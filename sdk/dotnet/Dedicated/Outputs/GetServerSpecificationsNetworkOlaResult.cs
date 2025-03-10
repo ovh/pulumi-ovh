@@ -18,11 +18,11 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly bool Available;
         /// <summary>
-        /// Supported modes
+        /// What modes are supported
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerSpecificationsNetworkOlaAvailableModeResult> AvailableModes;
         /// <summary>
-        /// Supported modes (DEPRECATED)
+        /// (DEPRECATED) What modes are supported
         /// </summary>
         public readonly ImmutableArray<string> SupportedModes;
 

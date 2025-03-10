@@ -25,12 +25,9 @@ class DatabaseInstanceArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               Available engines:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: Name of the database.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] name: Database name
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "engine", engine)
@@ -42,7 +39,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -54,8 +51,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        Available engines:
+        Name of the engine of the service
         """
         return pulumi.get(self, "engine")
 
@@ -66,10 +62,6 @@ class DatabaseInstanceArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -80,7 +72,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the database.
+        Database name
         """
         return pulumi.get(self, "name")
 
@@ -99,13 +91,10 @@ class _DatabaseInstanceState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[bool] default: Defines if the database has been created by default.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               Available engines:
-        :param pulumi.Input[str] name: Name of the database.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[bool] default: Defines if the database has been created by default
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] name: Database name
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -122,7 +111,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -134,7 +123,7 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines if the database has been created by default.
+        Defines if the database has been created by default
         """
         return pulumi.get(self, "default")
 
@@ -146,8 +135,7 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        Available engines:
+        Name of the engine of the service
         """
         return pulumi.get(self, "engine")
 
@@ -159,7 +147,7 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the database.
+        Database name
         """
         return pulumi.get(self, "name")
 
@@ -170,10 +158,6 @@ class _DatabaseInstanceState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -192,46 +176,12 @@ class DatabaseInstance(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a database for a database cluster associated with a public cloud project.
-
-        With this resource you can create a database for the following database engine:
-
-          * `mysql`
-          * `postgresql`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
-            engine="YYYY",
-            id="ZZZZ")
-        database = ovh.cloud_project_database.DatabaseInstance("database",
-            service_name=db.service_name,
-            engine=db.engine,
-            cluster_id=db.id)
-        ```
-
-        ## Import
-
-        OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
-        ```
-
+        Create a DatabaseInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               Available engines:
-        :param pulumi.Input[str] name: Name of the database.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] name: Database name
         """
         ...
     @overload
@@ -240,38 +190,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: DatabaseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a database for a database cluster associated with a public cloud project.
-
-        With this resource you can create a database for the following database engine:
-
-          * `mysql`
-          * `postgresql`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
-            engine="YYYY",
-            id="ZZZZ")
-        database = ovh.cloud_project_database.DatabaseInstance("database",
-            service_name=db.service_name,
-            engine=db.engine,
-            cluster_id=db.id)
-        ```
-
-        ## Import
-
-        OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
-        ```
-
+        Create a DatabaseInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,13 +252,10 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[bool] default: Defines if the database has been created by default.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               Available engines:
-        :param pulumi.Input[str] name: Name of the database.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[bool] default: Defines if the database has been created by default
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] name: Database name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -356,7 +272,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -364,7 +280,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def default(self) -> pulumi.Output[bool]:
         """
-        Defines if the database has been created by default.
+        Defines if the database has been created by default
         """
         return pulumi.get(self, "default")
 
@@ -372,8 +288,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        Available engines:
+        Name of the engine of the service
         """
         return pulumi.get(self, "engine")
 
@@ -381,16 +296,12 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the database.
+        Database name
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 

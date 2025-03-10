@@ -8,77 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
-//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
-//				State:       pulumi.StringRef("ok"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iploadbalancing.NewUdpFrontend(ctx, "testFrontend", &iploadbalancing.UdpFrontendArgs{
-//				ServiceName: pulumi.String(lb.ServiceName),
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				Zone:        pulumi.String("all"),
-//				Port:        pulumi.String("10,11"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
-// ```
 type UdpFrontend struct {
 	pulumi.CustomResourceState
 
-	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	// Only attach frontend on these ip. No restriction if null
 	DedicatedIpfos pulumi.StringArrayOutput `pulumi:"dedicatedIpfos"`
 	// Default UDP Farm of your frontend
 	DefaultFarmId pulumi.Float64PtrOutput `pulumi:"defaultFarmId"`
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// Human readable name for your frontend
+	// Human readable name for your frontend, this field is for you
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Id of your frontend
 	FrontendId pulumi.Float64Output `pulumi:"frontendId"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+	// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	// Zone of your frontend. Use "all" for all owned zone.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -121,44 +73,42 @@ func GetUdpFrontend(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UdpFrontend resources.
 type udpFrontendState struct {
-	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	// Only attach frontend on these ip. No restriction if null
 	DedicatedIpfos []string `pulumi:"dedicatedIpfos"`
 	// Default UDP Farm of your frontend
 	DefaultFarmId *float64 `pulumi:"defaultFarmId"`
 	// Disable your frontend. Default: 'false'
 	Disabled *bool `pulumi:"disabled"`
-	// Human readable name for your frontend
+	// Human readable name for your frontend, this field is for you
 	DisplayName *string `pulumi:"displayName"`
 	// Id of your frontend
 	FrontendId *float64 `pulumi:"frontendId"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+	// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
 	Port *string `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	// Zone of your frontend. Use "all" for all owned zone.
 	Zone *string `pulumi:"zone"`
 }
 
 type UdpFrontendState struct {
-	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	// Only attach frontend on these ip. No restriction if null
 	DedicatedIpfos pulumi.StringArrayInput
 	// Default UDP Farm of your frontend
 	DefaultFarmId pulumi.Float64PtrInput
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolPtrInput
-	// Human readable name for your frontend
+	// Human readable name for your frontend, this field is for you
 	DisplayName pulumi.StringPtrInput
 	// Id of your frontend
 	FrontendId pulumi.Float64PtrInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+	// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
 	Port pulumi.StringPtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	// Zone of your frontend. Use "all" for all owned zone.
 	Zone pulumi.StringPtrInput
 }
 
@@ -167,41 +117,39 @@ func (UdpFrontendState) ElementType() reflect.Type {
 }
 
 type udpFrontendArgs struct {
-	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	// Only attach frontend on these ip. No restriction if null
 	DedicatedIpfos []string `pulumi:"dedicatedIpfos"`
 	// Default UDP Farm of your frontend
 	DefaultFarmId *float64 `pulumi:"defaultFarmId"`
 	// Disable your frontend. Default: 'false'
 	Disabled *bool `pulumi:"disabled"`
-	// Human readable name for your frontend
+	// Human readable name for your frontend, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+	// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
 	Port string `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName string `pulumi:"serviceName"`
-	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	// Zone of your frontend. Use "all" for all owned zone.
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a UdpFrontend resource.
 type UdpFrontendArgs struct {
-	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	// Only attach frontend on these ip. No restriction if null
 	DedicatedIpfos pulumi.StringArrayInput
 	// Default UDP Farm of your frontend
 	DefaultFarmId pulumi.Float64PtrInput
 	// Disable your frontend. Default: 'false'
 	Disabled pulumi.BoolPtrInput
-	// Human readable name for your frontend
+	// Human readable name for your frontend, this field is for you
 	DisplayName pulumi.StringPtrInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+	// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
 	Port pulumi.StringInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
-	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	// Zone of your frontend. Use "all" for all owned zone.
 	Zone pulumi.StringInput
 }
 
@@ -292,7 +240,7 @@ func (o UdpFrontendOutput) ToUdpFrontendOutputWithContext(ctx context.Context) U
 	return o
 }
 
-// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+// Only attach frontend on these ip. No restriction if null
 func (o UdpFrontendOutput) DedicatedIpfos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.StringArrayOutput { return v.DedicatedIpfos }).(pulumi.StringArrayOutput)
 }
@@ -307,7 +255,7 @@ func (o UdpFrontendOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Human readable name for your frontend
+// Human readable name for your frontend, this field is for you
 func (o UdpFrontendOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -317,9 +265,8 @@ func (o UdpFrontendOutput) FrontendId() pulumi.Float64Output {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.Float64Output { return v.FrontendId }).(pulumi.Float64Output)
 }
 
-// Port(s) attached to your frontend. Supports single port (numerical value),
-// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-// and/or 'range'. Each port must be in the [1;49151] range
+// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
 func (o UdpFrontendOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
@@ -329,7 +276,7 @@ func (o UdpFrontendOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+// Zone of your frontend. Use "all" for all owned zone.
 func (o UdpFrontendOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

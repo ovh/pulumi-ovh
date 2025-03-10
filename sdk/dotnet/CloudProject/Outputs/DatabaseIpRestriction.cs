@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Current status of the cluster.
+        /// Current status of the IP restriction
         /// </summary>
         public readonly string? Status;
 

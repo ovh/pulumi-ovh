@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const vrackOnly = new ovh.cloudproject.KubeIpRestrictions("vrackOnly", {
- *     ips: ["10.42.0.0/16"],
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- * });
- * ```
- *
- * ## Import
- *
- * OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
- * ```
- */
 export class KubeIpRestrictions extends pulumi.CustomResource {
     /**
      * Get an existing KubeIpRestrictions resource's state with the given name, ID, and optional extra
@@ -59,15 +33,15 @@ export class KubeIpRestrictions extends pulumi.CustomResource {
     }
 
     /**
-     * List of CIDR authorized to interact with the managed Kubernetes cluster.
+     * List of IP restrictions for the cluster
      */
     public readonly ips!: pulumi.Output<string[]>;
     /**
-     * The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+     * Kube ID
      */
     public readonly kubeId!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+     * Service name
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -112,15 +86,15 @@ export class KubeIpRestrictions extends pulumi.CustomResource {
  */
 export interface KubeIpRestrictionsState {
     /**
-     * List of CIDR authorized to interact with the managed Kubernetes cluster.
+     * List of IP restrictions for the cluster
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+     * Kube ID
      */
     kubeId?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+     * Service name
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -130,15 +104,15 @@ export interface KubeIpRestrictionsState {
  */
 export interface KubeIpRestrictionsArgs {
     /**
-     * List of CIDR authorized to interact with the managed Kubernetes cluster.
+     * List of IP restrictions for the cluster
      */
     ips: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+     * Kube ID
      */
     kubeId: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+     * Service name
      */
     serviceName: pulumi.Input<string>;
 }

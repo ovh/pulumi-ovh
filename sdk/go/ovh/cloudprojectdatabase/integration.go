@@ -8,100 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an integration for a database cluster associated with a public cloud project.
-//
-// With this resource you can create an integration for all engine exept `mongodb`.
-//
-// Please take a look at the list of available `types` in the `Argument references` section in order to know the list of avaulable integrations. For example, thanks to the integration feature you can have your PostgreSQL logs in your OpenSearch Database.
-//
-// ## Example Usage
-//
-// Push PostgreSQL logs in an OpenSearch DB:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dbPostgresql, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
-//				ServiceName: "XXXX",
-//				Engine:      "postgresql",
-//				Id:          "ZZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			dbOpensearch, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
-//				ServiceName: "XXXX",
-//				Engine:      "opensearch",
-//				Id:          "ZZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudprojectdatabase.NewIntegration(ctx, "integration", &cloudprojectdatabase.IntegrationArgs{
-//				ServiceName:          pulumi.String(dbPostgresql.ServiceName),
-//				Engine:               pulumi.String(dbPostgresql.Engine),
-//				ClusterId:            pulumi.String(dbPostgresql.Id),
-//				SourceServiceId:      pulumi.String(dbPostgresql.Id),
-//				DestinationServiceId: pulumi.String(dbOpensearch.Id),
-//				Type:                 pulumi.String("opensearchLogs"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
-// ```
 type Integration struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// ID of the destination service.
+	// ID of the destination service
 	DestinationServiceId pulumi.StringOutput `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// Name of the engine of the service
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// Parameters for the integration.
-	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// ID of the source service.
+	// Parameters for the integration
+	Parameters  pulumi.StringMapOutput `pulumi:"parameters"`
+	ServiceName pulumi.StringOutput    `pulumi:"serviceName"`
+	// ID of the source service
 	SourceServiceId pulumi.StringOutput `pulumi:"sourceServiceId"`
-	// Current status of the integration.
+	// Current status of the integration
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Type of the integration.
-	// Available types:
-	// * `grafanaDashboard`
-	// * `grafanaDatasource`
-	// * `kafkaConnect`
-	// * `kafkaLogs`
-	// * `kafkaMirrorMaker`
+	// Type of the integration
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -150,56 +77,38 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// ID of the destination service.
+	// ID of the destination service
 	DestinationServiceId *string `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// Name of the engine of the service
 	Engine *string `pulumi:"engine"`
-	// Parameters for the integration.
-	Parameters map[string]string `pulumi:"parameters"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName *string `pulumi:"serviceName"`
-	// ID of the source service.
+	// Parameters for the integration
+	Parameters  map[string]string `pulumi:"parameters"`
+	ServiceName *string           `pulumi:"serviceName"`
+	// ID of the source service
 	SourceServiceId *string `pulumi:"sourceServiceId"`
-	// Current status of the integration.
+	// Current status of the integration
 	Status *string `pulumi:"status"`
-	// Type of the integration.
-	// Available types:
-	// * `grafanaDashboard`
-	// * `grafanaDatasource`
-	// * `kafkaConnect`
-	// * `kafkaLogs`
-	// * `kafkaMirrorMaker`
+	// Type of the integration
 	Type *string `pulumi:"type"`
 }
 
 type IntegrationState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// ID of the destination service.
+	// ID of the destination service
 	DestinationServiceId pulumi.StringPtrInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// Name of the engine of the service
 	Engine pulumi.StringPtrInput
-	// Parameters for the integration.
-	Parameters pulumi.StringMapInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Parameters for the integration
+	Parameters  pulumi.StringMapInput
 	ServiceName pulumi.StringPtrInput
-	// ID of the source service.
+	// ID of the source service
 	SourceServiceId pulumi.StringPtrInput
-	// Current status of the integration.
+	// Current status of the integration
 	Status pulumi.StringPtrInput
-	// Type of the integration.
-	// Available types:
-	// * `grafanaDashboard`
-	// * `grafanaDatasource`
-	// * `kafkaConnect`
-	// * `kafkaLogs`
-	// * `kafkaMirrorMaker`
+	// Type of the integration
 	Type pulumi.StringPtrInput
 }
 
@@ -208,53 +117,35 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// ID of the destination service.
+	// ID of the destination service
 	DestinationServiceId string `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// Name of the engine of the service
 	Engine string `pulumi:"engine"`
-	// Parameters for the integration.
-	Parameters map[string]string `pulumi:"parameters"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
-	// ID of the source service.
+	// Parameters for the integration
+	Parameters  map[string]string `pulumi:"parameters"`
+	ServiceName string            `pulumi:"serviceName"`
+	// ID of the source service
 	SourceServiceId string `pulumi:"sourceServiceId"`
-	// Type of the integration.
-	// Available types:
-	// * `grafanaDashboard`
-	// * `grafanaDatasource`
-	// * `kafkaConnect`
-	// * `kafkaLogs`
-	// * `kafkaMirrorMaker`
+	// Type of the integration
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// ID of the destination service.
+	// ID of the destination service
 	DestinationServiceId pulumi.StringInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// Name of the engine of the service
 	Engine pulumi.StringInput
-	// Parameters for the integration.
-	Parameters pulumi.StringMapInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Parameters for the integration
+	Parameters  pulumi.StringMapInput
 	ServiceName pulumi.StringInput
-	// ID of the source service.
+	// ID of the source service
 	SourceServiceId pulumi.StringInput
-	// Type of the integration.
-	// Available types:
-	// * `grafanaDashboard`
-	// * `grafanaDatasource`
-	// * `kafkaConnect`
-	// * `kafkaLogs`
-	// * `kafkaMirrorMaker`
+	// Type of the integration
 	Type pulumi.StringPtrInput
 }
 
@@ -345,50 +236,41 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o IntegrationOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// ID of the destination service.
+// ID of the destination service
 func (o IntegrationOutput) DestinationServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.DestinationServiceId }).(pulumi.StringOutput)
 }
 
-// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-// All engines available exept `mongodb`.
+// Name of the engine of the service
 func (o IntegrationOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Parameters for the integration.
+// Parameters for the integration
 func (o IntegrationOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o IntegrationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// ID of the source service.
+// ID of the source service
 func (o IntegrationOutput) SourceServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.SourceServiceId }).(pulumi.StringOutput)
 }
 
-// Current status of the integration.
+// Current status of the integration
 func (o IntegrationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Type of the integration.
-// Available types:
-// * `grafanaDashboard`
-// * `grafanaDatasource`
-// * `kafkaConnect`
-// * `kafkaLogs`
-// * `kafkaMirrorMaker`
+// Type of the integration
 func (o IntegrationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

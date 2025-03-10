@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows to manipulate LDP tokens.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const token = new ovh.dbaas.LogsToken("token", {serviceName: "ldp-xx-xxxxx"});
- * ```
- */
 export class LogsToken extends pulumi.CustomResource {
     /**
      * Get an existing LogsToken resource's state with the given name, ID, and optional extra
@@ -45,27 +33,27 @@ export class LogsToken extends pulumi.CustomResource {
     }
 
     /**
-     * Cluster ID. If not provided, the default clusterId is used
+     * Cluster ID
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Token creation date
+     * Token creation
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the token
+     * Token name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The LDP service name
+     * Service name
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * ID of the token
+     * Token used
      */
     public /*out*/ readonly tokenId!: pulumi.Output<string>;
     /**
-     * Token last update date
+     * Token last update
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
@@ -118,27 +106,27 @@ export class LogsToken extends pulumi.CustomResource {
  */
 export interface LogsTokenState {
     /**
-     * Cluster ID. If not provided, the default clusterId is used
+     * Cluster ID
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Token creation date
+     * Token creation
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the token
+     * Token name
      */
     name?: pulumi.Input<string>;
     /**
-     * The LDP service name
+     * Service name
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * ID of the token
+     * Token used
      */
     tokenId?: pulumi.Input<string>;
     /**
-     * Token last update date
+     * Token last update
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -152,15 +140,15 @@ export interface LogsTokenState {
  */
 export interface LogsTokenArgs {
     /**
-     * Cluster ID. If not provided, the default clusterId is used
+     * Cluster ID
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Name of the token
+     * Token name
      */
     name?: pulumi.Input<string>;
     /**
-     * The LDP service name
+     * Service name
      */
     serviceName: pulumi.Input<string>;
 }

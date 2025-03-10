@@ -14,19 +14,19 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
     public sealed class GetCapabilitiesFlavorResult
     {
         /// <summary>
-        /// Flavor core number.
+        /// Flavor core number
         /// </summary>
         public readonly int Core;
         /// <summary>
-        /// Flavor ram size in GB.
+        /// Flavor ram size in GB
         /// </summary>
         public readonly int Memory;
         /// <summary>
-        /// Name of the plan.
+        /// Name of the flavor
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Flavor disk size in GB.
+        /// Flavor disk size in GB
         /// </summary>
         public readonly int Storage;
 

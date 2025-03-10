@@ -7,214 +7,366 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
-type ServerDetails struct {
-	// Personnal hostname to use in server reinstallation
-	CustomHostname *string `pulumi:"customHostname"`
-	// Disk group id to process install on (only available for some templates)
-	DiskGroupId *float64 `pulumi:"diskGroupId"`
-	// true if you want to install only on the first disk
-	NoRaid *bool `pulumi:"noRaid"`
-	// Number of devices to use for system's software RAID
-	SoftRaidDevices *float64 `pulumi:"softRaidDevices"`
+type ServerCustomizations struct {
+	// Config Drive UserData
+	ConfigDriveUserData *string `pulumi:"configDriveUserData"`
+	// Path of the EFI bootloader from the OS installed on the server
+	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
+	// Custom hostname
+	Hostname *string `pulumi:"hostname"`
+	// Image HTTP Headers
+	HttpHeaders map[string]string `pulumi:"httpHeaders"`
+	// Image checksum
+	ImageCheckSum *string `pulumi:"imageCheckSum"`
+	// Checksum type
+	ImageCheckSumType *string `pulumi:"imageCheckSumType"`
+	// Image Type
+	ImageType *string `pulumi:"imageType"`
+	// Image URL
+	ImageUrl *string `pulumi:"imageUrl"`
+	// Display Language
+	Language *string `pulumi:"language"`
+	// Post-Installation Script
+	PostInstallationScript *string `pulumi:"postInstallationScript"`
+	// Post-Installation Script File Extension
+	PostInstallationScriptExtension *string `pulumi:"postInstallationScriptExtension"`
+	// SSH Public Key
+	SshKey *string `pulumi:"sshKey"`
 }
 
-// ServerDetailsInput is an input type that accepts ServerDetailsArgs and ServerDetailsOutput values.
-// You can construct a concrete instance of `ServerDetailsInput` via:
+// ServerCustomizationsInput is an input type that accepts ServerCustomizationsArgs and ServerCustomizationsOutput values.
+// You can construct a concrete instance of `ServerCustomizationsInput` via:
 //
-//	ServerDetailsArgs{...}
-type ServerDetailsInput interface {
+//	ServerCustomizationsArgs{...}
+type ServerCustomizationsInput interface {
 	pulumi.Input
 
-	ToServerDetailsOutput() ServerDetailsOutput
-	ToServerDetailsOutputWithContext(context.Context) ServerDetailsOutput
+	ToServerCustomizationsOutput() ServerCustomizationsOutput
+	ToServerCustomizationsOutputWithContext(context.Context) ServerCustomizationsOutput
 }
 
-type ServerDetailsArgs struct {
-	// Personnal hostname to use in server reinstallation
-	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
-	// Disk group id to process install on (only available for some templates)
-	DiskGroupId pulumi.Float64PtrInput `pulumi:"diskGroupId"`
-	// true if you want to install only on the first disk
-	NoRaid pulumi.BoolPtrInput `pulumi:"noRaid"`
-	// Number of devices to use for system's software RAID
-	SoftRaidDevices pulumi.Float64PtrInput `pulumi:"softRaidDevices"`
+type ServerCustomizationsArgs struct {
+	// Config Drive UserData
+	ConfigDriveUserData pulumi.StringPtrInput `pulumi:"configDriveUserData"`
+	// Path of the EFI bootloader from the OS installed on the server
+	EfiBootloaderPath pulumi.StringPtrInput `pulumi:"efiBootloaderPath"`
+	// Custom hostname
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Image HTTP Headers
+	HttpHeaders pulumi.StringMapInput `pulumi:"httpHeaders"`
+	// Image checksum
+	ImageCheckSum pulumi.StringPtrInput `pulumi:"imageCheckSum"`
+	// Checksum type
+	ImageCheckSumType pulumi.StringPtrInput `pulumi:"imageCheckSumType"`
+	// Image Type
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// Image URL
+	ImageUrl pulumi.StringPtrInput `pulumi:"imageUrl"`
+	// Display Language
+	Language pulumi.StringPtrInput `pulumi:"language"`
+	// Post-Installation Script
+	PostInstallationScript pulumi.StringPtrInput `pulumi:"postInstallationScript"`
+	// Post-Installation Script File Extension
+	PostInstallationScriptExtension pulumi.StringPtrInput `pulumi:"postInstallationScriptExtension"`
+	// SSH Public Key
+	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
 }
 
-func (ServerDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerDetails)(nil)).Elem()
+func (ServerCustomizationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCustomizations)(nil)).Elem()
 }
 
-func (i ServerDetailsArgs) ToServerDetailsOutput() ServerDetailsOutput {
-	return i.ToServerDetailsOutputWithContext(context.Background())
+func (i ServerCustomizationsArgs) ToServerCustomizationsOutput() ServerCustomizationsOutput {
+	return i.ToServerCustomizationsOutputWithContext(context.Background())
 }
 
-func (i ServerDetailsArgs) ToServerDetailsOutputWithContext(ctx context.Context) ServerDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsOutput)
+func (i ServerCustomizationsArgs) ToServerCustomizationsOutputWithContext(ctx context.Context) ServerCustomizationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCustomizationsOutput)
 }
 
-func (i ServerDetailsArgs) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
-	return i.ToServerDetailsPtrOutputWithContext(context.Background())
+func (i ServerCustomizationsArgs) ToServerCustomizationsPtrOutput() ServerCustomizationsPtrOutput {
+	return i.ToServerCustomizationsPtrOutputWithContext(context.Background())
 }
 
-func (i ServerDetailsArgs) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsOutput).ToServerDetailsPtrOutputWithContext(ctx)
+func (i ServerCustomizationsArgs) ToServerCustomizationsPtrOutputWithContext(ctx context.Context) ServerCustomizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCustomizationsOutput).ToServerCustomizationsPtrOutputWithContext(ctx)
 }
 
-// ServerDetailsPtrInput is an input type that accepts ServerDetailsArgs, ServerDetailsPtr and ServerDetailsPtrOutput values.
-// You can construct a concrete instance of `ServerDetailsPtrInput` via:
+// ServerCustomizationsPtrInput is an input type that accepts ServerCustomizationsArgs, ServerCustomizationsPtr and ServerCustomizationsPtrOutput values.
+// You can construct a concrete instance of `ServerCustomizationsPtrInput` via:
 //
-//	        ServerDetailsArgs{...}
+//	        ServerCustomizationsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ServerDetailsPtrInput interface {
+type ServerCustomizationsPtrInput interface {
 	pulumi.Input
 
-	ToServerDetailsPtrOutput() ServerDetailsPtrOutput
-	ToServerDetailsPtrOutputWithContext(context.Context) ServerDetailsPtrOutput
+	ToServerCustomizationsPtrOutput() ServerCustomizationsPtrOutput
+	ToServerCustomizationsPtrOutputWithContext(context.Context) ServerCustomizationsPtrOutput
 }
 
-type serverDetailsPtrType ServerDetailsArgs
+type serverCustomizationsPtrType ServerCustomizationsArgs
 
-func ServerDetailsPtr(v *ServerDetailsArgs) ServerDetailsPtrInput {
-	return (*serverDetailsPtrType)(v)
+func ServerCustomizationsPtr(v *ServerCustomizationsArgs) ServerCustomizationsPtrInput {
+	return (*serverCustomizationsPtrType)(v)
 }
 
-func (*serverDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerDetails)(nil)).Elem()
+func (*serverCustomizationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerCustomizations)(nil)).Elem()
 }
 
-func (i *serverDetailsPtrType) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
-	return i.ToServerDetailsPtrOutputWithContext(context.Background())
+func (i *serverCustomizationsPtrType) ToServerCustomizationsPtrOutput() ServerCustomizationsPtrOutput {
+	return i.ToServerCustomizationsPtrOutputWithContext(context.Background())
 }
 
-func (i *serverDetailsPtrType) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsPtrOutput)
+func (i *serverCustomizationsPtrType) ToServerCustomizationsPtrOutputWithContext(ctx context.Context) ServerCustomizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCustomizationsPtrOutput)
 }
 
-type ServerDetailsOutput struct{ *pulumi.OutputState }
+type ServerCustomizationsOutput struct{ *pulumi.OutputState }
 
-func (ServerDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerDetails)(nil)).Elem()
+func (ServerCustomizationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCustomizations)(nil)).Elem()
 }
 
-func (o ServerDetailsOutput) ToServerDetailsOutput() ServerDetailsOutput {
+func (o ServerCustomizationsOutput) ToServerCustomizationsOutput() ServerCustomizationsOutput {
 	return o
 }
 
-func (o ServerDetailsOutput) ToServerDetailsOutputWithContext(ctx context.Context) ServerDetailsOutput {
+func (o ServerCustomizationsOutput) ToServerCustomizationsOutputWithContext(ctx context.Context) ServerCustomizationsOutput {
 	return o
 }
 
-func (o ServerDetailsOutput) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
-	return o.ToServerDetailsPtrOutputWithContext(context.Background())
+func (o ServerCustomizationsOutput) ToServerCustomizationsPtrOutput() ServerCustomizationsPtrOutput {
+	return o.ToServerCustomizationsPtrOutputWithContext(context.Background())
 }
 
-func (o ServerDetailsOutput) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerDetails) *ServerDetails {
+func (o ServerCustomizationsOutput) ToServerCustomizationsPtrOutputWithContext(ctx context.Context) ServerCustomizationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerCustomizations) *ServerCustomizations {
 		return &v
-	}).(ServerDetailsPtrOutput)
+	}).(ServerCustomizationsPtrOutput)
 }
 
-// Personnal hostname to use in server reinstallation
-func (o ServerDetailsOutput) CustomHostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerDetails) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
+// Config Drive UserData
+func (o ServerCustomizationsOutput) ConfigDriveUserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.ConfigDriveUserData }).(pulumi.StringPtrOutput)
 }
 
-// Disk group id to process install on (only available for some templates)
-func (o ServerDetailsOutput) DiskGroupId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServerDetails) *float64 { return v.DiskGroupId }).(pulumi.Float64PtrOutput)
+// Path of the EFI bootloader from the OS installed on the server
+func (o ServerCustomizationsOutput) EfiBootloaderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.EfiBootloaderPath }).(pulumi.StringPtrOutput)
 }
 
-// true if you want to install only on the first disk
-func (o ServerDetailsOutput) NoRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerDetails) *bool { return v.NoRaid }).(pulumi.BoolPtrOutput)
+// Custom hostname
+func (o ServerCustomizationsOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// Number of devices to use for system's software RAID
-func (o ServerDetailsOutput) SoftRaidDevices() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ServerDetails) *float64 { return v.SoftRaidDevices }).(pulumi.Float64PtrOutput)
+// Image HTTP Headers
+func (o ServerCustomizationsOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServerCustomizations) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
 }
 
-type ServerDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerDetails)(nil)).Elem()
+// Image checksum
+func (o ServerCustomizationsOutput) ImageCheckSum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.ImageCheckSum }).(pulumi.StringPtrOutput)
 }
 
-func (o ServerDetailsPtrOutput) ToServerDetailsPtrOutput() ServerDetailsPtrOutput {
+// Checksum type
+func (o ServerCustomizationsOutput) ImageCheckSumType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.ImageCheckSumType }).(pulumi.StringPtrOutput)
+}
+
+// Image Type
+func (o ServerCustomizationsOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
+// Image URL
+func (o ServerCustomizationsOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.ImageUrl }).(pulumi.StringPtrOutput)
+}
+
+// Display Language
+func (o ServerCustomizationsOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script
+func (o ServerCustomizationsOutput) PostInstallationScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.PostInstallationScript }).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script File Extension
+func (o ServerCustomizationsOutput) PostInstallationScriptExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.PostInstallationScriptExtension }).(pulumi.StringPtrOutput)
+}
+
+// SSH Public Key
+func (o ServerCustomizationsOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCustomizations) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+type ServerCustomizationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerCustomizationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerCustomizations)(nil)).Elem()
+}
+
+func (o ServerCustomizationsPtrOutput) ToServerCustomizationsPtrOutput() ServerCustomizationsPtrOutput {
 	return o
 }
 
-func (o ServerDetailsPtrOutput) ToServerDetailsPtrOutputWithContext(ctx context.Context) ServerDetailsPtrOutput {
+func (o ServerCustomizationsPtrOutput) ToServerCustomizationsPtrOutputWithContext(ctx context.Context) ServerCustomizationsPtrOutput {
 	return o
 }
 
-func (o ServerDetailsPtrOutput) Elem() ServerDetailsOutput {
-	return o.ApplyT(func(v *ServerDetails) ServerDetails {
+func (o ServerCustomizationsPtrOutput) Elem() ServerCustomizationsOutput {
+	return o.ApplyT(func(v *ServerCustomizations) ServerCustomizations {
 		if v != nil {
 			return *v
 		}
-		var ret ServerDetails
+		var ret ServerCustomizations
 		return ret
-	}).(ServerDetailsOutput)
+	}).(ServerCustomizationsOutput)
 }
 
-// Personnal hostname to use in server reinstallation
-func (o ServerDetailsPtrOutput) CustomHostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerDetails) *string {
+// Config Drive UserData
+func (o ServerCustomizationsPtrOutput) ConfigDriveUserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CustomHostname
+		return v.ConfigDriveUserData
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disk group id to process install on (only available for some templates)
-func (o ServerDetailsPtrOutput) DiskGroupId() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ServerDetails) *float64 {
+// Path of the EFI bootloader from the OS installed on the server
+func (o ServerCustomizationsPtrOutput) EfiBootloaderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DiskGroupId
-	}).(pulumi.Float64PtrOutput)
+		return v.EfiBootloaderPath
+	}).(pulumi.StringPtrOutput)
 }
 
-// true if you want to install only on the first disk
-func (o ServerDetailsPtrOutput) NoRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerDetails) *bool {
+// Custom hostname
+func (o ServerCustomizationsPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
 		if v == nil {
 			return nil
 		}
-		return v.NoRaid
-	}).(pulumi.BoolPtrOutput)
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
 }
 
-// Number of devices to use for system's software RAID
-func (o ServerDetailsPtrOutput) SoftRaidDevices() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ServerDetails) *float64 {
+// Image HTTP Headers
+func (o ServerCustomizationsPtrOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerCustomizations) map[string]string {
 		if v == nil {
 			return nil
 		}
-		return v.SoftRaidDevices
-	}).(pulumi.Float64PtrOutput)
+		return v.HttpHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Image checksum
+func (o ServerCustomizationsPtrOutput) ImageCheckSum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageCheckSum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Checksum type
+func (o ServerCustomizationsPtrOutput) ImageCheckSumType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageCheckSumType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image Type
+func (o ServerCustomizationsPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image URL
+func (o ServerCustomizationsPtrOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display Language
+func (o ServerCustomizationsPtrOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Language
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script
+func (o ServerCustomizationsPtrOutput) PostInstallationScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostInstallationScript
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script File Extension
+func (o ServerCustomizationsPtrOutput) PostInstallationScriptExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostInstallationScriptExtension
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH Public Key
+func (o ServerCustomizationsPtrOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServerIam struct {
 	// Resource display name
 	DisplayName *string `pulumi:"displayName"`
-	// Unique identifier of the resource in the IAM
+	// Unique identifier of the resource
 	Id *string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags map[string]string `pulumi:"tags"`
-	// URN of the private database, used when writing IAM policies
+	// Unique resource name used in policies
 	Urn *string `pulumi:"urn"`
 }
 
@@ -232,11 +384,11 @@ type ServerIamInput interface {
 type ServerIamArgs struct {
 	// Resource display name
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Unique identifier of the resource in the IAM
+	// Unique identifier of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// URN of the private database, used when writing IAM policies
+	// Unique resource name used in policies
 	Urn pulumi.StringPtrInput `pulumi:"urn"`
 }
 
@@ -322,17 +474,17 @@ func (o ServerIamOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource in the IAM
+// Unique identifier of the resource
 func (o ServerIamOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerIam) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+// Resource tags. Tags that were internally computed are prefixed with ovh:
 func (o ServerIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServerIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// URN of the private database, used when writing IAM policies
+// Unique resource name used in policies
 func (o ServerIamOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
 }
@@ -371,7 +523,7 @@ func (o ServerIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource in the IAM
+// Unique identifier of the resource
 func (o ServerIamPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerIam) *string {
 		if v == nil {
@@ -381,7 +533,7 @@ func (o ServerIamPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+// Resource tags. Tags that were internally computed are prefixed with ovh:
 func (o ServerIamPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServerIam) map[string]string {
 		if v == nil {
@@ -391,7 +543,7 @@ func (o ServerIamPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// URN of the private database, used when writing IAM policies
+// Unique resource name used in policies
 func (o ServerIamPtrOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerIam) *string {
 		if v == nil {
@@ -399,306 +551,6 @@ func (o ServerIamPtrOutput) Urn() pulumi.StringPtrOutput {
 		}
 		return v.Urn
 	}).(pulumi.StringPtrOutput)
-}
-
-type ServerInstallTaskDetails struct {
-	// Set up the server using the provided hostname instead of the default hostname.
-	CustomHostname *string `pulumi:"customHostname"`
-	// Disk group id.
-	DiskGroupId *int `pulumi:"diskGroupId"`
-	// Set to true to disable RAID.
-	NoRaid *bool `pulumi:"noRaid"`
-	// soft raid devices.
-	SoftRaidDevices *int `pulumi:"softRaidDevices"`
-}
-
-// ServerInstallTaskDetailsInput is an input type that accepts ServerInstallTaskDetailsArgs and ServerInstallTaskDetailsOutput values.
-// You can construct a concrete instance of `ServerInstallTaskDetailsInput` via:
-//
-//	ServerInstallTaskDetailsArgs{...}
-type ServerInstallTaskDetailsInput interface {
-	pulumi.Input
-
-	ToServerInstallTaskDetailsOutput() ServerInstallTaskDetailsOutput
-	ToServerInstallTaskDetailsOutputWithContext(context.Context) ServerInstallTaskDetailsOutput
-}
-
-type ServerInstallTaskDetailsArgs struct {
-	// Set up the server using the provided hostname instead of the default hostname.
-	CustomHostname pulumi.StringPtrInput `pulumi:"customHostname"`
-	// Disk group id.
-	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
-	// Set to true to disable RAID.
-	NoRaid pulumi.BoolPtrInput `pulumi:"noRaid"`
-	// soft raid devices.
-	SoftRaidDevices pulumi.IntPtrInput `pulumi:"softRaidDevices"`
-}
-
-func (ServerInstallTaskDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerInstallTaskDetails)(nil)).Elem()
-}
-
-func (i ServerInstallTaskDetailsArgs) ToServerInstallTaskDetailsOutput() ServerInstallTaskDetailsOutput {
-	return i.ToServerInstallTaskDetailsOutputWithContext(context.Background())
-}
-
-func (i ServerInstallTaskDetailsArgs) ToServerInstallTaskDetailsOutputWithContext(ctx context.Context) ServerInstallTaskDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskDetailsOutput)
-}
-
-func (i ServerInstallTaskDetailsArgs) ToServerInstallTaskDetailsPtrOutput() ServerInstallTaskDetailsPtrOutput {
-	return i.ToServerInstallTaskDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i ServerInstallTaskDetailsArgs) ToServerInstallTaskDetailsPtrOutputWithContext(ctx context.Context) ServerInstallTaskDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskDetailsOutput).ToServerInstallTaskDetailsPtrOutputWithContext(ctx)
-}
-
-// ServerInstallTaskDetailsPtrInput is an input type that accepts ServerInstallTaskDetailsArgs, ServerInstallTaskDetailsPtr and ServerInstallTaskDetailsPtrOutput values.
-// You can construct a concrete instance of `ServerInstallTaskDetailsPtrInput` via:
-//
-//	        ServerInstallTaskDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServerInstallTaskDetailsPtrInput interface {
-	pulumi.Input
-
-	ToServerInstallTaskDetailsPtrOutput() ServerInstallTaskDetailsPtrOutput
-	ToServerInstallTaskDetailsPtrOutputWithContext(context.Context) ServerInstallTaskDetailsPtrOutput
-}
-
-type serverInstallTaskDetailsPtrType ServerInstallTaskDetailsArgs
-
-func ServerInstallTaskDetailsPtr(v *ServerInstallTaskDetailsArgs) ServerInstallTaskDetailsPtrInput {
-	return (*serverInstallTaskDetailsPtrType)(v)
-}
-
-func (*serverInstallTaskDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerInstallTaskDetails)(nil)).Elem()
-}
-
-func (i *serverInstallTaskDetailsPtrType) ToServerInstallTaskDetailsPtrOutput() ServerInstallTaskDetailsPtrOutput {
-	return i.ToServerInstallTaskDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *serverInstallTaskDetailsPtrType) ToServerInstallTaskDetailsPtrOutputWithContext(ctx context.Context) ServerInstallTaskDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskDetailsPtrOutput)
-}
-
-type ServerInstallTaskDetailsOutput struct{ *pulumi.OutputState }
-
-func (ServerInstallTaskDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerInstallTaskDetails)(nil)).Elem()
-}
-
-func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsOutput() ServerInstallTaskDetailsOutput {
-	return o
-}
-
-func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsOutputWithContext(ctx context.Context) ServerInstallTaskDetailsOutput {
-	return o
-}
-
-func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsPtrOutput() ServerInstallTaskDetailsPtrOutput {
-	return o.ToServerInstallTaskDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o ServerInstallTaskDetailsOutput) ToServerInstallTaskDetailsPtrOutputWithContext(ctx context.Context) ServerInstallTaskDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerInstallTaskDetails) *ServerInstallTaskDetails {
-		return &v
-	}).(ServerInstallTaskDetailsPtrOutput)
-}
-
-// Set up the server using the provided hostname instead of the default hostname.
-func (o ServerInstallTaskDetailsOutput) CustomHostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *string { return v.CustomHostname }).(pulumi.StringPtrOutput)
-}
-
-// Disk group id.
-func (o ServerInstallTaskDetailsOutput) DiskGroupId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.DiskGroupId }).(pulumi.IntPtrOutput)
-}
-
-// Set to true to disable RAID.
-func (o ServerInstallTaskDetailsOutput) NoRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *bool { return v.NoRaid }).(pulumi.BoolPtrOutput)
-}
-
-// soft raid devices.
-func (o ServerInstallTaskDetailsOutput) SoftRaidDevices() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServerInstallTaskDetails) *int { return v.SoftRaidDevices }).(pulumi.IntPtrOutput)
-}
-
-type ServerInstallTaskDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerInstallTaskDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerInstallTaskDetails)(nil)).Elem()
-}
-
-func (o ServerInstallTaskDetailsPtrOutput) ToServerInstallTaskDetailsPtrOutput() ServerInstallTaskDetailsPtrOutput {
-	return o
-}
-
-func (o ServerInstallTaskDetailsPtrOutput) ToServerInstallTaskDetailsPtrOutputWithContext(ctx context.Context) ServerInstallTaskDetailsPtrOutput {
-	return o
-}
-
-func (o ServerInstallTaskDetailsPtrOutput) Elem() ServerInstallTaskDetailsOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) ServerInstallTaskDetails {
-		if v != nil {
-			return *v
-		}
-		var ret ServerInstallTaskDetails
-		return ret
-	}).(ServerInstallTaskDetailsOutput)
-}
-
-// Set up the server using the provided hostname instead of the default hostname.
-func (o ServerInstallTaskDetailsPtrOutput) CustomHostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomHostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Disk group id.
-func (o ServerInstallTaskDetailsPtrOutput) DiskGroupId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DiskGroupId
-	}).(pulumi.IntPtrOutput)
-}
-
-// Set to true to disable RAID.
-func (o ServerInstallTaskDetailsPtrOutput) NoRaid() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NoRaid
-	}).(pulumi.BoolPtrOutput)
-}
-
-// soft raid devices.
-func (o ServerInstallTaskDetailsPtrOutput) SoftRaidDevices() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServerInstallTaskDetails) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SoftRaidDevices
-	}).(pulumi.IntPtrOutput)
-}
-
-type ServerInstallTaskUserMetadata struct {
-	// The key for the user_metadata
-	Key string `pulumi:"key"`
-	// The value for the user_metadata
-	Value string `pulumi:"value"`
-}
-
-// ServerInstallTaskUserMetadataInput is an input type that accepts ServerInstallTaskUserMetadataArgs and ServerInstallTaskUserMetadataOutput values.
-// You can construct a concrete instance of `ServerInstallTaskUserMetadataInput` via:
-//
-//	ServerInstallTaskUserMetadataArgs{...}
-type ServerInstallTaskUserMetadataInput interface {
-	pulumi.Input
-
-	ToServerInstallTaskUserMetadataOutput() ServerInstallTaskUserMetadataOutput
-	ToServerInstallTaskUserMetadataOutputWithContext(context.Context) ServerInstallTaskUserMetadataOutput
-}
-
-type ServerInstallTaskUserMetadataArgs struct {
-	// The key for the user_metadata
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value for the user_metadata
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (ServerInstallTaskUserMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerInstallTaskUserMetadata)(nil)).Elem()
-}
-
-func (i ServerInstallTaskUserMetadataArgs) ToServerInstallTaskUserMetadataOutput() ServerInstallTaskUserMetadataOutput {
-	return i.ToServerInstallTaskUserMetadataOutputWithContext(context.Background())
-}
-
-func (i ServerInstallTaskUserMetadataArgs) ToServerInstallTaskUserMetadataOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskUserMetadataOutput)
-}
-
-// ServerInstallTaskUserMetadataArrayInput is an input type that accepts ServerInstallTaskUserMetadataArray and ServerInstallTaskUserMetadataArrayOutput values.
-// You can construct a concrete instance of `ServerInstallTaskUserMetadataArrayInput` via:
-//
-//	ServerInstallTaskUserMetadataArray{ ServerInstallTaskUserMetadataArgs{...} }
-type ServerInstallTaskUserMetadataArrayInput interface {
-	pulumi.Input
-
-	ToServerInstallTaskUserMetadataArrayOutput() ServerInstallTaskUserMetadataArrayOutput
-	ToServerInstallTaskUserMetadataArrayOutputWithContext(context.Context) ServerInstallTaskUserMetadataArrayOutput
-}
-
-type ServerInstallTaskUserMetadataArray []ServerInstallTaskUserMetadataInput
-
-func (ServerInstallTaskUserMetadataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerInstallTaskUserMetadata)(nil)).Elem()
-}
-
-func (i ServerInstallTaskUserMetadataArray) ToServerInstallTaskUserMetadataArrayOutput() ServerInstallTaskUserMetadataArrayOutput {
-	return i.ToServerInstallTaskUserMetadataArrayOutputWithContext(context.Background())
-}
-
-func (i ServerInstallTaskUserMetadataArray) ToServerInstallTaskUserMetadataArrayOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerInstallTaskUserMetadataArrayOutput)
-}
-
-type ServerInstallTaskUserMetadataOutput struct{ *pulumi.OutputState }
-
-func (ServerInstallTaskUserMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerInstallTaskUserMetadata)(nil)).Elem()
-}
-
-func (o ServerInstallTaskUserMetadataOutput) ToServerInstallTaskUserMetadataOutput() ServerInstallTaskUserMetadataOutput {
-	return o
-}
-
-func (o ServerInstallTaskUserMetadataOutput) ToServerInstallTaskUserMetadataOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataOutput {
-	return o
-}
-
-// The key for the user_metadata
-func (o ServerInstallTaskUserMetadataOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerInstallTaskUserMetadata) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// The value for the user_metadata
-func (o ServerInstallTaskUserMetadataOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerInstallTaskUserMetadata) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type ServerInstallTaskUserMetadataArrayOutput struct{ *pulumi.OutputState }
-
-func (ServerInstallTaskUserMetadataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerInstallTaskUserMetadata)(nil)).Elem()
-}
-
-func (o ServerInstallTaskUserMetadataArrayOutput) ToServerInstallTaskUserMetadataArrayOutput() ServerInstallTaskUserMetadataArrayOutput {
-	return o
-}
-
-func (o ServerInstallTaskUserMetadataArrayOutput) ToServerInstallTaskUserMetadataArrayOutputWithContext(ctx context.Context) ServerInstallTaskUserMetadataArrayOutput {
-	return o
-}
-
-func (o ServerInstallTaskUserMetadataArrayOutput) Index(i pulumi.IntInput) ServerInstallTaskUserMetadataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerInstallTaskUserMetadata {
-		return vs[0].([]ServerInstallTaskUserMetadata)[vs[1].(int)]
-	}).(ServerInstallTaskUserMetadataOutput)
 }
 
 type ServerNetworkingInterface struct {
@@ -808,8 +660,7 @@ func (o ServerNetworkingInterfaceArrayOutput) Index(i pulumi.IntInput) ServerNet
 }
 
 type ServerOrder struct {
-	Date *string `pulumi:"date"`
-	// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+	Date           *string             `pulumi:"date"`
 	Details        []ServerOrderDetail `pulumi:"details"`
 	ExpirationDate *string             `pulumi:"expirationDate"`
 	OrderId        *float64            `pulumi:"orderId"`
@@ -827,8 +678,7 @@ type ServerOrderInput interface {
 }
 
 type ServerOrderArgs struct {
-	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
+	Date           pulumi.StringPtrInput       `pulumi:"date"`
 	Details        ServerOrderDetailArrayInput `pulumi:"details"`
 	ExpirationDate pulumi.StringPtrInput       `pulumi:"expirationDate"`
 	OrderId        pulumi.Float64PtrInput      `pulumi:"orderId"`
@@ -915,7 +765,6 @@ func (o ServerOrderOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerOrder) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
 func (o ServerOrderOutput) Details() ServerOrderDetailArrayOutput {
 	return o.ApplyT(func(v ServerOrder) []ServerOrderDetail { return v.Details }).(ServerOrderDetailArrayOutput)
 }
@@ -961,7 +810,6 @@ func (o ServerOrderPtrOutput) Date() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
 func (o ServerOrderPtrOutput) Details() ServerOrderDetailArrayOutput {
 	return o.ApplyT(func(v *ServerOrder) []ServerOrderDetail {
 		if v == nil {
@@ -1591,104 +1439,2122 @@ func (o ServerPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) Serve
 	}).(ServerPlanOptionConfigurationOutput)
 }
 
-type ServerUserMetadata struct {
-	Key   *string `pulumi:"key"`
-	Value *string `pulumi:"value"`
+type ServerReinstallTaskCustomizations struct {
+	// Config Drive UserData
+	ConfigDriveUserData *string `pulumi:"configDriveUserData"`
+	// EFI bootloader path
+	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
+	// Custom hostname
+	Hostname *string `pulumi:"hostname"`
+	// Image HTTP Headers
+	HttpHeaders map[string]string `pulumi:"httpHeaders"`
+	// Image checksum
+	ImageCheckSum *string `pulumi:"imageCheckSum"`
+	// Checksum type
+	ImageCheckSumType *string `pulumi:"imageCheckSumType"`
+	// Image Type
+	ImageType *string `pulumi:"imageType"`
+	// Image URL
+	ImageUrl *string `pulumi:"imageUrl"`
+	// Display Language
+	Language *string `pulumi:"language"`
+	// Post-Installation Script
+	PostInstallationScript *string `pulumi:"postInstallationScript"`
+	// Post-Installation Script File Extension
+	PostInstallationScriptExtension *string `pulumi:"postInstallationScriptExtension"`
+	// SSH Public Key
+	SshKey *string `pulumi:"sshKey"`
 }
 
-// ServerUserMetadataInput is an input type that accepts ServerUserMetadataArgs and ServerUserMetadataOutput values.
-// You can construct a concrete instance of `ServerUserMetadataInput` via:
+// ServerReinstallTaskCustomizationsInput is an input type that accepts ServerReinstallTaskCustomizationsArgs and ServerReinstallTaskCustomizationsOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskCustomizationsInput` via:
 //
-//	ServerUserMetadataArgs{...}
-type ServerUserMetadataInput interface {
+//	ServerReinstallTaskCustomizationsArgs{...}
+type ServerReinstallTaskCustomizationsInput interface {
 	pulumi.Input
 
-	ToServerUserMetadataOutput() ServerUserMetadataOutput
-	ToServerUserMetadataOutputWithContext(context.Context) ServerUserMetadataOutput
+	ToServerReinstallTaskCustomizationsOutput() ServerReinstallTaskCustomizationsOutput
+	ToServerReinstallTaskCustomizationsOutputWithContext(context.Context) ServerReinstallTaskCustomizationsOutput
 }
 
-type ServerUserMetadataArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
+type ServerReinstallTaskCustomizationsArgs struct {
+	// Config Drive UserData
+	ConfigDriveUserData pulumi.StringPtrInput `pulumi:"configDriveUserData"`
+	// EFI bootloader path
+	EfiBootloaderPath pulumi.StringPtrInput `pulumi:"efiBootloaderPath"`
+	// Custom hostname
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Image HTTP Headers
+	HttpHeaders pulumi.StringMapInput `pulumi:"httpHeaders"`
+	// Image checksum
+	ImageCheckSum pulumi.StringPtrInput `pulumi:"imageCheckSum"`
+	// Checksum type
+	ImageCheckSumType pulumi.StringPtrInput `pulumi:"imageCheckSumType"`
+	// Image Type
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// Image URL
+	ImageUrl pulumi.StringPtrInput `pulumi:"imageUrl"`
+	// Display Language
+	Language pulumi.StringPtrInput `pulumi:"language"`
+	// Post-Installation Script
+	PostInstallationScript pulumi.StringPtrInput `pulumi:"postInstallationScript"`
+	// Post-Installation Script File Extension
+	PostInstallationScriptExtension pulumi.StringPtrInput `pulumi:"postInstallationScriptExtension"`
+	// SSH Public Key
+	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
 }
 
-func (ServerUserMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerUserMetadata)(nil)).Elem()
+func (ServerReinstallTaskCustomizationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskCustomizations)(nil)).Elem()
 }
 
-func (i ServerUserMetadataArgs) ToServerUserMetadataOutput() ServerUserMetadataOutput {
-	return i.ToServerUserMetadataOutputWithContext(context.Background())
+func (i ServerReinstallTaskCustomizationsArgs) ToServerReinstallTaskCustomizationsOutput() ServerReinstallTaskCustomizationsOutput {
+	return i.ToServerReinstallTaskCustomizationsOutputWithContext(context.Background())
 }
 
-func (i ServerUserMetadataArgs) ToServerUserMetadataOutputWithContext(ctx context.Context) ServerUserMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerUserMetadataOutput)
+func (i ServerReinstallTaskCustomizationsArgs) ToServerReinstallTaskCustomizationsOutputWithContext(ctx context.Context) ServerReinstallTaskCustomizationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskCustomizationsOutput)
 }
 
-// ServerUserMetadataArrayInput is an input type that accepts ServerUserMetadataArray and ServerUserMetadataArrayOutput values.
-// You can construct a concrete instance of `ServerUserMetadataArrayInput` via:
+func (i ServerReinstallTaskCustomizationsArgs) ToServerReinstallTaskCustomizationsPtrOutput() ServerReinstallTaskCustomizationsPtrOutput {
+	return i.ToServerReinstallTaskCustomizationsPtrOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskCustomizationsArgs) ToServerReinstallTaskCustomizationsPtrOutputWithContext(ctx context.Context) ServerReinstallTaskCustomizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskCustomizationsOutput).ToServerReinstallTaskCustomizationsPtrOutputWithContext(ctx)
+}
+
+// ServerReinstallTaskCustomizationsPtrInput is an input type that accepts ServerReinstallTaskCustomizationsArgs, ServerReinstallTaskCustomizationsPtr and ServerReinstallTaskCustomizationsPtrOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskCustomizationsPtrInput` via:
 //
-//	ServerUserMetadataArray{ ServerUserMetadataArgs{...} }
-type ServerUserMetadataArrayInput interface {
+//	        ServerReinstallTaskCustomizationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerReinstallTaskCustomizationsPtrInput interface {
 	pulumi.Input
 
-	ToServerUserMetadataArrayOutput() ServerUserMetadataArrayOutput
-	ToServerUserMetadataArrayOutputWithContext(context.Context) ServerUserMetadataArrayOutput
+	ToServerReinstallTaskCustomizationsPtrOutput() ServerReinstallTaskCustomizationsPtrOutput
+	ToServerReinstallTaskCustomizationsPtrOutputWithContext(context.Context) ServerReinstallTaskCustomizationsPtrOutput
 }
 
-type ServerUserMetadataArray []ServerUserMetadataInput
+type serverReinstallTaskCustomizationsPtrType ServerReinstallTaskCustomizationsArgs
 
-func (ServerUserMetadataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerUserMetadata)(nil)).Elem()
+func ServerReinstallTaskCustomizationsPtr(v *ServerReinstallTaskCustomizationsArgs) ServerReinstallTaskCustomizationsPtrInput {
+	return (*serverReinstallTaskCustomizationsPtrType)(v)
 }
 
-func (i ServerUserMetadataArray) ToServerUserMetadataArrayOutput() ServerUserMetadataArrayOutput {
-	return i.ToServerUserMetadataArrayOutputWithContext(context.Background())
+func (*serverReinstallTaskCustomizationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerReinstallTaskCustomizations)(nil)).Elem()
 }
 
-func (i ServerUserMetadataArray) ToServerUserMetadataArrayOutputWithContext(ctx context.Context) ServerUserMetadataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerUserMetadataArrayOutput)
+func (i *serverReinstallTaskCustomizationsPtrType) ToServerReinstallTaskCustomizationsPtrOutput() ServerReinstallTaskCustomizationsPtrOutput {
+	return i.ToServerReinstallTaskCustomizationsPtrOutputWithContext(context.Background())
 }
 
-type ServerUserMetadataOutput struct{ *pulumi.OutputState }
-
-func (ServerUserMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerUserMetadata)(nil)).Elem()
+func (i *serverReinstallTaskCustomizationsPtrType) ToServerReinstallTaskCustomizationsPtrOutputWithContext(ctx context.Context) ServerReinstallTaskCustomizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskCustomizationsPtrOutput)
 }
 
-func (o ServerUserMetadataOutput) ToServerUserMetadataOutput() ServerUserMetadataOutput {
+type ServerReinstallTaskCustomizationsOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskCustomizationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskCustomizations)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskCustomizationsOutput) ToServerReinstallTaskCustomizationsOutput() ServerReinstallTaskCustomizationsOutput {
 	return o
 }
 
-func (o ServerUserMetadataOutput) ToServerUserMetadataOutputWithContext(ctx context.Context) ServerUserMetadataOutput {
+func (o ServerReinstallTaskCustomizationsOutput) ToServerReinstallTaskCustomizationsOutputWithContext(ctx context.Context) ServerReinstallTaskCustomizationsOutput {
 	return o
 }
 
-func (o ServerUserMetadataOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerUserMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o ServerReinstallTaskCustomizationsOutput) ToServerReinstallTaskCustomizationsPtrOutput() ServerReinstallTaskCustomizationsPtrOutput {
+	return o.ToServerReinstallTaskCustomizationsPtrOutputWithContext(context.Background())
 }
 
-func (o ServerUserMetadataOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServerUserMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o ServerReinstallTaskCustomizationsOutput) ToServerReinstallTaskCustomizationsPtrOutputWithContext(ctx context.Context) ServerReinstallTaskCustomizationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerReinstallTaskCustomizations) *ServerReinstallTaskCustomizations {
+		return &v
+	}).(ServerReinstallTaskCustomizationsPtrOutput)
 }
 
-type ServerUserMetadataArrayOutput struct{ *pulumi.OutputState }
-
-func (ServerUserMetadataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerUserMetadata)(nil)).Elem()
+// Config Drive UserData
+func (o ServerReinstallTaskCustomizationsOutput) ConfigDriveUserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.ConfigDriveUserData }).(pulumi.StringPtrOutput)
 }
 
-func (o ServerUserMetadataArrayOutput) ToServerUserMetadataArrayOutput() ServerUserMetadataArrayOutput {
+// EFI bootloader path
+func (o ServerReinstallTaskCustomizationsOutput) EfiBootloaderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.EfiBootloaderPath }).(pulumi.StringPtrOutput)
+}
+
+// Custom hostname
+func (o ServerReinstallTaskCustomizationsOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Image HTTP Headers
+func (o ServerReinstallTaskCustomizationsOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
+}
+
+// Image checksum
+func (o ServerReinstallTaskCustomizationsOutput) ImageCheckSum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.ImageCheckSum }).(pulumi.StringPtrOutput)
+}
+
+// Checksum type
+func (o ServerReinstallTaskCustomizationsOutput) ImageCheckSumType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.ImageCheckSumType }).(pulumi.StringPtrOutput)
+}
+
+// Image Type
+func (o ServerReinstallTaskCustomizationsOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
+// Image URL
+func (o ServerReinstallTaskCustomizationsOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.ImageUrl }).(pulumi.StringPtrOutput)
+}
+
+// Display Language
+func (o ServerReinstallTaskCustomizationsOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script
+func (o ServerReinstallTaskCustomizationsOutput) PostInstallationScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.PostInstallationScript }).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script File Extension
+func (o ServerReinstallTaskCustomizationsOutput) PostInstallationScriptExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.PostInstallationScriptExtension }).(pulumi.StringPtrOutput)
+}
+
+// SSH Public Key
+func (o ServerReinstallTaskCustomizationsOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+type ServerReinstallTaskCustomizationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskCustomizationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerReinstallTaskCustomizations)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskCustomizationsPtrOutput) ToServerReinstallTaskCustomizationsPtrOutput() ServerReinstallTaskCustomizationsPtrOutput {
 	return o
 }
 
-func (o ServerUserMetadataArrayOutput) ToServerUserMetadataArrayOutputWithContext(ctx context.Context) ServerUserMetadataArrayOutput {
+func (o ServerReinstallTaskCustomizationsPtrOutput) ToServerReinstallTaskCustomizationsPtrOutputWithContext(ctx context.Context) ServerReinstallTaskCustomizationsPtrOutput {
 	return o
 }
 
-func (o ServerUserMetadataArrayOutput) Index(i pulumi.IntInput) ServerUserMetadataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerUserMetadata {
-		return vs[0].([]ServerUserMetadata)[vs[1].(int)]
-	}).(ServerUserMetadataOutput)
+func (o ServerReinstallTaskCustomizationsPtrOutput) Elem() ServerReinstallTaskCustomizationsOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) ServerReinstallTaskCustomizations {
+		if v != nil {
+			return *v
+		}
+		var ret ServerReinstallTaskCustomizations
+		return ret
+	}).(ServerReinstallTaskCustomizationsOutput)
+}
+
+// Config Drive UserData
+func (o ServerReinstallTaskCustomizationsPtrOutput) ConfigDriveUserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigDriveUserData
+	}).(pulumi.StringPtrOutput)
+}
+
+// EFI bootloader path
+func (o ServerReinstallTaskCustomizationsPtrOutput) EfiBootloaderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EfiBootloaderPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom hostname
+func (o ServerReinstallTaskCustomizationsPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image HTTP Headers
+func (o ServerReinstallTaskCustomizationsPtrOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Image checksum
+func (o ServerReinstallTaskCustomizationsPtrOutput) ImageCheckSum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageCheckSum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Checksum type
+func (o ServerReinstallTaskCustomizationsPtrOutput) ImageCheckSumType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageCheckSumType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image Type
+func (o ServerReinstallTaskCustomizationsPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image URL
+func (o ServerReinstallTaskCustomizationsPtrOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display Language
+func (o ServerReinstallTaskCustomizationsPtrOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Language
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script
+func (o ServerReinstallTaskCustomizationsPtrOutput) PostInstallationScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostInstallationScript
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post-Installation Script File Extension
+func (o ServerReinstallTaskCustomizationsPtrOutput) PostInstallationScriptExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostInstallationScriptExtension
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH Public Key
+func (o ServerReinstallTaskCustomizationsPtrOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerReinstallTaskStorage struct {
+	// Disk group id (default is 0, meaning automatic)
+	DiskGroupId *int `pulumi:"diskGroupId"`
+	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+	HardwareRaids []ServerReinstallTaskStorageHardwareRaid `pulumi:"hardwareRaids"`
+	// Partitioning configuration
+	Partitionings []ServerReinstallTaskStoragePartitioning `pulumi:"partitionings"`
+}
+
+// ServerReinstallTaskStorageInput is an input type that accepts ServerReinstallTaskStorageArgs and ServerReinstallTaskStorageOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStorageInput` via:
+//
+//	ServerReinstallTaskStorageArgs{...}
+type ServerReinstallTaskStorageInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStorageOutput() ServerReinstallTaskStorageOutput
+	ToServerReinstallTaskStorageOutputWithContext(context.Context) ServerReinstallTaskStorageOutput
+}
+
+type ServerReinstallTaskStorageArgs struct {
+	// Disk group id (default is 0, meaning automatic)
+	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
+	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+	HardwareRaids ServerReinstallTaskStorageHardwareRaidArrayInput `pulumi:"hardwareRaids"`
+	// Partitioning configuration
+	Partitionings ServerReinstallTaskStoragePartitioningArrayInput `pulumi:"partitionings"`
+}
+
+func (ServerReinstallTaskStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStorage)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStorageArgs) ToServerReinstallTaskStorageOutput() ServerReinstallTaskStorageOutput {
+	return i.ToServerReinstallTaskStorageOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStorageArgs) ToServerReinstallTaskStorageOutputWithContext(ctx context.Context) ServerReinstallTaskStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStorageOutput)
+}
+
+// ServerReinstallTaskStorageArrayInput is an input type that accepts ServerReinstallTaskStorageArray and ServerReinstallTaskStorageArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStorageArrayInput` via:
+//
+//	ServerReinstallTaskStorageArray{ ServerReinstallTaskStorageArgs{...} }
+type ServerReinstallTaskStorageArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStorageArrayOutput() ServerReinstallTaskStorageArrayOutput
+	ToServerReinstallTaskStorageArrayOutputWithContext(context.Context) ServerReinstallTaskStorageArrayOutput
+}
+
+type ServerReinstallTaskStorageArray []ServerReinstallTaskStorageInput
+
+func (ServerReinstallTaskStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStorage)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStorageArray) ToServerReinstallTaskStorageArrayOutput() ServerReinstallTaskStorageArrayOutput {
+	return i.ToServerReinstallTaskStorageArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStorageArray) ToServerReinstallTaskStorageArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStorageArrayOutput)
+}
+
+type ServerReinstallTaskStorageOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStorage)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStorageOutput) ToServerReinstallTaskStorageOutput() ServerReinstallTaskStorageOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStorageOutput) ToServerReinstallTaskStorageOutputWithContext(ctx context.Context) ServerReinstallTaskStorageOutput {
+	return o
+}
+
+// Disk group id (default is 0, meaning automatic)
+func (o ServerReinstallTaskStorageOutput) DiskGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorage) *int { return v.DiskGroupId }).(pulumi.IntPtrOutput)
+}
+
+// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+func (o ServerReinstallTaskStorageOutput) HardwareRaids() ServerReinstallTaskStorageHardwareRaidArrayOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorage) []ServerReinstallTaskStorageHardwareRaid { return v.HardwareRaids }).(ServerReinstallTaskStorageHardwareRaidArrayOutput)
+}
+
+// Partitioning configuration
+func (o ServerReinstallTaskStorageOutput) Partitionings() ServerReinstallTaskStoragePartitioningArrayOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorage) []ServerReinstallTaskStoragePartitioning { return v.Partitionings }).(ServerReinstallTaskStoragePartitioningArrayOutput)
+}
+
+type ServerReinstallTaskStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStorage)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStorageArrayOutput) ToServerReinstallTaskStorageArrayOutput() ServerReinstallTaskStorageArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStorageArrayOutput) ToServerReinstallTaskStorageArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStorageArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStorageArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStorage {
+		return vs[0].([]ServerReinstallTaskStorage)[vs[1].(int)]
+	}).(ServerReinstallTaskStorageOutput)
+}
+
+type ServerReinstallTaskStorageHardwareRaid struct {
+	// Number of arrays (default is 1)
+	Arrays *int `pulumi:"arrays"`
+	// Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+	Disks *int `pulumi:"disks"`
+	// Hardware raid type (default is 1)
+	RaidLevel *int `pulumi:"raidLevel"`
+	// Number of disks in the disk group involved in the spare (default is 0)
+	Spares *int `pulumi:"spares"`
+}
+
+// ServerReinstallTaskStorageHardwareRaidInput is an input type that accepts ServerReinstallTaskStorageHardwareRaidArgs and ServerReinstallTaskStorageHardwareRaidOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStorageHardwareRaidInput` via:
+//
+//	ServerReinstallTaskStorageHardwareRaidArgs{...}
+type ServerReinstallTaskStorageHardwareRaidInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStorageHardwareRaidOutput() ServerReinstallTaskStorageHardwareRaidOutput
+	ToServerReinstallTaskStorageHardwareRaidOutputWithContext(context.Context) ServerReinstallTaskStorageHardwareRaidOutput
+}
+
+type ServerReinstallTaskStorageHardwareRaidArgs struct {
+	// Number of arrays (default is 1)
+	Arrays pulumi.IntPtrInput `pulumi:"arrays"`
+	// Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+	Disks pulumi.IntPtrInput `pulumi:"disks"`
+	// Hardware raid type (default is 1)
+	RaidLevel pulumi.IntPtrInput `pulumi:"raidLevel"`
+	// Number of disks in the disk group involved in the spare (default is 0)
+	Spares pulumi.IntPtrInput `pulumi:"spares"`
+}
+
+func (ServerReinstallTaskStorageHardwareRaidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStorageHardwareRaid)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStorageHardwareRaidArgs) ToServerReinstallTaskStorageHardwareRaidOutput() ServerReinstallTaskStorageHardwareRaidOutput {
+	return i.ToServerReinstallTaskStorageHardwareRaidOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStorageHardwareRaidArgs) ToServerReinstallTaskStorageHardwareRaidOutputWithContext(ctx context.Context) ServerReinstallTaskStorageHardwareRaidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStorageHardwareRaidOutput)
+}
+
+// ServerReinstallTaskStorageHardwareRaidArrayInput is an input type that accepts ServerReinstallTaskStorageHardwareRaidArray and ServerReinstallTaskStorageHardwareRaidArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStorageHardwareRaidArrayInput` via:
+//
+//	ServerReinstallTaskStorageHardwareRaidArray{ ServerReinstallTaskStorageHardwareRaidArgs{...} }
+type ServerReinstallTaskStorageHardwareRaidArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStorageHardwareRaidArrayOutput() ServerReinstallTaskStorageHardwareRaidArrayOutput
+	ToServerReinstallTaskStorageHardwareRaidArrayOutputWithContext(context.Context) ServerReinstallTaskStorageHardwareRaidArrayOutput
+}
+
+type ServerReinstallTaskStorageHardwareRaidArray []ServerReinstallTaskStorageHardwareRaidInput
+
+func (ServerReinstallTaskStorageHardwareRaidArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStorageHardwareRaid)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStorageHardwareRaidArray) ToServerReinstallTaskStorageHardwareRaidArrayOutput() ServerReinstallTaskStorageHardwareRaidArrayOutput {
+	return i.ToServerReinstallTaskStorageHardwareRaidArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStorageHardwareRaidArray) ToServerReinstallTaskStorageHardwareRaidArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStorageHardwareRaidArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStorageHardwareRaidArrayOutput)
+}
+
+type ServerReinstallTaskStorageHardwareRaidOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStorageHardwareRaidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStorageHardwareRaid)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStorageHardwareRaidOutput) ToServerReinstallTaskStorageHardwareRaidOutput() ServerReinstallTaskStorageHardwareRaidOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStorageHardwareRaidOutput) ToServerReinstallTaskStorageHardwareRaidOutputWithContext(ctx context.Context) ServerReinstallTaskStorageHardwareRaidOutput {
+	return o
+}
+
+// Number of arrays (default is 1)
+func (o ServerReinstallTaskStorageHardwareRaidOutput) Arrays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorageHardwareRaid) *int { return v.Arrays }).(pulumi.IntPtrOutput)
+}
+
+// Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+func (o ServerReinstallTaskStorageHardwareRaidOutput) Disks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorageHardwareRaid) *int { return v.Disks }).(pulumi.IntPtrOutput)
+}
+
+// Hardware raid type (default is 1)
+func (o ServerReinstallTaskStorageHardwareRaidOutput) RaidLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorageHardwareRaid) *int { return v.RaidLevel }).(pulumi.IntPtrOutput)
+}
+
+// Number of disks in the disk group involved in the spare (default is 0)
+func (o ServerReinstallTaskStorageHardwareRaidOutput) Spares() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStorageHardwareRaid) *int { return v.Spares }).(pulumi.IntPtrOutput)
+}
+
+type ServerReinstallTaskStorageHardwareRaidArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStorageHardwareRaidArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStorageHardwareRaid)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStorageHardwareRaidArrayOutput) ToServerReinstallTaskStorageHardwareRaidArrayOutput() ServerReinstallTaskStorageHardwareRaidArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStorageHardwareRaidArrayOutput) ToServerReinstallTaskStorageHardwareRaidArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStorageHardwareRaidArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStorageHardwareRaidArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStorageHardwareRaidOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStorageHardwareRaid {
+		return vs[0].([]ServerReinstallTaskStorageHardwareRaid)[vs[1].(int)]
+	}).(ServerReinstallTaskStorageHardwareRaidOutput)
+}
+
+type ServerReinstallTaskStoragePartitioning struct {
+	// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+	Disks *int `pulumi:"disks"`
+	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+	Layouts []ServerReinstallTaskStoragePartitioningLayout `pulumi:"layouts"`
+	// Partitioning scheme name
+	SchemeName *string `pulumi:"schemeName"`
+}
+
+// ServerReinstallTaskStoragePartitioningInput is an input type that accepts ServerReinstallTaskStoragePartitioningArgs and ServerReinstallTaskStoragePartitioningOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningArgs{...}
+type ServerReinstallTaskStoragePartitioningInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningOutput() ServerReinstallTaskStoragePartitioningOutput
+	ToServerReinstallTaskStoragePartitioningOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningOutput
+}
+
+type ServerReinstallTaskStoragePartitioningArgs struct {
+	// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+	Disks pulumi.IntPtrInput `pulumi:"disks"`
+	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+	Layouts ServerReinstallTaskStoragePartitioningLayoutArrayInput `pulumi:"layouts"`
+	// Partitioning scheme name
+	SchemeName pulumi.StringPtrInput `pulumi:"schemeName"`
+}
+
+func (ServerReinstallTaskStoragePartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioning)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningArgs) ToServerReinstallTaskStoragePartitioningOutput() ServerReinstallTaskStoragePartitioningOutput {
+	return i.ToServerReinstallTaskStoragePartitioningOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningArgs) ToServerReinstallTaskStoragePartitioningOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningOutput)
+}
+
+// ServerReinstallTaskStoragePartitioningArrayInput is an input type that accepts ServerReinstallTaskStoragePartitioningArray and ServerReinstallTaskStoragePartitioningArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningArrayInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningArray{ ServerReinstallTaskStoragePartitioningArgs{...} }
+type ServerReinstallTaskStoragePartitioningArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningArrayOutput() ServerReinstallTaskStoragePartitioningArrayOutput
+	ToServerReinstallTaskStoragePartitioningArrayOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningArrayOutput
+}
+
+type ServerReinstallTaskStoragePartitioningArray []ServerReinstallTaskStoragePartitioningInput
+
+func (ServerReinstallTaskStoragePartitioningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioning)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningArray) ToServerReinstallTaskStoragePartitioningArrayOutput() ServerReinstallTaskStoragePartitioningArrayOutput {
+	return i.ToServerReinstallTaskStoragePartitioningArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningArray) ToServerReinstallTaskStoragePartitioningArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningArrayOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioning)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningOutput) ToServerReinstallTaskStoragePartitioningOutput() ServerReinstallTaskStoragePartitioningOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningOutput) ToServerReinstallTaskStoragePartitioningOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningOutput {
+	return o
+}
+
+// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+func (o ServerReinstallTaskStoragePartitioningOutput) Disks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioning) *int { return v.Disks }).(pulumi.IntPtrOutput)
+}
+
+// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+func (o ServerReinstallTaskStoragePartitioningOutput) Layouts() ServerReinstallTaskStoragePartitioningLayoutArrayOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioning) []ServerReinstallTaskStoragePartitioningLayout {
+		return v.Layouts
+	}).(ServerReinstallTaskStoragePartitioningLayoutArrayOutput)
+}
+
+// Partitioning scheme name
+func (o ServerReinstallTaskStoragePartitioningOutput) SchemeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioning) *string { return v.SchemeName }).(pulumi.StringPtrOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioning)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningArrayOutput) ToServerReinstallTaskStoragePartitioningArrayOutput() ServerReinstallTaskStoragePartitioningArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningArrayOutput) ToServerReinstallTaskStoragePartitioningArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStoragePartitioningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStoragePartitioning {
+		return vs[0].([]ServerReinstallTaskStoragePartitioning)[vs[1].(int)]
+	}).(ServerReinstallTaskStoragePartitioningOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayout struct {
+	// Partition extras parameters
+	Extras []ServerReinstallTaskStoragePartitioningLayoutExtra `pulumi:"extras"`
+	// File system type
+	FileSystem string `pulumi:"fileSystem"`
+	// Mount point
+	MountPoint string `pulumi:"mountPoint"`
+	// Software raid type (default is 1)
+	RaidLevel *int `pulumi:"raidLevel"`
+	// Partition size in MiB (default value is 0)
+	Size *int `pulumi:"size"`
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutArgs and ServerReinstallTaskStoragePartitioningLayoutOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutArgs{...}
+type ServerReinstallTaskStoragePartitioningLayoutInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutOutput() ServerReinstallTaskStoragePartitioningLayoutOutput
+	ToServerReinstallTaskStoragePartitioningLayoutOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutArgs struct {
+	// Partition extras parameters
+	Extras ServerReinstallTaskStoragePartitioningLayoutExtraArrayInput `pulumi:"extras"`
+	// File system type
+	FileSystem pulumi.StringInput `pulumi:"fileSystem"`
+	// Mount point
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// Software raid type (default is 1)
+	RaidLevel pulumi.IntPtrInput `pulumi:"raidLevel"`
+	// Partition size in MiB (default value is 0)
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (ServerReinstallTaskStoragePartitioningLayoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutArgs) ToServerReinstallTaskStoragePartitioningLayoutOutput() ServerReinstallTaskStoragePartitioningLayoutOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutArgs) ToServerReinstallTaskStoragePartitioningLayoutOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutOutput)
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutArrayInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutArray and ServerReinstallTaskStoragePartitioningLayoutArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutArrayInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutArray{ ServerReinstallTaskStoragePartitioningLayoutArgs{...} }
+type ServerReinstallTaskStoragePartitioningLayoutArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutArrayOutput() ServerReinstallTaskStoragePartitioningLayoutArrayOutput
+	ToServerReinstallTaskStoragePartitioningLayoutArrayOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutArrayOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutArray []ServerReinstallTaskStoragePartitioningLayoutInput
+
+func (ServerReinstallTaskStoragePartitioningLayoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutArray) ToServerReinstallTaskStoragePartitioningLayoutArrayOutput() ServerReinstallTaskStoragePartitioningLayoutArrayOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutArray) ToServerReinstallTaskStoragePartitioningLayoutArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutArrayOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) ToServerReinstallTaskStoragePartitioningLayoutOutput() ServerReinstallTaskStoragePartitioningLayoutOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) ToServerReinstallTaskStoragePartitioningLayoutOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutOutput {
+	return o
+}
+
+// Partition extras parameters
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) Extras() ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) []ServerReinstallTaskStoragePartitioningLayoutExtra {
+		return v.Extras
+	}).(ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput)
+}
+
+// File system type
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) FileSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) string { return v.FileSystem }).(pulumi.StringOutput)
+}
+
+// Mount point
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// Software raid type (default is 1)
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) RaidLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) *int { return v.RaidLevel }).(pulumi.IntPtrOutput)
+}
+
+// Partition size in MiB (default value is 0)
+func (o ServerReinstallTaskStoragePartitioningLayoutOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutArrayOutput() ServerReinstallTaskStoragePartitioningLayoutArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStoragePartitioningLayoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStoragePartitioningLayout {
+		return vs[0].([]ServerReinstallTaskStoragePartitioningLayout)[vs[1].(int)]
+	}).(ServerReinstallTaskStoragePartitioningLayoutOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtra struct {
+	// LVM-specific parameters
+	Lvs []ServerReinstallTaskStoragePartitioningLayoutExtraLv `pulumi:"lvs"`
+	// ZFS-specific parameters
+	Zps []ServerReinstallTaskStoragePartitioningLayoutExtraZp `pulumi:"zps"`
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutExtraInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutExtraArgs and ServerReinstallTaskStoragePartitioningLayoutExtraOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutExtraInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutExtraArgs{...}
+type ServerReinstallTaskStoragePartitioningLayoutExtraInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutExtraOutput() ServerReinstallTaskStoragePartitioningLayoutExtraOutput
+	ToServerReinstallTaskStoragePartitioningLayoutExtraOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraArgs struct {
+	// LVM-specific parameters
+	Lvs ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayInput `pulumi:"lvs"`
+	// ZFS-specific parameters
+	Zps ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayInput `pulumi:"zps"`
+}
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtra)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraArgs) ToServerReinstallTaskStoragePartitioningLayoutExtraOutput() ServerReinstallTaskStoragePartitioningLayoutExtraOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutExtraOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraArgs) ToServerReinstallTaskStoragePartitioningLayoutExtraOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutExtraOutput)
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutExtraArrayInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutExtraArray and ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutExtraArrayInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutExtraArray{ ServerReinstallTaskStoragePartitioningLayoutExtraArgs{...} }
+type ServerReinstallTaskStoragePartitioningLayoutExtraArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput
+	ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraArray []ServerReinstallTaskStoragePartitioningLayoutExtraInput
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayoutExtra)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraArray) ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraArray) ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtra)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraOutput() ServerReinstallTaskStoragePartitioningLayoutExtraOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraOutput {
+	return o
+}
+
+// LVM-specific parameters
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) Lvs() ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtra) []ServerReinstallTaskStoragePartitioningLayoutExtraLv {
+		return v.Lvs
+	}).(ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput)
+}
+
+// ZFS-specific parameters
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) Zps() ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtra) []ServerReinstallTaskStoragePartitioningLayoutExtraZp {
+		return v.Zps
+	}).(ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayoutExtra)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStoragePartitioningLayoutExtraOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStoragePartitioningLayoutExtra {
+		return vs[0].([]ServerReinstallTaskStoragePartitioningLayoutExtra)[vs[1].(int)]
+	}).(ServerReinstallTaskStoragePartitioningLayoutExtraOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraLv struct {
+	// Logical volume name
+	Name *string `pulumi:"name"`
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutExtraLvInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs and ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutExtraLvInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs{...}
+type ServerReinstallTaskStoragePartitioningLayoutExtraLvInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutput() ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput
+	ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs struct {
+	// Logical volume name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraLv)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs) ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutput() ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs) ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput)
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutExtraLvArray and ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutExtraLvArray{ ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs{...} }
+type ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput
+	ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraLvArray []ServerReinstallTaskStoragePartitioningLayoutExtraLvInput
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraLvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayoutExtraLv)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraLvArray) ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraLvArray) ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraLv)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutput() ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraLvOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput {
+	return o
+}
+
+// Logical volume name
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtraLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayoutExtraLv)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStoragePartitioningLayoutExtraLv {
+		return vs[0].([]ServerReinstallTaskStoragePartitioningLayoutExtraLv)[vs[1].(int)]
+	}).(ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraZp struct {
+	// zpool name (generated automatically if not specified)
+	Name *string `pulumi:"name"`
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutExtraZpInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs and ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutExtraZpInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs{...}
+type ServerReinstallTaskStoragePartitioningLayoutExtraZpInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutput() ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput
+	ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs struct {
+	// zpool name (generated automatically if not specified)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraZp)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs) ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutput() ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs) ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput)
+}
+
+// ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayInput is an input type that accepts ServerReinstallTaskStoragePartitioningLayoutExtraZpArray and ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput values.
+// You can construct a concrete instance of `ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayInput` via:
+//
+//	ServerReinstallTaskStoragePartitioningLayoutExtraZpArray{ ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs{...} }
+type ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayInput interface {
+	pulumi.Input
+
+	ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput
+	ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutputWithContext(context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraZpArray []ServerReinstallTaskStoragePartitioningLayoutExtraZpInput
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraZpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayoutExtraZp)(nil)).Elem()
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraZpArray) ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput {
+	return i.ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutputWithContext(context.Background())
+}
+
+func (i ServerReinstallTaskStoragePartitioningLayoutExtraZpArray) ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraZp)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutput() ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraZpOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput {
+	return o
+}
+
+// zpool name (generated automatically if not specified)
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtraZp) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerReinstallTaskStoragePartitioningLayoutExtraZp)(nil)).Elem()
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput() ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput) ToServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutputWithContext(ctx context.Context) ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput {
+	return o
+}
+
+func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput) Index(i pulumi.IntInput) ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerReinstallTaskStoragePartitioningLayoutExtraZp {
+		return vs[0].([]ServerReinstallTaskStoragePartitioningLayoutExtraZp)[vs[1].(int)]
+	}).(ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput)
+}
+
+type ServerStorage struct {
+	// Disk group id (default is 0, meaning automatic)
+	DiskGroupId *float64 `pulumi:"diskGroupId"`
+	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+	HardwareRaids []ServerStorageHardwareRaid `pulumi:"hardwareRaids"`
+	// Partitioning configuration
+	Partitioning *ServerStoragePartitioning `pulumi:"partitioning"`
+}
+
+// ServerStorageInput is an input type that accepts ServerStorageArgs and ServerStorageOutput values.
+// You can construct a concrete instance of `ServerStorageInput` via:
+//
+//	ServerStorageArgs{...}
+type ServerStorageInput interface {
+	pulumi.Input
+
+	ToServerStorageOutput() ServerStorageOutput
+	ToServerStorageOutputWithContext(context.Context) ServerStorageOutput
+}
+
+type ServerStorageArgs struct {
+	// Disk group id (default is 0, meaning automatic)
+	DiskGroupId pulumi.Float64PtrInput `pulumi:"diskGroupId"`
+	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+	HardwareRaids ServerStorageHardwareRaidArrayInput `pulumi:"hardwareRaids"`
+	// Partitioning configuration
+	Partitioning ServerStoragePartitioningPtrInput `pulumi:"partitioning"`
+}
+
+func (ServerStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStorage)(nil)).Elem()
+}
+
+func (i ServerStorageArgs) ToServerStorageOutput() ServerStorageOutput {
+	return i.ToServerStorageOutputWithContext(context.Background())
+}
+
+func (i ServerStorageArgs) ToServerStorageOutputWithContext(ctx context.Context) ServerStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageOutput)
+}
+
+// ServerStorageArrayInput is an input type that accepts ServerStorageArray and ServerStorageArrayOutput values.
+// You can construct a concrete instance of `ServerStorageArrayInput` via:
+//
+//	ServerStorageArray{ ServerStorageArgs{...} }
+type ServerStorageArrayInput interface {
+	pulumi.Input
+
+	ToServerStorageArrayOutput() ServerStorageArrayOutput
+	ToServerStorageArrayOutputWithContext(context.Context) ServerStorageArrayOutput
+}
+
+type ServerStorageArray []ServerStorageInput
+
+func (ServerStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerStorage)(nil)).Elem()
+}
+
+func (i ServerStorageArray) ToServerStorageArrayOutput() ServerStorageArrayOutput {
+	return i.ToServerStorageArrayOutputWithContext(context.Background())
+}
+
+func (i ServerStorageArray) ToServerStorageArrayOutputWithContext(ctx context.Context) ServerStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageArrayOutput)
+}
+
+type ServerStorageOutput struct{ *pulumi.OutputState }
+
+func (ServerStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStorage)(nil)).Elem()
+}
+
+func (o ServerStorageOutput) ToServerStorageOutput() ServerStorageOutput {
+	return o
+}
+
+func (o ServerStorageOutput) ToServerStorageOutputWithContext(ctx context.Context) ServerStorageOutput {
+	return o
+}
+
+// Disk group id (default is 0, meaning automatic)
+func (o ServerStorageOutput) DiskGroupId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStorage) *float64 { return v.DiskGroupId }).(pulumi.Float64PtrOutput)
+}
+
+// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+func (o ServerStorageOutput) HardwareRaids() ServerStorageHardwareRaidArrayOutput {
+	return o.ApplyT(func(v ServerStorage) []ServerStorageHardwareRaid { return v.HardwareRaids }).(ServerStorageHardwareRaidArrayOutput)
+}
+
+// Partitioning configuration
+func (o ServerStorageOutput) Partitioning() ServerStoragePartitioningPtrOutput {
+	return o.ApplyT(func(v ServerStorage) *ServerStoragePartitioning { return v.Partitioning }).(ServerStoragePartitioningPtrOutput)
+}
+
+type ServerStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerStorage)(nil)).Elem()
+}
+
+func (o ServerStorageArrayOutput) ToServerStorageArrayOutput() ServerStorageArrayOutput {
+	return o
+}
+
+func (o ServerStorageArrayOutput) ToServerStorageArrayOutputWithContext(ctx context.Context) ServerStorageArrayOutput {
+	return o
+}
+
+func (o ServerStorageArrayOutput) Index(i pulumi.IntInput) ServerStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerStorage {
+		return vs[0].([]ServerStorage)[vs[1].(int)]
+	}).(ServerStorageOutput)
+}
+
+type ServerStorageHardwareRaid struct {
+	// Number of arrays (default is 1)
+	Arrays *float64 `pulumi:"arrays"`
+	// Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+	Disks *float64 `pulumi:"disks"`
+	// Hardware raid type (default is 1)
+	RaidLevel *float64 `pulumi:"raidLevel"`
+	// Number of disks in the disk group involved in the spare (default is 0)
+	Spares *float64 `pulumi:"spares"`
+}
+
+// ServerStorageHardwareRaidInput is an input type that accepts ServerStorageHardwareRaidArgs and ServerStorageHardwareRaidOutput values.
+// You can construct a concrete instance of `ServerStorageHardwareRaidInput` via:
+//
+//	ServerStorageHardwareRaidArgs{...}
+type ServerStorageHardwareRaidInput interface {
+	pulumi.Input
+
+	ToServerStorageHardwareRaidOutput() ServerStorageHardwareRaidOutput
+	ToServerStorageHardwareRaidOutputWithContext(context.Context) ServerStorageHardwareRaidOutput
+}
+
+type ServerStorageHardwareRaidArgs struct {
+	// Number of arrays (default is 1)
+	Arrays pulumi.Float64PtrInput `pulumi:"arrays"`
+	// Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+	Disks pulumi.Float64PtrInput `pulumi:"disks"`
+	// Hardware raid type (default is 1)
+	RaidLevel pulumi.Float64PtrInput `pulumi:"raidLevel"`
+	// Number of disks in the disk group involved in the spare (default is 0)
+	Spares pulumi.Float64PtrInput `pulumi:"spares"`
+}
+
+func (ServerStorageHardwareRaidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStorageHardwareRaid)(nil)).Elem()
+}
+
+func (i ServerStorageHardwareRaidArgs) ToServerStorageHardwareRaidOutput() ServerStorageHardwareRaidOutput {
+	return i.ToServerStorageHardwareRaidOutputWithContext(context.Background())
+}
+
+func (i ServerStorageHardwareRaidArgs) ToServerStorageHardwareRaidOutputWithContext(ctx context.Context) ServerStorageHardwareRaidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageHardwareRaidOutput)
+}
+
+// ServerStorageHardwareRaidArrayInput is an input type that accepts ServerStorageHardwareRaidArray and ServerStorageHardwareRaidArrayOutput values.
+// You can construct a concrete instance of `ServerStorageHardwareRaidArrayInput` via:
+//
+//	ServerStorageHardwareRaidArray{ ServerStorageHardwareRaidArgs{...} }
+type ServerStorageHardwareRaidArrayInput interface {
+	pulumi.Input
+
+	ToServerStorageHardwareRaidArrayOutput() ServerStorageHardwareRaidArrayOutput
+	ToServerStorageHardwareRaidArrayOutputWithContext(context.Context) ServerStorageHardwareRaidArrayOutput
+}
+
+type ServerStorageHardwareRaidArray []ServerStorageHardwareRaidInput
+
+func (ServerStorageHardwareRaidArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerStorageHardwareRaid)(nil)).Elem()
+}
+
+func (i ServerStorageHardwareRaidArray) ToServerStorageHardwareRaidArrayOutput() ServerStorageHardwareRaidArrayOutput {
+	return i.ToServerStorageHardwareRaidArrayOutputWithContext(context.Background())
+}
+
+func (i ServerStorageHardwareRaidArray) ToServerStorageHardwareRaidArrayOutputWithContext(ctx context.Context) ServerStorageHardwareRaidArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStorageHardwareRaidArrayOutput)
+}
+
+type ServerStorageHardwareRaidOutput struct{ *pulumi.OutputState }
+
+func (ServerStorageHardwareRaidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStorageHardwareRaid)(nil)).Elem()
+}
+
+func (o ServerStorageHardwareRaidOutput) ToServerStorageHardwareRaidOutput() ServerStorageHardwareRaidOutput {
+	return o
+}
+
+func (o ServerStorageHardwareRaidOutput) ToServerStorageHardwareRaidOutputWithContext(ctx context.Context) ServerStorageHardwareRaidOutput {
+	return o
+}
+
+// Number of arrays (default is 1)
+func (o ServerStorageHardwareRaidOutput) Arrays() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStorageHardwareRaid) *float64 { return v.Arrays }).(pulumi.Float64PtrOutput)
+}
+
+// Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+func (o ServerStorageHardwareRaidOutput) Disks() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStorageHardwareRaid) *float64 { return v.Disks }).(pulumi.Float64PtrOutput)
+}
+
+// Hardware raid type (default is 1)
+func (o ServerStorageHardwareRaidOutput) RaidLevel() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStorageHardwareRaid) *float64 { return v.RaidLevel }).(pulumi.Float64PtrOutput)
+}
+
+// Number of disks in the disk group involved in the spare (default is 0)
+func (o ServerStorageHardwareRaidOutput) Spares() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStorageHardwareRaid) *float64 { return v.Spares }).(pulumi.Float64PtrOutput)
+}
+
+type ServerStorageHardwareRaidArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerStorageHardwareRaidArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerStorageHardwareRaid)(nil)).Elem()
+}
+
+func (o ServerStorageHardwareRaidArrayOutput) ToServerStorageHardwareRaidArrayOutput() ServerStorageHardwareRaidArrayOutput {
+	return o
+}
+
+func (o ServerStorageHardwareRaidArrayOutput) ToServerStorageHardwareRaidArrayOutputWithContext(ctx context.Context) ServerStorageHardwareRaidArrayOutput {
+	return o
+}
+
+func (o ServerStorageHardwareRaidArrayOutput) Index(i pulumi.IntInput) ServerStorageHardwareRaidOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerStorageHardwareRaid {
+		return vs[0].([]ServerStorageHardwareRaid)[vs[1].(int)]
+	}).(ServerStorageHardwareRaidOutput)
+}
+
+type ServerStoragePartitioning struct {
+	// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+	Disks *float64 `pulumi:"disks"`
+	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+	Layouts []ServerStoragePartitioningLayout `pulumi:"layouts"`
+	// Partitioning scheme (if applicable with selected operating system)
+	SchemeName *string `pulumi:"schemeName"`
+}
+
+// ServerStoragePartitioningInput is an input type that accepts ServerStoragePartitioningArgs and ServerStoragePartitioningOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningInput` via:
+//
+//	ServerStoragePartitioningArgs{...}
+type ServerStoragePartitioningInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningOutput() ServerStoragePartitioningOutput
+	ToServerStoragePartitioningOutputWithContext(context.Context) ServerStoragePartitioningOutput
+}
+
+type ServerStoragePartitioningArgs struct {
+	// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+	Disks pulumi.Float64PtrInput `pulumi:"disks"`
+	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+	Layouts ServerStoragePartitioningLayoutArrayInput `pulumi:"layouts"`
+	// Partitioning scheme (if applicable with selected operating system)
+	SchemeName pulumi.StringPtrInput `pulumi:"schemeName"`
+}
+
+func (ServerStoragePartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioning)(nil)).Elem()
+}
+
+func (i ServerStoragePartitioningArgs) ToServerStoragePartitioningOutput() ServerStoragePartitioningOutput {
+	return i.ToServerStoragePartitioningOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningArgs) ToServerStoragePartitioningOutputWithContext(ctx context.Context) ServerStoragePartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningOutput)
+}
+
+func (i ServerStoragePartitioningArgs) ToServerStoragePartitioningPtrOutput() ServerStoragePartitioningPtrOutput {
+	return i.ToServerStoragePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningArgs) ToServerStoragePartitioningPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningOutput).ToServerStoragePartitioningPtrOutputWithContext(ctx)
+}
+
+// ServerStoragePartitioningPtrInput is an input type that accepts ServerStoragePartitioningArgs, ServerStoragePartitioningPtr and ServerStoragePartitioningPtrOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningPtrInput` via:
+//
+//	        ServerStoragePartitioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerStoragePartitioningPtrInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningPtrOutput() ServerStoragePartitioningPtrOutput
+	ToServerStoragePartitioningPtrOutputWithContext(context.Context) ServerStoragePartitioningPtrOutput
+}
+
+type serverStoragePartitioningPtrType ServerStoragePartitioningArgs
+
+func ServerStoragePartitioningPtr(v *ServerStoragePartitioningArgs) ServerStoragePartitioningPtrInput {
+	return (*serverStoragePartitioningPtrType)(v)
+}
+
+func (*serverStoragePartitioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioning)(nil)).Elem()
+}
+
+func (i *serverStoragePartitioningPtrType) ToServerStoragePartitioningPtrOutput() ServerStoragePartitioningPtrOutput {
+	return i.ToServerStoragePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i *serverStoragePartitioningPtrType) ToServerStoragePartitioningPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningPtrOutput)
+}
+
+type ServerStoragePartitioningOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioning)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningOutput) ToServerStoragePartitioningOutput() ServerStoragePartitioningOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningOutput) ToServerStoragePartitioningOutputWithContext(ctx context.Context) ServerStoragePartitioningOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningOutput) ToServerStoragePartitioningPtrOutput() ServerStoragePartitioningPtrOutput {
+	return o.ToServerStoragePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (o ServerStoragePartitioningOutput) ToServerStoragePartitioningPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerStoragePartitioning) *ServerStoragePartitioning {
+		return &v
+	}).(ServerStoragePartitioningPtrOutput)
+}
+
+// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+func (o ServerStoragePartitioningOutput) Disks() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioning) *float64 { return v.Disks }).(pulumi.Float64PtrOutput)
+}
+
+// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+func (o ServerStoragePartitioningOutput) Layouts() ServerStoragePartitioningLayoutArrayOutput {
+	return o.ApplyT(func(v ServerStoragePartitioning) []ServerStoragePartitioningLayout { return v.Layouts }).(ServerStoragePartitioningLayoutArrayOutput)
+}
+
+// Partitioning scheme (if applicable with selected operating system)
+func (o ServerStoragePartitioningOutput) SchemeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioning) *string { return v.SchemeName }).(pulumi.StringPtrOutput)
+}
+
+type ServerStoragePartitioningPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioning)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningPtrOutput) ToServerStoragePartitioningPtrOutput() ServerStoragePartitioningPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningPtrOutput) ToServerStoragePartitioningPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningPtrOutput) Elem() ServerStoragePartitioningOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioning) ServerStoragePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret ServerStoragePartitioning
+		return ret
+	}).(ServerStoragePartitioningOutput)
+}
+
+// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+func (o ServerStoragePartitioningPtrOutput) Disks() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioning) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+func (o ServerStoragePartitioningPtrOutput) Layouts() ServerStoragePartitioningLayoutArrayOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioning) []ServerStoragePartitioningLayout {
+		if v == nil {
+			return nil
+		}
+		return v.Layouts
+	}).(ServerStoragePartitioningLayoutArrayOutput)
+}
+
+// Partitioning scheme (if applicable with selected operating system)
+func (o ServerStoragePartitioningPtrOutput) SchemeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerStoragePartitioningLayout struct {
+	// Partition extras parameters
+	Extras *ServerStoragePartitioningLayoutExtras `pulumi:"extras"`
+	// File system type
+	FileSystem string `pulumi:"fileSystem"`
+	// Mount point
+	MountPoint string `pulumi:"mountPoint"`
+	// Software raid type (default is 1)
+	RaidLevel *float64 `pulumi:"raidLevel"`
+	// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+	Size *float64 `pulumi:"size"`
+}
+
+// ServerStoragePartitioningLayoutInput is an input type that accepts ServerStoragePartitioningLayoutArgs and ServerStoragePartitioningLayoutOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutInput` via:
+//
+//	ServerStoragePartitioningLayoutArgs{...}
+type ServerStoragePartitioningLayoutInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutOutput() ServerStoragePartitioningLayoutOutput
+	ToServerStoragePartitioningLayoutOutputWithContext(context.Context) ServerStoragePartitioningLayoutOutput
+}
+
+type ServerStoragePartitioningLayoutArgs struct {
+	// Partition extras parameters
+	Extras ServerStoragePartitioningLayoutExtrasPtrInput `pulumi:"extras"`
+	// File system type
+	FileSystem pulumi.StringInput `pulumi:"fileSystem"`
+	// Mount point
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// Software raid type (default is 1)
+	RaidLevel pulumi.Float64PtrInput `pulumi:"raidLevel"`
+	// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+	Size pulumi.Float64PtrInput `pulumi:"size"`
+}
+
+func (ServerStoragePartitioningLayoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (i ServerStoragePartitioningLayoutArgs) ToServerStoragePartitioningLayoutOutput() ServerStoragePartitioningLayoutOutput {
+	return i.ToServerStoragePartitioningLayoutOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutArgs) ToServerStoragePartitioningLayoutOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutOutput)
+}
+
+// ServerStoragePartitioningLayoutArrayInput is an input type that accepts ServerStoragePartitioningLayoutArray and ServerStoragePartitioningLayoutArrayOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutArrayInput` via:
+//
+//	ServerStoragePartitioningLayoutArray{ ServerStoragePartitioningLayoutArgs{...} }
+type ServerStoragePartitioningLayoutArrayInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutArrayOutput() ServerStoragePartitioningLayoutArrayOutput
+	ToServerStoragePartitioningLayoutArrayOutputWithContext(context.Context) ServerStoragePartitioningLayoutArrayOutput
+}
+
+type ServerStoragePartitioningLayoutArray []ServerStoragePartitioningLayoutInput
+
+func (ServerStoragePartitioningLayoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (i ServerStoragePartitioningLayoutArray) ToServerStoragePartitioningLayoutArrayOutput() ServerStoragePartitioningLayoutArrayOutput {
+	return i.ToServerStoragePartitioningLayoutArrayOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutArray) ToServerStoragePartitioningLayoutArrayOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutArrayOutput)
+}
+
+type ServerStoragePartitioningLayoutOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutOutput) ToServerStoragePartitioningLayoutOutput() ServerStoragePartitioningLayoutOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutOutput) ToServerStoragePartitioningLayoutOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutOutput {
+	return o
+}
+
+// Partition extras parameters
+func (o ServerStoragePartitioningLayoutOutput) Extras() ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayout) *ServerStoragePartitioningLayoutExtras { return v.Extras }).(ServerStoragePartitioningLayoutExtrasPtrOutput)
+}
+
+// File system type
+func (o ServerStoragePartitioningLayoutOutput) FileSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayout) string { return v.FileSystem }).(pulumi.StringOutput)
+}
+
+// Mount point
+func (o ServerStoragePartitioningLayoutOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayout) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// Software raid type (default is 1)
+func (o ServerStoragePartitioningLayoutOutput) RaidLevel() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayout) *float64 { return v.RaidLevel }).(pulumi.Float64PtrOutput)
+}
+
+// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+func (o ServerStoragePartitioningLayoutOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayout) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
+}
+
+type ServerStoragePartitioningLayoutArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerStoragePartitioningLayout)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutArrayOutput) ToServerStoragePartitioningLayoutArrayOutput() ServerStoragePartitioningLayoutArrayOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutArrayOutput) ToServerStoragePartitioningLayoutArrayOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutArrayOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutArrayOutput) Index(i pulumi.IntInput) ServerStoragePartitioningLayoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerStoragePartitioningLayout {
+		return vs[0].([]ServerStoragePartitioningLayout)[vs[1].(int)]
+	}).(ServerStoragePartitioningLayoutOutput)
+}
+
+type ServerStoragePartitioningLayoutExtras struct {
+	// LVM-specific parameters
+	Lv *ServerStoragePartitioningLayoutExtrasLv `pulumi:"lv"`
+	// ZFS-specific parameters
+	Zp *ServerStoragePartitioningLayoutExtrasZp `pulumi:"zp"`
+}
+
+// ServerStoragePartitioningLayoutExtrasInput is an input type that accepts ServerStoragePartitioningLayoutExtrasArgs and ServerStoragePartitioningLayoutExtrasOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutExtrasInput` via:
+//
+//	ServerStoragePartitioningLayoutExtrasArgs{...}
+type ServerStoragePartitioningLayoutExtrasInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutExtrasOutput() ServerStoragePartitioningLayoutExtrasOutput
+	ToServerStoragePartitioningLayoutExtrasOutputWithContext(context.Context) ServerStoragePartitioningLayoutExtrasOutput
+}
+
+type ServerStoragePartitioningLayoutExtrasArgs struct {
+	// LVM-specific parameters
+	Lv ServerStoragePartitioningLayoutExtrasLvPtrInput `pulumi:"lv"`
+	// ZFS-specific parameters
+	Zp ServerStoragePartitioningLayoutExtrasZpPtrInput `pulumi:"zp"`
+}
+
+func (ServerStoragePartitioningLayoutExtrasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayoutExtras)(nil)).Elem()
+}
+
+func (i ServerStoragePartitioningLayoutExtrasArgs) ToServerStoragePartitioningLayoutExtrasOutput() ServerStoragePartitioningLayoutExtrasOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutExtrasArgs) ToServerStoragePartitioningLayoutExtrasOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasOutput)
+}
+
+func (i ServerStoragePartitioningLayoutExtrasArgs) ToServerStoragePartitioningLayoutExtrasPtrOutput() ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutExtrasArgs) ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasOutput).ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(ctx)
+}
+
+// ServerStoragePartitioningLayoutExtrasPtrInput is an input type that accepts ServerStoragePartitioningLayoutExtrasArgs, ServerStoragePartitioningLayoutExtrasPtr and ServerStoragePartitioningLayoutExtrasPtrOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutExtrasPtrInput` via:
+//
+//	        ServerStoragePartitioningLayoutExtrasArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerStoragePartitioningLayoutExtrasPtrInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutExtrasPtrOutput() ServerStoragePartitioningLayoutExtrasPtrOutput
+	ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(context.Context) ServerStoragePartitioningLayoutExtrasPtrOutput
+}
+
+type serverStoragePartitioningLayoutExtrasPtrType ServerStoragePartitioningLayoutExtrasArgs
+
+func ServerStoragePartitioningLayoutExtrasPtr(v *ServerStoragePartitioningLayoutExtrasArgs) ServerStoragePartitioningLayoutExtrasPtrInput {
+	return (*serverStoragePartitioningLayoutExtrasPtrType)(v)
+}
+
+func (*serverStoragePartitioningLayoutExtrasPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioningLayoutExtras)(nil)).Elem()
+}
+
+func (i *serverStoragePartitioningLayoutExtrasPtrType) ToServerStoragePartitioningLayoutExtrasPtrOutput() ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(context.Background())
+}
+
+func (i *serverStoragePartitioningLayoutExtrasPtrType) ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutExtrasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayoutExtras)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutExtrasOutput) ToServerStoragePartitioningLayoutExtrasOutput() ServerStoragePartitioningLayoutExtrasOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasOutput) ToServerStoragePartitioningLayoutExtrasOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasOutput) ToServerStoragePartitioningLayoutExtrasPtrOutput() ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return o.ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(context.Background())
+}
+
+func (o ServerStoragePartitioningLayoutExtrasOutput) ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerStoragePartitioningLayoutExtras) *ServerStoragePartitioningLayoutExtras {
+		return &v
+	}).(ServerStoragePartitioningLayoutExtrasPtrOutput)
+}
+
+// LVM-specific parameters
+func (o ServerStoragePartitioningLayoutExtrasOutput) Lv() ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayoutExtras) *ServerStoragePartitioningLayoutExtrasLv { return v.Lv }).(ServerStoragePartitioningLayoutExtrasLvPtrOutput)
+}
+
+// ZFS-specific parameters
+func (o ServerStoragePartitioningLayoutExtrasOutput) Zp() ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayoutExtras) *ServerStoragePartitioningLayoutExtrasZp { return v.Zp }).(ServerStoragePartitioningLayoutExtrasZpPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutExtrasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioningLayoutExtras)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutExtrasPtrOutput) ToServerStoragePartitioningLayoutExtrasPtrOutput() ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasPtrOutput) ToServerStoragePartitioningLayoutExtrasPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasPtrOutput) Elem() ServerStoragePartitioningLayoutExtrasOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtras) ServerStoragePartitioningLayoutExtras {
+		if v != nil {
+			return *v
+		}
+		var ret ServerStoragePartitioningLayoutExtras
+		return ret
+	}).(ServerStoragePartitioningLayoutExtrasOutput)
+}
+
+// LVM-specific parameters
+func (o ServerStoragePartitioningLayoutExtrasPtrOutput) Lv() ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtras) *ServerStoragePartitioningLayoutExtrasLv {
+		if v == nil {
+			return nil
+		}
+		return v.Lv
+	}).(ServerStoragePartitioningLayoutExtrasLvPtrOutput)
+}
+
+// ZFS-specific parameters
+func (o ServerStoragePartitioningLayoutExtrasPtrOutput) Zp() ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtras) *ServerStoragePartitioningLayoutExtrasZp {
+		if v == nil {
+			return nil
+		}
+		return v.Zp
+	}).(ServerStoragePartitioningLayoutExtrasZpPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasLv struct {
+	// Logical volume name
+	Name *string `pulumi:"name"`
+}
+
+// ServerStoragePartitioningLayoutExtrasLvInput is an input type that accepts ServerStoragePartitioningLayoutExtrasLvArgs and ServerStoragePartitioningLayoutExtrasLvOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutExtrasLvInput` via:
+//
+//	ServerStoragePartitioningLayoutExtrasLvArgs{...}
+type ServerStoragePartitioningLayoutExtrasLvInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutExtrasLvOutput() ServerStoragePartitioningLayoutExtrasLvOutput
+	ToServerStoragePartitioningLayoutExtrasLvOutputWithContext(context.Context) ServerStoragePartitioningLayoutExtrasLvOutput
+}
+
+type ServerStoragePartitioningLayoutExtrasLvArgs struct {
+	// Logical volume name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServerStoragePartitioningLayoutExtrasLvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasLv)(nil)).Elem()
+}
+
+func (i ServerStoragePartitioningLayoutExtrasLvArgs) ToServerStoragePartitioningLayoutExtrasLvOutput() ServerStoragePartitioningLayoutExtrasLvOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasLvOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutExtrasLvArgs) ToServerStoragePartitioningLayoutExtrasLvOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasLvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasLvOutput)
+}
+
+func (i ServerStoragePartitioningLayoutExtrasLvArgs) ToServerStoragePartitioningLayoutExtrasLvPtrOutput() ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutExtrasLvArgs) ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasLvOutput).ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(ctx)
+}
+
+// ServerStoragePartitioningLayoutExtrasLvPtrInput is an input type that accepts ServerStoragePartitioningLayoutExtrasLvArgs, ServerStoragePartitioningLayoutExtrasLvPtr and ServerStoragePartitioningLayoutExtrasLvPtrOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutExtrasLvPtrInput` via:
+//
+//	        ServerStoragePartitioningLayoutExtrasLvArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerStoragePartitioningLayoutExtrasLvPtrInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutExtrasLvPtrOutput() ServerStoragePartitioningLayoutExtrasLvPtrOutput
+	ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(context.Context) ServerStoragePartitioningLayoutExtrasLvPtrOutput
+}
+
+type serverStoragePartitioningLayoutExtrasLvPtrType ServerStoragePartitioningLayoutExtrasLvArgs
+
+func ServerStoragePartitioningLayoutExtrasLvPtr(v *ServerStoragePartitioningLayoutExtrasLvArgs) ServerStoragePartitioningLayoutExtrasLvPtrInput {
+	return (*serverStoragePartitioningLayoutExtrasLvPtrType)(v)
+}
+
+func (*serverStoragePartitioningLayoutExtrasLvPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioningLayoutExtrasLv)(nil)).Elem()
+}
+
+func (i *serverStoragePartitioningLayoutExtrasLvPtrType) ToServerStoragePartitioningLayoutExtrasLvPtrOutput() ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(context.Background())
+}
+
+func (i *serverStoragePartitioningLayoutExtrasLvPtrType) ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasLvPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasLvOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutExtrasLvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasLv)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvOutput) ToServerStoragePartitioningLayoutExtrasLvOutput() ServerStoragePartitioningLayoutExtrasLvOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvOutput) ToServerStoragePartitioningLayoutExtrasLvOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasLvOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvOutput) ToServerStoragePartitioningLayoutExtrasLvPtrOutput() ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return o.ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(context.Background())
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvOutput) ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerStoragePartitioningLayoutExtrasLv) *ServerStoragePartitioningLayoutExtrasLv {
+		return &v
+	}).(ServerStoragePartitioningLayoutExtrasLvPtrOutput)
+}
+
+// Logical volume name
+func (o ServerStoragePartitioningLayoutExtrasLvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayoutExtrasLv) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasLvPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutExtrasLvPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioningLayoutExtrasLv)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) ToServerStoragePartitioningLayoutExtrasLvPtrOutput() ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) ToServerStoragePartitioningLayoutExtrasLvPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasLvPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) Elem() ServerStoragePartitioningLayoutExtrasLvOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtrasLv) ServerStoragePartitioningLayoutExtrasLv {
+		if v != nil {
+			return *v
+		}
+		var ret ServerStoragePartitioningLayoutExtrasLv
+		return ret
+	}).(ServerStoragePartitioningLayoutExtrasLvOutput)
+}
+
+// Logical volume name
+func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtrasLv) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasZp struct {
+	// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+	Name *string `pulumi:"name"`
+}
+
+// ServerStoragePartitioningLayoutExtrasZpInput is an input type that accepts ServerStoragePartitioningLayoutExtrasZpArgs and ServerStoragePartitioningLayoutExtrasZpOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutExtrasZpInput` via:
+//
+//	ServerStoragePartitioningLayoutExtrasZpArgs{...}
+type ServerStoragePartitioningLayoutExtrasZpInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutExtrasZpOutput() ServerStoragePartitioningLayoutExtrasZpOutput
+	ToServerStoragePartitioningLayoutExtrasZpOutputWithContext(context.Context) ServerStoragePartitioningLayoutExtrasZpOutput
+}
+
+type ServerStoragePartitioningLayoutExtrasZpArgs struct {
+	// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServerStoragePartitioningLayoutExtrasZpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasZp)(nil)).Elem()
+}
+
+func (i ServerStoragePartitioningLayoutExtrasZpArgs) ToServerStoragePartitioningLayoutExtrasZpOutput() ServerStoragePartitioningLayoutExtrasZpOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasZpOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutExtrasZpArgs) ToServerStoragePartitioningLayoutExtrasZpOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasZpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasZpOutput)
+}
+
+func (i ServerStoragePartitioningLayoutExtrasZpArgs) ToServerStoragePartitioningLayoutExtrasZpPtrOutput() ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(context.Background())
+}
+
+func (i ServerStoragePartitioningLayoutExtrasZpArgs) ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasZpOutput).ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(ctx)
+}
+
+// ServerStoragePartitioningLayoutExtrasZpPtrInput is an input type that accepts ServerStoragePartitioningLayoutExtrasZpArgs, ServerStoragePartitioningLayoutExtrasZpPtr and ServerStoragePartitioningLayoutExtrasZpPtrOutput values.
+// You can construct a concrete instance of `ServerStoragePartitioningLayoutExtrasZpPtrInput` via:
+//
+//	        ServerStoragePartitioningLayoutExtrasZpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerStoragePartitioningLayoutExtrasZpPtrInput interface {
+	pulumi.Input
+
+	ToServerStoragePartitioningLayoutExtrasZpPtrOutput() ServerStoragePartitioningLayoutExtrasZpPtrOutput
+	ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(context.Context) ServerStoragePartitioningLayoutExtrasZpPtrOutput
+}
+
+type serverStoragePartitioningLayoutExtrasZpPtrType ServerStoragePartitioningLayoutExtrasZpArgs
+
+func ServerStoragePartitioningLayoutExtrasZpPtr(v *ServerStoragePartitioningLayoutExtrasZpArgs) ServerStoragePartitioningLayoutExtrasZpPtrInput {
+	return (*serverStoragePartitioningLayoutExtrasZpPtrType)(v)
+}
+
+func (*serverStoragePartitioningLayoutExtrasZpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioningLayoutExtrasZp)(nil)).Elem()
+}
+
+func (i *serverStoragePartitioningLayoutExtrasZpPtrType) ToServerStoragePartitioningLayoutExtrasZpPtrOutput() ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return i.ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(context.Background())
+}
+
+func (i *serverStoragePartitioningLayoutExtrasZpPtrType) ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerStoragePartitioningLayoutExtrasZpPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasZpOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutExtrasZpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasZp)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpOutput) ToServerStoragePartitioningLayoutExtrasZpOutput() ServerStoragePartitioningLayoutExtrasZpOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpOutput) ToServerStoragePartitioningLayoutExtrasZpOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasZpOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpOutput) ToServerStoragePartitioningLayoutExtrasZpPtrOutput() ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return o.ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(context.Background())
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpOutput) ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerStoragePartitioningLayoutExtrasZp) *ServerStoragePartitioningLayoutExtrasZp {
+		return &v
+	}).(ServerStoragePartitioningLayoutExtrasZpPtrOutput)
+}
+
+// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+func (o ServerStoragePartitioningLayoutExtrasZpOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerStoragePartitioningLayoutExtrasZp) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServerStoragePartitioningLayoutExtrasZpPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerStoragePartitioningLayoutExtrasZpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerStoragePartitioningLayoutExtrasZp)(nil)).Elem()
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) ToServerStoragePartitioningLayoutExtrasZpPtrOutput() ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) ToServerStoragePartitioningLayoutExtrasZpPtrOutputWithContext(ctx context.Context) ServerStoragePartitioningLayoutExtrasZpPtrOutput {
+	return o
+}
+
+func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) Elem() ServerStoragePartitioningLayoutExtrasZpOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtrasZp) ServerStoragePartitioningLayoutExtrasZp {
+		if v != nil {
+			return *v
+		}
+		var ret ServerStoragePartitioningLayoutExtrasZp
+		return ret
+	}).(ServerStoragePartitioningLayoutExtrasZpOutput)
+}
+
+// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtrasZp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServerSpecificationsHardwareDefaultHardwareRaidSize struct {
@@ -1747,21 +3613,21 @@ func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) Value() pu
 }
 
 type GetServerSpecificationsHardwareDiskGroup struct {
-	// Default hardware raid size for this disk group
+	// default hardware raid size for this disk group
 	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize `pulumi:"defaultHardwareRaidSize"`
-	// Default hardware raid type for this disk group
+	// default hardware raid type for this disk group
 	DefaultHardwareRaidType string `pulumi:"defaultHardwareRaidType"`
-	// Expansion card description
+	// human readable description of this disk group
 	Description string `pulumi:"description"`
-	// Identifier of this disk group
+	// identifier of this disk group
 	DiskGroupId float64 `pulumi:"diskGroupId"`
-	// Disk capacity
+	// disk capacity
 	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSize `pulumi:"diskSize"`
-	// Type of the disk (SSD, SATA, SAS, ...)
+	// type of the disk (SSD, SATA, SAS, ...)
 	DiskType string `pulumi:"diskType"`
-	// Number of disks in this group
+	// number of disks in this group
 	NumberOfDisks float64 `pulumi:"numberOfDisks"`
-	// Raid controller, if any, managing this group of disks
+	// raid controller, if any, managing this group of disks
 	RaidController string `pulumi:"raidController"`
 }
 
@@ -1777,21 +3643,21 @@ type GetServerSpecificationsHardwareDiskGroupInput interface {
 }
 
 type GetServerSpecificationsHardwareDiskGroupArgs struct {
-	// Default hardware raid size for this disk group
+	// default hardware raid size for this disk group
 	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput `pulumi:"defaultHardwareRaidSize"`
-	// Default hardware raid type for this disk group
+	// default hardware raid type for this disk group
 	DefaultHardwareRaidType pulumi.StringInput `pulumi:"defaultHardwareRaidType"`
-	// Expansion card description
+	// human readable description of this disk group
 	Description pulumi.StringInput `pulumi:"description"`
-	// Identifier of this disk group
+	// identifier of this disk group
 	DiskGroupId pulumi.Float64Input `pulumi:"diskGroupId"`
-	// Disk capacity
+	// disk capacity
 	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSizeInput `pulumi:"diskSize"`
-	// Type of the disk (SSD, SATA, SAS, ...)
+	// type of the disk (SSD, SATA, SAS, ...)
 	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// Number of disks in this group
+	// number of disks in this group
 	NumberOfDisks pulumi.Float64Input `pulumi:"numberOfDisks"`
-	// Raid controller, if any, managing this group of disks
+	// raid controller, if any, managing this group of disks
 	RaidController pulumi.StringInput `pulumi:"raidController"`
 }
 
@@ -1846,46 +3712,46 @@ func (o GetServerSpecificationsHardwareDiskGroupOutput) ToGetServerSpecification
 	return o
 }
 
-// Default hardware raid size for this disk group
+// default hardware raid size for this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidSize() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize {
 		return v.DefaultHardwareRaidSize
 	}).(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput)
 }
 
-// Default hardware raid type for this disk group
+// default hardware raid type for this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DefaultHardwareRaidType }).(pulumi.StringOutput)
 }
 
-// Expansion card description
+// human readable description of this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Identifier of this disk group
+// identifier of this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskGroupId() pulumi.Float64Output {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.DiskGroupId }).(pulumi.Float64Output)
 }
 
-// Disk capacity
+// disk capacity
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskSize() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDiskSize {
 		return v.DiskSize
 	}).(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput)
 }
 
-// Type of the disk (SSD, SATA, SAS, ...)
+// type of the disk (SSD, SATA, SAS, ...)
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// Number of disks in this group
+// number of disks in this group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) NumberOfDisks() pulumi.Float64Output {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.NumberOfDisks }).(pulumi.Float64Output)
 }
 
-// Raid controller, if any, managing this group of disks
+// raid controller, if any, managing this group of disks
 func (o GetServerSpecificationsHardwareDiskGroupOutput) RaidController() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.RaidController }).(pulumi.StringOutput)
 }
@@ -2021,7 +3887,7 @@ func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) Value() pulumi.F
 }
 
 type GetServerSpecificationsHardwareExpansionCard struct {
-	// Expansion card description
+	// expansion card description
 	Description string `pulumi:"description"`
 	// Expansion card type enum
 	Type string `pulumi:"type"`
@@ -2039,7 +3905,7 @@ type GetServerSpecificationsHardwareExpansionCardInput interface {
 }
 
 type GetServerSpecificationsHardwareExpansionCardArgs struct {
-	// Expansion card description
+	// expansion card description
 	Description pulumi.StringInput `pulumi:"description"`
 	// Expansion card type enum
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2096,7 +3962,7 @@ func (o GetServerSpecificationsHardwareExpansionCardOutput) ToGetServerSpecifica
 	return o
 }
 
-// Expansion card description
+// expansion card description
 func (o GetServerSpecificationsHardwareExpansionCardOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareExpansionCard) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -2282,13 +4148,13 @@ func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetServerSpecificationsNetworkBandwidth struct {
-	// Bandwidth limitation Internet to OVH
+	// bandwidth limitation Internet to OVH
 	InternetToOvh GetServerSpecificationsNetworkBandwidthInternetToOvh `pulumi:"internetToOvh"`
-	// Bandwidth limitation OVH to Internet
+	// bandwidth limitation OVH to Internet
 	OvhToInternet GetServerSpecificationsNetworkBandwidthOvhToInternet `pulumi:"ovhToInternet"`
-	// Bandwidth limitation OVH to OVH
+	// bandwidth limitation OVH to OVH
 	OvhToOvh GetServerSpecificationsNetworkBandwidthOvhToOvh `pulumi:"ovhToOvh"`
-	// Bandwidth offer type (included┃standard)
+	// bandwidth offer type
 	Type string `pulumi:"type"`
 }
 
@@ -2304,13 +4170,13 @@ type GetServerSpecificationsNetworkBandwidthInput interface {
 }
 
 type GetServerSpecificationsNetworkBandwidthArgs struct {
-	// Bandwidth limitation Internet to OVH
+	// bandwidth limitation Internet to OVH
 	InternetToOvh GetServerSpecificationsNetworkBandwidthInternetToOvhInput `pulumi:"internetToOvh"`
-	// Bandwidth limitation OVH to Internet
+	// bandwidth limitation OVH to Internet
 	OvhToInternet GetServerSpecificationsNetworkBandwidthOvhToInternetInput `pulumi:"ovhToInternet"`
-	// Bandwidth limitation OVH to OVH
+	// bandwidth limitation OVH to OVH
 	OvhToOvh GetServerSpecificationsNetworkBandwidthOvhToOvhInput `pulumi:"ovhToOvh"`
-	// Bandwidth offer type (included┃standard)
+	// bandwidth offer type
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2340,28 +4206,28 @@ func (o GetServerSpecificationsNetworkBandwidthOutput) ToGetServerSpecifications
 	return o
 }
 
-// Bandwidth limitation Internet to OVH
+// bandwidth limitation Internet to OVH
 func (o GetServerSpecificationsNetworkBandwidthOutput) InternetToOvh() GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthInternetToOvh {
 		return v.InternetToOvh
 	}).(GetServerSpecificationsNetworkBandwidthInternetToOvhOutput)
 }
 
-// Bandwidth limitation OVH to Internet
+// bandwidth limitation OVH to Internet
 func (o GetServerSpecificationsNetworkBandwidthOutput) OvhToInternet() GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthOvhToInternet {
 		return v.OvhToInternet
 	}).(GetServerSpecificationsNetworkBandwidthOvhToInternetOutput)
 }
 
-// Bandwidth limitation OVH to OVH
+// bandwidth limitation OVH to OVH
 func (o GetServerSpecificationsNetworkBandwidthOutput) OvhToOvh() GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthOvhToOvh {
 		return v.OvhToOvh
 	}).(GetServerSpecificationsNetworkBandwidthOvhToOvhOutput)
 }
 
-// Bandwidth offer type (included┃standard)
+// bandwidth offer type
 func (o GetServerSpecificationsNetworkBandwidthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2589,9 +4455,9 @@ func (o GetServerSpecificationsNetworkConnectionValOutput) Value() pulumi.Float6
 type GetServerSpecificationsNetworkOla struct {
 	// Is the OLA feature available
 	Available bool `pulumi:"available"`
-	// Supported modes
+	// What modes are supported
 	AvailableModes []GetServerSpecificationsNetworkOlaAvailableMode `pulumi:"availableModes"`
-	// Supported modes (DEPRECATED)
+	// (DEPRECATED) What modes are supported
 	SupportedModes []string `pulumi:"supportedModes"`
 }
 
@@ -2609,9 +4475,9 @@ type GetServerSpecificationsNetworkOlaInput interface {
 type GetServerSpecificationsNetworkOlaArgs struct {
 	// Is the OLA feature available
 	Available pulumi.BoolInput `pulumi:"available"`
-	// Supported modes
+	// What modes are supported
 	AvailableModes GetServerSpecificationsNetworkOlaAvailableModeArrayInput `pulumi:"availableModes"`
-	// Supported modes (DEPRECATED)
+	// (DEPRECATED) What modes are supported
 	SupportedModes pulumi.StringArrayInput `pulumi:"supportedModes"`
 }
 
@@ -2646,24 +4512,24 @@ func (o GetServerSpecificationsNetworkOlaOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
-// Supported modes
+// What modes are supported
 func (o GetServerSpecificationsNetworkOlaOutput) AvailableModes() GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) []GetServerSpecificationsNetworkOlaAvailableMode {
 		return v.AvailableModes
 	}).(GetServerSpecificationsNetworkOlaAvailableModeArrayOutput)
 }
 
-// Supported modes (DEPRECATED)
+// (DEPRECATED) What modes are supported
 func (o GetServerSpecificationsNetworkOlaOutput) SupportedModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) []string { return v.SupportedModes }).(pulumi.StringArrayOutput)
 }
 
 type GetServerSpecificationsNetworkOlaAvailableMode struct {
-	// Whether it is the default configuration of the server
+	// Is it the default configuration of the server
 	Default bool `pulumi:"default"`
 	// Interface layout
 	Interfaces []GetServerSpecificationsNetworkOlaAvailableModeInterface `pulumi:"interfaces"`
-	// Switch name
+	// Mode name
 	Name string `pulumi:"name"`
 }
 
@@ -2679,11 +4545,11 @@ type GetServerSpecificationsNetworkOlaAvailableModeInput interface {
 }
 
 type GetServerSpecificationsNetworkOlaAvailableModeArgs struct {
-	// Whether it is the default configuration of the server
+	// Is it the default configuration of the server
 	Default pulumi.BoolInput `pulumi:"default"`
 	// Interface layout
 	Interfaces GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput `pulumi:"interfaces"`
-	// Switch name
+	// Mode name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2738,7 +4604,7 @@ func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) ToGetServerSpecifi
 	return o
 }
 
-// Whether it is the default configuration of the server
+// Is it the default configuration of the server
 func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) bool { return v.Default }).(pulumi.BoolOutput)
 }
@@ -2750,7 +4616,7 @@ func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Interfaces() GetSe
 	}).(GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput)
 }
 
-// Switch name
+// Mode name
 func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2780,7 +4646,7 @@ type GetServerSpecificationsNetworkOlaAvailableModeInterface struct {
 	Aggregation bool `pulumi:"aggregation"`
 	// Interface count
 	Count float64 `pulumi:"count"`
-	// Bandwidth offer type (included┃standard)
+	// An enum describing OVH Link Aggregation interface types
 	Type string `pulumi:"type"`
 }
 
@@ -2800,7 +4666,7 @@ type GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs struct {
 	Aggregation pulumi.BoolInput `pulumi:"aggregation"`
 	// Interface count
 	Count pulumi.Float64Input `pulumi:"count"`
-	// Bandwidth offer type (included┃standard)
+	// An enum describing OVH Link Aggregation interface types
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2865,7 +4731,7 @@ func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Count() p
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) float64 { return v.Count }).(pulumi.Float64Output)
 }
 
-// Bandwidth offer type (included┃standard)
+// An enum describing OVH Link Aggregation interface types
 func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3148,7 +5014,7 @@ type GetServerSpecificationsNetworkTraffic struct {
 	InputQuotaSize GetServerSpecificationsNetworkTrafficInputQuotaSize `pulumi:"inputQuotaSize"`
 	// Monthly input traffic consumed this month
 	InputQuotaUsed GetServerSpecificationsNetworkTrafficInputQuotaUsed `pulumi:"inputQuotaUsed"`
-	// Whether bandwidth is throttleted for being over quota
+	// Is bandwidth throttleted for being over quota
 	IsThrottled bool `pulumi:"isThrottled"`
 	// Monthly output traffic quota allowed
 	OutputQuotaSize GetServerSpecificationsNetworkTrafficOutputQuotaSize `pulumi:"outputQuotaSize"`
@@ -3174,7 +5040,7 @@ type GetServerSpecificationsNetworkTrafficArgs struct {
 	InputQuotaSize GetServerSpecificationsNetworkTrafficInputQuotaSizeInput `pulumi:"inputQuotaSize"`
 	// Monthly input traffic consumed this month
 	InputQuotaUsed GetServerSpecificationsNetworkTrafficInputQuotaUsedInput `pulumi:"inputQuotaUsed"`
-	// Whether bandwidth is throttleted for being over quota
+	// Is bandwidth throttleted for being over quota
 	IsThrottled pulumi.BoolInput `pulumi:"isThrottled"`
 	// Monthly output traffic quota allowed
 	OutputQuotaSize GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput `pulumi:"outputQuotaSize"`
@@ -3224,7 +5090,7 @@ func (o GetServerSpecificationsNetworkTrafficOutput) InputQuotaUsed() GetServerS
 	}).(GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput)
 }
 
-// Whether bandwidth is throttleted for being over quota
+// Is bandwidth throttleted for being over quota
 func (o GetServerSpecificationsNetworkTrafficOutput) IsThrottled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) bool { return v.IsThrottled }).(pulumi.BoolOutput)
 }
@@ -3469,7 +5335,7 @@ func (o GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) Value() pulu
 }
 
 type GetServerSpecificationsNetworkVmac struct {
-	// Whether server is compatible vmac
+	// Server is compatible vmac or not
 	Supported bool `pulumi:"supported"`
 }
 
@@ -3485,7 +5351,7 @@ type GetServerSpecificationsNetworkVmacInput interface {
 }
 
 type GetServerSpecificationsNetworkVmacArgs struct {
-	// Whether server is compatible vmac
+	// Server is compatible vmac or not
 	Supported pulumi.BoolInput `pulumi:"supported"`
 }
 
@@ -3515,7 +5381,7 @@ func (o GetServerSpecificationsNetworkVmacOutput) ToGetServerSpecificationsNetwo
 	return o
 }
 
-// Whether server is compatible vmac
+// Server is compatible vmac or not
 func (o GetServerSpecificationsNetworkVmacOutput) Supported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkVmac) bool { return v.Supported }).(pulumi.BoolOutput)
 }
@@ -3523,7 +5389,7 @@ func (o GetServerSpecificationsNetworkVmacOutput) Supported() pulumi.BoolOutput 
 type GetServerSpecificationsNetworkVrack struct {
 	// vrack bandwidth limitation
 	Bandwidth GetServerSpecificationsNetworkVrackBandwidth `pulumi:"bandwidth"`
-	// Bandwidth offer type (included┃standard)
+	// bandwidth offer type
 	Type string `pulumi:"type"`
 }
 
@@ -3541,7 +5407,7 @@ type GetServerSpecificationsNetworkVrackInput interface {
 type GetServerSpecificationsNetworkVrackArgs struct {
 	// vrack bandwidth limitation
 	Bandwidth GetServerSpecificationsNetworkVrackBandwidthInput `pulumi:"bandwidth"`
-	// Bandwidth offer type (included┃standard)
+	// bandwidth offer type
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3578,7 +5444,7 @@ func (o GetServerSpecificationsNetworkVrackOutput) Bandwidth() GetServerSpecific
 	}).(GetServerSpecificationsNetworkVrackBandwidthOutput)
 }
 
-// Bandwidth offer type (included┃standard)
+// bandwidth offer type
 func (o GetServerSpecificationsNetworkVrackOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkVrack) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3639,14 +5505,10 @@ func (o GetServerSpecificationsNetworkVrackBandwidthOutput) Value() pulumi.Float
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerDetailsInput)(nil)).Elem(), ServerDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerDetailsPtrInput)(nil)).Elem(), ServerDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCustomizationsInput)(nil)).Elem(), ServerCustomizationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCustomizationsPtrInput)(nil)).Elem(), ServerCustomizationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerIamInput)(nil)).Elem(), ServerIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerIamPtrInput)(nil)).Elem(), ServerIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskDetailsPtrInput)(nil)).Elem(), ServerInstallTaskDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskUserMetadataInput)(nil)).Elem(), ServerInstallTaskUserMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerInstallTaskUserMetadataArrayInput)(nil)).Elem(), ServerInstallTaskUserMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceInput)(nil)).Elem(), ServerNetworkingInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerNetworkingInterfaceArrayInput)(nil)).Elem(), ServerNetworkingInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerOrderInput)(nil)).Elem(), ServerOrderArgs{})
@@ -3661,8 +5523,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionArrayInput)(nil)).Elem(), ServerPlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionConfigurationInput)(nil)).Elem(), ServerPlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerPlanOptionConfigurationArrayInput)(nil)).Elem(), ServerPlanOptionConfigurationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerUserMetadataInput)(nil)).Elem(), ServerUserMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerUserMetadataArrayInput)(nil)).Elem(), ServerUserMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskCustomizationsInput)(nil)).Elem(), ServerReinstallTaskCustomizationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskCustomizationsPtrInput)(nil)).Elem(), ServerReinstallTaskCustomizationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStorageInput)(nil)).Elem(), ServerReinstallTaskStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStorageArrayInput)(nil)).Elem(), ServerReinstallTaskStorageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStorageHardwareRaidInput)(nil)).Elem(), ServerReinstallTaskStorageHardwareRaidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStorageHardwareRaidArrayInput)(nil)).Elem(), ServerReinstallTaskStorageHardwareRaidArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningArrayInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutArrayInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutExtraArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraArrayInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutExtraArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraLvInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutExtraLvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraZpInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayInput)(nil)).Elem(), ServerReinstallTaskStoragePartitioningLayoutExtraZpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStorageInput)(nil)).Elem(), ServerStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStorageArrayInput)(nil)).Elem(), ServerStorageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStorageHardwareRaidInput)(nil)).Elem(), ServerStorageHardwareRaidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStorageHardwareRaidArrayInput)(nil)).Elem(), ServerStorageHardwareRaidArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningInput)(nil)).Elem(), ServerStoragePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningPtrInput)(nil)).Elem(), ServerStoragePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutInput)(nil)).Elem(), ServerStoragePartitioningLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutArrayInput)(nil)).Elem(), ServerStoragePartitioningLayoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasPtrInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasLvInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasLvPtrInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasLvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasZpInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasZpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasZpPtrInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasZpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArray{})
@@ -3695,14 +5585,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVmacInput)(nil)).Elem(), GetServerSpecificationsNetworkVmacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVrackInput)(nil)).Elem(), GetServerSpecificationsNetworkVrackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsNetworkVrackBandwidthInput)(nil)).Elem(), GetServerSpecificationsNetworkVrackBandwidthArgs{})
-	pulumi.RegisterOutputType(ServerDetailsOutput{})
-	pulumi.RegisterOutputType(ServerDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ServerCustomizationsOutput{})
+	pulumi.RegisterOutputType(ServerCustomizationsPtrOutput{})
 	pulumi.RegisterOutputType(ServerIamOutput{})
 	pulumi.RegisterOutputType(ServerIamPtrOutput{})
-	pulumi.RegisterOutputType(ServerInstallTaskDetailsOutput{})
-	pulumi.RegisterOutputType(ServerInstallTaskDetailsPtrOutput{})
-	pulumi.RegisterOutputType(ServerInstallTaskUserMetadataOutput{})
-	pulumi.RegisterOutputType(ServerInstallTaskUserMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceOutput{})
 	pulumi.RegisterOutputType(ServerNetworkingInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ServerOrderOutput{})
@@ -3717,8 +5603,36 @@ func init() {
 	pulumi.RegisterOutputType(ServerPlanOptionArrayOutput{})
 	pulumi.RegisterOutputType(ServerPlanOptionConfigurationOutput{})
 	pulumi.RegisterOutputType(ServerPlanOptionConfigurationArrayOutput{})
-	pulumi.RegisterOutputType(ServerUserMetadataOutput{})
-	pulumi.RegisterOutputType(ServerUserMetadataArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskCustomizationsOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskCustomizationsPtrOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStorageOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStorageArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStorageHardwareRaidOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStorageHardwareRaidArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutExtraOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutExtraLvOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput{})
+	pulumi.RegisterOutputType(ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput{})
+	pulumi.RegisterOutputType(ServerStorageOutput{})
+	pulumi.RegisterOutputType(ServerStorageArrayOutput{})
+	pulumi.RegisterOutputType(ServerStorageHardwareRaidOutput{})
+	pulumi.RegisterOutputType(ServerStorageHardwareRaidArrayOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningPtrOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutArrayOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasPtrOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasLvOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasLvPtrOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasZpOutput{})
+	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasZpPtrOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupArrayOutput{})

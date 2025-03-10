@@ -8,11 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Import an existing key in the JWK format in an OVHcloud KMS.
 type ServiceKeyJWK struct {
 	pulumi.CustomResourceState
 

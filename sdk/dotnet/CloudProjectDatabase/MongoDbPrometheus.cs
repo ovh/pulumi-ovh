@@ -9,28 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
-    /// <summary>
-    /// ## Import
-    /// 
-    /// OVHcloud Managed MongoDB clusters prometheus can be imported using the `service_name` and `cluster_id`, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus my_prometheus service_name/engine/cluster_id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus")]
     public partial class MongoDbPrometheus : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// (Sensitive) Password of the user.
+        /// Password of the user
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -41,21 +30,17 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Output("passwordReset")]
         public Output<string?> PasswordReset { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the srv domain endpoint.
+        /// Name of the srv domain endpoint
         /// </summary>
         [Output("srvDomain")]
         public Output<string> SrvDomain { get; private set; } = null!;
 
         /// <summary>
-        /// name of the prometheus user.
+        /// Name of the user
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -112,7 +97,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class MongoDbPrometheusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -123,10 +108,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -139,7 +120,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class MongoDbPrometheusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -148,7 +129,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private Input<string>? _password;
 
         /// <summary>
-        /// (Sensitive) Password of the user.
+        /// Password of the user
         /// </summary>
         public Input<string>? Password
         {
@@ -166,21 +147,17 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Name of the srv domain endpoint.
+        /// Name of the srv domain endpoint
         /// </summary>
         [Input("srvDomain")]
         public Input<string>? SrvDomain { get; set; }
 
         /// <summary>
-        /// name of the prometheus user.
+        /// Name of the user
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

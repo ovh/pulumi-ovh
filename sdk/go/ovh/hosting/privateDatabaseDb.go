@@ -8,52 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create a new database on your private cloud database service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hosting.NewPrivateDatabaseDb(ctx, "database", &hosting.PrivateDatabaseDbArgs{
-//				DatabaseName: pulumi.String("XXXXXX"),
-//				ServiceName:  pulumi.String("XXXXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
-//
-// ```sh
-// $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
-// ```
 type PrivateDatabaseDb struct {
 	pulumi.CustomResourceState
 
 	// Name of your new database
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -95,14 +59,14 @@ func GetPrivateDatabaseDb(ctx *pulumi.Context,
 type privateDatabaseDbState struct {
 	// Name of your new database
 	DatabaseName *string `pulumi:"databaseName"`
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type PrivateDatabaseDbState struct {
 	// Name of your new database
 	DatabaseName pulumi.StringPtrInput
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -113,7 +77,7 @@ func (PrivateDatabaseDbState) ElementType() reflect.Type {
 type privateDatabaseDbArgs struct {
 	// Name of your new database
 	DatabaseName string `pulumi:"databaseName"`
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -121,7 +85,7 @@ type privateDatabaseDbArgs struct {
 type PrivateDatabaseDbArgs struct {
 	// Name of your new database
 	DatabaseName pulumi.StringInput
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName pulumi.StringInput
 }
 
@@ -217,7 +181,7 @@ func (o PrivateDatabaseDbOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseDb) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The internal name of your private database.
+// The internal name of your private database
 func (o PrivateDatabaseDbOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseDb) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

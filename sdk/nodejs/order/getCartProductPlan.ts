@@ -6,27 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information of order cart product plan.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const plan = myCart.then(myCart => ovh.Order.getCartProductPlan({
- *     cartId: myCart.id,
- *     priceCapacity: "renew",
- *     product: "cloud",
- *     planCode: "project",
- * }));
- * ```
- */
 export function getCartProductPlan(args: GetCartProductPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCartProductPlan:getCartProductPlan", {
@@ -42,25 +21,10 @@ export function getCartProductPlan(args: GetCartProductPlanArgs, opts?: pulumi.I
  * A collection of arguments for invoking getCartProductPlan.
  */
 export interface GetCartProductPlanArgs {
-    /**
-     * Cart identifier
-     */
     cartId: string;
-    /**
-     * Catalog name
-     */
     catalogName?: string;
-    /**
-     * Product offer identifier
-     */
     planCode: string;
-    /**
-     * Capacity of the pricing (type of pricing)
-     */
     priceCapacity: string;
-    /**
-     * Product
-     */
     product: string;
 }
 
@@ -74,50 +38,14 @@ export interface GetCartProductPlanResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Product offer identifier
-     */
     readonly planCode: string;
     readonly priceCapacity: string;
-    /**
-     * Prices of the product offer
-     */
     readonly prices: outputs.Order.GetCartProductPlanPrice[];
     readonly product: string;
-    /**
-     * Name of the product
-     */
     readonly productName: string;
-    /**
-     * Product type
-     */
     readonly productType: string;
-    /**
-     * Selected Price according to capacity
-     */
     readonly selectedPrices: outputs.Order.GetCartProductPlanSelectedPrice[];
 }
-/**
- * Use this data source to retrieve information of order cart product plan.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const plan = myCart.then(myCart => ovh.Order.getCartProductPlan({
- *     cartId: myCart.id,
- *     priceCapacity: "renew",
- *     product: "cloud",
- *     planCode: "project",
- * }));
- * ```
- */
 export function getCartProductPlanOutput(args: GetCartProductPlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCartProductPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Order/getCartProductPlan:getCartProductPlan", {
@@ -133,24 +61,9 @@ export function getCartProductPlanOutput(args: GetCartProductPlanOutputArgs, opt
  * A collection of arguments for invoking getCartProductPlan.
  */
 export interface GetCartProductPlanOutputArgs {
-    /**
-     * Cart identifier
-     */
     cartId: pulumi.Input<string>;
-    /**
-     * Catalog name
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * Product offer identifier
-     */
     planCode: pulumi.Input<string>;
-    /**
-     * Capacity of the pricing (type of pricing)
-     */
     priceCapacity: pulumi.Input<string>;
-    /**
-     * Product
-     */
     product: pulumi.Input<string>;
 }

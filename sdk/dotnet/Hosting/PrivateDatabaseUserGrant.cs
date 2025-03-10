@@ -9,65 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Hosting
 {
-    /// <summary>
-    /// Add grant on a database in your private cloud database instance.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var userGrant = new Ovh.Hosting.PrivateDatabaseUserGrant("userGrant", new()
-    ///     {
-    ///         DatabaseName = "ovhcloud",
-    ///         Grant = "admin",
-    ///         ServiceName = "XXXXXX",
-    ///         UserName = "terraform",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant")]
     public partial class PrivateDatabaseUserGrant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Database name where add grant.
+        /// Database name where add grant
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// Database name where add grant. Values can be: 
-        /// - admin
-        /// - none
-        /// - ro
-        /// - rw
+        /// Database name where add grant
         /// </summary>
         [Output("grant")]
         public Output<string> Grant { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// User name used to connect on your databases.
+        /// User name used to connect on your databases
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -120,29 +84,25 @@ namespace Pulumi.Ovh.Hosting
     public sealed class PrivateDatabaseUserGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database name where add grant.
+        /// Database name where add grant
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Database name where add grant. Values can be: 
-        /// - admin
-        /// - none
-        /// - ro
-        /// - rw
+        /// Database name where add grant
         /// </summary>
         [Input("grant", required: true)]
         public Input<string> Grant { get; set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// User name used to connect on your databases.
+        /// User name used to connect on your databases
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
@@ -156,29 +116,25 @@ namespace Pulumi.Ovh.Hosting
     public sealed class PrivateDatabaseUserGrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database name where add grant.
+        /// Database name where add grant
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// Database name where add grant. Values can be: 
-        /// - admin
-        /// - none
-        /// - ro
-        /// - rw
+        /// Database name where add grant
         /// </summary>
         [Input("grant")]
         public Input<string>? Grant { get; set; }
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// User name used to connect on your databases.
+        /// User name used to connect on your databases
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

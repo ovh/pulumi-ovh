@@ -7,21 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type GetReferenceActionsAction struct {
-	// Name of the action
-	Action string `pulumi:"action"`
-	// List of the categories of the action
-	Categories []string `pulumi:"categories"`
-	// Description of the action
-	Description string `pulumi:"description"`
-	// Resource type the action is related to
-	ResourceType string `pulumi:"resourceType"`
+	Action       string   `pulumi:"action"`
+	Categories   []string `pulumi:"categories"`
+	Description  string   `pulumi:"description"`
+	ResourceType string   `pulumi:"resourceType"`
 }
 
 // GetReferenceActionsActionInput is an input type that accepts GetReferenceActionsActionArgs and GetReferenceActionsActionOutput values.
@@ -36,14 +32,10 @@ type GetReferenceActionsActionInput interface {
 }
 
 type GetReferenceActionsActionArgs struct {
-	// Name of the action
-	Action pulumi.StringInput `pulumi:"action"`
-	// List of the categories of the action
-	Categories pulumi.StringArrayInput `pulumi:"categories"`
-	// Description of the action
-	Description pulumi.StringInput `pulumi:"description"`
-	// Resource type the action is related to
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	Action       pulumi.StringInput      `pulumi:"action"`
+	Categories   pulumi.StringArrayInput `pulumi:"categories"`
+	Description  pulumi.StringInput      `pulumi:"description"`
+	ResourceType pulumi.StringInput      `pulumi:"resourceType"`
 }
 
 func (GetReferenceActionsActionArgs) ElementType() reflect.Type {
@@ -97,22 +89,18 @@ func (o GetReferenceActionsActionOutput) ToGetReferenceActionsActionOutputWithCo
 	return o
 }
 
-// Name of the action
 func (o GetReferenceActionsActionOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReferenceActionsAction) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// List of the categories of the action
 func (o GetReferenceActionsActionOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetReferenceActionsAction) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
-// Description of the action
 func (o GetReferenceActionsActionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReferenceActionsAction) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Resource type the action is related to
 func (o GetReferenceActionsActionOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReferenceActionsAction) string { return v.ResourceType }).(pulumi.StringOutput)
 }

@@ -33,7 +33,7 @@ class VrackArgs:
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
         :param pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['VrackPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionArgs']]] plan_options: Product Plan to order
@@ -96,7 +96,7 @@ class VrackArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        Ovh Subsidiary
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -156,11 +156,10 @@ class _VrackState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vrack resources.
-        :param pulumi.Input[str] vrack_urn: The URN of the vrack, used with IAM permissions
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
         :param pulumi.Input[Sequence[pulumi.Input['VrackOrderArgs']]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['VrackPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['VrackPlanOptionArgs']]] plan_options: Product Plan to order
@@ -191,9 +190,6 @@ class _VrackState:
     @property
     @pulumi.getter(name="VrackURN")
     def vrack_urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URN of the vrack, used with IAM permissions
-        """
         return pulumi.get(self, "vrack_urn")
 
     @vrack_urn.setter
@@ -240,7 +236,7 @@ class _VrackState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        Ovh Subsidiary
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -312,62 +308,13 @@ class Vrack(pulumi.CustomResource):
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_account = ovh.Me.get_me()
-        my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
-            price_capacity="renew",
-            product="vrack",
-            plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
-            ovh_subsidiary=my_cart.ovh_subsidiary,
-            description="my vrack",
-            plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
-            })
-        ```
-
-        ## Import
-
-        A vRack can be imported using the `service_name`.
-
-        Using the following configuration:
-
-        hcl
-
-        import {
-
-          to = ovh_vrack.vrack
-
-          id = "<service name>"
-
-        }
-
-        You can then run:
-
-        bash
-
-        $ pulumi preview -generate-config-out=vrack.tf
-
-        $ pulumi up
-
-        The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
-
+        Create a Vrack resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
         :param pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]] plan_options: Product Plan to order
@@ -379,56 +326,7 @@ class Vrack(pulumi.CustomResource):
                  args: Optional[VrackArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_account = ovh.Me.get_me()
-        my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
-            price_capacity="renew",
-            product="vrack",
-            plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
-            ovh_subsidiary=my_cart.ovh_subsidiary,
-            description="my vrack",
-            plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
-            })
-        ```
-
-        ## Import
-
-        A vRack can be imported using the `service_name`.
-
-        Using the following configuration:
-
-        hcl
-
-        import {
-
-          to = ovh_vrack.vrack
-
-          id = "<service name>"
-
-        }
-
-        You can then run:
-
-        bash
-
-        $ pulumi preview -generate-config-out=vrack.tf
-
-        $ pulumi up
-
-        The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
-
+        Create a Vrack resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VrackArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -495,11 +393,10 @@ class Vrack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] vrack_urn: The URN of the vrack, used with IAM permissions
         :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] name: yourvrackname
         :param pulumi.Input[Sequence[pulumi.Input[Union['VrackOrderArgs', 'VrackOrderArgsDict']]]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Union['VrackPlanArgs', 'VrackPlanArgsDict']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['VrackPlanOptionArgs', 'VrackPlanOptionArgsDict']]]] plan_options: Product Plan to order
@@ -523,9 +420,6 @@ class Vrack(pulumi.CustomResource):
     @property
     @pulumi.getter(name="VrackURN")
     def vrack_urn(self) -> pulumi.Output[str]:
-        """
-        The URN of the vrack, used with IAM permissions
-        """
         return pulumi.get(self, "vrack_urn")
 
     @property
@@ -556,7 +450,7 @@ class Vrack(pulumi.CustomResource):
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[str]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        Ovh Subsidiary
         """
         return pulumi.get(self, "ovh_subsidiary")
 

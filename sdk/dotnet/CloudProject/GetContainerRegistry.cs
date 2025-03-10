@@ -11,78 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetContainerRegistry
     {
-        /// <summary>
-        /// Use this data source to get information about a container registry associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
-        ///     {
-        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetContainerRegistryResult> InvokeAsync(GetContainerRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("ovh:CloudProject/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a container registry associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
-        ///     {
-        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("ovh:CloudProject/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a container registry associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
-        ///     {
-        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetContainerRegistryResult> Invoke(GetContainerRegistryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("ovh:CloudProject/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());
     }
@@ -90,16 +24,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetContainerRegistryArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Registry ID
-        /// </summary>
         [Input("registryId", required: true)]
         public string RegistryId { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -111,16 +38,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetContainerRegistryInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Registry ID
-        /// </summary>
         [Input("registryId", required: true)]
         public Input<string> RegistryId { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -134,47 +54,20 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetContainerRegistryResult
     {
-        /// <summary>
-        /// Registry creation date
-        /// </summary>
         public readonly string CreatedAt;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Registry name
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Project ID of your registry
-        /// </summary>
         public readonly string ProjectId;
-        /// <summary>
-        /// Region of the registry
-        /// </summary>
         public readonly string Region;
         public readonly string RegistryId;
         public readonly string ServiceName;
-        /// <summary>
-        /// Current size of the registry (bytes)
-        /// </summary>
         public readonly int Size;
-        /// <summary>
-        /// Registry status
-        /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// Registry last update date
-        /// </summary>
         public readonly string UpdatedAt;
-        /// <summary>
-        /// Access url of the registry
-        /// </summary>
         public readonly string Url;
-        /// <summary>
-        /// Version of your registry
-        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

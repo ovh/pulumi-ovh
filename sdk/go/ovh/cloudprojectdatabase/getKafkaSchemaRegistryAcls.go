@@ -7,39 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			schemaRegistryAcls, err := cloudprojectdatabase.GetKafkaSchemaRegistryAcls(ctx, &cloudprojectdatabase.GetKafkaSchemaRegistryAclsArgs{
-//				ServiceName: "XXX",
-//				ClusterId:   "YYY",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("aclIds", schemaRegistryAcls.AclIds)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKafkaSchemaRegistryAcls(ctx *pulumi.Context, args *GetKafkaSchemaRegistryAclsArgs, opts ...pulumi.InvokeOption) (*GetKafkaSchemaRegistryAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaSchemaRegistryAclsResult
@@ -52,22 +23,16 @@ func GetKafkaSchemaRegistryAcls(ctx *pulumi.Context, args *GetKafkaSchemaRegistr
 
 // A collection of arguments for invoking getKafkaSchemaRegistryAcls.
 type GetKafkaSchemaRegistryAclsArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getKafkaSchemaRegistryAcls.
 type GetKafkaSchemaRegistryAclsResult struct {
-	// The list of schema refistry ACLs ids of the kafka cluster associated with the project.
-	AclIds []string `pulumi:"aclIds"`
-	// See Argument Reference above.
-	ClusterId string `pulumi:"clusterId"`
+	AclIds    []string `pulumi:"aclIds"`
+	ClusterId string   `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
+	Id          string `pulumi:"id"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -82,10 +47,7 @@ func GetKafkaSchemaRegistryAclsOutput(ctx *pulumi.Context, args GetKafkaSchemaRe
 
 // A collection of arguments for invoking getKafkaSchemaRegistryAcls.
 type GetKafkaSchemaRegistryAclsOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -108,12 +70,10 @@ func (o GetKafkaSchemaRegistryAclsResultOutput) ToGetKafkaSchemaRegistryAclsResu
 	return o
 }
 
-// The list of schema refistry ACLs ids of the kafka cluster associated with the project.
 func (o GetKafkaSchemaRegistryAclsResultOutput) AclIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaSchemaRegistryAclsResult) []string { return v.AclIds }).(pulumi.StringArrayOutput)
 }
 
-// See Argument Reference above.
 func (o GetKafkaSchemaRegistryAclsResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaSchemaRegistryAclsResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -123,7 +83,6 @@ func (o GetKafkaSchemaRegistryAclsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaSchemaRegistryAclsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetKafkaSchemaRegistryAclsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaSchemaRegistryAclsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

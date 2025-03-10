@@ -9,59 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Apply IP restrictions container registry associated with a public cloud project on Harbor UI and API.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
-    ///     {
-    ///         ServiceName = "XXXXXX",
-    ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-    ///     });
-    /// 
-    ///     var myMgtIprestrictions = new Ovh.CloudProject.ContainerRegistryIPRestrictionsManagement("myMgtIprestrictions", new()
-    ///     {
-    ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
-    ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
-    ///         IpRestrictions = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "ip_block", "xxx.xxx.xxx.xxx/xx" },
-    ///                 { "description", "xxxxxxx" },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement")]
     public partial class ContainerRegistryIPRestrictionsManagement : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// IP restrictions applied on Harbor UI and API.
+        /// List your IP restrictions applied on artifact manager component
         /// </summary>
         [Output("ipRestrictions")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> IpRestrictions { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the Managed Private Registry.
+        /// RegistryID
         /// </summary>
         [Output("registryId")]
         public Output<string> RegistryId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -117,7 +81,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<ImmutableDictionary<string, string>>? _ipRestrictions;
 
         /// <summary>
-        /// IP restrictions applied on Harbor UI and API.
+        /// List your IP restrictions applied on artifact manager component
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> IpRestrictions
         {
@@ -126,13 +90,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the Managed Private Registry.
+        /// RegistryID
         /// </summary>
         [Input("registryId", required: true)]
         public Input<string> RegistryId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -149,7 +113,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<ImmutableDictionary<string, string>>? _ipRestrictions;
 
         /// <summary>
-        /// IP restrictions applied on Harbor UI and API.
+        /// List your IP restrictions applied on artifact manager component
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> IpRestrictions
         {
@@ -158,13 +122,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the Managed Private Registry.
+        /// RegistryID
         /// </summary>
         [Input("registryId")]
         public Input<string>? RegistryId { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

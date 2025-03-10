@@ -151,49 +151,7 @@ class IpAddress(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Attach an IP block to a VRack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_account = ovh.Me.get_me()
-        my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
-            price_capacity="renew",
-            product="vrack",
-            plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
-            description=my_cart.description,
-            ovh_subsidiary=my_cart.ovh_subsidiary,
-            plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
-            })
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
-            price_capacity="renew",
-            product="ip",
-            plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
-            ovh_subsidiary=my_cart.ovh_subsidiary,
-            description=my_cart.description,
-            plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                "configurations": [{
-                    "label": "country",
-                    "value": "FR",
-                }],
-            })
-        vrack_block = ovh.vrack.IpAddress("vrackBlock",
-            service_name=vrack_vrack.service_name,
-            block=ipblock_ip_service.ip)
-        ```
-
+        Create a IpAddress resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] block: Your IP block.
@@ -206,49 +164,7 @@ class IpAddress(pulumi.CustomResource):
                  args: IpAddressArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Attach an IP block to a VRack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_account = ovh.Me.get_me()
-        my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
-            price_capacity="renew",
-            product="vrack",
-            plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
-            description=my_cart.description,
-            ovh_subsidiary=my_cart.ovh_subsidiary,
-            plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
-            })
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
-            price_capacity="renew",
-            product="ip",
-            plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
-            ovh_subsidiary=my_cart.ovh_subsidiary,
-            description=my_cart.description,
-            plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                "configurations": [{
-                    "label": "country",
-                    "value": "FR",
-                }],
-            })
-        vrack_block = ovh.vrack.IpAddress("vrackBlock",
-            service_name=vrack_vrack.service_name,
-            block=ipblock_ip_service.ip)
-        ```
-
+        Create a IpAddress resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IpAddressArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

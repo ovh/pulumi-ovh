@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates an alert on a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myAlert = new ovh.cloudproject.Alerting("myAlert", {
- *     delay: 3600,
- *     email: "aaa.bbb@domain.com",
- *     monthlyThreshold: 1000,
- *     serviceName: "XXX",
- * });
- * ```
- */
 export class Alerting extends pulumi.CustomResource {
     /**
      * Get an existing Alerting resource's state with the given name, ID, and optional extra
@@ -56,7 +39,7 @@ export class Alerting extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
-     * Delay between two alerts in seconds
+     * Possible values for delay between two alerts in seconds
      */
     public readonly delay!: pulumi.Output<number>;
     /**
@@ -72,8 +55,7 @@ export class Alerting extends pulumi.CustomResource {
      */
     public readonly monthlyThreshold!: pulumi.Output<number>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The project id
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -131,7 +113,7 @@ export interface AlertingState {
      */
     creationDate?: pulumi.Input<string>;
     /**
-     * Delay between two alerts in seconds
+     * Possible values for delay between two alerts in seconds
      */
     delay?: pulumi.Input<number>;
     /**
@@ -147,8 +129,7 @@ export interface AlertingState {
      */
     monthlyThreshold?: pulumi.Input<number>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The project id
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -158,7 +139,7 @@ export interface AlertingState {
  */
 export interface AlertingArgs {
     /**
-     * Delay between two alerts in seconds
+     * Possible values for delay between two alerts in seconds
      */
     delay: pulumi.Input<number>;
     /**
@@ -170,8 +151,7 @@ export interface AlertingArgs {
      */
     monthlyThreshold: pulumi.Input<number>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The project id
      */
     serviceName: pulumi.Input<string>;
 }

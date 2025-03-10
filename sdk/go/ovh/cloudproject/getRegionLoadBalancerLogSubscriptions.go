@@ -7,39 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetRegionLoadBalancerLogSubscriptions(ctx, &cloudproject.GetRegionLoadBalancerLogSubscriptionsArgs{
-//				LoadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-//				RegionName:     "gggg",
-//				ServiceName:    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegionLoadBalancerLogSubscriptions(ctx *pulumi.Context, args *GetRegionLoadBalancerLogSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetRegionLoadBalancerLogSubscriptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionLoadBalancerLogSubscriptionsResult
@@ -52,29 +23,20 @@ func GetRegionLoadBalancerLogSubscriptions(ctx *pulumi.Context, args *GetRegionL
 
 // A collection of arguments for invoking getRegionLoadBalancerLogSubscriptions.
 type GetRegionLoadBalancerLogSubscriptionsArgs struct {
-	// currently only "haproxy" is available
-	Kind *string `pulumi:"kind"`
-	// Loadbalancer id to get the logs
-	LoadbalancerId string `pulumi:"loadbalancerId"`
-	// A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
-	RegionName string `pulumi:"regionName"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	Kind           *string `pulumi:"kind"`
+	LoadbalancerId string  `pulumi:"loadbalancerId"`
+	RegionName     string  `pulumi:"regionName"`
+	ServiceName    string  `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getRegionLoadBalancerLogSubscriptions.
 type GetRegionLoadBalancerLogSubscriptionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Router used for forwarding log
-	Kind *string `pulumi:"kind"`
-	// Loadbalancer id to get the logs
-	LoadbalancerId string `pulumi:"loadbalancerId"`
-	// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11".
-	RegionName string `pulumi:"regionName"`
-	// The id of the public cloud project.
-	ServiceName string `pulumi:"serviceName"`
-	// The list of the subscription id
+	Id              string   `pulumi:"id"`
+	Kind            *string  `pulumi:"kind"`
+	LoadbalancerId  string   `pulumi:"loadbalancerId"`
+	RegionName      string   `pulumi:"regionName"`
+	ServiceName     string   `pulumi:"serviceName"`
 	SubscriptionIds []string `pulumi:"subscriptionIds"`
 }
 
@@ -89,14 +51,10 @@ func GetRegionLoadBalancerLogSubscriptionsOutput(ctx *pulumi.Context, args GetRe
 
 // A collection of arguments for invoking getRegionLoadBalancerLogSubscriptions.
 type GetRegionLoadBalancerLogSubscriptionsOutputArgs struct {
-	// currently only "haproxy" is available
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Loadbalancer id to get the logs
-	LoadbalancerId pulumi.StringInput `pulumi:"loadbalancerId"`
-	// A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
-	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	Kind           pulumi.StringPtrInput `pulumi:"kind"`
+	LoadbalancerId pulumi.StringInput    `pulumi:"loadbalancerId"`
+	RegionName     pulumi.StringInput    `pulumi:"regionName"`
+	ServiceName    pulumi.StringInput    `pulumi:"serviceName"`
 }
 
 func (GetRegionLoadBalancerLogSubscriptionsOutputArgs) ElementType() reflect.Type {
@@ -123,27 +81,22 @@ func (o GetRegionLoadBalancerLogSubscriptionsResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v GetRegionLoadBalancerLogSubscriptionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Router used for forwarding log
 func (o GetRegionLoadBalancerLogSubscriptionsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegionLoadBalancerLogSubscriptionsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Loadbalancer id to get the logs
 func (o GetRegionLoadBalancerLogSubscriptionsResultOutput) LoadbalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionLoadBalancerLogSubscriptionsResult) string { return v.LoadbalancerId }).(pulumi.StringOutput)
 }
 
-// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11".
 func (o GetRegionLoadBalancerLogSubscriptionsResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionLoadBalancerLogSubscriptionsResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project.
 func (o GetRegionLoadBalancerLogSubscriptionsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionLoadBalancerLogSubscriptionsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The list of the subscription id
 func (o GetRegionLoadBalancerLogSubscriptionsResultOutput) SubscriptionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionLoadBalancerLogSubscriptionsResult) []string { return v.SubscriptionIds }).(pulumi.StringArrayOutput)
 }

@@ -32,19 +32,6 @@ class TcpFrontendArgs:
                  ssl: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TcpFrontend resource.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
-        :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
-        :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "service_name", service_name)
@@ -69,11 +56,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[str]:
-        """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -83,9 +65,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -95,9 +74,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
-        """
-        Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -107,9 +83,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="allowedSources")
     def allowed_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        """
         return pulumi.get(self, "allowed_sources")
 
     @allowed_sources.setter
@@ -119,9 +92,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="dedicatedIpfos")
     def dedicated_ipfos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        """
         return pulumi.get(self, "dedicated_ipfos")
 
     @dedicated_ipfos.setter
@@ -131,9 +101,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="defaultFarmId")
     def default_farm_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        Default TCP Farm of your frontend
-        """
         return pulumi.get(self, "default_farm_id")
 
     @default_farm_id.setter
@@ -143,9 +110,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="defaultSslId")
     def default_ssl_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        Default ssl served to your customer
-        """
         return pulumi.get(self, "default_ssl_id")
 
     @default_ssl_id.setter
@@ -155,9 +119,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="deniedSources")
     def denied_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        """
         return pulumi.get(self, "denied_sources")
 
     @denied_sources.setter
@@ -167,9 +128,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable your frontend. Default: 'false'
-        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -179,9 +137,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human readable name for your frontend, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -191,9 +146,6 @@ class TcpFrontendArgs:
     @property
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL deciphering. Default: 'false'
-        """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
@@ -217,19 +169,6 @@ class _TcpFrontendState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TcpFrontend resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
-        :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
-        :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
-        :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         if allowed_sources is not None:
             pulumi.set(__self__, "allowed_sources", allowed_sources)
@@ -257,9 +196,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="allowedSources")
     def allowed_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        """
         return pulumi.get(self, "allowed_sources")
 
     @allowed_sources.setter
@@ -269,9 +205,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="dedicatedIpfos")
     def dedicated_ipfos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        """
         return pulumi.get(self, "dedicated_ipfos")
 
     @dedicated_ipfos.setter
@@ -281,9 +214,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="defaultFarmId")
     def default_farm_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        Default TCP Farm of your frontend
-        """
         return pulumi.get(self, "default_farm_id")
 
     @default_farm_id.setter
@@ -293,9 +223,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="defaultSslId")
     def default_ssl_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        Default ssl served to your customer
-        """
         return pulumi.get(self, "default_ssl_id")
 
     @default_ssl_id.setter
@@ -305,9 +232,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="deniedSources")
     def denied_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        """
         return pulumi.get(self, "denied_sources")
 
     @denied_sources.setter
@@ -317,9 +241,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable your frontend. Default: 'false'
-        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -329,9 +250,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human readable name for your frontend, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -341,11 +259,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
-        """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -355,9 +268,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -367,9 +277,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[bool]]:
-        """
-        SSL deciphering. Default: 'false'
-        """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
@@ -379,9 +286,6 @@ class _TcpFrontendState:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -407,48 +311,9 @@ class TcpFrontend(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        farm80 = ovh.ip_load_balancing.TcpFarm("farm80",
-            display_name="ingress-8080-gra",
-            port=80,
-            service_name=lb.service_name,
-            zone="all")
-        test_frontend = ovh.ip_load_balancing.TcpFrontend("testFrontend",
-            default_farm_id=farm80.id,
-            display_name="ingress-8080-gra",
-            port="80,443",
-            service_name=lb.service_name,
-            zone="all")
-        ```
-
-        ## Import
-
-        TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
-
+        Create a TcpFrontend resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
-        :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
-        :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
-        :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         ...
     @overload
@@ -457,33 +322,7 @@ class TcpFrontend(pulumi.CustomResource):
                  args: TcpFrontendArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        farm80 = ovh.ip_load_balancing.TcpFarm("farm80",
-            display_name="ingress-8080-gra",
-            port=80,
-            service_name=lb.service_name,
-            zone="all")
-        test_frontend = ovh.ip_load_balancing.TcpFrontend("testFrontend",
-            default_farm_id=farm80.id,
-            display_name="ingress-8080-gra",
-            port="80,443",
-            service_name=lb.service_name,
-            zone="all")
-        ```
-
-        ## Import
-
-        TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
-
+        Create a TcpFrontend resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TcpFrontendArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -564,19 +403,6 @@ class TcpFrontend(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        :param pulumi.Input[int] default_farm_id: Default TCP Farm of your frontend
-        :param pulumi.Input[int] default_ssl_id: Default ssl served to your customer
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
-        :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
-        :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -598,90 +424,55 @@ class TcpFrontend(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowedSources")
     def allowed_sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-        """
         return pulumi.get(self, "allowed_sources")
 
     @property
     @pulumi.getter(name="dedicatedIpfos")
     def dedicated_ipfos(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-        """
         return pulumi.get(self, "dedicated_ipfos")
 
     @property
     @pulumi.getter(name="defaultFarmId")
     def default_farm_id(self) -> pulumi.Output[int]:
-        """
-        Default TCP Farm of your frontend
-        """
         return pulumi.get(self, "default_farm_id")
 
     @property
     @pulumi.getter(name="defaultSslId")
     def default_ssl_id(self) -> pulumi.Output[int]:
-        """
-        Default ssl served to your customer
-        """
         return pulumi.get(self, "default_ssl_id")
 
     @property
     @pulumi.getter(name="deniedSources")
     def denied_sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
-        """
         return pulumi.get(self, "denied_sources")
 
     @property
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Disable your frontend. Default: 'false'
-        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human readable name for your frontend, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
-        """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def ssl(self) -> pulumi.Output[Optional[bool]]:
-        """
-        SSL deciphering. Default: 'false'
-        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
-        """
-        Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-        """
         return pulumi.get(self, "zone")
 

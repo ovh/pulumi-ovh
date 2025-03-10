@@ -16,10 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'ServerDetails',
+    'ServerCustomizations',
     'ServerIam',
-    'ServerInstallTaskDetails',
-    'ServerInstallTaskUserMetadata',
     'ServerNetworkingInterface',
     'ServerOrder',
     'ServerOrderDetail',
@@ -27,7 +25,21 @@ __all__ = [
     'ServerPlanConfiguration',
     'ServerPlanOption',
     'ServerPlanOptionConfiguration',
-    'ServerUserMetadata',
+    'ServerReinstallTaskCustomizations',
+    'ServerReinstallTaskStorage',
+    'ServerReinstallTaskStorageHardwareRaid',
+    'ServerReinstallTaskStoragePartitioning',
+    'ServerReinstallTaskStoragePartitioningLayout',
+    'ServerReinstallTaskStoragePartitioningLayoutExtra',
+    'ServerReinstallTaskStoragePartitioningLayoutExtraLv',
+    'ServerReinstallTaskStoragePartitioningLayoutExtraZp',
+    'ServerStorage',
+    'ServerStorageHardwareRaid',
+    'ServerStoragePartitioning',
+    'ServerStoragePartitioningLayout',
+    'ServerStoragePartitioningLayoutExtras',
+    'ServerStoragePartitioningLayoutExtrasLv',
+    'ServerStoragePartitioningLayoutExtrasZp',
     'GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult',
     'GetServerSpecificationsHardwareDiskGroupResult',
     'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult',
@@ -58,81 +70,189 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ServerDetails(dict):
+class ServerCustomizations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "customHostname":
-            suggest = "custom_hostname"
-        elif key == "diskGroupId":
-            suggest = "disk_group_id"
-        elif key == "noRaid":
-            suggest = "no_raid"
-        elif key == "softRaidDevices":
-            suggest = "soft_raid_devices"
+        if key == "configDriveUserData":
+            suggest = "config_drive_user_data"
+        elif key == "efiBootloaderPath":
+            suggest = "efi_bootloader_path"
+        elif key == "httpHeaders":
+            suggest = "http_headers"
+        elif key == "imageCheckSum":
+            suggest = "image_check_sum"
+        elif key == "imageCheckSumType":
+            suggest = "image_check_sum_type"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "imageUrl":
+            suggest = "image_url"
+        elif key == "postInstallationScript":
+            suggest = "post_installation_script"
+        elif key == "postInstallationScriptExtension":
+            suggest = "post_installation_script_extension"
+        elif key == "sshKey":
+            suggest = "ssh_key"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerDetails. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ServerCustomizations. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ServerDetails.__key_warning(key)
+        ServerCustomizations.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ServerDetails.__key_warning(key)
+        ServerCustomizations.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 custom_hostname: Optional[str] = None,
-                 disk_group_id: Optional[float] = None,
-                 no_raid: Optional[bool] = None,
-                 soft_raid_devices: Optional[float] = None):
+                 config_drive_user_data: Optional[str] = None,
+                 efi_bootloader_path: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 http_headers: Optional[Mapping[str, str]] = None,
+                 image_check_sum: Optional[str] = None,
+                 image_check_sum_type: Optional[str] = None,
+                 image_type: Optional[str] = None,
+                 image_url: Optional[str] = None,
+                 language: Optional[str] = None,
+                 post_installation_script: Optional[str] = None,
+                 post_installation_script_extension: Optional[str] = None,
+                 ssh_key: Optional[str] = None):
         """
-        :param str custom_hostname: Personnal hostname to use in server reinstallation
-        :param float disk_group_id: Disk group id to process install on (only available for some templates)
-        :param bool no_raid: true if you want to install only on the first disk
-        :param float soft_raid_devices: Number of devices to use for system's software RAID
+        :param str config_drive_user_data: Config Drive UserData
+        :param str efi_bootloader_path: Path of the EFI bootloader from the OS installed on the server
+        :param str hostname: Custom hostname
+        :param Mapping[str, str] http_headers: Image HTTP Headers
+        :param str image_check_sum: Image checksum
+        :param str image_check_sum_type: Checksum type
+        :param str image_type: Image Type
+        :param str image_url: Image URL
+        :param str language: Display Language
+        :param str post_installation_script: Post-Installation Script
+        :param str post_installation_script_extension: Post-Installation Script File Extension
+        :param str ssh_key: SSH Public Key
         """
-        if custom_hostname is not None:
-            pulumi.set(__self__, "custom_hostname", custom_hostname)
-        if disk_group_id is not None:
-            pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if no_raid is not None:
-            pulumi.set(__self__, "no_raid", no_raid)
-        if soft_raid_devices is not None:
-            pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
+        if config_drive_user_data is not None:
+            pulumi.set(__self__, "config_drive_user_data", config_drive_user_data)
+        if efi_bootloader_path is not None:
+            pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if image_check_sum is not None:
+            pulumi.set(__self__, "image_check_sum", image_check_sum)
+        if image_check_sum_type is not None:
+            pulumi.set(__self__, "image_check_sum_type", image_check_sum_type)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if image_url is not None:
+            pulumi.set(__self__, "image_url", image_url)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
+        if post_installation_script is not None:
+            pulumi.set(__self__, "post_installation_script", post_installation_script)
+        if post_installation_script_extension is not None:
+            pulumi.set(__self__, "post_installation_script_extension", post_installation_script_extension)
+        if ssh_key is not None:
+            pulumi.set(__self__, "ssh_key", ssh_key)
 
     @property
-    @pulumi.getter(name="customHostname")
-    def custom_hostname(self) -> Optional[str]:
+    @pulumi.getter(name="configDriveUserData")
+    def config_drive_user_data(self) -> Optional[str]:
         """
-        Personnal hostname to use in server reinstallation
+        Config Drive UserData
         """
-        return pulumi.get(self, "custom_hostname")
+        return pulumi.get(self, "config_drive_user_data")
 
     @property
-    @pulumi.getter(name="diskGroupId")
-    def disk_group_id(self) -> Optional[float]:
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> Optional[str]:
         """
-        Disk group id to process install on (only available for some templates)
+        Path of the EFI bootloader from the OS installed on the server
         """
-        return pulumi.get(self, "disk_group_id")
+        return pulumi.get(self, "efi_bootloader_path")
 
     @property
-    @pulumi.getter(name="noRaid")
-    def no_raid(self) -> Optional[bool]:
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
         """
-        true if you want to install only on the first disk
+        Custom hostname
         """
-        return pulumi.get(self, "no_raid")
+        return pulumi.get(self, "hostname")
 
     @property
-    @pulumi.getter(name="softRaidDevices")
-    def soft_raid_devices(self) -> Optional[float]:
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[Mapping[str, str]]:
         """
-        Number of devices to use for system's software RAID
+        Image HTTP Headers
         """
-        return pulumi.get(self, "soft_raid_devices")
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter(name="imageCheckSum")
+    def image_check_sum(self) -> Optional[str]:
+        """
+        Image checksum
+        """
+        return pulumi.get(self, "image_check_sum")
+
+    @property
+    @pulumi.getter(name="imageCheckSumType")
+    def image_check_sum_type(self) -> Optional[str]:
+        """
+        Checksum type
+        """
+        return pulumi.get(self, "image_check_sum_type")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[str]:
+        """
+        Image Type
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> Optional[str]:
+        """
+        Image URL
+        """
+        return pulumi.get(self, "image_url")
+
+    @property
+    @pulumi.getter
+    def language(self) -> Optional[str]:
+        """
+        Display Language
+        """
+        return pulumi.get(self, "language")
+
+    @property
+    @pulumi.getter(name="postInstallationScript")
+    def post_installation_script(self) -> Optional[str]:
+        """
+        Post-Installation Script
+        """
+        return pulumi.get(self, "post_installation_script")
+
+    @property
+    @pulumi.getter(name="postInstallationScriptExtension")
+    def post_installation_script_extension(self) -> Optional[str]:
+        """
+        Post-Installation Script File Extension
+        """
+        return pulumi.get(self, "post_installation_script_extension")
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> Optional[str]:
+        """
+        SSH Public Key
+        """
+        return pulumi.get(self, "ssh_key")
 
 
 @pulumi.output_type
@@ -161,9 +281,9 @@ class ServerIam(dict):
                  urn: Optional[str] = None):
         """
         :param str display_name: Resource display name
-        :param str id: Unique identifier of the resource in the IAM
-        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
-        :param str urn: URN of the private database, used when writing IAM policies
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -186,7 +306,7 @@ class ServerIam(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Unique identifier of the resource in the IAM
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -194,7 +314,7 @@ class ServerIam(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
-        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         return pulumi.get(self, "tags")
 
@@ -202,116 +322,9 @@ class ServerIam(dict):
     @pulumi.getter
     def urn(self) -> Optional[str]:
         """
-        URN of the private database, used when writing IAM policies
+        Unique resource name used in policies
         """
         return pulumi.get(self, "urn")
-
-
-@pulumi.output_type
-class ServerInstallTaskDetails(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customHostname":
-            suggest = "custom_hostname"
-        elif key == "diskGroupId":
-            suggest = "disk_group_id"
-        elif key == "noRaid":
-            suggest = "no_raid"
-        elif key == "softRaidDevices":
-            suggest = "soft_raid_devices"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerInstallTaskDetails. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerInstallTaskDetails.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerInstallTaskDetails.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 custom_hostname: Optional[str] = None,
-                 disk_group_id: Optional[int] = None,
-                 no_raid: Optional[bool] = None,
-                 soft_raid_devices: Optional[int] = None):
-        """
-        :param str custom_hostname: Set up the server using the provided hostname instead of the default hostname.
-        :param int disk_group_id: Disk group id.
-        :param bool no_raid: Set to true to disable RAID.
-        :param int soft_raid_devices: soft raid devices.
-        """
-        if custom_hostname is not None:
-            pulumi.set(__self__, "custom_hostname", custom_hostname)
-        if disk_group_id is not None:
-            pulumi.set(__self__, "disk_group_id", disk_group_id)
-        if no_raid is not None:
-            pulumi.set(__self__, "no_raid", no_raid)
-        if soft_raid_devices is not None:
-            pulumi.set(__self__, "soft_raid_devices", soft_raid_devices)
-
-    @property
-    @pulumi.getter(name="customHostname")
-    def custom_hostname(self) -> Optional[str]:
-        """
-        Set up the server using the provided hostname instead of the default hostname.
-        """
-        return pulumi.get(self, "custom_hostname")
-
-    @property
-    @pulumi.getter(name="diskGroupId")
-    def disk_group_id(self) -> Optional[int]:
-        """
-        Disk group id.
-        """
-        return pulumi.get(self, "disk_group_id")
-
-    @property
-    @pulumi.getter(name="noRaid")
-    def no_raid(self) -> Optional[bool]:
-        """
-        Set to true to disable RAID.
-        """
-        return pulumi.get(self, "no_raid")
-
-    @property
-    @pulumi.getter(name="softRaidDevices")
-    def soft_raid_devices(self) -> Optional[int]:
-        """
-        soft raid devices.
-        """
-        return pulumi.get(self, "soft_raid_devices")
-
-
-@pulumi.output_type
-class ServerInstallTaskUserMetadata(dict):
-    def __init__(__self__, *,
-                 key: str,
-                 value: str):
-        """
-        :param str key: The key for the user_metadata
-        :param str value: The value for the user_metadata
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> str:
-        """
-        The key for the user_metadata
-        """
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        The value for the user_metadata
-        """
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -369,9 +382,6 @@ class ServerOrder(dict):
                  details: Optional[Sequence['outputs.ServerOrderDetail']] = None,
                  expiration_date: Optional[str] = None,
                  order_id: Optional[float] = None):
-        """
-        :param Sequence['ServerOrderDetailArgs'] details: Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
-        """
         if date is not None:
             pulumi.set(__self__, "date", date)
         if details is not None:
@@ -389,9 +399,6 @@ class ServerOrder(dict):
     @property
     @pulumi.getter
     def details(self) -> Optional[Sequence['outputs.ServerOrderDetail']]:
-        """
-        Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
-        """
         return pulumi.get(self, "details")
 
     @property
@@ -705,24 +712,887 @@ class ServerPlanOptionConfiguration(dict):
 
 
 @pulumi.output_type
-class ServerUserMetadata(dict):
+class ServerReinstallTaskCustomizations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configDriveUserData":
+            suggest = "config_drive_user_data"
+        elif key == "efiBootloaderPath":
+            suggest = "efi_bootloader_path"
+        elif key == "httpHeaders":
+            suggest = "http_headers"
+        elif key == "imageCheckSum":
+            suggest = "image_check_sum"
+        elif key == "imageCheckSumType":
+            suggest = "image_check_sum_type"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "imageUrl":
+            suggest = "image_url"
+        elif key == "postInstallationScript":
+            suggest = "post_installation_script"
+        elif key == "postInstallationScriptExtension":
+            suggest = "post_installation_script_extension"
+        elif key == "sshKey":
+            suggest = "ssh_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerReinstallTaskCustomizations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerReinstallTaskCustomizations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerReinstallTaskCustomizations.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 key: Optional[str] = None,
-                 value: Optional[str] = None):
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 config_drive_user_data: Optional[str] = None,
+                 efi_bootloader_path: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 http_headers: Optional[Mapping[str, str]] = None,
+                 image_check_sum: Optional[str] = None,
+                 image_check_sum_type: Optional[str] = None,
+                 image_type: Optional[str] = None,
+                 image_url: Optional[str] = None,
+                 language: Optional[str] = None,
+                 post_installation_script: Optional[str] = None,
+                 post_installation_script_extension: Optional[str] = None,
+                 ssh_key: Optional[str] = None):
+        """
+        :param str config_drive_user_data: Config Drive UserData
+        :param str efi_bootloader_path: EFI bootloader path
+        :param str hostname: Custom hostname
+        :param Mapping[str, str] http_headers: Image HTTP Headers
+        :param str image_check_sum: Image checksum
+        :param str image_check_sum_type: Checksum type
+        :param str image_type: Image Type
+        :param str image_url: Image URL
+        :param str language: Display Language
+        :param str post_installation_script: Post-Installation Script
+        :param str post_installation_script_extension: Post-Installation Script File Extension
+        :param str ssh_key: SSH Public Key
+        """
+        if config_drive_user_data is not None:
+            pulumi.set(__self__, "config_drive_user_data", config_drive_user_data)
+        if efi_bootloader_path is not None:
+            pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if image_check_sum is not None:
+            pulumi.set(__self__, "image_check_sum", image_check_sum)
+        if image_check_sum_type is not None:
+            pulumi.set(__self__, "image_check_sum_type", image_check_sum_type)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if image_url is not None:
+            pulumi.set(__self__, "image_url", image_url)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
+        if post_installation_script is not None:
+            pulumi.set(__self__, "post_installation_script", post_installation_script)
+        if post_installation_script_extension is not None:
+            pulumi.set(__self__, "post_installation_script_extension", post_installation_script_extension)
+        if ssh_key is not None:
+            pulumi.set(__self__, "ssh_key", ssh_key)
+
+    @property
+    @pulumi.getter(name="configDriveUserData")
+    def config_drive_user_data(self) -> Optional[str]:
+        """
+        Config Drive UserData
+        """
+        return pulumi.get(self, "config_drive_user_data")
+
+    @property
+    @pulumi.getter(name="efiBootloaderPath")
+    def efi_bootloader_path(self) -> Optional[str]:
+        """
+        EFI bootloader path
+        """
+        return pulumi.get(self, "efi_bootloader_path")
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[str]:
-        return pulumi.get(self, "key")
+    def hostname(self) -> Optional[str]:
+        """
+        Custom hostname
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[Mapping[str, str]]:
+        """
+        Image HTTP Headers
+        """
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter(name="imageCheckSum")
+    def image_check_sum(self) -> Optional[str]:
+        """
+        Image checksum
+        """
+        return pulumi.get(self, "image_check_sum")
+
+    @property
+    @pulumi.getter(name="imageCheckSumType")
+    def image_check_sum_type(self) -> Optional[str]:
+        """
+        Checksum type
+        """
+        return pulumi.get(self, "image_check_sum_type")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[str]:
+        """
+        Image Type
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> Optional[str]:
+        """
+        Image URL
+        """
+        return pulumi.get(self, "image_url")
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
-        return pulumi.get(self, "value")
+    def language(self) -> Optional[str]:
+        """
+        Display Language
+        """
+        return pulumi.get(self, "language")
+
+    @property
+    @pulumi.getter(name="postInstallationScript")
+    def post_installation_script(self) -> Optional[str]:
+        """
+        Post-Installation Script
+        """
+        return pulumi.get(self, "post_installation_script")
+
+    @property
+    @pulumi.getter(name="postInstallationScriptExtension")
+    def post_installation_script_extension(self) -> Optional[str]:
+        """
+        Post-Installation Script File Extension
+        """
+        return pulumi.get(self, "post_installation_script_extension")
+
+    @property
+    @pulumi.getter(name="sshKey")
+    def ssh_key(self) -> Optional[str]:
+        """
+        SSH Public Key
+        """
+        return pulumi.get(self, "ssh_key")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskGroupId":
+            suggest = "disk_group_id"
+        elif key == "hardwareRaids":
+            suggest = "hardware_raids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerReinstallTaskStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerReinstallTaskStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerReinstallTaskStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_group_id: Optional[int] = None,
+                 hardware_raids: Optional[Sequence['outputs.ServerReinstallTaskStorageHardwareRaid']] = None,
+                 partitionings: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioning']] = None):
+        """
+        :param int disk_group_id: Disk group id (default is 0, meaning automatic)
+        :param Sequence['ServerReinstallTaskStorageHardwareRaidArgs'] hardware_raids: Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        :param Sequence['ServerReinstallTaskStoragePartitioningArgs'] partitionings: Partitioning configuration
+        """
+        if disk_group_id is not None:
+            pulumi.set(__self__, "disk_group_id", disk_group_id)
+        if hardware_raids is not None:
+            pulumi.set(__self__, "hardware_raids", hardware_raids)
+        if partitionings is not None:
+            pulumi.set(__self__, "partitionings", partitionings)
+
+    @property
+    @pulumi.getter(name="diskGroupId")
+    def disk_group_id(self) -> Optional[int]:
+        """
+        Disk group id (default is 0, meaning automatic)
+        """
+        return pulumi.get(self, "disk_group_id")
+
+    @property
+    @pulumi.getter(name="hardwareRaids")
+    def hardware_raids(self) -> Optional[Sequence['outputs.ServerReinstallTaskStorageHardwareRaid']]:
+        """
+        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        """
+        return pulumi.get(self, "hardware_raids")
+
+    @property
+    @pulumi.getter
+    def partitionings(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioning']]:
+        """
+        Partitioning configuration
+        """
+        return pulumi.get(self, "partitionings")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStorageHardwareRaid(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "raidLevel":
+            suggest = "raid_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerReinstallTaskStorageHardwareRaid. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerReinstallTaskStorageHardwareRaid.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerReinstallTaskStorageHardwareRaid.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arrays: Optional[int] = None,
+                 disks: Optional[int] = None,
+                 raid_level: Optional[int] = None,
+                 spares: Optional[int] = None):
+        """
+        :param int arrays: Number of arrays (default is 1)
+        :param int disks: Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+        :param int raid_level: Hardware raid type (default is 1)
+        :param int spares: Number of disks in the disk group involved in the spare (default is 0)
+        """
+        if arrays is not None:
+            pulumi.set(__self__, "arrays", arrays)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if raid_level is not None:
+            pulumi.set(__self__, "raid_level", raid_level)
+        if spares is not None:
+            pulumi.set(__self__, "spares", spares)
+
+    @property
+    @pulumi.getter
+    def arrays(self) -> Optional[int]:
+        """
+        Number of arrays (default is 1)
+        """
+        return pulumi.get(self, "arrays")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[int]:
+        """
+        Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="raidLevel")
+    def raid_level(self) -> Optional[int]:
+        """
+        Hardware raid type (default is 1)
+        """
+        return pulumi.get(self, "raid_level")
+
+    @property
+    @pulumi.getter
+    def spares(self) -> Optional[int]:
+        """
+        Number of disks in the disk group involved in the spare (default is 0)
+        """
+        return pulumi.get(self, "spares")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStoragePartitioning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemeName":
+            suggest = "scheme_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerReinstallTaskStoragePartitioning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerReinstallTaskStoragePartitioning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerReinstallTaskStoragePartitioning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disks: Optional[int] = None,
+                 layouts: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayout']] = None,
+                 scheme_name: Optional[str] = None):
+        """
+        :param int disks: Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutArgs'] layouts: Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        :param str scheme_name: Partitioning scheme name
+        """
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if layouts is not None:
+            pulumi.set(__self__, "layouts", layouts)
+        if scheme_name is not None:
+            pulumi.set(__self__, "scheme_name", scheme_name)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[int]:
+        """
+        Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def layouts(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayout']]:
+        """
+        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        """
+        return pulumi.get(self, "layouts")
+
+    @property
+    @pulumi.getter(name="schemeName")
+    def scheme_name(self) -> Optional[str]:
+        """
+        Partitioning scheme name
+        """
+        return pulumi.get(self, "scheme_name")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStoragePartitioningLayout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSystem":
+            suggest = "file_system"
+        elif key == "mountPoint":
+            suggest = "mount_point"
+        elif key == "raidLevel":
+            suggest = "raid_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerReinstallTaskStoragePartitioningLayout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerReinstallTaskStoragePartitioningLayout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerReinstallTaskStoragePartitioningLayout.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_system: str,
+                 mount_point: str,
+                 extras: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtra']] = None,
+                 raid_level: Optional[int] = None,
+                 size: Optional[int] = None):
+        """
+        :param str file_system: File system type
+        :param str mount_point: Mount point
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraArgs'] extras: Partition extras parameters
+        :param int raid_level: Software raid type (default is 1)
+        :param int size: Partition size in MiB (default value is 0)
+        """
+        pulumi.set(__self__, "file_system", file_system)
+        pulumi.set(__self__, "mount_point", mount_point)
+        if extras is not None:
+            pulumi.set(__self__, "extras", extras)
+        if raid_level is not None:
+            pulumi.set(__self__, "raid_level", raid_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter(name="fileSystem")
+    def file_system(self) -> str:
+        """
+        File system type
+        """
+        return pulumi.get(self, "file_system")
+
+    @property
+    @pulumi.getter(name="mountPoint")
+    def mount_point(self) -> str:
+        """
+        Mount point
+        """
+        return pulumi.get(self, "mount_point")
+
+    @property
+    @pulumi.getter
+    def extras(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtra']]:
+        """
+        Partition extras parameters
+        """
+        return pulumi.get(self, "extras")
+
+    @property
+    @pulumi.getter(name="raidLevel")
+    def raid_level(self) -> Optional[int]:
+        """
+        Software raid type (default is 1)
+        """
+        return pulumi.get(self, "raid_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        Partition size in MiB (default value is 0)
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStoragePartitioningLayoutExtra(dict):
+    def __init__(__self__, *,
+                 lvs: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraLv']] = None,
+                 zps: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraZp']] = None):
+        """
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs'] lvs: LVM-specific parameters
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs'] zps: ZFS-specific parameters
+        """
+        if lvs is not None:
+            pulumi.set(__self__, "lvs", lvs)
+        if zps is not None:
+            pulumi.set(__self__, "zps", zps)
+
+    @property
+    @pulumi.getter
+    def lvs(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraLv']]:
+        """
+        LVM-specific parameters
+        """
+        return pulumi.get(self, "lvs")
+
+    @property
+    @pulumi.getter
+    def zps(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraZp']]:
+        """
+        ZFS-specific parameters
+        """
+        return pulumi.get(self, "zps")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStoragePartitioningLayoutExtraLv(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: Logical volume name
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Logical volume name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServerReinstallTaskStoragePartitioningLayoutExtraZp(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: zpool name (generated automatically if not specified)
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        zpool name (generated automatically if not specified)
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServerStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskGroupId":
+            suggest = "disk_group_id"
+        elif key == "hardwareRaids":
+            suggest = "hardware_raids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_group_id: Optional[float] = None,
+                 hardware_raids: Optional[Sequence['outputs.ServerStorageHardwareRaid']] = None,
+                 partitioning: Optional['outputs.ServerStoragePartitioning'] = None):
+        """
+        :param float disk_group_id: Disk group id (default is 0, meaning automatic)
+        :param Sequence['ServerStorageHardwareRaidArgs'] hardware_raids: Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        :param 'ServerStoragePartitioningArgs' partitioning: Partitioning configuration
+        """
+        if disk_group_id is not None:
+            pulumi.set(__self__, "disk_group_id", disk_group_id)
+        if hardware_raids is not None:
+            pulumi.set(__self__, "hardware_raids", hardware_raids)
+        if partitioning is not None:
+            pulumi.set(__self__, "partitioning", partitioning)
+
+    @property
+    @pulumi.getter(name="diskGroupId")
+    def disk_group_id(self) -> Optional[float]:
+        """
+        Disk group id (default is 0, meaning automatic)
+        """
+        return pulumi.get(self, "disk_group_id")
+
+    @property
+    @pulumi.getter(name="hardwareRaids")
+    def hardware_raids(self) -> Optional[Sequence['outputs.ServerStorageHardwareRaid']]:
+        """
+        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        """
+        return pulumi.get(self, "hardware_raids")
+
+    @property
+    @pulumi.getter
+    def partitioning(self) -> Optional['outputs.ServerStoragePartitioning']:
+        """
+        Partitioning configuration
+        """
+        return pulumi.get(self, "partitioning")
+
+
+@pulumi.output_type
+class ServerStorageHardwareRaid(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "raidLevel":
+            suggest = "raid_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerStorageHardwareRaid. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerStorageHardwareRaid.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerStorageHardwareRaid.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arrays: Optional[float] = None,
+                 disks: Optional[float] = None,
+                 raid_level: Optional[float] = None,
+                 spares: Optional[float] = None):
+        """
+        :param float arrays: Number of arrays (default is 1)
+        :param float disks: Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+        :param float raid_level: Hardware raid type (default is 1)
+        :param float spares: Number of disks in the disk group involved in the spare (default is 0)
+        """
+        if arrays is not None:
+            pulumi.set(__self__, "arrays", arrays)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if raid_level is not None:
+            pulumi.set(__self__, "raid_level", raid_level)
+        if spares is not None:
+            pulumi.set(__self__, "spares", spares)
+
+    @property
+    @pulumi.getter
+    def arrays(self) -> Optional[float]:
+        """
+        Number of arrays (default is 1)
+        """
+        return pulumi.get(self, "arrays")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[float]:
+        """
+        Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="raidLevel")
+    def raid_level(self) -> Optional[float]:
+        """
+        Hardware raid type (default is 1)
+        """
+        return pulumi.get(self, "raid_level")
+
+    @property
+    @pulumi.getter
+    def spares(self) -> Optional[float]:
+        """
+        Number of disks in the disk group involved in the spare (default is 0)
+        """
+        return pulumi.get(self, "spares")
+
+
+@pulumi.output_type
+class ServerStoragePartitioning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemeName":
+            suggest = "scheme_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerStoragePartitioning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerStoragePartitioning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerStoragePartitioning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disks: Optional[float] = None,
+                 layouts: Optional[Sequence['outputs.ServerStoragePartitioningLayout']] = None,
+                 scheme_name: Optional[str] = None):
+        """
+        :param float disks: Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+        :param Sequence['ServerStoragePartitioningLayoutArgs'] layouts: Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        :param str scheme_name: Partitioning scheme (if applicable with selected operating system)
+        """
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if layouts is not None:
+            pulumi.set(__self__, "layouts", layouts)
+        if scheme_name is not None:
+            pulumi.set(__self__, "scheme_name", scheme_name)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[float]:
+        """
+        Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def layouts(self) -> Optional[Sequence['outputs.ServerStoragePartitioningLayout']]:
+        """
+        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        """
+        return pulumi.get(self, "layouts")
+
+    @property
+    @pulumi.getter(name="schemeName")
+    def scheme_name(self) -> Optional[str]:
+        """
+        Partitioning scheme (if applicable with selected operating system)
+        """
+        return pulumi.get(self, "scheme_name")
+
+
+@pulumi.output_type
+class ServerStoragePartitioningLayout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSystem":
+            suggest = "file_system"
+        elif key == "mountPoint":
+            suggest = "mount_point"
+        elif key == "raidLevel":
+            suggest = "raid_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerStoragePartitioningLayout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerStoragePartitioningLayout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerStoragePartitioningLayout.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_system: str,
+                 mount_point: str,
+                 extras: Optional['outputs.ServerStoragePartitioningLayoutExtras'] = None,
+                 raid_level: Optional[float] = None,
+                 size: Optional[float] = None):
+        """
+        :param str file_system: File system type
+        :param str mount_point: Mount point
+        :param 'ServerStoragePartitioningLayoutExtrasArgs' extras: Partition extras parameters
+        :param float raid_level: Software raid type (default is 1)
+        :param float size: Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+        """
+        pulumi.set(__self__, "file_system", file_system)
+        pulumi.set(__self__, "mount_point", mount_point)
+        if extras is not None:
+            pulumi.set(__self__, "extras", extras)
+        if raid_level is not None:
+            pulumi.set(__self__, "raid_level", raid_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter(name="fileSystem")
+    def file_system(self) -> str:
+        """
+        File system type
+        """
+        return pulumi.get(self, "file_system")
+
+    @property
+    @pulumi.getter(name="mountPoint")
+    def mount_point(self) -> str:
+        """
+        Mount point
+        """
+        return pulumi.get(self, "mount_point")
+
+    @property
+    @pulumi.getter
+    def extras(self) -> Optional['outputs.ServerStoragePartitioningLayoutExtras']:
+        """
+        Partition extras parameters
+        """
+        return pulumi.get(self, "extras")
+
+    @property
+    @pulumi.getter(name="raidLevel")
+    def raid_level(self) -> Optional[float]:
+        """
+        Software raid type (default is 1)
+        """
+        return pulumi.get(self, "raid_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[float]:
+        """
+        Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ServerStoragePartitioningLayoutExtras(dict):
+    def __init__(__self__, *,
+                 lv: Optional['outputs.ServerStoragePartitioningLayoutExtrasLv'] = None,
+                 zp: Optional['outputs.ServerStoragePartitioningLayoutExtrasZp'] = None):
+        """
+        :param 'ServerStoragePartitioningLayoutExtrasLvArgs' lv: LVM-specific parameters
+        :param 'ServerStoragePartitioningLayoutExtrasZpArgs' zp: ZFS-specific parameters
+        """
+        if lv is not None:
+            pulumi.set(__self__, "lv", lv)
+        if zp is not None:
+            pulumi.set(__self__, "zp", zp)
+
+    @property
+    @pulumi.getter
+    def lv(self) -> Optional['outputs.ServerStoragePartitioningLayoutExtrasLv']:
+        """
+        LVM-specific parameters
+        """
+        return pulumi.get(self, "lv")
+
+    @property
+    @pulumi.getter
+    def zp(self) -> Optional['outputs.ServerStoragePartitioningLayoutExtrasZp']:
+        """
+        ZFS-specific parameters
+        """
+        return pulumi.get(self, "zp")
+
+
+@pulumi.output_type
+class ServerStoragePartitioningLayoutExtrasLv(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: Logical volume name
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Logical volume name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServerStoragePartitioningLayoutExtrasZp(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -756,14 +1626,14 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
                  number_of_disks: float,
                  raid_controller: str):
         """
-        :param 'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs' default_hardware_raid_size: Default hardware raid size for this disk group
-        :param str default_hardware_raid_type: Default hardware raid type for this disk group
-        :param str description: Expansion card description
-        :param float disk_group_id: Identifier of this disk group
-        :param 'GetServerSpecificationsHardwareDiskGroupDiskSizeArgs' disk_size: Disk capacity
-        :param str disk_type: Type of the disk (SSD, SATA, SAS, ...)
-        :param float number_of_disks: Number of disks in this group
-        :param str raid_controller: Raid controller, if any, managing this group of disks
+        :param 'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs' default_hardware_raid_size: default hardware raid size for this disk group
+        :param str default_hardware_raid_type: default hardware raid type for this disk group
+        :param str description: human readable description of this disk group
+        :param float disk_group_id: identifier of this disk group
+        :param 'GetServerSpecificationsHardwareDiskGroupDiskSizeArgs' disk_size: disk capacity
+        :param str disk_type: type of the disk (SSD, SATA, SAS, ...)
+        :param float number_of_disks: number of disks in this group
+        :param str raid_controller: raid controller, if any, managing this group of disks
         """
         pulumi.set(__self__, "default_hardware_raid_size", default_hardware_raid_size)
         pulumi.set(__self__, "default_hardware_raid_type", default_hardware_raid_type)
@@ -778,7 +1648,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="defaultHardwareRaidSize")
     def default_hardware_raid_size(self) -> 'outputs.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult':
         """
-        Default hardware raid size for this disk group
+        default hardware raid size for this disk group
         """
         return pulumi.get(self, "default_hardware_raid_size")
 
@@ -786,7 +1656,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="defaultHardwareRaidType")
     def default_hardware_raid_type(self) -> str:
         """
-        Default hardware raid type for this disk group
+        default hardware raid type for this disk group
         """
         return pulumi.get(self, "default_hardware_raid_type")
 
@@ -794,7 +1664,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Expansion card description
+        human readable description of this disk group
         """
         return pulumi.get(self, "description")
 
@@ -802,7 +1672,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="diskGroupId")
     def disk_group_id(self) -> float:
         """
-        Identifier of this disk group
+        identifier of this disk group
         """
         return pulumi.get(self, "disk_group_id")
 
@@ -810,7 +1680,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> 'outputs.GetServerSpecificationsHardwareDiskGroupDiskSizeResult':
         """
-        Disk capacity
+        disk capacity
         """
         return pulumi.get(self, "disk_size")
 
@@ -818,7 +1688,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        Type of the disk (SSD, SATA, SAS, ...)
+        type of the disk (SSD, SATA, SAS, ...)
         """
         return pulumi.get(self, "disk_type")
 
@@ -826,7 +1696,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="numberOfDisks")
     def number_of_disks(self) -> float:
         """
-        Number of disks in this group
+        number of disks in this group
         """
         return pulumi.get(self, "number_of_disks")
 
@@ -834,7 +1704,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="raidController")
     def raid_controller(self) -> str:
         """
-        Raid controller, if any, managing this group of disks
+        raid controller, if any, managing this group of disks
         """
         return pulumi.get(self, "raid_controller")
 
@@ -883,7 +1753,7 @@ class GetServerSpecificationsHardwareExpansionCardResult(dict):
                  description: str,
                  type: str):
         """
-        :param str description: Expansion card description
+        :param str description: expansion card description
         :param str type: Expansion card type enum
         """
         pulumi.set(__self__, "description", description)
@@ -893,7 +1763,7 @@ class GetServerSpecificationsHardwareExpansionCardResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Expansion card description
+        expansion card description
         """
         return pulumi.get(self, "description")
 
@@ -952,10 +1822,10 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
                  ovh_to_ovh: 'outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult',
                  type: str):
         """
-        :param 'GetServerSpecificationsNetworkBandwidthInternetToOvhArgs' internet_to_ovh: Bandwidth limitation Internet to OVH
-        :param 'GetServerSpecificationsNetworkBandwidthOvhToInternetArgs' ovh_to_internet: Bandwidth limitation OVH to Internet
-        :param 'GetServerSpecificationsNetworkBandwidthOvhToOvhArgs' ovh_to_ovh: Bandwidth limitation OVH to OVH
-        :param str type: Bandwidth offer type (included┃standard)
+        :param 'GetServerSpecificationsNetworkBandwidthInternetToOvhArgs' internet_to_ovh: bandwidth limitation Internet to OVH
+        :param 'GetServerSpecificationsNetworkBandwidthOvhToInternetArgs' ovh_to_internet: bandwidth limitation OVH to Internet
+        :param 'GetServerSpecificationsNetworkBandwidthOvhToOvhArgs' ovh_to_ovh: bandwidth limitation OVH to OVH
+        :param str type: bandwidth offer type
         """
         pulumi.set(__self__, "internet_to_ovh", internet_to_ovh)
         pulumi.set(__self__, "ovh_to_internet", ovh_to_internet)
@@ -966,7 +1836,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter(name="internetToOvh")
     def internet_to_ovh(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthInternetToOvhResult':
         """
-        Bandwidth limitation Internet to OVH
+        bandwidth limitation Internet to OVH
         """
         return pulumi.get(self, "internet_to_ovh")
 
@@ -974,7 +1844,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter(name="ovhToInternet")
     def ovh_to_internet(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthOvhToInternetResult':
         """
-        Bandwidth limitation OVH to Internet
+        bandwidth limitation OVH to Internet
         """
         return pulumi.get(self, "ovh_to_internet")
 
@@ -982,7 +1852,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter(name="ovhToOvh")
     def ovh_to_ovh(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult':
         """
-        Bandwidth limitation OVH to OVH
+        bandwidth limitation OVH to OVH
         """
         return pulumi.get(self, "ovh_to_ovh")
 
@@ -990,7 +1860,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Bandwidth offer type (included┃standard)
+        bandwidth offer type
         """
         return pulumi.get(self, "type")
 
@@ -1079,8 +1949,8 @@ class GetServerSpecificationsNetworkOlaResult(dict):
                  supported_modes: Sequence[str]):
         """
         :param bool available: Is the OLA feature available
-        :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeArgs'] available_modes: Supported modes
-        :param Sequence[str] supported_modes: Supported modes (DEPRECATED)
+        :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeArgs'] available_modes: What modes are supported
+        :param Sequence[str] supported_modes: (DEPRECATED) What modes are supported
         """
         pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "available_modes", available_modes)
@@ -1098,7 +1968,7 @@ class GetServerSpecificationsNetworkOlaResult(dict):
     @pulumi.getter(name="availableModes")
     def available_modes(self) -> Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeResult']:
         """
-        Supported modes
+        What modes are supported
         """
         return pulumi.get(self, "available_modes")
 
@@ -1106,7 +1976,7 @@ class GetServerSpecificationsNetworkOlaResult(dict):
     @pulumi.getter(name="supportedModes")
     def supported_modes(self) -> Sequence[str]:
         """
-        Supported modes (DEPRECATED)
+        (DEPRECATED) What modes are supported
         """
         return pulumi.get(self, "supported_modes")
 
@@ -1118,9 +1988,9 @@ class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
                  interfaces: Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult'],
                  name: str):
         """
-        :param bool default: Whether it is the default configuration of the server
+        :param bool default: Is it the default configuration of the server
         :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs'] interfaces: Interface layout
-        :param str name: Switch name
+        :param str name: Mode name
         """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "interfaces", interfaces)
@@ -1130,7 +2000,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
     @pulumi.getter
     def default(self) -> bool:
         """
-        Whether it is the default configuration of the server
+        Is it the default configuration of the server
         """
         return pulumi.get(self, "default")
 
@@ -1146,7 +2016,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Switch name
+        Mode name
         """
         return pulumi.get(self, "name")
 
@@ -1160,7 +2030,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult(dict):
         """
         :param bool aggregation: Interface aggregation status
         :param float count: Interface count
-        :param str type: Bandwidth offer type (included┃standard)
+        :param str type: An enum describing OVH Link Aggregation interface types
         """
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "count", count)
@@ -1186,7 +2056,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Bandwidth offer type (included┃standard)
+        An enum describing OVH Link Aggregation interface types
         """
         return pulumi.get(self, "type")
 
@@ -1330,7 +2200,7 @@ class GetServerSpecificationsNetworkTrafficResult(dict):
         """
         :param 'GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs' input_quota_size: Monthly input traffic quota allowed
         :param 'GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs' input_quota_used: Monthly input traffic consumed this month
-        :param bool is_throttled: Whether bandwidth is throttleted for being over quota
+        :param bool is_throttled: Is bandwidth throttleted for being over quota
         :param 'GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs' output_quota_size: Monthly output traffic quota allowed
         :param 'GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs' output_quota_used: Monthly output traffic consumed this month
         :param str reset_quota_date: Next reset quota date for traffic counter
@@ -1362,7 +2232,7 @@ class GetServerSpecificationsNetworkTrafficResult(dict):
     @pulumi.getter(name="isThrottled")
     def is_throttled(self) -> bool:
         """
-        Whether bandwidth is throttleted for being over quota
+        Is bandwidth throttleted for being over quota
         """
         return pulumi.get(self, "is_throttled")
 
@@ -1472,7 +2342,7 @@ class GetServerSpecificationsNetworkVmacResult(dict):
     def __init__(__self__, *,
                  supported: bool):
         """
-        :param bool supported: Whether server is compatible vmac
+        :param bool supported: Server is compatible vmac or not
         """
         pulumi.set(__self__, "supported", supported)
 
@@ -1480,7 +2350,7 @@ class GetServerSpecificationsNetworkVmacResult(dict):
     @pulumi.getter
     def supported(self) -> bool:
         """
-        Whether server is compatible vmac
+        Server is compatible vmac or not
         """
         return pulumi.get(self, "supported")
 
@@ -1492,7 +2362,7 @@ class GetServerSpecificationsNetworkVrackResult(dict):
                  type: str):
         """
         :param 'GetServerSpecificationsNetworkVrackBandwidthArgs' bandwidth: vrack bandwidth limitation
-        :param str type: Bandwidth offer type (included┃standard)
+        :param str type: bandwidth offer type
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "type", type)
@@ -1509,7 +2379,7 @@ class GetServerSpecificationsNetworkVrackResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Bandwidth offer type (included┃standard)
+        bandwidth offer type
         """
         return pulumi.get(self, "type")
 

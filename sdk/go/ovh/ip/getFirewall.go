@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about an IP firewall.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.GetFirewall(ctx, &ip.GetFirewallArgs{
-//				Ip:           "XXXXXX",
-//				IpOnFirewall: "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulumi.InvokeOption) (*LookupFirewallResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallResult
@@ -51,9 +23,7 @@ func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulum
 
 // A collection of arguments for invoking getFirewall.
 type LookupFirewallArgs struct {
-	// The IP or the CIDR
-	Ip string `pulumi:"ip"`
-	// IPv4 address
+	Ip           string `pulumi:"ip"`
 	IpOnFirewall string `pulumi:"ipOnFirewall"`
 }
 
@@ -61,14 +31,10 @@ type LookupFirewallArgs struct {
 type LookupFirewallResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The IP or the CIDR
-	Ip string `pulumi:"ip"`
-	// IPv4 address
-	// * ` enabled  ` - Whether firewall is enabled
+	Id           string `pulumi:"id"`
+	Ip           string `pulumi:"ip"`
 	IpOnFirewall string `pulumi:"ipOnFirewall"`
-	// Current state of your ip on firewall
-	State string `pulumi:"state"`
+	State        string `pulumi:"state"`
 }
 
 func LookupFirewallOutput(ctx *pulumi.Context, args LookupFirewallOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallResultOutput {
@@ -82,9 +48,7 @@ func LookupFirewallOutput(ctx *pulumi.Context, args LookupFirewallOutputArgs, op
 
 // A collection of arguments for invoking getFirewall.
 type LookupFirewallOutputArgs struct {
-	// The IP or the CIDR
-	Ip pulumi.StringInput `pulumi:"ip"`
-	// IPv4 address
+	Ip           pulumi.StringInput `pulumi:"ip"`
 	IpOnFirewall pulumi.StringInput `pulumi:"ipOnFirewall"`
 }
 
@@ -116,18 +80,14 @@ func (o LookupFirewallResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IP or the CIDR
 func (o LookupFirewallResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IPv4 address
-// * ` enabled  ` - Whether firewall is enabled
 func (o LookupFirewallResultOutput) IpOnFirewall() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.IpOnFirewall }).(pulumi.StringOutput)
 }
 
-// Current state of your ip on firewall
 func (o LookupFirewallResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.State }).(pulumi.StringOutput)
 }

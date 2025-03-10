@@ -37,24 +37,19 @@ class KubeNodePoolArgs:
                  template: Optional[pulumi.Input['KubeNodePoolTemplateArgs']] = None):
         """
         The set of arguments for constructing a KubeNodePool resource.
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
-        :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
-        :param pulumi.Input[int] desired_nodes: number of nodes to start.
-        :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
-        :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
-        :param pulumi.Input[bool] monthly_billed: should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] name: The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: Flavor name
+        :param pulumi.Input[str] kube_id: Kube ID
+        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[bool] anti_affinity: Enable anti affinity groups for nodes in the pool
+        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds for autoscaling
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds for autoscaling
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold for autoscaling
+        :param pulumi.Input[int] desired_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[int] max_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[int] min_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[bool] monthly_billed: Enable monthly billing on all nodes in the pool
+        :param pulumi.Input[str] name: NodePool resource name
         :param pulumi.Input['KubeNodePoolTemplateArgs'] template: Node pool template
         """
         pulumi.set(__self__, "flavor_name", flavor_name)
@@ -87,8 +82,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Input[str]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-        **Changing this value recreates the resource.**
+        Flavor name
         """
         return pulumi.get(self, "flavor_name")
 
@@ -100,7 +94,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> pulumi.Input[str]:
         """
-        The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
+        Kube ID
         """
         return pulumi.get(self, "kube_id")
 
@@ -112,7 +106,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        Service name
         """
         return pulumi.get(self, "service_name")
 
@@ -124,7 +118,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="antiAffinity")
     def anti_affinity(self) -> Optional[pulumi.Input[bool]]:
         """
-        should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        Enable anti affinity groups for nodes in the pool
         """
         return pulumi.get(self, "anti_affinity")
 
@@ -136,7 +130,7 @@ class KubeNodePoolArgs:
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable auto-scaling for the pool. Default to `false`.
+        Enable auto-scaling for the pool
         """
         return pulumi.get(self, "autoscale")
 
@@ -148,8 +142,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        scaleDownUnneededTimeSeconds for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -161,8 +154,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        scaleDownUnreadyTimeSeconds for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -174,9 +166,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        scaleDownUtilizationThreshold for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
@@ -188,7 +178,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        number of nodes to start.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "desired_nodes")
 
@@ -200,7 +190,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "max_nodes")
 
@@ -212,7 +202,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "min_nodes")
 
@@ -224,7 +214,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="monthlyBilled")
     def monthly_billed(self) -> Optional[pulumi.Input[bool]]:
         """
-        should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
+        Enable monthly billing on all nodes in the pool
         """
         return pulumi.get(self, "monthly_billed")
 
@@ -236,7 +226,7 @@ class KubeNodePoolArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
+        NodePool resource name
         """
         return pulumi.get(self, "name")
 
@@ -285,33 +275,28 @@ class _KubeNodePoolState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KubeNodePool resources.
-        :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        :param pulumi.Input[bool] anti_affinity: Enable anti affinity groups for nodes in the pool
+        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds for autoscaling
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds for autoscaling
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold for autoscaling
         :param pulumi.Input[int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[str] created_at: Creation date
         :param pulumi.Input[int] current_nodes: Number of nodes present in the pool
-        :param pulumi.Input[int] desired_nodes: number of nodes to start.
+        :param pulumi.Input[int] desired_nodes: Number of nodes you desire in the pool
         :param pulumi.Input[str] flavor: Flavor name
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
-        :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
-        :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
-        :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
-        :param pulumi.Input[bool] monthly_billed: should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] name: The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: Flavor name
+        :param pulumi.Input[str] kube_id: Kube ID
+        :param pulumi.Input[int] max_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[int] min_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[bool] monthly_billed: Enable monthly billing on all nodes in the pool
+        :param pulumi.Input[str] name: NodePool resource name
         :param pulumi.Input[str] project_id: Project id
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] size_status: Status describing the state between number of nodes wanted and available ones
         :param pulumi.Input[str] status: Current status
         :param pulumi.Input['KubeNodePoolTemplateArgs'] template: Node pool template
-        :param pulumi.Input[int] up_to_date_nodes: Number of nodes with the latest version installed in the pool
+        :param pulumi.Input[int] up_to_date_nodes: Number of nodes with latest version installed in the pool
         :param pulumi.Input[str] updated_at: Last update date
         """
         if anti_affinity is not None:
@@ -365,7 +350,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="antiAffinity")
     def anti_affinity(self) -> Optional[pulumi.Input[bool]]:
         """
-        should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        Enable anti affinity groups for nodes in the pool
         """
         return pulumi.get(self, "anti_affinity")
 
@@ -377,7 +362,7 @@ class _KubeNodePoolState:
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable auto-scaling for the pool. Default to `false`.
+        Enable auto-scaling for the pool
         """
         return pulumi.get(self, "autoscale")
 
@@ -389,8 +374,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        scaleDownUnneededTimeSeconds for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -402,8 +386,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        scaleDownUnreadyTimeSeconds for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -415,9 +398,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        scaleDownUtilizationThreshold for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
@@ -465,7 +446,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        number of nodes to start.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "desired_nodes")
 
@@ -489,8 +470,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[str]]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-        **Changing this value recreates the resource.**
+        Flavor name
         """
         return pulumi.get(self, "flavor_name")
 
@@ -502,7 +482,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
+        Kube ID
         """
         return pulumi.get(self, "kube_id")
 
@@ -514,7 +494,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "max_nodes")
 
@@ -526,7 +506,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "min_nodes")
 
@@ -538,7 +518,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="monthlyBilled")
     def monthly_billed(self) -> Optional[pulumi.Input[bool]]:
         """
-        should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
+        Enable monthly billing on all nodes in the pool
         """
         return pulumi.get(self, "monthly_billed")
 
@@ -550,7 +530,7 @@ class _KubeNodePoolState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
+        NodePool resource name
         """
         return pulumi.get(self, "name")
 
@@ -574,7 +554,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        Service name
         """
         return pulumi.get(self, "service_name")
 
@@ -622,7 +602,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="upToDateNodes")
     def up_to_date_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of nodes with the latest version installed in the pool
+        Number of nodes with latest version installed in the pool
         """
         return pulumi.get(self, "up_to_date_nodes")
 
@@ -664,91 +644,22 @@ class KubeNodePool(pulumi.CustomResource):
                  template: Optional[pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']]] = None,
                  __props__=None):
         """
-        Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.
-
-        ## Example Usage
-
-        Create a simple node pool in your Kubernetes cluster:
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        node_pool = ovh.cloud_project.KubeNodePool("nodePool",
-            desired_nodes=3,
-            flavor_name="b2-7",
-            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            max_nodes=3,
-            min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-        ```
-
-        Create an advanced node pool in your Kubernetes cluster:
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        pool = ovh.cloud_project.KubeNodePool("pool",
-            desired_nodes=3,
-            flavor_name="b2-7",
-            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            max_nodes=3,
-            min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            template={
-                "metadata": {
-                    "annotations": {
-                        "k1": "v1",
-                        "k2": "v2",
-                    },
-                    "finalizers": [],
-                    "labels": {
-                        "k3": "v3",
-                        "k4": "v4",
-                    },
-                },
-                "spec": {
-                    "taints": [{
-                        "effect": "PreferNoSchedule",
-                        "key": "k",
-                        "value": "v",
-                    }],
-                    "unschedulable": False,
-                },
-            })
-        ```
-
-        ## Import
-
-        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
-        ```
-
+        Create a KubeNodePool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
-        :param pulumi.Input[int] desired_nodes: number of nodes to start.
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
-        :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
-        :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
-        :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
-        :param pulumi.Input[bool] monthly_billed: should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] name: The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        :param pulumi.Input[bool] anti_affinity: Enable anti affinity groups for nodes in the pool
+        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds for autoscaling
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds for autoscaling
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold for autoscaling
+        :param pulumi.Input[int] desired_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[str] flavor_name: Flavor name
+        :param pulumi.Input[str] kube_id: Kube ID
+        :param pulumi.Input[int] max_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[int] min_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[bool] monthly_billed: Enable monthly billing on all nodes in the pool
+        :param pulumi.Input[str] name: NodePool resource name
+        :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']] template: Node pool template
         """
         ...
@@ -758,71 +669,7 @@ class KubeNodePool(pulumi.CustomResource):
                  args: KubeNodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.
-
-        ## Example Usage
-
-        Create a simple node pool in your Kubernetes cluster:
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        node_pool = ovh.cloud_project.KubeNodePool("nodePool",
-            desired_nodes=3,
-            flavor_name="b2-7",
-            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            max_nodes=3,
-            min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-        ```
-
-        Create an advanced node pool in your Kubernetes cluster:
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        pool = ovh.cloud_project.KubeNodePool("pool",
-            desired_nodes=3,
-            flavor_name="b2-7",
-            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            max_nodes=3,
-            min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            template={
-                "metadata": {
-                    "annotations": {
-                        "k1": "v1",
-                        "k2": "v2",
-                    },
-                    "finalizers": [],
-                    "labels": {
-                        "k3": "v3",
-                        "k4": "v4",
-                    },
-                },
-                "spec": {
-                    "taints": [{
-                        "effect": "PreferNoSchedule",
-                        "key": "k",
-                        "value": "v",
-                    }],
-                    "unschedulable": False,
-                },
-            })
-        ```
-
-        ## Import
-
-        OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
-        ```
-
+        Create a KubeNodePool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KubeNodePoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -930,33 +777,28 @@ class KubeNodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        :param pulumi.Input[bool] anti_affinity: Enable anti affinity groups for nodes in the pool
+        :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds for autoscaling
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds for autoscaling
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold for autoscaling
         :param pulumi.Input[int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[str] created_at: Creation date
         :param pulumi.Input[int] current_nodes: Number of nodes present in the pool
-        :param pulumi.Input[int] desired_nodes: number of nodes to start.
+        :param pulumi.Input[int] desired_nodes: Number of nodes you desire in the pool
         :param pulumi.Input[str] flavor: Flavor name
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
-        :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
-        :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
-        :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
-        :param pulumi.Input[bool] monthly_billed: should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] name: The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: Flavor name
+        :param pulumi.Input[str] kube_id: Kube ID
+        :param pulumi.Input[int] max_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[int] min_nodes: Number of nodes you desire in the pool
+        :param pulumi.Input[bool] monthly_billed: Enable monthly billing on all nodes in the pool
+        :param pulumi.Input[str] name: NodePool resource name
         :param pulumi.Input[str] project_id: Project id
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] size_status: Status describing the state between number of nodes wanted and available ones
         :param pulumi.Input[str] status: Current status
         :param pulumi.Input[Union['KubeNodePoolTemplateArgs', 'KubeNodePoolTemplateArgsDict']] template: Node pool template
-        :param pulumi.Input[int] up_to_date_nodes: Number of nodes with the latest version installed in the pool
+        :param pulumi.Input[int] up_to_date_nodes: Number of nodes with latest version installed in the pool
         :param pulumi.Input[str] updated_at: Last update date
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -992,7 +834,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="antiAffinity")
     def anti_affinity(self) -> pulumi.Output[bool]:
         """
-        should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        Enable anti affinity groups for nodes in the pool
         """
         return pulumi.get(self, "anti_affinity")
 
@@ -1000,7 +842,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter
     def autoscale(self) -> pulumi.Output[bool]:
         """
-        Enable auto-scaling for the pool. Default to `false`.
+        Enable auto-scaling for the pool
         """
         return pulumi.get(self, "autoscale")
 
@@ -1008,8 +850,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> pulumi.Output[int]:
         """
-        scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        scaleDownUnneededTimeSeconds for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -1017,8 +858,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> pulumi.Output[int]:
         """
-        scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        scaleDownUnreadyTimeSeconds for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -1026,9 +866,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> pulumi.Output[float]:
         """
-        scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        scaleDownUtilizationThreshold for autoscaling
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
@@ -1060,7 +898,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> pulumi.Output[int]:
         """
-        number of nodes to start.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "desired_nodes")
 
@@ -1076,8 +914,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Output[str]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-        **Changing this value recreates the resource.**
+        Flavor name
         """
         return pulumi.get(self, "flavor_name")
 
@@ -1085,7 +922,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> pulumi.Output[str]:
         """
-        The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
+        Kube ID
         """
         return pulumi.get(self, "kube_id")
 
@@ -1093,7 +930,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> pulumi.Output[int]:
         """
-        maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "max_nodes")
 
@@ -1101,7 +938,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> pulumi.Output[int]:
         """
-        minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
+        Number of nodes you desire in the pool
         """
         return pulumi.get(self, "min_nodes")
 
@@ -1109,7 +946,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="monthlyBilled")
     def monthly_billed(self) -> pulumi.Output[bool]:
         """
-        should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
+        Enable monthly billing on all nodes in the pool
         """
         return pulumi.get(self, "monthly_billed")
 
@@ -1117,7 +954,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
+        NodePool resource name
         """
         return pulumi.get(self, "name")
 
@@ -1133,7 +970,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        Service name
         """
         return pulumi.get(self, "service_name")
 
@@ -1165,7 +1002,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="upToDateNodes")
     def up_to_date_nodes(self) -> pulumi.Output[int]:
         """
-        Number of nodes with the latest version installed in the pool
+        Number of nodes with latest version installed in the pool
         """
         return pulumi.get(self, "up_to_date_nodes")
 

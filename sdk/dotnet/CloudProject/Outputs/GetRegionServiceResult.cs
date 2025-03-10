@@ -13,14 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetRegionServiceResult
     {
-        /// <summary>
-        /// The name of the region associated with the public cloud
-        /// project.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// the status of the service
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

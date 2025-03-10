@@ -49,17 +49,11 @@ class GetKafkaUserAccessResult:
     @property
     @pulumi.getter
     def cert(self) -> str:
-        """
-        User cert.
-        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -73,25 +67,16 @@ class GetKafkaUserAccessResult:
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        (Sensitive) User key for the cert.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "user_id")
 
 
@@ -114,25 +99,7 @@ def get_kafka_user_access(cluster_id: Optional[str] = None,
                           user_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaUserAccessResult:
     """
-    Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    access = ovh.CloudProjectDatabase.get_kafka_user_access(service_name="XXX",
-        cluster_id="YYY",
-        user_id="ZZZ")
-    pulumi.export("accessCert", access.cert)
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str user_id: User ID
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -153,25 +120,7 @@ def get_kafka_user_access_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                  user_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaUserAccessResult]:
     """
-    Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    access = ovh.CloudProjectDatabase.get_kafka_user_access(service_name="XXX",
-        cluster_id="YYY",
-        user_id="ZZZ")
-    pulumi.export("accessCert", access.cert)
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str user_id: User ID
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class InstanceBootFromArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        /// Instance image id
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }

@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve list of user logins of the account's identity users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const users = ovh.Me.getIdentityUsers({});
- * ```
- */
 export function getIdentityUsers(opts?: pulumi.InvokeOptions): Promise<GetIdentityUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getIdentityUsers:getIdentityUsers", {
@@ -30,23 +18,8 @@ export interface GetIdentityUsersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The list of the user's logins of all the identity users.
-     */
     readonly users: string[];
 }
-/**
- * Use this data source to retrieve list of user logins of the account's identity users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const users = ovh.Me.getIdentityUsers({});
- * ```
- */
 export function getIdentityUsersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getIdentityUsers:getIdentityUsers", {

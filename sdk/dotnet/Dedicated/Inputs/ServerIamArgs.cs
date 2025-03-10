@@ -19,7 +19,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource in the IAM
+        /// Unique identifier of the resource
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        /// Resource tags. Tags that were internally computed are prefixed with ovh:
         /// </summary>
         public InputMap<string> Tags
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         }
 
         /// <summary>
-        /// URN of the private database, used when writing IAM policies
+        /// Unique resource name used in policies
         /// </summary>
         [Input("urn")]
         public Input<string>? Urn { get; set; }

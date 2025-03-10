@@ -45,9 +45,6 @@ class GetResourceGroupsResult:
     @property
     @pulumi.getter(name="resourceGroups")
     def resource_groups(self) -> Sequence[str]:
-        """
-        List of the resource groups IDs.
-        """
         return pulumi.get(self, "resource_groups")
 
 
@@ -63,16 +60,7 @@ class AwaitableGetResourceGroupsResult(GetResourceGroupsResult):
 
 def get_resource_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceGroupsResult:
     """
-    Use this data source to list the existing IAM policies of an account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_groups = ovh.Iam.get_resource_groups()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,16 +71,7 @@ def get_resource_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         resource_groups=pulumi.get(__ret__, 'resource_groups'))
 def get_resource_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceGroupsResult]:
     """
-    Use this data source to list the existing IAM policies of an account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_groups = ovh.Iam.get_resource_groups()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

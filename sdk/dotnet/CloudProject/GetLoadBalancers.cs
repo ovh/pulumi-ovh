@@ -11,90 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetLoadBalancers
     {
-        /// <summary>
-        /// List your public cloud loadbalancers.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var lbsLoadBalancers = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         RegionName = "XXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["lbs"] = lbsLoadBalancers,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("ovh:CloudProject/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// List your public cloud loadbalancers.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var lbsLoadBalancers = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         RegionName = "XXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["lbs"] = lbsLoadBalancers,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("ovh:CloudProject/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// List your public cloud loadbalancers.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var lbsLoadBalancers = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         RegionName = "XXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["lbs"] = lbsLoadBalancers,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("ovh:CloudProject/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
     }
@@ -102,16 +24,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Region of the loadbalancers.
-        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -123,16 +38,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Region of the loadbalancers.
-        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -150,17 +58,8 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// List of loadbalancer
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersLoadbalancerResult> Loadbalancers;
-        /// <summary>
-        /// Region of the loadbalancers
-        /// </summary>
         public readonly string RegionName;
-        /// <summary>
-        /// ID of the public cloud project
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

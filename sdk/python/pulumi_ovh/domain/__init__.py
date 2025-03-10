@@ -5,8 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .ds_records import *
 from .get_zone import *
 from .get_zone_dns_sec import *
+from .name import *
+from .name_servers import *
 from .zone import *
 from .zone_dns_sec import *
 from .zone_import import *

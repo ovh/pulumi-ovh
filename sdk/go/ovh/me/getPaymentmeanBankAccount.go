@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a bank account
-// payment mean associated with an OVHcloud account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.GetPaymentmeanBankAccount(ctx, &me.GetPaymentmeanBankAccountArgs{
-//				UseDefault: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPaymentmeanBankAccount(ctx *pulumi.Context, args *GetPaymentmeanBankAccountArgs, opts ...pulumi.InvokeOption) (*GetPaymentmeanBankAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPaymentmeanBankAccountResult
@@ -51,25 +23,15 @@ func GetPaymentmeanBankAccount(ctx *pulumi.Context, args *GetPaymentmeanBankAcco
 
 // A collection of arguments for invoking getPaymentmeanBankAccount.
 type GetPaymentmeanBankAccountArgs struct {
-	// a regexp used to filter bank accounts
-	// on their `description` attributes.
 	DescriptionRegexp *string `pulumi:"descriptionRegexp"`
-	// Filter bank accounts on their `state` attribute.
-	// Can be "blockedForIncidents", "valid", "pendingValidation"
-	State *string `pulumi:"state"`
-	// Retrieve bank account marked as default payment mean.
-	UseDefault *bool `pulumi:"useDefault"`
-	// Retrieve oldest bank account.
-	// project.
-	UseOldest *bool `pulumi:"useOldest"`
+	State             *string `pulumi:"state"`
+	UseDefault        *bool   `pulumi:"useDefault"`
+	UseOldest         *bool   `pulumi:"useOldest"`
 }
 
 // A collection of values returned by getPaymentmeanBankAccount.
 type GetPaymentmeanBankAccountResult struct {
-	// a boolean which tells if the retrieved bank account
-	// is marked as the default payment mean
-	Default bool `pulumi:"default"`
-	// the description attribute of the bank account
+	Default           bool    `pulumi:"default"`
 	Description       string  `pulumi:"description"`
 	DescriptionRegexp *string `pulumi:"descriptionRegexp"`
 	// The provider-assigned unique ID for this managed resource.
@@ -90,17 +52,10 @@ func GetPaymentmeanBankAccountOutput(ctx *pulumi.Context, args GetPaymentmeanBan
 
 // A collection of arguments for invoking getPaymentmeanBankAccount.
 type GetPaymentmeanBankAccountOutputArgs struct {
-	// a regexp used to filter bank accounts
-	// on their `description` attributes.
 	DescriptionRegexp pulumi.StringPtrInput `pulumi:"descriptionRegexp"`
-	// Filter bank accounts on their `state` attribute.
-	// Can be "blockedForIncidents", "valid", "pendingValidation"
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Retrieve bank account marked as default payment mean.
-	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
-	// Retrieve oldest bank account.
-	// project.
-	UseOldest pulumi.BoolPtrInput `pulumi:"useOldest"`
+	State             pulumi.StringPtrInput `pulumi:"state"`
+	UseDefault        pulumi.BoolPtrInput   `pulumi:"useDefault"`
+	UseOldest         pulumi.BoolPtrInput   `pulumi:"useOldest"`
 }
 
 func (GetPaymentmeanBankAccountOutputArgs) ElementType() reflect.Type {
@@ -122,13 +77,10 @@ func (o GetPaymentmeanBankAccountResultOutput) ToGetPaymentmeanBankAccountResult
 	return o
 }
 
-// a boolean which tells if the retrieved bank account
-// is marked as the default payment mean
 func (o GetPaymentmeanBankAccountResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPaymentmeanBankAccountResult) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-// the description attribute of the bank account
 func (o GetPaymentmeanBankAccountResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPaymentmeanBankAccountResult) string { return v.Description }).(pulumi.StringOutput)
 }

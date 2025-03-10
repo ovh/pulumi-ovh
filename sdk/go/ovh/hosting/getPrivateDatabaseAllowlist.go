@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about an hosting privatedatabase whitelist.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hosting.GetPrivateDatabaseAllowlist(ctx, &hosting.GetPrivateDatabaseAllowlistArgs{
-//				Ip:          pulumi.StringRef("XXXXXX"),
-//				ServiceName: "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPrivateDatabaseAllowlist(ctx *pulumi.Context, args *LookupPrivateDatabaseAllowlistArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseAllowlistResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseAllowlistResult
@@ -51,30 +23,22 @@ func LookupPrivateDatabaseAllowlist(ctx *pulumi.Context, args *LookupPrivateData
 
 // A collection of arguments for invoking getPrivateDatabaseAllowlist.
 type LookupPrivateDatabaseAllowlistArgs struct {
-	// The whitelisted IP in your instance
-	Ip *string `pulumi:"ip"`
-	// The internal name of your private database
-	ServiceName string `pulumi:"serviceName"`
+	Ip          *string `pulumi:"ip"`
+	ServiceName string  `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getPrivateDatabaseAllowlist.
 type LookupPrivateDatabaseAllowlistResult struct {
-	// Creation date of the database
 	CreationDate string `pulumi:"creationDate"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string  `pulumi:"id"`
-	Ip *string `pulumi:"ip"`
-	// The last update date of this whitelist
-	LastUpdate string `pulumi:"lastUpdate"`
-	// Custom name for your Whitelisted IP
-	Name string `pulumi:"name"`
-	// Authorize this IP to access service port
-	Service     bool   `pulumi:"service"`
-	ServiceName string `pulumi:"serviceName"`
-	// Authorize this IP to access SFTP port
-	Sftp bool `pulumi:"sftp"`
-	// Whitelist status
-	Status string `pulumi:"status"`
+	Id          string  `pulumi:"id"`
+	Ip          *string `pulumi:"ip"`
+	LastUpdate  string  `pulumi:"lastUpdate"`
+	Name        string  `pulumi:"name"`
+	Service     bool    `pulumi:"service"`
+	ServiceName string  `pulumi:"serviceName"`
+	Sftp        bool    `pulumi:"sftp"`
+	Status      string  `pulumi:"status"`
 }
 
 func LookupPrivateDatabaseAllowlistOutput(ctx *pulumi.Context, args LookupPrivateDatabaseAllowlistOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDatabaseAllowlistResultOutput {
@@ -88,10 +52,8 @@ func LookupPrivateDatabaseAllowlistOutput(ctx *pulumi.Context, args LookupPrivat
 
 // A collection of arguments for invoking getPrivateDatabaseAllowlist.
 type LookupPrivateDatabaseAllowlistOutputArgs struct {
-	// The whitelisted IP in your instance
-	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// The internal name of your private database
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	Ip          pulumi.StringPtrInput `pulumi:"ip"`
+	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
 }
 
 func (LookupPrivateDatabaseAllowlistOutputArgs) ElementType() reflect.Type {
@@ -113,7 +75,6 @@ func (o LookupPrivateDatabaseAllowlistResultOutput) ToLookupPrivateDatabaseAllow
 	return o
 }
 
-// Creation date of the database
 func (o LookupPrivateDatabaseAllowlistResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
@@ -127,17 +88,14 @@ func (o LookupPrivateDatabaseAllowlistResultOutput) Ip() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// The last update date of this whitelist
 func (o LookupPrivateDatabaseAllowlistResultOutput) LastUpdate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) string { return v.LastUpdate }).(pulumi.StringOutput)
 }
 
-// Custom name for your Whitelisted IP
 func (o LookupPrivateDatabaseAllowlistResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Authorize this IP to access service port
 func (o LookupPrivateDatabaseAllowlistResultOutput) Service() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) bool { return v.Service }).(pulumi.BoolOutput)
 }
@@ -146,12 +104,10 @@ func (o LookupPrivateDatabaseAllowlistResultOutput) ServiceName() pulumi.StringO
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Authorize this IP to access SFTP port
 func (o LookupPrivateDatabaseAllowlistResultOutput) Sftp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) bool { return v.Sftp }).(pulumi.BoolOutput)
 }
 
-// Whitelist status
 func (o LookupPrivateDatabaseAllowlistResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseAllowlistResult) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -8,76 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a database for a database cluster associated with a public cloud project.
-//
-// With this resource you can create a database for the following database engine:
-//
-//   - `mysql`
-//   - `postgresql`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
-//				ServiceName: "XXXX",
-//				Engine:      "YYYY",
-//				Id:          "ZZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudprojectdatabase.NewDatabaseInstance(ctx, "database", &cloudprojectdatabase.DatabaseInstanceArgs{
-//				ServiceName: pulumi.String(db.ServiceName),
-//				Engine:      pulumi.String(db.Engine),
-//				ClusterId:   pulumi.String(db.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
-// ```
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Defines if the database has been created by default.
+	// Defines if the database has been created by default
 	Default pulumi.BoolOutput `pulumi:"default"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// Name of the engine of the service
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// Name of the database.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Database name
+	Name        pulumi.StringOutput `pulumi:"name"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -120,32 +65,26 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// Defines if the database has been created by default.
+	// Defines if the database has been created by default
 	Default *bool `pulumi:"default"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// Name of the engine of the service
 	Engine *string `pulumi:"engine"`
-	// Name of the database.
-	Name *string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Database name
+	Name        *string `pulumi:"name"`
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type DatabaseInstanceState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// Defines if the database has been created by default.
+	// Defines if the database has been created by default
 	Default pulumi.BoolPtrInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// Name of the engine of the service
 	Engine pulumi.StringPtrInput
-	// Name of the database.
-	Name pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Database name
+	Name        pulumi.StringPtrInput
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -154,29 +93,23 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// Name of the engine of the service
 	Engine string `pulumi:"engine"`
-	// Name of the database.
-	Name *string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	// Database name
+	Name        *string `pulumi:"name"`
+	ServiceName string  `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// Name of the engine of the service
 	Engine pulumi.StringInput
-	// Name of the database.
-	Name pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Database name
+	Name        pulumi.StringPtrInput
 	ServiceName pulumi.StringInput
 }
 
@@ -267,29 +200,26 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o DatabaseInstanceOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Defines if the database has been created by default.
+// Defines if the database has been created by default
 func (o DatabaseInstanceOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.Default }).(pulumi.BoolOutput)
 }
 
-// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-// Available engines:
+// Name of the engine of the service
 func (o DatabaseInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Name of the database.
+// Database name
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o DatabaseInstanceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

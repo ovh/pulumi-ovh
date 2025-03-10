@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class InstanceSshKey
     {
         /// <summary>
-        /// SSH Keypair name
+        /// SSH Key pair name
         /// </summary>
         public readonly string Name;
 

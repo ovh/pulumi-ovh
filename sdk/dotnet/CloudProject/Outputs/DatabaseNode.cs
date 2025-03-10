@@ -14,16 +14,15 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class DatabaseNode
     {
         /// <summary>
-        /// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        /// Private network ID in which the node is. It's the regional openstackId of the private network.
         /// </summary>
         public readonly string? NetworkId;
         /// <summary>
-        /// Public cloud region in which the node should be deployed.
-        /// Ex: "GRA'.
+        /// Region of the node
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Private subnet ID in which the node is.
+        /// Private subnet ID in which the node is
         /// </summary>
         public readonly string? SubnetId;
 

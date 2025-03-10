@@ -8,63 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an identity user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewIdentityUser(ctx, "myUser", &me.IdentityUserArgs{
-//				Description: pulumi.String("Some custom description"),
-//				Email:       pulumi.String("my_login@example.com"),
-//				Group:       pulumi.String("DEFAULT"),
-//				Login:       pulumi.String("my_login"),
-//				Password:    pulumi.String("super-s3cr3t!password"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type IdentityUser struct {
 	pulumi.CustomResourceState
 
-	// URN of the user, used when writing IAM policies
 	UserURN pulumi.StringOutput `pulumi:"UserURN"`
-	// Creation date of this user.
+	// Creation date of this user
 	Creation pulumi.StringOutput `pulumi:"creation"`
-	// User description.
+	// User description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// User's email.
+	// User's email
 	Email pulumi.StringOutput `pulumi:"email"`
-	// User's group.
+	// User's group
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Last update of this user.
+	// Last update of this user
 	LastUpdate pulumi.StringOutput `pulumi:"lastUpdate"`
-	// User's login suffix.
+	// User's login suffix
 	Login pulumi.StringOutput `pulumi:"login"`
-	// User's password.
+	// User's password
 	Password pulumi.StringOutput `pulumi:"password"`
-	// When the user changed his password for the last time.
+	// When the user changed his password for the last time
 	PasswordLastUpdate pulumi.StringOutput `pulumi:"passwordLastUpdate"`
-	// Current user's status.
+	// Current user's status
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -114,48 +82,46 @@ func GetIdentityUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityUser resources.
 type identityUserState struct {
-	// URN of the user, used when writing IAM policies
 	UserURN *string `pulumi:"UserURN"`
-	// Creation date of this user.
+	// Creation date of this user
 	Creation *string `pulumi:"creation"`
-	// User description.
+	// User description
 	Description *string `pulumi:"description"`
-	// User's email.
+	// User's email
 	Email *string `pulumi:"email"`
-	// User's group.
+	// User's group
 	Group *string `pulumi:"group"`
-	// Last update of this user.
+	// Last update of this user
 	LastUpdate *string `pulumi:"lastUpdate"`
-	// User's login suffix.
+	// User's login suffix
 	Login *string `pulumi:"login"`
-	// User's password.
+	// User's password
 	Password *string `pulumi:"password"`
-	// When the user changed his password for the last time.
+	// When the user changed his password for the last time
 	PasswordLastUpdate *string `pulumi:"passwordLastUpdate"`
-	// Current user's status.
+	// Current user's status
 	Status *string `pulumi:"status"`
 }
 
 type IdentityUserState struct {
-	// URN of the user, used when writing IAM policies
 	UserURN pulumi.StringPtrInput
-	// Creation date of this user.
+	// Creation date of this user
 	Creation pulumi.StringPtrInput
-	// User description.
+	// User description
 	Description pulumi.StringPtrInput
-	// User's email.
+	// User's email
 	Email pulumi.StringPtrInput
-	// User's group.
+	// User's group
 	Group pulumi.StringPtrInput
-	// Last update of this user.
+	// Last update of this user
 	LastUpdate pulumi.StringPtrInput
-	// User's login suffix.
+	// User's login suffix
 	Login pulumi.StringPtrInput
-	// User's password.
+	// User's password
 	Password pulumi.StringPtrInput
-	// When the user changed his password for the last time.
+	// When the user changed his password for the last time
 	PasswordLastUpdate pulumi.StringPtrInput
-	// Current user's status.
+	// Current user's status
 	Status pulumi.StringPtrInput
 }
 
@@ -164,29 +130,29 @@ func (IdentityUserState) ElementType() reflect.Type {
 }
 
 type identityUserArgs struct {
-	// User description.
+	// User description
 	Description *string `pulumi:"description"`
-	// User's email.
+	// User's email
 	Email string `pulumi:"email"`
-	// User's group.
+	// User's group
 	Group *string `pulumi:"group"`
-	// User's login suffix.
+	// User's login suffix
 	Login string `pulumi:"login"`
-	// User's password.
+	// User's password
 	Password string `pulumi:"password"`
 }
 
 // The set of arguments for constructing a IdentityUser resource.
 type IdentityUserArgs struct {
-	// User description.
+	// User description
 	Description pulumi.StringPtrInput
-	// User's email.
+	// User's email
 	Email pulumi.StringInput
-	// User's group.
+	// User's group
 	Group pulumi.StringPtrInput
-	// User's login suffix.
+	// User's login suffix
 	Login pulumi.StringInput
-	// User's password.
+	// User's password
 	Password pulumi.StringInput
 }
 
@@ -277,52 +243,51 @@ func (o IdentityUserOutput) ToIdentityUserOutputWithContext(ctx context.Context)
 	return o
 }
 
-// URN of the user, used when writing IAM policies
 func (o IdentityUserOutput) UserURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.UserURN }).(pulumi.StringOutput)
 }
 
-// Creation date of this user.
+// Creation date of this user
 func (o IdentityUserOutput) Creation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Creation }).(pulumi.StringOutput)
 }
 
-// User description.
+// User description
 func (o IdentityUserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// User's email.
+// User's email
 func (o IdentityUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// User's group.
+// User's group
 func (o IdentityUserOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Last update of this user.
+// Last update of this user
 func (o IdentityUserOutput) LastUpdate() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.LastUpdate }).(pulumi.StringOutput)
 }
 
-// User's login suffix.
+// User's login suffix
 func (o IdentityUserOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Login }).(pulumi.StringOutput)
 }
 
-// User's password.
+// User's password
 func (o IdentityUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// When the user changed his password for the last time.
+// When the user changed his password for the last time
 func (o IdentityUserOutput) PasswordLastUpdate() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.PasswordLastUpdate }).(pulumi.StringOutput)
 }
 
-// Current user's status.
+// Current user's status
 func (o IdentityUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

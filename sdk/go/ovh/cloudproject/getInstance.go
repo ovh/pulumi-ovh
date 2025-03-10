@@ -7,42 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **This datasource uses a Beta API**
-// Use this data source to get the instance of a public cloud project.
-//
-// ## Example Usage
-//
-// To get information of an instance:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetInstance(ctx, &cloudproject.GetInstanceArgs{
-//				InstanceId:  "ZZZZZ",
-//				Region:      "XXXX",
-//				ServiceName: "YYYY",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult
@@ -55,38 +23,27 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 
 // A collection of arguments for invoking getInstance.
 type LookupInstanceArgs struct {
-	// Instance id
-	InstanceId string `pulumi:"instanceId"`
-	// Instance region
-	Region string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	InstanceId  string `pulumi:"instanceId"`
+	Region      string `pulumi:"region"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	// Instance IP addresses
-	Addresses []GetInstanceAddress `pulumi:"addresses"`
-	// Volumes attached to the instance
-	AttachedVolumes []GetInstanceAttachedVolume `pulumi:"attachedVolumes"`
-	// Flavor id
-	FlavorId string `pulumi:"flavorId"`
-	// Flavor name
-	FlavorName string `pulumi:"flavorName"`
+	Addresses        []GetInstanceAddress        `pulumi:"addresses"`
+	AttachedVolumes  []GetInstanceAttachedVolume `pulumi:"attachedVolumes"`
+	AvailabilityZone string                      `pulumi:"availabilityZone"`
+	FlavorId         string                      `pulumi:"flavorId"`
+	FlavorName       string                      `pulumi:"flavorName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Image id
-	ImageId    string `pulumi:"imageId"`
-	InstanceId string `pulumi:"instanceId"`
-	// Instance name
+	Id          string `pulumi:"id"`
+	ImageId     string `pulumi:"imageId"`
+	InstanceId  string `pulumi:"instanceId"`
 	Name        string `pulumi:"name"`
 	Region      string `pulumi:"region"`
 	ServiceName string `pulumi:"serviceName"`
-	// SSH Keypair
-	SshKey string `pulumi:"sshKey"`
-	// Instance task state
-	TaskState string `pulumi:"taskState"`
+	SshKey      string `pulumi:"sshKey"`
+	TaskState   string `pulumi:"taskState"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -100,12 +57,8 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 
 // A collection of arguments for invoking getInstance.
 type LookupInstanceOutputArgs struct {
-	// Instance id
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Instance region
-	Region pulumi.StringInput `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	InstanceId  pulumi.StringInput `pulumi:"instanceId"`
+	Region      pulumi.StringInput `pulumi:"region"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -128,22 +81,22 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
-// Instance IP addresses
 func (o LookupInstanceResultOutput) Addresses() GetInstanceAddressArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAddress { return v.Addresses }).(GetInstanceAddressArrayOutput)
 }
 
-// Volumes attached to the instance
 func (o LookupInstanceResultOutput) AttachedVolumes() GetInstanceAttachedVolumeArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAttachedVolume { return v.AttachedVolumes }).(GetInstanceAttachedVolumeArrayOutput)
 }
 
-// Flavor id
+func (o LookupInstanceResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
 func (o LookupInstanceResultOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Flavor name
 func (o LookupInstanceResultOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.FlavorName }).(pulumi.StringOutput)
 }
@@ -153,7 +106,6 @@ func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Image id
 func (o LookupInstanceResultOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -162,7 +114,6 @@ func (o LookupInstanceResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Instance name
 func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -175,12 +126,10 @@ func (o LookupInstanceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// SSH Keypair
 func (o LookupInstanceResultOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.SshKey }).(pulumi.StringOutput)
 }
 
-// Instance task state
 func (o LookupInstanceResultOutput) TaskState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.TaskState }).(pulumi.StringOutput)
 }

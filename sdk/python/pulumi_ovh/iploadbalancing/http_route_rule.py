@@ -29,14 +29,6 @@ class HttpRouteRuleInitArgs:
                  sub_field: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HttpRouteRule resource.
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         pulumi.set(__self__, "field", field)
         pulumi.set(__self__, "match", match)
@@ -54,9 +46,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def field(self) -> pulumi.Input[str]:
-        """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        """
         return pulumi.get(self, "field")
 
     @field.setter
@@ -66,9 +55,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def match(self) -> pulumi.Input[str]:
-        """
-        Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -78,9 +64,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Input[str]:
-        """
-        The route to apply this rule
-        """
         return pulumi.get(self, "route_id")
 
     @route_id.setter
@@ -90,9 +73,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -102,9 +82,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human readable name for your rule, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -114,9 +91,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Invert the matching operator effect
-        """
         return pulumi.get(self, "negate")
 
     @negate.setter
@@ -126,9 +100,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
-        """
-        Value to match against this match. Interpretation if this field depends on the match and field
-        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -138,9 +109,6 @@ class HttpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="subField")
     def sub_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-        """
         return pulumi.get(self, "sub_field")
 
     @sub_field.setter
@@ -161,14 +129,6 @@ class _HttpRouteRuleState:
                  sub_field: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HttpRouteRule resources.
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -190,9 +150,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human readable name for your rule, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -202,9 +159,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        """
         return pulumi.get(self, "field")
 
     @field.setter
@@ -214,9 +168,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
-        """
-        Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -226,9 +177,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Invert the matching operator effect
-        """
         return pulumi.get(self, "negate")
 
     @negate.setter
@@ -238,9 +186,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
-        """
-        Value to match against this match. Interpretation if this field depends on the match and field
-        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -250,9 +195,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The route to apply this rule
-        """
         return pulumi.get(self, "route_id")
 
     @route_id.setter
@@ -262,9 +204,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -274,9 +213,6 @@ class _HttpRouteRuleState:
     @property
     @pulumi.getter(name="subField")
     def sub_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-        """
         return pulumi.get(self, "sub_field")
 
     @sub_field.setter
@@ -299,67 +235,9 @@ class HttpRouteRule(pulumi.CustomResource):
                  sub_field: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manage rules for HTTP route.
-
-        ## Example Usage
-
-        Route which redirect all URL to HTTPs for example.com (Vhost).
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
-            action={
-                "status": 302,
-                "target": "https://${host}${path}${arguments}",
-                "type": "redirect",
-            },
-            display_name="Redirect to HTTPS",
-            frontend_id=11111,
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1)
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
-            display_name="Match example.com host",
-            field="host",
-            match="is",
-            negate=False,
-            pattern="example.com",
-            route_id=https_redirect.id,
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
-        ```
-
-        Rule which match a specific header (same effect as the host match above).
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
-            display_name="Match example.com Host header",
-            field="headers",
-            match="is",
-            negate=False,
-            pattern="example.com",
-            route_id=ovh_iploadbalancing_http_route["https_redirect"]["id"],
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            sub_field="Host")
-        ```
-
-        ## Import
-
-        HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
-
+        Create a HttpRouteRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         ...
     @overload
@@ -368,57 +246,7 @@ class HttpRouteRule(pulumi.CustomResource):
                  args: HttpRouteRuleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage rules for HTTP route.
-
-        ## Example Usage
-
-        Route which redirect all URL to HTTPs for example.com (Vhost).
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
-            action={
-                "status": 302,
-                "target": "https://${host}${path}${arguments}",
-                "type": "redirect",
-            },
-            display_name="Redirect to HTTPS",
-            frontend_id=11111,
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1)
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
-            display_name="Match example.com host",
-            field="host",
-            match="is",
-            negate=False,
-            pattern="example.com",
-            route_id=https_redirect.id,
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
-        ```
-
-        Rule which match a specific header (same effect as the host match above).
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
-            display_name="Match example.com Host header",
-            field="headers",
-            match="is",
-            negate=False,
-            pattern="example.com",
-            route_id=ovh_iploadbalancing_http_route["https_redirect"]["id"],
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            sub_field="Host")
-        ```
-
-        ## Import
-
-        HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
-
+        Create a HttpRouteRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param HttpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -492,14 +320,6 @@ class HttpRouteRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -518,64 +338,40 @@ class HttpRouteRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human readable name for your rule, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def field(self) -> pulumi.Output[str]:
-        """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        """
         return pulumi.get(self, "field")
 
     @property
     @pulumi.getter
     def match(self) -> pulumi.Output[str]:
-        """
-        Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def negate(self) -> pulumi.Output[bool]:
-        """
-        Invert the matching operator effect
-        """
         return pulumi.get(self, "negate")
 
     @property
     @pulumi.getter
     def pattern(self) -> pulumi.Output[Optional[str]]:
-        """
-        Value to match against this match. Interpretation if this field depends on the match and field
-        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Output[str]:
-        """
-        The route to apply this rule
-        """
         return pulumi.get(self, "route_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="subField")
     def sub_field(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-        """
         return pulumi.get(self, "sub_field")
 

@@ -4,60 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Set the S3 Policy of a public cloud project user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const user = new ovh.cloudproject.User("user", {
- *     serviceName: "XXX",
- *     description: "my user",
- *     roleNames: ["objectstore_operator"],
- * });
- * const myS3Credentials = new ovh.cloudproject.S3Credential("myS3Credentials", {
- *     serviceName: user.serviceName,
- *     userId: user.id,
- * });
- * const policy = new ovh.cloudproject.S3Policy("policy", {
- *     serviceName: user.serviceName,
- *     userId: user.id,
- *     policy: JSON.stringify({
- *         Statement: [{
- *             Sid: "RWContainer",
- *             Effect: "Allow",
- *             Action: [
- *                 "s3:GetObject",
- *                 "s3:PutObject",
- *                 "s3:DeleteObject",
- *                 "s3:ListBucket",
- *                 "s3:ListMultipartUploadParts",
- *                 "s3:ListBucketMultipartUploads",
- *                 "s3:AbortMultipartUpload",
- *                 "s3:GetBucketLocation",
- *             ],
- *             Resource: [
- *                 "arn:aws:s3:::hp-bucket",
- *                 "arn:aws:s3:::hp-bucket/*",
- *             ],
- *         }],
- *     }),
- * });
- * ```
- *
- * ## Import
- *
- * OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
- * ```
- */
 export class S3Policy extends pulumi.CustomResource {
     /**
      * Get an existing S3Policy resource's state with the given name, ID, and optional extra
@@ -87,16 +33,15 @@ export class S3Policy extends pulumi.CustomResource {
     }
 
     /**
-     * The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+     * The policy document. This is a JSON formatted string.
      */
     public readonly policy!: pulumi.Output<string>;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the ID of the cloud project.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * The ID of a public cloud project's user.
+     * The user ID
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -141,16 +86,15 @@ export class S3Policy extends pulumi.CustomResource {
  */
 export interface S3PolicyState {
     /**
-     * The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+     * The policy document. This is a JSON formatted string.
      */
     policy?: pulumi.Input<string>;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the ID of the cloud project.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The ID of a public cloud project's user.
+     * The user ID
      */
     userId?: pulumi.Input<string>;
 }
@@ -160,16 +104,15 @@ export interface S3PolicyState {
  */
 export interface S3PolicyArgs {
     /**
-     * The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+     * The policy document. This is a JSON formatted string.
      */
     policy: pulumi.Input<string>;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the ID of the cloud project.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The ID of a public cloud project's user.
+     * The user ID
      */
     userId: pulumi.Input<string>;
 }

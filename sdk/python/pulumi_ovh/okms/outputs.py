@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'OkmsIam',
@@ -24,6 +25,9 @@ __all__ = [
     'GetOkmsServiceKeyJwkKeyResult',
     'GetOkmsServiceKeyPemIamResult',
     'GetOkmsServiceKeyPemKeysPemResult',
+    'GetOvhCloudConnectIamResult',
+    'GetOvhCloudConnectsOccResult',
+    'GetOvhCloudConnectsOccIamResult',
 ]
 
 @pulumi.output_type
@@ -51,10 +55,10 @@ class OkmsIam(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  urn: Optional[str] = None):
         """
-        :param str display_name: (String) Resource display name
-        :param str id: (String) Unique identifier of the resource
-        :param Mapping[str, str] tags: (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param str urn: (String) Unique resource name used in policies
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -69,7 +73,7 @@ class OkmsIam(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         """
-        (String) Resource display name
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -77,7 +81,7 @@ class OkmsIam(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        (String) Unique identifier of the resource
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -85,7 +89,7 @@ class OkmsIam(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
-        (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         return pulumi.get(self, "tags")
 
@@ -93,7 +97,7 @@ class OkmsIam(dict):
     @pulumi.getter
     def urn(self) -> Optional[str]:
         """
-        (String) Unique resource name used in policies
+        Unique resource name used in policies
         """
         return pulumi.get(self, "urn")
 
@@ -404,59 +408,8 @@ class GetOkmsResourceIamResult(dict):
                  tags: Mapping[str, str],
                  urn: str):
         """
-        :param str display_name: (String) Resource display name
-        :param str id: Should be set to the ID of your KMS
-        :param Mapping[str, str] tags: (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param str urn: (String) Unique resource name used in policies
-        """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "urn", urn)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
-        """
-        (String) Resource display name
-        """
-        return pulumi.get(self, "display_name")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Should be set to the ID of your KMS
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Mapping[str, str]:
-        """
-        (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
-        """
-        return pulumi.get(self, "tags")
-
-    @property
-    @pulumi.getter
-    def urn(self) -> str:
-        """
-        (String) Unique resource name used in policies
-        """
-        return pulumi.get(self, "urn")
-
-
-@pulumi.output_type
-class GetOkmsServiceKeyIamResult(dict):
-    def __init__(__self__, *,
-                 display_name: str,
-                 id: str,
-                 tags: Mapping[str, str],
-                 urn: str):
-        """
         :param str display_name: Resource display name
-        :param str id: ID of the service key
+        :param str id: Unique identifier of the resource
         :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
         :param str urn: Unique resource name used in policies
         """
@@ -477,7 +430,58 @@ class GetOkmsServiceKeyIamResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the service key
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetOkmsServiceKeyIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 id: str,
+                 tags: Mapping[str, str],
+                 urn: str):
+        """
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -507,7 +511,7 @@ class GetOkmsServiceKeyJwkIamResult(dict):
                  urn: str):
         """
         :param str display_name: Resource display name
-        :param str id: ID of the service key
+        :param str id: Unique identifier of the resource
         :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
         :param str urn: Unique resource name used in policies
         """
@@ -528,7 +532,7 @@ class GetOkmsServiceKeyJwkIamResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the service key
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -733,5 +737,246 @@ class GetOkmsServiceKeyPemKeysPemResult(dict):
         The key in base64 encoded PEM format
         """
         return pulumi.get(self, "pem")
+
+
+@pulumi.output_type
+class GetOvhCloudConnectIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 id: str,
+                 tags: Mapping[str, str],
+                 urn: str):
+        """
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetOvhCloudConnectsOccResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: str,
+                 description: str,
+                 iam: 'outputs.GetOvhCloudConnectsOccIamResult',
+                 interface_lists: Sequence[float],
+                 pop: str,
+                 port_quantity: str,
+                 product: str,
+                 provider_name: str,
+                 service_name: str,
+                 status: str,
+                 uuid: str,
+                 vrack: str):
+        """
+        :param str bandwidth: Service bandwidth
+        :param str description: Service description
+        :param 'GetOvhCloudConnectsOccIamArgs' iam: IAM resource metadata
+        :param Sequence[float] interface_lists: List of interfaces linked to a service
+        :param str pop: Pop reference where the service is delivered
+        :param str port_quantity: Port quantity
+        :param str product: Product name of the service
+        :param str provider_name: Service provider
+        :param str service_name: Service name
+        :param str status: Service status
+        :param str uuid: Service UUID
+        :param str vrack: vrack linked to the service
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "iam", iam)
+        pulumi.set(__self__, "interface_lists", interface_lists)
+        pulumi.set(__self__, "pop", pop)
+        pulumi.set(__self__, "port_quantity", port_quantity)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "provider_name", provider_name)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "vrack", vrack)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        """
+        Service bandwidth
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Service description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def iam(self) -> 'outputs.GetOvhCloudConnectsOccIamResult':
+        """
+        IAM resource metadata
+        """
+        return pulumi.get(self, "iam")
+
+    @property
+    @pulumi.getter(name="interfaceLists")
+    def interface_lists(self) -> Sequence[float]:
+        """
+        List of interfaces linked to a service
+        """
+        return pulumi.get(self, "interface_lists")
+
+    @property
+    @pulumi.getter
+    def pop(self) -> str:
+        """
+        Pop reference where the service is delivered
+        """
+        return pulumi.get(self, "pop")
+
+    @property
+    @pulumi.getter(name="portQuantity")
+    def port_quantity(self) -> str:
+        """
+        Port quantity
+        """
+        return pulumi.get(self, "port_quantity")
+
+    @property
+    @pulumi.getter
+    def product(self) -> str:
+        """
+        Product name of the service
+        """
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> str:
+        """
+        Service provider
+        """
+        return pulumi.get(self, "provider_name")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Service name
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Service status
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Service UUID
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter
+    def vrack(self) -> str:
+        """
+        vrack linked to the service
+        """
+        return pulumi.get(self, "vrack")
+
+
+@pulumi.output_type
+class GetOvhCloudConnectsOccIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 id: str,
+                 tags: Mapping[str, str],
+                 urn: str):
+        """
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
 
 

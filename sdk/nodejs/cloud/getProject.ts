@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Get the details of a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const project = ovh.Cloud.getProject({
- *     serviceName: "XXX",
- * });
- * ```
- */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Cloud/getProject:getProject", {
@@ -31,10 +17,6 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
-    /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -42,77 +24,24 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
-    /**
-     * Project access
-     */
     readonly access: string;
-    /**
-     * Project creation date
-     */
     readonly creationDate: string;
-    /**
-     * Description of your project
-     */
     readonly description: string;
-    /**
-     * Expiration date of your project. After this date, your project will be deleted
-     */
     readonly expiration: string;
-    /**
-     * IAM resource information
-     */
     readonly iam: outputs.Cloud.GetProjectIam;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Manual quota prevent automatic quota upgrade
-     */
     readonly manualQuota: boolean;
-    /**
-     * Project order ID
-     */
     readonly orderId: number;
-    /**
-     * Order plan code
-     */
     readonly planCode: string;
-    /**
-     * Project ID
-     */
     readonly projectId: string;
-    /**
-     * Project name
-     */
     readonly projectName: string;
-    /**
-     * ID of the public cloud project
-     */
     readonly serviceName: string;
-    /**
-     * Current status
-     */
     readonly status: string;
-    /**
-     * Project unleashed
-     */
     readonly unleash: boolean;
 }
-/**
- * Get the details of a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const project = ovh.Cloud.getProject({
- *     serviceName: "XXX",
- * });
- * ```
- */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Cloud/getProject:getProject", {
@@ -124,9 +53,5 @@ export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectOutputArgs {
-    /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

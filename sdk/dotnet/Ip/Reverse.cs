@@ -9,58 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Ip
 {
-    /// <summary>
-    /// Provides a OVHcloud IP reverse.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Set the reverse of an IP
-    ///     var test = new Ovh.Ip.Reverse("test", new()
-    ///     {
-    ///         Ip = "192.0.2.0/24",
-    ///         ReverseIp = "192.0.2.1",
-    ///         ReverseValue = "example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Ip/reverse:Reverse")]
     public partial class Reverse : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The IP to set the reverse of
-        /// </summary>
         [Output("ReverseIp")]
         public Output<string> ReverseIp { get; private set; } = null!;
 
-        /// <summary>
-        /// The value of the reverse
-        /// </summary>
         [Output("ReverseValue")]
         public Output<string> ReverseValue { get; private set; } = null!;
 
-        /// <summary>
-        /// The IP block to which the IP belongs
-        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
@@ -111,21 +68,12 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class ReverseArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IP to set the reverse of
-        /// </summary>
         [Input("ReverseIp", required: true)]
         public Input<string> ReverseIp { get; set; } = null!;
 
-        /// <summary>
-        /// The value of the reverse
-        /// </summary>
         [Input("ReverseValue", required: true)]
         public Input<string> ReverseValue { get; set; } = null!;
 
-        /// <summary>
-        /// The IP block to which the IP belongs
-        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
@@ -137,21 +85,12 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class ReverseState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The IP to set the reverse of
-        /// </summary>
         [Input("ReverseIp")]
         public Input<string>? ReverseIp { get; set; }
 
-        /// <summary>
-        /// The value of the reverse
-        /// </summary>
         [Input("ReverseValue")]
         public Input<string>? ReverseValue { get; set; }
 
-        /// <summary>
-        /// The IP block to which the IP belongs
-        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 

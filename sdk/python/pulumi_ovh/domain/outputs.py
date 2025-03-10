@@ -16,6 +16,22 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DsRecordsDsRecord',
+    'NameCurrentState',
+    'NameCurrentStateDnsConfiguration',
+    'NameCurrentStateDnsConfigurationNameServer',
+    'NameCurrentTask',
+    'NameIam',
+    'NameOrder',
+    'NameOrderDetail',
+    'NamePlan',
+    'NamePlanConfiguration',
+    'NamePlanOption',
+    'NamePlanOptionConfiguration',
+    'NameServersServer',
+    'NameTargetSpec',
+    'NameTargetSpecDnsConfiguration',
+    'NameTargetSpecDnsConfigurationNameServer',
     'ZoneOrder',
     'ZoneOrderDetail',
     'ZonePlan',
@@ -23,6 +39,1014 @@ __all__ = [
     'ZonePlanOption',
     'ZonePlanOptionConfiguration',
 ]
+
+@pulumi.output_type
+class DsRecordsDsRecord(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DsRecordsDsRecord. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DsRecordsDsRecord.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DsRecordsDsRecord.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 algorithm: str,
+                 flags: str,
+                 public_key: str,
+                 tag: int):
+        """
+        :param str algorithm: Algorithm name of the DNSSEC key
+        :param str flags: Flag name of the DNSSEC key
+        :param str public_key: Public key
+        :param int tag: Tag of the DNSSEC key
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "flags", flags)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        Algorithm name of the DNSSEC key
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> str:
+        """
+        Flag name of the DNSSEC key
+        """
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Public key
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> int:
+        """
+        Tag of the DNSSEC key
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class NameCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalStates":
+            suggest = "additional_states"
+        elif key == "dnsConfiguration":
+            suggest = "dns_configuration"
+        elif key == "mainState":
+            suggest = "main_state"
+        elif key == "protectionState":
+            suggest = "protection_state"
+        elif key == "suspensionState":
+            suggest = "suspension_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_states: Optional[Sequence[str]] = None,
+                 dns_configuration: Optional['outputs.NameCurrentStateDnsConfiguration'] = None,
+                 extension: Optional[str] = None,
+                 main_state: Optional[str] = None,
+                 name: Optional[str] = None,
+                 protection_state: Optional[str] = None,
+                 suspension_state: Optional[str] = None):
+        """
+        :param Sequence[str] additional_states: Domain additional states
+        :param 'NameCurrentStateDnsConfigurationArgs' dns_configuration: The domain DNS configuration
+        :param str extension: Extension of the domain name
+        :param str main_state: Domain main state
+        :param str name: Domain name
+        :param str protection_state: Domain protection state
+        :param str suspension_state: Domain suspension state
+        """
+        if additional_states is not None:
+            pulumi.set(__self__, "additional_states", additional_states)
+        if dns_configuration is not None:
+            pulumi.set(__self__, "dns_configuration", dns_configuration)
+        if extension is not None:
+            pulumi.set(__self__, "extension", extension)
+        if main_state is not None:
+            pulumi.set(__self__, "main_state", main_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protection_state is not None:
+            pulumi.set(__self__, "protection_state", protection_state)
+        if suspension_state is not None:
+            pulumi.set(__self__, "suspension_state", suspension_state)
+
+    @property
+    @pulumi.getter(name="additionalStates")
+    def additional_states(self) -> Optional[Sequence[str]]:
+        """
+        Domain additional states
+        """
+        return pulumi.get(self, "additional_states")
+
+    @property
+    @pulumi.getter(name="dnsConfiguration")
+    def dns_configuration(self) -> Optional['outputs.NameCurrentStateDnsConfiguration']:
+        """
+        The domain DNS configuration
+        """
+        return pulumi.get(self, "dns_configuration")
+
+    @property
+    @pulumi.getter
+    def extension(self) -> Optional[str]:
+        """
+        Extension of the domain name
+        """
+        return pulumi.get(self, "extension")
+
+    @property
+    @pulumi.getter(name="mainState")
+    def main_state(self) -> Optional[str]:
+        """
+        Domain main state
+        """
+        return pulumi.get(self, "main_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Domain name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="protectionState")
+    def protection_state(self) -> Optional[str]:
+        """
+        Domain protection state
+        """
+        return pulumi.get(self, "protection_state")
+
+    @property
+    @pulumi.getter(name="suspensionState")
+    def suspension_state(self) -> Optional[str]:
+        """
+        Domain suspension state
+        """
+        return pulumi.get(self, "suspension_state")
+
+
+@pulumi.output_type
+class NameCurrentStateDnsConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configurationType":
+            suggest = "configuration_type"
+        elif key == "glueRecordIpv6supported":
+            suggest = "glue_record_ipv6supported"
+        elif key == "hostSupported":
+            suggest = "host_supported"
+        elif key == "maxDns":
+            suggest = "max_dns"
+        elif key == "minDns":
+            suggest = "min_dns"
+        elif key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameCurrentStateDnsConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameCurrentStateDnsConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameCurrentStateDnsConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 configuration_type: Optional[str] = None,
+                 glue_record_ipv6supported: Optional[bool] = None,
+                 host_supported: Optional[bool] = None,
+                 max_dns: Optional[float] = None,
+                 min_dns: Optional[float] = None,
+                 name_servers: Optional[Sequence['outputs.NameCurrentStateDnsConfigurationNameServer']] = None):
+        """
+        :param str configuration_type: The type of DNS configuration of the domain
+        :param bool glue_record_ipv6supported: Whether the registry supports IPv6 or not
+        :param bool host_supported: Whether the registry accepts hosts or not
+        :param float max_dns: The maximum number of name servers allowed by the registry
+        :param float min_dns: The minimum number of name servers allowed by the registry
+        :param Sequence['NameCurrentStateDnsConfigurationNameServerArgs'] name_servers: The name servers used by the domain name
+        """
+        if configuration_type is not None:
+            pulumi.set(__self__, "configuration_type", configuration_type)
+        if glue_record_ipv6supported is not None:
+            pulumi.set(__self__, "glue_record_ipv6supported", glue_record_ipv6supported)
+        if host_supported is not None:
+            pulumi.set(__self__, "host_supported", host_supported)
+        if max_dns is not None:
+            pulumi.set(__self__, "max_dns", max_dns)
+        if min_dns is not None:
+            pulumi.set(__self__, "min_dns", min_dns)
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="configurationType")
+    def configuration_type(self) -> Optional[str]:
+        """
+        The type of DNS configuration of the domain
+        """
+        return pulumi.get(self, "configuration_type")
+
+    @property
+    @pulumi.getter(name="glueRecordIpv6supported")
+    def glue_record_ipv6supported(self) -> Optional[bool]:
+        """
+        Whether the registry supports IPv6 or not
+        """
+        return pulumi.get(self, "glue_record_ipv6supported")
+
+    @property
+    @pulumi.getter(name="hostSupported")
+    def host_supported(self) -> Optional[bool]:
+        """
+        Whether the registry accepts hosts or not
+        """
+        return pulumi.get(self, "host_supported")
+
+    @property
+    @pulumi.getter(name="maxDns")
+    def max_dns(self) -> Optional[float]:
+        """
+        The maximum number of name servers allowed by the registry
+        """
+        return pulumi.get(self, "max_dns")
+
+    @property
+    @pulumi.getter(name="minDns")
+    def min_dns(self) -> Optional[float]:
+        """
+        The minimum number of name servers allowed by the registry
+        """
+        return pulumi.get(self, "min_dns")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[Sequence['outputs.NameCurrentStateDnsConfigurationNameServer']]:
+        """
+        The name servers used by the domain name
+        """
+        return pulumi.get(self, "name_servers")
+
+
+@pulumi.output_type
+class NameCurrentStateDnsConfigurationNameServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameServer":
+            suggest = "name_server"
+        elif key == "nameServerType":
+            suggest = "name_server_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameCurrentStateDnsConfigurationNameServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameCurrentStateDnsConfigurationNameServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameCurrentStateDnsConfigurationNameServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipv4: Optional[str] = None,
+                 ipv6: Optional[str] = None,
+                 name_server: Optional[str] = None,
+                 name_server_type: Optional[str] = None):
+        """
+        :param str ipv4: The IPv4 associated to the name server
+        :param str ipv6: The IPv6 associated to the name server
+        :param str name_server: The host name
+        :param str name_server_type: The type of name server
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if name_server is not None:
+            pulumi.set(__self__, "name_server", name_server)
+        if name_server_type is not None:
+            pulumi.set(__self__, "name_server_type", name_server_type)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[str]:
+        """
+        The IPv4 associated to the name server
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[str]:
+        """
+        The IPv6 associated to the name server
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter(name="nameServer")
+    def name_server(self) -> Optional[str]:
+        """
+        The host name
+        """
+        return pulumi.get(self, "name_server")
+
+    @property
+    @pulumi.getter(name="nameServerType")
+    def name_server_type(self) -> Optional[str]:
+        """
+        The type of name server
+        """
+        return pulumi.get(self, "name_server_type")
+
+
+@pulumi.output_type
+class NameCurrentTask(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 link: Optional[str] = None,
+                 status: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str id: Identifier of the current task
+        :param str link: Link to the task details
+        :param str status: Current global status of the current task
+        :param str type: Type of the current task
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def link(self) -> Optional[str]:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class NameIam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameIam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameIam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameIam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None,
+                 id: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 urn: Optional[str] = None):
+        """
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> Optional[str]:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class NameOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationDate":
+            suggest = "expiration_date"
+        elif key == "orderId":
+            suggest = "order_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date: Optional[str] = None,
+                 details: Optional[Sequence['outputs.NameOrderDetail']] = None,
+                 expiration_date: Optional[str] = None,
+                 order_id: Optional[float] = None):
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence['outputs.NameOrderDetail']]:
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[str]:
+        return pulumi.get(self, "expiration_date")
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[float]:
+        return pulumi.get(self, "order_id")
+
+
+@pulumi.output_type
+class NameOrderDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detailType":
+            suggest = "detail_type"
+        elif key == "orderDetailId":
+            suggest = "order_detail_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameOrderDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameOrderDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameOrderDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 detail_type: Optional[str] = None,
+                 domain: Optional[str] = None,
+                 order_detail_id: Optional[float] = None,
+                 quantity: Optional[str] = None):
+        """
+        :param str detail_type: Product type of item in order
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if detail_type is not None:
+            pulumi.set(__self__, "detail_type", detail_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if order_detail_id is not None:
+            pulumi.set(__self__, "order_detail_id", order_detail_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detailType")
+    def detail_type(self) -> Optional[str]:
+        """
+        Product type of item in order
+        """
+        return pulumi.get(self, "detail_type")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="orderDetailId")
+    def order_detail_id(self) -> Optional[float]:
+        return pulumi.get(self, "order_detail_id")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[str]:
+        return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class NamePlan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "planCode":
+            suggest = "plan_code"
+        elif key == "pricingMode":
+            suggest = "pricing_mode"
+        elif key == "itemId":
+            suggest = "item_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamePlan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamePlan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamePlan.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: str,
+                 plan_code: str,
+                 pricing_mode: str,
+                 configurations: Optional[Sequence['outputs.NamePlanConfiguration']] = None,
+                 item_id: Optional[float] = None,
+                 quantity: Optional[float] = None):
+        """
+        :param str duration: Duration selected for the purchase of the product
+        :param str plan_code: Identifier of the option offer
+        :param str pricing_mode: Pricing mode selected for the purchase of the product
+        :param float item_id: Cart item to be linked
+        :param float quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if item_id is not None:
+            pulumi.set(__self__, "item_id", item_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> str:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> str:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[Sequence['outputs.NamePlanConfiguration']]:
+        return pulumi.get(self, "configurations")
+
+    @property
+    @pulumi.getter(name="itemId")
+    def item_id(self) -> Optional[float]:
+        """
+        Cart item to be linked
+        """
+        return pulumi.get(self, "item_id")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[float]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class NamePlanConfiguration(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class NamePlanOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "planCode":
+            suggest = "plan_code"
+        elif key == "pricingMode":
+            suggest = "pricing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamePlanOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamePlanOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamePlanOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: str,
+                 plan_code: str,
+                 pricing_mode: str,
+                 quantity: float,
+                 configurations: Optional[Sequence['outputs.NamePlanOptionConfiguration']] = None):
+        """
+        :param str duration: Duration selected for the purchase of the product
+        :param str plan_code: Identifier of the option offer
+        :param str pricing_mode: Pricing mode selected for the purchase of the product
+        :param float quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        pulumi.set(__self__, "quantity", quantity)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> str:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> str:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> float:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[Sequence['outputs.NamePlanOptionConfiguration']]:
+        return pulumi.get(self, "configurations")
+
+
+@pulumi.output_type
+class NamePlanOptionConfiguration(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class NameServersServer(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 ip: Optional[str] = None):
+        """
+        :param str host: DNS name server hostname
+        :param str ip: DNS name server IP address
+        """
+        pulumi.set(__self__, "host", host)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        DNS name server hostname
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        DNS name server IP address
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class NameTargetSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsConfiguration":
+            suggest = "dns_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameTargetSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameTargetSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameTargetSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_configuration: Optional['outputs.NameTargetSpecDnsConfiguration'] = None):
+        """
+        :param 'NameTargetSpecDnsConfigurationArgs' dns_configuration: The domain DNS configuration
+        """
+        if dns_configuration is not None:
+            pulumi.set(__self__, "dns_configuration", dns_configuration)
+
+    @property
+    @pulumi.getter(name="dnsConfiguration")
+    def dns_configuration(self) -> Optional['outputs.NameTargetSpecDnsConfiguration']:
+        """
+        The domain DNS configuration
+        """
+        return pulumi.get(self, "dns_configuration")
+
+
+@pulumi.output_type
+class NameTargetSpecDnsConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameTargetSpecDnsConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameTargetSpecDnsConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameTargetSpecDnsConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name_servers: Optional[Sequence['outputs.NameTargetSpecDnsConfigurationNameServer']] = None):
+        """
+        :param Sequence['NameTargetSpecDnsConfigurationNameServerArgs'] name_servers: The name servers to update
+        """
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[Sequence['outputs.NameTargetSpecDnsConfigurationNameServer']]:
+        """
+        The name servers to update
+        """
+        return pulumi.get(self, "name_servers")
+
+
+@pulumi.output_type
+class NameTargetSpecDnsConfigurationNameServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameServer":
+            suggest = "name_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NameTargetSpecDnsConfigurationNameServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NameTargetSpecDnsConfigurationNameServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NameTargetSpecDnsConfigurationNameServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipv4: Optional[str] = None,
+                 ipv6: Optional[str] = None,
+                 name_server: Optional[str] = None):
+        """
+        :param str ipv4: The IPv4 associated to the name server
+        :param str ipv6: The IPv6 associated to the name server
+        :param str name_server: The host name
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if name_server is not None:
+            pulumi.set(__self__, "name_server", name_server)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[str]:
+        """
+        The IPv4 associated to the name server
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[str]:
+        """
+        The IPv6 associated to the name server
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter(name="nameServer")
+    def name_server(self) -> Optional[str]:
+        """
+        The host name
+        """
+        return pulumi.get(self, "name_server")
+
 
 @pulumi.output_type
 class ZoneOrder(dict):
@@ -204,7 +1228,7 @@ class ZonePlan(dict):
         :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
-        :param Sequence['ZonePlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        :param Sequence['ZonePlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -250,7 +1274,7 @@ class ZonePlan(dict):
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.ZonePlanConfiguration']]:
         """
-        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        Representation of a configuration item for personalizing product
         """
         return pulumi.get(self, "configurations")
 
@@ -261,8 +1285,8 @@ class ZonePlanConfiguration(dict):
                  label: str,
                  value: str):
         """
-        :param str label: Identifier of the resource : `zone` or `template`
-        :param str value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        :param str label: Identifier of the resource
+        :param str value: Path to the resource in API.OVH.COM
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -271,7 +1295,7 @@ class ZonePlanConfiguration(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Identifier of the resource : `zone` or `template`
+        Identifier of the resource
         """
         return pulumi.get(self, "label")
 
@@ -279,7 +1303,7 @@ class ZonePlanConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        Path to the resource in API.OVH.COM
         """
         return pulumi.get(self, "value")
 

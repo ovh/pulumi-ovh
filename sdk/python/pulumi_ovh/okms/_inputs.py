@@ -29,19 +29,19 @@ if not MYPY:
     class OkmsIamArgsDict(TypedDict):
         display_name: NotRequired[pulumi.Input[str]]
         """
-        (String) Resource display name
+        Resource display name
         """
         id: NotRequired[pulumi.Input[str]]
         """
-        (String) Unique identifier of the resource
+        Unique identifier of the resource
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         urn: NotRequired[pulumi.Input[str]]
         """
-        (String) Unique resource name used in policies
+        Unique resource name used in policies
         """
 elif False:
     OkmsIamArgsDict: TypeAlias = Mapping[str, Any]
@@ -54,10 +54,10 @@ class OkmsIamArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  urn: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] display_name: (String) Resource display name
-        :param pulumi.Input[str] id: (String) Unique identifier of the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param pulumi.Input[str] urn: (String) Unique resource name used in policies
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] id: Unique identifier of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param pulumi.Input[str] urn: Unique resource name used in policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -72,7 +72,7 @@ class OkmsIamArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        (String) Resource display name
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -84,7 +84,7 @@ class OkmsIamArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        (String) Unique identifier of the resource
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -96,7 +96,7 @@ class OkmsIamArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         return pulumi.get(self, "tags")
 
@@ -108,7 +108,7 @@ class OkmsIamArgs:
     @pulumi.getter
     def urn(self) -> Optional[pulumi.Input[str]]:
         """
-        (String) Unique resource name used in policies
+        Unique resource name used in policies
         """
         return pulumi.get(self, "urn")
 

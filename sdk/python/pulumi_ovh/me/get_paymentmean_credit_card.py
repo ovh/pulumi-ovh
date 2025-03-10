@@ -55,18 +55,11 @@ class GetPaymentmeanCreditCardResult:
     @property
     @pulumi.getter
     def default(self) -> bool:
-        """
-        a boolean which tells if the retrieved credit card
-        is marked as the default payment mean
-        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        the description attribute of the credit card
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -85,9 +78,6 @@ class GetPaymentmeanCreditCardResult:
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        the state attribute of the credit card
-        """
         return pulumi.get(self, "state")
 
     @property
@@ -128,26 +118,7 @@ def get_paymentmean_credit_card(description_regexp: Optional[str] = None,
                                 use_last_to_expire: Optional[bool] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPaymentmeanCreditCardResult:
     """
-    Use this data source to retrieve information about a credit card
-    payment mean associated with an OVHcloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    cc = ovh.Me.get_paymentmean_credit_card(use_default=True)
-    ```
-
-
-    :param str description_regexp: a regexp used to filter credit cards 
-           on their `description` attributes.
-    :param Sequence[str] states: Filter credit cards on their `state` attribute.
-           Can be "expired", "valid", "tooManyFailures"
-    :param bool use_default: Retrieve credit card marked as default payment mean.
-    :param bool use_last_to_expire: Retrieve the credit card that will be the last
-           to expire according to its expiration date.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['descriptionRegexp'] = description_regexp
@@ -172,26 +143,7 @@ def get_paymentmean_credit_card_output(description_regexp: Optional[pulumi.Input
                                        use_last_to_expire: Optional[pulumi.Input[Optional[bool]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPaymentmeanCreditCardResult]:
     """
-    Use this data source to retrieve information about a credit card
-    payment mean associated with an OVHcloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    cc = ovh.Me.get_paymentmean_credit_card(use_default=True)
-    ```
-
-
-    :param str description_regexp: a regexp used to filter credit cards 
-           on their `description` attributes.
-    :param Sequence[str] states: Filter credit cards on their `state` attribute.
-           Can be "expired", "valid", "tooManyFailures"
-    :param bool use_default: Retrieve credit card marked as default payment mean.
-    :param bool use_last_to_expire: Retrieve the credit card that will be the last
-           to expire according to its expiration date.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['descriptionRegexp'] = description_regexp

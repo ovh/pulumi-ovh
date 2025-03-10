@@ -8,42 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create a new Gateway for existing subnet in the specified public cloud project.
-//
-// ## Import
-//
-// A gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProject/gateway:Gateway gateway service_name/region/id
-// ```
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// List of External Information of the gateway.
+	// External information of the gateway
 	ExternalInformations GatewayExternalInformationArrayOutput `pulumi:"externalInformations"`
-	// Interfaces list of the gateway.
+	// Interfaces list of the gateway
 	Interfaces GatewayInterfaceTypeArrayOutput `pulumi:"interfaces"`
-	// Model of the gateway.
-	Model pulumi.StringOutput `pulumi:"model"`
-	// Name of the gateway.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// ID of the private network.
-	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// Region of the gateway.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// ID of the private network.
+	Model      pulumi.StringOutput             `pulumi:"model"`
+	Name       pulumi.StringOutput             `pulumi:"name"`
+	NetworkId  pulumi.StringOutput             `pulumi:"networkId"`
+	Region     pulumi.StringOutput             `pulumi:"region"`
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Status of the gateway.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// ID of the subnet.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
+	Status      pulumi.StringOutput `pulumi:"status"`
+	SubnetId    pulumi.StringOutput `pulumi:"subnetId"`
 }
 
 // NewGateway registers a new resource with the given unique name, arguments, and options.
@@ -91,45 +74,33 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// List of External Information of the gateway.
+	// External information of the gateway
 	ExternalInformations []GatewayExternalInformation `pulumi:"externalInformations"`
-	// Interfaces list of the gateway.
+	// Interfaces list of the gateway
 	Interfaces []GatewayInterfaceType `pulumi:"interfaces"`
-	// Model of the gateway.
-	Model *string `pulumi:"model"`
-	// Name of the gateway.
-	Name *string `pulumi:"name"`
-	// ID of the private network.
-	NetworkId *string `pulumi:"networkId"`
-	// Region of the gateway.
-	Region *string `pulumi:"region"`
-	// ID of the private network.
+	Model      *string                `pulumi:"model"`
+	Name       *string                `pulumi:"name"`
+	NetworkId  *string                `pulumi:"networkId"`
+	Region     *string                `pulumi:"region"`
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName *string `pulumi:"serviceName"`
-	// Status of the gateway.
-	Status *string `pulumi:"status"`
-	// ID of the subnet.
-	SubnetId *string `pulumi:"subnetId"`
+	Status      *string `pulumi:"status"`
+	SubnetId    *string `pulumi:"subnetId"`
 }
 
 type GatewayState struct {
-	// List of External Information of the gateway.
+	// External information of the gateway
 	ExternalInformations GatewayExternalInformationArrayInput
-	// Interfaces list of the gateway.
+	// Interfaces list of the gateway
 	Interfaces GatewayInterfaceTypeArrayInput
-	// Model of the gateway.
-	Model pulumi.StringPtrInput
-	// Name of the gateway.
-	Name pulumi.StringPtrInput
-	// ID of the private network.
-	NetworkId pulumi.StringPtrInput
-	// Region of the gateway.
-	Region pulumi.StringPtrInput
-	// ID of the private network.
+	Model      pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	NetworkId  pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringPtrInput
-	// Status of the gateway.
-	Status pulumi.StringPtrInput
-	// ID of the subnet.
-	SubnetId pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
+	SubnetId    pulumi.StringPtrInput
 }
 
 func (GatewayState) ElementType() reflect.Type {
@@ -137,34 +108,24 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// Model of the gateway.
-	Model string `pulumi:"model"`
-	// Name of the gateway.
-	Name *string `pulumi:"name"`
-	// ID of the private network.
-	NetworkId string `pulumi:"networkId"`
-	// Region of the gateway.
-	Region string `pulumi:"region"`
-	// ID of the private network.
+	Model     string  `pulumi:"model"`
+	Name      *string `pulumi:"name"`
+	NetworkId string  `pulumi:"networkId"`
+	Region    string  `pulumi:"region"`
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName string `pulumi:"serviceName"`
-	// ID of the subnet.
-	SubnetId string `pulumi:"subnetId"`
+	SubnetId    string `pulumi:"subnetId"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// Model of the gateway.
-	Model pulumi.StringInput
-	// Name of the gateway.
-	Name pulumi.StringPtrInput
-	// ID of the private network.
+	Model     pulumi.StringInput
+	Name      pulumi.StringPtrInput
 	NetworkId pulumi.StringInput
-	// Region of the gateway.
-	Region pulumi.StringInput
-	// ID of the private network.
+	Region    pulumi.StringInput
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringInput
-	// ID of the subnet.
-	SubnetId pulumi.StringInput
+	SubnetId    pulumi.StringInput
 }
 
 func (GatewayArgs) ElementType() reflect.Type {
@@ -254,47 +215,41 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
-// List of External Information of the gateway.
+// External information of the gateway
 func (o GatewayOutput) ExternalInformations() GatewayExternalInformationArrayOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExternalInformationArrayOutput { return v.ExternalInformations }).(GatewayExternalInformationArrayOutput)
 }
 
-// Interfaces list of the gateway.
+// Interfaces list of the gateway
 func (o GatewayOutput) Interfaces() GatewayInterfaceTypeArrayOutput {
 	return o.ApplyT(func(v *Gateway) GatewayInterfaceTypeArrayOutput { return v.Interfaces }).(GatewayInterfaceTypeArrayOutput)
 }
 
-// Model of the gateway.
 func (o GatewayOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
 
-// Name of the gateway.
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// ID of the private network.
 func (o GatewayOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Region of the gateway.
 func (o GatewayOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// ID of the private network.
+// Service name of the resource representing the id of the cloud project.
 func (o GatewayOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Status of the gateway.
 func (o GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// ID of the subnet.
 func (o GatewayOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }

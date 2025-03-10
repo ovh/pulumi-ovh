@@ -45,9 +45,6 @@ class GetVracksResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence[str]:
-        """
-        The list of vrack service name available for your OVHcloud account.
-        """
         return pulumi.get(self, "results")
 
 
@@ -63,16 +60,7 @@ class AwaitableGetVracksResult(GetVracksResult):
 
 def get_vracks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVracksResult:
     """
-    Use this data source to get the list of Vrack IDs available for your OVHcloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    vracks = ovh.Vrack.get_vracks()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,16 +71,7 @@ def get_vracks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVrack
         results=pulumi.get(__ret__, 'results'))
 def get_vracks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVracksResult]:
     """
-    Use this data source to get the list of Vrack IDs available for your OVHcloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    vracks = ovh.Vrack.get_vracks()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

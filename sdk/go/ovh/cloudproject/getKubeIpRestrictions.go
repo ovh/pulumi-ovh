@@ -7,39 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ipRestrictions, err := cloudproject.GetKubeIpRestrictions(ctx, &cloudproject.GetKubeIpRestrictionsArgs{
-//				ServiceName: "XXXXXX",
-//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ips", ipRestrictions.Ips)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupKubeIpRestrictions(ctx *pulumi.Context, args *LookupKubeIpRestrictionsArgs, opts ...pulumi.InvokeOption) (*LookupKubeIpRestrictionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeIpRestrictionsResult
@@ -52,23 +23,17 @@ func LookupKubeIpRestrictions(ctx *pulumi.Context, args *LookupKubeIpRestriction
 
 // A collection of arguments for invoking getKubeIpRestrictions.
 type LookupKubeIpRestrictionsArgs struct {
-	// The id of the managed kubernetes cluster.
-	KubeId string `pulumi:"kubeId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	KubeId      string `pulumi:"kubeId"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getKubeIpRestrictions.
 type LookupKubeIpRestrictionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The list of CIDRs that restricts the access to the API server.
-	Ips []string `pulumi:"ips"`
-	// See Argument Reference above.
-	KubeId string `pulumi:"kubeId"`
-	// See Argument Reference above.
-	ServiceName string `pulumi:"serviceName"`
+	Id          string   `pulumi:"id"`
+	Ips         []string `pulumi:"ips"`
+	KubeId      string   `pulumi:"kubeId"`
+	ServiceName string   `pulumi:"serviceName"`
 }
 
 func LookupKubeIpRestrictionsOutput(ctx *pulumi.Context, args LookupKubeIpRestrictionsOutputArgs, opts ...pulumi.InvokeOption) LookupKubeIpRestrictionsResultOutput {
@@ -82,10 +47,7 @@ func LookupKubeIpRestrictionsOutput(ctx *pulumi.Context, args LookupKubeIpRestri
 
 // A collection of arguments for invoking getKubeIpRestrictions.
 type LookupKubeIpRestrictionsOutputArgs struct {
-	// The id of the managed kubernetes cluster.
-	KubeId pulumi.StringInput `pulumi:"kubeId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	KubeId      pulumi.StringInput `pulumi:"kubeId"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -113,17 +75,14 @@ func (o LookupKubeIpRestrictionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeIpRestrictionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of CIDRs that restricts the access to the API server.
 func (o LookupKubeIpRestrictionsResultOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKubeIpRestrictionsResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// See Argument Reference above.
 func (o LookupKubeIpRestrictionsResultOutput) KubeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeIpRestrictionsResult) string { return v.KubeId }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o LookupKubeIpRestrictionsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeIpRestrictionsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

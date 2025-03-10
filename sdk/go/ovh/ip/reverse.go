@@ -8,59 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a OVHcloud IP reverse.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Set the reverse of an IP
-//			_, err := ip.NewReverse(ctx, "test", &ip.ReverseArgs{
-//				Ip:           pulumi.String("192.0.2.0/24"),
-//				ReverseIp:    pulumi.String("192.0.2.1"),
-//				ReverseValue: pulumi.String("example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
-// ```
 type Reverse struct {
 	pulumi.CustomResourceState
 
-	// The IP to set the reverse of
-	ReverseIp pulumi.StringOutput `pulumi:"ReverseIp"`
-	// The value of the reverse
+	ReverseIp    pulumi.StringOutput `pulumi:"ReverseIp"`
 	ReverseValue pulumi.StringOutput `pulumi:"ReverseValue"`
-	// The IP block to which the IP belongs
-	Ip pulumi.StringOutput `pulumi:"ip"`
+	Ip           pulumi.StringOutput `pulumi:"ip"`
 }
 
 // NewReverse registers a new resource with the given unique name, arguments, and options.
@@ -102,21 +59,15 @@ func GetReverse(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reverse resources.
 type reverseState struct {
-	// The IP to set the reverse of
-	ReverseIp *string `pulumi:"ReverseIp"`
-	// The value of the reverse
+	ReverseIp    *string `pulumi:"ReverseIp"`
 	ReverseValue *string `pulumi:"ReverseValue"`
-	// The IP block to which the IP belongs
-	Ip *string `pulumi:"ip"`
+	Ip           *string `pulumi:"ip"`
 }
 
 type ReverseState struct {
-	// The IP to set the reverse of
-	ReverseIp pulumi.StringPtrInput
-	// The value of the reverse
+	ReverseIp    pulumi.StringPtrInput
 	ReverseValue pulumi.StringPtrInput
-	// The IP block to which the IP belongs
-	Ip pulumi.StringPtrInput
+	Ip           pulumi.StringPtrInput
 }
 
 func (ReverseState) ElementType() reflect.Type {
@@ -124,22 +75,16 @@ func (ReverseState) ElementType() reflect.Type {
 }
 
 type reverseArgs struct {
-	// The IP to set the reverse of
-	ReverseIp string `pulumi:"ReverseIp"`
-	// The value of the reverse
+	ReverseIp    string `pulumi:"ReverseIp"`
 	ReverseValue string `pulumi:"ReverseValue"`
-	// The IP block to which the IP belongs
-	Ip string `pulumi:"ip"`
+	Ip           string `pulumi:"ip"`
 }
 
 // The set of arguments for constructing a Reverse resource.
 type ReverseArgs struct {
-	// The IP to set the reverse of
-	ReverseIp pulumi.StringInput
-	// The value of the reverse
+	ReverseIp    pulumi.StringInput
 	ReverseValue pulumi.StringInput
-	// The IP block to which the IP belongs
-	Ip pulumi.StringInput
+	Ip           pulumi.StringInput
 }
 
 func (ReverseArgs) ElementType() reflect.Type {
@@ -229,17 +174,14 @@ func (o ReverseOutput) ToReverseOutputWithContext(ctx context.Context) ReverseOu
 	return o
 }
 
-// The IP to set the reverse of
 func (o ReverseOutput) ReverseIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reverse) pulumi.StringOutput { return v.ReverseIp }).(pulumi.StringOutput)
 }
 
-// The value of the reverse
 func (o ReverseOutput) ReverseValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reverse) pulumi.StringOutput { return v.ReverseValue }).(pulumi.StringOutput)
 }
 
-// The IP block to which the IP belongs
 func (o ReverseOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reverse) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }

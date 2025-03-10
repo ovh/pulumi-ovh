@@ -14,15 +14,15 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetNetworkPrivatesNetworkRegionResult
     {
         /// <summary>
-        /// Network ID on openstack region
+        /// Network id on openstack region
         /// </summary>
         public readonly string OpenstackId;
         /// <summary>
-        /// Name of the region
+        /// Network region
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Status of the network
+        /// Network region status
         /// </summary>
         public readonly string Status;
 

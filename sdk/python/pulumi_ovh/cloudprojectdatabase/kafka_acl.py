@@ -26,13 +26,10 @@ class KafkaAclArgs:
                  username: pulumi.Input[str]):
         """
         The set of arguments for constructing a KafkaAcl resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] topic: Topic affected by this ACL.
-        :param pulumi.Input[str] username: Username affected by this ACL.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic
+        :param pulumi.Input[str] topic: Topic affected by this acl
+        :param pulumi.Input[str] username: Username affected by this acl
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "permission", permission)
@@ -44,7 +41,7 @@ class KafkaAclArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -56,8 +53,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        Permission to give to this username on this topic.
-        Available permissions:
+        Permission to give to this username on this topic
         """
         return pulumi.get(self, "permission")
 
@@ -68,10 +64,6 @@ class KafkaAclArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -82,7 +74,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
         """
-        Topic affected by this ACL.
+        Topic affected by this acl
         """
         return pulumi.get(self, "topic")
 
@@ -94,7 +86,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        Username affected by this ACL.
+        Username affected by this acl
         """
         return pulumi.get(self, "username")
 
@@ -113,13 +105,10 @@ class _KafkaAclState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaAcl resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] topic: Topic affected by this ACL.
-        :param pulumi.Input[str] username: Username affected by this ACL.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic
+        :param pulumi.Input[str] topic: Topic affected by this acl
+        :param pulumi.Input[str] username: Username affected by this acl
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -136,7 +125,7 @@ class _KafkaAclState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -148,8 +137,7 @@ class _KafkaAclState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        Permission to give to this username on this topic.
-        Available permissions:
+        Permission to give to this username on this topic
         """
         return pulumi.get(self, "permission")
 
@@ -160,10 +148,6 @@ class _KafkaAclState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -174,7 +158,7 @@ class _KafkaAclState:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Topic affected by this ACL.
+        Topic affected by this acl
         """
         return pulumi.get(self, "topic")
 
@@ -186,7 +170,7 @@ class _KafkaAclState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        Username affected by this ACL.
+        Username affected by this acl
         """
         return pulumi.get(self, "username")
 
@@ -207,44 +191,13 @@ class KafkaAcl(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an ACL for a kafka cluster associated with a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
-            engine="kafka",
-            id="ZZZ")
-        acl = ovh.cloud_project_database.KafkaAcl("acl",
-            service_name=kafka.service_name,
-            cluster_id=kafka.id,
-            permission="read",
-            topic="mytopic",
-            username="johndoe")
-        ```
-
-        ## Import
-
-        OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
-        ```
-
+        Create a KafkaAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] topic: Topic affected by this ACL.
-        :param pulumi.Input[str] username: Username affected by this ACL.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic
+        :param pulumi.Input[str] topic: Topic affected by this acl
+        :param pulumi.Input[str] username: Username affected by this acl
         """
         ...
     @overload
@@ -253,35 +206,7 @@ class KafkaAcl(pulumi.CustomResource):
                  args: KafkaAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an ACL for a kafka cluster associated with a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
-            engine="kafka",
-            id="ZZZ")
-        acl = ovh.cloud_project_database.KafkaAcl("acl",
-            service_name=kafka.service_name,
-            cluster_id=kafka.id,
-            permission="read",
-            topic="mytopic",
-            username="johndoe")
-        ```
-
-        ## Import
-
-        OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
-        ```
-
+        Create a KafkaAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaAclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -348,13 +273,10 @@ class KafkaAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] topic: Topic affected by this ACL.
-        :param pulumi.Input[str] username: Username affected by this ACL.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic
+        :param pulumi.Input[str] topic: Topic affected by this acl
+        :param pulumi.Input[str] username: Username affected by this acl
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -371,7 +293,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -379,25 +301,20 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        Permission to give to this username on this topic.
-        Available permissions:
+        Permission to give to this username on this topic
         """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def topic(self) -> pulumi.Output[str]:
         """
-        Topic affected by this ACL.
+        Topic affected by this acl
         """
         return pulumi.get(self, "topic")
 
@@ -405,7 +322,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        Username affected by this ACL.
+        Username affected by this acl
         """
         return pulumi.get(self, "username")
 

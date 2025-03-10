@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const pgUser = ovh.CloudProjectDatabase.getPostgresSqlUser({
- *     serviceName: "XXX",
- *     clusterId: "YYY",
- *     name: "ZZZ",
- * });
- * export const pgUserRoles = pgUser.then(pgUser => pgUser.roles);
- * ```
- */
 export function getPostgresSqlUser(args: GetPostgresSqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", {
@@ -34,18 +17,8 @@ export function getPostgresSqlUser(args: GetPostgresSqlUserArgs, opts?: pulumi.I
  * A collection of arguments for invoking getPostgresSqlUser.
  */
 export interface GetPostgresSqlUserArgs {
-    /**
-     * Cluster ID
-     */
     clusterId: string;
-    /**
-     * Name of the user.
-     */
     name: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -53,52 +26,17 @@ export interface GetPostgresSqlUserArgs {
  * A collection of values returned by getPostgresSqlUser.
  */
 export interface GetPostgresSqlUserResult {
-    /**
-     * See Argument Reference above.
-     */
     readonly clusterId: string;
-    /**
-     * Date of the creation of the user.
-     */
     readonly createdAt: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Name of the user.
-     */
     readonly name: string;
-    /**
-     * Roles the user belongs to.
-     */
     readonly roles: string[];
-    /**
-     * Current status of the user.
-     */
     readonly serviceName: string;
-    /**
-     * Current status of the user.
-     */
     readonly status: string;
 }
-/**
- * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const pgUser = ovh.CloudProjectDatabase.getPostgresSqlUser({
- *     serviceName: "XXX",
- *     clusterId: "YYY",
- *     name: "ZZZ",
- * });
- * export const pgUserRoles = pgUser.then(pgUser => pgUser.roles);
- * ```
- */
 export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresSqlUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", {
@@ -112,17 +50,7 @@ export function getPostgresSqlUserOutput(args: GetPostgresSqlUserOutputArgs, opt
  * A collection of arguments for invoking getPostgresSqlUser.
  */
 export interface GetPostgresSqlUserOutputArgs {
-    /**
-     * Cluster ID
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * Name of the user.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

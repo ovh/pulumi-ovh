@@ -18,15 +18,15 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string GatewayId;
         /// <summary>
-        /// ID of the floating IP
+        /// ID of the port
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Value of the floating IP
+        /// IP of the port
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+        /// Type of the port
         /// </summary>
         public readonly string Type;
 

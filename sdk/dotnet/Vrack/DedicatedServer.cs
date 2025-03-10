@@ -9,43 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Vrack
 {
-    /// <summary>
-    /// Attach a legacy dedicated server to a vRack.
-    /// 
-    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.&lt;br /&gt;
-    /// Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vds = new Ovh.Vrack.DedicatedServer("vds", new()
-    ///     {
-    ///         ServerId = "67890",
-    ///         ServiceName = "XXXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServer:DedicatedServer")]
     public partial class DedicatedServer : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The id of the dedicated server.
-        /// </summary>
         [Output("serverId")]
         public Output<string> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The service name of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// Service name of the resource representing the id of the cloud project.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -97,15 +68,11 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class DedicatedServerArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the dedicated server.
-        /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
         /// <summary>
-        /// The service name of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// Service name of the resource representing the id of the cloud project.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -118,15 +85,11 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class DedicatedServerState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the dedicated server.
-        /// </summary>
         [Input("serverId")]
         public Input<string>? ServerId { get; set; }
 
         /// <summary>
-        /// The service name of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// Service name of the resource representing the id of the cloud project.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

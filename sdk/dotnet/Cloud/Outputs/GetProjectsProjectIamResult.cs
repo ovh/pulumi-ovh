@@ -18,15 +18,15 @@ namespace Pulumi.Ovh.Cloud.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Unique identifier of the resource in the IAM
+        /// Unique identifier of the resource
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        /// Resource tags. Tags that were internally computed are prefixed with ovh:
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// URN of the private database, used when writing IAM policies
+        /// Unique resource name used in policies
         /// </summary>
         public readonly string Urn;
 

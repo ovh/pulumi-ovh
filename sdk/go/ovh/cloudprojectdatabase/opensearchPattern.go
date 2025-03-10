@@ -8,69 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a pattern for a opensearch cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			opensearch, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
-//				ServiceName: "XXX",
-//				Engine:      "opensearch",
-//				Id:          "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudprojectdatabase.NewOpensearchPattern(ctx, "pattern", &cloudprojectdatabase.OpensearchPatternArgs{
-//				ServiceName:   pulumi.String(opensearch.ServiceName),
-//				ClusterId:     pulumi.String(opensearch.Id),
-//				MaxIndexCount: pulumi.Int(2),
-//				Pattern:       pulumi.String("logs_*"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
-// ```
 type OpensearchPattern struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Maximum number of index for this pattern.
+	// Maximum number of index for this pattern
 	MaxIndexCount pulumi.IntPtrOutput `pulumi:"maxIndexCount"`
-	// Pattern format.
-	Pattern pulumi.StringOutput `pulumi:"pattern"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Pattern format
+	Pattern     pulumi.StringOutput `pulumi:"pattern"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -113,26 +63,22 @@ func GetOpensearchPattern(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchPattern resources.
 type opensearchPatternState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// Maximum number of index for this pattern.
+	// Maximum number of index for this pattern
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
-	// Pattern format.
-	Pattern *string `pulumi:"pattern"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Pattern format
+	Pattern     *string `pulumi:"pattern"`
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type OpensearchPatternState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// Maximum number of index for this pattern.
+	// Maximum number of index for this pattern
 	MaxIndexCount pulumi.IntPtrInput
-	// Pattern format.
-	Pattern pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Pattern format
+	Pattern     pulumi.StringPtrInput
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -141,27 +87,23 @@ func (OpensearchPatternState) ElementType() reflect.Type {
 }
 
 type opensearchPatternArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// Maximum number of index for this pattern.
+	// Maximum number of index for this pattern
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
-	// Pattern format.
-	Pattern string `pulumi:"pattern"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Pattern format
+	Pattern     string `pulumi:"pattern"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a OpensearchPattern resource.
 type OpensearchPatternArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// Maximum number of index for this pattern.
+	// Maximum number of index for this pattern
 	MaxIndexCount pulumi.IntPtrInput
-	// Pattern format.
-	Pattern pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Pattern format
+	Pattern     pulumi.StringInput
 	ServiceName pulumi.StringInput
 }
 
@@ -252,23 +194,21 @@ func (o OpensearchPatternOutput) ToOpensearchPatternOutputWithContext(ctx contex
 	return o
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o OpensearchPatternOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchPattern) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Maximum number of index for this pattern.
+// Maximum number of index for this pattern
 func (o OpensearchPatternOutput) MaxIndexCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OpensearchPattern) pulumi.IntPtrOutput { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
 }
 
-// Pattern format.
+// Pattern format
 func (o OpensearchPatternOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchPattern) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o OpensearchPatternOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchPattern) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

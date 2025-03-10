@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const netboots = ovh.Dedicated.getServerBoots({
- *     bootType: "harddisk",
- *     serviceName: "myserver",
- * });
- * ```
- */
 export function getServerBoots(args: GetServerBootsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBootsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getServerBoots:getServerBoots", {
@@ -32,17 +17,8 @@ export function getServerBoots(args: GetServerBootsArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getServerBoots.
  */
 export interface GetServerBootsArgs {
-    /**
-     * Filter the value of bootType property (harddisk, rescue, internal, network)
-     */
     bootType?: string;
-    /**
-     * Filter the value of kernel property (iPXE script name)
-     */
     kernel?: string;
-    /**
-     * The internal name of your dedicated server.
-     */
     serviceName: string;
 }
 
@@ -56,27 +32,9 @@ export interface GetServerBootsResult {
      */
     readonly id: string;
     readonly kernel?: string;
-    /**
-     * The list of dedicated server netboots.
-     */
     readonly results: number[];
     readonly serviceName: string;
 }
-/**
- * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const netboots = ovh.Dedicated.getServerBoots({
- *     bootType: "harddisk",
- *     serviceName: "myserver",
- * });
- * ```
- */
 export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerBootsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getServerBoots:getServerBoots", {
@@ -90,16 +48,7 @@ export function getServerBootsOutput(args: GetServerBootsOutputArgs, opts?: pulu
  * A collection of arguments for invoking getServerBoots.
  */
 export interface GetServerBootsOutputArgs {
-    /**
-     * Filter the value of bootType property (harddisk, rescue, internal, network)
-     */
     bootType?: pulumi.Input<string>;
-    /**
-     * Filter the value of kernel property (iPXE script name)
-     */
     kernel?: pulumi.Input<string>;
-    /**
-     * The internal name of your dedicated server.
-     */
     serviceName: pulumi.Input<string>;
 }

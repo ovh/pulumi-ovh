@@ -13,9 +13,6 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetKubeCustomizationResult
     {
-        /// <summary>
-        /// Kubernetes API server customization
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetKubeCustomizationApiserverResult> Apiservers;
 
         [OutputConstructor]

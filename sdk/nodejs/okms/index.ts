@@ -35,6 +35,16 @@ export const getOkmsServiceKeyPem: typeof import("./getOkmsServiceKeyPem").getOk
 export const getOkmsServiceKeyPemOutput: typeof import("./getOkmsServiceKeyPem").getOkmsServiceKeyPemOutput = null as any;
 utilities.lazyLoad(exports, ["getOkmsServiceKeyPem","getOkmsServiceKeyPemOutput"], () => require("./getOkmsServiceKeyPem"));
 
+export { GetOvhCloudConnectArgs, GetOvhCloudConnectResult, GetOvhCloudConnectOutputArgs } from "./getOvhCloudConnect";
+export const getOvhCloudConnect: typeof import("./getOvhCloudConnect").getOvhCloudConnect = null as any;
+export const getOvhCloudConnectOutput: typeof import("./getOvhCloudConnect").getOvhCloudConnectOutput = null as any;
+utilities.lazyLoad(exports, ["getOvhCloudConnect","getOvhCloudConnectOutput"], () => require("./getOvhCloudConnect"));
+
+export { GetOvhCloudConnectsResult } from "./getOvhCloudConnects";
+export const getOvhCloudConnects: typeof import("./getOvhCloudConnects").getOvhCloudConnects = null as any;
+export const getOvhCloudConnectsOutput: typeof import("./getOvhCloudConnects").getOvhCloudConnectsOutput = null as any;
+utilities.lazyLoad(exports, ["getOvhCloudConnects","getOvhCloudConnectsOutput"], () => require("./getOvhCloudConnects"));
+
 export { OkmsArgs, OkmsState } from "./okms";
 export type Okms = import("./okms").Okms;
 export const Okms: typeof import("./okms").Okms = null as any;

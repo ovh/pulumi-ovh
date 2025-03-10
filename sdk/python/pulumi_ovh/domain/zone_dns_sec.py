@@ -22,7 +22,7 @@ class ZoneDNSSecArgs:
                  zone_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ZoneDNSSec resource.
-        :param pulumi.Input[str] zone_name: The name of the domain zone
+        :param pulumi.Input[str] zone_name: The internal name of your zone
         """
         pulumi.set(__self__, "zone_name", zone_name)
 
@@ -30,7 +30,7 @@ class ZoneDNSSecArgs:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Input[str]:
         """
-        The name of the domain zone
+        The internal name of your zone
         """
         return pulumi.get(self, "zone_name")
 
@@ -46,8 +46,8 @@ class _ZoneDNSSecState:
                  zone_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneDNSSec resources.
-        :param pulumi.Input[str] status: DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
-        :param pulumi.Input[str] zone_name: The name of the domain zone
+        :param pulumi.Input[str] status: DNSSEC Status
+        :param pulumi.Input[str] zone_name: The internal name of your zone
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -58,7 +58,7 @@ class _ZoneDNSSecState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+        DNSSEC Status
         """
         return pulumi.get(self, "status")
 
@@ -70,7 +70,7 @@ class _ZoneDNSSecState:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the domain zone
+        The internal name of your zone
         """
         return pulumi.get(self, "zone_name")
 
@@ -87,20 +87,10 @@ class ZoneDNSSec(pulumi.CustomResource):
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Enable / disable DNSSEC on a domain zone.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        dnssec = ovh.domain.ZoneDNSSec("dnssec", zone_name="mysite.ovh")
-        ```
-
+        Create a ZoneDNSSec resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] zone_name: The name of the domain zone
+        :param pulumi.Input[str] zone_name: The internal name of your zone
         """
         ...
     @overload
@@ -109,17 +99,7 @@ class ZoneDNSSec(pulumi.CustomResource):
                  args: ZoneDNSSecArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Enable / disable DNSSEC on a domain zone.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        dnssec = ovh.domain.ZoneDNSSec("dnssec", zone_name="mysite.ovh")
-        ```
-
+        Create a ZoneDNSSec resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ZoneDNSSecArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -168,8 +148,8 @@ class ZoneDNSSec(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] status: DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
-        :param pulumi.Input[str] zone_name: The name of the domain zone
+        :param pulumi.Input[str] status: DNSSEC Status
+        :param pulumi.Input[str] zone_name: The internal name of your zone
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -183,7 +163,7 @@ class ZoneDNSSec(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+        DNSSEC Status
         """
         return pulumi.get(self, "status")
 
@@ -191,7 +171,7 @@ class ZoneDNSSec(pulumi.CustomResource):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[str]:
         """
-        The name of the domain zone
+        The internal name of your zone
         """
         return pulumi.get(self, "zone_name")
 

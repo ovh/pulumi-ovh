@@ -6,74 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myaccount = ovh.Me.getMe({});
- * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
- *     ovhSubsidiary: myaccount.ovhSubsidiary,
- * }));
- * const databaseCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
- *     cartId: mycart.id,
- *     priceCapacity: "renew",
- *     product: "privateSQL",
- *     planCode: "private-sql-512-instance",
- * }));
- * const databasePrivateDatabase = new ovh.hosting.PrivateDatabase("databasePrivateDatabase", {
- *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
- *     displayName: "Postgresql-12",
- *     plan: {
- *         duration: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.prices?.[3]?.duration),
- *         planCode: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.planCode),
- *         pricingMode: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.selectedPrices?.[0]?.pricingMode),
- *         configurations: [
- *             {
- *                 label: "dc",
- *                 value: "gra3",
- *             },
- *             {
- *                 label: "engine",
- *                 value: "postgresql_12",
- *             },
- *         ],
- *     },
- * });
- * export const privatedatabaseServiceName = databasePrivateDatabase.serviceName;
- * ```
- *
- * ## Import
- *
- * OVHcloud Webhosting database can be imported using the `service_name`.
- *
- * Using the following configuration:
- *
- * hcl
- *
- * import {
- *
- *   to = ovh_hosting_privatedatabase.database
- *
- *   id = "<service name>"
- *
- * }
- *
- * You can then run:
- *
- * bash
- *
- * $ pulumi preview -generate-config-out=database.tf
- *
- * $ pulumi up
- *
- * The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
- */
 export class PrivateDatabase extends pulumi.CustomResource {
     /**
      * Get an existing PrivateDatabase resource's state with the given name, ID, and optional extra
@@ -102,9 +34,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
         return obj['__pulumiType'] === PrivateDatabase.__pulumiType;
     }
 
-    /**
-     * URN of the private database, used when writing IAM policies
-     */
     public /*out*/ readonly DatabaseURN!: pulumi.Output<string>;
     /**
      * Number of CPU on your private database
@@ -135,11 +64,11 @@ export class PrivateDatabase extends pulumi.CustomResource {
      */
     public /*out*/ readonly offer!: pulumi.Output<string>;
     /**
-     * Details about your Order
+     * Details about an Order
      */
     public readonly orders!: pulumi.Output<outputs.Hosting.PrivateDatabaseOrder[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -180,9 +109,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
      * Private database server name
      */
     public /*out*/ readonly server!: pulumi.Output<string>;
-    /**
-     * Service name
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
      * Private database state
@@ -280,9 +206,6 @@ export class PrivateDatabase extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PrivateDatabase resources.
  */
 export interface PrivateDatabaseState {
-    /**
-     * URN of the private database, used when writing IAM policies
-     */
     DatabaseURN?: pulumi.Input<string>;
     /**
      * Number of CPU on your private database
@@ -313,11 +236,11 @@ export interface PrivateDatabaseState {
      */
     offer?: pulumi.Input<string>;
     /**
-     * Details about your Order
+     * Details about an Order
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabaseOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -358,9 +281,6 @@ export interface PrivateDatabaseState {
      * Private database server name
      */
     server?: pulumi.Input<string>;
-    /**
-     * Service name
-     */
     serviceName?: pulumi.Input<string>;
     /**
      * Private database state
@@ -393,11 +313,11 @@ export interface PrivateDatabaseArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Details about your Order
+     * Details about an Order
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabaseOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -414,8 +334,5 @@ export interface PrivateDatabaseArgs {
      * Product Plan to order
      */
     planOptions?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabasePlanOption>[]>;
-    /**
-     * Service name
-     */
     serviceName?: pulumi.Input<string>;
 }

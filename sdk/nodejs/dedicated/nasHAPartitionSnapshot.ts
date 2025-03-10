@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource for managing **snapshot** to partitions on HA-NAS services
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myPartition = new ovh.dedicated.NasHAPartitionSnapshot("myPartition", {
- *     partitionName: "my-partition",
- *     serviceName: "zpool-12345",
- *     type: "day-3",
- * });
- * ```
- *
- * ## Import
- *
- * HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
- *
- * ```sh
- * $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
- * ```
- */
 export class NasHAPartitionSnapshot extends pulumi.CustomResource {
     /**
      * Get an existing NasHAPartitionSnapshot resource's state with the given name, ID, and optional extra
@@ -56,17 +32,8 @@ export class NasHAPartitionSnapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === NasHAPartitionSnapshot.__pulumiType;
     }
 
-    /**
-     * name of the partition
-     */
     public readonly partitionName!: pulumi.Output<string>;
-    /**
-     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-     */
     public readonly serviceName!: pulumi.Output<string>;
-    /**
-     * Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-     */
     public readonly type!: pulumi.Output<string>;
 
     /**
@@ -109,17 +76,8 @@ export class NasHAPartitionSnapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NasHAPartitionSnapshot resources.
  */
 export interface NasHAPartitionSnapshotState {
-    /**
-     * name of the partition
-     */
     partitionName?: pulumi.Input<string>;
-    /**
-     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-     */
     serviceName?: pulumi.Input<string>;
-    /**
-     * Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-     */
     type?: pulumi.Input<string>;
 }
 
@@ -127,16 +85,7 @@ export interface NasHAPartitionSnapshotState {
  * The set of arguments for constructing a NasHAPartitionSnapshot resource.
  */
 export interface NasHAPartitionSnapshotArgs {
-    /**
-     * name of the partition
-     */
     partitionName: pulumi.Input<string>;
-    /**
-     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-     */
     type: pulumi.Input<string>;
 }

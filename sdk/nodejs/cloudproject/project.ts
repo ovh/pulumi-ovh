@@ -6,35 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * Cloud project can be imported using the `project_id`.
- *
- * Using the following configuration:
- *
- * hcl
- *
- * import {
- *
- *   to = ovh_cloud_project.my_cloud_project
- *
- *   id = "<project ID>"
- *
- * }
- *
- * You can then run:
- *
- * bash
- *
- * $ pulumi preview -generate-config-out=cloudproject.tf
- *
- * $ pulumi up
- *
- * The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
- */
 export class Project extends pulumi.CustomResource {
     /**
      * Get an existing Project resource's state with the given name, ID, and optional extra
@@ -63,21 +34,15 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
-    /**
-     * The URN of the cloud project
-     */
     public /*out*/ readonly ProjectURN!: pulumi.Output<string>;
     public /*out*/ readonly access!: pulumi.Output<string>;
-    /**
-     * A description associated with the user.
-     */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Details about the order that was used to create the public cloud project
+     * Details about an Order
      */
     public readonly orders!: pulumi.Output<outputs.CloudProject.ProjectOrder[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -94,17 +59,8 @@ export class Project extends pulumi.CustomResource {
      * Product Plan to order
      */
     public readonly planOptions!: pulumi.Output<outputs.CloudProject.ProjectPlanOption[] | undefined>;
-    /**
-     * openstack project id
-     */
     public /*out*/ readonly projectId!: pulumi.Output<string>;
-    /**
-     * openstack project name
-     */
     public /*out*/ readonly projectName!: pulumi.Output<string>;
-    /**
-     * project status
-     */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
@@ -154,21 +110,15 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
-    /**
-     * The URN of the cloud project
-     */
     ProjectURN?: pulumi.Input<string>;
     access?: pulumi.Input<string>;
-    /**
-     * A description associated with the user.
-     */
     description?: pulumi.Input<string>;
     /**
-     * Details about the order that was used to create the public cloud project
+     * Details about an Order
      */
     orders?: pulumi.Input<pulumi.Input<inputs.CloudProject.ProjectOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -185,17 +135,8 @@ export interface ProjectState {
      * Product Plan to order
      */
     planOptions?: pulumi.Input<pulumi.Input<inputs.CloudProject.ProjectPlanOption>[]>;
-    /**
-     * openstack project id
-     */
     projectId?: pulumi.Input<string>;
-    /**
-     * openstack project name
-     */
     projectName?: pulumi.Input<string>;
-    /**
-     * project status
-     */
     status?: pulumi.Input<string>;
 }
 
@@ -203,16 +144,13 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
-    /**
-     * A description associated with the user.
-     */
     description?: pulumi.Input<string>;
     /**
-     * Details about the order that was used to create the public cloud project
+     * Details about an Order
      */
     orders?: pulumi.Input<pulumi.Input<inputs.CloudProject.ProjectOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**

@@ -8,34 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// OVHcloud Managed MongoDB clusters prometheus can be imported using the `service_name` and `cluster_id`, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus my_prometheus service_name/engine/cluster_id
-// ```
 type MongoDbPrometheus struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Name of the srv domain endpoint.
+	ServiceName   pulumi.StringOutput    `pulumi:"serviceName"`
+	// Name of the srv domain endpoint
 	SrvDomain pulumi.StringOutput `pulumi:"srvDomain"`
-	// name of the prometheus user.
+	// Name of the user
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -79,34 +68,30 @@ func GetMongoDbPrometheus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MongoDbPrometheus resources.
 type mongoDbPrometheusState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName *string `pulumi:"serviceName"`
-	// Name of the srv domain endpoint.
+	ServiceName   *string `pulumi:"serviceName"`
+	// Name of the srv domain endpoint
 	SrvDomain *string `pulumi:"srvDomain"`
-	// name of the prometheus user.
+	// Name of the user
 	Username *string `pulumi:"username"`
 }
 
 type MongoDbPrometheusState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringPtrInput
-	// Name of the srv domain endpoint.
+	ServiceName   pulumi.StringPtrInput
+	// Name of the srv domain endpoint
 	SrvDomain pulumi.StringPtrInput
-	// name of the prometheus user.
+	// Name of the user
 	Username pulumi.StringPtrInput
 }
 
@@ -115,24 +100,20 @@ func (MongoDbPrometheusState) ElementType() reflect.Type {
 }
 
 type mongoDbPrometheusArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName   string  `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a MongoDbPrometheus resource.
 type MongoDbPrometheusArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
+	ServiceName   pulumi.StringInput
 }
 
 func (MongoDbPrometheusArgs) ElementType() reflect.Type {
@@ -222,12 +203,12 @@ func (o MongoDbPrometheusOutput) ToMongoDbPrometheusOutputWithContext(ctx contex
 	return o
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o MongoDbPrometheusOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbPrometheus) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// (Sensitive) Password of the user.
+// Password of the user
 func (o MongoDbPrometheusOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbPrometheus) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -237,18 +218,16 @@ func (o MongoDbPrometheusOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbPrometheus) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o MongoDbPrometheusOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbPrometheus) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Name of the srv domain endpoint.
+// Name of the srv domain endpoint
 func (o MongoDbPrometheusOutput) SrvDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbPrometheus) pulumi.StringOutput { return v.SrvDomain }).(pulumi.StringOutput)
 }
 
-// name of the prometheus user.
+// Name of the user
 func (o MongoDbPrometheusOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbPrometheus) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

@@ -9,104 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Creates a user in a public cloud project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var user1 = new Ovh.CloudProject.User("user1", new()
-    ///     {
-    ///         ServiceName = "XXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// the date the user was created.
-        /// </summary>
         [Output("creationDate")]
         public Output<string> CreationDate { get; private set; } = null!;
 
-        /// <summary>
-        /// A description associated with the user.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// a convenient map representing an openstack_rc file.
-        /// Note: no password nor sensitive token is set in this map.
-        /// </summary>
         [Output("openstackRc")]
         public Output<ImmutableDictionary<string, string>> OpenstackRc { get; private set; } = null!;
 
-        /// <summary>
-        /// (Sensitive) the password generated for the user. The password can
-        /// be used with the Openstack API. This attribute is sensitive and will only be
-        /// retrieve once during creation.
-        /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of a role. See `role_names`.
-        /// </summary>
         [Output("roleName")]
         public Output<string?> RoleName { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of role names. Values can be: 
-        /// - administrator,
-        /// - ai_training_operator
-        /// - ai_training_read
-        /// - authentication
-        /// - backup_operator
-        /// - compute_operator
-        /// - image_operator
-        /// - infrastructure_supervisor
-        /// - network_operator
-        /// - network_security_operator
-        /// - objectstore_operator
-        /// - volume_operator
-        /// </summary>
         [Output("roleNames")]
         public Output<ImmutableArray<string>> RoleNames { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of roles associated with the user.
-        /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<Outputs.UserRole>> Roles { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name of the resource representing the id of the cloud project.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
-        /// <summary>
-        /// the status of the user. should be normally set to 'ok'.
-        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
-        /// <summary>
-        /// the username generated for the user. This username can be used with
-        /// the Openstack API.
-        /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
@@ -161,49 +96,22 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description associated with the user.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("openstackRc")]
         private InputMap<string>? _openstackRc;
-
-        /// <summary>
-        /// a convenient map representing an openstack_rc file.
-        /// Note: no password nor sensitive token is set in this map.
-        /// </summary>
         public InputMap<string> OpenstackRc
         {
             get => _openstackRc ?? (_openstackRc = new InputMap<string>());
             set => _openstackRc = value;
         }
 
-        /// <summary>
-        /// The name of a role. See `role_names`.
-        /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         [Input("roleNames")]
         private InputList<string>? _roleNames;
-
-        /// <summary>
-        /// A list of role names. Values can be: 
-        /// - administrator,
-        /// - ai_training_operator
-        /// - ai_training_read
-        /// - authentication
-        /// - backup_operator
-        /// - compute_operator
-        /// - image_operator
-        /// - infrastructure_supervisor
-        /// - network_operator
-        /// - network_security_operator
-        /// - objectstore_operator
-        /// - volume_operator
-        /// </summary>
         public InputList<string> RoleNames
         {
             get => _roleNames ?? (_roleNames = new InputList<string>());
@@ -211,8 +119,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name of the resource representing the id of the cloud project.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -225,25 +132,14 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// the date the user was created.
-        /// </summary>
         [Input("creationDate")]
         public Input<string>? CreationDate { get; set; }
 
-        /// <summary>
-        /// A description associated with the user.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("openstackRc")]
         private InputMap<string>? _openstackRc;
-
-        /// <summary>
-        /// a convenient map representing an openstack_rc file.
-        /// Note: no password nor sensitive token is set in this map.
-        /// </summary>
         public InputMap<string> OpenstackRc
         {
             get => _openstackRc ?? (_openstackRc = new InputMap<string>());
@@ -252,12 +148,6 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("password")]
         private Input<string>? _password;
-
-        /// <summary>
-        /// (Sensitive) the password generated for the user. The password can
-        /// be used with the Openstack API. This attribute is sensitive and will only be
-        /// retrieve once during creation.
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -268,30 +158,11 @@ namespace Pulumi.Ovh.CloudProject
             }
         }
 
-        /// <summary>
-        /// The name of a role. See `role_names`.
-        /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         [Input("roleNames")]
         private InputList<string>? _roleNames;
-
-        /// <summary>
-        /// A list of role names. Values can be: 
-        /// - administrator,
-        /// - ai_training_operator
-        /// - ai_training_read
-        /// - authentication
-        /// - backup_operator
-        /// - compute_operator
-        /// - image_operator
-        /// - infrastructure_supervisor
-        /// - network_operator
-        /// - network_security_operator
-        /// - objectstore_operator
-        /// - volume_operator
-        /// </summary>
         public InputList<string> RoleNames
         {
             get => _roleNames ?? (_roleNames = new InputList<string>());
@@ -300,10 +171,6 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("roles")]
         private InputList<Inputs.UserRoleGetArgs>? _roles;
-
-        /// <summary>
-        /// A list of roles associated with the user.
-        /// </summary>
         public InputList<Inputs.UserRoleGetArgs> Roles
         {
             get => _roles ?? (_roles = new InputList<Inputs.UserRoleGetArgs>());
@@ -311,22 +178,14 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name of the resource representing the id of the cloud project.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        /// <summary>
-        /// the status of the user. should be normally set to 'ok'.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        /// <summary>
-        /// the username generated for the user. This username can be used with
-        /// the Openstack API.
-        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

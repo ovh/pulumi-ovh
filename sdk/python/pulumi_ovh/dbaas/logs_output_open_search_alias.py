@@ -28,13 +28,13 @@ class LogsOutputOpenSearchAliasArgs:
                  streams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LogsOutputOpenSearchAlias resource.
-        :param pulumi.Input[str] description: Index description
+        :param pulumi.Input[str] description: Alias description
         :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[str] suffix: Index suffix
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: List of attached indexes id
-        :param pulumi.Input[int] nb_index: Number of indices linked
-        :param pulumi.Input[int] nb_stream: Number of streams linked
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: List of attached streams id
+        :param pulumi.Input[str] suffix: Alias suffix
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: Indexes attached to alias
+        :param pulumi.Input[int] nb_index: Number of index
+        :param pulumi.Input[int] nb_stream: Number of shard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: Streams attached to alias
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "service_name", service_name)
@@ -52,7 +52,7 @@ class LogsOutputOpenSearchAliasArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        Index description
+        Alias description
         """
         return pulumi.get(self, "description")
 
@@ -76,7 +76,7 @@ class LogsOutputOpenSearchAliasArgs:
     @pulumi.getter
     def suffix(self) -> pulumi.Input[str]:
         """
-        Index suffix
+        Alias suffix
         """
         return pulumi.get(self, "suffix")
 
@@ -88,7 +88,7 @@ class LogsOutputOpenSearchAliasArgs:
     @pulumi.getter
     def indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of attached indexes id
+        Indexes attached to alias
         """
         return pulumi.get(self, "indexes")
 
@@ -100,7 +100,7 @@ class LogsOutputOpenSearchAliasArgs:
     @pulumi.getter(name="nbIndex")
     def nb_index(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of indices linked
+        Number of index
         """
         return pulumi.get(self, "nb_index")
 
@@ -112,7 +112,7 @@ class LogsOutputOpenSearchAliasArgs:
     @pulumi.getter(name="nbStream")
     def nb_stream(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of streams linked
+        Number of shard
         """
         return pulumi.get(self, "nb_stream")
 
@@ -124,7 +124,7 @@ class LogsOutputOpenSearchAliasArgs:
     @pulumi.getter
     def streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of attached streams id
+        Streams attached to alias
         """
         return pulumi.get(self, "streams")
 
@@ -151,19 +151,19 @@ class _LogsOutputOpenSearchAliasState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogsOutputOpenSearchAlias resources.
-        :param pulumi.Input[str] alias_id: Alias Id
-        :param pulumi.Input[str] created_at: Alias creation
+        :param pulumi.Input[str] alias_id: Alias used
+        :param pulumi.Input[str] created_at: Operation creation
         :param pulumi.Input[int] current_size: Current alias size (in bytes)
-        :param pulumi.Input[str] description: Index description
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: List of attached indexes id
+        :param pulumi.Input[str] description: Alias description
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: Indexes attached to alias
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[str] name: Alias name
-        :param pulumi.Input[int] nb_index: Number of indices linked
-        :param pulumi.Input[int] nb_stream: Number of streams linked
+        :param pulumi.Input[int] nb_index: Number of index
+        :param pulumi.Input[int] nb_stream: Number of shard
         :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: List of attached streams id
-        :param pulumi.Input[str] suffix: Index suffix
-        :param pulumi.Input[str] updated_at: Input last update
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: Streams attached to alias
+        :param pulumi.Input[str] suffix: Alias suffix
+        :param pulumi.Input[str] updated_at: Operation last update
         """
         if alias_id is not None:
             pulumi.set(__self__, "alias_id", alias_id)
@@ -196,7 +196,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter(name="aliasId")
     def alias_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias Id
+        Alias used
         """
         return pulumi.get(self, "alias_id")
 
@@ -208,7 +208,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias creation
+        Operation creation
         """
         return pulumi.get(self, "created_at")
 
@@ -232,7 +232,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Index description
+        Alias description
         """
         return pulumi.get(self, "description")
 
@@ -244,7 +244,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter
     def indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of attached indexes id
+        Indexes attached to alias
         """
         return pulumi.get(self, "indexes")
 
@@ -280,7 +280,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter(name="nbIndex")
     def nb_index(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of indices linked
+        Number of index
         """
         return pulumi.get(self, "nb_index")
 
@@ -292,7 +292,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter(name="nbStream")
     def nb_stream(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of streams linked
+        Number of shard
         """
         return pulumi.get(self, "nb_stream")
 
@@ -316,7 +316,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter
     def streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of attached streams id
+        Streams attached to alias
         """
         return pulumi.get(self, "streams")
 
@@ -328,7 +328,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter
     def suffix(self) -> Optional[pulumi.Input[str]]:
         """
-        Index suffix
+        Alias suffix
         """
         return pulumi.get(self, "suffix")
 
@@ -340,7 +340,7 @@ class _LogsOutputOpenSearchAliasState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Input last update
+        Operation last update
         """
         return pulumi.get(self, "updated_at")
 
@@ -363,29 +363,16 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
                  suffix: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a DBaaS Logs Opensearch output alias.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        alias = ovh.dbaas.LogsOutputOpenSearchAlias("alias",
-            description="my opensearch alias",
-            service_name="....",
-            suffix="alias")
-        ```
-
+        Create a LogsOutputOpenSearchAlias resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Index description
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: List of attached indexes id
-        :param pulumi.Input[int] nb_index: Number of indices linked
-        :param pulumi.Input[int] nb_stream: Number of streams linked
+        :param pulumi.Input[str] description: Alias description
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: Indexes attached to alias
+        :param pulumi.Input[int] nb_index: Number of index
+        :param pulumi.Input[int] nb_stream: Number of shard
         :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: List of attached streams id
-        :param pulumi.Input[str] suffix: Index suffix
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: Streams attached to alias
+        :param pulumi.Input[str] suffix: Alias suffix
         """
         ...
     @overload
@@ -394,20 +381,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
                  args: LogsOutputOpenSearchAliasArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a DBaaS Logs Opensearch output alias.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        alias = ovh.dbaas.LogsOutputOpenSearchAlias("alias",
-            description="my opensearch alias",
-            service_name="....",
-            suffix="alias")
-        ```
-
+        Create a LogsOutputOpenSearchAlias resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param LogsOutputOpenSearchAliasArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -488,19 +462,19 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alias_id: Alias Id
-        :param pulumi.Input[str] created_at: Alias creation
+        :param pulumi.Input[str] alias_id: Alias used
+        :param pulumi.Input[str] created_at: Operation creation
         :param pulumi.Input[int] current_size: Current alias size (in bytes)
-        :param pulumi.Input[str] description: Index description
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: List of attached indexes id
+        :param pulumi.Input[str] description: Alias description
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] indexes: Indexes attached to alias
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[str] name: Alias name
-        :param pulumi.Input[int] nb_index: Number of indices linked
-        :param pulumi.Input[int] nb_stream: Number of streams linked
+        :param pulumi.Input[int] nb_index: Number of index
+        :param pulumi.Input[int] nb_stream: Number of shard
         :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: List of attached streams id
-        :param pulumi.Input[str] suffix: Index suffix
-        :param pulumi.Input[str] updated_at: Input last update
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] streams: Streams attached to alias
+        :param pulumi.Input[str] suffix: Alias suffix
+        :param pulumi.Input[str] updated_at: Operation last update
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -525,7 +499,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter(name="aliasId")
     def alias_id(self) -> pulumi.Output[str]:
         """
-        Alias Id
+        Alias used
         """
         return pulumi.get(self, "alias_id")
 
@@ -533,7 +507,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Alias creation
+        Operation creation
         """
         return pulumi.get(self, "created_at")
 
@@ -549,7 +523,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Index description
+        Alias description
         """
         return pulumi.get(self, "description")
 
@@ -557,7 +531,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter
     def indexes(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of attached indexes id
+        Indexes attached to alias
         """
         return pulumi.get(self, "indexes")
 
@@ -581,7 +555,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter(name="nbIndex")
     def nb_index(self) -> pulumi.Output[int]:
         """
-        Number of indices linked
+        Number of index
         """
         return pulumi.get(self, "nb_index")
 
@@ -589,7 +563,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter(name="nbStream")
     def nb_stream(self) -> pulumi.Output[int]:
         """
-        Number of streams linked
+        Number of shard
         """
         return pulumi.get(self, "nb_stream")
 
@@ -605,7 +579,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter
     def streams(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of attached streams id
+        Streams attached to alias
         """
         return pulumi.get(self, "streams")
 
@@ -613,7 +587,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter
     def suffix(self) -> pulumi.Output[str]:
         """
-        Index suffix
+        Alias suffix
         """
         return pulumi.get(self, "suffix")
 
@@ -621,7 +595,7 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        Input last update
+        Operation last update
         """
         return pulumi.get(self, "updated_at")
 

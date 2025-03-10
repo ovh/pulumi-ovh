@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a KMS service key.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := okms.GetOkmsServiceKey(ctx, &okms.GetOkmsServiceKeyArgs{
-//				Id:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//				OkmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetOkmsServiceKey(ctx *pulumi.Context, args *GetOkmsServiceKeyArgs, opts ...pulumi.InvokeOption) (*GetOkmsServiceKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOkmsServiceKeyResult
@@ -51,9 +23,7 @@ func GetOkmsServiceKey(ctx *pulumi.Context, args *GetOkmsServiceKeyArgs, opts ..
 
 // A collection of arguments for invoking getOkmsServiceKey.
 type GetOkmsServiceKeyArgs struct {
-	// ID of the service key
-	Id string `pulumi:"id"`
-	// ID of the KMS
+	Id     string `pulumi:"id"`
 	OkmsId string `pulumi:"okmsId"`
 }
 
@@ -82,9 +52,7 @@ func GetOkmsServiceKeyOutput(ctx *pulumi.Context, args GetOkmsServiceKeyOutputAr
 
 // A collection of arguments for invoking getOkmsServiceKey.
 type GetOkmsServiceKeyOutputArgs struct {
-	// ID of the service key
-	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the KMS
+	Id     pulumi.StringInput `pulumi:"id"`
 	OkmsId pulumi.StringInput `pulumi:"okmsId"`
 }
 

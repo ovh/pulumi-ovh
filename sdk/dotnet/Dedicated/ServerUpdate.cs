@@ -9,59 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
-    ///     {
-    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
-    ///         BootType = "rescue",
-    ///         Kernel = "rescue64-pro",
-    ///     });
-    /// 
-    ///     var server = new Ovh.Dedicated.ServerUpdate("server", new()
-    ///     {
-    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
-    ///         BootId = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
-    ///         Monitoring = true,
-    ///         State = "ok",
-    ///         DisplayName = "Some human-readable name",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Dedicated/serverUpdate:ServerUpdate")]
     public partial class ServerUpdate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// boot id of the server
+        /// The boot id of your dedicated server.
         /// </summary>
         [Output("bootId")]
         public Output<int> BootId { get; private set; } = null!;
 
         /// <summary>
-        /// boot script of the server
+        /// The boot script of your dedicated server.
         /// </summary>
         [Output("bootScript")]
         public Output<string?> BootScript { get; private set; } = null!;
 
         /// <summary>
-        /// display name of the dedicated server
+        /// Display name of the dedicated server
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// path of the EFI bootloader
+        /// The path of the EFI bootloader.
         /// </summary>
         [Output("efiBootloaderPath")]
         public Output<string> EfiBootloaderPath { get; private set; } = null!;
@@ -73,7 +43,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<bool> Monitoring { get; private set; } = null!;
 
         /// <summary>
-        /// The service_name of your dedicated server.
+        /// The internal name of your dedicated server.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -132,25 +102,25 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// boot id of the server
+        /// The boot id of your dedicated server.
         /// </summary>
         [Input("bootId")]
         public Input<int>? BootId { get; set; }
 
         /// <summary>
-        /// boot script of the server
+        /// The boot script of your dedicated server.
         /// </summary>
         [Input("bootScript")]
         public Input<string>? BootScript { get; set; }
 
         /// <summary>
-        /// display name of the dedicated server
+        /// Display name of the dedicated server
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// path of the EFI bootloader
+        /// The path of the EFI bootloader.
         /// </summary>
         [Input("efiBootloaderPath")]
         public Input<string>? EfiBootloaderPath { get; set; }
@@ -162,7 +132,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// The service_name of your dedicated server.
+        /// The internal name of your dedicated server.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -182,25 +152,25 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerUpdateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// boot id of the server
+        /// The boot id of your dedicated server.
         /// </summary>
         [Input("bootId")]
         public Input<int>? BootId { get; set; }
 
         /// <summary>
-        /// boot script of the server
+        /// The boot script of your dedicated server.
         /// </summary>
         [Input("bootScript")]
         public Input<string>? BootScript { get; set; }
 
         /// <summary>
-        /// display name of the dedicated server
+        /// Display name of the dedicated server
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// path of the EFI bootloader
+        /// The path of the EFI bootloader.
         /// </summary>
         [Input("efiBootloaderPath")]
         public Input<string>? EfiBootloaderPath { get; set; }
@@ -212,7 +182,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// The service_name of your dedicated server.
+        /// The internal name of your dedicated server.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

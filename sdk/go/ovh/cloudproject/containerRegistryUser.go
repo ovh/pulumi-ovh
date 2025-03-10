@@ -8,60 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a user for a container registry associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
-//				ServiceName: "XXXXXX",
-//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudproject.NewContainerRegistryUser(ctx, "user", &cloudproject.ContainerRegistryUserArgs{
-//				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
-//				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
-//				Email:       pulumi.String("foo@bar.com"),
-//				Login:       pulumi.String("foobar"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ContainerRegistryUser struct {
 	pulumi.CustomResourceState
 
-	// User email
+	// User email.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Registry name
 	Login pulumi.StringOutput `pulumi:"login"`
-	// (Sensitive) User password
+	// User password
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Registry ID
+	// RegistryID
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// User name
 	User pulumi.StringOutput `pulumi:"user"`
@@ -113,32 +75,30 @@ func GetContainerRegistryUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerRegistryUser resources.
 type containerRegistryUserState struct {
-	// User email
+	// User email.
 	Email *string `pulumi:"email"`
 	// Registry name
 	Login *string `pulumi:"login"`
-	// (Sensitive) User password
+	// User password
 	Password *string `pulumi:"password"`
-	// Registry ID
+	// RegistryID
 	RegistryId *string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName *string `pulumi:"serviceName"`
 	// User name
 	User *string `pulumi:"user"`
 }
 
 type ContainerRegistryUserState struct {
-	// User email
+	// User email.
 	Email pulumi.StringPtrInput
 	// Registry name
 	Login pulumi.StringPtrInput
-	// (Sensitive) User password
+	// User password
 	Password pulumi.StringPtrInput
-	// Registry ID
+	// RegistryID
 	RegistryId pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName pulumi.StringPtrInput
 	// User name
 	User pulumi.StringPtrInput
@@ -149,27 +109,25 @@ func (ContainerRegistryUserState) ElementType() reflect.Type {
 }
 
 type containerRegistryUserArgs struct {
-	// User email
+	// User email.
 	Email string `pulumi:"email"`
 	// Registry name
 	Login string `pulumi:"login"`
-	// Registry ID
+	// RegistryID
 	RegistryId string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a ContainerRegistryUser resource.
 type ContainerRegistryUserArgs struct {
-	// User email
+	// User email.
 	Email pulumi.StringInput
 	// Registry name
 	Login pulumi.StringInput
-	// Registry ID
+	// RegistryID
 	RegistryId pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName pulumi.StringInput
 }
 
@@ -260,7 +218,7 @@ func (o ContainerRegistryUserOutput) ToContainerRegistryUserOutputWithContext(ct
 	return o
 }
 
-// User email
+// User email.
 func (o ContainerRegistryUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
@@ -270,18 +228,17 @@ func (o ContainerRegistryUserOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.Login }).(pulumi.StringOutput)
 }
 
-// (Sensitive) User password
+// User password
 func (o ContainerRegistryUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Registry ID
+// RegistryID
 func (o ContainerRegistryUserOutput) RegistryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.RegistryId }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// Service name
 func (o ContainerRegistryUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -39,19 +39,19 @@ if not MYPY:
     class VpsIamArgsDict(TypedDict):
         display_name: NotRequired[pulumi.Input[str]]
         """
-        Custom display name
+        Resource display name
         """
         id: NotRequired[pulumi.Input[str]]
         """
-        Unique identifier of the resource in the IAM
+        Unique identifier of the resource
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         urn: NotRequired[pulumi.Input[str]]
         """
-        URN of the private database, used when writing IAM policies
+        Unique resource name used in policies
         """
 elif False:
     VpsIamArgsDict: TypeAlias = Mapping[str, Any]
@@ -64,10 +64,10 @@ class VpsIamArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  urn: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] display_name: Custom display name
-        :param pulumi.Input[str] id: Unique identifier of the resource in the IAM
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
-        :param pulumi.Input[str] urn: URN of the private database, used when writing IAM policies
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] id: Unique identifier of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param pulumi.Input[str] urn: Unique resource name used in policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -82,7 +82,7 @@ class VpsIamArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom display name
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -94,7 +94,7 @@ class VpsIamArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the resource in the IAM
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -106,7 +106,7 @@ class VpsIamArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         return pulumi.get(self, "tags")
 
@@ -118,7 +118,7 @@ class VpsIamArgs:
     @pulumi.getter
     def urn(self) -> Optional[pulumi.Input[str]]:
         """
-        URN of the private database, used when writing IAM policies
+        Unique resource name used in policies
         """
         return pulumi.get(self, "urn")
 
@@ -130,40 +130,16 @@ class VpsIamArgs:
 if not MYPY:
     class VpsModelArgsDict(TypedDict):
         available_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
-        """
         datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        Datacenters where this model is available
-        """
         disk: NotRequired[pulumi.Input[float]]
-        """
-        Disk capacity of this VPS
-        """
         maximum_additionnal_ip: NotRequired[pulumi.Input[float]]
-        """
-        Maximum number of additional IPs
-        """
         memory: NotRequired[pulumi.Input[float]]
-        """
-        RAM of the VPS
-        """
         name: NotRequired[pulumi.Input[str]]
-        """
-        Name of the VPS
-        """
         offer: NotRequired[pulumi.Input[str]]
-        """
-        Description of this VPS offer
-        """
         vcore: NotRequired[pulumi.Input[float]]
-        """
-        Number of vcores
-        """
         version: NotRequired[pulumi.Input[str]]
         """
-        All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        All versions that VPS can have
         """
 elif False:
     VpsModelArgsDict: TypeAlias = Mapping[str, Any]
@@ -181,15 +157,7 @@ class VpsModelArgs:
                  vcore: Optional[pulumi.Input[float]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_options: All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: Datacenters where this model is available
-        :param pulumi.Input[float] disk: Disk capacity of this VPS
-        :param pulumi.Input[float] maximum_additionnal_ip: Maximum number of additional IPs
-        :param pulumi.Input[float] memory: RAM of the VPS
-        :param pulumi.Input[str] name: Name of the VPS
-        :param pulumi.Input[str] offer: Description of this VPS offer
-        :param pulumi.Input[float] vcore: Number of vcores
-        :param pulumi.Input[str] version: All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        :param pulumi.Input[str] version: All versions that VPS can have
         """
         if available_options is not None:
             pulumi.set(__self__, "available_options", available_options)
@@ -213,9 +181,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter(name="availableOptions")
     def available_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
-        """
         return pulumi.get(self, "available_options")
 
     @available_options.setter
@@ -225,9 +190,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter
     def datacenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Datacenters where this model is available
-        """
         return pulumi.get(self, "datacenters")
 
     @datacenters.setter
@@ -237,9 +199,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input[float]]:
-        """
-        Disk capacity of this VPS
-        """
         return pulumi.get(self, "disk")
 
     @disk.setter
@@ -249,9 +208,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter(name="maximumAdditionnalIp")
     def maximum_additionnal_ip(self) -> Optional[pulumi.Input[float]]:
-        """
-        Maximum number of additional IPs
-        """
         return pulumi.get(self, "maximum_additionnal_ip")
 
     @maximum_additionnal_ip.setter
@@ -261,9 +217,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[float]]:
-        """
-        RAM of the VPS
-        """
         return pulumi.get(self, "memory")
 
     @memory.setter
@@ -273,9 +226,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the VPS
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -285,9 +235,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter
     def offer(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of this VPS offer
-        """
         return pulumi.get(self, "offer")
 
     @offer.setter
@@ -297,9 +244,6 @@ class VpsModelArgs:
     @property
     @pulumi.getter
     def vcore(self) -> Optional[pulumi.Input[float]]:
-        """
-        Number of vcores
-        """
         return pulumi.get(self, "vcore")
 
     @vcore.setter
@@ -310,7 +254,7 @@ class VpsModelArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        All versions that VPS can have
         """
         return pulumi.get(self, "version")
 
@@ -469,20 +413,17 @@ if not MYPY:
     class VpsPlanArgsDict(TypedDict):
         duration: pulumi.Input[str]
         """
-        duration
+        Duration selected for the purchase of the product
         """
         plan_code: pulumi.Input[str]
         """
-        Plan code
+        Identifier of the option offer
         """
         pricing_mode: pulumi.Input[str]
         """
-        Pricing model identifier
+        Pricing mode selected for the purchase of the product
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpsPlanConfigurationArgsDict']]]]
-        """
-        Representation of a configuration item for personalizing product
-        """
         item_id: NotRequired[pulumi.Input[float]]
         """
         Cart item to be linked
@@ -504,10 +445,9 @@ class VpsPlanArgs:
                  item_id: Optional[pulumi.Input[float]] = None,
                  quantity: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[str] duration: duration
-        :param pulumi.Input[str] plan_code: Plan code
-        :param pulumi.Input[str] pricing_mode: Pricing model identifier
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] plan_code: Identifier of the option offer
+        :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
         :param pulumi.Input[float] item_id: Cart item to be linked
         :param pulumi.Input[float] quantity: Quantity of product desired
         """
@@ -525,7 +465,7 @@ class VpsPlanArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
         """
-        duration
+        Duration selected for the purchase of the product
         """
         return pulumi.get(self, "duration")
 
@@ -537,7 +477,7 @@ class VpsPlanArgs:
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Input[str]:
         """
-        Plan code
+        Identifier of the option offer
         """
         return pulumi.get(self, "plan_code")
 
@@ -549,7 +489,7 @@ class VpsPlanArgs:
     @pulumi.getter(name="pricingMode")
     def pricing_mode(self) -> pulumi.Input[str]:
         """
-        Pricing model identifier
+        Pricing mode selected for the purchase of the product
         """
         return pulumi.get(self, "pricing_mode")
 
@@ -560,9 +500,6 @@ class VpsPlanArgs:
     @property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanConfigurationArgs']]]]:
-        """
-        Representation of a configuration item for personalizing product
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -598,11 +535,11 @@ if not MYPY:
     class VpsPlanConfigurationArgsDict(TypedDict):
         label: pulumi.Input[str]
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         value: pulumi.Input[str]
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
 elif False:
     VpsPlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -613,8 +550,8 @@ class VpsPlanConfigurationArgs:
                  label: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] label: Identifier of the resource
-        :param pulumi.Input[str] value: Path to the resource in api.ovh.com
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -623,7 +560,7 @@ class VpsPlanConfigurationArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -635,7 +572,7 @@ class VpsPlanConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 
@@ -648,24 +585,21 @@ if not MYPY:
     class VpsPlanOptionArgsDict(TypedDict):
         duration: pulumi.Input[str]
         """
-        duration
+        Duration selected for the purchase of the product
         """
         plan_code: pulumi.Input[str]
         """
-        Plan code
+        Identifier of the option offer
         """
         pricing_mode: pulumi.Input[str]
         """
-        Pricing model identifier
+        Pricing mode selected for the purchase of the product
         """
         quantity: pulumi.Input[float]
         """
         Quantity of product desired
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgsDict']]]]
-        """
-        Representation of a configuration item for personalizing product
-        """
 elif False:
     VpsPlanOptionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -678,11 +612,10 @@ class VpsPlanOptionArgs:
                  quantity: pulumi.Input[float],
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]]] = None):
         """
-        :param pulumi.Input[str] duration: duration
-        :param pulumi.Input[str] plan_code: Plan code
-        :param pulumi.Input[str] pricing_mode: Pricing model identifier
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] plan_code: Identifier of the option offer
+        :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
         :param pulumi.Input[float] quantity: Quantity of product desired
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -695,7 +628,7 @@ class VpsPlanOptionArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
         """
-        duration
+        Duration selected for the purchase of the product
         """
         return pulumi.get(self, "duration")
 
@@ -707,7 +640,7 @@ class VpsPlanOptionArgs:
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Input[str]:
         """
-        Plan code
+        Identifier of the option offer
         """
         return pulumi.get(self, "plan_code")
 
@@ -719,7 +652,7 @@ class VpsPlanOptionArgs:
     @pulumi.getter(name="pricingMode")
     def pricing_mode(self) -> pulumi.Input[str]:
         """
-        Pricing model identifier
+        Pricing mode selected for the purchase of the product
         """
         return pulumi.get(self, "pricing_mode")
 
@@ -742,9 +675,6 @@ class VpsPlanOptionArgs:
     @property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]]]:
-        """
-        Representation of a configuration item for personalizing product
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -756,11 +686,11 @@ if not MYPY:
     class VpsPlanOptionConfigurationArgsDict(TypedDict):
         label: pulumi.Input[str]
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         value: pulumi.Input[str]
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
 elif False:
     VpsPlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -771,8 +701,8 @@ class VpsPlanOptionConfigurationArgs:
                  label: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] label: Identifier of the resource
-        :param pulumi.Input[str] value: Path to the resource in api.ovh.com
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -781,7 +711,7 @@ class VpsPlanOptionConfigurationArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -793,7 +723,7 @@ class VpsPlanOptionConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 

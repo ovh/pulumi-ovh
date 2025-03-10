@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.Domain.Outputs
         /// </summary>
         public readonly string? CatalogName;
         /// <summary>
-        /// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        /// Representation of a configuration item for personalizing product
         /// </summary>
         public readonly ImmutableArray<Outputs.ZonePlanConfiguration> Configurations;
         /// <summary>

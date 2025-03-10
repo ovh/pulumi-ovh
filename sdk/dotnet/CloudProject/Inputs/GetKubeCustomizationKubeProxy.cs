@@ -12,15 +12,9 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
     public sealed class GetKubeCustomizationKubeProxyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Kubernetes cluster kube-proxy customization of iptables specific config.
-        /// </summary>
         [Input("iptables")]
         public Inputs.GetKubeCustomizationKubeProxyIptablesArgs? Iptables { get; set; }
 
-        /// <summary>
-        /// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        /// </summary>
         [Input("ipvs")]
         public Inputs.GetKubeCustomizationKubeProxyIpvsArgs? Ipvs { get; set; }
 

@@ -70,9 +70,6 @@ class GetM3dbNamespaceResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -86,89 +83,56 @@ class GetM3dbNamespaceResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def resolution(self) -> str:
-        """
-        Resolution for an aggregated namespace.
-        """
         return pulumi.get(self, "resolution")
 
     @property
     @pulumi.getter(name="retentionBlockDataExpirationDuration")
     def retention_block_data_expiration_duration(self) -> str:
-        """
-        Controls how long we wait before expiring stale data.
-        """
         return pulumi.get(self, "retention_block_data_expiration_duration")
 
     @property
     @pulumi.getter(name="retentionBlockSizeDuration")
     def retention_block_size_duration(self) -> str:
-        """
-        Controls how long to keep a block in memory before flushing to a fileset on disk.
-        """
         return pulumi.get(self, "retention_block_size_duration")
 
     @property
     @pulumi.getter(name="retentionBufferFutureDuration")
     def retention_buffer_future_duration(self) -> str:
-        """
-        Controls how far into the future writes to the namespace will be accepted.
-        """
         return pulumi.get(self, "retention_buffer_future_duration")
 
     @property
     @pulumi.getter(name="retentionBufferPastDuration")
     def retention_buffer_past_duration(self) -> str:
-        """
-        Controls how far into the past writes to the namespace will be accepted.
-        """
         return pulumi.get(self, "retention_buffer_past_duration")
 
     @property
     @pulumi.getter(name="retentionPeriodDuration")
     def retention_period_duration(self) -> str:
-        """
-        Controls the duration of time that M3DB will retain data for the namespace.
-        """
         return pulumi.get(self, "retention_period_duration")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="snapshotEnabled")
     def snapshot_enabled(self) -> bool:
-        """
-        SDefines whether M3db will create snapshot files for this namespace.
-        """
         return pulumi.get(self, "snapshot_enabled")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Type of namespace.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="writesToCommitLogEnabled")
     def writes_to_commit_log_enabled(self) -> bool:
-        """
-        Defines whether M3DB will include writes to this namespace in the commit log.
-        """
         return pulumi.get(self, "writes_to_commit_log_enabled")
 
 
@@ -198,25 +162,7 @@ def get_m3db_namespace(cluster_id: Optional[str] = None,
                        service_name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetM3dbNamespaceResult:
     """
-    Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    m3db_namespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
-        cluster_id="YYY",
-        name="ZZZ")
-    pulumi.export("m3dbnamespaceType", m3db_namespace.type)
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str name: Name of the namespace.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -244,25 +190,7 @@ def get_m3db_namespace_output(cluster_id: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbNamespaceResult]:
     """
-    Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    m3db_namespace = ovh.CloudProject.get_m3db_namespace(service_name="XXX",
-        cluster_id="YYY",
-        name="ZZZ")
-    pulumi.export("m3dbnamespaceType", m3db_namespace.type)
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str name: Name of the namespace.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

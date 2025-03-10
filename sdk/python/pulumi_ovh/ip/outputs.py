@@ -126,7 +126,7 @@ class IpServiceOrderDetail(dict):
                  order_detail_id: Optional[int] = None,
                  quantity: Optional[str] = None):
         """
-        :param str description: Custom description on your ip.
+        :param str description: description
         :param str domain: expiration date
         :param int order_detail_id: order detail id
         :param str quantity: quantity
@@ -144,7 +144,7 @@ class IpServiceOrderDetail(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Custom description on your ip.
+        description
         """
         return pulumi.get(self, "description")
 
@@ -321,7 +321,7 @@ class IpServicePlanOption(dict):
         :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
-        :param Sequence['IpServicePlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
+        :param Sequence['IpServicePlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -367,7 +367,7 @@ class IpServicePlanOption(dict):
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.IpServicePlanOptionConfiguration']]:
         """
-        Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
+        Representation of a configuration item for personalizing product
         """
         return pulumi.get(self, "configurations")
 
@@ -423,7 +423,7 @@ class IpServiceRoutedTo(dict):
     def __init__(__self__, *,
                  service_name: Optional[str] = None):
         """
-        :param str service_name: service name
+        :param str service_name: Service where ip is routed to
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -432,7 +432,7 @@ class IpServiceRoutedTo(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[str]:
         """
-        service name
+        Service where ip is routed to
         """
         return pulumi.get(self, "service_name")
 
@@ -459,7 +459,7 @@ class MoveRoutedTo(dict):
     def __init__(__self__, *,
                  service_name: str):
         """
-        :param str service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
+        :param str service_name: Service where ip is routed to
         """
         pulumi.set(__self__, "service_name", service_name)
 
@@ -467,7 +467,7 @@ class MoveRoutedTo(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Name of the service to route the IP to. IP will be parked if this value is an empty string
+        Service where ip is routed to
         """
         return pulumi.get(self, "service_name")
 
@@ -477,7 +477,7 @@ class GetServiceRoutedToResult(dict):
     def __init__(__self__, *,
                  service_name: str):
         """
-        :param str service_name: The service name
+        :param str service_name: Service where ip is routed to
         """
         pulumi.set(__self__, "service_name", service_name)
 
@@ -485,7 +485,7 @@ class GetServiceRoutedToResult(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        The service name
+        Service where ip is routed to
         """
         return pulumi.get(self, "service_name")
 

@@ -9,36 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Hosting
 {
-    /// <summary>
-    /// Create a new database on your private cloud database service.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var database = new Ovh.Hosting.PrivateDatabaseDb("database", new()
-    ///     {
-    ///         DatabaseName = "XXXXXX",
-    ///         ServiceName = "XXXXXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb")]
     public partial class PrivateDatabaseDb : global::Pulumi.CustomResource
     {
@@ -49,7 +19,7 @@ namespace Pulumi.Ovh.Hosting
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -108,7 +78,7 @@ namespace Pulumi.Ovh.Hosting
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -128,7 +98,7 @@ namespace Pulumi.Ovh.Hosting
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

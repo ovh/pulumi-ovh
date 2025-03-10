@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a credit card
-// payment mean associated with an OVHcloud account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.GetPaymentmeanCreditCard(ctx, &me.GetPaymentmeanCreditCardArgs{
-//				UseDefault: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPaymentmeanCreditCard(ctx *pulumi.Context, args *GetPaymentmeanCreditCardArgs, opts ...pulumi.InvokeOption) (*GetPaymentmeanCreditCardResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPaymentmeanCreditCardResult
@@ -51,30 +23,19 @@ func GetPaymentmeanCreditCard(ctx *pulumi.Context, args *GetPaymentmeanCreditCar
 
 // A collection of arguments for invoking getPaymentmeanCreditCard.
 type GetPaymentmeanCreditCardArgs struct {
-	// a regexp used to filter credit cards
-	// on their `description` attributes.
-	DescriptionRegexp *string `pulumi:"descriptionRegexp"`
-	// Filter credit cards on their `state` attribute.
-	// Can be "expired", "valid", "tooManyFailures"
-	States []string `pulumi:"states"`
-	// Retrieve credit card marked as default payment mean.
-	UseDefault *bool `pulumi:"useDefault"`
-	// Retrieve the credit card that will be the last
-	// to expire according to its expiration date.
-	UseLastToExpire *bool `pulumi:"useLastToExpire"`
+	DescriptionRegexp *string  `pulumi:"descriptionRegexp"`
+	States            []string `pulumi:"states"`
+	UseDefault        *bool    `pulumi:"useDefault"`
+	UseLastToExpire   *bool    `pulumi:"useLastToExpire"`
 }
 
 // A collection of values returned by getPaymentmeanCreditCard.
 type GetPaymentmeanCreditCardResult struct {
-	// a boolean which tells if the retrieved credit card
-	// is marked as the default payment mean
-	Default bool `pulumi:"default"`
-	// the description attribute of the credit card
+	Default           bool    `pulumi:"default"`
 	Description       string  `pulumi:"description"`
 	DescriptionRegexp *string `pulumi:"descriptionRegexp"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// the state attribute of the credit card
+	Id              string   `pulumi:"id"`
 	State           string   `pulumi:"state"`
 	States          []string `pulumi:"states"`
 	UseDefault      *bool    `pulumi:"useDefault"`
@@ -92,17 +53,10 @@ func GetPaymentmeanCreditCardOutput(ctx *pulumi.Context, args GetPaymentmeanCred
 
 // A collection of arguments for invoking getPaymentmeanCreditCard.
 type GetPaymentmeanCreditCardOutputArgs struct {
-	// a regexp used to filter credit cards
-	// on their `description` attributes.
-	DescriptionRegexp pulumi.StringPtrInput `pulumi:"descriptionRegexp"`
-	// Filter credit cards on their `state` attribute.
-	// Can be "expired", "valid", "tooManyFailures"
-	States pulumi.StringArrayInput `pulumi:"states"`
-	// Retrieve credit card marked as default payment mean.
-	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
-	// Retrieve the credit card that will be the last
-	// to expire according to its expiration date.
-	UseLastToExpire pulumi.BoolPtrInput `pulumi:"useLastToExpire"`
+	DescriptionRegexp pulumi.StringPtrInput   `pulumi:"descriptionRegexp"`
+	States            pulumi.StringArrayInput `pulumi:"states"`
+	UseDefault        pulumi.BoolPtrInput     `pulumi:"useDefault"`
+	UseLastToExpire   pulumi.BoolPtrInput     `pulumi:"useLastToExpire"`
 }
 
 func (GetPaymentmeanCreditCardOutputArgs) ElementType() reflect.Type {
@@ -124,13 +78,10 @@ func (o GetPaymentmeanCreditCardResultOutput) ToGetPaymentmeanCreditCardResultOu
 	return o
 }
 
-// a boolean which tells if the retrieved credit card
-// is marked as the default payment mean
 func (o GetPaymentmeanCreditCardResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPaymentmeanCreditCardResult) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-// the description attribute of the credit card
 func (o GetPaymentmeanCreditCardResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPaymentmeanCreditCardResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -144,7 +95,6 @@ func (o GetPaymentmeanCreditCardResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPaymentmeanCreditCardResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// the state attribute of the credit card
 func (o GetPaymentmeanCreditCardResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPaymentmeanCreditCardResult) string { return v.State }).(pulumi.StringOutput)
 }

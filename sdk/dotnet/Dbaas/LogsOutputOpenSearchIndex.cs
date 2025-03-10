@@ -9,29 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
-    /// <summary>
-    /// Creates a DBaaS Logs Opensearch output index.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var index = new Ovh.Dbaas.LogsOutputOpenSearchIndex("index", new()
-    ///     {
-    ///         Description = "my opensearch index",
-    ///         ServiceName = "....",
-    ///         Suffix = "index",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex")]
     public partial class LogsOutputOpenSearchIndex : global::Pulumi.CustomResource
     {
@@ -42,13 +19,13 @@ namespace Pulumi.Ovh.Dbaas
         public Output<bool> AlertNotifyEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Index creation
+        /// Operation creation
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Current index size (in bytes)
+        /// Current Index size (in bytes)
         /// </summary>
         [Output("currentSize")]
         public Output<int> CurrentSize { get; private set; } = null!;
@@ -84,7 +61,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of shards
+        /// Number of shard
         /// </summary>
         [Output("nbShard")]
         public Output<int> NbShard { get; private set; } = null!;
@@ -102,7 +79,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Suffix { get; private set; } = null!;
 
         /// <summary>
-        /// Index last update
+        /// Operation last update
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -161,7 +138,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// Number of shards
+        /// Number of shard
         /// </summary>
         [Input("nbShard", required: true)]
         public Input<int> NbShard { get; set; } = null!;
@@ -193,13 +170,13 @@ namespace Pulumi.Ovh.Dbaas
         public Input<bool>? AlertNotifyEnabled { get; set; }
 
         /// <summary>
-        /// Index creation
+        /// Operation creation
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Current index size (in bytes)
+        /// Current Index size (in bytes)
         /// </summary>
         [Input("currentSize")]
         public Input<int>? CurrentSize { get; set; }
@@ -235,7 +212,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of shards
+        /// Number of shard
         /// </summary>
         [Input("nbShard")]
         public Input<int>? NbShard { get; set; }
@@ -253,7 +230,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? Suffix { get; set; }
 
         /// <summary>
-        /// Index last update
+        /// Operation last update
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

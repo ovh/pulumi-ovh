@@ -11,75 +11,12 @@ namespace Pulumi.Ovh.Okms
 {
     public static class GetOkmsResource
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a KMS associated with this account
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kms = Ovh.Okms.GetOkmsResource.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetOkmsResourceResult> InvokeAsync(GetOkmsResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOkmsResourceResult>("ovh:Okms/getOkmsResource:getOkmsResource", args ?? new GetOkmsResourceArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about a KMS associated with this account
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kms = Ovh.Okms.GetOkmsResource.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetOkmsResourceResult> Invoke(GetOkmsResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsResourceResult>("ovh:Okms/getOkmsResource:getOkmsResource", args ?? new GetOkmsResourceInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about a KMS associated with this account
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kms = Ovh.Okms.GetOkmsResource.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetOkmsResourceResult> Invoke(GetOkmsResourceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsResourceResult>("ovh:Okms/getOkmsResource:getOkmsResource", args ?? new GetOkmsResourceInvokeArgs(), options.WithDefaults());
     }
@@ -87,9 +24,6 @@ namespace Pulumi.Ovh.Okms
 
     public sealed class GetOkmsResourceArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Should be set to the ID of your KMS
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -101,9 +35,6 @@ namespace Pulumi.Ovh.Okms
 
     public sealed class GetOkmsResourceInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Should be set to the ID of your KMS
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -117,33 +48,12 @@ namespace Pulumi.Ovh.Okms
     [OutputType]
     public sealed class GetOkmsResourceResult
     {
-        /// <summary>
-        /// (Attributes) IAM resource metadata (see below for nested schema)
-        /// </summary>
         public readonly Outputs.GetOkmsResourceIamResult Iam;
-        /// <summary>
-        /// (String) Unique identifier of the resource
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (String) KMS kmip API endpoint
-        /// </summary>
         public readonly string KmipEndpoint;
-        /// <summary>
-        /// (String) KMS public CA (Certificate Authority)
-        /// </summary>
         public readonly string PublicCa;
-        /// <summary>
-        /// (String) Region
-        /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// (String) KMS rest API endpoint
-        /// </summary>
         public readonly string RestEndpoint;
-        /// <summary>
-        /// (String) KMS rest API swagger UI
-        /// </summary>
         public readonly string SwaggerEndpoint;
 
         [OutputConstructor]

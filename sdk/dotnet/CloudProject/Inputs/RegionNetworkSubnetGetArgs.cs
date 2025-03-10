@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputList<Inputs.RegionNetworkSubnetAllocationPoolGetArgs>? _allocationPools;
 
         /// <summary>
-        /// List of IP pools allocated in subnet
+        /// List of ip pools allocated in subnet
         /// </summary>
         public InputList<Inputs.RegionNetworkSubnetAllocationPoolGetArgs> AllocationPools
         {

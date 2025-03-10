@@ -49,9 +49,6 @@ class GetPrivateDatabaseUserGrantResult:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        Creation date of the database
-        """
         return pulumi.get(self, "creation_date")
 
     @property
@@ -62,9 +59,6 @@ class GetPrivateDatabaseUserGrantResult:
     @property
     @pulumi.getter
     def grant(self) -> str:
-        """
-        Grant name
-        """
         return pulumi.get(self, "grant")
 
     @property
@@ -105,23 +99,7 @@ def get_private_database_user_grant(database_name: Optional[str] = None,
                                     user_name: Optional[str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateDatabaseUserGrantResult:
     """
-    Use this data source to retrieve information about an hosting privatedatabase user grant.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    user_grant = ovh.Hosting.get_private_database_user_grant(database_name="XXXXXX",
-        service_name="XXXXXX",
-        user_name="XXXXXX")
-    ```
-
-
-    :param str database_name: The database name on which grant the user
-    :param str service_name: The internal name of your private database
-    :param str user_name: The user name
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -142,23 +120,7 @@ def get_private_database_user_grant_output(database_name: Optional[pulumi.Input[
                                            user_name: Optional[pulumi.Input[str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseUserGrantResult]:
     """
-    Use this data source to retrieve information about an hosting privatedatabase user grant.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    user_grant = ovh.Hosting.get_private_database_user_grant(database_name="XXXXXX",
-        service_name="XXXXXX",
-        user_name="XXXXXX")
-    ```
-
-
-    :param str database_name: The database name on which grant the user
-    :param str service_name: The internal name of your private database
-    :param str user_name: The user name
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name

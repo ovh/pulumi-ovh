@@ -4,38 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a backend server group (farm) to be used by loadbalancing frontend(s)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const farmName = new ovh.iploadbalancing.UdpFarm("farmName", {
- *     displayName: "ingress-8080-gra",
- *     port: 80,
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "gra",
- * });
- * ```
- *
- * ## Import
- *
- * UDP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:IpLoadBalancing/udpFarm:UdpFarm farmname service_name/farm_id
- * ```
- */
 export class UdpFarm extends pulumi.CustomResource {
     /**
      * Get an existing UdpFarm resource's state with the given name, ID, and optional extra
@@ -65,11 +33,11 @@ export class UdpFarm extends pulumi.CustomResource {
     }
 
     /**
-     * Readable label for loadbalancer farm
+     * Human readable name for your backend, this field is for you
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Id of your farm.
+     * Id of your farm
      */
     public /*out*/ readonly farmId!: pulumi.Output<number>;
     /**
@@ -81,11 +49,12 @@ export class UdpFarm extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
+     * is attached to a vRack
      */
     public readonly vrackNetworkId!: pulumi.Output<number | undefined>;
     /**
-     * Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
+     * Zone of your farm
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -136,11 +105,11 @@ export class UdpFarm extends pulumi.CustomResource {
  */
 export interface UdpFarmState {
     /**
-     * Readable label for loadbalancer farm
+     * Human readable name for your backend, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Id of your farm.
+     * Id of your farm
      */
     farmId?: pulumi.Input<number>;
     /**
@@ -152,11 +121,12 @@ export interface UdpFarmState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
+     * is attached to a vRack
      */
     vrackNetworkId?: pulumi.Input<number>;
     /**
-     * Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
+     * Zone of your farm
      */
     zone?: pulumi.Input<string>;
 }
@@ -166,7 +136,7 @@ export interface UdpFarmState {
  */
 export interface UdpFarmArgs {
     /**
-     * Readable label for loadbalancer farm
+     * Human readable name for your backend, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -178,11 +148,12 @@ export interface UdpFarmArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
+     * is attached to a vRack
      */
     vrackNetworkId?: pulumi.Input<number>;
     /**
-     * Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
+     * Zone of your farm
      */
     zone: pulumi.Input<string>;
 }

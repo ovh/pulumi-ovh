@@ -6,73 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myaccount = ovh.Me.getMe({});
- * const mycart = ovh.Order.getCart({
- *     ovhSubsidiary: "fr",
- * });
- * const ipblockCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
- *     cartId: mycart.id,
- *     priceCapacity: "renew",
- *     product: "ip",
- *     planCode: "ip-v4-s30-ripe",
- * }));
- * const ipblockIpService = new ovh.ip.IpService("ipblockIpService", {
- *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
- *     description: "my ip block",
- *     plan: {
- *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
- *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
- *         configurations: [
- *             {
- *                 label: "country",
- *                 value: "FR",
- *             },
- *             {
- *                 label: "region",
- *                 value: "europe",
- *             },
- *             {
- *                 label: "destination",
- *                 value: "parking",
- *             },
- *         ],
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * The resource can be imported using its `service_name`, E.g.,
- *
- * hcl
- *
- * import {
- *
- *   to = ovh_ip_service.ipblock
- *
- *   id = "ip-xx.xx.xx.xx"
- *
- * }
- *
- * bash
- *
- * $ pulumi preview -generate-config-out=ipblock.tf
- *
- * $ pulumi up
- *
- * The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
- */
 export class IpService extends pulumi.CustomResource {
     /**
      * Get an existing IpService resource's state with the given name, ID, and optional extra
@@ -101,32 +34,20 @@ export class IpService extends pulumi.CustomResource {
         return obj['__pulumiType'] === IpService.__pulumiType;
     }
 
-    /**
-     * can be terminated
-     */
     public /*out*/ readonly canBeTerminated!: pulumi.Output<boolean>;
-    /**
-     * country
-     */
     public /*out*/ readonly country!: pulumi.Output<string>;
     /**
-     * Custom description on your ip.
+     * Custom description on your ip
      */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * ip block
-     */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * Details about an Order
      */
     public readonly orders!: pulumi.Output<outputs.Ip.IpServiceOrder[]>;
-    /**
-     * IP block organisation Id
-     */
     public /*out*/ readonly organisationId!: pulumi.Output<string>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -147,9 +68,6 @@ export class IpService extends pulumi.CustomResource {
      * Routage information
      */
     public /*out*/ readonly routedTos!: pulumi.Output<outputs.Ip.IpServiceRoutedTo[]>;
-    /**
-     * service name
-     */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
      * Possible values for ip type
@@ -207,32 +125,20 @@ export class IpService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IpService resources.
  */
 export interface IpServiceState {
-    /**
-     * can be terminated
-     */
     canBeTerminated?: pulumi.Input<boolean>;
-    /**
-     * country
-     */
     country?: pulumi.Input<string>;
     /**
-     * Custom description on your ip.
+     * Custom description on your ip
      */
     description?: pulumi.Input<string>;
-    /**
-     * ip block
-     */
     ip?: pulumi.Input<string>;
     /**
      * Details about an Order
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Ip.IpServiceOrder>[]>;
-    /**
-     * IP block organisation Id
-     */
     organisationId?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -253,9 +159,6 @@ export interface IpServiceState {
      * Routage information
      */
     routedTos?: pulumi.Input<pulumi.Input<inputs.Ip.IpServiceRoutedTo>[]>;
-    /**
-     * service name
-     */
     serviceName?: pulumi.Input<string>;
     /**
      * Possible values for ip type
@@ -268,7 +171,7 @@ export interface IpServiceState {
  */
 export interface IpServiceArgs {
     /**
-     * Custom description on your ip.
+     * Custom description on your ip
      */
     description?: pulumi.Input<string>;
     /**
@@ -276,7 +179,7 @@ export interface IpServiceArgs {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Ip.IpServiceOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**

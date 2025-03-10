@@ -27,12 +27,12 @@ class UdpFarmServerArgs:
                  port: Optional[pulumi.Input[float]] = None):
         """
         The set of arguments for constructing a UdpFarmServer resource.
-        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
-        :param pulumi.Input[float] farm_id: ID of the farm this server is attached to
+        :param pulumi.Input[str] address: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[float] farm_id: Id of your farm
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] status: backend status - `active` or `inactive`
-        :param pulumi.Input[str] display_name: Label for the server
-        :param pulumi.Input[float] port: Port that backend will respond on
+        :param pulumi.Input[str] status: Possible values for server status
+        :param pulumi.Input[str] display_name: Human readable name for your server, this field is for you
+        :param pulumi.Input[float] port: Port attached to your server ([1..49151]). Inherited from farm if null
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "farm_id", farm_id)
@@ -47,7 +47,7 @@ class UdpFarmServerArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
         """
-        Address of the backend server (IP from either internal or OVHcloud network)
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "address")
 
@@ -59,7 +59,7 @@ class UdpFarmServerArgs:
     @pulumi.getter(name="farmId")
     def farm_id(self) -> pulumi.Input[float]:
         """
-        ID of the farm this server is attached to
+        Id of your farm
         """
         return pulumi.get(self, "farm_id")
 
@@ -83,7 +83,7 @@ class UdpFarmServerArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
         """
-        backend status - `active` or `inactive`
+        Possible values for server status
         """
         return pulumi.get(self, "status")
 
@@ -95,7 +95,7 @@ class UdpFarmServerArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Label for the server
+        Human readable name for your server, this field is for you
         """
         return pulumi.get(self, "display_name")
 
@@ -107,7 +107,7 @@ class UdpFarmServerArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[float]]:
         """
-        Port that backend will respond on
+        Port attached to your server ([1..49151]). Inherited from farm if null
         """
         return pulumi.get(self, "port")
 
@@ -129,14 +129,14 @@ class _UdpFarmServerState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UdpFarmServer resources.
-        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
-        :param pulumi.Input[float] backend_id: Synonym for `farm_id`.
-        :param pulumi.Input[str] display_name: Label for the server
-        :param pulumi.Input[float] farm_id: ID of the farm this server is attached to
-        :param pulumi.Input[float] port: Port that backend will respond on
-        :param pulumi.Input[float] server_id: Id of your server.
+        :param pulumi.Input[str] address: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[float] backend_id: Synonym for farm_id
+        :param pulumi.Input[str] display_name: Human readable name for your server, this field is for you
+        :param pulumi.Input[float] farm_id: Id of your farm
+        :param pulumi.Input[float] port: Port attached to your server ([1..49151]). Inherited from farm if null
+        :param pulumi.Input[float] server_id: Id of your server
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[str] status: Possible values for server status
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -159,7 +159,7 @@ class _UdpFarmServerState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        Address of the backend server (IP from either internal or OVHcloud network)
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "address")
 
@@ -171,7 +171,7 @@ class _UdpFarmServerState:
     @pulumi.getter(name="backendId")
     def backend_id(self) -> Optional[pulumi.Input[float]]:
         """
-        Synonym for `farm_id`.
+        Synonym for farm_id
         """
         return pulumi.get(self, "backend_id")
 
@@ -183,7 +183,7 @@ class _UdpFarmServerState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Label for the server
+        Human readable name for your server, this field is for you
         """
         return pulumi.get(self, "display_name")
 
@@ -195,7 +195,7 @@ class _UdpFarmServerState:
     @pulumi.getter(name="farmId")
     def farm_id(self) -> Optional[pulumi.Input[float]]:
         """
-        ID of the farm this server is attached to
+        Id of your farm
         """
         return pulumi.get(self, "farm_id")
 
@@ -207,7 +207,7 @@ class _UdpFarmServerState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[float]]:
         """
-        Port that backend will respond on
+        Port attached to your server ([1..49151]). Inherited from farm if null
         """
         return pulumi.get(self, "port")
 
@@ -219,7 +219,7 @@ class _UdpFarmServerState:
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[pulumi.Input[float]]:
         """
-        Id of your server.
+        Id of your server
         """
         return pulumi.get(self, "server_id")
 
@@ -243,7 +243,7 @@ class _UdpFarmServerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        backend status - `active` or `inactive`
+        Possible values for server status
         """
         return pulumi.get(self, "status")
 
@@ -265,42 +265,15 @@ class UdpFarmServer(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a backend server entry linked to loadbalancing group (farm)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        farm_name = ovh.ip_load_balancing.UdpFarm("farmName",
-            display_name="ingress-8080-gra",
-            port=80,
-            service_name=lb.service_name,
-            zone="gra")
-        backend = ovh.ip_load_balancing.UdpFarmServer("backend",
-            address="4.5.6.7",
-            display_name="mybackend",
-            farm_id=farm_name.farm_id,
-            port=80,
-            service_name=lb.service_name,
-            status="active")
-        ```
-
-        ## Import
-
-        UDP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
-
+        Create a UdpFarmServer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
-        :param pulumi.Input[str] display_name: Label for the server
-        :param pulumi.Input[float] farm_id: ID of the farm this server is attached to
-        :param pulumi.Input[float] port: Port that backend will respond on
+        :param pulumi.Input[str] address: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] display_name: Human readable name for your server, this field is for you
+        :param pulumi.Input[float] farm_id: Id of your farm
+        :param pulumi.Input[float] port: Port attached to your server ([1..49151]). Inherited from farm if null
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[str] status: Possible values for server status
         """
         ...
     @overload
@@ -309,34 +282,7 @@ class UdpFarmServer(pulumi.CustomResource):
                  args: UdpFarmServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a backend server entry linked to loadbalancing group (farm)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        farm_name = ovh.ip_load_balancing.UdpFarm("farmName",
-            display_name="ingress-8080-gra",
-            port=80,
-            service_name=lb.service_name,
-            zone="gra")
-        backend = ovh.ip_load_balancing.UdpFarmServer("backend",
-            address="4.5.6.7",
-            display_name="mybackend",
-            farm_id=farm_name.farm_id,
-            port=80,
-            service_name=lb.service_name,
-            status="active")
-        ```
-
-        ## Import
-
-        UDP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
-
+        Create a UdpFarmServer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param UdpFarmServerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -408,14 +354,14 @@ class UdpFarmServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
-        :param pulumi.Input[float] backend_id: Synonym for `farm_id`.
-        :param pulumi.Input[str] display_name: Label for the server
-        :param pulumi.Input[float] farm_id: ID of the farm this server is attached to
-        :param pulumi.Input[float] port: Port that backend will respond on
-        :param pulumi.Input[float] server_id: Id of your server.
+        :param pulumi.Input[str] address: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[float] backend_id: Synonym for farm_id
+        :param pulumi.Input[str] display_name: Human readable name for your server, this field is for you
+        :param pulumi.Input[float] farm_id: Id of your farm
+        :param pulumi.Input[float] port: Port attached to your server ([1..49151]). Inherited from farm if null
+        :param pulumi.Input[float] server_id: Id of your server
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[str] status: Possible values for server status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -435,7 +381,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        Address of the backend server (IP from either internal or OVHcloud network)
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "address")
 
@@ -443,7 +389,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter(name="backendId")
     def backend_id(self) -> pulumi.Output[float]:
         """
-        Synonym for `farm_id`.
+        Synonym for farm_id
         """
         return pulumi.get(self, "backend_id")
 
@@ -451,7 +397,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Label for the server
+        Human readable name for your server, this field is for you
         """
         return pulumi.get(self, "display_name")
 
@@ -459,7 +405,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter(name="farmId")
     def farm_id(self) -> pulumi.Output[float]:
         """
-        ID of the farm this server is attached to
+        Id of your farm
         """
         return pulumi.get(self, "farm_id")
 
@@ -467,7 +413,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[float]]:
         """
-        Port that backend will respond on
+        Port attached to your server ([1..49151]). Inherited from farm if null
         """
         return pulumi.get(self, "port")
 
@@ -475,7 +421,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Output[float]:
         """
-        Id of your server.
+        Id of your server
         """
         return pulumi.get(self, "server_id")
 
@@ -491,7 +437,7 @@ class UdpFarmServer(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        backend status - `active` or `inactive`
+        Possible values for server status
         """
         return pulumi.get(self, "status")
 

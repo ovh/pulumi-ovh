@@ -11,87 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetNetworkPrivates
     {
-        /// <summary>
-        /// List public cloud project private networks.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["private"] = privateNetworkPrivates,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetNetworkPrivatesResult> InvokeAsync(GetNetworkPrivatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPrivatesResult>("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", args ?? new GetNetworkPrivatesArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// List public cloud project private networks.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["private"] = privateNetworkPrivates,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetNetworkPrivatesResult> Invoke(GetNetworkPrivatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPrivatesResult>("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", args ?? new GetNetworkPrivatesInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// List public cloud project private networks.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["private"] = privateNetworkPrivates,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetNetworkPrivatesResult> Invoke(GetNetworkPrivatesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPrivatesResult>("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", args ?? new GetNetworkPrivatesInvokeArgs(), options.WithDefaults());
     }
@@ -99,9 +24,6 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetNetworkPrivatesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the public cloud project.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -113,9 +35,6 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetNetworkPrivatesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the public cloud project.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -133,13 +52,7 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// List of network
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkPrivatesNetworkResult> Networks;
-        /// <summary>
-        /// ID of the public cloud project
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

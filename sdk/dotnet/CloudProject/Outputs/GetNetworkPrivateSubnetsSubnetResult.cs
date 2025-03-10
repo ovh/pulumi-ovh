@@ -14,23 +14,23 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetNetworkPrivateSubnetsSubnetResult
     {
         /// <summary>
-        /// CIDR of the subnet
+        /// Subnet CIDR
         /// </summary>
         public readonly string Cidr;
         /// <summary>
-        /// Whether or not if DHCP is enabled for the subnet
+        /// Is DHCP enabled for the subnet
         /// </summary>
         public readonly bool DhcpEnabled;
         /// <summary>
-        /// Gateway IP of the subnet
+        /// Gateway IP in the subnet
         /// </summary>
         public readonly string GatewayIp;
         /// <summary>
-        /// ID of the subnet
+        /// Subnet id
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of ip pools allocated in the subnet
+        /// List of ip pools allocated in subnet
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkPrivateSubnetsSubnetIpPoolResult> IpPools;
 

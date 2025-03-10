@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			subscriptions, err := cloudprojectdatabase.GetDatabaseLogSubscriptions(ctx, &cloudprojectdatabase.GetDatabaseLogSubscriptionsArgs{
-//				ServiceName: "XXX",
-//				Engine:      "YYY",
-//				ClusterId:   "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("subscriptionIds", subscriptions.SubscriptionIds)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDatabaseLogSubscriptions(ctx *pulumi.Context, args *GetDatabaseLogSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseLogSubscriptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseLogSubscriptionsResult
@@ -53,27 +23,18 @@ func GetDatabaseLogSubscriptions(ctx *pulumi.Context, args *GetDatabaseLogSubscr
 
 // A collection of arguments for invoking getDatabaseLogSubscriptions.
 type GetDatabaseLogSubscriptionsArgs struct {
-	// Cluster ID.
-	ClusterId string `pulumi:"clusterId"`
-	// The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	Engine string `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Engine      string `pulumi:"engine"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getDatabaseLogSubscriptions.
 type GetDatabaseLogSubscriptionsResult struct {
-	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
-	// See Argument Reference above.
-	Engine string `pulumi:"engine"`
+	Engine    string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
-	ServiceName string `pulumi:"serviceName"`
-	// The list of log subscription ids of the cluster associated with the project.
+	Id              string   `pulumi:"id"`
+	ServiceName     string   `pulumi:"serviceName"`
 	SubscriptionIds []string `pulumi:"subscriptionIds"`
 }
 
@@ -88,13 +49,8 @@ func GetDatabaseLogSubscriptionsOutput(ctx *pulumi.Context, args GetDatabaseLogS
 
 // A collection of arguments for invoking getDatabaseLogSubscriptions.
 type GetDatabaseLogSubscriptionsOutputArgs struct {
-	// Cluster ID.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	Engine pulumi.StringInput `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Engine      pulumi.StringInput `pulumi:"engine"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -117,12 +73,10 @@ func (o GetDatabaseLogSubscriptionsResultOutput) ToGetDatabaseLogSubscriptionsRe
 	return o
 }
 
-// See Argument Reference above.
 func (o GetDatabaseLogSubscriptionsResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseLogSubscriptionsResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetDatabaseLogSubscriptionsResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseLogSubscriptionsResult) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -132,12 +86,10 @@ func (o GetDatabaseLogSubscriptionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseLogSubscriptionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetDatabaseLogSubscriptionsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseLogSubscriptionsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The list of log subscription ids of the cluster associated with the project.
 func (o GetDatabaseLogSubscriptionsResultOutput) SubscriptionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseLogSubscriptionsResult) []string { return v.SubscriptionIds }).(pulumi.StringArrayOutput)
 }

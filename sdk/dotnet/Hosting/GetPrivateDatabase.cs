@@ -11,75 +11,12 @@ namespace Pulumi.Ovh.Hosting
 {
     public static class GetPrivateDatabase
     {
-        /// <summary>
-        /// Use this data source to retrieve information about an hosting database.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var database = Ovh.Hosting.GetPrivateDatabase.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetPrivateDatabaseResult> InvokeAsync(GetPrivateDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about an hosting database.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var database = Ovh.Hosting.GetPrivateDatabase.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetPrivateDatabaseResult> Invoke(GetPrivateDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about an hosting database.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var database = Ovh.Hosting.GetPrivateDatabase.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetPrivateDatabaseResult> Invoke(GetPrivateDatabaseInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseResult>("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", args ?? new GetPrivateDatabaseInvokeArgs(), options.WithDefaults());
     }
@@ -87,9 +24,6 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The internal name of your private database
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -101,9 +35,6 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The internal name of your private database
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -117,83 +48,29 @@ namespace Pulumi.Ovh.Hosting
     [OutputType]
     public sealed class GetPrivateDatabaseResult
     {
-        /// <summary>
-        /// Number of CPU on your private database
-        /// </summary>
         public readonly int Cpu;
-        /// <summary>
-        /// Datacenter where this private database is located
-        /// </summary>
         public readonly string Datacenter;
-        /// <summary>
-        /// Name displayed in customer panel for your private database
-        /// </summary>
         public readonly string DisplayName;
-        /// <summary>
-        /// Private database hostname
-        /// </summary>
         public readonly string Hostname;
-        /// <summary>
-        /// Private database FTP hostname
-        /// </summary>
         public readonly string HostnameFtp;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Infrastructure where service was stored
-        /// </summary>
         public readonly string Infrastructure;
-        /// <summary>
-        /// Type of the private database offer
-        /// </summary>
         public readonly string Offer;
-        /// <summary>
-        /// Private database service port
-        /// </summary>
         public readonly int Port;
-        /// <summary>
-        /// Private database FTP port
-        /// </summary>
         public readonly int PortFtp;
-        /// <summary>
-        /// Space allowed (in MB) on your private database
-        /// </summary>
         public readonly int QuotaSize;
-        /// <summary>
-        /// Sapce used (in MB) on your private database
-        /// </summary>
         public readonly int QuotaUsed;
-        /// <summary>
-        /// Amount of ram (in MB) on your private database
-        /// </summary>
         public readonly int Ram;
-        /// <summary>
-        /// Private database server name
-        /// </summary>
         public readonly string Server;
         public readonly string ServiceName;
-        /// <summary>
-        /// Private database state
-        /// </summary>
         public readonly string State;
         public readonly string Type;
-        /// <summary>
-        /// URN of the private database
-        /// </summary>
         public readonly string Urn;
-        /// <summary>
-        /// Private database available versions
-        /// </summary>
         public readonly string Version;
-        /// <summary>
-        /// Private database version label
-        /// </summary>
         public readonly string VersionLabel;
-        /// <summary>
-        /// Private database version number
-        /// </summary>
         public readonly double VersionNumber;
 
         [OutputConstructor]

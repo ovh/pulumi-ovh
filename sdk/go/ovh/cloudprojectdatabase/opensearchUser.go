@@ -8,38 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id
-// ```
 type OpensearchUser struct {
 	pulumi.CustomResourceState
 
-	// Acls of the user.
+	// Acls of the user
 	Acls OpensearchUserAclArrayOutput `pulumi:"acls"`
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Date of the creation of the user.
+	// Date of the creation of the user
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+	// Name of the user
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Current status of the user.
+	ServiceName   pulumi.StringOutput    `pulumi:"serviceName"`
+	// Current status of the user
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -83,42 +72,38 @@ func GetOpensearchUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchUser resources.
 type opensearchUserState struct {
-	// Acls of the user.
+	// Acls of the user
 	Acls []OpensearchUserAcl `pulumi:"acls"`
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// Date of the creation of the user.
+	// Date of the creation of the user
 	CreatedAt *string `pulumi:"createdAt"`
-	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+	// Name of the user
 	Name *string `pulumi:"name"`
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName *string `pulumi:"serviceName"`
-	// Current status of the user.
+	ServiceName   *string `pulumi:"serviceName"`
+	// Current status of the user
 	Status *string `pulumi:"status"`
 }
 
 type OpensearchUserState struct {
-	// Acls of the user.
+	// Acls of the user
 	Acls OpensearchUserAclArrayInput
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// Date of the creation of the user.
+	// Date of the creation of the user
 	CreatedAt pulumi.StringPtrInput
-	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+	// Name of the user
 	Name pulumi.StringPtrInput
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringPtrInput
-	// Current status of the user.
+	ServiceName   pulumi.StringPtrInput
+	// Current status of the user
 	Status pulumi.StringPtrInput
 }
 
@@ -127,32 +112,28 @@ func (OpensearchUserState) ElementType() reflect.Type {
 }
 
 type opensearchUserArgs struct {
-	// Acls of the user.
+	// Acls of the user
 	Acls []OpensearchUserAcl `pulumi:"acls"`
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+	// Name of the user
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName   string  `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a OpensearchUser resource.
 type OpensearchUserArgs struct {
-	// Acls of the user.
+	// Acls of the user
 	Acls OpensearchUserAclArrayInput
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+	// Name of the user
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
+	ServiceName   pulumi.StringInput
 }
 
 func (OpensearchUserArgs) ElementType() reflect.Type {
@@ -242,27 +223,27 @@ func (o OpensearchUserOutput) ToOpensearchUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Acls of the user.
+// Acls of the user
 func (o OpensearchUserOutput) Acls() OpensearchUserAclArrayOutput {
 	return o.ApplyT(func(v *OpensearchUser) OpensearchUserAclArrayOutput { return v.Acls }).(OpensearchUserAclArrayOutput)
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o OpensearchUserOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Date of the creation of the user.
+// Date of the creation of the user
 func (o OpensearchUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+// Name of the user
 func (o OpensearchUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Sensitive) Password of the user.
+// Password of the user
 func (o OpensearchUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -272,13 +253,11 @@ func (o OpensearchUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o OpensearchUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Current status of the user.
+// Current status of the user
 func (o OpensearchUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

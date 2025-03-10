@@ -29,14 +29,6 @@ class TcpRouteRuleInitArgs:
                  sub_field: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TcpRouteRule resource.
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         pulumi.set(__self__, "field", field)
         pulumi.set(__self__, "match", match)
@@ -54,9 +46,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def field(self) -> pulumi.Input[str]:
-        """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        """
         return pulumi.get(self, "field")
 
     @field.setter
@@ -66,9 +55,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def match(self) -> pulumi.Input[str]:
-        """
-        Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -78,9 +64,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Input[str]:
-        """
-        The route to apply this rule
-        """
         return pulumi.get(self, "route_id")
 
     @route_id.setter
@@ -90,9 +73,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -102,9 +82,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human readable name for your rule, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -114,9 +91,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Invert the matching operator effect
-        """
         return pulumi.get(self, "negate")
 
     @negate.setter
@@ -126,9 +100,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
-        """
-        Value to match against this match. Interpretation if this field depends on the match and field
-        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -138,9 +109,6 @@ class TcpRouteRuleInitArgs:
     @property
     @pulumi.getter(name="subField")
     def sub_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-        """
         return pulumi.get(self, "sub_field")
 
     @sub_field.setter
@@ -161,14 +129,6 @@ class _TcpRouteRuleState:
                  sub_field: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TcpRouteRule resources.
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -190,9 +150,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human readable name for your rule, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -202,9 +159,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        """
         return pulumi.get(self, "field")
 
     @field.setter
@@ -214,9 +168,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
-        """
-        Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -226,9 +177,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Invert the matching operator effect
-        """
         return pulumi.get(self, "negate")
 
     @negate.setter
@@ -238,9 +186,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
-        """
-        Value to match against this match. Interpretation if this field depends on the match and field
-        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -250,9 +195,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The route to apply this rule
-        """
         return pulumi.get(self, "route_id")
 
     @route_id.setter
@@ -262,9 +204,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -274,9 +213,6 @@ class _TcpRouteRuleState:
     @property
     @pulumi.getter(name="subField")
     def sub_field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-        """
         return pulumi.get(self, "sub_field")
 
     @sub_field.setter
@@ -299,45 +235,9 @@ class TcpRouteRule(pulumi.CustomResource):
                  sub_field: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manage rules for TCP route.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        reject = ovh.ip_load_balancing.TcpRoute("reject",
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1,
-            frontend_id=11111,
-            action={
-                "type": "reject",
-            })
-        example_rule = ovh.ip_load_balancing.TcpRouteRule("exampleRule",
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            route_id=reject.id,
-            display_name="Match example.com host",
-            field="sni",
-            match="is",
-            negate=False,
-            pattern="example.com")
-        ```
-
-        ## Import
-
-        TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
-
+        Create a TcpRouteRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         ...
     @overload
@@ -346,35 +246,7 @@ class TcpRouteRule(pulumi.CustomResource):
                  args: TcpRouteRuleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage rules for TCP route.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        reject = ovh.ip_load_balancing.TcpRoute("reject",
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1,
-            frontend_id=11111,
-            action={
-                "type": "reject",
-            })
-        example_rule = ovh.ip_load_balancing.TcpRouteRule("exampleRule",
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            route_id=reject.id,
-            display_name="Match example.com host",
-            field="sni",
-            match="is",
-            negate=False,
-            pattern="example.com")
-        ```
-
-        ## Import
-
-        TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
-
+        Create a TcpRouteRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TcpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -448,14 +320,6 @@ class TcpRouteRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        :param pulumi.Input[bool] negate: Invert the matching operator effect
-        :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
-        :param pulumi.Input[str] route_id: The route to apply this rule
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] sub_field: Name of sub-field, if applicable. This may be a Cookie or Header name for instance
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,64 +338,40 @@ class TcpRouteRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human readable name for your rule, this field is for you
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def field(self) -> pulumi.Output[str]:
-        """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-        """
         return pulumi.get(self, "field")
 
     @property
     @pulumi.getter
     def match(self) -> pulumi.Output[str]:
-        """
-        Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def negate(self) -> pulumi.Output[bool]:
-        """
-        Invert the matching operator effect
-        """
         return pulumi.get(self, "negate")
 
     @property
     @pulumi.getter
     def pattern(self) -> pulumi.Output[Optional[str]]:
-        """
-        Value to match against this match. Interpretation if this field depends on the match and field
-        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Output[str]:
-        """
-        The route to apply this rule
-        """
         return pulumi.get(self, "route_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="subField")
     def sub_field(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-        """
         return pulumi.get(self, "sub_field")
 

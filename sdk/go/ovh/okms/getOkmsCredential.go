@@ -7,11 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
 func GetOkmsCredential(ctx *pulumi.Context, args *GetOkmsCredentialArgs, opts ...pulumi.InvokeOption) (*GetOkmsCredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOkmsCredentialResult
@@ -24,32 +23,22 @@ func GetOkmsCredential(ctx *pulumi.Context, args *GetOkmsCredentialArgs, opts ..
 
 // A collection of arguments for invoking getOkmsCredential.
 type GetOkmsCredentialArgs struct {
-	// ID of the credential
-	Id string `pulumi:"id"`
-	// ID of the KMS
+	Id     string `pulumi:"id"`
 	OkmsId string `pulumi:"okmsId"`
 }
 
 // A collection of values returned by getOkmsCredential.
 type GetOkmsCredentialResult struct {
-	// (String) PEM encoded certificate of the credential
-	CertificatePem string `pulumi:"certificatePem"`
-	// (String) Creation time of the credential
-	CreatedAt string `pulumi:"createdAt"`
-	// (String) Description of the credential
-	Description string `pulumi:"description"`
-	// (String) Expiration time of the credential
-	ExpiredAt string `pulumi:"expiredAt"`
-	// (Boolean) Is the credential generated from CSR
-	FromCsr bool   `pulumi:"fromCsr"`
-	Id      string `pulumi:"id"`
-	// (List of String) List of identity URNs associated with the credential
-	IdentityUrns []string `pulumi:"identityUrns"`
-	// (String) Name of the credential
-	Name   string `pulumi:"name"`
-	OkmsId string `pulumi:"okmsId"`
-	// (String) Status of the credential
-	Status string `pulumi:"status"`
+	CertificatePem string   `pulumi:"certificatePem"`
+	CreatedAt      string   `pulumi:"createdAt"`
+	Description    string   `pulumi:"description"`
+	ExpiredAt      string   `pulumi:"expiredAt"`
+	FromCsr        bool     `pulumi:"fromCsr"`
+	Id             string   `pulumi:"id"`
+	IdentityUrns   []string `pulumi:"identityUrns"`
+	Name           string   `pulumi:"name"`
+	OkmsId         string   `pulumi:"okmsId"`
+	Status         string   `pulumi:"status"`
 }
 
 func GetOkmsCredentialOutput(ctx *pulumi.Context, args GetOkmsCredentialOutputArgs, opts ...pulumi.InvokeOption) GetOkmsCredentialResultOutput {
@@ -63,9 +52,7 @@ func GetOkmsCredentialOutput(ctx *pulumi.Context, args GetOkmsCredentialOutputAr
 
 // A collection of arguments for invoking getOkmsCredential.
 type GetOkmsCredentialOutputArgs struct {
-	// ID of the credential
-	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the KMS
+	Id     pulumi.StringInput `pulumi:"id"`
 	OkmsId pulumi.StringInput `pulumi:"okmsId"`
 }
 
@@ -88,27 +75,22 @@ func (o GetOkmsCredentialResultOutput) ToGetOkmsCredentialResultOutputWithContex
 	return o
 }
 
-// (String) PEM encoded certificate of the credential
 func (o GetOkmsCredentialResultOutput) CertificatePem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.CertificatePem }).(pulumi.StringOutput)
 }
 
-// (String) Creation time of the credential
 func (o GetOkmsCredentialResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// (String) Description of the credential
 func (o GetOkmsCredentialResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (String) Expiration time of the credential
 func (o GetOkmsCredentialResultOutput) ExpiredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.ExpiredAt }).(pulumi.StringOutput)
 }
 
-// (Boolean) Is the credential generated from CSR
 func (o GetOkmsCredentialResultOutput) FromCsr() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) bool { return v.FromCsr }).(pulumi.BoolOutput)
 }
@@ -117,12 +99,10 @@ func (o GetOkmsCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (List of String) List of identity URNs associated with the credential
 func (o GetOkmsCredentialResultOutput) IdentityUrns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) []string { return v.IdentityUrns }).(pulumi.StringArrayOutput)
 }
 
-// (String) Name of the credential
 func (o GetOkmsCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -131,7 +111,6 @@ func (o GetOkmsCredentialResultOutput) OkmsId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.OkmsId }).(pulumi.StringOutput)
 }
 
-// (String) Status of the credential
 func (o GetOkmsCredentialResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.Status }).(pulumi.StringOutput)
 }

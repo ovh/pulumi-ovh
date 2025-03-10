@@ -61,10 +61,6 @@ class GetFailoverIpAttachResult:
     @property
     @pulumi.getter
     def block(self) -> str:
-        """
-        The IP block
-        * `continentCode` - The Ip continent
-        """
         return pulumi.get(self, "block")
 
     @property
@@ -80,26 +76,16 @@ class GetFailoverIpAttachResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The Ip id
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def ip(self) -> str:
-        """
-        The Ip Address
-        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter
     def progress(self) -> int:
-        """
-        Current operation progress in percent
-        * `routedTo` - Instance where ip is routed to
-        """
         return pulumi.get(self, "progress")
 
     @property
@@ -115,10 +101,6 @@ class GetFailoverIpAttachResult:
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Ip status, can be `ok` or `operationPending`
-        * `subType` - IP sub type, can be `cloud` or `ovh`
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -153,24 +135,7 @@ def get_failover_ip_attach(block: Optional[str] = None,
                            service_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFailoverIpAttachResult:
     """
-    Use this data source to get the details of a failover IP address of a service in a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_failover_ip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str block: The IP block
-           * `continentCode` - The Ip continent
-    :param str ip: The failover ip address to query
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['block'] = block
@@ -201,24 +166,7 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFailoverIpAttachResult]:
     """
-    Use this data source to get the details of a failover IP address of a service in a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_failover_ip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str block: The IP block
-           * `continentCode` - The Ip continent
-    :param str ip: The failover ip address to query
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['block'] = block

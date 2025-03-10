@@ -51,25 +51,16 @@ class GetKubeIpRestrictionsResult:
     @property
     @pulumi.getter
     def ips(self) -> Sequence[str]:
-        """
-        The list of CIDRs that restricts the access to the API server.
-        """
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "kube_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -89,23 +80,7 @@ def get_kube_ip_restrictions(kube_id: Optional[str] = None,
                              service_name: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubeIpRestrictionsResult:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    ip_restrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("ips", ip_restrictions.ips)
-    ```
-
-
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id
@@ -122,23 +97,7 @@ def get_kube_ip_restrictions_output(kube_id: Optional[pulumi.Input[str]] = None,
                                     service_name: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeIpRestrictionsResult]:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    ip_restrictions = ovh.CloudProject.get_kube_ip_restrictions(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("ips", ip_restrictions.ips)
-    ```
-
-
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id

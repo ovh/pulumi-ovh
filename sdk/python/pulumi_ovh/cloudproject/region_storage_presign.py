@@ -27,16 +27,11 @@ class RegionStoragePresignArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionStoragePresign resource.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
-        :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
+        :param pulumi.Input[int] expire: How long (in seconds) the URL will be valid
+        :param pulumi.Input[str] object: Name of the object to download or upload
+        :param pulumi.Input[str] region_name: Region name
+        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project
+        :param pulumi.Input[str] name: The S3 storage container's name
         """
         pulumi.set(__self__, "expire", expire)
         pulumi.set(__self__, "method", method)
@@ -50,8 +45,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter
     def expire(self) -> pulumi.Input[int]:
         """
-        Define, in seconds, for how long your URL will be
-        valid.
+        How long (in seconds) the URL will be valid
         """
         return pulumi.get(self, "expire")
 
@@ -62,10 +56,6 @@ class RegionStoragePresignArgs:
     @property
     @pulumi.getter
     def method(self) -> pulumi.Input[str]:
-        """
-        The method you want to use to interact with your
-        object. Can be either 'GET' or 'PUT'.
-        """
         return pulumi.get(self, "method")
 
     @method.setter
@@ -76,7 +66,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter
     def object(self) -> pulumi.Input[str]:
         """
-        The name of the object in your S3 bucket.
+        Name of the object to download or upload
         """
         return pulumi.get(self, "object")
 
@@ -88,8 +78,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Input[str]:
         """
-        The region in which your storage is located. Must
-        be in **uppercase**. Ex.: "GRA".
+        Region name
         """
         return pulumi.get(self, "region_name")
 
@@ -101,8 +90,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the ID of the cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -114,7 +102,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of your S3 storage container/bucket.
+        The S3 storage container's name
         """
         return pulumi.get(self, "name")
 
@@ -135,17 +123,12 @@ class _RegionStoragePresignState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionStoragePresign resources.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
-        :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
-        :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] url: Computed URL result.
+        :param pulumi.Input[int] expire: How long (in seconds) the URL will be valid
+        :param pulumi.Input[str] name: The S3 storage container's name
+        :param pulumi.Input[str] object: Name of the object to download or upload
+        :param pulumi.Input[str] region_name: Region name
+        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project
+        :param pulumi.Input[str] url: Presigned URL
         """
         if expire is not None:
             pulumi.set(__self__, "expire", expire)
@@ -166,8 +149,7 @@ class _RegionStoragePresignState:
     @pulumi.getter
     def expire(self) -> Optional[pulumi.Input[int]]:
         """
-        Define, in seconds, for how long your URL will be
-        valid.
+        How long (in seconds) the URL will be valid
         """
         return pulumi.get(self, "expire")
 
@@ -178,10 +160,6 @@ class _RegionStoragePresignState:
     @property
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
-        """
-        The method you want to use to interact with your
-        object. Can be either 'GET' or 'PUT'.
-        """
         return pulumi.get(self, "method")
 
     @method.setter
@@ -192,7 +170,7 @@ class _RegionStoragePresignState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of your S3 storage container/bucket.
+        The S3 storage container's name
         """
         return pulumi.get(self, "name")
 
@@ -204,7 +182,7 @@ class _RegionStoragePresignState:
     @pulumi.getter
     def object(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the object in your S3 bucket.
+        Name of the object to download or upload
         """
         return pulumi.get(self, "object")
 
@@ -216,8 +194,7 @@ class _RegionStoragePresignState:
     @pulumi.getter(name="regionName")
     def region_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The region in which your storage is located. Must
-        be in **uppercase**. Ex.: "GRA".
+        Region name
         """
         return pulumi.get(self, "region_name")
 
@@ -229,8 +206,7 @@ class _RegionStoragePresignState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the ID of the cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -242,7 +218,7 @@ class _RegionStoragePresignState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Computed URL result.
+        Presigned URL
         """
         return pulumi.get(self, "url")
 
@@ -264,35 +240,14 @@ class RegionStoragePresign(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Generates a temporary presigned S3 URLs to download or upload an object.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        presigned_url_region_storage_presign = ovh.cloud_project.RegionStoragePresign("presignedUrlRegionStoragePresign",
-            service_name="xxxxxxxxxxxxxxxxx",
-            region_name="GRA",
-            expire=3600,
-            method="GET",
-            object="an-object-in-the-bucket")
-        pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
-        ```
-
+        Create a RegionStoragePresign resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
-        :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
-        :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[int] expire: How long (in seconds) the URL will be valid
+        :param pulumi.Input[str] name: The S3 storage container's name
+        :param pulumi.Input[str] object: Name of the object to download or upload
+        :param pulumi.Input[str] region_name: Region name
+        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project
         """
         ...
     @overload
@@ -301,23 +256,7 @@ class RegionStoragePresign(pulumi.CustomResource):
                  args: RegionStoragePresignArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Generates a temporary presigned S3 URLs to download or upload an object.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        presigned_url_region_storage_presign = ovh.cloud_project.RegionStoragePresign("presignedUrlRegionStoragePresign",
-            service_name="xxxxxxxxxxxxxxxxx",
-            region_name="GRA",
-            expire=3600,
-            method="GET",
-            object="an-object-in-the-bucket")
-        pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
-        ```
-
+        Create a RegionStoragePresign resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RegionStoragePresignArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -389,17 +328,12 @@ class RegionStoragePresign(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
-        :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
-        :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] url: Computed URL result.
+        :param pulumi.Input[int] expire: How long (in seconds) the URL will be valid
+        :param pulumi.Input[str] name: The S3 storage container's name
+        :param pulumi.Input[str] object: Name of the object to download or upload
+        :param pulumi.Input[str] region_name: Region name
+        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project
+        :param pulumi.Input[str] url: Presigned URL
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -418,25 +352,20 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter
     def expire(self) -> pulumi.Output[int]:
         """
-        Define, in seconds, for how long your URL will be
-        valid.
+        How long (in seconds) the URL will be valid
         """
         return pulumi.get(self, "expire")
 
     @property
     @pulumi.getter
     def method(self) -> pulumi.Output[str]:
-        """
-        The method you want to use to interact with your
-        object. Can be either 'GET' or 'PUT'.
-        """
         return pulumi.get(self, "method")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of your S3 storage container/bucket.
+        The S3 storage container's name
         """
         return pulumi.get(self, "name")
 
@@ -444,7 +373,7 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter
     def object(self) -> pulumi.Output[str]:
         """
-        The name of the object in your S3 bucket.
+        Name of the object to download or upload
         """
         return pulumi.get(self, "object")
 
@@ -452,8 +381,7 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Output[str]:
         """
-        The region in which your storage is located. Must
-        be in **uppercase**. Ex.: "GRA".
+        Region name
         """
         return pulumi.get(self, "region_name")
 
@@ -461,8 +389,7 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the ID of the cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -470,7 +397,7 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        Computed URL result.
+        Presigned URL
         """
         return pulumi.get(self, "url")
 

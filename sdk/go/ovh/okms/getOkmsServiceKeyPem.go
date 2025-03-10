@@ -7,11 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a KMS service key, in the PEM format.
 func GetOkmsServiceKeyPem(ctx *pulumi.Context, args *GetOkmsServiceKeyPemArgs, opts ...pulumi.InvokeOption) (*GetOkmsServiceKeyPemResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOkmsServiceKeyPemResult

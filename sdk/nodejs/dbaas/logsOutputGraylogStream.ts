@@ -4,42 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a DBaaS Logs Graylog output stream.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const stream = new ovh.dbaas.LogsOutputGraylogStream("stream", {
- *     description: "my graylog stream",
- *     serviceName: "....",
- *     title: "my stream",
- * });
- * ```
- *
- * To define the retention of the stream, you can use the following configuration:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const retention = ovh.Dbaas.getLogsClustersRetention({
- *     serviceName: "ldp-xx-xxxxx",
- *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
- *     duration: "P14D",
- * });
- * const stream = new ovh.dbaas.LogsOutputGraylogStream("stream", {
- *     serviceName: "....",
- *     title: "my stream",
- *     description: "my graylog stream",
- *     retentionId: retention.then(retention => retention.retentionId),
- * });
- * ```
- */
 export class LogsOutputGraylogStream extends pulumi.CustomResource {
     /**
      * Get an existing LogsOutputGraylogStream resource's state with the given name, ID, and optional extra
@@ -73,11 +37,11 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public /*out*/ readonly canAlert!: pulumi.Output<boolean>;
     /**
-     * Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+     * Cold storage compression method
      */
     public readonly coldStorageCompression!: pulumi.Output<string>;
     /**
-     * ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+     * ColdStorage content
      */
     public readonly coldStorageContent!: pulumi.Output<string>;
     /**
@@ -93,7 +57,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly coldStorageRetention!: pulumi.Output<number>;
     /**
-     * ColdStorage destination. One of "PCA", "PCS"
+     * ColdStorage destination
      */
     public readonly coldStorageTarget!: pulumi.Output<string>;
     /**
@@ -129,7 +93,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public /*out*/ readonly nbAlertCondition!: pulumi.Output<number>;
     /**
-     * Number of coldstored archivesr
+     * Number of coldstored archives
      */
     public /*out*/ readonly nbArchive!: pulumi.Output<number>;
     /**
@@ -157,7 +121,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * Stream last updater
+     * Stream last update
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
@@ -165,7 +129,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly webSocketEnabled!: pulumi.Output<boolean>;
     /**
-     * Write token of the stream (empty if the caller is not the owner of the stream)
+     * Write token of the stream
      */
     public /*out*/ readonly writeToken!: pulumi.Output<string>;
 
@@ -260,11 +224,11 @@ export interface LogsOutputGraylogStreamState {
      */
     canAlert?: pulumi.Input<boolean>;
     /**
-     * Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+     * Cold storage compression method
      */
     coldStorageCompression?: pulumi.Input<string>;
     /**
-     * ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+     * ColdStorage content
      */
     coldStorageContent?: pulumi.Input<string>;
     /**
@@ -280,7 +244,7 @@ export interface LogsOutputGraylogStreamState {
      */
     coldStorageRetention?: pulumi.Input<number>;
     /**
-     * ColdStorage destination. One of "PCA", "PCS"
+     * ColdStorage destination
      */
     coldStorageTarget?: pulumi.Input<string>;
     /**
@@ -316,7 +280,7 @@ export interface LogsOutputGraylogStreamState {
      */
     nbAlertCondition?: pulumi.Input<number>;
     /**
-     * Number of coldstored archivesr
+     * Number of coldstored archives
      */
     nbArchive?: pulumi.Input<number>;
     /**
@@ -344,7 +308,7 @@ export interface LogsOutputGraylogStreamState {
      */
     title?: pulumi.Input<string>;
     /**
-     * Stream last updater
+     * Stream last update
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -352,7 +316,7 @@ export interface LogsOutputGraylogStreamState {
      */
     webSocketEnabled?: pulumi.Input<boolean>;
     /**
-     * Write token of the stream (empty if the caller is not the owner of the stream)
+     * Write token of the stream
      */
     writeToken?: pulumi.Input<string>;
 }
@@ -362,11 +326,11 @@ export interface LogsOutputGraylogStreamState {
  */
 export interface LogsOutputGraylogStreamArgs {
     /**
-     * Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+     * Cold storage compression method
      */
     coldStorageCompression?: pulumi.Input<string>;
     /**
-     * ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+     * ColdStorage content
      */
     coldStorageContent?: pulumi.Input<string>;
     /**
@@ -382,7 +346,7 @@ export interface LogsOutputGraylogStreamArgs {
      */
     coldStorageRetention?: pulumi.Input<number>;
     /**
-     * ColdStorage destination. One of "PCA", "PCS"
+     * ColdStorage destination
      */
     coldStorageTarget?: pulumi.Input<string>;
     /**

@@ -52,25 +52,16 @@ class GetM3dbUserResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Date of the creation of the user.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def group(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "group")
 
     @property
@@ -84,25 +75,16 @@ class GetM3dbUserResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Current status of the user.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Current status of the user.
-        """
         return pulumi.get(self, "status")
 
 
@@ -126,25 +108,7 @@ def get_m3db_user(cluster_id: Optional[str] = None,
                   service_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetM3dbUserResult:
     """
-    Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    m3db_user = ovh.CloudProject.get_m3db_user(service_name="XXX",
-        cluster_id="YYY",
-        name="ZZZ")
-    pulumi.export("m3dbUserGroup", m3db_user.group)
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str name: Name of the user.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -166,25 +130,7 @@ def get_m3db_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbUserResult]:
     """
-    Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    m3db_user = ovh.CloudProject.get_m3db_user(service_name="XXX",
-        cluster_id="YYY",
-        name="ZZZ")
-    pulumi.export("m3dbUserGroup", m3db_user.group)
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str name: Name of the user.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

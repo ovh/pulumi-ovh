@@ -81,11 +81,11 @@ if not MYPY:
     class LogsInputConfigurationFlowggerArgsDict(TypedDict):
         log_format: pulumi.Input[str]
         """
-        Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
+        Type of format to decode
         """
         log_framing: pulumi.Input[str]
         """
-        Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
+        Indicates how messages are delimited
         """
 elif False:
     LogsInputConfigurationFlowggerArgsDict: TypeAlias = Mapping[str, Any]
@@ -96,8 +96,8 @@ class LogsInputConfigurationFlowggerArgs:
                  log_format: pulumi.Input[str],
                  log_framing: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] log_format: Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
-        :param pulumi.Input[str] log_framing: Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
+        :param pulumi.Input[str] log_format: Type of format to decode
+        :param pulumi.Input[str] log_framing: Indicates how messages are delimited
         """
         pulumi.set(__self__, "log_format", log_format)
         pulumi.set(__self__, "log_framing", log_framing)
@@ -106,7 +106,7 @@ class LogsInputConfigurationFlowggerArgs:
     @pulumi.getter(name="logFormat")
     def log_format(self) -> pulumi.Input[str]:
         """
-        Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
+        Type of format to decode
         """
         return pulumi.get(self, "log_format")
 
@@ -118,7 +118,7 @@ class LogsInputConfigurationFlowggerArgs:
     @pulumi.getter(name="logFraming")
     def log_framing(self) -> pulumi.Input[str]:
         """
-        Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
+        Indicates how messages are delimited
         """
         return pulumi.get(self, "log_framing")
 

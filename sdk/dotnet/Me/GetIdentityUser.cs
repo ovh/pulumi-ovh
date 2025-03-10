@@ -11,75 +11,12 @@ namespace Pulumi.Ovh.Me
 {
     public static class GetIdentityUser
     {
-        /// <summary>
-        /// Use this data source to retrieve information about an identity user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myUser = Ovh.Me.GetIdentityUser.Invoke(new()
-        ///     {
-        ///         User = "my_user_login",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetIdentityUserResult> InvokeAsync(GetIdentityUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about an identity user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myUser = Ovh.Me.GetIdentityUser.Invoke(new()
-        ///     {
-        ///         User = "my_user_login",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetIdentityUserResult> Invoke(GetIdentityUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about an identity user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myUser = Ovh.Me.GetIdentityUser.Invoke(new()
-        ///     {
-        ///         User = "my_user_login",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetIdentityUserResult> Invoke(GetIdentityUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUserResult>("ovh:Me/getIdentityUser:getIdentityUser", args ?? new GetIdentityUserInvokeArgs(), options.WithDefaults());
     }
@@ -87,9 +24,6 @@ namespace Pulumi.Ovh.Me
 
     public sealed class GetIdentityUserArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// User's login.
-        /// </summary>
         [Input("user", required: true)]
         public string User { get; set; } = null!;
 
@@ -101,9 +35,6 @@ namespace Pulumi.Ovh.Me
 
     public sealed class GetIdentityUserInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// User's login.
-        /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 
@@ -117,45 +48,18 @@ namespace Pulumi.Ovh.Me
     [OutputType]
     public sealed class GetIdentityUserResult
     {
-        /// <summary>
-        /// User's identity URN.
-        /// </summary>
         public readonly string UserURN;
-        /// <summary>
-        /// Creation date of this user.
-        /// </summary>
         public readonly string Creation;
-        /// <summary>
-        /// User description.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// User's email.
-        /// </summary>
         public readonly string Email;
-        /// <summary>
-        /// User's group.
-        /// </summary>
         public readonly string Group;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Last update of this user.
-        /// </summary>
         public readonly string LastUpdate;
-        /// <summary>
-        /// User's login suffix.
-        /// </summary>
         public readonly string Login;
-        /// <summary>
-        /// When the user changed his password for the last time.
-        /// </summary>
         public readonly string PasswordLastUpdate;
-        /// <summary>
-        /// Current user's status.
-        /// </summary>
         public readonly string Status;
         public readonly string User;
 

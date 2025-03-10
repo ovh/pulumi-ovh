@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a network in a public cloud project.
- */
 export class RegionNetwork extends pulumi.CustomResource {
     /**
      * Get an existing RegionNetwork resource's state with the given name, ID, and optional extra
@@ -38,23 +35,23 @@ export class RegionNetwork extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the network
+     * Network name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Network region returned by the API
+     * Network region
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * Network region
+     * Region name
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project
+     * Service name
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Parameters to create a subnet
+     * Parameters to create a subnet from another resource creation
      */
     public readonly subnet!: pulumi.Output<outputs.CloudProject.RegionNetworkSubnet>;
     /**
@@ -62,7 +59,7 @@ export class RegionNetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly visibility!: pulumi.Output<string>;
     /**
-     * VLAN ID, between 1 and 4000
+     * VLAN id, between 1 and 4000
      */
     public readonly vlanId!: pulumi.Output<number>;
 
@@ -115,23 +112,23 @@ export class RegionNetwork extends pulumi.CustomResource {
  */
 export interface RegionNetworkState {
     /**
-     * Name of the network
+     * Network name
      */
     name?: pulumi.Input<string>;
     /**
-     * Network region returned by the API
+     * Network region
      */
     region?: pulumi.Input<string>;
     /**
-     * Network region
+     * Region name
      */
     regionName?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project
+     * Service name
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Parameters to create a subnet
+     * Parameters to create a subnet from another resource creation
      */
     subnet?: pulumi.Input<inputs.CloudProject.RegionNetworkSubnet>;
     /**
@@ -139,7 +136,7 @@ export interface RegionNetworkState {
      */
     visibility?: pulumi.Input<string>;
     /**
-     * VLAN ID, between 1 and 4000
+     * VLAN id, between 1 and 4000
      */
     vlanId?: pulumi.Input<number>;
 }
@@ -149,23 +146,23 @@ export interface RegionNetworkState {
  */
 export interface RegionNetworkArgs {
     /**
-     * Name of the network
+     * Network name
      */
     name?: pulumi.Input<string>;
     /**
-     * Network region
+     * Region name
      */
     regionName: pulumi.Input<string>;
     /**
-     * The id of the public cloud project
+     * Service name
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Parameters to create a subnet
+     * Parameters to create a subnet from another resource creation
      */
     subnet: pulumi.Input<inputs.CloudProject.RegionNetworkSubnet>;
     /**
-     * VLAN ID, between 1 and 4000
+     * VLAN id, between 1 and 4000
      */
     vlanId?: pulumi.Input<number>;
 }

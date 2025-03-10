@@ -11,204 +11,12 @@ namespace Pulumi.Ovh.Dbaas
 {
     public static class GetLogsClustersRetention
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a DBaas logs cluster retention.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// It is also possible to retrieve a retention using its duration:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         Duration = "P14D",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// Additionnaly, you can filter retentions on their type:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         Duration = "P14D",
-        ///         RetentionType = "LOGS_INDEXING",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetLogsClustersRetentionResult> InvokeAsync(GetLogsClustersRetentionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsClustersRetentionResult>("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args ?? new GetLogsClustersRetentionArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about a DBaas logs cluster retention.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// It is also possible to retrieve a retention using its duration:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         Duration = "P14D",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// Additionnaly, you can filter retentions on their type:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         Duration = "P14D",
-        ///         RetentionType = "LOGS_INDEXING",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetLogsClustersRetentionResult> Invoke(GetLogsClustersRetentionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersRetentionResult>("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args ?? new GetLogsClustersRetentionInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about a DBaas logs cluster retention.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// It is also possible to retrieve a retention using its duration:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         Duration = "P14D",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// Additionnaly, you can filter retentions on their type:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
-        ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         Duration = "P14D",
-        ///         RetentionType = "LOGS_INDEXING",
-        ///         ServiceName = "ldp-xx-xxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetLogsClustersRetentionResult> Invoke(GetLogsClustersRetentionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersRetentionResult>("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", args ?? new GetLogsClustersRetentionInvokeArgs(), options.WithDefaults());
     }
@@ -216,33 +24,18 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsClustersRetentionArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
-        /// </summary>
         [Input("duration")]
         public string? Duration { get; set; }
 
-        /// <summary>
-        /// ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
-        /// </summary>
         [Input("retentionId")]
         public string? RetentionId { get; set; }
 
-        /// <summary>
-        /// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
-        /// </summary>
         [Input("retentionType")]
         public string? RetentionType { get; set; }
 
-        /// <summary>
-        /// The service name. It's the ID of your Logs Data Platform instance.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -254,33 +47,18 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsClustersRetentionInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
-        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
-        /// <summary>
-        /// ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
-        /// </summary>
         [Input("retentionId")]
         public Input<string>? RetentionId { get; set; }
 
-        /// <summary>
-        /// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
-        /// </summary>
         [Input("retentionType")]
         public Input<string>? RetentionType { get; set; }
 
-        /// <summary>
-        /// The service name. It's the ID of your Logs Data Platform instance.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -295,25 +73,13 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class GetLogsClustersRetentionResult
     {
         public readonly string ClusterId;
-        /// <summary>
-        /// Indexed duration expressed in ISO-8601 format
-        /// </summary>
         public readonly string Duration;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Indicates if a new stream can use it
-        /// </summary>
         public readonly bool IsSupported;
-        /// <summary>
-        /// ID of the retention that can be used when creating a stream
-        /// </summary>
         public readonly string RetentionId;
-        /// <summary>
-        /// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
-        /// </summary>
         public readonly string RetentionType;
         public readonly string ServiceName;
 

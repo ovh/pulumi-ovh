@@ -37,9 +37,6 @@ class GetAPIOAuth2ClientsResult:
     @property
     @pulumi.getter(name="clientIds")
     def client_ids(self) -> Sequence[str]:
-        """
-        The list of all the existing client IDs.
-        """
         return pulumi.get(self, "client_ids")
 
     @property
@@ -63,16 +60,7 @@ class AwaitableGetAPIOAuth2ClientsResult(GetAPIOAuth2ClientsResult):
 
 def get_apio_auth2_clients(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAPIOAuth2ClientsResult:
     """
-    Use this data source to retrieve information the list of existing OAuth2 service account IDs.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_oauth2_clients = ovh.Me.get_apio_auth2_client()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,16 +71,7 @@ def get_apio_auth2_clients(opts: Optional[pulumi.InvokeOptions] = None) -> Await
         id=pulumi.get(__ret__, 'id'))
 def get_apio_auth2_clients_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAPIOAuth2ClientsResult]:
     """
-    Use this data source to retrieve information the list of existing OAuth2 service account IDs.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_oauth2_clients = ovh.Me.get_apio_auth2_client()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

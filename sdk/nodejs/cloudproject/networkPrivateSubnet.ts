@@ -6,37 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a subnet in a private network of a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const subnet = new ovh.cloudproject.NetworkPrivateSubnet("subnet", {
- *     dhcp: true,
- *     end: "192.168.168.200",
- *     network: "192.168.168.0/24",
- *     networkId: "0234543",
- *     noGateway: false,
- *     region: "GRA1",
- *     serviceName: "xxxxx",
- *     start: "192.168.168.100",
- * });
- * ```
- *
- * ## Import
- *
- * Subnet in a private network of a public cloud project can be imported using the `service_name` , the `network_id` as `pn-xxxx` format and the `subnet_id`, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet mysubnet service_name/network_id/subnet_id
- * ```
- */
 export class NetworkPrivateSubnet extends pulumi.CustomResource {
     /**
      * Get an existing NetworkPrivateSubnet resource's state with the given name, ID, and optional extra
@@ -65,62 +34,19 @@ export class NetworkPrivateSubnet extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkPrivateSubnet.__pulumiType;
     }
 
-    /**
-     * Ip Block representing the subnet cidr.
-     */
     public /*out*/ readonly cidr!: pulumi.Output<string>;
-    /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
-     */
     public readonly dhcp!: pulumi.Output<boolean | undefined>;
-    /**
-     * Last ip for this region.
-     * Changing this value recreates the subnet.
-     */
     public readonly end!: pulumi.Output<string>;
-    /**
-     * The IP of the gateway
-     */
     public /*out*/ readonly gatewayIp!: pulumi.Output<string>;
-    /**
-     * List of ip pools allocated in the subnet.
-     * * `ip_pools/network` - Global network with cidr.
-     * * `ip_pools/region` - Region where this subnet is created.
-     * * `ip_pools/dhcp` - DHCP enabled.
-     * * `ip_pools/end` - Last ip for this region.
-     * * `ip_pools/start` - First ip for this region.
-     */
     public /*out*/ readonly ipPools!: pulumi.Output<outputs.CloudProject.NetworkPrivateSubnetIpPool[]>;
-    /**
-     * Global network in CIDR format.
-     * Changing this value recreates the subnet
-     */
     public readonly network!: pulumi.Output<string>;
-    /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
-     */
     public readonly networkId!: pulumi.Output<string>;
-    /**
-     * Set to true if you don't want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
-     */
     public readonly noGateway!: pulumi.Output<boolean | undefined>;
-    /**
-     * The region in which the network subnet will be created.
-     * Ex.: "GRA1". Changing this value recreates the resource.
-     */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the id of the cloud project.
      */
     public readonly serviceName!: pulumi.Output<string>;
-    /**
-     * First ip for this region.
-     * Changing this value recreates the subnet.
-     */
     public readonly start!: pulumi.Output<string>;
 
     /**
@@ -188,62 +114,19 @@ export class NetworkPrivateSubnet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkPrivateSubnet resources.
  */
 export interface NetworkPrivateSubnetState {
-    /**
-     * Ip Block representing the subnet cidr.
-     */
     cidr?: pulumi.Input<string>;
-    /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
-     */
     dhcp?: pulumi.Input<boolean>;
-    /**
-     * Last ip for this region.
-     * Changing this value recreates the subnet.
-     */
     end?: pulumi.Input<string>;
-    /**
-     * The IP of the gateway
-     */
     gatewayIp?: pulumi.Input<string>;
-    /**
-     * List of ip pools allocated in the subnet.
-     * * `ip_pools/network` - Global network with cidr.
-     * * `ip_pools/region` - Region where this subnet is created.
-     * * `ip_pools/dhcp` - DHCP enabled.
-     * * `ip_pools/end` - Last ip for this region.
-     * * `ip_pools/start` - First ip for this region.
-     */
     ipPools?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateSubnetIpPool>[]>;
-    /**
-     * Global network in CIDR format.
-     * Changing this value recreates the subnet
-     */
     network?: pulumi.Input<string>;
-    /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * Set to true if you don't want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
-     */
     noGateway?: pulumi.Input<boolean>;
-    /**
-     * The region in which the network subnet will be created.
-     * Ex.: "GRA1". Changing this value recreates the resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the id of the cloud project.
      */
     serviceName?: pulumi.Input<string>;
-    /**
-     * First ip for this region.
-     * Changing this value recreates the subnet.
-     */
     start?: pulumi.Input<string>;
 }
 
@@ -251,44 +134,15 @@ export interface NetworkPrivateSubnetState {
  * The set of arguments for constructing a NetworkPrivateSubnet resource.
  */
 export interface NetworkPrivateSubnetArgs {
-    /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
-     */
     dhcp?: pulumi.Input<boolean>;
-    /**
-     * Last ip for this region.
-     * Changing this value recreates the subnet.
-     */
     end: pulumi.Input<string>;
-    /**
-     * Global network in CIDR format.
-     * Changing this value recreates the subnet
-     */
     network: pulumi.Input<string>;
-    /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
-     */
     networkId: pulumi.Input<string>;
-    /**
-     * Set to true if you don't want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
-     */
     noGateway?: pulumi.Input<boolean>;
-    /**
-     * The region in which the network subnet will be created.
-     * Ex.: "GRA1". Changing this value recreates the resource.
-     */
     region: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the id of the cloud project.
      */
     serviceName: pulumi.Input<string>;
-    /**
-     * First ip for this region.
-     * Changing this value recreates the subnet.
-     */
     start: pulumi.Input<string>;
 }

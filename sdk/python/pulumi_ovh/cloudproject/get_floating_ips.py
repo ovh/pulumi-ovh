@@ -57,9 +57,6 @@ class GetFloatingIPsResult:
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
-        """
-        Floating IP region
-        """
         return pulumi.get(self, "region_name")
 
     @property
@@ -84,11 +81,7 @@ def get_floating_ips(region_name: Optional[str] = None,
                      service_name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIPsResult:
     """
-    Use this data source to get the floating IPs of a public cloud project.
-
-
-    :param str region_name: Public cloud region name
-    :param str service_name: The id of the public cloud project
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['regionName'] = region_name
@@ -105,11 +98,7 @@ def get_floating_ips_output(region_name: Optional[pulumi.Input[str]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFloatingIPsResult]:
     """
-    Use this data source to get the floating IPs of a public cloud project.
-
-
-    :param str region_name: Public cloud region name
-    :param str service_name: The id of the public cloud project
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['regionName'] = region_name

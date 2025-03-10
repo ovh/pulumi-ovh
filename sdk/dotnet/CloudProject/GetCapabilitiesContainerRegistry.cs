@@ -11,75 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetCapabilitiesContainerRegistry
     {
-        /// <summary>
-        /// Use this data source to get the container registry capabilities of a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var capabilities = Ovh.CloudProject.GetCapabilitiesContainerRegistry.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetCapabilitiesContainerRegistryResult> InvokeAsync(GetCapabilitiesContainerRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the container registry capabilities of a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var capabilities = Ovh.CloudProject.GetCapabilitiesContainerRegistry.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCapabilitiesContainerRegistryResult> Invoke(GetCapabilitiesContainerRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the container registry capabilities of a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var capabilities = Ovh.CloudProject.GetCapabilitiesContainerRegistry.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCapabilitiesContainerRegistryResult> Invoke(GetCapabilitiesContainerRegistryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesContainerRegistryResult>("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", args ?? new GetCapabilitiesContainerRegistryInvokeArgs(), options.WithDefaults());
     }
@@ -87,10 +24,6 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetCapabilitiesContainerRegistryArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -102,10 +35,6 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetCapabilitiesContainerRegistryInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -123,9 +52,6 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// List of container registry capability for a single region
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCapabilitiesContainerRegistryResultResult> Results;
         public readonly string ServiceName;
 

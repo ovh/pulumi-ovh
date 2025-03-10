@@ -7,35 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ovh.GetServers(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetServersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServersResult
@@ -49,8 +24,7 @@ func GetServers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetServersRe
 // A collection of values returned by getServers.
 type GetServersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The list of dedicated servers IDs associated with your OVHcloud Account.
+	Id      string   `pulumi:"id"`
 	Results []string `pulumi:"results"`
 }
 
@@ -81,7 +55,6 @@ func (o GetServersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of dedicated servers IDs associated with your OVHcloud Account.
 func (o GetServersResultOutput) Results() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServersResult) []string { return v.Results }).(pulumi.StringArrayOutput)
 }

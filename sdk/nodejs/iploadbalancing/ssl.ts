@@ -4,39 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a new custom SSL certificate on your IP Load Balancing
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const sslname = new ovh.iploadbalancing.Ssl("sslname", {
- *     certificate: "...",
- *     chain: "...",
- *     displayName: "test",
- *     key: "...",
- *     serviceName: lb.then(lb => lb.serviceName),
- * });
- * ```
- *
- * ## Import
- *
- * SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:IpLoadBalancing/ssl:Ssl sslname service_name/ssl_id
- * ```
- */
 export class Ssl extends pulumi.CustomResource {
     /**
      * Get an existing Ssl resource's state with the given name, ID, and optional extra
@@ -74,15 +41,15 @@ export class Ssl extends pulumi.CustomResource {
      */
     public readonly chain!: pulumi.Output<string | undefined>;
     /**
-     * Readable label for loadbalancer ssl
+     * Human readable name for your ssl certificate, this field is for you
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Expire date of your SSL certificate.
+     * Expire date of your SSL certificate
      */
     public /*out*/ readonly expireDate!: pulumi.Output<string>;
     /**
-     * Fingerprint of your SSL certificate.
+     * Fingerprint of your SSL certificate
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -90,11 +57,11 @@ export class Ssl extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * Subject Alternative Name of your SSL certificate.
+     * Subject Alternative Name of your SSL certificate
      */
     public /*out*/ readonly sans!: pulumi.Output<string[]>;
     /**
-     * Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+     * Serial of your SSL certificate (Deprecated, use fingerprint instead!)
      */
     public /*out*/ readonly serial!: pulumi.Output<string>;
     /**
@@ -102,11 +69,12 @@ export class Ssl extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Subject of your SSL certificate.
+     * Subject of your SSL certificate
      */
     public /*out*/ readonly subject!: pulumi.Output<string>;
     /**
-     * Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+     * Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+     * certificates.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -177,15 +145,15 @@ export interface SslState {
      */
     chain?: pulumi.Input<string>;
     /**
-     * Readable label for loadbalancer ssl
+     * Human readable name for your ssl certificate, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Expire date of your SSL certificate.
+     * Expire date of your SSL certificate
      */
     expireDate?: pulumi.Input<string>;
     /**
-     * Fingerprint of your SSL certificate.
+     * Fingerprint of your SSL certificate
      */
     fingerprint?: pulumi.Input<string>;
     /**
@@ -193,11 +161,11 @@ export interface SslState {
      */
     key?: pulumi.Input<string>;
     /**
-     * Subject Alternative Name of your SSL certificate.
+     * Subject Alternative Name of your SSL certificate
      */
     sans?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+     * Serial of your SSL certificate (Deprecated, use fingerprint instead!)
      */
     serial?: pulumi.Input<string>;
     /**
@@ -205,11 +173,12 @@ export interface SslState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Subject of your SSL certificate.
+     * Subject of your SSL certificate
      */
     subject?: pulumi.Input<string>;
     /**
-     * Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+     * Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+     * certificates.
      */
     type?: pulumi.Input<string>;
 }
@@ -227,7 +196,7 @@ export interface SslArgs {
      */
     chain?: pulumi.Input<string>;
     /**
-     * Readable label for loadbalancer ssl
+     * Human readable name for your ssl certificate, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**

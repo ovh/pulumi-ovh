@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the regions of a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetRegions(ctx, &cloudproject.GetRegionsArgs{
-//				HasServicesUps: []string{
-//					"network",
-//				},
-//				ServiceName: "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult
@@ -53,21 +23,15 @@ func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRegions.
 type GetRegionsArgs struct {
-	// List of services which has to be UP in regions.
-	// Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-	// If left blank, returns all regions associated with the service_name.
 	HasServicesUps []string `pulumi:"hasServicesUps"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName    string   `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	HasServicesUps []string `pulumi:"hasServicesUps"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The list of regions associated with the project, filtered by services UP.
+	Id          string   `pulumi:"id"`
 	Names       []string `pulumi:"names"`
 	ServiceName string   `pulumi:"serviceName"`
 }
@@ -83,13 +47,8 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRegions.
 type GetRegionsOutputArgs struct {
-	// List of services which has to be UP in regions.
-	// Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-	// If left blank, returns all regions associated with the service_name.
 	HasServicesUps pulumi.StringArrayInput `pulumi:"hasServicesUps"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	ServiceName    pulumi.StringInput      `pulumi:"serviceName"`
 }
 
 func (GetRegionsOutputArgs) ElementType() reflect.Type {
@@ -120,7 +79,6 @@ func (o GetRegionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of regions associated with the project, filtered by services UP.
 func (o GetRegionsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

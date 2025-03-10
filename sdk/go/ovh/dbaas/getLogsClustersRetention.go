@@ -7,96 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a DBaas logs cluster retention.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
-//				ClusterId:   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//				RetentionId: pulumi.StringRef("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"),
-//				ServiceName: "ldp-xx-xxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// It is also possible to retrieve a retention using its duration:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
-//				ClusterId:   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//				Duration:    pulumi.StringRef("P14D"),
-//				ServiceName: "ldp-xx-xxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Additionnaly, you can filter retentions on their type:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
-//				ClusterId:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//				Duration:      pulumi.StringRef("P14D"),
-//				RetentionType: pulumi.StringRef("LOGS_INDEXING"),
-//				ServiceName:   "ldp-xx-xxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLogsClustersRetention(ctx *pulumi.Context, args *GetLogsClustersRetentionArgs, opts ...pulumi.InvokeOption) (*GetLogsClustersRetentionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogsClustersRetentionResult
@@ -109,30 +23,21 @@ func GetLogsClustersRetention(ctx *pulumi.Context, args *GetLogsClustersRetentio
 
 // A collection of arguments for invoking getLogsClustersRetention.
 type GetLogsClustersRetentionArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// Indexed duration expressed in ISO-8601 format. Cannot be used if `retentionId` is defined.
-	Duration *string `pulumi:"duration"`
-	// ID of the retention object. Cannot be used if `duration` or `retentionType` is defined.
-	RetentionId *string `pulumi:"retentionId"`
-	// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retentionId` is defined. Defaults to `LOGS_INDEXING` if not defined.
+	ClusterId     string  `pulumi:"clusterId"`
+	Duration      *string `pulumi:"duration"`
+	RetentionId   *string `pulumi:"retentionId"`
 	RetentionType *string `pulumi:"retentionType"`
-	// The service name. It's the ID of your Logs Data Platform instance.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName   string  `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getLogsClustersRetention.
 type GetLogsClustersRetentionResult struct {
 	ClusterId string `pulumi:"clusterId"`
-	// Indexed duration expressed in ISO-8601 format
-	Duration string `pulumi:"duration"`
+	Duration  string `pulumi:"duration"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates if a new stream can use it
-	IsSupported bool `pulumi:"isSupported"`
-	// ID of the retention that can be used when creating a stream
-	RetentionId string `pulumi:"retentionId"`
-	// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
+	Id            string `pulumi:"id"`
+	IsSupported   bool   `pulumi:"isSupported"`
+	RetentionId   string `pulumi:"retentionId"`
 	RetentionType string `pulumi:"retentionType"`
 	ServiceName   string `pulumi:"serviceName"`
 }
@@ -148,16 +53,11 @@ func GetLogsClustersRetentionOutput(ctx *pulumi.Context, args GetLogsClustersRet
 
 // A collection of arguments for invoking getLogsClustersRetention.
 type GetLogsClustersRetentionOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Indexed duration expressed in ISO-8601 format. Cannot be used if `retentionId` is defined.
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// ID of the retention object. Cannot be used if `duration` or `retentionType` is defined.
-	RetentionId pulumi.StringPtrInput `pulumi:"retentionId"`
-	// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retentionId` is defined. Defaults to `LOGS_INDEXING` if not defined.
+	ClusterId     pulumi.StringInput    `pulumi:"clusterId"`
+	Duration      pulumi.StringPtrInput `pulumi:"duration"`
+	RetentionId   pulumi.StringPtrInput `pulumi:"retentionId"`
 	RetentionType pulumi.StringPtrInput `pulumi:"retentionType"`
-	// The service name. It's the ID of your Logs Data Platform instance.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	ServiceName   pulumi.StringInput    `pulumi:"serviceName"`
 }
 
 func (GetLogsClustersRetentionOutputArgs) ElementType() reflect.Type {
@@ -183,7 +83,6 @@ func (o GetLogsClustersRetentionResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogsClustersRetentionResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Indexed duration expressed in ISO-8601 format
 func (o GetLogsClustersRetentionResultOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogsClustersRetentionResult) string { return v.Duration }).(pulumi.StringOutput)
 }
@@ -193,17 +92,14 @@ func (o GetLogsClustersRetentionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogsClustersRetentionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates if a new stream can use it
 func (o GetLogsClustersRetentionResultOutput) IsSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLogsClustersRetentionResult) bool { return v.IsSupported }).(pulumi.BoolOutput)
 }
 
-// ID of the retention that can be used when creating a stream
 func (o GetLogsClustersRetentionResultOutput) RetentionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogsClustersRetentionResult) string { return v.RetentionId }).(pulumi.StringOutput)
 }
 
-// Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
 func (o GetLogsClustersRetentionResultOutput) RetentionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogsClustersRetentionResult) string { return v.RetentionType }).(pulumi.StringOutput)
 }

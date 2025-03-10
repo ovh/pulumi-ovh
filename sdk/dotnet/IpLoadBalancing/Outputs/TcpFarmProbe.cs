@@ -13,41 +13,14 @@ namespace Pulumi.Ovh.IpLoadBalancing.Outputs
     [OutputType]
     public sealed class TcpFarmProbe
     {
-        /// <summary>
-        /// Force use of SSL (TLS)
-        /// </summary>
         public readonly bool? ForceSsl;
-        /// <summary>
-        /// probe interval, Value between 30 and 3600 seconds, default 30
-        /// </summary>
         public readonly int? Interval;
-        /// <summary>
-        /// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
-        /// </summary>
         public readonly string? Match;
-        /// <summary>
-        /// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
-        /// </summary>
         public readonly string? Method;
-        /// <summary>
-        /// Negate probe result
-        /// </summary>
         public readonly bool? Negate;
-        /// <summary>
-        /// Pattern to match against `match`
-        /// </summary>
         public readonly string? Pattern;
-        /// <summary>
-        /// Port for backends to receive traffic on.
-        /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// URL for HTTP probe type.
-        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

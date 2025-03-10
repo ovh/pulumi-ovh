@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const server = ovh.Vps.getVps({
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getVps(args: GetVpsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Vps/getVps:getVps", {
@@ -29,9 +15,6 @@ export function getVps(args: GetVpsArgs, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getVps.
  */
 export interface GetVpsArgs {
-    /**
-     * The serviceName of your dedicated server.
-     */
     serviceName: string;
 }
 
@@ -39,87 +22,28 @@ export interface GetVpsArgs {
  * A collection of values returned by getVps.
  */
 export interface GetVpsResult {
-    /**
-     * The URN of the vps
-     */
     readonly VpsURN: string;
-    /**
-     * The OVHcloud cluster the vps is in
-     */
     readonly cluster: string;
-    /**
-     * The datacenter in which the vps is located
-     */
     readonly datacenter: {[key: string]: string};
-    /**
-     * The displayed name in the OVHcloud web admin
-     */
     readonly displayname: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The list of IPs addresses attached to the vps
-     */
     readonly ips: string[];
-    /**
-     * The keymap for the ip kvm, valid values "", "fr", "us"
-     */
     readonly keymap: string;
-    /**
-     * The amount of memory in MB of the vps.
-     */
     readonly memory: number;
-    /**
-     * A dict describing the type of vps.
-     */
     readonly model: {[key: string]: string};
     readonly name: string;
-    /**
-     * The source of the boot kernel
-     */
     readonly netbootmode: string;
-    /**
-     * The type of offer (ssd, cloud, classic)
-     */
     readonly offertype: string;
     readonly serviceName: string;
-    /**
-     * A boolean to indicate if OVHcloud SLA monitoring is active.
-     */
     readonly slamonitoring: boolean;
-    /**
-     * The state of the vps
-     */
     readonly state: string;
-    /**
-     * The type of server
-     */
     readonly type: string;
-    /**
-     * The number of vcore of the vps
-     */
     readonly vcore: number;
-    /**
-     * The OVHcloud zone where the vps is
-     */
     readonly zone: string;
 }
-/**
- * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const server = ovh.Vps.getVps({
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getVpsOutput(args: GetVpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Vps/getVps:getVps", {
@@ -131,8 +55,5 @@ export function getVpsOutput(args: GetVpsOutputArgs, opts?: pulumi.InvokeOutputO
  * A collection of arguments for invoking getVps.
  */
 export interface GetVpsOutputArgs {
-    /**
-     * The serviceName of your dedicated server.
-     */
     serviceName: pulumi.Input<string>;
 }

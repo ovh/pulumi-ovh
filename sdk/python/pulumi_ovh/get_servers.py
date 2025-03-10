@@ -45,9 +45,6 @@ class GetServersResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence[str]:
-        """
-        The list of dedicated servers IDs associated with your OVHcloud Account.
-        """
         return pulumi.get(self, "results")
 
 
@@ -63,16 +60,7 @@ class AwaitableGetServersResult(GetServersResult):
 
 def get_servers(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServersResult:
     """
-    Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    servers = ovh.get_servers()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,16 +71,7 @@ def get_servers(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServ
         results=pulumi.get(__ret__, 'results'))
 def get_servers_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServersResult]:
     """
-    Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    servers = ovh.get_servers()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

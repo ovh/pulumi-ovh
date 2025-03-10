@@ -32,18 +32,16 @@ class M3DbNamespaceArgs:
                  writes_to_commit_log_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a M3DbNamespace resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
-        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
-        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace
+        :param pulumi.Input[str] name: Name of the namespace
+        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data
+        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk
+        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace
+        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3db will create snapshot files for this namespace
+        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3db will include writes to this namespace in the commit log
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "resolution", resolution)
@@ -69,7 +67,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -81,7 +79,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter
     def resolution(self) -> pulumi.Input[str]:
         """
-        Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+        Resolution for an aggregated namespace
         """
         return pulumi.get(self, "resolution")
 
@@ -92,10 +90,6 @@ class M3DbNamespaceArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -106,7 +100,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+        Name of the namespace
         """
         return pulumi.get(self, "name")
 
@@ -118,7 +112,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="retentionBlockDataExpirationDuration")
     def retention_block_data_expiration_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how long we wait before expiring stale data
         """
         return pulumi.get(self, "retention_block_data_expiration_duration")
 
@@ -130,7 +124,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="retentionBlockSizeDuration")
     def retention_block_size_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how long to keep a block in memory before flushing to a fileset on disk
         """
         return pulumi.get(self, "retention_block_size_duration")
 
@@ -142,7 +136,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="retentionBufferFutureDuration")
     def retention_buffer_future_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how far into the future writes to the namespace will be accepted
         """
         return pulumi.get(self, "retention_buffer_future_duration")
 
@@ -154,7 +148,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="retentionBufferPastDuration")
     def retention_buffer_past_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how far into the past writes to the namespace will be accepted
         """
         return pulumi.get(self, "retention_buffer_past_duration")
 
@@ -166,7 +160,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="retentionPeriodDuration")
     def retention_period_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls the duration of time that M3DB will retain data for the namespace
         """
         return pulumi.get(self, "retention_period_duration")
 
@@ -178,7 +172,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="snapshotEnabled")
     def snapshot_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether M3DB will create snapshot files for this namespace.
+        Defines whether M3db will create snapshot files for this namespace
         """
         return pulumi.get(self, "snapshot_enabled")
 
@@ -190,7 +184,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="writesToCommitLogEnabled")
     def writes_to_commit_log_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether M3DB will include writes to this namespace in the commit log.
+        Defines whether M3db will include writes to this namespace in the commit log
         """
         return pulumi.get(self, "writes_to_commit_log_enabled")
 
@@ -216,19 +210,17 @@ class _M3DbNamespaceState:
                  writes_to_commit_log_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering M3DbNamespace resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
-        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
-        :param pulumi.Input[str] type: Type of namespace.
-        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] name: Name of the namespace
+        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace
+        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data
+        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk
+        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace
+        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3db will create snapshot files for this namespace
+        :param pulumi.Input[str] type: Type of namespace
+        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3db will include writes to this namespace in the commit log
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -259,7 +251,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -271,7 +263,7 @@ class _M3DbNamespaceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+        Name of the namespace
         """
         return pulumi.get(self, "name")
 
@@ -283,7 +275,7 @@ class _M3DbNamespaceState:
     @pulumi.getter
     def resolution(self) -> Optional[pulumi.Input[str]]:
         """
-        Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+        Resolution for an aggregated namespace
         """
         return pulumi.get(self, "resolution")
 
@@ -295,7 +287,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="retentionBlockDataExpirationDuration")
     def retention_block_data_expiration_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how long we wait before expiring stale data
         """
         return pulumi.get(self, "retention_block_data_expiration_duration")
 
@@ -307,7 +299,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="retentionBlockSizeDuration")
     def retention_block_size_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how long to keep a block in memory before flushing to a fileset on disk
         """
         return pulumi.get(self, "retention_block_size_duration")
 
@@ -319,7 +311,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="retentionBufferFutureDuration")
     def retention_buffer_future_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how far into the future writes to the namespace will be accepted
         """
         return pulumi.get(self, "retention_buffer_future_duration")
 
@@ -331,7 +323,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="retentionBufferPastDuration")
     def retention_buffer_past_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how far into the past writes to the namespace will be accepted
         """
         return pulumi.get(self, "retention_buffer_past_duration")
 
@@ -343,7 +335,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="retentionPeriodDuration")
     def retention_period_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls the duration of time that M3DB will retain data for the namespace
         """
         return pulumi.get(self, "retention_period_duration")
 
@@ -354,10 +346,6 @@ class _M3DbNamespaceState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -368,7 +356,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="snapshotEnabled")
     def snapshot_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether M3DB will create snapshot files for this namespace.
+        Defines whether M3db will create snapshot files for this namespace
         """
         return pulumi.get(self, "snapshot_enabled")
 
@@ -380,7 +368,7 @@ class _M3DbNamespaceState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of namespace.
+        Type of namespace
         """
         return pulumi.get(self, "type")
 
@@ -392,7 +380,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="writesToCommitLogEnabled")
     def writes_to_commit_log_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether M3DB will include writes to this namespace in the commit log.
+        Defines whether M3db will include writes to this namespace in the commit log
         """
         return pulumi.get(self, "writes_to_commit_log_enabled")
 
@@ -419,48 +407,19 @@ class M3DbNamespace(pulumi.CustomResource):
                  writes_to_commit_log_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Creates a namespace for a M3DB cluster associated with a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        m3db = ovh.CloudProjectDatabase.get_database(service_name="XXX",
-            engine="m3db",
-            id="ZZZ")
-        namespace = ovh.cloud_project_database.M3DbNamespace("namespace",
-            service_name=m3db.service_name,
-            cluster_id=m3db.id,
-            resolution="P2D",
-            retention_period_duration="PT48H")
-        ```
-
-        ## Import
-
-        OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
-        ```
-
+        Create a M3DbNamespace resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
-        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
-        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] name: Name of the namespace
+        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace
+        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data
+        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk
+        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace
+        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3db will create snapshot files for this namespace
+        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3db will include writes to this namespace in the commit log
         """
         ...
     @overload
@@ -469,34 +428,7 @@ class M3DbNamespace(pulumi.CustomResource):
                  args: M3DbNamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a namespace for a M3DB cluster associated with a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        m3db = ovh.CloudProjectDatabase.get_database(service_name="XXX",
-            engine="m3db",
-            id="ZZZ")
-        namespace = ovh.cloud_project_database.M3DbNamespace("namespace",
-            service_name=m3db.service_name,
-            cluster_id=m3db.id,
-            resolution="P2D",
-            retention_period_duration="PT48H")
-        ```
-
-        ## Import
-
-        OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
-        ```
-
+        Create a M3DbNamespace resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param M3DbNamespaceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -579,19 +511,17 @@ class M3DbNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] name: Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
-        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
-        :param pulumi.Input[str] type: Type of namespace.
-        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] name: Name of the namespace
+        :param pulumi.Input[str] resolution: Resolution for an aggregated namespace
+        :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data
+        :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk
+        :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted
+        :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace
+        :param pulumi.Input[bool] snapshot_enabled: Defines whether M3db will create snapshot files for this namespace
+        :param pulumi.Input[str] type: Type of namespace
+        :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3db will include writes to this namespace in the commit log
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -615,7 +545,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -623,7 +553,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+        Name of the namespace
         """
         return pulumi.get(self, "name")
 
@@ -631,7 +561,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter
     def resolution(self) -> pulumi.Output[str]:
         """
-        Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+        Resolution for an aggregated namespace
         """
         return pulumi.get(self, "resolution")
 
@@ -639,7 +569,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="retentionBlockDataExpirationDuration")
     def retention_block_data_expiration_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how long we wait before expiring stale data
         """
         return pulumi.get(self, "retention_block_data_expiration_duration")
 
@@ -647,7 +577,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="retentionBlockSizeDuration")
     def retention_block_size_duration(self) -> pulumi.Output[str]:
         """
-        Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how long to keep a block in memory before flushing to a fileset on disk
         """
         return pulumi.get(self, "retention_block_size_duration")
 
@@ -655,7 +585,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="retentionBufferFutureDuration")
     def retention_buffer_future_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how far into the future writes to the namespace will be accepted
         """
         return pulumi.get(self, "retention_buffer_future_duration")
 
@@ -663,7 +593,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="retentionBufferPastDuration")
     def retention_buffer_past_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls how far into the past writes to the namespace will be accepted
         """
         return pulumi.get(self, "retention_buffer_past_duration")
 
@@ -671,24 +601,20 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="retentionPeriodDuration")
     def retention_period_duration(self) -> pulumi.Output[str]:
         """
-        Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+        Controls the duration of time that M3DB will retain data for the namespace
         """
         return pulumi.get(self, "retention_period_duration")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="snapshotEnabled")
     def snapshot_enabled(self) -> pulumi.Output[bool]:
         """
-        Defines whether M3DB will create snapshot files for this namespace.
+        Defines whether M3db will create snapshot files for this namespace
         """
         return pulumi.get(self, "snapshot_enabled")
 
@@ -696,7 +622,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of namespace.
+        Type of namespace
         """
         return pulumi.get(self, "type")
 
@@ -704,7 +630,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="writesToCommitLogEnabled")
     def writes_to_commit_log_enabled(self) -> pulumi.Output[bool]:
         """
-        Defines whether M3DB will include writes to this namespace in the commit log.
+        Defines whether M3db will include writes to this namespace in the commit log
         """
         return pulumi.get(self, "writes_to_commit_log_enabled")
 

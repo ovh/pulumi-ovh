@@ -23,8 +23,8 @@ class ServerRebootTaskArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ServerRebootTask resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger reboot, used also to form implicit dependencies.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: Change this value to recreate a reboot task.
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
         """
         pulumi.set(__self__, "keepers", keepers)
         pulumi.set(__self__, "service_name", service_name)
@@ -33,7 +33,7 @@ class ServerRebootTaskArgs:
     @pulumi.getter
     def keepers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of values tracked to trigger reboot, used also to form implicit dependencies.
+        Change this value to recreate a reboot task.
         """
         return pulumi.get(self, "keepers")
 
@@ -45,7 +45,7 @@ class ServerRebootTaskArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The service_name of your dedicated server.
+        The internal name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -67,14 +67,14 @@ class _ServerRebootTaskState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerRebootTask resources.
-        :param pulumi.Input[str] comment: Details of this task. (should be `Reboot asked`)
-        :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
-        :param pulumi.Input[str] function: Function name (should be `hardReboot`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger reboot, used also to form implicit dependencies.
-        :param pulumi.Input[str] last_update: Last update in RFC3339 format.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
-        :param pulumi.Input[str] start_date: Task creation date in RFC3339 format.
-        :param pulumi.Input[str] status: Task status (should be `done`)
+        :param pulumi.Input[str] comment: Details of this task
+        :param pulumi.Input[str] done_date: Completion date
+        :param pulumi.Input[str] function: Function name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: Change this value to recreate a reboot task.
+        :param pulumi.Input[str] last_update: Last update
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] start_date: Task Creation date
+        :param pulumi.Input[str] status: Task status
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -97,7 +97,7 @@ class _ServerRebootTaskState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Details of this task. (should be `Reboot asked`)
+        Details of this task
         """
         return pulumi.get(self, "comment")
 
@@ -109,7 +109,7 @@ class _ServerRebootTaskState:
     @pulumi.getter(name="doneDate")
     def done_date(self) -> Optional[pulumi.Input[str]]:
         """
-        Completion date in RFC3339 format.
+        Completion date
         """
         return pulumi.get(self, "done_date")
 
@@ -121,7 +121,7 @@ class _ServerRebootTaskState:
     @pulumi.getter
     def function(self) -> Optional[pulumi.Input[str]]:
         """
-        Function name (should be `hardReboot`).
+        Function name
         """
         return pulumi.get(self, "function")
 
@@ -133,7 +133,7 @@ class _ServerRebootTaskState:
     @pulumi.getter
     def keepers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of values tracked to trigger reboot, used also to form implicit dependencies.
+        Change this value to recreate a reboot task.
         """
         return pulumi.get(self, "keepers")
 
@@ -145,7 +145,7 @@ class _ServerRebootTaskState:
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> Optional[pulumi.Input[str]]:
         """
-        Last update in RFC3339 format.
+        Last update
         """
         return pulumi.get(self, "last_update")
 
@@ -157,7 +157,7 @@ class _ServerRebootTaskState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The service_name of your dedicated server.
+        The internal name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -169,7 +169,7 @@ class _ServerRebootTaskState:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[str]]:
         """
-        Task creation date in RFC3339 format.
+        Task Creation date
         """
         return pulumi.get(self, "start_date")
 
@@ -181,7 +181,7 @@ class _ServerRebootTaskState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Task status (should be `done`)
+        Task status
         """
         return pulumi.get(self, "status")
 
@@ -199,29 +199,11 @@ class ServerRebootTask(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
-            boot_type="rescue",
-            kernel="rescue64-pro")
-        server_on_rescue = ovh.dedicated.ServerUpdate("serverOnRescue",
-            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
-            boot_id=rescue.results[0],
-            monitoring=True,
-            state="ok")
-        server_reboot = ovh.dedicated.ServerRebootTask("serverReboot",
-            service_name=rescue.service_name,
-            keepers=[server_on_rescue.boot_id])
-        ```
-
+        Create a ServerRebootTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger reboot, used also to form implicit dependencies.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: Change this value to recreate a reboot task.
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
         """
         ...
     @overload
@@ -230,25 +212,7 @@ class ServerRebootTask(pulumi.CustomResource):
                  args: ServerRebootTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
-            boot_type="rescue",
-            kernel="rescue64-pro")
-        server_on_rescue = ovh.dedicated.ServerUpdate("serverOnRescue",
-            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
-            boot_id=rescue.results[0],
-            monitoring=True,
-            state="ok")
-        server_reboot = ovh.dedicated.ServerRebootTask("serverReboot",
-            service_name=rescue.service_name,
-            keepers=[server_on_rescue.boot_id])
-        ```
-
+        Create a ServerRebootTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServerRebootTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -312,14 +276,14 @@ class ServerRebootTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comment: Details of this task. (should be `Reboot asked`)
-        :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
-        :param pulumi.Input[str] function: Function name (should be `hardReboot`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger reboot, used also to form implicit dependencies.
-        :param pulumi.Input[str] last_update: Last update in RFC3339 format.
-        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
-        :param pulumi.Input[str] start_date: Task creation date in RFC3339 format.
-        :param pulumi.Input[str] status: Task status (should be `done`)
+        :param pulumi.Input[str] comment: Details of this task
+        :param pulumi.Input[str] done_date: Completion date
+        :param pulumi.Input[str] function: Function name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: Change this value to recreate a reboot task.
+        :param pulumi.Input[str] last_update: Last update
+        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] start_date: Task Creation date
+        :param pulumi.Input[str] status: Task status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -339,7 +303,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[str]:
         """
-        Details of this task. (should be `Reboot asked`)
+        Details of this task
         """
         return pulumi.get(self, "comment")
 
@@ -347,7 +311,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter(name="doneDate")
     def done_date(self) -> pulumi.Output[str]:
         """
-        Completion date in RFC3339 format.
+        Completion date
         """
         return pulumi.get(self, "done_date")
 
@@ -355,7 +319,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter
     def function(self) -> pulumi.Output[str]:
         """
-        Function name (should be `hardReboot`).
+        Function name
         """
         return pulumi.get(self, "function")
 
@@ -363,7 +327,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter
     def keepers(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of values tracked to trigger reboot, used also to form implicit dependencies.
+        Change this value to recreate a reboot task.
         """
         return pulumi.get(self, "keepers")
 
@@ -371,7 +335,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> pulumi.Output[str]:
         """
-        Last update in RFC3339 format.
+        Last update
         """
         return pulumi.get(self, "last_update")
 
@@ -379,7 +343,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The service_name of your dedicated server.
+        The internal name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -387,7 +351,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter(name="startDate")
     def start_date(self) -> pulumi.Output[str]:
         """
-        Task creation date in RFC3339 format.
+        Task Creation date
         """
         return pulumi.get(self, "start_date")
 
@@ -395,7 +359,7 @@ class ServerRebootTask(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Task status (should be `done`)
+        Task status
         """
         return pulumi.get(self, "status")
 

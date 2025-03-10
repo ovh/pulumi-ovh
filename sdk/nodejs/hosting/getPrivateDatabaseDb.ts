@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about an hosting privatedatabase.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myDatabase = ovh.Hosting.getPrivateDatabaseDb({
- *     databaseName: "XXXXXX",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getPrivateDatabaseDb(args: GetPrivateDatabaseDbArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseDbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", {
@@ -33,13 +18,7 @@ export function getPrivateDatabaseDb(args: GetPrivateDatabaseDbArgs, opts?: pulu
  * A collection of arguments for invoking getPrivateDatabaseDb.
  */
 export interface GetPrivateDatabaseDbArgs {
-    /**
-     * Database name
-     */
     databaseName: string;
-    /**
-     * The internal name of your private database
-     */
     serviceName: string;
 }
 
@@ -47,44 +26,17 @@ export interface GetPrivateDatabaseDbArgs {
  * A collection of values returned by getPrivateDatabaseDb.
  */
 export interface GetPrivateDatabaseDbResult {
-    /**
-     * Time of the next backup (every day)
-     */
     readonly backupTime: string;
-    /**
-     * Creation date of the database
-     */
     readonly creationDate: string;
     readonly databaseName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Space used by the database (in MB)
-     */
     readonly quotaUsed: number;
     readonly serviceName: string;
-    /**
-     * Users granted to this database
-     */
     readonly users: outputs.Hosting.GetPrivateDatabaseDbUser[];
 }
-/**
- * Use this data source to retrieve information about an hosting privatedatabase.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myDatabase = ovh.Hosting.getPrivateDatabaseDb({
- *     databaseName: "XXXXXX",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getPrivateDatabaseDbOutput(args: GetPrivateDatabaseDbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateDatabaseDbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", {
@@ -97,12 +49,6 @@ export function getPrivateDatabaseDbOutput(args: GetPrivateDatabaseDbOutputArgs,
  * A collection of arguments for invoking getPrivateDatabaseDb.
  */
 export interface GetPrivateDatabaseDbOutputArgs {
-    /**
-     * Database name
-     */
     databaseName: pulumi.Input<string>;
-    /**
-     * The internal name of your private database
-     */
     serviceName: pulumi.Input<string>;
 }

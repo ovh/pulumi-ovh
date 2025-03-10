@@ -7,11 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to list the IAM action associated with a resource type.
 func GetReferenceActions(ctx *pulumi.Context, args *GetReferenceActionsArgs, opts ...pulumi.InvokeOption) (*GetReferenceActionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReferenceActionsResult
@@ -24,13 +23,11 @@ func GetReferenceActions(ctx *pulumi.Context, args *GetReferenceActionsArgs, opt
 
 // A collection of arguments for invoking getReferenceActions.
 type GetReferenceActionsArgs struct {
-	// Kind of resource we want the actions for
 	Type string `pulumi:"type"`
 }
 
 // A collection of values returned by getReferenceActions.
 type GetReferenceActionsResult struct {
-	// List of actions
 	Actions []GetReferenceActionsAction `pulumi:"actions"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
@@ -48,7 +45,6 @@ func GetReferenceActionsOutput(ctx *pulumi.Context, args GetReferenceActionsOutp
 
 // A collection of arguments for invoking getReferenceActions.
 type GetReferenceActionsOutputArgs struct {
-	// Kind of resource we want the actions for
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -71,7 +67,6 @@ func (o GetReferenceActionsResultOutput) ToGetReferenceActionsResultOutputWithCo
 	return o
 }
 
-// List of actions
 func (o GetReferenceActionsResultOutput) Actions() GetReferenceActionsActionArrayOutput {
 	return o.ApplyT(func(v GetReferenceActionsResult) []GetReferenceActionsAction { return v.Actions }).(GetReferenceActionsActionArrayOutput)
 }

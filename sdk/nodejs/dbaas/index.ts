@@ -60,6 +60,16 @@ export type LogsOutputOpenSearchIndex = import("./logsOutputOpenSearchIndex").Lo
 export const LogsOutputOpenSearchIndex: typeof import("./logsOutputOpenSearchIndex").LogsOutputOpenSearchIndex = null as any;
 utilities.lazyLoad(exports, ["LogsOutputOpenSearchIndex"], () => require("./logsOutputOpenSearchIndex"));
 
+export { LogsRoleArgs, LogsRoleState } from "./logsRole";
+export type LogsRole = import("./logsRole").LogsRole;
+export const LogsRole: typeof import("./logsRole").LogsRole = null as any;
+utilities.lazyLoad(exports, ["LogsRole"], () => require("./logsRole"));
+
+export { LogsRolePermissionStreamArgs, LogsRolePermissionStreamState } from "./logsRolePermissionStream";
+export type LogsRolePermissionStream = import("./logsRolePermissionStream").LogsRolePermissionStream;
+export const LogsRolePermissionStream: typeof import("./logsRolePermissionStream").LogsRolePermissionStream = null as any;
+utilities.lazyLoad(exports, ["LogsRolePermissionStream"], () => require("./logsRolePermissionStream"));
+
 export { LogsTokenArgs, LogsTokenState } from "./logsToken";
 export type LogsToken = import("./logsToken").LogsToken;
 export const LogsToken: typeof import("./logsToken").LogsToken = null as any;
@@ -80,6 +90,10 @@ const _module = {
                 return new LogsOutputOpenSearchAlias(name, <any>undefined, { urn })
             case "ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex":
                 return new LogsOutputOpenSearchIndex(name, <any>undefined, { urn })
+            case "ovh:Dbaas/logsRole:LogsRole":
+                return new LogsRole(name, <any>undefined, { urn })
+            case "ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream":
+                return new LogsRolePermissionStream(name, <any>undefined, { urn })
             case "ovh:Dbaas/logsToken:LogsToken":
                 return new LogsToken(name, <any>undefined, { urn })
             default:
@@ -92,4 +106,6 @@ pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsInput", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputGraylogStream", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputOpenSearchAlias", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsOutputOpenSearchIndex", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsRole", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsRolePermissionStream", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dbaas/logsToken", _module)

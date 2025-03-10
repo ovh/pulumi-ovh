@@ -11,105 +11,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetIpRestrictions
     {
-        /// <summary>
-        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
-        /// 
-        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// To get the list of IP restriction on a database cluster service:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         Engine = "YYYY",
-        ///         ClusterId = "ZZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ips"] = ipRestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetIpRestrictionsResult> InvokeAsync(GetIpRestrictionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
-        /// 
-        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// To get the list of IP restriction on a database cluster service:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         Engine = "YYYY",
-        ///         ClusterId = "ZZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ips"] = ipRestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetIpRestrictionsResult> Invoke(GetIpRestrictionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
-        /// 
-        /// Use this data source to get the list of IP restrictions associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// To get the list of IP restriction on a database cluster service:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         Engine = "YYYY",
-        ///         ClusterId = "ZZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ips"] = ipRestrictions.Apply(getIpRestrictionsResult =&gt; getIpRestrictionsResult.Ips),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetIpRestrictionsResult> Invoke(GetIpRestrictionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsInvokeArgs(), options.WithDefaults());
     }
@@ -117,23 +24,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetIpRestrictionsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The engine of the database cluster you want to list IP restrictions. To get a full list of available engine visit:
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -145,23 +41,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetIpRestrictionsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The engine of the database cluster you want to list IP restrictions. To get a full list of available engine visit:
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -175,25 +60,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetIpRestrictionsResult
     {
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Engine;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The list of IP restriction of the database associated with the project.
-        /// </summary>
         public readonly ImmutableArray<string> Ips;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

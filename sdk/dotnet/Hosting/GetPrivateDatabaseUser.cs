@@ -11,78 +11,12 @@ namespace Pulumi.Ovh.Hosting
 {
     public static class GetPrivateDatabaseUser
     {
-        /// <summary>
-        /// Use this data source to retrieve information about an hosting privatedatabase user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Ovh.Hosting.GetPrivateDatabaseUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         UserName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetPrivateDatabaseUserResult> InvokeAsync(GetPrivateDatabaseUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about an hosting privatedatabase user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Ovh.Hosting.GetPrivateDatabaseUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         UserName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetPrivateDatabaseUserResult> Invoke(GetPrivateDatabaseUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about an hosting privatedatabase user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var user = Ovh.Hosting.GetPrivateDatabaseUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         UserName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetPrivateDatabaseUserResult> Invoke(GetPrivateDatabaseUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserResult>("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", args ?? new GetPrivateDatabaseUserInvokeArgs(), options.WithDefaults());
     }
@@ -90,15 +24,9 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseUserArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The internal name of your private database
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// User name
-        /// </summary>
         [Input("userName", required: true)]
         public string UserName { get; set; } = null!;
 
@@ -110,15 +38,9 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseUserInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The internal name of your private database
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// User name
-        /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
 
@@ -132,13 +54,7 @@ namespace Pulumi.Ovh.Hosting
     [OutputType]
     public sealed class GetPrivateDatabaseUserResult
     {
-        /// <summary>
-        /// Creation date of the database
-        /// </summary>
         public readonly string CreationDate;
-        /// <summary>
-        /// Users granted to this database
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetPrivateDatabaseUserDatabaseResult> Databases;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

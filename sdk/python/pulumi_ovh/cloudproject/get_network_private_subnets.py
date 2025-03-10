@@ -52,25 +52,16 @@ class GetNetworkPrivateSubnetsResult:
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
-        """
-        ID of the network
-        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        ID of the public cloud project
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def subnets(self) -> Sequence['outputs.GetNetworkPrivateSubnetsSubnetResult']:
-        """
-        List of subnets
-        """
         return pulumi.get(self, "subnets")
 
 
@@ -90,22 +81,7 @@ def get_network_private_subnets(network_id: Optional[str] = None,
                                 service_name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkPrivateSubnetsResult:
     """
-    List public cloud project subnets of a private network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    private_network_private_subnets = ovh.CloudProject.get_network_private_subnets(service_name="XXXXXX",
-        network_id="XXXXXX")
-    pulumi.export("private", private_network_private_subnets)
-    ```
-
-
-    :param str network_id: ID of the network
-    :param str service_name: The ID of the public cloud project.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['networkId'] = network_id
@@ -122,22 +98,7 @@ def get_network_private_subnets_output(network_id: Optional[pulumi.Input[str]] =
                                        service_name: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPrivateSubnetsResult]:
     """
-    List public cloud project subnets of a private network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    private_network_private_subnets = ovh.CloudProject.get_network_private_subnets(service_name="XXXXXX",
-        network_id="XXXXXX")
-    pulumi.export("private", private_network_private_subnets)
-    ```
-
-
-    :param str network_id: ID of the network
-    :param str service_name: The ID of the public cloud project.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['networkId'] = network_id

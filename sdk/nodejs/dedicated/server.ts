@@ -6,35 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * Dedicated servers can be imported using the `service_name`.
- *
- * Using the following configuration:
- *
- * hcl
- *
- * import {
- *
- *   to = ovh_dedicated_server.server
- *
- *   id = "<service name>"
- *
- * }
- *
- * You can then run:
- *
- * bash
- *
- * $ pulumi preview -generate-config-out=dedicated.tf
- *
- * $ pulumi up
- *
- * The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
- */
 export class Server extends pulumi.CustomResource {
     /**
      * Get an existing Server resource's state with the given name, ID, and optional extra
@@ -64,55 +35,49 @@ export class Server extends pulumi.CustomResource {
     }
 
     /**
-     * Dedicated AZ localisation
+     * dedicated AZ localisation
      */
     public /*out*/ readonly availabilityZone!: pulumi.Output<string>;
-    /**
-     * Boot id of the server
-     */
     public readonly bootId!: pulumi.Output<number>;
     /**
-     * Boot script of the server
+     * Ipxe script served on boot
      */
     public readonly bootScript!: pulumi.Output<string>;
     /**
-     * Dedicated server commercial range
+     * dedicater server commercial range
      */
     public /*out*/ readonly commercialRange!: pulumi.Output<string>;
     /**
-     * Dedicated datacenter localisation (bhs1,bhs2,...)
+     * OS reinstallation customizations
+     */
+    public readonly customizations!: pulumi.Output<outputs.Dedicated.ServerCustomizations | undefined>;
+    /**
+     * dedicated datacenter localisation
      */
     public /*out*/ readonly datacenter!: pulumi.Output<string>;
     /**
-     * A structure describing informations about installation custom
-     */
-    public readonly details!: pulumi.Output<outputs.Dedicated.ServerDetails | undefined>;
-    /**
-     * Resource display name
+     * The display name of your dedicated server
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Path of the EFI bootloader
+     * Path of the EFI bootloader served on boot
      */
     public readonly efiBootloaderPath!: pulumi.Output<string>;
     /**
-     * IAM resource information
+     * IAM resource metadata
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Dedicated.ServerIam>;
     /**
-     * Dedicated server ip (IPv4)
+     * dedicated server ip
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
-    /**
-     * Link speed of the server
-     */
     public /*out*/ readonly linkSpeed!: pulumi.Output<number>;
     /**
      * Icmp monitoring state
      */
     public readonly monitoring!: pulumi.Output<boolean>;
     /**
-     * Dedicated server name
+     * dedicated server name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public /*out*/ readonly newUpgradeSystem!: pulumi.Output<boolean>;
@@ -127,19 +92,15 @@ export class Server extends pulumi.CustomResource {
     /**
      * Operating system
      */
-    public /*out*/ readonly os!: pulumi.Output<string>;
+    public readonly os!: pulumi.Output<string>;
     /**
      * OVH subsidiaries
      */
     public readonly ovhSubsidiary!: pulumi.Output<string | undefined>;
-    /**
-     * Partition scheme name
-     */
-    public readonly partitionSchemeName!: pulumi.Output<string | undefined>;
     public readonly planOptions!: pulumi.Output<outputs.Dedicated.ServerPlanOption[]>;
     public readonly plans!: pulumi.Output<outputs.Dedicated.ServerPlan[]>;
     /**
-     * Power state of the server (poweron, poweroff)
+     * Power state of the server
      */
     public /*out*/ readonly powerState!: pulumi.Output<string>;
     /**
@@ -147,15 +108,16 @@ export class Server extends pulumi.CustomResource {
      */
     public /*out*/ readonly professionalUse!: pulumi.Output<boolean>;
     /**
-     * Rack id of the server
+     * Arbitrary properties to pass to cloud-init's config drive datasource
      */
+    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly rack!: pulumi.Output<string>;
     /**
-     * Dedicated region localisation
+     * dedicated region localisation
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * Rescue mail of the server
+     * Custom email used to receive rescue credentials
      */
     public readonly rescueMail!: pulumi.Output<string>;
     /**
@@ -163,37 +125,30 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly rescueSshKey!: pulumi.Output<string>;
     /**
-     * Dedicated server reverse
+     * dedicated server reverse
      */
     public /*out*/ readonly reverse!: pulumi.Output<string>;
-    /**
-     * Root device of the server
-     */
     public readonly rootDevice!: pulumi.Output<string>;
     /**
      * Server id
      */
     public /*out*/ readonly serverId!: pulumi.Output<number>;
     /**
-     * The serviceName of your dedicated server
+     * The internal name of your dedicated server
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
-     * All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+     * All states a Dedicated can be in
      */
     public readonly state!: pulumi.Output<string>;
     /**
-     * Dedicated server support level (critical, fastpath, gs, pro)
+     * OS reinstallation storage configurations
+     */
+    public readonly storages!: pulumi.Output<outputs.Dedicated.ServerStorage[] | undefined>;
+    /**
+     * Dedicated server support level
      */
     public /*out*/ readonly supportLevel!: pulumi.Output<string>;
-    /**
-     * Template name
-     */
-    public readonly templateName!: pulumi.Output<string | undefined>;
-    /**
-     * Metadata
-     */
-    public readonly userMetadatas!: pulumi.Output<outputs.Dedicated.ServerUserMetadata[] | undefined>;
 
     /**
      * Create a Server resource with the given unique name, arguments, and options.
@@ -212,8 +167,8 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["bootId"] = state ? state.bootId : undefined;
             resourceInputs["bootScript"] = state ? state.bootScript : undefined;
             resourceInputs["commercialRange"] = state ? state.commercialRange : undefined;
+            resourceInputs["customizations"] = state ? state.customizations : undefined;
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["details"] = state ? state.details : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["efiBootloaderPath"] = state ? state.efiBootloaderPath : undefined;
             resourceInputs["iam"] = state ? state.iam : undefined;
@@ -226,11 +181,11 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["order"] = state ? state.order : undefined;
             resourceInputs["os"] = state ? state.os : undefined;
             resourceInputs["ovhSubsidiary"] = state ? state.ovhSubsidiary : undefined;
-            resourceInputs["partitionSchemeName"] = state ? state.partitionSchemeName : undefined;
             resourceInputs["planOptions"] = state ? state.planOptions : undefined;
             resourceInputs["plans"] = state ? state.plans : undefined;
             resourceInputs["powerState"] = state ? state.powerState : undefined;
             resourceInputs["professionalUse"] = state ? state.professionalUse : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["rack"] = state ? state.rack : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["rescueMail"] = state ? state.rescueMail : undefined;
@@ -240,28 +195,27 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["serverId"] = state ? state.serverId : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["storages"] = state ? state.storages : undefined;
             resourceInputs["supportLevel"] = state ? state.supportLevel : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["userMetadatas"] = state ? state.userMetadatas : undefined;
         } else {
             const args = argsOrState as ServerArgs | undefined;
             resourceInputs["bootId"] = args ? args.bootId : undefined;
             resourceInputs["bootScript"] = args ? args.bootScript : undefined;
-            resourceInputs["details"] = args ? args.details : undefined;
+            resourceInputs["customizations"] = args ? args.customizations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["efiBootloaderPath"] = args ? args.efiBootloaderPath : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["noIntervention"] = args ? args.noIntervention : undefined;
+            resourceInputs["os"] = args ? args.os : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
-            resourceInputs["partitionSchemeName"] = args ? args.partitionSchemeName : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
             resourceInputs["plans"] = args ? args.plans : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["rescueMail"] = args ? args.rescueMail : undefined;
             resourceInputs["rescueSshKey"] = args ? args.rescueSshKey : undefined;
             resourceInputs["rootDevice"] = args ? args.rootDevice : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["userMetadatas"] = args ? args.userMetadatas : undefined;
+            resourceInputs["storages"] = args ? args.storages : undefined;
             resourceInputs["availabilityZone"] = undefined /*out*/;
             resourceInputs["commercialRange"] = undefined /*out*/;
             resourceInputs["datacenter"] = undefined /*out*/;
@@ -271,7 +225,6 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["newUpgradeSystem"] = undefined /*out*/;
             resourceInputs["order"] = undefined /*out*/;
-            resourceInputs["os"] = undefined /*out*/;
             resourceInputs["powerState"] = undefined /*out*/;
             resourceInputs["professionalUse"] = undefined /*out*/;
             resourceInputs["rack"] = undefined /*out*/;
@@ -291,55 +244,49 @@ export class Server extends pulumi.CustomResource {
  */
 export interface ServerState {
     /**
-     * Dedicated AZ localisation
+     * dedicated AZ localisation
      */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * Boot id of the server
-     */
     bootId?: pulumi.Input<number>;
     /**
-     * Boot script of the server
+     * Ipxe script served on boot
      */
     bootScript?: pulumi.Input<string>;
     /**
-     * Dedicated server commercial range
+     * dedicater server commercial range
      */
     commercialRange?: pulumi.Input<string>;
     /**
-     * Dedicated datacenter localisation (bhs1,bhs2,...)
+     * OS reinstallation customizations
+     */
+    customizations?: pulumi.Input<inputs.Dedicated.ServerCustomizations>;
+    /**
+     * dedicated datacenter localisation
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * A structure describing informations about installation custom
-     */
-    details?: pulumi.Input<inputs.Dedicated.ServerDetails>;
-    /**
-     * Resource display name
+     * The display name of your dedicated server
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Path of the EFI bootloader
+     * Path of the EFI bootloader served on boot
      */
     efiBootloaderPath?: pulumi.Input<string>;
     /**
-     * IAM resource information
+     * IAM resource metadata
      */
     iam?: pulumi.Input<inputs.Dedicated.ServerIam>;
     /**
-     * Dedicated server ip (IPv4)
+     * dedicated server ip
      */
     ip?: pulumi.Input<string>;
-    /**
-     * Link speed of the server
-     */
     linkSpeed?: pulumi.Input<number>;
     /**
      * Icmp monitoring state
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Dedicated server name
+     * dedicated server name
      */
     name?: pulumi.Input<string>;
     newUpgradeSystem?: pulumi.Input<boolean>;
@@ -359,14 +306,10 @@ export interface ServerState {
      * OVH subsidiaries
      */
     ovhSubsidiary?: pulumi.Input<string>;
-    /**
-     * Partition scheme name
-     */
-    partitionSchemeName?: pulumi.Input<string>;
     planOptions?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlanOption>[]>;
     plans?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlan>[]>;
     /**
-     * Power state of the server (poweron, poweroff)
+     * Power state of the server
      */
     powerState?: pulumi.Input<string>;
     /**
@@ -374,15 +317,16 @@ export interface ServerState {
      */
     professionalUse?: pulumi.Input<boolean>;
     /**
-     * Rack id of the server
+     * Arbitrary properties to pass to cloud-init's config drive datasource
      */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     rack?: pulumi.Input<string>;
     /**
-     * Dedicated region localisation
+     * dedicated region localisation
      */
     region?: pulumi.Input<string>;
     /**
-     * Rescue mail of the server
+     * Custom email used to receive rescue credentials
      */
     rescueMail?: pulumi.Input<string>;
     /**
@@ -390,61 +334,51 @@ export interface ServerState {
      */
     rescueSshKey?: pulumi.Input<string>;
     /**
-     * Dedicated server reverse
+     * dedicated server reverse
      */
     reverse?: pulumi.Input<string>;
-    /**
-     * Root device of the server
-     */
     rootDevice?: pulumi.Input<string>;
     /**
      * Server id
      */
     serverId?: pulumi.Input<number>;
     /**
-     * The serviceName of your dedicated server
+     * The internal name of your dedicated server
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+     * All states a Dedicated can be in
      */
     state?: pulumi.Input<string>;
     /**
-     * Dedicated server support level (critical, fastpath, gs, pro)
+     * OS reinstallation storage configurations
+     */
+    storages?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerStorage>[]>;
+    /**
+     * Dedicated server support level
      */
     supportLevel?: pulumi.Input<string>;
-    /**
-     * Template name
-     */
-    templateName?: pulumi.Input<string>;
-    /**
-     * Metadata
-     */
-    userMetadatas?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerUserMetadata>[]>;
 }
 
 /**
  * The set of arguments for constructing a Server resource.
  */
 export interface ServerArgs {
-    /**
-     * Boot id of the server
-     */
     bootId?: pulumi.Input<number>;
     /**
-     * Boot script of the server
+     * Ipxe script served on boot
      */
     bootScript?: pulumi.Input<string>;
     /**
-     * A structure describing informations about installation custom
+     * OS reinstallation customizations
      */
-    details?: pulumi.Input<inputs.Dedicated.ServerDetails>;
+    customizations?: pulumi.Input<inputs.Dedicated.ServerCustomizations>;
     /**
-     * Resource display name
+     * The display name of your dedicated server
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Path of the EFI bootloader
+     * Path of the EFI bootloader served on boot
      */
     efiBootloaderPath?: pulumi.Input<string>;
     /**
@@ -456,37 +390,34 @@ export interface ServerArgs {
      */
     noIntervention?: pulumi.Input<boolean>;
     /**
+     * Operating system
+     */
+    os?: pulumi.Input<string>;
+    /**
      * OVH subsidiaries
      */
     ovhSubsidiary?: pulumi.Input<string>;
-    /**
-     * Partition scheme name
-     */
-    partitionSchemeName?: pulumi.Input<string>;
     planOptions?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlanOption>[]>;
     plans?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlan>[]>;
     /**
-     * Rescue mail of the server
+     * Arbitrary properties to pass to cloud-init's config drive datasource
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Custom email used to receive rescue credentials
      */
     rescueMail?: pulumi.Input<string>;
     /**
      * Public SSH Key used in the rescue mode
      */
     rescueSshKey?: pulumi.Input<string>;
-    /**
-     * Root device of the server
-     */
     rootDevice?: pulumi.Input<string>;
     /**
-     * All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+     * All states a Dedicated can be in
      */
     state?: pulumi.Input<string>;
     /**
-     * Template name
+     * OS reinstallation storage configurations
      */
-    templateName?: pulumi.Input<string>;
-    /**
-     * Metadata
-     */
-    userMetadatas?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerUserMetadata>[]>;
+    storages?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerStorage>[]>;
 }

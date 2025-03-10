@@ -8,62 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Generates a temporary presigned S3 URLs to download or upload an object.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			presignedUrlRegionStoragePresign, err := cloudproject.NewRegionStoragePresign(ctx, "presignedUrlRegionStoragePresign", &cloudproject.RegionStoragePresignArgs{
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxx"),
-//				RegionName:  pulumi.String("GRA"),
-//				Expire:      pulumi.Int(3600),
-//				Method:      pulumi.String("GET"),
-//				Object:      pulumi.String("an-object-in-the-bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("presignedUrl", presignedUrlRegionStoragePresign.Url)
-//			return nil
-//		})
-//	}
-//
-// ```
 type RegionStoragePresign struct {
 	pulumi.CustomResourceState
 
-	// Define, in seconds, for how long your URL will be
-	// valid.
-	Expire pulumi.IntOutput `pulumi:"expire"`
-	// The method you want to use to interact with your
-	// object. Can be either 'GET' or 'PUT'.
+	// How long (in seconds) the URL will be valid
+	Expire pulumi.IntOutput    `pulumi:"expire"`
 	Method pulumi.StringOutput `pulumi:"method"`
-	// The name of your S3 storage container/bucket.
+	// The S3 storage container's name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the object in your S3 bucket.
+	// Name of the object to download or upload
 	Object pulumi.StringOutput `pulumi:"object"`
-	// The region in which your storage is located. Must
-	// be in **uppercase**. Ex.: "GRA".
+	// Region name
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Computed URL result.
+	// Presigned URL
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -112,44 +75,34 @@ func GetRegionStoragePresign(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionStoragePresign resources.
 type regionStoragePresignState struct {
-	// Define, in seconds, for how long your URL will be
-	// valid.
-	Expire *int `pulumi:"expire"`
-	// The method you want to use to interact with your
-	// object. Can be either 'GET' or 'PUT'.
+	// How long (in seconds) the URL will be valid
+	Expire *int    `pulumi:"expire"`
 	Method *string `pulumi:"method"`
-	// The name of your S3 storage container/bucket.
+	// The S3 storage container's name
 	Name *string `pulumi:"name"`
-	// The name of the object in your S3 bucket.
+	// Name of the object to download or upload
 	Object *string `pulumi:"object"`
-	// The region in which your storage is located. Must
-	// be in **uppercase**. Ex.: "GRA".
+	// Region name
 	RegionName *string `pulumi:"regionName"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project
 	ServiceName *string `pulumi:"serviceName"`
-	// Computed URL result.
+	// Presigned URL
 	Url *string `pulumi:"url"`
 }
 
 type RegionStoragePresignState struct {
-	// Define, in seconds, for how long your URL will be
-	// valid.
+	// How long (in seconds) the URL will be valid
 	Expire pulumi.IntPtrInput
-	// The method you want to use to interact with your
-	// object. Can be either 'GET' or 'PUT'.
 	Method pulumi.StringPtrInput
-	// The name of your S3 storage container/bucket.
+	// The S3 storage container's name
 	Name pulumi.StringPtrInput
-	// The name of the object in your S3 bucket.
+	// Name of the object to download or upload
 	Object pulumi.StringPtrInput
-	// The region in which your storage is located. Must
-	// be in **uppercase**. Ex.: "GRA".
+	// Region name
 	RegionName pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project
 	ServiceName pulumi.StringPtrInput
-	// Computed URL result.
+	// Presigned URL
 	Url pulumi.StringPtrInput
 }
 
@@ -158,41 +111,31 @@ func (RegionStoragePresignState) ElementType() reflect.Type {
 }
 
 type regionStoragePresignArgs struct {
-	// Define, in seconds, for how long your URL will be
-	// valid.
-	Expire int `pulumi:"expire"`
-	// The method you want to use to interact with your
-	// object. Can be either 'GET' or 'PUT'.
+	// How long (in seconds) the URL will be valid
+	Expire int    `pulumi:"expire"`
 	Method string `pulumi:"method"`
-	// The name of your S3 storage container/bucket.
+	// The S3 storage container's name
 	Name *string `pulumi:"name"`
-	// The name of the object in your S3 bucket.
+	// Name of the object to download or upload
 	Object string `pulumi:"object"`
-	// The region in which your storage is located. Must
-	// be in **uppercase**. Ex.: "GRA".
+	// Region name
 	RegionName string `pulumi:"regionName"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a RegionStoragePresign resource.
 type RegionStoragePresignArgs struct {
-	// Define, in seconds, for how long your URL will be
-	// valid.
+	// How long (in seconds) the URL will be valid
 	Expire pulumi.IntInput
-	// The method you want to use to interact with your
-	// object. Can be either 'GET' or 'PUT'.
 	Method pulumi.StringInput
-	// The name of your S3 storage container/bucket.
+	// The S3 storage container's name
 	Name pulumi.StringPtrInput
-	// The name of the object in your S3 bucket.
+	// Name of the object to download or upload
 	Object pulumi.StringInput
-	// The region in which your storage is located. Must
-	// be in **uppercase**. Ex.: "GRA".
+	// Region name
 	RegionName pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project
 	ServiceName pulumi.StringInput
 }
 
@@ -283,41 +226,36 @@ func (o RegionStoragePresignOutput) ToRegionStoragePresignOutputWithContext(ctx 
 	return o
 }
 
-// Define, in seconds, for how long your URL will be
-// valid.
+// How long (in seconds) the URL will be valid
 func (o RegionStoragePresignOutput) Expire() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.IntOutput { return v.Expire }).(pulumi.IntOutput)
 }
 
-// The method you want to use to interact with your
-// object. Can be either 'GET' or 'PUT'.
 func (o RegionStoragePresignOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
 }
 
-// The name of your S3 storage container/bucket.
+// The S3 storage container's name
 func (o RegionStoragePresignOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the object in your S3 bucket.
+// Name of the object to download or upload
 func (o RegionStoragePresignOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.StringOutput { return v.Object }).(pulumi.StringOutput)
 }
 
-// The region in which your storage is located. Must
-// be in **uppercase**. Ex.: "GRA".
+// Region name
 func (o RegionStoragePresignOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// Service name of the resource representing the ID of the cloud project
 func (o RegionStoragePresignOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Computed URL result.
+// Presigned URL
 func (o RegionStoragePresignOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionStoragePresign) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

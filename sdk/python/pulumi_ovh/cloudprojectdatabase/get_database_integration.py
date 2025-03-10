@@ -58,73 +58,46 @@ class GetDatabaseIntegrationResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> str:
-        """
-        ID of the destination service.
-        """
         return pulumi.get(self, "destination_service_id")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def parameters(self) -> Mapping[str, str]:
-        """
-        Parameters for the integration.
-        """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="sourceServiceId")
     def source_service_id(self) -> str:
-        """
-        ID of the source service.
-        """
         return pulumi.get(self, "source_service_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Current status of the integration.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Type of the integration.
-        """
         return pulumi.get(self, "type")
 
 
@@ -151,28 +124,7 @@ def get_database_integration(cluster_id: Optional[str] = None,
                              service_name: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseIntegrationResult:
     """
-    Use this data source to get information about an integration of a database cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    integration = ovh.CloudProjectDatabase.get_database_integration(service_name="XXX",
-        engine="YYY",
-        cluster_id="ZZZ",
-        id="UUU")
-    pulumi.export("integrationType", integration.type)
-    ```
-
-
-    :param str cluster_id: Cluster ID.
-    :param str engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-           All engines available exept `mongodb`
-    :param str id: Integration ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -198,28 +150,7 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
                                     service_name: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseIntegrationResult]:
     """
-    Use this data source to get information about an integration of a database cluster associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    integration = ovh.CloudProjectDatabase.get_database_integration(service_name="XXX",
-        engine="YYY",
-        cluster_id="ZZZ",
-        id="UUU")
-    pulumi.export("integrationType", integration.type)
-    ```
-
-
-    :param str cluster_id: Cluster ID.
-    :param str engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-           All engines available exept `mongodb`
-    :param str id: Integration ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

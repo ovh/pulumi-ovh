@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			m3dbNamespace, err := cloudproject.GetM3dbNamespace(ctx, &cloudproject.GetM3dbNamespaceArgs{
-//				ServiceName: "XXX",
-//				ClusterId:   "YYY",
-//				Name:        "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("m3dbnamespaceType", m3dbNamespace.Type)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetM3dbNamespace(ctx *pulumi.Context, args *GetM3dbNamespaceArgs, opts ...pulumi.InvokeOption) (*GetM3dbNamespaceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbNamespaceResult
@@ -53,43 +23,27 @@ func GetM3dbNamespace(ctx *pulumi.Context, args *GetM3dbNamespaceArgs, opts ...p
 
 // A collection of arguments for invoking getM3dbNamespace.
 type GetM3dbNamespaceArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// Name of the namespace.
-	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Name        string `pulumi:"name"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getM3dbNamespace.
 type GetM3dbNamespaceResult struct {
-	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
-	Name string `pulumi:"name"`
-	// Resolution for an aggregated namespace.
-	Resolution string `pulumi:"resolution"`
-	// Controls how long we wait before expiring stale data.
+	Id                                   string `pulumi:"id"`
+	Name                                 string `pulumi:"name"`
+	Resolution                           string `pulumi:"resolution"`
 	RetentionBlockDataExpirationDuration string `pulumi:"retentionBlockDataExpirationDuration"`
-	// Controls how long to keep a block in memory before flushing to a fileset on disk.
-	RetentionBlockSizeDuration string `pulumi:"retentionBlockSizeDuration"`
-	// Controls how far into the future writes to the namespace will be accepted.
-	RetentionBufferFutureDuration string `pulumi:"retentionBufferFutureDuration"`
-	// Controls how far into the past writes to the namespace will be accepted.
-	RetentionBufferPastDuration string `pulumi:"retentionBufferPastDuration"`
-	// Controls the duration of time that M3DB will retain data for the namespace.
-	RetentionPeriodDuration string `pulumi:"retentionPeriodDuration"`
-	// See Argument Reference above.
-	ServiceName string `pulumi:"serviceName"`
-	// SDefines whether M3db will create snapshot files for this namespace.
-	SnapshotEnabled bool `pulumi:"snapshotEnabled"`
-	// Type of namespace.
-	Type string `pulumi:"type"`
-	// Defines whether M3DB will include writes to this namespace in the commit log.
-	WritesToCommitLogEnabled bool `pulumi:"writesToCommitLogEnabled"`
+	RetentionBlockSizeDuration           string `pulumi:"retentionBlockSizeDuration"`
+	RetentionBufferFutureDuration        string `pulumi:"retentionBufferFutureDuration"`
+	RetentionBufferPastDuration          string `pulumi:"retentionBufferPastDuration"`
+	RetentionPeriodDuration              string `pulumi:"retentionPeriodDuration"`
+	ServiceName                          string `pulumi:"serviceName"`
+	SnapshotEnabled                      bool   `pulumi:"snapshotEnabled"`
+	Type                                 string `pulumi:"type"`
+	WritesToCommitLogEnabled             bool   `pulumi:"writesToCommitLogEnabled"`
 }
 
 func GetM3dbNamespaceOutput(ctx *pulumi.Context, args GetM3dbNamespaceOutputArgs, opts ...pulumi.InvokeOption) GetM3dbNamespaceResultOutput {
@@ -103,12 +57,8 @@ func GetM3dbNamespaceOutput(ctx *pulumi.Context, args GetM3dbNamespaceOutputArgs
 
 // A collection of arguments for invoking getM3dbNamespace.
 type GetM3dbNamespaceOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Name of the namespace.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Name        pulumi.StringInput `pulumi:"name"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -131,7 +81,6 @@ func (o GetM3dbNamespaceResultOutput) ToGetM3dbNamespaceResultOutputWithContext(
 	return o
 }
 
-// See Argument Reference above.
 func (o GetM3dbNamespaceResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -141,57 +90,46 @@ func (o GetM3dbNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetM3dbNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resolution for an aggregated namespace.
 func (o GetM3dbNamespaceResultOutput) Resolution() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.Resolution }).(pulumi.StringOutput)
 }
 
-// Controls how long we wait before expiring stale data.
 func (o GetM3dbNamespaceResultOutput) RetentionBlockDataExpirationDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.RetentionBlockDataExpirationDuration }).(pulumi.StringOutput)
 }
 
-// Controls how long to keep a block in memory before flushing to a fileset on disk.
 func (o GetM3dbNamespaceResultOutput) RetentionBlockSizeDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.RetentionBlockSizeDuration }).(pulumi.StringOutput)
 }
 
-// Controls how far into the future writes to the namespace will be accepted.
 func (o GetM3dbNamespaceResultOutput) RetentionBufferFutureDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.RetentionBufferFutureDuration }).(pulumi.StringOutput)
 }
 
-// Controls how far into the past writes to the namespace will be accepted.
 func (o GetM3dbNamespaceResultOutput) RetentionBufferPastDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.RetentionBufferPastDuration }).(pulumi.StringOutput)
 }
 
-// Controls the duration of time that M3DB will retain data for the namespace.
 func (o GetM3dbNamespaceResultOutput) RetentionPeriodDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.RetentionPeriodDuration }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetM3dbNamespaceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// SDefines whether M3db will create snapshot files for this namespace.
 func (o GetM3dbNamespaceResultOutput) SnapshotEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) bool { return v.SnapshotEnabled }).(pulumi.BoolOutput)
 }
 
-// Type of namespace.
 func (o GetM3dbNamespaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Defines whether M3DB will include writes to this namespace in the commit log.
 func (o GetM3dbNamespaceResultOutput) WritesToCommitLogEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetM3dbNamespaceResult) bool { return v.WritesToCommitLogEnabled }).(pulumi.BoolOutput)
 }

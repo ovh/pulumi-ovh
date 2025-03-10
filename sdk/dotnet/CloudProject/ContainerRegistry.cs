@@ -9,43 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Creates a container registry associated with a public cloud project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var regcap = Ovh.CloudProject.GetCapabilitiesContainerFilter.Invoke(new()
-    ///     {
-    ///         ServiceName = "XXXXXX",
-    ///         PlanName = "SMALL",
-    ///         Region = "GRA",
-    ///     });
-    /// 
-    ///     var myRegistry = new Ovh.CloudProject.ContainerRegistry("myRegistry", new()
-    ///     {
-    ///         ServiceName = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.ServiceName),
-    ///         PlanId = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Id),
-    ///         Region = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Region),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistry:ContainerRegistry")]
     public partial class ContainerRegistry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Plan creation date
+        /// Registry creation date
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -57,7 +25,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Plan ID of the registry
+        /// Plan ID of the registry.
         /// </summary>
         [Output("planId")]
         public Output<string> PlanId { get; private set; } = null!;
@@ -75,15 +43,11 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Region of the registry
+        /// Region of the registry.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -171,21 +135,17 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Plan ID of the registry
+        /// Plan ID of the registry.
         /// </summary>
         [Input("planId")]
         public Input<string>? PlanId { get; set; }
 
         /// <summary>
-        /// Region of the registry
+        /// Region of the registry.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -198,7 +158,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class ContainerRegistryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Plan creation date
+        /// Registry creation date
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -210,7 +170,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Plan ID of the registry
+        /// Plan ID of the registry.
         /// </summary>
         [Input("planId")]
         public Input<string>? PlanId { get; set; }
@@ -234,15 +194,11 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Region of the registry
+        /// Region of the registry.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

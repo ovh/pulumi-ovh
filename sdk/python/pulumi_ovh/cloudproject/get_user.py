@@ -56,17 +56,11 @@ class GetUserResult:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        the date the user was created.
-        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        description of the role
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -80,9 +74,6 @@ class GetUserResult:
     @property
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetUserRoleResult']:
-        """
-        A list of roles associated with the user.
-        """
         return pulumi.get(self, "roles")
 
     @property
@@ -93,9 +84,6 @@ class GetUserResult:
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        the status of the user. should be normally set to 'ok'.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -106,10 +94,6 @@ class GetUserResult:
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        the username generated for the user. This username can be used with
-        the Openstack API.
-        """
         return pulumi.get(self, "username")
 
 
@@ -133,26 +117,7 @@ def get_user(service_name: Optional[str] = None,
              user_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Get the user details of a previously created public cloud project user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    project_users = ovh.CloudProject.get_users(service_name="XXX")
-    # Get the user ID of a previously created user with the description "S3-User"
-    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
-    s3_user_id = users[0]
-    my_user = ovh.CloudProject.get_user(service_name=project_users.service_name,
-        user_id=s3_user_id)
-    ```
-
-
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str user_id: The ID of a public cloud project's user.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -173,26 +138,7 @@ def get_user_output(service_name: Optional[pulumi.Input[str]] = None,
                     user_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
-    Get the user details of a previously created public cloud project user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    project_users = ovh.CloudProject.get_users(service_name="XXX")
-    # Get the user ID of a previously created user with the description "S3-User"
-    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
-    s3_user_id = users[0]
-    my_user = ovh.CloudProject.get_user(service_name=project_users.service_name,
-        user_id=s3_user_id)
-    ```
-
-
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str user_id: The ID of a public cloud project's user.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

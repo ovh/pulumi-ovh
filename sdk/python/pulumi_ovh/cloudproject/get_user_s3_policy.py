@@ -51,9 +51,6 @@ class GetUserS3PolicyResult:
     @property
     @pulumi.getter
     def policy(self) -> str:
-        """
-        (Required) The policy document. This is a JSON formatted string.
-        """
         return pulumi.get(self, "policy")
 
     @property
@@ -83,26 +80,7 @@ def get_user_s3_policy(service_name: Optional[str] = None,
                        user_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserS3PolicyResult:
     """
-    Get the S3 Policy of a public cloud project user. The policy can be set by using the `CloudProject.S3Policy` resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    project_users = ovh.CloudProject.get_users(service_name="XXX")
-    # Get the user ID of a previously created user with the description "S3-User"
-    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
-    s3_user_id = users[0]
-    policy = ovh.CloudProject.get_user_s3_policy(service_name=project_users.service_name,
-        user_id=s3_user_id)
-    ```
-
-
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str user_id: The ID of a public cloud project's user.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -119,26 +97,7 @@ def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
                               user_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserS3PolicyResult]:
     """
-    Get the S3 Policy of a public cloud project user. The policy can be set by using the `CloudProject.S3Policy` resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    project_users = ovh.CloudProject.get_users(service_name="XXX")
-    # Get the user ID of a previously created user with the description "S3-User"
-    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
-    s3_user_id = users[0]
-    policy = ovh.CloudProject.get_user_s3_policy(service_name=project_users.service_name,
-        user_id=s3_user_id)
-    ```
-
-
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str user_id: The ID of a public cloud project's user.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manage a worflow that schedules backups of public cloud instance.
- * Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myBackup = new ovh.cloudproject.WorkflowBackup("myBackup", {
- *     cron: "50 4 * * *",
- *     instanceId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
- *     maxExecutionCount: 0,
- *     regionName: "GRA11",
- *     rotation: 7,
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- * });
- * ```
- */
 export class WorkflowBackup extends pulumi.CustomResource {
     /**
      * Get an existing WorkflowBackup resource's state with the given name, ID, and optional extra
@@ -52,37 +32,17 @@ export class WorkflowBackup extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkflowBackup.__pulumiType;
     }
 
-    /**
-     * The name of the backup files that are created. If empty, the `name` attribute is used.
-     */
     public readonly backupName!: pulumi.Output<string>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    /**
-     * The cron periodicity at which the backup workflow is scheduled
-     *
-     * * `instanceId` the id of the instance to back up
-     */
     public readonly cron!: pulumi.Output<string>;
     public readonly instanceId!: pulumi.Output<string>;
-    /**
-     * The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
-     */
     public readonly maxExecutionCount!: pulumi.Output<number | undefined>;
-    /**
-     * The worflow name that is used in the UI
-     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the openstack region.
+     * Region name.
      */
     public readonly regionName!: pulumi.Output<string>;
-    /**
-     * The number of backup that are retained.
-     */
     public readonly rotation!: pulumi.Output<number>;
-    /**
-     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -143,37 +103,17 @@ export class WorkflowBackup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkflowBackup resources.
  */
 export interface WorkflowBackupState {
-    /**
-     * The name of the backup files that are created. If empty, the `name` attribute is used.
-     */
     backupName?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * The cron periodicity at which the backup workflow is scheduled
-     *
-     * * `instanceId` the id of the instance to back up
-     */
     cron?: pulumi.Input<string>;
     instanceId?: pulumi.Input<string>;
-    /**
-     * The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
-     */
     maxExecutionCount?: pulumi.Input<number>;
-    /**
-     * The worflow name that is used in the UI
-     */
     name?: pulumi.Input<string>;
     /**
-     * The name of the openstack region.
+     * Region name.
      */
     regionName?: pulumi.Input<string>;
-    /**
-     * The number of backup that are retained.
-     */
     rotation?: pulumi.Input<number>;
-    /**
-     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -181,35 +121,15 @@ export interface WorkflowBackupState {
  * The set of arguments for constructing a WorkflowBackup resource.
  */
 export interface WorkflowBackupArgs {
-    /**
-     * The name of the backup files that are created. If empty, the `name` attribute is used.
-     */
     backupName?: pulumi.Input<string>;
-    /**
-     * The cron periodicity at which the backup workflow is scheduled
-     *
-     * * `instanceId` the id of the instance to back up
-     */
     cron: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
-    /**
-     * The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
-     */
     maxExecutionCount?: pulumi.Input<number>;
-    /**
-     * The worflow name that is used in the UI
-     */
     name?: pulumi.Input<string>;
     /**
-     * The name of the openstack region.
+     * Region name.
      */
     regionName: pulumi.Input<string>;
-    /**
-     * The number of backup that are retained.
-     */
     rotation: pulumi.Input<number>;
-    /**
-     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

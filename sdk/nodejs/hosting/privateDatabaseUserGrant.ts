@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Add grant on a database in your private cloud database instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const userGrant = new ovh.hosting.PrivateDatabaseUserGrant("userGrant", {
- *     databaseName: "ovhcloud",
- *     grant: "admin",
- *     serviceName: "XXXXXX",
- *     userName: "terraform",
- * });
- * ```
- *
- * ## Import
- *
- * OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
- *
- * ```sh
- * $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
- * ```
- */
 export class PrivateDatabaseUserGrant extends pulumi.CustomResource {
     /**
      * Get an existing PrivateDatabaseUserGrant resource's state with the given name, ID, and optional extra
@@ -58,23 +33,19 @@ export class PrivateDatabaseUserGrant extends pulumi.CustomResource {
     }
 
     /**
-     * Database name where add grant.
+     * Database name where add grant
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * Database name where add grant. Values can be: 
-     * - admin
-     * - none
-     * - ro
-     * - rw
+     * Database name where add grant
      */
     public readonly grant!: pulumi.Output<string>;
     /**
-     * The internal name of your private database.
+     * The internal name of your private database
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * User name used to connect on your databases.
+     * User name used to connect on your databases
      */
     public readonly userName!: pulumi.Output<string>;
 
@@ -124,23 +95,19 @@ export class PrivateDatabaseUserGrant extends pulumi.CustomResource {
  */
 export interface PrivateDatabaseUserGrantState {
     /**
-     * Database name where add grant.
+     * Database name where add grant
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * Database name where add grant. Values can be: 
-     * - admin
-     * - none
-     * - ro
-     * - rw
+     * Database name where add grant
      */
     grant?: pulumi.Input<string>;
     /**
-     * The internal name of your private database.
+     * The internal name of your private database
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * User name used to connect on your databases.
+     * User name used to connect on your databases
      */
     userName?: pulumi.Input<string>;
 }
@@ -150,23 +117,19 @@ export interface PrivateDatabaseUserGrantState {
  */
 export interface PrivateDatabaseUserGrantArgs {
     /**
-     * Database name where add grant.
+     * Database name where add grant
      */
     databaseName: pulumi.Input<string>;
     /**
-     * Database name where add grant. Values can be: 
-     * - admin
-     * - none
-     * - ro
-     * - rw
+     * Database name where add grant
      */
     grant: pulumi.Input<string>;
     /**
-     * The internal name of your private database.
+     * The internal name of your private database
      */
     serviceName: pulumi.Input<string>;
     /**
-     * User name used to connect on your databases.
+     * User name used to connect on your databases
      */
     userName: pulumi.Input<string>;
 }

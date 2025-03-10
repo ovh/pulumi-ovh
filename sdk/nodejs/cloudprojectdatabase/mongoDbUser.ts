@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * OVHcloud Managed MongoDB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser my_user service_name/cluster_id/id
- * ```
- */
 export class MongoDbUser extends pulumi.CustomResource {
     /**
      * Get an existing MongoDbUser resource's state with the given name, ID, and optional extra
@@ -44,19 +33,19 @@ export class MongoDbUser extends pulumi.CustomResource {
     }
 
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Date of the creation of the user.
+     * Date of the creation of the user
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
+     * Name of the user
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Sensitive) Password of the user.
+     * Password of the user
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
@@ -64,34 +53,12 @@ export class MongoDbUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
-     * * `backup@admin`
-     * * `clusterAdmin@admin`
-     * * `clusterManager@admin`
-     * * `clusterMonitor@admin`
-     * * `dbAdmin@(defined db)`
-     * * `dbAdminAnyDatabase@admin`
-     * * `dbOwner@(defined db)`
-     * * `enableSharding@(defined db)`
-     * * `hostManager@admin`
-     * * `read@(defined db)`
-     * * `readAnyDatabase@admin`
-     * * `readWrite@(defined db)`
-     * * `readWriteAnyDatabase@admin`
-     * * `restore@admin`
-     * * `root@admin`
-     * * `userAdmin@(defined db)`
-     * * `userAdminAnyDatabase@admin`
+     * Roles the user belongs to with the authentication database
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Current status of the user.
+     * Current status of the user
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -145,19 +112,19 @@ export class MongoDbUser extends pulumi.CustomResource {
  */
 export interface MongoDbUserState {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Date of the creation of the user.
+     * Date of the creation of the user
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
+     * Name of the user
      */
     name?: pulumi.Input<string>;
     /**
-     * (Sensitive) Password of the user.
+     * Password of the user
      */
     password?: pulumi.Input<string>;
     /**
@@ -165,34 +132,12 @@ export interface MongoDbUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
-     * * `backup@admin`
-     * * `clusterAdmin@admin`
-     * * `clusterManager@admin`
-     * * `clusterMonitor@admin`
-     * * `dbAdmin@(defined db)`
-     * * `dbAdminAnyDatabase@admin`
-     * * `dbOwner@(defined db)`
-     * * `enableSharding@(defined db)`
-     * * `hostManager@admin`
-     * * `read@(defined db)`
-     * * `readAnyDatabase@admin`
-     * * `readWrite@(defined db)`
-     * * `readWriteAnyDatabase@admin`
-     * * `restore@admin`
-     * * `root@admin`
-     * * `userAdmin@(defined db)`
-     * * `userAdminAnyDatabase@admin`
+     * Roles the user belongs to with the authentication database
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Current status of the user.
+     * Current status of the user
      */
     status?: pulumi.Input<string>;
 }
@@ -202,11 +147,11 @@ export interface MongoDbUserState {
  */
 export interface MongoDbUserArgs {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "admin" is mapped with already created admin@admin user instead of creating a new user.
+     * Name of the user
      */
     name?: pulumi.Input<string>;
     /**
@@ -214,30 +159,8 @@ export interface MongoDbUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
-     * * `backup@admin`
-     * * `clusterAdmin@admin`
-     * * `clusterManager@admin`
-     * * `clusterMonitor@admin`
-     * * `dbAdmin@(defined db)`
-     * * `dbAdminAnyDatabase@admin`
-     * * `dbOwner@(defined db)`
-     * * `enableSharding@(defined db)`
-     * * `hostManager@admin`
-     * * `read@(defined db)`
-     * * `readAnyDatabase@admin`
-     * * `readWrite@(defined db)`
-     * * `readWriteAnyDatabase@admin`
-     * * `restore@admin`
-     * * `root@admin`
-     * * `userAdmin@(defined db)`
-     * * `userAdminAnyDatabase@admin`
+     * Roles the user belongs to with the authentication database
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

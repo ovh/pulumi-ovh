@@ -31,7 +31,7 @@ namespace Pulumi.Ovh.Hosting.Inputs
         }
 
         /// <summary>
-        /// Service duration
+        /// duration
         /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;

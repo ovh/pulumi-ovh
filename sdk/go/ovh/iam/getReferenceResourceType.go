@@ -7,35 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to list all the IAM resource types.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.GetReferenceResourceType(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetReferenceResourceType(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetReferenceResourceTypeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReferenceResourceTypeResult
@@ -49,8 +24,7 @@ func GetReferenceResourceType(ctx *pulumi.Context, opts ...pulumi.InvokeOption) 
 // A collection of values returned by getReferenceResourceType.
 type GetReferenceResourceTypeResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// List of resource types
+	Id    string   `pulumi:"id"`
 	Types []string `pulumi:"types"`
 }
 
@@ -81,7 +55,6 @@ func (o GetReferenceResourceTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReferenceResourceTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of resource types
 func (o GetReferenceResourceTypeResultOutput) Types() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetReferenceResourceTypeResult) []string { return v.Types }).(pulumi.StringArrayOutput)
 }

@@ -8,59 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Apply IP restrictions container registry associated with a public cloud project on Harbor UI and API.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
-//				ServiceName: "XXXXXX",
-//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudproject.NewContainerRegistryIPRestrictionsManagement(ctx, "myMgtIprestrictions", &cloudproject.ContainerRegistryIPRestrictionsManagementArgs{
-//				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
-//				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
-//				IpRestrictions: pulumi.StringMapArray{
-//					pulumi.StringMap{
-//						"ip_block":    pulumi.String("xxx.xxx.xxx.xxx/xx"),
-//						"description": pulumi.String("xxxxxxx"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ContainerRegistryIPRestrictionsManagement struct {
 	pulumi.CustomResourceState
 
-	// IP restrictions applied on Harbor UI and API.
+	// List your IP restrictions applied on artifact manager component
 	IpRestrictions pulumi.StringMapArrayOutput `pulumi:"ipRestrictions"`
-	// The id of the Managed Private Registry.
+	// RegistryID
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -103,20 +62,20 @@ func GetContainerRegistryIPRestrictionsManagement(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerRegistryIPRestrictionsManagement resources.
 type containerRegistryIPRestrictionsManagementState struct {
-	// IP restrictions applied on Harbor UI and API.
+	// List your IP restrictions applied on artifact manager component
 	IpRestrictions []map[string]string `pulumi:"ipRestrictions"`
-	// The id of the Managed Private Registry.
+	// RegistryID
 	RegistryId *string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type ContainerRegistryIPRestrictionsManagementState struct {
-	// IP restrictions applied on Harbor UI and API.
+	// List your IP restrictions applied on artifact manager component
 	IpRestrictions pulumi.StringMapArrayInput
-	// The id of the Managed Private Registry.
+	// RegistryID
 	RegistryId pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -125,21 +84,21 @@ func (ContainerRegistryIPRestrictionsManagementState) ElementType() reflect.Type
 }
 
 type containerRegistryIPRestrictionsManagementArgs struct {
-	// IP restrictions applied on Harbor UI and API.
+	// List your IP restrictions applied on artifact manager component
 	IpRestrictions []map[string]string `pulumi:"ipRestrictions"`
-	// The id of the Managed Private Registry.
+	// RegistryID
 	RegistryId string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a ContainerRegistryIPRestrictionsManagement resource.
 type ContainerRegistryIPRestrictionsManagementArgs struct {
-	// IP restrictions applied on Harbor UI and API.
+	// List your IP restrictions applied on artifact manager component
 	IpRestrictions pulumi.StringMapArrayInput
-	// The id of the Managed Private Registry.
+	// RegistryID
 	RegistryId pulumi.StringInput
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name
 	ServiceName pulumi.StringInput
 }
 
@@ -230,19 +189,19 @@ func (o ContainerRegistryIPRestrictionsManagementOutput) ToContainerRegistryIPRe
 	return o
 }
 
-// IP restrictions applied on Harbor UI and API.
+// List your IP restrictions applied on artifact manager component
 func (o ContainerRegistryIPRestrictionsManagementOutput) IpRestrictions() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *ContainerRegistryIPRestrictionsManagement) pulumi.StringMapArrayOutput {
 		return v.IpRestrictions
 	}).(pulumi.StringMapArrayOutput)
 }
 
-// The id of the Managed Private Registry.
+// RegistryID
 func (o ContainerRegistryIPRestrictionsManagementOutput) RegistryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryIPRestrictionsManagement) pulumi.StringOutput { return v.RegistryId }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// Service name
 func (o ContainerRegistryIPRestrictionsManagementOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryIPRestrictionsManagement) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

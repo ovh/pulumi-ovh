@@ -53,17 +53,11 @@ class GetPrivateDatabaseDbResult:
     @property
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> str:
-        """
-        Time of the next backup (every day)
-        """
         return pulumi.get(self, "backup_time")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        Creation date of the database
-        """
         return pulumi.get(self, "creation_date")
 
     @property
@@ -82,9 +76,6 @@ class GetPrivateDatabaseDbResult:
     @property
     @pulumi.getter(name="quotaUsed")
     def quota_used(self) -> int:
-        """
-        Space used by the database (in MB)
-        """
         return pulumi.get(self, "quota_used")
 
     @property
@@ -95,9 +86,6 @@ class GetPrivateDatabaseDbResult:
     @property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetPrivateDatabaseDbUserResult']:
-        """
-        Users granted to this database
-        """
         return pulumi.get(self, "users")
 
 
@@ -120,21 +108,7 @@ def get_private_database_db(database_name: Optional[str] = None,
                             service_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateDatabaseDbResult:
     """
-    Use this data source to retrieve information about an hosting privatedatabase.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_database = ovh.Hosting.get_private_database_db(database_name="XXXXXX",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str database_name: Database name
-    :param str service_name: The internal name of your private database
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -154,21 +128,7 @@ def get_private_database_db_output(database_name: Optional[pulumi.Input[str]] = 
                                    service_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseDbResult]:
     """
-    Use this data source to retrieve information about an hosting privatedatabase.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_database = ovh.Hosting.get_private_database_db(database_name="XXXXXX",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str database_name: Database name
-    :param str service_name: The internal name of your private database
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name

@@ -11,66 +11,12 @@ namespace Pulumi.Ovh
 {
     public static class GetInstallationTemplates
     {
-        /// <summary>
-        /// Use this data source to get the list of installation templates available for dedicated servers.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var templates = Ovh.GetInstallationTemplates.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetInstallationTemplatesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstallationTemplatesResult>("ovh:index/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the list of installation templates available for dedicated servers.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var templates = Ovh.GetInstallationTemplates.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetInstallationTemplatesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplatesResult>("ovh:index/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the list of installation templates available for dedicated servers.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var templates = Ovh.GetInstallationTemplates.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetInstallationTemplatesResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplatesResult>("ovh:index/getInstallationTemplates:getInstallationTemplates", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -83,9 +29,6 @@ namespace Pulumi.Ovh
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The list of installation templates IDs available for dedicated servers.
-        /// </summary>
         public readonly ImmutableArray<string> Results;
 
         [OutputConstructor]

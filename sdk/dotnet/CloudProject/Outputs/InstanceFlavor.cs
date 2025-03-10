@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class InstanceFlavor
     {
         /// <summary>
-        /// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        /// Flavor id
         /// </summary>
         public readonly string FlavorId;
 

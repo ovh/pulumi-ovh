@@ -9,59 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vrackOnly = new Ovh.CloudProject.KubeIpRestrictions("vrackOnly", new()
-    ///     {
-    ///         Ips = new[]
-    ///         {
-    ///             "10.42.0.0/16",
-    ///         },
-    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions")]
     public partial class KubeIpRestrictions : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of CIDR authorized to interact with the managed Kubernetes cluster.
+        /// List of IP restrictions for the cluster
         /// </summary>
         [Output("ips")]
         public Output<ImmutableArray<string>> Ips { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        /// Kube ID
         /// </summary>
         [Output("kubeId")]
         public Output<string> KubeId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        /// Service name
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -117,7 +81,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _ips;
 
         /// <summary>
-        /// List of CIDR authorized to interact with the managed Kubernetes cluster.
+        /// List of IP restrictions for the cluster
         /// </summary>
         public InputList<string> Ips
         {
@@ -126,13 +90,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        /// Kube ID
         /// </summary>
         [Input("kubeId", required: true)]
         public Input<string> KubeId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        /// Service name
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -149,7 +113,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _ips;
 
         /// <summary>
-        /// List of CIDR authorized to interact with the managed Kubernetes cluster.
+        /// List of IP restrictions for the cluster
         /// </summary>
         public InputList<string> Ips
         {
@@ -158,13 +122,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        /// Kube ID
         /// </summary>
         [Input("kubeId")]
         public Input<string>? KubeId { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        /// Service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

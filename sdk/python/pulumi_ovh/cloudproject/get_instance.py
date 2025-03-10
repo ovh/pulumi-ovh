@@ -27,13 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, addresses=None, attached_volumes=None, flavor_id=None, flavor_name=None, id=None, image_id=None, instance_id=None, name=None, region=None, service_name=None, ssh_key=None, task_state=None):
+    def __init__(__self__, addresses=None, attached_volumes=None, availability_zone=None, flavor_id=None, flavor_name=None, id=None, image_id=None, instance_id=None, name=None, region=None, service_name=None, ssh_key=None, task_state=None):
         if addresses and not isinstance(addresses, list):
             raise TypeError("Expected argument 'addresses' to be a list")
         pulumi.set(__self__, "addresses", addresses)
         if attached_volumes and not isinstance(attached_volumes, list):
             raise TypeError("Expected argument 'attached_volumes' to be a list")
         pulumi.set(__self__, "attached_volumes", attached_volumes)
+        if availability_zone and not isinstance(availability_zone, str):
+            raise TypeError("Expected argument 'availability_zone' to be a str")
+        pulumi.set(__self__, "availability_zone", availability_zone)
         if flavor_id and not isinstance(flavor_id, str):
             raise TypeError("Expected argument 'flavor_id' to be a str")
         pulumi.set(__self__, "flavor_id", flavor_id)
@@ -68,33 +71,26 @@ class GetInstanceResult:
     @property
     @pulumi.getter
     def addresses(self) -> Sequence['outputs.GetInstanceAddressResult']:
-        """
-        Instance IP addresses
-        """
         return pulumi.get(self, "addresses")
 
     @property
     @pulumi.getter(name="attachedVolumes")
     def attached_volumes(self) -> Sequence['outputs.GetInstanceAttachedVolumeResult']:
-        """
-        Volumes attached to the instance
-        """
         return pulumi.get(self, "attached_volumes")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> str:
-        """
-        Flavor id
-        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> str:
-        """
-        Flavor name
-        """
         return pulumi.get(self, "flavor_name")
 
     @property
@@ -108,9 +104,6 @@ class GetInstanceResult:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> str:
-        """
-        Image id
-        """
         return pulumi.get(self, "image_id")
 
     @property
@@ -121,9 +114,6 @@ class GetInstanceResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Instance name
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -139,17 +129,11 @@ class GetInstanceResult:
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> str:
-        """
-        SSH Keypair
-        """
         return pulumi.get(self, "ssh_key")
 
     @property
     @pulumi.getter(name="taskState")
     def task_state(self) -> str:
-        """
-        Instance task state
-        """
         return pulumi.get(self, "task_state")
 
 
@@ -161,6 +145,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             addresses=self.addresses,
             attached_volumes=self.attached_volumes,
+            availability_zone=self.availability_zone,
             flavor_id=self.flavor_id,
             flavor_name=self.flavor_name,
             id=self.id,
@@ -178,27 +163,7 @@ def get_instance(instance_id: Optional[str] = None,
                  service_name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
-    **This datasource uses a Beta API**
-    Use this data source to get the instance of a public cloud project.
-
-    ## Example Usage
-
-    To get information of an instance:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    instance = ovh.CloudProject.get_instance(instance_id="ZZZZZ",
-        region="XXXX",
-        service_name="YYYY")
-    ```
-
-
-    :param str instance_id: Instance id
-    :param str region: Instance region
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -210,6 +175,7 @@ def get_instance(instance_id: Optional[str] = None,
     return AwaitableGetInstanceResult(
         addresses=pulumi.get(__ret__, 'addresses'),
         attached_volumes=pulumi.get(__ret__, 'attached_volumes'),
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
         flavor_id=pulumi.get(__ret__, 'flavor_id'),
         flavor_name=pulumi.get(__ret__, 'flavor_name'),
         id=pulumi.get(__ret__, 'id'),
@@ -225,27 +191,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
                         service_name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
-    **This datasource uses a Beta API**
-    Use this data source to get the instance of a public cloud project.
-
-    ## Example Usage
-
-    To get information of an instance:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    instance = ovh.CloudProject.get_instance(instance_id="ZZZZZ",
-        region="XXXX",
-        service_name="YYYY")
-    ```
-
-
-    :param str instance_id: Instance id
-    :param str region: Instance region
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -256,6 +202,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetInstanceResult(
         addresses=pulumi.get(__response__, 'addresses'),
         attached_volumes=pulumi.get(__response__, 'attached_volumes'),
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
         flavor_id=pulumi.get(__response__, 'flavor_id'),
         flavor_name=pulumi.get(__response__, 'flavor_name'),
         id=pulumi.get(__response__, 'id'),

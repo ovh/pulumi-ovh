@@ -67,33 +67,21 @@ class GetLogsOutputOpenSearchIndexResult:
     @property
     @pulumi.getter(name="alertNotifyEnabled")
     def alert_notify_enabled(self) -> bool:
-        """
-        If set, notify when size is near 80, 90 or 100 % of its maximum capacity
-        """
         return pulumi.get(self, "alert_notify_enabled")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Index creation
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="currentSize")
     def current_size(self) -> int:
-        """
-        Current index size (in bytes)
-        """
         return pulumi.get(self, "current_size")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Index description
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -107,41 +95,26 @@ class GetLogsOutputOpenSearchIndexResult:
     @property
     @pulumi.getter(name="indexId")
     def index_id(self) -> str:
-        """
-        Index ID
-        """
         return pulumi.get(self, "index_id")
 
     @property
     @pulumi.getter(name="isEditable")
     def is_editable(self) -> bool:
-        """
-        Indicates if you are allowed to edit entry
-        """
         return pulumi.get(self, "is_editable")
 
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> int:
-        """
-        Maximum index size (in bytes)
-        """
         return pulumi.get(self, "max_size")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Index name
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nbShard")
     def nb_shard(self) -> int:
-        """
-        Number of shard
-        """
         return pulumi.get(self, "nb_shard")
 
     @property
@@ -152,9 +125,6 @@ class GetLogsOutputOpenSearchIndexResult:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        Index last update
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -183,22 +153,7 @@ def get_logs_output_open_search_index(name: Optional[str] = None,
                                       service_name: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogsOutputOpenSearchIndexResult:
     """
-    Use this data source to retrieve information about a DBaas logs output opensearch index.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    index = ovh.Dbaas.get_logs_output_open_search_index(name="index-name",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-
-    :param str name: Index name
-    :param int nb_shard: Number of shard
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -225,22 +180,7 @@ def get_logs_output_open_search_index_output(name: Optional[pulumi.Input[str]] =
                                              service_name: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsOutputOpenSearchIndexResult]:
     """
-    Use this data source to retrieve information about a DBaas logs output opensearch index.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    index = ovh.Dbaas.get_logs_output_open_search_index(name="index-name",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-
-    :param str name: Index name
-    :param int nb_shard: Number of shard
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

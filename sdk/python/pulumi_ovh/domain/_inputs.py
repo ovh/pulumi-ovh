@@ -15,6 +15,38 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'DsRecordsDsRecordArgs',
+    'DsRecordsDsRecordArgsDict',
+    'NameCurrentStateArgs',
+    'NameCurrentStateArgsDict',
+    'NameCurrentStateDnsConfigurationArgs',
+    'NameCurrentStateDnsConfigurationArgsDict',
+    'NameCurrentStateDnsConfigurationNameServerArgs',
+    'NameCurrentStateDnsConfigurationNameServerArgsDict',
+    'NameCurrentTaskArgs',
+    'NameCurrentTaskArgsDict',
+    'NameIamArgs',
+    'NameIamArgsDict',
+    'NameOrderArgs',
+    'NameOrderArgsDict',
+    'NameOrderDetailArgs',
+    'NameOrderDetailArgsDict',
+    'NamePlanArgs',
+    'NamePlanArgsDict',
+    'NamePlanConfigurationArgs',
+    'NamePlanConfigurationArgsDict',
+    'NamePlanOptionArgs',
+    'NamePlanOptionArgsDict',
+    'NamePlanOptionConfigurationArgs',
+    'NamePlanOptionConfigurationArgsDict',
+    'NameServersServerArgs',
+    'NameServersServerArgsDict',
+    'NameTargetSpecArgs',
+    'NameTargetSpecArgsDict',
+    'NameTargetSpecDnsConfigurationArgs',
+    'NameTargetSpecDnsConfigurationArgsDict',
+    'NameTargetSpecDnsConfigurationNameServerArgs',
+    'NameTargetSpecDnsConfigurationNameServerArgsDict',
     'ZoneOrderArgs',
     'ZoneOrderArgsDict',
     'ZoneOrderDetailArgs',
@@ -30,6 +62,1310 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class DsRecordsDsRecordArgsDict(TypedDict):
+        algorithm: pulumi.Input[str]
+        """
+        Algorithm name of the DNSSEC key
+        """
+        flags: pulumi.Input[str]
+        """
+        Flag name of the DNSSEC key
+        """
+        public_key: pulumi.Input[str]
+        """
+        Public key
+        """
+        tag: pulumi.Input[int]
+        """
+        Tag of the DNSSEC key
+        """
+elif False:
+    DsRecordsDsRecordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DsRecordsDsRecordArgs:
+    def __init__(__self__, *,
+                 algorithm: pulumi.Input[str],
+                 flags: pulumi.Input[str],
+                 public_key: pulumi.Input[str],
+                 tag: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] algorithm: Algorithm name of the DNSSEC key
+        :param pulumi.Input[str] flags: Flag name of the DNSSEC key
+        :param pulumi.Input[str] public_key: Public key
+        :param pulumi.Input[int] tag: Tag of the DNSSEC key
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "flags", flags)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Input[str]:
+        """
+        Algorithm name of the DNSSEC key
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: pulumi.Input[str]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> pulumi.Input[str]:
+        """
+        Flag name of the DNSSEC key
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: pulumi.Input[str]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input[str]:
+        """
+        Public key
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[int]:
+        """
+        Tag of the DNSSEC key
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[int]):
+        pulumi.set(self, "tag", value)
+
+
+if not MYPY:
+    class NameCurrentStateArgsDict(TypedDict):
+        additional_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain additional states
+        """
+        dns_configuration: NotRequired[pulumi.Input['NameCurrentStateDnsConfigurationArgsDict']]
+        """
+        The domain DNS configuration
+        """
+        extension: NotRequired[pulumi.Input[str]]
+        """
+        Extension of the domain name
+        """
+        main_state: NotRequired[pulumi.Input[str]]
+        """
+        Domain main state
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Domain name
+        """
+        protection_state: NotRequired[pulumi.Input[str]]
+        """
+        Domain protection state
+        """
+        suspension_state: NotRequired[pulumi.Input[str]]
+        """
+        Domain suspension state
+        """
+elif False:
+    NameCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameCurrentStateArgs:
+    def __init__(__self__, *,
+                 additional_states: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_configuration: Optional[pulumi.Input['NameCurrentStateDnsConfigurationArgs']] = None,
+                 extension: Optional[pulumi.Input[str]] = None,
+                 main_state: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protection_state: Optional[pulumi.Input[str]] = None,
+                 suspension_state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_states: Domain additional states
+        :param pulumi.Input['NameCurrentStateDnsConfigurationArgs'] dns_configuration: The domain DNS configuration
+        :param pulumi.Input[str] extension: Extension of the domain name
+        :param pulumi.Input[str] main_state: Domain main state
+        :param pulumi.Input[str] name: Domain name
+        :param pulumi.Input[str] protection_state: Domain protection state
+        :param pulumi.Input[str] suspension_state: Domain suspension state
+        """
+        if additional_states is not None:
+            pulumi.set(__self__, "additional_states", additional_states)
+        if dns_configuration is not None:
+            pulumi.set(__self__, "dns_configuration", dns_configuration)
+        if extension is not None:
+            pulumi.set(__self__, "extension", extension)
+        if main_state is not None:
+            pulumi.set(__self__, "main_state", main_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protection_state is not None:
+            pulumi.set(__self__, "protection_state", protection_state)
+        if suspension_state is not None:
+            pulumi.set(__self__, "suspension_state", suspension_state)
+
+    @property
+    @pulumi.getter(name="additionalStates")
+    def additional_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain additional states
+        """
+        return pulumi.get(self, "additional_states")
+
+    @additional_states.setter
+    def additional_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_states", value)
+
+    @property
+    @pulumi.getter(name="dnsConfiguration")
+    def dns_configuration(self) -> Optional[pulumi.Input['NameCurrentStateDnsConfigurationArgs']]:
+        """
+        The domain DNS configuration
+        """
+        return pulumi.get(self, "dns_configuration")
+
+    @dns_configuration.setter
+    def dns_configuration(self, value: Optional[pulumi.Input['NameCurrentStateDnsConfigurationArgs']]):
+        pulumi.set(self, "dns_configuration", value)
+
+    @property
+    @pulumi.getter
+    def extension(self) -> Optional[pulumi.Input[str]]:
+        """
+        Extension of the domain name
+        """
+        return pulumi.get(self, "extension")
+
+    @extension.setter
+    def extension(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extension", value)
+
+    @property
+    @pulumi.getter(name="mainState")
+    def main_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain main state
+        """
+        return pulumi.get(self, "main_state")
+
+    @main_state.setter
+    def main_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_state", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="protectionState")
+    def protection_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain protection state
+        """
+        return pulumi.get(self, "protection_state")
+
+    @protection_state.setter
+    def protection_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protection_state", value)
+
+    @property
+    @pulumi.getter(name="suspensionState")
+    def suspension_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain suspension state
+        """
+        return pulumi.get(self, "suspension_state")
+
+    @suspension_state.setter
+    def suspension_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suspension_state", value)
+
+
+if not MYPY:
+    class NameCurrentStateDnsConfigurationArgsDict(TypedDict):
+        configuration_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of DNS configuration of the domain
+        """
+        glue_record_ipv6supported: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the registry supports IPv6 or not
+        """
+        host_supported: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the registry accepts hosts or not
+        """
+        max_dns: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of name servers allowed by the registry
+        """
+        min_dns: NotRequired[pulumi.Input[float]]
+        """
+        The minimum number of name servers allowed by the registry
+        """
+        name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['NameCurrentStateDnsConfigurationNameServerArgsDict']]]]
+        """
+        The name servers used by the domain name
+        """
+elif False:
+    NameCurrentStateDnsConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameCurrentStateDnsConfigurationArgs:
+    def __init__(__self__, *,
+                 configuration_type: Optional[pulumi.Input[str]] = None,
+                 glue_record_ipv6supported: Optional[pulumi.Input[bool]] = None,
+                 host_supported: Optional[pulumi.Input[bool]] = None,
+                 max_dns: Optional[pulumi.Input[float]] = None,
+                 min_dns: Optional[pulumi.Input[float]] = None,
+                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['NameCurrentStateDnsConfigurationNameServerArgs']]]] = None):
+        """
+        :param pulumi.Input[str] configuration_type: The type of DNS configuration of the domain
+        :param pulumi.Input[bool] glue_record_ipv6supported: Whether the registry supports IPv6 or not
+        :param pulumi.Input[bool] host_supported: Whether the registry accepts hosts or not
+        :param pulumi.Input[float] max_dns: The maximum number of name servers allowed by the registry
+        :param pulumi.Input[float] min_dns: The minimum number of name servers allowed by the registry
+        :param pulumi.Input[Sequence[pulumi.Input['NameCurrentStateDnsConfigurationNameServerArgs']]] name_servers: The name servers used by the domain name
+        """
+        if configuration_type is not None:
+            pulumi.set(__self__, "configuration_type", configuration_type)
+        if glue_record_ipv6supported is not None:
+            pulumi.set(__self__, "glue_record_ipv6supported", glue_record_ipv6supported)
+        if host_supported is not None:
+            pulumi.set(__self__, "host_supported", host_supported)
+        if max_dns is not None:
+            pulumi.set(__self__, "max_dns", max_dns)
+        if min_dns is not None:
+            pulumi.set(__self__, "min_dns", min_dns)
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="configurationType")
+    def configuration_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of DNS configuration of the domain
+        """
+        return pulumi.get(self, "configuration_type")
+
+    @configuration_type.setter
+    def configuration_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "configuration_type", value)
+
+    @property
+    @pulumi.getter(name="glueRecordIpv6supported")
+    def glue_record_ipv6supported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the registry supports IPv6 or not
+        """
+        return pulumi.get(self, "glue_record_ipv6supported")
+
+    @glue_record_ipv6supported.setter
+    def glue_record_ipv6supported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "glue_record_ipv6supported", value)
+
+    @property
+    @pulumi.getter(name="hostSupported")
+    def host_supported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the registry accepts hosts or not
+        """
+        return pulumi.get(self, "host_supported")
+
+    @host_supported.setter
+    def host_supported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "host_supported", value)
+
+    @property
+    @pulumi.getter(name="maxDns")
+    def max_dns(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of name servers allowed by the registry
+        """
+        return pulumi.get(self, "max_dns")
+
+    @max_dns.setter
+    def max_dns(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_dns", value)
+
+    @property
+    @pulumi.getter(name="minDns")
+    def min_dns(self) -> Optional[pulumi.Input[float]]:
+        """
+        The minimum number of name servers allowed by the registry
+        """
+        return pulumi.get(self, "min_dns")
+
+    @min_dns.setter
+    def min_dns(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_dns", value)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NameCurrentStateDnsConfigurationNameServerArgs']]]]:
+        """
+        The name servers used by the domain name
+        """
+        return pulumi.get(self, "name_servers")
+
+    @name_servers.setter
+    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NameCurrentStateDnsConfigurationNameServerArgs']]]]):
+        pulumi.set(self, "name_servers", value)
+
+
+if not MYPY:
+    class NameCurrentStateDnsConfigurationNameServerArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 associated to the name server
+        """
+        ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 associated to the name server
+        """
+        name_server: NotRequired[pulumi.Input[str]]
+        """
+        The host name
+        """
+        name_server_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of name server
+        """
+elif False:
+    NameCurrentStateDnsConfigurationNameServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameCurrentStateDnsConfigurationNameServerArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input[str]] = None,
+                 ipv6: Optional[pulumi.Input[str]] = None,
+                 name_server: Optional[pulumi.Input[str]] = None,
+                 name_server_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ipv4: The IPv4 associated to the name server
+        :param pulumi.Input[str] ipv6: The IPv6 associated to the name server
+        :param pulumi.Input[str] name_server: The host name
+        :param pulumi.Input[str] name_server_type: The type of name server
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if name_server is not None:
+            pulumi.set(__self__, "name_server", name_server)
+        if name_server_type is not None:
+            pulumi.set(__self__, "name_server_type", name_server_type)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 associated to the name server
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv6 associated to the name server
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter(name="nameServer")
+    def name_server(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host name
+        """
+        return pulumi.get(self, "name_server")
+
+    @name_server.setter
+    def name_server(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_server", value)
+
+    @property
+    @pulumi.getter(name="nameServerType")
+    def name_server_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of name server
+        """
+        return pulumi.get(self, "name_server_type")
+
+    @name_server_type.setter
+    def name_server_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_server_type", value)
+
+
+if not MYPY:
+    class NameCurrentTaskArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the current task
+        """
+        link: NotRequired[pulumi.Input[str]]
+        """
+        Link to the task details
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Current global status of the current task
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the current task
+        """
+elif False:
+    NameCurrentTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameCurrentTaskArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 link: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Identifier of the current task
+        :param pulumi.Input[str] link: Link to the task details
+        :param pulumi.Input[str] status: Current global status of the current task
+        :param pulumi.Input[str] type: Type of the current task
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def link(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @link.setter
+    def link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class NameIamArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Resource display name
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier of the resource
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        urn: NotRequired[pulumi.Input[str]]
+        """
+        Unique resource name used in policies
+        """
+elif False:
+    NameIamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameIamArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 urn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] id: Unique identifier of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param pulumi.Input[str] urn: Unique resource name used in policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+    @urn.setter
+    def urn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "urn", value)
+
+
+if not MYPY:
+    class NameOrderArgsDict(TypedDict):
+        date: NotRequired[pulumi.Input[str]]
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['NameOrderDetailArgsDict']]]]
+        expiration_date: NotRequired[pulumi.Input[str]]
+        order_id: NotRequired[pulumi.Input[float]]
+elif False:
+    NameOrderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameOrderArgs:
+    def __init__(__self__, *,
+                 date: Optional[pulumi.Input[str]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input['NameOrderDetailArgs']]]] = None,
+                 expiration_date: Optional[pulumi.Input[str]] = None,
+                 order_id: Optional[pulumi.Input[float]] = None):
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "date")
+
+    @date.setter
+    def date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "date", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NameOrderDetailArgs']]]]:
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NameOrderDetailArgs']]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expiration_date")
+
+    @expiration_date.setter
+    def expiration_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_date", value)
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "order_id")
+
+    @order_id.setter
+    def order_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "order_id", value)
+
+
+if not MYPY:
+    class NameOrderDetailArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        detail_type: NotRequired[pulumi.Input[str]]
+        """
+        Product type of item in order
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        order_detail_id: NotRequired[pulumi.Input[float]]
+        quantity: NotRequired[pulumi.Input[str]]
+elif False:
+    NameOrderDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameOrderDetailArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 detail_type: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 order_detail_id: Optional[pulumi.Input[float]] = None,
+                 quantity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] detail_type: Product type of item in order
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if detail_type is not None:
+            pulumi.set(__self__, "detail_type", detail_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if order_detail_id is not None:
+            pulumi.set(__self__, "order_detail_id", order_detail_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="detailType")
+    def detail_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Product type of item in order
+        """
+        return pulumi.get(self, "detail_type")
+
+    @detail_type.setter
+    def detail_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detail_type", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="orderDetailId")
+    def order_detail_id(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "order_detail_id")
+
+    @order_detail_id.setter
+    def order_detail_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "order_detail_id", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quantity", value)
+
+
+if not MYPY:
+    class NamePlanArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Duration selected for the purchase of the product
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Identifier of the option offer
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['NamePlanConfigurationArgsDict']]]]
+        item_id: NotRequired[pulumi.Input[float]]
+        """
+        Cart item to be linked
+        """
+        quantity: NotRequired[pulumi.Input[float]]
+        """
+        Quantity of product desired
+        """
+elif False:
+    NamePlanArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NamePlanArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 plan_code: pulumi.Input[str],
+                 pricing_mode: pulumi.Input[str],
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['NamePlanConfigurationArgs']]]] = None,
+                 item_id: Optional[pulumi.Input[float]] = None,
+                 quantity: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] plan_code: Identifier of the option offer
+        :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
+        :param pulumi.Input[float] item_id: Cart item to be linked
+        :param pulumi.Input[float] quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if item_id is not None:
+            pulumi.set(__self__, "item_id", item_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Input[str]:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> pulumi.Input[str]:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @pricing_mode.setter
+    def pricing_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pricing_mode", value)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NamePlanConfigurationArgs']]]]:
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamePlanConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter(name="itemId")
+    def item_id(self) -> Optional[pulumi.Input[float]]:
+        """
+        Cart item to be linked
+        """
+        return pulumi.get(self, "item_id")
+
+    @item_id.setter
+    def item_id(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "item_id", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[pulumi.Input[float]]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "quantity", value)
+
+
+if not MYPY:
+    class NamePlanConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label for your configuration item
+        """
+        value: pulumi.Input[str]
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+elif False:
+    NamePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NamePlanConfigurationArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class NamePlanOptionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Duration selected for the purchase of the product
+        """
+        plan_code: pulumi.Input[str]
+        """
+        Identifier of the option offer
+        """
+        pricing_mode: pulumi.Input[str]
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        quantity: pulumi.Input[float]
+        """
+        Quantity of product desired
+        """
+        configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['NamePlanOptionConfigurationArgsDict']]]]
+elif False:
+    NamePlanOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NamePlanOptionArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 plan_code: pulumi.Input[str],
+                 pricing_mode: pulumi.Input[str],
+                 quantity: pulumi.Input[float],
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['NamePlanOptionConfigurationArgs']]]] = None):
+        """
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] plan_code: Identifier of the option offer
+        :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
+        :param pulumi.Input[float] quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        pulumi.set(__self__, "quantity", quantity)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Input[str]:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> pulumi.Input[str]:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @pricing_mode.setter
+    def pricing_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pricing_mode", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> pulumi.Input[float]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: pulumi.Input[float]):
+        pulumi.set(self, "quantity", value)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NamePlanOptionConfigurationArgs']]]]:
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamePlanOptionConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+
+if not MYPY:
+    class NamePlanOptionConfigurationArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label for your configuration item
+        """
+        value: pulumi.Input[str]
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+elif False:
+    NamePlanOptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NamePlanOptionConfigurationArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] label: Label for your configuration item
+        :param pulumi.Input[str] value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class NameServersServerArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        DNS name server hostname
+        """
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        DNS name server IP address
+        """
+elif False:
+    NameServersServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameServersServerArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: DNS name server hostname
+        :param pulumi.Input[str] ip: DNS name server IP address
+        """
+        pulumi.set(__self__, "host", host)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        DNS name server hostname
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        DNS name server IP address
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class NameTargetSpecArgsDict(TypedDict):
+        dns_configuration: NotRequired[pulumi.Input['NameTargetSpecDnsConfigurationArgsDict']]
+        """
+        The domain DNS configuration
+        """
+elif False:
+    NameTargetSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameTargetSpecArgs:
+    def __init__(__self__, *,
+                 dns_configuration: Optional[pulumi.Input['NameTargetSpecDnsConfigurationArgs']] = None):
+        """
+        :param pulumi.Input['NameTargetSpecDnsConfigurationArgs'] dns_configuration: The domain DNS configuration
+        """
+        if dns_configuration is not None:
+            pulumi.set(__self__, "dns_configuration", dns_configuration)
+
+    @property
+    @pulumi.getter(name="dnsConfiguration")
+    def dns_configuration(self) -> Optional[pulumi.Input['NameTargetSpecDnsConfigurationArgs']]:
+        """
+        The domain DNS configuration
+        """
+        return pulumi.get(self, "dns_configuration")
+
+    @dns_configuration.setter
+    def dns_configuration(self, value: Optional[pulumi.Input['NameTargetSpecDnsConfigurationArgs']]):
+        pulumi.set(self, "dns_configuration", value)
+
+
+if not MYPY:
+    class NameTargetSpecDnsConfigurationArgsDict(TypedDict):
+        name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['NameTargetSpecDnsConfigurationNameServerArgsDict']]]]
+        """
+        The name servers to update
+        """
+elif False:
+    NameTargetSpecDnsConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameTargetSpecDnsConfigurationArgs:
+    def __init__(__self__, *,
+                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['NameTargetSpecDnsConfigurationNameServerArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NameTargetSpecDnsConfigurationNameServerArgs']]] name_servers: The name servers to update
+        """
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NameTargetSpecDnsConfigurationNameServerArgs']]]]:
+        """
+        The name servers to update
+        """
+        return pulumi.get(self, "name_servers")
+
+    @name_servers.setter
+    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NameTargetSpecDnsConfigurationNameServerArgs']]]]):
+        pulumi.set(self, "name_servers", value)
+
+
+if not MYPY:
+    class NameTargetSpecDnsConfigurationNameServerArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 associated to the name server
+        """
+        ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 associated to the name server
+        """
+        name_server: NotRequired[pulumi.Input[str]]
+        """
+        The host name
+        """
+elif False:
+    NameTargetSpecDnsConfigurationNameServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NameTargetSpecDnsConfigurationNameServerArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input[str]] = None,
+                 ipv6: Optional[pulumi.Input[str]] = None,
+                 name_server: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ipv4: The IPv4 associated to the name server
+        :param pulumi.Input[str] ipv6: The IPv6 associated to the name server
+        :param pulumi.Input[str] name_server: The host name
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if name_server is not None:
+            pulumi.set(__self__, "name_server", name_server)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 associated to the name server
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv6 associated to the name server
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter(name="nameServer")
+    def name_server(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host name
+        """
+        return pulumi.get(self, "name_server")
+
+    @name_server.setter
+    def name_server(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_server", value)
+
 
 if not MYPY:
     class ZoneOrderArgsDict(TypedDict):
@@ -235,7 +1571,7 @@ if not MYPY:
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgsDict']]]]
         """
-        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        Representation of a configuration item for personalizing product
         """
 elif False:
     ZonePlanArgsDict: TypeAlias = Mapping[str, Any]
@@ -253,7 +1589,7 @@ class ZonePlanArgs:
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
-        :param pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        :param pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -315,7 +1651,7 @@ class ZonePlanArgs:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]]]:
         """
-        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
+        Representation of a configuration item for personalizing product
         """
         return pulumi.get(self, "configurations")
 
@@ -328,11 +1664,11 @@ if not MYPY:
     class ZonePlanConfigurationArgsDict(TypedDict):
         label: pulumi.Input[str]
         """
-        Identifier of the resource : `zone` or `template`
+        Identifier of the resource
         """
         value: pulumi.Input[str]
         """
-        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        Path to the resource in API.OVH.COM
         """
 elif False:
     ZonePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -343,8 +1679,8 @@ class ZonePlanConfigurationArgs:
                  label: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] label: Identifier of the resource : `zone` or `template`
-        :param pulumi.Input[str] value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        :param pulumi.Input[str] label: Identifier of the resource
+        :param pulumi.Input[str] value: Path to the resource in API.OVH.COM
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -353,7 +1689,7 @@ class ZonePlanConfigurationArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Identifier of the resource : `zone` or `template`
+        Identifier of the resource
         """
         return pulumi.get(self, "label")
 
@@ -365,7 +1701,7 @@ class ZonePlanConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        Path to the resource in API.OVH.COM
         """
         return pulumi.get(self, "value")
 

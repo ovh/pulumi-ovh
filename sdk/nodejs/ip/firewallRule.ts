@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this resource to manage a rule on an IP firewall.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myFirewallRule = new ovh.ip.FirewallRule("myFirewallRule", {
- *     action: "deny",
- *     ip: "XXXXXX",
- *     ipOnFirewall: "XXXXXX",
- *     protocol: "tcp",
- *     sequence: 0,
- * });
- * ```
- *
- * ## Import
- *
- * The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
- * ```
- */
 export class FirewallRule extends pulumi.CustomResource {
     /**
      * Get an existing FirewallRule resource's state with the given name, ID, and optional extra
@@ -61,15 +33,12 @@ export class FirewallRule extends pulumi.CustomResource {
     }
 
     /**
-     * Possible values for action (deny|permit)
+     * Possible values for action
      */
     public readonly action!: pulumi.Output<string>;
-    /**
-     * Creation date of the rule
-     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
-     * Destination IP for your rule
+     * Destination ip for your rule
      */
     public /*out*/ readonly destination!: pulumi.Output<string>;
     /**
@@ -77,7 +46,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly destinationPort!: pulumi.Output<number>;
     /**
-     * String description of field `destinationPort`
+     * Destination port range for your rule. Only with TCP/UDP protocol
      */
     public /*out*/ readonly destinationPortDesc!: pulumi.Output<string>;
     /**
@@ -85,23 +54,20 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly fragments!: pulumi.Output<boolean>;
     /**
-     * The IP or the CIDR
+     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
      */
     public readonly ip!: pulumi.Output<string>;
     /**
-     * IPv4 address
+     * IPv4 address (e.g., 192.0.2.0)
      */
     public readonly ipOnFirewall!: pulumi.Output<string>;
     /**
-     * Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+     * Possible values for protocol
      */
     public readonly protocol!: pulumi.Output<string>;
-    /**
-     * Description of the rule
-     */
     public /*out*/ readonly rule!: pulumi.Output<string>;
     /**
-     * Rule position in the rules array
+     * Possible values for action
      */
     public readonly sequence!: pulumi.Output<number>;
     /**
@@ -113,7 +79,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly sourcePort!: pulumi.Output<number>;
     /**
-     * String description of field `sourcePort`
+     * Source port for your rule. Only with TCP/UDP protocol
      */
     public /*out*/ readonly sourcePortDesc!: pulumi.Output<string>;
     /**
@@ -121,7 +87,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * TCP option on your rule (syn|established)
+     * TCP option on your rule
      */
     public readonly tcpOption!: pulumi.Output<string>;
 
@@ -198,15 +164,12 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleState {
     /**
-     * Possible values for action (deny|permit)
+     * Possible values for action
      */
     action?: pulumi.Input<string>;
-    /**
-     * Creation date of the rule
-     */
     creationDate?: pulumi.Input<string>;
     /**
-     * Destination IP for your rule
+     * Destination ip for your rule
      */
     destination?: pulumi.Input<string>;
     /**
@@ -214,7 +177,7 @@ export interface FirewallRuleState {
      */
     destinationPort?: pulumi.Input<number>;
     /**
-     * String description of field `destinationPort`
+     * Destination port range for your rule. Only with TCP/UDP protocol
      */
     destinationPortDesc?: pulumi.Input<string>;
     /**
@@ -222,23 +185,20 @@ export interface FirewallRuleState {
      */
     fragments?: pulumi.Input<boolean>;
     /**
-     * The IP or the CIDR
+     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
      */
     ip?: pulumi.Input<string>;
     /**
-     * IPv4 address
+     * IPv4 address (e.g., 192.0.2.0)
      */
     ipOnFirewall?: pulumi.Input<string>;
     /**
-     * Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+     * Possible values for protocol
      */
     protocol?: pulumi.Input<string>;
-    /**
-     * Description of the rule
-     */
     rule?: pulumi.Input<string>;
     /**
-     * Rule position in the rules array
+     * Possible values for action
      */
     sequence?: pulumi.Input<number>;
     /**
@@ -250,7 +210,7 @@ export interface FirewallRuleState {
      */
     sourcePort?: pulumi.Input<number>;
     /**
-     * String description of field `sourcePort`
+     * Source port for your rule. Only with TCP/UDP protocol
      */
     sourcePortDesc?: pulumi.Input<string>;
     /**
@@ -258,7 +218,7 @@ export interface FirewallRuleState {
      */
     state?: pulumi.Input<string>;
     /**
-     * TCP option on your rule (syn|established)
+     * TCP option on your rule
      */
     tcpOption?: pulumi.Input<string>;
 }
@@ -268,7 +228,7 @@ export interface FirewallRuleState {
  */
 export interface FirewallRuleArgs {
     /**
-     * Possible values for action (deny|permit)
+     * Possible values for action
      */
     action: pulumi.Input<string>;
     /**
@@ -280,19 +240,19 @@ export interface FirewallRuleArgs {
      */
     fragments?: pulumi.Input<boolean>;
     /**
-     * The IP or the CIDR
+     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
      */
     ip: pulumi.Input<string>;
     /**
-     * IPv4 address
+     * IPv4 address (e.g., 192.0.2.0)
      */
     ipOnFirewall: pulumi.Input<string>;
     /**
-     * Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+     * Possible values for protocol
      */
     protocol: pulumi.Input<string>;
     /**
-     * Rule position in the rules array
+     * Possible values for action
      */
     sequence: pulumi.Input<number>;
     /**
@@ -304,7 +264,7 @@ export interface FirewallRuleArgs {
      */
     sourcePort?: pulumi.Input<number>;
     /**
-     * TCP option on your rule (syn|established)
+     * TCP option on your rule
      */
     tcpOption?: pulumi.Input<string>;
 }

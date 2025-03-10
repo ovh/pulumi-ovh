@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a DBaas logs input engine.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const logstash = ovh.Dbaas.getLogsInputEngine({
- *     isDeprecated: true,
- *     name: "logstash",
- *     serviceName: "ldp-xx-xxxxx",
- *     version: "6.8",
- * });
- * ```
- */
 export function getLogsInputEngine(args: GetLogsInputEngineArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsInputEngineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", {
@@ -35,21 +18,9 @@ export function getLogsInputEngine(args: GetLogsInputEngineArgs, opts?: pulumi.I
  * A collection of arguments for invoking getLogsInputEngine.
  */
 export interface GetLogsInputEngineArgs {
-    /**
-     * Indicates if engine will soon not be supported.
-     */
     isDeprecated?: boolean;
-    /**
-     * The name of the logs input engine.
-     */
     name?: string;
-    /**
-     * The service name. It's the ID of your Logs Data Platform instance.
-     */
     serviceName: string;
-    /**
-     * Software version
-     */
     version?: string;
 }
 
@@ -66,23 +37,6 @@ export interface GetLogsInputEngineResult {
     readonly serviceName: string;
     readonly version: string;
 }
-/**
- * Use this data source to retrieve information about a DBaas logs input engine.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const logstash = ovh.Dbaas.getLogsInputEngine({
- *     isDeprecated: true,
- *     name: "logstash",
- *     serviceName: "ldp-xx-xxxxx",
- *     version: "6.8",
- * });
- * ```
- */
 export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsInputEngineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", {
@@ -97,20 +51,8 @@ export function getLogsInputEngineOutput(args: GetLogsInputEngineOutputArgs, opt
  * A collection of arguments for invoking getLogsInputEngine.
  */
 export interface GetLogsInputEngineOutputArgs {
-    /**
-     * Indicates if engine will soon not be supported.
-     */
     isDeprecated?: pulumi.Input<boolean>;
-    /**
-     * The name of the logs input engine.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The service name. It's the ID of your Logs Data Platform instance.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Software version
-     */
     version?: pulumi.Input<string>;
 }

@@ -9,100 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Me
 {
-    /// <summary>
-    /// Creates an OAuth2 service account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myOauth2ClientAuthCode = new Ovh.Me.APIOAuth2Client("myOauth2ClientAuthCode", new()
-    ///     {
-    ///         CallbackUrls = new[]
-    ///         {
-    ///             "https://my-app.com/callback",
-    ///         },
-    ///         Description = "An OAuth2 client using the authorization code flow for my-app.com",
-    ///         Flow = "AUTHORIZATION_CODE",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myOauth2ClientClientCreds = new Ovh.Me.APIOAuth2Client("myOauth2ClientClientCreds", new()
-    ///     {
-    ///         Description = "An OAuth2 client using the client credentials flow for my app",
-    ///         Flow = "CLIENT_CREDENTIALS",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OAuth2 clients can be imported using their `client_id`:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
-    /// ```
-    /// 
-    /// Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Me/aPIOAuth2Client:APIOAuth2Client")]
     public partial class APIOAuth2Client : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        /// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         /// </summary>
         [Output("callbackUrls")]
         public Output<ImmutableArray<string>> CallbackUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Client ID of the created service account.
+        /// Client ID for the oauth2 client, generated during the resource creation.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Client secret of the created service account.
+        /// Secret for the oauth2 client, generated during the oauth2 client creation.
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// OAuth2 client description.
+        /// A description of your oauth2 client.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        /// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         /// </summary>
         [Output("flow")]
         public Output<string> Flow { get; private set; } = null!;
@@ -113,9 +48,6 @@ namespace Pulumi.Ovh.Me
         [Output("identity")]
         public Output<string> Identity { get; private set; } = null!;
 
-        /// <summary>
-        /// OAuth2 client name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -174,7 +106,7 @@ namespace Pulumi.Ovh.Me
         private InputList<string>? _callbackUrls;
 
         /// <summary>
-        /// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        /// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         /// </summary>
         public InputList<string> CallbackUrls
         {
@@ -183,20 +115,17 @@ namespace Pulumi.Ovh.Me
         }
 
         /// <summary>
-        /// OAuth2 client description.
+        /// A description of your oauth2 client.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        /// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         /// </summary>
         [Input("flow", required: true)]
         public Input<string> Flow { get; set; } = null!;
 
-        /// <summary>
-        /// OAuth2 client name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -212,7 +141,7 @@ namespace Pulumi.Ovh.Me
         private InputList<string>? _callbackUrls;
 
         /// <summary>
-        /// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        /// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         /// </summary>
         public InputList<string> CallbackUrls
         {
@@ -221,7 +150,7 @@ namespace Pulumi.Ovh.Me
         }
 
         /// <summary>
-        /// Client ID of the created service account.
+        /// Client ID for the oauth2 client, generated during the resource creation.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -230,7 +159,7 @@ namespace Pulumi.Ovh.Me
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Client secret of the created service account.
+        /// Secret for the oauth2 client, generated during the oauth2 client creation.
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -243,13 +172,13 @@ namespace Pulumi.Ovh.Me
         }
 
         /// <summary>
-        /// OAuth2 client description.
+        /// A description of your oauth2 client.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        /// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         /// </summary>
         [Input("flow")]
         public Input<string>? Flow { get; set; }
@@ -260,9 +189,6 @@ namespace Pulumi.Ovh.Me
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
-        /// <summary>
-        /// OAuth2 client name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.Okms.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// ID of the service key
+        /// Unique identifier of the resource
         /// </summary>
         public readonly string Id;
         /// <summary>

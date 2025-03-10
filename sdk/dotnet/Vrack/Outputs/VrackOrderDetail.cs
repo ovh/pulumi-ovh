@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Vrack.Outputs
     public sealed class VrackOrderDetail
     {
         /// <summary>
-        /// yourvrackdescription
+        /// description
         /// </summary>
         public readonly string? Description;
         /// <summary>

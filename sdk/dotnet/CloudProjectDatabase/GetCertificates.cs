@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetCertificates
     {
-        /// <summary>
-        /// Use this data source to get information about certificates of a cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var certificates = Ovh.CloudProjectDatabase.GetCertificates.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         Engine = "YYY",
-        ///         ClusterId = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificatesCa"] = certificates.Apply(getCertificatesResult =&gt; getCertificatesResult.Ca),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("ovh:CloudProjectDatabase/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about certificates of a cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var certificates = Ovh.CloudProjectDatabase.GetCertificates.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         Engine = "YYY",
-        ///         ClusterId = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificatesCa"] = certificates.Apply(getCertificatesResult =&gt; getCertificatesResult.Ca),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("ovh:CloudProjectDatabase/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about certificates of a cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var certificates = Ovh.CloudProjectDatabase.GetCertificates.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         Engine = "YYY",
-        ///         ClusterId = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificatesCa"] = certificates.Apply(getCertificatesResult =&gt; getCertificatesResult.Ca),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("ovh:CloudProjectDatabase/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
     }
@@ -105,24 +24,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetCertificatesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The engine of the database cluster you want database information. To get a full list of available engine visit:
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// Available engines:
-        /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -134,24 +41,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The engine of the database cluster you want database information. To get a full list of available engine visit:
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// Available engines:
-        /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -165,25 +60,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetCertificatesResult
     {
-        /// <summary>
-        /// CA certificate used for the service.
-        /// </summary>
         public readonly string Ca;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Engine;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

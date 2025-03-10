@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this resource to manage an IP firewall.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myFirewall = new ovh.ip.Firewall("myFirewall", {
- *     ip: "XXXXXX",
- *     ipOnFirewall: "XXXXXX",
- * });
- * ```
- */
 export class Firewall extends pulumi.CustomResource {
     /**
      * Get an existing Firewall resource's state with the given name, ID, and optional extra
@@ -49,12 +34,11 @@ export class Firewall extends pulumi.CustomResource {
 
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * The IP or the CIDR
+     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
      */
     public readonly ip!: pulumi.Output<string>;
     /**
-     * IPv4 address
-     * * `enabled ` - Whether firewall should be enabled
+     * IPv4 address (e.g., 192.0.2.0)
      */
     public readonly ipOnFirewall!: pulumi.Output<string>;
     /**
@@ -103,12 +87,11 @@ export class Firewall extends pulumi.CustomResource {
 export interface FirewallState {
     enabled?: pulumi.Input<boolean>;
     /**
-     * The IP or the CIDR
+     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
      */
     ip?: pulumi.Input<string>;
     /**
-     * IPv4 address
-     * * `enabled ` - Whether firewall should be enabled
+     * IPv4 address (e.g., 192.0.2.0)
      */
     ipOnFirewall?: pulumi.Input<string>;
     /**
@@ -123,12 +106,11 @@ export interface FirewallState {
 export interface FirewallArgs {
     enabled?: pulumi.Input<boolean>;
     /**
-     * The IP or the CIDR
+     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
      */
     ip: pulumi.Input<string>;
     /**
-     * IPv4 address
-     * * `enabled ` - Whether firewall should be enabled
+     * IPv4 address (e.g., 192.0.2.0)
      */
     ipOnFirewall: pulumi.Input<string>;
 }

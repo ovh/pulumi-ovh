@@ -9,374 +9,78 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Minimum settings for each engine (region choice is up to the user):
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var cassandradb = new Ovh.CloudProject.Database("cassandradb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-cassandra",
-    ///         Engine = "cassandra",
-    ///         Version = "4.0",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///     });
-    /// 
-    ///     var kafkadb = new Ovh.CloudProject.Database("kafkadb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-kafka",
-    ///         Engine = "kafka",
-    ///         Version = "3.8",
-    ///         Flavor = "db1-4",
-    ///         Plan = "business",
-    ///         KafkaRestApi = true,
-    ///         KafkaSchemaRegistry = true,
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "DE",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "DE",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "DE",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var m3db = new Ovh.CloudProject.Database("m3db", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-m3db",
-    ///         Engine = "m3db",
-    ///         Version = "1.2",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-7",
-    ///     });
-    /// 
-    ///     var mongodb = new Ovh.CloudProject.Database("mongodb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-mongodb",
-    ///         Engine = "mongodb",
-    ///         Version = "5.0",
-    ///         Plan = "discovery",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "GRA",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-2",
-    ///     });
-    /// 
-    ///     var mysqldb = new Ovh.CloudProject.Database("mysqldb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-mysql",
-    ///         Engine = "mysql",
-    ///         Version = "8",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "SBG",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///         AdvancedConfiguration = 
-    ///         {
-    ///             { "mysql.sql_mode", "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES" },
-    ///             { "mysql.sql_require_primary_key", "true" },
-    ///         },
-    ///     });
-    /// 
-    ///     var opensearchdb = new Ovh.CloudProject.Database("opensearchdb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-opensearch",
-    ///         Engine = "opensearch",
-    ///         Version = "1",
-    ///         Plan = "essential",
-    ///         OpensearchAclsEnabled = true,
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "UK",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///     });
-    /// 
-    ///     var pgsqldb = new Ovh.CloudProject.Database("pgsqldb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-postgresql",
-    ///         Engine = "postgresql",
-    ///         Version = "14",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "WAW",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///         IpRestrictions = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseIpRestrictionArgs
-    ///             {
-    ///                 Description = "ip 1",
-    ///                 Ip = "178.97.6.0/24",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseIpRestrictionArgs
-    ///             {
-    ///                 Description = "ip 2",
-    ///                 Ip = "178.97.7.0/24",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var redisdb = new Ovh.CloudProject.Database("redisdb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-redis",
-    ///         Engine = "redis",
-    ///         Version = "6.2",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///     });
-    /// 
-    ///     var grafana = new Ovh.CloudProject.Database("grafana", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-grafana",
-    ///         Engine = "grafana",
-    ///         Version = "9.1",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "GRA",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// To deploy a business PostgreSQL service with two nodes on public network:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var postgresql = new Ovh.CloudProject.Database("postgresql", new()
-    ///     {
-    ///         Description = "my-first-postgresql",
-    ///         Engine = "postgresql",
-    ///         Flavor = "db1-15",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "GRA",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "GRA",
-    ///             },
-    ///         },
-    ///         Plan = "business",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Version = "14",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// To deploy an enterprise MongoDB service with three nodes on private network:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mongodb = new Ovh.CloudProject.Database("mongodb", new()
-    ///     {
-    ///         Description = "my-first-mongodb",
-    ///         Engine = "mongodb",
-    ///         Flavor = "db1-30",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    ///                 Region = "SBG",
-    ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    ///                 Region = "SBG",
-    ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    ///                 Region = "SBG",
-    ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    ///             },
-    ///         },
-    ///         Plan = "production",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Version = "5.0",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/database:Database")]
     public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Advanced configuration key / value.
+        /// Advanced configuration key / value
         /// </summary>
         [Output("advancedConfiguration")]
         public Output<ImmutableDictionary<string, string>> AdvancedConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
+        /// engines with one being the same as the nodes[].region field
         /// </summary>
         [Output("backupRegions")]
         public Output<ImmutableArray<string>> BackupRegions { get; private set; } = null!;
 
         /// <summary>
-        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        /// Time on which backups start every day
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// Date of the creation of the cluster.
+        /// Date of the creation of the cluster
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the cluster
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The disk size (in GB) of the database service.
+        /// Disk size attributes of the cluster
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the disk type of the database service.
+        /// Disk type attributes of the cluster
         /// </summary>
         [Output("diskType")]
         public Output<string> DiskType { get; private set; } = null!;
 
         /// <summary>
-        /// List of all endpoints objects of the service.
+        /// List of all endpoints of the service
         /// </summary>
         [Output("endpoints")]
         public Output<ImmutableArray<Outputs.DatabaseEndpoint>> Endpoints { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine you want to deploy. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Name of the engine of the service
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        /// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        /// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// The node flavor used for this cluster
         /// </summary>
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
 
         /// <summary>
-        /// IP Blocks authorized to access to the cluster.
+        /// IP Blocks authorized to access to the cluster
         /// </summary>
         [Output("ipRestrictions")]
         public Output<ImmutableArray<Outputs.DatabaseIpRestriction>> IpRestrictions { get; private set; } = null!;
 
         /// <summary>
-        /// Defines whether the REST API is enabled on a kafka cluster
+        /// Defines whether the REST API is enabled on a Kafka cluster
         /// </summary>
         [Output("kafkaRestApi")]
         public Output<bool?> KafkaRestApi { get; private set; } = null!;
@@ -388,55 +92,46 @@ namespace Pulumi.Ovh.CloudProject
         public Output<bool?> KafkaSchemaRegistry { get; private set; } = null!;
 
         /// <summary>
-        /// Time on which maintenances can start every day.
+        /// Time on which maintenances can start every day
         /// </summary>
         [Output("maintenanceTime")]
         public Output<string> MaintenanceTime { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network of the cluster.
+        /// Type of network of the cluster
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// List of nodes object.
-        /// Multi region cluster are not yet available, all node should be identical.
+        /// List of nodes composing the service
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.DatabaseNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
-        /// Defines whether the ACLs are enabled on an OpenSearch cluster
+        /// Defines whether the ACLs are enabled on an Opensearch cluster
         /// </summary>
         [Output("opensearchAclsEnabled")]
         public Output<bool?> OpensearchAclsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Plan of the cluster.
-        /// * MongoDB: Enum: "discovery", "production", "advanced".
-        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business"
+        /// Plan of the cluster
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Current status of the cluster.
+        /// Current status of the cluster
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the engine in which the service should be deployed
+        /// Version of the engine deployed on the cluster
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -492,7 +187,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputMap<string>? _advancedConfiguration;
 
         /// <summary>
-        /// Advanced configuration key / value.
+        /// Advanced configuration key / value
         /// </summary>
         public InputMap<string> AdvancedConfiguration
         {
@@ -504,7 +199,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _backupRegions;
 
         /// <summary>
-        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
+        /// engines with one being the same as the nodes[].region field
         /// </summary>
         public InputList<string> BackupRegions
         {
@@ -513,34 +209,31 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        /// Time on which backups start every day
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the cluster
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The disk size (in GB) of the database service.
+        /// Disk size attributes of the cluster
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The database engine you want to deploy. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Name of the engine of the service
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        /// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        /// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// The node flavor used for this cluster
         /// </summary>
         [Input("flavor", required: true)]
         public Input<string> Flavor { get; set; } = null!;
@@ -549,7 +242,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseIpRestrictionArgs>? _ipRestrictions;
 
         /// <summary>
-        /// IP Blocks authorized to access to the cluster.
+        /// IP Blocks authorized to access to the cluster
         /// </summary>
         public InputList<Inputs.DatabaseIpRestrictionArgs> IpRestrictions
         {
@@ -558,7 +251,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Defines whether the REST API is enabled on a kafka cluster
+        /// Defines whether the REST API is enabled on a Kafka cluster
         /// </summary>
         [Input("kafkaRestApi")]
         public Input<bool>? KafkaRestApi { get; set; }
@@ -570,7 +263,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? KafkaSchemaRegistry { get; set; }
 
         /// <summary>
-        /// Time on which maintenances can start every day.
+        /// Time on which maintenances can start every day
         /// </summary>
         [Input("maintenanceTime")]
         public Input<string>? MaintenanceTime { get; set; }
@@ -579,8 +272,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseNodeArgs>? _nodes;
 
         /// <summary>
-        /// List of nodes object.
-        /// Multi region cluster are not yet available, all node should be identical.
+        /// List of nodes composing the service
         /// </summary>
         public InputList<Inputs.DatabaseNodeArgs> Nodes
         {
@@ -589,30 +281,22 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Defines whether the ACLs are enabled on an OpenSearch cluster
+        /// Defines whether the ACLs are enabled on an Opensearch cluster
         /// </summary>
         [Input("opensearchAclsEnabled")]
         public Input<bool>? OpensearchAclsEnabled { get; set; }
 
         /// <summary>
-        /// Plan of the cluster.
-        /// * MongoDB: Enum: "discovery", "production", "advanced".
-        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business"
+        /// Plan of the cluster
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The version of the engine in which the service should be deployed
+        /// Version of the engine deployed on the cluster
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -629,7 +313,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputMap<string>? _advancedConfiguration;
 
         /// <summary>
-        /// Advanced configuration key / value.
+        /// Advanced configuration key / value
         /// </summary>
         public InputMap<string> AdvancedConfiguration
         {
@@ -641,7 +325,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _backupRegions;
 
         /// <summary>
-        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        /// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
+        /// engines with one being the same as the nodes[].region field
         /// </summary>
         public InputList<string> BackupRegions
         {
@@ -650,31 +335,31 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        /// Time on which backups start every day
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// Date of the creation of the cluster.
+        /// Date of the creation of the cluster
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Small description of the database service.
+        /// Description of the cluster
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The disk size (in GB) of the database service.
+        /// Disk size attributes of the cluster
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// Defines the disk type of the database service.
+        /// Disk type attributes of the cluster
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -683,7 +368,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseEndpointGetArgs>? _endpoints;
 
         /// <summary>
-        /// List of all endpoints objects of the service.
+        /// List of all endpoints of the service
         /// </summary>
         public InputList<Inputs.DatabaseEndpointGetArgs> Endpoints
         {
@@ -692,16 +377,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The database engine you want to deploy. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Name of the engine of the service
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        /// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        /// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// The node flavor used for this cluster
         /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
@@ -710,7 +392,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseIpRestrictionGetArgs>? _ipRestrictions;
 
         /// <summary>
-        /// IP Blocks authorized to access to the cluster.
+        /// IP Blocks authorized to access to the cluster
         /// </summary>
         public InputList<Inputs.DatabaseIpRestrictionGetArgs> IpRestrictions
         {
@@ -719,7 +401,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Defines whether the REST API is enabled on a kafka cluster
+        /// Defines whether the REST API is enabled on a Kafka cluster
         /// </summary>
         [Input("kafkaRestApi")]
         public Input<bool>? KafkaRestApi { get; set; }
@@ -731,13 +413,13 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? KafkaSchemaRegistry { get; set; }
 
         /// <summary>
-        /// Time on which maintenances can start every day.
+        /// Time on which maintenances can start every day
         /// </summary>
         [Input("maintenanceTime")]
         public Input<string>? MaintenanceTime { get; set; }
 
         /// <summary>
-        /// Type of network of the cluster.
+        /// Type of network of the cluster
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -746,8 +428,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseNodeGetArgs>? _nodes;
 
         /// <summary>
-        /// List of nodes object.
-        /// Multi region cluster are not yet available, all node should be identical.
+        /// List of nodes composing the service
         /// </summary>
         public InputList<Inputs.DatabaseNodeGetArgs> Nodes
         {
@@ -756,36 +437,28 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Defines whether the ACLs are enabled on an OpenSearch cluster
+        /// Defines whether the ACLs are enabled on an Opensearch cluster
         /// </summary>
         [Input("opensearchAclsEnabled")]
         public Input<bool>? OpensearchAclsEnabled { get; set; }
 
         /// <summary>
-        /// Plan of the cluster.
-        /// * MongoDB: Enum: "discovery", "production", "advanced".
-        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business"
+        /// Plan of the cluster
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Current status of the cluster.
+        /// Current status of the cluster
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The version of the engine in which the service should be deployed
+        /// Version of the engine deployed on the cluster
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

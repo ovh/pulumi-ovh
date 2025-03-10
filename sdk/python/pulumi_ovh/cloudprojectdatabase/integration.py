@@ -28,21 +28,12 @@ class IntegrationArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Integration resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               All engines available exept `mongodb`.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] source_service_id: ID of the source service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration.
-        :param pulumi.Input[str] type: Type of the integration.
-               Available types:
-               * `grafanaDashboard`
-               * `grafanaDatasource`
-               * `kafkaConnect`
-               * `kafkaLogs`
-               * `kafkaMirrorMaker`
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] destination_service_id: ID of the destination service
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] source_service_id: ID of the source service
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration
+        :param pulumi.Input[str] type: Type of the integration
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "destination_service_id", destination_service_id)
@@ -58,7 +49,7 @@ class IntegrationArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -70,7 +61,7 @@ class IntegrationArgs:
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> pulumi.Input[str]:
         """
-        ID of the destination service.
+        ID of the destination service
         """
         return pulumi.get(self, "destination_service_id")
 
@@ -82,8 +73,7 @@ class IntegrationArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        All engines available exept `mongodb`.
+        Name of the engine of the service
         """
         return pulumi.get(self, "engine")
 
@@ -94,10 +84,6 @@ class IntegrationArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -108,7 +94,7 @@ class IntegrationArgs:
     @pulumi.getter(name="sourceServiceId")
     def source_service_id(self) -> pulumi.Input[str]:
         """
-        ID of the source service.
+        ID of the source service
         """
         return pulumi.get(self, "source_service_id")
 
@@ -120,7 +106,7 @@ class IntegrationArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Parameters for the integration.
+        Parameters for the integration
         """
         return pulumi.get(self, "parameters")
 
@@ -132,13 +118,7 @@ class IntegrationArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the integration.
-        Available types:
-        * `grafanaDashboard`
-        * `grafanaDatasource`
-        * `kafkaConnect`
-        * `kafkaLogs`
-        * `kafkaMirrorMaker`
+        Type of the integration
         """
         return pulumi.get(self, "type")
 
@@ -160,22 +140,13 @@ class _IntegrationState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               All engines available exept `mongodb`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] source_service_id: ID of the source service.
-        :param pulumi.Input[str] status: Current status of the integration.
-        :param pulumi.Input[str] type: Type of the integration.
-               Available types:
-               * `grafanaDashboard`
-               * `grafanaDatasource`
-               * `kafkaConnect`
-               * `kafkaLogs`
-               * `kafkaMirrorMaker`
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] destination_service_id: ID of the destination service
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration
+        :param pulumi.Input[str] source_service_id: ID of the source service
+        :param pulumi.Input[str] status: Current status of the integration
+        :param pulumi.Input[str] type: Type of the integration
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -198,7 +169,7 @@ class _IntegrationState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -210,7 +181,7 @@ class _IntegrationState:
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the destination service.
+        ID of the destination service
         """
         return pulumi.get(self, "destination_service_id")
 
@@ -222,8 +193,7 @@ class _IntegrationState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        All engines available exept `mongodb`.
+        Name of the engine of the service
         """
         return pulumi.get(self, "engine")
 
@@ -235,7 +205,7 @@ class _IntegrationState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Parameters for the integration.
+        Parameters for the integration
         """
         return pulumi.get(self, "parameters")
 
@@ -246,10 +216,6 @@ class _IntegrationState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -260,7 +226,7 @@ class _IntegrationState:
     @pulumi.getter(name="sourceServiceId")
     def source_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the source service.
+        ID of the source service
         """
         return pulumi.get(self, "source_service_id")
 
@@ -272,7 +238,7 @@ class _IntegrationState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Current status of the integration.
+        Current status of the integration
         """
         return pulumi.get(self, "status")
 
@@ -284,13 +250,7 @@ class _IntegrationState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the integration.
-        Available types:
-        * `grafanaDashboard`
-        * `grafanaDatasource`
-        * `kafkaConnect`
-        * `kafkaLogs`
-        * `kafkaMirrorMaker`
+        Type of the integration
         """
         return pulumi.get(self, "type")
 
@@ -313,62 +273,15 @@ class Integration(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an integration for a database cluster associated with a public cloud project.
-
-        With this resource you can create an integration for all engine exept `mongodb`.
-
-        Please take a look at the list of available `types` in the `Argument references` section in order to know the list of avaulable integrations. For example, thanks to the integration feature you can have your PostgreSQL logs in your OpenSearch Database.
-
-        ## Example Usage
-
-        Push PostgreSQL logs in an OpenSearch DB:
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        db_postgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
-            engine="postgresql",
-            id="ZZZZ")
-        db_opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
-            engine="opensearch",
-            id="ZZZZ")
-        integration = ovh.cloud_project_database.Integration("integration",
-            service_name=db_postgresql.service_name,
-            engine=db_postgresql.engine,
-            cluster_id=db_postgresql.id,
-            source_service_id=db_postgresql.id,
-            destination_service_id=db_opensearch.id,
-            type="opensearchLogs")
-        ```
-
-        ## Import
-
-        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
-        ```
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               All engines available exept `mongodb`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] source_service_id: ID of the source service.
-        :param pulumi.Input[str] type: Type of the integration.
-               Available types:
-               * `grafanaDashboard`
-               * `grafanaDatasource`
-               * `kafkaConnect`
-               * `kafkaLogs`
-               * `kafkaMirrorMaker`
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] destination_service_id: ID of the destination service
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration
+        :param pulumi.Input[str] source_service_id: ID of the source service
+        :param pulumi.Input[str] type: Type of the integration
         """
         ...
     @overload
@@ -377,45 +290,7 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an integration for a database cluster associated with a public cloud project.
-
-        With this resource you can create an integration for all engine exept `mongodb`.
-
-        Please take a look at the list of available `types` in the `Argument references` section in order to know the list of avaulable integrations. For example, thanks to the integration feature you can have your PostgreSQL logs in your OpenSearch Database.
-
-        ## Example Usage
-
-        Push PostgreSQL logs in an OpenSearch DB:
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        db_postgresql = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
-            engine="postgresql",
-            id="ZZZZ")
-        db_opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
-            engine="opensearch",
-            id="ZZZZ")
-        integration = ovh.cloud_project_database.Integration("integration",
-            service_name=db_postgresql.service_name,
-            engine=db_postgresql.engine,
-            cluster_id=db_postgresql.id,
-            source_service_id=db_postgresql.id,
-            destination_service_id=db_opensearch.id,
-            type="opensearchLogs")
-        ```
-
-        ## Import
-
-        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
-        ```
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -490,22 +365,13 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-               All engines available exept `mongodb`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] source_service_id: ID of the source service.
-        :param pulumi.Input[str] status: Current status of the integration.
-        :param pulumi.Input[str] type: Type of the integration.
-               Available types:
-               * `grafanaDashboard`
-               * `grafanaDatasource`
-               * `kafkaConnect`
-               * `kafkaLogs`
-               * `kafkaMirrorMaker`
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] destination_service_id: ID of the destination service
+        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameters for the integration
+        :param pulumi.Input[str] source_service_id: ID of the source service
+        :param pulumi.Input[str] status: Current status of the integration
+        :param pulumi.Input[str] type: Type of the integration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -525,7 +391,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -533,7 +399,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> pulumi.Output[str]:
         """
-        ID of the destination service.
+        ID of the destination service
         """
         return pulumi.get(self, "destination_service_id")
 
@@ -541,8 +407,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        All engines available exept `mongodb`.
+        Name of the engine of the service
         """
         return pulumi.get(self, "engine")
 
@@ -550,24 +415,20 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Parameters for the integration.
+        Parameters for the integration
         """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="sourceServiceId")
     def source_service_id(self) -> pulumi.Output[str]:
         """
-        ID of the source service.
+        ID of the source service
         """
         return pulumi.get(self, "source_service_id")
 
@@ -575,7 +436,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Current status of the integration.
+        Current status of the integration
         """
         return pulumi.get(self, "status")
 
@@ -583,13 +444,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the integration.
-        Available types:
-        * `grafanaDashboard`
-        * `grafanaDatasource`
-        * `kafkaConnect`
-        * `kafkaLogs`
-        * `kafkaMirrorMaker`
+        Type of the integration
         """
         return pulumi.get(self, "type")
 

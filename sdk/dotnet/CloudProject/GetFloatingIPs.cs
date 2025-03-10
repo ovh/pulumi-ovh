@@ -11,21 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetFloatingIPs
     {
-        /// <summary>
-        /// Use this data source to get the floating IPs of a public cloud project.
-        /// </summary>
         public static Task<GetFloatingIPsResult> InvokeAsync(GetFloatingIPsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIPsResult>("ovh:CloudProject/getFloatingIPs:getFloatingIPs", args ?? new GetFloatingIPsArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the floating IPs of a public cloud project.
-        /// </summary>
         public static Output<GetFloatingIPsResult> Invoke(GetFloatingIPsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIPsResult>("ovh:CloudProject/getFloatingIPs:getFloatingIPs", args ?? new GetFloatingIPsInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the floating IPs of a public cloud project.
-        /// </summary>
         public static Output<GetFloatingIPsResult> Invoke(GetFloatingIPsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIPsResult>("ovh:CloudProject/getFloatingIPs:getFloatingIPs", args ?? new GetFloatingIPsInvokeArgs(), options.WithDefaults());
     }
@@ -33,15 +24,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetFloatingIPsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Public cloud region name
-        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -53,15 +38,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetFloatingIPsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Public cloud region name
-        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -80,9 +59,6 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Floating IP region
-        /// </summary>
         public readonly string RegionName;
         public readonly string ServiceName;
 

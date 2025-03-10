@@ -8,69 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a backend server group (farm) to be used by loadbalancing frontend(s)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
-//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
-//				State:       pulumi.StringRef("ok"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iploadbalancing.NewTcpFarm(ctx, "farmName", &iploadbalancing.TcpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				ServiceName: pulumi.String(lb.ServiceName),
-//				Zone:        pulumi.String("GRA"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// TCP Farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
 type TcpFarm struct {
 	pulumi.CustomResourceState
 
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
-	Balance pulumi.StringPtrOutput `pulumi:"balance"`
-	// Readable label for loadbalancer farm
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Port attached to your farm ([1..49151]). Inherited from frontend if null
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// define a backend healthcheck probe
-	Probe TcpFarmProbePtrOutput `pulumi:"probe"`
-	// The internal name of your IP load balancing
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Stickiness type. No stickiness if null (`sourceIp`)
-	Stickiness pulumi.StringPtrOutput `pulumi:"stickiness"`
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
-	VrackNetworkId pulumi.IntPtrOutput `pulumi:"vrackNetworkId"`
-	// Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Balance        pulumi.StringPtrOutput `pulumi:"balance"`
+	DisplayName    pulumi.StringPtrOutput `pulumi:"displayName"`
+	Port           pulumi.IntPtrOutput    `pulumi:"port"`
+	Probe          TcpFarmProbePtrOutput  `pulumi:"probe"`
+	ServiceName    pulumi.StringOutput    `pulumi:"serviceName"`
+	Stickiness     pulumi.StringPtrOutput `pulumi:"stickiness"`
+	VrackNetworkId pulumi.IntPtrOutput    `pulumi:"vrackNetworkId"`
+	Zone           pulumi.StringOutput    `pulumi:"zone"`
 }
 
 // NewTcpFarm registers a new resource with the given unique name, arguments, and options.
@@ -109,41 +61,25 @@ func GetTcpFarm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TcpFarm resources.
 type tcpFarmState struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
-	Balance *string `pulumi:"balance"`
-	// Readable label for loadbalancer farm
-	DisplayName *string `pulumi:"displayName"`
-	// Port attached to your farm ([1..49151]). Inherited from frontend if null
-	Port *int `pulumi:"port"`
-	// define a backend healthcheck probe
-	Probe *TcpFarmProbe `pulumi:"probe"`
-	// The internal name of your IP load balancing
-	ServiceName *string `pulumi:"serviceName"`
-	// Stickiness type. No stickiness if null (`sourceIp`)
-	Stickiness *string `pulumi:"stickiness"`
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
-	VrackNetworkId *int `pulumi:"vrackNetworkId"`
-	// Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
-	Zone *string `pulumi:"zone"`
+	Balance        *string       `pulumi:"balance"`
+	DisplayName    *string       `pulumi:"displayName"`
+	Port           *int          `pulumi:"port"`
+	Probe          *TcpFarmProbe `pulumi:"probe"`
+	ServiceName    *string       `pulumi:"serviceName"`
+	Stickiness     *string       `pulumi:"stickiness"`
+	VrackNetworkId *int          `pulumi:"vrackNetworkId"`
+	Zone           *string       `pulumi:"zone"`
 }
 
 type TcpFarmState struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
-	Balance pulumi.StringPtrInput
-	// Readable label for loadbalancer farm
-	DisplayName pulumi.StringPtrInput
-	// Port attached to your farm ([1..49151]). Inherited from frontend if null
-	Port pulumi.IntPtrInput
-	// define a backend healthcheck probe
-	Probe TcpFarmProbePtrInput
-	// The internal name of your IP load balancing
-	ServiceName pulumi.StringPtrInput
-	// Stickiness type. No stickiness if null (`sourceIp`)
-	Stickiness pulumi.StringPtrInput
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+	Balance        pulumi.StringPtrInput
+	DisplayName    pulumi.StringPtrInput
+	Port           pulumi.IntPtrInput
+	Probe          TcpFarmProbePtrInput
+	ServiceName    pulumi.StringPtrInput
+	Stickiness     pulumi.StringPtrInput
 	VrackNetworkId pulumi.IntPtrInput
-	// Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
-	Zone pulumi.StringPtrInput
+	Zone           pulumi.StringPtrInput
 }
 
 func (TcpFarmState) ElementType() reflect.Type {
@@ -151,42 +87,26 @@ func (TcpFarmState) ElementType() reflect.Type {
 }
 
 type tcpFarmArgs struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
-	Balance *string `pulumi:"balance"`
-	// Readable label for loadbalancer farm
-	DisplayName *string `pulumi:"displayName"`
-	// Port attached to your farm ([1..49151]). Inherited from frontend if null
-	Port *int `pulumi:"port"`
-	// define a backend healthcheck probe
-	Probe *TcpFarmProbe `pulumi:"probe"`
-	// The internal name of your IP load balancing
-	ServiceName string `pulumi:"serviceName"`
-	// Stickiness type. No stickiness if null (`sourceIp`)
-	Stickiness *string `pulumi:"stickiness"`
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
-	VrackNetworkId *int `pulumi:"vrackNetworkId"`
-	// Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
-	Zone string `pulumi:"zone"`
+	Balance        *string       `pulumi:"balance"`
+	DisplayName    *string       `pulumi:"displayName"`
+	Port           *int          `pulumi:"port"`
+	Probe          *TcpFarmProbe `pulumi:"probe"`
+	ServiceName    string        `pulumi:"serviceName"`
+	Stickiness     *string       `pulumi:"stickiness"`
+	VrackNetworkId *int          `pulumi:"vrackNetworkId"`
+	Zone           string        `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a TcpFarm resource.
 type TcpFarmArgs struct {
-	// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
-	Balance pulumi.StringPtrInput
-	// Readable label for loadbalancer farm
-	DisplayName pulumi.StringPtrInput
-	// Port attached to your farm ([1..49151]). Inherited from frontend if null
-	Port pulumi.IntPtrInput
-	// define a backend healthcheck probe
-	Probe TcpFarmProbePtrInput
-	// The internal name of your IP load balancing
-	ServiceName pulumi.StringInput
-	// Stickiness type. No stickiness if null (`sourceIp`)
-	Stickiness pulumi.StringPtrInput
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+	Balance        pulumi.StringPtrInput
+	DisplayName    pulumi.StringPtrInput
+	Port           pulumi.IntPtrInput
+	Probe          TcpFarmProbePtrInput
+	ServiceName    pulumi.StringInput
+	Stickiness     pulumi.StringPtrInput
 	VrackNetworkId pulumi.IntPtrInput
-	// Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
-	Zone pulumi.StringInput
+	Zone           pulumi.StringInput
 }
 
 func (TcpFarmArgs) ElementType() reflect.Type {
@@ -276,42 +196,34 @@ func (o TcpFarmOutput) ToTcpFarmOutputWithContext(ctx context.Context) TcpFarmOu
 	return o
 }
 
-// Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
 func (o TcpFarmOutput) Balance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.StringPtrOutput { return v.Balance }).(pulumi.StringPtrOutput)
 }
 
-// Readable label for loadbalancer farm
 func (o TcpFarmOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Port attached to your farm ([1..49151]). Inherited from frontend if null
 func (o TcpFarmOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// define a backend healthcheck probe
 func (o TcpFarmOutput) Probe() TcpFarmProbePtrOutput {
 	return o.ApplyT(func(v *TcpFarm) TcpFarmProbePtrOutput { return v.Probe }).(TcpFarmProbePtrOutput)
 }
 
-// The internal name of your IP load balancing
 func (o TcpFarmOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Stickiness type. No stickiness if null (`sourceIp`)
 func (o TcpFarmOutput) Stickiness() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.StringPtrOutput { return v.Stickiness }).(pulumi.StringPtrOutput)
 }
 
-// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 func (o TcpFarmOutput) VrackNetworkId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.IntPtrOutput { return v.VrackNetworkId }).(pulumi.IntPtrOutput)
 }
 
-// Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
 func (o TcpFarmOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpFarm) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

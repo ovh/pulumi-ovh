@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a domain zone.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const rootZone = ovh.Domain.getZone({
- *     name: "mysite.ovh",
- * });
- * ```
- */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Domain/getZone:getZone", {
@@ -29,9 +15,6 @@ export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getZone.
  */
 export interface GetZoneArgs {
-    /**
-     * The name of the domain zone.
-     */
     name: string;
 }
 
@@ -39,46 +22,17 @@ export interface GetZoneArgs {
  * A collection of values returned by getZone.
  */
 export interface GetZoneResult {
-    /**
-     * URN of the DNS zone
-     */
     readonly ZoneURN: string;
-    /**
-     * Is DNSSEC supported by this zone
-     */
     readonly dnssecSupported: boolean;
-    /**
-     * hasDnsAnycast flag of the DNS zone
-     */
     readonly hasDnsAnycast: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Last update date of the DNS zone
-     */
     readonly lastUpdate: string;
     readonly name: string;
-    /**
-     * Name servers that host the DNS zone
-     */
     readonly nameServers: string[];
 }
-/**
- * Use this data source to retrieve information about a domain zone.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const rootZone = ovh.Domain.getZone({
- *     name: "mysite.ovh",
- * });
- * ```
- */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Domain/getZone:getZone", {
@@ -90,8 +44,5 @@ export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getZone.
  */
 export interface GetZoneOutputArgs {
-    /**
-     * The name of the domain zone.
-     */
     name: pulumi.Input<string>;
 }

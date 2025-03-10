@@ -45,9 +45,6 @@ class GetReferenceResourceTypeResult:
     @property
     @pulumi.getter
     def types(self) -> Sequence[str]:
-        """
-        List of resource types
-        """
         return pulumi.get(self, "types")
 
 
@@ -63,16 +60,7 @@ class AwaitableGetReferenceResourceTypeResult(GetReferenceResourceTypeResult):
 
 def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReferenceResourceTypeResult:
     """
-    Use this data source to list all the IAM resource types.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    types = ovh.Iam.get_reference_resource_type()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,16 +71,7 @@ def get_reference_resource_type(opts: Optional[pulumi.InvokeOptions] = None) -> 
         types=pulumi.get(__ret__, 'types'))
 def get_reference_resource_type_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReferenceResourceTypeResult]:
     """
-    Use this data source to list all the IAM resource types.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    types = ovh.Iam.get_reference_resource_type()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

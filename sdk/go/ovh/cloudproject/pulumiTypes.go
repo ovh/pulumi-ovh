@@ -7,19 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type AlertingFormattedMonthlyThreshold struct {
-	// Currency of the monthly threshold
-	CurrencyCode *string `pulumi:"currencyCode"`
-	// Text representation of the monthly threshold
-	Text *string `pulumi:"text"`
-	// Value of the monthly threshold
-	Value *float64 `pulumi:"value"`
+	CurrencyCode *string  `pulumi:"currencyCode"`
+	Text         *string  `pulumi:"text"`
+	Value        *float64 `pulumi:"value"`
 }
 
 // AlertingFormattedMonthlyThresholdInput is an input type that accepts AlertingFormattedMonthlyThresholdArgs and AlertingFormattedMonthlyThresholdOutput values.
@@ -34,12 +31,9 @@ type AlertingFormattedMonthlyThresholdInput interface {
 }
 
 type AlertingFormattedMonthlyThresholdArgs struct {
-	// Currency of the monthly threshold
-	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
-	// Text representation of the monthly threshold
-	Text pulumi.StringPtrInput `pulumi:"text"`
-	// Value of the monthly threshold
-	Value pulumi.Float64PtrInput `pulumi:"value"`
+	CurrencyCode pulumi.StringPtrInput  `pulumi:"currencyCode"`
+	Text         pulumi.StringPtrInput  `pulumi:"text"`
+	Value        pulumi.Float64PtrInput `pulumi:"value"`
 }
 
 func (AlertingFormattedMonthlyThresholdArgs) ElementType() reflect.Type {
@@ -119,17 +113,14 @@ func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThres
 	}).(AlertingFormattedMonthlyThresholdPtrOutput)
 }
 
-// Currency of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdOutput) CurrencyCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
 }
 
-// Text representation of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
 
-// Value of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
@@ -158,7 +149,6 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) Elem() AlertingFormattedMont
 	}).(AlertingFormattedMonthlyThresholdOutput)
 }
 
-// Currency of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
 		if v == nil {
@@ -168,7 +158,6 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) CurrencyCode() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Text representation of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
 		if v == nil {
@@ -178,7 +167,6 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) Text() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdPtrOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *float64 {
 		if v == nil {
@@ -189,7 +177,7 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) Value() pulumi.Float64PtrOut
 }
 
 type ContainerRegistryPlan struct {
-	// Plan code from the catalog
+	// Plan code from catalog
 	Code *string `pulumi:"code"`
 	// Plan creation date
 	CreatedAt *string `pulumi:"createdAt"`
@@ -197,11 +185,11 @@ type ContainerRegistryPlan struct {
 	Features []ContainerRegistryPlanFeature `pulumi:"features"`
 	// Plan ID
 	Id *string `pulumi:"id"`
-	// Registry name
+	// Plan name
 	Name *string `pulumi:"name"`
 	// Container registry limits
 	RegistryLimits []ContainerRegistryPlanRegistryLimit `pulumi:"registryLimits"`
-	// Registry last update date
+	// Plan last update date
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -217,7 +205,7 @@ type ContainerRegistryPlanInput interface {
 }
 
 type ContainerRegistryPlanArgs struct {
-	// Plan code from the catalog
+	// Plan code from catalog
 	Code pulumi.StringPtrInput `pulumi:"code"`
 	// Plan creation date
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
@@ -225,11 +213,11 @@ type ContainerRegistryPlanArgs struct {
 	Features ContainerRegistryPlanFeatureArrayInput `pulumi:"features"`
 	// Plan ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Registry name
+	// Plan name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Container registry limits
 	RegistryLimits ContainerRegistryPlanRegistryLimitArrayInput `pulumi:"registryLimits"`
-	// Registry last update date
+	// Plan last update date
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
@@ -284,7 +272,7 @@ func (o ContainerRegistryPlanOutput) ToContainerRegistryPlanOutputWithContext(ct
 	return o
 }
 
-// Plan code from the catalog
+// Plan code from catalog
 func (o ContainerRegistryPlanOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
@@ -304,7 +292,7 @@ func (o ContainerRegistryPlanOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Registry name
+// Plan name
 func (o ContainerRegistryPlanOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -314,7 +302,7 @@ func (o ContainerRegistryPlanOutput) RegistryLimits() ContainerRegistryPlanRegis
 	return o.ApplyT(func(v ContainerRegistryPlan) []ContainerRegistryPlanRegistryLimit { return v.RegistryLimits }).(ContainerRegistryPlanRegistryLimitArrayOutput)
 }
 
-// Registry last update date
+// Plan last update date
 func (o ContainerRegistryPlanOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -543,21 +531,21 @@ func (o ContainerRegistryPlanRegistryLimitArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type DatabaseEndpoint struct {
-	// Type of component the URI relates to.
+	// Type of component the URI relates to
 	Component *string `pulumi:"component"`
-	// Domain of the cluster.
+	// Domain of the cluster
 	Domain *string `pulumi:"domain"`
-	// Path of the endpoint.
+	// Path of the endpoint
 	Path *string `pulumi:"path"`
-	// Connection port for the endpoint.
+	// Connection port for the endpoint
 	Port *int `pulumi:"port"`
-	// Scheme used to generate the URI.
+	// Scheme used to generate the URI
 	Scheme *string `pulumi:"scheme"`
-	// Defines whether the endpoint uses SSL.
+	// Defines whether the endpoint uses SSL
 	Ssl *bool `pulumi:"ssl"`
-	// SSL mode used to connect to the service if the SSL is enabled.
+	// SSL mode used to connect to the service if the SSL is enabled
 	SslMode *string `pulumi:"sslMode"`
-	// URI of the endpoint.
+	// URI of the endpoint
 	Uri *string `pulumi:"uri"`
 }
 
@@ -573,21 +561,21 @@ type DatabaseEndpointInput interface {
 }
 
 type DatabaseEndpointArgs struct {
-	// Type of component the URI relates to.
+	// Type of component the URI relates to
 	Component pulumi.StringPtrInput `pulumi:"component"`
-	// Domain of the cluster.
+	// Domain of the cluster
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// Path of the endpoint.
+	// Path of the endpoint
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Connection port for the endpoint.
+	// Connection port for the endpoint
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Scheme used to generate the URI.
+	// Scheme used to generate the URI
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-	// Defines whether the endpoint uses SSL.
+	// Defines whether the endpoint uses SSL
 	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
-	// SSL mode used to connect to the service if the SSL is enabled.
+	// SSL mode used to connect to the service if the SSL is enabled
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
-	// URI of the endpoint.
+	// URI of the endpoint
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -642,42 +630,42 @@ func (o DatabaseEndpointOutput) ToDatabaseEndpointOutputWithContext(ctx context.
 	return o
 }
 
-// Type of component the URI relates to.
+// Type of component the URI relates to
 func (o DatabaseEndpointOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
-// Domain of the cluster.
+// Domain of the cluster
 func (o DatabaseEndpointOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// Path of the endpoint.
+// Path of the endpoint
 func (o DatabaseEndpointOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Connection port for the endpoint.
+// Connection port for the endpoint
 func (o DatabaseEndpointOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Scheme used to generate the URI.
+// Scheme used to generate the URI
 func (o DatabaseEndpointOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
-// Defines whether the endpoint uses SSL.
+// Defines whether the endpoint uses SSL
 func (o DatabaseEndpointOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
-// SSL mode used to connect to the service if the SSL is enabled.
+// SSL mode used to connect to the service if the SSL is enabled
 func (o DatabaseEndpointOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.SslMode }).(pulumi.StringPtrOutput)
 }
 
-// URI of the endpoint.
+// URI of the endpoint
 func (o DatabaseEndpointOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -707,7 +695,7 @@ type DatabaseIpRestriction struct {
 	Description *string `pulumi:"description"`
 	// Authorized IP
 	Ip *string `pulumi:"ip"`
-	// Current status of the cluster.
+	// Current status of the IP restriction
 	Status *string `pulumi:"status"`
 }
 
@@ -727,7 +715,7 @@ type DatabaseIpRestrictionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Authorized IP
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Current status of the cluster.
+	// Current status of the IP restriction
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -792,7 +780,7 @@ func (o DatabaseIpRestrictionOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Current status of the cluster.
+// Current status of the IP restriction
 func (o DatabaseIpRestrictionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -818,12 +806,11 @@ func (o DatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) DatabaseIpRes
 }
 
 type DatabaseNode struct {
-	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+	// Private network ID in which the node is. It's the regional openstackId of the private network.
 	NetworkId *string `pulumi:"networkId"`
-	// Public cloud region in which the node should be deployed.
-	// Ex: "GRA'.
+	// Region of the node
 	Region string `pulumi:"region"`
-	// Private subnet ID in which the node is.
+	// Private subnet ID in which the node is
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -839,12 +826,11 @@ type DatabaseNodeInput interface {
 }
 
 type DatabaseNodeArgs struct {
-	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+	// Private network ID in which the node is. It's the regional openstackId of the private network.
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
-	// Public cloud region in which the node should be deployed.
-	// Ex: "GRA'.
+	// Region of the node
 	Region pulumi.StringInput `pulumi:"region"`
-	// Private subnet ID in which the node is.
+	// Private subnet ID in which the node is
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -899,18 +885,17 @@ func (o DatabaseNodeOutput) ToDatabaseNodeOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+// Private network ID in which the node is. It's the regional openstackId of the private network.
 func (o DatabaseNodeOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-// Public cloud region in which the node should be deployed.
-// Ex: "GRA'.
+// Region of the node
 func (o DatabaseNodeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseNode) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Private subnet ID in which the node is.
+// Private subnet ID in which the node is
 func (o DatabaseNodeOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -936,9 +921,9 @@ func (o DatabaseNodeArrayOutput) Index(i pulumi.IntInput) DatabaseNodeOutput {
 }
 
 type GatewayExternalInformation struct {
-	// List of external ips of the gateway.
+	// List of external ips of the gateway
 	Ips []GatewayExternalInformationIp `pulumi:"ips"`
-	// ID of the private network.
+	// External network ID of the gateway
 	NetworkId *string `pulumi:"networkId"`
 }
 
@@ -954,9 +939,9 @@ type GatewayExternalInformationInput interface {
 }
 
 type GatewayExternalInformationArgs struct {
-	// List of external ips of the gateway.
+	// List of external ips of the gateway
 	Ips GatewayExternalInformationIpArrayInput `pulumi:"ips"`
-	// ID of the private network.
+	// External network ID of the gateway
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
 }
 
@@ -1011,12 +996,12 @@ func (o GatewayExternalInformationOutput) ToGatewayExternalInformationOutputWith
 	return o
 }
 
-// List of external ips of the gateway.
+// List of external ips of the gateway
 func (o GatewayExternalInformationOutput) Ips() GatewayExternalInformationIpArrayOutput {
 	return o.ApplyT(func(v GatewayExternalInformation) []GatewayExternalInformationIp { return v.Ips }).(GatewayExternalInformationIpArrayOutput)
 }
 
-// ID of the private network.
+// External network ID of the gateway
 func (o GatewayExternalInformationOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayExternalInformation) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
@@ -1042,9 +1027,9 @@ func (o GatewayExternalInformationArrayOutput) Index(i pulumi.IntInput) GatewayE
 }
 
 type GatewayExternalInformationIp struct {
-	// IP of the interface.
+	// External IP of the gateway
 	Ip *string `pulumi:"ip"`
-	// ID of the subnet.
+	// Subnet ID of the ip
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -1060,9 +1045,9 @@ type GatewayExternalInformationIpInput interface {
 }
 
 type GatewayExternalInformationIpArgs struct {
-	// IP of the interface.
+	// External IP of the gateway
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// ID of the subnet.
+	// Subnet ID of the ip
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -1117,12 +1102,12 @@ func (o GatewayExternalInformationIpOutput) ToGatewayExternalInformationIpOutput
 	return o
 }
 
-// IP of the interface.
+// External IP of the gateway
 func (o GatewayExternalInformationIpOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayExternalInformationIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// ID of the subnet.
+// Subnet ID of the ip
 func (o GatewayExternalInformationIpOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayExternalInformationIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -1148,13 +1133,13 @@ func (o GatewayExternalInformationIpArrayOutput) Index(i pulumi.IntInput) Gatewa
 }
 
 type GatewayInterfaceType struct {
-	// ID of the interface.
+	// ID of the interface
 	Id *string `pulumi:"id"`
-	// IP of the interface.
+	// IP of the interface
 	Ip *string `pulumi:"ip"`
-	// ID of the private network.
+	// Network ID of the interface
 	NetworkId *string `pulumi:"networkId"`
-	// ID of the subnet.
+	// Subnet ID of the interface
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -1170,13 +1155,13 @@ type GatewayInterfaceTypeInput interface {
 }
 
 type GatewayInterfaceTypeArgs struct {
-	// ID of the interface.
+	// ID of the interface
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// IP of the interface.
+	// IP of the interface
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// ID of the private network.
+	// Network ID of the interface
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
-	// ID of the subnet.
+	// Subnet ID of the interface
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -1231,22 +1216,22 @@ func (o GatewayInterfaceTypeOutput) ToGatewayInterfaceTypeOutputWithContext(ctx 
 	return o
 }
 
-// ID of the interface.
+// ID of the interface
 func (o GatewayInterfaceTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// IP of the interface.
+// IP of the interface
 func (o GatewayInterfaceTypeOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// ID of the private network.
+// Network ID of the interface
 func (o GatewayInterfaceTypeOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-// ID of the subnet.
+// Subnet ID of the interface
 func (o GatewayInterfaceTypeOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -1378,7 +1363,7 @@ func (o InstanceAddressArrayOutput) Index(i pulumi.IntInput) InstanceAddressOutp
 }
 
 type InstanceAttachedVolume struct {
-	// Instance id
+	// Volume id
 	Id *string `pulumi:"id"`
 }
 
@@ -1394,7 +1379,7 @@ type InstanceAttachedVolumeInput interface {
 }
 
 type InstanceAttachedVolumeArgs struct {
-	// Instance id
+	// Volume id
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -1449,7 +1434,7 @@ func (o InstanceAttachedVolumeOutput) ToInstanceAttachedVolumeOutputWithContext(
 	return o
 }
 
-// Instance id
+// Volume id
 func (o InstanceAttachedVolumeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAttachedVolume) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -1631,7 +1616,7 @@ func (o InstanceAutoBackupPtrOutput) Rotation() pulumi.IntPtrOutput {
 }
 
 type InstanceBootFrom struct {
-	// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+	// Instance image id
 	ImageId *string `pulumi:"imageId"`
 	// Instance volume id
 	VolumeId *string `pulumi:"volumeId"`
@@ -1649,7 +1634,7 @@ type InstanceBootFromInput interface {
 }
 
 type InstanceBootFromArgs struct {
-	// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+	// Instance image id
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// Instance volume id
 	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
@@ -1732,7 +1717,7 @@ func (o InstanceBootFromOutput) ToInstanceBootFromPtrOutputWithContext(ctx conte
 	}).(InstanceBootFromPtrOutput)
 }
 
-// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+// Instance image id
 func (o InstanceBootFromOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBootFrom) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
@@ -1766,7 +1751,7 @@ func (o InstanceBootFromPtrOutput) Elem() InstanceBootFromOutput {
 	}).(InstanceBootFromOutput)
 }
 
-// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+// Instance image id
 func (o InstanceBootFromPtrOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBootFrom) *string {
 		if v == nil {
@@ -1787,7 +1772,7 @@ func (o InstanceBootFromPtrOutput) VolumeId() pulumi.StringPtrOutput {
 }
 
 type InstanceFlavor struct {
-	// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+	// Flavor id
 	FlavorId string `pulumi:"flavorId"`
 }
 
@@ -1803,7 +1788,7 @@ type InstanceFlavorInput interface {
 }
 
 type InstanceFlavorArgs struct {
-	// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+	// Flavor id
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
 }
 
@@ -1884,7 +1869,7 @@ func (o InstanceFlavorOutput) ToInstanceFlavorPtrOutputWithContext(ctx context.C
 	}).(InstanceFlavorPtrOutput)
 }
 
-// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+// Flavor id
 func (o InstanceFlavorOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFlavor) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -1913,7 +1898,7 @@ func (o InstanceFlavorPtrOutput) Elem() InstanceFlavorOutput {
 	}).(InstanceFlavorOutput)
 }
 
-// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+// Flavor id
 func (o InstanceFlavorPtrOutput) FlavorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceFlavor) *string {
 		if v == nil {
@@ -2061,7 +2046,7 @@ func (o InstanceGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 type InstanceNetwork struct {
-	// Set the new instance as public boolean
+	// Set the new instance as public
 	Public *bool `pulumi:"public"`
 }
 
@@ -2077,7 +2062,7 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
-	// Set the new instance as public boolean
+	// Set the new instance as public
 	Public pulumi.BoolPtrInput `pulumi:"public"`
 }
 
@@ -2158,7 +2143,7 @@ func (o InstanceNetworkOutput) ToInstanceNetworkPtrOutputWithContext(ctx context
 	}).(InstanceNetworkPtrOutput)
 }
 
-// Set the new instance as public boolean
+// Set the new instance as public
 func (o InstanceNetworkOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *bool { return v.Public }).(pulumi.BoolPtrOutput)
 }
@@ -2187,7 +2172,7 @@ func (o InstanceNetworkPtrOutput) Elem() InstanceNetworkOutput {
 	}).(InstanceNetworkOutput)
 }
 
-// Set the new instance as public boolean
+// Set the new instance as public
 func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceNetwork) *bool {
 		if v == nil {
@@ -2198,7 +2183,7 @@ func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
 }
 
 type InstanceSshKey struct {
-	// SSH Keypair name
+	// SSH Key pair name
 	Name string `pulumi:"name"`
 }
 
@@ -2214,7 +2199,7 @@ type InstanceSshKeyInput interface {
 }
 
 type InstanceSshKeyArgs struct {
-	// SSH Keypair name
+	// SSH Key pair name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2295,7 +2280,7 @@ func (o InstanceSshKeyOutput) ToInstanceSshKeyPtrOutputWithContext(ctx context.C
 	}).(InstanceSshKeyPtrOutput)
 }
 
-// SSH Keypair name
+// SSH Key pair name
 func (o InstanceSshKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSshKey) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2324,7 +2309,7 @@ func (o InstanceSshKeyPtrOutput) Elem() InstanceSshKeyOutput {
 	}).(InstanceSshKeyOutput)
 }
 
-// SSH Keypair name
+// SSH Key pair name
 func (o InstanceSshKeyPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceSshKey) *string {
 		if v == nil {
@@ -2337,7 +2322,7 @@ func (o InstanceSshKeyPtrOutput) Name() pulumi.StringPtrOutput {
 type InstanceSshKeyCreate struct {
 	// SSH Key pair name
 	Name string `pulumi:"name"`
-	// SSH Public key
+	// SSH Public Key
 	PublicKey string `pulumi:"publicKey"`
 }
 
@@ -2355,7 +2340,7 @@ type InstanceSshKeyCreateInput interface {
 type InstanceSshKeyCreateArgs struct {
 	// SSH Key pair name
 	Name pulumi.StringInput `pulumi:"name"`
-	// SSH Public key
+	// SSH Public Key
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
@@ -2441,7 +2426,7 @@ func (o InstanceSshKeyCreateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSshKeyCreate) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SSH Public key
+// SSH Public Key
 func (o InstanceSshKeyCreateOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSshKeyCreate) string { return v.PublicKey }).(pulumi.StringOutput)
 }
@@ -2480,7 +2465,7 @@ func (o InstanceSshKeyCreatePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSH Public key
+// SSH Public Key
 func (o InstanceSshKeyCreatePtrOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceSshKeyCreate) *string {
 		if v == nil {
@@ -2491,8 +2476,6 @@ func (o InstanceSshKeyCreatePtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 type KubeCustomization struct {
-	// Kubernetes API server customization
-	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers []KubeCustomizationApiserver `pulumi:"apiservers"`
 }
@@ -2509,8 +2492,6 @@ type KubeCustomizationInput interface {
 }
 
 type KubeCustomizationArgs struct {
-	// Kubernetes API server customization
-	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers KubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
@@ -2566,8 +2547,6 @@ func (o KubeCustomizationOutput) ToKubeCustomizationOutputWithContext(ctx contex
 	return o
 }
 
-// Kubernetes API server customization
-//
 // Deprecated: Use customizationApiserver instead
 func (o KubeCustomizationOutput) Apiservers() KubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v KubeCustomization) []KubeCustomizationApiserver { return v.Apiservers }).(KubeCustomizationApiserverArrayOutput)
@@ -2594,7 +2573,6 @@ func (o KubeCustomizationArrayOutput) Index(i pulumi.IntInput) KubeCustomization
 }
 
 type KubeCustomizationApiserver struct {
-	// Kubernetes API server admission plugins customization
 	Admissionplugins []KubeCustomizationApiserverAdmissionplugin `pulumi:"admissionplugins"`
 }
 
@@ -2610,7 +2588,6 @@ type KubeCustomizationApiserverInput interface {
 }
 
 type KubeCustomizationApiserverArgs struct {
-	// Kubernetes API server admission plugins customization
 	Admissionplugins KubeCustomizationApiserverAdmissionpluginArrayInput `pulumi:"admissionplugins"`
 }
 
@@ -2665,7 +2642,6 @@ func (o KubeCustomizationApiserverOutput) ToKubeCustomizationApiserverOutputWith
 	return o
 }
 
-// Kubernetes API server admission plugins customization
 func (o KubeCustomizationApiserverOutput) Admissionplugins() KubeCustomizationApiserverAdmissionpluginArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserver) []KubeCustomizationApiserverAdmissionplugin {
 		return v.Admissionplugins
@@ -2693,10 +2669,8 @@ func (o KubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) KubeCust
 }
 
 type KubeCustomizationApiserverAdmissionplugin struct {
-	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-	Enableds []string `pulumi:"enableds"`
+	Enableds  []string `pulumi:"enableds"`
 }
 
 // KubeCustomizationApiserverAdmissionpluginInput is an input type that accepts KubeCustomizationApiserverAdmissionpluginArgs and KubeCustomizationApiserverAdmissionpluginOutput values.
@@ -2711,10 +2685,8 @@ type KubeCustomizationApiserverAdmissionpluginInput interface {
 }
 
 type KubeCustomizationApiserverAdmissionpluginArgs struct {
-	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
+	Enableds  pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
 func (KubeCustomizationApiserverAdmissionpluginArgs) ElementType() reflect.Type {
@@ -2768,12 +2740,10 @@ func (o KubeCustomizationApiserverAdmissionpluginOutput) ToKubeCustomizationApis
 	return o
 }
 
-// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
-// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -2799,10 +2769,8 @@ func (o KubeCustomizationApiserverAdmissionpluginArrayOutput) Index(i pulumi.Int
 }
 
 type KubeCustomizationKubeProxy struct {
-	// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 	Iptables *KubeCustomizationKubeProxyIptables `pulumi:"iptables"`
-	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
-	Ipvs *KubeCustomizationKubeProxyIpvs `pulumi:"ipvs"`
+	Ipvs     *KubeCustomizationKubeProxyIpvs     `pulumi:"ipvs"`
 }
 
 // KubeCustomizationKubeProxyInput is an input type that accepts KubeCustomizationKubeProxyArgs and KubeCustomizationKubeProxyOutput values.
@@ -2817,10 +2785,8 @@ type KubeCustomizationKubeProxyInput interface {
 }
 
 type KubeCustomizationKubeProxyArgs struct {
-	// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 	Iptables KubeCustomizationKubeProxyIptablesPtrInput `pulumi:"iptables"`
-	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
-	Ipvs KubeCustomizationKubeProxyIpvsPtrInput `pulumi:"ipvs"`
+	Ipvs     KubeCustomizationKubeProxyIpvsPtrInput     `pulumi:"ipvs"`
 }
 
 func (KubeCustomizationKubeProxyArgs) ElementType() reflect.Type {
@@ -2900,12 +2866,10 @@ func (o KubeCustomizationKubeProxyOutput) ToKubeCustomizationKubeProxyPtrOutputW
 	}).(KubeCustomizationKubeProxyPtrOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyOutput) Iptables() KubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIptables { return v.Iptables }).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyOutput) Ipvs() KubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIpvs { return v.Ipvs }).(KubeCustomizationKubeProxyIpvsPtrOutput)
 }
@@ -2934,7 +2898,6 @@ func (o KubeCustomizationKubeProxyPtrOutput) Elem() KubeCustomizationKubeProxyOu
 	}).(KubeCustomizationKubeProxyOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyPtrOutput) Iptables() KubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIptables {
 		if v == nil {
@@ -2944,7 +2907,6 @@ func (o KubeCustomizationKubeProxyPtrOutput) Iptables() KubeCustomizationKubePro
 	}).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyPtrOutput) Ipvs() KubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIpvs {
 		if v == nil {
@@ -2955,10 +2917,8 @@ func (o KubeCustomizationKubeProxyPtrOutput) Ipvs() KubeCustomizationKubeProxyIp
 }
 
 type KubeCustomizationKubeProxyIptables struct {
-	// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod *string `pulumi:"syncPeriod"`
+	SyncPeriod    *string `pulumi:"syncPeriod"`
 }
 
 // KubeCustomizationKubeProxyIptablesInput is an input type that accepts KubeCustomizationKubeProxyIptablesArgs and KubeCustomizationKubeProxyIptablesOutput values.
@@ -2973,10 +2933,8 @@ type KubeCustomizationKubeProxyIptablesInput interface {
 }
 
 type KubeCustomizationKubeProxyIptablesArgs struct {
-	// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
 }
 
 func (KubeCustomizationKubeProxyIptablesArgs) ElementType() reflect.Type {
@@ -3056,12 +3014,10 @@ func (o KubeCustomizationKubeProxyIptablesOutput) ToKubeCustomizationKubeProxyIp
 	}).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 func (o KubeCustomizationKubeProxyIptablesOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
@@ -3090,7 +3046,6 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) Elem() KubeCustomizationKub
 	}).(KubeCustomizationKubeProxyIptablesOutput)
 }
 
-// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -3100,7 +3055,6 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -3111,18 +3065,12 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringP
 }
 
 type KubeCustomizationKubeProxyIpvs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	// IPVS scheduler.
-	Scheduler *string `pulumi:"scheduler"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod *string `pulumi:"syncPeriod"`
-	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	Scheduler     *string `pulumi:"scheduler"`
+	SyncPeriod    *string `pulumi:"syncPeriod"`
 	TcpFinTimeout *string `pulumi:"tcpFinTimeout"`
-	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	TcpTimeout *string `pulumi:"tcpTimeout"`
-	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	UdpTimeout *string `pulumi:"udpTimeout"`
+	TcpTimeout    *string `pulumi:"tcpTimeout"`
+	UdpTimeout    *string `pulumi:"udpTimeout"`
 }
 
 // KubeCustomizationKubeProxyIpvsInput is an input type that accepts KubeCustomizationKubeProxyIpvsArgs and KubeCustomizationKubeProxyIpvsOutput values.
@@ -3137,18 +3085,12 @@ type KubeCustomizationKubeProxyIpvsInput interface {
 }
 
 type KubeCustomizationKubeProxyIpvsArgs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	// IPVS scheduler.
-	Scheduler pulumi.StringPtrInput `pulumi:"scheduler"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
-	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	Scheduler     pulumi.StringPtrInput `pulumi:"scheduler"`
+	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
 	TcpFinTimeout pulumi.StringPtrInput `pulumi:"tcpFinTimeout"`
-	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	TcpTimeout pulumi.StringPtrInput `pulumi:"tcpTimeout"`
-	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-	UdpTimeout pulumi.StringPtrInput `pulumi:"udpTimeout"`
+	TcpTimeout    pulumi.StringPtrInput `pulumi:"tcpTimeout"`
+	UdpTimeout    pulumi.StringPtrInput `pulumi:"udpTimeout"`
 }
 
 func (KubeCustomizationKubeProxyIpvsArgs) ElementType() reflect.Type {
@@ -3228,32 +3170,26 @@ func (o KubeCustomizationKubeProxyIpvsOutput) ToKubeCustomizationKubeProxyIpvsPt
 	}).(KubeCustomizationKubeProxyIpvsPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpFinTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpTimeout }).(pulumi.StringPtrOutput)
 }
 
-// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.UdpTimeout }).(pulumi.StringPtrOutput)
 }
@@ -3282,7 +3218,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Elem() KubeCustomizationKubePro
 	}).(KubeCustomizationKubeProxyIpvsOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3292,7 +3227,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3302,7 +3236,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3312,7 +3245,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3322,7 +3254,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3332,7 +3263,6 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3343,14 +3273,10 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOu
 }
 
 type KubeKubeconfigAttribute struct {
-	// The kubernetes API server client certificate.
-	ClientCertificate *string `pulumi:"clientCertificate"`
-	// The kubernetes API server client key.
-	ClientKey *string `pulumi:"clientKey"`
-	// The kubernetes API server CA certificate.
+	ClientCertificate    *string `pulumi:"clientCertificate"`
+	ClientKey            *string `pulumi:"clientKey"`
 	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
-	// The kubernetes API server URL.
-	Host *string `pulumi:"host"`
+	Host                 *string `pulumi:"host"`
 }
 
 // KubeKubeconfigAttributeInput is an input type that accepts KubeKubeconfigAttributeArgs and KubeKubeconfigAttributeOutput values.
@@ -3365,14 +3291,10 @@ type KubeKubeconfigAttributeInput interface {
 }
 
 type KubeKubeconfigAttributeArgs struct {
-	// The kubernetes API server client certificate.
-	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	// The kubernetes API server client key.
-	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
-	// The kubernetes API server CA certificate.
+	ClientCertificate    pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	ClientKey            pulumi.StringPtrInput `pulumi:"clientKey"`
 	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
-	// The kubernetes API server URL.
-	Host pulumi.StringPtrInput `pulumi:"host"`
+	Host                 pulumi.StringPtrInput `pulumi:"host"`
 }
 
 func (KubeKubeconfigAttributeArgs) ElementType() reflect.Type {
@@ -3426,22 +3348,18 @@ func (o KubeKubeconfigAttributeOutput) ToKubeKubeconfigAttributeOutputWithContex
 	return o
 }
 
-// The kubernetes API server client certificate.
 func (o KubeKubeconfigAttributeOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes API server client key.
 func (o KubeKubeconfigAttributeOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes API server CA certificate.
 func (o KubeKubeconfigAttributeOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes API server URL.
 func (o KubeKubeconfigAttributeOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -3957,21 +3875,6 @@ type KubePrivateNetworkConfiguration struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway string `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
-	//
-	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	PrivateNetworkRoutingAsDefault bool `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -3990,21 +3893,6 @@ type KubePrivateNetworkConfigurationArgs struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway pulumi.StringInput `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
-	//
-	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	PrivateNetworkRoutingAsDefault pulumi.BoolInput `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -4091,24 +3979,6 @@ func (o KubePrivateNetworkConfigurationOutput) DefaultVrackGateway() pulumi.Stri
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
-//
-// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o KubePrivateNetworkConfigurationOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubePrivateNetworkConfiguration) bool { return v.PrivateNetworkRoutingAsDefault }).(pulumi.BoolOutput)
 }
@@ -4148,24 +4018,6 @@ func (o KubePrivateNetworkConfigurationPtrOutput) DefaultVrackGateway() pulumi.S
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
-//
-// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubePrivateNetworkConfiguration) *bool {
 		if v == nil {
@@ -4175,11 +4027,2437 @@ func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
+type LoadbalancerFloatingIp struct {
+	// ID of the resource
+	Id *string `pulumi:"id"`
+	// IP Address of the resource
+	Ip *string `pulumi:"ip"`
+}
+
+// LoadbalancerFloatingIpInput is an input type that accepts LoadbalancerFloatingIpArgs and LoadbalancerFloatingIpOutput values.
+// You can construct a concrete instance of `LoadbalancerFloatingIpInput` via:
+//
+//	LoadbalancerFloatingIpArgs{...}
+type LoadbalancerFloatingIpInput interface {
+	pulumi.Input
+
+	ToLoadbalancerFloatingIpOutput() LoadbalancerFloatingIpOutput
+	ToLoadbalancerFloatingIpOutputWithContext(context.Context) LoadbalancerFloatingIpOutput
+}
+
+type LoadbalancerFloatingIpArgs struct {
+	// ID of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// IP Address of the resource
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (LoadbalancerFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerFloatingIp)(nil)).Elem()
+}
+
+func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpOutput() LoadbalancerFloatingIpOutput {
+	return i.ToLoadbalancerFloatingIpOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpOutputWithContext(ctx context.Context) LoadbalancerFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerFloatingIpOutput)
+}
+
+func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
+	return i.ToLoadbalancerFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerFloatingIpOutput).ToLoadbalancerFloatingIpPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerFloatingIpPtrInput is an input type that accepts LoadbalancerFloatingIpArgs, LoadbalancerFloatingIpPtr and LoadbalancerFloatingIpPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerFloatingIpPtrInput` via:
+//
+//	        LoadbalancerFloatingIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerFloatingIpPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput
+	ToLoadbalancerFloatingIpPtrOutputWithContext(context.Context) LoadbalancerFloatingIpPtrOutput
+}
+
+type loadbalancerFloatingIpPtrType LoadbalancerFloatingIpArgs
+
+func LoadbalancerFloatingIpPtr(v *LoadbalancerFloatingIpArgs) LoadbalancerFloatingIpPtrInput {
+	return (*loadbalancerFloatingIpPtrType)(v)
+}
+
+func (*loadbalancerFloatingIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerFloatingIp)(nil)).Elem()
+}
+
+func (i *loadbalancerFloatingIpPtrType) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
+	return i.ToLoadbalancerFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerFloatingIpPtrType) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerFloatingIpPtrOutput)
+}
+
+type LoadbalancerFloatingIpOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerFloatingIp)(nil)).Elem()
+}
+
+func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpOutput() LoadbalancerFloatingIpOutput {
+	return o
+}
+
+func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpOutputWithContext(ctx context.Context) LoadbalancerFloatingIpOutput {
+	return o
+}
+
+func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
+	return o.ToLoadbalancerFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerFloatingIp) *LoadbalancerFloatingIp {
+		return &v
+	}).(LoadbalancerFloatingIpPtrOutput)
+}
+
+// ID of the resource
+func (o LoadbalancerFloatingIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IP Address of the resource
+func (o LoadbalancerFloatingIpOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerFloatingIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerFloatingIpPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerFloatingIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerFloatingIp)(nil)).Elem()
+}
+
+func (o LoadbalancerFloatingIpPtrOutput) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerFloatingIpPtrOutput) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerFloatingIpPtrOutput) Elem() LoadbalancerFloatingIpOutput {
+	return o.ApplyT(func(v *LoadbalancerFloatingIp) LoadbalancerFloatingIp {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerFloatingIp
+		return ret
+	}).(LoadbalancerFloatingIpOutput)
+}
+
+// ID of the resource
+func (o LoadbalancerFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerFloatingIp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP Address of the resource
+func (o LoadbalancerFloatingIpPtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerFloatingIp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListener struct {
+	// The allowed CIDRs
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
+	// The description of the listener
+	Description *string `pulumi:"description"`
+	// Name of the listener
+	Name *string `pulumi:"name"`
+	// Listener pool
+	Pool *LoadbalancerListenerPool `pulumi:"pool"`
+	// Listener port
+	Port float64 `pulumi:"port"`
+	// Protocol for the listener
+	Protocol string `pulumi:"protocol"`
+	// Secret ID to get certificate for SSL listener creation
+	SecretId *string `pulumi:"secretId"`
+	// Timeout client data of the listener
+	TimeoutClientData *float64 `pulumi:"timeoutClientData"`
+	// Timeout member data of the listener
+	TimeoutMemberData *float64 `pulumi:"timeoutMemberData"`
+	// TLS versions of the listener
+	TlsVersions []string `pulumi:"tlsVersions"`
+}
+
+// LoadbalancerListenerInput is an input type that accepts LoadbalancerListenerArgs and LoadbalancerListenerOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerInput` via:
+//
+//	LoadbalancerListenerArgs{...}
+type LoadbalancerListenerInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerOutput() LoadbalancerListenerOutput
+	ToLoadbalancerListenerOutputWithContext(context.Context) LoadbalancerListenerOutput
+}
+
+type LoadbalancerListenerArgs struct {
+	// The allowed CIDRs
+	AllowedCidrs pulumi.StringArrayInput `pulumi:"allowedCidrs"`
+	// The description of the listener
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the listener
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Listener pool
+	Pool LoadbalancerListenerPoolPtrInput `pulumi:"pool"`
+	// Listener port
+	Port pulumi.Float64Input `pulumi:"port"`
+	// Protocol for the listener
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Secret ID to get certificate for SSL listener creation
+	SecretId pulumi.StringPtrInput `pulumi:"secretId"`
+	// Timeout client data of the listener
+	TimeoutClientData pulumi.Float64PtrInput `pulumi:"timeoutClientData"`
+	// Timeout member data of the listener
+	TimeoutMemberData pulumi.Float64PtrInput `pulumi:"timeoutMemberData"`
+	// TLS versions of the listener
+	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
+}
+
+func (LoadbalancerListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListener)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerArgs) ToLoadbalancerListenerOutput() LoadbalancerListenerOutput {
+	return i.ToLoadbalancerListenerOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerArgs) ToLoadbalancerListenerOutputWithContext(ctx context.Context) LoadbalancerListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerOutput)
+}
+
+// LoadbalancerListenerArrayInput is an input type that accepts LoadbalancerListenerArray and LoadbalancerListenerArrayOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerArrayInput` via:
+//
+//	LoadbalancerListenerArray{ LoadbalancerListenerArgs{...} }
+type LoadbalancerListenerArrayInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerArrayOutput() LoadbalancerListenerArrayOutput
+	ToLoadbalancerListenerArrayOutputWithContext(context.Context) LoadbalancerListenerArrayOutput
+}
+
+type LoadbalancerListenerArray []LoadbalancerListenerInput
+
+func (LoadbalancerListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadbalancerListener)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerArray) ToLoadbalancerListenerArrayOutput() LoadbalancerListenerArrayOutput {
+	return i.ToLoadbalancerListenerArrayOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerArray) ToLoadbalancerListenerArrayOutputWithContext(ctx context.Context) LoadbalancerListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerArrayOutput)
+}
+
+type LoadbalancerListenerOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListener)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerOutput) ToLoadbalancerListenerOutput() LoadbalancerListenerOutput {
+	return o
+}
+
+func (o LoadbalancerListenerOutput) ToLoadbalancerListenerOutputWithContext(ctx context.Context) LoadbalancerListenerOutput {
+	return o
+}
+
+// The allowed CIDRs
+func (o LoadbalancerListenerOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadbalancerListener) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The description of the listener
+func (o LoadbalancerListenerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the listener
+func (o LoadbalancerListenerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Listener pool
+func (o LoadbalancerListenerOutput) Pool() LoadbalancerListenerPoolPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *LoadbalancerListenerPool { return v.Pool }).(LoadbalancerListenerPoolPtrOutput)
+}
+
+// Listener port
+func (o LoadbalancerListenerOutput) Port() pulumi.Float64Output {
+	return o.ApplyT(func(v LoadbalancerListener) float64 { return v.Port }).(pulumi.Float64Output)
+}
+
+// Protocol for the listener
+func (o LoadbalancerListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadbalancerListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Secret ID to get certificate for SSL listener creation
+func (o LoadbalancerListenerOutput) SecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *string { return v.SecretId }).(pulumi.StringPtrOutput)
+}
+
+// Timeout client data of the listener
+func (o LoadbalancerListenerOutput) TimeoutClientData() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *float64 { return v.TimeoutClientData }).(pulumi.Float64PtrOutput)
+}
+
+// Timeout member data of the listener
+func (o LoadbalancerListenerOutput) TimeoutMemberData() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *float64 { return v.TimeoutMemberData }).(pulumi.Float64PtrOutput)
+}
+
+// TLS versions of the listener
+func (o LoadbalancerListenerOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadbalancerListener) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
+type LoadbalancerListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadbalancerListener)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerArrayOutput) ToLoadbalancerListenerArrayOutput() LoadbalancerListenerArrayOutput {
+	return o
+}
+
+func (o LoadbalancerListenerArrayOutput) ToLoadbalancerListenerArrayOutputWithContext(ctx context.Context) LoadbalancerListenerArrayOutput {
+	return o
+}
+
+func (o LoadbalancerListenerArrayOutput) Index(i pulumi.IntInput) LoadbalancerListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadbalancerListener {
+		return vs[0].([]LoadbalancerListener)[vs[1].(int)]
+	}).(LoadbalancerListenerOutput)
+}
+
+type LoadbalancerListenerPool struct {
+	// Pool algorithm to split traffic between members
+	Algorithm *string `pulumi:"algorithm"`
+	// Pool health monitor
+	HealthMonitor *LoadbalancerListenerPoolHealthMonitor `pulumi:"healthMonitor"`
+	// Pool members
+	Members []LoadbalancerListenerPoolMember `pulumi:"members"`
+	// Name of the pool
+	Name *string `pulumi:"name"`
+	// Protocol for the pool
+	Protocol *string `pulumi:"protocol"`
+	// Pool session persistence
+	SessionPersistence *LoadbalancerListenerPoolSessionPersistence `pulumi:"sessionPersistence"`
+}
+
+// LoadbalancerListenerPoolInput is an input type that accepts LoadbalancerListenerPoolArgs and LoadbalancerListenerPoolOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolInput` via:
+//
+//	LoadbalancerListenerPoolArgs{...}
+type LoadbalancerListenerPoolInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolOutput() LoadbalancerListenerPoolOutput
+	ToLoadbalancerListenerPoolOutputWithContext(context.Context) LoadbalancerListenerPoolOutput
+}
+
+type LoadbalancerListenerPoolArgs struct {
+	// Pool algorithm to split traffic between members
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// Pool health monitor
+	HealthMonitor LoadbalancerListenerPoolHealthMonitorPtrInput `pulumi:"healthMonitor"`
+	// Pool members
+	Members LoadbalancerListenerPoolMemberArrayInput `pulumi:"members"`
+	// Name of the pool
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Protocol for the pool
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Pool session persistence
+	SessionPersistence LoadbalancerListenerPoolSessionPersistencePtrInput `pulumi:"sessionPersistence"`
+}
+
+func (LoadbalancerListenerPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPool)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolOutput() LoadbalancerListenerPoolOutput {
+	return i.ToLoadbalancerListenerPoolOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolOutputWithContext(ctx context.Context) LoadbalancerListenerPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolOutput)
+}
+
+func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
+	return i.ToLoadbalancerListenerPoolPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolOutput).ToLoadbalancerListenerPoolPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerListenerPoolPtrInput is an input type that accepts LoadbalancerListenerPoolArgs, LoadbalancerListenerPoolPtr and LoadbalancerListenerPoolPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolPtrInput` via:
+//
+//	        LoadbalancerListenerPoolArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerListenerPoolPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput
+	ToLoadbalancerListenerPoolPtrOutputWithContext(context.Context) LoadbalancerListenerPoolPtrOutput
+}
+
+type loadbalancerListenerPoolPtrType LoadbalancerListenerPoolArgs
+
+func LoadbalancerListenerPoolPtr(v *LoadbalancerListenerPoolArgs) LoadbalancerListenerPoolPtrInput {
+	return (*loadbalancerListenerPoolPtrType)(v)
+}
+
+func (*loadbalancerListenerPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPool)(nil)).Elem()
+}
+
+func (i *loadbalancerListenerPoolPtrType) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
+	return i.ToLoadbalancerListenerPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerListenerPoolPtrType) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolPtrOutput)
+}
+
+type LoadbalancerListenerPoolOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPool)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolOutput() LoadbalancerListenerPoolOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolOutputWithContext(ctx context.Context) LoadbalancerListenerPoolOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
+	return o.ToLoadbalancerListenerPoolPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPool) *LoadbalancerListenerPool {
+		return &v
+	}).(LoadbalancerListenerPoolPtrOutput)
+}
+
+// Pool algorithm to split traffic between members
+func (o LoadbalancerListenerPoolOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPool) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// Pool health monitor
+func (o LoadbalancerListenerPoolOutput) HealthMonitor() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPool) *LoadbalancerListenerPoolHealthMonitor { return v.HealthMonitor }).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+}
+
+// Pool members
+func (o LoadbalancerListenerPoolOutput) Members() LoadbalancerListenerPoolMemberArrayOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPool) []LoadbalancerListenerPoolMember { return v.Members }).(LoadbalancerListenerPoolMemberArrayOutput)
+}
+
+// Name of the pool
+func (o LoadbalancerListenerPoolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Protocol for the pool
+func (o LoadbalancerListenerPoolOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPool) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Pool session persistence
+func (o LoadbalancerListenerPoolOutput) SessionPersistence() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPool) *LoadbalancerListenerPoolSessionPersistence {
+		return v.SessionPersistence
+	}).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+}
+
+type LoadbalancerListenerPoolPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPool)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolPtrOutput) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolPtrOutput) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolPtrOutput) Elem() LoadbalancerListenerPoolOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) LoadbalancerListenerPool {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerListenerPool
+		return ret
+	}).(LoadbalancerListenerPoolOutput)
+}
+
+// Pool algorithm to split traffic between members
+func (o LoadbalancerListenerPoolPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool health monitor
+func (o LoadbalancerListenerPoolPtrOutput) HealthMonitor() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) *LoadbalancerListenerPoolHealthMonitor {
+		if v == nil {
+			return nil
+		}
+		return v.HealthMonitor
+	}).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+}
+
+// Pool members
+func (o LoadbalancerListenerPoolPtrOutput) Members() LoadbalancerListenerPoolMemberArrayOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) []LoadbalancerListenerPoolMember {
+		if v == nil {
+			return nil
+		}
+		return v.Members
+	}).(LoadbalancerListenerPoolMemberArrayOutput)
+}
+
+// Name of the pool
+func (o LoadbalancerListenerPoolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Protocol for the pool
+func (o LoadbalancerListenerPoolPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool session persistence
+func (o LoadbalancerListenerPoolPtrOutput) SessionPersistence() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPool) *LoadbalancerListenerPoolSessionPersistence {
+		if v == nil {
+			return nil
+		}
+		return v.SessionPersistence
+	}).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+}
+
+type LoadbalancerListenerPoolHealthMonitor struct {
+	// Duration between sending probes to members, in seconds
+	Delay *float64 `pulumi:"delay"`
+	// Monitor HTTP configuration
+	HttpConfiguration *LoadbalancerListenerPoolHealthMonitorHttpConfiguration `pulumi:"httpConfiguration"`
+	// Number of successful checks before changing the operating status of the member to ONLINE
+	MaxRetries *float64 `pulumi:"maxRetries"`
+	// Number of allowed check failures before changing the operating status of the member to ERROR
+	MaxRetriesDown *float64 `pulumi:"maxRetriesDown"`
+	// Type of the monitor
+	MonitorType *string `pulumi:"monitorType"`
+	// The name of the resource
+	Name *string `pulumi:"name"`
+	// The operating status of the resource
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// The provisioning status of the resource
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+	Timeout *float64 `pulumi:"timeout"`
+}
+
+// LoadbalancerListenerPoolHealthMonitorInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorArgs and LoadbalancerListenerPoolHealthMonitorOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorInput` via:
+//
+//	LoadbalancerListenerPoolHealthMonitorArgs{...}
+type LoadbalancerListenerPoolHealthMonitorInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolHealthMonitorOutput() LoadbalancerListenerPoolHealthMonitorOutput
+	ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorOutput
+}
+
+type LoadbalancerListenerPoolHealthMonitorArgs struct {
+	// Duration between sending probes to members, in seconds
+	Delay pulumi.Float64PtrInput `pulumi:"delay"`
+	// Monitor HTTP configuration
+	HttpConfiguration LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput `pulumi:"httpConfiguration"`
+	// Number of successful checks before changing the operating status of the member to ONLINE
+	MaxRetries pulumi.Float64PtrInput `pulumi:"maxRetries"`
+	// Number of allowed check failures before changing the operating status of the member to ERROR
+	MaxRetriesDown pulumi.Float64PtrInput `pulumi:"maxRetriesDown"`
+	// Type of the monitor
+	MonitorType pulumi.StringPtrInput `pulumi:"monitorType"`
+	// The name of the resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The operating status of the resource
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// The provisioning status of the resource
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
+}
+
+func (LoadbalancerListenerPoolHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorOutput() LoadbalancerListenerPoolHealthMonitorOutput {
+	return i.ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorOutput)
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return i.ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorOutput).ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerListenerPoolHealthMonitorPtrInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorArgs, LoadbalancerListenerPoolHealthMonitorPtr and LoadbalancerListenerPoolHealthMonitorPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorPtrInput` via:
+//
+//	        LoadbalancerListenerPoolHealthMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerListenerPoolHealthMonitorPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput
+	ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput
+}
+
+type loadbalancerListenerPoolHealthMonitorPtrType LoadbalancerListenerPoolHealthMonitorArgs
+
+func LoadbalancerListenerPoolHealthMonitorPtr(v *LoadbalancerListenerPoolHealthMonitorArgs) LoadbalancerListenerPoolHealthMonitorPtrInput {
+	return (*loadbalancerListenerPoolHealthMonitorPtrType)(v)
+}
+
+func (*loadbalancerListenerPoolHealthMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (i *loadbalancerListenerPoolHealthMonitorPtrType) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return i.ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerListenerPoolHealthMonitorPtrType) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+}
+
+type LoadbalancerListenerPoolHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorOutput() LoadbalancerListenerPoolHealthMonitorOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPoolHealthMonitor) *LoadbalancerListenerPoolHealthMonitor {
+		return &v
+	}).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+}
+
+// Duration between sending probes to members, in seconds
+func (o LoadbalancerListenerPoolHealthMonitorOutput) Delay() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.Delay }).(pulumi.Float64PtrOutput)
+}
+
+// Monitor HTTP configuration
+func (o LoadbalancerListenerPoolHealthMonitorOutput) HttpConfiguration() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+		return v.HttpConfiguration
+	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+}
+
+// Number of successful checks before changing the operating status of the member to ONLINE
+func (o LoadbalancerListenerPoolHealthMonitorOutput) MaxRetries() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.MaxRetries }).(pulumi.Float64PtrOutput)
+}
+
+// Number of allowed check failures before changing the operating status of the member to ERROR
+func (o LoadbalancerListenerPoolHealthMonitorOutput) MaxRetriesDown() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.MaxRetriesDown }).(pulumi.Float64PtrOutput)
+}
+
+// Type of the monitor
+func (o LoadbalancerListenerPoolHealthMonitorOutput) MonitorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.MonitorType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
+func (o LoadbalancerListenerPoolHealthMonitorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The operating status of the resource
+func (o LoadbalancerListenerPoolHealthMonitorOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning status of the resource
+func (o LoadbalancerListenerPoolHealthMonitorOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+func (o LoadbalancerListenerPoolHealthMonitorOutput) Timeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+}
+
+type LoadbalancerListenerPoolHealthMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolHealthMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Elem() LoadbalancerListenerPoolHealthMonitorOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) LoadbalancerListenerPoolHealthMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerListenerPoolHealthMonitor
+		return ret
+	}).(LoadbalancerListenerPoolHealthMonitorOutput)
+}
+
+// Duration between sending probes to members, in seconds
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Delay() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Monitor HTTP configuration
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) HttpConfiguration() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.HttpConfiguration
+	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+}
+
+// Number of successful checks before changing the operating status of the member to ONLINE
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MaxRetries() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Number of allowed check failures before changing the operating status of the member to ERROR
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MaxRetriesDown() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetriesDown
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Type of the monitor
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MonitorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operating status of the resource
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning status of the resource
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Timeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.Float64PtrOutput)
+}
+
+type LoadbalancerListenerPoolHealthMonitorHttpConfiguration struct {
+	// Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+	DomainName *string `pulumi:"domainName"`
+	// Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+	ExpectedCodes *string `pulumi:"expectedCodes"`
+	// HTTP method that the health monitor uses for requests
+	HttpMethod *string `pulumi:"httpMethod"`
+	// HTTP version that the health monitor uses for requests
+	HttpVersion *string `pulumi:"httpVersion"`
+	// HTTP URL path of the request sent by the monitor to test the health of a backend member
+	UrlPath *string `pulumi:"urlPath"`
+}
+
+// LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs and LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput` via:
+//
+//	LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{...}
+type LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput
+	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput
+}
+
+type LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs struct {
+	// Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+	ExpectedCodes pulumi.StringPtrInput `pulumi:"expectedCodes"`
+	// HTTP method that the health monitor uses for requests
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// HTTP version that the health monitor uses for requests
+	HttpVersion pulumi.StringPtrInput `pulumi:"httpVersion"`
+	// HTTP URL path of the request sent by the monitor to test the health of a backend member
+	UrlPath pulumi.StringPtrInput `pulumi:"urlPath"`
+}
+
+func (LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return i.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput)
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return i.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput).ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs, LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtr and LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput` via:
+//
+//	        LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput
+	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput
+}
+
+type loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs
+
+func LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtr(v *LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput {
+	return (*loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType)(v)
+}
+
+func (*loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+}
+
+func (i *loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return i.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+}
+
+type LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+		return &v
+	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+}
+
+// Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+}
+
+// HTTP method that the health monitor uses for requests
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// HTTP version that the health monitor uses for requests
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.HttpVersion }).(pulumi.StringPtrOutput)
+}
+
+// HTTP URL path of the request sent by the monitor to test the health of a backend member
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.UrlPath }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) Elem() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerListenerPoolHealthMonitorHttpConfiguration
+		return ret
+	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput)
+}
+
+// Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedCodes
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP method that the health monitor uses for requests
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP version that the health monitor uses for requests
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP URL path of the request sent by the monitor to test the health of a backend member
+func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListenerPoolMember struct {
+	// IP address of the resource
+	Address *string `pulumi:"address"`
+	// Name of the member
+	Name *string `pulumi:"name"`
+	// Protocol port number for the resource
+	ProtocolPort *float64 `pulumi:"protocolPort"`
+	// Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
+	Weight *float64 `pulumi:"weight"`
+}
+
+// LoadbalancerListenerPoolMemberInput is an input type that accepts LoadbalancerListenerPoolMemberArgs and LoadbalancerListenerPoolMemberOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolMemberInput` via:
+//
+//	LoadbalancerListenerPoolMemberArgs{...}
+type LoadbalancerListenerPoolMemberInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolMemberOutput() LoadbalancerListenerPoolMemberOutput
+	ToLoadbalancerListenerPoolMemberOutputWithContext(context.Context) LoadbalancerListenerPoolMemberOutput
+}
+
+type LoadbalancerListenerPoolMemberArgs struct {
+	// IP address of the resource
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Name of the member
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Protocol port number for the resource
+	ProtocolPort pulumi.Float64PtrInput `pulumi:"protocolPort"`
+	// Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
+	Weight pulumi.Float64PtrInput `pulumi:"weight"`
+}
+
+func (LoadbalancerListenerPoolMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolMember)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerPoolMemberArgs) ToLoadbalancerListenerPoolMemberOutput() LoadbalancerListenerPoolMemberOutput {
+	return i.ToLoadbalancerListenerPoolMemberOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolMemberArgs) ToLoadbalancerListenerPoolMemberOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolMemberOutput)
+}
+
+// LoadbalancerListenerPoolMemberArrayInput is an input type that accepts LoadbalancerListenerPoolMemberArray and LoadbalancerListenerPoolMemberArrayOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolMemberArrayInput` via:
+//
+//	LoadbalancerListenerPoolMemberArray{ LoadbalancerListenerPoolMemberArgs{...} }
+type LoadbalancerListenerPoolMemberArrayInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolMemberArrayOutput() LoadbalancerListenerPoolMemberArrayOutput
+	ToLoadbalancerListenerPoolMemberArrayOutputWithContext(context.Context) LoadbalancerListenerPoolMemberArrayOutput
+}
+
+type LoadbalancerListenerPoolMemberArray []LoadbalancerListenerPoolMemberInput
+
+func (LoadbalancerListenerPoolMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadbalancerListenerPoolMember)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerPoolMemberArray) ToLoadbalancerListenerPoolMemberArrayOutput() LoadbalancerListenerPoolMemberArrayOutput {
+	return i.ToLoadbalancerListenerPoolMemberArrayOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolMemberArray) ToLoadbalancerListenerPoolMemberArrayOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolMemberArrayOutput)
+}
+
+type LoadbalancerListenerPoolMemberOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolMember)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolMemberOutput) ToLoadbalancerListenerPoolMemberOutput() LoadbalancerListenerPoolMemberOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolMemberOutput) ToLoadbalancerListenerPoolMemberOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberOutput {
+	return o
+}
+
+// IP address of the resource
+func (o LoadbalancerListenerPoolMemberOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Name of the member
+func (o LoadbalancerListenerPoolMemberOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Protocol port number for the resource
+func (o LoadbalancerListenerPoolMemberOutput) ProtocolPort() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *float64 { return v.ProtocolPort }).(pulumi.Float64PtrOutput)
+}
+
+// Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
+func (o LoadbalancerListenerPoolMemberOutput) Weight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
+}
+
+type LoadbalancerListenerPoolMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadbalancerListenerPoolMember)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolMemberArrayOutput) ToLoadbalancerListenerPoolMemberArrayOutput() LoadbalancerListenerPoolMemberArrayOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolMemberArrayOutput) ToLoadbalancerListenerPoolMemberArrayOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberArrayOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolMemberArrayOutput) Index(i pulumi.IntInput) LoadbalancerListenerPoolMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadbalancerListenerPoolMember {
+		return vs[0].([]LoadbalancerListenerPoolMember)[vs[1].(int)]
+	}).(LoadbalancerListenerPoolMemberOutput)
+}
+
+type LoadbalancerListenerPoolSessionPersistence struct {
+	// Cookie name, only applicable to session persistence through cookie
+	CookieName *string `pulumi:"cookieName"`
+	// Type of session persistence
+	Type *string `pulumi:"type"`
+}
+
+// LoadbalancerListenerPoolSessionPersistenceInput is an input type that accepts LoadbalancerListenerPoolSessionPersistenceArgs and LoadbalancerListenerPoolSessionPersistenceOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolSessionPersistenceInput` via:
+//
+//	LoadbalancerListenerPoolSessionPersistenceArgs{...}
+type LoadbalancerListenerPoolSessionPersistenceInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolSessionPersistenceOutput() LoadbalancerListenerPoolSessionPersistenceOutput
+	ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(context.Context) LoadbalancerListenerPoolSessionPersistenceOutput
+}
+
+type LoadbalancerListenerPoolSessionPersistenceArgs struct {
+	// Cookie name, only applicable to session persistence through cookie
+	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
+	// Type of session persistence
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (LoadbalancerListenerPoolSessionPersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistenceOutput() LoadbalancerListenerPoolSessionPersistenceOutput {
+	return i.ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolSessionPersistenceOutput)
+}
+
+func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return i.ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolSessionPersistenceOutput).ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx)
+}
+
+// LoadbalancerListenerPoolSessionPersistencePtrInput is an input type that accepts LoadbalancerListenerPoolSessionPersistenceArgs, LoadbalancerListenerPoolSessionPersistencePtr and LoadbalancerListenerPoolSessionPersistencePtrOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerPoolSessionPersistencePtrInput` via:
+//
+//	        LoadbalancerListenerPoolSessionPersistenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerListenerPoolSessionPersistencePtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput
+	ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput
+}
+
+type loadbalancerListenerPoolSessionPersistencePtrType LoadbalancerListenerPoolSessionPersistenceArgs
+
+func LoadbalancerListenerPoolSessionPersistencePtr(v *LoadbalancerListenerPoolSessionPersistenceArgs) LoadbalancerListenerPoolSessionPersistencePtrInput {
+	return (*loadbalancerListenerPoolSessionPersistencePtrType)(v)
+}
+
+func (*loadbalancerListenerPoolSessionPersistencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+}
+
+func (i *loadbalancerListenerPoolSessionPersistencePtrType) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return i.ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerListenerPoolSessionPersistencePtrType) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+}
+
+type LoadbalancerListenerPoolSessionPersistenceOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolSessionPersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistenceOutput() LoadbalancerListenerPoolSessionPersistenceOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistenceOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPoolSessionPersistence) *LoadbalancerListenerPoolSessionPersistence {
+		return &v
+	}).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+}
+
+// Cookie name, only applicable to session persistence through cookie
+func (o LoadbalancerListenerPoolSessionPersistenceOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolSessionPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+}
+
+// Type of session persistence
+func (o LoadbalancerListenerPoolSessionPersistenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerPoolSessionPersistence) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListenerPoolSessionPersistencePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerPoolSessionPersistencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) Elem() LoadbalancerListenerPoolSessionPersistenceOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolSessionPersistence) LoadbalancerListenerPoolSessionPersistence {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerListenerPoolSessionPersistence
+		return ret
+	}).(LoadbalancerListenerPoolSessionPersistenceOutput)
+}
+
+// Cookie name, only applicable to session persistence through cookie
+func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolSessionPersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of session persistence
+func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerPoolSessionPersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetwork struct {
+	// Information to private network
+	Private LoadbalancerNetworkPrivate `pulumi:"private"`
+}
+
+// LoadbalancerNetworkInput is an input type that accepts LoadbalancerNetworkArgs and LoadbalancerNetworkOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkInput` via:
+//
+//	LoadbalancerNetworkArgs{...}
+type LoadbalancerNetworkInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkOutput() LoadbalancerNetworkOutput
+	ToLoadbalancerNetworkOutputWithContext(context.Context) LoadbalancerNetworkOutput
+}
+
+type LoadbalancerNetworkArgs struct {
+	// Information to private network
+	Private LoadbalancerNetworkPrivateInput `pulumi:"private"`
+}
+
+func (LoadbalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetwork)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkOutput() LoadbalancerNetworkOutput {
+	return i.ToLoadbalancerNetworkOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkOutput)
+}
+
+func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
+	return i.ToLoadbalancerNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkOutput).ToLoadbalancerNetworkPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPtrInput is an input type that accepts LoadbalancerNetworkArgs, LoadbalancerNetworkPtr and LoadbalancerNetworkPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPtrInput` via:
+//
+//	        LoadbalancerNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput
+	ToLoadbalancerNetworkPtrOutputWithContext(context.Context) LoadbalancerNetworkPtrOutput
+}
+
+type loadbalancerNetworkPtrType LoadbalancerNetworkArgs
+
+func LoadbalancerNetworkPtr(v *LoadbalancerNetworkArgs) LoadbalancerNetworkPtrInput {
+	return (*loadbalancerNetworkPtrType)(v)
+}
+
+func (*loadbalancerNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetwork)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPtrType) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
+	return i.ToLoadbalancerNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPtrType) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPtrOutput)
+}
+
+type LoadbalancerNetworkOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetwork)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkOutput() LoadbalancerNetworkOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
+	return o.ToLoadbalancerNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetwork) *LoadbalancerNetwork {
+		return &v
+	}).(LoadbalancerNetworkPtrOutput)
+}
+
+// Information to private network
+func (o LoadbalancerNetworkOutput) Private() LoadbalancerNetworkPrivateOutput {
+	return o.ApplyT(func(v LoadbalancerNetwork) LoadbalancerNetworkPrivate { return v.Private }).(LoadbalancerNetworkPrivateOutput)
+}
+
+type LoadbalancerNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetwork)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPtrOutput) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPtrOutput) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPtrOutput) Elem() LoadbalancerNetworkOutput {
+	return o.ApplyT(func(v *LoadbalancerNetwork) LoadbalancerNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetwork
+		return ret
+	}).(LoadbalancerNetworkOutput)
+}
+
+// Information to private network
+func (o LoadbalancerNetworkPtrOutput) Private() LoadbalancerNetworkPrivatePtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetwork) *LoadbalancerNetworkPrivate {
+		if v == nil {
+			return nil
+		}
+		return &v.Private
+	}).(LoadbalancerNetworkPrivatePtrOutput)
+}
+
+type LoadbalancerNetworkPrivate struct {
+	// Floating IP to associate
+	FloatingIp *LoadbalancerNetworkPrivateFloatingIp `pulumi:"floatingIp"`
+	// Floating IP to create
+	FloatingIpCreate *LoadbalancerNetworkPrivateFloatingIpCreate `pulumi:"floatingIpCreate"`
+	// Gateway to associate
+	Gateway *LoadbalancerNetworkPrivateGateway `pulumi:"gateway"`
+	// Gateway to create
+	GatewayCreate *LoadbalancerNetworkPrivateGatewayCreate `pulumi:"gatewayCreate"`
+	// Network to associate
+	Network LoadbalancerNetworkPrivateNetwork `pulumi:"network"`
+}
+
+// LoadbalancerNetworkPrivateInput is an input type that accepts LoadbalancerNetworkPrivateArgs and LoadbalancerNetworkPrivateOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateInput` via:
+//
+//	LoadbalancerNetworkPrivateArgs{...}
+type LoadbalancerNetworkPrivateInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateOutput() LoadbalancerNetworkPrivateOutput
+	ToLoadbalancerNetworkPrivateOutputWithContext(context.Context) LoadbalancerNetworkPrivateOutput
+}
+
+type LoadbalancerNetworkPrivateArgs struct {
+	// Floating IP to associate
+	FloatingIp LoadbalancerNetworkPrivateFloatingIpPtrInput `pulumi:"floatingIp"`
+	// Floating IP to create
+	FloatingIpCreate LoadbalancerNetworkPrivateFloatingIpCreatePtrInput `pulumi:"floatingIpCreate"`
+	// Gateway to associate
+	Gateway LoadbalancerNetworkPrivateGatewayPtrInput `pulumi:"gateway"`
+	// Gateway to create
+	GatewayCreate LoadbalancerNetworkPrivateGatewayCreatePtrInput `pulumi:"gatewayCreate"`
+	// Network to associate
+	Network LoadbalancerNetworkPrivateNetworkInput `pulumi:"network"`
+}
+
+func (LoadbalancerNetworkPrivateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivate)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivateOutput() LoadbalancerNetworkPrivateOutput {
+	return i.ToLoadbalancerNetworkPrivateOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateOutput)
+}
+
+func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
+	return i.ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateOutput).ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPrivatePtrInput is an input type that accepts LoadbalancerNetworkPrivateArgs, LoadbalancerNetworkPrivatePtr and LoadbalancerNetworkPrivatePtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivatePtrInput` via:
+//
+//	        LoadbalancerNetworkPrivateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPrivatePtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput
+	ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Context) LoadbalancerNetworkPrivatePtrOutput
+}
+
+type loadbalancerNetworkPrivatePtrType LoadbalancerNetworkPrivateArgs
+
+func LoadbalancerNetworkPrivatePtr(v *LoadbalancerNetworkPrivateArgs) LoadbalancerNetworkPrivatePtrInput {
+	return (*loadbalancerNetworkPrivatePtrType)(v)
+}
+
+func (*loadbalancerNetworkPrivatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivate)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPrivatePtrType) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
+	return i.ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPrivatePtrType) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivatePtrOutput)
+}
+
+type LoadbalancerNetworkPrivateOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivate)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivateOutput() LoadbalancerNetworkPrivateOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
+	return o.ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivate {
+		return &v
+	}).(LoadbalancerNetworkPrivatePtrOutput)
+}
+
+// Floating IP to associate
+func (o LoadbalancerNetworkPrivateOutput) FloatingIp() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIp { return v.FloatingIp }).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+}
+
+// Floating IP to create
+func (o LoadbalancerNetworkPrivateOutput) FloatingIpCreate() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIpCreate {
+		return v.FloatingIpCreate
+	}).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+// Gateway to associate
+func (o LoadbalancerNetworkPrivateOutput) Gateway() LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGateway { return v.Gateway }).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+}
+
+// Gateway to create
+func (o LoadbalancerNetworkPrivateOutput) GatewayCreate() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGatewayCreate { return v.GatewayCreate }).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+}
+
+// Network to associate
+func (o LoadbalancerNetworkPrivateOutput) Network() LoadbalancerNetworkPrivateNetworkOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivate) LoadbalancerNetworkPrivateNetwork { return v.Network }).(LoadbalancerNetworkPrivateNetworkOutput)
+}
+
+type LoadbalancerNetworkPrivatePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivate)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivatePtrOutput) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivatePtrOutput) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivatePtrOutput) Elem() LoadbalancerNetworkPrivateOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) LoadbalancerNetworkPrivate {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetworkPrivate
+		return ret
+	}).(LoadbalancerNetworkPrivateOutput)
+}
+
+// Floating IP to associate
+func (o LoadbalancerNetworkPrivatePtrOutput) FloatingIp() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIp {
+		if v == nil {
+			return nil
+		}
+		return v.FloatingIp
+	}).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+}
+
+// Floating IP to create
+func (o LoadbalancerNetworkPrivatePtrOutput) FloatingIpCreate() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIpCreate {
+		if v == nil {
+			return nil
+		}
+		return v.FloatingIpCreate
+	}).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+// Gateway to associate
+func (o LoadbalancerNetworkPrivatePtrOutput) Gateway() LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+}
+
+// Gateway to create
+func (o LoadbalancerNetworkPrivatePtrOutput) GatewayCreate() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGatewayCreate {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayCreate
+	}).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+}
+
+// Network to associate
+func (o LoadbalancerNetworkPrivatePtrOutput) Network() LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateNetwork {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(LoadbalancerNetworkPrivateNetworkPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateFloatingIp struct {
+	// ID of the floatingIp
+	Id *string `pulumi:"id"`
+}
+
+// LoadbalancerNetworkPrivateFloatingIpInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpArgs and LoadbalancerNetworkPrivateFloatingIpOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpInput` via:
+//
+//	LoadbalancerNetworkPrivateFloatingIpArgs{...}
+type LoadbalancerNetworkPrivateFloatingIpInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateFloatingIpOutput() LoadbalancerNetworkPrivateFloatingIpOutput
+	ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpOutput
+}
+
+type LoadbalancerNetworkPrivateFloatingIpArgs struct {
+	// ID of the floatingIp
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (LoadbalancerNetworkPrivateFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpOutput() LoadbalancerNetworkPrivateFloatingIpOutput {
+	return i.ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpOutput)
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return i.ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpOutput).ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPrivateFloatingIpPtrInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpArgs, LoadbalancerNetworkPrivateFloatingIpPtr and LoadbalancerNetworkPrivateFloatingIpPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpPtrInput` via:
+//
+//	        LoadbalancerNetworkPrivateFloatingIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPrivateFloatingIpPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput
+	ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput
+}
+
+type loadbalancerNetworkPrivateFloatingIpPtrType LoadbalancerNetworkPrivateFloatingIpArgs
+
+func LoadbalancerNetworkPrivateFloatingIpPtr(v *LoadbalancerNetworkPrivateFloatingIpArgs) LoadbalancerNetworkPrivateFloatingIpPtrInput {
+	return (*loadbalancerNetworkPrivateFloatingIpPtrType)(v)
+}
+
+func (*loadbalancerNetworkPrivateFloatingIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPrivateFloatingIpPtrType) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return i.ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPrivateFloatingIpPtrType) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateFloatingIpOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpOutput() LoadbalancerNetworkPrivateFloatingIpOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateFloatingIp) *LoadbalancerNetworkPrivateFloatingIp {
+		return &v
+	}).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+}
+
+// ID of the floatingIp
+func (o LoadbalancerNetworkPrivateFloatingIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateFloatingIpPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateFloatingIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) Elem() LoadbalancerNetworkPrivateFloatingIpOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIp) LoadbalancerNetworkPrivateFloatingIp {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetworkPrivateFloatingIp
+		return ret
+	}).(LoadbalancerNetworkPrivateFloatingIpOutput)
+}
+
+// ID of the floatingIp
+func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateFloatingIpCreate struct {
+	// Description for the floatingIp
+	Description *string `pulumi:"description"`
+}
+
+// LoadbalancerNetworkPrivateFloatingIpCreateInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpCreateArgs and LoadbalancerNetworkPrivateFloatingIpCreateOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpCreateInput` via:
+//
+//	LoadbalancerNetworkPrivateFloatingIpCreateArgs{...}
+type LoadbalancerNetworkPrivateFloatingIpCreateInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateFloatingIpCreateOutput() LoadbalancerNetworkPrivateFloatingIpCreateOutput
+	ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpCreateOutput
+}
+
+type LoadbalancerNetworkPrivateFloatingIpCreateArgs struct {
+	// Description for the floatingIp
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (LoadbalancerNetworkPrivateFloatingIpCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreateOutput() LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+	return i.ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpCreateOutput)
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return i.ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpCreateOutput).ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPrivateFloatingIpCreatePtrInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpCreateArgs, LoadbalancerNetworkPrivateFloatingIpCreatePtr and LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpCreatePtrInput` via:
+//
+//	        LoadbalancerNetworkPrivateFloatingIpCreateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPrivateFloatingIpCreatePtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput
+	ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput
+}
+
+type loadbalancerNetworkPrivateFloatingIpCreatePtrType LoadbalancerNetworkPrivateFloatingIpCreateArgs
+
+func LoadbalancerNetworkPrivateFloatingIpCreatePtr(v *LoadbalancerNetworkPrivateFloatingIpCreateArgs) LoadbalancerNetworkPrivateFloatingIpCreatePtrInput {
+	return (*loadbalancerNetworkPrivateFloatingIpCreatePtrType)(v)
+}
+
+func (*loadbalancerNetworkPrivateFloatingIpCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPrivateFloatingIpCreatePtrType) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return i.ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPrivateFloatingIpCreatePtrType) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+type LoadbalancerNetworkPrivateFloatingIpCreateOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateFloatingIpCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreateOutput() LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateFloatingIpCreate) *LoadbalancerNetworkPrivateFloatingIpCreate {
+		return &v
+	}).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+// Description for the floatingIp
+func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateFloatingIpCreate) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) Elem() LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIpCreate) LoadbalancerNetworkPrivateFloatingIpCreate {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetworkPrivateFloatingIpCreate
+		return ret
+	}).(LoadbalancerNetworkPrivateFloatingIpCreateOutput)
+}
+
+// Description for the floatingIp
+func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIpCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateGateway struct {
+	// ID of the gateway
+	Id *string `pulumi:"id"`
+}
+
+// LoadbalancerNetworkPrivateGatewayInput is an input type that accepts LoadbalancerNetworkPrivateGatewayArgs and LoadbalancerNetworkPrivateGatewayOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayInput` via:
+//
+//	LoadbalancerNetworkPrivateGatewayArgs{...}
+type LoadbalancerNetworkPrivateGatewayInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateGatewayOutput() LoadbalancerNetworkPrivateGatewayOutput
+	ToLoadbalancerNetworkPrivateGatewayOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayOutput
+}
+
+type LoadbalancerNetworkPrivateGatewayArgs struct {
+	// ID of the gateway
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (LoadbalancerNetworkPrivateGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayOutput() LoadbalancerNetworkPrivateGatewayOutput {
+	return i.ToLoadbalancerNetworkPrivateGatewayOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayOutput)
+}
+
+func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return i.ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayOutput).ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPrivateGatewayPtrInput is an input type that accepts LoadbalancerNetworkPrivateGatewayArgs, LoadbalancerNetworkPrivateGatewayPtr and LoadbalancerNetworkPrivateGatewayPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayPtrInput` via:
+//
+//	        LoadbalancerNetworkPrivateGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPrivateGatewayPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput
+	ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput
+}
+
+type loadbalancerNetworkPrivateGatewayPtrType LoadbalancerNetworkPrivateGatewayArgs
+
+func LoadbalancerNetworkPrivateGatewayPtr(v *LoadbalancerNetworkPrivateGatewayArgs) LoadbalancerNetworkPrivateGatewayPtrInput {
+	return (*loadbalancerNetworkPrivateGatewayPtrType)(v)
+}
+
+func (*loadbalancerNetworkPrivateGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPrivateGatewayPtrType) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return i.ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPrivateGatewayPtrType) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateGatewayOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayOutput() LoadbalancerNetworkPrivateGatewayOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return o.ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateGateway) *LoadbalancerNetworkPrivateGateway {
+		return &v
+	}).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+}
+
+// ID of the gateway
+func (o LoadbalancerNetworkPrivateGatewayOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateGateway) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateGatewayPtrOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayPtrOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayPtrOutput) Elem() LoadbalancerNetworkPrivateGatewayOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGateway) LoadbalancerNetworkPrivateGateway {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetworkPrivateGateway
+		return ret
+	}).(LoadbalancerNetworkPrivateGatewayOutput)
+}
+
+// ID of the gateway
+func (o LoadbalancerNetworkPrivateGatewayPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateGatewayCreate struct {
+	// Model of the gateway
+	Model *string `pulumi:"model"`
+	// Name of the gateway
+	Name *string `pulumi:"name"`
+}
+
+// LoadbalancerNetworkPrivateGatewayCreateInput is an input type that accepts LoadbalancerNetworkPrivateGatewayCreateArgs and LoadbalancerNetworkPrivateGatewayCreateOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayCreateInput` via:
+//
+//	LoadbalancerNetworkPrivateGatewayCreateArgs{...}
+type LoadbalancerNetworkPrivateGatewayCreateInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateGatewayCreateOutput() LoadbalancerNetworkPrivateGatewayCreateOutput
+	ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayCreateOutput
+}
+
+type LoadbalancerNetworkPrivateGatewayCreateArgs struct {
+	// Model of the gateway
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Name of the gateway
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LoadbalancerNetworkPrivateGatewayCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreateOutput() LoadbalancerNetworkPrivateGatewayCreateOutput {
+	return i.ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayCreateOutput)
+}
+
+func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return i.ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayCreateOutput).ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPrivateGatewayCreatePtrInput is an input type that accepts LoadbalancerNetworkPrivateGatewayCreateArgs, LoadbalancerNetworkPrivateGatewayCreatePtr and LoadbalancerNetworkPrivateGatewayCreatePtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayCreatePtrInput` via:
+//
+//	        LoadbalancerNetworkPrivateGatewayCreateArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPrivateGatewayCreatePtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput
+	ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput
+}
+
+type loadbalancerNetworkPrivateGatewayCreatePtrType LoadbalancerNetworkPrivateGatewayCreateArgs
+
+func LoadbalancerNetworkPrivateGatewayCreatePtr(v *LoadbalancerNetworkPrivateGatewayCreateArgs) LoadbalancerNetworkPrivateGatewayCreatePtrInput {
+	return (*loadbalancerNetworkPrivateGatewayCreatePtrType)(v)
+}
+
+func (*loadbalancerNetworkPrivateGatewayCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPrivateGatewayCreatePtrType) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return i.ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPrivateGatewayCreatePtrType) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+}
+
+type LoadbalancerNetworkPrivateGatewayCreateOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateGatewayCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreateOutput() LoadbalancerNetworkPrivateGatewayCreateOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreateOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateGatewayCreate) *LoadbalancerNetworkPrivateGatewayCreate {
+		return &v
+	}).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+}
+
+// Model of the gateway
+func (o LoadbalancerNetworkPrivateGatewayCreateOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateGatewayCreate) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// Name of the gateway
+func (o LoadbalancerNetworkPrivateGatewayCreateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateGatewayCreate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateGatewayCreatePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateGatewayCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Elem() LoadbalancerNetworkPrivateGatewayCreateOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGatewayCreate) LoadbalancerNetworkPrivateGatewayCreate {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetworkPrivateGatewayCreate
+		return ret
+	}).(LoadbalancerNetworkPrivateGatewayCreateOutput)
+}
+
+// Model of the gateway
+func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGatewayCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the gateway
+func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGatewayCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateNetwork struct {
+	// Private network ID
+	Id string `pulumi:"id"`
+	// Subnet ID
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// LoadbalancerNetworkPrivateNetworkInput is an input type that accepts LoadbalancerNetworkPrivateNetworkArgs and LoadbalancerNetworkPrivateNetworkOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateNetworkInput` via:
+//
+//	LoadbalancerNetworkPrivateNetworkArgs{...}
+type LoadbalancerNetworkPrivateNetworkInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateNetworkOutput() LoadbalancerNetworkPrivateNetworkOutput
+	ToLoadbalancerNetworkPrivateNetworkOutputWithContext(context.Context) LoadbalancerNetworkPrivateNetworkOutput
+}
+
+type LoadbalancerNetworkPrivateNetworkArgs struct {
+	// Private network ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Subnet ID
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (LoadbalancerNetworkPrivateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkOutput() LoadbalancerNetworkPrivateNetworkOutput {
+	return i.ToLoadbalancerNetworkPrivateNetworkOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateNetworkOutput)
+}
+
+func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return i.ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateNetworkOutput).ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerNetworkPrivateNetworkPtrInput is an input type that accepts LoadbalancerNetworkPrivateNetworkArgs, LoadbalancerNetworkPrivateNetworkPtr and LoadbalancerNetworkPrivateNetworkPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerNetworkPrivateNetworkPtrInput` via:
+//
+//	        LoadbalancerNetworkPrivateNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerNetworkPrivateNetworkPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput
+	ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput
+}
+
+type loadbalancerNetworkPrivateNetworkPtrType LoadbalancerNetworkPrivateNetworkArgs
+
+func LoadbalancerNetworkPrivateNetworkPtr(v *LoadbalancerNetworkPrivateNetworkArgs) LoadbalancerNetworkPrivateNetworkPtrInput {
+	return (*loadbalancerNetworkPrivateNetworkPtrType)(v)
+}
+
+func (*loadbalancerNetworkPrivateNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (i *loadbalancerNetworkPrivateNetworkPtrType) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return i.ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerNetworkPrivateNetworkPtrType) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateNetworkPtrOutput)
+}
+
+type LoadbalancerNetworkPrivateNetworkOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkOutput() LoadbalancerNetworkPrivateNetworkOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return o.ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateNetwork) *LoadbalancerNetworkPrivateNetwork {
+		return &v
+	}).(LoadbalancerNetworkPrivateNetworkPtrOutput)
+}
+
+// Private network ID
+func (o LoadbalancerNetworkPrivateNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Subnet ID
+func (o LoadbalancerNetworkPrivateNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadbalancerNetworkPrivateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type LoadbalancerNetworkPrivateNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerNetworkPrivateNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (o LoadbalancerNetworkPrivateNetworkPtrOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateNetworkPtrOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
+	return o
+}
+
+func (o LoadbalancerNetworkPrivateNetworkPtrOutput) Elem() LoadbalancerNetworkPrivateNetworkOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateNetwork) LoadbalancerNetworkPrivateNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerNetworkPrivateNetwork
+		return ret
+	}).(LoadbalancerNetworkPrivateNetworkOutput)
+}
+
+// Private network ID
+func (o LoadbalancerNetworkPrivateNetworkPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet ID
+func (o LoadbalancerNetworkPrivateNetworkPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerNetworkPrivateNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
 type NetworkPrivateRegionsAttribute struct {
 	Openstackid *string `pulumi:"openstackid"`
 	Region      *string `pulumi:"region"`
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status string `pulumi:"status"`
+	Status      string  `pulumi:"status"`
 }
 
 // NetworkPrivateRegionsAttributeInput is an input type that accepts NetworkPrivateRegionsAttributeArgs and NetworkPrivateRegionsAttributeOutput values.
@@ -4196,8 +6474,7 @@ type NetworkPrivateRegionsAttributeInput interface {
 type NetworkPrivateRegionsAttributeArgs struct {
 	Openstackid pulumi.StringPtrInput `pulumi:"openstackid"`
 	Region      pulumi.StringPtrInput `pulumi:"region"`
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status pulumi.StringInput `pulumi:"status"`
+	Status      pulumi.StringInput    `pulumi:"status"`
 }
 
 func (NetworkPrivateRegionsAttributeArgs) ElementType() reflect.Type {
@@ -4259,7 +6536,6 @@ func (o NetworkPrivateRegionsAttributeOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsAttribute) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// the status of the network. should be normally set to 'ACTIVE'.
 func (o NetworkPrivateRegionsAttributeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsAttribute) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4286,8 +6562,7 @@ func (o NetworkPrivateRegionsAttributeArrayOutput) Index(i pulumi.IntInput) Netw
 
 type NetworkPrivateRegionsStatus struct {
 	Region *string `pulumi:"region"`
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status string `pulumi:"status"`
+	Status string  `pulumi:"status"`
 }
 
 // NetworkPrivateRegionsStatusInput is an input type that accepts NetworkPrivateRegionsStatusArgs and NetworkPrivateRegionsStatusOutput values.
@@ -4303,8 +6578,7 @@ type NetworkPrivateRegionsStatusInput interface {
 
 type NetworkPrivateRegionsStatusArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status pulumi.StringInput `pulumi:"status"`
+	Status pulumi.StringInput    `pulumi:"status"`
 }
 
 func (NetworkPrivateRegionsStatusArgs) ElementType() reflect.Type {
@@ -4362,7 +6636,6 @@ func (o NetworkPrivateRegionsStatusOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsStatus) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// the status of the network. should be normally set to 'ACTIVE'.
 func (o NetworkPrivateRegionsStatusOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsStatus) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4388,21 +6661,11 @@ func (o NetworkPrivateRegionsStatusArrayOutput) Index(i pulumi.IntInput) Network
 }
 
 type NetworkPrivateSubnetIpPool struct {
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to false.
-	Dhcp *bool `pulumi:"dhcp"`
-	// Last ip for this region.
-	// Changing this value recreates the subnet.
-	End *string `pulumi:"end"`
-	// Global network in CIDR format.
-	// Changing this value recreates the subnet
+	Dhcp    *bool   `pulumi:"dhcp"`
+	End     *string `pulumi:"end"`
 	Network *string `pulumi:"network"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
-	Region *string `pulumi:"region"`
-	// First ip for this region.
-	// Changing this value recreates the subnet.
-	Start *string `pulumi:"start"`
+	Region  *string `pulumi:"region"`
+	Start   *string `pulumi:"start"`
 }
 
 // NetworkPrivateSubnetIpPoolInput is an input type that accepts NetworkPrivateSubnetIpPoolArgs and NetworkPrivateSubnetIpPoolOutput values.
@@ -4417,21 +6680,11 @@ type NetworkPrivateSubnetIpPoolInput interface {
 }
 
 type NetworkPrivateSubnetIpPoolArgs struct {
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to false.
-	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
-	// Last ip for this region.
-	// Changing this value recreates the subnet.
-	End pulumi.StringPtrInput `pulumi:"end"`
-	// Global network in CIDR format.
-	// Changing this value recreates the subnet
+	Dhcp    pulumi.BoolPtrInput   `pulumi:"dhcp"`
+	End     pulumi.StringPtrInput `pulumi:"end"`
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// First ip for this region.
-	// Changing this value recreates the subnet.
-	Start pulumi.StringPtrInput `pulumi:"start"`
+	Region  pulumi.StringPtrInput `pulumi:"region"`
+	Start   pulumi.StringPtrInput `pulumi:"start"`
 }
 
 func (NetworkPrivateSubnetIpPoolArgs) ElementType() reflect.Type {
@@ -4485,32 +6738,22 @@ func (o NetworkPrivateSubnetIpPoolOutput) ToNetworkPrivateSubnetIpPoolOutputWith
 	return o
 }
 
-// Enable DHCP.
-// Changing this forces a new resource to be created. Defaults to false.
 func (o NetworkPrivateSubnetIpPoolOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// Last ip for this region.
-// Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetIpPoolOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
-// Global network in CIDR format.
-// Changing this value recreates the subnet
 func (o NetworkPrivateSubnetIpPoolOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The region in which the network subnet will be created.
-// Ex.: "GRA1". Changing this value recreates the resource.
 func (o NetworkPrivateSubnetIpPoolOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// First ip for this region.
-// Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetIpPoolOutput) Start() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
@@ -4742,7 +6985,7 @@ type ProjectOrder struct {
 	Details []ProjectOrderDetail `pulumi:"details"`
 	// expiration date
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// order id, the same as the `id`
+	// order id
 	OrderId *int `pulumi:"orderId"`
 }
 
@@ -4764,7 +7007,7 @@ type ProjectOrderArgs struct {
 	Details ProjectOrderDetailArrayInput `pulumi:"details"`
 	// expiration date
 	ExpirationDate pulumi.StringPtrInput `pulumi:"expirationDate"`
-	// order id, the same as the `id`
+	// order id
 	OrderId pulumi.IntPtrInput `pulumi:"orderId"`
 }
 
@@ -4834,7 +7077,7 @@ func (o ProjectOrderOutput) ExpirationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectOrder) *string { return v.ExpirationDate }).(pulumi.StringPtrOutput)
 }
 
-// order id, the same as the `id`
+// order id
 func (o ProjectOrderOutput) OrderId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectOrder) *int { return v.OrderId }).(pulumi.IntPtrOutput)
 }
@@ -4860,7 +7103,7 @@ func (o ProjectOrderArrayOutput) Index(i pulumi.IntInput) ProjectOrderOutput {
 }
 
 type ProjectOrderDetail struct {
-	// A description associated with the user.
+	// description
 	Description *string `pulumi:"description"`
 	// expiration date
 	Domain *string `pulumi:"domain"`
@@ -4882,7 +7125,7 @@ type ProjectOrderDetailInput interface {
 }
 
 type ProjectOrderDetailArgs struct {
-	// A description associated with the user.
+	// description
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// expiration date
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -4943,7 +7186,7 @@ func (o ProjectOrderDetailOutput) ToProjectOrderDetailOutputWithContext(ctx cont
 	return o
 }
 
-// A description associated with the user.
+// description
 func (o ProjectOrderDetailOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -4990,7 +7233,7 @@ type ProjectPlan struct {
 	Configurations []ProjectPlanConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
-	// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+	// Plan code
 	PlanCode string `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode string `pulumi:"pricingMode"`
@@ -5014,7 +7257,7 @@ type ProjectPlanArgs struct {
 	Configurations ProjectPlanConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+	// Plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
@@ -5112,7 +7355,7 @@ func (o ProjectPlanOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectPlan) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+// Plan code
 func (o ProjectPlanOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectPlan) string { return v.PlanCode }).(pulumi.StringOutput)
 }
@@ -5176,7 +7419,7 @@ func (o ProjectPlanPtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+// Plan code
 func (o ProjectPlanPtrOutput) PlanCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPlan) *string {
 		if v == nil {
@@ -5541,8 +7784,1120 @@ func (o ProjectPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) Proj
 	}).(ProjectPlanOptionConfigurationOutput)
 }
 
+type RancherCurrentState struct {
+	// Bootstrap password of the managed Rancher service, returned only on creation
+	BootstrapPassword *string `pulumi:"bootstrapPassword"`
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions []RancherCurrentStateIpRestriction `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name *string `pulumi:"name"`
+	// Networking properties of a managed Rancher service
+	Networking *RancherCurrentStateNetworking `pulumi:"networking"`
+	// Plan of the managed Rancher service
+	Plan *string `pulumi:"plan"`
+	// Region of the managed Rancher service
+	Region *string `pulumi:"region"`
+	// URL of the managed Rancher service
+	Url *string `pulumi:"url"`
+	// Latest metrics regarding the usage of the managed Rancher service
+	Usage *RancherCurrentStateUsage `pulumi:"usage"`
+	// Version of the managed Rancher service
+	Version *string `pulumi:"version"`
+}
+
+// RancherCurrentStateInput is an input type that accepts RancherCurrentStateArgs and RancherCurrentStateOutput values.
+// You can construct a concrete instance of `RancherCurrentStateInput` via:
+//
+//	RancherCurrentStateArgs{...}
+type RancherCurrentStateInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateOutput() RancherCurrentStateOutput
+	ToRancherCurrentStateOutputWithContext(context.Context) RancherCurrentStateOutput
+}
+
+type RancherCurrentStateArgs struct {
+	// Bootstrap password of the managed Rancher service, returned only on creation
+	BootstrapPassword pulumi.StringPtrInput `pulumi:"bootstrapPassword"`
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions RancherCurrentStateIpRestrictionArrayInput `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Networking properties of a managed Rancher service
+	Networking RancherCurrentStateNetworkingPtrInput `pulumi:"networking"`
+	// Plan of the managed Rancher service
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
+	// Region of the managed Rancher service
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// URL of the managed Rancher service
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// Latest metrics regarding the usage of the managed Rancher service
+	Usage RancherCurrentStateUsagePtrInput `pulumi:"usage"`
+	// Version of the managed Rancher service
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (RancherCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentState)(nil)).Elem()
+}
+
+func (i RancherCurrentStateArgs) ToRancherCurrentStateOutput() RancherCurrentStateOutput {
+	return i.ToRancherCurrentStateOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateArgs) ToRancherCurrentStateOutputWithContext(ctx context.Context) RancherCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateOutput)
+}
+
+func (i RancherCurrentStateArgs) ToRancherCurrentStatePtrOutput() RancherCurrentStatePtrOutput {
+	return i.ToRancherCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateArgs) ToRancherCurrentStatePtrOutputWithContext(ctx context.Context) RancherCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateOutput).ToRancherCurrentStatePtrOutputWithContext(ctx)
+}
+
+// RancherCurrentStatePtrInput is an input type that accepts RancherCurrentStateArgs, RancherCurrentStatePtr and RancherCurrentStatePtrOutput values.
+// You can construct a concrete instance of `RancherCurrentStatePtrInput` via:
+//
+//	        RancherCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type RancherCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStatePtrOutput() RancherCurrentStatePtrOutput
+	ToRancherCurrentStatePtrOutputWithContext(context.Context) RancherCurrentStatePtrOutput
+}
+
+type rancherCurrentStatePtrType RancherCurrentStateArgs
+
+func RancherCurrentStatePtr(v *RancherCurrentStateArgs) RancherCurrentStatePtrInput {
+	return (*rancherCurrentStatePtrType)(v)
+}
+
+func (*rancherCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherCurrentState)(nil)).Elem()
+}
+
+func (i *rancherCurrentStatePtrType) ToRancherCurrentStatePtrOutput() RancherCurrentStatePtrOutput {
+	return i.ToRancherCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *rancherCurrentStatePtrType) ToRancherCurrentStatePtrOutputWithContext(ctx context.Context) RancherCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStatePtrOutput)
+}
+
+type RancherCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentState)(nil)).Elem()
+}
+
+func (o RancherCurrentStateOutput) ToRancherCurrentStateOutput() RancherCurrentStateOutput {
+	return o
+}
+
+func (o RancherCurrentStateOutput) ToRancherCurrentStateOutputWithContext(ctx context.Context) RancherCurrentStateOutput {
+	return o
+}
+
+func (o RancherCurrentStateOutput) ToRancherCurrentStatePtrOutput() RancherCurrentStatePtrOutput {
+	return o.ToRancherCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o RancherCurrentStateOutput) ToRancherCurrentStatePtrOutputWithContext(ctx context.Context) RancherCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RancherCurrentState) *RancherCurrentState {
+		return &v
+	}).(RancherCurrentStatePtrOutput)
+}
+
+// Bootstrap password of the managed Rancher service, returned only on creation
+func (o RancherCurrentStateOutput) BootstrapPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *string { return v.BootstrapPassword }).(pulumi.StringPtrOutput)
+}
+
+// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+func (o RancherCurrentStateOutput) IpRestrictions() RancherCurrentStateIpRestrictionArrayOutput {
+	return o.ApplyT(func(v RancherCurrentState) []RancherCurrentStateIpRestriction { return v.IpRestrictions }).(RancherCurrentStateIpRestrictionArrayOutput)
+}
+
+// Name of the managed Rancher service
+func (o RancherCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Networking properties of a managed Rancher service
+func (o RancherCurrentStateOutput) Networking() RancherCurrentStateNetworkingPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *RancherCurrentStateNetworking { return v.Networking }).(RancherCurrentStateNetworkingPtrOutput)
+}
+
+// Plan of the managed Rancher service
+func (o RancherCurrentStateOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+// Region of the managed Rancher service
+func (o RancherCurrentStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// URL of the managed Rancher service
+func (o RancherCurrentStateOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// Latest metrics regarding the usage of the managed Rancher service
+func (o RancherCurrentStateOutput) Usage() RancherCurrentStateUsagePtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *RancherCurrentStateUsage { return v.Usage }).(RancherCurrentStateUsagePtrOutput)
+}
+
+// Version of the managed Rancher service
+func (o RancherCurrentStateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type RancherCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherCurrentState)(nil)).Elem()
+}
+
+func (o RancherCurrentStatePtrOutput) ToRancherCurrentStatePtrOutput() RancherCurrentStatePtrOutput {
+	return o
+}
+
+func (o RancherCurrentStatePtrOutput) ToRancherCurrentStatePtrOutputWithContext(ctx context.Context) RancherCurrentStatePtrOutput {
+	return o
+}
+
+func (o RancherCurrentStatePtrOutput) Elem() RancherCurrentStateOutput {
+	return o.ApplyT(func(v *RancherCurrentState) RancherCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret RancherCurrentState
+		return ret
+	}).(RancherCurrentStateOutput)
+}
+
+// Bootstrap password of the managed Rancher service, returned only on creation
+func (o RancherCurrentStatePtrOutput) BootstrapPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootstrapPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+func (o RancherCurrentStatePtrOutput) IpRestrictions() RancherCurrentStateIpRestrictionArrayOutput {
+	return o.ApplyT(func(v *RancherCurrentState) []RancherCurrentStateIpRestriction {
+		if v == nil {
+			return nil
+		}
+		return v.IpRestrictions
+	}).(RancherCurrentStateIpRestrictionArrayOutput)
+}
+
+// Name of the managed Rancher service
+func (o RancherCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Networking properties of a managed Rancher service
+func (o RancherCurrentStatePtrOutput) Networking() RancherCurrentStateNetworkingPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *RancherCurrentStateNetworking {
+		if v == nil {
+			return nil
+		}
+		return v.Networking
+	}).(RancherCurrentStateNetworkingPtrOutput)
+}
+
+// Plan of the managed Rancher service
+func (o RancherCurrentStatePtrOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Plan
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region of the managed Rancher service
+func (o RancherCurrentStatePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the managed Rancher service
+func (o RancherCurrentStatePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Latest metrics regarding the usage of the managed Rancher service
+func (o RancherCurrentStatePtrOutput) Usage() RancherCurrentStateUsagePtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *RancherCurrentStateUsage {
+		if v == nil {
+			return nil
+		}
+		return v.Usage
+	}).(RancherCurrentStateUsagePtrOutput)
+}
+
+// Version of the managed Rancher service
+func (o RancherCurrentStatePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type RancherCurrentStateIpRestriction struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock *string `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description *string `pulumi:"description"`
+}
+
+// RancherCurrentStateIpRestrictionInput is an input type that accepts RancherCurrentStateIpRestrictionArgs and RancherCurrentStateIpRestrictionOutput values.
+// You can construct a concrete instance of `RancherCurrentStateIpRestrictionInput` via:
+//
+//	RancherCurrentStateIpRestrictionArgs{...}
+type RancherCurrentStateIpRestrictionInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateIpRestrictionOutput() RancherCurrentStateIpRestrictionOutput
+	ToRancherCurrentStateIpRestrictionOutputWithContext(context.Context) RancherCurrentStateIpRestrictionOutput
+}
+
+type RancherCurrentStateIpRestrictionArgs struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (RancherCurrentStateIpRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (i RancherCurrentStateIpRestrictionArgs) ToRancherCurrentStateIpRestrictionOutput() RancherCurrentStateIpRestrictionOutput {
+	return i.ToRancherCurrentStateIpRestrictionOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateIpRestrictionArgs) ToRancherCurrentStateIpRestrictionOutputWithContext(ctx context.Context) RancherCurrentStateIpRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateIpRestrictionOutput)
+}
+
+// RancherCurrentStateIpRestrictionArrayInput is an input type that accepts RancherCurrentStateIpRestrictionArray and RancherCurrentStateIpRestrictionArrayOutput values.
+// You can construct a concrete instance of `RancherCurrentStateIpRestrictionArrayInput` via:
+//
+//	RancherCurrentStateIpRestrictionArray{ RancherCurrentStateIpRestrictionArgs{...} }
+type RancherCurrentStateIpRestrictionArrayInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateIpRestrictionArrayOutput() RancherCurrentStateIpRestrictionArrayOutput
+	ToRancherCurrentStateIpRestrictionArrayOutputWithContext(context.Context) RancherCurrentStateIpRestrictionArrayOutput
+}
+
+type RancherCurrentStateIpRestrictionArray []RancherCurrentStateIpRestrictionInput
+
+func (RancherCurrentStateIpRestrictionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (i RancherCurrentStateIpRestrictionArray) ToRancherCurrentStateIpRestrictionArrayOutput() RancherCurrentStateIpRestrictionArrayOutput {
+	return i.ToRancherCurrentStateIpRestrictionArrayOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateIpRestrictionArray) ToRancherCurrentStateIpRestrictionArrayOutputWithContext(ctx context.Context) RancherCurrentStateIpRestrictionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateIpRestrictionArrayOutput)
+}
+
+type RancherCurrentStateIpRestrictionOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateIpRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (o RancherCurrentStateIpRestrictionOutput) ToRancherCurrentStateIpRestrictionOutput() RancherCurrentStateIpRestrictionOutput {
+	return o
+}
+
+func (o RancherCurrentStateIpRestrictionOutput) ToRancherCurrentStateIpRestrictionOutputWithContext(ctx context.Context) RancherCurrentStateIpRestrictionOutput {
+	return o
+}
+
+// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+func (o RancherCurrentStateIpRestrictionOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentStateIpRestriction) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// Description of the allowed CIDR block
+func (o RancherCurrentStateIpRestrictionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentStateIpRestriction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type RancherCurrentStateIpRestrictionArrayOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateIpRestrictionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (o RancherCurrentStateIpRestrictionArrayOutput) ToRancherCurrentStateIpRestrictionArrayOutput() RancherCurrentStateIpRestrictionArrayOutput {
+	return o
+}
+
+func (o RancherCurrentStateIpRestrictionArrayOutput) ToRancherCurrentStateIpRestrictionArrayOutputWithContext(ctx context.Context) RancherCurrentStateIpRestrictionArrayOutput {
+	return o
+}
+
+func (o RancherCurrentStateIpRestrictionArrayOutput) Index(i pulumi.IntInput) RancherCurrentStateIpRestrictionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RancherCurrentStateIpRestriction {
+		return vs[0].([]RancherCurrentStateIpRestriction)[vs[1].(int)]
+	}).(RancherCurrentStateIpRestrictionOutput)
+}
+
+type RancherCurrentStateNetworking struct {
+	// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+	EgressCidrBlocks []string `pulumi:"egressCidrBlocks"`
+}
+
+// RancherCurrentStateNetworkingInput is an input type that accepts RancherCurrentStateNetworkingArgs and RancherCurrentStateNetworkingOutput values.
+// You can construct a concrete instance of `RancherCurrentStateNetworkingInput` via:
+//
+//	RancherCurrentStateNetworkingArgs{...}
+type RancherCurrentStateNetworkingInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateNetworkingOutput() RancherCurrentStateNetworkingOutput
+	ToRancherCurrentStateNetworkingOutputWithContext(context.Context) RancherCurrentStateNetworkingOutput
+}
+
+type RancherCurrentStateNetworkingArgs struct {
+	// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+	EgressCidrBlocks pulumi.StringArrayInput `pulumi:"egressCidrBlocks"`
+}
+
+func (RancherCurrentStateNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentStateNetworking)(nil)).Elem()
+}
+
+func (i RancherCurrentStateNetworkingArgs) ToRancherCurrentStateNetworkingOutput() RancherCurrentStateNetworkingOutput {
+	return i.ToRancherCurrentStateNetworkingOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateNetworkingArgs) ToRancherCurrentStateNetworkingOutputWithContext(ctx context.Context) RancherCurrentStateNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateNetworkingOutput)
+}
+
+func (i RancherCurrentStateNetworkingArgs) ToRancherCurrentStateNetworkingPtrOutput() RancherCurrentStateNetworkingPtrOutput {
+	return i.ToRancherCurrentStateNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateNetworkingArgs) ToRancherCurrentStateNetworkingPtrOutputWithContext(ctx context.Context) RancherCurrentStateNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateNetworkingOutput).ToRancherCurrentStateNetworkingPtrOutputWithContext(ctx)
+}
+
+// RancherCurrentStateNetworkingPtrInput is an input type that accepts RancherCurrentStateNetworkingArgs, RancherCurrentStateNetworkingPtr and RancherCurrentStateNetworkingPtrOutput values.
+// You can construct a concrete instance of `RancherCurrentStateNetworkingPtrInput` via:
+//
+//	        RancherCurrentStateNetworkingArgs{...}
+//
+//	or:
+//
+//	        nil
+type RancherCurrentStateNetworkingPtrInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateNetworkingPtrOutput() RancherCurrentStateNetworkingPtrOutput
+	ToRancherCurrentStateNetworkingPtrOutputWithContext(context.Context) RancherCurrentStateNetworkingPtrOutput
+}
+
+type rancherCurrentStateNetworkingPtrType RancherCurrentStateNetworkingArgs
+
+func RancherCurrentStateNetworkingPtr(v *RancherCurrentStateNetworkingArgs) RancherCurrentStateNetworkingPtrInput {
+	return (*rancherCurrentStateNetworkingPtrType)(v)
+}
+
+func (*rancherCurrentStateNetworkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherCurrentStateNetworking)(nil)).Elem()
+}
+
+func (i *rancherCurrentStateNetworkingPtrType) ToRancherCurrentStateNetworkingPtrOutput() RancherCurrentStateNetworkingPtrOutput {
+	return i.ToRancherCurrentStateNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i *rancherCurrentStateNetworkingPtrType) ToRancherCurrentStateNetworkingPtrOutputWithContext(ctx context.Context) RancherCurrentStateNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateNetworkingPtrOutput)
+}
+
+type RancherCurrentStateNetworkingOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentStateNetworking)(nil)).Elem()
+}
+
+func (o RancherCurrentStateNetworkingOutput) ToRancherCurrentStateNetworkingOutput() RancherCurrentStateNetworkingOutput {
+	return o
+}
+
+func (o RancherCurrentStateNetworkingOutput) ToRancherCurrentStateNetworkingOutputWithContext(ctx context.Context) RancherCurrentStateNetworkingOutput {
+	return o
+}
+
+func (o RancherCurrentStateNetworkingOutput) ToRancherCurrentStateNetworkingPtrOutput() RancherCurrentStateNetworkingPtrOutput {
+	return o.ToRancherCurrentStateNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (o RancherCurrentStateNetworkingOutput) ToRancherCurrentStateNetworkingPtrOutputWithContext(ctx context.Context) RancherCurrentStateNetworkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RancherCurrentStateNetworking) *RancherCurrentStateNetworking {
+		return &v
+	}).(RancherCurrentStateNetworkingPtrOutput)
+}
+
+// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+func (o RancherCurrentStateNetworkingOutput) EgressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RancherCurrentStateNetworking) []string { return v.EgressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type RancherCurrentStateNetworkingPtrOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateNetworkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherCurrentStateNetworking)(nil)).Elem()
+}
+
+func (o RancherCurrentStateNetworkingPtrOutput) ToRancherCurrentStateNetworkingPtrOutput() RancherCurrentStateNetworkingPtrOutput {
+	return o
+}
+
+func (o RancherCurrentStateNetworkingPtrOutput) ToRancherCurrentStateNetworkingPtrOutputWithContext(ctx context.Context) RancherCurrentStateNetworkingPtrOutput {
+	return o
+}
+
+func (o RancherCurrentStateNetworkingPtrOutput) Elem() RancherCurrentStateNetworkingOutput {
+	return o.ApplyT(func(v *RancherCurrentStateNetworking) RancherCurrentStateNetworking {
+		if v != nil {
+			return *v
+		}
+		var ret RancherCurrentStateNetworking
+		return ret
+	}).(RancherCurrentStateNetworkingOutput)
+}
+
+// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+func (o RancherCurrentStateNetworkingPtrOutput) EgressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RancherCurrentStateNetworking) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+type RancherCurrentStateUsage struct {
+	// Date of the sample
+	Datetime *string `pulumi:"datetime"`
+	// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+	OrchestratedVcpus *float64 `pulumi:"orchestratedVcpus"`
+}
+
+// RancherCurrentStateUsageInput is an input type that accepts RancherCurrentStateUsageArgs and RancherCurrentStateUsageOutput values.
+// You can construct a concrete instance of `RancherCurrentStateUsageInput` via:
+//
+//	RancherCurrentStateUsageArgs{...}
+type RancherCurrentStateUsageInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateUsageOutput() RancherCurrentStateUsageOutput
+	ToRancherCurrentStateUsageOutputWithContext(context.Context) RancherCurrentStateUsageOutput
+}
+
+type RancherCurrentStateUsageArgs struct {
+	// Date of the sample
+	Datetime pulumi.StringPtrInput `pulumi:"datetime"`
+	// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+	OrchestratedVcpus pulumi.Float64PtrInput `pulumi:"orchestratedVcpus"`
+}
+
+func (RancherCurrentStateUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentStateUsage)(nil)).Elem()
+}
+
+func (i RancherCurrentStateUsageArgs) ToRancherCurrentStateUsageOutput() RancherCurrentStateUsageOutput {
+	return i.ToRancherCurrentStateUsageOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateUsageArgs) ToRancherCurrentStateUsageOutputWithContext(ctx context.Context) RancherCurrentStateUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateUsageOutput)
+}
+
+func (i RancherCurrentStateUsageArgs) ToRancherCurrentStateUsagePtrOutput() RancherCurrentStateUsagePtrOutput {
+	return i.ToRancherCurrentStateUsagePtrOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentStateUsageArgs) ToRancherCurrentStateUsagePtrOutputWithContext(ctx context.Context) RancherCurrentStateUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateUsageOutput).ToRancherCurrentStateUsagePtrOutputWithContext(ctx)
+}
+
+// RancherCurrentStateUsagePtrInput is an input type that accepts RancherCurrentStateUsageArgs, RancherCurrentStateUsagePtr and RancherCurrentStateUsagePtrOutput values.
+// You can construct a concrete instance of `RancherCurrentStateUsagePtrInput` via:
+//
+//	        RancherCurrentStateUsageArgs{...}
+//
+//	or:
+//
+//	        nil
+type RancherCurrentStateUsagePtrInput interface {
+	pulumi.Input
+
+	ToRancherCurrentStateUsagePtrOutput() RancherCurrentStateUsagePtrOutput
+	ToRancherCurrentStateUsagePtrOutputWithContext(context.Context) RancherCurrentStateUsagePtrOutput
+}
+
+type rancherCurrentStateUsagePtrType RancherCurrentStateUsageArgs
+
+func RancherCurrentStateUsagePtr(v *RancherCurrentStateUsageArgs) RancherCurrentStateUsagePtrInput {
+	return (*rancherCurrentStateUsagePtrType)(v)
+}
+
+func (*rancherCurrentStateUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherCurrentStateUsage)(nil)).Elem()
+}
+
+func (i *rancherCurrentStateUsagePtrType) ToRancherCurrentStateUsagePtrOutput() RancherCurrentStateUsagePtrOutput {
+	return i.ToRancherCurrentStateUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *rancherCurrentStateUsagePtrType) ToRancherCurrentStateUsagePtrOutputWithContext(ctx context.Context) RancherCurrentStateUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentStateUsagePtrOutput)
+}
+
+type RancherCurrentStateUsageOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentStateUsage)(nil)).Elem()
+}
+
+func (o RancherCurrentStateUsageOutput) ToRancherCurrentStateUsageOutput() RancherCurrentStateUsageOutput {
+	return o
+}
+
+func (o RancherCurrentStateUsageOutput) ToRancherCurrentStateUsageOutputWithContext(ctx context.Context) RancherCurrentStateUsageOutput {
+	return o
+}
+
+func (o RancherCurrentStateUsageOutput) ToRancherCurrentStateUsagePtrOutput() RancherCurrentStateUsagePtrOutput {
+	return o.ToRancherCurrentStateUsagePtrOutputWithContext(context.Background())
+}
+
+func (o RancherCurrentStateUsageOutput) ToRancherCurrentStateUsagePtrOutputWithContext(ctx context.Context) RancherCurrentStateUsagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RancherCurrentStateUsage) *RancherCurrentStateUsage {
+		return &v
+	}).(RancherCurrentStateUsagePtrOutput)
+}
+
+// Date of the sample
+func (o RancherCurrentStateUsageOutput) Datetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentStateUsage) *string { return v.Datetime }).(pulumi.StringPtrOutput)
+}
+
+// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+func (o RancherCurrentStateUsageOutput) OrchestratedVcpus() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RancherCurrentStateUsage) *float64 { return v.OrchestratedVcpus }).(pulumi.Float64PtrOutput)
+}
+
+type RancherCurrentStateUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentStateUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherCurrentStateUsage)(nil)).Elem()
+}
+
+func (o RancherCurrentStateUsagePtrOutput) ToRancherCurrentStateUsagePtrOutput() RancherCurrentStateUsagePtrOutput {
+	return o
+}
+
+func (o RancherCurrentStateUsagePtrOutput) ToRancherCurrentStateUsagePtrOutputWithContext(ctx context.Context) RancherCurrentStateUsagePtrOutput {
+	return o
+}
+
+func (o RancherCurrentStateUsagePtrOutput) Elem() RancherCurrentStateUsageOutput {
+	return o.ApplyT(func(v *RancherCurrentStateUsage) RancherCurrentStateUsage {
+		if v != nil {
+			return *v
+		}
+		var ret RancherCurrentStateUsage
+		return ret
+	}).(RancherCurrentStateUsageOutput)
+}
+
+// Date of the sample
+func (o RancherCurrentStateUsagePtrOutput) Datetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentStateUsage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datetime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+func (o RancherCurrentStateUsagePtrOutput) OrchestratedVcpus() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RancherCurrentStateUsage) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OrchestratedVcpus
+	}).(pulumi.Float64PtrOutput)
+}
+
+type RancherCurrentTask struct {
+	// Identifier of the current task
+	Id *string `pulumi:"id"`
+	// Link to the task details
+	Link *string `pulumi:"link"`
+	// Current global status of the current task
+	Status *string `pulumi:"status"`
+	// Type of the current task
+	Type *string `pulumi:"type"`
+}
+
+// RancherCurrentTaskInput is an input type that accepts RancherCurrentTaskArgs and RancherCurrentTaskOutput values.
+// You can construct a concrete instance of `RancherCurrentTaskInput` via:
+//
+//	RancherCurrentTaskArgs{...}
+type RancherCurrentTaskInput interface {
+	pulumi.Input
+
+	ToRancherCurrentTaskOutput() RancherCurrentTaskOutput
+	ToRancherCurrentTaskOutputWithContext(context.Context) RancherCurrentTaskOutput
+}
+
+type RancherCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringPtrInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RancherCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentTask)(nil)).Elem()
+}
+
+func (i RancherCurrentTaskArgs) ToRancherCurrentTaskOutput() RancherCurrentTaskOutput {
+	return i.ToRancherCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentTaskArgs) ToRancherCurrentTaskOutputWithContext(ctx context.Context) RancherCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentTaskOutput)
+}
+
+// RancherCurrentTaskArrayInput is an input type that accepts RancherCurrentTaskArray and RancherCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `RancherCurrentTaskArrayInput` via:
+//
+//	RancherCurrentTaskArray{ RancherCurrentTaskArgs{...} }
+type RancherCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToRancherCurrentTaskArrayOutput() RancherCurrentTaskArrayOutput
+	ToRancherCurrentTaskArrayOutputWithContext(context.Context) RancherCurrentTaskArrayOutput
+}
+
+type RancherCurrentTaskArray []RancherCurrentTaskInput
+
+func (RancherCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RancherCurrentTask)(nil)).Elem()
+}
+
+func (i RancherCurrentTaskArray) ToRancherCurrentTaskArrayOutput() RancherCurrentTaskArrayOutput {
+	return i.ToRancherCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i RancherCurrentTaskArray) ToRancherCurrentTaskArrayOutputWithContext(ctx context.Context) RancherCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherCurrentTaskArrayOutput)
+}
+
+type RancherCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherCurrentTask)(nil)).Elem()
+}
+
+func (o RancherCurrentTaskOutput) ToRancherCurrentTaskOutput() RancherCurrentTaskOutput {
+	return o
+}
+
+func (o RancherCurrentTaskOutput) ToRancherCurrentTaskOutputWithContext(ctx context.Context) RancherCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o RancherCurrentTaskOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentTask) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Link to the task details
+func (o RancherCurrentTaskOutput) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentTask) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Current global status of the current task
+func (o RancherCurrentTaskOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentTask) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of the current task
+func (o RancherCurrentTaskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherCurrentTask) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RancherCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (RancherCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RancherCurrentTask)(nil)).Elem()
+}
+
+func (o RancherCurrentTaskArrayOutput) ToRancherCurrentTaskArrayOutput() RancherCurrentTaskArrayOutput {
+	return o
+}
+
+func (o RancherCurrentTaskArrayOutput) ToRancherCurrentTaskArrayOutputWithContext(ctx context.Context) RancherCurrentTaskArrayOutput {
+	return o
+}
+
+func (o RancherCurrentTaskArrayOutput) Index(i pulumi.IntInput) RancherCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RancherCurrentTask {
+		return vs[0].([]RancherCurrentTask)[vs[1].(int)]
+	}).(RancherCurrentTaskOutput)
+}
+
+type RancherTargetSpec struct {
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions []RancherTargetSpecIpRestriction `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name string `pulumi:"name"`
+	// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+	Plan string `pulumi:"plan"`
+	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+	Version *string `pulumi:"version"`
+}
+
+// RancherTargetSpecInput is an input type that accepts RancherTargetSpecArgs and RancherTargetSpecOutput values.
+// You can construct a concrete instance of `RancherTargetSpecInput` via:
+//
+//	RancherTargetSpecArgs{...}
+type RancherTargetSpecInput interface {
+	pulumi.Input
+
+	ToRancherTargetSpecOutput() RancherTargetSpecOutput
+	ToRancherTargetSpecOutputWithContext(context.Context) RancherTargetSpecOutput
+}
+
+type RancherTargetSpecArgs struct {
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions RancherTargetSpecIpRestrictionArrayInput `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name pulumi.StringInput `pulumi:"name"`
+	// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+	Plan pulumi.StringInput `pulumi:"plan"`
+	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (RancherTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherTargetSpec)(nil)).Elem()
+}
+
+func (i RancherTargetSpecArgs) ToRancherTargetSpecOutput() RancherTargetSpecOutput {
+	return i.ToRancherTargetSpecOutputWithContext(context.Background())
+}
+
+func (i RancherTargetSpecArgs) ToRancherTargetSpecOutputWithContext(ctx context.Context) RancherTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherTargetSpecOutput)
+}
+
+func (i RancherTargetSpecArgs) ToRancherTargetSpecPtrOutput() RancherTargetSpecPtrOutput {
+	return i.ToRancherTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i RancherTargetSpecArgs) ToRancherTargetSpecPtrOutputWithContext(ctx context.Context) RancherTargetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherTargetSpecOutput).ToRancherTargetSpecPtrOutputWithContext(ctx)
+}
+
+// RancherTargetSpecPtrInput is an input type that accepts RancherTargetSpecArgs, RancherTargetSpecPtr and RancherTargetSpecPtrOutput values.
+// You can construct a concrete instance of `RancherTargetSpecPtrInput` via:
+//
+//	        RancherTargetSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type RancherTargetSpecPtrInput interface {
+	pulumi.Input
+
+	ToRancherTargetSpecPtrOutput() RancherTargetSpecPtrOutput
+	ToRancherTargetSpecPtrOutputWithContext(context.Context) RancherTargetSpecPtrOutput
+}
+
+type rancherTargetSpecPtrType RancherTargetSpecArgs
+
+func RancherTargetSpecPtr(v *RancherTargetSpecArgs) RancherTargetSpecPtrInput {
+	return (*rancherTargetSpecPtrType)(v)
+}
+
+func (*rancherTargetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherTargetSpec)(nil)).Elem()
+}
+
+func (i *rancherTargetSpecPtrType) ToRancherTargetSpecPtrOutput() RancherTargetSpecPtrOutput {
+	return i.ToRancherTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *rancherTargetSpecPtrType) ToRancherTargetSpecPtrOutputWithContext(ctx context.Context) RancherTargetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherTargetSpecPtrOutput)
+}
+
+type RancherTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (RancherTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherTargetSpec)(nil)).Elem()
+}
+
+func (o RancherTargetSpecOutput) ToRancherTargetSpecOutput() RancherTargetSpecOutput {
+	return o
+}
+
+func (o RancherTargetSpecOutput) ToRancherTargetSpecOutputWithContext(ctx context.Context) RancherTargetSpecOutput {
+	return o
+}
+
+func (o RancherTargetSpecOutput) ToRancherTargetSpecPtrOutput() RancherTargetSpecPtrOutput {
+	return o.ToRancherTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o RancherTargetSpecOutput) ToRancherTargetSpecPtrOutputWithContext(ctx context.Context) RancherTargetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RancherTargetSpec) *RancherTargetSpec {
+		return &v
+	}).(RancherTargetSpecPtrOutput)
+}
+
+// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+func (o RancherTargetSpecOutput) IpRestrictions() RancherTargetSpecIpRestrictionArrayOutput {
+	return o.ApplyT(func(v RancherTargetSpec) []RancherTargetSpecIpRestriction { return v.IpRestrictions }).(RancherTargetSpecIpRestrictionArrayOutput)
+}
+
+// Name of the managed Rancher service
+func (o RancherTargetSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RancherTargetSpec) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+func (o RancherTargetSpecOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v RancherTargetSpec) string { return v.Plan }).(pulumi.StringOutput)
+}
+
+// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+func (o RancherTargetSpecOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherTargetSpec) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type RancherTargetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (RancherTargetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RancherTargetSpec)(nil)).Elem()
+}
+
+func (o RancherTargetSpecPtrOutput) ToRancherTargetSpecPtrOutput() RancherTargetSpecPtrOutput {
+	return o
+}
+
+func (o RancherTargetSpecPtrOutput) ToRancherTargetSpecPtrOutputWithContext(ctx context.Context) RancherTargetSpecPtrOutput {
+	return o
+}
+
+func (o RancherTargetSpecPtrOutput) Elem() RancherTargetSpecOutput {
+	return o.ApplyT(func(v *RancherTargetSpec) RancherTargetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret RancherTargetSpec
+		return ret
+	}).(RancherTargetSpecOutput)
+}
+
+// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+func (o RancherTargetSpecPtrOutput) IpRestrictions() RancherTargetSpecIpRestrictionArrayOutput {
+	return o.ApplyT(func(v *RancherTargetSpec) []RancherTargetSpecIpRestriction {
+		if v == nil {
+			return nil
+		}
+		return v.IpRestrictions
+	}).(RancherTargetSpecIpRestrictionArrayOutput)
+}
+
+// Name of the managed Rancher service
+func (o RancherTargetSpecPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherTargetSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+func (o RancherTargetSpecPtrOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherTargetSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Plan
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+func (o RancherTargetSpecPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RancherTargetSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type RancherTargetSpecIpRestriction struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock *string `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description *string `pulumi:"description"`
+}
+
+// RancherTargetSpecIpRestrictionInput is an input type that accepts RancherTargetSpecIpRestrictionArgs and RancherTargetSpecIpRestrictionOutput values.
+// You can construct a concrete instance of `RancherTargetSpecIpRestrictionInput` via:
+//
+//	RancherTargetSpecIpRestrictionArgs{...}
+type RancherTargetSpecIpRestrictionInput interface {
+	pulumi.Input
+
+	ToRancherTargetSpecIpRestrictionOutput() RancherTargetSpecIpRestrictionOutput
+	ToRancherTargetSpecIpRestrictionOutputWithContext(context.Context) RancherTargetSpecIpRestrictionOutput
+}
+
+type RancherTargetSpecIpRestrictionArgs struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (RancherTargetSpecIpRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (i RancherTargetSpecIpRestrictionArgs) ToRancherTargetSpecIpRestrictionOutput() RancherTargetSpecIpRestrictionOutput {
+	return i.ToRancherTargetSpecIpRestrictionOutputWithContext(context.Background())
+}
+
+func (i RancherTargetSpecIpRestrictionArgs) ToRancherTargetSpecIpRestrictionOutputWithContext(ctx context.Context) RancherTargetSpecIpRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherTargetSpecIpRestrictionOutput)
+}
+
+// RancherTargetSpecIpRestrictionArrayInput is an input type that accepts RancherTargetSpecIpRestrictionArray and RancherTargetSpecIpRestrictionArrayOutput values.
+// You can construct a concrete instance of `RancherTargetSpecIpRestrictionArrayInput` via:
+//
+//	RancherTargetSpecIpRestrictionArray{ RancherTargetSpecIpRestrictionArgs{...} }
+type RancherTargetSpecIpRestrictionArrayInput interface {
+	pulumi.Input
+
+	ToRancherTargetSpecIpRestrictionArrayOutput() RancherTargetSpecIpRestrictionArrayOutput
+	ToRancherTargetSpecIpRestrictionArrayOutputWithContext(context.Context) RancherTargetSpecIpRestrictionArrayOutput
+}
+
+type RancherTargetSpecIpRestrictionArray []RancherTargetSpecIpRestrictionInput
+
+func (RancherTargetSpecIpRestrictionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (i RancherTargetSpecIpRestrictionArray) ToRancherTargetSpecIpRestrictionArrayOutput() RancherTargetSpecIpRestrictionArrayOutput {
+	return i.ToRancherTargetSpecIpRestrictionArrayOutputWithContext(context.Background())
+}
+
+func (i RancherTargetSpecIpRestrictionArray) ToRancherTargetSpecIpRestrictionArrayOutputWithContext(ctx context.Context) RancherTargetSpecIpRestrictionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RancherTargetSpecIpRestrictionArrayOutput)
+}
+
+type RancherTargetSpecIpRestrictionOutput struct{ *pulumi.OutputState }
+
+func (RancherTargetSpecIpRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (o RancherTargetSpecIpRestrictionOutput) ToRancherTargetSpecIpRestrictionOutput() RancherTargetSpecIpRestrictionOutput {
+	return o
+}
+
+func (o RancherTargetSpecIpRestrictionOutput) ToRancherTargetSpecIpRestrictionOutputWithContext(ctx context.Context) RancherTargetSpecIpRestrictionOutput {
+	return o
+}
+
+// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+func (o RancherTargetSpecIpRestrictionOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherTargetSpecIpRestriction) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// Description of the allowed CIDR block
+func (o RancherTargetSpecIpRestrictionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RancherTargetSpecIpRestriction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type RancherTargetSpecIpRestrictionArrayOutput struct{ *pulumi.OutputState }
+
+func (RancherTargetSpecIpRestrictionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (o RancherTargetSpecIpRestrictionArrayOutput) ToRancherTargetSpecIpRestrictionArrayOutput() RancherTargetSpecIpRestrictionArrayOutput {
+	return o
+}
+
+func (o RancherTargetSpecIpRestrictionArrayOutput) ToRancherTargetSpecIpRestrictionArrayOutputWithContext(ctx context.Context) RancherTargetSpecIpRestrictionArrayOutput {
+	return o
+}
+
+func (o RancherTargetSpecIpRestrictionArrayOutput) Index(i pulumi.IntInput) RancherTargetSpecIpRestrictionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RancherTargetSpecIpRestriction {
+		return vs[0].([]RancherTargetSpecIpRestriction)[vs[1].(int)]
+	}).(RancherTargetSpecIpRestrictionOutput)
+}
+
 type RegionNetworkSubnet struct {
-	// List of IP pools allocated in subnet
+	// List of ip pools allocated in subnet
 	AllocationPools []RegionNetworkSubnetAllocationPool `pulumi:"allocationPools"`
 	// Subnet range in CIDR notation
 	Cidr string `pulumi:"cidr"`
@@ -5576,7 +8931,7 @@ type RegionNetworkSubnetInput interface {
 }
 
 type RegionNetworkSubnetArgs struct {
-	// List of IP pools allocated in subnet
+	// List of ip pools allocated in subnet
 	AllocationPools RegionNetworkSubnetAllocationPoolArrayInput `pulumi:"allocationPools"`
 	// Subnet range in CIDR notation
 	Cidr pulumi.StringInput `pulumi:"cidr"`
@@ -5675,7 +9030,7 @@ func (o RegionNetworkSubnetOutput) ToRegionNetworkSubnetPtrOutputWithContext(ctx
 	}).(RegionNetworkSubnetPtrOutput)
 }
 
-// List of IP pools allocated in subnet
+// List of ip pools allocated in subnet
 func (o RegionNetworkSubnetOutput) AllocationPools() RegionNetworkSubnetAllocationPoolArrayOutput {
 	return o.ApplyT(func(v RegionNetworkSubnet) []RegionNetworkSubnetAllocationPool { return v.AllocationPools }).(RegionNetworkSubnetAllocationPoolArrayOutput)
 }
@@ -5749,7 +9104,7 @@ func (o RegionNetworkSubnetPtrOutput) Elem() RegionNetworkSubnetOutput {
 	}).(RegionNetworkSubnetOutput)
 }
 
-// List of IP pools allocated in subnet
+// List of ip pools allocated in subnet
 func (o RegionNetworkSubnetPtrOutput) AllocationPools() RegionNetworkSubnetAllocationPoolArrayOutput {
 	return o.ApplyT(func(v *RegionNetworkSubnet) []RegionNetworkSubnetAllocationPool {
 		if v == nil {
@@ -6061,14 +9416,1160 @@ func (o RegionNetworkSubnetHostRouteArrayOutput) Index(i pulumi.IntInput) Region
 	}).(RegionNetworkSubnetHostRouteOutput)
 }
 
-type UserRole struct {
-	// A description associated with the user.
-	Description *string `pulumi:"description"`
-	// id of the role
+type StorageEncryption struct {
+	// Encryption algorithm
+	SseAlgorithm *string `pulumi:"sseAlgorithm"`
+}
+
+// StorageEncryptionInput is an input type that accepts StorageEncryptionArgs and StorageEncryptionOutput values.
+// You can construct a concrete instance of `StorageEncryptionInput` via:
+//
+//	StorageEncryptionArgs{...}
+type StorageEncryptionInput interface {
+	pulumi.Input
+
+	ToStorageEncryptionOutput() StorageEncryptionOutput
+	ToStorageEncryptionOutputWithContext(context.Context) StorageEncryptionOutput
+}
+
+type StorageEncryptionArgs struct {
+	// Encryption algorithm
+	SseAlgorithm pulumi.StringPtrInput `pulumi:"sseAlgorithm"`
+}
+
+func (StorageEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageEncryption)(nil)).Elem()
+}
+
+func (i StorageEncryptionArgs) ToStorageEncryptionOutput() StorageEncryptionOutput {
+	return i.ToStorageEncryptionOutputWithContext(context.Background())
+}
+
+func (i StorageEncryptionArgs) ToStorageEncryptionOutputWithContext(ctx context.Context) StorageEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageEncryptionOutput)
+}
+
+func (i StorageEncryptionArgs) ToStorageEncryptionPtrOutput() StorageEncryptionPtrOutput {
+	return i.ToStorageEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i StorageEncryptionArgs) ToStorageEncryptionPtrOutputWithContext(ctx context.Context) StorageEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageEncryptionOutput).ToStorageEncryptionPtrOutputWithContext(ctx)
+}
+
+// StorageEncryptionPtrInput is an input type that accepts StorageEncryptionArgs, StorageEncryptionPtr and StorageEncryptionPtrOutput values.
+// You can construct a concrete instance of `StorageEncryptionPtrInput` via:
+//
+//	        StorageEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToStorageEncryptionPtrOutput() StorageEncryptionPtrOutput
+	ToStorageEncryptionPtrOutputWithContext(context.Context) StorageEncryptionPtrOutput
+}
+
+type storageEncryptionPtrType StorageEncryptionArgs
+
+func StorageEncryptionPtr(v *StorageEncryptionArgs) StorageEncryptionPtrInput {
+	return (*storageEncryptionPtrType)(v)
+}
+
+func (*storageEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageEncryption)(nil)).Elem()
+}
+
+func (i *storageEncryptionPtrType) ToStorageEncryptionPtrOutput() StorageEncryptionPtrOutput {
+	return i.ToStorageEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *storageEncryptionPtrType) ToStorageEncryptionPtrOutputWithContext(ctx context.Context) StorageEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageEncryptionPtrOutput)
+}
+
+type StorageEncryptionOutput struct{ *pulumi.OutputState }
+
+func (StorageEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageEncryption)(nil)).Elem()
+}
+
+func (o StorageEncryptionOutput) ToStorageEncryptionOutput() StorageEncryptionOutput {
+	return o
+}
+
+func (o StorageEncryptionOutput) ToStorageEncryptionOutputWithContext(ctx context.Context) StorageEncryptionOutput {
+	return o
+}
+
+func (o StorageEncryptionOutput) ToStorageEncryptionPtrOutput() StorageEncryptionPtrOutput {
+	return o.ToStorageEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o StorageEncryptionOutput) ToStorageEncryptionPtrOutputWithContext(ctx context.Context) StorageEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageEncryption) *StorageEncryption {
+		return &v
+	}).(StorageEncryptionPtrOutput)
+}
+
+// Encryption algorithm
+func (o StorageEncryptionOutput) SseAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageEncryption) *string { return v.SseAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+type StorageEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageEncryption)(nil)).Elem()
+}
+
+func (o StorageEncryptionPtrOutput) ToStorageEncryptionPtrOutput() StorageEncryptionPtrOutput {
+	return o
+}
+
+func (o StorageEncryptionPtrOutput) ToStorageEncryptionPtrOutputWithContext(ctx context.Context) StorageEncryptionPtrOutput {
+	return o
+}
+
+func (o StorageEncryptionPtrOutput) Elem() StorageEncryptionOutput {
+	return o.ApplyT(func(v *StorageEncryption) StorageEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret StorageEncryption
+		return ret
+	}).(StorageEncryptionOutput)
+}
+
+// Encryption algorithm
+func (o StorageEncryptionPtrOutput) SseAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SseAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageObject struct {
+	// ETag
+	Etag *string `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker *bool `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest *bool `pulumi:"isLatest"`
+	// Key
+	Key *string `pulumi:"key"`
+	// Last modification date
+	LastModified *string `pulumi:"lastModified"`
+	// Size (bytes)
+	Size *float64 `pulumi:"size"`
+	// Storage class
+	StorageClass *string `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId *string `pulumi:"versionId"`
+}
+
+// StorageObjectInput is an input type that accepts StorageObjectArgs and StorageObjectOutput values.
+// You can construct a concrete instance of `StorageObjectInput` via:
+//
+//	StorageObjectArgs{...}
+type StorageObjectInput interface {
+	pulumi.Input
+
+	ToStorageObjectOutput() StorageObjectOutput
+	ToStorageObjectOutputWithContext(context.Context) StorageObjectOutput
+}
+
+type StorageObjectArgs struct {
+	// ETag
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker pulumi.BoolPtrInput `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest pulumi.BoolPtrInput `pulumi:"isLatest"`
+	// Key
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Last modification date
+	LastModified pulumi.StringPtrInput `pulumi:"lastModified"`
+	// Size (bytes)
+	Size pulumi.Float64PtrInput `pulumi:"size"`
+	// Storage class
+	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+}
+
+func (StorageObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageObject)(nil)).Elem()
+}
+
+func (i StorageObjectArgs) ToStorageObjectOutput() StorageObjectOutput {
+	return i.ToStorageObjectOutputWithContext(context.Background())
+}
+
+func (i StorageObjectArgs) ToStorageObjectOutputWithContext(ctx context.Context) StorageObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectOutput)
+}
+
+// StorageObjectArrayInput is an input type that accepts StorageObjectArray and StorageObjectArrayOutput values.
+// You can construct a concrete instance of `StorageObjectArrayInput` via:
+//
+//	StorageObjectArray{ StorageObjectArgs{...} }
+type StorageObjectArrayInput interface {
+	pulumi.Input
+
+	ToStorageObjectArrayOutput() StorageObjectArrayOutput
+	ToStorageObjectArrayOutputWithContext(context.Context) StorageObjectArrayOutput
+}
+
+type StorageObjectArray []StorageObjectInput
+
+func (StorageObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageObject)(nil)).Elem()
+}
+
+func (i StorageObjectArray) ToStorageObjectArrayOutput() StorageObjectArrayOutput {
+	return i.ToStorageObjectArrayOutputWithContext(context.Background())
+}
+
+func (i StorageObjectArray) ToStorageObjectArrayOutputWithContext(ctx context.Context) StorageObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectArrayOutput)
+}
+
+type StorageObjectOutput struct{ *pulumi.OutputState }
+
+func (StorageObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageObject)(nil)).Elem()
+}
+
+func (o StorageObjectOutput) ToStorageObjectOutput() StorageObjectOutput {
+	return o
+}
+
+func (o StorageObjectOutput) ToStorageObjectOutputWithContext(ctx context.Context) StorageObjectOutput {
+	return o
+}
+
+// ETag
+func (o StorageObjectOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObject) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Whether this object is a delete marker
+func (o StorageObjectOutput) IsDeleteMarker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StorageObject) *bool { return v.IsDeleteMarker }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this is the latest version of the object
+func (o StorageObjectOutput) IsLatest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StorageObject) *bool { return v.IsLatest }).(pulumi.BoolPtrOutput)
+}
+
+// Key
+func (o StorageObjectOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObject) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Last modification date
+func (o StorageObjectOutput) LastModified() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObject) *string { return v.LastModified }).(pulumi.StringPtrOutput)
+}
+
+// Size (bytes)
+func (o StorageObjectOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StorageObject) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
+}
+
+// Storage class
+func (o StorageObjectOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObject) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+// Version ID of the object
+func (o StorageObjectOutput) VersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObject) *string { return v.VersionId }).(pulumi.StringPtrOutput)
+}
+
+type StorageObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageObject)(nil)).Elem()
+}
+
+func (o StorageObjectArrayOutput) ToStorageObjectArrayOutput() StorageObjectArrayOutput {
+	return o
+}
+
+func (o StorageObjectArrayOutput) ToStorageObjectArrayOutputWithContext(ctx context.Context) StorageObjectArrayOutput {
+	return o
+}
+
+func (o StorageObjectArrayOutput) Index(i pulumi.IntInput) StorageObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageObject {
+		return vs[0].([]StorageObject)[vs[1].(int)]
+	}).(StorageObjectOutput)
+}
+
+type StorageReplication struct {
+	// Replication rules
+	Rules []StorageReplicationRule `pulumi:"rules"`
+}
+
+// StorageReplicationInput is an input type that accepts StorageReplicationArgs and StorageReplicationOutput values.
+// You can construct a concrete instance of `StorageReplicationInput` via:
+//
+//	StorageReplicationArgs{...}
+type StorageReplicationInput interface {
+	pulumi.Input
+
+	ToStorageReplicationOutput() StorageReplicationOutput
+	ToStorageReplicationOutputWithContext(context.Context) StorageReplicationOutput
+}
+
+type StorageReplicationArgs struct {
+	// Replication rules
+	Rules StorageReplicationRuleArrayInput `pulumi:"rules"`
+}
+
+func (StorageReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplication)(nil)).Elem()
+}
+
+func (i StorageReplicationArgs) ToStorageReplicationOutput() StorageReplicationOutput {
+	return i.ToStorageReplicationOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationArgs) ToStorageReplicationOutputWithContext(ctx context.Context) StorageReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationOutput)
+}
+
+func (i StorageReplicationArgs) ToStorageReplicationPtrOutput() StorageReplicationPtrOutput {
+	return i.ToStorageReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationArgs) ToStorageReplicationPtrOutputWithContext(ctx context.Context) StorageReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationOutput).ToStorageReplicationPtrOutputWithContext(ctx)
+}
+
+// StorageReplicationPtrInput is an input type that accepts StorageReplicationArgs, StorageReplicationPtr and StorageReplicationPtrOutput values.
+// You can construct a concrete instance of `StorageReplicationPtrInput` via:
+//
+//	        StorageReplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageReplicationPtrInput interface {
+	pulumi.Input
+
+	ToStorageReplicationPtrOutput() StorageReplicationPtrOutput
+	ToStorageReplicationPtrOutputWithContext(context.Context) StorageReplicationPtrOutput
+}
+
+type storageReplicationPtrType StorageReplicationArgs
+
+func StorageReplicationPtr(v *StorageReplicationArgs) StorageReplicationPtrInput {
+	return (*storageReplicationPtrType)(v)
+}
+
+func (*storageReplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageReplication)(nil)).Elem()
+}
+
+func (i *storageReplicationPtrType) ToStorageReplicationPtrOutput() StorageReplicationPtrOutput {
+	return i.ToStorageReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *storageReplicationPtrType) ToStorageReplicationPtrOutputWithContext(ctx context.Context) StorageReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationPtrOutput)
+}
+
+type StorageReplicationOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplication)(nil)).Elem()
+}
+
+func (o StorageReplicationOutput) ToStorageReplicationOutput() StorageReplicationOutput {
+	return o
+}
+
+func (o StorageReplicationOutput) ToStorageReplicationOutputWithContext(ctx context.Context) StorageReplicationOutput {
+	return o
+}
+
+func (o StorageReplicationOutput) ToStorageReplicationPtrOutput() StorageReplicationPtrOutput {
+	return o.ToStorageReplicationPtrOutputWithContext(context.Background())
+}
+
+func (o StorageReplicationOutput) ToStorageReplicationPtrOutputWithContext(ctx context.Context) StorageReplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageReplication) *StorageReplication {
+		return &v
+	}).(StorageReplicationPtrOutput)
+}
+
+// Replication rules
+func (o StorageReplicationOutput) Rules() StorageReplicationRuleArrayOutput {
+	return o.ApplyT(func(v StorageReplication) []StorageReplicationRule { return v.Rules }).(StorageReplicationRuleArrayOutput)
+}
+
+type StorageReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageReplication)(nil)).Elem()
+}
+
+func (o StorageReplicationPtrOutput) ToStorageReplicationPtrOutput() StorageReplicationPtrOutput {
+	return o
+}
+
+func (o StorageReplicationPtrOutput) ToStorageReplicationPtrOutputWithContext(ctx context.Context) StorageReplicationPtrOutput {
+	return o
+}
+
+func (o StorageReplicationPtrOutput) Elem() StorageReplicationOutput {
+	return o.ApplyT(func(v *StorageReplication) StorageReplication {
+		if v != nil {
+			return *v
+		}
+		var ret StorageReplication
+		return ret
+	}).(StorageReplicationOutput)
+}
+
+// Replication rules
+func (o StorageReplicationPtrOutput) Rules() StorageReplicationRuleArrayOutput {
+	return o.ApplyT(func(v *StorageReplication) []StorageReplicationRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(StorageReplicationRuleArrayOutput)
+}
+
+type StorageReplicationRule struct {
+	// Delete marker replication
+	DeleteMarkerReplication *string `pulumi:"deleteMarkerReplication"`
+	// Rule destination configuration
+	Destination *StorageReplicationRuleDestination `pulumi:"destination"`
+	// Rule filters
+	Filter *StorageReplicationRuleFilter `pulumi:"filter"`
+	// Rule ID
 	Id *string `pulumi:"id"`
-	// name of the role
-	Name *string `pulumi:"name"`
-	// list of permissions associated with the role
+	// Rule priority
+	Priority *float64 `pulumi:"priority"`
+	// Rule status
+	Status *string `pulumi:"status"`
+}
+
+// StorageReplicationRuleInput is an input type that accepts StorageReplicationRuleArgs and StorageReplicationRuleOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleInput` via:
+//
+//	StorageReplicationRuleArgs{...}
+type StorageReplicationRuleInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleOutput() StorageReplicationRuleOutput
+	ToStorageReplicationRuleOutputWithContext(context.Context) StorageReplicationRuleOutput
+}
+
+type StorageReplicationRuleArgs struct {
+	// Delete marker replication
+	DeleteMarkerReplication pulumi.StringPtrInput `pulumi:"deleteMarkerReplication"`
+	// Rule destination configuration
+	Destination StorageReplicationRuleDestinationPtrInput `pulumi:"destination"`
+	// Rule filters
+	Filter StorageReplicationRuleFilterPtrInput `pulumi:"filter"`
+	// Rule ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Rule priority
+	Priority pulumi.Float64PtrInput `pulumi:"priority"`
+	// Rule status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (StorageReplicationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRule)(nil)).Elem()
+}
+
+func (i StorageReplicationRuleArgs) ToStorageReplicationRuleOutput() StorageReplicationRuleOutput {
+	return i.ToStorageReplicationRuleOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleArgs) ToStorageReplicationRuleOutputWithContext(ctx context.Context) StorageReplicationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleOutput)
+}
+
+// StorageReplicationRuleArrayInput is an input type that accepts StorageReplicationRuleArray and StorageReplicationRuleArrayOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleArrayInput` via:
+//
+//	StorageReplicationRuleArray{ StorageReplicationRuleArgs{...} }
+type StorageReplicationRuleArrayInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleArrayOutput() StorageReplicationRuleArrayOutput
+	ToStorageReplicationRuleArrayOutputWithContext(context.Context) StorageReplicationRuleArrayOutput
+}
+
+type StorageReplicationRuleArray []StorageReplicationRuleInput
+
+func (StorageReplicationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageReplicationRule)(nil)).Elem()
+}
+
+func (i StorageReplicationRuleArray) ToStorageReplicationRuleArrayOutput() StorageReplicationRuleArrayOutput {
+	return i.ToStorageReplicationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleArray) ToStorageReplicationRuleArrayOutputWithContext(ctx context.Context) StorageReplicationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleArrayOutput)
+}
+
+type StorageReplicationRuleOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRule)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleOutput) ToStorageReplicationRuleOutput() StorageReplicationRuleOutput {
+	return o
+}
+
+func (o StorageReplicationRuleOutput) ToStorageReplicationRuleOutputWithContext(ctx context.Context) StorageReplicationRuleOutput {
+	return o
+}
+
+// Delete marker replication
+func (o StorageReplicationRuleOutput) DeleteMarkerReplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRule) *string { return v.DeleteMarkerReplication }).(pulumi.StringPtrOutput)
+}
+
+// Rule destination configuration
+func (o StorageReplicationRuleOutput) Destination() StorageReplicationRuleDestinationPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRule) *StorageReplicationRuleDestination { return v.Destination }).(StorageReplicationRuleDestinationPtrOutput)
+}
+
+// Rule filters
+func (o StorageReplicationRuleOutput) Filter() StorageReplicationRuleFilterPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRule) *StorageReplicationRuleFilter { return v.Filter }).(StorageReplicationRuleFilterPtrOutput)
+}
+
+// Rule ID
+func (o StorageReplicationRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Rule priority
+func (o StorageReplicationRuleOutput) Priority() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StorageReplicationRule) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
+}
+
+// Rule status
+func (o StorageReplicationRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type StorageReplicationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageReplicationRule)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleArrayOutput) ToStorageReplicationRuleArrayOutput() StorageReplicationRuleArrayOutput {
+	return o
+}
+
+func (o StorageReplicationRuleArrayOutput) ToStorageReplicationRuleArrayOutputWithContext(ctx context.Context) StorageReplicationRuleArrayOutput {
+	return o
+}
+
+func (o StorageReplicationRuleArrayOutput) Index(i pulumi.IntInput) StorageReplicationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageReplicationRule {
+		return vs[0].([]StorageReplicationRule)[vs[1].(int)]
+	}).(StorageReplicationRuleOutput)
+}
+
+type StorageReplicationRuleDestination struct {
+	// Destination bucket name
+	Name string `pulumi:"name"`
+	// Destination region
+	Region string `pulumi:"region"`
+	// Destination storage class
+	StorageClass *string `pulumi:"storageClass"`
+}
+
+// StorageReplicationRuleDestinationInput is an input type that accepts StorageReplicationRuleDestinationArgs and StorageReplicationRuleDestinationOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleDestinationInput` via:
+//
+//	StorageReplicationRuleDestinationArgs{...}
+type StorageReplicationRuleDestinationInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleDestinationOutput() StorageReplicationRuleDestinationOutput
+	ToStorageReplicationRuleDestinationOutputWithContext(context.Context) StorageReplicationRuleDestinationOutput
+}
+
+type StorageReplicationRuleDestinationArgs struct {
+	// Destination bucket name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Destination region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Destination storage class
+	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
+}
+
+func (StorageReplicationRuleDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRuleDestination)(nil)).Elem()
+}
+
+func (i StorageReplicationRuleDestinationArgs) ToStorageReplicationRuleDestinationOutput() StorageReplicationRuleDestinationOutput {
+	return i.ToStorageReplicationRuleDestinationOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleDestinationArgs) ToStorageReplicationRuleDestinationOutputWithContext(ctx context.Context) StorageReplicationRuleDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleDestinationOutput)
+}
+
+func (i StorageReplicationRuleDestinationArgs) ToStorageReplicationRuleDestinationPtrOutput() StorageReplicationRuleDestinationPtrOutput {
+	return i.ToStorageReplicationRuleDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleDestinationArgs) ToStorageReplicationRuleDestinationPtrOutputWithContext(ctx context.Context) StorageReplicationRuleDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleDestinationOutput).ToStorageReplicationRuleDestinationPtrOutputWithContext(ctx)
+}
+
+// StorageReplicationRuleDestinationPtrInput is an input type that accepts StorageReplicationRuleDestinationArgs, StorageReplicationRuleDestinationPtr and StorageReplicationRuleDestinationPtrOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleDestinationPtrInput` via:
+//
+//	        StorageReplicationRuleDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageReplicationRuleDestinationPtrInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleDestinationPtrOutput() StorageReplicationRuleDestinationPtrOutput
+	ToStorageReplicationRuleDestinationPtrOutputWithContext(context.Context) StorageReplicationRuleDestinationPtrOutput
+}
+
+type storageReplicationRuleDestinationPtrType StorageReplicationRuleDestinationArgs
+
+func StorageReplicationRuleDestinationPtr(v *StorageReplicationRuleDestinationArgs) StorageReplicationRuleDestinationPtrInput {
+	return (*storageReplicationRuleDestinationPtrType)(v)
+}
+
+func (*storageReplicationRuleDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageReplicationRuleDestination)(nil)).Elem()
+}
+
+func (i *storageReplicationRuleDestinationPtrType) ToStorageReplicationRuleDestinationPtrOutput() StorageReplicationRuleDestinationPtrOutput {
+	return i.ToStorageReplicationRuleDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *storageReplicationRuleDestinationPtrType) ToStorageReplicationRuleDestinationPtrOutputWithContext(ctx context.Context) StorageReplicationRuleDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleDestinationPtrOutput)
+}
+
+type StorageReplicationRuleDestinationOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRuleDestination)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleDestinationOutput) ToStorageReplicationRuleDestinationOutput() StorageReplicationRuleDestinationOutput {
+	return o
+}
+
+func (o StorageReplicationRuleDestinationOutput) ToStorageReplicationRuleDestinationOutputWithContext(ctx context.Context) StorageReplicationRuleDestinationOutput {
+	return o
+}
+
+func (o StorageReplicationRuleDestinationOutput) ToStorageReplicationRuleDestinationPtrOutput() StorageReplicationRuleDestinationPtrOutput {
+	return o.ToStorageReplicationRuleDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o StorageReplicationRuleDestinationOutput) ToStorageReplicationRuleDestinationPtrOutputWithContext(ctx context.Context) StorageReplicationRuleDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageReplicationRuleDestination) *StorageReplicationRuleDestination {
+		return &v
+	}).(StorageReplicationRuleDestinationPtrOutput)
+}
+
+// Destination bucket name
+func (o StorageReplicationRuleDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageReplicationRuleDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Destination region
+func (o StorageReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Destination storage class
+func (o StorageReplicationRuleDestinationOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRuleDestination) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+type StorageReplicationRuleDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageReplicationRuleDestination)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleDestinationPtrOutput) ToStorageReplicationRuleDestinationPtrOutput() StorageReplicationRuleDestinationPtrOutput {
+	return o
+}
+
+func (o StorageReplicationRuleDestinationPtrOutput) ToStorageReplicationRuleDestinationPtrOutputWithContext(ctx context.Context) StorageReplicationRuleDestinationPtrOutput {
+	return o
+}
+
+func (o StorageReplicationRuleDestinationPtrOutput) Elem() StorageReplicationRuleDestinationOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleDestination) StorageReplicationRuleDestination {
+		if v != nil {
+			return *v
+		}
+		var ret StorageReplicationRuleDestination
+		return ret
+	}).(StorageReplicationRuleDestinationOutput)
+}
+
+// Destination bucket name
+func (o StorageReplicationRuleDestinationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Destination region
+func (o StorageReplicationRuleDestinationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Destination storage class
+func (o StorageReplicationRuleDestinationPtrOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageClass
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageReplicationRuleFilter struct {
+	// Prefix filter
+	Prefix *string `pulumi:"prefix"`
+	// Tags filter
+	Tags []StorageReplicationRuleFilterTag `pulumi:"tags"`
+}
+
+// StorageReplicationRuleFilterInput is an input type that accepts StorageReplicationRuleFilterArgs and StorageReplicationRuleFilterOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleFilterInput` via:
+//
+//	StorageReplicationRuleFilterArgs{...}
+type StorageReplicationRuleFilterInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleFilterOutput() StorageReplicationRuleFilterOutput
+	ToStorageReplicationRuleFilterOutputWithContext(context.Context) StorageReplicationRuleFilterOutput
+}
+
+type StorageReplicationRuleFilterArgs struct {
+	// Prefix filter
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Tags filter
+	Tags StorageReplicationRuleFilterTagArrayInput `pulumi:"tags"`
+}
+
+func (StorageReplicationRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRuleFilter)(nil)).Elem()
+}
+
+func (i StorageReplicationRuleFilterArgs) ToStorageReplicationRuleFilterOutput() StorageReplicationRuleFilterOutput {
+	return i.ToStorageReplicationRuleFilterOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleFilterArgs) ToStorageReplicationRuleFilterOutputWithContext(ctx context.Context) StorageReplicationRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterOutput)
+}
+
+func (i StorageReplicationRuleFilterArgs) ToStorageReplicationRuleFilterPtrOutput() StorageReplicationRuleFilterPtrOutput {
+	return i.ToStorageReplicationRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleFilterArgs) ToStorageReplicationRuleFilterPtrOutputWithContext(ctx context.Context) StorageReplicationRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterOutput).ToStorageReplicationRuleFilterPtrOutputWithContext(ctx)
+}
+
+// StorageReplicationRuleFilterPtrInput is an input type that accepts StorageReplicationRuleFilterArgs, StorageReplicationRuleFilterPtr and StorageReplicationRuleFilterPtrOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleFilterPtrInput` via:
+//
+//	        StorageReplicationRuleFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageReplicationRuleFilterPtrInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleFilterPtrOutput() StorageReplicationRuleFilterPtrOutput
+	ToStorageReplicationRuleFilterPtrOutputWithContext(context.Context) StorageReplicationRuleFilterPtrOutput
+}
+
+type storageReplicationRuleFilterPtrType StorageReplicationRuleFilterArgs
+
+func StorageReplicationRuleFilterPtr(v *StorageReplicationRuleFilterArgs) StorageReplicationRuleFilterPtrInput {
+	return (*storageReplicationRuleFilterPtrType)(v)
+}
+
+func (*storageReplicationRuleFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageReplicationRuleFilter)(nil)).Elem()
+}
+
+func (i *storageReplicationRuleFilterPtrType) ToStorageReplicationRuleFilterPtrOutput() StorageReplicationRuleFilterPtrOutput {
+	return i.ToStorageReplicationRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *storageReplicationRuleFilterPtrType) ToStorageReplicationRuleFilterPtrOutputWithContext(ctx context.Context) StorageReplicationRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterPtrOutput)
+}
+
+type StorageReplicationRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRuleFilter)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleFilterOutput) ToStorageReplicationRuleFilterOutput() StorageReplicationRuleFilterOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterOutput) ToStorageReplicationRuleFilterOutputWithContext(ctx context.Context) StorageReplicationRuleFilterOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterOutput) ToStorageReplicationRuleFilterPtrOutput() StorageReplicationRuleFilterPtrOutput {
+	return o.ToStorageReplicationRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (o StorageReplicationRuleFilterOutput) ToStorageReplicationRuleFilterPtrOutputWithContext(ctx context.Context) StorageReplicationRuleFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageReplicationRuleFilter) *StorageReplicationRuleFilter {
+		return &v
+	}).(StorageReplicationRuleFilterPtrOutput)
+}
+
+// Prefix filter
+func (o StorageReplicationRuleFilterOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRuleFilter) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Tags filter
+func (o StorageReplicationRuleFilterOutput) Tags() StorageReplicationRuleFilterTagArrayOutput {
+	return o.ApplyT(func(v StorageReplicationRuleFilter) []StorageReplicationRuleFilterTag { return v.Tags }).(StorageReplicationRuleFilterTagArrayOutput)
+}
+
+type StorageReplicationRuleFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageReplicationRuleFilter)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleFilterPtrOutput) ToStorageReplicationRuleFilterPtrOutput() StorageReplicationRuleFilterPtrOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterPtrOutput) ToStorageReplicationRuleFilterPtrOutputWithContext(ctx context.Context) StorageReplicationRuleFilterPtrOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterPtrOutput) Elem() StorageReplicationRuleFilterOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleFilter) StorageReplicationRuleFilter {
+		if v != nil {
+			return *v
+		}
+		var ret StorageReplicationRuleFilter
+		return ret
+	}).(StorageReplicationRuleFilterOutput)
+}
+
+// Prefix filter
+func (o StorageReplicationRuleFilterPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags filter
+func (o StorageReplicationRuleFilterPtrOutput) Tags() StorageReplicationRuleFilterTagArrayOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleFilter) []StorageReplicationRuleFilterTag {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(StorageReplicationRuleFilterTagArrayOutput)
+}
+
+type StorageReplicationRuleFilterTag struct {
+	// Tag key
+	Key string `pulumi:"key"`
+	// Tag value
+	Value string `pulumi:"value"`
+}
+
+// StorageReplicationRuleFilterTagInput is an input type that accepts StorageReplicationRuleFilterTagArgs and StorageReplicationRuleFilterTagOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleFilterTagInput` via:
+//
+//	StorageReplicationRuleFilterTagArgs{...}
+type StorageReplicationRuleFilterTagInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleFilterTagOutput() StorageReplicationRuleFilterTagOutput
+	ToStorageReplicationRuleFilterTagOutputWithContext(context.Context) StorageReplicationRuleFilterTagOutput
+}
+
+type StorageReplicationRuleFilterTagArgs struct {
+	// Tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (StorageReplicationRuleFilterTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRuleFilterTag)(nil)).Elem()
+}
+
+func (i StorageReplicationRuleFilterTagArgs) ToStorageReplicationRuleFilterTagOutput() StorageReplicationRuleFilterTagOutput {
+	return i.ToStorageReplicationRuleFilterTagOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleFilterTagArgs) ToStorageReplicationRuleFilterTagOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterTagOutput)
+}
+
+// StorageReplicationRuleFilterTagArrayInput is an input type that accepts StorageReplicationRuleFilterTagArray and StorageReplicationRuleFilterTagArrayOutput values.
+// You can construct a concrete instance of `StorageReplicationRuleFilterTagArrayInput` via:
+//
+//	StorageReplicationRuleFilterTagArray{ StorageReplicationRuleFilterTagArgs{...} }
+type StorageReplicationRuleFilterTagArrayInput interface {
+	pulumi.Input
+
+	ToStorageReplicationRuleFilterTagArrayOutput() StorageReplicationRuleFilterTagArrayOutput
+	ToStorageReplicationRuleFilterTagArrayOutputWithContext(context.Context) StorageReplicationRuleFilterTagArrayOutput
+}
+
+type StorageReplicationRuleFilterTagArray []StorageReplicationRuleFilterTagInput
+
+func (StorageReplicationRuleFilterTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageReplicationRuleFilterTag)(nil)).Elem()
+}
+
+func (i StorageReplicationRuleFilterTagArray) ToStorageReplicationRuleFilterTagArrayOutput() StorageReplicationRuleFilterTagArrayOutput {
+	return i.ToStorageReplicationRuleFilterTagArrayOutputWithContext(context.Background())
+}
+
+func (i StorageReplicationRuleFilterTagArray) ToStorageReplicationRuleFilterTagArrayOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterTagArrayOutput)
+}
+
+type StorageReplicationRuleFilterTagOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleFilterTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageReplicationRuleFilterTag)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleFilterTagOutput) ToStorageReplicationRuleFilterTagOutput() StorageReplicationRuleFilterTagOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterTagOutput) ToStorageReplicationRuleFilterTagOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagOutput {
+	return o
+}
+
+// Tag key
+func (o StorageReplicationRuleFilterTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageReplicationRuleFilterTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Tag value
+func (o StorageReplicationRuleFilterTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageReplicationRuleFilterTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type StorageReplicationRuleFilterTagArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageReplicationRuleFilterTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageReplicationRuleFilterTag)(nil)).Elem()
+}
+
+func (o StorageReplicationRuleFilterTagArrayOutput) ToStorageReplicationRuleFilterTagArrayOutput() StorageReplicationRuleFilterTagArrayOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterTagArrayOutput) ToStorageReplicationRuleFilterTagArrayOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagArrayOutput {
+	return o
+}
+
+func (o StorageReplicationRuleFilterTagArrayOutput) Index(i pulumi.IntInput) StorageReplicationRuleFilterTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageReplicationRuleFilterTag {
+		return vs[0].([]StorageReplicationRuleFilterTag)[vs[1].(int)]
+	}).(StorageReplicationRuleFilterTagOutput)
+}
+
+type StorageVersioning struct {
+	// Versioning status
+	Status *string `pulumi:"status"`
+}
+
+// StorageVersioningInput is an input type that accepts StorageVersioningArgs and StorageVersioningOutput values.
+// You can construct a concrete instance of `StorageVersioningInput` via:
+//
+//	StorageVersioningArgs{...}
+type StorageVersioningInput interface {
+	pulumi.Input
+
+	ToStorageVersioningOutput() StorageVersioningOutput
+	ToStorageVersioningOutputWithContext(context.Context) StorageVersioningOutput
+}
+
+type StorageVersioningArgs struct {
+	// Versioning status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (StorageVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageVersioning)(nil)).Elem()
+}
+
+func (i StorageVersioningArgs) ToStorageVersioningOutput() StorageVersioningOutput {
+	return i.ToStorageVersioningOutputWithContext(context.Background())
+}
+
+func (i StorageVersioningArgs) ToStorageVersioningOutputWithContext(ctx context.Context) StorageVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageVersioningOutput)
+}
+
+func (i StorageVersioningArgs) ToStorageVersioningPtrOutput() StorageVersioningPtrOutput {
+	return i.ToStorageVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i StorageVersioningArgs) ToStorageVersioningPtrOutputWithContext(ctx context.Context) StorageVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageVersioningOutput).ToStorageVersioningPtrOutputWithContext(ctx)
+}
+
+// StorageVersioningPtrInput is an input type that accepts StorageVersioningArgs, StorageVersioningPtr and StorageVersioningPtrOutput values.
+// You can construct a concrete instance of `StorageVersioningPtrInput` via:
+//
+//	        StorageVersioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageVersioningPtrInput interface {
+	pulumi.Input
+
+	ToStorageVersioningPtrOutput() StorageVersioningPtrOutput
+	ToStorageVersioningPtrOutputWithContext(context.Context) StorageVersioningPtrOutput
+}
+
+type storageVersioningPtrType StorageVersioningArgs
+
+func StorageVersioningPtr(v *StorageVersioningArgs) StorageVersioningPtrInput {
+	return (*storageVersioningPtrType)(v)
+}
+
+func (*storageVersioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageVersioning)(nil)).Elem()
+}
+
+func (i *storageVersioningPtrType) ToStorageVersioningPtrOutput() StorageVersioningPtrOutput {
+	return i.ToStorageVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i *storageVersioningPtrType) ToStorageVersioningPtrOutputWithContext(ctx context.Context) StorageVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageVersioningPtrOutput)
+}
+
+type StorageVersioningOutput struct{ *pulumi.OutputState }
+
+func (StorageVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageVersioning)(nil)).Elem()
+}
+
+func (o StorageVersioningOutput) ToStorageVersioningOutput() StorageVersioningOutput {
+	return o
+}
+
+func (o StorageVersioningOutput) ToStorageVersioningOutputWithContext(ctx context.Context) StorageVersioningOutput {
+	return o
+}
+
+func (o StorageVersioningOutput) ToStorageVersioningPtrOutput() StorageVersioningPtrOutput {
+	return o.ToStorageVersioningPtrOutputWithContext(context.Background())
+}
+
+func (o StorageVersioningOutput) ToStorageVersioningPtrOutputWithContext(ctx context.Context) StorageVersioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageVersioning) *StorageVersioning {
+		return &v
+	}).(StorageVersioningPtrOutput)
+}
+
+// Versioning status
+func (o StorageVersioningOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageVersioning) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type StorageVersioningPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageVersioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageVersioning)(nil)).Elem()
+}
+
+func (o StorageVersioningPtrOutput) ToStorageVersioningPtrOutput() StorageVersioningPtrOutput {
+	return o
+}
+
+func (o StorageVersioningPtrOutput) ToStorageVersioningPtrOutputWithContext(ctx context.Context) StorageVersioningPtrOutput {
+	return o
+}
+
+func (o StorageVersioningPtrOutput) Elem() StorageVersioningOutput {
+	return o.ApplyT(func(v *StorageVersioning) StorageVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret StorageVersioning
+		return ret
+	}).(StorageVersioningOutput)
+}
+
+// Versioning status
+func (o StorageVersioningPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageVersioning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type UserRole struct {
+	Description *string  `pulumi:"description"`
+	Id          *string  `pulumi:"id"`
+	Name        *string  `pulumi:"name"`
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -6084,13 +10585,9 @@ type UserRoleInput interface {
 }
 
 type UserRoleArgs struct {
-	// A description associated with the user.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// id of the role
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// name of the role
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// list of permissions associated with the role
+	Description pulumi.StringPtrInput   `pulumi:"description"`
+	Id          pulumi.StringPtrInput   `pulumi:"id"`
+	Name        pulumi.StringPtrInput   `pulumi:"name"`
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -6145,22 +10642,18 @@ func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRol
 	return o
 }
 
-// A description associated with the user.
 func (o UserRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRole) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// id of the role
 func (o UserRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// name of the role
 func (o UserRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRole) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// list of permissions associated with the role
 func (o UserRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -6603,7 +11096,7 @@ func (o GetCapabilitiesContainerRegistryResultArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetCapabilitiesContainerRegistryResultPlan struct {
-	// Plan code from the catalog
+	// Plan code from catalog
 	Code string `pulumi:"code"`
 	// Plan creation date
 	CreatedAt string `pulumi:"createdAt"`
@@ -6631,7 +11124,7 @@ type GetCapabilitiesContainerRegistryResultPlanInput interface {
 }
 
 type GetCapabilitiesContainerRegistryResultPlanArgs struct {
-	// Plan code from the catalog
+	// Plan code from catalog
 	Code pulumi.StringInput `pulumi:"code"`
 	// Plan creation date
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
@@ -6698,7 +11191,7 @@ func (o GetCapabilitiesContainerRegistryResultPlanOutput) ToGetCapabilitiesConta
 	return o
 }
 
-// Plan code from the catalog
+// Plan code from catalog
 func (o GetCapabilitiesContainerRegistryResultPlanOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesContainerRegistryResultPlan) string { return v.Code }).(pulumi.StringOutput)
 }
@@ -6969,7 +11462,7 @@ type GetContainerRegistriesResult struct {
 	Name string `pulumi:"name"`
 	// Project ID of your registry
 	ProjectId string `pulumi:"projectId"`
-	// Region of the registry
+	// Region of the registry.
 	Region string `pulumi:"region"`
 	// Current size of the registry (bytes)
 	Size int `pulumi:"size"`
@@ -7003,7 +11496,7 @@ type GetContainerRegistriesResultArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Project ID of your registry
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Region of the registry
+	// Region of the registry.
 	Region pulumi.StringInput `pulumi:"region"`
 	// Current size of the registry (bytes)
 	Size pulumi.IntInput `pulumi:"size"`
@@ -7088,7 +11581,7 @@ func (o GetContainerRegistriesResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRegistriesResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Region of the registry
+// Region of the registry.
 func (o GetContainerRegistriesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRegistriesResult) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -7253,18 +11746,399 @@ func (o GetContainerRegistryUsersResultArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetContainerRegistryUsersResultOutput)
 }
 
-type GetFloatingIPsCloudProjectFloatingip struct {
-	// Associated entity with the floating IP
-	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntity `pulumi:"associatedEntity"`
-	// ID of the floating IP
+type GetFlavorsFlavor struct {
+	// Available in stock
+	Available bool `pulumi:"available"`
+	// Capabilities of the flavor
+	Capabilities []GetFlavorsFlavorCapability `pulumi:"capabilities"`
+	// Number of disks
+	Disk float64 `pulumi:"disk"`
+	// Flavor id
 	Id string `pulumi:"id"`
-	// Value of the floating IP
+	// Max capacity of inbound traffic in Mbit/s
+	InboundBandwidth float64 `pulumi:"inboundBandwidth"`
+	// Flavor name
+	Name string `pulumi:"name"`
+	// OS to install on
+	OsType string `pulumi:"osType"`
+	// Max capacity of outbound traffic in Mbit/s
+	OutboundBandwidth float64 `pulumi:"outboundBandwidth"`
+	// Plan codes to order instances
+	PlanCodes GetFlavorsFlavorPlanCodes `pulumi:"planCodes"`
+	// Number instance you can spawn with your actual quota
+	Quota float64 `pulumi:"quota"`
+	// Ram quantity (Gio)
+	Ram float64 `pulumi:"ram"`
+	// Flavor region
+	Region string `pulumi:"region"`
+	// Flavor type
+	Type string `pulumi:"type"`
+	// Number of VCPUs
+	Vcpus float64 `pulumi:"vcpus"`
+}
+
+// GetFlavorsFlavorInput is an input type that accepts GetFlavorsFlavorArgs and GetFlavorsFlavorOutput values.
+// You can construct a concrete instance of `GetFlavorsFlavorInput` via:
+//
+//	GetFlavorsFlavorArgs{...}
+type GetFlavorsFlavorInput interface {
+	pulumi.Input
+
+	ToGetFlavorsFlavorOutput() GetFlavorsFlavorOutput
+	ToGetFlavorsFlavorOutputWithContext(context.Context) GetFlavorsFlavorOutput
+}
+
+type GetFlavorsFlavorArgs struct {
+	// Available in stock
+	Available pulumi.BoolInput `pulumi:"available"`
+	// Capabilities of the flavor
+	Capabilities GetFlavorsFlavorCapabilityArrayInput `pulumi:"capabilities"`
+	// Number of disks
+	Disk pulumi.Float64Input `pulumi:"disk"`
+	// Flavor id
+	Id pulumi.StringInput `pulumi:"id"`
+	// Max capacity of inbound traffic in Mbit/s
+	InboundBandwidth pulumi.Float64Input `pulumi:"inboundBandwidth"`
+	// Flavor name
+	Name pulumi.StringInput `pulumi:"name"`
+	// OS to install on
+	OsType pulumi.StringInput `pulumi:"osType"`
+	// Max capacity of outbound traffic in Mbit/s
+	OutboundBandwidth pulumi.Float64Input `pulumi:"outboundBandwidth"`
+	// Plan codes to order instances
+	PlanCodes GetFlavorsFlavorPlanCodesInput `pulumi:"planCodes"`
+	// Number instance you can spawn with your actual quota
+	Quota pulumi.Float64Input `pulumi:"quota"`
+	// Ram quantity (Gio)
+	Ram pulumi.Float64Input `pulumi:"ram"`
+	// Flavor region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Flavor type
+	Type pulumi.StringInput `pulumi:"type"`
+	// Number of VCPUs
+	Vcpus pulumi.Float64Input `pulumi:"vcpus"`
+}
+
+func (GetFlavorsFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetFlavorsFlavorArgs) ToGetFlavorsFlavorOutput() GetFlavorsFlavorOutput {
+	return i.ToGetFlavorsFlavorOutputWithContext(context.Background())
+}
+
+func (i GetFlavorsFlavorArgs) ToGetFlavorsFlavorOutputWithContext(ctx context.Context) GetFlavorsFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlavorsFlavorOutput)
+}
+
+// GetFlavorsFlavorArrayInput is an input type that accepts GetFlavorsFlavorArray and GetFlavorsFlavorArrayOutput values.
+// You can construct a concrete instance of `GetFlavorsFlavorArrayInput` via:
+//
+//	GetFlavorsFlavorArray{ GetFlavorsFlavorArgs{...} }
+type GetFlavorsFlavorArrayInput interface {
+	pulumi.Input
+
+	ToGetFlavorsFlavorArrayOutput() GetFlavorsFlavorArrayOutput
+	ToGetFlavorsFlavorArrayOutputWithContext(context.Context) GetFlavorsFlavorArrayOutput
+}
+
+type GetFlavorsFlavorArray []GetFlavorsFlavorInput
+
+func (GetFlavorsFlavorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetFlavorsFlavorArray) ToGetFlavorsFlavorArrayOutput() GetFlavorsFlavorArrayOutput {
+	return i.ToGetFlavorsFlavorArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlavorsFlavorArray) ToGetFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetFlavorsFlavorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlavorsFlavorArrayOutput)
+}
+
+type GetFlavorsFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetFlavorsFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutput() GetFlavorsFlavorOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutputWithContext(ctx context.Context) GetFlavorsFlavorOutput {
+	return o
+}
+
+// Available in stock
+func (o GetFlavorsFlavorOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// Capabilities of the flavor
+func (o GetFlavorsFlavorOutput) Capabilities() GetFlavorsFlavorCapabilityArrayOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) []GetFlavorsFlavorCapability { return v.Capabilities }).(GetFlavorsFlavorCapabilityArrayOutput)
+}
+
+// Number of disks
+func (o GetFlavorsFlavorOutput) Disk() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.Disk }).(pulumi.Float64Output)
+}
+
+// Flavor id
+func (o GetFlavorsFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Max capacity of inbound traffic in Mbit/s
+func (o GetFlavorsFlavorOutput) InboundBandwidth() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.InboundBandwidth }).(pulumi.Float64Output)
+}
+
+// Flavor name
+func (o GetFlavorsFlavorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OS to install on
+func (o GetFlavorsFlavorOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Max capacity of outbound traffic in Mbit/s
+func (o GetFlavorsFlavorOutput) OutboundBandwidth() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.OutboundBandwidth }).(pulumi.Float64Output)
+}
+
+// Plan codes to order instances
+func (o GetFlavorsFlavorOutput) PlanCodes() GetFlavorsFlavorPlanCodesOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) GetFlavorsFlavorPlanCodes { return v.PlanCodes }).(GetFlavorsFlavorPlanCodesOutput)
+}
+
+// Number instance you can spawn with your actual quota
+func (o GetFlavorsFlavorOutput) Quota() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.Quota }).(pulumi.Float64Output)
+}
+
+// Ram quantity (Gio)
+func (o GetFlavorsFlavorOutput) Ram() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.Ram }).(pulumi.Float64Output)
+}
+
+// Flavor region
+func (o GetFlavorsFlavorOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Flavor type
+func (o GetFlavorsFlavorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Number of VCPUs
+func (o GetFlavorsFlavorOutput) Vcpus() pulumi.Float64Output {
+	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.Vcpus }).(pulumi.Float64Output)
+}
+
+type GetFlavorsFlavorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlavorsFlavorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetFlavorsFlavorArrayOutput) ToGetFlavorsFlavorArrayOutput() GetFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorArrayOutput) ToGetFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetFlavorsFlavorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlavorsFlavor {
+		return vs[0].([]GetFlavorsFlavor)[vs[1].(int)]
+	}).(GetFlavorsFlavorOutput)
+}
+
+type GetFlavorsFlavorCapability struct {
+	// Is the capability enabled
+	Enabled bool `pulumi:"enabled"`
+	// Name of the capability
+	Name string `pulumi:"name"`
+}
+
+// GetFlavorsFlavorCapabilityInput is an input type that accepts GetFlavorsFlavorCapabilityArgs and GetFlavorsFlavorCapabilityOutput values.
+// You can construct a concrete instance of `GetFlavorsFlavorCapabilityInput` via:
+//
+//	GetFlavorsFlavorCapabilityArgs{...}
+type GetFlavorsFlavorCapabilityInput interface {
+	pulumi.Input
+
+	ToGetFlavorsFlavorCapabilityOutput() GetFlavorsFlavorCapabilityOutput
+	ToGetFlavorsFlavorCapabilityOutputWithContext(context.Context) GetFlavorsFlavorCapabilityOutput
+}
+
+type GetFlavorsFlavorCapabilityArgs struct {
+	// Is the capability enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Name of the capability
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetFlavorsFlavorCapabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlavorsFlavorCapability)(nil)).Elem()
+}
+
+func (i GetFlavorsFlavorCapabilityArgs) ToGetFlavorsFlavorCapabilityOutput() GetFlavorsFlavorCapabilityOutput {
+	return i.ToGetFlavorsFlavorCapabilityOutputWithContext(context.Background())
+}
+
+func (i GetFlavorsFlavorCapabilityArgs) ToGetFlavorsFlavorCapabilityOutputWithContext(ctx context.Context) GetFlavorsFlavorCapabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlavorsFlavorCapabilityOutput)
+}
+
+// GetFlavorsFlavorCapabilityArrayInput is an input type that accepts GetFlavorsFlavorCapabilityArray and GetFlavorsFlavorCapabilityArrayOutput values.
+// You can construct a concrete instance of `GetFlavorsFlavorCapabilityArrayInput` via:
+//
+//	GetFlavorsFlavorCapabilityArray{ GetFlavorsFlavorCapabilityArgs{...} }
+type GetFlavorsFlavorCapabilityArrayInput interface {
+	pulumi.Input
+
+	ToGetFlavorsFlavorCapabilityArrayOutput() GetFlavorsFlavorCapabilityArrayOutput
+	ToGetFlavorsFlavorCapabilityArrayOutputWithContext(context.Context) GetFlavorsFlavorCapabilityArrayOutput
+}
+
+type GetFlavorsFlavorCapabilityArray []GetFlavorsFlavorCapabilityInput
+
+func (GetFlavorsFlavorCapabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlavorsFlavorCapability)(nil)).Elem()
+}
+
+func (i GetFlavorsFlavorCapabilityArray) ToGetFlavorsFlavorCapabilityArrayOutput() GetFlavorsFlavorCapabilityArrayOutput {
+	return i.ToGetFlavorsFlavorCapabilityArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlavorsFlavorCapabilityArray) ToGetFlavorsFlavorCapabilityArrayOutputWithContext(ctx context.Context) GetFlavorsFlavorCapabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlavorsFlavorCapabilityArrayOutput)
+}
+
+type GetFlavorsFlavorCapabilityOutput struct{ *pulumi.OutputState }
+
+func (GetFlavorsFlavorCapabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlavorsFlavorCapability)(nil)).Elem()
+}
+
+func (o GetFlavorsFlavorCapabilityOutput) ToGetFlavorsFlavorCapabilityOutput() GetFlavorsFlavorCapabilityOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorCapabilityOutput) ToGetFlavorsFlavorCapabilityOutputWithContext(ctx context.Context) GetFlavorsFlavorCapabilityOutput {
+	return o
+}
+
+// Is the capability enabled
+func (o GetFlavorsFlavorCapabilityOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFlavorsFlavorCapability) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of the capability
+func (o GetFlavorsFlavorCapabilityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavorCapability) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetFlavorsFlavorCapabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlavorsFlavorCapabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlavorsFlavorCapability)(nil)).Elem()
+}
+
+func (o GetFlavorsFlavorCapabilityArrayOutput) ToGetFlavorsFlavorCapabilityArrayOutput() GetFlavorsFlavorCapabilityArrayOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorCapabilityArrayOutput) ToGetFlavorsFlavorCapabilityArrayOutputWithContext(ctx context.Context) GetFlavorsFlavorCapabilityArrayOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorCapabilityArrayOutput) Index(i pulumi.IntInput) GetFlavorsFlavorCapabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlavorsFlavorCapability {
+		return vs[0].([]GetFlavorsFlavorCapability)[vs[1].(int)]
+	}).(GetFlavorsFlavorCapabilityOutput)
+}
+
+type GetFlavorsFlavorPlanCodes struct {
+	// Plan code to order hourly instance
+	Hourly string `pulumi:"hourly"`
+	// Plan code to order monthly instance
+	Monthly string `pulumi:"monthly"`
+}
+
+// GetFlavorsFlavorPlanCodesInput is an input type that accepts GetFlavorsFlavorPlanCodesArgs and GetFlavorsFlavorPlanCodesOutput values.
+// You can construct a concrete instance of `GetFlavorsFlavorPlanCodesInput` via:
+//
+//	GetFlavorsFlavorPlanCodesArgs{...}
+type GetFlavorsFlavorPlanCodesInput interface {
+	pulumi.Input
+
+	ToGetFlavorsFlavorPlanCodesOutput() GetFlavorsFlavorPlanCodesOutput
+	ToGetFlavorsFlavorPlanCodesOutputWithContext(context.Context) GetFlavorsFlavorPlanCodesOutput
+}
+
+type GetFlavorsFlavorPlanCodesArgs struct {
+	// Plan code to order hourly instance
+	Hourly pulumi.StringInput `pulumi:"hourly"`
+	// Plan code to order monthly instance
+	Monthly pulumi.StringInput `pulumi:"monthly"`
+}
+
+func (GetFlavorsFlavorPlanCodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlavorsFlavorPlanCodes)(nil)).Elem()
+}
+
+func (i GetFlavorsFlavorPlanCodesArgs) ToGetFlavorsFlavorPlanCodesOutput() GetFlavorsFlavorPlanCodesOutput {
+	return i.ToGetFlavorsFlavorPlanCodesOutputWithContext(context.Background())
+}
+
+func (i GetFlavorsFlavorPlanCodesArgs) ToGetFlavorsFlavorPlanCodesOutputWithContext(ctx context.Context) GetFlavorsFlavorPlanCodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlavorsFlavorPlanCodesOutput)
+}
+
+type GetFlavorsFlavorPlanCodesOutput struct{ *pulumi.OutputState }
+
+func (GetFlavorsFlavorPlanCodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlavorsFlavorPlanCodes)(nil)).Elem()
+}
+
+func (o GetFlavorsFlavorPlanCodesOutput) ToGetFlavorsFlavorPlanCodesOutput() GetFlavorsFlavorPlanCodesOutput {
+	return o
+}
+
+func (o GetFlavorsFlavorPlanCodesOutput) ToGetFlavorsFlavorPlanCodesOutputWithContext(ctx context.Context) GetFlavorsFlavorPlanCodesOutput {
+	return o
+}
+
+// Plan code to order hourly instance
+func (o GetFlavorsFlavorPlanCodesOutput) Hourly() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavorPlanCodes) string { return v.Hourly }).(pulumi.StringOutput)
+}
+
+// Plan code to order monthly instance
+func (o GetFlavorsFlavorPlanCodesOutput) Monthly() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlavorsFlavorPlanCodes) string { return v.Monthly }).(pulumi.StringOutput)
+}
+
+type GetFloatingIPsCloudProjectFloatingip struct {
+	// Associated entity with the floating ip
+	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntity `pulumi:"associatedEntity"`
+	// ID of the floating ip
+	Id string `pulumi:"id"`
+	// Value of the floating ip
 	Ip string `pulumi:"ip"`
 	// ID of the network
 	NetworkId string `pulumi:"networkId"`
 	// Floating ip region
 	Region string `pulumi:"region"`
-	// Status of the floating IP (active┃down┃error)
+	// Status of the floating ip
 	Status string `pulumi:"status"`
 }
 
@@ -7280,17 +12154,17 @@ type GetFloatingIPsCloudProjectFloatingipInput interface {
 }
 
 type GetFloatingIPsCloudProjectFloatingipArgs struct {
-	// Associated entity with the floating IP
+	// Associated entity with the floating ip
 	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput `pulumi:"associatedEntity"`
-	// ID of the floating IP
+	// ID of the floating ip
 	Id pulumi.StringInput `pulumi:"id"`
-	// Value of the floating IP
+	// Value of the floating ip
 	Ip pulumi.StringInput `pulumi:"ip"`
 	// ID of the network
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// Floating ip region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Status of the floating IP (active┃down┃error)
+	// Status of the floating ip
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -7345,19 +12219,19 @@ func (o GetFloatingIPsCloudProjectFloatingipOutput) ToGetFloatingIPsCloudProject
 	return o
 }
 
-// Associated entity with the floating IP
+// Associated entity with the floating ip
 func (o GetFloatingIPsCloudProjectFloatingipOutput) AssociatedEntity() GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) GetFloatingIPsCloudProjectFloatingipAssociatedEntity {
 		return v.AssociatedEntity
 	}).(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput)
 }
 
-// ID of the floating IP
+// ID of the floating ip
 func (o GetFloatingIPsCloudProjectFloatingipOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Value of the floating IP
+// Value of the floating ip
 func (o GetFloatingIPsCloudProjectFloatingipOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Ip }).(pulumi.StringOutput)
 }
@@ -7372,7 +12246,7 @@ func (o GetFloatingIPsCloudProjectFloatingipOutput) Region() pulumi.StringOutput
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Status of the floating IP (active┃down┃error)
+// Status of the floating ip
 func (o GetFloatingIPsCloudProjectFloatingipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -7400,11 +12274,11 @@ func (o GetFloatingIPsCloudProjectFloatingipArrayOutput) Index(i pulumi.IntInput
 type GetFloatingIPsCloudProjectFloatingipAssociatedEntity struct {
 	// ID of the gateway
 	GatewayId string `pulumi:"gatewayId"`
-	// ID of the floating IP
+	// ID of the port
 	Id string `pulumi:"id"`
-	// Value of the floating IP
+	// IP of the port
 	Ip string `pulumi:"ip"`
-	// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+	// Type of the port
 	Type string `pulumi:"type"`
 }
 
@@ -7422,11 +12296,11 @@ type GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput interface {
 type GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs struct {
 	// ID of the gateway
 	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
-	// ID of the floating IP
+	// ID of the port
 	Id pulumi.StringInput `pulumi:"id"`
-	// Value of the floating IP
+	// IP of the port
 	Ip pulumi.StringInput `pulumi:"ip"`
-	// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+	// Type of the port
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -7461,17 +12335,17 @@ func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) GatewayId() 
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.GatewayId }).(pulumi.StringOutput)
 }
 
-// ID of the floating IP
+// ID of the port
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Value of the floating IP
+// IP of the port
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+// Type of the port
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7583,7 +12457,7 @@ func (o GetInstanceAddressArrayOutput) Index(i pulumi.IntInput) GetInstanceAddre
 }
 
 type GetInstanceAttachedVolume struct {
-	// Instance id
+	// Volume id
 	Id string `pulumi:"id"`
 }
 
@@ -7599,7 +12473,7 @@ type GetInstanceAttachedVolumeInput interface {
 }
 
 type GetInstanceAttachedVolumeArgs struct {
-	// Instance id
+	// Volume id
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -7654,7 +12528,7 @@ func (o GetInstanceAttachedVolumeOutput) ToGetInstanceAttachedVolumeOutputWithCo
 	return o
 }
 
-// Instance id
+// Volume id
 func (o GetInstanceAttachedVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedVolume) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -7684,6 +12558,8 @@ type GetInstancesInstance struct {
 	Addresses []GetInstancesInstanceAddress `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes []GetInstancesInstanceAttachedVolume `pulumi:"attachedVolumes"`
+	// Availability Zone
+	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Flavor id
 	FlavorId string `pulumi:"flavorId"`
 	// Flavor name
@@ -7694,7 +12570,7 @@ type GetInstancesInstance struct {
 	ImageId string `pulumi:"imageId"`
 	// Instance name
 	Name string `pulumi:"name"`
-	// SSH Keypair
+	// SSH Key pair name
 	SshKey string `pulumi:"sshKey"`
 	// Instance task state
 	TaskState string `pulumi:"taskState"`
@@ -7716,6 +12592,8 @@ type GetInstancesInstanceArgs struct {
 	Addresses GetInstancesInstanceAddressArrayInput `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes GetInstancesInstanceAttachedVolumeArrayInput `pulumi:"attachedVolumes"`
+	// Availability Zone
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// Flavor id
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
 	// Flavor name
@@ -7726,7 +12604,7 @@ type GetInstancesInstanceArgs struct {
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Instance name
 	Name pulumi.StringInput `pulumi:"name"`
-	// SSH Keypair
+	// SSH Key pair name
 	SshKey pulumi.StringInput `pulumi:"sshKey"`
 	// Instance task state
 	TaskState pulumi.StringInput `pulumi:"taskState"`
@@ -7793,6 +12671,11 @@ func (o GetInstancesInstanceOutput) AttachedVolumes() GetInstancesInstanceAttach
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceAttachedVolume { return v.AttachedVolumes }).(GetInstancesInstanceAttachedVolumeArrayOutput)
 }
 
+// Availability Zone
+func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
 // Flavor id
 func (o GetInstancesInstanceOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.FlavorId }).(pulumi.StringOutput)
@@ -7818,7 +12701,7 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SSH Keypair
+// SSH Key pair name
 func (o GetInstancesInstanceOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SshKey }).(pulumi.StringOutput)
 }
@@ -7955,7 +12838,7 @@ func (o GetInstancesInstanceAddressArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 type GetInstancesInstanceAttachedVolume struct {
-	// Instance id
+	// Volume id
 	Id string `pulumi:"id"`
 }
 
@@ -7971,7 +12854,7 @@ type GetInstancesInstanceAttachedVolumeInput interface {
 }
 
 type GetInstancesInstanceAttachedVolumeArgs struct {
-	// Instance id
+	// Volume id
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -8026,7 +12909,7 @@ func (o GetInstancesInstanceAttachedVolumeOutput) ToGetInstancesInstanceAttached
 	return o
 }
 
-// Instance id
+// Volume id
 func (o GetInstancesInstanceAttachedVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAttachedVolume) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -8052,8 +12935,6 @@ func (o GetInstancesInstanceAttachedVolumeArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetKubeCustomization struct {
-	// Kubernetes API server customization
-	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers []GetKubeCustomizationApiserver `pulumi:"apiservers"`
 }
@@ -8070,8 +12951,6 @@ type GetKubeCustomizationInput interface {
 }
 
 type GetKubeCustomizationArgs struct {
-	// Kubernetes API server customization
-	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers GetKubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
@@ -8127,8 +13006,6 @@ func (o GetKubeCustomizationOutput) ToGetKubeCustomizationOutputWithContext(ctx 
 	return o
 }
 
-// Kubernetes API server customization
-//
 // Deprecated: Use customizationApiserver instead
 func (o GetKubeCustomizationOutput) Apiservers() GetKubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomization) []GetKubeCustomizationApiserver { return v.Apiservers }).(GetKubeCustomizationApiserverArrayOutput)
@@ -8155,7 +13032,6 @@ func (o GetKubeCustomizationArrayOutput) Index(i pulumi.IntInput) GetKubeCustomi
 }
 
 type GetKubeCustomizationApiserver struct {
-	// Kubernetes API server admission plugins customization
 	Admissionplugins []GetKubeCustomizationApiserverAdmissionplugin `pulumi:"admissionplugins"`
 }
 
@@ -8171,7 +13047,6 @@ type GetKubeCustomizationApiserverInput interface {
 }
 
 type GetKubeCustomizationApiserverArgs struct {
-	// Kubernetes API server admission plugins customization
 	Admissionplugins GetKubeCustomizationApiserverAdmissionpluginArrayInput `pulumi:"admissionplugins"`
 }
 
@@ -8226,7 +13101,6 @@ func (o GetKubeCustomizationApiserverOutput) ToGetKubeCustomizationApiserverOutp
 	return o
 }
 
-// Kubernetes API server admission plugins customization
 func (o GetKubeCustomizationApiserverOutput) Admissionplugins() GetKubeCustomizationApiserverAdmissionpluginArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserver) []GetKubeCustomizationApiserverAdmissionplugin {
 		return v.Admissionplugins
@@ -8254,10 +13128,8 @@ func (o GetKubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) GetKu
 }
 
 type GetKubeCustomizationApiserverAdmissionplugin struct {
-	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-	Enableds []string `pulumi:"enableds"`
+	Enableds  []string `pulumi:"enableds"`
 }
 
 // GetKubeCustomizationApiserverAdmissionpluginInput is an input type that accepts GetKubeCustomizationApiserverAdmissionpluginArgs and GetKubeCustomizationApiserverAdmissionpluginOutput values.
@@ -8272,10 +13144,8 @@ type GetKubeCustomizationApiserverAdmissionpluginInput interface {
 }
 
 type GetKubeCustomizationApiserverAdmissionpluginArgs struct {
-	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
+	Enableds  pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
 func (GetKubeCustomizationApiserverAdmissionpluginArgs) ElementType() reflect.Type {
@@ -8329,12 +13199,10 @@ func (o GetKubeCustomizationApiserverAdmissionpluginOutput) ToGetKubeCustomizati
 	return o
 }
 
-// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 func (o GetKubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
-// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
 func (o GetKubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -8360,10 +13228,8 @@ func (o GetKubeCustomizationApiserverAdmissionpluginArrayOutput) Index(i pulumi.
 }
 
 type GetKubeCustomizationKubeProxy struct {
-	// Kubernetes cluster kube-proxy customization of iptables specific config.
 	Iptables *GetKubeCustomizationKubeProxyIptables `pulumi:"iptables"`
-	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-	Ipvs *GetKubeCustomizationKubeProxyIpvs `pulumi:"ipvs"`
+	Ipvs     *GetKubeCustomizationKubeProxyIpvs     `pulumi:"ipvs"`
 }
 
 // GetKubeCustomizationKubeProxyInput is an input type that accepts GetKubeCustomizationKubeProxyArgs and GetKubeCustomizationKubeProxyOutput values.
@@ -8378,10 +13244,8 @@ type GetKubeCustomizationKubeProxyInput interface {
 }
 
 type GetKubeCustomizationKubeProxyArgs struct {
-	// Kubernetes cluster kube-proxy customization of iptables specific config.
 	Iptables GetKubeCustomizationKubeProxyIptablesPtrInput `pulumi:"iptables"`
-	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-	Ipvs GetKubeCustomizationKubeProxyIpvsPtrInput `pulumi:"ipvs"`
+	Ipvs     GetKubeCustomizationKubeProxyIpvsPtrInput     `pulumi:"ipvs"`
 }
 
 func (GetKubeCustomizationKubeProxyArgs) ElementType() reflect.Type {
@@ -8461,12 +13325,10 @@ func (o GetKubeCustomizationKubeProxyOutput) ToGetKubeCustomizationKubeProxyPtrO
 	}).(GetKubeCustomizationKubeProxyPtrOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of iptables specific config.
 func (o GetKubeCustomizationKubeProxyOutput) Iptables() GetKubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIptables { return v.Iptables }).(GetKubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyOutput) Ipvs() GetKubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIpvs { return v.Ipvs }).(GetKubeCustomizationKubeProxyIpvsPtrOutput)
 }
@@ -8495,7 +13357,6 @@ func (o GetKubeCustomizationKubeProxyPtrOutput) Elem() GetKubeCustomizationKubeP
 	}).(GetKubeCustomizationKubeProxyOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of iptables specific config.
 func (o GetKubeCustomizationKubeProxyPtrOutput) Iptables() GetKubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIptables {
 		if v == nil {
@@ -8505,7 +13366,6 @@ func (o GetKubeCustomizationKubeProxyPtrOutput) Iptables() GetKubeCustomizationK
 	}).(GetKubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyPtrOutput) Ipvs() GetKubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIpvs {
 		if v == nil {
@@ -8516,10 +13376,8 @@ func (o GetKubeCustomizationKubeProxyPtrOutput) Ipvs() GetKubeCustomizationKubeP
 }
 
 type GetKubeCustomizationKubeProxyIptables struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-	SyncPeriod *string `pulumi:"syncPeriod"`
+	SyncPeriod    *string `pulumi:"syncPeriod"`
 }
 
 // GetKubeCustomizationKubeProxyIptablesInput is an input type that accepts GetKubeCustomizationKubeProxyIptablesArgs and GetKubeCustomizationKubeProxyIptablesOutput values.
@@ -8534,10 +13392,8 @@ type GetKubeCustomizationKubeProxyIptablesInput interface {
 }
 
 type GetKubeCustomizationKubeProxyIptablesArgs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
 }
 
 func (GetKubeCustomizationKubeProxyIptablesArgs) ElementType() reflect.Type {
@@ -8617,12 +13473,10 @@ func (o GetKubeCustomizationKubeProxyIptablesOutput) ToGetKubeCustomizationKubeP
 	}).(GetKubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIptablesOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIptables) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIptablesOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIptables) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
@@ -8651,7 +13505,6 @@ func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) Elem() GetKubeCustomizat
 	}).(GetKubeCustomizationKubeProxyIptablesOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -8661,7 +13514,6 @@ func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -8672,18 +13524,12 @@ func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.Stri
 }
 
 type GetKubeCustomizationKubeProxyIpvs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	// IPVS scheduler.
-	Scheduler *string `pulumi:"scheduler"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-	SyncPeriod *string `pulumi:"syncPeriod"`
-	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
+	Scheduler     *string `pulumi:"scheduler"`
+	SyncPeriod    *string `pulumi:"syncPeriod"`
 	TcpFinTimeout *string `pulumi:"tcpFinTimeout"`
-	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-	TcpTimeout *string `pulumi:"tcpTimeout"`
-	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-	UdpTimeout *string `pulumi:"udpTimeout"`
+	TcpTimeout    *string `pulumi:"tcpTimeout"`
+	UdpTimeout    *string `pulumi:"udpTimeout"`
 }
 
 // GetKubeCustomizationKubeProxyIpvsInput is an input type that accepts GetKubeCustomizationKubeProxyIpvsArgs and GetKubeCustomizationKubeProxyIpvsOutput values.
@@ -8698,18 +13544,12 @@ type GetKubeCustomizationKubeProxyIpvsInput interface {
 }
 
 type GetKubeCustomizationKubeProxyIpvsArgs struct {
-	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	// IPVS scheduler.
-	Scheduler pulumi.StringPtrInput `pulumi:"scheduler"`
-	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
-	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
+	Scheduler     pulumi.StringPtrInput `pulumi:"scheduler"`
+	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
 	TcpFinTimeout pulumi.StringPtrInput `pulumi:"tcpFinTimeout"`
-	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-	TcpTimeout pulumi.StringPtrInput `pulumi:"tcpTimeout"`
-	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-	UdpTimeout pulumi.StringPtrInput `pulumi:"udpTimeout"`
+	TcpTimeout    pulumi.StringPtrInput `pulumi:"tcpTimeout"`
+	UdpTimeout    pulumi.StringPtrInput `pulumi:"udpTimeout"`
 }
 
 func (GetKubeCustomizationKubeProxyIpvsArgs) ElementType() reflect.Type {
@@ -8789,32 +13629,26 @@ func (o GetKubeCustomizationKubeProxyIpvsOutput) ToGetKubeCustomizationKubeProxy
 	}).(GetKubeCustomizationKubeProxyIpvsPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// IPVS scheduler.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.TcpFinTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.TcpTimeout }).(pulumi.StringPtrOutput)
 }
 
-// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.UdpTimeout }).(pulumi.StringPtrOutput)
 }
@@ -8843,7 +13677,6 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) Elem() GetKubeCustomizationK
 	}).(GetKubeCustomizationKubeProxyIpvsOutput)
 }
 
-// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -8853,7 +13686,6 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPVS scheduler.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -8863,7 +13695,6 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -8873,7 +13704,6 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -8883,7 +13713,6 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -8893,7 +13722,6 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -8904,29 +13732,29 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPt
 }
 
 type GetKubeNodePoolNodesNode struct {
-	// Creation date.
+	// Creation date
 	CreatedAt string `pulumi:"createdAt"`
-	// (Optional) Date of the effective deployment.
+	// Node deployment date
 	DeployedAt string `pulumi:"deployedAt"`
-	// Flavor name.
+	// Flavor name
 	Flavor string `pulumi:"flavor"`
-	// ID of the node.
+	// Node ID
 	Id string `pulumi:"id"`
-	// Openstack ID of the underlying VM of the node.
+	// Public Cloud instance ID
 	InstanceId string `pulumi:"instanceId"`
-	// Is the node in the target version of the cluster.
+	// True if the node is up to date
 	IsUpToDate bool `pulumi:"isUpToDate"`
-	// Name of the node pool from which we want the nodes.
+	// Node name
 	Name string `pulumi:"name"`
-	// Managed kubernetes node pool ID.
+	// NodePool parent ID
 	NodePoolId string `pulumi:"nodePoolId"`
-	// Public cloud project ID.
+	// Project ID
 	ProjectId string `pulumi:"projectId"`
-	// Current status.
+	// Current status
 	Status string `pulumi:"status"`
-	// Last update date.
+	// Last update date
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Version in which the node is.
+	// Node version
 	Version string `pulumi:"version"`
 }
 
@@ -8942,29 +13770,29 @@ type GetKubeNodePoolNodesNodeInput interface {
 }
 
 type GetKubeNodePoolNodesNodeArgs struct {
-	// Creation date.
+	// Creation date
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// (Optional) Date of the effective deployment.
+	// Node deployment date
 	DeployedAt pulumi.StringInput `pulumi:"deployedAt"`
-	// Flavor name.
+	// Flavor name
 	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// ID of the node.
+	// Node ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// Openstack ID of the underlying VM of the node.
+	// Public Cloud instance ID
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Is the node in the target version of the cluster.
+	// True if the node is up to date
 	IsUpToDate pulumi.BoolInput `pulumi:"isUpToDate"`
-	// Name of the node pool from which we want the nodes.
+	// Node name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Managed kubernetes node pool ID.
+	// NodePool parent ID
 	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
-	// Public cloud project ID.
+	// Project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Current status.
+	// Current status
 	Status pulumi.StringInput `pulumi:"status"`
-	// Last update date.
+	// Last update date
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Version in which the node is.
+	// Node version
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -9019,62 +13847,62 @@ func (o GetKubeNodePoolNodesNodeOutput) ToGetKubeNodePoolNodesNodeOutputWithCont
 	return o
 }
 
-// Creation date.
+// Creation date
 func (o GetKubeNodePoolNodesNodeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// (Optional) Date of the effective deployment.
+// Node deployment date
 func (o GetKubeNodePoolNodesNodeOutput) DeployedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.DeployedAt }).(pulumi.StringOutput)
 }
 
-// Flavor name.
+// Flavor name
 func (o GetKubeNodePoolNodesNodeOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// ID of the node.
+// Node ID
 func (o GetKubeNodePoolNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Openstack ID of the underlying VM of the node.
+// Public Cloud instance ID
 func (o GetKubeNodePoolNodesNodeOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Is the node in the target version of the cluster.
+// True if the node is up to date
 func (o GetKubeNodePoolNodesNodeOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) bool { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
-// Name of the node pool from which we want the nodes.
+// Node name
 func (o GetKubeNodePoolNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Managed kubernetes node pool ID.
+// NodePool parent ID
 func (o GetKubeNodePoolNodesNodeOutput) NodePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.NodePoolId }).(pulumi.StringOutput)
 }
 
-// Public cloud project ID.
+// Project ID
 func (o GetKubeNodePoolNodesNodeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Current status.
+// Current status
 func (o GetKubeNodePoolNodesNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Last update date.
+// Last update date
 func (o GetKubeNodePoolNodesNodeOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Version in which the node is.
+// Node version
 func (o GetKubeNodePoolNodesNodeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -9589,27 +14417,27 @@ func (o GetKubeNodePoolTemplateSpecPtrOutput) Unschedulable() pulumi.BoolPtrOutp
 type GetKubeNodesNode struct {
 	// Creation date
 	CreatedAt string `pulumi:"createdAt"`
-	// (Optional) Date of the effective deployment
+	// Node deployment date
 	DeployedAt string `pulumi:"deployedAt"`
 	// Flavor name
 	Flavor string `pulumi:"flavor"`
-	// ID of the node
+	// Node ID
 	Id string `pulumi:"id"`
-	// Openstack ID of the underlying VM of the node
+	// Public Cloud instance ID
 	InstanceId string `pulumi:"instanceId"`
-	// Is the node in the target version of the cluster
+	// True if the node is up to date
 	IsUpToDate bool `pulumi:"isUpToDate"`
-	// Name of the node
+	// Node name
 	Name string `pulumi:"name"`
-	// Managed kubernetes node pool ID
+	// NodePool parent ID
 	NodePoolId string `pulumi:"nodePoolId"`
-	// Public cloud project ID
+	// Project ID
 	ProjectId string `pulumi:"projectId"`
 	// Current status
 	Status string `pulumi:"status"`
 	// Last update date
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Version in which the node is
+	// Node version
 	Version string `pulumi:"version"`
 }
 
@@ -9627,27 +14455,27 @@ type GetKubeNodesNodeInput interface {
 type GetKubeNodesNodeArgs struct {
 	// Creation date
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// (Optional) Date of the effective deployment
+	// Node deployment date
 	DeployedAt pulumi.StringInput `pulumi:"deployedAt"`
 	// Flavor name
 	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// ID of the node
+	// Node ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// Openstack ID of the underlying VM of the node
+	// Public Cloud instance ID
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Is the node in the target version of the cluster
+	// True if the node is up to date
 	IsUpToDate pulumi.BoolInput `pulumi:"isUpToDate"`
-	// Name of the node
+	// Node name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Managed kubernetes node pool ID
+	// NodePool parent ID
 	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
-	// Public cloud project ID
+	// Project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Current status
 	Status pulumi.StringInput `pulumi:"status"`
 	// Last update date
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Version in which the node is
+	// Node version
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -9707,7 +14535,7 @@ func (o GetKubeNodesNodeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// (Optional) Date of the effective deployment
+// Node deployment date
 func (o GetKubeNodesNodeOutput) DeployedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.DeployedAt }).(pulumi.StringOutput)
 }
@@ -9717,32 +14545,32 @@ func (o GetKubeNodesNodeOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// ID of the node
+// Node ID
 func (o GetKubeNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Openstack ID of the underlying VM of the node
+// Public Cloud instance ID
 func (o GetKubeNodesNodeOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Is the node in the target version of the cluster
+// True if the node is up to date
 func (o GetKubeNodesNodeOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) bool { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
-// Name of the node
+// Node name
 func (o GetKubeNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Managed kubernetes node pool ID
+// NodePool parent ID
 func (o GetKubeNodesNodeOutput) NodePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.NodePoolId }).(pulumi.StringOutput)
 }
 
-// Public cloud project ID
+// Project ID
 func (o GetKubeNodesNodeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -9757,7 +14585,7 @@ func (o GetKubeNodesNodeOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Version in which the node is
+// Node version
 func (o GetKubeNodesNodeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -9782,10 +14610,125 @@ func (o GetKubeNodesNodeArrayOutput) Index(i pulumi.IntInput) GetKubeNodesNodeOu
 	}).(GetKubeNodesNodeOutput)
 }
 
-type GetLoadBalancerFloatingIp struct {
-	// ID of the loadbalancer
+type GetLoadBalancerFlavorsFlavor struct {
+	// Flavor id
 	Id string `pulumi:"id"`
-	// Value of the floating IP
+	// Flavor name
+	Name string `pulumi:"name"`
+	// Region name
+	Region string `pulumi:"region"`
+}
+
+// GetLoadBalancerFlavorsFlavorInput is an input type that accepts GetLoadBalancerFlavorsFlavorArgs and GetLoadBalancerFlavorsFlavorOutput values.
+// You can construct a concrete instance of `GetLoadBalancerFlavorsFlavorInput` via:
+//
+//	GetLoadBalancerFlavorsFlavorArgs{...}
+type GetLoadBalancerFlavorsFlavorInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerFlavorsFlavorOutput() GetLoadBalancerFlavorsFlavorOutput
+	ToGetLoadBalancerFlavorsFlavorOutputWithContext(context.Context) GetLoadBalancerFlavorsFlavorOutput
+}
+
+type GetLoadBalancerFlavorsFlavorArgs struct {
+	// Flavor id
+	Id pulumi.StringInput `pulumi:"id"`
+	// Flavor name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Region name
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetLoadBalancerFlavorsFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetLoadBalancerFlavorsFlavorArgs) ToGetLoadBalancerFlavorsFlavorOutput() GetLoadBalancerFlavorsFlavorOutput {
+	return i.ToGetLoadBalancerFlavorsFlavorOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerFlavorsFlavorArgs) ToGetLoadBalancerFlavorsFlavorOutputWithContext(ctx context.Context) GetLoadBalancerFlavorsFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerFlavorsFlavorOutput)
+}
+
+// GetLoadBalancerFlavorsFlavorArrayInput is an input type that accepts GetLoadBalancerFlavorsFlavorArray and GetLoadBalancerFlavorsFlavorArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerFlavorsFlavorArrayInput` via:
+//
+//	GetLoadBalancerFlavorsFlavorArray{ GetLoadBalancerFlavorsFlavorArgs{...} }
+type GetLoadBalancerFlavorsFlavorArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerFlavorsFlavorArrayOutput() GetLoadBalancerFlavorsFlavorArrayOutput
+	ToGetLoadBalancerFlavorsFlavorArrayOutputWithContext(context.Context) GetLoadBalancerFlavorsFlavorArrayOutput
+}
+
+type GetLoadBalancerFlavorsFlavorArray []GetLoadBalancerFlavorsFlavorInput
+
+func (GetLoadBalancerFlavorsFlavorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetLoadBalancerFlavorsFlavorArray) ToGetLoadBalancerFlavorsFlavorArrayOutput() GetLoadBalancerFlavorsFlavorArrayOutput {
+	return i.ToGetLoadBalancerFlavorsFlavorArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerFlavorsFlavorArray) ToGetLoadBalancerFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetLoadBalancerFlavorsFlavorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerFlavorsFlavorArrayOutput)
+}
+
+type GetLoadBalancerFlavorsFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerFlavorsFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetLoadBalancerFlavorsFlavorOutput) ToGetLoadBalancerFlavorsFlavorOutput() GetLoadBalancerFlavorsFlavorOutput {
+	return o
+}
+
+func (o GetLoadBalancerFlavorsFlavorOutput) ToGetLoadBalancerFlavorsFlavorOutputWithContext(ctx context.Context) GetLoadBalancerFlavorsFlavorOutput {
+	return o
+}
+
+// Flavor id
+func (o GetLoadBalancerFlavorsFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Flavor name
+func (o GetLoadBalancerFlavorsFlavorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region name
+func (o GetLoadBalancerFlavorsFlavorOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerFlavorsFlavor) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancerFlavorsFlavorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerFlavorsFlavorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetLoadBalancerFlavorsFlavorArrayOutput) ToGetLoadBalancerFlavorsFlavorArrayOutput() GetLoadBalancerFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerFlavorsFlavorArrayOutput) ToGetLoadBalancerFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetLoadBalancerFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerFlavorsFlavorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerFlavorsFlavor {
+		return vs[0].([]GetLoadBalancerFlavorsFlavor)[vs[1].(int)]
+	}).(GetLoadBalancerFlavorsFlavorOutput)
+}
+
+type GetLoadBalancerFloatingIp struct {
+	// ID of the floating IP
+	Id string `pulumi:"id"`
+	// IP Address of the floating IP
 	Ip string `pulumi:"ip"`
 }
 
@@ -9801,9 +14744,9 @@ type GetLoadBalancerFloatingIpInput interface {
 }
 
 type GetLoadBalancerFloatingIpArgs struct {
-	// ID of the loadbalancer
+	// ID of the floating IP
 	Id pulumi.StringInput `pulumi:"id"`
-	// Value of the floating IP
+	// IP Address of the floating IP
 	Ip pulumi.StringInput `pulumi:"ip"`
 }
 
@@ -9833,24 +14776,24 @@ func (o GetLoadBalancerFloatingIpOutput) ToGetLoadBalancerFloatingIpOutputWithCo
 	return o
 }
 
-// ID of the loadbalancer
+// ID of the floating IP
 func (o GetLoadBalancerFloatingIpOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFloatingIp) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Value of the floating IP
+// IP Address of the floating IP
 func (o GetLoadBalancerFloatingIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 type GetLoadBalancersLoadbalancer struct {
-	// Date of creation of the loadbalancer
+	// The UTC date and timestamp when the loadbalancer was created
 	CreatedAt string `pulumi:"createdAt"`
 	// ID of the flavor
 	FlavorId string `pulumi:"flavorId"`
-	// Information about the floating IP
+	// Information about floating IP
 	FloatingIp GetLoadBalancersLoadbalancerFloatingIp `pulumi:"floatingIp"`
-	// ID of the floating IP
+	// ID of the loadbalancer
 	Id string `pulumi:"id"`
 	// Name of the loadbalancer
 	Name string `pulumi:"name"`
@@ -9860,7 +14803,7 @@ type GetLoadBalancersLoadbalancer struct {
 	ProvisioningStatus string `pulumi:"provisioningStatus"`
 	// Region of the loadbalancer
 	Region string `pulumi:"region"`
-	// Last update date of the loadbalancer
+	// UTC date and timestamp when the loadbalancer was updated
 	UpdatedAt string `pulumi:"updatedAt"`
 	// IP address of the Virtual IP
 	VipAddress string `pulumi:"vipAddress"`
@@ -9882,13 +14825,13 @@ type GetLoadBalancersLoadbalancerInput interface {
 }
 
 type GetLoadBalancersLoadbalancerArgs struct {
-	// Date of creation of the loadbalancer
+	// The UTC date and timestamp when the loadbalancer was created
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// ID of the flavor
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
-	// Information about the floating IP
+	// Information about floating IP
 	FloatingIp GetLoadBalancersLoadbalancerFloatingIpInput `pulumi:"floatingIp"`
-	// ID of the floating IP
+	// ID of the loadbalancer
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the loadbalancer
 	Name pulumi.StringInput `pulumi:"name"`
@@ -9898,7 +14841,7 @@ type GetLoadBalancersLoadbalancerArgs struct {
 	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
 	// Region of the loadbalancer
 	Region pulumi.StringInput `pulumi:"region"`
-	// Last update date of the loadbalancer
+	// UTC date and timestamp when the loadbalancer was updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// IP address of the Virtual IP
 	VipAddress pulumi.StringInput `pulumi:"vipAddress"`
@@ -9959,7 +14902,7 @@ func (o GetLoadBalancersLoadbalancerOutput) ToGetLoadBalancersLoadbalancerOutput
 	return o
 }
 
-// Date of creation of the loadbalancer
+// The UTC date and timestamp when the loadbalancer was created
 func (o GetLoadBalancersLoadbalancerOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -9969,12 +14912,12 @@ func (o GetLoadBalancersLoadbalancerOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Information about the floating IP
+// Information about floating IP
 func (o GetLoadBalancersLoadbalancerOutput) FloatingIp() GetLoadBalancersLoadbalancerFloatingIpOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) GetLoadBalancersLoadbalancerFloatingIp { return v.FloatingIp }).(GetLoadBalancersLoadbalancerFloatingIpOutput)
 }
 
-// ID of the floating IP
+// ID of the loadbalancer
 func (o GetLoadBalancersLoadbalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -9999,7 +14942,7 @@ func (o GetLoadBalancersLoadbalancerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Last update date of the loadbalancer
+// UTC date and timestamp when the loadbalancer was updated
 func (o GetLoadBalancersLoadbalancerOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -10042,7 +14985,7 @@ func (o GetLoadBalancersLoadbalancerArrayOutput) Index(i pulumi.IntInput) GetLoa
 type GetLoadBalancersLoadbalancerFloatingIp struct {
 	// ID of the floating IP
 	Id string `pulumi:"id"`
-	// Value of the floating IP
+	// IP Address of the floating IP
 	Ip string `pulumi:"ip"`
 }
 
@@ -10060,7 +15003,7 @@ type GetLoadBalancersLoadbalancerFloatingIpInput interface {
 type GetLoadBalancersLoadbalancerFloatingIpArgs struct {
 	// ID of the floating IP
 	Id pulumi.StringInput `pulumi:"id"`
-	// Value of the floating IP
+	// IP Address of the floating IP
 	Ip pulumi.StringInput `pulumi:"ip"`
 }
 
@@ -10095,17 +15038,17 @@ func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Value of the floating IP
+// IP Address of the floating IP
 func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 type GetNetworkPrivateRegion struct {
-	// Network ID on openstack region
+	// Network id on openstack region
 	OpenstackId string `pulumi:"openstackId"`
-	// Name of the region
+	// Network region
 	Region string `pulumi:"region"`
-	// Status of the network
+	// Network region status
 	Status string `pulumi:"status"`
 }
 
@@ -10121,11 +15064,11 @@ type GetNetworkPrivateRegionInput interface {
 }
 
 type GetNetworkPrivateRegionArgs struct {
-	// Network ID on openstack region
+	// Network id on openstack region
 	OpenstackId pulumi.StringInput `pulumi:"openstackId"`
-	// Name of the region
+	// Network region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Status of the network
+	// Network region status
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -10180,17 +15123,17 @@ func (o GetNetworkPrivateRegionOutput) ToGetNetworkPrivateRegionOutputWithContex
 	return o
 }
 
-// Network ID on openstack region
+// Network id on openstack region
 func (o GetNetworkPrivateRegionOutput) OpenstackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.OpenstackId }).(pulumi.StringOutput)
 }
 
-// Name of the region
+// Network region
 func (o GetNetworkPrivateRegionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Status of the network
+// Network region status
 func (o GetNetworkPrivateRegionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -10216,15 +15159,15 @@ func (o GetNetworkPrivateRegionArrayOutput) Index(i pulumi.IntInput) GetNetworkP
 }
 
 type GetNetworkPrivateSubnetsSubnet struct {
-	// CIDR of the subnet
+	// Subnet CIDR
 	Cidr string `pulumi:"cidr"`
-	// Whether or not if DHCP is enabled for the subnet
+	// Is DHCP enabled for the subnet
 	DhcpEnabled bool `pulumi:"dhcpEnabled"`
-	// Gateway IP of the subnet
+	// Gateway IP in the subnet
 	GatewayIp string `pulumi:"gatewayIp"`
-	// ID of the subnet
+	// Subnet id
 	Id string `pulumi:"id"`
-	// List of ip pools allocated in the subnet
+	// List of ip pools allocated in subnet
 	IpPools []GetNetworkPrivateSubnetsSubnetIpPool `pulumi:"ipPools"`
 }
 
@@ -10240,15 +15183,15 @@ type GetNetworkPrivateSubnetsSubnetInput interface {
 }
 
 type GetNetworkPrivateSubnetsSubnetArgs struct {
-	// CIDR of the subnet
+	// Subnet CIDR
 	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Whether or not if DHCP is enabled for the subnet
+	// Is DHCP enabled for the subnet
 	DhcpEnabled pulumi.BoolInput `pulumi:"dhcpEnabled"`
-	// Gateway IP of the subnet
+	// Gateway IP in the subnet
 	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
-	// ID of the subnet
+	// Subnet id
 	Id pulumi.StringInput `pulumi:"id"`
-	// List of ip pools allocated in the subnet
+	// List of ip pools allocated in subnet
 	IpPools GetNetworkPrivateSubnetsSubnetIpPoolArrayInput `pulumi:"ipPools"`
 }
 
@@ -10303,27 +15246,27 @@ func (o GetNetworkPrivateSubnetsSubnetOutput) ToGetNetworkPrivateSubnetsSubnetOu
 	return o
 }
 
-// CIDR of the subnet
+// Subnet CIDR
 func (o GetNetworkPrivateSubnetsSubnetOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Whether or not if DHCP is enabled for the subnet
+// Is DHCP enabled for the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) DhcpEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) bool { return v.DhcpEnabled }).(pulumi.BoolOutput)
 }
 
-// Gateway IP of the subnet
+// Gateway IP in the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
-// ID of the subnet
+// Subnet id
 func (o GetNetworkPrivateSubnetsSubnetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of ip pools allocated in the subnet
+// List of ip pools allocated in subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) IpPools() GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) []GetNetworkPrivateSubnetsSubnetIpPool { return v.IpPools }).(GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput)
 }
@@ -10349,13 +15292,13 @@ func (o GetNetworkPrivateSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetN
 }
 
 type GetNetworkPrivateSubnetsSubnetIpPool struct {
-	// Whether or not if DHCP is enabled
+	// Enable DHCP
 	Dhcp bool `pulumi:"dhcp"`
 	// Last IP for this region (eg: 192.168.1.24)
 	End string `pulumi:"end"`
 	// Global network with cidr (eg: 192.168.1.0/24)
 	Network string `pulumi:"network"`
-	// Region associated to the subnet
+	// Region of the subnet
 	Region string `pulumi:"region"`
 	// First IP for this region (eg: 192.168.1.12)
 	Start string `pulumi:"start"`
@@ -10373,13 +15316,13 @@ type GetNetworkPrivateSubnetsSubnetIpPoolInput interface {
 }
 
 type GetNetworkPrivateSubnetsSubnetIpPoolArgs struct {
-	// Whether or not if DHCP is enabled
+	// Enable DHCP
 	Dhcp pulumi.BoolInput `pulumi:"dhcp"`
 	// Last IP for this region (eg: 192.168.1.24)
 	End pulumi.StringInput `pulumi:"end"`
 	// Global network with cidr (eg: 192.168.1.0/24)
 	Network pulumi.StringInput `pulumi:"network"`
-	// Region associated to the subnet
+	// Region of the subnet
 	Region pulumi.StringInput `pulumi:"region"`
 	// First IP for this region (eg: 192.168.1.12)
 	Start pulumi.StringInput `pulumi:"start"`
@@ -10436,7 +15379,7 @@ func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) ToGetNetworkPrivateSubnetsSu
 	return o
 }
 
-// Whether or not if DHCP is enabled
+// Enable DHCP
 func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Dhcp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) bool { return v.Dhcp }).(pulumi.BoolOutput)
 }
@@ -10451,7 +15394,7 @@ func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Network() pulumi.StringOutpu
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Region associated to the subnet
+// Region of the subnet
 func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -10482,17 +15425,17 @@ func (o GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetNetworkPrivatesNetwork struct {
-	// ID of the network
+	// Network id
 	Id string `pulumi:"id"`
-	// Name of the network
+	// Network name
 	Name string `pulumi:"name"`
-	// Information about the private network in the openstack region
+	// Details about private network in region
 	Regions []GetNetworkPrivatesNetworkRegion `pulumi:"regions"`
-	// Status of the network
+	// Network status
 	Status string `pulumi:"status"`
-	// Type of the network
+	// Network type
 	Type string `pulumi:"type"`
-	// VLAN ID of the network
+	// Network VLAN id
 	VlanId float64 `pulumi:"vlanId"`
 }
 
@@ -10508,17 +15451,17 @@ type GetNetworkPrivatesNetworkInput interface {
 }
 
 type GetNetworkPrivatesNetworkArgs struct {
-	// ID of the network
+	// Network id
 	Id pulumi.StringInput `pulumi:"id"`
-	// Name of the network
+	// Network name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Information about the private network in the openstack region
+	// Details about private network in region
 	Regions GetNetworkPrivatesNetworkRegionArrayInput `pulumi:"regions"`
-	// Status of the network
+	// Network status
 	Status pulumi.StringInput `pulumi:"status"`
-	// Type of the network
+	// Network type
 	Type pulumi.StringInput `pulumi:"type"`
-	// VLAN ID of the network
+	// Network VLAN id
 	VlanId pulumi.Float64Input `pulumi:"vlanId"`
 }
 
@@ -10573,32 +15516,32 @@ func (o GetNetworkPrivatesNetworkOutput) ToGetNetworkPrivatesNetworkOutputWithCo
 	return o
 }
 
-// ID of the network
+// Network id
 func (o GetNetworkPrivatesNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the network
+// Network name
 func (o GetNetworkPrivatesNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Information about the private network in the openstack region
+// Details about private network in region
 func (o GetNetworkPrivatesNetworkOutput) Regions() GetNetworkPrivatesNetworkRegionArrayOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) []GetNetworkPrivatesNetworkRegion { return v.Regions }).(GetNetworkPrivatesNetworkRegionArrayOutput)
 }
 
-// Status of the network
+// Network status
 func (o GetNetworkPrivatesNetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Type of the network
+// Network type
 func (o GetNetworkPrivatesNetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// VLAN ID of the network
+// Network VLAN id
 func (o GetNetworkPrivatesNetworkOutput) VlanId() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) float64 { return v.VlanId }).(pulumi.Float64Output)
 }
@@ -10624,11 +15567,11 @@ func (o GetNetworkPrivatesNetworkArrayOutput) Index(i pulumi.IntInput) GetNetwor
 }
 
 type GetNetworkPrivatesNetworkRegion struct {
-	// Network ID on openstack region
+	// Network id on openstack region
 	OpenstackId string `pulumi:"openstackId"`
-	// Name of the region
+	// Network region
 	Region string `pulumi:"region"`
-	// Status of the network
+	// Network region status
 	Status string `pulumi:"status"`
 }
 
@@ -10644,11 +15587,11 @@ type GetNetworkPrivatesNetworkRegionInput interface {
 }
 
 type GetNetworkPrivatesNetworkRegionArgs struct {
-	// Network ID on openstack region
+	// Network id on openstack region
 	OpenstackId pulumi.StringInput `pulumi:"openstackId"`
-	// Name of the region
+	// Network region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Status of the network
+	// Network region status
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -10703,17 +15646,17 @@ func (o GetNetworkPrivatesNetworkRegionOutput) ToGetNetworkPrivatesNetworkRegion
 	return o
 }
 
-// Network ID on openstack region
+// Network id on openstack region
 func (o GetNetworkPrivatesNetworkRegionOutput) OpenstackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.OpenstackId }).(pulumi.StringOutput)
 }
 
-// Name of the region
+// Network region
 func (o GetNetworkPrivatesNetworkRegionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Status of the network
+// Network region status
 func (o GetNetworkPrivatesNetworkRegionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -10739,9 +15682,9 @@ func (o GetNetworkPrivatesNetworkRegionArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetOpenSearchUserAcl struct {
-	// Pattern of the ACL.
+	// Pattern of the ACL
 	Pattern string `pulumi:"pattern"`
-	// Permission of the ACL.
+	// Permission of the ACL
 	Permission string `pulumi:"permission"`
 }
 
@@ -10757,9 +15700,9 @@ type GetOpenSearchUserAclInput interface {
 }
 
 type GetOpenSearchUserAclArgs struct {
-	// Pattern of the ACL.
+	// Pattern of the ACL
 	Pattern pulumi.StringInput `pulumi:"pattern"`
-	// Permission of the ACL.
+	// Permission of the ACL
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -10814,12 +15757,12 @@ func (o GetOpenSearchUserAclOutput) ToGetOpenSearchUserAclOutputWithContext(ctx 
 	return o
 }
 
-// Pattern of the ACL.
+// Pattern of the ACL
 func (o GetOpenSearchUserAclOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserAcl) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Permission of the ACL.
+// Permission of the ACL
 func (o GetOpenSearchUserAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -10950,11 +15893,917 @@ func (o GetPrometheusTargetArrayOutput) Index(i pulumi.IntInput) GetPrometheusTa
 	}).(GetPrometheusTargetOutput)
 }
 
-type GetRegionService struct {
-	// The name of the region associated with the public cloud
-	// project.
+type GetRancherCurrentState struct {
+	// Bootstrap password of the managed Rancher service, returned only on creation
+	BootstrapPassword string `pulumi:"bootstrapPassword"`
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions []GetRancherCurrentStateIpRestriction `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
 	Name string `pulumi:"name"`
-	// the status of the service
+	// Networking properties of a managed Rancher service
+	Networking GetRancherCurrentStateNetworking `pulumi:"networking"`
+	// Plan of the managed Rancher service
+	Plan string `pulumi:"plan"`
+	// Region of the managed Rancher service
+	Region string `pulumi:"region"`
+	// URL of the managed Rancher service
+	Url string `pulumi:"url"`
+	// Latest metrics regarding the usage of the managed Rancher service
+	Usage GetRancherCurrentStateUsage `pulumi:"usage"`
+	// Version of the managed Rancher service
+	Version string `pulumi:"version"`
+}
+
+// GetRancherCurrentStateInput is an input type that accepts GetRancherCurrentStateArgs and GetRancherCurrentStateOutput values.
+// You can construct a concrete instance of `GetRancherCurrentStateInput` via:
+//
+//	GetRancherCurrentStateArgs{...}
+type GetRancherCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentStateOutput() GetRancherCurrentStateOutput
+	ToGetRancherCurrentStateOutputWithContext(context.Context) GetRancherCurrentStateOutput
+}
+
+type GetRancherCurrentStateArgs struct {
+	// Bootstrap password of the managed Rancher service, returned only on creation
+	BootstrapPassword pulumi.StringInput `pulumi:"bootstrapPassword"`
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions GetRancherCurrentStateIpRestrictionArrayInput `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name pulumi.StringInput `pulumi:"name"`
+	// Networking properties of a managed Rancher service
+	Networking GetRancherCurrentStateNetworkingInput `pulumi:"networking"`
+	// Plan of the managed Rancher service
+	Plan pulumi.StringInput `pulumi:"plan"`
+	// Region of the managed Rancher service
+	Region pulumi.StringInput `pulumi:"region"`
+	// URL of the managed Rancher service
+	Url pulumi.StringInput `pulumi:"url"`
+	// Latest metrics regarding the usage of the managed Rancher service
+	Usage GetRancherCurrentStateUsageInput `pulumi:"usage"`
+	// Version of the managed Rancher service
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetRancherCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentState)(nil)).Elem()
+}
+
+func (i GetRancherCurrentStateArgs) ToGetRancherCurrentStateOutput() GetRancherCurrentStateOutput {
+	return i.ToGetRancherCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentStateArgs) ToGetRancherCurrentStateOutputWithContext(ctx context.Context) GetRancherCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentStateOutput)
+}
+
+type GetRancherCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentState)(nil)).Elem()
+}
+
+func (o GetRancherCurrentStateOutput) ToGetRancherCurrentStateOutput() GetRancherCurrentStateOutput {
+	return o
+}
+
+func (o GetRancherCurrentStateOutput) ToGetRancherCurrentStateOutputWithContext(ctx context.Context) GetRancherCurrentStateOutput {
+	return o
+}
+
+// Bootstrap password of the managed Rancher service, returned only on creation
+func (o GetRancherCurrentStateOutput) BootstrapPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) string { return v.BootstrapPassword }).(pulumi.StringOutput)
+}
+
+// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+func (o GetRancherCurrentStateOutput) IpRestrictions() GetRancherCurrentStateIpRestrictionArrayOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) []GetRancherCurrentStateIpRestriction { return v.IpRestrictions }).(GetRancherCurrentStateIpRestrictionArrayOutput)
+}
+
+// Name of the managed Rancher service
+func (o GetRancherCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Networking properties of a managed Rancher service
+func (o GetRancherCurrentStateOutput) Networking() GetRancherCurrentStateNetworkingOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) GetRancherCurrentStateNetworking { return v.Networking }).(GetRancherCurrentStateNetworkingOutput)
+}
+
+// Plan of the managed Rancher service
+func (o GetRancherCurrentStateOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) string { return v.Plan }).(pulumi.StringOutput)
+}
+
+// Region of the managed Rancher service
+func (o GetRancherCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// URL of the managed Rancher service
+func (o GetRancherCurrentStateOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Latest metrics regarding the usage of the managed Rancher service
+func (o GetRancherCurrentStateOutput) Usage() GetRancherCurrentStateUsageOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) GetRancherCurrentStateUsage { return v.Usage }).(GetRancherCurrentStateUsageOutput)
+}
+
+// Version of the managed Rancher service
+func (o GetRancherCurrentStateOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetRancherCurrentStateIpRestriction struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock string `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description string `pulumi:"description"`
+}
+
+// GetRancherCurrentStateIpRestrictionInput is an input type that accepts GetRancherCurrentStateIpRestrictionArgs and GetRancherCurrentStateIpRestrictionOutput values.
+// You can construct a concrete instance of `GetRancherCurrentStateIpRestrictionInput` via:
+//
+//	GetRancherCurrentStateIpRestrictionArgs{...}
+type GetRancherCurrentStateIpRestrictionInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentStateIpRestrictionOutput() GetRancherCurrentStateIpRestrictionOutput
+	ToGetRancherCurrentStateIpRestrictionOutputWithContext(context.Context) GetRancherCurrentStateIpRestrictionOutput
+}
+
+type GetRancherCurrentStateIpRestrictionArgs struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (GetRancherCurrentStateIpRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (i GetRancherCurrentStateIpRestrictionArgs) ToGetRancherCurrentStateIpRestrictionOutput() GetRancherCurrentStateIpRestrictionOutput {
+	return i.ToGetRancherCurrentStateIpRestrictionOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentStateIpRestrictionArgs) ToGetRancherCurrentStateIpRestrictionOutputWithContext(ctx context.Context) GetRancherCurrentStateIpRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentStateIpRestrictionOutput)
+}
+
+// GetRancherCurrentStateIpRestrictionArrayInput is an input type that accepts GetRancherCurrentStateIpRestrictionArray and GetRancherCurrentStateIpRestrictionArrayOutput values.
+// You can construct a concrete instance of `GetRancherCurrentStateIpRestrictionArrayInput` via:
+//
+//	GetRancherCurrentStateIpRestrictionArray{ GetRancherCurrentStateIpRestrictionArgs{...} }
+type GetRancherCurrentStateIpRestrictionArrayInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentStateIpRestrictionArrayOutput() GetRancherCurrentStateIpRestrictionArrayOutput
+	ToGetRancherCurrentStateIpRestrictionArrayOutputWithContext(context.Context) GetRancherCurrentStateIpRestrictionArrayOutput
+}
+
+type GetRancherCurrentStateIpRestrictionArray []GetRancherCurrentStateIpRestrictionInput
+
+func (GetRancherCurrentStateIpRestrictionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (i GetRancherCurrentStateIpRestrictionArray) ToGetRancherCurrentStateIpRestrictionArrayOutput() GetRancherCurrentStateIpRestrictionArrayOutput {
+	return i.ToGetRancherCurrentStateIpRestrictionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentStateIpRestrictionArray) ToGetRancherCurrentStateIpRestrictionArrayOutputWithContext(ctx context.Context) GetRancherCurrentStateIpRestrictionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentStateIpRestrictionArrayOutput)
+}
+
+type GetRancherCurrentStateIpRestrictionOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentStateIpRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (o GetRancherCurrentStateIpRestrictionOutput) ToGetRancherCurrentStateIpRestrictionOutput() GetRancherCurrentStateIpRestrictionOutput {
+	return o
+}
+
+func (o GetRancherCurrentStateIpRestrictionOutput) ToGetRancherCurrentStateIpRestrictionOutputWithContext(ctx context.Context) GetRancherCurrentStateIpRestrictionOutput {
+	return o
+}
+
+// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+func (o GetRancherCurrentStateIpRestrictionOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentStateIpRestriction) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// Description of the allowed CIDR block
+func (o GetRancherCurrentStateIpRestrictionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentStateIpRestriction) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type GetRancherCurrentStateIpRestrictionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentStateIpRestrictionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherCurrentStateIpRestriction)(nil)).Elem()
+}
+
+func (o GetRancherCurrentStateIpRestrictionArrayOutput) ToGetRancherCurrentStateIpRestrictionArrayOutput() GetRancherCurrentStateIpRestrictionArrayOutput {
+	return o
+}
+
+func (o GetRancherCurrentStateIpRestrictionArrayOutput) ToGetRancherCurrentStateIpRestrictionArrayOutputWithContext(ctx context.Context) GetRancherCurrentStateIpRestrictionArrayOutput {
+	return o
+}
+
+func (o GetRancherCurrentStateIpRestrictionArrayOutput) Index(i pulumi.IntInput) GetRancherCurrentStateIpRestrictionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRancherCurrentStateIpRestriction {
+		return vs[0].([]GetRancherCurrentStateIpRestriction)[vs[1].(int)]
+	}).(GetRancherCurrentStateIpRestrictionOutput)
+}
+
+type GetRancherCurrentStateNetworking struct {
+	// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+	EgressCidrBlocks []string `pulumi:"egressCidrBlocks"`
+}
+
+// GetRancherCurrentStateNetworkingInput is an input type that accepts GetRancherCurrentStateNetworkingArgs and GetRancherCurrentStateNetworkingOutput values.
+// You can construct a concrete instance of `GetRancherCurrentStateNetworkingInput` via:
+//
+//	GetRancherCurrentStateNetworkingArgs{...}
+type GetRancherCurrentStateNetworkingInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentStateNetworkingOutput() GetRancherCurrentStateNetworkingOutput
+	ToGetRancherCurrentStateNetworkingOutputWithContext(context.Context) GetRancherCurrentStateNetworkingOutput
+}
+
+type GetRancherCurrentStateNetworkingArgs struct {
+	// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+	EgressCidrBlocks pulumi.StringArrayInput `pulumi:"egressCidrBlocks"`
+}
+
+func (GetRancherCurrentStateNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentStateNetworking)(nil)).Elem()
+}
+
+func (i GetRancherCurrentStateNetworkingArgs) ToGetRancherCurrentStateNetworkingOutput() GetRancherCurrentStateNetworkingOutput {
+	return i.ToGetRancherCurrentStateNetworkingOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentStateNetworkingArgs) ToGetRancherCurrentStateNetworkingOutputWithContext(ctx context.Context) GetRancherCurrentStateNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentStateNetworkingOutput)
+}
+
+type GetRancherCurrentStateNetworkingOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentStateNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentStateNetworking)(nil)).Elem()
+}
+
+func (o GetRancherCurrentStateNetworkingOutput) ToGetRancherCurrentStateNetworkingOutput() GetRancherCurrentStateNetworkingOutput {
+	return o
+}
+
+func (o GetRancherCurrentStateNetworkingOutput) ToGetRancherCurrentStateNetworkingOutputWithContext(ctx context.Context) GetRancherCurrentStateNetworkingOutput {
+	return o
+}
+
+// Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+func (o GetRancherCurrentStateNetworkingOutput) EgressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRancherCurrentStateNetworking) []string { return v.EgressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type GetRancherCurrentStateUsage struct {
+	// Date of the sample
+	Datetime string `pulumi:"datetime"`
+	// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+	OrchestratedVcpus float64 `pulumi:"orchestratedVcpus"`
+}
+
+// GetRancherCurrentStateUsageInput is an input type that accepts GetRancherCurrentStateUsageArgs and GetRancherCurrentStateUsageOutput values.
+// You can construct a concrete instance of `GetRancherCurrentStateUsageInput` via:
+//
+//	GetRancherCurrentStateUsageArgs{...}
+type GetRancherCurrentStateUsageInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentStateUsageOutput() GetRancherCurrentStateUsageOutput
+	ToGetRancherCurrentStateUsageOutputWithContext(context.Context) GetRancherCurrentStateUsageOutput
+}
+
+type GetRancherCurrentStateUsageArgs struct {
+	// Date of the sample
+	Datetime pulumi.StringInput `pulumi:"datetime"`
+	// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+	OrchestratedVcpus pulumi.Float64Input `pulumi:"orchestratedVcpus"`
+}
+
+func (GetRancherCurrentStateUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentStateUsage)(nil)).Elem()
+}
+
+func (i GetRancherCurrentStateUsageArgs) ToGetRancherCurrentStateUsageOutput() GetRancherCurrentStateUsageOutput {
+	return i.ToGetRancherCurrentStateUsageOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentStateUsageArgs) ToGetRancherCurrentStateUsageOutputWithContext(ctx context.Context) GetRancherCurrentStateUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentStateUsageOutput)
+}
+
+type GetRancherCurrentStateUsageOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentStateUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentStateUsage)(nil)).Elem()
+}
+
+func (o GetRancherCurrentStateUsageOutput) ToGetRancherCurrentStateUsageOutput() GetRancherCurrentStateUsageOutput {
+	return o
+}
+
+func (o GetRancherCurrentStateUsageOutput) ToGetRancherCurrentStateUsageOutputWithContext(ctx context.Context) GetRancherCurrentStateUsageOutput {
+	return o
+}
+
+// Date of the sample
+func (o GetRancherCurrentStateUsageOutput) Datetime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentStateUsage) string { return v.Datetime }).(pulumi.StringOutput)
+}
+
+// Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+func (o GetRancherCurrentStateUsageOutput) OrchestratedVcpus() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRancherCurrentStateUsage) float64 { return v.OrchestratedVcpus }).(pulumi.Float64Output)
+}
+
+type GetRancherCurrentTask struct {
+	// Identifier of the current task
+	Id string `pulumi:"id"`
+	// Link to the task details
+	Link string `pulumi:"link"`
+	// Current global status of the current task
+	Status string `pulumi:"status"`
+	// Type of the current task
+	Type string `pulumi:"type"`
+}
+
+// GetRancherCurrentTaskInput is an input type that accepts GetRancherCurrentTaskArgs and GetRancherCurrentTaskOutput values.
+// You can construct a concrete instance of `GetRancherCurrentTaskInput` via:
+//
+//	GetRancherCurrentTaskArgs{...}
+type GetRancherCurrentTaskInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentTaskOutput() GetRancherCurrentTaskOutput
+	ToGetRancherCurrentTaskOutputWithContext(context.Context) GetRancherCurrentTaskOutput
+}
+
+type GetRancherCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRancherCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentTask)(nil)).Elem()
+}
+
+func (i GetRancherCurrentTaskArgs) ToGetRancherCurrentTaskOutput() GetRancherCurrentTaskOutput {
+	return i.ToGetRancherCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentTaskArgs) ToGetRancherCurrentTaskOutputWithContext(ctx context.Context) GetRancherCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentTaskOutput)
+}
+
+// GetRancherCurrentTaskArrayInput is an input type that accepts GetRancherCurrentTaskArray and GetRancherCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `GetRancherCurrentTaskArrayInput` via:
+//
+//	GetRancherCurrentTaskArray{ GetRancherCurrentTaskArgs{...} }
+type GetRancherCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetRancherCurrentTaskArrayOutput() GetRancherCurrentTaskArrayOutput
+	ToGetRancherCurrentTaskArrayOutputWithContext(context.Context) GetRancherCurrentTaskArrayOutput
+}
+
+type GetRancherCurrentTaskArray []GetRancherCurrentTaskInput
+
+func (GetRancherCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherCurrentTask)(nil)).Elem()
+}
+
+func (i GetRancherCurrentTaskArray) ToGetRancherCurrentTaskArrayOutput() GetRancherCurrentTaskArrayOutput {
+	return i.ToGetRancherCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetRancherCurrentTaskArray) ToGetRancherCurrentTaskArrayOutputWithContext(ctx context.Context) GetRancherCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherCurrentTaskArrayOutput)
+}
+
+type GetRancherCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherCurrentTask)(nil)).Elem()
+}
+
+func (o GetRancherCurrentTaskOutput) ToGetRancherCurrentTaskOutput() GetRancherCurrentTaskOutput {
+	return o
+}
+
+func (o GetRancherCurrentTaskOutput) ToGetRancherCurrentTaskOutputWithContext(ctx context.Context) GetRancherCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o GetRancherCurrentTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Link to the task details
+func (o GetRancherCurrentTaskOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentTask) string { return v.Link }).(pulumi.StringOutput)
+}
+
+// Current global status of the current task
+func (o GetRancherCurrentTaskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentTask) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the current task
+func (o GetRancherCurrentTaskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherCurrentTask) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRancherCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRancherCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherCurrentTask)(nil)).Elem()
+}
+
+func (o GetRancherCurrentTaskArrayOutput) ToGetRancherCurrentTaskArrayOutput() GetRancherCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetRancherCurrentTaskArrayOutput) ToGetRancherCurrentTaskArrayOutputWithContext(ctx context.Context) GetRancherCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetRancherCurrentTaskArrayOutput) Index(i pulumi.IntInput) GetRancherCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRancherCurrentTask {
+		return vs[0].([]GetRancherCurrentTask)[vs[1].(int)]
+	}).(GetRancherCurrentTaskOutput)
+}
+
+type GetRancherPlanPlan struct {
+	// Cause for an unavailability
+	Cause string `pulumi:"cause"`
+	// Human-readable description of the unavailability cause
+	Message string `pulumi:"message"`
+	// Name of the plan
+	Name string `pulumi:"name"`
+	// Status of the plan
+	Status string `pulumi:"status"`
+}
+
+// GetRancherPlanPlanInput is an input type that accepts GetRancherPlanPlanArgs and GetRancherPlanPlanOutput values.
+// You can construct a concrete instance of `GetRancherPlanPlanInput` via:
+//
+//	GetRancherPlanPlanArgs{...}
+type GetRancherPlanPlanInput interface {
+	pulumi.Input
+
+	ToGetRancherPlanPlanOutput() GetRancherPlanPlanOutput
+	ToGetRancherPlanPlanOutputWithContext(context.Context) GetRancherPlanPlanOutput
+}
+
+type GetRancherPlanPlanArgs struct {
+	// Cause for an unavailability
+	Cause pulumi.StringInput `pulumi:"cause"`
+	// Human-readable description of the unavailability cause
+	Message pulumi.StringInput `pulumi:"message"`
+	// Name of the plan
+	Name pulumi.StringInput `pulumi:"name"`
+	// Status of the plan
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRancherPlanPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherPlanPlan)(nil)).Elem()
+}
+
+func (i GetRancherPlanPlanArgs) ToGetRancherPlanPlanOutput() GetRancherPlanPlanOutput {
+	return i.ToGetRancherPlanPlanOutputWithContext(context.Background())
+}
+
+func (i GetRancherPlanPlanArgs) ToGetRancherPlanPlanOutputWithContext(ctx context.Context) GetRancherPlanPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherPlanPlanOutput)
+}
+
+// GetRancherPlanPlanArrayInput is an input type that accepts GetRancherPlanPlanArray and GetRancherPlanPlanArrayOutput values.
+// You can construct a concrete instance of `GetRancherPlanPlanArrayInput` via:
+//
+//	GetRancherPlanPlanArray{ GetRancherPlanPlanArgs{...} }
+type GetRancherPlanPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetRancherPlanPlanArrayOutput() GetRancherPlanPlanArrayOutput
+	ToGetRancherPlanPlanArrayOutputWithContext(context.Context) GetRancherPlanPlanArrayOutput
+}
+
+type GetRancherPlanPlanArray []GetRancherPlanPlanInput
+
+func (GetRancherPlanPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherPlanPlan)(nil)).Elem()
+}
+
+func (i GetRancherPlanPlanArray) ToGetRancherPlanPlanArrayOutput() GetRancherPlanPlanArrayOutput {
+	return i.ToGetRancherPlanPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetRancherPlanPlanArray) ToGetRancherPlanPlanArrayOutputWithContext(ctx context.Context) GetRancherPlanPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherPlanPlanArrayOutput)
+}
+
+type GetRancherPlanPlanOutput struct{ *pulumi.OutputState }
+
+func (GetRancherPlanPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherPlanPlan)(nil)).Elem()
+}
+
+func (o GetRancherPlanPlanOutput) ToGetRancherPlanPlanOutput() GetRancherPlanPlanOutput {
+	return o
+}
+
+func (o GetRancherPlanPlanOutput) ToGetRancherPlanPlanOutputWithContext(ctx context.Context) GetRancherPlanPlanOutput {
+	return o
+}
+
+// Cause for an unavailability
+func (o GetRancherPlanPlanOutput) Cause() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherPlanPlan) string { return v.Cause }).(pulumi.StringOutput)
+}
+
+// Human-readable description of the unavailability cause
+func (o GetRancherPlanPlanOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherPlanPlan) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Name of the plan
+func (o GetRancherPlanPlanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherPlanPlan) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status of the plan
+func (o GetRancherPlanPlanOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherPlanPlan) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRancherPlanPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRancherPlanPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherPlanPlan)(nil)).Elem()
+}
+
+func (o GetRancherPlanPlanArrayOutput) ToGetRancherPlanPlanArrayOutput() GetRancherPlanPlanArrayOutput {
+	return o
+}
+
+func (o GetRancherPlanPlanArrayOutput) ToGetRancherPlanPlanArrayOutputWithContext(ctx context.Context) GetRancherPlanPlanArrayOutput {
+	return o
+}
+
+func (o GetRancherPlanPlanArrayOutput) Index(i pulumi.IntInput) GetRancherPlanPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRancherPlanPlan {
+		return vs[0].([]GetRancherPlanPlan)[vs[1].(int)]
+	}).(GetRancherPlanPlanOutput)
+}
+
+type GetRancherTargetSpec struct {
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions []GetRancherTargetSpecIpRestriction `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name string `pulumi:"name"`
+	// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+	Plan string `pulumi:"plan"`
+	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
+	Version string `pulumi:"version"`
+}
+
+// GetRancherTargetSpecInput is an input type that accepts GetRancherTargetSpecArgs and GetRancherTargetSpecOutput values.
+// You can construct a concrete instance of `GetRancherTargetSpecInput` via:
+//
+//	GetRancherTargetSpecArgs{...}
+type GetRancherTargetSpecInput interface {
+	pulumi.Input
+
+	ToGetRancherTargetSpecOutput() GetRancherTargetSpecOutput
+	ToGetRancherTargetSpecOutputWithContext(context.Context) GetRancherTargetSpecOutput
+}
+
+type GetRancherTargetSpecArgs struct {
+	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+	IpRestrictions GetRancherTargetSpecIpRestrictionArrayInput `pulumi:"ipRestrictions"`
+	// Name of the managed Rancher service
+	Name pulumi.StringInput `pulumi:"name"`
+	// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+	Plan pulumi.StringInput `pulumi:"plan"`
+	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetRancherTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherTargetSpec)(nil)).Elem()
+}
+
+func (i GetRancherTargetSpecArgs) ToGetRancherTargetSpecOutput() GetRancherTargetSpecOutput {
+	return i.ToGetRancherTargetSpecOutputWithContext(context.Background())
+}
+
+func (i GetRancherTargetSpecArgs) ToGetRancherTargetSpecOutputWithContext(ctx context.Context) GetRancherTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherTargetSpecOutput)
+}
+
+type GetRancherTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (GetRancherTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherTargetSpec)(nil)).Elem()
+}
+
+func (o GetRancherTargetSpecOutput) ToGetRancherTargetSpecOutput() GetRancherTargetSpecOutput {
+	return o
+}
+
+func (o GetRancherTargetSpecOutput) ToGetRancherTargetSpecOutputWithContext(ctx context.Context) GetRancherTargetSpecOutput {
+	return o
+}
+
+// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+func (o GetRancherTargetSpecOutput) IpRestrictions() GetRancherTargetSpecIpRestrictionArrayOutput {
+	return o.ApplyT(func(v GetRancherTargetSpec) []GetRancherTargetSpecIpRestriction { return v.IpRestrictions }).(GetRancherTargetSpecIpRestrictionArrayOutput)
+}
+
+// Name of the managed Rancher service
+func (o GetRancherTargetSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherTargetSpec) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+func (o GetRancherTargetSpecOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherTargetSpec) string { return v.Plan }).(pulumi.StringOutput)
+}
+
+// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
+func (o GetRancherTargetSpecOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherTargetSpec) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetRancherTargetSpecIpRestriction struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock string `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description string `pulumi:"description"`
+}
+
+// GetRancherTargetSpecIpRestrictionInput is an input type that accepts GetRancherTargetSpecIpRestrictionArgs and GetRancherTargetSpecIpRestrictionOutput values.
+// You can construct a concrete instance of `GetRancherTargetSpecIpRestrictionInput` via:
+//
+//	GetRancherTargetSpecIpRestrictionArgs{...}
+type GetRancherTargetSpecIpRestrictionInput interface {
+	pulumi.Input
+
+	ToGetRancherTargetSpecIpRestrictionOutput() GetRancherTargetSpecIpRestrictionOutput
+	ToGetRancherTargetSpecIpRestrictionOutputWithContext(context.Context) GetRancherTargetSpecIpRestrictionOutput
+}
+
+type GetRancherTargetSpecIpRestrictionArgs struct {
+	// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// Description of the allowed CIDR block
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (GetRancherTargetSpecIpRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (i GetRancherTargetSpecIpRestrictionArgs) ToGetRancherTargetSpecIpRestrictionOutput() GetRancherTargetSpecIpRestrictionOutput {
+	return i.ToGetRancherTargetSpecIpRestrictionOutputWithContext(context.Background())
+}
+
+func (i GetRancherTargetSpecIpRestrictionArgs) ToGetRancherTargetSpecIpRestrictionOutputWithContext(ctx context.Context) GetRancherTargetSpecIpRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherTargetSpecIpRestrictionOutput)
+}
+
+// GetRancherTargetSpecIpRestrictionArrayInput is an input type that accepts GetRancherTargetSpecIpRestrictionArray and GetRancherTargetSpecIpRestrictionArrayOutput values.
+// You can construct a concrete instance of `GetRancherTargetSpecIpRestrictionArrayInput` via:
+//
+//	GetRancherTargetSpecIpRestrictionArray{ GetRancherTargetSpecIpRestrictionArgs{...} }
+type GetRancherTargetSpecIpRestrictionArrayInput interface {
+	pulumi.Input
+
+	ToGetRancherTargetSpecIpRestrictionArrayOutput() GetRancherTargetSpecIpRestrictionArrayOutput
+	ToGetRancherTargetSpecIpRestrictionArrayOutputWithContext(context.Context) GetRancherTargetSpecIpRestrictionArrayOutput
+}
+
+type GetRancherTargetSpecIpRestrictionArray []GetRancherTargetSpecIpRestrictionInput
+
+func (GetRancherTargetSpecIpRestrictionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (i GetRancherTargetSpecIpRestrictionArray) ToGetRancherTargetSpecIpRestrictionArrayOutput() GetRancherTargetSpecIpRestrictionArrayOutput {
+	return i.ToGetRancherTargetSpecIpRestrictionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRancherTargetSpecIpRestrictionArray) ToGetRancherTargetSpecIpRestrictionArrayOutputWithContext(ctx context.Context) GetRancherTargetSpecIpRestrictionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherTargetSpecIpRestrictionArrayOutput)
+}
+
+type GetRancherTargetSpecIpRestrictionOutput struct{ *pulumi.OutputState }
+
+func (GetRancherTargetSpecIpRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (o GetRancherTargetSpecIpRestrictionOutput) ToGetRancherTargetSpecIpRestrictionOutput() GetRancherTargetSpecIpRestrictionOutput {
+	return o
+}
+
+func (o GetRancherTargetSpecIpRestrictionOutput) ToGetRancherTargetSpecIpRestrictionOutputWithContext(ctx context.Context) GetRancherTargetSpecIpRestrictionOutput {
+	return o
+}
+
+// Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+func (o GetRancherTargetSpecIpRestrictionOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherTargetSpecIpRestriction) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// Description of the allowed CIDR block
+func (o GetRancherTargetSpecIpRestrictionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherTargetSpecIpRestriction) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type GetRancherTargetSpecIpRestrictionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRancherTargetSpecIpRestrictionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherTargetSpecIpRestriction)(nil)).Elem()
+}
+
+func (o GetRancherTargetSpecIpRestrictionArrayOutput) ToGetRancherTargetSpecIpRestrictionArrayOutput() GetRancherTargetSpecIpRestrictionArrayOutput {
+	return o
+}
+
+func (o GetRancherTargetSpecIpRestrictionArrayOutput) ToGetRancherTargetSpecIpRestrictionArrayOutputWithContext(ctx context.Context) GetRancherTargetSpecIpRestrictionArrayOutput {
+	return o
+}
+
+func (o GetRancherTargetSpecIpRestrictionArrayOutput) Index(i pulumi.IntInput) GetRancherTargetSpecIpRestrictionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRancherTargetSpecIpRestriction {
+		return vs[0].([]GetRancherTargetSpecIpRestriction)[vs[1].(int)]
+	}).(GetRancherTargetSpecIpRestrictionOutput)
+}
+
+type GetRancherVersionVersion struct {
+	// Cause for an unavailability
+	Cause string `pulumi:"cause"`
+	// Changelog URL of the version
+	ChangelogUrl string `pulumi:"changelogUrl"`
+	// Human-readable description of the unavailability cause
+	Message string `pulumi:"message"`
+	// Name of the version
+	Name string `pulumi:"name"`
+	// Status of the version
+	Status string `pulumi:"status"`
+}
+
+// GetRancherVersionVersionInput is an input type that accepts GetRancherVersionVersionArgs and GetRancherVersionVersionOutput values.
+// You can construct a concrete instance of `GetRancherVersionVersionInput` via:
+//
+//	GetRancherVersionVersionArgs{...}
+type GetRancherVersionVersionInput interface {
+	pulumi.Input
+
+	ToGetRancherVersionVersionOutput() GetRancherVersionVersionOutput
+	ToGetRancherVersionVersionOutputWithContext(context.Context) GetRancherVersionVersionOutput
+}
+
+type GetRancherVersionVersionArgs struct {
+	// Cause for an unavailability
+	Cause pulumi.StringInput `pulumi:"cause"`
+	// Changelog URL of the version
+	ChangelogUrl pulumi.StringInput `pulumi:"changelogUrl"`
+	// Human-readable description of the unavailability cause
+	Message pulumi.StringInput `pulumi:"message"`
+	// Name of the version
+	Name pulumi.StringInput `pulumi:"name"`
+	// Status of the version
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRancherVersionVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherVersionVersion)(nil)).Elem()
+}
+
+func (i GetRancherVersionVersionArgs) ToGetRancherVersionVersionOutput() GetRancherVersionVersionOutput {
+	return i.ToGetRancherVersionVersionOutputWithContext(context.Background())
+}
+
+func (i GetRancherVersionVersionArgs) ToGetRancherVersionVersionOutputWithContext(ctx context.Context) GetRancherVersionVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherVersionVersionOutput)
+}
+
+// GetRancherVersionVersionArrayInput is an input type that accepts GetRancherVersionVersionArray and GetRancherVersionVersionArrayOutput values.
+// You can construct a concrete instance of `GetRancherVersionVersionArrayInput` via:
+//
+//	GetRancherVersionVersionArray{ GetRancherVersionVersionArgs{...} }
+type GetRancherVersionVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetRancherVersionVersionArrayOutput() GetRancherVersionVersionArrayOutput
+	ToGetRancherVersionVersionArrayOutputWithContext(context.Context) GetRancherVersionVersionArrayOutput
+}
+
+type GetRancherVersionVersionArray []GetRancherVersionVersionInput
+
+func (GetRancherVersionVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherVersionVersion)(nil)).Elem()
+}
+
+func (i GetRancherVersionVersionArray) ToGetRancherVersionVersionArrayOutput() GetRancherVersionVersionArrayOutput {
+	return i.ToGetRancherVersionVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRancherVersionVersionArray) ToGetRancherVersionVersionArrayOutputWithContext(ctx context.Context) GetRancherVersionVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRancherVersionVersionArrayOutput)
+}
+
+type GetRancherVersionVersionOutput struct{ *pulumi.OutputState }
+
+func (GetRancherVersionVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRancherVersionVersion)(nil)).Elem()
+}
+
+func (o GetRancherVersionVersionOutput) ToGetRancherVersionVersionOutput() GetRancherVersionVersionOutput {
+	return o
+}
+
+func (o GetRancherVersionVersionOutput) ToGetRancherVersionVersionOutputWithContext(ctx context.Context) GetRancherVersionVersionOutput {
+	return o
+}
+
+// Cause for an unavailability
+func (o GetRancherVersionVersionOutput) Cause() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherVersionVersion) string { return v.Cause }).(pulumi.StringOutput)
+}
+
+// Changelog URL of the version
+func (o GetRancherVersionVersionOutput) ChangelogUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherVersionVersion) string { return v.ChangelogUrl }).(pulumi.StringOutput)
+}
+
+// Human-readable description of the unavailability cause
+func (o GetRancherVersionVersionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherVersionVersion) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Name of the version
+func (o GetRancherVersionVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherVersionVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status of the version
+func (o GetRancherVersionVersionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRancherVersionVersion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRancherVersionVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRancherVersionVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRancherVersionVersion)(nil)).Elem()
+}
+
+func (o GetRancherVersionVersionArrayOutput) ToGetRancherVersionVersionArrayOutput() GetRancherVersionVersionArrayOutput {
+	return o
+}
+
+func (o GetRancherVersionVersionArrayOutput) ToGetRancherVersionVersionArrayOutputWithContext(ctx context.Context) GetRancherVersionVersionArrayOutput {
+	return o
+}
+
+func (o GetRancherVersionVersionArrayOutput) Index(i pulumi.IntInput) GetRancherVersionVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRancherVersionVersion {
+		return vs[0].([]GetRancherVersionVersion)[vs[1].(int)]
+	}).(GetRancherVersionVersionOutput)
+}
+
+type GetRegionService struct {
+	Name   string `pulumi:"name"`
 	Status string `pulumi:"status"`
 }
 
@@ -10970,10 +16819,7 @@ type GetRegionServiceInput interface {
 }
 
 type GetRegionServiceArgs struct {
-	// The name of the region associated with the public cloud
-	// project.
-	Name pulumi.StringInput `pulumi:"name"`
-	// the status of the service
+	Name   pulumi.StringInput `pulumi:"name"`
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -11028,13 +16874,10 @@ func (o GetRegionServiceOutput) ToGetRegionServiceOutputWithContext(ctx context.
 	return o
 }
 
-// The name of the region associated with the public cloud
-// project.
 func (o GetRegionServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionService) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// the status of the service
 func (o GetRegionServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionService) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -11059,14 +16902,1386 @@ func (o GetRegionServiceArrayOutput) Index(i pulumi.IntInput) GetRegionServiceOu
 	}).(GetRegionServiceOutput)
 }
 
-type GetUserRole struct {
-	// description of the role
-	Description string `pulumi:"description"`
-	// id of the role
+type GetStorageEncryption struct {
+	// Encryption algorithm
+	SseAlgorithm string `pulumi:"sseAlgorithm"`
+}
+
+// GetStorageEncryptionInput is an input type that accepts GetStorageEncryptionArgs and GetStorageEncryptionOutput values.
+// You can construct a concrete instance of `GetStorageEncryptionInput` via:
+//
+//	GetStorageEncryptionArgs{...}
+type GetStorageEncryptionInput interface {
+	pulumi.Input
+
+	ToGetStorageEncryptionOutput() GetStorageEncryptionOutput
+	ToGetStorageEncryptionOutputWithContext(context.Context) GetStorageEncryptionOutput
+}
+
+type GetStorageEncryptionArgs struct {
+	// Encryption algorithm
+	SseAlgorithm pulumi.StringInput `pulumi:"sseAlgorithm"`
+}
+
+func (GetStorageEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEncryption)(nil)).Elem()
+}
+
+func (i GetStorageEncryptionArgs) ToGetStorageEncryptionOutput() GetStorageEncryptionOutput {
+	return i.ToGetStorageEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetStorageEncryptionArgs) ToGetStorageEncryptionOutputWithContext(ctx context.Context) GetStorageEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEncryptionOutput)
+}
+
+type GetStorageEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEncryption)(nil)).Elem()
+}
+
+func (o GetStorageEncryptionOutput) ToGetStorageEncryptionOutput() GetStorageEncryptionOutput {
+	return o
+}
+
+func (o GetStorageEncryptionOutput) ToGetStorageEncryptionOutputWithContext(ctx context.Context) GetStorageEncryptionOutput {
+	return o
+}
+
+// Encryption algorithm
+func (o GetStorageEncryptionOutput) SseAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEncryption) string { return v.SseAlgorithm }).(pulumi.StringOutput)
+}
+
+type GetStorageObject struct {
+	// ETag
+	Etag string `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker bool `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest bool `pulumi:"isLatest"`
+	// Key
+	Key string `pulumi:"key"`
+	// Last modification date
+	LastModified string `pulumi:"lastModified"`
+	// Size (bytes)
+	Size float64 `pulumi:"size"`
+	// Storage class
+	StorageClass string `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId string `pulumi:"versionId"`
+}
+
+// GetStorageObjectInput is an input type that accepts GetStorageObjectArgs and GetStorageObjectOutput values.
+// You can construct a concrete instance of `GetStorageObjectInput` via:
+//
+//	GetStorageObjectArgs{...}
+type GetStorageObjectInput interface {
+	pulumi.Input
+
+	ToGetStorageObjectOutput() GetStorageObjectOutput
+	ToGetStorageObjectOutputWithContext(context.Context) GetStorageObjectOutput
+}
+
+type GetStorageObjectArgs struct {
+	// ETag
+	Etag pulumi.StringInput `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker pulumi.BoolInput `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest pulumi.BoolInput `pulumi:"isLatest"`
+	// Key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Last modification date
+	LastModified pulumi.StringInput `pulumi:"lastModified"`
+	// Size (bytes)
+	Size pulumi.Float64Input `pulumi:"size"`
+	// Storage class
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId pulumi.StringInput `pulumi:"versionId"`
+}
+
+func (GetStorageObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageObject)(nil)).Elem()
+}
+
+func (i GetStorageObjectArgs) ToGetStorageObjectOutput() GetStorageObjectOutput {
+	return i.ToGetStorageObjectOutputWithContext(context.Background())
+}
+
+func (i GetStorageObjectArgs) ToGetStorageObjectOutputWithContext(ctx context.Context) GetStorageObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageObjectOutput)
+}
+
+// GetStorageObjectArrayInput is an input type that accepts GetStorageObjectArray and GetStorageObjectArrayOutput values.
+// You can construct a concrete instance of `GetStorageObjectArrayInput` via:
+//
+//	GetStorageObjectArray{ GetStorageObjectArgs{...} }
+type GetStorageObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetStorageObjectArrayOutput() GetStorageObjectArrayOutput
+	ToGetStorageObjectArrayOutputWithContext(context.Context) GetStorageObjectArrayOutput
+}
+
+type GetStorageObjectArray []GetStorageObjectInput
+
+func (GetStorageObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageObject)(nil)).Elem()
+}
+
+func (i GetStorageObjectArray) ToGetStorageObjectArrayOutput() GetStorageObjectArrayOutput {
+	return i.ToGetStorageObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetStorageObjectArray) ToGetStorageObjectArrayOutputWithContext(ctx context.Context) GetStorageObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageObjectArrayOutput)
+}
+
+type GetStorageObjectOutput struct{ *pulumi.OutputState }
+
+func (GetStorageObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageObject)(nil)).Elem()
+}
+
+func (o GetStorageObjectOutput) ToGetStorageObjectOutput() GetStorageObjectOutput {
+	return o
+}
+
+func (o GetStorageObjectOutput) ToGetStorageObjectOutputWithContext(ctx context.Context) GetStorageObjectOutput {
+	return o
+}
+
+// ETag
+func (o GetStorageObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObject) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Whether this object is a delete marker
+func (o GetStorageObjectOutput) IsDeleteMarker() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageObject) bool { return v.IsDeleteMarker }).(pulumi.BoolOutput)
+}
+
+// Whether this is the latest version of the object
+func (o GetStorageObjectOutput) IsLatest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageObject) bool { return v.IsLatest }).(pulumi.BoolOutput)
+}
+
+// Key
+func (o GetStorageObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObject) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Last modification date
+func (o GetStorageObjectOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObject) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// Size (bytes)
+func (o GetStorageObjectOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStorageObject) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// Storage class
+func (o GetStorageObjectOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObject) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// Version ID of the object
+func (o GetStorageObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObject) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+type GetStorageObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStorageObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageObject)(nil)).Elem()
+}
+
+func (o GetStorageObjectArrayOutput) ToGetStorageObjectArrayOutput() GetStorageObjectArrayOutput {
+	return o
+}
+
+func (o GetStorageObjectArrayOutput) ToGetStorageObjectArrayOutputWithContext(ctx context.Context) GetStorageObjectArrayOutput {
+	return o
+}
+
+func (o GetStorageObjectArrayOutput) Index(i pulumi.IntInput) GetStorageObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageObject {
+		return vs[0].([]GetStorageObject)[vs[1].(int)]
+	}).(GetStorageObjectOutput)
+}
+
+type GetStorageReplication struct {
+	// Replication rules
+	Rules []GetStorageReplicationRule `pulumi:"rules"`
+}
+
+// GetStorageReplicationInput is an input type that accepts GetStorageReplicationArgs and GetStorageReplicationOutput values.
+// You can construct a concrete instance of `GetStorageReplicationInput` via:
+//
+//	GetStorageReplicationArgs{...}
+type GetStorageReplicationInput interface {
+	pulumi.Input
+
+	ToGetStorageReplicationOutput() GetStorageReplicationOutput
+	ToGetStorageReplicationOutputWithContext(context.Context) GetStorageReplicationOutput
+}
+
+type GetStorageReplicationArgs struct {
+	// Replication rules
+	Rules GetStorageReplicationRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetStorageReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplication)(nil)).Elem()
+}
+
+func (i GetStorageReplicationArgs) ToGetStorageReplicationOutput() GetStorageReplicationOutput {
+	return i.ToGetStorageReplicationOutputWithContext(context.Background())
+}
+
+func (i GetStorageReplicationArgs) ToGetStorageReplicationOutputWithContext(ctx context.Context) GetStorageReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageReplicationOutput)
+}
+
+type GetStorageReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetStorageReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplication)(nil)).Elem()
+}
+
+func (o GetStorageReplicationOutput) ToGetStorageReplicationOutput() GetStorageReplicationOutput {
+	return o
+}
+
+func (o GetStorageReplicationOutput) ToGetStorageReplicationOutputWithContext(ctx context.Context) GetStorageReplicationOutput {
+	return o
+}
+
+// Replication rules
+func (o GetStorageReplicationOutput) Rules() GetStorageReplicationRuleArrayOutput {
+	return o.ApplyT(func(v GetStorageReplication) []GetStorageReplicationRule { return v.Rules }).(GetStorageReplicationRuleArrayOutput)
+}
+
+type GetStorageReplicationRule struct {
+	// Delete marker replication
+	DeleteMarkerReplication string `pulumi:"deleteMarkerReplication"`
+	// Rule destination configuration
+	Destination GetStorageReplicationRuleDestination `pulumi:"destination"`
+	// Rule filters
+	Filter GetStorageReplicationRuleFilter `pulumi:"filter"`
+	// Rule ID
 	Id string `pulumi:"id"`
-	// name of the role
+	// Rule priority
+	Priority float64 `pulumi:"priority"`
+	// Rule status
+	Status string `pulumi:"status"`
+}
+
+// GetStorageReplicationRuleInput is an input type that accepts GetStorageReplicationRuleArgs and GetStorageReplicationRuleOutput values.
+// You can construct a concrete instance of `GetStorageReplicationRuleInput` via:
+//
+//	GetStorageReplicationRuleArgs{...}
+type GetStorageReplicationRuleInput interface {
+	pulumi.Input
+
+	ToGetStorageReplicationRuleOutput() GetStorageReplicationRuleOutput
+	ToGetStorageReplicationRuleOutputWithContext(context.Context) GetStorageReplicationRuleOutput
+}
+
+type GetStorageReplicationRuleArgs struct {
+	// Delete marker replication
+	DeleteMarkerReplication pulumi.StringInput `pulumi:"deleteMarkerReplication"`
+	// Rule destination configuration
+	Destination GetStorageReplicationRuleDestinationInput `pulumi:"destination"`
+	// Rule filters
+	Filter GetStorageReplicationRuleFilterInput `pulumi:"filter"`
+	// Rule ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Rule priority
+	Priority pulumi.Float64Input `pulumi:"priority"`
+	// Rule status
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetStorageReplicationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplicationRule)(nil)).Elem()
+}
+
+func (i GetStorageReplicationRuleArgs) ToGetStorageReplicationRuleOutput() GetStorageReplicationRuleOutput {
+	return i.ToGetStorageReplicationRuleOutputWithContext(context.Background())
+}
+
+func (i GetStorageReplicationRuleArgs) ToGetStorageReplicationRuleOutputWithContext(ctx context.Context) GetStorageReplicationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageReplicationRuleOutput)
+}
+
+// GetStorageReplicationRuleArrayInput is an input type that accepts GetStorageReplicationRuleArray and GetStorageReplicationRuleArrayOutput values.
+// You can construct a concrete instance of `GetStorageReplicationRuleArrayInput` via:
+//
+//	GetStorageReplicationRuleArray{ GetStorageReplicationRuleArgs{...} }
+type GetStorageReplicationRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetStorageReplicationRuleArrayOutput() GetStorageReplicationRuleArrayOutput
+	ToGetStorageReplicationRuleArrayOutputWithContext(context.Context) GetStorageReplicationRuleArrayOutput
+}
+
+type GetStorageReplicationRuleArray []GetStorageReplicationRuleInput
+
+func (GetStorageReplicationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageReplicationRule)(nil)).Elem()
+}
+
+func (i GetStorageReplicationRuleArray) ToGetStorageReplicationRuleArrayOutput() GetStorageReplicationRuleArrayOutput {
+	return i.ToGetStorageReplicationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetStorageReplicationRuleArray) ToGetStorageReplicationRuleArrayOutputWithContext(ctx context.Context) GetStorageReplicationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageReplicationRuleArrayOutput)
+}
+
+type GetStorageReplicationRuleOutput struct{ *pulumi.OutputState }
+
+func (GetStorageReplicationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplicationRule)(nil)).Elem()
+}
+
+func (o GetStorageReplicationRuleOutput) ToGetStorageReplicationRuleOutput() GetStorageReplicationRuleOutput {
+	return o
+}
+
+func (o GetStorageReplicationRuleOutput) ToGetStorageReplicationRuleOutputWithContext(ctx context.Context) GetStorageReplicationRuleOutput {
+	return o
+}
+
+// Delete marker replication
+func (o GetStorageReplicationRuleOutput) DeleteMarkerReplication() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRule) string { return v.DeleteMarkerReplication }).(pulumi.StringOutput)
+}
+
+// Rule destination configuration
+func (o GetStorageReplicationRuleOutput) Destination() GetStorageReplicationRuleDestinationOutput {
+	return o.ApplyT(func(v GetStorageReplicationRule) GetStorageReplicationRuleDestination { return v.Destination }).(GetStorageReplicationRuleDestinationOutput)
+}
+
+// Rule filters
+func (o GetStorageReplicationRuleOutput) Filter() GetStorageReplicationRuleFilterOutput {
+	return o.ApplyT(func(v GetStorageReplicationRule) GetStorageReplicationRuleFilter { return v.Filter }).(GetStorageReplicationRuleFilterOutput)
+}
+
+// Rule ID
+func (o GetStorageReplicationRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Rule priority
+func (o GetStorageReplicationRuleOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStorageReplicationRule) float64 { return v.Priority }).(pulumi.Float64Output)
+}
+
+// Rule status
+func (o GetStorageReplicationRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetStorageReplicationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStorageReplicationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageReplicationRule)(nil)).Elem()
+}
+
+func (o GetStorageReplicationRuleArrayOutput) ToGetStorageReplicationRuleArrayOutput() GetStorageReplicationRuleArrayOutput {
+	return o
+}
+
+func (o GetStorageReplicationRuleArrayOutput) ToGetStorageReplicationRuleArrayOutputWithContext(ctx context.Context) GetStorageReplicationRuleArrayOutput {
+	return o
+}
+
+func (o GetStorageReplicationRuleArrayOutput) Index(i pulumi.IntInput) GetStorageReplicationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageReplicationRule {
+		return vs[0].([]GetStorageReplicationRule)[vs[1].(int)]
+	}).(GetStorageReplicationRuleOutput)
+}
+
+type GetStorageReplicationRuleDestination struct {
+	// Destination bucket name
 	Name string `pulumi:"name"`
-	// list of permissions associated with the role
+	// Destination region, can be null if destination bucket has been deleted
+	Region string `pulumi:"region"`
+	// Destination storage class
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// GetStorageReplicationRuleDestinationInput is an input type that accepts GetStorageReplicationRuleDestinationArgs and GetStorageReplicationRuleDestinationOutput values.
+// You can construct a concrete instance of `GetStorageReplicationRuleDestinationInput` via:
+//
+//	GetStorageReplicationRuleDestinationArgs{...}
+type GetStorageReplicationRuleDestinationInput interface {
+	pulumi.Input
+
+	ToGetStorageReplicationRuleDestinationOutput() GetStorageReplicationRuleDestinationOutput
+	ToGetStorageReplicationRuleDestinationOutputWithContext(context.Context) GetStorageReplicationRuleDestinationOutput
+}
+
+type GetStorageReplicationRuleDestinationArgs struct {
+	// Destination bucket name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Destination region, can be null if destination bucket has been deleted
+	Region pulumi.StringInput `pulumi:"region"`
+	// Destination storage class
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (GetStorageReplicationRuleDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplicationRuleDestination)(nil)).Elem()
+}
+
+func (i GetStorageReplicationRuleDestinationArgs) ToGetStorageReplicationRuleDestinationOutput() GetStorageReplicationRuleDestinationOutput {
+	return i.ToGetStorageReplicationRuleDestinationOutputWithContext(context.Background())
+}
+
+func (i GetStorageReplicationRuleDestinationArgs) ToGetStorageReplicationRuleDestinationOutputWithContext(ctx context.Context) GetStorageReplicationRuleDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageReplicationRuleDestinationOutput)
+}
+
+type GetStorageReplicationRuleDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetStorageReplicationRuleDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplicationRuleDestination)(nil)).Elem()
+}
+
+func (o GetStorageReplicationRuleDestinationOutput) ToGetStorageReplicationRuleDestinationOutput() GetStorageReplicationRuleDestinationOutput {
+	return o
+}
+
+func (o GetStorageReplicationRuleDestinationOutput) ToGetStorageReplicationRuleDestinationOutputWithContext(ctx context.Context) GetStorageReplicationRuleDestinationOutput {
+	return o
+}
+
+// Destination bucket name
+func (o GetStorageReplicationRuleDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRuleDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Destination region, can be null if destination bucket has been deleted
+func (o GetStorageReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Destination storage class
+func (o GetStorageReplicationRuleDestinationOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRuleDestination) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type GetStorageReplicationRuleFilter struct {
+	// Prefix filter
+	Prefix string `pulumi:"prefix"`
+	// Tags filter
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetStorageReplicationRuleFilterInput is an input type that accepts GetStorageReplicationRuleFilterArgs and GetStorageReplicationRuleFilterOutput values.
+// You can construct a concrete instance of `GetStorageReplicationRuleFilterInput` via:
+//
+//	GetStorageReplicationRuleFilterArgs{...}
+type GetStorageReplicationRuleFilterInput interface {
+	pulumi.Input
+
+	ToGetStorageReplicationRuleFilterOutput() GetStorageReplicationRuleFilterOutput
+	ToGetStorageReplicationRuleFilterOutputWithContext(context.Context) GetStorageReplicationRuleFilterOutput
+}
+
+type GetStorageReplicationRuleFilterArgs struct {
+	// Prefix filter
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Tags filter
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetStorageReplicationRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplicationRuleFilter)(nil)).Elem()
+}
+
+func (i GetStorageReplicationRuleFilterArgs) ToGetStorageReplicationRuleFilterOutput() GetStorageReplicationRuleFilterOutput {
+	return i.ToGetStorageReplicationRuleFilterOutputWithContext(context.Background())
+}
+
+func (i GetStorageReplicationRuleFilterArgs) ToGetStorageReplicationRuleFilterOutputWithContext(ctx context.Context) GetStorageReplicationRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageReplicationRuleFilterOutput)
+}
+
+type GetStorageReplicationRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (GetStorageReplicationRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageReplicationRuleFilter)(nil)).Elem()
+}
+
+func (o GetStorageReplicationRuleFilterOutput) ToGetStorageReplicationRuleFilterOutput() GetStorageReplicationRuleFilterOutput {
+	return o
+}
+
+func (o GetStorageReplicationRuleFilterOutput) ToGetStorageReplicationRuleFilterOutputWithContext(ctx context.Context) GetStorageReplicationRuleFilterOutput {
+	return o
+}
+
+// Prefix filter
+func (o GetStorageReplicationRuleFilterOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageReplicationRuleFilter) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Tags filter
+func (o GetStorageReplicationRuleFilterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStorageReplicationRuleFilter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetStorageVersioning struct {
+	// Versioning status
+	Status string `pulumi:"status"`
+}
+
+// GetStorageVersioningInput is an input type that accepts GetStorageVersioningArgs and GetStorageVersioningOutput values.
+// You can construct a concrete instance of `GetStorageVersioningInput` via:
+//
+//	GetStorageVersioningArgs{...}
+type GetStorageVersioningInput interface {
+	pulumi.Input
+
+	ToGetStorageVersioningOutput() GetStorageVersioningOutput
+	ToGetStorageVersioningOutputWithContext(context.Context) GetStorageVersioningOutput
+}
+
+type GetStorageVersioningArgs struct {
+	// Versioning status
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetStorageVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageVersioning)(nil)).Elem()
+}
+
+func (i GetStorageVersioningArgs) ToGetStorageVersioningOutput() GetStorageVersioningOutput {
+	return i.ToGetStorageVersioningOutputWithContext(context.Background())
+}
+
+func (i GetStorageVersioningArgs) ToGetStorageVersioningOutputWithContext(ctx context.Context) GetStorageVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageVersioningOutput)
+}
+
+type GetStorageVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetStorageVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageVersioning)(nil)).Elem()
+}
+
+func (o GetStorageVersioningOutput) ToGetStorageVersioningOutput() GetStorageVersioningOutput {
+	return o
+}
+
+func (o GetStorageVersioningOutput) ToGetStorageVersioningOutputWithContext(ctx context.Context) GetStorageVersioningOutput {
+	return o
+}
+
+// Versioning status
+func (o GetStorageVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetStoragesContainer struct {
+	// The date and timestamp when the resource was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Encryption configuration
+	Encryption GetStoragesContainerEncryption `pulumi:"encryption"`
+	// Container name
+	Name string `pulumi:"name"`
+	// Container objects
+	Objects []GetStoragesContainerObject `pulumi:"objects"`
+	// Container total objects count
+	ObjectsCount float64 `pulumi:"objectsCount"`
+	// Container total objects size (bytes)
+	ObjectsSize float64 `pulumi:"objectsSize"`
+	// Container owner user ID
+	OwnerId float64 `pulumi:"ownerId"`
+	// Container region
+	Region string `pulumi:"region"`
+	// Replication configuration
+	Replication GetStoragesContainerReplication `pulumi:"replication"`
+	// Container tags
+	Tags map[string]string `pulumi:"tags"`
+	// Versioning configuration
+	Versioning GetStoragesContainerVersioning `pulumi:"versioning"`
+	// Container virtual host
+	VirtualHost string `pulumi:"virtualHost"`
+}
+
+// GetStoragesContainerInput is an input type that accepts GetStoragesContainerArgs and GetStoragesContainerOutput values.
+// You can construct a concrete instance of `GetStoragesContainerInput` via:
+//
+//	GetStoragesContainerArgs{...}
+type GetStoragesContainerInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerOutput() GetStoragesContainerOutput
+	ToGetStoragesContainerOutputWithContext(context.Context) GetStoragesContainerOutput
+}
+
+type GetStoragesContainerArgs struct {
+	// The date and timestamp when the resource was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Encryption configuration
+	Encryption GetStoragesContainerEncryptionInput `pulumi:"encryption"`
+	// Container name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Container objects
+	Objects GetStoragesContainerObjectArrayInput `pulumi:"objects"`
+	// Container total objects count
+	ObjectsCount pulumi.Float64Input `pulumi:"objectsCount"`
+	// Container total objects size (bytes)
+	ObjectsSize pulumi.Float64Input `pulumi:"objectsSize"`
+	// Container owner user ID
+	OwnerId pulumi.Float64Input `pulumi:"ownerId"`
+	// Container region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Replication configuration
+	Replication GetStoragesContainerReplicationInput `pulumi:"replication"`
+	// Container tags
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Versioning configuration
+	Versioning GetStoragesContainerVersioningInput `pulumi:"versioning"`
+	// Container virtual host
+	VirtualHost pulumi.StringInput `pulumi:"virtualHost"`
+}
+
+func (GetStoragesContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainer)(nil)).Elem()
+}
+
+func (i GetStoragesContainerArgs) ToGetStoragesContainerOutput() GetStoragesContainerOutput {
+	return i.ToGetStoragesContainerOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerArgs) ToGetStoragesContainerOutputWithContext(ctx context.Context) GetStoragesContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerOutput)
+}
+
+// GetStoragesContainerArrayInput is an input type that accepts GetStoragesContainerArray and GetStoragesContainerArrayOutput values.
+// You can construct a concrete instance of `GetStoragesContainerArrayInput` via:
+//
+//	GetStoragesContainerArray{ GetStoragesContainerArgs{...} }
+type GetStoragesContainerArrayInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerArrayOutput() GetStoragesContainerArrayOutput
+	ToGetStoragesContainerArrayOutputWithContext(context.Context) GetStoragesContainerArrayOutput
+}
+
+type GetStoragesContainerArray []GetStoragesContainerInput
+
+func (GetStoragesContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragesContainer)(nil)).Elem()
+}
+
+func (i GetStoragesContainerArray) ToGetStoragesContainerArrayOutput() GetStoragesContainerArrayOutput {
+	return i.ToGetStoragesContainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerArray) ToGetStoragesContainerArrayOutputWithContext(ctx context.Context) GetStoragesContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerArrayOutput)
+}
+
+type GetStoragesContainerOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainer)(nil)).Elem()
+}
+
+func (o GetStoragesContainerOutput) ToGetStoragesContainerOutput() GetStoragesContainerOutput {
+	return o
+}
+
+func (o GetStoragesContainerOutput) ToGetStoragesContainerOutputWithContext(ctx context.Context) GetStoragesContainerOutput {
+	return o
+}
+
+// The date and timestamp when the resource was created
+func (o GetStoragesContainerOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainer) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Encryption configuration
+func (o GetStoragesContainerOutput) Encryption() GetStoragesContainerEncryptionOutput {
+	return o.ApplyT(func(v GetStoragesContainer) GetStoragesContainerEncryption { return v.Encryption }).(GetStoragesContainerEncryptionOutput)
+}
+
+// Container name
+func (o GetStoragesContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Container objects
+func (o GetStoragesContainerOutput) Objects() GetStoragesContainerObjectArrayOutput {
+	return o.ApplyT(func(v GetStoragesContainer) []GetStoragesContainerObject { return v.Objects }).(GetStoragesContainerObjectArrayOutput)
+}
+
+// Container total objects count
+func (o GetStoragesContainerOutput) ObjectsCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStoragesContainer) float64 { return v.ObjectsCount }).(pulumi.Float64Output)
+}
+
+// Container total objects size (bytes)
+func (o GetStoragesContainerOutput) ObjectsSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStoragesContainer) float64 { return v.ObjectsSize }).(pulumi.Float64Output)
+}
+
+// Container owner user ID
+func (o GetStoragesContainerOutput) OwnerId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStoragesContainer) float64 { return v.OwnerId }).(pulumi.Float64Output)
+}
+
+// Container region
+func (o GetStoragesContainerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainer) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Replication configuration
+func (o GetStoragesContainerOutput) Replication() GetStoragesContainerReplicationOutput {
+	return o.ApplyT(func(v GetStoragesContainer) GetStoragesContainerReplication { return v.Replication }).(GetStoragesContainerReplicationOutput)
+}
+
+// Container tags
+func (o GetStoragesContainerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStoragesContainer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Versioning configuration
+func (o GetStoragesContainerOutput) Versioning() GetStoragesContainerVersioningOutput {
+	return o.ApplyT(func(v GetStoragesContainer) GetStoragesContainerVersioning { return v.Versioning }).(GetStoragesContainerVersioningOutput)
+}
+
+// Container virtual host
+func (o GetStoragesContainerOutput) VirtualHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainer) string { return v.VirtualHost }).(pulumi.StringOutput)
+}
+
+type GetStoragesContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragesContainer)(nil)).Elem()
+}
+
+func (o GetStoragesContainerArrayOutput) ToGetStoragesContainerArrayOutput() GetStoragesContainerArrayOutput {
+	return o
+}
+
+func (o GetStoragesContainerArrayOutput) ToGetStoragesContainerArrayOutputWithContext(ctx context.Context) GetStoragesContainerArrayOutput {
+	return o
+}
+
+func (o GetStoragesContainerArrayOutput) Index(i pulumi.IntInput) GetStoragesContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoragesContainer {
+		return vs[0].([]GetStoragesContainer)[vs[1].(int)]
+	}).(GetStoragesContainerOutput)
+}
+
+type GetStoragesContainerEncryption struct {
+	// Encryption algorithm
+	SseAlgorithm string `pulumi:"sseAlgorithm"`
+}
+
+// GetStoragesContainerEncryptionInput is an input type that accepts GetStoragesContainerEncryptionArgs and GetStoragesContainerEncryptionOutput values.
+// You can construct a concrete instance of `GetStoragesContainerEncryptionInput` via:
+//
+//	GetStoragesContainerEncryptionArgs{...}
+type GetStoragesContainerEncryptionInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerEncryptionOutput() GetStoragesContainerEncryptionOutput
+	ToGetStoragesContainerEncryptionOutputWithContext(context.Context) GetStoragesContainerEncryptionOutput
+}
+
+type GetStoragesContainerEncryptionArgs struct {
+	// Encryption algorithm
+	SseAlgorithm pulumi.StringInput `pulumi:"sseAlgorithm"`
+}
+
+func (GetStoragesContainerEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerEncryption)(nil)).Elem()
+}
+
+func (i GetStoragesContainerEncryptionArgs) ToGetStoragesContainerEncryptionOutput() GetStoragesContainerEncryptionOutput {
+	return i.ToGetStoragesContainerEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerEncryptionArgs) ToGetStoragesContainerEncryptionOutputWithContext(ctx context.Context) GetStoragesContainerEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerEncryptionOutput)
+}
+
+type GetStoragesContainerEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerEncryption)(nil)).Elem()
+}
+
+func (o GetStoragesContainerEncryptionOutput) ToGetStoragesContainerEncryptionOutput() GetStoragesContainerEncryptionOutput {
+	return o
+}
+
+func (o GetStoragesContainerEncryptionOutput) ToGetStoragesContainerEncryptionOutputWithContext(ctx context.Context) GetStoragesContainerEncryptionOutput {
+	return o
+}
+
+// Encryption algorithm
+func (o GetStoragesContainerEncryptionOutput) SseAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerEncryption) string { return v.SseAlgorithm }).(pulumi.StringOutput)
+}
+
+type GetStoragesContainerObject struct {
+	// ETag
+	Etag string `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker bool `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest bool `pulumi:"isLatest"`
+	// Key
+	Key string `pulumi:"key"`
+	// Last modification date
+	LastModified string `pulumi:"lastModified"`
+	// Size (bytes)
+	Size float64 `pulumi:"size"`
+	// Storage class
+	StorageClass string `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId string `pulumi:"versionId"`
+}
+
+// GetStoragesContainerObjectInput is an input type that accepts GetStoragesContainerObjectArgs and GetStoragesContainerObjectOutput values.
+// You can construct a concrete instance of `GetStoragesContainerObjectInput` via:
+//
+//	GetStoragesContainerObjectArgs{...}
+type GetStoragesContainerObjectInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerObjectOutput() GetStoragesContainerObjectOutput
+	ToGetStoragesContainerObjectOutputWithContext(context.Context) GetStoragesContainerObjectOutput
+}
+
+type GetStoragesContainerObjectArgs struct {
+	// ETag
+	Etag pulumi.StringInput `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker pulumi.BoolInput `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest pulumi.BoolInput `pulumi:"isLatest"`
+	// Key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Last modification date
+	LastModified pulumi.StringInput `pulumi:"lastModified"`
+	// Size (bytes)
+	Size pulumi.Float64Input `pulumi:"size"`
+	// Storage class
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId pulumi.StringInput `pulumi:"versionId"`
+}
+
+func (GetStoragesContainerObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerObject)(nil)).Elem()
+}
+
+func (i GetStoragesContainerObjectArgs) ToGetStoragesContainerObjectOutput() GetStoragesContainerObjectOutput {
+	return i.ToGetStoragesContainerObjectOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerObjectArgs) ToGetStoragesContainerObjectOutputWithContext(ctx context.Context) GetStoragesContainerObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerObjectOutput)
+}
+
+// GetStoragesContainerObjectArrayInput is an input type that accepts GetStoragesContainerObjectArray and GetStoragesContainerObjectArrayOutput values.
+// You can construct a concrete instance of `GetStoragesContainerObjectArrayInput` via:
+//
+//	GetStoragesContainerObjectArray{ GetStoragesContainerObjectArgs{...} }
+type GetStoragesContainerObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerObjectArrayOutput() GetStoragesContainerObjectArrayOutput
+	ToGetStoragesContainerObjectArrayOutputWithContext(context.Context) GetStoragesContainerObjectArrayOutput
+}
+
+type GetStoragesContainerObjectArray []GetStoragesContainerObjectInput
+
+func (GetStoragesContainerObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragesContainerObject)(nil)).Elem()
+}
+
+func (i GetStoragesContainerObjectArray) ToGetStoragesContainerObjectArrayOutput() GetStoragesContainerObjectArrayOutput {
+	return i.ToGetStoragesContainerObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerObjectArray) ToGetStoragesContainerObjectArrayOutputWithContext(ctx context.Context) GetStoragesContainerObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerObjectArrayOutput)
+}
+
+type GetStoragesContainerObjectOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerObject)(nil)).Elem()
+}
+
+func (o GetStoragesContainerObjectOutput) ToGetStoragesContainerObjectOutput() GetStoragesContainerObjectOutput {
+	return o
+}
+
+func (o GetStoragesContainerObjectOutput) ToGetStoragesContainerObjectOutputWithContext(ctx context.Context) GetStoragesContainerObjectOutput {
+	return o
+}
+
+// ETag
+func (o GetStoragesContainerObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Whether this object is a delete marker
+func (o GetStoragesContainerObjectOutput) IsDeleteMarker() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) bool { return v.IsDeleteMarker }).(pulumi.BoolOutput)
+}
+
+// Whether this is the latest version of the object
+func (o GetStoragesContainerObjectOutput) IsLatest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) bool { return v.IsLatest }).(pulumi.BoolOutput)
+}
+
+// Key
+func (o GetStoragesContainerObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Last modification date
+func (o GetStoragesContainerObjectOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// Size (bytes)
+func (o GetStoragesContainerObjectOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStoragesContainerObject) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// Storage class
+func (o GetStoragesContainerObjectOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// Version ID of the object
+func (o GetStoragesContainerObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerObject) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+type GetStoragesContainerObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragesContainerObject)(nil)).Elem()
+}
+
+func (o GetStoragesContainerObjectArrayOutput) ToGetStoragesContainerObjectArrayOutput() GetStoragesContainerObjectArrayOutput {
+	return o
+}
+
+func (o GetStoragesContainerObjectArrayOutput) ToGetStoragesContainerObjectArrayOutputWithContext(ctx context.Context) GetStoragesContainerObjectArrayOutput {
+	return o
+}
+
+func (o GetStoragesContainerObjectArrayOutput) Index(i pulumi.IntInput) GetStoragesContainerObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoragesContainerObject {
+		return vs[0].([]GetStoragesContainerObject)[vs[1].(int)]
+	}).(GetStoragesContainerObjectOutput)
+}
+
+type GetStoragesContainerReplication struct {
+	// Replication rules
+	Rules []GetStoragesContainerReplicationRule `pulumi:"rules"`
+}
+
+// GetStoragesContainerReplicationInput is an input type that accepts GetStoragesContainerReplicationArgs and GetStoragesContainerReplicationOutput values.
+// You can construct a concrete instance of `GetStoragesContainerReplicationInput` via:
+//
+//	GetStoragesContainerReplicationArgs{...}
+type GetStoragesContainerReplicationInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerReplicationOutput() GetStoragesContainerReplicationOutput
+	ToGetStoragesContainerReplicationOutputWithContext(context.Context) GetStoragesContainerReplicationOutput
+}
+
+type GetStoragesContainerReplicationArgs struct {
+	// Replication rules
+	Rules GetStoragesContainerReplicationRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetStoragesContainerReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplication)(nil)).Elem()
+}
+
+func (i GetStoragesContainerReplicationArgs) ToGetStoragesContainerReplicationOutput() GetStoragesContainerReplicationOutput {
+	return i.ToGetStoragesContainerReplicationOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerReplicationArgs) ToGetStoragesContainerReplicationOutputWithContext(ctx context.Context) GetStoragesContainerReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerReplicationOutput)
+}
+
+type GetStoragesContainerReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplication)(nil)).Elem()
+}
+
+func (o GetStoragesContainerReplicationOutput) ToGetStoragesContainerReplicationOutput() GetStoragesContainerReplicationOutput {
+	return o
+}
+
+func (o GetStoragesContainerReplicationOutput) ToGetStoragesContainerReplicationOutputWithContext(ctx context.Context) GetStoragesContainerReplicationOutput {
+	return o
+}
+
+// Replication rules
+func (o GetStoragesContainerReplicationOutput) Rules() GetStoragesContainerReplicationRuleArrayOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplication) []GetStoragesContainerReplicationRule { return v.Rules }).(GetStoragesContainerReplicationRuleArrayOutput)
+}
+
+type GetStoragesContainerReplicationRule struct {
+	// Delete marker replication
+	DeleteMarkerReplication string `pulumi:"deleteMarkerReplication"`
+	// Rule destination configuration
+	Destination GetStoragesContainerReplicationRuleDestination `pulumi:"destination"`
+	// Rule filters
+	Filter GetStoragesContainerReplicationRuleFilter `pulumi:"filter"`
+	// Rule ID
+	Id string `pulumi:"id"`
+	// Rule priority
+	Priority float64 `pulumi:"priority"`
+	// Rule status
+	Status string `pulumi:"status"`
+}
+
+// GetStoragesContainerReplicationRuleInput is an input type that accepts GetStoragesContainerReplicationRuleArgs and GetStoragesContainerReplicationRuleOutput values.
+// You can construct a concrete instance of `GetStoragesContainerReplicationRuleInput` via:
+//
+//	GetStoragesContainerReplicationRuleArgs{...}
+type GetStoragesContainerReplicationRuleInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerReplicationRuleOutput() GetStoragesContainerReplicationRuleOutput
+	ToGetStoragesContainerReplicationRuleOutputWithContext(context.Context) GetStoragesContainerReplicationRuleOutput
+}
+
+type GetStoragesContainerReplicationRuleArgs struct {
+	// Delete marker replication
+	DeleteMarkerReplication pulumi.StringInput `pulumi:"deleteMarkerReplication"`
+	// Rule destination configuration
+	Destination GetStoragesContainerReplicationRuleDestinationInput `pulumi:"destination"`
+	// Rule filters
+	Filter GetStoragesContainerReplicationRuleFilterInput `pulumi:"filter"`
+	// Rule ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Rule priority
+	Priority pulumi.Float64Input `pulumi:"priority"`
+	// Rule status
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetStoragesContainerReplicationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplicationRule)(nil)).Elem()
+}
+
+func (i GetStoragesContainerReplicationRuleArgs) ToGetStoragesContainerReplicationRuleOutput() GetStoragesContainerReplicationRuleOutput {
+	return i.ToGetStoragesContainerReplicationRuleOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerReplicationRuleArgs) ToGetStoragesContainerReplicationRuleOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerReplicationRuleOutput)
+}
+
+// GetStoragesContainerReplicationRuleArrayInput is an input type that accepts GetStoragesContainerReplicationRuleArray and GetStoragesContainerReplicationRuleArrayOutput values.
+// You can construct a concrete instance of `GetStoragesContainerReplicationRuleArrayInput` via:
+//
+//	GetStoragesContainerReplicationRuleArray{ GetStoragesContainerReplicationRuleArgs{...} }
+type GetStoragesContainerReplicationRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerReplicationRuleArrayOutput() GetStoragesContainerReplicationRuleArrayOutput
+	ToGetStoragesContainerReplicationRuleArrayOutputWithContext(context.Context) GetStoragesContainerReplicationRuleArrayOutput
+}
+
+type GetStoragesContainerReplicationRuleArray []GetStoragesContainerReplicationRuleInput
+
+func (GetStoragesContainerReplicationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragesContainerReplicationRule)(nil)).Elem()
+}
+
+func (i GetStoragesContainerReplicationRuleArray) ToGetStoragesContainerReplicationRuleArrayOutput() GetStoragesContainerReplicationRuleArrayOutput {
+	return i.ToGetStoragesContainerReplicationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerReplicationRuleArray) ToGetStoragesContainerReplicationRuleArrayOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerReplicationRuleArrayOutput)
+}
+
+type GetStoragesContainerReplicationRuleOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerReplicationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplicationRule)(nil)).Elem()
+}
+
+func (o GetStoragesContainerReplicationRuleOutput) ToGetStoragesContainerReplicationRuleOutput() GetStoragesContainerReplicationRuleOutput {
+	return o
+}
+
+func (o GetStoragesContainerReplicationRuleOutput) ToGetStoragesContainerReplicationRuleOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleOutput {
+	return o
+}
+
+// Delete marker replication
+func (o GetStoragesContainerReplicationRuleOutput) DeleteMarkerReplication() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRule) string { return v.DeleteMarkerReplication }).(pulumi.StringOutput)
+}
+
+// Rule destination configuration
+func (o GetStoragesContainerReplicationRuleOutput) Destination() GetStoragesContainerReplicationRuleDestinationOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRule) GetStoragesContainerReplicationRuleDestination {
+		return v.Destination
+	}).(GetStoragesContainerReplicationRuleDestinationOutput)
+}
+
+// Rule filters
+func (o GetStoragesContainerReplicationRuleOutput) Filter() GetStoragesContainerReplicationRuleFilterOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRule) GetStoragesContainerReplicationRuleFilter { return v.Filter }).(GetStoragesContainerReplicationRuleFilterOutput)
+}
+
+// Rule ID
+func (o GetStoragesContainerReplicationRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Rule priority
+func (o GetStoragesContainerReplicationRuleOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRule) float64 { return v.Priority }).(pulumi.Float64Output)
+}
+
+// Rule status
+func (o GetStoragesContainerReplicationRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetStoragesContainerReplicationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerReplicationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragesContainerReplicationRule)(nil)).Elem()
+}
+
+func (o GetStoragesContainerReplicationRuleArrayOutput) ToGetStoragesContainerReplicationRuleArrayOutput() GetStoragesContainerReplicationRuleArrayOutput {
+	return o
+}
+
+func (o GetStoragesContainerReplicationRuleArrayOutput) ToGetStoragesContainerReplicationRuleArrayOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleArrayOutput {
+	return o
+}
+
+func (o GetStoragesContainerReplicationRuleArrayOutput) Index(i pulumi.IntInput) GetStoragesContainerReplicationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoragesContainerReplicationRule {
+		return vs[0].([]GetStoragesContainerReplicationRule)[vs[1].(int)]
+	}).(GetStoragesContainerReplicationRuleOutput)
+}
+
+type GetStoragesContainerReplicationRuleDestination struct {
+	// Destination bucket name
+	Name string `pulumi:"name"`
+	// Destination region, can be null if destination bucket has been deleted
+	Region string `pulumi:"region"`
+	// Destination storage class
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// GetStoragesContainerReplicationRuleDestinationInput is an input type that accepts GetStoragesContainerReplicationRuleDestinationArgs and GetStoragesContainerReplicationRuleDestinationOutput values.
+// You can construct a concrete instance of `GetStoragesContainerReplicationRuleDestinationInput` via:
+//
+//	GetStoragesContainerReplicationRuleDestinationArgs{...}
+type GetStoragesContainerReplicationRuleDestinationInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerReplicationRuleDestinationOutput() GetStoragesContainerReplicationRuleDestinationOutput
+	ToGetStoragesContainerReplicationRuleDestinationOutputWithContext(context.Context) GetStoragesContainerReplicationRuleDestinationOutput
+}
+
+type GetStoragesContainerReplicationRuleDestinationArgs struct {
+	// Destination bucket name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Destination region, can be null if destination bucket has been deleted
+	Region pulumi.StringInput `pulumi:"region"`
+	// Destination storage class
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (GetStoragesContainerReplicationRuleDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplicationRuleDestination)(nil)).Elem()
+}
+
+func (i GetStoragesContainerReplicationRuleDestinationArgs) ToGetStoragesContainerReplicationRuleDestinationOutput() GetStoragesContainerReplicationRuleDestinationOutput {
+	return i.ToGetStoragesContainerReplicationRuleDestinationOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerReplicationRuleDestinationArgs) ToGetStoragesContainerReplicationRuleDestinationOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerReplicationRuleDestinationOutput)
+}
+
+type GetStoragesContainerReplicationRuleDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerReplicationRuleDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplicationRuleDestination)(nil)).Elem()
+}
+
+func (o GetStoragesContainerReplicationRuleDestinationOutput) ToGetStoragesContainerReplicationRuleDestinationOutput() GetStoragesContainerReplicationRuleDestinationOutput {
+	return o
+}
+
+func (o GetStoragesContainerReplicationRuleDestinationOutput) ToGetStoragesContainerReplicationRuleDestinationOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleDestinationOutput {
+	return o
+}
+
+// Destination bucket name
+func (o GetStoragesContainerReplicationRuleDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRuleDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Destination region, can be null if destination bucket has been deleted
+func (o GetStoragesContainerReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Destination storage class
+func (o GetStoragesContainerReplicationRuleDestinationOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRuleDestination) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type GetStoragesContainerReplicationRuleFilter struct {
+	// Prefix filter
+	Prefix string `pulumi:"prefix"`
+	// Tags filter
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetStoragesContainerReplicationRuleFilterInput is an input type that accepts GetStoragesContainerReplicationRuleFilterArgs and GetStoragesContainerReplicationRuleFilterOutput values.
+// You can construct a concrete instance of `GetStoragesContainerReplicationRuleFilterInput` via:
+//
+//	GetStoragesContainerReplicationRuleFilterArgs{...}
+type GetStoragesContainerReplicationRuleFilterInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerReplicationRuleFilterOutput() GetStoragesContainerReplicationRuleFilterOutput
+	ToGetStoragesContainerReplicationRuleFilterOutputWithContext(context.Context) GetStoragesContainerReplicationRuleFilterOutput
+}
+
+type GetStoragesContainerReplicationRuleFilterArgs struct {
+	// Prefix filter
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Tags filter
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetStoragesContainerReplicationRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplicationRuleFilter)(nil)).Elem()
+}
+
+func (i GetStoragesContainerReplicationRuleFilterArgs) ToGetStoragesContainerReplicationRuleFilterOutput() GetStoragesContainerReplicationRuleFilterOutput {
+	return i.ToGetStoragesContainerReplicationRuleFilterOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerReplicationRuleFilterArgs) ToGetStoragesContainerReplicationRuleFilterOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerReplicationRuleFilterOutput)
+}
+
+type GetStoragesContainerReplicationRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerReplicationRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerReplicationRuleFilter)(nil)).Elem()
+}
+
+func (o GetStoragesContainerReplicationRuleFilterOutput) ToGetStoragesContainerReplicationRuleFilterOutput() GetStoragesContainerReplicationRuleFilterOutput {
+	return o
+}
+
+func (o GetStoragesContainerReplicationRuleFilterOutput) ToGetStoragesContainerReplicationRuleFilterOutputWithContext(ctx context.Context) GetStoragesContainerReplicationRuleFilterOutput {
+	return o
+}
+
+// Prefix filter
+func (o GetStoragesContainerReplicationRuleFilterOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRuleFilter) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Tags filter
+func (o GetStoragesContainerReplicationRuleFilterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRuleFilter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetStoragesContainerVersioning struct {
+	// Versioning status
+	Status string `pulumi:"status"`
+}
+
+// GetStoragesContainerVersioningInput is an input type that accepts GetStoragesContainerVersioningArgs and GetStoragesContainerVersioningOutput values.
+// You can construct a concrete instance of `GetStoragesContainerVersioningInput` via:
+//
+//	GetStoragesContainerVersioningArgs{...}
+type GetStoragesContainerVersioningInput interface {
+	pulumi.Input
+
+	ToGetStoragesContainerVersioningOutput() GetStoragesContainerVersioningOutput
+	ToGetStoragesContainerVersioningOutputWithContext(context.Context) GetStoragesContainerVersioningOutput
+}
+
+type GetStoragesContainerVersioningArgs struct {
+	// Versioning status
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetStoragesContainerVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerVersioning)(nil)).Elem()
+}
+
+func (i GetStoragesContainerVersioningArgs) ToGetStoragesContainerVersioningOutput() GetStoragesContainerVersioningOutput {
+	return i.ToGetStoragesContainerVersioningOutputWithContext(context.Background())
+}
+
+func (i GetStoragesContainerVersioningArgs) ToGetStoragesContainerVersioningOutputWithContext(ctx context.Context) GetStoragesContainerVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragesContainerVersioningOutput)
+}
+
+type GetStoragesContainerVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetStoragesContainerVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragesContainerVersioning)(nil)).Elem()
+}
+
+func (o GetStoragesContainerVersioningOutput) ToGetStoragesContainerVersioningOutput() GetStoragesContainerVersioningOutput {
+	return o
+}
+
+func (o GetStoragesContainerVersioningOutput) ToGetStoragesContainerVersioningOutputWithContext(ctx context.Context) GetStoragesContainerVersioningOutput {
+	return o
+}
+
+// Versioning status
+func (o GetStoragesContainerVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragesContainerVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetUserRole struct {
+	Description string   `pulumi:"description"`
+	Id          string   `pulumi:"id"`
+	Name        string   `pulumi:"name"`
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -11082,13 +18297,9 @@ type GetUserRoleInput interface {
 }
 
 type GetUserRoleArgs struct {
-	// description of the role
-	Description pulumi.StringInput `pulumi:"description"`
-	// id of the role
-	Id pulumi.StringInput `pulumi:"id"`
-	// name of the role
-	Name pulumi.StringInput `pulumi:"name"`
-	// list of permissions associated with the role
+	Description pulumi.StringInput      `pulumi:"description"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Name        pulumi.StringInput      `pulumi:"name"`
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -11143,22 +18354,18 @@ func (o GetUserRoleOutput) ToGetUserRoleOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// description of the role
 func (o GetUserRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// id of the role
 func (o GetUserRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// name of the role
 func (o GetUserRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// list of permissions associated with the role
 func (o GetUserRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUserRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -11184,19 +18391,12 @@ func (o GetUserRoleArrayOutput) Index(i pulumi.IntInput) GetUserRoleOutput {
 }
 
 type GetUsersUser struct {
-	// the date the user was created.
-	CreationDate string `pulumi:"creationDate"`
-	// description of the role
-	Description string `pulumi:"description"`
-	// A list of roles associated with the user.
-	Roles []GetUsersUserRole `pulumi:"roles"`
-	// the status of the user. should be normally set to 'ok'.
-	Status string `pulumi:"status"`
-	// The ID of a public cloud project's user.
-	UserId string `pulumi:"userId"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
-	Username string `pulumi:"username"`
+	CreationDate string             `pulumi:"creationDate"`
+	Description  string             `pulumi:"description"`
+	Roles        []GetUsersUserRole `pulumi:"roles"`
+	Status       string             `pulumi:"status"`
+	UserId       string             `pulumi:"userId"`
+	Username     string             `pulumi:"username"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -11211,19 +18411,12 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	// the date the user was created.
-	CreationDate pulumi.StringInput `pulumi:"creationDate"`
-	// description of the role
-	Description pulumi.StringInput `pulumi:"description"`
-	// A list of roles associated with the user.
-	Roles GetUsersUserRoleArrayInput `pulumi:"roles"`
-	// the status of the user. should be normally set to 'ok'.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of a public cloud project's user.
-	UserId pulumi.StringInput `pulumi:"userId"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
-	Username pulumi.StringInput `pulumi:"username"`
+	CreationDate pulumi.StringInput         `pulumi:"creationDate"`
+	Description  pulumi.StringInput         `pulumi:"description"`
+	Roles        GetUsersUserRoleArrayInput `pulumi:"roles"`
+	Status       pulumi.StringInput         `pulumi:"status"`
+	UserId       pulumi.StringInput         `pulumi:"userId"`
+	Username     pulumi.StringInput         `pulumi:"username"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -11277,33 +18470,26 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
-// the date the user was created.
 func (o GetUsersUserOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// description of the role
 func (o GetUsersUserOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// A list of roles associated with the user.
 func (o GetUsersUserOutput) Roles() GetUsersUserRoleArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserRole { return v.Roles }).(GetUsersUserRoleArrayOutput)
 }
 
-// the status of the user. should be normally set to 'ok'.
 func (o GetUsersUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of a public cloud project's user.
 func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// the username generated for the user. This username can be used with
-// the Openstack API.
 func (o GetUsersUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -11329,13 +18515,9 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 type GetUsersUserRole struct {
-	// description of the role
-	Description string `pulumi:"description"`
-	// id of the role
-	Id string `pulumi:"id"`
-	// name of the role
-	Name string `pulumi:"name"`
-	// list of permissions associated with the role
+	Description string   `pulumi:"description"`
+	Id          string   `pulumi:"id"`
+	Name        string   `pulumi:"name"`
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -11351,13 +18533,9 @@ type GetUsersUserRoleInput interface {
 }
 
 type GetUsersUserRoleArgs struct {
-	// description of the role
-	Description pulumi.StringInput `pulumi:"description"`
-	// id of the role
-	Id pulumi.StringInput `pulumi:"id"`
-	// name of the role
-	Name pulumi.StringInput `pulumi:"name"`
-	// list of permissions associated with the role
+	Description pulumi.StringInput      `pulumi:"description"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Name        pulumi.StringInput      `pulumi:"name"`
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -11412,22 +18590,18 @@ func (o GetUsersUserRoleOutput) ToGetUsersUserRoleOutputWithContext(ctx context.
 	return o
 }
 
-// description of the role
 func (o GetUsersUserRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// id of the role
 func (o GetUsersUserRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// name of the role
 func (o GetUsersUserRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// list of permissions associated with the role
 func (o GetUsersUserRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersUserRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -11453,11 +18627,11 @@ func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOu
 }
 
 type GetVolumesVolume struct {
-	// The id of the volume
+	// Volume ID
 	Id string `pulumi:"id"`
-	// The name of the volume
+	// Volume name
 	Name string `pulumi:"name"`
-	// The size of the volume
+	// Volume size
 	Size float64 `pulumi:"size"`
 }
 
@@ -11473,11 +18647,11 @@ type GetVolumesVolumeInput interface {
 }
 
 type GetVolumesVolumeArgs struct {
-	// The id of the volume
+	// Volume ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the volume
+	// Volume name
 	Name pulumi.StringInput `pulumi:"name"`
-	// The size of the volume
+	// Volume size
 	Size pulumi.Float64Input `pulumi:"size"`
 }
 
@@ -11532,17 +18706,17 @@ func (o GetVolumesVolumeOutput) ToGetVolumesVolumeOutputWithContext(ctx context.
 	return o
 }
 
-// The id of the volume
+// Volume ID
 func (o GetVolumesVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the volume
+// Volume name
 func (o GetVolumesVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The size of the volume
+// Volume size
 func (o GetVolumesVolumeOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVolumesVolume) float64 { return v.Size }).(pulumi.Float64Output)
 }
@@ -11628,6 +18802,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolTemplateSpecPtrInput)(nil)).Elem(), KubeNodePoolTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubePrivateNetworkConfigurationInput)(nil)).Elem(), KubePrivateNetworkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubePrivateNetworkConfigurationPtrInput)(nil)).Elem(), KubePrivateNetworkConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerFloatingIpInput)(nil)).Elem(), LoadbalancerFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerFloatingIpPtrInput)(nil)).Elem(), LoadbalancerFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerInput)(nil)).Elem(), LoadbalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerArrayInput)(nil)).Elem(), LoadbalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolInput)(nil)).Elem(), LoadbalancerListenerPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolPtrInput)(nil)).Elem(), LoadbalancerListenerPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorPtrInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolMemberInput)(nil)).Elem(), LoadbalancerListenerPoolMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolMemberArrayInput)(nil)).Elem(), LoadbalancerListenerPoolMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistenceInput)(nil)).Elem(), LoadbalancerListenerPoolSessionPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistencePtrInput)(nil)).Elem(), LoadbalancerListenerPoolSessionPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkInput)(nil)).Elem(), LoadbalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPtrInput)(nil)).Elem(), LoadbalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateInput)(nil)).Elem(), LoadbalancerNetworkPrivateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivatePtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpPtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreateInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreatePtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayPtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreateInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreatePtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateNetworkInput)(nil)).Elem(), LoadbalancerNetworkPrivateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateNetworkPtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsAttributeInput)(nil)).Elem(), NetworkPrivateRegionsAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsAttributeArrayInput)(nil)).Elem(), NetworkPrivateRegionsAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsStatusInput)(nil)).Elem(), NetworkPrivateRegionsStatusArgs{})
@@ -11650,12 +18852,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionArrayInput)(nil)).Elem(), ProjectPlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationInput)(nil)).Elem(), ProjectPlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationArrayInput)(nil)).Elem(), ProjectPlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateInput)(nil)).Elem(), RancherCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStatePtrInput)(nil)).Elem(), RancherCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateIpRestrictionInput)(nil)).Elem(), RancherCurrentStateIpRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateIpRestrictionArrayInput)(nil)).Elem(), RancherCurrentStateIpRestrictionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateNetworkingInput)(nil)).Elem(), RancherCurrentStateNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateNetworkingPtrInput)(nil)).Elem(), RancherCurrentStateNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateUsageInput)(nil)).Elem(), RancherCurrentStateUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateUsagePtrInput)(nil)).Elem(), RancherCurrentStateUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentTaskInput)(nil)).Elem(), RancherCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentTaskArrayInput)(nil)).Elem(), RancherCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherTargetSpecInput)(nil)).Elem(), RancherTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherTargetSpecPtrInput)(nil)).Elem(), RancherTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherTargetSpecIpRestrictionInput)(nil)).Elem(), RancherTargetSpecIpRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RancherTargetSpecIpRestrictionArrayInput)(nil)).Elem(), RancherTargetSpecIpRestrictionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetInput)(nil)).Elem(), RegionNetworkSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetPtrInput)(nil)).Elem(), RegionNetworkSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetAllocationPoolInput)(nil)).Elem(), RegionNetworkSubnetAllocationPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetAllocationPoolArrayInput)(nil)).Elem(), RegionNetworkSubnetAllocationPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetHostRouteInput)(nil)).Elem(), RegionNetworkSubnetHostRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkSubnetHostRouteArrayInput)(nil)).Elem(), RegionNetworkSubnetHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageEncryptionInput)(nil)).Elem(), StorageEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageEncryptionPtrInput)(nil)).Elem(), StorageEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectInput)(nil)).Elem(), StorageObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectArrayInput)(nil)).Elem(), StorageObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationInput)(nil)).Elem(), StorageReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationPtrInput)(nil)).Elem(), StorageReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleInput)(nil)).Elem(), StorageReplicationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleArrayInput)(nil)).Elem(), StorageReplicationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleDestinationInput)(nil)).Elem(), StorageReplicationRuleDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleDestinationPtrInput)(nil)).Elem(), StorageReplicationRuleDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterInput)(nil)).Elem(), StorageReplicationRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterPtrInput)(nil)).Elem(), StorageReplicationRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterTagInput)(nil)).Elem(), StorageReplicationRuleFilterTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterTagArrayInput)(nil)).Elem(), StorageReplicationRuleFilterTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageVersioningInput)(nil)).Elem(), StorageVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageVersioningPtrInput)(nil)).Elem(), StorageVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleInput)(nil)).Elem(), UserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleArrayInput)(nil)).Elem(), UserRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSubOperationInput)(nil)).Elem(), VolumeSubOperationArgs{})
@@ -11676,6 +18908,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistriesResultArrayInput)(nil)).Elem(), GetContainerRegistriesResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistryUsersResultInput)(nil)).Elem(), GetContainerRegistryUsersResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRegistryUsersResultArrayInput)(nil)).Elem(), GetContainerRegistryUsersResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlavorsFlavorInput)(nil)).Elem(), GetFlavorsFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlavorsFlavorArrayInput)(nil)).Elem(), GetFlavorsFlavorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlavorsFlavorCapabilityInput)(nil)).Elem(), GetFlavorsFlavorCapabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlavorsFlavorCapabilityArrayInput)(nil)).Elem(), GetFlavorsFlavorCapabilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlavorsFlavorPlanCodesInput)(nil)).Elem(), GetFlavorsFlavorPlanCodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipArrayInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs{})
@@ -11711,6 +18948,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolTemplateSpecPtrInput)(nil)).Elem(), GetKubeNodePoolTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodesNodeInput)(nil)).Elem(), GetKubeNodesNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodesNodeArrayInput)(nil)).Elem(), GetKubeNodesNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFlavorsFlavorInput)(nil)).Elem(), GetLoadBalancerFlavorsFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFlavorsFlavorArrayInput)(nil)).Elem(), GetLoadBalancerFlavorsFlavorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFloatingIpInput)(nil)).Elem(), GetLoadBalancerFloatingIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerInput)(nil)).Elem(), GetLoadBalancersLoadbalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadbalancerArrayInput)(nil)).Elem(), GetLoadBalancersLoadbalancerArray{})
@@ -11729,8 +18968,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchUserAclArrayInput)(nil)).Elem(), GetOpenSearchUserAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusTargetInput)(nil)).Elem(), GetPrometheusTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusTargetArrayInput)(nil)).Elem(), GetPrometheusTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentStateInput)(nil)).Elem(), GetRancherCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentStateIpRestrictionInput)(nil)).Elem(), GetRancherCurrentStateIpRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentStateIpRestrictionArrayInput)(nil)).Elem(), GetRancherCurrentStateIpRestrictionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentStateNetworkingInput)(nil)).Elem(), GetRancherCurrentStateNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentStateUsageInput)(nil)).Elem(), GetRancherCurrentStateUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentTaskInput)(nil)).Elem(), GetRancherCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherCurrentTaskArrayInput)(nil)).Elem(), GetRancherCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherPlanPlanInput)(nil)).Elem(), GetRancherPlanPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherPlanPlanArrayInput)(nil)).Elem(), GetRancherPlanPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherTargetSpecInput)(nil)).Elem(), GetRancherTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherTargetSpecIpRestrictionInput)(nil)).Elem(), GetRancherTargetSpecIpRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherTargetSpecIpRestrictionArrayInput)(nil)).Elem(), GetRancherTargetSpecIpRestrictionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherVersionVersionInput)(nil)).Elem(), GetRancherVersionVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRancherVersionVersionArrayInput)(nil)).Elem(), GetRancherVersionVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionServiceInput)(nil)).Elem(), GetRegionServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionServiceArrayInput)(nil)).Elem(), GetRegionServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEncryptionInput)(nil)).Elem(), GetStorageEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageObjectInput)(nil)).Elem(), GetStorageObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageObjectArrayInput)(nil)).Elem(), GetStorageObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationInput)(nil)).Elem(), GetStorageReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationRuleInput)(nil)).Elem(), GetStorageReplicationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationRuleArrayInput)(nil)).Elem(), GetStorageReplicationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationRuleDestinationInput)(nil)).Elem(), GetStorageReplicationRuleDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationRuleFilterInput)(nil)).Elem(), GetStorageReplicationRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageVersioningInput)(nil)).Elem(), GetStorageVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerInput)(nil)).Elem(), GetStoragesContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerArrayInput)(nil)).Elem(), GetStoragesContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerEncryptionInput)(nil)).Elem(), GetStoragesContainerEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerObjectInput)(nil)).Elem(), GetStoragesContainerObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerObjectArrayInput)(nil)).Elem(), GetStoragesContainerObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerReplicationInput)(nil)).Elem(), GetStoragesContainerReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerReplicationRuleInput)(nil)).Elem(), GetStoragesContainerReplicationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerReplicationRuleArrayInput)(nil)).Elem(), GetStoragesContainerReplicationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerReplicationRuleDestinationInput)(nil)).Elem(), GetStoragesContainerReplicationRuleDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerReplicationRuleFilterInput)(nil)).Elem(), GetStoragesContainerReplicationRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragesContainerVersioningInput)(nil)).Elem(), GetStoragesContainerVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserRoleInput)(nil)).Elem(), GetUserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserRoleArrayInput)(nil)).Elem(), GetUserRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
@@ -11799,6 +19072,34 @@ func init() {
 	pulumi.RegisterOutputType(KubeNodePoolTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(KubePrivateNetworkConfigurationOutput{})
 	pulumi.RegisterOutputType(KubePrivateNetworkConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerFloatingIpOutput{})
+	pulumi.RegisterOutputType(LoadbalancerFloatingIpPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerArrayOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolMemberOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolMemberArrayOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolSessionPersistenceOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerPoolSessionPersistencePtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivatePtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpCreateOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayCreateOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayCreatePtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateNetworkOutput{})
+	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateNetworkPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateRegionsAttributeOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateRegionsAttributeArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateRegionsStatusOutput{})
@@ -11821,12 +19122,42 @@ func init() {
 	pulumi.RegisterOutputType(ProjectPlanOptionArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationOutput{})
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateIpRestrictionOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateIpRestrictionArrayOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateNetworkingOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateNetworkingPtrOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateUsageOutput{})
+	pulumi.RegisterOutputType(RancherCurrentStateUsagePtrOutput{})
+	pulumi.RegisterOutputType(RancherCurrentTaskOutput{})
+	pulumi.RegisterOutputType(RancherCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(RancherTargetSpecOutput{})
+	pulumi.RegisterOutputType(RancherTargetSpecPtrOutput{})
+	pulumi.RegisterOutputType(RancherTargetSpecIpRestrictionOutput{})
+	pulumi.RegisterOutputType(RancherTargetSpecIpRestrictionArrayOutput{})
 	pulumi.RegisterOutputType(RegionNetworkSubnetOutput{})
 	pulumi.RegisterOutputType(RegionNetworkSubnetPtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkSubnetAllocationPoolOutput{})
 	pulumi.RegisterOutputType(RegionNetworkSubnetAllocationPoolArrayOutput{})
 	pulumi.RegisterOutputType(RegionNetworkSubnetHostRouteOutput{})
 	pulumi.RegisterOutputType(RegionNetworkSubnetHostRouteArrayOutput{})
+	pulumi.RegisterOutputType(StorageEncryptionOutput{})
+	pulumi.RegisterOutputType(StorageEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(StorageObjectOutput{})
+	pulumi.RegisterOutputType(StorageObjectArrayOutput{})
+	pulumi.RegisterOutputType(StorageReplicationOutput{})
+	pulumi.RegisterOutputType(StorageReplicationPtrOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleArrayOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleDestinationOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleDestinationPtrOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleFilterOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleFilterPtrOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleFilterTagOutput{})
+	pulumi.RegisterOutputType(StorageReplicationRuleFilterTagArrayOutput{})
+	pulumi.RegisterOutputType(StorageVersioningOutput{})
+	pulumi.RegisterOutputType(StorageVersioningPtrOutput{})
 	pulumi.RegisterOutputType(UserRoleOutput{})
 	pulumi.RegisterOutputType(UserRoleArrayOutput{})
 	pulumi.RegisterOutputType(VolumeSubOperationOutput{})
@@ -11847,6 +19178,11 @@ func init() {
 	pulumi.RegisterOutputType(GetContainerRegistriesResultArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRegistryUsersResultOutput{})
 	pulumi.RegisterOutputType(GetContainerRegistryUsersResultArrayOutput{})
+	pulumi.RegisterOutputType(GetFlavorsFlavorOutput{})
+	pulumi.RegisterOutputType(GetFlavorsFlavorArrayOutput{})
+	pulumi.RegisterOutputType(GetFlavorsFlavorCapabilityOutput{})
+	pulumi.RegisterOutputType(GetFlavorsFlavorCapabilityArrayOutput{})
+	pulumi.RegisterOutputType(GetFlavorsFlavorPlanCodesOutput{})
 	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipOutput{})
 	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipArrayOutput{})
 	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput{})
@@ -11882,6 +19218,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubeNodePoolTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetKubeNodesNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerFlavorsFlavorOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerFlavorsFlavorArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFloatingIpOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadbalancerArrayOutput{})
@@ -11900,8 +19238,42 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchUserAclArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusTargetOutput{})
 	pulumi.RegisterOutputType(GetPrometheusTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentStateIpRestrictionOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentStateIpRestrictionArrayOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentStateNetworkingOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentStateUsageOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentTaskOutput{})
+	pulumi.RegisterOutputType(GetRancherCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetRancherPlanPlanOutput{})
+	pulumi.RegisterOutputType(GetRancherPlanPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetRancherTargetSpecOutput{})
+	pulumi.RegisterOutputType(GetRancherTargetSpecIpRestrictionOutput{})
+	pulumi.RegisterOutputType(GetRancherTargetSpecIpRestrictionArrayOutput{})
+	pulumi.RegisterOutputType(GetRancherVersionVersionOutput{})
+	pulumi.RegisterOutputType(GetRancherVersionVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionServiceOutput{})
 	pulumi.RegisterOutputType(GetRegionServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetStorageEncryptionOutput{})
+	pulumi.RegisterOutputType(GetStorageObjectOutput{})
+	pulumi.RegisterOutputType(GetStorageObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetStorageReplicationOutput{})
+	pulumi.RegisterOutputType(GetStorageReplicationRuleOutput{})
+	pulumi.RegisterOutputType(GetStorageReplicationRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetStorageReplicationRuleDestinationOutput{})
+	pulumi.RegisterOutputType(GetStorageReplicationRuleFilterOutput{})
+	pulumi.RegisterOutputType(GetStorageVersioningOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerEncryptionOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerObjectOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerReplicationOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerReplicationRuleOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerReplicationRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerReplicationRuleDestinationOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerReplicationRuleFilterOutput{})
+	pulumi.RegisterOutputType(GetStoragesContainerVersioningOutput{})
 	pulumi.RegisterOutputType(GetUserRoleOutput{})
 	pulumi.RegisterOutputType(GetUserRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})

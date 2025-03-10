@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attach a Public Cloud Project to a VRack.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const vcp = new ovh.vrack.CloudProject("vcp", {
- *     projectId: "67890",
- *     serviceName: "12345",
- * });
- * ```
- *
- * ## Import
- *
- * Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
- * ```
- */
 export class CloudProject extends pulumi.CustomResource {
     /**
      * Get an existing CloudProject resource's state with the given name, ID, and optional extra
@@ -57,14 +32,9 @@ export class CloudProject extends pulumi.CustomResource {
         return obj['__pulumiType'] === CloudProject.__pulumiType;
     }
 
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * Service name of the vrack resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -103,14 +73,9 @@ export class CloudProject extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudProject resources.
  */
 export interface CloudProjectState {
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     projectId?: pulumi.Input<string>;
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * Service name of the vrack resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -119,14 +84,9 @@ export interface CloudProjectState {
  * The set of arguments for constructing a CloudProject resource.
  */
 export interface CloudProjectArgs {
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     projectId: pulumi.Input<string>;
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * Service name of the vrack resource.
      */
     serviceName: pulumi.Input<string>;
 }

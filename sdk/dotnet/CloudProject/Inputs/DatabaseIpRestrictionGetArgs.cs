@@ -25,7 +25,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Current status of the cluster.
+        /// Current status of the IP restriction
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

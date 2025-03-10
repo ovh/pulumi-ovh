@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a bank account
- * payment mean associated with an OVHcloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const ba = ovh.Me.getPaymentmeanBankAccount({
- *     useDefault: true,
- * });
- * ```
- */
 export function getPaymentmeanBankAccount(args?: GetPaymentmeanBankAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetPaymentmeanBankAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,24 +19,9 @@ export function getPaymentmeanBankAccount(args?: GetPaymentmeanBankAccountArgs, 
  * A collection of arguments for invoking getPaymentmeanBankAccount.
  */
 export interface GetPaymentmeanBankAccountArgs {
-    /**
-     * a regexp used to filter bank accounts 
-     * on their `description` attributes.
-     */
     descriptionRegexp?: string;
-    /**
-     * Filter bank accounts on their `state` attribute.
-     * Can be "blockedForIncidents", "valid", "pendingValidation"
-     */
     state?: string;
-    /**
-     * Retrieve bank account marked as default payment mean.
-     */
     useDefault?: boolean;
-    /**
-     * Retrieve oldest bank account.
-     * project.
-     */
     useOldest?: boolean;
 }
 
@@ -59,14 +29,7 @@ export interface GetPaymentmeanBankAccountArgs {
  * A collection of values returned by getPaymentmeanBankAccount.
  */
 export interface GetPaymentmeanBankAccountResult {
-    /**
-     * a boolean which tells if the retrieved bank account
-     * is marked as the default payment mean
-     */
     readonly default: boolean;
-    /**
-     * the description attribute of the bank account
-     */
     readonly description: string;
     readonly descriptionRegexp?: string;
     /**
@@ -77,21 +40,6 @@ export interface GetPaymentmeanBankAccountResult {
     readonly useDefault?: boolean;
     readonly useOldest?: boolean;
 }
-/**
- * Use this data source to retrieve information about a bank account
- * payment mean associated with an OVHcloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const ba = ovh.Me.getPaymentmeanBankAccount({
- *     useDefault: true,
- * });
- * ```
- */
 export function getPaymentmeanBankAccountOutput(args?: GetPaymentmeanBankAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPaymentmeanBankAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -107,23 +55,8 @@ export function getPaymentmeanBankAccountOutput(args?: GetPaymentmeanBankAccount
  * A collection of arguments for invoking getPaymentmeanBankAccount.
  */
 export interface GetPaymentmeanBankAccountOutputArgs {
-    /**
-     * a regexp used to filter bank accounts 
-     * on their `description` attributes.
-     */
     descriptionRegexp?: pulumi.Input<string>;
-    /**
-     * Filter bank accounts on their `state` attribute.
-     * Can be "blockedForIncidents", "valid", "pendingValidation"
-     */
     state?: pulumi.Input<string>;
-    /**
-     * Retrieve bank account marked as default payment mean.
-     */
     useDefault?: pulumi.Input<boolean>;
-    /**
-     * Retrieve oldest bank account.
-     * project.
-     */
     useOldest?: pulumi.Input<boolean>;
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Ip.Outputs
     public sealed class GetServiceRoutedToResult
     {
         /// <summary>
-        /// The service name
+        /// Service where ip is routed to
         /// </summary>
         public readonly string ServiceName;
 

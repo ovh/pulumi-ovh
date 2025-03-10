@@ -8,76 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
-// ServiceName: pulumi.StringRef("ip-1.2.3.4"),
-// State: pulumi.StringRef("ok"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// farmName, err := iploadbalancing.NewTcpFarm(ctx, "farmName", &iploadbalancing.TcpFarmArgs{
-// Port: pulumi.Int(8080),
-// ServiceName: pulumi.String(lb.ServiceName),
-// Zone: pulumi.String("all"),
-// })
-// if err != nil {
-// return err
-// }
-// backend, err := iploadbalancing.NewTcpFarmServer(ctx, "backend", &iploadbalancing.TcpFarmServerArgs{
-// Address: pulumi.String("4.5.6.7"),
-// Backup: pulumi.Bool(true),
-// DisplayName: pulumi.String("mybackend"),
-// FarmId: farmName.ID(),
-// Port: pulumi.Int(80),
-// Probe: pulumi.Bool(true),
-// ProxyProtocolVersion: pulumi.String("v2"),
-// ServiceName: pulumi.String(lb.ServiceName),
-// Ssl: pulumi.Bool(false),
-// Status: pulumi.String("active"),
-// Weight: pulumi.Int(2),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = iploadbalancing.NewRefresh(ctx, "mylb", &iploadbalancing.RefreshArgs{
-// Keepers: pulumi.StringArray{
-// pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-ovh:IpLoadBalancing-refresh:Refresh.pp:23,16-35)),
-// },
-// ServiceName: pulumi.String(lb.ServiceName),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 type Refresh struct {
 	pulumi.CustomResourceState
 
-	// List of values tracked to trigger refresh, used also to form implicit dependencies
-	Keepers pulumi.StringArrayOutput `pulumi:"keepers"`
-	// The internal name of your IP load balancing
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	Keepers     pulumi.StringArrayOutput `pulumi:"keepers"`
+	ServiceName pulumi.StringOutput      `pulumi:"serviceName"`
 }
 
 // NewRefresh registers a new resource with the given unique name, arguments, and options.
@@ -116,16 +55,12 @@ func GetRefresh(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Refresh resources.
 type refreshState struct {
-	// List of values tracked to trigger refresh, used also to form implicit dependencies
-	Keepers []string `pulumi:"keepers"`
-	// The internal name of your IP load balancing
-	ServiceName *string `pulumi:"serviceName"`
+	Keepers     []string `pulumi:"keepers"`
+	ServiceName *string  `pulumi:"serviceName"`
 }
 
 type RefreshState struct {
-	// List of values tracked to trigger refresh, used also to form implicit dependencies
-	Keepers pulumi.StringArrayInput
-	// The internal name of your IP load balancing
+	Keepers     pulumi.StringArrayInput
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -134,17 +69,13 @@ func (RefreshState) ElementType() reflect.Type {
 }
 
 type refreshArgs struct {
-	// List of values tracked to trigger refresh, used also to form implicit dependencies
-	Keepers []string `pulumi:"keepers"`
-	// The internal name of your IP load balancing
-	ServiceName string `pulumi:"serviceName"`
+	Keepers     []string `pulumi:"keepers"`
+	ServiceName string   `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a Refresh resource.
 type RefreshArgs struct {
-	// List of values tracked to trigger refresh, used also to form implicit dependencies
-	Keepers pulumi.StringArrayInput
-	// The internal name of your IP load balancing
+	Keepers     pulumi.StringArrayInput
 	ServiceName pulumi.StringInput
 }
 
@@ -235,12 +166,10 @@ func (o RefreshOutput) ToRefreshOutputWithContext(ctx context.Context) RefreshOu
 	return o
 }
 
-// List of values tracked to trigger refresh, used also to form implicit dependencies
 func (o RefreshOutput) Keepers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Refresh) pulumi.StringArrayOutput { return v.Keepers }).(pulumi.StringArrayOutput)
 }
 
-// The internal name of your IP load balancing
 func (o RefreshOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Refresh) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -7,17 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type OpensearchUserAcl struct {
-	// Pattern of the ACL.
+	// Pattern of the ACL
 	Pattern string `pulumi:"pattern"`
 	// Permission of the ACL
-	// Available permission:
 	Permission string `pulumi:"permission"`
 }
 
@@ -33,10 +32,9 @@ type OpensearchUserAclInput interface {
 }
 
 type OpensearchUserAclArgs struct {
-	// Pattern of the ACL.
+	// Pattern of the ACL
 	Pattern pulumi.StringInput `pulumi:"pattern"`
 	// Permission of the ACL
-	// Available permission:
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -91,13 +89,12 @@ func (o OpensearchUserAclOutput) ToOpensearchUserAclOutputWithContext(ctx contex
 	return o
 }
 
-// Pattern of the ACL.
+// Pattern of the ACL
 func (o OpensearchUserAclOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v OpensearchUserAcl) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
 // Permission of the ACL
-// Available permission:
 func (o OpensearchUserAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v OpensearchUserAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -229,15 +226,15 @@ func (o PrometheusTargetArrayOutput) Index(i pulumi.IntInput) PrometheusTargetOu
 }
 
 type GetCapabilitiesEngine struct {
-	// Default version used for the engine.
+	// Default version used for the engine
 	DefaultVersion string `pulumi:"defaultVersion"`
-	// Description of the plan.
+	// Description of the engine
 	Description string `pulumi:"description"`
-	// Name of the plan.
+	// Engine name
 	Name string `pulumi:"name"`
-	// SSL modes for this engine.
+	// SSL modes for this engine
 	SslModes []string `pulumi:"sslModes"`
-	// Versions available for this engine.
+	// Versions available for this engine
 	Versions []string `pulumi:"versions"`
 }
 
@@ -253,15 +250,15 @@ type GetCapabilitiesEngineInput interface {
 }
 
 type GetCapabilitiesEngineArgs struct {
-	// Default version used for the engine.
+	// Default version used for the engine
 	DefaultVersion pulumi.StringInput `pulumi:"defaultVersion"`
-	// Description of the plan.
+	// Description of the engine
 	Description pulumi.StringInput `pulumi:"description"`
-	// Name of the plan.
+	// Engine name
 	Name pulumi.StringInput `pulumi:"name"`
-	// SSL modes for this engine.
+	// SSL modes for this engine
 	SslModes pulumi.StringArrayInput `pulumi:"sslModes"`
-	// Versions available for this engine.
+	// Versions available for this engine
 	Versions pulumi.StringArrayInput `pulumi:"versions"`
 }
 
@@ -316,27 +313,27 @@ func (o GetCapabilitiesEngineOutput) ToGetCapabilitiesEngineOutputWithContext(ct
 	return o
 }
 
-// Default version used for the engine.
+// Default version used for the engine
 func (o GetCapabilitiesEngineOutput) DefaultVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesEngine) string { return v.DefaultVersion }).(pulumi.StringOutput)
 }
 
-// Description of the plan.
+// Description of the engine
 func (o GetCapabilitiesEngineOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesEngine) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the plan.
+// Engine name
 func (o GetCapabilitiesEngineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesEngine) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SSL modes for this engine.
+// SSL modes for this engine
 func (o GetCapabilitiesEngineOutput) SslModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCapabilitiesEngine) []string { return v.SslModes }).(pulumi.StringArrayOutput)
 }
 
-// Versions available for this engine.
+// Versions available for this engine
 func (o GetCapabilitiesEngineOutput) Versions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCapabilitiesEngine) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }
@@ -362,13 +359,13 @@ func (o GetCapabilitiesEngineArrayOutput) Index(i pulumi.IntInput) GetCapabiliti
 }
 
 type GetCapabilitiesFlavor struct {
-	// Flavor core number.
+	// Flavor core number
 	Core int `pulumi:"core"`
-	// Flavor ram size in GB.
+	// Flavor ram size in GB
 	Memory int `pulumi:"memory"`
-	// Name of the plan.
+	// Name of the flavor
 	Name string `pulumi:"name"`
-	// Flavor disk size in GB.
+	// Flavor disk size in GB
 	Storage int `pulumi:"storage"`
 }
 
@@ -384,13 +381,13 @@ type GetCapabilitiesFlavorInput interface {
 }
 
 type GetCapabilitiesFlavorArgs struct {
-	// Flavor core number.
+	// Flavor core number
 	Core pulumi.IntInput `pulumi:"core"`
-	// Flavor ram size in GB.
+	// Flavor ram size in GB
 	Memory pulumi.IntInput `pulumi:"memory"`
-	// Name of the plan.
+	// Name of the flavor
 	Name pulumi.StringInput `pulumi:"name"`
-	// Flavor disk size in GB.
+	// Flavor disk size in GB
 	Storage pulumi.IntInput `pulumi:"storage"`
 }
 
@@ -445,22 +442,22 @@ func (o GetCapabilitiesFlavorOutput) ToGetCapabilitiesFlavorOutputWithContext(ct
 	return o
 }
 
-// Flavor core number.
+// Flavor core number
 func (o GetCapabilitiesFlavorOutput) Core() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCapabilitiesFlavor) int { return v.Core }).(pulumi.IntOutput)
 }
 
-// Flavor ram size in GB.
+// Flavor ram size in GB
 func (o GetCapabilitiesFlavorOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCapabilitiesFlavor) int { return v.Memory }).(pulumi.IntOutput)
 }
 
-// Name of the plan.
+// Name of the flavor
 func (o GetCapabilitiesFlavorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesFlavor) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Flavor disk size in GB.
+// Flavor disk size in GB
 func (o GetCapabilitiesFlavorOutput) Storage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCapabilitiesFlavor) int { return v.Storage }).(pulumi.IntOutput)
 }
@@ -486,9 +483,9 @@ func (o GetCapabilitiesFlavorArrayOutput) Index(i pulumi.IntInput) GetCapabiliti
 }
 
 type GetCapabilitiesOption struct {
-	// Name of the plan.
+	// Name of the option
 	Name string `pulumi:"name"`
-	// Type of the option.
+	// Type of the option
 	Type string `pulumi:"type"`
 }
 
@@ -504,9 +501,9 @@ type GetCapabilitiesOptionInput interface {
 }
 
 type GetCapabilitiesOptionArgs struct {
-	// Name of the plan.
+	// Name of the option
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the option.
+	// Type of the option
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -561,12 +558,12 @@ func (o GetCapabilitiesOptionOutput) ToGetCapabilitiesOptionOutputWithContext(ct
 	return o
 }
 
-// Name of the plan.
+// Name of the option
 func (o GetCapabilitiesOptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesOption) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the option.
+// Type of the option
 func (o GetCapabilitiesOptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesOption) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -592,11 +589,11 @@ func (o GetCapabilitiesOptionArrayOutput) Index(i pulumi.IntInput) GetCapabiliti
 }
 
 type GetCapabilitiesPlan struct {
-	// Automatic backup retention duration.
+	// Automatic backup retention duration
 	BackupRetention string `pulumi:"backupRetention"`
-	// Description of the plan.
+	// Description of the plan
 	Description string `pulumi:"description"`
-	// Name of the plan.
+	// Name of the plan
 	Name string `pulumi:"name"`
 }
 
@@ -612,11 +609,11 @@ type GetCapabilitiesPlanInput interface {
 }
 
 type GetCapabilitiesPlanArgs struct {
-	// Automatic backup retention duration.
+	// Automatic backup retention duration
 	BackupRetention pulumi.StringInput `pulumi:"backupRetention"`
-	// Description of the plan.
+	// Description of the plan
 	Description pulumi.StringInput `pulumi:"description"`
-	// Name of the plan.
+	// Name of the plan
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -671,17 +668,17 @@ func (o GetCapabilitiesPlanOutput) ToGetCapabilitiesPlanOutputWithContext(ctx co
 	return o
 }
 
-// Automatic backup retention duration.
+// Automatic backup retention duration
 func (o GetCapabilitiesPlanOutput) BackupRetention() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesPlan) string { return v.BackupRetention }).(pulumi.StringOutput)
 }
 
-// Description of the plan.
+// Description of the plan
 func (o GetCapabilitiesPlanOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesPlan) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the plan.
+// Name of the plan
 func (o GetCapabilitiesPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesPlan) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -707,21 +704,21 @@ func (o GetCapabilitiesPlanArrayOutput) Index(i pulumi.IntInput) GetCapabilities
 }
 
 type GetDatabaseEndpoint struct {
-	// Type of component the URI relates to.
+	// Type of component the URI relates to
 	Component string `pulumi:"component"`
-	// Domain of the cluster.
+	// Domain of the cluster
 	Domain string `pulumi:"domain"`
-	// Path of the endpoint.
+	// Path of the endpoint
 	Path string `pulumi:"path"`
-	// Connection port for the endpoint.
+	// Connection port for the endpoint
 	Port int `pulumi:"port"`
-	// Scheme used to generate the URI.
+	// Scheme used to generate the URI
 	Scheme string `pulumi:"scheme"`
-	// Defines whether the endpoint uses SSL.
+	// Defines whether the endpoint uses SSL
 	Ssl bool `pulumi:"ssl"`
-	// SSL mode used to connect to the service if the SSL is enabled.
+	// SSL mode used to connect to the service if the SSL is enabled
 	SslMode string `pulumi:"sslMode"`
-	// URI of the endpoint.
+	// URI of the endpoint
 	Uri string `pulumi:"uri"`
 }
 
@@ -737,21 +734,21 @@ type GetDatabaseEndpointInput interface {
 }
 
 type GetDatabaseEndpointArgs struct {
-	// Type of component the URI relates to.
+	// Type of component the URI relates to
 	Component pulumi.StringInput `pulumi:"component"`
-	// Domain of the cluster.
+	// Domain of the cluster
 	Domain pulumi.StringInput `pulumi:"domain"`
-	// Path of the endpoint.
+	// Path of the endpoint
 	Path pulumi.StringInput `pulumi:"path"`
-	// Connection port for the endpoint.
+	// Connection port for the endpoint
 	Port pulumi.IntInput `pulumi:"port"`
-	// Scheme used to generate the URI.
+	// Scheme used to generate the URI
 	Scheme pulumi.StringInput `pulumi:"scheme"`
-	// Defines whether the endpoint uses SSL.
+	// Defines whether the endpoint uses SSL
 	Ssl pulumi.BoolInput `pulumi:"ssl"`
-	// SSL mode used to connect to the service if the SSL is enabled.
+	// SSL mode used to connect to the service if the SSL is enabled
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
-	// URI of the endpoint.
+	// URI of the endpoint
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -806,42 +803,42 @@ func (o GetDatabaseEndpointOutput) ToGetDatabaseEndpointOutputWithContext(ctx co
 	return o
 }
 
-// Type of component the URI relates to.
+// Type of component the URI relates to
 func (o GetDatabaseEndpointOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) string { return v.Component }).(pulumi.StringOutput)
 }
 
-// Domain of the cluster.
+// Domain of the cluster
 func (o GetDatabaseEndpointOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Path of the endpoint.
+// Path of the endpoint
 func (o GetDatabaseEndpointOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Connection port for the endpoint.
+// Connection port for the endpoint
 func (o GetDatabaseEndpointOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Scheme used to generate the URI.
+// Scheme used to generate the URI
 func (o GetDatabaseEndpointOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// Defines whether the endpoint uses SSL.
+// Defines whether the endpoint uses SSL
 func (o GetDatabaseEndpointOutput) Ssl() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) bool { return v.Ssl }).(pulumi.BoolOutput)
 }
 
-// SSL mode used to connect to the service if the SSL is enabled.
+// SSL mode used to connect to the service if the SSL is enabled
 func (o GetDatabaseEndpointOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) string { return v.SslMode }).(pulumi.StringOutput)
 }
 
-// URI of the endpoint.
+// URI of the endpoint
 func (o GetDatabaseEndpointOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseEndpoint) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -871,7 +868,7 @@ type GetDatabaseIpRestriction struct {
 	Description string `pulumi:"description"`
 	// Authorized IP
 	Ip string `pulumi:"ip"`
-	// Current status of the cluster.
+	// Current status of the IP restriction
 	Status string `pulumi:"status"`
 }
 
@@ -891,7 +888,7 @@ type GetDatabaseIpRestrictionArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Authorized IP
 	Ip pulumi.StringInput `pulumi:"ip"`
-	// Current status of the cluster.
+	// Current status of the IP restriction
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -956,7 +953,7 @@ func (o GetDatabaseIpRestrictionOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseIpRestriction) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Current status of the cluster.
+// Current status of the IP restriction
 func (o GetDatabaseIpRestrictionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseIpRestriction) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -982,11 +979,11 @@ func (o GetDatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) GetDatabas
 }
 
 type GetDatabaseNode struct {
-	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+	// Private network ID in which the node is
 	NetworkId string `pulumi:"networkId"`
-	// Public cloud region in which the node should be deployed.
+	// Region of the node
 	Region string `pulumi:"region"`
-	// Private subnet ID in which the node is.
+	// Private subnet ID in which the node is
 	SubnetId string `pulumi:"subnetId"`
 }
 
@@ -1002,11 +999,11 @@ type GetDatabaseNodeInput interface {
 }
 
 type GetDatabaseNodeArgs struct {
-	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+	// Private network ID in which the node is
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
-	// Public cloud region in which the node should be deployed.
+	// Region of the node
 	Region pulumi.StringInput `pulumi:"region"`
-	// Private subnet ID in which the node is.
+	// Private subnet ID in which the node is
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 }
 
@@ -1061,17 +1058,17 @@ func (o GetDatabaseNodeOutput) ToGetDatabaseNodeOutputWithContext(ctx context.Co
 	return o
 }
 
-// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+// Private network ID in which the node is
 func (o GetDatabaseNodeOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseNode) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Public cloud region in which the node should be deployed.
+// Region of the node
 func (o GetDatabaseNodeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseNode) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Private subnet ID in which the node is.
+// Private subnet ID in which the node is
 func (o GetDatabaseNodeOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseNode) string { return v.SubnetId }).(pulumi.StringOutput)
 }

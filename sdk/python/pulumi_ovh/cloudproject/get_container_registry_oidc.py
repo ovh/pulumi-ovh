@@ -75,89 +75,56 @@ class GetContainerRegistryOIDCResult:
     @property
     @pulumi.getter(name="oidcAdminGroup")
     def oidc_admin_group(self) -> Optional[str]:
-        """
-        Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
-        """
         return pulumi.get(self, "oidc_admin_group")
 
     @property
     @pulumi.getter(name="oidcAutoOnboard")
     def oidc_auto_onboard(self) -> Optional[bool]:
-        """
-        Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
-        """
         return pulumi.get(self, "oidc_auto_onboard")
 
     @property
     @pulumi.getter(name="oidcClientId")
     def oidc_client_id(self) -> Optional[str]:
-        """
-        The client ID with which Harbor is registered as client application with the OIDC provider.
-        """
         return pulumi.get(self, "oidc_client_id")
 
     @property
     @pulumi.getter(name="oidcEndpoint")
     def oidc_endpoint(self) -> Optional[str]:
-        """
-        The URL of an OIDC-compliant server.
-        """
         return pulumi.get(self, "oidc_endpoint")
 
     @property
     @pulumi.getter(name="oidcGroupsClaim")
     def oidc_groups_claim(self) -> Optional[str]:
-        """
-        The name of Claim in the ID token whose value is the list of group names.
-        """
         return pulumi.get(self, "oidc_groups_claim")
 
     @property
     @pulumi.getter(name="oidcName")
     def oidc_name(self) -> Optional[str]:
-        """
-        The name of the OIDC provider.
-        """
         return pulumi.get(self, "oidc_name")
 
     @property
     @pulumi.getter(name="oidcScope")
     def oidc_scope(self) -> Optional[str]:
-        """
-        The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
-        """
         return pulumi.get(self, "oidc_scope")
 
     @property
     @pulumi.getter(name="oidcUserClaim")
     def oidc_user_claim(self) -> Optional[str]:
-        """
-        The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
-        """
         return pulumi.get(self, "oidc_user_claim")
 
     @property
     @pulumi.getter(name="oidcVerifyCert")
     def oidc_verify_cert(self) -> Optional[bool]:
-        """
-        Set it to `false` if your OIDC server is hosted via self-signed certificate.
-        """
         return pulumi.get(self, "oidc_verify_cert")
 
     @property
     @pulumi.getter(name="registryId")
     def registry_id(self) -> str:
-        """
-        The ID of the Managed Private Registry.
-        """
         return pulumi.get(self, "registry_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -194,31 +161,7 @@ def get_container_registry_oidc(oidc_admin_group: Optional[str] = None,
                                 service_name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRegistryOIDCResult:
     """
-    Use this data source to get a OVHcloud Managed Private Registry OIDC.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_oidc = ovh.CloudProject.get_container_registry_oidc(service_name="XXXXXX",
-        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("oidc-client-id", my_oidc.oidc_client_id)
-    ```
-
-
-    :param str oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
-    :param bool oidc_auto_onboard: Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
-    :param str oidc_client_id: The client ID with which Harbor is registered as client application with the OIDC provider.
-    :param str oidc_endpoint: The URL of an OIDC-compliant server.
-    :param str oidc_groups_claim: The name of Claim in the ID token whose value is the list of group names.
-    :param str oidc_name: The name of the OIDC provider.
-    :param str oidc_scope: The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
-    :param str oidc_user_claim: The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
-    :param bool oidc_verify_cert: Set it to `false` if your OIDC server is hosted via self-signed certificate.
-    :param str registry_id: The id of the Managed Private Registry.
-    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['oidcAdminGroup'] = oidc_admin_group
@@ -261,31 +204,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
                                        service_name: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryOIDCResult]:
     """
-    Use this data source to get a OVHcloud Managed Private Registry OIDC.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_oidc = ovh.CloudProject.get_container_registry_oidc(service_name="XXXXXX",
-        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("oidc-client-id", my_oidc.oidc_client_id)
-    ```
-
-
-    :param str oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
-    :param bool oidc_auto_onboard: Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
-    :param str oidc_client_id: The client ID with which Harbor is registered as client application with the OIDC provider.
-    :param str oidc_endpoint: The URL of an OIDC-compliant server.
-    :param str oidc_groups_claim: The name of Claim in the ID token whose value is the list of group names.
-    :param str oidc_name: The name of the OIDC provider.
-    :param str oidc_scope: The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
-    :param str oidc_user_claim: The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
-    :param bool oidc_verify_cert: Set it to `false` if your OIDC server is hosted via self-signed certificate.
-    :param str registry_id: The id of the Managed Private Registry.
-    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['oidcAdminGroup'] = oidc_admin_group

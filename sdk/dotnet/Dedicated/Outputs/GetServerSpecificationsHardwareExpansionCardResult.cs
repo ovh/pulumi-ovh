@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class GetServerSpecificationsHardwareExpansionCardResult
     {
         /// <summary>
-        /// Expansion card description
+        /// expansion card description
         /// </summary>
         public readonly string Description;
         /// <summary>

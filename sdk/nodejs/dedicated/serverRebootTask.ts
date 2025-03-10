@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const rescue = ovh.Dedicated.getServerBoots({
- *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
- *     bootType: "rescue",
- *     kernel: "rescue64-pro",
- * });
- * const serverOnRescue = new ovh.dedicated.ServerUpdate("serverOnRescue", {
- *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
- *     bootId: rescue.then(rescue => rescue.results?.[0]),
- *     monitoring: true,
- *     state: "ok",
- * });
- * const serverReboot = new ovh.dedicated.ServerRebootTask("serverReboot", {
- *     serviceName: rescue.then(rescue => rescue.serviceName),
- *     keepers: [serverOnRescue.bootId],
- * });
- * ```
- */
 export class ServerRebootTask extends pulumi.CustomResource {
     /**
      * Get an existing ServerRebootTask resource's state with the given name, ID, and optional extra
@@ -58,35 +33,35 @@ export class ServerRebootTask extends pulumi.CustomResource {
     }
 
     /**
-     * Details of this task. (should be `Reboot asked`)
+     * Details of this task
      */
     public /*out*/ readonly comment!: pulumi.Output<string>;
     /**
-     * Completion date in RFC3339 format.
+     * Completion date
      */
     public /*out*/ readonly doneDate!: pulumi.Output<string>;
     /**
-     * Function name (should be `hardReboot`).
+     * Function name
      */
     public /*out*/ readonly function!: pulumi.Output<string>;
     /**
-     * List of values tracked to trigger reboot, used also to form implicit dependencies.
+     * Change this value to recreate a reboot task.
      */
     public readonly keepers!: pulumi.Output<string[]>;
     /**
-     * Last update in RFC3339 format.
+     * Last update
      */
     public /*out*/ readonly lastUpdate!: pulumi.Output<string>;
     /**
-     * The serviceName of your dedicated server.
+     * The internal name of your dedicated server.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Task creation date in RFC3339 format.
+     * Task Creation date
      */
     public /*out*/ readonly startDate!: pulumi.Output<string>;
     /**
-     * Task status (should be `done`)
+     * Task status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -138,35 +113,35 @@ export class ServerRebootTask extends pulumi.CustomResource {
  */
 export interface ServerRebootTaskState {
     /**
-     * Details of this task. (should be `Reboot asked`)
+     * Details of this task
      */
     comment?: pulumi.Input<string>;
     /**
-     * Completion date in RFC3339 format.
+     * Completion date
      */
     doneDate?: pulumi.Input<string>;
     /**
-     * Function name (should be `hardReboot`).
+     * Function name
      */
     function?: pulumi.Input<string>;
     /**
-     * List of values tracked to trigger reboot, used also to form implicit dependencies.
+     * Change this value to recreate a reboot task.
      */
     keepers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Last update in RFC3339 format.
+     * Last update
      */
     lastUpdate?: pulumi.Input<string>;
     /**
-     * The serviceName of your dedicated server.
+     * The internal name of your dedicated server.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Task creation date in RFC3339 format.
+     * Task Creation date
      */
     startDate?: pulumi.Input<string>;
     /**
-     * Task status (should be `done`)
+     * Task status
      */
     status?: pulumi.Input<string>;
 }
@@ -176,11 +151,11 @@ export interface ServerRebootTaskState {
  */
 export interface ServerRebootTaskArgs {
     /**
-     * List of values tracked to trigger reboot, used also to form implicit dependencies.
+     * Change this value to recreate a reboot task.
      */
     keepers: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The serviceName of your dedicated server.
+     * The internal name of your dedicated server.
      */
     serviceName: pulumi.Input<string>;
 }

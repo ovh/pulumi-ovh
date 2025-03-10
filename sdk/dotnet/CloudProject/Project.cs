@@ -9,61 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// ## Import
-    /// 
-    /// Cloud project can be imported using the `project_id`.
-    /// 
-    /// Using the following configuration:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = ovh_cloud_project.my_cloud_project
-    /// 
-    ///   id = "&lt;project ID&gt;"
-    /// 
-    /// }
-    /// 
-    /// You can then run:
-    /// 
-    /// bash
-    /// 
-    /// $ pulumi preview -generate-config-out=cloudproject.tf
-    /// 
-    /// $ pulumi up
-    /// 
-    /// The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The URN of the cloud project
-        /// </summary>
         [Output("ProjectURN")]
         public Output<string> ProjectURN { get; private set; } = null!;
 
         [Output("access")]
         public Output<string> Access { get; private set; } = null!;
 
-        /// <summary>
-        /// A description associated with the user.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Details about the order that was used to create the public cloud project
+        /// Details about an Order
         /// </summary>
         [Output("orders")]
         public Output<ImmutableArray<Outputs.ProjectOrder>> Orders { get; private set; } = null!;
 
         /// <summary>
-        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// Ovh Subsidiary
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -86,21 +51,12 @@ namespace Pulumi.Ovh.CloudProject
         [Output("planOptions")]
         public Output<ImmutableArray<Outputs.ProjectPlanOption>> PlanOptions { get; private set; } = null!;
 
-        /// <summary>
-        /// openstack project id
-        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// openstack project name
-        /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
-        /// <summary>
-        /// project status
-        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -151,9 +107,6 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description associated with the user.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -161,7 +114,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.ProjectOrderArgs>? _orders;
 
         /// <summary>
-        /// Details about the order that was used to create the public cloud project
+        /// Details about an Order
         /// </summary>
         public InputList<Inputs.ProjectOrderArgs> Orders
         {
@@ -170,7 +123,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// Ovh Subsidiary
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -207,18 +160,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The URN of the cloud project
-        /// </summary>
         [Input("ProjectURN")]
         public Input<string>? ProjectURN { get; set; }
 
         [Input("access")]
         public Input<string>? Access { get; set; }
 
-        /// <summary>
-        /// A description associated with the user.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -226,7 +173,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.ProjectOrderGetArgs>? _orders;
 
         /// <summary>
-        /// Details about the order that was used to create the public cloud project
+        /// Details about an Order
         /// </summary>
         public InputList<Inputs.ProjectOrderGetArgs> Orders
         {
@@ -235,7 +182,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// Ovh Subsidiary
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -264,21 +211,12 @@ namespace Pulumi.Ovh.CloudProject
             set => _planOptions = value;
         }
 
-        /// <summary>
-        /// openstack project id
-        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// openstack project name
-        /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
-        /// <summary>
-        /// project status
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

@@ -31,16 +31,16 @@ class FirewallRuleArgs:
                  tcp_option: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FirewallRule resource.
-        :param pulumi.Input[str] action: Possible values for action (deny|permit)
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-        :param pulumi.Input[str] protocol: Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
-        :param pulumi.Input[float] sequence: Rule position in the rules array
+        :param pulumi.Input[str] action: Possible values for action
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] protocol: Possible values for protocol
+        :param pulumi.Input[float] sequence: Possible values for action
         :param pulumi.Input[float] destination_port: Destination port for your rule. Only with TCP/UDP protocol
         :param pulumi.Input[bool] fragments: Fragments option
         :param pulumi.Input[str] source: IPv4 CIDR notation (e.g., 192.0.2.0/24)
         :param pulumi.Input[float] source_port: Source port for your rule. Only with TCP/UDP protocol
-        :param pulumi.Input[str] tcp_option: TCP option on your rule (syn|established)
+        :param pulumi.Input[str] tcp_option: TCP option on your rule
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "ip", ip)
@@ -62,7 +62,7 @@ class FirewallRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        Possible values for action (deny|permit)
+        Possible values for action
         """
         return pulumi.get(self, "action")
 
@@ -74,7 +74,7 @@ class FirewallRuleArgs:
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
         """
-        The IP or the CIDR
+        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         """
         return pulumi.get(self, "ip")
 
@@ -86,7 +86,7 @@ class FirewallRuleArgs:
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> pulumi.Input[str]:
         """
-        IPv4 address
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -98,7 +98,7 @@ class FirewallRuleArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        Possible values for protocol
         """
         return pulumi.get(self, "protocol")
 
@@ -110,7 +110,7 @@ class FirewallRuleArgs:
     @pulumi.getter
     def sequence(self) -> pulumi.Input[float]:
         """
-        Rule position in the rules array
+        Possible values for action
         """
         return pulumi.get(self, "sequence")
 
@@ -170,7 +170,7 @@ class FirewallRuleArgs:
     @pulumi.getter(name="tcpOption")
     def tcp_option(self) -> Optional[pulumi.Input[str]]:
         """
-        TCP option on your rule (syn|established)
+        TCP option on your rule
         """
         return pulumi.get(self, "tcp_option")
 
@@ -200,22 +200,20 @@ class _FirewallRuleState:
                  tcp_option: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
-        :param pulumi.Input[str] action: Possible values for action (deny|permit)
-        :param pulumi.Input[str] creation_date: Creation date of the rule
-        :param pulumi.Input[str] destination: Destination IP for your rule
+        :param pulumi.Input[str] action: Possible values for action
+        :param pulumi.Input[str] destination: Destination ip for your rule
         :param pulumi.Input[float] destination_port: Destination port for your rule. Only with TCP/UDP protocol
-        :param pulumi.Input[str] destination_port_desc: String description of field `destination_port`
+        :param pulumi.Input[str] destination_port_desc: Destination port range for your rule. Only with TCP/UDP protocol
         :param pulumi.Input[bool] fragments: Fragments option
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-        :param pulumi.Input[str] protocol: Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
-        :param pulumi.Input[str] rule: Description of the rule
-        :param pulumi.Input[float] sequence: Rule position in the rules array
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] protocol: Possible values for protocol
+        :param pulumi.Input[float] sequence: Possible values for action
         :param pulumi.Input[str] source: IPv4 CIDR notation (e.g., 192.0.2.0/24)
         :param pulumi.Input[float] source_port: Source port for your rule. Only with TCP/UDP protocol
-        :param pulumi.Input[str] source_port_desc: String description of field `source_port`
+        :param pulumi.Input[str] source_port_desc: Source port for your rule. Only with TCP/UDP protocol
         :param pulumi.Input[str] state: Current state of your rule
-        :param pulumi.Input[str] tcp_option: TCP option on your rule (syn|established)
+        :param pulumi.Input[str] tcp_option: TCP option on your rule
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -254,7 +252,7 @@ class _FirewallRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        Possible values for action (deny|permit)
+        Possible values for action
         """
         return pulumi.get(self, "action")
 
@@ -265,9 +263,6 @@ class _FirewallRuleState:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[str]]:
-        """
-        Creation date of the rule
-        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -278,7 +273,7 @@ class _FirewallRuleState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        Destination IP for your rule
+        Destination ip for your rule
         """
         return pulumi.get(self, "destination")
 
@@ -302,7 +297,7 @@ class _FirewallRuleState:
     @pulumi.getter(name="destinationPortDesc")
     def destination_port_desc(self) -> Optional[pulumi.Input[str]]:
         """
-        String description of field `destination_port`
+        Destination port range for your rule. Only with TCP/UDP protocol
         """
         return pulumi.get(self, "destination_port_desc")
 
@@ -326,7 +321,7 @@ class _FirewallRuleState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP or the CIDR
+        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         """
         return pulumi.get(self, "ip")
 
@@ -338,7 +333,7 @@ class _FirewallRuleState:
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -350,7 +345,7 @@ class _FirewallRuleState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        Possible values for protocol
         """
         return pulumi.get(self, "protocol")
 
@@ -361,9 +356,6 @@ class _FirewallRuleState:
     @property
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the rule
-        """
         return pulumi.get(self, "rule")
 
     @rule.setter
@@ -374,7 +366,7 @@ class _FirewallRuleState:
     @pulumi.getter
     def sequence(self) -> Optional[pulumi.Input[float]]:
         """
-        Rule position in the rules array
+        Possible values for action
         """
         return pulumi.get(self, "sequence")
 
@@ -410,7 +402,7 @@ class _FirewallRuleState:
     @pulumi.getter(name="sourcePortDesc")
     def source_port_desc(self) -> Optional[pulumi.Input[str]]:
         """
-        String description of field `source_port`
+        Source port for your rule. Only with TCP/UDP protocol
         """
         return pulumi.get(self, "source_port_desc")
 
@@ -434,7 +426,7 @@ class _FirewallRuleState:
     @pulumi.getter(name="tcpOption")
     def tcp_option(self) -> Optional[pulumi.Input[str]]:
         """
-        TCP option on your rule (syn|established)
+        TCP option on your rule
         """
         return pulumi.get(self, "tcp_option")
 
@@ -460,44 +452,19 @@ class FirewallRule(pulumi.CustomResource):
                  tcp_option: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Use this resource to manage a rule on an IP firewall.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_firewall_rule = ovh.ip.FirewallRule("myFirewallRule",
-            action="deny",
-            ip="XXXXXX",
-            ip_on_firewall="XXXXXX",
-            protocol="tcp",
-            sequence=0)
-        ```
-
-        ## Import
-
-        The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
-        ```
-
+        Create a FirewallRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Possible values for action (deny|permit)
+        :param pulumi.Input[str] action: Possible values for action
         :param pulumi.Input[float] destination_port: Destination port for your rule. Only with TCP/UDP protocol
         :param pulumi.Input[bool] fragments: Fragments option
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-        :param pulumi.Input[str] protocol: Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
-        :param pulumi.Input[float] sequence: Rule position in the rules array
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] protocol: Possible values for protocol
+        :param pulumi.Input[float] sequence: Possible values for action
         :param pulumi.Input[str] source: IPv4 CIDR notation (e.g., 192.0.2.0/24)
         :param pulumi.Input[float] source_port: Source port for your rule. Only with TCP/UDP protocol
-        :param pulumi.Input[str] tcp_option: TCP option on your rule (syn|established)
+        :param pulumi.Input[str] tcp_option: TCP option on your rule
         """
         ...
     @overload
@@ -506,32 +473,7 @@ class FirewallRule(pulumi.CustomResource):
                  args: FirewallRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to manage a rule on an IP firewall.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_firewall_rule = ovh.ip.FirewallRule("myFirewallRule",
-            action="deny",
-            ip="XXXXXX",
-            ip_on_firewall="XXXXXX",
-            protocol="tcp",
-            sequence=0)
-        ```
-
-        ## Import
-
-        The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
-        ```
-
+        Create a FirewallRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -625,22 +567,20 @@ class FirewallRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Possible values for action (deny|permit)
-        :param pulumi.Input[str] creation_date: Creation date of the rule
-        :param pulumi.Input[str] destination: Destination IP for your rule
+        :param pulumi.Input[str] action: Possible values for action
+        :param pulumi.Input[str] destination: Destination ip for your rule
         :param pulumi.Input[float] destination_port: Destination port for your rule. Only with TCP/UDP protocol
-        :param pulumi.Input[str] destination_port_desc: String description of field `destination_port`
+        :param pulumi.Input[str] destination_port_desc: Destination port range for your rule. Only with TCP/UDP protocol
         :param pulumi.Input[bool] fragments: Fragments option
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-        :param pulumi.Input[str] protocol: Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
-        :param pulumi.Input[str] rule: Description of the rule
-        :param pulumi.Input[float] sequence: Rule position in the rules array
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] protocol: Possible values for protocol
+        :param pulumi.Input[float] sequence: Possible values for action
         :param pulumi.Input[str] source: IPv4 CIDR notation (e.g., 192.0.2.0/24)
         :param pulumi.Input[float] source_port: Source port for your rule. Only with TCP/UDP protocol
-        :param pulumi.Input[str] source_port_desc: String description of field `source_port`
+        :param pulumi.Input[str] source_port_desc: Source port for your rule. Only with TCP/UDP protocol
         :param pulumi.Input[str] state: Current state of your rule
-        :param pulumi.Input[str] tcp_option: TCP option on your rule (syn|established)
+        :param pulumi.Input[str] tcp_option: TCP option on your rule
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -668,23 +608,20 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
         """
-        Possible values for action (deny|permit)
+        Possible values for action
         """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
-        """
-        Creation date of the rule
-        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        Destination IP for your rule
+        Destination ip for your rule
         """
         return pulumi.get(self, "destination")
 
@@ -700,7 +637,7 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter(name="destinationPortDesc")
     def destination_port_desc(self) -> pulumi.Output[str]:
         """
-        String description of field `destination_port`
+        Destination port range for your rule. Only with TCP/UDP protocol
         """
         return pulumi.get(self, "destination_port_desc")
 
@@ -716,7 +653,7 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        The IP or the CIDR
+        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         """
         return pulumi.get(self, "ip")
 
@@ -724,7 +661,7 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> pulumi.Output[str]:
         """
-        IPv4 address
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -732,23 +669,20 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
         """
-        Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        Possible values for protocol
         """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def rule(self) -> pulumi.Output[str]:
-        """
-        Description of the rule
-        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def sequence(self) -> pulumi.Output[float]:
         """
-        Rule position in the rules array
+        Possible values for action
         """
         return pulumi.get(self, "sequence")
 
@@ -772,7 +706,7 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter(name="sourcePortDesc")
     def source_port_desc(self) -> pulumi.Output[str]:
         """
-        String description of field `source_port`
+        Source port for your rule. Only with TCP/UDP protocol
         """
         return pulumi.get(self, "source_port_desc")
 
@@ -788,7 +722,7 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter(name="tcpOption")
     def tcp_option(self) -> pulumi.Output[str]:
         """
-        TCP option on your rule (syn|established)
+        TCP option on your rule
         """
         return pulumi.get(self, "tcp_option")
 

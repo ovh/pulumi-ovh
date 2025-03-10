@@ -9,39 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Vrack
 {
-    /// <summary>
-    /// Attach an IP Load Balancing to a VRack.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var viplb = new Ovh.Vrack.IpLoadbalancing("viplb", new()
-    ///     {
-    ///         LoadbalancingId = "yyy",
-    ///         ServiceName = "xxx",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Vrack/ipLoadbalancing:IpLoadbalancing")]
     public partial class IpLoadbalancing : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The id of the IP Load Balancing.
+        /// Your ipLoadbalancing
         /// </summary>
         [Output("LoadbalancingId")]
         public Output<string> LoadbalancingId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the vrack.
+        /// The internal name of your vrack
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -94,13 +72,13 @@ namespace Pulumi.Ovh.Vrack
     public sealed class IpLoadbalancingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the IP Load Balancing.
+        /// Your ipLoadbalancing
         /// </summary>
         [Input("LoadbalancingId", required: true)]
         public Input<string> LoadbalancingId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the vrack.
+        /// The internal name of your vrack
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -114,13 +92,13 @@ namespace Pulumi.Ovh.Vrack
     public sealed class IpLoadbalancingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the IP Load Balancing.
+        /// Your ipLoadbalancing
         /// </summary>
         [Input("LoadbalancingId")]
         public Input<string>? LoadbalancingId { get; set; }
 
         /// <summary>
-        /// The id of the vrack.
+        /// The internal name of your vrack
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

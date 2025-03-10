@@ -9,48 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// **This resource uses a Beta API**
-    /// Creates an instance associated with a public cloud project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Create a instance.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instance = new Ovh.CloudProject.Instance("instance", new()
-    ///     {
-    ///         BillingPeriod = "hourly",
-    ///         BootFrom = new Ovh.CloudProject.Inputs.InstanceBootFromArgs
-    ///         {
-    ///             ImageId = "UUID",
-    ///         },
-    ///         Flavor = new Ovh.CloudProject.Inputs.InstanceFlavorArgs
-    ///         {
-    ///             FlavorId = "UUID",
-    ///         },
-    ///         Network = new Ovh.CloudProject.Inputs.InstanceNetworkArgs
-    ///         {
-    ///             Public = true,
-    ///         },
-    ///         Region = "RRRR",
-    ///         ServiceName = "XXX",
-    ///         SshKey = new Ovh.CloudProject.Inputs.InstanceSshKeyArgs
-    ///         {
-    ///             Name = "sshname",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
@@ -67,13 +25,19 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.InstanceAttachedVolume>> AttachedVolumes { get; private set; } = null!;
 
         /// <summary>
-        /// Create an autobackup workflow after instance start up.
+        /// Create an autobackup workflow after instance start up
         /// </summary>
         [Output("autoBackup")]
         public Output<Outputs.InstanceAutoBackup?> AutoBackup { get; private set; } = null!;
 
         /// <summary>
-        /// Billing period - hourly or monthly
+        /// The availability zone where the instance will be created
+        /// </summary>
+        [Output("availabilityZone")]
+        public Output<string> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
+        /// Billing period - hourly | monthly
         /// </summary>
         [Output("billingPeriod")]
         public Output<string> BillingPeriod { get; private set; } = null!;
@@ -139,14 +103,13 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// Service name of the resource representing the id of the cloud project
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Existing SSH Keypair
+        /// Existing SSH Key pair
         /// </summary>
         [Output("sshKey")]
         public Output<Outputs.InstanceSshKey?> SshKey { get; private set; } = null!;
@@ -217,13 +180,19 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create an autobackup workflow after instance start up.
+        /// Create an autobackup workflow after instance start up
         /// </summary>
         [Input("autoBackup")]
         public Input<Inputs.InstanceAutoBackupArgs>? AutoBackup { get; set; }
 
         /// <summary>
-        /// Billing period - hourly or monthly
+        /// The availability zone where the instance will be created
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Billing period - hourly | monthly
         /// </summary>
         [Input("billingPeriod", required: true)]
         public Input<string> BillingPeriod { get; set; } = null!;
@@ -271,14 +240,13 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// Service name of the resource representing the id of the cloud project
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Existing SSH Keypair
+        /// Existing SSH Key pair
         /// </summary>
         [Input("sshKey")]
         public Input<Inputs.InstanceSshKeyArgs>? SshKey { get; set; }
@@ -328,13 +296,19 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Create an autobackup workflow after instance start up.
+        /// Create an autobackup workflow after instance start up
         /// </summary>
         [Input("autoBackup")]
         public Input<Inputs.InstanceAutoBackupGetArgs>? AutoBackup { get; set; }
 
         /// <summary>
-        /// Billing period - hourly or monthly
+        /// The availability zone where the instance will be created
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Billing period - hourly | monthly
         /// </summary>
         [Input("billingPeriod")]
         public Input<string>? BillingPeriod { get; set; }
@@ -400,14 +374,13 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// Service name of the resource representing the id of the cloud project
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Existing SSH Keypair
+        /// Existing SSH Key pair
         /// </summary>
         [Input("sshKey")]
         public Input<Inputs.InstanceSshKeyGetArgs>? SshKey { get; set; }

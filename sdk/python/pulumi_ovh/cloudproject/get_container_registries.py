@@ -49,9 +49,6 @@ class GetContainerRegistriesResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetContainerRegistriesResultResult']:
-        """
-        The list of container registries associated with the project.
-        """
         return pulumi.get(self, "results")
 
     @property
@@ -74,20 +71,7 @@ class AwaitableGetContainerRegistriesResult(GetContainerRegistriesResult):
 def get_container_registries(service_name: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRegistriesResult:
     """
-    Use this data source to get the container registries of a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    registries = ovh.CloudProject.get_container_registries(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -101,20 +85,7 @@ def get_container_registries(service_name: Optional[str] = None,
 def get_container_registries_output(service_name: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistriesResult]:
     """
-    Use this data source to get the container registries of a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    registries = ovh.CloudProject.get_container_registries(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

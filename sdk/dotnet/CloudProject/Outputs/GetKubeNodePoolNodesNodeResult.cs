@@ -14,51 +14,51 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetKubeNodePoolNodesNodeResult
     {
         /// <summary>
-        /// Creation date.
+        /// Creation date
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// (Optional) Date of the effective deployment.
+        /// Node deployment date
         /// </summary>
         public readonly string DeployedAt;
         /// <summary>
-        /// Flavor name.
+        /// Flavor name
         /// </summary>
         public readonly string Flavor;
         /// <summary>
-        /// ID of the node.
+        /// Node ID
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Openstack ID of the underlying VM of the node.
+        /// Public Cloud instance ID
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// Is the node in the target version of the cluster.
+        /// True if the node is up to date
         /// </summary>
         public readonly bool IsUpToDate;
         /// <summary>
-        /// Name of the node pool from which we want the nodes.
+        /// Node name
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Managed kubernetes node pool ID.
+        /// NodePool parent ID
         /// </summary>
         public readonly string NodePoolId;
         /// <summary>
-        /// Public cloud project ID.
+        /// Project ID
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Current status.
+        /// Current status
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Last update date.
+        /// Last update date
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// Version in which the node is.
+        /// Node version
         /// </summary>
         public readonly string Version;
 

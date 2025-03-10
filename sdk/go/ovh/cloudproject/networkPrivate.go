@@ -8,80 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a private network in a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewNetworkPrivate(ctx, "net", &cloudproject.NetworkPrivateArgs{
-//				Regions: pulumi.StringArray{
-//					pulumi.String("GRA1"),
-//					pulumi.String("BHS1"),
-//				},
-//				ServiceName: pulumi.String("XXXXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Private network in a public cloud project can be imported using the `service_name` and the `network_id` as `pn-xxxx` format, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet service_name/network_id
-// ```
 type NetworkPrivate struct {
 	pulumi.CustomResourceState
 
-	// The name of the network.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// an array of valid OVHcloud public cloud region ID in which the network
-	// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-	Regions pulumi.StringArrayOutput `pulumi:"regions"`
-	// A map representing information about the region.
-	// * `regions_attributes/region` - The id of the region.
-	// * `regions_attributes/status` - The status of the network in the region.
-	// * `regions_attributes/openstackid` - The private network id in the region.
+	Name              pulumi.StringOutput                       `pulumi:"name"`
+	Regions           pulumi.StringArrayOutput                  `pulumi:"regions"`
 	RegionsAttributes NetworkPrivateRegionsAttributeArrayOutput `pulumi:"regionsAttributes"`
-	// (Deprecated) A map representing the status of the network per region.
-	// * `regions_status/region` - (Deprecated) The id of the region.
-	// * `regions_status/status` - (Deprecated) The status of the network in the region.
-	//
 	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses NetworkPrivateRegionsStatusArrayOutput `pulumi:"regionsStatuses"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// the type of the network. Either 'private' or 'public'.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// a vlan id to associate with the network.
-	// Changing this value recreates the resource. Defaults to 0.
-	VlanId pulumi.IntPtrOutput `pulumi:"vlanId"`
+	Status      pulumi.StringOutput `pulumi:"status"`
+	Type        pulumi.StringOutput `pulumi:"type"`
+	VlanId      pulumi.IntPtrOutput `pulumi:"vlanId"`
 }
 
 // NewNetworkPrivate registers a new resource with the given unique name, arguments, and options.
@@ -117,61 +60,29 @@ func GetNetworkPrivate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkPrivate resources.
 type networkPrivateState struct {
-	// The name of the network.
-	Name *string `pulumi:"name"`
-	// an array of valid OVHcloud public cloud region ID in which the network
-	// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-	Regions []string `pulumi:"regions"`
-	// A map representing information about the region.
-	// * `regions_attributes/region` - The id of the region.
-	// * `regions_attributes/status` - The status of the network in the region.
-	// * `regions_attributes/openstackid` - The private network id in the region.
+	Name              *string                          `pulumi:"name"`
+	Regions           []string                         `pulumi:"regions"`
 	RegionsAttributes []NetworkPrivateRegionsAttribute `pulumi:"regionsAttributes"`
-	// (Deprecated) A map representing the status of the network per region.
-	// * `regions_status/region` - (Deprecated) The id of the region.
-	// * `regions_status/status` - (Deprecated) The status of the network in the region.
-	//
 	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses []NetworkPrivateRegionsStatus `pulumi:"regionsStatuses"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName *string `pulumi:"serviceName"`
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status *string `pulumi:"status"`
-	// the type of the network. Either 'private' or 'public'.
-	Type *string `pulumi:"type"`
-	// a vlan id to associate with the network.
-	// Changing this value recreates the resource. Defaults to 0.
-	VlanId *int `pulumi:"vlanId"`
+	Status      *string `pulumi:"status"`
+	Type        *string `pulumi:"type"`
+	VlanId      *int    `pulumi:"vlanId"`
 }
 
 type NetworkPrivateState struct {
-	// The name of the network.
-	Name pulumi.StringPtrInput
-	// an array of valid OVHcloud public cloud region ID in which the network
-	// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-	Regions pulumi.StringArrayInput
-	// A map representing information about the region.
-	// * `regions_attributes/region` - The id of the region.
-	// * `regions_attributes/status` - The status of the network in the region.
-	// * `regions_attributes/openstackid` - The private network id in the region.
+	Name              pulumi.StringPtrInput
+	Regions           pulumi.StringArrayInput
 	RegionsAttributes NetworkPrivateRegionsAttributeArrayInput
-	// (Deprecated) A map representing the status of the network per region.
-	// * `regions_status/region` - (Deprecated) The id of the region.
-	// * `regions_status/status` - (Deprecated) The status of the network in the region.
-	//
 	// Deprecated: use the regionsAttributes field instead
 	RegionsStatuses NetworkPrivateRegionsStatusArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringPtrInput
-	// the status of the network. should be normally set to 'ACTIVE'.
-	Status pulumi.StringPtrInput
-	// the type of the network. Either 'private' or 'public'.
-	Type pulumi.StringPtrInput
-	// a vlan id to associate with the network.
-	// Changing this value recreates the resource. Defaults to 0.
-	VlanId pulumi.IntPtrInput
+	Status      pulumi.StringPtrInput
+	Type        pulumi.StringPtrInput
+	VlanId      pulumi.IntPtrInput
 }
 
 func (NetworkPrivateState) ElementType() reflect.Type {
@@ -179,32 +90,20 @@ func (NetworkPrivateState) ElementType() reflect.Type {
 }
 
 type networkPrivateArgs struct {
-	// The name of the network.
-	Name *string `pulumi:"name"`
-	// an array of valid OVHcloud public cloud region ID in which the network
-	// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+	Name    *string  `pulumi:"name"`
 	Regions []string `pulumi:"regions"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName string `pulumi:"serviceName"`
-	// a vlan id to associate with the network.
-	// Changing this value recreates the resource. Defaults to 0.
-	VlanId *int `pulumi:"vlanId"`
+	VlanId      *int   `pulumi:"vlanId"`
 }
 
 // The set of arguments for constructing a NetworkPrivate resource.
 type NetworkPrivateArgs struct {
-	// The name of the network.
-	Name pulumi.StringPtrInput
-	// an array of valid OVHcloud public cloud region ID in which the network
-	// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+	Name    pulumi.StringPtrInput
 	Regions pulumi.StringArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringInput
-	// a vlan id to associate with the network.
-	// Changing this value recreates the resource. Defaults to 0.
-	VlanId pulumi.IntPtrInput
+	VlanId      pulumi.IntPtrInput
 }
 
 func (NetworkPrivateArgs) ElementType() reflect.Type {
@@ -294,52 +193,36 @@ func (o NetworkPrivateOutput) ToNetworkPrivateOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The name of the network.
 func (o NetworkPrivateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// an array of valid OVHcloud public cloud region ID in which the network
-// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
 func (o NetworkPrivateOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivate) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
-// A map representing information about the region.
-// * `regions_attributes/region` - The id of the region.
-// * `regions_attributes/status` - The status of the network in the region.
-// * `regions_attributes/openstackid` - The private network id in the region.
 func (o NetworkPrivateOutput) RegionsAttributes() NetworkPrivateRegionsAttributeArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivate) NetworkPrivateRegionsAttributeArrayOutput { return v.RegionsAttributes }).(NetworkPrivateRegionsAttributeArrayOutput)
 }
 
-// (Deprecated) A map representing the status of the network per region.
-// * `regions_status/region` - (Deprecated) The id of the region.
-// * `regions_status/status` - (Deprecated) The status of the network in the region.
-//
 // Deprecated: use the regionsAttributes field instead
 func (o NetworkPrivateOutput) RegionsStatuses() NetworkPrivateRegionsStatusArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivate) NetworkPrivateRegionsStatusArrayOutput { return v.RegionsStatuses }).(NetworkPrivateRegionsStatusArrayOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// Service name of the resource representing the id of the cloud project.
 func (o NetworkPrivateOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivate) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// the status of the network. should be normally set to 'ACTIVE'.
 func (o NetworkPrivateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// the type of the network. Either 'private' or 'public'.
 func (o NetworkPrivateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// a vlan id to associate with the network.
-// Changing this value recreates the resource. Defaults to 0.
 func (o NetworkPrivateOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkPrivate) pulumi.IntPtrOutput { return v.VlanId }).(pulumi.IntPtrOutput)
 }

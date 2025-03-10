@@ -50,17 +50,11 @@ class GetCapabilitiesResult:
     @property
     @pulumi.getter
     def engines(self) -> Sequence['outputs.GetCapabilitiesEngineResult']:
-        """
-        Database engines available.
-        """
         return pulumi.get(self, "engines")
 
     @property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetCapabilitiesFlavorResult']:
-        """
-        Flavors available.
-        """
         return pulumi.get(self, "flavors")
 
     @property
@@ -74,25 +68,16 @@ class GetCapabilitiesResult:
     @property
     @pulumi.getter
     def options(self) -> Sequence['outputs.GetCapabilitiesOptionResult']:
-        """
-        Options available.
-        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetCapabilitiesPlanResult']:
-        """
-        Plans available.
-        """
         return pulumi.get(self, "plans")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -113,11 +98,7 @@ class AwaitableGetCapabilitiesResult(GetCapabilitiesResult):
 def get_capabilities(service_name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCapabilitiesResult:
     """
-    Use this data source to get information about capabilities of a public cloud project.
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -134,11 +115,7 @@ def get_capabilities(service_name: Optional[str] = None,
 def get_capabilities_output(service_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapabilitiesResult]:
     """
-    Use this data source to get information about capabilities of a public cloud project.
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

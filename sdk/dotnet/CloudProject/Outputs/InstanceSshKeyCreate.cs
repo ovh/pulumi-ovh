@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// SSH Public key
+        /// SSH Public Key
         /// </summary>
         public readonly string PublicKey;
 

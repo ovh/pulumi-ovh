@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkVrackBandwidthResult Bandwidth;
         /// <summary>
-        /// Bandwidth offer type (included┃standard)
+        /// bandwidth offer type
         /// </summary>
         public readonly string Type;
 

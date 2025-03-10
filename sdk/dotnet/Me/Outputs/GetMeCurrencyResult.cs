@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Me.Outputs
     public sealed class GetMeCurrencyResult
     {
         /// <summary>
-        /// Currency code used by this account (e.g EUR, USD, ...)
+        /// Currency code
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// Currency symbol used by this account (e.g €, $, ...)
+        /// Currency symbol
         /// </summary>
         public readonly string Symbol;
 

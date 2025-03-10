@@ -27,12 +27,6 @@ class PermissionsGroupArgs:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PermissionsGroup resource.
-        :param pulumi.Input[str] description: Group description.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: Set of actions allowed by the permissions group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: Set of actions that will be denied no matter what permissions group exists.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: Set of actions that will be subtracted from the `allow` list.
-        :param pulumi.Input[str] name: Name of the permissions group.
-        :param pulumi.Input[str] updated_at: Date of the last update of this group.
         """
         pulumi.set(__self__, "description", description)
         if allows is not None:
@@ -49,9 +43,6 @@ class PermissionsGroupArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
-        """
-        Group description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -61,9 +52,6 @@ class PermissionsGroupArgs:
     @property
     @pulumi.getter
     def allows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of actions allowed by the permissions group.
-        """
         return pulumi.get(self, "allows")
 
     @allows.setter
@@ -73,9 +61,6 @@ class PermissionsGroupArgs:
     @property
     @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of actions that will be denied no matter what permissions group exists.
-        """
         return pulumi.get(self, "denies")
 
     @denies.setter
@@ -85,9 +70,6 @@ class PermissionsGroupArgs:
     @property
     @pulumi.getter
     def excepts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of actions that will be subtracted from the `allow` list.
-        """
         return pulumi.get(self, "excepts")
 
     @excepts.setter
@@ -97,9 +79,6 @@ class PermissionsGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the permissions group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -109,9 +88,6 @@ class PermissionsGroupArgs:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date of the last update of this group.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -133,15 +109,6 @@ class _PermissionsGroupState:
                  urn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PermissionsGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: Set of actions allowed by the permissions group.
-        :param pulumi.Input[str] created_at: Creation date of this group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: Set of actions that will be denied no matter what permissions group exists.
-        :param pulumi.Input[str] description: Group description.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: Set of actions that will be subtracted from the `allow` list.
-        :param pulumi.Input[str] name: Name of the permissions group.
-        :param pulumi.Input[str] owner: Owner of the permissions group.
-        :param pulumi.Input[str] updated_at: Date of the last update of this group.
-        :param pulumi.Input[str] urn: URN of the permissions group.
         """
         if allows is not None:
             pulumi.set(__self__, "allows", allows)
@@ -165,9 +132,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def allows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of actions allowed by the permissions group.
-        """
         return pulumi.get(self, "allows")
 
     @allows.setter
@@ -177,9 +141,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Creation date of this group.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -189,9 +150,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of actions that will be denied no matter what permissions group exists.
-        """
         return pulumi.get(self, "denies")
 
     @denies.setter
@@ -201,9 +159,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Group description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -213,9 +168,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def excepts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of actions that will be subtracted from the `allow` list.
-        """
         return pulumi.get(self, "excepts")
 
     @excepts.setter
@@ -225,9 +177,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the permissions group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -237,9 +186,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Owner of the permissions group.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -249,9 +195,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date of the last update of this group.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -261,9 +204,6 @@ class _PermissionsGroupState:
     @property
     @pulumi.getter
     def urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        URN of the permissions group.
-        """
         return pulumi.get(self, "urn")
 
     @urn.setter
@@ -284,16 +224,9 @@ class PermissionsGroup(pulumi.CustomResource):
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create am IAM permissions group.
-
+        Create a PermissionsGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: Set of actions allowed by the permissions group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: Set of actions that will be denied no matter what permissions group exists.
-        :param pulumi.Input[str] description: Group description.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: Set of actions that will be subtracted from the `allow` list.
-        :param pulumi.Input[str] name: Name of the permissions group.
-        :param pulumi.Input[str] updated_at: Date of the last update of this group.
         """
         ...
     @overload
@@ -302,8 +235,7 @@ class PermissionsGroup(pulumi.CustomResource):
                  args: PermissionsGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create am IAM permissions group.
-
+        Create a PermissionsGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PermissionsGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -371,15 +303,6 @@ class PermissionsGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: Set of actions allowed by the permissions group.
-        :param pulumi.Input[str] created_at: Creation date of this group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: Set of actions that will be denied no matter what permissions group exists.
-        :param pulumi.Input[str] description: Group description.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: Set of actions that will be subtracted from the `allow` list.
-        :param pulumi.Input[str] name: Name of the permissions group.
-        :param pulumi.Input[str] owner: Owner of the permissions group.
-        :param pulumi.Input[str] updated_at: Date of the last update of this group.
-        :param pulumi.Input[str] urn: URN of the permissions group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -399,72 +322,45 @@ class PermissionsGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def allows(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Set of actions allowed by the permissions group.
-        """
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
-        """
-        Creation date of this group.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def denies(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Set of actions that will be denied no matter what permissions group exists.
-        """
         return pulumi.get(self, "denies")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        Group description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def excepts(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Set of actions that will be subtracted from the `allow` list.
-        """
         return pulumi.get(self, "excepts")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the permissions group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
-        """
-        Owner of the permissions group.
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
-        """
-        Date of the last update of this group.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def urn(self) -> pulumi.Output[str]:
-        """
-        URN of the permissions group.
-        """
         return pulumi.get(self, "urn")
 

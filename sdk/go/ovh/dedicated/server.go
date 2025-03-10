@@ -7,65 +7,36 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// Dedicated servers can be imported using the `service_name`.
-//
-// Using the following configuration:
-//
-// hcl
-//
-// import {
-//
-//	to = ovh_dedicated_server.server
-//
-//	id = "<service name>"
-//
-// }
-//
-// You can then run:
-//
-// bash
-//
-// $ pulumi preview -generate-config-out=dedicated.tf
-//
-// $ pulumi up
-//
-// The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Server struct {
 	pulumi.CustomResourceState
 
-	// Dedicated AZ localisation
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Boot id of the server
-	BootId pulumi.Float64Output `pulumi:"bootId"`
-	// Boot script of the server
+	// dedicated AZ localisation
+	AvailabilityZone pulumi.StringOutput  `pulumi:"availabilityZone"`
+	BootId           pulumi.Float64Output `pulumi:"bootId"`
+	// Ipxe script served on boot
 	BootScript pulumi.StringOutput `pulumi:"bootScript"`
-	// Dedicated server commercial range
+	// dedicater server commercial range
 	CommercialRange pulumi.StringOutput `pulumi:"commercialRange"`
-	// Dedicated datacenter localisation (bhs1,bhs2,...)
+	// OS reinstallation customizations
+	Customizations ServerCustomizationsPtrOutput `pulumi:"customizations"`
+	// dedicated datacenter localisation
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
-	// A structure describing informations about installation custom
-	Details ServerDetailsPtrOutput `pulumi:"details"`
-	// Resource display name
+	// The display name of your dedicated server
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Path of the EFI bootloader
+	// Path of the EFI bootloader served on boot
 	EfiBootloaderPath pulumi.StringOutput `pulumi:"efiBootloaderPath"`
-	// IAM resource information
+	// IAM resource metadata
 	Iam ServerIamOutput `pulumi:"iam"`
-	// Dedicated server ip (IPv4)
-	Ip pulumi.StringOutput `pulumi:"ip"`
-	// Link speed of the server
+	// dedicated server ip
+	Ip        pulumi.StringOutput  `pulumi:"ip"`
 	LinkSpeed pulumi.Float64Output `pulumi:"linkSpeed"`
 	// Icmp monitoring state
 	Monitoring pulumi.BoolOutput `pulumi:"monitoring"`
-	// Dedicated server name
+	// dedicated server name
 	Name             pulumi.StringOutput `pulumi:"name"`
 	NewUpgradeSystem pulumi.BoolOutput   `pulumi:"newUpgradeSystem"`
 	// Prevent datacenter intervention
@@ -75,39 +46,35 @@ type Server struct {
 	// Operating system
 	Os pulumi.StringOutput `pulumi:"os"`
 	// OVH subsidiaries
-	OvhSubsidiary pulumi.StringPtrOutput `pulumi:"ovhSubsidiary"`
-	// Partition scheme name
-	PartitionSchemeName pulumi.StringPtrOutput      `pulumi:"partitionSchemeName"`
-	PlanOptions         ServerPlanOptionArrayOutput `pulumi:"planOptions"`
-	Plans               ServerPlanArrayOutput       `pulumi:"plans"`
-	// Power state of the server (poweron, poweroff)
+	OvhSubsidiary pulumi.StringPtrOutput      `pulumi:"ovhSubsidiary"`
+	PlanOptions   ServerPlanOptionArrayOutput `pulumi:"planOptions"`
+	Plans         ServerPlanArrayOutput       `pulumi:"plans"`
+	// Power state of the server
 	PowerState pulumi.StringOutput `pulumi:"powerState"`
 	// Does this server have professional use option
 	ProfessionalUse pulumi.BoolOutput `pulumi:"professionalUse"`
-	// Rack id of the server
-	Rack pulumi.StringOutput `pulumi:"rack"`
-	// Dedicated region localisation
+	// Arbitrary properties to pass to cloud-init's config drive datasource
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	Rack       pulumi.StringOutput    `pulumi:"rack"`
+	// dedicated region localisation
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Rescue mail of the server
+	// Custom email used to receive rescue credentials
 	RescueMail pulumi.StringOutput `pulumi:"rescueMail"`
 	// Public SSH Key used in the rescue mode
 	RescueSshKey pulumi.StringOutput `pulumi:"rescueSshKey"`
-	// Dedicated server reverse
-	Reverse pulumi.StringOutput `pulumi:"reverse"`
-	// Root device of the server
+	// dedicated server reverse
+	Reverse    pulumi.StringOutput `pulumi:"reverse"`
 	RootDevice pulumi.StringOutput `pulumi:"rootDevice"`
 	// Server id
 	ServerId pulumi.Float64Output `pulumi:"serverId"`
-	// The serviceName of your dedicated server
+	// The internal name of your dedicated server
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+	// All states a Dedicated can be in
 	State pulumi.StringOutput `pulumi:"state"`
-	// Dedicated server support level (critical, fastpath, gs, pro)
+	// OS reinstallation storage configurations
+	Storages ServerStorageArrayOutput `pulumi:"storages"`
+	// Dedicated server support level
 	SupportLevel pulumi.StringOutput `pulumi:"supportLevel"`
-	// Template name
-	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
-	// Metadata
-	UserMetadatas ServerUserMetadataArrayOutput `pulumi:"userMetadatas"`
 }
 
 // NewServer registers a new resource with the given unique name, arguments, and options.
@@ -140,31 +107,29 @@ func GetServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Server resources.
 type serverState struct {
-	// Dedicated AZ localisation
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Boot id of the server
-	BootId *float64 `pulumi:"bootId"`
-	// Boot script of the server
+	// dedicated AZ localisation
+	AvailabilityZone *string  `pulumi:"availabilityZone"`
+	BootId           *float64 `pulumi:"bootId"`
+	// Ipxe script served on boot
 	BootScript *string `pulumi:"bootScript"`
-	// Dedicated server commercial range
+	// dedicater server commercial range
 	CommercialRange *string `pulumi:"commercialRange"`
-	// Dedicated datacenter localisation (bhs1,bhs2,...)
+	// OS reinstallation customizations
+	Customizations *ServerCustomizations `pulumi:"customizations"`
+	// dedicated datacenter localisation
 	Datacenter *string `pulumi:"datacenter"`
-	// A structure describing informations about installation custom
-	Details *ServerDetails `pulumi:"details"`
-	// Resource display name
+	// The display name of your dedicated server
 	DisplayName *string `pulumi:"displayName"`
-	// Path of the EFI bootloader
+	// Path of the EFI bootloader served on boot
 	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
-	// IAM resource information
+	// IAM resource metadata
 	Iam *ServerIam `pulumi:"iam"`
-	// Dedicated server ip (IPv4)
-	Ip *string `pulumi:"ip"`
-	// Link speed of the server
+	// dedicated server ip
+	Ip        *string  `pulumi:"ip"`
 	LinkSpeed *float64 `pulumi:"linkSpeed"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
-	// Dedicated server name
+	// dedicated server name
 	Name             *string `pulumi:"name"`
 	NewUpgradeSystem *bool   `pulumi:"newUpgradeSystem"`
 	// Prevent datacenter intervention
@@ -174,67 +139,61 @@ type serverState struct {
 	// Operating system
 	Os *string `pulumi:"os"`
 	// OVH subsidiaries
-	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
-	// Partition scheme name
-	PartitionSchemeName *string            `pulumi:"partitionSchemeName"`
-	PlanOptions         []ServerPlanOption `pulumi:"planOptions"`
-	Plans               []ServerPlan       `pulumi:"plans"`
-	// Power state of the server (poweron, poweroff)
+	OvhSubsidiary *string            `pulumi:"ovhSubsidiary"`
+	PlanOptions   []ServerPlanOption `pulumi:"planOptions"`
+	Plans         []ServerPlan       `pulumi:"plans"`
+	// Power state of the server
 	PowerState *string `pulumi:"powerState"`
 	// Does this server have professional use option
 	ProfessionalUse *bool `pulumi:"professionalUse"`
-	// Rack id of the server
-	Rack *string `pulumi:"rack"`
-	// Dedicated region localisation
+	// Arbitrary properties to pass to cloud-init's config drive datasource
+	Properties map[string]string `pulumi:"properties"`
+	Rack       *string           `pulumi:"rack"`
+	// dedicated region localisation
 	Region *string `pulumi:"region"`
-	// Rescue mail of the server
+	// Custom email used to receive rescue credentials
 	RescueMail *string `pulumi:"rescueMail"`
 	// Public SSH Key used in the rescue mode
 	RescueSshKey *string `pulumi:"rescueSshKey"`
-	// Dedicated server reverse
-	Reverse *string `pulumi:"reverse"`
-	// Root device of the server
+	// dedicated server reverse
+	Reverse    *string `pulumi:"reverse"`
 	RootDevice *string `pulumi:"rootDevice"`
 	// Server id
 	ServerId *float64 `pulumi:"serverId"`
-	// The serviceName of your dedicated server
+	// The internal name of your dedicated server
 	ServiceName *string `pulumi:"serviceName"`
-	// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+	// All states a Dedicated can be in
 	State *string `pulumi:"state"`
-	// Dedicated server support level (critical, fastpath, gs, pro)
+	// OS reinstallation storage configurations
+	Storages []ServerStorage `pulumi:"storages"`
+	// Dedicated server support level
 	SupportLevel *string `pulumi:"supportLevel"`
-	// Template name
-	TemplateName *string `pulumi:"templateName"`
-	// Metadata
-	UserMetadatas []ServerUserMetadata `pulumi:"userMetadatas"`
 }
 
 type ServerState struct {
-	// Dedicated AZ localisation
+	// dedicated AZ localisation
 	AvailabilityZone pulumi.StringPtrInput
-	// Boot id of the server
-	BootId pulumi.Float64PtrInput
-	// Boot script of the server
+	BootId           pulumi.Float64PtrInput
+	// Ipxe script served on boot
 	BootScript pulumi.StringPtrInput
-	// Dedicated server commercial range
+	// dedicater server commercial range
 	CommercialRange pulumi.StringPtrInput
-	// Dedicated datacenter localisation (bhs1,bhs2,...)
+	// OS reinstallation customizations
+	Customizations ServerCustomizationsPtrInput
+	// dedicated datacenter localisation
 	Datacenter pulumi.StringPtrInput
-	// A structure describing informations about installation custom
-	Details ServerDetailsPtrInput
-	// Resource display name
+	// The display name of your dedicated server
 	DisplayName pulumi.StringPtrInput
-	// Path of the EFI bootloader
+	// Path of the EFI bootloader served on boot
 	EfiBootloaderPath pulumi.StringPtrInput
-	// IAM resource information
+	// IAM resource metadata
 	Iam ServerIamPtrInput
-	// Dedicated server ip (IPv4)
-	Ip pulumi.StringPtrInput
-	// Link speed of the server
+	// dedicated server ip
+	Ip        pulumi.StringPtrInput
 	LinkSpeed pulumi.Float64PtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
-	// Dedicated server name
+	// dedicated server name
 	Name             pulumi.StringPtrInput
 	NewUpgradeSystem pulumi.BoolPtrInput
 	// Prevent datacenter intervention
@@ -245,38 +204,34 @@ type ServerState struct {
 	Os pulumi.StringPtrInput
 	// OVH subsidiaries
 	OvhSubsidiary pulumi.StringPtrInput
-	// Partition scheme name
-	PartitionSchemeName pulumi.StringPtrInput
-	PlanOptions         ServerPlanOptionArrayInput
-	Plans               ServerPlanArrayInput
-	// Power state of the server (poweron, poweroff)
+	PlanOptions   ServerPlanOptionArrayInput
+	Plans         ServerPlanArrayInput
+	// Power state of the server
 	PowerState pulumi.StringPtrInput
 	// Does this server have professional use option
 	ProfessionalUse pulumi.BoolPtrInput
-	// Rack id of the server
-	Rack pulumi.StringPtrInput
-	// Dedicated region localisation
+	// Arbitrary properties to pass to cloud-init's config drive datasource
+	Properties pulumi.StringMapInput
+	Rack       pulumi.StringPtrInput
+	// dedicated region localisation
 	Region pulumi.StringPtrInput
-	// Rescue mail of the server
+	// Custom email used to receive rescue credentials
 	RescueMail pulumi.StringPtrInput
 	// Public SSH Key used in the rescue mode
 	RescueSshKey pulumi.StringPtrInput
-	// Dedicated server reverse
-	Reverse pulumi.StringPtrInput
-	// Root device of the server
+	// dedicated server reverse
+	Reverse    pulumi.StringPtrInput
 	RootDevice pulumi.StringPtrInput
 	// Server id
 	ServerId pulumi.Float64PtrInput
-	// The serviceName of your dedicated server
+	// The internal name of your dedicated server
 	ServiceName pulumi.StringPtrInput
-	// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+	// All states a Dedicated can be in
 	State pulumi.StringPtrInput
-	// Dedicated server support level (critical, fastpath, gs, pro)
+	// OS reinstallation storage configurations
+	Storages ServerStorageArrayInput
+	// Dedicated server support level
 	SupportLevel pulumi.StringPtrInput
-	// Template name
-	TemplateName pulumi.StringPtrInput
-	// Metadata
-	UserMetadatas ServerUserMetadataArrayInput
 }
 
 func (ServerState) ElementType() reflect.Type {
@@ -284,74 +239,70 @@ func (ServerState) ElementType() reflect.Type {
 }
 
 type serverArgs struct {
-	// Boot id of the server
 	BootId *float64 `pulumi:"bootId"`
-	// Boot script of the server
+	// Ipxe script served on boot
 	BootScript *string `pulumi:"bootScript"`
-	// A structure describing informations about installation custom
-	Details *ServerDetails `pulumi:"details"`
-	// Resource display name
+	// OS reinstallation customizations
+	Customizations *ServerCustomizations `pulumi:"customizations"`
+	// The display name of your dedicated server
 	DisplayName *string `pulumi:"displayName"`
-	// Path of the EFI bootloader
+	// Path of the EFI bootloader served on boot
 	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
 	// Prevent datacenter intervention
 	NoIntervention *bool `pulumi:"noIntervention"`
+	// Operating system
+	Os *string `pulumi:"os"`
 	// OVH subsidiaries
-	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
-	// Partition scheme name
-	PartitionSchemeName *string            `pulumi:"partitionSchemeName"`
-	PlanOptions         []ServerPlanOption `pulumi:"planOptions"`
-	Plans               []ServerPlan       `pulumi:"plans"`
-	// Rescue mail of the server
+	OvhSubsidiary *string            `pulumi:"ovhSubsidiary"`
+	PlanOptions   []ServerPlanOption `pulumi:"planOptions"`
+	Plans         []ServerPlan       `pulumi:"plans"`
+	// Arbitrary properties to pass to cloud-init's config drive datasource
+	Properties map[string]string `pulumi:"properties"`
+	// Custom email used to receive rescue credentials
 	RescueMail *string `pulumi:"rescueMail"`
 	// Public SSH Key used in the rescue mode
 	RescueSshKey *string `pulumi:"rescueSshKey"`
-	// Root device of the server
-	RootDevice *string `pulumi:"rootDevice"`
-	// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+	RootDevice   *string `pulumi:"rootDevice"`
+	// All states a Dedicated can be in
 	State *string `pulumi:"state"`
-	// Template name
-	TemplateName *string `pulumi:"templateName"`
-	// Metadata
-	UserMetadatas []ServerUserMetadata `pulumi:"userMetadatas"`
+	// OS reinstallation storage configurations
+	Storages []ServerStorage `pulumi:"storages"`
 }
 
 // The set of arguments for constructing a Server resource.
 type ServerArgs struct {
-	// Boot id of the server
 	BootId pulumi.Float64PtrInput
-	// Boot script of the server
+	// Ipxe script served on boot
 	BootScript pulumi.StringPtrInput
-	// A structure describing informations about installation custom
-	Details ServerDetailsPtrInput
-	// Resource display name
+	// OS reinstallation customizations
+	Customizations ServerCustomizationsPtrInput
+	// The display name of your dedicated server
 	DisplayName pulumi.StringPtrInput
-	// Path of the EFI bootloader
+	// Path of the EFI bootloader served on boot
 	EfiBootloaderPath pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
 	// Prevent datacenter intervention
 	NoIntervention pulumi.BoolPtrInput
+	// Operating system
+	Os pulumi.StringPtrInput
 	// OVH subsidiaries
 	OvhSubsidiary pulumi.StringPtrInput
-	// Partition scheme name
-	PartitionSchemeName pulumi.StringPtrInput
-	PlanOptions         ServerPlanOptionArrayInput
-	Plans               ServerPlanArrayInput
-	// Rescue mail of the server
+	PlanOptions   ServerPlanOptionArrayInput
+	Plans         ServerPlanArrayInput
+	// Arbitrary properties to pass to cloud-init's config drive datasource
+	Properties pulumi.StringMapInput
+	// Custom email used to receive rescue credentials
 	RescueMail pulumi.StringPtrInput
 	// Public SSH Key used in the rescue mode
 	RescueSshKey pulumi.StringPtrInput
-	// Root device of the server
-	RootDevice pulumi.StringPtrInput
-	// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+	RootDevice   pulumi.StringPtrInput
+	// All states a Dedicated can be in
 	State pulumi.StringPtrInput
-	// Template name
-	TemplateName pulumi.StringPtrInput
-	// Metadata
-	UserMetadatas ServerUserMetadataArrayInput
+	// OS reinstallation storage configurations
+	Storages ServerStorageArrayInput
 }
 
 func (ServerArgs) ElementType() reflect.Type {
@@ -441,57 +392,55 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 	return o
 }
 
-// Dedicated AZ localisation
+// dedicated AZ localisation
 func (o ServerOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Boot id of the server
 func (o ServerOutput) BootId() pulumi.Float64Output {
 	return o.ApplyT(func(v *Server) pulumi.Float64Output { return v.BootId }).(pulumi.Float64Output)
 }
 
-// Boot script of the server
+// Ipxe script served on boot
 func (o ServerOutput) BootScript() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.BootScript }).(pulumi.StringOutput)
 }
 
-// Dedicated server commercial range
+// dedicater server commercial range
 func (o ServerOutput) CommercialRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.CommercialRange }).(pulumi.StringOutput)
 }
 
-// Dedicated datacenter localisation (bhs1,bhs2,...)
+// OS reinstallation customizations
+func (o ServerOutput) Customizations() ServerCustomizationsPtrOutput {
+	return o.ApplyT(func(v *Server) ServerCustomizationsPtrOutput { return v.Customizations }).(ServerCustomizationsPtrOutput)
+}
+
+// dedicated datacenter localisation
 func (o ServerOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
 }
 
-// A structure describing informations about installation custom
-func (o ServerOutput) Details() ServerDetailsPtrOutput {
-	return o.ApplyT(func(v *Server) ServerDetailsPtrOutput { return v.Details }).(ServerDetailsPtrOutput)
-}
-
-// Resource display name
+// The display name of your dedicated server
 func (o ServerOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Path of the EFI bootloader
+// Path of the EFI bootloader served on boot
 func (o ServerOutput) EfiBootloaderPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.EfiBootloaderPath }).(pulumi.StringOutput)
 }
 
-// IAM resource information
+// IAM resource metadata
 func (o ServerOutput) Iam() ServerIamOutput {
 	return o.ApplyT(func(v *Server) ServerIamOutput { return v.Iam }).(ServerIamOutput)
 }
 
-// Dedicated server ip (IPv4)
+// dedicated server ip
 func (o ServerOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Link speed of the server
 func (o ServerOutput) LinkSpeed() pulumi.Float64Output {
 	return o.ApplyT(func(v *Server) pulumi.Float64Output { return v.LinkSpeed }).(pulumi.Float64Output)
 }
@@ -501,7 +450,7 @@ func (o ServerOutput) Monitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Server) pulumi.BoolOutput { return v.Monitoring }).(pulumi.BoolOutput)
 }
 
-// Dedicated server name
+// dedicated server name
 func (o ServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -530,11 +479,6 @@ func (o ServerOutput) OvhSubsidiary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.OvhSubsidiary }).(pulumi.StringPtrOutput)
 }
 
-// Partition scheme name
-func (o ServerOutput) PartitionSchemeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.PartitionSchemeName }).(pulumi.StringPtrOutput)
-}
-
 func (o ServerOutput) PlanOptions() ServerPlanOptionArrayOutput {
 	return o.ApplyT(func(v *Server) ServerPlanOptionArrayOutput { return v.PlanOptions }).(ServerPlanOptionArrayOutput)
 }
@@ -543,7 +487,7 @@ func (o ServerOutput) Plans() ServerPlanArrayOutput {
 	return o.ApplyT(func(v *Server) ServerPlanArrayOutput { return v.Plans }).(ServerPlanArrayOutput)
 }
 
-// Power state of the server (poweron, poweroff)
+// Power state of the server
 func (o ServerOutput) PowerState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.PowerState }).(pulumi.StringOutput)
 }
@@ -553,17 +497,21 @@ func (o ServerOutput) ProfessionalUse() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Server) pulumi.BoolOutput { return v.ProfessionalUse }).(pulumi.BoolOutput)
 }
 
-// Rack id of the server
+// Arbitrary properties to pass to cloud-init's config drive datasource
+func (o ServerOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
 func (o ServerOutput) Rack() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Rack }).(pulumi.StringOutput)
 }
 
-// Dedicated region localisation
+// dedicated region localisation
 func (o ServerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Rescue mail of the server
+// Custom email used to receive rescue credentials
 func (o ServerOutput) RescueMail() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.RescueMail }).(pulumi.StringOutput)
 }
@@ -573,12 +521,11 @@ func (o ServerOutput) RescueSshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.RescueSshKey }).(pulumi.StringOutput)
 }
 
-// Dedicated server reverse
+// dedicated server reverse
 func (o ServerOutput) Reverse() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Reverse }).(pulumi.StringOutput)
 }
 
-// Root device of the server
 func (o ServerOutput) RootDevice() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.RootDevice }).(pulumi.StringOutput)
 }
@@ -588,29 +535,24 @@ func (o ServerOutput) ServerId() pulumi.Float64Output {
 	return o.ApplyT(func(v *Server) pulumi.Float64Output { return v.ServerId }).(pulumi.Float64Output)
 }
 
-// The serviceName of your dedicated server
+// The internal name of your dedicated server
 func (o ServerOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+// All states a Dedicated can be in
 func (o ServerOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Dedicated server support level (critical, fastpath, gs, pro)
+// OS reinstallation storage configurations
+func (o ServerOutput) Storages() ServerStorageArrayOutput {
+	return o.ApplyT(func(v *Server) ServerStorageArrayOutput { return v.Storages }).(ServerStorageArrayOutput)
+}
+
+// Dedicated server support level
 func (o ServerOutput) SupportLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.SupportLevel }).(pulumi.StringOutput)
-}
-
-// Template name
-func (o ServerOutput) TemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.TemplateName }).(pulumi.StringPtrOutput)
-}
-
-// Metadata
-func (o ServerOutput) UserMetadatas() ServerUserMetadataArrayOutput {
-	return o.ApplyT(func(v *Server) ServerUserMetadataArrayOutput { return v.UserMetadatas }).(ServerUserMetadataArrayOutput)
 }
 
 type ServerArrayOutput struct{ *pulumi.OutputState }

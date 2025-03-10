@@ -46,6 +46,20 @@ __all__ = [
     'KubeNodePoolTemplateMetadata',
     'KubeNodePoolTemplateSpec',
     'KubePrivateNetworkConfiguration',
+    'LoadbalancerFloatingIp',
+    'LoadbalancerListener',
+    'LoadbalancerListenerPool',
+    'LoadbalancerListenerPoolHealthMonitor',
+    'LoadbalancerListenerPoolHealthMonitorHttpConfiguration',
+    'LoadbalancerListenerPoolMember',
+    'LoadbalancerListenerPoolSessionPersistence',
+    'LoadbalancerNetwork',
+    'LoadbalancerNetworkPrivate',
+    'LoadbalancerNetworkPrivateFloatingIp',
+    'LoadbalancerNetworkPrivateFloatingIpCreate',
+    'LoadbalancerNetworkPrivateGateway',
+    'LoadbalancerNetworkPrivateGatewayCreate',
+    'LoadbalancerNetworkPrivateNetwork',
     'NetworkPrivateRegionsAttribute',
     'NetworkPrivateRegionsStatus',
     'NetworkPrivateSubnetIpPool',
@@ -57,9 +71,24 @@ __all__ = [
     'ProjectPlanConfiguration',
     'ProjectPlanOption',
     'ProjectPlanOptionConfiguration',
+    'RancherCurrentState',
+    'RancherCurrentStateIpRestriction',
+    'RancherCurrentStateNetworking',
+    'RancherCurrentStateUsage',
+    'RancherCurrentTask',
+    'RancherTargetSpec',
+    'RancherTargetSpecIpRestriction',
     'RegionNetworkSubnet',
     'RegionNetworkSubnetAllocationPool',
     'RegionNetworkSubnetHostRoute',
+    'StorageEncryption',
+    'StorageObject',
+    'StorageReplication',
+    'StorageReplicationRule',
+    'StorageReplicationRuleDestination',
+    'StorageReplicationRuleFilter',
+    'StorageReplicationRuleFilterTag',
+    'StorageVersioning',
     'UserRole',
     'VolumeSubOperation',
     'GetCapabilitiesContainerFilterFeatureResult',
@@ -70,6 +99,9 @@ __all__ = [
     'GetCapabilitiesContainerRegistryResultPlanRegistryLimitResult',
     'GetContainerRegistriesResultResult',
     'GetContainerRegistryUsersResultResult',
+    'GetFlavorsFlavorResult',
+    'GetFlavorsFlavorCapabilityResult',
+    'GetFlavorsFlavorPlanCodesResult',
     'GetFloatingIPsCloudProjectFloatingipResult',
     'GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult',
     'GetInstanceAddressResult',
@@ -88,6 +120,7 @@ __all__ = [
     'GetKubeNodePoolTemplateMetadataResult',
     'GetKubeNodePoolTemplateSpecResult',
     'GetKubeNodesNodeResult',
+    'GetLoadBalancerFlavorsFlavorResult',
     'GetLoadBalancerFloatingIpResult',
     'GetLoadBalancersLoadbalancerResult',
     'GetLoadBalancersLoadbalancerFloatingIpResult',
@@ -98,7 +131,31 @@ __all__ = [
     'GetNetworkPrivatesNetworkRegionResult',
     'GetOpenSearchUserAclResult',
     'GetPrometheusTargetResult',
+    'GetRancherCurrentStateResult',
+    'GetRancherCurrentStateIpRestrictionResult',
+    'GetRancherCurrentStateNetworkingResult',
+    'GetRancherCurrentStateUsageResult',
+    'GetRancherCurrentTaskResult',
+    'GetRancherPlanPlanResult',
+    'GetRancherTargetSpecResult',
+    'GetRancherTargetSpecIpRestrictionResult',
+    'GetRancherVersionVersionResult',
     'GetRegionServiceResult',
+    'GetStorageEncryptionResult',
+    'GetStorageObjectResult',
+    'GetStorageReplicationResult',
+    'GetStorageReplicationRuleResult',
+    'GetStorageReplicationRuleDestinationResult',
+    'GetStorageReplicationRuleFilterResult',
+    'GetStorageVersioningResult',
+    'GetStoragesContainerResult',
+    'GetStoragesContainerEncryptionResult',
+    'GetStoragesContainerObjectResult',
+    'GetStoragesContainerReplicationResult',
+    'GetStoragesContainerReplicationRuleResult',
+    'GetStoragesContainerReplicationRuleDestinationResult',
+    'GetStoragesContainerReplicationRuleFilterResult',
+    'GetStoragesContainerVersioningResult',
     'GetUserRoleResult',
     'GetUsersUserResult',
     'GetUsersUserRoleResult',
@@ -128,11 +185,6 @@ class AlertingFormattedMonthlyThreshold(dict):
                  currency_code: Optional[str] = None,
                  text: Optional[str] = None,
                  value: Optional[float] = None):
-        """
-        :param str currency_code: Currency of the monthly threshold
-        :param str text: Text representation of the monthly threshold
-        :param float value: Value of the monthly threshold
-        """
         if currency_code is not None:
             pulumi.set(__self__, "currency_code", currency_code)
         if text is not None:
@@ -143,25 +195,16 @@ class AlertingFormattedMonthlyThreshold(dict):
     @property
     @pulumi.getter(name="currencyCode")
     def currency_code(self) -> Optional[str]:
-        """
-        Currency of the monthly threshold
-        """
         return pulumi.get(self, "currency_code")
 
     @property
     @pulumi.getter
     def text(self) -> Optional[str]:
-        """
-        Text representation of the monthly threshold
-        """
         return pulumi.get(self, "text")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[float]:
-        """
-        Value of the monthly threshold
-        """
         return pulumi.get(self, "value")
 
 
@@ -197,13 +240,13 @@ class ContainerRegistryPlan(dict):
                  registry_limits: Optional[Sequence['outputs.ContainerRegistryPlanRegistryLimit']] = None,
                  updated_at: Optional[str] = None):
         """
-        :param str code: Plan code from the catalog
+        :param str code: Plan code from catalog
         :param str created_at: Plan creation date
         :param Sequence['ContainerRegistryPlanFeatureArgs'] features: Features of the plan
         :param str id: Plan ID
-        :param str name: Registry name
+        :param str name: Plan name
         :param Sequence['ContainerRegistryPlanRegistryLimitArgs'] registry_limits: Container registry limits
-        :param str updated_at: Registry last update date
+        :param str updated_at: Plan last update date
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -224,7 +267,7 @@ class ContainerRegistryPlan(dict):
     @pulumi.getter
     def code(self) -> Optional[str]:
         """
-        Plan code from the catalog
+        Plan code from catalog
         """
         return pulumi.get(self, "code")
 
@@ -256,7 +299,7 @@ class ContainerRegistryPlan(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Registry name
+        Plan name
         """
         return pulumi.get(self, "name")
 
@@ -272,7 +315,7 @@ class ContainerRegistryPlan(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[str]:
         """
-        Registry last update date
+        Plan last update date
         """
         return pulumi.get(self, "updated_at")
 
@@ -375,14 +418,14 @@ class DatabaseEndpoint(dict):
                  ssl_mode: Optional[str] = None,
                  uri: Optional[str] = None):
         """
-        :param str component: Type of component the URI relates to.
-        :param str domain: Domain of the cluster.
-        :param str path: Path of the endpoint.
-        :param int port: Connection port for the endpoint.
-        :param str scheme: Scheme used to generate the URI.
-        :param bool ssl: Defines whether the endpoint uses SSL.
-        :param str ssl_mode: SSL mode used to connect to the service if the SSL is enabled.
-        :param str uri: URI of the endpoint.
+        :param str component: Type of component the URI relates to
+        :param str domain: Domain of the cluster
+        :param str path: Path of the endpoint
+        :param int port: Connection port for the endpoint
+        :param str scheme: Scheme used to generate the URI
+        :param bool ssl: Defines whether the endpoint uses SSL
+        :param str ssl_mode: SSL mode used to connect to the service if the SSL is enabled
+        :param str uri: URI of the endpoint
         """
         if component is not None:
             pulumi.set(__self__, "component", component)
@@ -405,7 +448,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def component(self) -> Optional[str]:
         """
-        Type of component the URI relates to.
+        Type of component the URI relates to
         """
         return pulumi.get(self, "component")
 
@@ -413,7 +456,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        Domain of the cluster.
+        Domain of the cluster
         """
         return pulumi.get(self, "domain")
 
@@ -421,7 +464,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        Path of the endpoint.
+        Path of the endpoint
         """
         return pulumi.get(self, "path")
 
@@ -429,7 +472,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Connection port for the endpoint.
+        Connection port for the endpoint
         """
         return pulumi.get(self, "port")
 
@@ -437,7 +480,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def scheme(self) -> Optional[str]:
         """
-        Scheme used to generate the URI.
+        Scheme used to generate the URI
         """
         return pulumi.get(self, "scheme")
 
@@ -445,7 +488,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def ssl(self) -> Optional[bool]:
         """
-        Defines whether the endpoint uses SSL.
+        Defines whether the endpoint uses SSL
         """
         return pulumi.get(self, "ssl")
 
@@ -453,7 +496,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[str]:
         """
-        SSL mode used to connect to the service if the SSL is enabled.
+        SSL mode used to connect to the service if the SSL is enabled
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -461,7 +504,7 @@ class DatabaseEndpoint(dict):
     @pulumi.getter
     def uri(self) -> Optional[str]:
         """
-        URI of the endpoint.
+        URI of the endpoint
         """
         return pulumi.get(self, "uri")
 
@@ -475,7 +518,7 @@ class DatabaseIpRestriction(dict):
         """
         :param str description: Description of the IP restriction
         :param str ip: Authorized IP
-        :param str status: Current status of the cluster.
+        :param str status: Current status of the IP restriction
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -504,7 +547,7 @@ class DatabaseIpRestriction(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        Current status of the cluster.
+        Current status of the IP restriction
         """
         return pulumi.get(self, "status")
 
@@ -535,10 +578,9 @@ class DatabaseNode(dict):
                  network_id: Optional[str] = None,
                  subnet_id: Optional[str] = None):
         """
-        :param str region: Public cloud region in which the node should be deployed.
-               Ex: "GRA'.
-        :param str network_id: Private network id in which the node should be deployed. It's the regional openstackId of the private network
-        :param str subnet_id: Private subnet ID in which the node is.
+        :param str region: Region of the node
+        :param str network_id: Private network ID in which the node is. It's the regional openstackId of the private network.
+        :param str subnet_id: Private subnet ID in which the node is
         """
         pulumi.set(__self__, "region", region)
         if network_id is not None:
@@ -550,8 +592,7 @@ class DatabaseNode(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Public cloud region in which the node should be deployed.
-        Ex: "GRA'.
+        Region of the node
         """
         return pulumi.get(self, "region")
 
@@ -559,7 +600,7 @@ class DatabaseNode(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[str]:
         """
-        Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        Private network ID in which the node is. It's the regional openstackId of the private network.
         """
         return pulumi.get(self, "network_id")
 
@@ -567,7 +608,7 @@ class DatabaseNode(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
         """
-        Private subnet ID in which the node is.
+        Private subnet ID in which the node is
         """
         return pulumi.get(self, "subnet_id")
 
@@ -595,8 +636,8 @@ class GatewayExternalInformation(dict):
                  ips: Optional[Sequence['outputs.GatewayExternalInformationIp']] = None,
                  network_id: Optional[str] = None):
         """
-        :param Sequence['GatewayExternalInformationIpArgs'] ips: List of external ips of the gateway.
-        :param str network_id: ID of the private network.
+        :param Sequence['GatewayExternalInformationIpArgs'] ips: List of external ips of the gateway
+        :param str network_id: External network ID of the gateway
         """
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
@@ -607,7 +648,7 @@ class GatewayExternalInformation(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence['outputs.GatewayExternalInformationIp']]:
         """
-        List of external ips of the gateway.
+        List of external ips of the gateway
         """
         return pulumi.get(self, "ips")
 
@@ -615,7 +656,7 @@ class GatewayExternalInformation(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[str]:
         """
-        ID of the private network.
+        External network ID of the gateway
         """
         return pulumi.get(self, "network_id")
 
@@ -643,8 +684,8 @@ class GatewayExternalInformationIp(dict):
                  ip: Optional[str] = None,
                  subnet_id: Optional[str] = None):
         """
-        :param str ip: IP of the interface.
-        :param str subnet_id: ID of the subnet.
+        :param str ip: External IP of the gateway
+        :param str subnet_id: Subnet ID of the ip
         """
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
@@ -655,7 +696,7 @@ class GatewayExternalInformationIp(dict):
     @pulumi.getter
     def ip(self) -> Optional[str]:
         """
-        IP of the interface.
+        External IP of the gateway
         """
         return pulumi.get(self, "ip")
 
@@ -663,7 +704,7 @@ class GatewayExternalInformationIp(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
         """
-        ID of the subnet.
+        Subnet ID of the ip
         """
         return pulumi.get(self, "subnet_id")
 
@@ -695,10 +736,10 @@ class GatewayInterface(dict):
                  network_id: Optional[str] = None,
                  subnet_id: Optional[str] = None):
         """
-        :param str id: ID of the interface.
-        :param str ip: IP of the interface.
-        :param str network_id: ID of the private network.
-        :param str subnet_id: ID of the subnet.
+        :param str id: ID of the interface
+        :param str ip: IP of the interface
+        :param str network_id: Network ID of the interface
+        :param str subnet_id: Subnet ID of the interface
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -713,7 +754,7 @@ class GatewayInterface(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        ID of the interface.
+        ID of the interface
         """
         return pulumi.get(self, "id")
 
@@ -721,7 +762,7 @@ class GatewayInterface(dict):
     @pulumi.getter
     def ip(self) -> Optional[str]:
         """
-        IP of the interface.
+        IP of the interface
         """
         return pulumi.get(self, "ip")
 
@@ -729,7 +770,7 @@ class GatewayInterface(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[str]:
         """
-        ID of the private network.
+        Network ID of the interface
         """
         return pulumi.get(self, "network_id")
 
@@ -737,7 +778,7 @@ class GatewayInterface(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
         """
-        ID of the subnet.
+        Subnet ID of the interface
         """
         return pulumi.get(self, "subnet_id")
 
@@ -778,7 +819,7 @@ class InstanceAttachedVolume(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None):
         """
-        :param str id: Instance id
+        :param str id: Volume id
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -787,7 +828,7 @@ class InstanceAttachedVolume(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Instance id
+        Volume id
         """
         return pulumi.get(self, "id")
 
@@ -846,7 +887,7 @@ class InstanceBootFrom(dict):
                  image_id: Optional[str] = None,
                  volume_id: Optional[str] = None):
         """
-        :param str image_id: Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        :param str image_id: Instance image id
         :param str volume_id: Instance volume id
         """
         if image_id is not None:
@@ -858,7 +899,7 @@ class InstanceBootFrom(dict):
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[str]:
         """
-        Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
+        Instance image id
         """
         return pulumi.get(self, "image_id")
 
@@ -893,7 +934,7 @@ class InstanceFlavor(dict):
     def __init__(__self__, *,
                  flavor_id: str):
         """
-        :param str flavor_id: Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        :param str flavor_id: Flavor id
         """
         pulumi.set(__self__, "flavor_id", flavor_id)
 
@@ -901,7 +942,7 @@ class InstanceFlavor(dict):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> str:
         """
-        Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
+        Flavor id
         """
         return pulumi.get(self, "flavor_id")
 
@@ -947,7 +988,7 @@ class InstanceNetwork(dict):
     def __init__(__self__, *,
                  public: Optional[bool] = None):
         """
-        :param bool public: Set the new instance as public boolean
+        :param bool public: Set the new instance as public
         """
         if public is not None:
             pulumi.set(__self__, "public", public)
@@ -956,7 +997,7 @@ class InstanceNetwork(dict):
     @pulumi.getter
     def public(self) -> Optional[bool]:
         """
-        Set the new instance as public boolean
+        Set the new instance as public
         """
         return pulumi.get(self, "public")
 
@@ -966,7 +1007,7 @@ class InstanceSshKey(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: SSH Keypair name
+        :param str name: SSH Key pair name
         """
         pulumi.set(__self__, "name", name)
 
@@ -974,7 +1015,7 @@ class InstanceSshKey(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        SSH Keypair name
+        SSH Key pair name
         """
         return pulumi.get(self, "name")
 
@@ -1003,7 +1044,7 @@ class InstanceSshKeyCreate(dict):
                  public_key: str):
         """
         :param str name: SSH Key pair name
-        :param str public_key: SSH Public key
+        :param str public_key: SSH Public Key
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "public_key", public_key)
@@ -1020,7 +1061,7 @@ class InstanceSshKeyCreate(dict):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
         """
-        SSH Public key
+        SSH Public Key
         """
         return pulumi.get(self, "public_key")
 
@@ -1029,9 +1070,6 @@ class InstanceSshKeyCreate(dict):
 class KubeCustomization(dict):
     def __init__(__self__, *,
                  apiservers: Optional[Sequence['outputs.KubeCustomizationApiserver']] = None):
-        """
-        :param Sequence['KubeCustomizationApiserverArgs'] apiservers: Kubernetes API server customization
-        """
         if apiservers is not None:
             pulumi.set(__self__, "apiservers", apiservers)
 
@@ -1039,9 +1077,6 @@ class KubeCustomization(dict):
     @pulumi.getter
     @_utilities.deprecated("""Use customization_apiserver instead""")
     def apiservers(self) -> Optional[Sequence['outputs.KubeCustomizationApiserver']]:
-        """
-        Kubernetes API server customization
-        """
         return pulumi.get(self, "apiservers")
 
 
@@ -1049,18 +1084,12 @@ class KubeCustomization(dict):
 class KubeCustomizationApiserver(dict):
     def __init__(__self__, *,
                  admissionplugins: Optional[Sequence['outputs.KubeCustomizationApiserverAdmissionplugin']] = None):
-        """
-        :param Sequence['KubeCustomizationApiserverAdmissionpluginArgs'] admissionplugins: Kubernetes API server admission plugins customization
-        """
         if admissionplugins is not None:
             pulumi.set(__self__, "admissionplugins", admissionplugins)
 
     @property
     @pulumi.getter
     def admissionplugins(self) -> Optional[Sequence['outputs.KubeCustomizationApiserverAdmissionplugin']]:
-        """
-        Kubernetes API server admission plugins customization
-        """
         return pulumi.get(self, "admissionplugins")
 
 
@@ -1069,10 +1098,6 @@ class KubeCustomizationApiserverAdmissionplugin(dict):
     def __init__(__self__, *,
                  disableds: Optional[Sequence[str]] = None,
                  enableds: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] disableds: Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        :param Sequence[str] enableds: Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        """
         if disableds is not None:
             pulumi.set(__self__, "disableds", disableds)
         if enableds is not None:
@@ -1081,17 +1106,11 @@ class KubeCustomizationApiserverAdmissionplugin(dict):
     @property
     @pulumi.getter
     def disableds(self) -> Optional[Sequence[str]]:
-        """
-        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        """
         return pulumi.get(self, "disableds")
 
     @property
     @pulumi.getter
     def enableds(self) -> Optional[Sequence[str]]:
-        """
-        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        """
         return pulumi.get(self, "enableds")
 
 
@@ -1100,10 +1119,6 @@ class KubeCustomizationKubeProxy(dict):
     def __init__(__self__, *,
                  iptables: Optional['outputs.KubeCustomizationKubeProxyIptables'] = None,
                  ipvs: Optional['outputs.KubeCustomizationKubeProxyIpvs'] = None):
-        """
-        :param 'KubeCustomizationKubeProxyIptablesArgs' iptables: Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
-        :param 'KubeCustomizationKubeProxyIpvsArgs' ipvs: Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
-        """
         if iptables is not None:
             pulumi.set(__self__, "iptables", iptables)
         if ipvs is not None:
@@ -1112,17 +1127,11 @@ class KubeCustomizationKubeProxy(dict):
     @property
     @pulumi.getter
     def iptables(self) -> Optional['outputs.KubeCustomizationKubeProxyIptables']:
-        """
-        Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
-        """
         return pulumi.get(self, "iptables")
 
     @property
     @pulumi.getter
     def ipvs(self) -> Optional['outputs.KubeCustomizationKubeProxyIpvs']:
-        """
-        Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
-        """
         return pulumi.get(self, "ipvs")
 
 
@@ -1150,10 +1159,6 @@ class KubeCustomizationKubeProxyIptables(dict):
     def __init__(__self__, *,
                  min_sync_period: Optional[str] = None,
                  sync_period: Optional[str] = None):
-        """
-        :param str min_sync_period: Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
-        :param str sync_period: Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if sync_period is not None:
@@ -1162,17 +1167,11 @@ class KubeCustomizationKubeProxyIptables(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
-        """
-        Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
-        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
-        """
-        Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        """
         return pulumi.get(self, "sync_period")
 
 
@@ -1210,14 +1209,6 @@ class KubeCustomizationKubeProxyIpvs(dict):
                  tcp_fin_timeout: Optional[str] = None,
                  tcp_timeout: Optional[str] = None,
                  udp_timeout: Optional[str] = None):
-        """
-        :param str min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        :param str scheduler: IPVS scheduler.
-        :param str sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        :param str tcp_fin_timeout: Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        :param str tcp_timeout: Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        :param str udp_timeout: timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if scheduler is not None:
@@ -1234,49 +1225,31 @@ class KubeCustomizationKubeProxyIpvs(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
-        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter
     def scheduler(self) -> Optional[str]:
-        """
-        IPVS scheduler.
-        """
         return pulumi.get(self, "scheduler")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
-        """
         return pulumi.get(self, "sync_period")
 
     @property
     @pulumi.getter(name="tcpFinTimeout")
     def tcp_fin_timeout(self) -> Optional[str]:
-        """
-        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         return pulumi.get(self, "tcp_fin_timeout")
 
     @property
     @pulumi.getter(name="tcpTimeout")
     def tcp_timeout(self) -> Optional[str]:
-        """
-        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         return pulumi.get(self, "tcp_timeout")
 
     @property
     @pulumi.getter(name="udpTimeout")
     def udp_timeout(self) -> Optional[str]:
-        """
-        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
-        """
         return pulumi.get(self, "udp_timeout")
 
 
@@ -1308,12 +1281,6 @@ class KubeKubeconfigAttribute(dict):
                  client_key: Optional[str] = None,
                  cluster_ca_certificate: Optional[str] = None,
                  host: Optional[str] = None):
-        """
-        :param str client_certificate: The kubernetes API server client certificate.
-        :param str client_key: The kubernetes API server client key.
-        :param str cluster_ca_certificate: The kubernetes API server CA certificate.
-        :param str host: The kubernetes API server URL.
-        """
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -1326,33 +1293,21 @@ class KubeKubeconfigAttribute(dict):
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[str]:
-        """
-        The kubernetes API server client certificate.
-        """
         return pulumi.get(self, "client_certificate")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
-        """
-        The kubernetes API server client key.
-        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> Optional[str]:
-        """
-        The kubernetes API server CA certificate.
-        """
         return pulumi.get(self, "cluster_ca_certificate")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
-        """
-        The kubernetes API server URL.
-        """
         return pulumi.get(self, "host")
 
 
@@ -1481,11 +1436,6 @@ class KubePrivateNetworkConfiguration(dict):
         """
         :param str default_vrack_gateway: If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
         :param bool private_network_routing_as_default: Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
-               
-               In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-               ```python
-               import pulumi
-               ```
         """
         pulumi.set(__self__, "default_vrack_gateway", default_vrack_gateway)
         pulumi.set(__self__, "private_network_routing_as_default", private_network_routing_as_default)
@@ -1503,13 +1453,880 @@ class KubePrivateNetworkConfiguration(dict):
     def private_network_routing_as_default(self) -> bool:
         """
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
-
-        In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "private_network_routing_as_default")
+
+
+@pulumi.output_type
+class LoadbalancerFloatingIp(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 ip: Optional[str] = None):
+        """
+        :param str id: ID of the resource
+        :param str ip: IP Address of the resource
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        IP Address of the resource
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class LoadbalancerListener(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedCidrs":
+            suggest = "allowed_cidrs"
+        elif key == "secretId":
+            suggest = "secret_id"
+        elif key == "timeoutClientData":
+            suggest = "timeout_client_data"
+        elif key == "timeoutMemberData":
+            suggest = "timeout_member_data"
+        elif key == "tlsVersions":
+            suggest = "tls_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerListener. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerListener.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerListener.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 port: float,
+                 protocol: str,
+                 allowed_cidrs: Optional[Sequence[str]] = None,
+                 description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 pool: Optional['outputs.LoadbalancerListenerPool'] = None,
+                 secret_id: Optional[str] = None,
+                 timeout_client_data: Optional[float] = None,
+                 timeout_member_data: Optional[float] = None,
+                 tls_versions: Optional[Sequence[str]] = None):
+        """
+        :param float port: Listener port
+        :param str protocol: Protocol for the listener
+        :param Sequence[str] allowed_cidrs: The allowed CIDRs
+        :param str description: The description of the listener
+        :param str name: Name of the listener
+        :param 'LoadbalancerListenerPoolArgs' pool: Listener pool
+        :param str secret_id: Secret ID to get certificate for SSL listener creation
+        :param float timeout_client_data: Timeout client data of the listener
+        :param float timeout_member_data: Timeout member data of the listener
+        :param Sequence[str] tls_versions: TLS versions of the listener
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        if allowed_cidrs is not None:
+            pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pool is not None:
+            pulumi.set(__self__, "pool", pool)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
+        if timeout_client_data is not None:
+            pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+        if timeout_member_data is not None:
+            pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+        if tls_versions is not None:
+            pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @property
+    @pulumi.getter
+    def port(self) -> float:
+        """
+        Listener port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Protocol for the listener
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="allowedCidrs")
+    def allowed_cidrs(self) -> Optional[Sequence[str]]:
+        """
+        The allowed CIDRs
+        """
+        return pulumi.get(self, "allowed_cidrs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the listener
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the listener
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def pool(self) -> Optional['outputs.LoadbalancerListenerPool']:
+        """
+        Listener pool
+        """
+        return pulumi.get(self, "pool")
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[str]:
+        """
+        Secret ID to get certificate for SSL listener creation
+        """
+        return pulumi.get(self, "secret_id")
+
+    @property
+    @pulumi.getter(name="timeoutClientData")
+    def timeout_client_data(self) -> Optional[float]:
+        """
+        Timeout client data of the listener
+        """
+        return pulumi.get(self, "timeout_client_data")
+
+    @property
+    @pulumi.getter(name="timeoutMemberData")
+    def timeout_member_data(self) -> Optional[float]:
+        """
+        Timeout member data of the listener
+        """
+        return pulumi.get(self, "timeout_member_data")
+
+    @property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Optional[Sequence[str]]:
+        """
+        TLS versions of the listener
+        """
+        return pulumi.get(self, "tls_versions")
+
+
+@pulumi.output_type
+class LoadbalancerListenerPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthMonitor":
+            suggest = "health_monitor"
+        elif key == "sessionPersistence":
+            suggest = "session_persistence"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerListenerPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerListenerPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerListenerPool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 algorithm: Optional[str] = None,
+                 health_monitor: Optional['outputs.LoadbalancerListenerPoolHealthMonitor'] = None,
+                 members: Optional[Sequence['outputs.LoadbalancerListenerPoolMember']] = None,
+                 name: Optional[str] = None,
+                 protocol: Optional[str] = None,
+                 session_persistence: Optional['outputs.LoadbalancerListenerPoolSessionPersistence'] = None):
+        """
+        :param str algorithm: Pool algorithm to split traffic between members
+        :param 'LoadbalancerListenerPoolHealthMonitorArgs' health_monitor: Pool health monitor
+        :param Sequence['LoadbalancerListenerPoolMemberArgs'] members: Pool members
+        :param str name: Name of the pool
+        :param str protocol: Protocol for the pool
+        :param 'LoadbalancerListenerPoolSessionPersistenceArgs' session_persistence: Pool session persistence
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if health_monitor is not None:
+            pulumi.set(__self__, "health_monitor", health_monitor)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if session_persistence is not None:
+            pulumi.set(__self__, "session_persistence", session_persistence)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[str]:
+        """
+        Pool algorithm to split traffic between members
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="healthMonitor")
+    def health_monitor(self) -> Optional['outputs.LoadbalancerListenerPoolHealthMonitor']:
+        """
+        Pool health monitor
+        """
+        return pulumi.get(self, "health_monitor")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[Sequence['outputs.LoadbalancerListenerPoolMember']]:
+        """
+        Pool members
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the pool
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Protocol for the pool
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="sessionPersistence")
+    def session_persistence(self) -> Optional['outputs.LoadbalancerListenerPoolSessionPersistence']:
+        """
+        Pool session persistence
+        """
+        return pulumi.get(self, "session_persistence")
+
+
+@pulumi.output_type
+class LoadbalancerListenerPoolHealthMonitor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpConfiguration":
+            suggest = "http_configuration"
+        elif key == "maxRetries":
+            suggest = "max_retries"
+        elif key == "maxRetriesDown":
+            suggest = "max_retries_down"
+        elif key == "monitorType":
+            suggest = "monitor_type"
+        elif key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerListenerPoolHealthMonitor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerListenerPoolHealthMonitor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerListenerPoolHealthMonitor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay: Optional[float] = None,
+                 http_configuration: Optional['outputs.LoadbalancerListenerPoolHealthMonitorHttpConfiguration'] = None,
+                 max_retries: Optional[float] = None,
+                 max_retries_down: Optional[float] = None,
+                 monitor_type: Optional[str] = None,
+                 name: Optional[str] = None,
+                 operating_status: Optional[str] = None,
+                 provisioning_status: Optional[str] = None,
+                 timeout: Optional[float] = None):
+        """
+        :param float delay: Duration between sending probes to members, in seconds
+        :param 'LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs' http_configuration: Monitor HTTP configuration
+        :param float max_retries: Number of successful checks before changing the operating status of the member to ONLINE
+        :param float max_retries_down: Number of allowed check failures before changing the operating status of the member to ERROR
+        :param str monitor_type: Type of the monitor
+        :param str name: The name of the resource
+        :param str operating_status: The operating status of the resource
+        :param str provisioning_status: The provisioning status of the resource
+        :param float timeout: Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+        """
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if http_configuration is not None:
+            pulumi.set(__self__, "http_configuration", http_configuration)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if max_retries_down is not None:
+            pulumi.set(__self__, "max_retries_down", max_retries_down)
+        if monitor_type is not None:
+            pulumi.set(__self__, "monitor_type", monitor_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional[float]:
+        """
+        Duration between sending probes to members, in seconds
+        """
+        return pulumi.get(self, "delay")
+
+    @property
+    @pulumi.getter(name="httpConfiguration")
+    def http_configuration(self) -> Optional['outputs.LoadbalancerListenerPoolHealthMonitorHttpConfiguration']:
+        """
+        Monitor HTTP configuration
+        """
+        return pulumi.get(self, "http_configuration")
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[float]:
+        """
+        Number of successful checks before changing the operating status of the member to ONLINE
+        """
+        return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> Optional[float]:
+        """
+        Number of allowed check failures before changing the operating status of the member to ERROR
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @property
+    @pulumi.getter(name="monitorType")
+    def monitor_type(self) -> Optional[str]:
+        """
+        Type of the monitor
+        """
+        return pulumi.get(self, "monitor_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[str]:
+        """
+        The operating status of the resource
+        """
+        return pulumi.get(self, "operating_status")
+
+    @property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[str]:
+        """
+        The provisioning status of the resource
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[float]:
+        """
+        Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class LoadbalancerListenerPoolHealthMonitorHttpConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+        elif key == "expectedCodes":
+            suggest = "expected_codes"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "httpVersion":
+            suggest = "http_version"
+        elif key == "urlPath":
+            suggest = "url_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerListenerPoolHealthMonitorHttpConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerListenerPoolHealthMonitorHttpConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerListenerPoolHealthMonitorHttpConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_name: Optional[str] = None,
+                 expected_codes: Optional[str] = None,
+                 http_method: Optional[str] = None,
+                 http_version: Optional[str] = None,
+                 url_path: Optional[str] = None):
+        """
+        :param str domain_name: Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+        :param str expected_codes: Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+        :param str http_method: HTTP method that the health monitor uses for requests
+        :param str http_version: HTTP version that the health monitor uses for requests
+        :param str url_path: HTTP URL path of the request sent by the monitor to test the health of a backend member
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[str]:
+        """
+        Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[str]:
+        """
+        Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[str]:
+        """
+        HTTP method that the health monitor uses for requests
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[str]:
+        """
+        HTTP version that the health monitor uses for requests
+        """
+        return pulumi.get(self, "http_version")
+
+    @property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[str]:
+        """
+        HTTP URL path of the request sent by the monitor to test the health of a backend member
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class LoadbalancerListenerPoolMember(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protocolPort":
+            suggest = "protocol_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerListenerPoolMember. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerListenerPoolMember.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerListenerPoolMember.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 name: Optional[str] = None,
+                 protocol_port: Optional[float] = None,
+                 weight: Optional[float] = None):
+        """
+        :param str address: IP address of the resource
+        :param str name: Name of the member
+        :param float protocol_port: Protocol port number for the resource
+        :param float weight: Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol_port is not None:
+            pulumi.set(__self__, "protocol_port", protocol_port)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        IP address of the resource
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the member
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> Optional[float]:
+        """
+        Protocol port number for the resource
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[float]:
+        """
+        Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class LoadbalancerListenerPoolSessionPersistence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieName":
+            suggest = "cookie_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerListenerPoolSessionPersistence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerListenerPoolSessionPersistence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerListenerPoolSessionPersistence.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cookie_name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str cookie_name: Cookie name, only applicable to session persistence through cookie
+        :param str type: Type of session persistence
+        """
+        if cookie_name is not None:
+            pulumi.set(__self__, "cookie_name", cookie_name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> Optional[str]:
+        """
+        Cookie name, only applicable to session persistence through cookie
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of session persistence
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class LoadbalancerNetwork(dict):
+    def __init__(__self__, *,
+                 private: 'outputs.LoadbalancerNetworkPrivate'):
+        """
+        :param 'LoadbalancerNetworkPrivateArgs' private: Information to private network
+        """
+        pulumi.set(__self__, "private", private)
+
+    @property
+    @pulumi.getter
+    def private(self) -> 'outputs.LoadbalancerNetworkPrivate':
+        """
+        Information to private network
+        """
+        return pulumi.get(self, "private")
+
+
+@pulumi.output_type
+class LoadbalancerNetworkPrivate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "floatingIp":
+            suggest = "floating_ip"
+        elif key == "floatingIpCreate":
+            suggest = "floating_ip_create"
+        elif key == "gatewayCreate":
+            suggest = "gateway_create"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerNetworkPrivate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerNetworkPrivate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerNetworkPrivate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: 'outputs.LoadbalancerNetworkPrivateNetwork',
+                 floating_ip: Optional['outputs.LoadbalancerNetworkPrivateFloatingIp'] = None,
+                 floating_ip_create: Optional['outputs.LoadbalancerNetworkPrivateFloatingIpCreate'] = None,
+                 gateway: Optional['outputs.LoadbalancerNetworkPrivateGateway'] = None,
+                 gateway_create: Optional['outputs.LoadbalancerNetworkPrivateGatewayCreate'] = None):
+        """
+        :param 'LoadbalancerNetworkPrivateNetworkArgs' network: Network to associate
+        :param 'LoadbalancerNetworkPrivateFloatingIpArgs' floating_ip: Floating IP to associate
+        :param 'LoadbalancerNetworkPrivateFloatingIpCreateArgs' floating_ip_create: Floating IP to create
+        :param 'LoadbalancerNetworkPrivateGatewayArgs' gateway: Gateway to associate
+        :param 'LoadbalancerNetworkPrivateGatewayCreateArgs' gateway_create: Gateway to create
+        """
+        pulumi.set(__self__, "network", network)
+        if floating_ip is not None:
+            pulumi.set(__self__, "floating_ip", floating_ip)
+        if floating_ip_create is not None:
+            pulumi.set(__self__, "floating_ip_create", floating_ip_create)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if gateway_create is not None:
+            pulumi.set(__self__, "gateway_create", gateway_create)
+
+    @property
+    @pulumi.getter
+    def network(self) -> 'outputs.LoadbalancerNetworkPrivateNetwork':
+        """
+        Network to associate
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="floatingIp")
+    def floating_ip(self) -> Optional['outputs.LoadbalancerNetworkPrivateFloatingIp']:
+        """
+        Floating IP to associate
+        """
+        return pulumi.get(self, "floating_ip")
+
+    @property
+    @pulumi.getter(name="floatingIpCreate")
+    def floating_ip_create(self) -> Optional['outputs.LoadbalancerNetworkPrivateFloatingIpCreate']:
+        """
+        Floating IP to create
+        """
+        return pulumi.get(self, "floating_ip_create")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> Optional['outputs.LoadbalancerNetworkPrivateGateway']:
+        """
+        Gateway to associate
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter(name="gatewayCreate")
+    def gateway_create(self) -> Optional['outputs.LoadbalancerNetworkPrivateGatewayCreate']:
+        """
+        Gateway to create
+        """
+        return pulumi.get(self, "gateway_create")
+
+
+@pulumi.output_type
+class LoadbalancerNetworkPrivateFloatingIp(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: ID of the floatingIp
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the floatingIp
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class LoadbalancerNetworkPrivateFloatingIpCreate(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None):
+        """
+        :param str description: Description for the floatingIp
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description for the floatingIp
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class LoadbalancerNetworkPrivateGateway(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: ID of the gateway
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the gateway
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class LoadbalancerNetworkPrivateGatewayCreate(dict):
+    def __init__(__self__, *,
+                 model: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str model: Model of the gateway
+        :param str name: Name of the gateway
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[str]:
+        """
+        Model of the gateway
+        """
+        return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the gateway
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class LoadbalancerNetworkPrivateNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadbalancerNetworkPrivateNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadbalancerNetworkPrivateNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadbalancerNetworkPrivateNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: str,
+                 subnet_id: str):
+        """
+        :param str id: Private network ID
+        :param str subnet_id: Subnet ID
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Private network ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        Subnet ID
+        """
+        return pulumi.get(self, "subnet_id")
 
 
 @pulumi.output_type
@@ -1518,9 +2335,6 @@ class NetworkPrivateRegionsAttribute(dict):
                  status: str,
                  openstackid: Optional[str] = None,
                  region: Optional[str] = None):
-        """
-        :param str status: the status of the network. should be normally set to 'ACTIVE'.
-        """
         pulumi.set(__self__, "status", status)
         if openstackid is not None:
             pulumi.set(__self__, "openstackid", openstackid)
@@ -1530,9 +2344,6 @@ class NetworkPrivateRegionsAttribute(dict):
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        the status of the network. should be normally set to 'ACTIVE'.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -1551,9 +2362,6 @@ class NetworkPrivateRegionsStatus(dict):
     def __init__(__self__, *,
                  status: str,
                  region: Optional[str] = None):
-        """
-        :param str status: the status of the network. should be normally set to 'ACTIVE'.
-        """
         pulumi.set(__self__, "status", status)
         if region is not None:
             pulumi.set(__self__, "region", region)
@@ -1561,9 +2369,6 @@ class NetworkPrivateRegionsStatus(dict):
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        the status of the network. should be normally set to 'ACTIVE'.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -1580,18 +2385,6 @@ class NetworkPrivateSubnetIpPool(dict):
                  network: Optional[str] = None,
                  region: Optional[str] = None,
                  start: Optional[str] = None):
-        """
-        :param bool dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to false.
-        :param str end: Last ip for this region.
-               Changing this value recreates the subnet.
-        :param str network: Global network in CIDR format.
-               Changing this value recreates the subnet
-        :param str region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param str start: First ip for this region.
-               Changing this value recreates the subnet.
-        """
         if dhcp is not None:
             pulumi.set(__self__, "dhcp", dhcp)
         if end is not None:
@@ -1606,46 +2399,26 @@ class NetworkPrivateSubnetIpPool(dict):
     @property
     @pulumi.getter
     def dhcp(self) -> Optional[bool]:
-        """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to false.
-        """
         return pulumi.get(self, "dhcp")
 
     @property
     @pulumi.getter
     def end(self) -> Optional[str]:
-        """
-        Last ip for this region.
-        Changing this value recreates the subnet.
-        """
         return pulumi.get(self, "end")
 
     @property
     @pulumi.getter
     def network(self) -> Optional[str]:
-        """
-        Global network in CIDR format.
-        Changing this value recreates the subnet
-        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
-        """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def start(self) -> Optional[str]:
-        """
-        First ip for this region.
-        Changing this value recreates the subnet.
-        """
         return pulumi.get(self, "start")
 
 
@@ -1717,7 +2490,7 @@ class ProjectOrder(dict):
         :param str date: date
         :param Sequence['ProjectOrderDetailArgs'] details: Information about a Bill entry
         :param str expiration_date: expiration date
-        :param int order_id: order id, the same as the `id`
+        :param int order_id: order id
         """
         if date is not None:
             pulumi.set(__self__, "date", date)
@@ -1756,7 +2529,7 @@ class ProjectOrder(dict):
     @pulumi.getter(name="orderId")
     def order_id(self) -> Optional[int]:
         """
-        order id, the same as the `id`
+        order id
         """
         return pulumi.get(self, "order_id")
 
@@ -1786,7 +2559,7 @@ class ProjectOrderDetail(dict):
                  order_detail_id: Optional[int] = None,
                  quantity: Optional[str] = None):
         """
-        :param str description: A description associated with the user.
+        :param str description: description
         :param str domain: expiration date
         :param int order_detail_id: order detail id
         :param str quantity: quantity
@@ -1804,7 +2577,7 @@ class ProjectOrderDetail(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        A description associated with the user.
+        description
         """
         return pulumi.get(self, "description")
 
@@ -1864,7 +2637,7 @@ class ProjectPlan(dict):
                  configurations: Optional[Sequence['outputs.ProjectPlanConfiguration']] = None):
         """
         :param str duration: duration
-        :param str plan_code: Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+        :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
         :param Sequence['ProjectPlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
@@ -1889,7 +2662,7 @@ class ProjectPlan(dict):
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
         """
-        Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
+        Plan code
         """
         return pulumi.get(self, "plan_code")
 
@@ -2062,6 +2835,445 @@ class ProjectPlanOptionConfiguration(dict):
 
 
 @pulumi.output_type
+class RancherCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootstrapPassword":
+            suggest = "bootstrap_password"
+        elif key == "ipRestrictions":
+            suggest = "ip_restrictions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RancherCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RancherCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RancherCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bootstrap_password: Optional[str] = None,
+                 ip_restrictions: Optional[Sequence['outputs.RancherCurrentStateIpRestriction']] = None,
+                 name: Optional[str] = None,
+                 networking: Optional['outputs.RancherCurrentStateNetworking'] = None,
+                 plan: Optional[str] = None,
+                 region: Optional[str] = None,
+                 url: Optional[str] = None,
+                 usage: Optional['outputs.RancherCurrentStateUsage'] = None,
+                 version: Optional[str] = None):
+        """
+        :param str bootstrap_password: Bootstrap password of the managed Rancher service, returned only on creation
+        :param Sequence['RancherCurrentStateIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        :param str name: Name of the managed Rancher service
+        :param 'RancherCurrentStateNetworkingArgs' networking: Networking properties of a managed Rancher service
+        :param str plan: Plan of the managed Rancher service
+        :param str region: Region of the managed Rancher service
+        :param str url: URL of the managed Rancher service
+        :param 'RancherCurrentStateUsageArgs' usage: Latest metrics regarding the usage of the managed Rancher service
+        :param str version: Version of the managed Rancher service
+        """
+        if bootstrap_password is not None:
+            pulumi.set(__self__, "bootstrap_password", bootstrap_password)
+        if ip_restrictions is not None:
+            pulumi.set(__self__, "ip_restrictions", ip_restrictions)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if networking is not None:
+            pulumi.set(__self__, "networking", networking)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="bootstrapPassword")
+    def bootstrap_password(self) -> Optional[str]:
+        """
+        Bootstrap password of the managed Rancher service, returned only on creation
+        """
+        return pulumi.get(self, "bootstrap_password")
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Optional[Sequence['outputs.RancherCurrentStateIpRestriction']]:
+        """
+        List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        """
+        return pulumi.get(self, "ip_restrictions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the managed Rancher service
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def networking(self) -> Optional['outputs.RancherCurrentStateNetworking']:
+        """
+        Networking properties of a managed Rancher service
+        """
+        return pulumi.get(self, "networking")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[str]:
+        """
+        Plan of the managed Rancher service
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Region of the managed Rancher service
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        URL of the managed Rancher service
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional['outputs.RancherCurrentStateUsage']:
+        """
+        Latest metrics regarding the usage of the managed Rancher service
+        """
+        return pulumi.get(self, "usage")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the managed Rancher service
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class RancherCurrentStateIpRestriction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RancherCurrentStateIpRestriction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RancherCurrentStateIpRestriction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RancherCurrentStateIpRestriction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_block: Optional[str] = None,
+                 description: Optional[str] = None):
+        """
+        :param str cidr_block: Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        :param str description: Description of the allowed CIDR block
+        """
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[str]:
+        """
+        Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the allowed CIDR block
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RancherCurrentStateNetworking(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressCidrBlocks":
+            suggest = "egress_cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RancherCurrentStateNetworking. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RancherCurrentStateNetworking.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RancherCurrentStateNetworking.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 egress_cidr_blocks: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] egress_cidr_blocks: Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+        """
+        if egress_cidr_blocks is not None:
+            pulumi.set(__self__, "egress_cidr_blocks", egress_cidr_blocks)
+
+    @property
+    @pulumi.getter(name="egressCidrBlocks")
+    def egress_cidr_blocks(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+        """
+        return pulumi.get(self, "egress_cidr_blocks")
+
+
+@pulumi.output_type
+class RancherCurrentStateUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "orchestratedVcpus":
+            suggest = "orchestrated_vcpus"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RancherCurrentStateUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RancherCurrentStateUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RancherCurrentStateUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datetime: Optional[str] = None,
+                 orchestrated_vcpus: Optional[float] = None):
+        """
+        :param str datetime: Date of the sample
+        :param float orchestrated_vcpus: Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+        """
+        if datetime is not None:
+            pulumi.set(__self__, "datetime", datetime)
+        if orchestrated_vcpus is not None:
+            pulumi.set(__self__, "orchestrated_vcpus", orchestrated_vcpus)
+
+    @property
+    @pulumi.getter
+    def datetime(self) -> Optional[str]:
+        """
+        Date of the sample
+        """
+        return pulumi.get(self, "datetime")
+
+    @property
+    @pulumi.getter(name="orchestratedVcpus")
+    def orchestrated_vcpus(self) -> Optional[float]:
+        """
+        Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+        """
+        return pulumi.get(self, "orchestrated_vcpus")
+
+
+@pulumi.output_type
+class RancherCurrentTask(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 link: Optional[str] = None,
+                 status: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str id: Identifier of the current task
+        :param str link: Link to the task details
+        :param str status: Current global status of the current task
+        :param str type: Type of the current task
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def link(self) -> Optional[str]:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RancherTargetSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipRestrictions":
+            suggest = "ip_restrictions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RancherTargetSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RancherTargetSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RancherTargetSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 plan: str,
+                 ip_restrictions: Optional[Sequence['outputs.RancherTargetSpecIpRestriction']] = None,
+                 version: Optional[str] = None):
+        """
+        :param str name: Name of the managed Rancher service
+        :param str plan: Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+        :param Sequence['RancherTargetSpecIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        :param str version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "plan", plan)
+        if ip_restrictions is not None:
+            pulumi.set(__self__, "ip_restrictions", ip_restrictions)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the managed Rancher service
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> str:
+        """
+        Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Optional[Sequence['outputs.RancherTargetSpecIpRestriction']]:
+        """
+        List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        """
+        return pulumi.get(self, "ip_restrictions")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class RancherTargetSpecIpRestriction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RancherTargetSpecIpRestriction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RancherTargetSpecIpRestriction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RancherTargetSpecIpRestriction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_block: Optional[str] = None,
+                 description: Optional[str] = None):
+        """
+        :param str cidr_block: Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        :param str description: Description of the allowed CIDR block
+        """
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[str]:
+        """
+        Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the allowed CIDR block
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class RegionNetworkSubnet(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2110,7 +3322,7 @@ class RegionNetworkSubnet(dict):
         :param bool enable_dhcp: Enable DHCP for the subnet
         :param bool enable_gateway_ip: Set a gateway ip for the subnet
         :param float ip_version: IP version
-        :param Sequence['RegionNetworkSubnetAllocationPoolArgs'] allocation_pools: List of IP pools allocated in subnet
+        :param Sequence['RegionNetworkSubnetAllocationPoolArgs'] allocation_pools: List of ip pools allocated in subnet
         :param Sequence[str] dns_name_servers: DNS nameservers
         :param str gateway_ip: Gateway IP
         :param Sequence['RegionNetworkSubnetHostRouteArgs'] host_routes: Host routes
@@ -2170,7 +3382,7 @@ class RegionNetworkSubnet(dict):
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> Optional[Sequence['outputs.RegionNetworkSubnetAllocationPool']]:
         """
-        List of IP pools allocated in subnet
+        List of ip pools allocated in subnet
         """
         return pulumi.get(self, "allocation_pools")
 
@@ -2295,18 +3507,428 @@ class RegionNetworkSubnetHostRoute(dict):
 
 
 @pulumi.output_type
+class StorageEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sseAlgorithm":
+            suggest = "sse_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageEncryption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sse_algorithm: Optional[str] = None):
+        """
+        :param str sse_algorithm: Encryption algorithm
+        """
+        if sse_algorithm is not None:
+            pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+
+    @property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> Optional[str]:
+        """
+        Encryption algorithm
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+
+@pulumi.output_type
+class StorageObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isDeleteMarker":
+            suggest = "is_delete_marker"
+        elif key == "isLatest":
+            suggest = "is_latest"
+        elif key == "lastModified":
+            suggest = "last_modified"
+        elif key == "storageClass":
+            suggest = "storage_class"
+        elif key == "versionId":
+            suggest = "version_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageObject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 etag: Optional[str] = None,
+                 is_delete_marker: Optional[bool] = None,
+                 is_latest: Optional[bool] = None,
+                 key: Optional[str] = None,
+                 last_modified: Optional[str] = None,
+                 size: Optional[float] = None,
+                 storage_class: Optional[str] = None,
+                 version_id: Optional[str] = None):
+        """
+        :param str etag: ETag
+        :param bool is_delete_marker: Whether this object is a delete marker
+        :param bool is_latest: Whether this is the latest version of the object
+        :param str key: Key
+        :param str last_modified: Last modification date
+        :param float size: Size (bytes)
+        :param str storage_class: Storage class
+        :param str version_id: Version ID of the object
+        """
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if is_delete_marker is not None:
+            pulumi.set(__self__, "is_delete_marker", is_delete_marker)
+        if is_latest is not None:
+            pulumi.set(__self__, "is_latest", is_latest)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if last_modified is not None:
+            pulumi.set(__self__, "last_modified", last_modified)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[str]:
+        """
+        ETag
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="isDeleteMarker")
+    def is_delete_marker(self) -> Optional[bool]:
+        """
+        Whether this object is a delete marker
+        """
+        return pulumi.get(self, "is_delete_marker")
+
+    @property
+    @pulumi.getter(name="isLatest")
+    def is_latest(self) -> Optional[bool]:
+        """
+        Whether this is the latest version of the object
+        """
+        return pulumi.get(self, "is_latest")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> Optional[str]:
+        """
+        Last modification date
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[float]:
+        """
+        Size (bytes)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[str]:
+        """
+        Storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[str]:
+        """
+        Version ID of the object
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class StorageReplication(dict):
+    def __init__(__self__, *,
+                 rules: Optional[Sequence['outputs.StorageReplicationRule']] = None):
+        """
+        :param Sequence['StorageReplicationRuleArgs'] rules: Replication rules
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.StorageReplicationRule']]:
+        """
+        Replication rules
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class StorageReplicationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteMarkerReplication":
+            suggest = "delete_marker_replication"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageReplicationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageReplicationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageReplicationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_marker_replication: Optional[str] = None,
+                 destination: Optional['outputs.StorageReplicationRuleDestination'] = None,
+                 filter: Optional['outputs.StorageReplicationRuleFilter'] = None,
+                 id: Optional[str] = None,
+                 priority: Optional[float] = None,
+                 status: Optional[str] = None):
+        """
+        :param str delete_marker_replication: Delete marker replication
+        :param 'StorageReplicationRuleDestinationArgs' destination: Rule destination configuration
+        :param 'StorageReplicationRuleFilterArgs' filter: Rule filters
+        :param str id: Rule ID
+        :param float priority: Rule priority
+        :param str status: Rule status
+        """
+        if delete_marker_replication is not None:
+            pulumi.set(__self__, "delete_marker_replication", delete_marker_replication)
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="deleteMarkerReplication")
+    def delete_marker_replication(self) -> Optional[str]:
+        """
+        Delete marker replication
+        """
+        return pulumi.get(self, "delete_marker_replication")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional['outputs.StorageReplicationRuleDestination']:
+        """
+        Rule destination configuration
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.StorageReplicationRuleFilter']:
+        """
+        Rule filters
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[float]:
+        """
+        Rule priority
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Rule status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class StorageReplicationRuleDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageClass":
+            suggest = "storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageReplicationRuleDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageReplicationRuleDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageReplicationRuleDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 region: str,
+                 storage_class: Optional[str] = None):
+        """
+        :param str name: Destination bucket name
+        :param str region: Destination region
+        :param str storage_class: Destination storage class
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Destination bucket name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Destination region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[str]:
+        """
+        Destination storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class StorageReplicationRuleFilter(dict):
+    def __init__(__self__, *,
+                 prefix: Optional[str] = None,
+                 tags: Optional[Sequence['outputs.StorageReplicationRuleFilterTag']] = None):
+        """
+        :param str prefix: Prefix filter
+        :param Sequence['StorageReplicationRuleFilterTagArgs'] tags: Tags filter
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Prefix filter
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.StorageReplicationRuleFilterTag']]:
+        """
+        Tags filter
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class StorageReplicationRuleFilterTag(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Tag key
+        :param str value: Tag value
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Tag key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Tag value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class StorageVersioning(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        :param str status: Versioning status
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Versioning status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class UserRole(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  permissions: Optional[Sequence[str]] = None):
-        """
-        :param str description: A description associated with the user.
-        :param str id: id of the role
-        :param str name: name of the role
-        :param Sequence[str] permissions: list of permissions associated with the role
-        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if id is not None:
@@ -2319,33 +3941,21 @@ class UserRole(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        A description associated with the user.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        id of the role
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        name of the role
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def permissions(self) -> Optional[Sequence[str]]:
-        """
-        list of permissions associated with the role
-        """
         return pulumi.get(self, "permissions")
 
 
@@ -2486,7 +4096,7 @@ class GetCapabilitiesContainerRegistryResultPlanResult(dict):
                  registry_limits: Sequence['outputs.GetCapabilitiesContainerRegistryResultPlanRegistryLimitResult'],
                  updated_at: str):
         """
-        :param str code: Plan code from the catalog
+        :param str code: Plan code from catalog
         :param str created_at: Plan creation date
         :param Sequence['GetCapabilitiesContainerRegistryResultPlanFeatureArgs'] features: Features of the plan
         :param str id: Plan ID
@@ -2506,7 +4116,7 @@ class GetCapabilitiesContainerRegistryResultPlanResult(dict):
     @pulumi.getter
     def code(self) -> str:
         """
-        Plan code from the catalog
+        Plan code from catalog
         """
         return pulumi.get(self, "code")
 
@@ -2624,7 +4234,7 @@ class GetContainerRegistriesResultResult(dict):
         :param str id: Registry ID
         :param str name: Registry name
         :param str project_id: Project ID of your registry
-        :param str region: Region of the registry
+        :param str region: Region of the registry.
         :param int size: Current size of the registry (bytes)
         :param str status: Registry status
         :param str updated_at: Registry last update date
@@ -2678,7 +4288,7 @@ class GetContainerRegistriesResultResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Region of the registry
+        Region of the registry.
         """
         return pulumi.get(self, "region")
 
@@ -2764,6 +4374,225 @@ class GetContainerRegistryUsersResultResult(dict):
 
 
 @pulumi.output_type
+class GetFlavorsFlavorResult(dict):
+    def __init__(__self__, *,
+                 available: bool,
+                 capabilities: Sequence['outputs.GetFlavorsFlavorCapabilityResult'],
+                 disk: float,
+                 id: str,
+                 inbound_bandwidth: float,
+                 name: str,
+                 os_type: str,
+                 outbound_bandwidth: float,
+                 plan_codes: 'outputs.GetFlavorsFlavorPlanCodesResult',
+                 quota: float,
+                 ram: float,
+                 region: str,
+                 type: str,
+                 vcpus: float):
+        """
+        :param bool available: Available in stock
+        :param Sequence['GetFlavorsFlavorCapabilityArgs'] capabilities: Capabilities of the flavor
+        :param float disk: Number of disks
+        :param str id: Flavor id
+        :param float inbound_bandwidth: Max capacity of inbound traffic in Mbit/s
+        :param str name: Flavor name
+        :param str os_type: OS to install on
+        :param float outbound_bandwidth: Max capacity of outbound traffic in Mbit/s
+        :param 'GetFlavorsFlavorPlanCodesArgs' plan_codes: Plan codes to order instances
+        :param float quota: Number instance you can spawn with your actual quota
+        :param float ram: Ram quantity (Gio)
+        :param str region: Flavor region
+        :param str type: Flavor type
+        :param float vcpus: Number of VCPUs
+        """
+        pulumi.set(__self__, "available", available)
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inbound_bandwidth", inbound_bandwidth)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "os_type", os_type)
+        pulumi.set(__self__, "outbound_bandwidth", outbound_bandwidth)
+        pulumi.set(__self__, "plan_codes", plan_codes)
+        pulumi.set(__self__, "quota", quota)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        """
+        Available in stock
+        """
+        return pulumi.get(self, "available")
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Sequence['outputs.GetFlavorsFlavorCapabilityResult']:
+        """
+        Capabilities of the flavor
+        """
+        return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter
+    def disk(self) -> float:
+        """
+        Number of disks
+        """
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Flavor id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="inboundBandwidth")
+    def inbound_bandwidth(self) -> float:
+        """
+        Max capacity of inbound traffic in Mbit/s
+        """
+        return pulumi.get(self, "inbound_bandwidth")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Flavor name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> str:
+        """
+        OS to install on
+        """
+        return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter(name="outboundBandwidth")
+    def outbound_bandwidth(self) -> float:
+        """
+        Max capacity of outbound traffic in Mbit/s
+        """
+        return pulumi.get(self, "outbound_bandwidth")
+
+    @property
+    @pulumi.getter(name="planCodes")
+    def plan_codes(self) -> 'outputs.GetFlavorsFlavorPlanCodesResult':
+        """
+        Plan codes to order instances
+        """
+        return pulumi.get(self, "plan_codes")
+
+    @property
+    @pulumi.getter
+    def quota(self) -> float:
+        """
+        Number instance you can spawn with your actual quota
+        """
+        return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter
+    def ram(self) -> float:
+        """
+        Ram quantity (Gio)
+        """
+        return pulumi.get(self, "ram")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Flavor region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Flavor type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def vcpus(self) -> float:
+        """
+        Number of VCPUs
+        """
+        return pulumi.get(self, "vcpus")
+
+
+@pulumi.output_type
+class GetFlavorsFlavorCapabilityResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 name: str):
+        """
+        :param bool enabled: Is the capability enabled
+        :param str name: Name of the capability
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Is the capability enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the capability
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetFlavorsFlavorPlanCodesResult(dict):
+    def __init__(__self__, *,
+                 hourly: str,
+                 monthly: str):
+        """
+        :param str hourly: Plan code to order hourly instance
+        :param str monthly: Plan code to order monthly instance
+        """
+        pulumi.set(__self__, "hourly", hourly)
+        pulumi.set(__self__, "monthly", monthly)
+
+    @property
+    @pulumi.getter
+    def hourly(self) -> str:
+        """
+        Plan code to order hourly instance
+        """
+        return pulumi.get(self, "hourly")
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> str:
+        """
+        Plan code to order monthly instance
+        """
+        return pulumi.get(self, "monthly")
+
+
+@pulumi.output_type
 class GetFloatingIPsCloudProjectFloatingipResult(dict):
     def __init__(__self__, *,
                  associated_entity: 'outputs.GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult',
@@ -2773,12 +4602,12 @@ class GetFloatingIPsCloudProjectFloatingipResult(dict):
                  region: str,
                  status: str):
         """
-        :param 'GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs' associated_entity: Associated entity with the floating IP
-        :param str id: ID of the floating IP
-        :param str ip: Value of the floating IP
+        :param 'GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs' associated_entity: Associated entity with the floating ip
+        :param str id: ID of the floating ip
+        :param str ip: Value of the floating ip
         :param str network_id: ID of the network
         :param str region: Floating ip region
-        :param str status: Status of the floating IP (active┃down┃error)
+        :param str status: Status of the floating ip
         """
         pulumi.set(__self__, "associated_entity", associated_entity)
         pulumi.set(__self__, "id", id)
@@ -2791,7 +4620,7 @@ class GetFloatingIPsCloudProjectFloatingipResult(dict):
     @pulumi.getter(name="associatedEntity")
     def associated_entity(self) -> 'outputs.GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult':
         """
-        Associated entity with the floating IP
+        Associated entity with the floating ip
         """
         return pulumi.get(self, "associated_entity")
 
@@ -2799,7 +4628,7 @@ class GetFloatingIPsCloudProjectFloatingipResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the floating IP
+        ID of the floating ip
         """
         return pulumi.get(self, "id")
 
@@ -2807,7 +4636,7 @@ class GetFloatingIPsCloudProjectFloatingipResult(dict):
     @pulumi.getter
     def ip(self) -> str:
         """
-        Value of the floating IP
+        Value of the floating ip
         """
         return pulumi.get(self, "ip")
 
@@ -2831,7 +4660,7 @@ class GetFloatingIPsCloudProjectFloatingipResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the floating IP (active┃down┃error)
+        Status of the floating ip
         """
         return pulumi.get(self, "status")
 
@@ -2845,9 +4674,9 @@ class GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult(dict):
                  type: str):
         """
         :param str gateway_id: ID of the gateway
-        :param str id: ID of the floating IP
-        :param str ip: Value of the floating IP
-        :param str type: Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+        :param str id: ID of the port
+        :param str ip: IP of the port
+        :param str type: Type of the port
         """
         pulumi.set(__self__, "gateway_id", gateway_id)
         pulumi.set(__self__, "id", id)
@@ -2866,7 +4695,7 @@ class GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the floating IP
+        ID of the port
         """
         return pulumi.get(self, "id")
 
@@ -2874,7 +4703,7 @@ class GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult(dict):
     @pulumi.getter
     def ip(self) -> str:
         """
-        Value of the floating IP
+        IP of the port
         """
         return pulumi.get(self, "ip")
 
@@ -2882,7 +4711,7 @@ class GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
+        Type of the port
         """
         return pulumi.get(self, "type")
 
@@ -2921,7 +4750,7 @@ class GetInstanceAttachedVolumeResult(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: Instance id
+        :param str id: Volume id
         """
         pulumi.set(__self__, "id", id)
 
@@ -2929,7 +4758,7 @@ class GetInstanceAttachedVolumeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Instance id
+        Volume id
         """
         return pulumi.get(self, "id")
 
@@ -2939,6 +4768,7 @@ class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  addresses: Sequence['outputs.GetInstancesInstanceAddressResult'],
                  attached_volumes: Sequence['outputs.GetInstancesInstanceAttachedVolumeResult'],
+                 availability_zone: str,
                  flavor_id: str,
                  flavor_name: str,
                  id: str,
@@ -2949,16 +4779,18 @@ class GetInstancesInstanceResult(dict):
         """
         :param Sequence['GetInstancesInstanceAddressArgs'] addresses: Instance IP addresses
         :param Sequence['GetInstancesInstanceAttachedVolumeArgs'] attached_volumes: Volumes attached to the instance
+        :param str availability_zone: Availability Zone
         :param str flavor_id: Flavor id
         :param str flavor_name: Flavor name
         :param str id: Instance id
         :param str image_id: Image id
         :param str name: Instance name
-        :param str ssh_key: SSH Keypair
+        :param str ssh_key: SSH Key pair name
         :param str task_state: Instance task state
         """
         pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "attached_volumes", attached_volumes)
+        pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "flavor_id", flavor_id)
         pulumi.set(__self__, "flavor_name", flavor_name)
         pulumi.set(__self__, "id", id)
@@ -2982,6 +4814,14 @@ class GetInstancesInstanceResult(dict):
         Volumes attached to the instance
         """
         return pulumi.get(self, "attached_volumes")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        Availability Zone
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="flavorId")
@@ -3027,7 +4867,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> str:
         """
-        SSH Keypair
+        SSH Key pair name
         """
         return pulumi.get(self, "ssh_key")
 
@@ -3074,7 +4914,7 @@ class GetInstancesInstanceAttachedVolumeResult(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: Instance id
+        :param str id: Volume id
         """
         pulumi.set(__self__, "id", id)
 
@@ -3082,7 +4922,7 @@ class GetInstancesInstanceAttachedVolumeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Instance id
+        Volume id
         """
         return pulumi.get(self, "id")
 
@@ -3091,18 +4931,12 @@ class GetInstancesInstanceAttachedVolumeResult(dict):
 class GetKubeCustomizationResult(dict):
     def __init__(__self__, *,
                  apiservers: Sequence['outputs.GetKubeCustomizationApiserverResult']):
-        """
-        :param Sequence['GetKubeCustomizationApiserverArgs'] apiservers: Kubernetes API server customization
-        """
         pulumi.set(__self__, "apiservers", apiservers)
 
     @property
     @pulumi.getter
     @_utilities.deprecated("""Use customization_apiserver instead""")
     def apiservers(self) -> Sequence['outputs.GetKubeCustomizationApiserverResult']:
-        """
-        Kubernetes API server customization
-        """
         return pulumi.get(self, "apiservers")
 
 
@@ -3110,17 +4944,11 @@ class GetKubeCustomizationResult(dict):
 class GetKubeCustomizationApiserverResult(dict):
     def __init__(__self__, *,
                  admissionplugins: Sequence['outputs.GetKubeCustomizationApiserverAdmissionpluginResult']):
-        """
-        :param Sequence['GetKubeCustomizationApiserverAdmissionpluginArgs'] admissionplugins: Kubernetes API server admission plugins customization
-        """
         pulumi.set(__self__, "admissionplugins", admissionplugins)
 
     @property
     @pulumi.getter
     def admissionplugins(self) -> Sequence['outputs.GetKubeCustomizationApiserverAdmissionpluginResult']:
-        """
-        Kubernetes API server admission plugins customization
-        """
         return pulumi.get(self, "admissionplugins")
 
 
@@ -3129,27 +4957,17 @@ class GetKubeCustomizationApiserverAdmissionpluginResult(dict):
     def __init__(__self__, *,
                  disableds: Sequence[str],
                  enableds: Sequence[str]):
-        """
-        :param Sequence[str] disableds: Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        :param Sequence[str] enableds: Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        """
         pulumi.set(__self__, "disableds", disableds)
         pulumi.set(__self__, "enableds", enableds)
 
     @property
     @pulumi.getter
     def disableds(self) -> Sequence[str]:
-        """
-        Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        """
         return pulumi.get(self, "disableds")
 
     @property
     @pulumi.getter
     def enableds(self) -> Sequence[str]:
-        """
-        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        """
         return pulumi.get(self, "enableds")
 
 
@@ -3158,10 +4976,6 @@ class GetKubeCustomizationKubeProxyResult(dict):
     def __init__(__self__, *,
                  iptables: Optional['outputs.GetKubeCustomizationKubeProxyIptablesResult'] = None,
                  ipvs: Optional['outputs.GetKubeCustomizationKubeProxyIpvsResult'] = None):
-        """
-        :param 'GetKubeCustomizationKubeProxyIptablesArgs' iptables: Kubernetes cluster kube-proxy customization of iptables specific config.
-        :param 'GetKubeCustomizationKubeProxyIpvsArgs' ipvs: Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         if iptables is not None:
             pulumi.set(__self__, "iptables", iptables)
         if ipvs is not None:
@@ -3170,17 +4984,11 @@ class GetKubeCustomizationKubeProxyResult(dict):
     @property
     @pulumi.getter
     def iptables(self) -> Optional['outputs.GetKubeCustomizationKubeProxyIptablesResult']:
-        """
-        Kubernetes cluster kube-proxy customization of iptables specific config.
-        """
         return pulumi.get(self, "iptables")
 
     @property
     @pulumi.getter
     def ipvs(self) -> Optional['outputs.GetKubeCustomizationKubeProxyIpvsResult']:
-        """
-        Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         return pulumi.get(self, "ipvs")
 
 
@@ -3189,10 +4997,6 @@ class GetKubeCustomizationKubeProxyIptablesResult(dict):
     def __init__(__self__, *,
                  min_sync_period: Optional[str] = None,
                  sync_period: Optional[str] = None):
-        """
-        :param str min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        :param str sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if sync_period is not None:
@@ -3201,17 +5005,11 @@ class GetKubeCustomizationKubeProxyIptablesResult(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-        """
         return pulumi.get(self, "sync_period")
 
 
@@ -3224,14 +5022,6 @@ class GetKubeCustomizationKubeProxyIpvsResult(dict):
                  tcp_fin_timeout: Optional[str] = None,
                  tcp_timeout: Optional[str] = None,
                  udp_timeout: Optional[str] = None):
-        """
-        :param str min_sync_period: Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        :param str scheduler: IPVS scheduler.
-        :param str sync_period: Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-        :param str tcp_fin_timeout: Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
-        :param str tcp_timeout: Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        :param str udp_timeout: timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         if min_sync_period is not None:
             pulumi.set(__self__, "min_sync_period", min_sync_period)
         if scheduler is not None:
@@ -3248,49 +5038,31 @@ class GetKubeCustomizationKubeProxyIpvsResult(dict):
     @property
     @pulumi.getter(name="minSyncPeriod")
     def min_sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         return pulumi.get(self, "min_sync_period")
 
     @property
     @pulumi.getter
     def scheduler(self) -> Optional[str]:
-        """
-        IPVS scheduler.
-        """
         return pulumi.get(self, "scheduler")
 
     @property
     @pulumi.getter(name="syncPeriod")
     def sync_period(self) -> Optional[str]:
-        """
-        Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
-        """
         return pulumi.get(self, "sync_period")
 
     @property
     @pulumi.getter(name="tcpFinTimeout")
     def tcp_fin_timeout(self) -> Optional[str]:
-        """
-        Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
-        """
         return pulumi.get(self, "tcp_fin_timeout")
 
     @property
     @pulumi.getter(name="tcpTimeout")
     def tcp_timeout(self) -> Optional[str]:
-        """
-        Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         return pulumi.get(self, "tcp_timeout")
 
     @property
     @pulumi.getter(name="udpTimeout")
     def udp_timeout(self) -> Optional[str]:
-        """
-        timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
-        """
         return pulumi.get(self, "udp_timeout")
 
 
@@ -3310,18 +5082,18 @@ class GetKubeNodePoolNodesNodeResult(dict):
                  updated_at: str,
                  version: str):
         """
-        :param str created_at: Creation date.
-        :param str deployed_at: (Optional) Date of the effective deployment.
-        :param str flavor: Flavor name.
-        :param str id: ID of the node.
-        :param str instance_id: Openstack ID of the underlying VM of the node.
-        :param bool is_up_to_date: Is the node in the target version of the cluster.
-        :param str name: Name of the node pool from which we want the nodes.
-        :param str node_pool_id: Managed kubernetes node pool ID.
-        :param str project_id: Public cloud project ID.
-        :param str status: Current status.
-        :param str updated_at: Last update date.
-        :param str version: Version in which the node is.
+        :param str created_at: Creation date
+        :param str deployed_at: Node deployment date
+        :param str flavor: Flavor name
+        :param str id: Node ID
+        :param str instance_id: Public Cloud instance ID
+        :param bool is_up_to_date: True if the node is up to date
+        :param str name: Node name
+        :param str node_pool_id: NodePool parent ID
+        :param str project_id: Project ID
+        :param str status: Current status
+        :param str updated_at: Last update date
+        :param str version: Node version
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "deployed_at", deployed_at)
@@ -3340,7 +5112,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         """
-        Creation date.
+        Creation date
         """
         return pulumi.get(self, "created_at")
 
@@ -3348,7 +5120,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="deployedAt")
     def deployed_at(self) -> str:
         """
-        (Optional) Date of the effective deployment.
+        Node deployment date
         """
         return pulumi.get(self, "deployed_at")
 
@@ -3356,7 +5128,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter
     def flavor(self) -> str:
         """
-        Flavor name.
+        Flavor name
         """
         return pulumi.get(self, "flavor")
 
@@ -3364,7 +5136,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the node.
+        Node ID
         """
         return pulumi.get(self, "id")
 
@@ -3372,7 +5144,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        Openstack ID of the underlying VM of the node.
+        Public Cloud instance ID
         """
         return pulumi.get(self, "instance_id")
 
@@ -3380,7 +5152,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="isUpToDate")
     def is_up_to_date(self) -> bool:
         """
-        Is the node in the target version of the cluster.
+        True if the node is up to date
         """
         return pulumi.get(self, "is_up_to_date")
 
@@ -3388,7 +5160,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the node pool from which we want the nodes.
+        Node name
         """
         return pulumi.get(self, "name")
 
@@ -3396,7 +5168,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="nodePoolId")
     def node_pool_id(self) -> str:
         """
-        Managed kubernetes node pool ID.
+        NodePool parent ID
         """
         return pulumi.get(self, "node_pool_id")
 
@@ -3404,7 +5176,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Public cloud project ID.
+        Project ID
         """
         return pulumi.get(self, "project_id")
 
@@ -3412,7 +5184,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Current status.
+        Current status
         """
         return pulumi.get(self, "status")
 
@@ -3420,7 +5192,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
         """
-        Last update date.
+        Last update date
         """
         return pulumi.get(self, "updated_at")
 
@@ -3428,7 +5200,7 @@ class GetKubeNodePoolNodesNodeResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version in which the node is.
+        Node version
         """
         return pulumi.get(self, "version")
 
@@ -3555,17 +5327,17 @@ class GetKubeNodesNodeResult(dict):
                  version: str):
         """
         :param str created_at: Creation date
-        :param str deployed_at: (Optional) Date of the effective deployment
+        :param str deployed_at: Node deployment date
         :param str flavor: Flavor name
-        :param str id: ID of the node
-        :param str instance_id: Openstack ID of the underlying VM of the node
-        :param bool is_up_to_date: Is the node in the target version of the cluster
-        :param str name: Name of the node
-        :param str node_pool_id: Managed kubernetes node pool ID
-        :param str project_id: Public cloud project ID
+        :param str id: Node ID
+        :param str instance_id: Public Cloud instance ID
+        :param bool is_up_to_date: True if the node is up to date
+        :param str name: Node name
+        :param str node_pool_id: NodePool parent ID
+        :param str project_id: Project ID
         :param str status: Current status
         :param str updated_at: Last update date
-        :param str version: Version in which the node is
+        :param str version: Node version
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "deployed_at", deployed_at)
@@ -3592,7 +5364,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter(name="deployedAt")
     def deployed_at(self) -> str:
         """
-        (Optional) Date of the effective deployment
+        Node deployment date
         """
         return pulumi.get(self, "deployed_at")
 
@@ -3608,7 +5380,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the node
+        Node ID
         """
         return pulumi.get(self, "id")
 
@@ -3616,7 +5388,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        Openstack ID of the underlying VM of the node
+        Public Cloud instance ID
         """
         return pulumi.get(self, "instance_id")
 
@@ -3624,7 +5396,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter(name="isUpToDate")
     def is_up_to_date(self) -> bool:
         """
-        Is the node in the target version of the cluster
+        True if the node is up to date
         """
         return pulumi.get(self, "is_up_to_date")
 
@@ -3632,7 +5404,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the node
+        Node name
         """
         return pulumi.get(self, "name")
 
@@ -3640,7 +5412,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter(name="nodePoolId")
     def node_pool_id(self) -> str:
         """
-        Managed kubernetes node pool ID
+        NodePool parent ID
         """
         return pulumi.get(self, "node_pool_id")
 
@@ -3648,7 +5420,7 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Public cloud project ID
+        Project ID
         """
         return pulumi.get(self, "project_id")
 
@@ -3672,9 +5444,49 @@ class GetKubeNodesNodeResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version in which the node is
+        Node version
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetLoadBalancerFlavorsFlavorResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str,
+                 region: str):
+        """
+        :param str id: Flavor id
+        :param str name: Flavor name
+        :param str region: Region name
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Flavor id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Flavor name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region name
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -3683,8 +5495,8 @@ class GetLoadBalancerFloatingIpResult(dict):
                  id: str,
                  ip: str):
         """
-        :param str id: ID of the loadbalancer
-        :param str ip: Value of the floating IP
+        :param str id: ID of the floating IP
+        :param str ip: IP Address of the floating IP
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip", ip)
@@ -3693,7 +5505,7 @@ class GetLoadBalancerFloatingIpResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the loadbalancer
+        ID of the floating IP
         """
         return pulumi.get(self, "id")
 
@@ -3701,7 +5513,7 @@ class GetLoadBalancerFloatingIpResult(dict):
     @pulumi.getter
     def ip(self) -> str:
         """
-        Value of the floating IP
+        IP Address of the floating IP
         """
         return pulumi.get(self, "ip")
 
@@ -3722,15 +5534,15 @@ class GetLoadBalancersLoadbalancerResult(dict):
                  vip_network_id: str,
                  vip_subnet_id: str):
         """
-        :param str created_at: Date of creation of the loadbalancer
+        :param str created_at: The UTC date and timestamp when the loadbalancer was created
         :param str flavor_id: ID of the flavor
-        :param 'GetLoadBalancersLoadbalancerFloatingIpArgs' floating_ip: Information about the floating IP
-        :param str id: ID of the floating IP
+        :param 'GetLoadBalancersLoadbalancerFloatingIpArgs' floating_ip: Information about floating IP
+        :param str id: ID of the loadbalancer
         :param str name: Name of the loadbalancer
         :param str operating_status: Operating status of the loadbalancer
         :param str provisioning_status: Provisioning status of the loadbalancer
         :param str region: Region of the loadbalancer
-        :param str updated_at: Last update date of the loadbalancer
+        :param str updated_at: UTC date and timestamp when the loadbalancer was updated
         :param str vip_address: IP address of the Virtual IP
         :param str vip_network_id: Openstack ID of the network for the Virtual IP
         :param str vip_subnet_id: ID of the subnet for the Virtual IP
@@ -3752,7 +5564,7 @@ class GetLoadBalancersLoadbalancerResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         """
-        Date of creation of the loadbalancer
+        The UTC date and timestamp when the loadbalancer was created
         """
         return pulumi.get(self, "created_at")
 
@@ -3768,7 +5580,7 @@ class GetLoadBalancersLoadbalancerResult(dict):
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> 'outputs.GetLoadBalancersLoadbalancerFloatingIpResult':
         """
-        Information about the floating IP
+        Information about floating IP
         """
         return pulumi.get(self, "floating_ip")
 
@@ -3776,7 +5588,7 @@ class GetLoadBalancersLoadbalancerResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the floating IP
+        ID of the loadbalancer
         """
         return pulumi.get(self, "id")
 
@@ -3816,7 +5628,7 @@ class GetLoadBalancersLoadbalancerResult(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
         """
-        Last update date of the loadbalancer
+        UTC date and timestamp when the loadbalancer was updated
         """
         return pulumi.get(self, "updated_at")
 
@@ -3852,7 +5664,7 @@ class GetLoadBalancersLoadbalancerFloatingIpResult(dict):
                  ip: str):
         """
         :param str id: ID of the floating IP
-        :param str ip: Value of the floating IP
+        :param str ip: IP Address of the floating IP
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip", ip)
@@ -3869,7 +5681,7 @@ class GetLoadBalancersLoadbalancerFloatingIpResult(dict):
     @pulumi.getter
     def ip(self) -> str:
         """
-        Value of the floating IP
+        IP Address of the floating IP
         """
         return pulumi.get(self, "ip")
 
@@ -3881,9 +5693,9 @@ class GetNetworkPrivateRegionResult(dict):
                  region: str,
                  status: str):
         """
-        :param str openstack_id: Network ID on openstack region
-        :param str region: Name of the region
-        :param str status: Status of the network
+        :param str openstack_id: Network id on openstack region
+        :param str region: Network region
+        :param str status: Network region status
         """
         pulumi.set(__self__, "openstack_id", openstack_id)
         pulumi.set(__self__, "region", region)
@@ -3893,7 +5705,7 @@ class GetNetworkPrivateRegionResult(dict):
     @pulumi.getter(name="openstackId")
     def openstack_id(self) -> str:
         """
-        Network ID on openstack region
+        Network id on openstack region
         """
         return pulumi.get(self, "openstack_id")
 
@@ -3901,7 +5713,7 @@ class GetNetworkPrivateRegionResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Name of the region
+        Network region
         """
         return pulumi.get(self, "region")
 
@@ -3909,7 +5721,7 @@ class GetNetworkPrivateRegionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the network
+        Network region status
         """
         return pulumi.get(self, "status")
 
@@ -3923,11 +5735,11 @@ class GetNetworkPrivateSubnetsSubnetResult(dict):
                  id: str,
                  ip_pools: Sequence['outputs.GetNetworkPrivateSubnetsSubnetIpPoolResult']):
         """
-        :param str cidr: CIDR of the subnet
-        :param bool dhcp_enabled: Whether or not if DHCP is enabled for the subnet
-        :param str gateway_ip: Gateway IP of the subnet
-        :param str id: ID of the subnet
-        :param Sequence['GetNetworkPrivateSubnetsSubnetIpPoolArgs'] ip_pools: List of ip pools allocated in the subnet
+        :param str cidr: Subnet CIDR
+        :param bool dhcp_enabled: Is DHCP enabled for the subnet
+        :param str gateway_ip: Gateway IP in the subnet
+        :param str id: Subnet id
+        :param Sequence['GetNetworkPrivateSubnetsSubnetIpPoolArgs'] ip_pools: List of ip pools allocated in subnet
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
@@ -3939,7 +5751,7 @@ class GetNetworkPrivateSubnetsSubnetResult(dict):
     @pulumi.getter
     def cidr(self) -> str:
         """
-        CIDR of the subnet
+        Subnet CIDR
         """
         return pulumi.get(self, "cidr")
 
@@ -3947,7 +5759,7 @@ class GetNetworkPrivateSubnetsSubnetResult(dict):
     @pulumi.getter(name="dhcpEnabled")
     def dhcp_enabled(self) -> bool:
         """
-        Whether or not if DHCP is enabled for the subnet
+        Is DHCP enabled for the subnet
         """
         return pulumi.get(self, "dhcp_enabled")
 
@@ -3955,7 +5767,7 @@ class GetNetworkPrivateSubnetsSubnetResult(dict):
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> str:
         """
-        Gateway IP of the subnet
+        Gateway IP in the subnet
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -3963,7 +5775,7 @@ class GetNetworkPrivateSubnetsSubnetResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the subnet
+        Subnet id
         """
         return pulumi.get(self, "id")
 
@@ -3971,7 +5783,7 @@ class GetNetworkPrivateSubnetsSubnetResult(dict):
     @pulumi.getter(name="ipPools")
     def ip_pools(self) -> Sequence['outputs.GetNetworkPrivateSubnetsSubnetIpPoolResult']:
         """
-        List of ip pools allocated in the subnet
+        List of ip pools allocated in subnet
         """
         return pulumi.get(self, "ip_pools")
 
@@ -3985,10 +5797,10 @@ class GetNetworkPrivateSubnetsSubnetIpPoolResult(dict):
                  region: str,
                  start: str):
         """
-        :param bool dhcp: Whether or not if DHCP is enabled
+        :param bool dhcp: Enable DHCP
         :param str end: Last IP for this region (eg: 192.168.1.24)
         :param str network: Global network with cidr (eg: 192.168.1.0/24)
-        :param str region: Region associated to the subnet
+        :param str region: Region of the subnet
         :param str start: First IP for this region (eg: 192.168.1.12)
         """
         pulumi.set(__self__, "dhcp", dhcp)
@@ -4001,7 +5813,7 @@ class GetNetworkPrivateSubnetsSubnetIpPoolResult(dict):
     @pulumi.getter
     def dhcp(self) -> bool:
         """
-        Whether or not if DHCP is enabled
+        Enable DHCP
         """
         return pulumi.get(self, "dhcp")
 
@@ -4025,7 +5837,7 @@ class GetNetworkPrivateSubnetsSubnetIpPoolResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Region associated to the subnet
+        Region of the subnet
         """
         return pulumi.get(self, "region")
 
@@ -4048,12 +5860,12 @@ class GetNetworkPrivatesNetworkResult(dict):
                  type: str,
                  vlan_id: float):
         """
-        :param str id: ID of the network
-        :param str name: Name of the network
-        :param Sequence['GetNetworkPrivatesNetworkRegionArgs'] regions: Information about the private network in the openstack region
-        :param str status: Status of the network
-        :param str type: Type of the network
-        :param float vlan_id: VLAN ID of the network
+        :param str id: Network id
+        :param str name: Network name
+        :param Sequence['GetNetworkPrivatesNetworkRegionArgs'] regions: Details about private network in region
+        :param str status: Network status
+        :param str type: Network type
+        :param float vlan_id: Network VLAN id
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -4066,7 +5878,7 @@ class GetNetworkPrivatesNetworkResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the network
+        Network id
         """
         return pulumi.get(self, "id")
 
@@ -4074,7 +5886,7 @@ class GetNetworkPrivatesNetworkResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the network
+        Network name
         """
         return pulumi.get(self, "name")
 
@@ -4082,7 +5894,7 @@ class GetNetworkPrivatesNetworkResult(dict):
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetNetworkPrivatesNetworkRegionResult']:
         """
-        Information about the private network in the openstack region
+        Details about private network in region
         """
         return pulumi.get(self, "regions")
 
@@ -4090,7 +5902,7 @@ class GetNetworkPrivatesNetworkResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the network
+        Network status
         """
         return pulumi.get(self, "status")
 
@@ -4098,7 +5910,7 @@ class GetNetworkPrivatesNetworkResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the network
+        Network type
         """
         return pulumi.get(self, "type")
 
@@ -4106,7 +5918,7 @@ class GetNetworkPrivatesNetworkResult(dict):
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> float:
         """
-        VLAN ID of the network
+        Network VLAN id
         """
         return pulumi.get(self, "vlan_id")
 
@@ -4118,9 +5930,9 @@ class GetNetworkPrivatesNetworkRegionResult(dict):
                  region: str,
                  status: str):
         """
-        :param str openstack_id: Network ID on openstack region
-        :param str region: Name of the region
-        :param str status: Status of the network
+        :param str openstack_id: Network id on openstack region
+        :param str region: Network region
+        :param str status: Network region status
         """
         pulumi.set(__self__, "openstack_id", openstack_id)
         pulumi.set(__self__, "region", region)
@@ -4130,7 +5942,7 @@ class GetNetworkPrivatesNetworkRegionResult(dict):
     @pulumi.getter(name="openstackId")
     def openstack_id(self) -> str:
         """
-        Network ID on openstack region
+        Network id on openstack region
         """
         return pulumi.get(self, "openstack_id")
 
@@ -4138,7 +5950,7 @@ class GetNetworkPrivatesNetworkRegionResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Name of the region
+        Network region
         """
         return pulumi.get(self, "region")
 
@@ -4146,7 +5958,7 @@ class GetNetworkPrivatesNetworkRegionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the network
+        Network region status
         """
         return pulumi.get(self, "status")
 
@@ -4157,8 +5969,8 @@ class GetOpenSearchUserAclResult(dict):
                  pattern: str,
                  permission: str):
         """
-        :param str pattern: Pattern of the ACL.
-        :param str permission: Permission of the ACL.
+        :param str pattern: Pattern of the ACL
+        :param str permission: Permission of the ACL
         """
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "permission", permission)
@@ -4167,7 +5979,7 @@ class GetOpenSearchUserAclResult(dict):
     @pulumi.getter
     def pattern(self) -> str:
         """
-        Pattern of the ACL.
+        Pattern of the ACL
         """
         return pulumi.get(self, "pattern")
 
@@ -4175,7 +5987,7 @@ class GetOpenSearchUserAclResult(dict):
     @pulumi.getter
     def permission(self) -> str:
         """
-        Permission of the ACL.
+        Permission of the ACL
         """
         return pulumi.get(self, "permission")
 
@@ -4210,24 +6022,277 @@ class GetPrometheusTargetResult(dict):
 
 
 @pulumi.output_type
-class GetRegionServiceResult(dict):
+class GetRancherCurrentStateResult(dict):
     def __init__(__self__, *,
+                 bootstrap_password: str,
+                 ip_restrictions: Sequence['outputs.GetRancherCurrentStateIpRestrictionResult'],
                  name: str,
-                 status: str):
+                 networking: 'outputs.GetRancherCurrentStateNetworkingResult',
+                 plan: str,
+                 region: str,
+                 url: str,
+                 usage: 'outputs.GetRancherCurrentStateUsageResult',
+                 version: str):
         """
-        :param str name: The name of the region associated with the public cloud
-               project.
-        :param str status: the status of the service
+        :param str bootstrap_password: Bootstrap password of the managed Rancher service, returned only on creation
+        :param Sequence['GetRancherCurrentStateIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        :param str name: Name of the managed Rancher service
+        :param 'GetRancherCurrentStateNetworkingArgs' networking: Networking properties of a managed Rancher service
+        :param str plan: Plan of the managed Rancher service
+        :param str region: Region of the managed Rancher service
+        :param str url: URL of the managed Rancher service
+        :param 'GetRancherCurrentStateUsageArgs' usage: Latest metrics regarding the usage of the managed Rancher service
+        :param str version: Version of the managed Rancher service
         """
+        pulumi.set(__self__, "bootstrap_password", bootstrap_password)
+        pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "networking", networking)
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "usage", usage)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="bootstrapPassword")
+    def bootstrap_password(self) -> str:
+        """
+        Bootstrap password of the managed Rancher service, returned only on creation
+        """
+        return pulumi.get(self, "bootstrap_password")
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Sequence['outputs.GetRancherCurrentStateIpRestrictionResult']:
+        """
+        List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        """
+        return pulumi.get(self, "ip_restrictions")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the region associated with the public cloud
-        project.
+        Name of the managed Rancher service
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def networking(self) -> 'outputs.GetRancherCurrentStateNetworkingResult':
+        """
+        Networking properties of a managed Rancher service
+        """
+        return pulumi.get(self, "networking")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> str:
+        """
+        Plan of the managed Rancher service
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region of the managed Rancher service
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL of the managed Rancher service
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> 'outputs.GetRancherCurrentStateUsageResult':
+        """
+        Latest metrics regarding the usage of the managed Rancher service
+        """
+        return pulumi.get(self, "usage")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the managed Rancher service
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetRancherCurrentStateIpRestrictionResult(dict):
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 description: str):
+        """
+        :param str cidr_block: Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        :param str description: Description of the allowed CIDR block
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the allowed CIDR block
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetRancherCurrentStateNetworkingResult(dict):
+    def __init__(__self__, *,
+                 egress_cidr_blocks: Sequence[str]):
+        """
+        :param Sequence[str] egress_cidr_blocks: Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+        """
+        pulumi.set(__self__, "egress_cidr_blocks", egress_cidr_blocks)
+
+    @property
+    @pulumi.getter(name="egressCidrBlocks")
+    def egress_cidr_blocks(self) -> Sequence[str]:
+        """
+        Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+        """
+        return pulumi.get(self, "egress_cidr_blocks")
+
+
+@pulumi.output_type
+class GetRancherCurrentStateUsageResult(dict):
+    def __init__(__self__, *,
+                 datetime: str,
+                 orchestrated_vcpus: float):
+        """
+        :param str datetime: Date of the sample
+        :param float orchestrated_vcpus: Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+        """
+        pulumi.set(__self__, "datetime", datetime)
+        pulumi.set(__self__, "orchestrated_vcpus", orchestrated_vcpus)
+
+    @property
+    @pulumi.getter
+    def datetime(self) -> str:
+        """
+        Date of the sample
+        """
+        return pulumi.get(self, "datetime")
+
+    @property
+    @pulumi.getter(name="orchestratedVcpus")
+    def orchestrated_vcpus(self) -> float:
+        """
+        Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+        """
+        return pulumi.get(self, "orchestrated_vcpus")
+
+
+@pulumi.output_type
+class GetRancherCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 link: str,
+                 status: str,
+                 type: str):
+        """
+        :param str id: Identifier of the current task
+        :param str link: Link to the task details
+        :param str status: Current global status of the current task
+        :param str type: Type of the current task
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def link(self) -> str:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRancherPlanPlanResult(dict):
+    def __init__(__self__, *,
+                 cause: str,
+                 message: str,
+                 name: str,
+                 status: str):
+        """
+        :param str cause: Cause for an unavailability
+        :param str message: Human-readable description of the unavailability cause
+        :param str name: Name of the plan
+        :param str status: Status of the plan
+        """
+        pulumi.set(__self__, "cause", cause)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def cause(self) -> str:
+        """
+        Cause for an unavailability
+        """
+        return pulumi.get(self, "cause")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Human-readable description of the unavailability cause
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the plan
         """
         return pulumi.get(self, "name")
 
@@ -4235,7 +6300,889 @@ class GetRegionServiceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        the status of the service
+        Status of the plan
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetRancherTargetSpecResult(dict):
+    def __init__(__self__, *,
+                 ip_restrictions: Sequence['outputs.GetRancherTargetSpecIpRestrictionResult'],
+                 name: str,
+                 plan: str,
+                 version: str):
+        """
+        :param Sequence['GetRancherTargetSpecIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        :param str name: Name of the managed Rancher service
+        :param str plan: Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+        :param str version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
+        """
+        pulumi.set(__self__, "ip_restrictions", ip_restrictions)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Sequence['outputs.GetRancherTargetSpecIpRestrictionResult']:
+        """
+        List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+        """
+        return pulumi.get(self, "ip_restrictions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the managed Rancher service
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> str:
+        """
+        Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetRancherTargetSpecIpRestrictionResult(dict):
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 description: str):
+        """
+        :param str cidr_block: Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        :param str description: Description of the allowed CIDR block
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the allowed CIDR block
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetRancherVersionVersionResult(dict):
+    def __init__(__self__, *,
+                 cause: str,
+                 changelog_url: str,
+                 message: str,
+                 name: str,
+                 status: str):
+        """
+        :param str cause: Cause for an unavailability
+        :param str changelog_url: Changelog URL of the version
+        :param str message: Human-readable description of the unavailability cause
+        :param str name: Name of the version
+        :param str status: Status of the version
+        """
+        pulumi.set(__self__, "cause", cause)
+        pulumi.set(__self__, "changelog_url", changelog_url)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def cause(self) -> str:
+        """
+        Cause for an unavailability
+        """
+        return pulumi.get(self, "cause")
+
+    @property
+    @pulumi.getter(name="changelogUrl")
+    def changelog_url(self) -> str:
+        """
+        Changelog URL of the version
+        """
+        return pulumi.get(self, "changelog_url")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Human-readable description of the unavailability cause
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the version
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Status of the version
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetRegionServiceResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 status: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetStorageEncryptionResult(dict):
+    def __init__(__self__, *,
+                 sse_algorithm: str):
+        """
+        :param str sse_algorithm: Encryption algorithm
+        """
+        pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+
+    @property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> str:
+        """
+        Encryption algorithm
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+
+@pulumi.output_type
+class GetStorageObjectResult(dict):
+    def __init__(__self__, *,
+                 etag: str,
+                 is_delete_marker: bool,
+                 is_latest: bool,
+                 key: str,
+                 last_modified: str,
+                 size: float,
+                 storage_class: str,
+                 version_id: str):
+        """
+        :param str etag: ETag
+        :param bool is_delete_marker: Whether this object is a delete marker
+        :param bool is_latest: Whether this is the latest version of the object
+        :param str key: Key
+        :param str last_modified: Last modification date
+        :param float size: Size (bytes)
+        :param str storage_class: Storage class
+        :param str version_id: Version ID of the object
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "is_delete_marker", is_delete_marker)
+        pulumi.set(__self__, "is_latest", is_latest)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        ETag
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="isDeleteMarker")
+    def is_delete_marker(self) -> bool:
+        """
+        Whether this object is a delete marker
+        """
+        return pulumi.get(self, "is_delete_marker")
+
+    @property
+    @pulumi.getter(name="isLatest")
+    def is_latest(self) -> bool:
+        """
+        Whether this is the latest version of the object
+        """
+        return pulumi.get(self, "is_latest")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
+        """
+        Last modification date
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        Size (bytes)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        Version ID of the object
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class GetStorageReplicationResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetStorageReplicationRuleResult']):
+        """
+        :param Sequence['GetStorageReplicationRuleArgs'] rules: Replication rules
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetStorageReplicationRuleResult']:
+        """
+        Replication rules
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetStorageReplicationRuleResult(dict):
+    def __init__(__self__, *,
+                 delete_marker_replication: str,
+                 destination: 'outputs.GetStorageReplicationRuleDestinationResult',
+                 filter: 'outputs.GetStorageReplicationRuleFilterResult',
+                 id: str,
+                 priority: float,
+                 status: str):
+        """
+        :param str delete_marker_replication: Delete marker replication
+        :param 'GetStorageReplicationRuleDestinationArgs' destination: Rule destination configuration
+        :param 'GetStorageReplicationRuleFilterArgs' filter: Rule filters
+        :param str id: Rule ID
+        :param float priority: Rule priority
+        :param str status: Rule status
+        """
+        pulumi.set(__self__, "delete_marker_replication", delete_marker_replication)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="deleteMarkerReplication")
+    def delete_marker_replication(self) -> str:
+        """
+        Delete marker replication
+        """
+        return pulumi.get(self, "delete_marker_replication")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> 'outputs.GetStorageReplicationRuleDestinationResult':
+        """
+        Rule destination configuration
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> 'outputs.GetStorageReplicationRuleFilterResult':
+        """
+        Rule filters
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        """
+        Rule priority
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Rule status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetStorageReplicationRuleDestinationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 region: str,
+                 storage_class: str):
+        """
+        :param str name: Destination bucket name
+        :param str region: Destination region, can be null if destination bucket has been deleted
+        :param str storage_class: Destination storage class
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Destination bucket name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Destination region, can be null if destination bucket has been deleted
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Destination storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class GetStorageReplicationRuleFilterResult(dict):
+    def __init__(__self__, *,
+                 prefix: str,
+                 tags: Mapping[str, str]):
+        """
+        :param str prefix: Prefix filter
+        :param Mapping[str, str] tags: Tags filter
+        """
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Prefix filter
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Tags filter
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetStorageVersioningResult(dict):
+    def __init__(__self__, *,
+                 status: str):
+        """
+        :param str status: Versioning status
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Versioning status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetStoragesContainerResult(dict):
+    def __init__(__self__, *,
+                 created_at: str,
+                 encryption: 'outputs.GetStoragesContainerEncryptionResult',
+                 name: str,
+                 objects: Sequence['outputs.GetStoragesContainerObjectResult'],
+                 objects_count: float,
+                 objects_size: float,
+                 owner_id: float,
+                 region: str,
+                 replication: 'outputs.GetStoragesContainerReplicationResult',
+                 tags: Mapping[str, str],
+                 versioning: 'outputs.GetStoragesContainerVersioningResult',
+                 virtual_host: str):
+        """
+        :param str created_at: The date and timestamp when the resource was created
+        :param 'GetStoragesContainerEncryptionArgs' encryption: Encryption configuration
+        :param str name: Container name
+        :param Sequence['GetStoragesContainerObjectArgs'] objects: Container objects
+        :param float objects_count: Container total objects count
+        :param float objects_size: Container total objects size (bytes)
+        :param float owner_id: Container owner user ID
+        :param str region: Container region
+        :param 'GetStoragesContainerReplicationArgs' replication: Replication configuration
+        :param Mapping[str, str] tags: Container tags
+        :param 'GetStoragesContainerVersioningArgs' versioning: Versioning configuration
+        :param str virtual_host: Container virtual host
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "objects", objects)
+        pulumi.set(__self__, "objects_count", objects_count)
+        pulumi.set(__self__, "objects_size", objects_size)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "versioning", versioning)
+        pulumi.set(__self__, "virtual_host", virtual_host)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and timestamp when the resource was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetStoragesContainerEncryptionResult':
+        """
+        Encryption configuration
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Container name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Sequence['outputs.GetStoragesContainerObjectResult']:
+        """
+        Container objects
+        """
+        return pulumi.get(self, "objects")
+
+    @property
+    @pulumi.getter(name="objectsCount")
+    def objects_count(self) -> float:
+        """
+        Container total objects count
+        """
+        return pulumi.get(self, "objects_count")
+
+    @property
+    @pulumi.getter(name="objectsSize")
+    def objects_size(self) -> float:
+        """
+        Container total objects size (bytes)
+        """
+        return pulumi.get(self, "objects_size")
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> float:
+        """
+        Container owner user ID
+        """
+        return pulumi.get(self, "owner_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Container region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def replication(self) -> 'outputs.GetStoragesContainerReplicationResult':
+        """
+        Replication configuration
+        """
+        return pulumi.get(self, "replication")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Container tags
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> 'outputs.GetStoragesContainerVersioningResult':
+        """
+        Versioning configuration
+        """
+        return pulumi.get(self, "versioning")
+
+    @property
+    @pulumi.getter(name="virtualHost")
+    def virtual_host(self) -> str:
+        """
+        Container virtual host
+        """
+        return pulumi.get(self, "virtual_host")
+
+
+@pulumi.output_type
+class GetStoragesContainerEncryptionResult(dict):
+    def __init__(__self__, *,
+                 sse_algorithm: str):
+        """
+        :param str sse_algorithm: Encryption algorithm
+        """
+        pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+
+    @property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> str:
+        """
+        Encryption algorithm
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+
+@pulumi.output_type
+class GetStoragesContainerObjectResult(dict):
+    def __init__(__self__, *,
+                 etag: str,
+                 is_delete_marker: bool,
+                 is_latest: bool,
+                 key: str,
+                 last_modified: str,
+                 size: float,
+                 storage_class: str,
+                 version_id: str):
+        """
+        :param str etag: ETag
+        :param bool is_delete_marker: Whether this object is a delete marker
+        :param bool is_latest: Whether this is the latest version of the object
+        :param str key: Key
+        :param str last_modified: Last modification date
+        :param float size: Size (bytes)
+        :param str storage_class: Storage class
+        :param str version_id: Version ID of the object
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "is_delete_marker", is_delete_marker)
+        pulumi.set(__self__, "is_latest", is_latest)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        ETag
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="isDeleteMarker")
+    def is_delete_marker(self) -> bool:
+        """
+        Whether this object is a delete marker
+        """
+        return pulumi.get(self, "is_delete_marker")
+
+    @property
+    @pulumi.getter(name="isLatest")
+    def is_latest(self) -> bool:
+        """
+        Whether this is the latest version of the object
+        """
+        return pulumi.get(self, "is_latest")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
+        """
+        Last modification date
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        Size (bytes)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        Version ID of the object
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class GetStoragesContainerReplicationResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetStoragesContainerReplicationRuleResult']):
+        """
+        :param Sequence['GetStoragesContainerReplicationRuleArgs'] rules: Replication rules
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetStoragesContainerReplicationRuleResult']:
+        """
+        Replication rules
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetStoragesContainerReplicationRuleResult(dict):
+    def __init__(__self__, *,
+                 delete_marker_replication: str,
+                 destination: 'outputs.GetStoragesContainerReplicationRuleDestinationResult',
+                 filter: 'outputs.GetStoragesContainerReplicationRuleFilterResult',
+                 id: str,
+                 priority: float,
+                 status: str):
+        """
+        :param str delete_marker_replication: Delete marker replication
+        :param 'GetStoragesContainerReplicationRuleDestinationArgs' destination: Rule destination configuration
+        :param 'GetStoragesContainerReplicationRuleFilterArgs' filter: Rule filters
+        :param str id: Rule ID
+        :param float priority: Rule priority
+        :param str status: Rule status
+        """
+        pulumi.set(__self__, "delete_marker_replication", delete_marker_replication)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="deleteMarkerReplication")
+    def delete_marker_replication(self) -> str:
+        """
+        Delete marker replication
+        """
+        return pulumi.get(self, "delete_marker_replication")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> 'outputs.GetStoragesContainerReplicationRuleDestinationResult':
+        """
+        Rule destination configuration
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> 'outputs.GetStoragesContainerReplicationRuleFilterResult':
+        """
+        Rule filters
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        """
+        Rule priority
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Rule status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetStoragesContainerReplicationRuleDestinationResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 region: str,
+                 storage_class: str):
+        """
+        :param str name: Destination bucket name
+        :param str region: Destination region, can be null if destination bucket has been deleted
+        :param str storage_class: Destination storage class
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Destination bucket name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Destination region, can be null if destination bucket has been deleted
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Destination storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class GetStoragesContainerReplicationRuleFilterResult(dict):
+    def __init__(__self__, *,
+                 prefix: str,
+                 tags: Mapping[str, str]):
+        """
+        :param str prefix: Prefix filter
+        :param Mapping[str, str] tags: Tags filter
+        """
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Prefix filter
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Tags filter
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetStoragesContainerVersioningResult(dict):
+    def __init__(__self__, *,
+                 status: str):
+        """
+        :param str status: Versioning status
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Versioning status
         """
         return pulumi.get(self, "status")
 
@@ -4247,12 +7194,6 @@ class GetUserRoleResult(dict):
                  id: str,
                  name: str,
                  permissions: Sequence[str]):
-        """
-        :param str description: description of the role
-        :param str id: id of the role
-        :param str name: name of the role
-        :param Sequence[str] permissions: list of permissions associated with the role
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -4261,33 +7202,21 @@ class GetUserRoleResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        description of the role
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        id of the role
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        name of the role
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def permissions(self) -> Sequence[str]:
-        """
-        list of permissions associated with the role
-        """
         return pulumi.get(self, "permissions")
 
 
@@ -4300,15 +7229,6 @@ class GetUsersUserResult(dict):
                  status: str,
                  user_id: str,
                  username: str):
-        """
-        :param str creation_date: the date the user was created.
-        :param str description: description of the role
-        :param Sequence['GetUsersUserRoleArgs'] roles: A list of roles associated with the user.
-        :param str status: the status of the user. should be normally set to 'ok'.
-        :param str user_id: The ID of a public cloud project's user.
-        :param str username: the username generated for the user. This username can be used with
-               the Openstack API.
-        """
         pulumi.set(__self__, "creation_date", creation_date)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "roles", roles)
@@ -4319,50 +7239,31 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        the date the user was created.
-        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        description of the role
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetUsersUserRoleResult']:
-        """
-        A list of roles associated with the user.
-        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        the status of the user. should be normally set to 'ok'.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        The ID of a public cloud project's user.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        the username generated for the user. This username can be used with
-        the Openstack API.
-        """
         return pulumi.get(self, "username")
 
 
@@ -4373,12 +7274,6 @@ class GetUsersUserRoleResult(dict):
                  id: str,
                  name: str,
                  permissions: Sequence[str]):
-        """
-        :param str description: description of the role
-        :param str id: id of the role
-        :param str name: name of the role
-        :param Sequence[str] permissions: list of permissions associated with the role
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -4387,33 +7282,21 @@ class GetUsersUserRoleResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        description of the role
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        id of the role
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        name of the role
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def permissions(self) -> Sequence[str]:
-        """
-        list of permissions associated with the role
-        """
         return pulumi.get(self, "permissions")
 
 
@@ -4424,9 +7307,9 @@ class GetVolumesVolumeResult(dict):
                  name: str,
                  size: float):
         """
-        :param str id: The id of the volume
-        :param str name: The name of the volume
-        :param float size: The size of the volume
+        :param str id: Volume ID
+        :param str name: Volume name
+        :param float size: Volume size
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -4436,7 +7319,7 @@ class GetVolumesVolumeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The id of the volume
+        Volume ID
         """
         return pulumi.get(self, "id")
 
@@ -4444,7 +7327,7 @@ class GetVolumesVolumeResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume
+        Volume name
         """
         return pulumi.get(self, "name")
 
@@ -4452,7 +7335,7 @@ class GetVolumesVolumeResult(dict):
     @pulumi.getter
     def size(self) -> float:
         """
-        The size of the volume
+        Volume size
         """
         return pulumi.get(self, "size")
 

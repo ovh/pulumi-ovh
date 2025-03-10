@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information of order cart product options.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const options = myCart.then(myCart => ovh.Order.getCartProductOptions({
- *     cartId: myCart.id,
- *     product: "cloud",
- *     planCode: "project",
- * }));
- * ```
- */
 export function getCartProductOptions(args: GetCartProductOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductOptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCartProductOptions:getCartProductOptions", {
@@ -40,21 +20,9 @@ export function getCartProductOptions(args: GetCartProductOptionsArgs, opts?: pu
  * A collection of arguments for invoking getCartProductOptions.
  */
 export interface GetCartProductOptionsArgs {
-    /**
-     * Cart identifier
-     */
     cartId: string;
-    /**
-     * Catalog name
-     */
     catalogName?: string;
-    /**
-     * Product offer identifier
-     */
     planCode: string;
-    /**
-     * Product
-     */
     product: string;
 }
 
@@ -68,36 +36,10 @@ export interface GetCartProductOptionsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Product offer identifier
-     */
     readonly planCode: string;
     readonly product: string;
-    /**
-     * products results
-     */
     readonly results: outputs.Order.GetCartProductOptionsResult[];
 }
-/**
- * Use this data source to retrieve information of order cart product options.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const options = myCart.then(myCart => ovh.Order.getCartProductOptions({
- *     cartId: myCart.id,
- *     product: "cloud",
- *     planCode: "project",
- * }));
- * ```
- */
 export function getCartProductOptionsOutput(args: GetCartProductOptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCartProductOptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Order/getCartProductOptions:getCartProductOptions", {
@@ -112,20 +54,8 @@ export function getCartProductOptionsOutput(args: GetCartProductOptionsOutputArg
  * A collection of arguments for invoking getCartProductOptions.
  */
 export interface GetCartProductOptionsOutputArgs {
-    /**
-     * Cart identifier
-     */
     cartId: pulumi.Input<string>;
-    /**
-     * Catalog name
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * Product offer identifier
-     */
     planCode: pulumi.Input<string>;
-    /**
-     * Product
-     */
     product: pulumi.Input<string>;
 }

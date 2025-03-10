@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a DBaaS Logs Opensearch output alias.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const alias = new ovh.dbaas.LogsOutputOpenSearchAlias("alias", {
- *     description: "my opensearch alias",
- *     serviceName: "....",
- *     suffix: "alias",
- * });
- * ```
- */
 export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
     /**
      * Get an existing LogsOutputOpenSearchAlias resource's state with the given name, ID, and optional extra
@@ -49,11 +33,11 @@ export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
     }
 
     /**
-     * Alias Id
+     * Alias used
      */
     public /*out*/ readonly aliasId!: pulumi.Output<string>;
     /**
-     * Alias creation
+     * Operation creation
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -61,11 +45,11 @@ export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentSize!: pulumi.Output<number>;
     /**
-     * Index description
+     * Alias description
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * List of attached indexes id
+     * Indexes attached to alias
      */
     public readonly indexes!: pulumi.Output<string[]>;
     /**
@@ -77,11 +61,11 @@ export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Number of indices linked
+     * Number of index
      */
     public readonly nbIndex!: pulumi.Output<number>;
     /**
-     * Number of streams linked
+     * Number of shard
      */
     public readonly nbStream!: pulumi.Output<number>;
     /**
@@ -89,15 +73,15 @@ export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * List of attached streams id
+     * Streams attached to alias
      */
     public readonly streams!: pulumi.Output<string[]>;
     /**
-     * Index suffix
+     * Alias suffix
      */
     public readonly suffix!: pulumi.Output<string>;
     /**
-     * Input last update
+     * Operation last update
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -162,11 +146,11 @@ export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
  */
 export interface LogsOutputOpenSearchAliasState {
     /**
-     * Alias Id
+     * Alias used
      */
     aliasId?: pulumi.Input<string>;
     /**
-     * Alias creation
+     * Operation creation
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -174,11 +158,11 @@ export interface LogsOutputOpenSearchAliasState {
      */
     currentSize?: pulumi.Input<number>;
     /**
-     * Index description
+     * Alias description
      */
     description?: pulumi.Input<string>;
     /**
-     * List of attached indexes id
+     * Indexes attached to alias
      */
     indexes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -190,11 +174,11 @@ export interface LogsOutputOpenSearchAliasState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of indices linked
+     * Number of index
      */
     nbIndex?: pulumi.Input<number>;
     /**
-     * Number of streams linked
+     * Number of shard
      */
     nbStream?: pulumi.Input<number>;
     /**
@@ -202,15 +186,15 @@ export interface LogsOutputOpenSearchAliasState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * List of attached streams id
+     * Streams attached to alias
      */
     streams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Index suffix
+     * Alias suffix
      */
     suffix?: pulumi.Input<string>;
     /**
-     * Input last update
+     * Operation last update
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -220,19 +204,19 @@ export interface LogsOutputOpenSearchAliasState {
  */
 export interface LogsOutputOpenSearchAliasArgs {
     /**
-     * Index description
+     * Alias description
      */
     description: pulumi.Input<string>;
     /**
-     * List of attached indexes id
+     * Indexes attached to alias
      */
     indexes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Number of indices linked
+     * Number of index
      */
     nbIndex?: pulumi.Input<number>;
     /**
-     * Number of streams linked
+     * Number of shard
      */
     nbStream?: pulumi.Input<number>;
     /**
@@ -240,11 +224,11 @@ export interface LogsOutputOpenSearchAliasArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * List of attached streams id
+     * Streams attached to alias
      */
     streams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Index suffix
+     * Alias suffix
      */
     suffix: pulumi.Input<string>;
 }

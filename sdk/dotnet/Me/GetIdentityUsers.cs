@@ -11,66 +11,12 @@ namespace Pulumi.Ovh.Me
 {
     public static class GetIdentityUsers
     {
-        /// <summary>
-        /// Use this data source to retrieve list of user logins of the account's identity users.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var users = Ovh.Me.GetIdentityUsers.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetIdentityUsersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve list of user logins of the account's identity users.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var users = Ovh.Me.GetIdentityUsers.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetIdentityUsersResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve list of user logins of the account's identity users.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var users = Ovh.Me.GetIdentityUsers.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetIdentityUsersResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityUsersResult>("ovh:Me/getIdentityUsers:getIdentityUsers", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -83,9 +29,6 @@ namespace Pulumi.Ovh.Me
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The list of the user's logins of all the identity users.
-        /// </summary>
         public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]

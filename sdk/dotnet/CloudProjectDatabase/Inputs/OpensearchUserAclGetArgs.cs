@@ -13,14 +13,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Inputs
     public sealed class OpensearchUserAclGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Pattern of the ACL.
+        /// Pattern of the ACL
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
         /// Permission of the ACL
-        /// Available permission:
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;

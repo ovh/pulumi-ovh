@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Get information about a volume in a public cloud project
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const volume = ovh.CloudProject.getVolume({
- *     regionName: "xxx",
- *     serviceName: "yyy",
- *     volumeId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
- * });
- * ```
- */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getVolume:getVolume", {
@@ -33,17 +17,8 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeArgs {
-    /**
-     * A valid OVHcloud public cloud region name in which the volume is available. Ex.: "GRA11".
-     */
     regionName: string;
-    /**
-     * The id of the public cloud project.
-     */
     serviceName: string;
-    /**
-     * Volume id to get the informations
-     */
     volumeId: string;
 }
 
@@ -52,43 +27,12 @@ export interface GetVolumeArgs {
  */
 export interface GetVolumeResult {
     readonly id: string;
-    /**
-     * The name of the volume (E.g.: "GRA", meaning Gravelines, for region "GRA1")
-     */
     readonly name: string;
-    /**
-     * The region name where volume is available
-     */
     readonly regionName: string;
-    /**
-     * The id of the public cloud project.
-     */
     readonly serviceName: string;
-    /**
-     * The size of the volume
-     */
     readonly size: number;
-    /**
-     * The id of the volume
-     */
     readonly volumeId: string;
 }
-/**
- * Get information about a volume in a public cloud project
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const volume = ovh.CloudProject.getVolume({
- *     regionName: "xxx",
- *     serviceName: "yyy",
- *     volumeId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
- * });
- * ```
- */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getVolume:getVolume", {
@@ -102,16 +46,7 @@ export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeOutputArgs {
-    /**
-     * A valid OVHcloud public cloud region name in which the volume is available. Ex.: "GRA11".
-     */
     regionName: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Volume id to get the informations
-     */
     volumeId: pulumi.Input<string>;
 }

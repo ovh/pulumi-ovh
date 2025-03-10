@@ -6,63 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const vrackCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
- *     cartId: myCart.id,
- *     priceCapacity: "renew",
- *     product: "vrack",
- *     planCode: "vrack",
- * }));
- * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
- *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
- *     description: "my vrack",
- *     plan: {
- *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.planCode),
- *         pricingMode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * A vRack can be imported using the `service_name`.
- *
- * Using the following configuration:
- *
- * hcl
- *
- * import {
- *
- *   to = ovh_vrack.vrack
- *
- *   id = "<service name>"
- *
- * }
- *
- * You can then run:
- *
- * bash
- *
- * $ pulumi preview -generate-config-out=vrack.tf
- *
- * $ pulumi up
- *
- * The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
- */
 export class Vrack extends pulumi.CustomResource {
     /**
      * Get an existing Vrack resource's state with the given name, ID, and optional extra
@@ -91,9 +34,6 @@ export class Vrack extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vrack.__pulumiType;
     }
 
-    /**
-     * The URN of the vrack, used with IAM permissions
-     */
     public /*out*/ readonly VrackURN!: pulumi.Output<string>;
     /**
      * yourvrackdescription
@@ -108,7 +48,7 @@ export class Vrack extends pulumi.CustomResource {
      */
     public readonly orders!: pulumi.Output<outputs.Vrack.VrackOrder[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -173,9 +113,6 @@ export class Vrack extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vrack resources.
  */
 export interface VrackState {
-    /**
-     * The URN of the vrack, used with IAM permissions
-     */
     VrackURN?: pulumi.Input<string>;
     /**
      * yourvrackdescription
@@ -190,7 +127,7 @@ export interface VrackState {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Vrack.VrackOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -230,7 +167,7 @@ export interface VrackArgs {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Vrack.VrackOrder>[]>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     * Ovh Subsidiary
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**

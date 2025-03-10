@@ -8,60 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create a new IP whitelist on your private cloud database instance.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hosting.NewPrivateDatabaseAllowlist(ctx, "ip", &hosting.PrivateDatabaseAllowlistArgs{
-//				Ip:          pulumi.String("1.2.3.4"),
-//				Service:     pulumi.Bool(true),
-//				ServiceName: pulumi.String("XXXXXX"),
-//				Sftp:        pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
-//
-// ```sh
-// $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
-// ```
 type PrivateDatabaseAllowlist struct {
 	pulumi.CustomResourceState
 
-	// The whitelisted IP in your instance.
+	// The whitelisted IP in your instance
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// Custom name for your Whitelisted IP.
+	// Custom name for your Whitelisted IP
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Authorize this IP to access service port. Values can be `true` or `false`
+	// Authorize this IP to access service port
 	Service pulumi.BoolOutput `pulumi:"service"`
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Authorize this IP to access SFTP port. Values can be `true` or `false`
+	// Authorize this IP to access SFTP port
 	Sftp pulumi.BoolOutput `pulumi:"sftp"`
 }
 
@@ -107,28 +69,28 @@ func GetPrivateDatabaseAllowlist(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateDatabaseAllowlist resources.
 type privateDatabaseAllowlistState struct {
-	// The whitelisted IP in your instance.
+	// The whitelisted IP in your instance
 	Ip *string `pulumi:"ip"`
-	// Custom name for your Whitelisted IP.
+	// Custom name for your Whitelisted IP
 	Name *string `pulumi:"name"`
-	// Authorize this IP to access service port. Values can be `true` or `false`
+	// Authorize this IP to access service port
 	Service *bool `pulumi:"service"`
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName *string `pulumi:"serviceName"`
-	// Authorize this IP to access SFTP port. Values can be `true` or `false`
+	// Authorize this IP to access SFTP port
 	Sftp *bool `pulumi:"sftp"`
 }
 
 type PrivateDatabaseAllowlistState struct {
-	// The whitelisted IP in your instance.
+	// The whitelisted IP in your instance
 	Ip pulumi.StringPtrInput
-	// Custom name for your Whitelisted IP.
+	// Custom name for your Whitelisted IP
 	Name pulumi.StringPtrInput
-	// Authorize this IP to access service port. Values can be `true` or `false`
+	// Authorize this IP to access service port
 	Service pulumi.BoolPtrInput
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName pulumi.StringPtrInput
-	// Authorize this IP to access SFTP port. Values can be `true` or `false`
+	// Authorize this IP to access SFTP port
 	Sftp pulumi.BoolPtrInput
 }
 
@@ -137,29 +99,29 @@ func (PrivateDatabaseAllowlistState) ElementType() reflect.Type {
 }
 
 type privateDatabaseAllowlistArgs struct {
-	// The whitelisted IP in your instance.
+	// The whitelisted IP in your instance
 	Ip string `pulumi:"ip"`
-	// Custom name for your Whitelisted IP.
+	// Custom name for your Whitelisted IP
 	Name *string `pulumi:"name"`
-	// Authorize this IP to access service port. Values can be `true` or `false`
+	// Authorize this IP to access service port
 	Service bool `pulumi:"service"`
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName string `pulumi:"serviceName"`
-	// Authorize this IP to access SFTP port. Values can be `true` or `false`
+	// Authorize this IP to access SFTP port
 	Sftp bool `pulumi:"sftp"`
 }
 
 // The set of arguments for constructing a PrivateDatabaseAllowlist resource.
 type PrivateDatabaseAllowlistArgs struct {
-	// The whitelisted IP in your instance.
+	// The whitelisted IP in your instance
 	Ip pulumi.StringInput
-	// Custom name for your Whitelisted IP.
+	// Custom name for your Whitelisted IP
 	Name pulumi.StringPtrInput
-	// Authorize this IP to access service port. Values can be `true` or `false`
+	// Authorize this IP to access service port
 	Service pulumi.BoolInput
-	// The internal name of your private database.
+	// The internal name of your private database
 	ServiceName pulumi.StringInput
-	// Authorize this IP to access SFTP port. Values can be `true` or `false`
+	// Authorize this IP to access SFTP port
 	Sftp pulumi.BoolInput
 }
 
@@ -250,27 +212,27 @@ func (o PrivateDatabaseAllowlistOutput) ToPrivateDatabaseAllowlistOutputWithCont
 	return o
 }
 
-// The whitelisted IP in your instance.
+// The whitelisted IP in your instance
 func (o PrivateDatabaseAllowlistOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseAllowlist) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Custom name for your Whitelisted IP.
+// Custom name for your Whitelisted IP
 func (o PrivateDatabaseAllowlistOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseAllowlist) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Authorize this IP to access service port. Values can be `true` or `false`
+// Authorize this IP to access service port
 func (o PrivateDatabaseAllowlistOutput) Service() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PrivateDatabaseAllowlist) pulumi.BoolOutput { return v.Service }).(pulumi.BoolOutput)
 }
 
-// The internal name of your private database.
+// The internal name of your private database
 func (o PrivateDatabaseAllowlistOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseAllowlist) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Authorize this IP to access SFTP port. Values can be `true` or `false`
+// Authorize this IP to access SFTP port
 func (o PrivateDatabaseAllowlistOutput) Sftp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PrivateDatabaseAllowlist) pulumi.BoolOutput { return v.Sftp }).(pulumi.BoolOutput)
 }

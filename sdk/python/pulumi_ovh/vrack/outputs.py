@@ -123,7 +123,7 @@ class VrackOrderDetail(dict):
                  order_detail_id: Optional[int] = None,
                  quantity: Optional[str] = None):
         """
-        :param str description: yourvrackdescription
+        :param str description: description
         :param str domain: expiration date
         :param int order_detail_id: order detail id
         :param str quantity: quantity
@@ -141,7 +141,7 @@ class VrackOrderDetail(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        yourvrackdescription
+        description
         """
         return pulumi.get(self, "description")
 

@@ -61,9 +61,6 @@ class GetLogsClustersResult:
     @property
     @pulumi.getter
     def uuids(self) -> Sequence[str]:
-        """
-        is the cluster id
-        """
         return pulumi.get(self, "uuids")
 
 
@@ -82,19 +79,7 @@ class AwaitableGetLogsClustersResult(GetLogsClustersResult):
 def get_logs_clusters(service_name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogsClustersResult:
     """
-    Use this data source to retrieve UUIDs of DBaas logs clusters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    logstash = ovh.Dbaas.get_logs_clusters(service_name="ldp-xx-xxxxx")
-    ```
-
-
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -109,19 +94,7 @@ def get_logs_clusters(service_name: Optional[str] = None,
 def get_logs_clusters_output(service_name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsClustersResult]:
     """
-    Use this data source to retrieve UUIDs of DBaas logs clusters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    logstash = ovh.Dbaas.get_logs_clusters(service_name="ldp-xx-xxxxx")
-    ```
-
-
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

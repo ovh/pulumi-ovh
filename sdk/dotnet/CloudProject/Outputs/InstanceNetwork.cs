@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class InstanceNetwork
     {
         /// <summary>
-        /// Set the new instance as public boolean
+        /// Set the new instance as public
         /// </summary>
         public readonly bool? Public;
 

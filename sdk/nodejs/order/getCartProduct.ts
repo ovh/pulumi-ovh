@@ -6,25 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information of order cart product products.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const plans = myCart.then(myCart => ovh.Order.getCartProduct({
- *     cartId: myCart.id,
- *     product: "...",
- * }));
- * ```
- */
 export function getCartProduct(args: GetCartProductArgs, opts?: pulumi.InvokeOptions): Promise<GetCartProductResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCartProduct:getCartProduct", {
@@ -37,13 +18,7 @@ export function getCartProduct(args: GetCartProductArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getCartProduct.
  */
 export interface GetCartProductArgs {
-    /**
-     * Cart identifier
-     */
     cartId: string;
-    /**
-     * product
-     */
     product: string;
 }
 
@@ -57,30 +32,8 @@ export interface GetCartProductResult {
      */
     readonly id: string;
     readonly product: string;
-    /**
-     * products results
-     */
     readonly results: outputs.Order.GetCartProductResult[];
 }
-/**
- * Use this data source to retrieve information of order cart product products.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const plans = myCart.then(myCart => ovh.Order.getCartProduct({
- *     cartId: myCart.id,
- *     product: "...",
- * }));
- * ```
- */
 export function getCartProductOutput(args: GetCartProductOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCartProductResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Order/getCartProduct:getCartProduct", {
@@ -93,12 +46,6 @@ export function getCartProductOutput(args: GetCartProductOutputArgs, opts?: pulu
  * A collection of arguments for invoking getCartProduct.
  */
 export interface GetCartProductOutputArgs {
-    /**
-     * Cart identifier
-     */
     cartId: pulumi.Input<string>;
-    /**
-     * product
-     */
     product: pulumi.Input<string>;
 }

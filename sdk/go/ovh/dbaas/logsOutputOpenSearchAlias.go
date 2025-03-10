@@ -8,67 +8,38 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a DBaaS Logs Opensearch output alias.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbaas.NewLogsOutputOpenSearchAlias(ctx, "alias", &dbaas.LogsOutputOpenSearchAliasArgs{
-//				Description: pulumi.String("my opensearch alias"),
-//				ServiceName: pulumi.String("...."),
-//				Suffix:      pulumi.String("alias"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type LogsOutputOpenSearchAlias struct {
 	pulumi.CustomResourceState
 
-	// Alias Id
+	// Alias used
 	AliasId pulumi.StringOutput `pulumi:"aliasId"`
-	// Alias creation
+	// Operation creation
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Current alias size (in bytes)
 	CurrentSize pulumi.IntOutput `pulumi:"currentSize"`
-	// Index description
+	// Alias description
 	Description pulumi.StringOutput `pulumi:"description"`
-	// List of attached indexes id
+	// Indexes attached to alias
 	Indexes pulumi.StringArrayOutput `pulumi:"indexes"`
 	// Indicates if you are allowed to edit entry
 	IsEditable pulumi.BoolOutput `pulumi:"isEditable"`
 	// Alias name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of indices linked
+	// Number of index
 	NbIndex pulumi.IntOutput `pulumi:"nbIndex"`
-	// Number of streams linked
+	// Number of shard
 	NbStream pulumi.IntOutput `pulumi:"nbStream"`
 	// The service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// List of attached streams id
+	// Streams attached to alias
 	Streams pulumi.StringArrayOutput `pulumi:"streams"`
-	// Index suffix
+	// Alias suffix
 	Suffix pulumi.StringOutput `pulumi:"suffix"`
-	// Input last update
+	// Operation last update
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -111,60 +82,60 @@ func GetLogsOutputOpenSearchAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogsOutputOpenSearchAlias resources.
 type logsOutputOpenSearchAliasState struct {
-	// Alias Id
+	// Alias used
 	AliasId *string `pulumi:"aliasId"`
-	// Alias creation
+	// Operation creation
 	CreatedAt *string `pulumi:"createdAt"`
 	// Current alias size (in bytes)
 	CurrentSize *int `pulumi:"currentSize"`
-	// Index description
+	// Alias description
 	Description *string `pulumi:"description"`
-	// List of attached indexes id
+	// Indexes attached to alias
 	Indexes []string `pulumi:"indexes"`
 	// Indicates if you are allowed to edit entry
 	IsEditable *bool `pulumi:"isEditable"`
 	// Alias name
 	Name *string `pulumi:"name"`
-	// Number of indices linked
+	// Number of index
 	NbIndex *int `pulumi:"nbIndex"`
-	// Number of streams linked
+	// Number of shard
 	NbStream *int `pulumi:"nbStream"`
 	// The service name
 	ServiceName *string `pulumi:"serviceName"`
-	// List of attached streams id
+	// Streams attached to alias
 	Streams []string `pulumi:"streams"`
-	// Index suffix
+	// Alias suffix
 	Suffix *string `pulumi:"suffix"`
-	// Input last update
+	// Operation last update
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type LogsOutputOpenSearchAliasState struct {
-	// Alias Id
+	// Alias used
 	AliasId pulumi.StringPtrInput
-	// Alias creation
+	// Operation creation
 	CreatedAt pulumi.StringPtrInput
 	// Current alias size (in bytes)
 	CurrentSize pulumi.IntPtrInput
-	// Index description
+	// Alias description
 	Description pulumi.StringPtrInput
-	// List of attached indexes id
+	// Indexes attached to alias
 	Indexes pulumi.StringArrayInput
 	// Indicates if you are allowed to edit entry
 	IsEditable pulumi.BoolPtrInput
 	// Alias name
 	Name pulumi.StringPtrInput
-	// Number of indices linked
+	// Number of index
 	NbIndex pulumi.IntPtrInput
-	// Number of streams linked
+	// Number of shard
 	NbStream pulumi.IntPtrInput
 	// The service name
 	ServiceName pulumi.StringPtrInput
-	// List of attached streams id
+	// Streams attached to alias
 	Streams pulumi.StringArrayInput
-	// Index suffix
+	// Alias suffix
 	Suffix pulumi.StringPtrInput
-	// Input last update
+	// Operation last update
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -173,37 +144,37 @@ func (LogsOutputOpenSearchAliasState) ElementType() reflect.Type {
 }
 
 type logsOutputOpenSearchAliasArgs struct {
-	// Index description
+	// Alias description
 	Description string `pulumi:"description"`
-	// List of attached indexes id
+	// Indexes attached to alias
 	Indexes []string `pulumi:"indexes"`
-	// Number of indices linked
+	// Number of index
 	NbIndex *int `pulumi:"nbIndex"`
-	// Number of streams linked
+	// Number of shard
 	NbStream *int `pulumi:"nbStream"`
 	// The service name
 	ServiceName string `pulumi:"serviceName"`
-	// List of attached streams id
+	// Streams attached to alias
 	Streams []string `pulumi:"streams"`
-	// Index suffix
+	// Alias suffix
 	Suffix string `pulumi:"suffix"`
 }
 
 // The set of arguments for constructing a LogsOutputOpenSearchAlias resource.
 type LogsOutputOpenSearchAliasArgs struct {
-	// Index description
+	// Alias description
 	Description pulumi.StringInput
-	// List of attached indexes id
+	// Indexes attached to alias
 	Indexes pulumi.StringArrayInput
-	// Number of indices linked
+	// Number of index
 	NbIndex pulumi.IntPtrInput
-	// Number of streams linked
+	// Number of shard
 	NbStream pulumi.IntPtrInput
 	// The service name
 	ServiceName pulumi.StringInput
-	// List of attached streams id
+	// Streams attached to alias
 	Streams pulumi.StringArrayInput
-	// Index suffix
+	// Alias suffix
 	Suffix pulumi.StringInput
 }
 
@@ -294,12 +265,12 @@ func (o LogsOutputOpenSearchAliasOutput) ToLogsOutputOpenSearchAliasOutputWithCo
 	return o
 }
 
-// Alias Id
+// Alias used
 func (o LogsOutputOpenSearchAliasOutput) AliasId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.AliasId }).(pulumi.StringOutput)
 }
 
-// Alias creation
+// Operation creation
 func (o LogsOutputOpenSearchAliasOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -309,12 +280,12 @@ func (o LogsOutputOpenSearchAliasOutput) CurrentSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.IntOutput { return v.CurrentSize }).(pulumi.IntOutput)
 }
 
-// Index description
+// Alias description
 func (o LogsOutputOpenSearchAliasOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// List of attached indexes id
+// Indexes attached to alias
 func (o LogsOutputOpenSearchAliasOutput) Indexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringArrayOutput { return v.Indexes }).(pulumi.StringArrayOutput)
 }
@@ -329,12 +300,12 @@ func (o LogsOutputOpenSearchAliasOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of indices linked
+// Number of index
 func (o LogsOutputOpenSearchAliasOutput) NbIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.IntOutput { return v.NbIndex }).(pulumi.IntOutput)
 }
 
-// Number of streams linked
+// Number of shard
 func (o LogsOutputOpenSearchAliasOutput) NbStream() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.IntOutput { return v.NbStream }).(pulumi.IntOutput)
 }
@@ -344,17 +315,17 @@ func (o LogsOutputOpenSearchAliasOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// List of attached streams id
+// Streams attached to alias
 func (o LogsOutputOpenSearchAliasOutput) Streams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringArrayOutput { return v.Streams }).(pulumi.StringArrayOutput)
 }
 
-// Index suffix
+// Alias suffix
 func (o LogsOutputOpenSearchAliasOutput) Suffix() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.Suffix }).(pulumi.StringOutput)
 }
 
-// Input last update
+// Operation last update
 func (o LogsOutputOpenSearchAliasOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchAlias) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

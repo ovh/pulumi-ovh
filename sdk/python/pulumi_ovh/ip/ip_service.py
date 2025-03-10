@@ -29,9 +29,9 @@ class IpServiceArgs:
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionArgs']]]] = None):
         """
         The set of arguments for constructing a IpService resource.
-        :param pulumi.Input[str] description: Custom description on your ip.
+        :param pulumi.Input[str] description: Custom description on your ip
         :param pulumi.Input[Sequence[pulumi.Input['IpServiceOrderArgs']]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['IpServicePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionArgs']]] plan_options: Product Plan to order
@@ -56,7 +56,7 @@ class IpServiceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description on your ip.
+        Custom description on your ip
         """
         return pulumi.get(self, "description")
 
@@ -80,7 +80,7 @@ class IpServiceArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        Ovh Subsidiary
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -144,18 +144,13 @@ class _IpServiceState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IpService resources.
-        :param pulumi.Input[bool] can_be_terminated: can be terminated
-        :param pulumi.Input[str] country: country
-        :param pulumi.Input[str] description: Custom description on your ip.
-        :param pulumi.Input[str] ip: ip block
+        :param pulumi.Input[str] description: Custom description on your ip
         :param pulumi.Input[Sequence[pulumi.Input['IpServiceOrderArgs']]] orders: Details about an Order
-        :param pulumi.Input[str] organisation_id: IP block organisation Id
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input['IpServicePlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['IpServiceRoutedToArgs']]] routed_tos: Routage information
-        :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] type: Possible values for ip type
         """
         if can_be_terminated is not None:
@@ -191,9 +186,6 @@ class _IpServiceState:
     @property
     @pulumi.getter(name="canBeTerminated")
     def can_be_terminated(self) -> Optional[pulumi.Input[bool]]:
-        """
-        can be terminated
-        """
         return pulumi.get(self, "can_be_terminated")
 
     @can_be_terminated.setter
@@ -203,9 +195,6 @@ class _IpServiceState:
     @property
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[str]]:
-        """
-        country
-        """
         return pulumi.get(self, "country")
 
     @country.setter
@@ -216,7 +205,7 @@ class _IpServiceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description on your ip.
+        Custom description on your ip
         """
         return pulumi.get(self, "description")
 
@@ -227,9 +216,6 @@ class _IpServiceState:
     @property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        ip block
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -251,9 +237,6 @@ class _IpServiceState:
     @property
     @pulumi.getter(name="organisationId")
     def organisation_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        IP block organisation Id
-        """
         return pulumi.get(self, "organisation_id")
 
     @organisation_id.setter
@@ -264,7 +247,7 @@ class _IpServiceState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        Ovh Subsidiary
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -324,9 +307,6 @@ class _IpServiceState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        service name
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -359,71 +339,12 @@ class IpService(pulumi.CustomResource):
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        myaccount = ovh.Me.get_me()
-        mycart = ovh.Order.get_cart(ovh_subsidiary="fr")
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
-            price_capacity="renew",
-            product="ip",
-            plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
-            ovh_subsidiary=mycart.ovh_subsidiary,
-            description="my ip block",
-            plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                "configurations": [
-                    {
-                        "label": "country",
-                        "value": "FR",
-                    },
-                    {
-                        "label": "region",
-                        "value": "europe",
-                    },
-                    {
-                        "label": "destination",
-                        "value": "parking",
-                    },
-                ],
-            })
-        ```
-
-        ## Import
-
-        The resource can be imported using its `service_name`, E.g.,
-
-        hcl
-
-        import {
-
-          to = ovh_ip_service.ipblock
-
-          id = "ip-xx.xx.xx.xx"
-
-        }
-
-        bash
-
-        $ pulumi preview -generate-config-out=ipblock.tf
-
-        $ pulumi up
-
-        The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
-
+        Create a IpService resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Custom description on your ip.
+        :param pulumi.Input[str] description: Custom description on your ip
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]] orders: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]] plan_options: Product Plan to order
@@ -435,66 +356,7 @@ class IpService(pulumi.CustomResource):
                  args: Optional[IpServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        myaccount = ovh.Me.get_me()
-        mycart = ovh.Order.get_cart(ovh_subsidiary="fr")
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
-            price_capacity="renew",
-            product="ip",
-            plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
-            ovh_subsidiary=mycart.ovh_subsidiary,
-            description="my ip block",
-            plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
-                "configurations": [
-                    {
-                        "label": "country",
-                        "value": "FR",
-                    },
-                    {
-                        "label": "region",
-                        "value": "europe",
-                    },
-                    {
-                        "label": "destination",
-                        "value": "parking",
-                    },
-                ],
-            })
-        ```
-
-        ## Import
-
-        The resource can be imported using its `service_name`, E.g.,
-
-        hcl
-
-        import {
-
-          to = ovh_ip_service.ipblock
-
-          id = "ip-xx.xx.xx.xx"
-
-        }
-
-        bash
-
-        $ pulumi preview -generate-config-out=ipblock.tf
-
-        $ pulumi up
-
-        The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
-
+        Create a IpService resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IpServiceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -568,18 +430,13 @@ class IpService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] can_be_terminated: can be terminated
-        :param pulumi.Input[str] country: country
-        :param pulumi.Input[str] description: Custom description on your ip.
-        :param pulumi.Input[str] ip: ip block
+        :param pulumi.Input[str] description: Custom description on your ip
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpServiceOrderArgs', 'IpServiceOrderArgsDict']]]] orders: Details about an Order
-        :param pulumi.Input[str] organisation_id: IP block organisation Id
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        :param pulumi.Input[str] ovh_subsidiary: Ovh Subsidiary
         :param pulumi.Input[str] payment_mean: Ovh payment mode
         :param pulumi.Input[Union['IpServicePlanArgs', 'IpServicePlanArgsDict']] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpServicePlanOptionArgs', 'IpServicePlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpServiceRoutedToArgs', 'IpServiceRoutedToArgsDict']]]] routed_tos: Routage information
-        :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] type: Possible values for ip type
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -604,33 +461,24 @@ class IpService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="canBeTerminated")
     def can_be_terminated(self) -> pulumi.Output[bool]:
-        """
-        can be terminated
-        """
         return pulumi.get(self, "can_be_terminated")
 
     @property
     @pulumi.getter
     def country(self) -> pulumi.Output[str]:
-        """
-        country
-        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Custom description on your ip.
+        Custom description on your ip
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
-        """
-        ip block
-        """
         return pulumi.get(self, "ip")
 
     @property
@@ -644,16 +492,13 @@ class IpService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="organisationId")
     def organisation_id(self) -> pulumi.Output[str]:
-        """
-        IP block organisation Id
-        """
         return pulumi.get(self, "organisation_id")
 
     @property
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[str]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        Ovh Subsidiary
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -693,9 +538,6 @@ class IpService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        service name
-        """
         return pulumi.get(self, "service_name")
 
     @property

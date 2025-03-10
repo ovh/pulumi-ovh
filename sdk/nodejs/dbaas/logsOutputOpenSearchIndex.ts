@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a DBaaS Logs Opensearch output index.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const index = new ovh.dbaas.LogsOutputOpenSearchIndex("index", {
- *     description: "my opensearch index",
- *     serviceName: "....",
- *     suffix: "index",
- * });
- * ```
- */
 export class LogsOutputOpenSearchIndex extends pulumi.CustomResource {
     /**
      * Get an existing LogsOutputOpenSearchIndex resource's state with the given name, ID, and optional extra
@@ -53,11 +37,11 @@ export class LogsOutputOpenSearchIndex extends pulumi.CustomResource {
      */
     public /*out*/ readonly alertNotifyEnabled!: pulumi.Output<boolean>;
     /**
-     * Index creation
+     * Operation creation
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Current index size (in bytes)
+     * Current Index size (in bytes)
      */
     public /*out*/ readonly currentSize!: pulumi.Output<number>;
     /**
@@ -81,7 +65,7 @@ export class LogsOutputOpenSearchIndex extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Number of shards
+     * Number of shard
      */
     public readonly nbShard!: pulumi.Output<number>;
     /**
@@ -93,7 +77,7 @@ export class LogsOutputOpenSearchIndex extends pulumi.CustomResource {
      */
     public readonly suffix!: pulumi.Output<string>;
     /**
-     * Index last update
+     * Operation last update
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -163,11 +147,11 @@ export interface LogsOutputOpenSearchIndexState {
      */
     alertNotifyEnabled?: pulumi.Input<boolean>;
     /**
-     * Index creation
+     * Operation creation
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Current index size (in bytes)
+     * Current Index size (in bytes)
      */
     currentSize?: pulumi.Input<number>;
     /**
@@ -191,7 +175,7 @@ export interface LogsOutputOpenSearchIndexState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of shards
+     * Number of shard
      */
     nbShard?: pulumi.Input<number>;
     /**
@@ -203,7 +187,7 @@ export interface LogsOutputOpenSearchIndexState {
      */
     suffix?: pulumi.Input<string>;
     /**
-     * Index last update
+     * Operation last update
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -217,7 +201,7 @@ export interface LogsOutputOpenSearchIndexArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * Number of shards
+     * Number of shard
      */
     nbShard: pulumi.Input<number>;
     /**

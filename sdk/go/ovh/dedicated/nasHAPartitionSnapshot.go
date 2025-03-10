@@ -8,56 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource for managing **snapshot** to partitions on HA-NAS services
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dedicated.NewNasHAPartitionSnapshot(ctx, "myPartition", &dedicated.NasHAPartitionSnapshotArgs{
-//				PartitionName: pulumi.String("my-partition"),
-//				ServiceName:   pulumi.String("zpool-12345"),
-//				Type:          pulumi.String("day-3"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
-//
-// ```sh
-// $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
-// ```
 type NasHAPartitionSnapshot struct {
 	pulumi.CustomResourceState
 
-	// name of the partition
 	PartitionName pulumi.StringOutput `pulumi:"partitionName"`
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-	Type pulumi.StringOutput `pulumi:"type"`
+	ServiceName   pulumi.StringOutput `pulumi:"serviceName"`
+	Type          pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewNasHAPartitionSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -99,21 +59,15 @@ func GetNasHAPartitionSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NasHAPartitionSnapshot resources.
 type nasHAPartitionSnapshotState struct {
-	// name of the partition
 	PartitionName *string `pulumi:"partitionName"`
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName *string `pulumi:"serviceName"`
-	// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-	Type *string `pulumi:"type"`
+	ServiceName   *string `pulumi:"serviceName"`
+	Type          *string `pulumi:"type"`
 }
 
 type NasHAPartitionSnapshotState struct {
-	// name of the partition
 	PartitionName pulumi.StringPtrInput
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName pulumi.StringPtrInput
-	// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-	Type pulumi.StringPtrInput
+	ServiceName   pulumi.StringPtrInput
+	Type          pulumi.StringPtrInput
 }
 
 func (NasHAPartitionSnapshotState) ElementType() reflect.Type {
@@ -121,22 +75,16 @@ func (NasHAPartitionSnapshotState) ElementType() reflect.Type {
 }
 
 type nasHAPartitionSnapshotArgs struct {
-	// name of the partition
 	PartitionName string `pulumi:"partitionName"`
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName string `pulumi:"serviceName"`
-	// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-	Type string `pulumi:"type"`
+	ServiceName   string `pulumi:"serviceName"`
+	Type          string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NasHAPartitionSnapshot resource.
 type NasHAPartitionSnapshotArgs struct {
-	// name of the partition
 	PartitionName pulumi.StringInput
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName pulumi.StringInput
-	// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-	Type pulumi.StringInput
+	ServiceName   pulumi.StringInput
+	Type          pulumi.StringInput
 }
 
 func (NasHAPartitionSnapshotArgs) ElementType() reflect.Type {
@@ -226,17 +174,14 @@ func (o NasHAPartitionSnapshotOutput) ToNasHAPartitionSnapshotOutputWithContext(
 	return o
 }
 
-// name of the partition
 func (o NasHAPartitionSnapshotOutput) PartitionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionSnapshot) pulumi.StringOutput { return v.PartitionName }).(pulumi.StringOutput)
 }
 
-// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 func (o NasHAPartitionSnapshotOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionSnapshot) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
 func (o NasHAPartitionSnapshotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionSnapshot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

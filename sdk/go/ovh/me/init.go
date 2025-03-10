@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,14 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IdentityGroup{}
 	case "ovh:Me/identityUser:IdentityUser":
 		r = &IdentityUser{}
-	case "ovh:Me/installationTemplate:InstallationTemplate":
-		r = &InstallationTemplate{}
-	case "ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme":
-		r = &InstallationTemplatePartitionScheme{}
-	case "ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid":
-		r = &InstallationTemplatePartitionSchemeHardwareRaid{}
-	case "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition":
-		r = &InstallationTemplatePartitionSchemePartition{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -61,26 +53,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Me/identityUser",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"Me/installationTemplate",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"Me/installationTemplatePartitionScheme",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"Me/installationTemplatePartitionSchemeHardwareRaid",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"Me/installationTemplatePartitionSchemePartition",
 		&module{version},
 	)
 }

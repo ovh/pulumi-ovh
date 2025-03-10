@@ -7,11 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
 func LookupContainerRegistryIPRestrictionsManagement(ctx *pulumi.Context, args *LookupContainerRegistryIPRestrictionsManagementArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryIPRestrictionsManagementResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryIPRestrictionsManagementResult
@@ -24,22 +23,17 @@ func LookupContainerRegistryIPRestrictionsManagement(ctx *pulumi.Context, args *
 
 // A collection of arguments for invoking getContainerRegistryIPRestrictionsManagement.
 type LookupContainerRegistryIPRestrictionsManagementArgs struct {
-	// The id of the Managed Private Registry.
-	RegistryId string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	RegistryId  string `pulumi:"registryId"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getContainerRegistryIPRestrictionsManagement.
 type LookupContainerRegistryIPRestrictionsManagementResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// IP restrictions applied on Harbor UI and API.
+	Id             string              `pulumi:"id"`
 	IpRestrictions []map[string]string `pulumi:"ipRestrictions"`
-	// The ID of the Managed Private Registry.
-	RegistryId string `pulumi:"registryId"`
-	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	RegistryId     string              `pulumi:"registryId"`
+	ServiceName    string              `pulumi:"serviceName"`
 }
 
 func LookupContainerRegistryIPRestrictionsManagementOutput(ctx *pulumi.Context, args LookupContainerRegistryIPRestrictionsManagementOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistryIPRestrictionsManagementResultOutput {
@@ -53,9 +47,7 @@ func LookupContainerRegistryIPRestrictionsManagementOutput(ctx *pulumi.Context, 
 
 // A collection of arguments for invoking getContainerRegistryIPRestrictionsManagement.
 type LookupContainerRegistryIPRestrictionsManagementOutputArgs struct {
-	// The id of the Managed Private Registry.
-	RegistryId pulumi.StringInput `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	RegistryId  pulumi.StringInput `pulumi:"registryId"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -83,19 +75,16 @@ func (o LookupContainerRegistryIPRestrictionsManagementResultOutput) Id() pulumi
 	return o.ApplyT(func(v LookupContainerRegistryIPRestrictionsManagementResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// IP restrictions applied on Harbor UI and API.
 func (o LookupContainerRegistryIPRestrictionsManagementResultOutput) IpRestrictions() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v LookupContainerRegistryIPRestrictionsManagementResult) []map[string]string {
 		return v.IpRestrictions
 	}).(pulumi.StringMapArrayOutput)
 }
 
-// The ID of the Managed Private Registry.
 func (o LookupContainerRegistryIPRestrictionsManagementResultOutput) RegistryId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryIPRestrictionsManagementResult) string { return v.RegistryId }).(pulumi.StringOutput)
 }
 
-// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o LookupContainerRegistryIPRestrictionsManagementResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryIPRestrictionsManagementResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

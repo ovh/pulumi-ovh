@@ -9,35 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Attaches a failover IP address to a compute instance
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myFailoverIp = new Ovh.CloudProject.FailoverIpAttach("myFailoverIp", new()
-    ///     {
-    ///         Ip = "XXXXXX",
-    ///         RoutedTo = "XXXXXX",
-    ///         ServiceName = "XXXXXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/failoverIpAttach:FailoverIpAttach")]
     public partial class FailoverIpAttach : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IP block
-        /// * `continentCode` - The Ip continent
+        /// IP block
         /// </summary>
         [Output("block")]
         public Output<string> Block { get; private set; } = null!;
@@ -55,34 +31,31 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> GeoLoc { get; private set; } = null!;
 
         /// <summary>
-        /// The failover ip address to attach
+        /// Ip
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
         /// Current operation progress in percent
-        /// * `routedTo` - Instance where ip is routed to
         /// </summary>
         [Output("progress")]
         public Output<int> Progress { get; private set; } = null!;
 
         /// <summary>
-        /// The GUID of an instance to which the failover IP address is be attached
+        /// Instance where ip is routed to
         /// </summary>
         [Output("routedTo")]
         public Output<string> RoutedTo { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The service name
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Ip status, can be `ok` or `operationPending`
-        /// * `subType` - IP sub type, can be `cloud` or `ovh`
+        /// Ip status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -141,8 +114,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class FailoverIpAttachArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP block
-        /// * `continentCode` - The Ip continent
+        /// IP block
         /// </summary>
         [Input("block")]
         public Input<string>? Block { get; set; }
@@ -160,20 +132,19 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? GeoLoc { get; set; }
 
         /// <summary>
-        /// The failover ip address to attach
+        /// Ip
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// The GUID of an instance to which the failover IP address is be attached
+        /// Instance where ip is routed to
         /// </summary>
         [Input("routedTo")]
         public Input<string>? RoutedTo { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The service name
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -187,8 +158,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class FailoverIpAttachState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP block
-        /// * `continentCode` - The Ip continent
+        /// IP block
         /// </summary>
         [Input("block")]
         public Input<string>? Block { get; set; }
@@ -206,34 +176,31 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? GeoLoc { get; set; }
 
         /// <summary>
-        /// The failover ip address to attach
+        /// Ip
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
         /// Current operation progress in percent
-        /// * `routedTo` - Instance where ip is routed to
         /// </summary>
         [Input("progress")]
         public Input<int>? Progress { get; set; }
 
         /// <summary>
-        /// The GUID of an instance to which the failover IP address is be attached
+        /// Instance where ip is routed to
         /// </summary>
         [Input("routedTo")]
         public Input<string>? RoutedTo { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Ip status, can be `ok` or `operationPending`
-        /// * `subType` - IP sub type, can be `cloud` or `ovh`
+        /// Ip status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

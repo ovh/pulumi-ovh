@@ -8,84 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a DBaaS Logs Graylog output stream.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbaas.NewLogsOutputGraylogStream(ctx, "stream", &dbaas.LogsOutputGraylogStreamArgs{
-//				Description: pulumi.String("my graylog stream"),
-//				ServiceName: pulumi.String("...."),
-//				Title:       pulumi.String("my stream"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// To define the retention of the stream, you can use the following configuration:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			retention, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
-//				ServiceName: "ldp-xx-xxxxx",
-//				ClusterId:   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//				Duration:    pulumi.StringRef("P14D"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dbaas.NewLogsOutputGraylogStream(ctx, "stream", &dbaas.LogsOutputGraylogStreamArgs{
-//				ServiceName: pulumi.String("...."),
-//				Title:       pulumi.String("my stream"),
-//				Description: pulumi.String("my graylog stream"),
-//				RetentionId: pulumi.String(retention.RetentionId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type LogsOutputGraylogStream struct {
 	pulumi.CustomResourceState
 
 	// Indicates if the current user can create alert on the stream
 	CanAlert pulumi.BoolOutput `pulumi:"canAlert"`
-	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+	// Cold storage compression method
 	ColdStorageCompression pulumi.StringOutput `pulumi:"coldStorageCompression"`
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content
 	ColdStorageContent pulumi.StringOutput `pulumi:"coldStorageContent"`
 	// Is Cold storage enabled?
 	ColdStorageEnabled pulumi.BoolOutput `pulumi:"coldStorageEnabled"`
@@ -93,7 +27,7 @@ type LogsOutputGraylogStream struct {
 	ColdStorageNotifyEnabled pulumi.BoolOutput `pulumi:"coldStorageNotifyEnabled"`
 	// Cold storage retention in year
 	ColdStorageRetention pulumi.IntOutput `pulumi:"coldStorageRetention"`
-	// ColdStorage destination. One of "PCA", "PCS"
+	// ColdStorage destination
 	ColdStorageTarget pulumi.StringOutput `pulumi:"coldStorageTarget"`
 	// Stream creation
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -111,7 +45,7 @@ type LogsOutputGraylogStream struct {
 	IsShareable pulumi.BoolOutput `pulumi:"isShareable"`
 	// Number of alert condition
 	NbAlertCondition pulumi.IntOutput `pulumi:"nbAlertCondition"`
-	// Number of coldstored archivesr
+	// Number of coldstored archives
 	NbArchive pulumi.IntOutput `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrOutput `pulumi:"parentStreamId"`
@@ -125,11 +59,11 @@ type LogsOutputGraylogStream struct {
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
 	// Stream description
 	Title pulumi.StringOutput `pulumi:"title"`
-	// Stream last updater
+	// Stream last update
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Enable Websocket
 	WebSocketEnabled pulumi.BoolOutput `pulumi:"webSocketEnabled"`
-	// Write token of the stream (empty if the caller is not the owner of the stream)
+	// Write token of the stream
 	WriteToken pulumi.StringOutput `pulumi:"writeToken"`
 }
 
@@ -178,9 +112,9 @@ func GetLogsOutputGraylogStream(ctx *pulumi.Context,
 type logsOutputGraylogStreamState struct {
 	// Indicates if the current user can create alert on the stream
 	CanAlert *bool `pulumi:"canAlert"`
-	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+	// Cold storage compression method
 	ColdStorageCompression *string `pulumi:"coldStorageCompression"`
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content
 	ColdStorageContent *string `pulumi:"coldStorageContent"`
 	// Is Cold storage enabled?
 	ColdStorageEnabled *bool `pulumi:"coldStorageEnabled"`
@@ -188,7 +122,7 @@ type logsOutputGraylogStreamState struct {
 	ColdStorageNotifyEnabled *bool `pulumi:"coldStorageNotifyEnabled"`
 	// Cold storage retention in year
 	ColdStorageRetention *int `pulumi:"coldStorageRetention"`
-	// ColdStorage destination. One of "PCA", "PCS"
+	// ColdStorage destination
 	ColdStorageTarget *string `pulumi:"coldStorageTarget"`
 	// Stream creation
 	CreatedAt *string `pulumi:"createdAt"`
@@ -206,7 +140,7 @@ type logsOutputGraylogStreamState struct {
 	IsShareable *bool `pulumi:"isShareable"`
 	// Number of alert condition
 	NbAlertCondition *int `pulumi:"nbAlertCondition"`
-	// Number of coldstored archivesr
+	// Number of coldstored archives
 	NbArchive *int `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId *string `pulumi:"parentStreamId"`
@@ -220,20 +154,20 @@ type logsOutputGraylogStreamState struct {
 	StreamId *string `pulumi:"streamId"`
 	// Stream description
 	Title *string `pulumi:"title"`
-	// Stream last updater
+	// Stream last update
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Enable Websocket
 	WebSocketEnabled *bool `pulumi:"webSocketEnabled"`
-	// Write token of the stream (empty if the caller is not the owner of the stream)
+	// Write token of the stream
 	WriteToken *string `pulumi:"writeToken"`
 }
 
 type LogsOutputGraylogStreamState struct {
 	// Indicates if the current user can create alert on the stream
 	CanAlert pulumi.BoolPtrInput
-	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+	// Cold storage compression method
 	ColdStorageCompression pulumi.StringPtrInput
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content
 	ColdStorageContent pulumi.StringPtrInput
 	// Is Cold storage enabled?
 	ColdStorageEnabled pulumi.BoolPtrInput
@@ -241,7 +175,7 @@ type LogsOutputGraylogStreamState struct {
 	ColdStorageNotifyEnabled pulumi.BoolPtrInput
 	// Cold storage retention in year
 	ColdStorageRetention pulumi.IntPtrInput
-	// ColdStorage destination. One of "PCA", "PCS"
+	// ColdStorage destination
 	ColdStorageTarget pulumi.StringPtrInput
 	// Stream creation
 	CreatedAt pulumi.StringPtrInput
@@ -259,7 +193,7 @@ type LogsOutputGraylogStreamState struct {
 	IsShareable pulumi.BoolPtrInput
 	// Number of alert condition
 	NbAlertCondition pulumi.IntPtrInput
-	// Number of coldstored archivesr
+	// Number of coldstored archives
 	NbArchive pulumi.IntPtrInput
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrInput
@@ -273,11 +207,11 @@ type LogsOutputGraylogStreamState struct {
 	StreamId pulumi.StringPtrInput
 	// Stream description
 	Title pulumi.StringPtrInput
-	// Stream last updater
+	// Stream last update
 	UpdatedAt pulumi.StringPtrInput
 	// Enable Websocket
 	WebSocketEnabled pulumi.BoolPtrInput
-	// Write token of the stream (empty if the caller is not the owner of the stream)
+	// Write token of the stream
 	WriteToken pulumi.StringPtrInput
 }
 
@@ -286,9 +220,9 @@ func (LogsOutputGraylogStreamState) ElementType() reflect.Type {
 }
 
 type logsOutputGraylogStreamArgs struct {
-	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+	// Cold storage compression method
 	ColdStorageCompression *string `pulumi:"coldStorageCompression"`
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content
 	ColdStorageContent *string `pulumi:"coldStorageContent"`
 	// Is Cold storage enabled?
 	ColdStorageEnabled *bool `pulumi:"coldStorageEnabled"`
@@ -296,7 +230,7 @@ type logsOutputGraylogStreamArgs struct {
 	ColdStorageNotifyEnabled *bool `pulumi:"coldStorageNotifyEnabled"`
 	// Cold storage retention in year
 	ColdStorageRetention *int `pulumi:"coldStorageRetention"`
-	// ColdStorage destination. One of "PCA", "PCS"
+	// ColdStorage destination
 	ColdStorageTarget *string `pulumi:"coldStorageTarget"`
 	// Stream description
 	Description string `pulumi:"description"`
@@ -322,9 +256,9 @@ type logsOutputGraylogStreamArgs struct {
 
 // The set of arguments for constructing a LogsOutputGraylogStream resource.
 type LogsOutputGraylogStreamArgs struct {
-	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+	// Cold storage compression method
 	ColdStorageCompression pulumi.StringPtrInput
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content
 	ColdStorageContent pulumi.StringPtrInput
 	// Is Cold storage enabled?
 	ColdStorageEnabled pulumi.BoolPtrInput
@@ -332,7 +266,7 @@ type LogsOutputGraylogStreamArgs struct {
 	ColdStorageNotifyEnabled pulumi.BoolPtrInput
 	// Cold storage retention in year
 	ColdStorageRetention pulumi.IntPtrInput
-	// ColdStorage destination. One of "PCA", "PCS"
+	// ColdStorage destination
 	ColdStorageTarget pulumi.StringPtrInput
 	// Stream description
 	Description pulumi.StringInput
@@ -448,12 +382,12 @@ func (o LogsOutputGraylogStreamOutput) CanAlert() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.BoolOutput { return v.CanAlert }).(pulumi.BoolOutput)
 }
 
-// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
+// Cold storage compression method
 func (o LogsOutputGraylogStreamOutput) ColdStorageCompression() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.ColdStorageCompression }).(pulumi.StringOutput)
 }
 
-// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+// ColdStorage content
 func (o LogsOutputGraylogStreamOutput) ColdStorageContent() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.ColdStorageContent }).(pulumi.StringOutput)
 }
@@ -473,7 +407,7 @@ func (o LogsOutputGraylogStreamOutput) ColdStorageRetention() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.IntOutput { return v.ColdStorageRetention }).(pulumi.IntOutput)
 }
 
-// ColdStorage destination. One of "PCA", "PCS"
+// ColdStorage destination
 func (o LogsOutputGraylogStreamOutput) ColdStorageTarget() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.ColdStorageTarget }).(pulumi.StringOutput)
 }
@@ -518,7 +452,7 @@ func (o LogsOutputGraylogStreamOutput) NbAlertCondition() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.IntOutput { return v.NbAlertCondition }).(pulumi.IntOutput)
 }
 
-// Number of coldstored archivesr
+// Number of coldstored archives
 func (o LogsOutputGraylogStreamOutput) NbArchive() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.IntOutput { return v.NbArchive }).(pulumi.IntOutput)
 }
@@ -553,7 +487,7 @@ func (o LogsOutputGraylogStreamOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// Stream last updater
+// Stream last update
 func (o LogsOutputGraylogStreamOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -563,7 +497,7 @@ func (o LogsOutputGraylogStreamOutput) WebSocketEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.BoolOutput { return v.WebSocketEnabled }).(pulumi.BoolOutput)
 }
 
-// Write token of the stream (empty if the caller is not the owner of the stream)
+// Write token of the stream
 func (o LogsOutputGraylogStreamOutput) WriteToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.WriteToken }).(pulumi.StringOutput)
 }

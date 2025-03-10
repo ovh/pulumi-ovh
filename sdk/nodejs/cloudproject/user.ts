@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a user in a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const user1 = new ovh.cloudproject.User("user1", {serviceName: "XXX"});
- * ```
- */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -46,62 +34,18 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
-    /**
-     * the date the user was created.
-     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
-    /**
-     * A description associated with the user.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * a convenient map representing an openstackRc file.
-     * Note: no password nor sensitive token is set in this map.
-     */
     public readonly openstackRc!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * (Sensitive) the password generated for the user. The password can
-     * be used with the Openstack API. This attribute is sensitive and will only be
-     * retrieve once during creation.
-     */
     public /*out*/ readonly password!: pulumi.Output<string>;
-    /**
-     * The name of a role. See `roleNames`.
-     */
     public readonly roleName!: pulumi.Output<string | undefined>;
-    /**
-     * A list of role names. Values can be: 
-     * - administrator,
-     * - aiTrainingOperator
-     * - aiTrainingRead
-     * - authentication
-     * - backupOperator
-     * - computeOperator
-     * - imageOperator
-     * - infrastructureSupervisor
-     * - networkOperator
-     * - networkSecurityOperator
-     * - objectstoreOperator
-     * - volume_operator
-     */
     public readonly roleNames!: pulumi.Output<string[] | undefined>;
-    /**
-     * A list of roles associated with the user.
-     */
     public /*out*/ readonly roles!: pulumi.Output<outputs.CloudProject.UserRole[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the id of the cloud project.
      */
     public readonly serviceName!: pulumi.Output<string>;
-    /**
-     * the status of the user. should be normally set to 'ok'.
-     */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * the username generated for the user. This username can be used with
-     * the Openstack API.
-     */
     public /*out*/ readonly username!: pulumi.Output<string>;
 
     /**
@@ -154,62 +98,18 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
-    /**
-     * the date the user was created.
-     */
     creationDate?: pulumi.Input<string>;
-    /**
-     * A description associated with the user.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * a convenient map representing an openstackRc file.
-     * Note: no password nor sensitive token is set in this map.
-     */
     openstackRc?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * (Sensitive) the password generated for the user. The password can
-     * be used with the Openstack API. This attribute is sensitive and will only be
-     * retrieve once during creation.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * The name of a role. See `roleNames`.
-     */
     roleName?: pulumi.Input<string>;
-    /**
-     * A list of role names. Values can be: 
-     * - administrator,
-     * - aiTrainingOperator
-     * - aiTrainingRead
-     * - authentication
-     * - backupOperator
-     * - computeOperator
-     * - imageOperator
-     * - infrastructureSupervisor
-     * - networkOperator
-     * - networkSecurityOperator
-     * - objectstoreOperator
-     * - volume_operator
-     */
     roleNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of roles associated with the user.
-     */
     roles?: pulumi.Input<pulumi.Input<inputs.CloudProject.UserRole>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the id of the cloud project.
      */
     serviceName?: pulumi.Input<string>;
-    /**
-     * the status of the user. should be normally set to 'ok'.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * the username generated for the user. This username can be used with
-     * the Openstack API.
-     */
     username?: pulumi.Input<string>;
 }
 
@@ -217,38 +117,12 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
-    /**
-     * A description associated with the user.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * a convenient map representing an openstackRc file.
-     * Note: no password nor sensitive token is set in this map.
-     */
     openstackRc?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name of a role. See `roleNames`.
-     */
     roleName?: pulumi.Input<string>;
-    /**
-     * A list of role names. Values can be: 
-     * - administrator,
-     * - aiTrainingOperator
-     * - aiTrainingRead
-     * - authentication
-     * - backupOperator
-     * - computeOperator
-     * - imageOperator
-     * - infrastructureSupervisor
-     * - networkOperator
-     * - networkSecurityOperator
-     * - objectstoreOperator
-     * - volume_operator
-     */
     roleNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the id of the cloud project.
      */
     serviceName: pulumi.Input<string>;
 }

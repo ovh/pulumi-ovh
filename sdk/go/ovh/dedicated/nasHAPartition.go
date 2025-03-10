@@ -8,64 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource for managing partitions on HA-NAS services
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dedicated.NewNasHAPartition(ctx, "myPartition", &dedicated.NasHAPartitionArgs{
-//				Protocol:    pulumi.String("NFS"),
-//				ServiceName: pulumi.String("zpool-12345"),
-//				Size:        pulumi.Int(20),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// HA-NAS can be imported using the `{service_name}/{name}`, e.g.
-//
-// ```sh
-// $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
-// ```
 type NasHAPartition struct {
 	pulumi.CustomResourceState
 
-	// Percentage of partition space used in %
-	Capacity pulumi.IntOutput `pulumi:"capacity"`
-	// A brief description of the partition
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// name of the partition
-	Name pulumi.StringOutput `pulumi:"name"`
-	// one of "NFS", "CIFS" or "NFS_CIFS"
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// size of the partition in GB
-	Size pulumi.IntOutput `pulumi:"size"`
-	// Percentage of partition space used by snapshots in %
-	UsedBySnapshots pulumi.IntOutput `pulumi:"usedBySnapshots"`
+	Capacity        pulumi.IntOutput       `pulumi:"capacity"`
+	Description     pulumi.StringPtrOutput `pulumi:"description"`
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	Protocol        pulumi.StringOutput    `pulumi:"protocol"`
+	ServiceName     pulumi.StringOutput    `pulumi:"serviceName"`
+	Size            pulumi.IntOutput       `pulumi:"size"`
+	UsedBySnapshots pulumi.IntOutput       `pulumi:"usedBySnapshots"`
 }
 
 // NewNasHAPartition registers a new resource with the given unique name, arguments, and options.
@@ -107,36 +63,22 @@ func GetNasHAPartition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NasHAPartition resources.
 type nasHAPartitionState struct {
-	// Percentage of partition space used in %
-	Capacity *int `pulumi:"capacity"`
-	// A brief description of the partition
-	Description *string `pulumi:"description"`
-	// name of the partition
-	Name *string `pulumi:"name"`
-	// one of "NFS", "CIFS" or "NFS_CIFS"
-	Protocol *string `pulumi:"protocol"`
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName *string `pulumi:"serviceName"`
-	// size of the partition in GB
-	Size *int `pulumi:"size"`
-	// Percentage of partition space used by snapshots in %
-	UsedBySnapshots *int `pulumi:"usedBySnapshots"`
+	Capacity        *int    `pulumi:"capacity"`
+	Description     *string `pulumi:"description"`
+	Name            *string `pulumi:"name"`
+	Protocol        *string `pulumi:"protocol"`
+	ServiceName     *string `pulumi:"serviceName"`
+	Size            *int    `pulumi:"size"`
+	UsedBySnapshots *int    `pulumi:"usedBySnapshots"`
 }
 
 type NasHAPartitionState struct {
-	// Percentage of partition space used in %
-	Capacity pulumi.IntPtrInput
-	// A brief description of the partition
-	Description pulumi.StringPtrInput
-	// name of the partition
-	Name pulumi.StringPtrInput
-	// one of "NFS", "CIFS" or "NFS_CIFS"
-	Protocol pulumi.StringPtrInput
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName pulumi.StringPtrInput
-	// size of the partition in GB
-	Size pulumi.IntPtrInput
-	// Percentage of partition space used by snapshots in %
+	Capacity        pulumi.IntPtrInput
+	Description     pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	Protocol        pulumi.StringPtrInput
+	ServiceName     pulumi.StringPtrInput
+	Size            pulumi.IntPtrInput
 	UsedBySnapshots pulumi.IntPtrInput
 }
 
@@ -145,30 +87,20 @@ func (NasHAPartitionState) ElementType() reflect.Type {
 }
 
 type nasHAPartitionArgs struct {
-	// A brief description of the partition
 	Description *string `pulumi:"description"`
-	// name of the partition
-	Name *string `pulumi:"name"`
-	// one of "NFS", "CIFS" or "NFS_CIFS"
-	Protocol string `pulumi:"protocol"`
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-	ServiceName string `pulumi:"serviceName"`
-	// size of the partition in GB
-	Size int `pulumi:"size"`
+	Name        *string `pulumi:"name"`
+	Protocol    string  `pulumi:"protocol"`
+	ServiceName string  `pulumi:"serviceName"`
+	Size        int     `pulumi:"size"`
 }
 
 // The set of arguments for constructing a NasHAPartition resource.
 type NasHAPartitionArgs struct {
-	// A brief description of the partition
 	Description pulumi.StringPtrInput
-	// name of the partition
-	Name pulumi.StringPtrInput
-	// one of "NFS", "CIFS" or "NFS_CIFS"
-	Protocol pulumi.StringInput
-	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+	Name        pulumi.StringPtrInput
+	Protocol    pulumi.StringInput
 	ServiceName pulumi.StringInput
-	// size of the partition in GB
-	Size pulumi.IntInput
+	Size        pulumi.IntInput
 }
 
 func (NasHAPartitionArgs) ElementType() reflect.Type {
@@ -258,37 +190,30 @@ func (o NasHAPartitionOutput) ToNasHAPartitionOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Percentage of partition space used in %
 func (o NasHAPartitionOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// A brief description of the partition
 func (o NasHAPartitionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// name of the partition
 func (o NasHAPartitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// one of "NFS", "CIFS" or "NFS_CIFS"
 func (o NasHAPartitionOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 func (o NasHAPartitionOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// size of the partition in GB
 func (o NasHAPartitionOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Percentage of partition space used by snapshots in %
 func (o NasHAPartitionOutput) UsedBySnapshots() pulumi.IntOutput {
 	return o.ApplyT(func(v *NasHAPartition) pulumi.IntOutput { return v.UsedBySnapshots }).(pulumi.IntOutput)
 }

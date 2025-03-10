@@ -64,41 +64,26 @@ class GetIdentityUserResult:
     @property
     @pulumi.getter(name="UserURN")
     def user_urn(self) -> str:
-        """
-        User's identity URN.
-        """
         return pulumi.get(self, "user_urn")
 
     @property
     @pulumi.getter
     def creation(self) -> str:
-        """
-        Creation date of this user.
-        """
         return pulumi.get(self, "creation")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        User description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def email(self) -> str:
-        """
-        User's email.
-        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def group(self) -> str:
-        """
-        User's group.
-        """
         return pulumi.get(self, "group")
 
     @property
@@ -112,33 +97,21 @@ class GetIdentityUserResult:
     @property
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> str:
-        """
-        Last update of this user.
-        """
         return pulumi.get(self, "last_update")
 
     @property
     @pulumi.getter
     def login(self) -> str:
-        """
-        User's login suffix.
-        """
         return pulumi.get(self, "login")
 
     @property
     @pulumi.getter(name="passwordLastUpdate")
     def password_last_update(self) -> str:
-        """
-        When the user changed his password for the last time.
-        """
         return pulumi.get(self, "password_last_update")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Current user's status.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -169,19 +142,7 @@ class AwaitableGetIdentityUserResult(GetIdentityUserResult):
 def get_identity_user(user: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIdentityUserResult:
     """
-    Use this data source to retrieve information about an identity user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_user = ovh.Me.get_identity_user(user="my_user_login")
-    ```
-
-
-    :param str user: User's login.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['user'] = user
@@ -203,19 +164,7 @@ def get_identity_user(user: Optional[str] = None,
 def get_identity_user_output(user: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityUserResult]:
     """
-    Use this data source to retrieve information about an identity user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_user = ovh.Me.get_identity_user(user="my_user_login")
-    ```
-
-
-    :param str user: User's login.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['user'] = user

@@ -7,37 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a KMS associated with this account
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := okms.GetOkmsResource(ctx, &okms.GetOkmsResourceArgs{
-//				Id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetOkmsResource(ctx *pulumi.Context, args *GetOkmsResourceArgs, opts ...pulumi.InvokeOption) (*GetOkmsResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOkmsResourceResult
@@ -50,26 +23,18 @@ func GetOkmsResource(ctx *pulumi.Context, args *GetOkmsResourceArgs, opts ...pul
 
 // A collection of arguments for invoking getOkmsResource.
 type GetOkmsResourceArgs struct {
-	// Should be set to the ID of your KMS
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getOkmsResource.
 type GetOkmsResourceResult struct {
-	// (Attributes) IAM resource metadata (see below for nested schema)
-	Iam GetOkmsResourceIam `pulumi:"iam"`
-	// (String) Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// (String) KMS kmip API endpoint
-	KmipEndpoint string `pulumi:"kmipEndpoint"`
-	// (String) KMS public CA (Certificate Authority)
-	PublicCa string `pulumi:"publicCa"`
-	// (String) Region
-	Region string `pulumi:"region"`
-	// (String) KMS rest API endpoint
-	RestEndpoint string `pulumi:"restEndpoint"`
-	// (String) KMS rest API swagger UI
-	SwaggerEndpoint string `pulumi:"swaggerEndpoint"`
+	Iam             GetOkmsResourceIam `pulumi:"iam"`
+	Id              string             `pulumi:"id"`
+	KmipEndpoint    string             `pulumi:"kmipEndpoint"`
+	PublicCa        string             `pulumi:"publicCa"`
+	Region          string             `pulumi:"region"`
+	RestEndpoint    string             `pulumi:"restEndpoint"`
+	SwaggerEndpoint string             `pulumi:"swaggerEndpoint"`
 }
 
 func GetOkmsResourceOutput(ctx *pulumi.Context, args GetOkmsResourceOutputArgs, opts ...pulumi.InvokeOption) GetOkmsResourceResultOutput {
@@ -83,7 +48,6 @@ func GetOkmsResourceOutput(ctx *pulumi.Context, args GetOkmsResourceOutputArgs, 
 
 // A collection of arguments for invoking getOkmsResource.
 type GetOkmsResourceOutputArgs struct {
-	// Should be set to the ID of your KMS
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -106,37 +70,30 @@ func (o GetOkmsResourceResultOutput) ToGetOkmsResourceResultOutputWithContext(ct
 	return o
 }
 
-// (Attributes) IAM resource metadata (see below for nested schema)
 func (o GetOkmsResourceResultOutput) Iam() GetOkmsResourceIamOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) GetOkmsResourceIam { return v.Iam }).(GetOkmsResourceIamOutput)
 }
 
-// (String) Unique identifier of the resource
 func (o GetOkmsResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (String) KMS kmip API endpoint
 func (o GetOkmsResourceResultOutput) KmipEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) string { return v.KmipEndpoint }).(pulumi.StringOutput)
 }
 
-// (String) KMS public CA (Certificate Authority)
 func (o GetOkmsResourceResultOutput) PublicCa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) string { return v.PublicCa }).(pulumi.StringOutput)
 }
 
-// (String) Region
 func (o GetOkmsResourceResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// (String) KMS rest API endpoint
 func (o GetOkmsResourceResultOutput) RestEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) string { return v.RestEndpoint }).(pulumi.StringOutput)
 }
 
-// (String) KMS rest API swagger UI
 func (o GetOkmsResourceResultOutput) SwaggerEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceResult) string { return v.SwaggerEndpoint }).(pulumi.StringOutput)
 }

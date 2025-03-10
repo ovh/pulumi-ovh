@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Hosting.Inputs
     public sealed class PrivateDatabaseOrderDetailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom description on your privatedatabase order.
+        /// description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

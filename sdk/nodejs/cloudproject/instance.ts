@@ -6,37 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * **This resource uses a Beta API**
- * Creates an instance associated with a public cloud project.
- *
- * ## Example Usage
- *
- * Create a instance.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const instance = new ovh.cloudproject.Instance("instance", {
- *     billingPeriod: "hourly",
- *     bootFrom: {
- *         imageId: "UUID",
- *     },
- *     flavor: {
- *         flavorId: "UUID",
- *     },
- *     network: {
- *         "public": true,
- *     },
- *     region: "RRRR",
- *     serviceName: "XXX",
- *     sshKey: {
- *         name: "sshname",
- *     },
- * });
- * ```
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -74,11 +43,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly attachedVolumes!: pulumi.Output<outputs.CloudProject.InstanceAttachedVolume[]>;
     /**
-     * Create an autobackup workflow after instance start up.
+     * Create an autobackup workflow after instance start up
      */
     public readonly autoBackup!: pulumi.Output<outputs.CloudProject.InstanceAutoBackup | undefined>;
     /**
-     * Billing period - hourly or monthly
+     * The availability zone where the instance will be created
+     */
+    public readonly availabilityZone!: pulumi.Output<string>;
+    /**
+     * Billing period - hourly | monthly
      */
     public readonly billingPeriod!: pulumi.Output<string>;
     /**
@@ -122,12 +95,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * Service name of the resource representing the id of the cloud project
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Existing SSH Keypair
+     * Existing SSH Key pair
      */
     public readonly sshKey!: pulumi.Output<outputs.CloudProject.InstanceSshKey | undefined>;
     /**
@@ -159,6 +131,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["addresses"] = state ? state.addresses : undefined;
             resourceInputs["attachedVolumes"] = state ? state.attachedVolumes : undefined;
             resourceInputs["autoBackup"] = state ? state.autoBackup : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["billingPeriod"] = state ? state.billingPeriod : undefined;
             resourceInputs["bootFrom"] = state ? state.bootFrom : undefined;
             resourceInputs["bulk"] = state ? state.bulk : undefined;
@@ -196,6 +169,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["autoBackup"] = args ? args.autoBackup : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["billingPeriod"] = args ? args.billingPeriod : undefined;
             resourceInputs["bootFrom"] = args ? args.bootFrom : undefined;
             resourceInputs["bulk"] = args ? args.bulk : undefined;
@@ -233,11 +207,15 @@ export interface InstanceState {
      */
     attachedVolumes?: pulumi.Input<pulumi.Input<inputs.CloudProject.InstanceAttachedVolume>[]>;
     /**
-     * Create an autobackup workflow after instance start up.
+     * Create an autobackup workflow after instance start up
      */
     autoBackup?: pulumi.Input<inputs.CloudProject.InstanceAutoBackup>;
     /**
-     * Billing period - hourly or monthly
+     * The availability zone where the instance will be created
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Billing period - hourly | monthly
      */
     billingPeriod?: pulumi.Input<string>;
     /**
@@ -281,12 +259,11 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * Service name of the resource representing the id of the cloud project
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Existing SSH Keypair
+     * Existing SSH Key pair
      */
     sshKey?: pulumi.Input<inputs.CloudProject.InstanceSshKey>;
     /**
@@ -308,11 +285,15 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Create an autobackup workflow after instance start up.
+     * Create an autobackup workflow after instance start up
      */
     autoBackup?: pulumi.Input<inputs.CloudProject.InstanceAutoBackup>;
     /**
-     * Billing period - hourly or monthly
+     * The availability zone where the instance will be created
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Billing period - hourly | monthly
      */
     billingPeriod: pulumi.Input<string>;
     /**
@@ -344,12 +325,11 @@ export interface InstanceArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * Service name of the resource representing the id of the cloud project
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Existing SSH Keypair
+     * Existing SSH Key pair
      */
     sshKey?: pulumi.Input<inputs.CloudProject.InstanceSshKey>;
     /**

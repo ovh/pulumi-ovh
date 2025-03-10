@@ -14,9 +14,6 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class NetworkPrivateRegionsStatus
     {
         public readonly string? Region;
-        /// <summary>
-        /// the status of the network. should be normally set to 'ACTIVE'.
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

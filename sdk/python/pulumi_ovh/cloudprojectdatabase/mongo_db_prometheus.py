@@ -24,9 +24,7 @@ class MongoDbPrometheusArgs:
                  password_reset: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MongoDbPrometheus resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -38,7 +36,7 @@ class MongoDbPrometheusArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -49,10 +47,6 @@ class MongoDbPrometheusArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -83,13 +77,11 @@ class _MongoDbPrometheusState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MongoDbPrometheus resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] password: (Sensitive) Password of the user.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] password: Password of the user
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] srv_domain: Name of the srv domain endpoint.
-        :param pulumi.Input[str] username: name of the prometheus user.
+        :param pulumi.Input[str] srv_domain: Name of the srv domain endpoint
+        :param pulumi.Input[str] username: Name of the user
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -108,7 +100,7 @@ class _MongoDbPrometheusState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -120,7 +112,7 @@ class _MongoDbPrometheusState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        (Sensitive) Password of the user.
+        Password of the user
         """
         return pulumi.get(self, "password")
 
@@ -143,10 +135,6 @@ class _MongoDbPrometheusState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -157,7 +145,7 @@ class _MongoDbPrometheusState:
     @pulumi.getter(name="srvDomain")
     def srv_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the srv domain endpoint.
+        Name of the srv domain endpoint
         """
         return pulumi.get(self, "srv_domain")
 
@@ -169,7 +157,7 @@ class _MongoDbPrometheusState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the prometheus user.
+        Name of the user
         """
         return pulumi.get(self, "username")
 
@@ -188,22 +176,11 @@ class MongoDbPrometheus(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Import
-
-        OVHcloud Managed MongoDB clusters prometheus can be imported using the `service_name` and `cluster_id`, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus my_prometheus service_name/engine/cluster_id
-        ```
-
+        Create a MongoDbPrometheus resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -212,16 +189,7 @@ class MongoDbPrometheus(pulumi.CustomResource):
                  args: MongoDbPrometheusArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        OVHcloud Managed MongoDB clusters prometheus can be imported using the `service_name` and `cluster_id`, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus my_prometheus service_name/engine/cluster_id
-        ```
-
+        Create a MongoDbPrometheus resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MongoDbPrometheusArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -284,13 +252,11 @@ class MongoDbPrometheus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] password: (Sensitive) Password of the user.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[str] password: Password of the user
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] srv_domain: Name of the srv domain endpoint.
-        :param pulumi.Input[str] username: name of the prometheus user.
+        :param pulumi.Input[str] srv_domain: Name of the srv domain endpoint
+        :param pulumi.Input[str] username: Name of the user
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -308,7 +274,7 @@ class MongoDbPrometheus(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -316,7 +282,7 @@ class MongoDbPrometheus(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        (Sensitive) Password of the user.
+        Password of the user
         """
         return pulumi.get(self, "password")
 
@@ -331,17 +297,13 @@ class MongoDbPrometheus(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="srvDomain")
     def srv_domain(self) -> pulumi.Output[str]:
         """
-        Name of the srv domain endpoint.
+        Name of the srv domain endpoint
         """
         return pulumi.get(self, "srv_domain")
 
@@ -349,7 +311,7 @@ class MongoDbPrometheus(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        name of the prometheus user.
+        Name of the user
         """
         return pulumi.get(self, "username")
 

@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const subscription = ovh.CloudProjectDatabase.getDatabaseLogSubscription({
- *     serviceName: "VVV",
- *     engine: "XXX",
- *     clusterId: "YYY",
- *     id: "ZZZ",
- * });
- * export const subscriptionLdpName = subscription.then(subscription => subscription.ldpServiceName);
- * ```
- */
 export function getDatabaseLogSubscription(args: GetDatabaseLogSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseLogSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", {
@@ -36,23 +18,9 @@ export function getDatabaseLogSubscription(args: GetDatabaseLogSubscriptionArgs,
  * A collection of arguments for invoking getDatabaseLogSubscription.
  */
 export interface GetDatabaseLogSubscriptionArgs {
-    /**
-     * Cluster ID.
-     */
     clusterId: string;
-    /**
-     * The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     */
     engine: string;
-    /**
-     * Id of the log subscription.
-     */
     id: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -60,69 +28,18 @@ export interface GetDatabaseLogSubscriptionArgs {
  * A collection of values returned by getDatabaseLogSubscription.
  */
 export interface GetDatabaseLogSubscriptionResult {
-    /**
-     * See Argument Reference above.
-     */
     readonly clusterId: string;
-    /**
-     * Creation date of the subscription.
-     */
     readonly createdAt: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly engine: string;
-    /**
-     * ID of the log subscription.
-     */
     readonly id: string;
-    /**
-     * Log kind name of this subscription.
-     */
     readonly kind: string;
-    /**
-     * Name of the destination log service.
-     */
     readonly ldpServiceName: string;
-    /**
-     * Name of subscribed resource, where the logs come from.
-     */
     readonly resourceName: string;
-    /**
-     * Type of subscribed resource, where the logs come from.
-     */
     readonly resourceType: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly serviceName: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly streamId: string;
-    /**
-     * Last update date of the subscription.
-     */
     readonly updatedAt: string;
 }
-/**
- * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const subscription = ovh.CloudProjectDatabase.getDatabaseLogSubscription({
- *     serviceName: "VVV",
- *     engine: "XXX",
- *     clusterId: "YYY",
- *     id: "ZZZ",
- * });
- * export const subscriptionLdpName = subscription.then(subscription => subscription.ldpServiceName);
- * ```
- */
 export function getDatabaseLogSubscriptionOutput(args: GetDatabaseLogSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseLogSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", {
@@ -137,22 +54,8 @@ export function getDatabaseLogSubscriptionOutput(args: GetDatabaseLogSubscriptio
  * A collection of arguments for invoking getDatabaseLogSubscription.
  */
 export interface GetDatabaseLogSubscriptionOutputArgs {
-    /**
-     * Cluster ID.
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     */
     engine: pulumi.Input<string>;
-    /**
-     * Id of the log subscription.
-     */
     id: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

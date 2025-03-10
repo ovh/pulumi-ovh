@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class InstanceSshKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// SSH Keypair name
+        /// SSH Key pair name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

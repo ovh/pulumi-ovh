@@ -11,96 +11,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetDatabaseIntegration
     {
-        /// <summary>
-        /// Use this data source to get information about an integration of a database cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var integration = Ovh.CloudProjectDatabase.GetDatabaseIntegration.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         Engine = "YYY",
-        ///         ClusterId = "ZZZ",
-        ///         Id = "UUU",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["integrationType"] = integration.Apply(getDatabaseIntegrationResult =&gt; getDatabaseIntegrationResult.Type),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetDatabaseIntegrationResult> InvokeAsync(GetDatabaseIntegrationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about an integration of a database cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var integration = Ovh.CloudProjectDatabase.GetDatabaseIntegration.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         Engine = "YYY",
-        ///         ClusterId = "ZZZ",
-        ///         Id = "UUU",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["integrationType"] = integration.Apply(getDatabaseIntegrationResult =&gt; getDatabaseIntegrationResult.Type),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetDatabaseIntegrationResult> Invoke(GetDatabaseIntegrationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about an integration of a database cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var integration = Ovh.CloudProjectDatabase.GetDatabaseIntegration.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         Engine = "YYY",
-        ///         ClusterId = "ZZZ",
-        ///         Id = "UUU",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["integrationType"] = integration.Apply(getDatabaseIntegrationResult =&gt; getDatabaseIntegrationResult.Type),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetDatabaseIntegrationResult> Invoke(GetDatabaseIntegrationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIntegrationResult>("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", args ?? new GetDatabaseIntegrationInvokeArgs(), options.WithDefaults());
     }
@@ -108,29 +24,15 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetDatabaseIntegrationArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID.
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`
-        /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
 
-        /// <summary>
-        /// Integration ID
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -142,29 +44,15 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetDatabaseIntegrationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID.
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`
-        /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
-        /// <summary>
-        /// Integration ID
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -178,41 +66,14 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetDatabaseIntegrationResult
     {
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// ID of the destination service.
-        /// </summary>
         public readonly string DestinationServiceId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Engine;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Parameters for the integration.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Parameters;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// ID of the source service.
-        /// </summary>
         public readonly string SourceServiceId;
-        /// <summary>
-        /// Current status of the integration.
-        /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// Type of the integration.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

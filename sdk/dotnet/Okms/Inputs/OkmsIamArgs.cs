@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.Okms.Inputs
     public sealed class OkmsIamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (String) Resource display name
+        /// Resource display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// (String) Unique identifier of the resource
+        /// Unique identifier of the resource
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.Okms.Inputs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
+        /// Resource tags. Tags that were internally computed are prefixed with ovh:
         /// </summary>
         public InputMap<string> Tags
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.Okms.Inputs
         }
 
         /// <summary>
-        /// (String) Unique resource name used in policies
+        /// Unique resource name used in policies
         /// </summary>
         [Input("urn")]
         public Input<string>? Urn { get; set; }

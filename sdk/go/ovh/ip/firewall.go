@@ -8,46 +8,17 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this resource to manage an IP firewall.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewFirewall(ctx, "myFirewall", &ip.FirewallArgs{
-//				Ip:           pulumi.String("XXXXXX"),
-//				IpOnFirewall: pulumi.String("XXXXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// IPv4 address
-	// * ` enabled  ` - Whether firewall should be enabled
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnFirewall pulumi.StringOutput `pulumi:"ipOnFirewall"`
 	// Current state of your ip on firewall
 	State pulumi.StringOutput `pulumi:"state"`
@@ -90,10 +61,9 @@ func GetFirewall(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Firewall resources.
 type firewallState struct {
 	Enabled *bool `pulumi:"enabled"`
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip *string `pulumi:"ip"`
-	// IPv4 address
-	// * ` enabled  ` - Whether firewall should be enabled
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnFirewall *string `pulumi:"ipOnFirewall"`
 	// Current state of your ip on firewall
 	State *string `pulumi:"state"`
@@ -101,10 +71,9 @@ type firewallState struct {
 
 type FirewallState struct {
 	Enabled pulumi.BoolPtrInput
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip pulumi.StringPtrInput
-	// IPv4 address
-	// * ` enabled  ` - Whether firewall should be enabled
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnFirewall pulumi.StringPtrInput
 	// Current state of your ip on firewall
 	State pulumi.StringPtrInput
@@ -116,20 +85,18 @@ func (FirewallState) ElementType() reflect.Type {
 
 type firewallArgs struct {
 	Enabled *bool `pulumi:"enabled"`
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip string `pulumi:"ip"`
-	// IPv4 address
-	// * ` enabled  ` - Whether firewall should be enabled
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnFirewall string `pulumi:"ipOnFirewall"`
 }
 
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
 	Enabled pulumi.BoolPtrInput
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip pulumi.StringInput
-	// IPv4 address
-	// * ` enabled  ` - Whether firewall should be enabled
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnFirewall pulumi.StringInput
 }
 
@@ -224,13 +191,12 @@ func (o FirewallOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The IP or the CIDR
+// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 func (o FirewallOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IPv4 address
-// * ` enabled  ` - Whether firewall should be enabled
+// IPv4 address (e.g., 192.0.2.0)
 func (o FirewallOutput) IpOnFirewall() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.IpOnFirewall }).(pulumi.StringOutput)
 }

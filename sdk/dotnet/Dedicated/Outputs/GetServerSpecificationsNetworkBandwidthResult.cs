@@ -14,19 +14,19 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class GetServerSpecificationsNetworkBandwidthResult
     {
         /// <summary>
-        /// Bandwidth limitation Internet to OVH
+        /// bandwidth limitation Internet to OVH
         /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkBandwidthInternetToOvhResult InternetToOvh;
         /// <summary>
-        /// Bandwidth limitation OVH to Internet
+        /// bandwidth limitation OVH to Internet
         /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkBandwidthOvhToInternetResult OvhToInternet;
         /// <summary>
-        /// Bandwidth limitation OVH to OVH
+        /// bandwidth limitation OVH to OVH
         /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult OvhToOvh;
         /// <summary>
-        /// Bandwidth offer type (included┃standard)
+        /// bandwidth offer type
         /// </summary>
         public readonly string Type;
 

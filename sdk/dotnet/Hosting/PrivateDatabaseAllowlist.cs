@@ -9,67 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Hosting
 {
-    /// <summary>
-    /// Create a new IP whitelist on your private cloud database instance.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var ip = new Ovh.Hosting.PrivateDatabaseAllowlist("ip", new()
-    ///     {
-    ///         Ip = "1.2.3.4",
-    ///         Service = true,
-    ///         ServiceName = "XXXXXX",
-    ///         Sftp = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist")]
     public partial class PrivateDatabaseAllowlist : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The whitelisted IP in your instance.
+        /// The whitelisted IP in your instance
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// Custom name for your Whitelisted IP.
+        /// Custom name for your Whitelisted IP
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Authorize this IP to access service port. Values can be `true` or `false`
+        /// Authorize this IP to access service port
         /// </summary>
         [Output("service")]
         public Output<bool> Service { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Authorize this IP to access SFTP port. Values can be `true` or `false`
+        /// Authorize this IP to access SFTP port
         /// </summary>
         [Output("sftp")]
         public Output<bool> Sftp { get; private set; } = null!;
@@ -122,31 +90,31 @@ namespace Pulumi.Ovh.Hosting
     public sealed class PrivateDatabaseAllowlistArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The whitelisted IP in your instance.
+        /// The whitelisted IP in your instance
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// Custom name for your Whitelisted IP.
+        /// Custom name for your Whitelisted IP
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authorize this IP to access service port. Values can be `true` or `false`
+        /// Authorize this IP to access service port
         /// </summary>
         [Input("service", required: true)]
         public Input<bool> Service { get; set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Authorize this IP to access SFTP port. Values can be `true` or `false`
+        /// Authorize this IP to access SFTP port
         /// </summary>
         [Input("sftp", required: true)]
         public Input<bool> Sftp { get; set; } = null!;
@@ -160,31 +128,31 @@ namespace Pulumi.Ovh.Hosting
     public sealed class PrivateDatabaseAllowlistState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The whitelisted IP in your instance.
+        /// The whitelisted IP in your instance
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Custom name for your Whitelisted IP.
+        /// Custom name for your Whitelisted IP
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authorize this IP to access service port. Values can be `true` or `false`
+        /// Authorize this IP to access service port
         /// </summary>
         [Input("service")]
         public Input<bool>? Service { get; set; }
 
         /// <summary>
-        /// The internal name of your private database.
+        /// The internal name of your private database
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Authorize this IP to access SFTP port. Values can be `true` or `false`
+        /// Authorize this IP to access SFTP port
         /// </summary>
         [Input("sftp")]
         public Input<bool>? Sftp { get; set; }

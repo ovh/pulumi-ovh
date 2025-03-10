@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information about a container registry associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myRegistry = ovh.CloudProject.getContainerRegistry({
- *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getContainerRegistry(args: GetContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistry:getContainerRegistry", {
@@ -31,14 +16,7 @@ export function getContainerRegistry(args: GetContainerRegistryArgs, opts?: pulu
  * A collection of arguments for invoking getContainerRegistry.
  */
 export interface GetContainerRegistryArgs {
-    /**
-     * Registry ID
-     */
     registryId: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -46,64 +24,22 @@ export interface GetContainerRegistryArgs {
  * A collection of values returned by getContainerRegistry.
  */
 export interface GetContainerRegistryResult {
-    /**
-     * Registry creation date
-     */
     readonly createdAt: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Registry name
-     */
     readonly name: string;
-    /**
-     * Project ID of your registry
-     */
     readonly projectId: string;
-    /**
-     * Region of the registry
-     */
     readonly region: string;
     readonly registryId: string;
     readonly serviceName: string;
-    /**
-     * Current size of the registry (bytes)
-     */
     readonly size: number;
-    /**
-     * Registry status
-     */
     readonly status: string;
-    /**
-     * Registry last update date
-     */
     readonly updatedAt: string;
-    /**
-     * Access url of the registry
-     */
     readonly url: string;
-    /**
-     * Version of your registry
-     */
     readonly version: string;
 }
-/**
- * Use this data source to get information about a container registry associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myRegistry = ovh.CloudProject.getContainerRegistry({
- *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getContainerRegistryOutput(args: GetContainerRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistry:getContainerRegistry", {
@@ -116,13 +52,6 @@ export function getContainerRegistryOutput(args: GetContainerRegistryOutputArgs,
  * A collection of arguments for invoking getContainerRegistry.
  */
 export interface GetContainerRegistryOutputArgs {
-    /**
-     * Registry ID
-     */
     registryId: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

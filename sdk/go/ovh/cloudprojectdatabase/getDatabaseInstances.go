@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of databases of a database cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			databases, err := cloudprojectdatabase.GetDatabaseInstances(ctx, &cloudprojectdatabase.GetDatabaseInstancesArgs{
-//				ServiceName: "XXXX",
-//				Engine:      "YYYY",
-//				ClusterId:   "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("databaseIds", databases.DatabaseIds)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseInstancesResult
@@ -53,28 +23,18 @@ func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, o
 
 // A collection of arguments for invoking getDatabaseInstances.
 type GetDatabaseInstancesArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want to list databases. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
-	Engine string `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Engine      string `pulumi:"engine"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getDatabaseInstances.
 type GetDatabaseInstancesResult struct {
-	// See Argument Reference above.
-	ClusterId string `pulumi:"clusterId"`
-	// The list of databases ids of the database cluster associated with the project.
+	ClusterId   string   `pulumi:"clusterId"`
 	DatabaseIds []string `pulumi:"databaseIds"`
-	// See Argument Reference above.
-	Engine string `pulumi:"engine"`
+	Engine      string   `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
+	Id          string `pulumi:"id"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -89,14 +49,8 @@ func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOu
 
 // A collection of arguments for invoking getDatabaseInstances.
 type GetDatabaseInstancesOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The engine of the database cluster you want to list databases. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
-	Engine pulumi.StringInput `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Engine      pulumi.StringInput `pulumi:"engine"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -119,17 +73,14 @@ func (o GetDatabaseInstancesResultOutput) ToGetDatabaseInstancesResultOutputWith
 	return o
 }
 
-// See Argument Reference above.
 func (o GetDatabaseInstancesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The list of databases ids of the database cluster associated with the project.
 func (o GetDatabaseInstancesResultOutput) DatabaseIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) []string { return v.DatabaseIds }).(pulumi.StringArrayOutput)
 }
 
-// See Argument Reference above.
 func (o GetDatabaseInstancesResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -139,7 +90,6 @@ func (o GetDatabaseInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetDatabaseInstancesResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

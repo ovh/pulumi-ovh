@@ -61,16 +61,7 @@ class AwaitableGetProjectsResult(GetProjectsResult):
 
 def get_projects(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
-    Get the details of your public cloud projects.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    projects = ovh.Cloud.get_projects()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -81,16 +72,7 @@ def get_projects(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPro
         projects=pulumi.get(__ret__, 'projects'))
 def get_projects_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
-    Get the details of your public cloud projects.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    projects = ovh.Cloud.get_projects()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

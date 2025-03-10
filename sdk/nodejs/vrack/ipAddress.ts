@@ -4,60 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attach an IP block to a VRack.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myAccount = ovh.Me.getMe({});
- * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
- *     ovhSubsidiary: myAccount.ovhSubsidiary,
- * }));
- * const vrackCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
- *     cartId: myCart.id,
- *     priceCapacity: "renew",
- *     product: "vrack",
- *     planCode: "vrack",
- * }));
- * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
- *     description: myCart.then(myCart => myCart.description),
- *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
- *     plan: {
- *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.planCode),
- *         pricingMode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),
- *     },
- * });
- * const ipblockCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
- *     cartId: myCart.id,
- *     priceCapacity: "renew",
- *     product: "ip",
- *     planCode: "ip-v4-s30-ripe",
- * }));
- * const ipblockIpService = new ovh.ip.IpService("ipblockIpService", {
- *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
- *     description: myCart.then(myCart => myCart.description),
- *     plan: {
- *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
- *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
- *         configurations: [{
- *             label: "country",
- *             value: "FR",
- *         }],
- *     },
- * });
- * const vrackBlock = new ovh.vrack.IpAddress("vrackBlock", {
- *     serviceName: vrackVrack.serviceName,
- *     block: ipblockIpService.ip,
- * });
- * ```
- */
 export class IpAddress extends pulumi.CustomResource {
     /**
      * Get an existing IpAddress resource's state with the given name, ID, and optional extra

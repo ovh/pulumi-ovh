@@ -91,25 +91,7 @@ def get_logs_input_engine(is_deprecated: Optional[bool] = None,
                           version: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogsInputEngineResult:
     """
-    Use this data source to retrieve information about a DBaas logs input engine.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    logstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,
-        name="logstash",
-        service_name="ldp-xx-xxxxx",
-        version="6.8")
-    ```
-
-
-    :param bool is_deprecated: Indicates if engine will soon not be supported.
-    :param str name: The name of the logs input engine.
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
-    :param str version: Software version
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['isDeprecated'] = is_deprecated
@@ -131,25 +113,7 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
                                  version: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsInputEngineResult]:
     """
-    Use this data source to retrieve information about a DBaas logs input engine.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    logstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,
-        name="logstash",
-        service_name="ldp-xx-xxxxx",
-        version="6.8")
-    ```
-
-
-    :param bool is_deprecated: Indicates if engine will soon not be supported.
-    :param str name: The name of the logs input engine.
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
-    :param str version: Software version
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['isDeprecated'] = is_deprecated

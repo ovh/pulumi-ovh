@@ -13,30 +13,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class NetworkPrivateSubnetIpPool
     {
-        /// <summary>
-        /// Enable DHCP.
-        /// Changing this forces a new resource to be created. Defaults to false.
-        /// </summary>
         public readonly bool? Dhcp;
-        /// <summary>
-        /// Last ip for this region.
-        /// Changing this value recreates the subnet.
-        /// </summary>
         public readonly string? End;
-        /// <summary>
-        /// Global network in CIDR format.
-        /// Changing this value recreates the subnet
-        /// </summary>
         public readonly string? Network;
-        /// <summary>
-        /// The region in which the network subnet will be created.
-        /// Ex.: "GRA1". Changing this value recreates the resource.
-        /// </summary>
         public readonly string? Region;
-        /// <summary>
-        /// First ip for this region.
-        /// Changing this value recreates the subnet.
-        /// </summary>
         public readonly string? Start;
 
         [OutputConstructor]

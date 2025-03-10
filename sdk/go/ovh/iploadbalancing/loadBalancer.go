@@ -7,111 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			mycart, err := order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myaccount.OvhSubsidiary,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			iplb, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
-//				CartId:        mycart.Id,
-//				PriceCapacity: "renew",
-//				Product:       "ipLoadbalancing",
-//				PlanCode:      "iplb-lb1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			bhs, err := order.GetCartProductOptionsPlan(ctx, &order.GetCartProductOptionsPlanArgs{
-//				CartId:          iplb.CartId,
-//				PriceCapacity:   iplb.PriceCapacity,
-//				Product:         iplb.Product,
-//				PlanCode:        iplb.PlanCode,
-//				OptionsPlanCode: "iplb-zone-lb1-rbx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iploadbalancing.NewLoadBalancer(ctx, "iplb-lb1", &iploadbalancing.LoadBalancerArgs{
-//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
-//				DisplayName:   pulumi.String("my ip loadbalancing"),
-//				Plan: &iploadbalancing.LoadBalancerPlanArgs{
-//					Duration:    pulumi.String(iplb.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(iplb.PlanCode),
-//					PricingMode: pulumi.String(iplb.SelectedPrices[0].PricingMode),
-//				},
-//				PlanOptions: iploadbalancing.LoadBalancerPlanOptionArray{
-//					&iploadbalancing.LoadBalancerPlanOptionArgs{
-//						Duration:    pulumi.String(bhs.SelectedPrices[0].Duration),
-//						PlanCode:    pulumi.String(bhs.PlanCode),
-//						PricingMode: pulumi.String(bhs.SelectedPrices[0].PricingMode),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud IP load balancing services can be imported using its `service_name`.
-//
-// Using the following configuration:
-//
-// hcl
-//
-// import {
-//
-//	to = ovh_iploadbalancing.iplb
-//
-//	id = "<service name>"
-//
-// }
-//
-// You can then run:
-//
-// bash
-//
-// $ pulumi preview -generate-config-out=iplb.tf
-//
-// $ pulumi up
-//
-// The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
-	// URN of the load balancer, used when writing IAM policies
 	LoadBalancerURN pulumi.StringOutput `pulumi:"LoadBalancerURN"`
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -129,7 +31,7 @@ type LoadBalancer struct {
 	OrderableZones LoadBalancerOrderableZoneArrayOutput `pulumi:"orderableZones"`
 	// Details about an Order
 	Orders LoadBalancerOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -141,7 +43,9 @@ type LoadBalancer struct {
 	PlanOptions LoadBalancerPlanOptionArrayOutput `pulumi:"planOptions"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+	// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+	// 2.3, Java 7. Intermediate if null.
 	SslConfiguration pulumi.StringOutput `pulumi:"sslConfiguration"`
 	// Current state of your IP
 	State pulumi.StringOutput `pulumi:"state"`
@@ -187,7 +91,6 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
-	// URN of the load balancer, used when writing IAM policies
 	LoadBalancerURN *string `pulumi:"LoadBalancerURN"`
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName *string `pulumi:"displayName"`
@@ -205,7 +108,7 @@ type loadBalancerState struct {
 	OrderableZones []LoadBalancerOrderableZone `pulumi:"orderableZones"`
 	// Details about an Order
 	Orders []LoadBalancerOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -217,7 +120,9 @@ type loadBalancerState struct {
 	PlanOptions []LoadBalancerPlanOption `pulumi:"planOptions"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+	// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+	// 2.3, Java 7. Intermediate if null.
 	SslConfiguration *string `pulumi:"sslConfiguration"`
 	// Current state of your IP
 	State *string `pulumi:"state"`
@@ -230,7 +135,6 @@ type loadBalancerState struct {
 }
 
 type LoadBalancerState struct {
-	// URN of the load balancer, used when writing IAM policies
 	LoadBalancerURN pulumi.StringPtrInput
 	// Set the name displayed in ManagerV6 for your iplb (max 50 chars)
 	DisplayName pulumi.StringPtrInput
@@ -248,7 +152,7 @@ type LoadBalancerState struct {
 	OrderableZones LoadBalancerOrderableZoneArrayInput
 	// Details about an Order
 	Orders LoadBalancerOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -260,7 +164,9 @@ type LoadBalancerState struct {
 	PlanOptions LoadBalancerPlanOptionArrayInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+	// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+	// 2.3, Java 7. Intermediate if null.
 	SslConfiguration pulumi.StringPtrInput
 	// Current state of your IP
 	State pulumi.StringPtrInput
@@ -281,7 +187,7 @@ type loadBalancerArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Details about an Order
 	Orders []LoadBalancerOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -291,7 +197,9 @@ type loadBalancerArgs struct {
 	Plan *LoadBalancerPlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []LoadBalancerPlanOption `pulumi:"planOptions"`
-	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+	// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+	// 2.3, Java 7. Intermediate if null.
 	SslConfiguration *string `pulumi:"sslConfiguration"`
 }
 
@@ -301,7 +209,7 @@ type LoadBalancerArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Details about an Order
 	Orders LoadBalancerOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -311,7 +219,9 @@ type LoadBalancerArgs struct {
 	Plan LoadBalancerPlanPtrInput
 	// Product Plan to order
 	PlanOptions LoadBalancerPlanOptionArrayInput
-	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+	// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+	// 2.3, Java 7. Intermediate if null.
 	SslConfiguration pulumi.StringPtrInput
 }
 
@@ -402,7 +312,6 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
-// URN of the load balancer, used when writing IAM policies
 func (o LoadBalancerOutput) LoadBalancerURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerURN }).(pulumi.StringOutput)
 }
@@ -447,7 +356,7 @@ func (o LoadBalancerOutput) Orders() LoadBalancerOrderArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerOrderArrayOutput { return v.Orders }).(LoadBalancerOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+// Ovh Subsidiary
 func (o LoadBalancerOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -474,7 +383,9 @@ func (o LoadBalancerOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+// 2.3, Java 7. Intermediate if null.
 func (o LoadBalancerOutput) SslConfiguration() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.SslConfiguration }).(pulumi.StringOutput)
 }

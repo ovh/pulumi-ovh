@@ -4,69 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const farm80 = new ovh.iploadbalancing.HttpFarm("farm80", {
- *     displayName: "ingress-8080-gra",
- *     port: 80,
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
- * });
- * const testFrontend = new ovh.iploadbalancing.HttpFrontend("testFrontend", {
- *     defaultFarmId: farm80.id,
- *     displayName: "ingress-8080-gra",
- *     port: "80,443",
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
- * });
- * ```
- *
- * ### With HTTP Header
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const farm80 = new ovh.iploadbalancing.HttpFarm("farm80", {
- *     displayName: "ingress-8080-gra",
- *     port: 80,
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
- * });
- * const testFrontend = new ovh.iploadbalancing.HttpFrontend("testFrontend", {
- *     defaultFarmId: farm80.id,
- *     displayName: "ingress-8080-gra",
- *     httpHeaders: [
- *         "X-Ip-Header %%ci",
- *         "X-Port-Header %%cp",
- *     ],
- *     port: "80,443",
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
- * });
- * ```
- *
- * ## Import
- *
- * HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
- */
 export class HttpFrontend extends pulumi.CustomResource {
     /**
      * Get an existing HttpFrontend resource's state with the given name, ID, and optional extra
@@ -95,59 +32,18 @@ export class HttpFrontend extends pulumi.CustomResource {
         return obj['__pulumiType'] === HttpFrontend.__pulumiType;
     }
 
-    /**
-     * Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-     */
     public readonly allowedSources!: pulumi.Output<string[] | undefined>;
-    /**
-     * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-     */
     public readonly dedicatedIpfos!: pulumi.Output<string[] | undefined>;
-    /**
-     * Default TCP Farm of your frontend
-     */
     public readonly defaultFarmId!: pulumi.Output<number>;
-    /**
-     * Default ssl served to your customer
-     */
     public readonly defaultSslId!: pulumi.Output<number>;
-    /**
-     * Disable your frontend. Default: 'false'
-     */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Human readable name for your frontend, this field is for you
-     */
     public readonly displayName!: pulumi.Output<string | undefined>;
-    /**
-     * HTTP Strict Transport Security. Default: 'false'
-     */
     public readonly hsts!: pulumi.Output<boolean | undefined>;
-    /**
-     * HTTP headers to add to the frontend. List of string.
-     */
     public readonly httpHeaders!: pulumi.Output<string[] | undefined>;
-    /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
-     */
     public readonly port!: pulumi.Output<string>;
-    /**
-     * Redirection HTTP'
-     */
     public readonly redirectLocation!: pulumi.Output<string | undefined>;
-    /**
-     * The internal name of your IP load balancing
-     */
     public readonly serviceName!: pulumi.Output<string>;
-    /**
-     * SSL deciphering. Default: 'false'
-     */
     public readonly ssl!: pulumi.Output<boolean | undefined>;
-    /**
-     * Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -210,59 +106,18 @@ export class HttpFrontend extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HttpFrontend resources.
  */
 export interface HttpFrontendState {
-    /**
-     * Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-     */
     allowedSources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-     */
     dedicatedIpfos?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Default TCP Farm of your frontend
-     */
     defaultFarmId?: pulumi.Input<number>;
-    /**
-     * Default ssl served to your customer
-     */
     defaultSslId?: pulumi.Input<number>;
-    /**
-     * Disable your frontend. Default: 'false'
-     */
     disabled?: pulumi.Input<boolean>;
-    /**
-     * Human readable name for your frontend, this field is for you
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * HTTP Strict Transport Security. Default: 'false'
-     */
     hsts?: pulumi.Input<boolean>;
-    /**
-     * HTTP headers to add to the frontend. List of string.
-     */
     httpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
-     */
     port?: pulumi.Input<string>;
-    /**
-     * Redirection HTTP'
-     */
     redirectLocation?: pulumi.Input<string>;
-    /**
-     * The internal name of your IP load balancing
-     */
     serviceName?: pulumi.Input<string>;
-    /**
-     * SSL deciphering. Default: 'false'
-     */
     ssl?: pulumi.Input<boolean>;
-    /**
-     * Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-     */
     zone?: pulumi.Input<string>;
 }
 
@@ -270,58 +125,17 @@ export interface HttpFrontendState {
  * The set of arguments for constructing a HttpFrontend resource.
  */
 export interface HttpFrontendArgs {
-    /**
-     * Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
-     */
     allowedSources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
-     */
     dedicatedIpfos?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Default TCP Farm of your frontend
-     */
     defaultFarmId?: pulumi.Input<number>;
-    /**
-     * Default ssl served to your customer
-     */
     defaultSslId?: pulumi.Input<number>;
-    /**
-     * Disable your frontend. Default: 'false'
-     */
     disabled?: pulumi.Input<boolean>;
-    /**
-     * Human readable name for your frontend, this field is for you
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * HTTP Strict Transport Security. Default: 'false'
-     */
     hsts?: pulumi.Input<boolean>;
-    /**
-     * HTTP headers to add to the frontend. List of string.
-     */
     httpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
-     */
     port: pulumi.Input<string>;
-    /**
-     * Redirection HTTP'
-     */
     redirectLocation?: pulumi.Input<string>;
-    /**
-     * The internal name of your IP load balancing
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * SSL deciphering. Default: 'false'
-     */
     ssl?: pulumi.Input<boolean>;
-    /**
-     * Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
-     */
     zone: pulumi.Input<string>;
 }

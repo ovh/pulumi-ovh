@@ -40,16 +40,6 @@ export const getIdentityUsers: typeof import("./getIdentityUsers").getIdentityUs
 export const getIdentityUsersOutput: typeof import("./getIdentityUsers").getIdentityUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getIdentityUsers","getIdentityUsersOutput"], () => require("./getIdentityUsers"));
 
-export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
-export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
-export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;
-utilities.lazyLoad(exports, ["getInstallationTemplate","getInstallationTemplateOutput"], () => require("./getInstallationTemplate"));
-
-export { GetInstallationTemplatesResult } from "./getInstallationTemplates";
-export const getInstallationTemplates: typeof import("./getInstallationTemplates").getInstallationTemplates = null as any;
-export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
-utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
-
 export { GetMeResult } from "./getMe";
 export const getMe: typeof import("./getMe").getMe = null as any;
 export const getMeOutput: typeof import("./getMe").getMeOutput = null as any;
@@ -75,26 +65,6 @@ export type IdentityUser = import("./identityUser").IdentityUser;
 export const IdentityUser: typeof import("./identityUser").IdentityUser = null as any;
 utilities.lazyLoad(exports, ["IdentityUser"], () => require("./identityUser"));
 
-export { InstallationTemplateArgs, InstallationTemplateState } from "./installationTemplate";
-export type InstallationTemplate = import("./installationTemplate").InstallationTemplate;
-export const InstallationTemplate: typeof import("./installationTemplate").InstallationTemplate = null as any;
-utilities.lazyLoad(exports, ["InstallationTemplate"], () => require("./installationTemplate"));
-
-export { InstallationTemplatePartitionSchemeArgs, InstallationTemplatePartitionSchemeState } from "./installationTemplatePartitionScheme";
-export type InstallationTemplatePartitionScheme = import("./installationTemplatePartitionScheme").InstallationTemplatePartitionScheme;
-export const InstallationTemplatePartitionScheme: typeof import("./installationTemplatePartitionScheme").InstallationTemplatePartitionScheme = null as any;
-utilities.lazyLoad(exports, ["InstallationTemplatePartitionScheme"], () => require("./installationTemplatePartitionScheme"));
-
-export { InstallationTemplatePartitionSchemeHardwareRaidArgs, InstallationTemplatePartitionSchemeHardwareRaidState } from "./installationTemplatePartitionSchemeHardwareRaid";
-export type InstallationTemplatePartitionSchemeHardwareRaid = import("./installationTemplatePartitionSchemeHardwareRaid").InstallationTemplatePartitionSchemeHardwareRaid;
-export const InstallationTemplatePartitionSchemeHardwareRaid: typeof import("./installationTemplatePartitionSchemeHardwareRaid").InstallationTemplatePartitionSchemeHardwareRaid = null as any;
-utilities.lazyLoad(exports, ["InstallationTemplatePartitionSchemeHardwareRaid"], () => require("./installationTemplatePartitionSchemeHardwareRaid"));
-
-export { InstallationTemplatePartitionSchemePartitionArgs, InstallationTemplatePartitionSchemePartitionState } from "./installationTemplatePartitionSchemePartition";
-export type InstallationTemplatePartitionSchemePartition = import("./installationTemplatePartitionSchemePartition").InstallationTemplatePartitionSchemePartition;
-export const InstallationTemplatePartitionSchemePartition: typeof import("./installationTemplatePartitionSchemePartition").InstallationTemplatePartitionSchemePartition = null as any;
-utilities.lazyLoad(exports, ["InstallationTemplatePartitionSchemePartition"], () => require("./installationTemplatePartitionSchemePartition"));
-
 
 const _module = {
     version: utilities.getVersion(),
@@ -106,14 +76,6 @@ const _module = {
                 return new IdentityGroup(name, <any>undefined, { urn })
             case "ovh:Me/identityUser:IdentityUser":
                 return new IdentityUser(name, <any>undefined, { urn })
-            case "ovh:Me/installationTemplate:InstallationTemplate":
-                return new InstallationTemplate(name, <any>undefined, { urn })
-            case "ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme":
-                return new InstallationTemplatePartitionScheme(name, <any>undefined, { urn })
-            case "ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid":
-                return new InstallationTemplatePartitionSchemeHardwareRaid(name, <any>undefined, { urn })
-            case "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition":
-                return new InstallationTemplatePartitionSchemePartition(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -122,7 +84,3 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "Me/aPIOAuth2Client", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/identityGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/identityUser", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplate", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionScheme", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionSchemeHardwareRaid", _module)
-pulumi.runtime.registerResourceModule("ovh", "Me/installationTemplatePartitionSchemePartition", _module)

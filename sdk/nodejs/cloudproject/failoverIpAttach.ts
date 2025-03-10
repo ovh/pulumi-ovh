@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attaches a failover IP address to a compute instance
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myFailoverIp = new ovh.cloudproject.FailoverIpAttach("myFailoverIp", {
- *     ip: "XXXXXX",
- *     routedTo: "XXXXXX",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export class FailoverIpAttach extends pulumi.CustomResource {
     /**
      * Get an existing FailoverIpAttach resource's state with the given name, ID, and optional extra
@@ -49,8 +33,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
     }
 
     /**
-     * The IP block
-     * * `continentCode` - The Ip continent
+     * IP block
      */
     public readonly block!: pulumi.Output<string>;
     /**
@@ -62,26 +45,23 @@ export class FailoverIpAttach extends pulumi.CustomResource {
      */
     public readonly geoLoc!: pulumi.Output<string>;
     /**
-     * The failover ip address to attach
+     * Ip
      */
     public readonly ip!: pulumi.Output<string>;
     /**
      * Current operation progress in percent
-     * * `routedTo` - Instance where ip is routed to
      */
     public /*out*/ readonly progress!: pulumi.Output<number>;
     /**
-     * The GUID of an instance to which the failover IP address is be attached
+     * Instance where ip is routed to
      */
     public readonly routedTo!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The service name
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Ip status, can be `ok` or `operationPending`
-     * * `subType` - IP sub type, can be `cloud` or `ovh`
+     * Ip status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -136,8 +116,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
  */
 export interface FailoverIpAttachState {
     /**
-     * The IP block
-     * * `continentCode` - The Ip continent
+     * IP block
      */
     block?: pulumi.Input<string>;
     /**
@@ -149,26 +128,23 @@ export interface FailoverIpAttachState {
      */
     geoLoc?: pulumi.Input<string>;
     /**
-     * The failover ip address to attach
+     * Ip
      */
     ip?: pulumi.Input<string>;
     /**
      * Current operation progress in percent
-     * * `routedTo` - Instance where ip is routed to
      */
     progress?: pulumi.Input<number>;
     /**
-     * The GUID of an instance to which the failover IP address is be attached
+     * Instance where ip is routed to
      */
     routedTo?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The service name
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Ip status, can be `ok` or `operationPending`
-     * * `subType` - IP sub type, can be `cloud` or `ovh`
+     * Ip status
      */
     status?: pulumi.Input<string>;
     /**
@@ -182,8 +158,7 @@ export interface FailoverIpAttachState {
  */
 export interface FailoverIpAttachArgs {
     /**
-     * The IP block
-     * * `continentCode` - The Ip continent
+     * IP block
      */
     block?: pulumi.Input<string>;
     /**
@@ -195,16 +170,15 @@ export interface FailoverIpAttachArgs {
      */
     geoLoc?: pulumi.Input<string>;
     /**
-     * The failover ip address to attach
+     * Ip
      */
     ip?: pulumi.Input<string>;
     /**
-     * The GUID of an instance to which the failover IP address is be attached
+     * Instance where ip is routed to
      */
     routedTo?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The service name
      */
     serviceName: pulumi.Input<string>;
 }

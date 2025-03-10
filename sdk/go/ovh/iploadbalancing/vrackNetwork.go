@@ -8,27 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manage a vrack network for your IP Loadbalancing service.
 type VrackNetwork struct {
 	pulumi.CustomResourceState
 
 	// Human readable name for your vrack network
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+	// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+	// farms `vrackNetworkId` attribute
 	FarmIds pulumi.IntArrayOutput `pulumi:"farmIds"`
-	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+	// be in the private network and reserved for the Load Balancer
 	NatIp pulumi.StringOutput `pulumi:"natIp"`
-	// The internal name of your IP load balancing
+	// The internal name of your IPloadbalancer
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// IP block of the private network in the vRack
 	Subnet pulumi.StringOutput `pulumi:"subnet"`
 	// VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
 	Vlan pulumi.IntOutput `pulumi:"vlan"`
-	// (Required) Internal Load Balancer identifier of the vRack private network
+	// Internal Load Balancer identifier of the vRack private network
 	VrackNetworkId pulumi.IntOutput `pulumi:"vrackNetworkId"`
 }
 
@@ -73,34 +74,38 @@ func GetVrackNetwork(ctx *pulumi.Context,
 type vrackNetworkState struct {
 	// Human readable name for your vrack network
 	DisplayName *string `pulumi:"displayName"`
-	// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+	// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+	// farms `vrackNetworkId` attribute
 	FarmIds []int `pulumi:"farmIds"`
-	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+	// be in the private network and reserved for the Load Balancer
 	NatIp *string `pulumi:"natIp"`
-	// The internal name of your IP load balancing
+	// The internal name of your IPloadbalancer
 	ServiceName *string `pulumi:"serviceName"`
 	// IP block of the private network in the vRack
 	Subnet *string `pulumi:"subnet"`
 	// VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
 	Vlan *int `pulumi:"vlan"`
-	// (Required) Internal Load Balancer identifier of the vRack private network
+	// Internal Load Balancer identifier of the vRack private network
 	VrackNetworkId *int `pulumi:"vrackNetworkId"`
 }
 
 type VrackNetworkState struct {
 	// Human readable name for your vrack network
 	DisplayName pulumi.StringPtrInput
-	// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+	// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+	// farms `vrackNetworkId` attribute
 	FarmIds pulumi.IntArrayInput
-	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+	// be in the private network and reserved for the Load Balancer
 	NatIp pulumi.StringPtrInput
-	// The internal name of your IP load balancing
+	// The internal name of your IPloadbalancer
 	ServiceName pulumi.StringPtrInput
 	// IP block of the private network in the vRack
 	Subnet pulumi.StringPtrInput
 	// VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
 	Vlan pulumi.IntPtrInput
-	// (Required) Internal Load Balancer identifier of the vRack private network
+	// Internal Load Balancer identifier of the vRack private network
 	VrackNetworkId pulumi.IntPtrInput
 }
 
@@ -111,11 +116,13 @@ func (VrackNetworkState) ElementType() reflect.Type {
 type vrackNetworkArgs struct {
 	// Human readable name for your vrack network
 	DisplayName *string `pulumi:"displayName"`
-	// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+	// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+	// farms `vrackNetworkId` attribute
 	FarmIds []int `pulumi:"farmIds"`
-	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+	// be in the private network and reserved for the Load Balancer
 	NatIp string `pulumi:"natIp"`
-	// The internal name of your IP load balancing
+	// The internal name of your IPloadbalancer
 	ServiceName string `pulumi:"serviceName"`
 	// IP block of the private network in the vRack
 	Subnet string `pulumi:"subnet"`
@@ -127,11 +134,13 @@ type vrackNetworkArgs struct {
 type VrackNetworkArgs struct {
 	// Human readable name for your vrack network
 	DisplayName pulumi.StringPtrInput
-	// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+	// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+	// farms `vrackNetworkId` attribute
 	FarmIds pulumi.IntArrayInput
-	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+	// be in the private network and reserved for the Load Balancer
 	NatIp pulumi.StringInput
-	// The internal name of your IP load balancing
+	// The internal name of your IPloadbalancer
 	ServiceName pulumi.StringInput
 	// IP block of the private network in the vRack
 	Subnet pulumi.StringInput
@@ -231,17 +240,19 @@ func (o VrackNetworkOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VrackNetwork) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+// farms `vrackNetworkId` attribute
 func (o VrackNetworkOutput) FarmIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *VrackNetwork) pulumi.IntArrayOutput { return v.FarmIds }).(pulumi.IntArrayOutput)
 }
 
-// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+// be in the private network and reserved for the Load Balancer
 func (o VrackNetworkOutput) NatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VrackNetwork) pulumi.StringOutput { return v.NatIp }).(pulumi.StringOutput)
 }
 
-// The internal name of your IP load balancing
+// The internal name of your IPloadbalancer
 func (o VrackNetworkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VrackNetwork) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -256,7 +267,7 @@ func (o VrackNetworkOutput) Vlan() pulumi.IntOutput {
 	return o.ApplyT(func(v *VrackNetwork) pulumi.IntOutput { return v.Vlan }).(pulumi.IntOutput)
 }
 
-// (Required) Internal Load Balancer identifier of the vRack private network
+// Internal Load Balancer identifier of the vRack private network
 func (o VrackNetworkOutput) VrackNetworkId() pulumi.IntOutput {
 	return o.ApplyT(func(v *VrackNetwork) pulumi.IntOutput { return v.VrackNetworkId }).(pulumi.IntOutput)
 }

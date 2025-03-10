@@ -28,7 +28,7 @@ class SavingsPlanArgs:
         """
         The set of arguments for constructing a SavingsPlan resource.
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
-        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        :param pulumi.Input[str] flavor: Savings Plan flavor
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
         :param pulumi.Input[str] service_name: ID of the public cloud project
         :param pulumi.Input[int] size: Size of the Savings Plan
@@ -58,7 +58,7 @@ class SavingsPlanArgs:
     @pulumi.getter
     def flavor(self) -> pulumi.Input[str]:
         """
-        Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        Savings Plan flavor
         """
         return pulumi.get(self, "flavor")
 
@@ -136,12 +136,12 @@ class _SavingsPlanState:
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
         :param pulumi.Input[str] end_date: End date of the Savings Plan
-        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        :param pulumi.Input[str] flavor: Savings Plan flavor
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
-        :param pulumi.Input[str] period_end_action: Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
+        :param pulumi.Input[str] period_end_action: Action performed when reaching the end of the period
         :param pulumi.Input[str] period_end_date: End date of the current period
         :param pulumi.Input[str] period_start_date: Start date of the current period
-        :param pulumi.Input[int] service_id: Billing ID of the service
+        :param pulumi.Input[int] service_id: ID of the service
         :param pulumi.Input[str] service_name: ID of the public cloud project
         :param pulumi.Input[int] size: Size of the Savings Plan
         :param pulumi.Input[str] start_date: Start date of the Savings Plan
@@ -214,7 +214,7 @@ class _SavingsPlanState:
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
         """
-        Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        Savings Plan flavor
         """
         return pulumi.get(self, "flavor")
 
@@ -238,7 +238,7 @@ class _SavingsPlanState:
     @pulumi.getter(name="periodEndAction")
     def period_end_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
+        Action performed when reaching the end of the period
         """
         return pulumi.get(self, "period_end_action")
 
@@ -274,7 +274,7 @@ class _SavingsPlanState:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Billing ID of the service
+        ID of the service
         """
         return pulumi.get(self, "service_id")
 
@@ -344,32 +344,12 @@ class SavingsPlan(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create and manage an OVHcloud Savings Plan
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        plan = ovh.savings_plan.SavingsPlan("plan",
-            auto_renewal=True,
-            display_name="one_month_rancher_savings_plan",
-            flavor="Rancher",
-            period="P1M",
-            service_name="<public cloud project ID>",
-            size=2)
-        ```
-
-        ## Import
-
-        A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by "/" e.g.
-
+        Create a SavingsPlan resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
-        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        :param pulumi.Input[str] flavor: Savings Plan flavor
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
         :param pulumi.Input[str] service_name: ID of the public cloud project
         :param pulumi.Input[int] size: Size of the Savings Plan
@@ -381,27 +361,7 @@ class SavingsPlan(pulumi.CustomResource):
                  args: SavingsPlanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create and manage an OVHcloud Savings Plan
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        plan = ovh.savings_plan.SavingsPlan("plan",
-            auto_renewal=True,
-            display_name="one_month_rancher_savings_plan",
-            flavor="Rancher",
-            period="P1M",
-            service_name="<public cloud project ID>",
-            size=2)
-        ```
-
-        ## Import
-
-        A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by "/" e.g.
-
+        Create a SavingsPlan resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SavingsPlanArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -488,12 +448,12 @@ class SavingsPlan(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
         :param pulumi.Input[str] display_name: Custom display name, used in invoices
         :param pulumi.Input[str] end_date: End date of the Savings Plan
-        :param pulumi.Input[str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        :param pulumi.Input[str] flavor: Savings Plan flavor
         :param pulumi.Input[str] period: Periodicity of the Savings Plan
-        :param pulumi.Input[str] period_end_action: Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
+        :param pulumi.Input[str] period_end_action: Action performed when reaching the end of the period
         :param pulumi.Input[str] period_end_date: End date of the current period
         :param pulumi.Input[str] period_start_date: Start date of the current period
-        :param pulumi.Input[int] service_id: Billing ID of the service
+        :param pulumi.Input[int] service_id: ID of the service
         :param pulumi.Input[str] service_name: ID of the public cloud project
         :param pulumi.Input[int] size: Size of the Savings Plan
         :param pulumi.Input[str] start_date: Start date of the Savings Plan
@@ -546,7 +506,7 @@ class SavingsPlan(pulumi.CustomResource):
     @pulumi.getter
     def flavor(self) -> pulumi.Output[str]:
         """
-        Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+        Savings Plan flavor
         """
         return pulumi.get(self, "flavor")
 
@@ -562,7 +522,7 @@ class SavingsPlan(pulumi.CustomResource):
     @pulumi.getter(name="periodEndAction")
     def period_end_action(self) -> pulumi.Output[str]:
         """
-        Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
+        Action performed when reaching the end of the period
         """
         return pulumi.get(self, "period_end_action")
 
@@ -586,7 +546,7 @@ class SavingsPlan(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[int]:
         """
-        Billing ID of the service
+        ID of the service
         """
         return pulumi.get(self, "service_id")
 

@@ -83,57 +83,36 @@ class GetInstallationTemplateResult:
     @property
     @pulumi.getter(name="bitFormat")
     def bit_format(self) -> int:
-        """
-        Template bit format (32 or 64).
-        """
         return pulumi.get(self, "bit_format")
 
     @property
     @pulumi.getter
     def category(self) -> str:
-        """
-        Category of this template (informative only).
-        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Information about this template.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def distribution(self) -> str:
-        """
-        Distribution this template is based on.
-        """
         return pulumi.get(self, "distribution")
 
     @property
     @pulumi.getter(name="endOfInstall")
     def end_of_install(self) -> str:
-        """
-        End of install date of the template.
-        """
         return pulumi.get(self, "end_of_install")
 
     @property
     @pulumi.getter
     def family(self) -> str:
-        """
-        Template family type.
-        """
         return pulumi.get(self, "family")
 
     @property
     @pulumi.getter
     def filesystems(self) -> Sequence[str]:
-        """
-        Filesystems available.
-        """
         return pulumi.get(self, "filesystems")
 
     @property
@@ -152,57 +131,36 @@ class GetInstallationTemplateResult:
     @property
     @pulumi.getter
     def inputs(self) -> Sequence['outputs.GetInstallationTemplateInputResult']:
-        """
-        Represents the questions of the expected answers in the userMetadata field.
-        """
         return pulumi.get(self, "inputs")
 
     @property
     @pulumi.getter
     def licenses(self) -> Sequence['outputs.GetInstallationTemplateLicenseResult']:
-        """
-        License available for this template.
-        """
         return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter(name="lvmReady")
     def lvm_ready(self) -> bool:
-        """
-        Whether this template supports LVM.
-        """
         return pulumi.get(self, "lvm_ready")
 
     @property
     @pulumi.getter(name="noPartitioning")
     def no_partitioning(self) -> bool:
-        """
-        Partitioning customization is not available for this OS template.
-        """
         return pulumi.get(self, "no_partitioning")
 
     @property
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetInstallationTemplateProjectResult']:
-        """
-        Distribution project details.
-        """
         return pulumi.get(self, "projects")
 
     @property
     @pulumi.getter(name="softRaidOnlyMirroring")
     def soft_raid_only_mirroring(self) -> bool:
-        """
-        Template supports RAID0 and RAID1 on 2 disks.
-        """
         return pulumi.get(self, "soft_raid_only_mirroring")
 
     @property
     @pulumi.getter
     def subfamily(self) -> str:
-        """
-        Subfamily of the template.
-        """
         return pulumi.get(self, "subfamily")
 
     @property
@@ -239,20 +197,7 @@ class AwaitableGetInstallationTemplateResult(GetInstallationTemplateResult):
 def get_installation_template(template_name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstallationTemplateResult:
     """
-    Use this data source to retrieve information about a specific OVH dedicated server installation template.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    ovh_template = ovh.get_installation_template(template_name="debian12_64")
-    pulumi.export("template", ovh_template)
-    ```
-
-
-    :param str template_name: The name of the template.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['templateName'] = template_name
@@ -280,20 +225,7 @@ def get_installation_template(template_name: Optional[str] = None,
 def get_installation_template_output(template_name: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstallationTemplateResult]:
     """
-    Use this data source to retrieve information about a specific OVH dedicated server installation template.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    ovh_template = ovh.get_installation_template(template_name="debian12_64")
-    pulumi.export("template", ovh_template)
-    ```
-
-
-    :param str template_name: The name of the template.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['templateName'] = template_name

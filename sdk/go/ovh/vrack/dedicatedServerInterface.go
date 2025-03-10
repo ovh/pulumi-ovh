@@ -8,55 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attach a Dedicated Server Network Interface to a vRack.
-//
-// > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br />
-// Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			server, err := ovh.GetServer(ctx, &ovh.GetServerArgs{
-//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vrack.NewDedicatedServerInterface(ctx, "vdsi", &vrack.DedicatedServerInterfaceArgs{
-//				ServiceName: pulumi.String("pn-xxxxxxx"),
-//				InterfaceId: pulumi.String(server.EnabledVrackVnis[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DedicatedServerInterface struct {
 	pulumi.CustomResourceState
 
-	// The id of dedicated server network interface.
 	InterfaceId pulumi.StringOutput `pulumi:"interfaceId"`
-	// The id of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the vrack resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -96,18 +56,14 @@ func GetDedicatedServerInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DedicatedServerInterface resources.
 type dedicatedServerInterfaceState struct {
-	// The id of dedicated server network interface.
 	InterfaceId *string `pulumi:"interfaceId"`
-	// The id of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the vrack resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type DedicatedServerInterfaceState struct {
-	// The id of dedicated server network interface.
 	InterfaceId pulumi.StringPtrInput
-	// The id of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the vrack resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -116,19 +72,15 @@ func (DedicatedServerInterfaceState) ElementType() reflect.Type {
 }
 
 type dedicatedServerInterfaceArgs struct {
-	// The id of dedicated server network interface.
 	InterfaceId string `pulumi:"interfaceId"`
-	// The id of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the vrack resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a DedicatedServerInterface resource.
 type DedicatedServerInterfaceArgs struct {
-	// The id of dedicated server network interface.
 	InterfaceId pulumi.StringInput
-	// The id of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the vrack resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -219,13 +171,11 @@ func (o DedicatedServerInterfaceOutput) ToDedicatedServerInterfaceOutputWithCont
 	return o
 }
 
-// The id of dedicated server network interface.
 func (o DedicatedServerInterfaceOutput) InterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedServerInterface) pulumi.StringOutput { return v.InterfaceId }).(pulumi.StringOutput)
 }
 
-// The id of the vrack. If omitted,
-// the `OVH_VRACK_SERVICE` environment variable is used.
+// Service name of the vrack resource.
 func (o DedicatedServerInterfaceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedServerInterface) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

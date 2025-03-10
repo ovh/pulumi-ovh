@@ -84,17 +84,11 @@ class GetCartProductOptionsPlanResult:
     @property
     @pulumi.getter
     def exclusive(self) -> bool:
-        """
-        Define if options of this family are exclusive with each other
-        """
         return pulumi.get(self, "exclusive")
 
     @property
     @pulumi.getter
     def family(self) -> str:
-        """
-        Option family
-        """
         return pulumi.get(self, "family")
 
     @property
@@ -108,9 +102,6 @@ class GetCartProductOptionsPlanResult:
     @property
     @pulumi.getter
     def mandatory(self) -> bool:
-        """
-        Define if an option of this family is mandatory
-        """
         return pulumi.get(self, "mandatory")
 
     @property
@@ -121,9 +112,6 @@ class GetCartProductOptionsPlanResult:
     @property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
-        """
-        Product offer identifier
-        """
         return pulumi.get(self, "plan_code")
 
     @property
@@ -134,9 +122,6 @@ class GetCartProductOptionsPlanResult:
     @property
     @pulumi.getter
     def prices(self) -> Sequence['outputs.GetCartProductOptionsPlanPriceResult']:
-        """
-        Prices of the product offer
-        """
         return pulumi.get(self, "prices")
 
     @property
@@ -147,25 +132,16 @@ class GetCartProductOptionsPlanResult:
     @property
     @pulumi.getter(name="productName")
     def product_name(self) -> str:
-        """
-        Name of the product
-        """
         return pulumi.get(self, "product_name")
 
     @property
     @pulumi.getter(name="productType")
     def product_type(self) -> str:
-        """
-        Product type
-        """
         return pulumi.get(self, "product_type")
 
     @property
     @pulumi.getter(name="selectedPrices")
     def selected_prices(self) -> Sequence['outputs.GetCartProductOptionsPlanSelectedPriceResult']:
-        """
-        Selected Price according to capacity
-        """
         return pulumi.get(self, "selected_prices")
 
 
@@ -199,30 +175,7 @@ def get_cart_product_options_plan(cart_id: Optional[str] = None,
                                   product: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCartProductOptionsPlanResult:
     """
-    Use this data source to retrieve information of order cart product options plan.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_account = ovh.Me.get_me()
-    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-    plan = ovh.Order.get_cart_product_options_plan(cart_id=my_cart.id,
-        price_capacity="renew",
-        product="cloud",
-        plan_code="project",
-        options_plan_code="vrack")
-    ```
-
-
-    :param str cart_id: Cart identifier
-    :param str catalog_name: Catalog name
-    :param str options_plan_code: options plan code.
-    :param str plan_code: Product offer identifier
-    :param str price_capacity: Capacity of the pricing (type of pricing)
-    :param str product: Product
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cartId'] = cart_id
@@ -257,30 +210,7 @@ def get_cart_product_options_plan_output(cart_id: Optional[pulumi.Input[str]] = 
                                          product: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartProductOptionsPlanResult]:
     """
-    Use this data source to retrieve information of order cart product options plan.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_account = ovh.Me.get_me()
-    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-    plan = ovh.Order.get_cart_product_options_plan(cart_id=my_cart.id,
-        price_capacity="renew",
-        product="cloud",
-        plan_code="project",
-        options_plan_code="vrack")
-    ```
-
-
-    :param str cart_id: Cart identifier
-    :param str catalog_name: Catalog name
-    :param str options_plan_code: options plan code.
-    :param str plan_code: Product offer identifier
-    :param str price_capacity: Capacity of the pricing (type of pricing)
-    :param str product: Product
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cartId'] = cart_id

@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve an IAM permissions group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const website = ovh.Iam.getPermissionsGroup({
- *     urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
- * });
- * ```
- */
 export function getPermissionsGroups(opts?: pulumi.InvokeOptions): Promise<GetPermissionsGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPermissionsGroups:getPermissionsGroups", {
@@ -34,20 +20,6 @@ export interface GetPermissionsGroupsResult {
     readonly id: string;
     readonly urns: string[];
 }
-/**
- * Use this data source to retrieve an IAM permissions group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const website = ovh.Iam.getPermissionsGroup({
- *     urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
- * });
- * ```
- */
 export function getPermissionsGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionsGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getPermissionsGroups:getPermissionsGroups", {

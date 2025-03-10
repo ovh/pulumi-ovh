@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve am IAM policy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myPolicy = ovh.Iam.getPolicy({
- *     id: "my_policy_id",
- * });
- * ```
- */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPolicy:getPolicy", {
@@ -34,29 +20,11 @@ export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getPolicy.
  */
 export interface GetPolicyArgs {
-    /**
-     * Set of actions allowed by the policy.
-     */
     allows?: string[];
-    /**
-     * Set of actions that will be denied no matter what policy exists.
-     */
     denies?: string[];
-    /**
-     * Group description.
-     */
     description?: string;
-    /**
-     * Set of actions that will be subtracted from the `allow` list.
-     */
     excepts?: string[];
-    /**
-     * UUID of the policy.
-     */
     id: string;
-    /**
-     * Set of permissions groups that apply to the policy.
-     */
     permissionsGroups?: string[];
 }
 
@@ -64,70 +32,20 @@ export interface GetPolicyArgs {
  * A collection of values returned by getPolicy.
  */
 export interface GetPolicyResult {
-    /**
-     * Set of actions allowed by the policy.
-     */
     readonly allows?: string[];
-    /**
-     * Creation date of this group.
-     */
     readonly createdAt: string;
-    /**
-     * Set of actions that will be denied no matter what policy exists.
-     */
     readonly denies?: string[];
-    /**
-     * Group description.
-     */
     readonly description?: string;
-    /**
-     * Set of actions that will be subtracted from the `allow` list.
-     */
     readonly excepts?: string[];
     readonly id: string;
-    /**
-     * Set of identities affected by the policy.
-     */
     readonly identities: string[];
-    /**
-     * Name of the policy.
-     */
     readonly name: string;
-    /**
-     * Owner of the policy.
-     */
     readonly owner: string;
-    /**
-     * Set of permissions groups that apply to the policy.
-     */
     readonly permissionsGroups?: string[];
-    /**
-     * Indicates that the policy is a default one.
-     */
     readonly readOnly: boolean;
-    /**
-     * Set of resources affected by the policy.
-     */
     readonly resources: string[];
-    /**
-     * Date of the last update of this group.
-     */
     readonly updatedAt: string;
 }
-/**
- * Use this data source to retrieve am IAM policy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myPolicy = ovh.Iam.getPolicy({
- *     id: "my_policy_id",
- * });
- * ```
- */
 export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getPolicy:getPolicy", {
@@ -144,28 +62,10 @@ export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getPolicy.
  */
 export interface GetPolicyOutputArgs {
-    /**
-     * Set of actions allowed by the policy.
-     */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Set of actions that will be denied no matter what policy exists.
-     */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Group description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Set of actions that will be subtracted from the `allow` list.
-     */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * UUID of the policy.
-     */
     id: pulumi.Input<string>;
-    /**
-     * Set of permissions groups that apply to the policy.
-     */
     permissionsGroups?: pulumi.Input<pulumi.Input<string>[]>;
 }

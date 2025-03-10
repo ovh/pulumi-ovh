@@ -29,15 +29,13 @@ class KafkaTopicArgs:
                  retention_hours: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a KafkaTopic resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
-        :param pulumi.Input[str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[int] partitions: Number of partitions for this topic. Should be superior to 0
-        :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
-        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
-        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic
+        :param pulumi.Input[str] name: Name of the topic
+        :param pulumi.Input[int] partitions: Number of partitions for this topic
+        :param pulumi.Input[int] replication: Number of replication for this topic
+        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic
+        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -58,7 +56,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -69,10 +67,6 @@ class KafkaTopicArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -83,7 +77,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum insync replica accepted for this topic. Should be superior to 0
+        Minimum insync replica accepted for this topic
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -95,7 +89,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the topic. No spaces allowed.
+        Name of the topic
         """
         return pulumi.get(self, "name")
 
@@ -107,7 +101,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of partitions for this topic. Should be superior to 0
+        Number of partitions for this topic
         """
         return pulumi.get(self, "partitions")
 
@@ -119,7 +113,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def replication(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of replication for this topic. Should be superior to 1
+        Number of replication for this topic
         """
         return pulumi.get(self, "replication")
 
@@ -131,7 +125,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
+        Number of bytes for the retention of the data for this topic
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -143,7 +137,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="retentionHours")
     def retention_hours(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+        Number of hours for the retention of the data for this topic
         """
         return pulumi.get(self, "retention_hours")
 
@@ -165,15 +159,13 @@ class _KafkaTopicState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaTopic resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
-        :param pulumi.Input[str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[int] partitions: Number of partitions for this topic. Should be superior to 0
-        :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
-        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
-        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic
+        :param pulumi.Input[str] name: Name of the topic
+        :param pulumi.Input[int] partitions: Number of partitions for this topic
+        :param pulumi.Input[int] replication: Number of replication for this topic
+        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic
+        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -196,7 +188,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -208,7 +200,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum insync replica accepted for this topic. Should be superior to 0
+        Minimum insync replica accepted for this topic
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -220,7 +212,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the topic. No spaces allowed.
+        Name of the topic
         """
         return pulumi.get(self, "name")
 
@@ -232,7 +224,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of partitions for this topic. Should be superior to 0
+        Number of partitions for this topic
         """
         return pulumi.get(self, "partitions")
 
@@ -244,7 +236,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def replication(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of replication for this topic. Should be superior to 1
+        Number of replication for this topic
         """
         return pulumi.get(self, "replication")
 
@@ -256,7 +248,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
+        Number of bytes for the retention of the data for this topic
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -268,7 +260,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="retentionHours")
     def retention_hours(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+        Number of hours for the retention of the data for this topic
         """
         return pulumi.get(self, "retention_hours")
 
@@ -279,10 +271,6 @@ class _KafkaTopicState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -305,48 +293,16 @@ class KafkaTopic(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a topic for a kafka cluster associated with a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
-            engine="kafka",
-            id="ZZZ")
-        topic = ovh.cloud_project_database.KafkaTopic("topic",
-            service_name=kafka.service_name,
-            cluster_id=kafka.id,
-            min_insync_replicas=1,
-            partitions=3,
-            replication=2,
-            retention_bytes=4,
-            retention_hours=5)
-        ```
-
-        ## Import
-
-        OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
-        ```
-
+        Create a KafkaTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
-        :param pulumi.Input[str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[int] partitions: Number of partitions for this topic. Should be superior to 0
-        :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
-        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
-        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic
+        :param pulumi.Input[str] name: Name of the topic
+        :param pulumi.Input[int] partitions: Number of partitions for this topic
+        :param pulumi.Input[int] replication: Number of replication for this topic
+        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic
+        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic
         """
         ...
     @overload
@@ -355,37 +311,7 @@ class KafkaTopic(pulumi.CustomResource):
                  args: KafkaTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a topic for a kafka cluster associated with a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
-            engine="kafka",
-            id="ZZZ")
-        topic = ovh.cloud_project_database.KafkaTopic("topic",
-            service_name=kafka.service_name,
-            cluster_id=kafka.id,
-            min_insync_replicas=1,
-            partitions=3,
-            replication=2,
-            retention_bytes=4,
-            retention_hours=5)
-        ```
-
-        ## Import
-
-        OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
-        ```
-
+        Create a KafkaTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaTopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -455,15 +381,13 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
-        :param pulumi.Input[str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[int] partitions: Number of partitions for this topic. Should be superior to 0
-        :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
-        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
-        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] cluster_id: Id of the database cluster
+        :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic
+        :param pulumi.Input[str] name: Name of the topic
+        :param pulumi.Input[int] partitions: Number of partitions for this topic
+        :param pulumi.Input[int] replication: Number of replication for this topic
+        :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic
+        :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,7 +407,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID.
+        Id of the database cluster
         """
         return pulumi.get(self, "cluster_id")
 
@@ -491,7 +415,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> pulumi.Output[int]:
         """
-        Minimum insync replica accepted for this topic. Should be superior to 0
+        Minimum insync replica accepted for this topic
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -499,7 +423,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the topic. No spaces allowed.
+        Name of the topic
         """
         return pulumi.get(self, "name")
 
@@ -507,7 +431,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[int]:
         """
-        Number of partitions for this topic. Should be superior to 0
+        Number of partitions for this topic
         """
         return pulumi.get(self, "partitions")
 
@@ -515,7 +439,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def replication(self) -> pulumi.Output[int]:
         """
-        Number of replication for this topic. Should be superior to 1
+        Number of replication for this topic
         """
         return pulumi.get(self, "replication")
 
@@ -523,7 +447,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> pulumi.Output[int]:
         """
-        Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
+        Number of bytes for the retention of the data for this topic
         """
         return pulumi.get(self, "retention_bytes")
 
@@ -531,16 +455,12 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="retentionHours")
     def retention_hours(self) -> pulumi.Output[int]:
         """
-        Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+        Number of hours for the retention of the data for this topic
         """
         return pulumi.get(self, "retention_hours")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        """
         return pulumi.get(self, "service_name")
 

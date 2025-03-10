@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Ip.Outputs
     public sealed class IpServiceOrderDetail
     {
         /// <summary>
-        /// Custom description on your ip.
+        /// description
         /// </summary>
         public readonly string? Description;
         /// <summary>

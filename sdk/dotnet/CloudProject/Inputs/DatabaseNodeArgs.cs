@@ -13,20 +13,19 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class DatabaseNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        /// Private network ID in which the node is. It's the regional openstackId of the private network.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Public cloud region in which the node should be deployed.
-        /// Ex: "GRA'.
+        /// Region of the node
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Private subnet ID in which the node is.
+        /// Private subnet ID in which the node is
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

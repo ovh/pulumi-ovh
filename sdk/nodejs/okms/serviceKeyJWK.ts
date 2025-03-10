@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Import an existing key in the JWK format in an OVHcloud KMS.
- */
 export class ServiceKeyJWK extends pulumi.CustomResource {
     /**
      * Get an existing ServiceKeyJWK resource's state with the given name, ID, and optional extra

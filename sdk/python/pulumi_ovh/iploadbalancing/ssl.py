@@ -30,7 +30,7 @@ class SslArgs:
         :param pulumi.Input[str] key: Certificate key
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] chain: Certificate chain
-        :param pulumi.Input[str] display_name: Readable label for loadbalancer ssl
+        :param pulumi.Input[str] display_name: Human readable name for your ssl certificate, this field is for you
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "key", key)
@@ -92,7 +92,7 @@ class SslArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Readable label for loadbalancer ssl
+        Human readable name for your ssl certificate, this field is for you
         """
         return pulumi.get(self, "display_name")
 
@@ -119,15 +119,16 @@ class _SslState:
         Input properties used for looking up and filtering Ssl resources.
         :param pulumi.Input[str] certificate: Certificate
         :param pulumi.Input[str] chain: Certificate chain
-        :param pulumi.Input[str] display_name: Readable label for loadbalancer ssl
-        :param pulumi.Input[str] expire_date: Expire date of your SSL certificate.
-        :param pulumi.Input[str] fingerprint: Fingerprint of your SSL certificate.
+        :param pulumi.Input[str] display_name: Human readable name for your ssl certificate, this field is for you
+        :param pulumi.Input[str] expire_date: Expire date of your SSL certificate
+        :param pulumi.Input[str] fingerprint: Fingerprint of your SSL certificate
         :param pulumi.Input[str] key: Certificate key
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sans: Subject Alternative Name of your SSL certificate.
-        :param pulumi.Input[str] serial: Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sans: Subject Alternative Name of your SSL certificate
+        :param pulumi.Input[str] serial: Serial of your SSL certificate (Deprecated, use fingerprint instead!)
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] subject: Subject of your SSL certificate.
-        :param pulumi.Input[str] type: Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+        :param pulumi.Input[str] subject: Subject of your SSL certificate
+        :param pulumi.Input[str] type: Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+               certificates.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -180,7 +181,7 @@ class _SslState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Readable label for loadbalancer ssl
+        Human readable name for your ssl certificate, this field is for you
         """
         return pulumi.get(self, "display_name")
 
@@ -192,7 +193,7 @@ class _SslState:
     @pulumi.getter(name="expireDate")
     def expire_date(self) -> Optional[pulumi.Input[str]]:
         """
-        Expire date of your SSL certificate.
+        Expire date of your SSL certificate
         """
         return pulumi.get(self, "expire_date")
 
@@ -204,7 +205,7 @@ class _SslState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of your SSL certificate.
+        Fingerprint of your SSL certificate
         """
         return pulumi.get(self, "fingerprint")
 
@@ -228,7 +229,7 @@ class _SslState:
     @pulumi.getter
     def sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Subject Alternative Name of your SSL certificate.
+        Subject Alternative Name of your SSL certificate
         """
         return pulumi.get(self, "sans")
 
@@ -240,7 +241,7 @@ class _SslState:
     @pulumi.getter
     def serial(self) -> Optional[pulumi.Input[str]]:
         """
-        Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+        Serial of your SSL certificate (Deprecated, use fingerprint instead!)
         """
         return pulumi.get(self, "serial")
 
@@ -264,7 +265,7 @@ class _SslState:
     @pulumi.getter
     def subject(self) -> Optional[pulumi.Input[str]]:
         """
-        Subject of your SSL certificate.
+        Subject of your SSL certificate
         """
         return pulumi.get(self, "subject")
 
@@ -276,7 +277,8 @@ class _SslState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+        Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+        certificates.
         """
         return pulumi.get(self, "type")
 
@@ -297,39 +299,12 @@ class Ssl(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new custom SSL certificate on your IP Load Balancing
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        sslname = ovh.ip_load_balancing.Ssl("sslname",
-            certificate="...",
-            chain="...",
-            display_name="test",
-            key="...",
-            service_name=lb.service_name)
-        ```
-
-        ## Import
-
-        SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:IpLoadBalancing/ssl:Ssl sslname service_name/ssl_id
-        ```
-
+        Create a Ssl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: Certificate
         :param pulumi.Input[str] chain: Certificate chain
-        :param pulumi.Input[str] display_name: Readable label for loadbalancer ssl
+        :param pulumi.Input[str] display_name: Human readable name for your ssl certificate, this field is for you
         :param pulumi.Input[str] key: Certificate key
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         """
@@ -340,34 +315,7 @@ class Ssl(pulumi.CustomResource):
                  args: SslArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new custom SSL certificate on your IP Load Balancing
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        sslname = ovh.ip_load_balancing.Ssl("sslname",
-            certificate="...",
-            chain="...",
-            display_name="test",
-            key="...",
-            service_name=lb.service_name)
-        ```
-
-        ## Import
-
-        SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:IpLoadBalancing/ssl:Ssl sslname service_name/ssl_id
-        ```
-
+        Create a Ssl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SslArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -446,15 +394,16 @@ class Ssl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: Certificate
         :param pulumi.Input[str] chain: Certificate chain
-        :param pulumi.Input[str] display_name: Readable label for loadbalancer ssl
-        :param pulumi.Input[str] expire_date: Expire date of your SSL certificate.
-        :param pulumi.Input[str] fingerprint: Fingerprint of your SSL certificate.
+        :param pulumi.Input[str] display_name: Human readable name for your ssl certificate, this field is for you
+        :param pulumi.Input[str] expire_date: Expire date of your SSL certificate
+        :param pulumi.Input[str] fingerprint: Fingerprint of your SSL certificate
         :param pulumi.Input[str] key: Certificate key
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sans: Subject Alternative Name of your SSL certificate.
-        :param pulumi.Input[str] serial: Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sans: Subject Alternative Name of your SSL certificate
+        :param pulumi.Input[str] serial: Serial of your SSL certificate (Deprecated, use fingerprint instead!)
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] subject: Subject of your SSL certificate.
-        :param pulumi.Input[str] type: Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+        :param pulumi.Input[str] subject: Subject of your SSL certificate
+        :param pulumi.Input[str] type: Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+               certificates.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -493,7 +442,7 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Readable label for loadbalancer ssl
+        Human readable name for your ssl certificate, this field is for you
         """
         return pulumi.get(self, "display_name")
 
@@ -501,7 +450,7 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter(name="expireDate")
     def expire_date(self) -> pulumi.Output[str]:
         """
-        Expire date of your SSL certificate.
+        Expire date of your SSL certificate
         """
         return pulumi.get(self, "expire_date")
 
@@ -509,7 +458,7 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of your SSL certificate.
+        Fingerprint of your SSL certificate
         """
         return pulumi.get(self, "fingerprint")
 
@@ -525,7 +474,7 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter
     def sans(self) -> pulumi.Output[Sequence[str]]:
         """
-        Subject Alternative Name of your SSL certificate.
+        Subject Alternative Name of your SSL certificate
         """
         return pulumi.get(self, "sans")
 
@@ -533,7 +482,7 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter
     def serial(self) -> pulumi.Output[str]:
         """
-        Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+        Serial of your SSL certificate (Deprecated, use fingerprint instead!)
         """
         return pulumi.get(self, "serial")
 
@@ -549,7 +498,7 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter
     def subject(self) -> pulumi.Output[str]:
         """
-        Subject of your SSL certificate.
+        Subject of your SSL certificate
         """
         return pulumi.get(self, "subject")
 
@@ -557,7 +506,8 @@ class Ssl(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+        Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+        certificates.
         """
         return pulumi.get(self, "type")
 

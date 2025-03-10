@@ -11,108 +11,12 @@ namespace Pulumi.Ovh.Order
 {
     public static class GetCartProductOptionsPlan
     {
-        /// <summary>
-        /// Use this data source to retrieve information of order cart product options plan.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myAccount = Ovh.Me.GetMe.Invoke();
-        /// 
-        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
-        ///     {
-        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
-        ///     });
-        /// 
-        ///     var plan = Ovh.Order.GetCartProductOptionsPlan.Invoke(new()
-        ///     {
-        ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
-        ///         PriceCapacity = "renew",
-        ///         Product = "cloud",
-        ///         PlanCode = "project",
-        ///         OptionsPlanCode = "vrack",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetCartProductOptionsPlanResult> InvokeAsync(GetCartProductOptionsPlanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartProductOptionsPlanResult>("ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan", args ?? new GetCartProductOptionsPlanArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information of order cart product options plan.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myAccount = Ovh.Me.GetMe.Invoke();
-        /// 
-        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
-        ///     {
-        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
-        ///     });
-        /// 
-        ///     var plan = Ovh.Order.GetCartProductOptionsPlan.Invoke(new()
-        ///     {
-        ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
-        ///         PriceCapacity = "renew",
-        ///         Product = "cloud",
-        ///         PlanCode = "project",
-        ///         OptionsPlanCode = "vrack",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCartProductOptionsPlanResult> Invoke(GetCartProductOptionsPlanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartProductOptionsPlanResult>("ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan", args ?? new GetCartProductOptionsPlanInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information of order cart product options plan.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myAccount = Ovh.Me.GetMe.Invoke();
-        /// 
-        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
-        ///     {
-        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
-        ///     });
-        /// 
-        ///     var plan = Ovh.Order.GetCartProductOptionsPlan.Invoke(new()
-        ///     {
-        ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
-        ///         PriceCapacity = "renew",
-        ///         Product = "cloud",
-        ///         PlanCode = "project",
-        ///         OptionsPlanCode = "vrack",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetCartProductOptionsPlanResult> Invoke(GetCartProductOptionsPlanInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartProductOptionsPlanResult>("ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan", args ?? new GetCartProductOptionsPlanInvokeArgs(), options.WithDefaults());
     }
@@ -120,39 +24,21 @@ namespace Pulumi.Ovh.Order
 
     public sealed class GetCartProductOptionsPlanArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cart identifier
-        /// </summary>
         [Input("cartId", required: true)]
         public string CartId { get; set; } = null!;
 
-        /// <summary>
-        /// Catalog name
-        /// </summary>
         [Input("catalogName")]
         public string? CatalogName { get; set; }
 
-        /// <summary>
-        /// options plan code.
-        /// </summary>
         [Input("optionsPlanCode", required: true)]
         public string OptionsPlanCode { get; set; } = null!;
 
-        /// <summary>
-        /// Product offer identifier
-        /// </summary>
         [Input("planCode", required: true)]
         public string PlanCode { get; set; } = null!;
 
-        /// <summary>
-        /// Capacity of the pricing (type of pricing)
-        /// </summary>
         [Input("priceCapacity", required: true)]
         public string PriceCapacity { get; set; } = null!;
 
-        /// <summary>
-        /// Product
-        /// </summary>
         [Input("product", required: true)]
         public string Product { get; set; } = null!;
 
@@ -164,39 +50,21 @@ namespace Pulumi.Ovh.Order
 
     public sealed class GetCartProductOptionsPlanInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cart identifier
-        /// </summary>
         [Input("cartId", required: true)]
         public Input<string> CartId { get; set; } = null!;
 
-        /// <summary>
-        /// Catalog name
-        /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
-        /// <summary>
-        /// options plan code.
-        /// </summary>
         [Input("optionsPlanCode", required: true)]
         public Input<string> OptionsPlanCode { get; set; } = null!;
 
-        /// <summary>
-        /// Product offer identifier
-        /// </summary>
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
 
-        /// <summary>
-        /// Capacity of the pricing (type of pricing)
-        /// </summary>
         [Input("priceCapacity", required: true)]
         public Input<string> PriceCapacity { get; set; } = null!;
 
-        /// <summary>
-        /// Product
-        /// </summary>
         [Input("product", required: true)]
         public Input<string> Product { get; set; } = null!;
 
@@ -212,44 +80,20 @@ namespace Pulumi.Ovh.Order
     {
         public readonly string CartId;
         public readonly string? CatalogName;
-        /// <summary>
-        /// Define if options of this family are exclusive with each other
-        /// </summary>
         public readonly bool Exclusive;
-        /// <summary>
-        /// Option family
-        /// </summary>
         public readonly string Family;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Define if an option of this family is mandatory
-        /// </summary>
         public readonly bool Mandatory;
         public readonly string OptionsPlanCode;
-        /// <summary>
-        /// Product offer identifier
-        /// </summary>
         public readonly string PlanCode;
         public readonly string PriceCapacity;
-        /// <summary>
-        /// Prices of the product offer
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCartProductOptionsPlanPriceResult> Prices;
         public readonly string Product;
-        /// <summary>
-        /// Name of the product
-        /// </summary>
         public readonly string ProductName;
-        /// <summary>
-        /// Product type
-        /// </summary>
         public readonly string ProductType;
-        /// <summary>
-        /// Selected Price according to capacity
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetCartProductOptionsPlanSelectedPriceResult> SelectedPrices;
 
         [OutputConstructor]

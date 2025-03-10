@@ -7,49 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information of order cart product products.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myAccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myCart, err := order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myAccount.OvhSubsidiary,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = order.GetCartProduct(ctx, &order.GetCartProductArgs{
-//				CartId:  myCart.Id,
-//				Product: "...",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupCartProduct(ctx *pulumi.Context, args *LookupCartProductArgs, opts ...pulumi.InvokeOption) (*LookupCartProductResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCartProductResult
@@ -62,9 +23,7 @@ func LookupCartProduct(ctx *pulumi.Context, args *LookupCartProductArgs, opts ..
 
 // A collection of arguments for invoking getCartProduct.
 type LookupCartProductArgs struct {
-	// Cart identifier
-	CartId string `pulumi:"cartId"`
-	// product
+	CartId  string `pulumi:"cartId"`
 	Product string `pulumi:"product"`
 }
 
@@ -72,9 +31,8 @@ type LookupCartProductArgs struct {
 type LookupCartProductResult struct {
 	CartId string `pulumi:"cartId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
-	Product string `pulumi:"product"`
-	// products results
+	Id      string                 `pulumi:"id"`
+	Product string                 `pulumi:"product"`
 	Results []GetCartProductResult `pulumi:"results"`
 }
 
@@ -89,9 +47,7 @@ func LookupCartProductOutput(ctx *pulumi.Context, args LookupCartProductOutputAr
 
 // A collection of arguments for invoking getCartProduct.
 type LookupCartProductOutputArgs struct {
-	// Cart identifier
-	CartId pulumi.StringInput `pulumi:"cartId"`
-	// product
+	CartId  pulumi.StringInput `pulumi:"cartId"`
 	Product pulumi.StringInput `pulumi:"product"`
 }
 
@@ -127,7 +83,6 @@ func (o LookupCartProductResultOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCartProductResult) string { return v.Product }).(pulumi.StringOutput)
 }
 
-// products results
 func (o LookupCartProductResultOutput) Results() GetCartProductResultArrayOutput {
 	return o.ApplyT(func(v LookupCartProductResult) []GetCartProductResult { return v.Results }).(GetCartProductResultArrayOutput)
 }

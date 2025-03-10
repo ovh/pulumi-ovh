@@ -9,73 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Domain
 {
-    /// <summary>
-    /// Provides a OVHcloud domain zone redirection.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Add a redirection to a sub-domain
-    ///     var test = new Ovh.Domain.ZoneRedirection("test", new()
-    ///     {
-    ///         Subdomain = "test",
-    ///         Target = "http://www.ovh",
-    ///         Type = "visiblePermanent",
-    ///         Zone = "testdemo.ovh",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Domain/zoneRedirection:ZoneRedirection")]
     public partial class ZoneRedirection : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// A description of this redirection
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Keywords to describe this redirection
-        /// </summary>
         [Output("keywords")]
         public Output<string?> Keywords { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the redirection
-        /// </summary>
         [Output("subdomain")]
         public Output<string?> Subdomain { get; private set; } = null!;
 
-        /// <summary>
-        /// The value of the redirection
-        /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
 
-        /// <summary>
-        /// Title of this redirection
-        /// </summary>
         [Output("title")]
         public Output<string?> Title { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of the redirection, with values:
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain to add the redirection to
-        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -126,45 +80,24 @@ namespace Pulumi.Ovh.Domain
 
     public sealed class ZoneRedirectionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of this redirection
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Keywords to describe this redirection
-        /// </summary>
         [Input("keywords")]
         public Input<string>? Keywords { get; set; }
 
-        /// <summary>
-        /// The name of the redirection
-        /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
 
-        /// <summary>
-        /// The value of the redirection
-        /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
-        /// <summary>
-        /// Title of this redirection
-        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
-        /// <summary>
-        /// The type of the redirection, with values:
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        /// <summary>
-        /// The domain to add the redirection to
-        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 
@@ -176,45 +109,24 @@ namespace Pulumi.Ovh.Domain
 
     public sealed class ZoneRedirectionState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description of this redirection
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Keywords to describe this redirection
-        /// </summary>
         [Input("keywords")]
         public Input<string>? Keywords { get; set; }
 
-        /// <summary>
-        /// The name of the redirection
-        /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
 
-        /// <summary>
-        /// The value of the redirection
-        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
-        /// <summary>
-        /// Title of this redirection
-        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
-        /// <summary>
-        /// The type of the redirection, with values:
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        /// <summary>
-        /// The domain to add the redirection to
-        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

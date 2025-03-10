@@ -67,9 +67,6 @@ class GetKubeOidcResult:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
-        """
-        The OIDC client ID.
-        """
         return pulumi.get(self, "client_id")
 
     @property
@@ -83,81 +80,51 @@ class GetKubeOidcResult:
     @property
     @pulumi.getter(name="issuerUrl")
     def issuer_url(self) -> Optional[str]:
-        """
-        The OIDC issuer url.
-        """
         return pulumi.get(self, "issuer_url")
 
     @property
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "kube_id")
 
     @property
     @pulumi.getter(name="oidcCaContent")
     def oidc_ca_content(self) -> Optional[str]:
-        """
-        Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
-        """
         return pulumi.get(self, "oidc_ca_content")
 
     @property
     @pulumi.getter(name="oidcGroupsClaims")
     def oidc_groups_claims(self) -> Optional[Sequence[str]]:
-        """
-        Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
-        """
         return pulumi.get(self, "oidc_groups_claims")
 
     @property
     @pulumi.getter(name="oidcGroupsPrefix")
     def oidc_groups_prefix(self) -> Optional[str]:
-        """
-        Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
-        """
         return pulumi.get(self, "oidc_groups_prefix")
 
     @property
     @pulumi.getter(name="oidcRequiredClaims")
     def oidc_required_claims(self) -> Optional[Sequence[str]]:
-        """
-        Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
-        """
         return pulumi.get(self, "oidc_required_claims")
 
     @property
     @pulumi.getter(name="oidcSigningAlgs")
     def oidc_signing_algs(self) -> Optional[Sequence[str]]:
-        """
-        Array of signing algorithms accepted. Default is \\"RS256\\".
-        """
         return pulumi.get(self, "oidc_signing_algs")
 
     @property
     @pulumi.getter(name="oidcUsernameClaim")
     def oidc_username_claim(self) -> Optional[str]:
-        """
-        JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
-        """
         return pulumi.get(self, "oidc_username_claim")
 
     @property
     @pulumi.getter(name="oidcUsernamePrefix")
     def oidc_username_prefix(self) -> Optional[str]:
-        """
-        Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
-        """
         return pulumi.get(self, "oidc_username_prefix")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -194,32 +161,7 @@ def get_kube_oidc(client_id: Optional[str] = None,
                   service_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubeOidcResult:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    oidc = ovh.CloudProject.get_kube_oidc(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("oidc-val", oidc.client_id)
-    ```
-
-
-    :param str client_id: The OIDC client ID.
-    :param str issuer_url: The OIDC issuer url.
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str oidc_ca_content: Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
-    :param Sequence[str] oidc_groups_claims: Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
-    :param str oidc_groups_prefix: Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
-    :param Sequence[str] oidc_required_claims: Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
-    :param Sequence[str] oidc_signing_algs: Array of signing algorithms accepted. Default is \\"RS256\\".
-    :param str oidc_username_claim: JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
-    :param str oidc_username_prefix: Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clientId'] = client_id
@@ -262,32 +204,7 @@ def get_kube_oidc_output(client_id: Optional[pulumi.Input[Optional[str]]] = None
                          service_name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeOidcResult]:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    oidc = ovh.CloudProject.get_kube_oidc(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("oidc-val", oidc.client_id)
-    ```
-
-
-    :param str client_id: The OIDC client ID.
-    :param str issuer_url: The OIDC issuer url.
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str oidc_ca_content: Content of the certificate for the CA, in base64 format, that signed your identity provider's web certificate. Defaults to the host's root CAs.
-    :param Sequence[str] oidc_groups_claims: Array of JWT claim to use as the user's group. If the claim is present it must be an array of strings.
-    :param str oidc_groups_prefix: Prefix prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: will create group names like oidc:engineering and oidc:infra.
-    :param Sequence[str] oidc_required_claims: Array of key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value."
-    :param Sequence[str] oidc_signing_algs: Array of signing algorithms accepted. Default is \\"RS256\\".
-    :param str oidc_username_claim: JWT claim to use as the user name. By default sub, which is expected to be a unique identifier of the end user. Admins can choose other claims, such as email or name, depending on their provider. However, claims other than email will be prefixed with the issuer URL to prevent naming clashes with other plugins.
-    :param str oidc_username_prefix: Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidc_username_claim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clientId'] = client_id

@@ -85,33 +85,21 @@ class GetVpsResult:
     @property
     @pulumi.getter(name="VpsURN")
     def vps_urn(self) -> str:
-        """
-        The URN of the vps
-        """
         return pulumi.get(self, "vps_urn")
 
     @property
     @pulumi.getter
     def cluster(self) -> str:
-        """
-        The OVHcloud cluster the vps is in
-        """
         return pulumi.get(self, "cluster")
 
     @property
     @pulumi.getter
     def datacenter(self) -> Mapping[str, str]:
-        """
-        The datacenter in which the vps is located
-        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter
     def displayname(self) -> str:
-        """
-        The displayed name in the OVHcloud web admin
-        """
         return pulumi.get(self, "displayname")
 
     @property
@@ -125,33 +113,21 @@ class GetVpsResult:
     @property
     @pulumi.getter
     def ips(self) -> Sequence[str]:
-        """
-        The list of IPs addresses attached to the vps
-        """
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
     def keymap(self) -> str:
-        """
-        The keymap for the ip kvm, valid values "", "fr", "us"
-        """
         return pulumi.get(self, "keymap")
 
     @property
     @pulumi.getter
     def memory(self) -> int:
-        """
-        The amount of memory in MB of the vps.
-        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
     def model(self) -> Mapping[str, str]:
-        """
-        A dict describing the type of vps.
-        """
         return pulumi.get(self, "model")
 
     @property
@@ -162,17 +138,11 @@ class GetVpsResult:
     @property
     @pulumi.getter
     def netbootmode(self) -> str:
-        """
-        The source of the boot kernel
-        """
         return pulumi.get(self, "netbootmode")
 
     @property
     @pulumi.getter
     def offertype(self) -> str:
-        """
-        The type of offer (ssd, cloud, classic)
-        """
         return pulumi.get(self, "offertype")
 
     @property
@@ -183,41 +153,26 @@ class GetVpsResult:
     @property
     @pulumi.getter
     def slamonitoring(self) -> bool:
-        """
-        A boolean to indicate if OVHcloud SLA monitoring is active.
-        """
         return pulumi.get(self, "slamonitoring")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        The state of the vps
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The type of server
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def vcore(self) -> int:
-        """
-        The number of vcore of the vps
-        """
         return pulumi.get(self, "vcore")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        The OVHcloud zone where the vps is
-        """
         return pulumi.get(self, "zone")
 
 
@@ -250,19 +205,7 @@ class AwaitableGetVpsResult(GetVpsResult):
 def get_vps(service_name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpsResult:
     """
-    Use this data source to retrieve information about a vps associated with your OVHcloud Account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    server = ovh.Vps.get_vps(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The service_name of your dedicated server.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -291,19 +234,7 @@ def get_vps(service_name: Optional[str] = None,
 def get_vps_output(service_name: Optional[pulumi.Input[str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpsResult]:
     """
-    Use this data source to retrieve information about a vps associated with your OVHcloud Account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    server = ovh.Vps.get_vps(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The service_name of your dedicated server.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

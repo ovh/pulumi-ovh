@@ -56,9 +56,6 @@ class GetRegionsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
-        """
-        The list of regions associated with the project, filtered by services UP.
-        """
         return pulumi.get(self, "names")
 
     @property
@@ -83,24 +80,7 @@ def get_regions(has_services_ups: Optional[Sequence[str]] = None,
                 service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
-    Use this data source to get the regions of a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
-        service_name="XXXXXX")
-    ```
-
-
-    :param Sequence[str] has_services_ups: List of services which has to be UP in regions.
-           Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-           If left blank, returns all regions associated with the service_name.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['hasServicesUps'] = has_services_ups
@@ -117,24 +97,7 @@ def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence
                        service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
-    Use this data source to get the regions of a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
-        service_name="XXXXXX")
-    ```
-
-
-    :param Sequence[str] has_services_ups: List of services which has to be UP in regions.
-           Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-           If left blank, returns all regions associated with the service_name.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['hasServicesUps'] = has_services_ups

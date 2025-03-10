@@ -51,10 +51,10 @@ class VpsIam(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  urn: Optional[str] = None):
         """
-        :param str display_name: Custom display name
-        :param str id: Unique identifier of the resource in the IAM
-        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
-        :param str urn: URN of the private database, used when writing IAM policies
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -69,7 +69,7 @@ class VpsIam(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         """
-        Custom display name
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -77,7 +77,7 @@ class VpsIam(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Unique identifier of the resource in the IAM
+        Unique identifier of the resource
         """
         return pulumi.get(self, "id")
 
@@ -85,7 +85,7 @@ class VpsIam(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
-        Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        Resource tags. Tags that were internally computed are prefixed with ovh:
         """
         return pulumi.get(self, "tags")
 
@@ -93,7 +93,7 @@ class VpsIam(dict):
     @pulumi.getter
     def urn(self) -> Optional[str]:
         """
-        URN of the private database, used when writing IAM policies
+        Unique resource name used in policies
         """
         return pulumi.get(self, "urn")
 
@@ -130,15 +130,7 @@ class VpsModel(dict):
                  vcore: Optional[float] = None,
                  version: Optional[str] = None):
         """
-        :param Sequence[str] available_options: All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
-        :param Sequence[str] datacenters: Datacenters where this model is available
-        :param float disk: Disk capacity of this VPS
-        :param float maximum_additionnal_ip: Maximum number of additional IPs
-        :param float memory: RAM of the VPS
-        :param str name: Name of the VPS
-        :param str offer: Description of this VPS offer
-        :param float vcore: Number of vcores
-        :param str version: All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        :param str version: All versions that VPS can have
         """
         if available_options is not None:
             pulumi.set(__self__, "available_options", available_options)
@@ -162,72 +154,48 @@ class VpsModel(dict):
     @property
     @pulumi.getter(name="availableOptions")
     def available_options(self) -> Optional[Sequence[str]]:
-        """
-        All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
-        """
         return pulumi.get(self, "available_options")
 
     @property
     @pulumi.getter
     def datacenters(self) -> Optional[Sequence[str]]:
-        """
-        Datacenters where this model is available
-        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter
     def disk(self) -> Optional[float]:
-        """
-        Disk capacity of this VPS
-        """
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter(name="maximumAdditionnalIp")
     def maximum_additionnal_ip(self) -> Optional[float]:
-        """
-        Maximum number of additional IPs
-        """
         return pulumi.get(self, "maximum_additionnal_ip")
 
     @property
     @pulumi.getter
     def memory(self) -> Optional[float]:
-        """
-        RAM of the VPS
-        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Name of the VPS
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def offer(self) -> Optional[str]:
-        """
-        Description of this VPS offer
-        """
         return pulumi.get(self, "offer")
 
     @property
     @pulumi.getter
     def vcore(self) -> Optional[float]:
-        """
-        Number of vcores
-        """
         return pulumi.get(self, "vcore")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        All versions that VPS can have
         """
         return pulumi.get(self, "version")
 
@@ -389,10 +357,9 @@ class VpsPlan(dict):
                  item_id: Optional[float] = None,
                  quantity: Optional[float] = None):
         """
-        :param str duration: duration
-        :param str plan_code: Plan code
-        :param str pricing_mode: Pricing model identifier
-        :param Sequence['VpsPlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
+        :param str duration: Duration selected for the purchase of the product
+        :param str plan_code: Identifier of the option offer
+        :param str pricing_mode: Pricing mode selected for the purchase of the product
         :param float item_id: Cart item to be linked
         :param float quantity: Quantity of product desired
         """
@@ -410,7 +377,7 @@ class VpsPlan(dict):
     @pulumi.getter
     def duration(self) -> str:
         """
-        duration
+        Duration selected for the purchase of the product
         """
         return pulumi.get(self, "duration")
 
@@ -418,7 +385,7 @@ class VpsPlan(dict):
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
         """
-        Plan code
+        Identifier of the option offer
         """
         return pulumi.get(self, "plan_code")
 
@@ -426,16 +393,13 @@ class VpsPlan(dict):
     @pulumi.getter(name="pricingMode")
     def pricing_mode(self) -> str:
         """
-        Pricing model identifier
+        Pricing mode selected for the purchase of the product
         """
         return pulumi.get(self, "pricing_mode")
 
     @property
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.VpsPlanConfiguration']]:
-        """
-        Representation of a configuration item for personalizing product
-        """
         return pulumi.get(self, "configurations")
 
     @property
@@ -461,8 +425,8 @@ class VpsPlanConfiguration(dict):
                  label: str,
                  value: str):
         """
-        :param str label: Identifier of the resource
-        :param str value: Path to the resource in api.ovh.com
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -471,7 +435,7 @@ class VpsPlanConfiguration(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -479,7 +443,7 @@ class VpsPlanConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 
@@ -512,11 +476,10 @@ class VpsPlanOption(dict):
                  quantity: float,
                  configurations: Optional[Sequence['outputs.VpsPlanOptionConfiguration']] = None):
         """
-        :param str duration: duration
-        :param str plan_code: Plan code
-        :param str pricing_mode: Pricing model identifier
+        :param str duration: Duration selected for the purchase of the product
+        :param str plan_code: Identifier of the option offer
+        :param str pricing_mode: Pricing mode selected for the purchase of the product
         :param float quantity: Quantity of product desired
-        :param Sequence['VpsPlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -529,7 +492,7 @@ class VpsPlanOption(dict):
     @pulumi.getter
     def duration(self) -> str:
         """
-        duration
+        Duration selected for the purchase of the product
         """
         return pulumi.get(self, "duration")
 
@@ -537,7 +500,7 @@ class VpsPlanOption(dict):
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
         """
-        Plan code
+        Identifier of the option offer
         """
         return pulumi.get(self, "plan_code")
 
@@ -545,7 +508,7 @@ class VpsPlanOption(dict):
     @pulumi.getter(name="pricingMode")
     def pricing_mode(self) -> str:
         """
-        Pricing model identifier
+        Pricing mode selected for the purchase of the product
         """
         return pulumi.get(self, "pricing_mode")
 
@@ -560,9 +523,6 @@ class VpsPlanOption(dict):
     @property
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.VpsPlanOptionConfiguration']]:
-        """
-        Representation of a configuration item for personalizing product
-        """
         return pulumi.get(self, "configurations")
 
 
@@ -572,8 +532,8 @@ class VpsPlanOptionConfiguration(dict):
                  label: str,
                  value: str):
         """
-        :param str label: Identifier of the resource
-        :param str value: Path to the resource in api.ovh.com
+        :param str label: Label for your configuration item
+        :param str value: Value or resource URL on API.OVH.COM of your configuration item
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -582,7 +542,7 @@ class VpsPlanOptionConfiguration(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Identifier of the resource
+        Label for your configuration item
         """
         return pulumi.get(self, "label")
 
@@ -590,7 +550,7 @@ class VpsPlanOptionConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Path to the resource in api.ovh.com
+        Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
 

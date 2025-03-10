@@ -9,64 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
-    /// <summary>
-    /// ## Import
-    /// 
-    /// OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/redisUser:RedisUser")]
     public partial class RedisUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Categories of the user.
+        /// Categories of the user
         /// </summary>
         [Output("categories")]
         public Output<ImmutableArray<string>> Categories { get; private set; } = null!;
 
         /// <summary>
-        /// Channels of the user.
+        /// Channels of the user
         /// </summary>
         [Output("channels")]
         public Output<ImmutableArray<string>> Channels { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Commands of the user.
+        /// Commands of the user
         /// </summary>
         [Output("commands")]
         public Output<ImmutableArray<string>> Commands { get; private set; } = null!;
 
         /// <summary>
-        /// Date of the creation of the user.
+        /// Date of the creation of the user
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Keys of the user.
+        /// Keys of the user
         /// </summary>
         [Output("keys")]
         public Output<ImmutableArray<string>> Keys { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Sensitive) Password of the user.
+        /// Password of the user
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -77,15 +66,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Output("passwordReset")]
         public Output<string?> PasswordReset { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Current status of the user.
+        /// Current status of the user
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -145,7 +130,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _categories;
 
         /// <summary>
-        /// Categories of the user.
+        /// Categories of the user
         /// </summary>
         public InputList<string> Categories
         {
@@ -157,7 +142,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _channels;
 
         /// <summary>
-        /// Channels of the user.
+        /// Channels of the user
         /// </summary>
         public InputList<string> Channels
         {
@@ -166,7 +151,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -175,7 +160,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _commands;
 
         /// <summary>
-        /// Commands of the user.
+        /// Commands of the user
         /// </summary>
         public InputList<string> Commands
         {
@@ -187,7 +172,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _keys;
 
         /// <summary>
-        /// Keys of the user.
+        /// Keys of the user
         /// </summary>
         public InputList<string> Keys
         {
@@ -196,7 +181,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -207,10 +192,6 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -226,7 +207,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _categories;
 
         /// <summary>
-        /// Categories of the user.
+        /// Categories of the user
         /// </summary>
         public InputList<string> Categories
         {
@@ -238,7 +219,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _channels;
 
         /// <summary>
-        /// Channels of the user.
+        /// Channels of the user
         /// </summary>
         public InputList<string> Channels
         {
@@ -247,7 +228,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -256,7 +237,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _commands;
 
         /// <summary>
-        /// Commands of the user.
+        /// Commands of the user
         /// </summary>
         public InputList<string> Commands
         {
@@ -265,7 +246,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Date of the creation of the user.
+        /// Date of the creation of the user
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -274,7 +255,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _keys;
 
         /// <summary>
-        /// Keys of the user.
+        /// Keys of the user
         /// </summary>
         public InputList<string> Keys
         {
@@ -283,7 +264,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -292,7 +273,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private Input<string>? _password;
 
         /// <summary>
-        /// (Sensitive) Password of the user.
+        /// Password of the user
         /// </summary>
         public Input<string>? Password
         {
@@ -310,15 +291,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Current status of the user.
+        /// Current status of the user
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

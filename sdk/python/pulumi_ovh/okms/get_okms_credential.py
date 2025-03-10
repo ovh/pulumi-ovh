@@ -61,41 +61,26 @@ class GetOkmsCredentialResult:
     @property
     @pulumi.getter(name="certificatePem")
     def certificate_pem(self) -> str:
-        """
-        (String) PEM encoded certificate of the credential
-        """
         return pulumi.get(self, "certificate_pem")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        (String) Creation time of the credential
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        (String) Description of the credential
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="expiredAt")
     def expired_at(self) -> str:
-        """
-        (String) Expiration time of the credential
-        """
         return pulumi.get(self, "expired_at")
 
     @property
     @pulumi.getter(name="fromCsr")
     def from_csr(self) -> bool:
-        """
-        (Boolean) Is the credential generated from CSR
-        """
         return pulumi.get(self, "from_csr")
 
     @property
@@ -106,17 +91,11 @@ class GetOkmsCredentialResult:
     @property
     @pulumi.getter(name="identityUrns")
     def identity_urns(self) -> Sequence[str]:
-        """
-        (List of String) List of identity URNs associated with the credential
-        """
         return pulumi.get(self, "identity_urns")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (String) Name of the credential
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -127,9 +106,6 @@ class GetOkmsCredentialResult:
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        (String) Status of the credential
-        """
         return pulumi.get(self, "status")
 
 
@@ -155,11 +131,7 @@ def get_okms_credential(id: Optional[str] = None,
                         okms_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOkmsCredentialResult:
     """
-    Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
-
-
-    :param str id: ID of the credential
-    :param str okms_id: ID of the KMS
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -182,11 +154,7 @@ def get_okms_credential_output(id: Optional[pulumi.Input[str]] = None,
                                okms_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsCredentialResult]:
     """
-    Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
-
-
-    :param str id: ID of the credential
-    :param str okms_id: ID of the KMS
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

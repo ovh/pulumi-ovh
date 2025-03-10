@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the details of a public cloud project loadbalancer.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lbLoadBalancer, err := cloudproject.GetLoadBalancer(ctx, &cloudproject.GetLoadBalancerArgs{
-//				ServiceName: "XXXXXX",
-//				RegionName:  "XXX",
-//				Id:          "XXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("lb", lbLoadBalancer)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLoadBalancer(ctx *pulumi.Context, args *GetLoadBalancerArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancerResult
@@ -53,43 +23,26 @@ func GetLoadBalancer(ctx *pulumi.Context, args *GetLoadBalancerArgs, opts ...pul
 
 // A collection of arguments for invoking getLoadBalancer.
 type GetLoadBalancerArgs struct {
-	// ID of the loadbalancer
-	Id string `pulumi:"id"`
-	// Region of the loadbalancer.
-	RegionName string `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	Id          string `pulumi:"id"`
+	RegionName  string `pulumi:"regionName"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getLoadBalancer.
 type GetLoadBalancerResult struct {
-	// Date of creation of the loadbalancer
-	CreatedAt string `pulumi:"createdAt"`
-	// ID of the flavor
-	FlavorId string `pulumi:"flavorId"`
-	// Information about the floating IP
-	FloatingIp GetLoadBalancerFloatingIp `pulumi:"floatingIp"`
-	// ID of the floating IP
-	Id string `pulumi:"id"`
-	// Name of the loadbalancer
-	Name string `pulumi:"name"`
-	// Operating status of the loadbalancer
-	OperatingStatus string `pulumi:"operatingStatus"`
-	// Provisioning status of the loadbalancer
-	ProvisioningStatus string `pulumi:"provisioningStatus"`
-	// Region of the loadbalancer
-	RegionName string `pulumi:"regionName"`
-	// ID of the public cloud project
-	ServiceName string `pulumi:"serviceName"`
-	// Last update date of the loadbalancer
-	UpdatedAt string `pulumi:"updatedAt"`
-	// IP address of the Virtual IP
-	VipAddress string `pulumi:"vipAddress"`
-	// Openstack ID of the network for the Virtual IP
-	VipNetworkId string `pulumi:"vipNetworkId"`
-	// ID of the subnet for the Virtual IP
-	VipSubnetId string `pulumi:"vipSubnetId"`
+	CreatedAt          string                    `pulumi:"createdAt"`
+	FlavorId           string                    `pulumi:"flavorId"`
+	FloatingIp         GetLoadBalancerFloatingIp `pulumi:"floatingIp"`
+	Id                 string                    `pulumi:"id"`
+	Name               string                    `pulumi:"name"`
+	OperatingStatus    string                    `pulumi:"operatingStatus"`
+	ProvisioningStatus string                    `pulumi:"provisioningStatus"`
+	RegionName         string                    `pulumi:"regionName"`
+	ServiceName        string                    `pulumi:"serviceName"`
+	UpdatedAt          string                    `pulumi:"updatedAt"`
+	VipAddress         string                    `pulumi:"vipAddress"`
+	VipNetworkId       string                    `pulumi:"vipNetworkId"`
+	VipSubnetId        string                    `pulumi:"vipSubnetId"`
 }
 
 func GetLoadBalancerOutput(ctx *pulumi.Context, args GetLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerResultOutput {
@@ -103,12 +56,8 @@ func GetLoadBalancerOutput(ctx *pulumi.Context, args GetLoadBalancerOutputArgs, 
 
 // A collection of arguments for invoking getLoadBalancer.
 type GetLoadBalancerOutputArgs struct {
-	// ID of the loadbalancer
-	Id pulumi.StringInput `pulumi:"id"`
-	// Region of the loadbalancer.
-	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	Id          pulumi.StringInput `pulumi:"id"`
+	RegionName  pulumi.StringInput `pulumi:"regionName"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -131,67 +80,54 @@ func (o GetLoadBalancerResultOutput) ToGetLoadBalancerResultOutputWithContext(ct
 	return o
 }
 
-// Date of creation of the loadbalancer
 func (o GetLoadBalancerResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// ID of the flavor
 func (o GetLoadBalancerResultOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Information about the floating IP
 func (o GetLoadBalancerResultOutput) FloatingIp() GetLoadBalancerFloatingIpOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) GetLoadBalancerFloatingIp { return v.FloatingIp }).(GetLoadBalancerFloatingIpOutput)
 }
 
-// ID of the floating IP
 func (o GetLoadBalancerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the loadbalancer
 func (o GetLoadBalancerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Operating status of the loadbalancer
 func (o GetLoadBalancerResultOutput) OperatingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.OperatingStatus }).(pulumi.StringOutput)
 }
 
-// Provisioning status of the loadbalancer
 func (o GetLoadBalancerResultOutput) ProvisioningStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
 }
 
-// Region of the loadbalancer
 func (o GetLoadBalancerResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// ID of the public cloud project
 func (o GetLoadBalancerResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Last update date of the loadbalancer
 func (o GetLoadBalancerResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// IP address of the Virtual IP
 func (o GetLoadBalancerResultOutput) VipAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.VipAddress }).(pulumi.StringOutput)
 }
 
-// Openstack ID of the network for the Virtual IP
 func (o GetLoadBalancerResultOutput) VipNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.VipNetworkId }).(pulumi.StringOutput)
 }
 
-// ID of the subnet for the Virtual IP
 func (o GetLoadBalancerResultOutput) VipSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.VipSubnetId }).(pulumi.StringOutput)
 }

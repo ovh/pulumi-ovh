@@ -14,35 +14,35 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class DatabaseEndpoint
     {
         /// <summary>
-        /// Type of component the URI relates to.
+        /// Type of component the URI relates to
         /// </summary>
         public readonly string? Component;
         /// <summary>
-        /// Domain of the cluster.
+        /// Domain of the cluster
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// Path of the endpoint.
+        /// Path of the endpoint
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// Connection port for the endpoint.
+        /// Connection port for the endpoint
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Scheme used to generate the URI.
+        /// Scheme used to generate the URI
         /// </summary>
         public readonly string? Scheme;
         /// <summary>
-        /// Defines whether the endpoint uses SSL.
+        /// Defines whether the endpoint uses SSL
         /// </summary>
         public readonly bool? Ssl;
         /// <summary>
-        /// SSL mode used to connect to the service if the SSL is enabled.
+        /// SSL mode used to connect to the service if the SSL is enabled
         /// </summary>
         public readonly string? SslMode;
         /// <summary>
-        /// URI of the endpoint.
+        /// URI of the endpoint
         /// </summary>
         public readonly string? Uri;
 

@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const prometheus = ovh.CloudProject.getMongoDbPrometheus({
- *     serviceName: "XXX",
- *     clusterId: "ZZZ",
- * });
- * export const name = prometheus.then(prometheus => prometheus.username);
- * ```
- */
 export function getMongoDbPrometheus(args: GetMongoDbPrometheusArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDbPrometheusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", {
@@ -32,14 +16,7 @@ export function getMongoDbPrometheus(args: GetMongoDbPrometheusArgs, opts?: pulu
  * A collection of arguments for invoking getMongoDbPrometheus.
  */
 export interface GetMongoDbPrometheusArgs {
-    /**
-     * Cluster ID
-     */
     clusterId: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -47,43 +24,15 @@ export interface GetMongoDbPrometheusArgs {
  * A collection of values returned by getMongoDbPrometheus.
  */
 export interface GetMongoDbPrometheusResult {
-    /**
-     * See Argument Reference above.
-     */
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly serviceName: string;
-    /**
-     * Name of the srv domain endpoint.
-     */
     readonly srvDomain: string;
-    /**
-     * name of the prometheus user.
-     */
     readonly username: string;
 }
-/**
- * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const prometheus = ovh.CloudProject.getMongoDbPrometheus({
- *     serviceName: "XXX",
- *     clusterId: "ZZZ",
- * });
- * export const name = prometheus.then(prometheus => prometheus.username);
- * ```
- */
 export function getMongoDbPrometheusOutput(args: GetMongoDbPrometheusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMongoDbPrometheusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", {
@@ -96,13 +45,6 @@ export function getMongoDbPrometheusOutput(args: GetMongoDbPrometheusOutputArgs,
  * A collection of arguments for invoking getMongoDbPrometheus.
  */
 export interface GetMongoDbPrometheusOutputArgs {
-    /**
-     * Cluster ID
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

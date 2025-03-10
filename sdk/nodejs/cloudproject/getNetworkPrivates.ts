@@ -6,25 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * List public cloud project private networks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * export = async () => {
- *     const privateNetworkPrivates = await ovh.CloudProject.getNetworkPrivates({
- *         serviceName: "XXXXXX",
- *     });
- *     return {
- *         "private": privateNetworkPrivates,
- *     };
- * }
- * ```
- */
 export function getNetworkPrivates(args: GetNetworkPrivatesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPrivatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", {
@@ -36,9 +17,6 @@ export function getNetworkPrivates(args: GetNetworkPrivatesArgs, opts?: pulumi.I
  * A collection of arguments for invoking getNetworkPrivates.
  */
 export interface GetNetworkPrivatesArgs {
-    /**
-     * The ID of the public cloud project.
-     */
     serviceName: string;
 }
 
@@ -50,34 +28,9 @@ export interface GetNetworkPrivatesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * List of network
-     */
     readonly networks: outputs.CloudProject.GetNetworkPrivatesNetwork[];
-    /**
-     * ID of the public cloud project
-     */
     readonly serviceName: string;
 }
-/**
- * List public cloud project private networks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * export = async () => {
- *     const privateNetworkPrivates = await ovh.CloudProject.getNetworkPrivates({
- *         serviceName: "XXXXXX",
- *     });
- *     return {
- *         "private": privateNetworkPrivates,
- *     };
- * }
- * ```
- */
 export function getNetworkPrivatesOutput(args: GetNetworkPrivatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPrivatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", {
@@ -89,8 +42,5 @@ export function getNetworkPrivatesOutput(args: GetNetworkPrivatesOutputArgs, opt
  * A collection of arguments for invoking getNetworkPrivates.
  */
 export interface GetNetworkPrivatesOutputArgs {
-    /**
-     * The ID of the public cloud project.
-     */
     serviceName: pulumi.Input<string>;
 }

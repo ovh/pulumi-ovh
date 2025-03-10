@@ -4,52 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an integration for a database cluster associated with a public cloud project.
- *
- * With this resource you can create an integration for all engine exept `mongodb`.
- *
- * Please take a look at the list of available `types` in the `Argument references` section in order to know the list of avaulable integrations. For example, thanks to the integration feature you can have your PostgreSQL logs in your OpenSearch Database.
- *
- * ## Example Usage
- *
- * Push PostgreSQL logs in an OpenSearch DB:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const dbPostgresql = ovh.CloudProjectDatabase.getDatabase({
- *     serviceName: "XXXX",
- *     engine: "postgresql",
- *     id: "ZZZZ",
- * });
- * const dbOpensearch = ovh.CloudProjectDatabase.getDatabase({
- *     serviceName: "XXXX",
- *     engine: "opensearch",
- *     id: "ZZZZ",
- * });
- * const integration = new ovh.cloudprojectdatabase.Integration("integration", {
- *     serviceName: dbPostgresql.then(dbPostgresql => dbPostgresql.serviceName),
- *     engine: dbPostgresql.then(dbPostgresql => dbPostgresql.engine),
- *     clusterId: dbPostgresql.then(dbPostgresql => dbPostgresql.id),
- *     sourceServiceId: dbPostgresql.then(dbPostgresql => dbPostgresql.id),
- *     destinationServiceId: dbOpensearch.then(dbOpensearch => dbOpensearch.id),
- *     type: "opensearchLogs",
- * });
- * ```
- *
- * ## Import
- *
- * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
- * ```
- */
 export class Integration extends pulumi.CustomResource {
     /**
      * Get an existing Integration resource's state with the given name, ID, and optional extra
@@ -79,43 +33,32 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * ID of the destination service.
+     * ID of the destination service
      */
     public readonly destinationServiceId!: pulumi.Output<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * Name of the engine of the service
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * Parameters for the integration.
+     * Parameters for the integration
      */
     public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * ID of the source service.
+     * ID of the source service
      */
     public readonly sourceServiceId!: pulumi.Output<string>;
     /**
-     * Current status of the integration.
+     * Current status of the integration
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Type of the integration.
-     * Available types:
-     * * `grafanaDashboard`
-     * * `grafanaDatasource`
-     * * `kafkaConnect`
-     * * `kafkaLogs`
-     * * `kafkaMirrorMaker`
+     * Type of the integration
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -176,43 +119,32 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * ID of the destination service.
+     * ID of the destination service
      */
     destinationServiceId?: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * Name of the engine of the service
      */
     engine?: pulumi.Input<string>;
     /**
-     * Parameters for the integration.
+     * Parameters for the integration
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName?: pulumi.Input<string>;
     /**
-     * ID of the source service.
+     * ID of the source service
      */
     sourceServiceId?: pulumi.Input<string>;
     /**
-     * Current status of the integration.
+     * Current status of the integration
      */
     status?: pulumi.Input<string>;
     /**
-     * Type of the integration.
-     * Available types:
-     * * `grafanaDashboard`
-     * * `grafanaDatasource`
-     * * `kafkaConnect`
-     * * `kafkaLogs`
-     * * `kafkaMirrorMaker`
+     * Type of the integration
      */
     type?: pulumi.Input<string>;
 }
@@ -222,39 +154,28 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId: pulumi.Input<string>;
     /**
-     * ID of the destination service.
+     * ID of the destination service
      */
     destinationServiceId: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * Name of the engine of the service
      */
     engine: pulumi.Input<string>;
     /**
-     * Parameters for the integration.
+     * Parameters for the integration
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
     /**
-     * ID of the source service.
+     * ID of the source service
      */
     sourceServiceId: pulumi.Input<string>;
     /**
-     * Type of the integration.
-     * Available types:
-     * * `grafanaDashboard`
-     * * `grafanaDatasource`
-     * * `kafkaConnect`
-     * * `kafkaLogs`
-     * * `kafkaMirrorMaker`
+     * Type of the integration
      */
     type?: pulumi.Input<string>;
 }

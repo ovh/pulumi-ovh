@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a rule on an IP firewall.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myFirewallRule = ovh.Ip.getFirewallRule({
- *     ip: "XXXXXX",
- *     ipOnFirewall: "XXXXXX",
- *     sequence: 0,
- * });
- * ```
- */
 export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Ip/getFirewallRule:getFirewallRule", {
@@ -33,17 +17,8 @@ export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getFirewallRule.
  */
 export interface GetFirewallRuleArgs {
-    /**
-     * The IP or the CIDR
-     */
     ip: string;
-    /**
-     * IPv4 address
-     */
     ipOnFirewall: string;
-    /**
-     * Rule position in the rules array
-     */
     sequence: number;
 }
 
@@ -51,83 +26,25 @@ export interface GetFirewallRuleArgs {
  * A collection of values returned by getFirewallRule.
  */
 export interface GetFirewallRuleResult {
-    /**
-     * Possible values for action (deny|permit)
-     */
     readonly action: string;
-    /**
-     * Creation date of the rule
-     */
     readonly creationDate: string;
-    /**
-     * Destination IP for your rule
-     */
     readonly destination: string;
-    /**
-     * Destination port for your rule. Only with TCP/UDP protocol
-     */
     readonly destinationPort: string;
-    /**
-     * Fragments option
-     */
     readonly fragments: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The IP or the CIDR
-     */
     readonly ip: string;
-    /**
-     * IPv4 address
-     */
     readonly ipOnFirewall: string;
-    /**
-     * Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
-     */
     readonly protocol: string;
-    /**
-     * Description of the rule
-     */
     readonly rule: string;
-    /**
-     * Rule position in the rules array
-     */
     readonly sequence: number;
-    /**
-     * IPv4 CIDR notation (e.g., 192.0.2.0/24)
-     */
     readonly source: string;
-    /**
-     * Source port for your rule. Only with TCP/UDP protocol
-     */
     readonly sourcePort: string;
-    /**
-     * Current state of your rule
-     */
     readonly state: string;
-    /**
-     * TCP option on your rule (syn|established)
-     */
     readonly tcpOption: string;
 }
-/**
- * Use this data source to retrieve information about a rule on an IP firewall.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myFirewallRule = ovh.Ip.getFirewallRule({
- *     ip: "XXXXXX",
- *     ipOnFirewall: "XXXXXX",
- *     sequence: 0,
- * });
- * ```
- */
 export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Ip/getFirewallRule:getFirewallRule", {
@@ -141,16 +58,7 @@ export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pu
  * A collection of arguments for invoking getFirewallRule.
  */
 export interface GetFirewallRuleOutputArgs {
-    /**
-     * The IP or the CIDR
-     */
     ip: pulumi.Input<string>;
-    /**
-     * IPv4 address
-     */
     ipOnFirewall: pulumi.Input<string>;
-    /**
-     * Rule position in the rules array
-     */
     sequence: pulumi.Input<number>;
 }

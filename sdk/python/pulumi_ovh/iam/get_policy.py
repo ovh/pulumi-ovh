@@ -70,41 +70,26 @@ class GetPolicyResult:
     @property
     @pulumi.getter
     def allows(self) -> Optional[Sequence[str]]:
-        """
-        Set of actions allowed by the policy.
-        """
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Creation date of this group.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def denies(self) -> Optional[Sequence[str]]:
-        """
-        Set of actions that will be denied no matter what policy exists.
-        """
         return pulumi.get(self, "denies")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        Group description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def excepts(self) -> Optional[Sequence[str]]:
-        """
-        Set of actions that will be subtracted from the `allow` list.
-        """
         return pulumi.get(self, "excepts")
 
     @property
@@ -115,57 +100,36 @@ class GetPolicyResult:
     @property
     @pulumi.getter
     def identities(self) -> Sequence[str]:
-        """
-        Set of identities affected by the policy.
-        """
         return pulumi.get(self, "identities")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the policy.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> str:
-        """
-        Owner of the policy.
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="permissionsGroups")
     def permissions_groups(self) -> Optional[Sequence[str]]:
-        """
-        Set of permissions groups that apply to the policy.
-        """
         return pulumi.get(self, "permissions_groups")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
-        """
-        Indicates that the policy is a default one.
-        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence[str]:
-        """
-        Set of resources affected by the policy.
-        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        Date of the last update of this group.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -198,24 +162,7 @@ def get_policy(allows: Optional[Sequence[str]] = None,
                permissions_groups: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
-    Use this data source to retrieve am IAM policy.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_policy = ovh.Iam.get_policy(id="my_policy_id")
-    ```
-
-
-    :param Sequence[str] allows: Set of actions allowed by the policy.
-    :param Sequence[str] denies: Set of actions that will be denied no matter what policy exists.
-    :param str description: Group description.
-    :param Sequence[str] excepts: Set of actions that will be subtracted from the `allow` list.
-    :param str id: UUID of the policy.
-    :param Sequence[str] permissions_groups: Set of permissions groups that apply to the policy.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['allows'] = allows
@@ -249,24 +196,7 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                       permissions_groups: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyResult]:
     """
-    Use this data source to retrieve am IAM policy.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_policy = ovh.Iam.get_policy(id="my_policy_id")
-    ```
-
-
-    :param Sequence[str] allows: Set of actions allowed by the policy.
-    :param Sequence[str] denies: Set of actions that will be denied no matter what policy exists.
-    :param str description: Group description.
-    :param Sequence[str] excepts: Set of actions that will be subtracted from the `allow` list.
-    :param str id: UUID of the policy.
-    :param Sequence[str] permissions_groups: Set of permissions groups that apply to the policy.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['allows'] = allows

@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class InstanceAttachedVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Instance id
+        /// Volume id
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

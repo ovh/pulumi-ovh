@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetKafkaAcl
     {
-        /// <summary>
-        /// Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var acl = Ovh.CloudProjectDatabase.GetKafkaAcl.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Id = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["aclPermission"] = acl.Apply(getKafkaAclResult =&gt; getKafkaAclResult.Permission),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var acl = Ovh.CloudProjectDatabase.GetKafkaAcl.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Id = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["aclPermission"] = acl.Apply(getKafkaAclResult =&gt; getKafkaAclResult.Permission),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetKafkaAclResult> Invoke(GetKafkaAclInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var acl = Ovh.CloudProjectDatabase.GetKafkaAcl.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Id = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["aclPermission"] = acl.Apply(getKafkaAclResult =&gt; getKafkaAclResult.Permission),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetKafkaAclResult> Invoke(GetKafkaAclInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithDefaults());
     }
@@ -105,22 +24,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetKafkaAclArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// ACL ID
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -132,22 +41,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetKafkaAclInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// ACL ID
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -161,29 +60,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetKafkaAclResult
     {
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Permission to give to this username on this topic.
-        /// </summary>
         public readonly string Permission;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Topic affected by this ACL.
-        /// </summary>
         public readonly string Topic;
-        /// <summary>
-        /// Username affected by this ACL.
-        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

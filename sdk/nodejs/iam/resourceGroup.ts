@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an OVHcloud IAM resource group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myResourceGroup = new ovh.iam.ResourceGroup("myResourceGroup", {resources: [
- *     "urn:v1:eu:resource:service1:service1-id",
- *     "urn:v1:eu:resource:service2:service2-id",
- * ]});
- * ```
- *
- * ## Import
- *
- * Resource groups can be imported by using their id.
- *
- * > Read only resource groups cannot be imported
- */
 export class ResourceGroup extends pulumi.CustomResource {
     /**
      * Get an existing ResourceGroup resource's state with the given name, ID, and optional extra
@@ -53,33 +32,12 @@ export class ResourceGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceGroup.__pulumiType;
     }
 
-    /**
-     * URN of the resource group, used when writing policies
-     */
     public /*out*/ readonly GroupURN!: pulumi.Output<string>;
-    /**
-     * Date of the creation of the resource group
-     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    /**
-     * Name of the resource group
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Name of the account owning the resource group
-     */
     public /*out*/ readonly owner!: pulumi.Output<string>;
-    /**
-     * Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-     */
     public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
-    /**
-     * Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-     */
     public readonly resources!: pulumi.Output<string[] | undefined>;
-    /**
-     * Date of the last modification of the resource group
-     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
@@ -121,33 +79,12 @@ export class ResourceGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourceGroup resources.
  */
 export interface ResourceGroupState {
-    /**
-     * URN of the resource group, used when writing policies
-     */
     GroupURN?: pulumi.Input<string>;
-    /**
-     * Date of the creation of the resource group
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Name of the resource group
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Name of the account owning the resource group
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-     */
     readOnly?: pulumi.Input<boolean>;
-    /**
-     * Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-     */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Date of the last modification of the resource group
-     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -155,12 +92,6 @@ export interface ResourceGroupState {
  * The set of arguments for constructing a ResourceGroup resource.
  */
 export interface ResourceGroupArgs {
-    /**
-     * Name of the resource group
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-     */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }

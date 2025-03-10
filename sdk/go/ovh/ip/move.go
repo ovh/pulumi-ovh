@@ -8,86 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Moves a given IP to a different service, or inversely, parks it if empty service is given
-//
-// ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewMove(ctx, "moveIpToLoadBalancerXxxxx", &ip.MoveArgs{
-//				Ip: pulumi.String("1.2.3.4"),
-//				RoutedTo: &ip.MoveRoutedToArgs{
-//					ServiceName: pulumi.String("loadbalancer-XXXXX"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Park IP/Detach IP `1.2.3.4` from any service
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewMove(ctx, "parkIp", &ip.MoveArgs{
-//				Ip: pulumi.String("1.2.3.4"),
-//				RoutedTo: &ip.MoveRoutedToArgs{
-//					ServiceName: pulumi.String(""),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Move struct {
 	pulumi.CustomResourceState
 
-	// Whether IP service can be terminated
-	CanBeTerminated pulumi.BoolOutput `pulumi:"canBeTerminated"`
-	// Country
-	Country pulumi.StringOutput `pulumi:"country"`
-	// Description attached to the IP
-	Description pulumi.StringOutput `pulumi:"description"`
-	// IP block that we want to attach to a different service
-	Ip pulumi.StringOutput `pulumi:"ip"`
-	// IP block organisation Id
+	CanBeTerminated pulumi.BoolOutput   `pulumi:"canBeTerminated"`
+	Country         pulumi.StringOutput `pulumi:"country"`
+	// Custom description on your ip
+	Description    pulumi.StringOutput `pulumi:"description"`
+	Ip             pulumi.StringOutput `pulumi:"ip"`
 	OrganisationId pulumi.StringOutput `pulumi:"organisationId"`
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
-	RoutedTo MoveRoutedToOutput `pulumi:"routedTo"`
-	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
+	// Routage information
+	RoutedTo    MoveRoutedToOutput  `pulumi:"routedTo"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
 	TaskStartDate pulumi.StringOutput `pulumi:"taskStartDate"`
@@ -133,21 +68,15 @@ func GetMove(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Move resources.
 type moveState struct {
-	// Whether IP service can be terminated
-	CanBeTerminated *bool `pulumi:"canBeTerminated"`
-	// Country
-	Country *string `pulumi:"country"`
-	// Description attached to the IP
-	Description *string `pulumi:"description"`
-	// IP block that we want to attach to a different service
-	Ip *string `pulumi:"ip"`
-	// IP block organisation Id
+	CanBeTerminated *bool   `pulumi:"canBeTerminated"`
+	Country         *string `pulumi:"country"`
+	// Custom description on your ip
+	Description    *string `pulumi:"description"`
+	Ip             *string `pulumi:"ip"`
 	OrganisationId *string `pulumi:"organisationId"`
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
-	RoutedTo *MoveRoutedTo `pulumi:"routedTo"`
-	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
-	ServiceName *string `pulumi:"serviceName"`
+	// Routage information
+	RoutedTo    *MoveRoutedTo `pulumi:"routedTo"`
+	ServiceName *string       `pulumi:"serviceName"`
 	// Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
 	TaskStartDate *string `pulumi:"taskStartDate"`
 	// Status field of the current IP task that is in charge of changing the service the IP is attached to
@@ -157,20 +86,14 @@ type moveState struct {
 }
 
 type MoveState struct {
-	// Whether IP service can be terminated
 	CanBeTerminated pulumi.BoolPtrInput
-	// Country
-	Country pulumi.StringPtrInput
-	// Description attached to the IP
-	Description pulumi.StringPtrInput
-	// IP block that we want to attach to a different service
-	Ip pulumi.StringPtrInput
-	// IP block organisation Id
+	Country         pulumi.StringPtrInput
+	// Custom description on your ip
+	Description    pulumi.StringPtrInput
+	Ip             pulumi.StringPtrInput
 	OrganisationId pulumi.StringPtrInput
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
-	RoutedTo MoveRoutedToPtrInput
-	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
+	// Routage information
+	RoutedTo    MoveRoutedToPtrInput
 	ServiceName pulumi.StringPtrInput
 	// Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
 	TaskStartDate pulumi.StringPtrInput
@@ -185,23 +108,19 @@ func (MoveState) ElementType() reflect.Type {
 }
 
 type moveArgs struct {
-	// Description attached to the IP
+	// Custom description on your ip
 	Description *string `pulumi:"description"`
-	// IP block that we want to attach to a different service
-	Ip string `pulumi:"ip"`
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	Ip          string  `pulumi:"ip"`
+	// Routage information
 	RoutedTo MoveRoutedTo `pulumi:"routedTo"`
 }
 
 // The set of arguments for constructing a Move resource.
 type MoveArgs struct {
-	// Description attached to the IP
+	// Custom description on your ip
 	Description pulumi.StringPtrInput
-	// IP block that we want to attach to a different service
-	Ip pulumi.StringInput
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	Ip          pulumi.StringInput
+	// Routage information
 	RoutedTo MoveRoutedToInput
 }
 
@@ -292,38 +211,32 @@ func (o MoveOutput) ToMoveOutputWithContext(ctx context.Context) MoveOutput {
 	return o
 }
 
-// Whether IP service can be terminated
 func (o MoveOutput) CanBeTerminated() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Move) pulumi.BoolOutput { return v.CanBeTerminated }).(pulumi.BoolOutput)
 }
 
-// Country
 func (o MoveOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.Country }).(pulumi.StringOutput)
 }
 
-// Description attached to the IP
+// Custom description on your ip
 func (o MoveOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// IP block that we want to attach to a different service
 func (o MoveOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IP block organisation Id
 func (o MoveOutput) OrganisationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.OrganisationId }).(pulumi.StringOutput)
 }
 
-// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+// Routage information
 func (o MoveOutput) RoutedTo() MoveRoutedToOutput {
 	return o.ApplyT(func(v *Move) MoveRoutedToOutput { return v.RoutedTo }).(MoveRoutedToOutput)
 }
 
-// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 func (o MoveOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

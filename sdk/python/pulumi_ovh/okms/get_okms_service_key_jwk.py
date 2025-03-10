@@ -123,21 +123,7 @@ def get_okms_service_key_jwk(id: Optional[str] = None,
                              okms_id: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOkmsServiceKeyJwkResult:
     """
-    Use this data source to retrieve information about a KMS service key, in the JWK format.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    key_info = ovh.Okms.get_okms_service_key(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-    ```
-
-
-    :param str id: ID of the service key
-    :param str okms_id: ID of the KMS
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -159,21 +145,7 @@ def get_okms_service_key_jwk_output(id: Optional[pulumi.Input[str]] = None,
                                     okms_id: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsServiceKeyJwkResult]:
     """
-    Use this data source to retrieve information about a KMS service key, in the JWK format.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    key_info = ovh.Okms.get_okms_service_key(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-    ```
-
-
-    :param str id: ID of the service key
-    :param str okms_id: ID of the KMS
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

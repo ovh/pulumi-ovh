@@ -13,21 +13,9 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class KubeKubeconfigAttribute
     {
-        /// <summary>
-        /// The kubernetes API server client certificate.
-        /// </summary>
         public readonly string? ClientCertificate;
-        /// <summary>
-        /// The kubernetes API server client key.
-        /// </summary>
         public readonly string? ClientKey;
-        /// <summary>
-        /// The kubernetes API server CA certificate.
-        /// </summary>
         public readonly string? ClusterCaCertificate;
-        /// <summary>
-        /// The kubernetes API server URL.
-        /// </summary>
         public readonly string? Host;
 
         [OutputConstructor]

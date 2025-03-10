@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetKubeNodePool
     {
-        /// <summary>
-        /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nodepool = Ovh.CloudProject.GetKubeNodePool.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        ///         Name = "xxxxxx",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["maxNodes"] = nodepool.Apply(getKubeNodePoolResult =&gt; getKubeNodePoolResult.MaxNodes),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetKubeNodePoolResult> InvokeAsync(GetKubeNodePoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nodepool = Ovh.CloudProject.GetKubeNodePool.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        ///         Name = "xxxxxx",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["maxNodes"] = nodepool.Apply(getKubeNodePoolResult =&gt; getKubeNodePoolResult.MaxNodes),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetKubeNodePoolResult> Invoke(GetKubeNodePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get a OVHcloud Managed Kubernetes node pool.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nodepool = Ovh.CloudProject.GetKubeNodePool.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        ///         Name = "xxxxxx",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["maxNodes"] = nodepool.Apply(getKubeNodePoolResult =&gt; getKubeNodePoolResult.MaxNodes),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetKubeNodePoolResult> Invoke(GetKubeNodePoolInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodePoolResult>("ovh:CloudProject/getKubeNodePool:getKubeNodePool", args ?? new GetKubeNodePoolInvokeArgs(), options.WithDefaults());
     }
@@ -105,22 +24,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetKubeNodePoolArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the managed kubernetes cluster.
-        /// </summary>
         [Input("kubeId", required: true)]
         public string KubeId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the node pool.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -135,22 +44,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetKubeNodePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The id of the managed kubernetes cluster.
-        /// </summary>
         [Input("kubeId", required: true)]
         public Input<string> KubeId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the node pool.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -167,107 +66,32 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetKubeNodePoolResult
     {
-        /// <summary>
-        /// (Optional) should the pool use the anti-affinity feature. Default to `false`.
-        /// </summary>
         public readonly bool AntiAffinity;
-        /// <summary>
-        /// (Optional) Enable auto-scaling for the pool. Default to `false`.
-        /// </summary>
         public readonly bool Autoscale;
-        /// <summary>
-        /// (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-        /// How long a node should be unneeded before it is eligible for scale down
-        /// </summary>
         public readonly int AutoscalingScaleDownUnneededTimeSeconds;
-        /// <summary>
-        /// (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-        /// How long an unready node should be unneeded before it is eligible for scale down
-        /// </summary>
         public readonly int AutoscalingScaleDownUnreadyTimeSeconds;
-        /// <summary>
-        /// (Optional) scaleDownUtilizationThreshold autoscaling parameter
-        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        /// </summary>
         public readonly double AutoscalingScaleDownUtilizationThreshold;
-        /// <summary>
-        /// Number of nodes which are actually ready in the pool
-        /// </summary>
         public readonly int AvailableNodes;
-        /// <summary>
-        /// Creation date
-        /// </summary>
         public readonly string CreatedAt;
-        /// <summary>
-        /// Number of nodes present in the pool
-        /// </summary>
         public readonly int CurrentNodes;
-        /// <summary>
-        /// Number of nodes you desire in the pool
-        /// </summary>
         public readonly int DesiredNodes;
-        /// <summary>
-        /// Flavor name
-        /// </summary>
         public readonly string Flavor;
-        /// <summary>
-        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-        /// Ex: "b2-7". Changing this value recreates the resource.
-        /// You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
-        /// </summary>
         public readonly string FlavorName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string KubeId;
-        /// <summary>
-        /// maximum number of nodes allowed in the pool.
-        /// Setting `desired_nodes` over this value will raise an error.
-        /// </summary>
         public readonly int MaxNodes;
-        /// <summary>
-        /// minimum number of nodes allowed in the pool.
-        /// Setting `desired_nodes` under this value will raise an error.
-        /// </summary>
         public readonly int MinNodes;
-        /// <summary>
-        /// (Optional) should the nodes be billed on a monthly basis. Default to `false`.
-        /// </summary>
         public readonly bool MonthlyBilled;
-        /// <summary>
-        /// (Optional) The name of the nodepool.
-        /// Changing this value recreates the resource.
-        /// Warning: "_" char is not allowed!
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Project id
-        /// </summary>
         public readonly string ProjectId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Status describing the state between number of nodes wanted and available ones
-        /// </summary>
         public readonly string SizeStatus;
-        /// <summary>
-        /// Current status
-        /// </summary>
         public readonly string Status;
         public readonly Outputs.GetKubeNodePoolTemplateResult? Template;
-        /// <summary>
-        /// Number of nodes with the latest version installed in the pool
-        /// </summary>
         public readonly int UpToDateNodes;
-        /// <summary>
-        /// Last update date
-        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]

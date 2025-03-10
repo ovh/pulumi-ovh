@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("disableds", required: true)]
         private InputList<string>? _disableds;
-
-        /// <summary>
-        /// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        /// </summary>
         public InputList<string> Disableds
         {
             get => _disableds ?? (_disableds = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("enableds", required: true)]
         private InputList<string>? _enableds;
-
-        /// <summary>
-        /// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
-        /// </summary>
         public InputList<string> Enableds
         {
             get => _enableds ?? (_enableds = new InputList<string>());

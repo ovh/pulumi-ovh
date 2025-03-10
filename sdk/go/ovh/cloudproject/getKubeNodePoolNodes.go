@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			nodesKubeNodePoolNodes, err := cloudproject.GetKubeNodePoolNodes(ctx, &cloudproject.GetKubeNodePoolNodesArgs{
-//				ServiceName: "XXXXXX",
-//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-//				Name:        "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nodes", nodesKubeNodePoolNodes)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKubeNodePoolNodes(ctx *pulumi.Context, args *GetKubeNodePoolNodesArgs, opts ...pulumi.InvokeOption) (*GetKubeNodePoolNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubeNodePoolNodesResult
@@ -53,27 +23,19 @@ func GetKubeNodePoolNodes(ctx *pulumi.Context, args *GetKubeNodePoolNodesArgs, o
 
 // A collection of arguments for invoking getKubeNodePoolNodes.
 type GetKubeNodePoolNodesArgs struct {
-	// The ID of the managed kubernetes cluster.
-	KubeId string `pulumi:"kubeId"`
-	// Name of the node pool from which we want the nodes.
-	Name string `pulumi:"name"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	KubeId      string `pulumi:"kubeId"`
+	Name        string `pulumi:"name"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getKubeNodePoolNodes.
 type GetKubeNodePoolNodesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
-	KubeId string `pulumi:"kubeId"`
-	// Name of the node.
-	Name string `pulumi:"name"`
-	// List of all nodes composing the kubernetes cluster.
-	Nodes []GetKubeNodePoolNodesNode `pulumi:"nodes"`
-	// See Argument Reference above.
-	ServiceName string `pulumi:"serviceName"`
+	Id          string                     `pulumi:"id"`
+	KubeId      string                     `pulumi:"kubeId"`
+	Name        string                     `pulumi:"name"`
+	Nodes       []GetKubeNodePoolNodesNode `pulumi:"nodes"`
+	ServiceName string                     `pulumi:"serviceName"`
 }
 
 func GetKubeNodePoolNodesOutput(ctx *pulumi.Context, args GetKubeNodePoolNodesOutputArgs, opts ...pulumi.InvokeOption) GetKubeNodePoolNodesResultOutput {
@@ -87,12 +49,8 @@ func GetKubeNodePoolNodesOutput(ctx *pulumi.Context, args GetKubeNodePoolNodesOu
 
 // A collection of arguments for invoking getKubeNodePoolNodes.
 type GetKubeNodePoolNodesOutputArgs struct {
-	// The ID of the managed kubernetes cluster.
-	KubeId pulumi.StringInput `pulumi:"kubeId"`
-	// Name of the node pool from which we want the nodes.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	KubeId      pulumi.StringInput `pulumi:"kubeId"`
+	Name        pulumi.StringInput `pulumi:"name"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -120,22 +78,18 @@ func (o GetKubeNodePoolNodesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetKubeNodePoolNodesResultOutput) KubeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesResult) string { return v.KubeId }).(pulumi.StringOutput)
 }
 
-// Name of the node.
 func (o GetKubeNodePoolNodesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of all nodes composing the kubernetes cluster.
 func (o GetKubeNodePoolNodesResultOutput) Nodes() GetKubeNodePoolNodesNodeArrayOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesResult) []GetKubeNodePoolNodesNode { return v.Nodes }).(GetKubeNodePoolNodesNodeArrayOutput)
 }
 
-// See Argument Reference above.
 func (o GetKubeNodePoolNodesResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

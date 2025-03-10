@@ -23,8 +23,6 @@ class RefreshArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a Refresh resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger refresh, used also to form implicit dependencies
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         """
         pulumi.set(__self__, "keepers", keepers)
         pulumi.set(__self__, "service_name", service_name)
@@ -32,9 +30,6 @@ class RefreshArgs:
     @property
     @pulumi.getter
     def keepers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        List of values tracked to trigger refresh, used also to form implicit dependencies
-        """
         return pulumi.get(self, "keepers")
 
     @keepers.setter
@@ -44,9 +39,6 @@ class RefreshArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -61,8 +53,6 @@ class _RefreshState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Refresh resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger refresh, used also to form implicit dependencies
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         """
         if keepers is not None:
             pulumi.set(__self__, "keepers", keepers)
@@ -72,9 +62,6 @@ class _RefreshState:
     @property
     @pulumi.getter
     def keepers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of values tracked to trigger refresh, used also to form implicit dependencies
-        """
         return pulumi.get(self, "keepers")
 
     @keepers.setter
@@ -84,9 +71,6 @@ class _RefreshState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -103,41 +87,9 @@ class Refresh(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
-            port=8080,
-            service_name=lb.service_name,
-            zone="all")
-        backend = ovh.ip_load_balancing.TcpFarmServer("backend",
-            address="4.5.6.7",
-            backup=True,
-            display_name="mybackend",
-            farm_id=farm_name.id,
-            port=80,
-            probe=True,
-            proxy_protocol_version="v2",
-            service_name=lb.service_name,
-            ssl=False,
-            status="active",
-            weight=2)
-        mylb = ovh.ip_load_balancing.Refresh("mylb",
-            keepers=[[__item.address for __item in [backend]]],
-            service_name=lb.service_name)
-        ```
-
+        Create a Refresh resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger refresh, used also to form implicit dependencies
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         """
         ...
     @overload
@@ -146,37 +98,7 @@ class Refresh(pulumi.CustomResource):
                  args: RefreshArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
-            port=8080,
-            service_name=lb.service_name,
-            zone="all")
-        backend = ovh.ip_load_balancing.TcpFarmServer("backend",
-            address="4.5.6.7",
-            backup=True,
-            display_name="mybackend",
-            farm_id=farm_name.id,
-            port=80,
-            probe=True,
-            proxy_protocol_version="v2",
-            service_name=lb.service_name,
-            ssl=False,
-            status="active",
-            weight=2)
-        mylb = ovh.ip_load_balancing.Refresh("mylb",
-            keepers=[[__item.address for __item in [backend]]],
-            service_name=lb.service_name)
-        ```
-
+        Create a Refresh resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RefreshArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,8 +150,6 @@ class Refresh(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keepers: List of values tracked to trigger refresh, used also to form implicit dependencies
-        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -242,16 +162,10 @@ class Refresh(pulumi.CustomResource):
     @property
     @pulumi.getter
     def keepers(self) -> pulumi.Output[Sequence[str]]:
-        """
-        List of values tracked to trigger refresh, used also to form implicit dependencies
-        """
         return pulumi.get(self, "keepers")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The internal name of your IP load balancing
-        """
         return pulumi.get(self, "service_name")
 

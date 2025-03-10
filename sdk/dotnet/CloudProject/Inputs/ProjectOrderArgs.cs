@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
-        /// order id, the same as the `id`
+        /// order id
         /// </summary>
         [Input("orderId")]
         public Input<int>? OrderId { get; set; }

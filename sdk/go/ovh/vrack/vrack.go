@@ -7,94 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myAccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myCart, err := order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myAccount.OvhSubsidiary,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			vrackCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
-//				CartId:        myCart.Id,
-//				PriceCapacity: "renew",
-//				Product:       "vrack",
-//				PlanCode:      "vrack",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vrack.NewVrack(ctx, "vrackVrack", &vrack.VrackArgs{
-//				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
-//				Description:   pulumi.String("my vrack"),
-//				Plan: &vrack.VrackPlanArgs{
-//					Duration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// A vRack can be imported using the `service_name`.
-//
-// Using the following configuration:
-//
-// hcl
-//
-// import {
-//
-//	to = ovh_vrack.vrack
-//
-//	id = "<service name>"
-//
-// }
-//
-// You can then run:
-//
-// bash
-//
-// $ pulumi preview -generate-config-out=vrack.tf
-//
-// $ pulumi up
-//
-// The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Vrack struct {
 	pulumi.CustomResourceState
 
-	// The URN of the vrack, used with IAM permissions
 	VrackURN pulumi.StringOutput `pulumi:"VrackURN"`
 	// yourvrackdescription
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -102,7 +21,7 @@ type Vrack struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Details about an Order
 	Orders VrackOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -146,7 +65,6 @@ func GetVrack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vrack resources.
 type vrackState struct {
-	// The URN of the vrack, used with IAM permissions
 	VrackURN *string `pulumi:"VrackURN"`
 	// yourvrackdescription
 	Description *string `pulumi:"description"`
@@ -154,7 +72,7 @@ type vrackState struct {
 	Name *string `pulumi:"name"`
 	// Details about an Order
 	Orders []VrackOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -169,7 +87,6 @@ type vrackState struct {
 }
 
 type VrackState struct {
-	// The URN of the vrack, used with IAM permissions
 	VrackURN pulumi.StringPtrInput
 	// yourvrackdescription
 	Description pulumi.StringPtrInput
@@ -177,7 +94,7 @@ type VrackState struct {
 	Name pulumi.StringPtrInput
 	// Details about an Order
 	Orders VrackOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -202,7 +119,7 @@ type vrackArgs struct {
 	Name *string `pulumi:"name"`
 	// Details about an Order
 	Orders []VrackOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -222,7 +139,7 @@ type VrackArgs struct {
 	Name pulumi.StringPtrInput
 	// Details about an Order
 	Orders VrackOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -321,7 +238,6 @@ func (o VrackOutput) ToVrackOutputWithContext(ctx context.Context) VrackOutput {
 	return o
 }
 
-// The URN of the vrack, used with IAM permissions
 func (o VrackOutput) VrackURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.VrackURN }).(pulumi.StringOutput)
 }
@@ -341,7 +257,7 @@ func (o VrackOutput) Orders() VrackOrderArrayOutput {
 	return o.ApplyT(func(v *Vrack) VrackOrderArrayOutput { return v.Orders }).(VrackOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+// Ovh Subsidiary
 func (o VrackOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vrack) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }

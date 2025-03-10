@@ -6,21 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to retrieve information about a specific OVH dedicated server installation template.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const ovhTemplate = ovh.getInstallationTemplate({
- *     templateName: "debian12_64",
- * });
- * export const template = ovhTemplate;
- * ```
- */
 export function getInstallationTemplate(args: GetInstallationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstallationTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getInstallationTemplate:getInstallationTemplate", {
@@ -32,9 +17,6 @@ export function getInstallationTemplate(args: GetInstallationTemplateArgs, opts?
  * A collection of arguments for invoking getInstallationTemplate.
  */
 export interface GetInstallationTemplateArgs {
-    /**
-     * The name of the template.
-     */
     templateName: string;
 }
 
@@ -42,84 +24,27 @@ export interface GetInstallationTemplateArgs {
  * A collection of values returned by getInstallationTemplate.
  */
 export interface GetInstallationTemplateResult {
-    /**
-     * Template bit format (32 or 64).
-     */
     readonly bitFormat: number;
-    /**
-     * Category of this template (informative only).
-     */
     readonly category: string;
-    /**
-     * Information about this template.
-     */
     readonly description: string;
-    /**
-     * Distribution this template is based on.
-     */
     readonly distribution: string;
-    /**
-     * End of install date of the template.
-     */
     readonly endOfInstall: string;
-    /**
-     * Template family type.
-     */
     readonly family: string;
-    /**
-     * Filesystems available.
-     */
     readonly filesystems: string[];
     readonly hardRaidConfiguration: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Represents the questions of the expected answers in the userMetadata field.
-     */
     readonly inputs: outputs.GetInstallationTemplateInput[];
-    /**
-     * License available for this template.
-     */
     readonly licenses: outputs.GetInstallationTemplateLicense[];
-    /**
-     * Whether this template supports LVM.
-     */
     readonly lvmReady: boolean;
-    /**
-     * Partitioning customization is not available for this OS template.
-     */
     readonly noPartitioning: boolean;
-    /**
-     * Distribution project details.
-     */
     readonly projects: outputs.GetInstallationTemplateProject[];
-    /**
-     * Template supports RAID0 and RAID1 on 2 disks.
-     */
     readonly softRaidOnlyMirroring: boolean;
-    /**
-     * Subfamily of the template.
-     */
     readonly subfamily: string;
     readonly templateName: string;
 }
-/**
- * Use this data source to retrieve information about a specific OVH dedicated server installation template.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const ovhTemplate = ovh.getInstallationTemplate({
- *     templateName: "debian12_64",
- * });
- * export const template = ovhTemplate;
- * ```
- */
 export function getInstallationTemplateOutput(args: GetInstallationTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstallationTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:index/getInstallationTemplate:getInstallationTemplate", {
@@ -131,8 +56,5 @@ export function getInstallationTemplateOutput(args: GetInstallationTemplateOutpu
  * A collection of arguments for invoking getInstallationTemplate.
  */
 export interface GetInstallationTemplateOutputArgs {
-    /**
-     * The name of the template.
-     */
     templateName: pulumi.Input<string>;
 }

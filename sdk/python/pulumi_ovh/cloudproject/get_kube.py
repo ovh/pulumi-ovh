@@ -93,34 +93,22 @@ class GetKubeResult:
     @property
     @pulumi.getter(name="controlPlaneIsUpToDate")
     def control_plane_is_up_to_date(self) -> bool:
-        """
-        True if control-plane is up-to-date.
-        """
         return pulumi.get(self, "control_plane_is_up_to_date")
 
     @property
     @pulumi.getter(name="customizationApiservers")
     def customization_apiservers(self) -> Sequence['outputs.GetKubeCustomizationApiserverResult']:
-        """
-        Kubernetes API server customization
-        """
         return pulumi.get(self, "customization_apiservers")
 
     @property
     @pulumi.getter(name="customizationKubeProxy")
     def customization_kube_proxy(self) -> Optional['outputs.GetKubeCustomizationKubeProxyResult']:
-        """
-        Kubernetes kube-proxy customization
-        """
         return pulumi.get(self, "customization_kube_proxy")
 
     @property
     @pulumi.getter
     @_utilities.deprecated("""Use customization_apiserver instead""")
     def customizations(self) -> Sequence['outputs.GetKubeCustomizationResult']:
-        """
-        **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
-        """
         return pulumi.get(self, "customizations")
 
     @property
@@ -134,121 +122,76 @@ class GetKubeResult:
     @property
     @pulumi.getter(name="isUpToDate")
     def is_up_to_date(self) -> bool:
-        """
-        True if all nodes and control-plane are up-to-date.
-        """
         return pulumi.get(self, "is_up_to_date")
 
     @property
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "kube_id")
 
     @property
     @pulumi.getter(name="kubeProxyMode")
     def kube_proxy_mode(self) -> Optional[str]:
-        """
-        Selected mode for kube-proxy.
-        """
         return pulumi.get(self, "kube_proxy_mode")
 
     @property
     @pulumi.getter(name="loadBalancersSubnetId")
     def load_balancers_subnet_id(self) -> str:
-        """
-        Openstack private network (or vRack) ID to use for load balancers.
-        """
         return pulumi.get(self, "load_balancers_subnet_id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the managed kubernetes cluster.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nextUpgradeVersions")
     def next_upgrade_versions(self) -> Sequence[str]:
-        """
-        Kubernetes versions available for upgrade.
-        """
         return pulumi.get(self, "next_upgrade_versions")
 
     @property
     @pulumi.getter(name="nodesSubnetId")
     def nodes_subnet_id(self) -> str:
-        """
-        Openstack private network (or vRack) ID to use for nodes.
-        """
         return pulumi.get(self, "nodes_subnet_id")
 
     @property
     @pulumi.getter(name="nodesUrl")
     def nodes_url(self) -> str:
-        """
-        Cluster nodes URL.
-        """
         return pulumi.get(self, "nodes_url")
 
     @property
     @pulumi.getter(name="privateNetworkId")
     def private_network_id(self) -> str:
-        """
-        OpenStack private network (or vrack) ID to use.
-        """
         return pulumi.get(self, "private_network_id")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
-        """
-        The OVHcloud public cloud region ID of the managed kubernetes cluster.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Cluster status. Should be normally set to 'READY'.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[str]:
-        """
-        Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
-        """
         return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter
     def url(self) -> str:
-        """
-        Management URL of your cluster.
-        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
-        """
-        Kubernetes version of the managed kubernetes cluster.
-        """
         return pulumi.get(self, "version")
 
 
@@ -292,30 +235,7 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
              version: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubeResult:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_kube_cluster = ovh.CloudProject.get_kube(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("version", my_kube_cluster.version)
-    ```
-
-
-    :param Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']] customization_apiservers: Kubernetes API server customization
-    :param Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict'] customization_kube_proxy: Kubernetes kube-proxy customization
-    :param Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str kube_proxy_mode: Selected mode for kube-proxy.
-    :param str name: The name of the managed kubernetes cluster.
-    :param str region: The OVHcloud public cloud region ID of the managed kubernetes cluster.
-    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
-    :param str version: Kubernetes version of the managed kubernetes cluster.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['customizationApiservers'] = customization_apiservers
@@ -364,30 +284,7 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
                     version: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeResult]:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_kube_cluster = ovh.CloudProject.get_kube(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    pulumi.export("version", my_kube_cluster.version)
-    ```
-
-
-    :param Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']] customization_apiservers: Kubernetes API server customization
-    :param Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict'] customization_kube_proxy: Kubernetes kube-proxy customization
-    :param Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str kube_proxy_mode: Selected mode for kube-proxy.
-    :param str name: The name of the managed kubernetes cluster.
-    :param str region: The OVHcloud public cloud region ID of the managed kubernetes cluster.
-    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-    :param str update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
-    :param str version: Kubernetes version of the managed kubernetes cluster.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['customizationApiservers'] = customization_apiservers

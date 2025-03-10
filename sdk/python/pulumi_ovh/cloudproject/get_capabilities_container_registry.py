@@ -49,9 +49,6 @@ class GetCapabilitiesContainerRegistryResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetCapabilitiesContainerRegistryResultResult']:
-        """
-        List of container registry capability for a single region
-        """
         return pulumi.get(self, "results")
 
     @property
@@ -74,20 +71,7 @@ class AwaitableGetCapabilitiesContainerRegistryResult(GetCapabilitiesContainerRe
 def get_capabilities_container_registry(service_name: Optional[str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCapabilitiesContainerRegistryResult:
     """
-    Use this data source to get the container registry capabilities of a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    capabilities = ovh.CloudProject.get_capabilities_container_registry(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -101,20 +85,7 @@ def get_capabilities_container_registry(service_name: Optional[str] = None,
 def get_capabilities_container_registry_output(service_name: Optional[pulumi.Input[str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapabilitiesContainerRegistryResult]:
     """
-    Use this data source to get the container registry capabilities of a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    capabilities = ovh.CloudProject.get_capabilities_container_registry(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

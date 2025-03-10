@@ -8,58 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Handle a whole DNS zone using a zone file.
-//
-// > __WARNING__ This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := domain.NewZoneImport(ctx, "import", &domain.ZoneImportArgs{
-//				ZoneName: pulumi.String("mysite.ovh"),
-//				ZoneFile: pulumi.String(readFileOrPanic("./example.zone")),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ZoneImport struct {
 	pulumi.CustomResourceState
 
 	// Zone file exported from the API
 	ExportedContent pulumi.StringOutput `pulumi:"exportedContent"`
-	// Content of the zone file to import
+	// Zone file that will be imported
 	ZoneFile pulumi.StringOutput `pulumi:"zoneFile"`
-	// The name of the domain zone
+	// Zone name
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
@@ -101,18 +61,18 @@ func GetZoneImport(ctx *pulumi.Context,
 type zoneImportState struct {
 	// Zone file exported from the API
 	ExportedContent *string `pulumi:"exportedContent"`
-	// Content of the zone file to import
+	// Zone file that will be imported
 	ZoneFile *string `pulumi:"zoneFile"`
-	// The name of the domain zone
+	// Zone name
 	ZoneName *string `pulumi:"zoneName"`
 }
 
 type ZoneImportState struct {
 	// Zone file exported from the API
 	ExportedContent pulumi.StringPtrInput
-	// Content of the zone file to import
+	// Zone file that will be imported
 	ZoneFile pulumi.StringPtrInput
-	// The name of the domain zone
+	// Zone name
 	ZoneName pulumi.StringPtrInput
 }
 
@@ -121,17 +81,17 @@ func (ZoneImportState) ElementType() reflect.Type {
 }
 
 type zoneImportArgs struct {
-	// Content of the zone file to import
+	// Zone file that will be imported
 	ZoneFile string `pulumi:"zoneFile"`
-	// The name of the domain zone
+	// Zone name
 	ZoneName string `pulumi:"zoneName"`
 }
 
 // The set of arguments for constructing a ZoneImport resource.
 type ZoneImportArgs struct {
-	// Content of the zone file to import
+	// Zone file that will be imported
 	ZoneFile pulumi.StringInput
-	// The name of the domain zone
+	// Zone name
 	ZoneName pulumi.StringInput
 }
 
@@ -227,12 +187,12 @@ func (o ZoneImportOutput) ExportedContent() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneImport) pulumi.StringOutput { return v.ExportedContent }).(pulumi.StringOutput)
 }
 
-// Content of the zone file to import
+// Zone file that will be imported
 func (o ZoneImportOutput) ZoneFile() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneImport) pulumi.StringOutput { return v.ZoneFile }).(pulumi.StringOutput)
 }
 
-// The name of the domain zone
+// Zone name
 func (o ZoneImportOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneImport) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }

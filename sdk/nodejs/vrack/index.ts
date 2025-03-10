@@ -35,6 +35,21 @@ export type IpLoadbalancing = import("./ipLoadbalancing").IpLoadbalancing;
 export const IpLoadbalancing: typeof import("./ipLoadbalancing").IpLoadbalancing = null as any;
 utilities.lazyLoad(exports, ["IpLoadbalancing"], () => require("./ipLoadbalancing"));
 
+export { Ipv6AddressArgs, Ipv6AddressState } from "./ipv6Address";
+export type Ipv6Address = import("./ipv6Address").Ipv6Address;
+export const Ipv6Address: typeof import("./ipv6Address").Ipv6Address = null as any;
+utilities.lazyLoad(exports, ["Ipv6Address"], () => require("./ipv6Address"));
+
+export { OVHCloudConnectArgs, OVHCloudConnectState } from "./ovhcloudConnect";
+export type OVHCloudConnect = import("./ovhcloudConnect").OVHCloudConnect;
+export const OVHCloudConnect: typeof import("./ovhcloudConnect").OVHCloudConnect = null as any;
+utilities.lazyLoad(exports, ["OVHCloudConnect"], () => require("./ovhcloudConnect"));
+
+export { ServicesArgs, ServicesState } from "./services";
+export type Services = import("./services").Services;
+export const Services: typeof import("./services").Services = null as any;
+utilities.lazyLoad(exports, ["Services"], () => require("./services"));
+
 export { VrackArgs, VrackState } from "./vrack";
 export type Vrack = import("./vrack").Vrack;
 export const Vrack: typeof import("./vrack").Vrack = null as any;
@@ -55,6 +70,12 @@ const _module = {
                 return new IpAddress(name, <any>undefined, { urn })
             case "ovh:Vrack/ipLoadbalancing:IpLoadbalancing":
                 return new IpLoadbalancing(name, <any>undefined, { urn })
+            case "ovh:Vrack/ipv6Address:Ipv6Address":
+                return new Ipv6Address(name, <any>undefined, { urn })
+            case "ovh:Vrack/oVHCloudConnect:OVHCloudConnect":
+                return new OVHCloudConnect(name, <any>undefined, { urn })
+            case "ovh:Vrack/services:Services":
+                return new Services(name, <any>undefined, { urn })
             case "ovh:Vrack/vrack:Vrack":
                 return new Vrack(name, <any>undefined, { urn })
             default:
@@ -67,4 +88,7 @@ pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServer", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServerInterface", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipAddress", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipLoadbalancing", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/ipv6Address", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/oVHCloudConnect", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/services", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/vrack", _module)

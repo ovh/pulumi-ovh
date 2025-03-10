@@ -9,85 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
-    /// <summary>
-    /// Creates a backend server entry linked to loadbalancing group (farm)
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
-    ///     {
-    ///         ServiceName = "ip-1.2.3.4",
-    ///         State = "ok",
-    ///     });
-    /// 
-    ///     var farmName = new Ovh.IpLoadBalancing.UdpFarm("farmName", new()
-    ///     {
-    ///         DisplayName = "ingress-8080-gra",
-    ///         Port = 80,
-    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
-    ///         Zone = "gra",
-    ///     });
-    /// 
-    ///     var backend = new Ovh.IpLoadBalancing.UdpFarmServer("backend", new()
-    ///     {
-    ///         Address = "4.5.6.7",
-    ///         DisplayName = "mybackend",
-    ///         FarmId = farmName.FarmId,
-    ///         Port = 80,
-    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
-    ///         Status = "active",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// UDP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
-    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer")]
     public partial class UdpFarmServer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Address of the backend server (IP from either internal or OVHcloud network)
+        /// IPv4 address (e.g., 192.0.2.0)
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// Synonym for `farm_id`.
+        /// Synonym for farm_id
         /// </summary>
         [Output("backendId")]
         public Output<double> BackendId { get; private set; } = null!;
 
         /// <summary>
-        /// Label for the server
+        /// Human readable name for your server, this field is for you
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the farm this server is attached to
+        /// Id of your farm
         /// </summary>
         [Output("farmId")]
         public Output<double> FarmId { get; private set; } = null!;
 
         /// <summary>
-        /// Port that backend will respond on
+        /// Port attached to your server ([1..49151]). Inherited from farm if null
         /// </summary>
         [Output("port")]
         public Output<double?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Id of your server.
+        /// Id of your server
         /// </summary>
         [Output("serverId")]
         public Output<double> ServerId { get; private set; } = null!;
@@ -99,7 +55,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// backend status - `active` or `inactive`
+        /// Possible values for server status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -152,25 +108,25 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public sealed class UdpFarmServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address of the backend server (IP from either internal or OVHcloud network)
+        /// IPv4 address (e.g., 192.0.2.0)
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// Label for the server
+        /// Human readable name for your server, this field is for you
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// ID of the farm this server is attached to
+        /// Id of your farm
         /// </summary>
         [Input("farmId", required: true)]
         public Input<double> FarmId { get; set; } = null!;
 
         /// <summary>
-        /// Port that backend will respond on
+        /// Port attached to your server ([1..49151]). Inherited from farm if null
         /// </summary>
         [Input("port")]
         public Input<double>? Port { get; set; }
@@ -182,7 +138,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// backend status - `active` or `inactive`
+        /// Possible values for server status
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -196,37 +152,37 @@ namespace Pulumi.Ovh.IpLoadBalancing
     public sealed class UdpFarmServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address of the backend server (IP from either internal or OVHcloud network)
+        /// IPv4 address (e.g., 192.0.2.0)
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// Synonym for `farm_id`.
+        /// Synonym for farm_id
         /// </summary>
         [Input("backendId")]
         public Input<double>? BackendId { get; set; }
 
         /// <summary>
-        /// Label for the server
+        /// Human readable name for your server, this field is for you
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// ID of the farm this server is attached to
+        /// Id of your farm
         /// </summary>
         [Input("farmId")]
         public Input<double>? FarmId { get; set; }
 
         /// <summary>
-        /// Port that backend will respond on
+        /// Port attached to your server ([1..49151]). Inherited from farm if null
         /// </summary>
         [Input("port")]
         public Input<double>? Port { get; set; }
 
         /// <summary>
-        /// Id of your server.
+        /// Id of your server
         /// </summary>
         [Input("serverId")]
         public Input<double>? ServerId { get; set; }
@@ -238,7 +194,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// backend status - `active` or `inactive`
+        /// Possible values for server status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

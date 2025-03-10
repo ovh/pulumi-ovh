@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource for managing partitions on HA-NAS services
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myPartition = new ovh.dedicated.NasHAPartition("myPartition", {
- *     protocol: "NFS",
- *     serviceName: "zpool-12345",
- *     size: 20,
- * });
- * ```
- *
- * ## Import
- *
- * HA-NAS can be imported using the `{service_name}/{name}`, e.g.
- *
- * ```sh
- * $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
- * ```
- */
 export class NasHAPartition extends pulumi.CustomResource {
     /**
      * Get an existing NasHAPartition resource's state with the given name, ID, and optional extra
@@ -56,33 +32,12 @@ export class NasHAPartition extends pulumi.CustomResource {
         return obj['__pulumiType'] === NasHAPartition.__pulumiType;
     }
 
-    /**
-     * Percentage of partition space used in %
-     */
     public /*out*/ readonly capacity!: pulumi.Output<number>;
-    /**
-     * A brief description of the partition
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * name of the partition
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * one of "NFS", "CIFS" or "NFS_CIFS"
-     */
     public readonly protocol!: pulumi.Output<string>;
-    /**
-     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-     */
     public readonly serviceName!: pulumi.Output<string>;
-    /**
-     * size of the partition in GB
-     */
     public readonly size!: pulumi.Output<number>;
-    /**
-     * Percentage of partition space used by snapshots in %
-     */
     public /*out*/ readonly usedBySnapshots!: pulumi.Output<number>;
 
     /**
@@ -133,33 +88,12 @@ export class NasHAPartition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NasHAPartition resources.
  */
 export interface NasHAPartitionState {
-    /**
-     * Percentage of partition space used in %
-     */
     capacity?: pulumi.Input<number>;
-    /**
-     * A brief description of the partition
-     */
     description?: pulumi.Input<string>;
-    /**
-     * name of the partition
-     */
     name?: pulumi.Input<string>;
-    /**
-     * one of "NFS", "CIFS" or "NFS_CIFS"
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-     */
     serviceName?: pulumi.Input<string>;
-    /**
-     * size of the partition in GB
-     */
     size?: pulumi.Input<number>;
-    /**
-     * Percentage of partition space used by snapshots in %
-     */
     usedBySnapshots?: pulumi.Input<number>;
 }
 
@@ -167,24 +101,9 @@ export interface NasHAPartitionState {
  * The set of arguments for constructing a NasHAPartition resource.
  */
 export interface NasHAPartitionArgs {
-    /**
-     * A brief description of the partition
-     */
     description?: pulumi.Input<string>;
-    /**
-     * name of the partition
-     */
     name?: pulumi.Input<string>;
-    /**
-     * one of "NFS", "CIFS" or "NFS_CIFS"
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * size of the partition in GB
-     */
     size: pulumi.Input<number>;
 }

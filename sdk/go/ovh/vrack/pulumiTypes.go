@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -138,7 +138,7 @@ func (o VrackOrderArrayOutput) Index(i pulumi.IntInput) VrackOrderOutput {
 }
 
 type VrackOrderDetail struct {
-	// yourvrackdescription
+	// description
 	Description *string `pulumi:"description"`
 	// expiration date
 	Domain *string `pulumi:"domain"`
@@ -160,7 +160,7 @@ type VrackOrderDetailInput interface {
 }
 
 type VrackOrderDetailArgs struct {
-	// yourvrackdescription
+	// description
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// expiration date
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -221,7 +221,7 @@ func (o VrackOrderDetailOutput) ToVrackOrderDetailOutputWithContext(ctx context.
 	return o
 }
 
-// yourvrackdescription
+// description
 func (o VrackOrderDetailOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VrackOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

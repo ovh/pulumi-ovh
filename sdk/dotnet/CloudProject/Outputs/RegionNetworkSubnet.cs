@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class RegionNetworkSubnet
     {
         /// <summary>
-        /// List of IP pools allocated in subnet
+        /// List of ip pools allocated in subnet
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionNetworkSubnetAllocationPool> AllocationPools;
         /// <summary>

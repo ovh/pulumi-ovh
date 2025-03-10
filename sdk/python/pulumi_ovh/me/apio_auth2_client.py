@@ -25,10 +25,9 @@ class APIOAuth2ClientArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a APIOAuth2Client resource.
-        :param pulumi.Input[str] description: OAuth2 client description.
-        :param pulumi.Input[str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
-        :param pulumi.Input[str] name: OAuth2 client name.
+        :param pulumi.Input[str] description: A description of your oauth2 client.
+        :param pulumi.Input[str] flow: OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "flow", flow)
@@ -41,7 +40,7 @@ class APIOAuth2ClientArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        OAuth2 client description.
+        A description of your oauth2 client.
         """
         return pulumi.get(self, "description")
 
@@ -53,7 +52,7 @@ class APIOAuth2ClientArgs:
     @pulumi.getter
     def flow(self) -> pulumi.Input[str]:
         """
-        The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         """
         return pulumi.get(self, "flow")
 
@@ -65,7 +64,7 @@ class APIOAuth2ClientArgs:
     @pulumi.getter(name="callbackUrls")
     def callback_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         """
         return pulumi.get(self, "callback_urls")
 
@@ -76,9 +75,6 @@ class APIOAuth2ClientArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        OAuth2 client name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -98,13 +94,12 @@ class _APIOAuth2ClientState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering APIOAuth2Client resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
-        :param pulumi.Input[str] client_id: Client ID of the created service account.
-        :param pulumi.Input[str] client_secret: Client secret of the created service account.
-        :param pulumi.Input[str] description: OAuth2 client description.
-        :param pulumi.Input[str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+        :param pulumi.Input[str] client_id: Client ID for the oauth2 client, generated during the resource creation.
+        :param pulumi.Input[str] client_secret: Secret for the oauth2 client, generated during the oauth2 client creation.
+        :param pulumi.Input[str] description: A description of your oauth2 client.
+        :param pulumi.Input[str] flow: OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         :param pulumi.Input[str] identity: URN that will allow you to associate this oauth2 client with an access policy
-        :param pulumi.Input[str] name: OAuth2 client name.
         """
         if callback_urls is not None:
             pulumi.set(__self__, "callback_urls", callback_urls)
@@ -125,7 +120,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter(name="callbackUrls")
     def callback_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         """
         return pulumi.get(self, "callback_urls")
 
@@ -137,7 +132,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Client ID of the created service account.
+        Client ID for the oauth2 client, generated during the resource creation.
         """
         return pulumi.get(self, "client_id")
 
@@ -149,7 +144,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        Client secret of the created service account.
+        Secret for the oauth2 client, generated during the oauth2 client creation.
         """
         return pulumi.get(self, "client_secret")
 
@@ -161,7 +156,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        OAuth2 client description.
+        A description of your oauth2 client.
         """
         return pulumi.get(self, "description")
 
@@ -173,7 +168,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter
     def flow(self) -> Optional[pulumi.Input[str]]:
         """
-        The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         """
         return pulumi.get(self, "flow")
 
@@ -196,9 +191,6 @@ class _APIOAuth2ClientState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        OAuth2 client name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -217,57 +209,12 @@ class APIOAuth2Client(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an OAuth2 service account.
-
-        ## Example Usage
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("myOauth2ClientAuthCode",
-            callback_urls=["https://my-app.com/callback"],
-            description="An OAuth2 client using the authorization code flow for my-app.com",
-            flow="AUTHORIZATION_CODE")
-        ```
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("myOauth2ClientClientCreds",
-            description="An OAuth2 client using the client credentials flow for my app",
-            flow="CLIENT_CREDENTIALS")
-        ```
-
-        ## Import
-
-        OAuth2 clients can be imported using their `client_id`:
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
-        ```
-
-        Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
-        ```
-
+        Create a APIOAuth2Client resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
-        :param pulumi.Input[str] description: OAuth2 client description.
-        :param pulumi.Input[str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
-        :param pulumi.Input[str] name: OAuth2 client name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+        :param pulumi.Input[str] description: A description of your oauth2 client.
+        :param pulumi.Input[str] flow: OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         """
         ...
     @overload
@@ -276,51 +223,7 @@ class APIOAuth2Client(pulumi.CustomResource):
                  args: APIOAuth2ClientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an OAuth2 service account.
-
-        ## Example Usage
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("myOauth2ClientAuthCode",
-            callback_urls=["https://my-app.com/callback"],
-            description="An OAuth2 client using the authorization code flow for my-app.com",
-            flow="AUTHORIZATION_CODE")
-        ```
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("myOauth2ClientClientCreds",
-            description="An OAuth2 client using the client credentials flow for my app",
-            flow="CLIENT_CREDENTIALS")
-        ```
-
-        ## Import
-
-        OAuth2 clients can be imported using their `client_id`:
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
-        ```
-
-        Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
-        ```
-
+        Create a APIOAuth2Client resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param APIOAuth2ClientArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -386,13 +289,12 @@ class APIOAuth2Client(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
-        :param pulumi.Input[str] client_id: Client ID of the created service account.
-        :param pulumi.Input[str] client_secret: Client secret of the created service account.
-        :param pulumi.Input[str] description: OAuth2 client description.
-        :param pulumi.Input[str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callback_urls: Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+        :param pulumi.Input[str] client_id: Client ID for the oauth2 client, generated during the resource creation.
+        :param pulumi.Input[str] client_secret: Secret for the oauth2 client, generated during the oauth2 client creation.
+        :param pulumi.Input[str] description: A description of your oauth2 client.
+        :param pulumi.Input[str] flow: OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         :param pulumi.Input[str] identity: URN that will allow you to associate this oauth2 client with an access policy
-        :param pulumi.Input[str] name: OAuth2 client name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,7 +313,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter(name="callbackUrls")
     def callback_urls(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
         """
         return pulumi.get(self, "callback_urls")
 
@@ -419,7 +321,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
         """
-        Client ID of the created service account.
+        Client ID for the oauth2 client, generated during the resource creation.
         """
         return pulumi.get(self, "client_id")
 
@@ -427,7 +329,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[str]:
         """
-        Client secret of the created service account.
+        Secret for the oauth2 client, generated during the oauth2 client creation.
         """
         return pulumi.get(self, "client_secret")
 
@@ -435,7 +337,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        OAuth2 client description.
+        A description of your oauth2 client.
         """
         return pulumi.get(self, "description")
 
@@ -443,7 +345,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter
     def flow(self) -> pulumi.Output[str]:
         """
-        The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
         """
         return pulumi.get(self, "flow")
 
@@ -458,8 +360,5 @@ class APIOAuth2Client(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        OAuth2 client name.
-        """
         return pulumi.get(self, "name")
 

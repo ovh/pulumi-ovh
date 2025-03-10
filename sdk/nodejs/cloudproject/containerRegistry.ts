@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a container registry associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const regcap = ovh.CloudProject.getCapabilitiesContainerFilter({
- *     serviceName: "XXXXXX",
- *     planName: "SMALL",
- *     region: "GRA",
- * });
- * const myRegistry = new ovh.cloudproject.ContainerRegistry("myRegistry", {
- *     serviceName: regcap.then(regcap => regcap.serviceName),
- *     planId: regcap.then(regcap => regcap.id),
- *     region: regcap.then(regcap => regcap.region),
- * });
- * ```
- *
- * > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
- */
 export class ContainerRegistry extends pulumi.CustomResource {
     /**
      * Get an existing ContainerRegistry resource's state with the given name, ID, and optional extra
@@ -59,7 +35,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
     }
 
     /**
-     * Plan creation date
+     * Registry creation date
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -67,7 +43,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Plan ID of the registry
+     * Plan ID of the registry.
      */
     public readonly planId!: pulumi.Output<string>;
     /**
@@ -79,13 +55,9 @@ export class ContainerRegistry extends pulumi.CustomResource {
      */
     public /*out*/ readonly projectId!: pulumi.Output<string>;
     /**
-     * Region of the registry
+     * Region of the registry.
      */
     public readonly region!: pulumi.Output<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
      * Current size of the registry (bytes)
@@ -164,7 +136,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
  */
 export interface ContainerRegistryState {
     /**
-     * Plan creation date
+     * Registry creation date
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -172,7 +144,7 @@ export interface ContainerRegistryState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Plan ID of the registry
+     * Plan ID of the registry.
      */
     planId?: pulumi.Input<string>;
     /**
@@ -184,13 +156,9 @@ export interface ContainerRegistryState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Region of the registry
+     * Region of the registry.
      */
     region?: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName?: pulumi.Input<string>;
     /**
      * Current size of the registry (bytes)
@@ -223,16 +191,12 @@ export interface ContainerRegistryArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Plan ID of the registry
+     * Plan ID of the registry.
      */
     planId?: pulumi.Input<string>;
     /**
-     * Region of the registry
+     * Region of the registry.
      */
     region: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

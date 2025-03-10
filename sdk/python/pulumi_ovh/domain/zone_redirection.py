@@ -28,13 +28,6 @@ class ZoneRedirectionArgs:
                  title: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZoneRedirection resource.
-        :param pulumi.Input[str] target: The value of the redirection
-        :param pulumi.Input[str] type: The type of the redirection, with values:
-        :param pulumi.Input[str] zone: The domain to add the redirection to
-        :param pulumi.Input[str] description: A description of this redirection
-        :param pulumi.Input[str] keywords: Keywords to describe this redirection
-        :param pulumi.Input[str] subdomain: The name of the redirection
-        :param pulumi.Input[str] title: Title of this redirection
         """
         pulumi.set(__self__, "target", target)
         pulumi.set(__self__, "type", type)
@@ -51,9 +44,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
-        """
-        The value of the redirection
-        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -63,9 +53,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The type of the redirection, with values:
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -75,9 +62,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
-        """
-        The domain to add the redirection to
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -87,9 +71,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description of this redirection
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -99,9 +80,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def keywords(self) -> Optional[pulumi.Input[str]]:
-        """
-        Keywords to describe this redirection
-        """
         return pulumi.get(self, "keywords")
 
     @keywords.setter
@@ -111,9 +89,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the redirection
-        """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
@@ -123,9 +98,6 @@ class ZoneRedirectionArgs:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Title of this redirection
-        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -145,13 +117,6 @@ class _ZoneRedirectionState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneRedirection resources.
-        :param pulumi.Input[str] description: A description of this redirection
-        :param pulumi.Input[str] keywords: Keywords to describe this redirection
-        :param pulumi.Input[str] subdomain: The name of the redirection
-        :param pulumi.Input[str] target: The value of the redirection
-        :param pulumi.Input[str] title: Title of this redirection
-        :param pulumi.Input[str] type: The type of the redirection, with values:
-        :param pulumi.Input[str] zone: The domain to add the redirection to
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -171,9 +136,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description of this redirection
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -183,9 +145,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def keywords(self) -> Optional[pulumi.Input[str]]:
-        """
-        Keywords to describe this redirection
-        """
         return pulumi.get(self, "keywords")
 
     @keywords.setter
@@ -195,9 +154,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the redirection
-        """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
@@ -207,9 +163,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the redirection
-        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -219,9 +172,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Title of this redirection
-        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -231,9 +181,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the redirection, with values:
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -243,9 +190,6 @@ class _ZoneRedirectionState:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The domain to add the redirection to
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -267,31 +211,9 @@ class ZoneRedirection(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a OVHcloud domain zone redirection.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        # Add a redirection to a sub-domain
-        test = ovh.domain.ZoneRedirection("test",
-            subdomain="test",
-            target="http://www.ovh",
-            type="visiblePermanent",
-            zone="testdemo.ovh")
-        ```
-
+        Create a ZoneRedirection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description of this redirection
-        :param pulumi.Input[str] keywords: Keywords to describe this redirection
-        :param pulumi.Input[str] subdomain: The name of the redirection
-        :param pulumi.Input[str] target: The value of the redirection
-        :param pulumi.Input[str] title: Title of this redirection
-        :param pulumi.Input[str] type: The type of the redirection, with values:
-        :param pulumi.Input[str] zone: The domain to add the redirection to
         """
         ...
     @overload
@@ -300,22 +222,7 @@ class ZoneRedirection(pulumi.CustomResource):
                  args: ZoneRedirectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a OVHcloud domain zone redirection.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        # Add a redirection to a sub-domain
-        test = ovh.domain.ZoneRedirection("test",
-            subdomain="test",
-            target="http://www.ovh",
-            type="visiblePermanent",
-            zone="testdemo.ovh")
-        ```
-
+        Create a ZoneRedirection resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ZoneRedirectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -384,13 +291,6 @@ class ZoneRedirection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description of this redirection
-        :param pulumi.Input[str] keywords: Keywords to describe this redirection
-        :param pulumi.Input[str] subdomain: The name of the redirection
-        :param pulumi.Input[str] target: The value of the redirection
-        :param pulumi.Input[str] title: Title of this redirection
-        :param pulumi.Input[str] type: The type of the redirection, with values:
-        :param pulumi.Input[str] zone: The domain to add the redirection to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -408,56 +308,35 @@ class ZoneRedirection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        A description of this redirection
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def keywords(self) -> pulumi.Output[Optional[str]]:
-        """
-        Keywords to describe this redirection
-        """
         return pulumi.get(self, "keywords")
 
     @property
     @pulumi.getter
     def subdomain(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the redirection
-        """
         return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
     def target(self) -> pulumi.Output[str]:
-        """
-        The value of the redirection
-        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter
     def title(self) -> pulumi.Output[Optional[str]]:
-        """
-        Title of this redirection
-        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        The type of the redirection, with values:
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
-        """
-        The domain to add the redirection to
-        """
         return pulumi.get(self, "zone")
 

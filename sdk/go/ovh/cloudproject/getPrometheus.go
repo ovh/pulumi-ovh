@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use CloudProjectDatabase.MongoDbPrometheus datasource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			prometheus, err := cloudproject.GetPrometheus(ctx, &cloudproject.GetPrometheusArgs{
-//				ServiceName: "XXX",
-//				Engine:      "YYY",
-//				ClusterId:   "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("name", prometheus.Username)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPrometheus(ctx *pulumi.Context, args *GetPrometheusArgs, opts ...pulumi.InvokeOption) (*GetPrometheusResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheusResult
@@ -53,33 +23,20 @@ func GetPrometheus(ctx *pulumi.Context, args *GetPrometheusArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getPrometheus.
 type GetPrometheusArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want user information. To get a full list of available engine visit :
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
-	Engine string `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Engine      string `pulumi:"engine"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getPrometheus.
 type GetPrometheusResult struct {
-	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
-	// See Argument Reference above.
-	Engine string `pulumi:"engine"`
+	Engine    string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
-	ServiceName string `pulumi:"serviceName"`
-	// List of all endpoint targets.
-	// * `Host` - Host of the endpoint.
-	// * `Port` - Connection port for the endpoint.
-	Targets []GetPrometheusTarget `pulumi:"targets"`
-	// name of the prometheus user.
-	Username string `pulumi:"username"`
+	Id          string                `pulumi:"id"`
+	ServiceName string                `pulumi:"serviceName"`
+	Targets     []GetPrometheusTarget `pulumi:"targets"`
+	Username    string                `pulumi:"username"`
 }
 
 func GetPrometheusOutput(ctx *pulumi.Context, args GetPrometheusOutputArgs, opts ...pulumi.InvokeOption) GetPrometheusResultOutput {
@@ -93,14 +50,8 @@ func GetPrometheusOutput(ctx *pulumi.Context, args GetPrometheusOutputArgs, opts
 
 // A collection of arguments for invoking getPrometheus.
 type GetPrometheusOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The engine of the database cluster you want user information. To get a full list of available engine visit :
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
-	Engine pulumi.StringInput `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Engine      pulumi.StringInput `pulumi:"engine"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -123,12 +74,10 @@ func (o GetPrometheusResultOutput) ToGetPrometheusResultOutputWithContext(ctx co
 	return o
 }
 
-// See Argument Reference above.
 func (o GetPrometheusResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetPrometheusResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusResult) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -138,19 +87,14 @@ func (o GetPrometheusResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetPrometheusResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// List of all endpoint targets.
-// * `Host` - Host of the endpoint.
-// * `Port` - Connection port for the endpoint.
 func (o GetPrometheusResultOutput) Targets() GetPrometheusTargetArrayOutput {
 	return o.ApplyT(func(v GetPrometheusResult) []GetPrometheusTarget { return v.Targets }).(GetPrometheusTargetArrayOutput)
 }
 
-// name of the prometheus user.
 func (o GetPrometheusResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusResult) string { return v.Username }).(pulumi.StringOutput)
 }

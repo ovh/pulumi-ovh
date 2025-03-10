@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetMongoDbUser
     {
-        /// <summary>
-        /// Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var mongoUser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Name = "ZZZ@admin",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mongoUserRoles"] = mongoUser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetMongoDbUserResult> InvokeAsync(GetMongoDbUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var mongoUser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Name = "ZZZ@admin",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mongoUserRoles"] = mongoUser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetMongoDbUserResult> Invoke(GetMongoDbUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var mongoUser = Ovh.CloudProject.GetMongoDbUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Name = "ZZZ@admin",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mongoUserRoles"] = mongoUser.Apply(getMongoDbUserResult =&gt; getMongoDbUserResult.Roles),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetMongoDbUserResult> Invoke(GetMongoDbUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoDbUserResult>("ovh:CloudProject/getMongoDbUser:getMongoDbUser", args ?? new GetMongoDbUserInvokeArgs(), options.WithDefaults());
     }
@@ -105,22 +24,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetMongoDbUserArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -132,22 +41,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetMongoDbUserInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -161,33 +60,15 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetMongoDbUserResult
     {
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// Date of the creation of the user.
-        /// </summary>
         public readonly string CreatedAt;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Roles the user belongs to
-        /// </summary>
         public readonly ImmutableArray<string> Roles;
-        /// <summary>
-        /// Current status of the user.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Current status of the user.
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

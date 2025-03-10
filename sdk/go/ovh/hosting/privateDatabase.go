@@ -7,105 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myaccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			mycart, err := order.GetCart(ctx, &order.GetCartArgs{
-//				OvhSubsidiary: myaccount.OvhSubsidiary,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			databaseCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
-//				CartId:        mycart.Id,
-//				PriceCapacity: "renew",
-//				Product:       "privateSQL",
-//				PlanCode:      "private-sql-512-instance",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			databasePrivateDatabase, err := hosting.NewPrivateDatabase(ctx, "databasePrivateDatabase", &hosting.PrivateDatabaseArgs{
-//				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
-//				DisplayName:   pulumi.String("Postgresql-12"),
-//				Plan: &hosting.PrivateDatabasePlanArgs{
-//					Duration:    pulumi.String(databaseCartProductPlan.Prices[3].Duration),
-//					PlanCode:    pulumi.String(databaseCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
-//					Configurations: hosting.PrivateDatabasePlanConfigurationArray{
-//						&hosting.PrivateDatabasePlanConfigurationArgs{
-//							Label: pulumi.String("dc"),
-//							Value: pulumi.String("gra3"),
-//						},
-//						&hosting.PrivateDatabasePlanConfigurationArgs{
-//							Label: pulumi.String("engine"),
-//							Value: pulumi.String("postgresql_12"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("privatedatabaseServiceName", databasePrivateDatabase.ServiceName)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Webhosting database can be imported using the `service_name`.
-//
-// Using the following configuration:
-//
-// hcl
-//
-// import {
-//
-//	to = ovh_hosting_privatedatabase.database
-//
-//	id = "<service name>"
-//
-// }
-//
-// You can then run:
-//
-// bash
-//
-// $ pulumi preview -generate-config-out=database.tf
-//
-// $ pulumi up
-//
-// The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type PrivateDatabase struct {
 	pulumi.CustomResourceState
 
-	// URN of the private database, used when writing IAM policies
 	DatabaseURN pulumi.StringOutput `pulumi:"DatabaseURN"`
 	// Number of CPU on your private database
 	Cpu pulumi.IntOutput `pulumi:"cpu"`
@@ -121,9 +29,9 @@ type PrivateDatabase struct {
 	Infrastructure pulumi.StringOutput `pulumi:"infrastructure"`
 	// Type of the private database offer
 	Offer pulumi.StringOutput `pulumi:"offer"`
-	// Details about your Order
+	// Details about an Order
 	Orders PrivateDatabaseOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -144,8 +52,7 @@ type PrivateDatabase struct {
 	// Amount of ram (in MB) on your private database
 	Ram pulumi.IntOutput `pulumi:"ram"`
 	// Private database server name
-	Server pulumi.StringOutput `pulumi:"server"`
-	// Service name
+	Server      pulumi.StringOutput `pulumi:"server"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Private database state
 	State pulumi.StringOutput `pulumi:"state"`
@@ -189,7 +96,6 @@ func GetPrivateDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateDatabase resources.
 type privateDatabaseState struct {
-	// URN of the private database, used when writing IAM policies
 	DatabaseURN *string `pulumi:"DatabaseURN"`
 	// Number of CPU on your private database
 	Cpu *int `pulumi:"cpu"`
@@ -205,9 +111,9 @@ type privateDatabaseState struct {
 	Infrastructure *string `pulumi:"infrastructure"`
 	// Type of the private database offer
 	Offer *string `pulumi:"offer"`
-	// Details about your Order
+	// Details about an Order
 	Orders []PrivateDatabaseOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -228,8 +134,7 @@ type privateDatabaseState struct {
 	// Amount of ram (in MB) on your private database
 	Ram *int `pulumi:"ram"`
 	// Private database server name
-	Server *string `pulumi:"server"`
-	// Service name
+	Server      *string `pulumi:"server"`
 	ServiceName *string `pulumi:"serviceName"`
 	// Private database state
 	State *string `pulumi:"state"`
@@ -244,7 +149,6 @@ type privateDatabaseState struct {
 }
 
 type PrivateDatabaseState struct {
-	// URN of the private database, used when writing IAM policies
 	DatabaseURN pulumi.StringPtrInput
 	// Number of CPU on your private database
 	Cpu pulumi.IntPtrInput
@@ -260,9 +164,9 @@ type PrivateDatabaseState struct {
 	Infrastructure pulumi.StringPtrInput
 	// Type of the private database offer
 	Offer pulumi.StringPtrInput
-	// Details about your Order
+	// Details about an Order
 	Orders PrivateDatabaseOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -283,8 +187,7 @@ type PrivateDatabaseState struct {
 	// Amount of ram (in MB) on your private database
 	Ram pulumi.IntPtrInput
 	// Private database server name
-	Server pulumi.StringPtrInput
-	// Service name
+	Server      pulumi.StringPtrInput
 	ServiceName pulumi.StringPtrInput
 	// Private database state
 	State pulumi.StringPtrInput
@@ -305,9 +208,9 @@ func (PrivateDatabaseState) ElementType() reflect.Type {
 type privateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName *string `pulumi:"displayName"`
-	// Details about your Order
+	// Details about an Order
 	Orders []PrivateDatabaseOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -317,17 +220,16 @@ type privateDatabaseArgs struct {
 	Plan *PrivateDatabasePlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []PrivateDatabasePlanOption `pulumi:"planOptions"`
-	// Service name
-	ServiceName *string `pulumi:"serviceName"`
+	ServiceName *string                     `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a PrivateDatabase resource.
 type PrivateDatabaseArgs struct {
 	// Name displayed in customer panel for your private database
 	DisplayName pulumi.StringPtrInput
-	// Details about your Order
+	// Details about an Order
 	Orders PrivateDatabaseOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -337,7 +239,6 @@ type PrivateDatabaseArgs struct {
 	Plan PrivateDatabasePlanPtrInput
 	// Product Plan to order
 	PlanOptions PrivateDatabasePlanOptionArrayInput
-	// Service name
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -428,7 +329,6 @@ func (o PrivateDatabaseOutput) ToPrivateDatabaseOutputWithContext(ctx context.Co
 	return o
 }
 
-// URN of the private database, used when writing IAM policies
 func (o PrivateDatabaseOutput) DatabaseURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.DatabaseURN }).(pulumi.StringOutput)
 }
@@ -468,12 +368,12 @@ func (o PrivateDatabaseOutput) Offer() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.Offer }).(pulumi.StringOutput)
 }
 
-// Details about your Order
+// Details about an Order
 func (o PrivateDatabaseOutput) Orders() PrivateDatabaseOrderArrayOutput {
 	return o.ApplyT(func(v *PrivateDatabase) PrivateDatabaseOrderArrayOutput { return v.Orders }).(PrivateDatabaseOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+// Ovh Subsidiary
 func (o PrivateDatabaseOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -525,7 +425,6 @@ func (o PrivateDatabaseOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
 }
 
-// Service name
 func (o PrivateDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

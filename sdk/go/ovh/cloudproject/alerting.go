@@ -8,46 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an alert on a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewAlerting(ctx, "myAlert", &cloudproject.AlertingArgs{
-//				Delay:            pulumi.Float64(3600),
-//				Email:            pulumi.String("aaa.bbb@domain.com"),
-//				MonthlyThreshold: pulumi.Float64(1000),
-//				ServiceName:      pulumi.String("XXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Alerting struct {
 	pulumi.CustomResourceState
 
 	// Alerting creation date
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
-	// Delay between two alerts in seconds
+	// Possible values for delay between two alerts in seconds
 	Delay pulumi.Float64Output `pulumi:"delay"`
 	// Email to contact
 	Email pulumi.StringOutput `pulumi:"email"`
@@ -55,8 +25,7 @@ type Alerting struct {
 	FormattedMonthlyThreshold AlertingFormattedMonthlyThresholdOutput `pulumi:"formattedMonthlyThreshold"`
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64Output `pulumi:"monthlyThreshold"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The project id
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -104,7 +73,7 @@ func GetAlerting(ctx *pulumi.Context,
 type alertingState struct {
 	// Alerting creation date
 	CreationDate *string `pulumi:"creationDate"`
-	// Delay between two alerts in seconds
+	// Possible values for delay between two alerts in seconds
 	Delay *float64 `pulumi:"delay"`
 	// Email to contact
 	Email *string `pulumi:"email"`
@@ -112,15 +81,14 @@ type alertingState struct {
 	FormattedMonthlyThreshold *AlertingFormattedMonthlyThreshold `pulumi:"formattedMonthlyThreshold"`
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold *float64 `pulumi:"monthlyThreshold"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The project id
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type AlertingState struct {
 	// Alerting creation date
 	CreationDate pulumi.StringPtrInput
-	// Delay between two alerts in seconds
+	// Possible values for delay between two alerts in seconds
 	Delay pulumi.Float64PtrInput
 	// Email to contact
 	Email pulumi.StringPtrInput
@@ -128,8 +96,7 @@ type AlertingState struct {
 	FormattedMonthlyThreshold AlertingFormattedMonthlyThresholdPtrInput
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64PtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The project id
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -138,27 +105,25 @@ func (AlertingState) ElementType() reflect.Type {
 }
 
 type alertingArgs struct {
-	// Delay between two alerts in seconds
+	// Possible values for delay between two alerts in seconds
 	Delay float64 `pulumi:"delay"`
 	// Email to contact
 	Email string `pulumi:"email"`
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold float64 `pulumi:"monthlyThreshold"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The project id
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a Alerting resource.
 type AlertingArgs struct {
-	// Delay between two alerts in seconds
+	// Possible values for delay between two alerts in seconds
 	Delay pulumi.Float64Input
 	// Email to contact
 	Email pulumi.StringInput
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64Input
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The project id
 	ServiceName pulumi.StringInput
 }
 
@@ -254,7 +219,7 @@ func (o AlertingOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alerting) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// Delay between two alerts in seconds
+// Possible values for delay between two alerts in seconds
 func (o AlertingOutput) Delay() pulumi.Float64Output {
 	return o.ApplyT(func(v *Alerting) pulumi.Float64Output { return v.Delay }).(pulumi.Float64Output)
 }
@@ -274,8 +239,7 @@ func (o AlertingOutput) MonthlyThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v *Alerting) pulumi.Float64Output { return v.MonthlyThreshold }).(pulumi.Float64Output)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The project id
 func (o AlertingOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alerting) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

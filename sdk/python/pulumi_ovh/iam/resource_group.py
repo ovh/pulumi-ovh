@@ -23,8 +23,6 @@ class ResourceGroupArgs:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
-        :param pulumi.Input[str] name: Name of the resource group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -34,9 +32,6 @@ class ResourceGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the resource group
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -46,9 +41,6 @@ class ResourceGroupArgs:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -68,13 +60,6 @@ class _ResourceGroupState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
-        :param pulumi.Input[str] group_urn: URN of the resource group, used when writing policies
-        :param pulumi.Input[str] created_at: Date of the creation of the resource group
-        :param pulumi.Input[str] name: Name of the resource group
-        :param pulumi.Input[str] owner: Name of the account owning the resource group
-        :param pulumi.Input[bool] read_only: Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        :param pulumi.Input[str] updated_at: Date of the last modification of the resource group
         """
         if group_urn is not None:
             pulumi.set(__self__, "group_urn", group_urn)
@@ -94,9 +79,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter(name="GroupURN")
     def group_urn(self) -> Optional[pulumi.Input[str]]:
-        """
-        URN of the resource group, used when writing policies
-        """
         return pulumi.get(self, "group_urn")
 
     @group_urn.setter
@@ -106,9 +88,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date of the creation of the resource group
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -118,9 +97,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the resource group
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -130,9 +106,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the account owning the resource group
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -142,9 +115,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -154,9 +124,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -166,9 +133,6 @@ class _ResourceGroupState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date of the last modification of the resource group
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -185,30 +149,9 @@ class ResourceGroup(pulumi.CustomResource):
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides an OVHcloud IAM resource group.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_resource_group = ovh.iam.ResourceGroup("myResourceGroup", resources=[
-            "urn:v1:eu:resource:service1:service1-id",
-            "urn:v1:eu:resource:service2:service2-id",
-        ])
-        ```
-
-        ## Import
-
-        Resource groups can be imported by using their id.
-
-        > Read only resource groups cannot be imported
-
+        Create a ResourceGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Name of the resource group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
         """
         ...
     @overload
@@ -217,26 +160,7 @@ class ResourceGroup(pulumi.CustomResource):
                  args: Optional[ResourceGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an OVHcloud IAM resource group.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_resource_group = ovh.iam.ResourceGroup("myResourceGroup", resources=[
-            "urn:v1:eu:resource:service1:service1-id",
-            "urn:v1:eu:resource:service2:service2-id",
-        ])
-        ```
-
-        ## Import
-
-        Resource groups can be imported by using their id.
-
-        > Read only resource groups cannot be imported
-
+        Create a ResourceGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ResourceGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -294,13 +218,6 @@ class ResourceGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_urn: URN of the resource group, used when writing policies
-        :param pulumi.Input[str] created_at: Date of the creation of the resource group
-        :param pulumi.Input[str] name: Name of the resource group
-        :param pulumi.Input[str] owner: Name of the account owning the resource group
-        :param pulumi.Input[bool] read_only: Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        :param pulumi.Input[str] updated_at: Date of the last modification of the resource group
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,56 +235,35 @@ class ResourceGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="GroupURN")
     def group_urn(self) -> pulumi.Output[str]:
-        """
-        URN of the resource group, used when writing policies
-        """
         return pulumi.get(self, "group_urn")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
-        """
-        Date of the creation of the resource group
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the resource group
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
-        """
-        Name of the account owning the resource group
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[bool]:
-        """
-        Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter
     def resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
-        """
-        Date of the last modification of the resource group
-        """
         return pulumi.get(self, "updated_at")
 

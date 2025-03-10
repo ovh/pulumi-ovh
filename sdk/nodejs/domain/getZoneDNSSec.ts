@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a domain zone DNSSEC status.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const dnssec = ovh.Domain.getZoneDNSSec({
- *     zoneName: "mysite.ovh",
- * });
- * ```
- */
 export function getZoneDNSSec(args: GetZoneDNSSecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDNSSecResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Domain/getZoneDNSSec:getZoneDNSSec", {
@@ -29,9 +15,6 @@ export function getZoneDNSSec(args: GetZoneDNSSecArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getZoneDNSSec.
  */
 export interface GetZoneDNSSecArgs {
-    /**
-     * The name of the domain zone
-     */
     zoneName: string;
 }
 
@@ -43,26 +26,9 @@ export interface GetZoneDNSSecResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
-     */
     readonly status: string;
     readonly zoneName: string;
 }
-/**
- * Use this data source to retrieve information about a domain zone DNSSEC status.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const dnssec = ovh.Domain.getZoneDNSSec({
- *     zoneName: "mysite.ovh",
- * });
- * ```
- */
 export function getZoneDNSSecOutput(args: GetZoneDNSSecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDNSSecResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Domain/getZoneDNSSec:getZoneDNSSec", {
@@ -74,8 +40,5 @@ export function getZoneDNSSecOutput(args: GetZoneDNSSecOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getZoneDNSSec.
  */
 export interface GetZoneDNSSecOutputArgs {
-    /**
-     * The name of the domain zone
-     */
     zoneName: pulumi.Input<string>;
 }

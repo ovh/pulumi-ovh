@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("admissionplugins")]
         private InputList<Inputs.KubeCustomizationApiserverAdmissionpluginArgs>? _admissionplugins;
-
-        /// <summary>
-        /// Kubernetes API server admission plugins customization
-        /// </summary>
         public InputList<Inputs.KubeCustomizationApiserverAdmissionpluginArgs> Admissionplugins
         {
             get => _admissionplugins ?? (_admissionplugins = new InputList<Inputs.KubeCustomizationApiserverAdmissionpluginArgs>());

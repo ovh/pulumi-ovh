@@ -9,55 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
-    /// <summary>
-    /// Provides a resource for managing **snapshot** to partitions on HA-NAS services
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionSnapshot("myPartition", new()
-    ///     {
-    ///         PartitionName = "my-partition",
-    ///         ServiceName = "zpool-12345",
-    ///         Type = "day-3",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot")]
     public partial class NasHAPartitionSnapshot : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// name of the partition
-        /// </summary>
         [Output("partitionName")]
         public Output<string> PartitionName { get; private set; } = null!;
 
-        /// <summary>
-        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
-        /// <summary>
-        /// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -108,21 +68,12 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class NasHAPartitionSnapshotArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// name of the partition
-        /// </summary>
         [Input("partitionName", required: true)]
         public Input<string> PartitionName { get; set; } = null!;
 
-        /// <summary>
-        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -134,21 +85,12 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class NasHAPartitionSnapshotState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// name of the partition
-        /// </summary>
         [Input("partitionName")]
         public Input<string>? PartitionName { get; set; }
 
-        /// <summary>
-        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        /// <summary>
-        /// Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

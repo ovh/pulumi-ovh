@@ -9,79 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
-    /// <summary>
-    /// Provides a resource for managing partitions on HA-NAS services
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myPartition = new Ovh.Dedicated.NasHAPartition("myPartition", new()
-    ///     {
-    ///         Protocol = "NFS",
-    ///         ServiceName = "zpool-12345",
-    ///         Size = 20,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// HA-NAS can be imported using the `{service_name}/{name}`, e.g.
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Dedicated/nasHAPartition:NasHAPartition")]
     public partial class NasHAPartition : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Percentage of partition space used in %
-        /// </summary>
         [Output("capacity")]
         public Output<int> Capacity { get; private set; } = null!;
 
-        /// <summary>
-        /// A brief description of the partition
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// name of the partition
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// one of "NFS", "CIFS" or "NFS_CIFS"
-        /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
-        /// <summary>
-        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
-        /// <summary>
-        /// size of the partition in GB
-        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
-        /// <summary>
-        /// Percentage of partition space used by snapshots in %
-        /// </summary>
         [Output("usedBySnapshots")]
         public Output<int> UsedBySnapshots { get; private set; } = null!;
 
@@ -132,33 +80,18 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class NasHAPartitionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A brief description of the partition
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// name of the partition
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// one of "NFS", "CIFS" or "NFS_CIFS"
-        /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
-        /// <summary>
-        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// size of the partition in GB
-        /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 
@@ -170,45 +103,24 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class NasHAPartitionState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Percentage of partition space used in %
-        /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
 
-        /// <summary>
-        /// A brief description of the partition
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// name of the partition
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// one of "NFS", "CIFS" or "NFS_CIFS"
-        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
-        /// <summary>
-        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        /// <summary>
-        /// size of the partition in GB
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
-        /// <summary>
-        /// Percentage of partition space used by snapshots in %
-        /// </summary>
         [Input("usedBySnapshots")]
         public Input<int>? UsedBySnapshots { get; set; }
 

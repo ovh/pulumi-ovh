@@ -8,77 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manage rules for TCP route.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			reject, err := iploadbalancing.NewTcpRoute(ctx, "reject", &iploadbalancing.TcpRouteArgs{
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
-//				Weight:      pulumi.Int(1),
-//				FrontendId:  pulumi.Int(11111),
-//				Action: &iploadbalancing.TcpRouteActionArgs{
-//					Type: pulumi.String("reject"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iploadbalancing.NewTcpRouteRule(ctx, "exampleRule", &iploadbalancing.TcpRouteRuleArgs{
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
-//				RouteId:     reject.ID(),
-//				DisplayName: pulumi.String("Match example.com host"),
-//				Field:       pulumi.String("sni"),
-//				Match:       pulumi.String("is"),
-//				Negate:      pulumi.Bool(false),
-//				Pattern:     pulumi.String("example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 type TcpRouteRule struct {
 	pulumi.CustomResourceState
 
-	// Human readable name for your rule, this field is for you
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-	Field pulumi.StringOutput `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-	Match pulumi.StringOutput `pulumi:"match"`
-	// Invert the matching operator effect
-	Negate pulumi.BoolOutput `pulumi:"negate"`
-	// Value to match against this match. Interpretation if this field depends on the match and field
-	Pattern pulumi.StringPtrOutput `pulumi:"pattern"`
-	// The route to apply this rule
-	RouteId pulumi.StringOutput `pulumi:"routeId"`
-	// The internal name of your IP load balancing
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-	SubField pulumi.StringPtrOutput `pulumi:"subField"`
+	Field       pulumi.StringOutput    `pulumi:"field"`
+	Match       pulumi.StringOutput    `pulumi:"match"`
+	Negate      pulumi.BoolOutput      `pulumi:"negate"`
+	Pattern     pulumi.StringPtrOutput `pulumi:"pattern"`
+	RouteId     pulumi.StringOutput    `pulumi:"routeId"`
+	ServiceName pulumi.StringOutput    `pulumi:"serviceName"`
+	SubField    pulumi.StringPtrOutput `pulumi:"subField"`
 }
 
 // NewTcpRouteRule registers a new resource with the given unique name, arguments, and options.
@@ -123,41 +67,25 @@ func GetTcpRouteRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TcpRouteRule resources.
 type tcpRouteRuleState struct {
-	// Human readable name for your rule, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-	Field *string `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-	Match *string `pulumi:"match"`
-	// Invert the matching operator effect
-	Negate *bool `pulumi:"negate"`
-	// Value to match against this match. Interpretation if this field depends on the match and field
-	Pattern *string `pulumi:"pattern"`
-	// The route to apply this rule
-	RouteId *string `pulumi:"routeId"`
-	// The internal name of your IP load balancing
+	Field       *string `pulumi:"field"`
+	Match       *string `pulumi:"match"`
+	Negate      *bool   `pulumi:"negate"`
+	Pattern     *string `pulumi:"pattern"`
+	RouteId     *string `pulumi:"routeId"`
 	ServiceName *string `pulumi:"serviceName"`
-	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-	SubField *string `pulumi:"subField"`
+	SubField    *string `pulumi:"subField"`
 }
 
 type TcpRouteRuleState struct {
-	// Human readable name for your rule, this field is for you
 	DisplayName pulumi.StringPtrInput
-	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-	Field pulumi.StringPtrInput
-	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-	Match pulumi.StringPtrInput
-	// Invert the matching operator effect
-	Negate pulumi.BoolPtrInput
-	// Value to match against this match. Interpretation if this field depends on the match and field
-	Pattern pulumi.StringPtrInput
-	// The route to apply this rule
-	RouteId pulumi.StringPtrInput
-	// The internal name of your IP load balancing
+	Field       pulumi.StringPtrInput
+	Match       pulumi.StringPtrInput
+	Negate      pulumi.BoolPtrInput
+	Pattern     pulumi.StringPtrInput
+	RouteId     pulumi.StringPtrInput
 	ServiceName pulumi.StringPtrInput
-	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-	SubField pulumi.StringPtrInput
+	SubField    pulumi.StringPtrInput
 }
 
 func (TcpRouteRuleState) ElementType() reflect.Type {
@@ -165,42 +93,26 @@ func (TcpRouteRuleState) ElementType() reflect.Type {
 }
 
 type tcpRouteRuleArgs struct {
-	// Human readable name for your rule, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-	Field string `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-	Match string `pulumi:"match"`
-	// Invert the matching operator effect
-	Negate *bool `pulumi:"negate"`
-	// Value to match against this match. Interpretation if this field depends on the match and field
-	Pattern *string `pulumi:"pattern"`
-	// The route to apply this rule
-	RouteId string `pulumi:"routeId"`
-	// The internal name of your IP load balancing
-	ServiceName string `pulumi:"serviceName"`
-	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-	SubField *string `pulumi:"subField"`
+	Field       string  `pulumi:"field"`
+	Match       string  `pulumi:"match"`
+	Negate      *bool   `pulumi:"negate"`
+	Pattern     *string `pulumi:"pattern"`
+	RouteId     string  `pulumi:"routeId"`
+	ServiceName string  `pulumi:"serviceName"`
+	SubField    *string `pulumi:"subField"`
 }
 
 // The set of arguments for constructing a TcpRouteRule resource.
 type TcpRouteRuleArgs struct {
-	// Human readable name for your rule, this field is for you
 	DisplayName pulumi.StringPtrInput
-	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
-	Field pulumi.StringInput
-	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
-	Match pulumi.StringInput
-	// Invert the matching operator effect
-	Negate pulumi.BoolPtrInput
-	// Value to match against this match. Interpretation if this field depends on the match and field
-	Pattern pulumi.StringPtrInput
-	// The route to apply this rule
-	RouteId pulumi.StringInput
-	// The internal name of your IP load balancing
+	Field       pulumi.StringInput
+	Match       pulumi.StringInput
+	Negate      pulumi.BoolPtrInput
+	Pattern     pulumi.StringPtrInput
+	RouteId     pulumi.StringInput
 	ServiceName pulumi.StringInput
-	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
-	SubField pulumi.StringPtrInput
+	SubField    pulumi.StringPtrInput
 }
 
 func (TcpRouteRuleArgs) ElementType() reflect.Type {
@@ -290,42 +202,34 @@ func (o TcpRouteRuleOutput) ToTcpRouteRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Human readable name for your rule, this field is for you
 func (o TcpRouteRuleOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
 func (o TcpRouteRuleOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringOutput { return v.Field }).(pulumi.StringOutput)
 }
 
-// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
 func (o TcpRouteRuleOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringOutput { return v.Match }).(pulumi.StringOutput)
 }
 
-// Invert the matching operator effect
 func (o TcpRouteRuleOutput) Negate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.BoolOutput { return v.Negate }).(pulumi.BoolOutput)
 }
 
-// Value to match against this match. Interpretation if this field depends on the match and field
 func (o TcpRouteRuleOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringPtrOutput { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
-// The route to apply this rule
 func (o TcpRouteRuleOutput) RouteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringOutput { return v.RouteId }).(pulumi.StringOutput)
 }
 
-// The internal name of your IP load balancing
 func (o TcpRouteRuleOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
 func (o TcpRouteRuleOutput) SubField() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpRouteRule) pulumi.StringPtrOutput { return v.SubField }).(pulumi.StringPtrOutput)
 }

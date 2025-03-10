@@ -9,78 +9,62 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
-    /// <summary>
-    /// ## Import
-    /// 
-    /// OVHcloud Managed PostgreSQL clusters connection pools can be imported using the `service_name`, `cluster_id` and `id` of the connection pool, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool my_connection_pool service_name/cluster_id/id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool")]
     public partial class PostgresSqlConnectionPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Database ID for a database that belongs to the Database cluster given above.
+        /// Database used for the connection pool
         /// </summary>
         [Output("databaseId")]
         public Output<string> DatabaseId { get; private set; } = null!;
 
         /// <summary>
         /// Connection mode to the connection pool
-        /// Available modes:
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the connection pool.
+        /// Name of the connection pool
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Port of the connection pool.
+        /// Port of the connection pool
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Size of the connection pool.
+        /// Size of the connection pool
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// Ssl connection mode for the pool.
+        /// SSL connection mode for the pool
         /// </summary>
         [Output("sslMode")]
         public Output<string> SslMode { get; private set; } = null!;
 
         /// <summary>
-        /// Connection URI to the pool.
+        /// Connection URI to the pool
         /// </summary>
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
 
         /// <summary>
-        /// Database user authorized to connect to the pool, if none all the users are allowed.
+        /// Database user authorized to connect to the pool, if none all the users are allowed
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -133,45 +117,40 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class PostgresSqlConnectionPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Database ID for a database that belongs to the Database cluster given above.
+        /// Database used for the connection pool
         /// </summary>
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
 
         /// <summary>
         /// Connection mode to the connection pool
-        /// Available modes:
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
-        /// Name of the connection pool.
+        /// Name of the connection pool
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Size of the connection pool.
+        /// Size of the connection pool
         /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 
         /// <summary>
-        /// Database user authorized to connect to the pool, if none all the users are allowed.
+        /// Database user authorized to connect to the pool, if none all the users are allowed
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
@@ -185,63 +164,58 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class PostgresSqlConnectionPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Database ID for a database that belongs to the Database cluster given above.
+        /// Database used for the connection pool
         /// </summary>
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }
 
         /// <summary>
         /// Connection mode to the connection pool
-        /// Available modes:
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Name of the connection pool.
+        /// Name of the connection pool
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Port of the connection pool.
+        /// Port of the connection pool
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Size of the connection pool.
+        /// Size of the connection pool
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// Ssl connection mode for the pool.
+        /// SSL connection mode for the pool
         /// </summary>
         [Input("sslMode")]
         public Input<string>? SslMode { get; set; }
 
         /// <summary>
-        /// Connection URI to the pool.
+        /// Connection URI to the pool
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 
         /// <summary>
-        /// Database user authorized to connect to the pool, if none all the users are allowed.
+        /// Database user authorized to connect to the pool, if none all the users are allowed
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the floating IPs of a public cloud project.
- */
 export function getFloatingIPs(args: GetFloatingIPsArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIPsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getFloatingIPs:getFloatingIPs", {
@@ -21,13 +18,7 @@ export function getFloatingIPs(args: GetFloatingIPsArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getFloatingIPs.
  */
 export interface GetFloatingIPsArgs {
-    /**
-     * Public cloud region name
-     */
     regionName: string;
-    /**
-     * The id of the public cloud project
-     */
     serviceName: string;
 }
 
@@ -40,15 +31,9 @@ export interface GetFloatingIPsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Floating IP region
-     */
     readonly regionName: string;
     readonly serviceName: string;
 }
-/**
- * Use this data source to get the floating IPs of a public cloud project.
- */
 export function getFloatingIPsOutput(args: GetFloatingIPsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFloatingIPsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getFloatingIPs:getFloatingIPs", {
@@ -61,12 +46,6 @@ export function getFloatingIPsOutput(args: GetFloatingIPsOutputArgs, opts?: pulu
  * A collection of arguments for invoking getFloatingIPs.
  */
 export interface GetFloatingIPsOutputArgs {
-    /**
-     * Public cloud region name
-     */
     regionName: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project
-     */
     serviceName: pulumi.Input<string>;
 }

@@ -27,13 +27,7 @@ class NetworkPrivateArgs:
                  vlan_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a NetworkPrivate resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: an array of valid OVHcloud public cloud region ID in which the network
-               will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        :param pulumi.Input[int] vlan_id: a vlan id to associate with the network.
-               Changing this value recreates the resource. Defaults to 0.
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
         """
         pulumi.set(__self__, "service_name", service_name)
         if name is not None:
@@ -47,8 +41,7 @@ class NetworkPrivateArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the id of the cloud project.
         """
         return pulumi.get(self, "service_name")
 
@@ -59,9 +52,6 @@ class NetworkPrivateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the network.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -71,10 +61,6 @@ class NetworkPrivateArgs:
     @property
     @pulumi.getter
     def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        an array of valid OVHcloud public cloud region ID in which the network
-        will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        """
         return pulumi.get(self, "regions")
 
     @regions.setter
@@ -84,10 +70,6 @@ class NetworkPrivateArgs:
     @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        a vlan id to associate with the network.
-        Changing this value recreates the resource. Defaults to 0.
-        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -108,22 +90,7 @@ class _NetworkPrivateState:
                  vlan_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering NetworkPrivate resources.
-        :param pulumi.Input[str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: an array of valid OVHcloud public cloud region ID in which the network
-               will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsAttributeArgs']]] regions_attributes: A map representing information about the region.
-               * `regions_attributes/region` - The id of the region.
-               * `regions_attributes/status` - The status of the network in the region.
-               * `regions_attributes/openstackid` - The private network id in the region.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsStatusArgs']]] regions_statuses: (Deprecated) A map representing the status of the network per region.
-               * `regions_status/region` - (Deprecated) The id of the region.
-               * `regions_status/status` - (Deprecated) The status of the network in the region.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] status: the status of the network. should be normally set to 'ACTIVE'.
-        :param pulumi.Input[str] type: the type of the network. Either 'private' or 'public'.
-        :param pulumi.Input[int] vlan_id: a vlan id to associate with the network.
-               Changing this value recreates the resource. Defaults to 0.
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -148,9 +115,6 @@ class _NetworkPrivateState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the network.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -160,10 +124,6 @@ class _NetworkPrivateState:
     @property
     @pulumi.getter
     def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        an array of valid OVHcloud public cloud region ID in which the network
-        will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        """
         return pulumi.get(self, "regions")
 
     @regions.setter
@@ -173,12 +133,6 @@ class _NetworkPrivateState:
     @property
     @pulumi.getter(name="regionsAttributes")
     def regions_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsAttributeArgs']]]]:
-        """
-        A map representing information about the region.
-        * `regions_attributes/region` - The id of the region.
-        * `regions_attributes/status` - The status of the network in the region.
-        * `regions_attributes/openstackid` - The private network id in the region.
-        """
         return pulumi.get(self, "regions_attributes")
 
     @regions_attributes.setter
@@ -189,11 +143,6 @@ class _NetworkPrivateState:
     @pulumi.getter(name="regionsStatuses")
     @_utilities.deprecated("""use the regions_attributes field instead""")
     def regions_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsStatusArgs']]]]:
-        """
-        (Deprecated) A map representing the status of the network per region.
-        * `regions_status/region` - (Deprecated) The id of the region.
-        * `regions_status/status` - (Deprecated) The status of the network in the region.
-        """
         return pulumi.get(self, "regions_statuses")
 
     @regions_statuses.setter
@@ -204,8 +153,7 @@ class _NetworkPrivateState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the id of the cloud project.
         """
         return pulumi.get(self, "service_name")
 
@@ -216,9 +164,6 @@ class _NetworkPrivateState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        the status of the network. should be normally set to 'ACTIVE'.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -228,9 +173,6 @@ class _NetworkPrivateState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        the type of the network. Either 'private' or 'public'.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -240,10 +182,6 @@ class _NetworkPrivateState:
     @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        a vlan id to associate with the network.
-        Changing this value recreates the resource. Defaults to 0.
-        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -262,41 +200,10 @@ class NetworkPrivate(pulumi.CustomResource):
                  vlan_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Creates a private network in a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        net = ovh.cloud_project.NetworkPrivate("net",
-            regions=[
-                "GRA1",
-                "BHS1",
-            ],
-            service_name="XXXXXX")
-        ```
-
-        ## Import
-
-        Private network in a public cloud project can be imported using the `service_name` and the `network_id` as `pn-xxxx` format, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet service_name/network_id
-        ```
-
+        Create a NetworkPrivate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: an array of valid OVHcloud public cloud region ID in which the network
-               will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[int] vlan_id: a vlan id to associate with the network.
-               Changing this value recreates the resource. Defaults to 0.
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
         """
         ...
     @overload
@@ -305,32 +212,7 @@ class NetworkPrivate(pulumi.CustomResource):
                  args: NetworkPrivateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a private network in a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        net = ovh.cloud_project.NetworkPrivate("net",
-            regions=[
-                "GRA1",
-                "BHS1",
-            ],
-            service_name="XXXXXX")
-        ```
-
-        ## Import
-
-        Private network in a public cloud project can be imported using the `service_name` and the `network_id` as `pn-xxxx` format, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet service_name/network_id
-        ```
-
+        Create a NetworkPrivate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NetworkPrivateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -394,22 +276,7 @@ class NetworkPrivate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: an array of valid OVHcloud public cloud region ID in which the network
-               will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsAttributeArgs', 'NetworkPrivateRegionsAttributeArgsDict']]]] regions_attributes: A map representing information about the region.
-               * `regions_attributes/region` - The id of the region.
-               * `regions_attributes/status` - The status of the network in the region.
-               * `regions_attributes/openstackid` - The private network id in the region.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsStatusArgs', 'NetworkPrivateRegionsStatusArgsDict']]]] regions_statuses: (Deprecated) A map representing the status of the network per region.
-               * `regions_status/region` - (Deprecated) The id of the region.
-               * `regions_status/status` - (Deprecated) The status of the network in the region.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[str] status: the status of the network. should be normally set to 'ACTIVE'.
-        :param pulumi.Input[str] type: the type of the network. Either 'private' or 'public'.
-        :param pulumi.Input[int] vlan_id: a vlan id to associate with the network.
-               Changing this value recreates the resource. Defaults to 0.
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -428,73 +295,44 @@ class NetworkPrivate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the network.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def regions(self) -> pulumi.Output[Sequence[str]]:
-        """
-        an array of valid OVHcloud public cloud region ID in which the network
-        will be available. Ex.: "GRA1". Defaults to all public cloud regions.
-        """
         return pulumi.get(self, "regions")
 
     @property
     @pulumi.getter(name="regionsAttributes")
     def regions_attributes(self) -> pulumi.Output[Sequence['outputs.NetworkPrivateRegionsAttribute']]:
-        """
-        A map representing information about the region.
-        * `regions_attributes/region` - The id of the region.
-        * `regions_attributes/status` - The status of the network in the region.
-        * `regions_attributes/openstackid` - The private network id in the region.
-        """
         return pulumi.get(self, "regions_attributes")
 
     @property
     @pulumi.getter(name="regionsStatuses")
     @_utilities.deprecated("""use the regions_attributes field instead""")
     def regions_statuses(self) -> pulumi.Output[Sequence['outputs.NetworkPrivateRegionsStatus']]:
-        """
-        (Deprecated) A map representing the status of the network per region.
-        * `regions_status/region` - (Deprecated) The id of the region.
-        * `regions_status/status` - (Deprecated) The status of the network in the region.
-        """
         return pulumi.get(self, "regions_statuses")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the id of the cloud project.
         """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
-        """
-        the status of the network. should be normally set to 'ACTIVE'.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        the type of the network. Either 'private' or 'public'.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[Optional[int]]:
-        """
-        a vlan id to associate with the network.
-        Changing this value recreates the resource. Defaults to 0.
-        """
         return pulumi.get(self, "vlan_id")
 

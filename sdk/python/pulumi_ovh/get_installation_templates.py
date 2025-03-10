@@ -45,9 +45,6 @@ class GetInstallationTemplatesResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence[str]:
-        """
-        The list of installation templates IDs available for dedicated servers.
-        """
         return pulumi.get(self, "results")
 
 
@@ -63,16 +60,7 @@ class AwaitableGetInstallationTemplatesResult(GetInstallationTemplatesResult):
 
 def get_installation_templates(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstallationTemplatesResult:
     """
-    Use this data source to get the list of installation templates available for dedicated servers.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    templates = ovh.get_installation_templates()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -83,16 +71,7 @@ def get_installation_templates(opts: Optional[pulumi.InvokeOptions] = None) -> A
         results=pulumi.get(__ret__, 'results'))
 def get_installation_templates_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstallationTemplatesResult]:
     """
-    Use this data source to get the list of installation templates available for dedicated servers.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    templates = ovh.get_installation_templates()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

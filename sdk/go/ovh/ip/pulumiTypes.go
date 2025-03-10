@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -138,7 +138,7 @@ func (o IpServiceOrderArrayOutput) Index(i pulumi.IntInput) IpServiceOrderOutput
 }
 
 type IpServiceOrderDetail struct {
-	// Custom description on your ip.
+	// description
 	Description *string `pulumi:"description"`
 	// expiration date
 	Domain *string `pulumi:"domain"`
@@ -160,7 +160,7 @@ type IpServiceOrderDetailInput interface {
 }
 
 type IpServiceOrderDetailArgs struct {
-	// Custom description on your ip.
+	// description
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// expiration date
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -221,7 +221,7 @@ func (o IpServiceOrderDetailOutput) ToIpServiceOrderDetailOutputWithContext(ctx 
 	return o
 }
 
-// Custom description on your ip.
+// description
 func (o IpServiceOrderDetailOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpServiceOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -583,7 +583,7 @@ func (o IpServicePlanConfigurationArrayOutput) Index(i pulumi.IntInput) IpServic
 type IpServicePlanOption struct {
 	// Catalog name
 	CatalogName *string `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
+	// Representation of a configuration item for personalizing product
 	Configurations []IpServicePlanOptionConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
@@ -607,7 +607,7 @@ type IpServicePlanOptionInput interface {
 type IpServicePlanOptionArgs struct {
 	// Catalog name
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
+	// Representation of a configuration item for personalizing product
 	Configurations IpServicePlanOptionConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
@@ -673,7 +673,7 @@ func (o IpServicePlanOptionOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpServicePlanOption) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
+// Representation of a configuration item for personalizing product
 func (o IpServicePlanOptionOutput) Configurations() IpServicePlanOptionConfigurationArrayOutput {
 	return o.ApplyT(func(v IpServicePlanOption) []IpServicePlanOptionConfiguration { return v.Configurations }).(IpServicePlanOptionConfigurationArrayOutput)
 }
@@ -820,7 +820,7 @@ func (o IpServicePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) Ip
 }
 
 type IpServiceRoutedTo struct {
-	// service name
+	// Service where ip is routed to
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -836,7 +836,7 @@ type IpServiceRoutedToInput interface {
 }
 
 type IpServiceRoutedToArgs struct {
-	// service name
+	// Service where ip is routed to
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -891,7 +891,7 @@ func (o IpServiceRoutedToOutput) ToIpServiceRoutedToOutputWithContext(ctx contex
 	return o
 }
 
-// service name
+// Service where ip is routed to
 func (o IpServiceRoutedToOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpServiceRoutedTo) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -917,7 +917,7 @@ func (o IpServiceRoutedToArrayOutput) Index(i pulumi.IntInput) IpServiceRoutedTo
 }
 
 type MoveRoutedTo struct {
-	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	// Service where ip is routed to
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -933,7 +933,7 @@ type MoveRoutedToInput interface {
 }
 
 type MoveRoutedToArgs struct {
-	// Name of the service to route the IP to. IP will be parked if this value is an empty string
+	// Service where ip is routed to
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -1014,7 +1014,7 @@ func (o MoveRoutedToOutput) ToMoveRoutedToPtrOutputWithContext(ctx context.Conte
 	}).(MoveRoutedToPtrOutput)
 }
 
-// Name of the service to route the IP to. IP will be parked if this value is an empty string
+// Service where ip is routed to
 func (o MoveRoutedToOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v MoveRoutedTo) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -1043,7 +1043,7 @@ func (o MoveRoutedToPtrOutput) Elem() MoveRoutedToOutput {
 	}).(MoveRoutedToOutput)
 }
 
-// Name of the service to route the IP to. IP will be parked if this value is an empty string
+// Service where ip is routed to
 func (o MoveRoutedToPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MoveRoutedTo) *string {
 		if v == nil {
@@ -1054,7 +1054,7 @@ func (o MoveRoutedToPtrOutput) ServiceName() pulumi.StringPtrOutput {
 }
 
 type GetServiceRoutedTo struct {
-	// The service name
+	// Service where ip is routed to
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -1070,7 +1070,7 @@ type GetServiceRoutedToInput interface {
 }
 
 type GetServiceRoutedToArgs struct {
-	// The service name
+	// Service where ip is routed to
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -1125,7 +1125,7 @@ func (o GetServiceRoutedToOutput) ToGetServiceRoutedToOutputWithContext(ctx cont
 	return o
 }
 
-// The service name
+// Service where ip is routed to
 func (o GetServiceRoutedToOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceRoutedTo) string { return v.ServiceName }).(pulumi.StringOutput)
 }

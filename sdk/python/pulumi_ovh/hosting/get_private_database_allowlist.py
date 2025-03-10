@@ -58,9 +58,6 @@ class GetPrivateDatabaseAllowlistResult:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
-        """
-        Creation date of the database
-        """
         return pulumi.get(self, "creation_date")
 
     @property
@@ -79,25 +76,16 @@ class GetPrivateDatabaseAllowlistResult:
     @property
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> str:
-        """
-        The last update date of this whitelist
-        """
         return pulumi.get(self, "last_update")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Custom name for your Whitelisted IP
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def service(self) -> bool:
-        """
-        Authorize this IP to access service port
-        """
         return pulumi.get(self, "service")
 
     @property
@@ -108,17 +96,11 @@ class GetPrivateDatabaseAllowlistResult:
     @property
     @pulumi.getter
     def sftp(self) -> bool:
-        """
-        Authorize this IP to access SFTP port
-        """
         return pulumi.get(self, "sftp")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Whitelist status
-        """
         return pulumi.get(self, "status")
 
 
@@ -143,21 +125,7 @@ def get_private_database_allowlist(ip: Optional[str] = None,
                                    service_name: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateDatabaseAllowlistResult:
     """
-    Use this data source to retrieve information about an hosting privatedatabase whitelist.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str ip: The whitelisted IP in your instance
-    :param str service_name: The internal name of your private database
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ip'] = ip
@@ -179,21 +147,7 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[str
                                           service_name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseAllowlistResult]:
     """
-    Use this data source to retrieve information about an hosting privatedatabase whitelist.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str ip: The whitelisted IP in your instance
-    :param str service_name: The internal name of your private database
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ip'] = ip

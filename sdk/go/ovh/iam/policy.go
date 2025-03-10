@@ -8,89 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an IAM policy.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			account, err := me.GetMe(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myGroup, err := me.NewIdentityGroup(ctx, "myGroup", &me.IdentityGroupArgs{
-//				Description: pulumi.String("my_group created in Terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewPolicy(ctx, "manager", &iam.PolicyArgs{
-//				Description: pulumi.String("Users are allowed to use the OVH manager"),
-//				Identities: pulumi.StringArray{
-//					myGroup.GroupURN,
-//				},
-//				Resources: pulumi.StringArray{
-//					pulumi.String(account.AccountURN),
-//				},
-//				Allows: pulumi.StringArray{
-//					pulumi.String("account:apiovh:me/get"),
-//					pulumi.String("account:apiovh:me/supportLevel/get"),
-//					pulumi.String("account:apiovh:me/certificates/get"),
-//					pulumi.String("account:apiovh:me/tag/get"),
-//					pulumi.String("account:apiovh:services/get"),
-//					pulumi.String("account:apiovh:*"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// List of actions allowed on resources by identities
-	Allows pulumi.StringArrayOutput `pulumi:"allows"`
-	// Creation date of this group.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// List of actions that will always be denied even if also allowed by this policy or another one.
-	Denies pulumi.StringArrayOutput `pulumi:"denies"`
-	// Description of the policy
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
-	Excepts pulumi.StringArrayOutput `pulumi:"excepts"`
-	// List of identities affected by the policy
-	Identities pulumi.StringArrayOutput `pulumi:"identities"`
-	// Name of the policy, must be unique
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Owner of the policy.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	Allows            pulumi.StringArrayOutput `pulumi:"allows"`
+	CreatedAt         pulumi.StringOutput      `pulumi:"createdAt"`
+	Denies            pulumi.StringArrayOutput `pulumi:"denies"`
+	Description       pulumi.StringPtrOutput   `pulumi:"description"`
+	Excepts           pulumi.StringArrayOutput `pulumi:"excepts"`
+	Identities        pulumi.StringArrayOutput `pulumi:"identities"`
+	Name              pulumi.StringOutput      `pulumi:"name"`
+	Owner             pulumi.StringOutput      `pulumi:"owner"`
 	PermissionsGroups pulumi.StringArrayOutput `pulumi:"permissionsGroups"`
-	// Indicates that the policy is a default one.
-	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
-	// List of resources affected by the policy
-	Resources pulumi.StringArrayOutput `pulumi:"resources"`
-	// Date of the last update of this group.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	ReadOnly          pulumi.BoolOutput        `pulumi:"readOnly"`
+	Resources         pulumi.StringArrayOutput `pulumi:"resources"`
+	UpdatedAt         pulumi.StringOutput      `pulumi:"updatedAt"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -129,57 +65,33 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// List of actions allowed on resources by identities
-	Allows []string `pulumi:"allows"`
-	// Creation date of this group.
-	CreatedAt *string `pulumi:"createdAt"`
-	// List of actions that will always be denied even if also allowed by this policy or another one.
-	Denies []string `pulumi:"denies"`
-	// Description of the policy
-	Description *string `pulumi:"description"`
-	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
-	Excepts []string `pulumi:"excepts"`
-	// List of identities affected by the policy
-	Identities []string `pulumi:"identities"`
-	// Name of the policy, must be unique
-	Name *string `pulumi:"name"`
-	// Owner of the policy.
-	Owner *string `pulumi:"owner"`
-	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	Allows            []string `pulumi:"allows"`
+	CreatedAt         *string  `pulumi:"createdAt"`
+	Denies            []string `pulumi:"denies"`
+	Description       *string  `pulumi:"description"`
+	Excepts           []string `pulumi:"excepts"`
+	Identities        []string `pulumi:"identities"`
+	Name              *string  `pulumi:"name"`
+	Owner             *string  `pulumi:"owner"`
 	PermissionsGroups []string `pulumi:"permissionsGroups"`
-	// Indicates that the policy is a default one.
-	ReadOnly *bool `pulumi:"readOnly"`
-	// List of resources affected by the policy
-	Resources []string `pulumi:"resources"`
-	// Date of the last update of this group.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	ReadOnly          *bool    `pulumi:"readOnly"`
+	Resources         []string `pulumi:"resources"`
+	UpdatedAt         *string  `pulumi:"updatedAt"`
 }
 
 type PolicyState struct {
-	// List of actions allowed on resources by identities
-	Allows pulumi.StringArrayInput
-	// Creation date of this group.
-	CreatedAt pulumi.StringPtrInput
-	// List of actions that will always be denied even if also allowed by this policy or another one.
-	Denies pulumi.StringArrayInput
-	// Description of the policy
-	Description pulumi.StringPtrInput
-	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
-	Excepts pulumi.StringArrayInput
-	// List of identities affected by the policy
-	Identities pulumi.StringArrayInput
-	// Name of the policy, must be unique
-	Name pulumi.StringPtrInput
-	// Owner of the policy.
-	Owner pulumi.StringPtrInput
-	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	Allows            pulumi.StringArrayInput
+	CreatedAt         pulumi.StringPtrInput
+	Denies            pulumi.StringArrayInput
+	Description       pulumi.StringPtrInput
+	Excepts           pulumi.StringArrayInput
+	Identities        pulumi.StringArrayInput
+	Name              pulumi.StringPtrInput
+	Owner             pulumi.StringPtrInput
 	PermissionsGroups pulumi.StringArrayInput
-	// Indicates that the policy is a default one.
-	ReadOnly pulumi.BoolPtrInput
-	// List of resources affected by the policy
-	Resources pulumi.StringArrayInput
-	// Date of the last update of this group.
-	UpdatedAt pulumi.StringPtrInput
+	ReadOnly          pulumi.BoolPtrInput
+	Resources         pulumi.StringArrayInput
+	UpdatedAt         pulumi.StringPtrInput
 }
 
 func (PolicyState) ElementType() reflect.Type {
@@ -187,42 +99,26 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// List of actions allowed on resources by identities
-	Allows []string `pulumi:"allows"`
-	// List of actions that will always be denied even if also allowed by this policy or another one.
-	Denies []string `pulumi:"denies"`
-	// Description of the policy
-	Description *string `pulumi:"description"`
-	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
-	Excepts []string `pulumi:"excepts"`
-	// List of identities affected by the policy
-	Identities []string `pulumi:"identities"`
-	// Name of the policy, must be unique
-	Name *string `pulumi:"name"`
-	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	Allows            []string `pulumi:"allows"`
+	Denies            []string `pulumi:"denies"`
+	Description       *string  `pulumi:"description"`
+	Excepts           []string `pulumi:"excepts"`
+	Identities        []string `pulumi:"identities"`
+	Name              *string  `pulumi:"name"`
 	PermissionsGroups []string `pulumi:"permissionsGroups"`
-	// List of resources affected by the policy
-	Resources []string `pulumi:"resources"`
+	Resources         []string `pulumi:"resources"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// List of actions allowed on resources by identities
-	Allows pulumi.StringArrayInput
-	// List of actions that will always be denied even if also allowed by this policy or another one.
-	Denies pulumi.StringArrayInput
-	// Description of the policy
-	Description pulumi.StringPtrInput
-	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
-	Excepts pulumi.StringArrayInput
-	// List of identities affected by the policy
-	Identities pulumi.StringArrayInput
-	// Name of the policy, must be unique
-	Name pulumi.StringPtrInput
-	// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+	Allows            pulumi.StringArrayInput
+	Denies            pulumi.StringArrayInput
+	Description       pulumi.StringPtrInput
+	Excepts           pulumi.StringArrayInput
+	Identities        pulumi.StringArrayInput
+	Name              pulumi.StringPtrInput
 	PermissionsGroups pulumi.StringArrayInput
-	// List of resources affected by the policy
-	Resources pulumi.StringArrayInput
+	Resources         pulumi.StringArrayInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {
@@ -312,62 +208,50 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
-// List of actions allowed on resources by identities
 func (o PolicyOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Allows }).(pulumi.StringArrayOutput)
 }
 
-// Creation date of this group.
 func (o PolicyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// List of actions that will always be denied even if also allowed by this policy or another one.
 func (o PolicyOutput) Denies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Denies }).(pulumi.StringArrayOutput)
 }
 
-// Description of the policy
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 func (o PolicyOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Excepts }).(pulumi.StringArrayOutput)
 }
 
-// List of identities affected by the policy
 func (o PolicyOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Identities }).(pulumi.StringArrayOutput)
 }
 
-// Name of the policy, must be unique
 func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Owner of the policy.
 func (o PolicyOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
 func (o PolicyOutput) PermissionsGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.PermissionsGroups }).(pulumi.StringArrayOutput)
 }
 
-// Indicates that the policy is a default one.
 func (o PolicyOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Policy) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
-// List of resources affected by the policy
 func (o PolicyOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-// Date of the last update of this group.
 func (o PolicyOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

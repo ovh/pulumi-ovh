@@ -98,137 +98,86 @@ class GetDatabaseResult:
     @property
     @pulumi.getter(name="advancedConfiguration")
     def advanced_configuration(self) -> Mapping[str, str]:
-        """
-        Advanced configuration key / value.
-        """
         return pulumi.get(self, "advanced_configuration")
 
     @property
     @pulumi.getter(name="backupRegions")
     def backup_regions(self) -> Sequence[str]:
-        """
-        List of region where backups are pushed.
-        """
         return pulumi.get(self, "backup_regions")
 
     @property
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> str:
-        """
-        Time on which backups start every day.
-        """
         return pulumi.get(self, "backup_time")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Date of the creation of the cluster.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Description of the IP restriction
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
-        """
-        The disk size (in GB) of the database service.
-        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
-        """
-        The disk type of the database service.
-        """
         return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetDatabaseEndpointResult']:
-        """
-        List of all endpoints objects of the service.
-        """
         return pulumi.get(self, "endpoints")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter
     def flavor(self) -> str:
-        """
-        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        """
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> Sequence['outputs.GetDatabaseIpRestrictionResult']:
-        """
-        IP Blocks authorized to access to the cluster.
-        """
         return pulumi.get(self, "ip_restrictions")
 
     @property
     @pulumi.getter(name="kafkaRestApi")
     def kafka_rest_api(self) -> bool:
-        """
-        Defines whether the REST API is enabled on a kafka cluster.
-        """
         return pulumi.get(self, "kafka_rest_api")
 
     @property
     @pulumi.getter(name="kafkaSchemaRegistry")
     def kafka_schema_registry(self) -> bool:
-        """
-        Defines whether the schema registry is enabled on a Kafka cluster
-        """
         return pulumi.get(self, "kafka_schema_registry")
 
     @property
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> str:
-        """
-        Time on which maintenances can start every day.
-        """
         return pulumi.get(self, "maintenance_time")
 
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
-        """
-        Type of network of the cluster.
-        """
         return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetDatabaseNodeResult']:
-        """
-        List of nodes object.
-        """
         return pulumi.get(self, "nodes")
 
     @property
@@ -239,33 +188,21 @@ class GetDatabaseResult:
     @property
     @pulumi.getter
     def plan(self) -> str:
-        """
-        Plan of the cluster.
-        """
         return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Current status of the cluster.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        The version of the engine in which the service should be deployed
-        """
         return pulumi.get(self, "version")
 
 
@@ -304,28 +241,7 @@ def get_database(engine: Optional[str] = None,
                  service_name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
-    Use this data source to get the managed database of a public cloud project.
-
-    ## Example Usage
-
-    To get information of a database cluster service:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    db = ovh.CloudProjectDatabase.get_database(service_name="XXXXXX",
-        engine="YYYY",
-        id="ZZZZ")
-    pulumi.export("clusterId", db.id)
-    ```
-
-
-    :param str engine: The database engine you want to get information. To get a full list of available engine visit:
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-    :param str id: Cluster ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['engine'] = engine
@@ -362,28 +278,7 @@ def get_database_output(engine: Optional[pulumi.Input[str]] = None,
                         service_name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseResult]:
     """
-    Use this data source to get the managed database of a public cloud project.
-
-    ## Example Usage
-
-    To get information of a database cluster service:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    db = ovh.CloudProjectDatabase.get_database(service_name="XXXXXX",
-        engine="YYYY",
-        id="ZZZZ")
-    pulumi.export("clusterId", db.id)
-    ```
-
-
-    :param str engine: The database engine you want to get information. To get a full list of available engine visit:
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-    :param str id: Cluster ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['engine'] = engine

@@ -57,9 +57,6 @@ class GetLogsClustersRetentionResult:
     @property
     @pulumi.getter
     def duration(self) -> str:
-        """
-        Indexed duration expressed in ISO-8601 format
-        """
         return pulumi.get(self, "duration")
 
     @property
@@ -73,25 +70,16 @@ class GetLogsClustersRetentionResult:
     @property
     @pulumi.getter(name="isSupported")
     def is_supported(self) -> bool:
-        """
-        Indicates if a new stream can use it
-        """
         return pulumi.get(self, "is_supported")
 
     @property
     @pulumi.getter(name="retentionId")
     def retention_id(self) -> str:
-        """
-        ID of the retention that can be used when creating a stream
-        """
         return pulumi.get(self, "retention_id")
 
     @property
     @pulumi.getter(name="retentionType")
     def retention_type(self) -> str:
-        """
-        Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
-        """
         return pulumi.get(self, "retention_type")
 
     @property
@@ -122,48 +110,7 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
                                 service_name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogsClustersRetentionResult:
     """
-    Use this data source to retrieve information about a DBaas logs cluster retention.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        retention_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-    It is also possible to retrieve a retention using its duration:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        duration="P14D",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-    Additionnaly, you can filter retentions on their type:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        duration="P14D",
-        retention_type="LOGS_INDEXING",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str duration: Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
-    :param str retention_id: ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
-    :param str retention_type: Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -189,48 +136,7 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
                                        service_name: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsClustersRetentionResult]:
     """
-    Use this data source to retrieve information about a DBaas logs cluster retention.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        retention_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-    It is also possible to retrieve a retention using its duration:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        duration="P14D",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-    Additionnaly, you can filter retentions on their type:
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        duration="P14D",
-        retention_type="LOGS_INDEXING",
-        service_name="ldp-xx-xxxxx")
-    ```
-
-
-    :param str cluster_id: Cluster ID
-    :param str duration: Indexed duration expressed in ISO-8601 format. Cannot be used if `retention_id` is defined.
-    :param str retention_id: ID of the retention object. Cannot be used if `duration` or `retention_type` is defined.
-    :param str retention_type: Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retention_id` is defined. Defaults to `LOGS_INDEXING` if not defined.
-    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

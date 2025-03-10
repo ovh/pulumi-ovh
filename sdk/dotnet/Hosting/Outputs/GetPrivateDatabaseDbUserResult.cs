@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Hosting.Outputs
     public sealed class GetPrivateDatabaseDbUserResult
     {
         /// <summary>
-        /// Grant of this user for this database
+        /// User's rights on this database
         /// </summary>
         public readonly string GrantType;
         /// <summary>

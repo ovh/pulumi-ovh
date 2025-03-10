@@ -9,79 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Iam
 {
-    /// <summary>
-    /// Provides an OVHcloud IAM resource group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myResourceGroup = new Ovh.Iam.ResourceGroup("myResourceGroup", new()
-    ///     {
-    ///         Resources = new[]
-    ///         {
-    ///             "urn:v1:eu:resource:service1:service1-id",
-    ///             "urn:v1:eu:resource:service2:service2-id",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Resource groups can be imported by using their id.
-    /// 
-    /// &gt; Read only resource groups cannot be imported
-    /// </summary>
     [OvhResourceType("ovh:Iam/resourceGroup:ResourceGroup")]
     public partial class ResourceGroup : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// URN of the resource group, used when writing policies
-        /// </summary>
         [Output("GroupURN")]
         public Output<string> GroupURN { get; private set; } = null!;
 
-        /// <summary>
-        /// Date of the creation of the resource group
-        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the resource group
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the account owning the resource group
-        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
-        /// <summary>
-        /// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-        /// </summary>
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
 
-        /// <summary>
-        /// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<string>> Resources { get; private set; } = null!;
 
-        /// <summary>
-        /// Date of the last modification of the resource group
-        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
@@ -132,18 +80,11 @@ namespace Pulumi.Ovh.Iam
 
     public sealed class ResourceGroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the resource group
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("resources")]
         private InputList<string>? _resources;
-
-        /// <summary>
-        /// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        /// </summary>
         public InputList<string> Resources
         {
             get => _resources ?? (_resources = new InputList<string>());
@@ -158,51 +99,29 @@ namespace Pulumi.Ovh.Iam
 
     public sealed class ResourceGroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// URN of the resource group, used when writing policies
-        /// </summary>
         [Input("GroupURN")]
         public Input<string>? GroupURN { get; set; }
 
-        /// <summary>
-        /// Date of the creation of the resource group
-        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
-        /// <summary>
-        /// Name of the resource group
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Name of the account owning the resource group
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        /// <summary>
-        /// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
-        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("resources")]
         private InputList<string>? _resources;
-
-        /// <summary>
-        /// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
-        /// </summary>
         public InputList<string> Resources
         {
             get => _resources ?? (_resources = new InputList<string>());
             set => _resources = value;
         }
 
-        /// <summary>
-        /// Date of the last modification of the resource group
-        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 

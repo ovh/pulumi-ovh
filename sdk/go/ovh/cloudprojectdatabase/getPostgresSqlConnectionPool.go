@@ -7,51 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testPoolPostgresSqlConnectionPool, err := cloudprojectdatabase.GetPostgresSqlConnectionPool(ctx, &cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{
-//				ServiceName: "XXX",
-//				ClusterId:   "YYY",
-//				Name:        "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("testPool", pulumi.Map{
-//				"service_name": testPoolPostgresSqlConnectionPool.ServiceName,
-//				"cluster_id":   testPoolPostgresSqlConnectionPool.ClusterId,
-//				"name":         testPoolPostgresSqlConnectionPool.Name,
-//				"database_id":  testPoolPostgresSqlConnectionPool.DatabaseId,
-//				"mode":         testPoolPostgresSqlConnectionPool.Mode,
-//				"size":         testPoolPostgresSqlConnectionPool.Size,
-//				"port":         testPoolPostgresSqlConnectionPool.Port,
-//				"ssl_mode":     testPoolPostgresSqlConnectionPool.SslMode,
-//				"uri":          testPoolPostgresSqlConnectionPool.Uri,
-//				"user_id":      testPoolPostgresSqlConnectionPool.UserId,
-//			})
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPostgresSqlConnectionPool(ctx *pulumi.Context, args *LookupPostgresSqlConnectionPoolArgs, opts ...pulumi.InvokeOption) (*LookupPostgresSqlConnectionPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresSqlConnectionPoolResult
@@ -64,40 +23,25 @@ func LookupPostgresSqlConnectionPool(ctx *pulumi.Context, args *LookupPostgresSq
 
 // A collection of arguments for invoking getPostgresSqlConnectionPool.
 type LookupPostgresSqlConnectionPoolArgs struct {
-	// Cluster ID.
-	ClusterId string `pulumi:"clusterId"`
-	// Name of the Connection pool.
-	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Name        string `pulumi:"name"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getPostgresSqlConnectionPool.
 type LookupPostgresSqlConnectionPoolResult struct {
-	// See Argument Reference above
-	ClusterId string `pulumi:"clusterId"`
-	// Database ID for a database that belongs to the Database cluster given above.
+	ClusterId  string `pulumi:"clusterId"`
 	DatabaseId string `pulumi:"databaseId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Connection mode to the connection pool
-	// Available modes:
-	Mode string `pulumi:"mode"`
-	// See Argument Reference above
-	Name string `pulumi:"name"`
-	// Port of the connection pool.
-	Port int `pulumi:"port"`
-	// See Argument Reference above
+	Id          string `pulumi:"id"`
+	Mode        string `pulumi:"mode"`
+	Name        string `pulumi:"name"`
+	Port        int    `pulumi:"port"`
 	ServiceName string `pulumi:"serviceName"`
-	// Size of the connection pool.
-	Size int `pulumi:"size"`
-	// Ssl connection mode for the pool.
-	SslMode string `pulumi:"sslMode"`
-	// Connection URI to the pool.
-	Uri string `pulumi:"uri"`
-	// Database user authorized to connect to the pool, if none all the users are allowed.
-	UserId string `pulumi:"userId"`
+	Size        int    `pulumi:"size"`
+	SslMode     string `pulumi:"sslMode"`
+	Uri         string `pulumi:"uri"`
+	UserId      string `pulumi:"userId"`
 }
 
 func LookupPostgresSqlConnectionPoolOutput(ctx *pulumi.Context, args LookupPostgresSqlConnectionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresSqlConnectionPoolResultOutput {
@@ -111,12 +55,8 @@ func LookupPostgresSqlConnectionPoolOutput(ctx *pulumi.Context, args LookupPostg
 
 // A collection of arguments for invoking getPostgresSqlConnectionPool.
 type LookupPostgresSqlConnectionPoolOutputArgs struct {
-	// Cluster ID.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Name of the Connection pool.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Name        pulumi.StringInput `pulumi:"name"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -139,12 +79,10 @@ func (o LookupPostgresSqlConnectionPoolResultOutput) ToLookupPostgresSqlConnecti
 	return o
 }
 
-// See Argument Reference above
 func (o LookupPostgresSqlConnectionPoolResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Database ID for a database that belongs to the Database cluster given above.
 func (o LookupPostgresSqlConnectionPoolResultOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.DatabaseId }).(pulumi.StringOutput)
 }
@@ -154,43 +92,34 @@ func (o LookupPostgresSqlConnectionPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Connection mode to the connection pool
-// Available modes:
 func (o LookupPostgresSqlConnectionPoolResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above
 func (o LookupPostgresSqlConnectionPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Port of the connection pool.
 func (o LookupPostgresSqlConnectionPoolResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// See Argument Reference above
 func (o LookupPostgresSqlConnectionPoolResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Size of the connection pool.
 func (o LookupPostgresSqlConnectionPoolResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Ssl connection mode for the pool.
 func (o LookupPostgresSqlConnectionPoolResultOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.SslMode }).(pulumi.StringOutput)
 }
 
-// Connection URI to the pool.
 func (o LookupPostgresSqlConnectionPoolResultOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.Uri }).(pulumi.StringOutput)
 }
 
-// Database user authorized to connect to the pool, if none all the users are allowed.
 func (o LookupPostgresSqlConnectionPoolResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.UserId }).(pulumi.StringOutput)
 }

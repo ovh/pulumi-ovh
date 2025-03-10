@@ -11,78 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetVolumes
     {
-        /// <summary>
-        /// Get all the volume from a region of a public cloud project
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var volume = Ovh.CloudProject.GetVolume.Invoke(new()
-        ///     {
-        ///         RegionName = "xxx",
-        ///         ServiceName = "yyy",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetVolumesResult> InvokeAsync(GetVolumesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumesResult>("ovh:CloudProject/getVolumes:getVolumes", args ?? new GetVolumesArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Get all the volume from a region of a public cloud project
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var volume = Ovh.CloudProject.GetVolume.Invoke(new()
-        ///     {
-        ///         RegionName = "xxx",
-        ///         ServiceName = "yyy",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetVolumesResult> Invoke(GetVolumesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumesResult>("ovh:CloudProject/getVolumes:getVolumes", args ?? new GetVolumesInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Get all the volume from a region of a public cloud project
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var volume = Ovh.CloudProject.GetVolume.Invoke(new()
-        ///     {
-        ///         RegionName = "xxx",
-        ///         ServiceName = "yyy",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetVolumesResult> Invoke(GetVolumesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumesResult>("ovh:CloudProject/getVolumes:getVolumes", args ?? new GetVolumesInvokeArgs(), options.WithDefaults());
     }
@@ -90,15 +24,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetVolumesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// A valid OVHcloud public cloud region name in which the volumes are available. Ex.: "GRA11".
-        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -110,15 +38,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetVolumesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// A valid OVHcloud public cloud region name in which the volumes are available. Ex.: "GRA11".
-        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -136,13 +58,7 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The region name where volumes are available
-        /// </summary>
         public readonly string RegionName;
-        /// <summary>
-        /// The id of the public cloud project.
-        /// </summary>
         public readonly string ServiceName;
         public readonly ImmutableArray<Outputs.GetVolumesVolumeResult> Volumes;
 

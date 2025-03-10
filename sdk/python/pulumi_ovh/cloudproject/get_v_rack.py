@@ -48,25 +48,16 @@ class GetVRackResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The id of the vrack
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the vrack
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        The id of the public cloud project
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -85,21 +76,7 @@ class AwaitableGetVRackResult(GetVRackResult):
 def get_v_rack(service_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVRackResult:
     """
-    Use this data source to get the linked vrack on your public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    vrack_v_rack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
-    pulumi.export("vrack", vrack_v_rack)
-    ```
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -114,21 +91,7 @@ def get_v_rack(service_name: Optional[str] = None,
 def get_v_rack_output(service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVRackResult]:
     """
-    Use this data source to get the linked vrack on your public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    vrack_v_rack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
-    pulumi.export("vrack", vrack_v_rack)
-    ```
-
-
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

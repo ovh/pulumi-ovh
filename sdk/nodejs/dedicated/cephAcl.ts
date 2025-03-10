@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Add a new access ACL for the given network/mask.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myCeph = ovh.Dedicated.getCeph({
- *     serviceName: "94d423da-0e55-45f2-9812-836460a19939",
- * });
- * const my_acl = new ovh.dedicated.CephAcl("my-acl", {
- *     serviceName: myCeph.then(myCeph => myCeph.id),
- *     network: "1.2.3.4",
- *     netmask: "255.255.255.255",
- * });
- * ```
- */
 export class CephAcl extends pulumi.CustomResource {
     /**
      * Get an existing CephAcl resource's state with the given name, ID, and optional extra
@@ -52,21 +32,9 @@ export class CephAcl extends pulumi.CustomResource {
         return obj['__pulumiType'] === CephAcl.__pulumiType;
     }
 
-    /**
-     * IP family. `IPv4` or `IPv6`
-     */
     public /*out*/ readonly family!: pulumi.Output<string>;
-    /**
-     * The network mask to apply
-     */
     public readonly netmask!: pulumi.Output<string>;
-    /**
-     * The network IP to authorize
-     */
     public readonly network!: pulumi.Output<string>;
-    /**
-     * The internal name of your dedicated CEPH
-     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -111,21 +79,9 @@ export class CephAcl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CephAcl resources.
  */
 export interface CephAclState {
-    /**
-     * IP family. `IPv4` or `IPv6`
-     */
     family?: pulumi.Input<string>;
-    /**
-     * The network mask to apply
-     */
     netmask?: pulumi.Input<string>;
-    /**
-     * The network IP to authorize
-     */
     network?: pulumi.Input<string>;
-    /**
-     * The internal name of your dedicated CEPH
-     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -133,16 +89,7 @@ export interface CephAclState {
  * The set of arguments for constructing a CephAcl resource.
  */
 export interface CephAclArgs {
-    /**
-     * The network mask to apply
-     */
     netmask: pulumi.Input<string>;
-    /**
-     * The network IP to authorize
-     */
     network: pulumi.Input<string>;
-    /**
-     * The internal name of your dedicated CEPH
-     */
     serviceName: pulumi.Input<string>;
 }

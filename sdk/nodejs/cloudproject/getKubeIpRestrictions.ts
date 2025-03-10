@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const ipRestrictions = ovh.CloudProject.getKubeIpRestrictions({
- *     serviceName: "XXXXXX",
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- * });
- * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
- * ```
- */
 export function getKubeIpRestrictions(args: GetKubeIpRestrictionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeIpRestrictionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", {
@@ -32,14 +16,7 @@ export function getKubeIpRestrictions(args: GetKubeIpRestrictionsArgs, opts?: pu
  * A collection of arguments for invoking getKubeIpRestrictions.
  */
 export interface GetKubeIpRestrictionsArgs {
-    /**
-     * The id of the managed kubernetes cluster.
-     */
     kubeId: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -51,35 +28,10 @@ export interface GetKubeIpRestrictionsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The list of CIDRs that restricts the access to the API server.
-     */
     readonly ips: string[];
-    /**
-     * See Argument Reference above.
-     */
     readonly kubeId: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly serviceName: string;
 }
-/**
- * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const ipRestrictions = ovh.CloudProject.getKubeIpRestrictions({
- *     serviceName: "XXXXXX",
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- * });
- * export const ips = ipRestrictions.then(ipRestrictions => ipRestrictions.ips);
- * ```
- */
 export function getKubeIpRestrictionsOutput(args: GetKubeIpRestrictionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeIpRestrictionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", {
@@ -92,13 +44,6 @@ export function getKubeIpRestrictionsOutput(args: GetKubeIpRestrictionsOutputArg
  * A collection of arguments for invoking getKubeIpRestrictions.
  */
 export interface GetKubeIpRestrictionsOutputArgs {
-    /**
-     * The id of the managed kubernetes cluster.
-     */
     kubeId: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

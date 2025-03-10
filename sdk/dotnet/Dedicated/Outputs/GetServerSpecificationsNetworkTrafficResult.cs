@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkTrafficInputQuotaUsedResult InputQuotaUsed;
         /// <summary>
-        /// Whether bandwidth is throttleted for being over quota
+        /// Is bandwidth throttleted for being over quota
         /// </summary>
         public readonly bool IsThrottled;
         /// <summary>

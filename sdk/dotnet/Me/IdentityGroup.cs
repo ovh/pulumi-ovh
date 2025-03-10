@@ -9,70 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Me
 {
-    /// <summary>
-    /// Creates an identity group.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myGroup = new Ovh.Me.IdentityGroup("myGroup", new()
-    ///     {
-    ///         Description = "Some custom description",
-    ///         Role = "NONE",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Me/identityGroup:IdentityGroup")]
     public partial class IdentityGroup : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// URN of the user group, used when writing IAM policies
-        /// </summary>
         [Output("GroupURN")]
         public Output<string> GroupURN { get; private set; } = null!;
 
-        /// <summary>
-        /// Creation date of this group.
-        /// </summary>
         [Output("creation")]
         public Output<string> Creation { get; private set; } = null!;
 
-        /// <summary>
-        /// Is the group a default and immutable one.
-        /// </summary>
         [Output("defaultGroup")]
         public Output<bool> DefaultGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// Group description.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Date of the last update of this group.
-        /// </summary>
         [Output("lastUpdate")]
         public Output<string> LastUpdate { get; private set; } = null!;
 
-        /// <summary>
-        /// Group name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-        /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
@@ -123,21 +80,12 @@ namespace Pulumi.Ovh.Me
 
     public sealed class IdentityGroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Group description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Group name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
@@ -149,45 +97,24 @@ namespace Pulumi.Ovh.Me
 
     public sealed class IdentityGroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// URN of the user group, used when writing IAM policies
-        /// </summary>
         [Input("GroupURN")]
         public Input<string>? GroupURN { get; set; }
 
-        /// <summary>
-        /// Creation date of this group.
-        /// </summary>
         [Input("creation")]
         public Input<string>? Creation { get; set; }
 
-        /// <summary>
-        /// Is the group a default and immutable one.
-        /// </summary>
         [Input("defaultGroup")]
         public Input<bool>? DefaultGroup { get; set; }
 
-        /// <summary>
-        /// Group description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Date of the last update of this group.
-        /// </summary>
         [Input("lastUpdate")]
         public Input<string>? LastUpdate { get; set; }
 
-        /// <summary>
-        /// Group name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

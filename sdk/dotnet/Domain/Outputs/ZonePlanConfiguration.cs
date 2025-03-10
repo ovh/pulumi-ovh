@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Domain.Outputs
     public sealed class ZonePlanConfiguration
     {
         /// <summary>
-        /// Identifier of the resource : `zone` or `template`
+        /// Identifier of the resource
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        /// Path to the resource in API.OVH.COM
         /// </summary>
         public readonly string Value;
 

@@ -6,37 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Moves a given IP to a different service, or inversely, parks it if empty service is given
- *
- * ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const moveIpToLoadBalancerXxxxx = new ovh.ip.Move("moveIpToLoadBalancerXxxxx", {
- *     ip: "1.2.3.4",
- *     routedTo: {
- *         serviceName: "loadbalancer-XXXXX",
- *     },
- * });
- * ```
- *
- * ## Park IP/Detach IP `1.2.3.4` from any service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const parkIp = new ovh.ip.Move("parkIp", {
- *     ip: "1.2.3.4",
- *     routedTo: {
- *         serviceName: "",
- *     },
- * });
- * ```
- */
 export class Move extends pulumi.CustomResource {
     /**
      * Get an existing Move resource's state with the given name, ID, and optional extra
@@ -65,34 +34,18 @@ export class Move extends pulumi.CustomResource {
         return obj['__pulumiType'] === Move.__pulumiType;
     }
 
-    /**
-     * Whether IP service can be terminated
-     */
     public /*out*/ readonly canBeTerminated!: pulumi.Output<boolean>;
-    /**
-     * Country
-     */
     public /*out*/ readonly country!: pulumi.Output<string>;
     /**
-     * Description attached to the IP
+     * Custom description on your ip
      */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * IP block that we want to attach to a different service
-     */
     public readonly ip!: pulumi.Output<string>;
-    /**
-     * IP block organisation Id
-     */
     public /*out*/ readonly organisationId!: pulumi.Output<string>;
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Routage information
      */
     public readonly routedTo!: pulumi.Output<outputs.Ip.MoveRoutedTo>;
-    /**
-     * Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
-     */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
      * Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
@@ -158,34 +111,18 @@ export class Move extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Move resources.
  */
 export interface MoveState {
-    /**
-     * Whether IP service can be terminated
-     */
     canBeTerminated?: pulumi.Input<boolean>;
-    /**
-     * Country
-     */
     country?: pulumi.Input<string>;
     /**
-     * Description attached to the IP
+     * Custom description on your ip
      */
     description?: pulumi.Input<string>;
-    /**
-     * IP block that we want to attach to a different service
-     */
     ip?: pulumi.Input<string>;
-    /**
-     * IP block organisation Id
-     */
     organisationId?: pulumi.Input<string>;
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Routage information
      */
     routedTo?: pulumi.Input<inputs.Ip.MoveRoutedTo>;
-    /**
-     * Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
-     */
     serviceName?: pulumi.Input<string>;
     /**
      * Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
@@ -206,16 +143,12 @@ export interface MoveState {
  */
 export interface MoveArgs {
     /**
-     * Description attached to the IP
+     * Custom description on your ip
      */
     description?: pulumi.Input<string>;
-    /**
-     * IP block that we want to attach to a different service
-     */
     ip: pulumi.Input<string>;
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Routage information
      */
     routedTo: pulumi.Input<inputs.Ip.MoveRoutedTo>;
 }

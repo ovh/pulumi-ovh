@@ -11,6 +11,9 @@ from .dedicated_server_interface import *
 from .get_vracks import *
 from .ip_address import *
 from .ip_loadbalancing import *
+from .ipv6_address import *
+from .ovh_cloud_connect import *
+from .services import *
 from .vrack import *
 from ._inputs import *
 from . import outputs

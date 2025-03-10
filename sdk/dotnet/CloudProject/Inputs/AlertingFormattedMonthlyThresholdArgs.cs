@@ -12,21 +12,12 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
     public sealed class AlertingFormattedMonthlyThresholdArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Currency of the monthly threshold
-        /// </summary>
         [Input("currencyCode")]
         public Input<string>? CurrencyCode { get; set; }
 
-        /// <summary>
-        /// Text representation of the monthly threshold
-        /// </summary>
         [Input("text")]
         public Input<string>? Text { get; set; }
 
-        /// <summary>
-        /// Value of the monthly threshold
-        /// </summary>
         [Input("value")]
         public Input<double>? Value { get; set; }
 

@@ -14,15 +14,15 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
     public sealed class GetCapabilitiesPlanResult
     {
         /// <summary>
-        /// Automatic backup retention duration.
+        /// Automatic backup retention duration
         /// </summary>
         public readonly string BackupRetention;
         /// <summary>
-        /// Description of the plan.
+        /// Description of the plan
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Name of the plan.
+        /// Name of the plan
         /// </summary>
         public readonly string Name;
 

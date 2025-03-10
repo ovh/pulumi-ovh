@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- */
 export class Vps extends pulumi.CustomResource {
     /**
      * Get an existing Vps resource's state with the given name, ID, and optional extra
@@ -37,44 +34,35 @@ export class Vps extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vps.__pulumiType;
     }
 
-    /**
-     * VPS cluster
-     */
     public /*out*/ readonly cluster!: pulumi.Output<string>;
     /**
-     * Custom display name
+     * Set the name displayed in Manager for your VPS (max 50 chars)
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * IAM resource information
+     * IAM resource metadata
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Vps.VpsIam>;
     /**
      * KVM keyboard layout on VPS Cloud
      */
     public readonly keymap!: pulumi.Output<string>;
-    /**
-     * RAM of this VPS
-     */
     public readonly memoryLimit!: pulumi.Output<number>;
     /**
-     * Structure describing characteristics of a VPS model
+     * A structure describing characteristics of a VPS model
      */
     public readonly model!: pulumi.Output<outputs.Vps.VpsModel>;
     /**
-     * IP blocks for OVH monitoring servers
+     * Ip blocks for OVH monitoring servers
      */
     public readonly monitoringIpBlocks!: pulumi.Output<string[]>;
-    /**
-     * Name of the VPS
-     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * VPS netboot mode (local┃rescue)
+     * All values a VPS netboot mode can be in
      */
     public readonly netbootMode!: pulumi.Output<string>;
     /**
-     * All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+     * All offers a VPS can have
      */
     public readonly offerType!: pulumi.Output<string>;
     /**
@@ -82,16 +70,10 @@ export class Vps extends pulumi.CustomResource {
      */
     public /*out*/ readonly order!: pulumi.Output<outputs.Vps.VpsOrder>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+     * OVH subsidiaries
      */
     public readonly ovhSubsidiary!: pulumi.Output<string | undefined>;
-    /**
-     * Product Plan to order
-     */
     public readonly planOptions!: pulumi.Output<outputs.Vps.VpsPlanOption[]>;
-    /**
-     * Product Plan to order
-     */
     public readonly plans!: pulumi.Output<outputs.Vps.VpsPlan[]>;
     /**
      * The internal name of your VPS offer
@@ -99,16 +81,10 @@ export class Vps extends pulumi.CustomResource {
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     public readonly slaMonitoring!: pulumi.Output<boolean>;
     /**
-     * State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+     * All states a VPS can be in
      */
     public readonly state!: pulumi.Output<string>;
-    /**
-     * Number of vcores
-     */
     public readonly vcore!: pulumi.Output<number>;
-    /**
-     * OpenStask region where the VPS is located
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -174,44 +150,35 @@ export class Vps extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vps resources.
  */
 export interface VpsState {
-    /**
-     * VPS cluster
-     */
     cluster?: pulumi.Input<string>;
     /**
-     * Custom display name
+     * Set the name displayed in Manager for your VPS (max 50 chars)
      */
     displayName?: pulumi.Input<string>;
     /**
-     * IAM resource information
+     * IAM resource metadata
      */
     iam?: pulumi.Input<inputs.Vps.VpsIam>;
     /**
      * KVM keyboard layout on VPS Cloud
      */
     keymap?: pulumi.Input<string>;
-    /**
-     * RAM of this VPS
-     */
     memoryLimit?: pulumi.Input<number>;
     /**
-     * Structure describing characteristics of a VPS model
+     * A structure describing characteristics of a VPS model
      */
     model?: pulumi.Input<inputs.Vps.VpsModel>;
     /**
-     * IP blocks for OVH monitoring servers
+     * Ip blocks for OVH monitoring servers
      */
     monitoringIpBlocks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the VPS
-     */
     name?: pulumi.Input<string>;
     /**
-     * VPS netboot mode (local┃rescue)
+     * All values a VPS netboot mode can be in
      */
     netbootMode?: pulumi.Input<string>;
     /**
-     * All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+     * All offers a VPS can have
      */
     offerType?: pulumi.Input<string>;
     /**
@@ -219,16 +186,10 @@ export interface VpsState {
      */
     order?: pulumi.Input<inputs.Vps.VpsOrder>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+     * OVH subsidiaries
      */
     ovhSubsidiary?: pulumi.Input<string>;
-    /**
-     * Product Plan to order
-     */
     planOptions?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanOption>[]>;
-    /**
-     * Product Plan to order
-     */
     plans?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlan>[]>;
     /**
      * The internal name of your VPS offer
@@ -236,16 +197,10 @@ export interface VpsState {
     serviceName?: pulumi.Input<string>;
     slaMonitoring?: pulumi.Input<boolean>;
     /**
-     * State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+     * All states a VPS can be in
      */
     state?: pulumi.Input<string>;
-    /**
-     * Number of vcores
-     */
     vcore?: pulumi.Input<number>;
-    /**
-     * OpenStask region where the VPS is located
-     */
     zone?: pulumi.Input<string>;
 }
 
@@ -254,60 +209,42 @@ export interface VpsState {
  */
 export interface VpsArgs {
     /**
-     * Custom display name
+     * Set the name displayed in Manager for your VPS (max 50 chars)
      */
     displayName?: pulumi.Input<string>;
     /**
      * KVM keyboard layout on VPS Cloud
      */
     keymap?: pulumi.Input<string>;
-    /**
-     * RAM of this VPS
-     */
     memoryLimit?: pulumi.Input<number>;
     /**
-     * Structure describing characteristics of a VPS model
+     * A structure describing characteristics of a VPS model
      */
     model?: pulumi.Input<inputs.Vps.VpsModel>;
     /**
-     * IP blocks for OVH monitoring servers
+     * Ip blocks for OVH monitoring servers
      */
     monitoringIpBlocks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the VPS
-     */
     name?: pulumi.Input<string>;
     /**
-     * VPS netboot mode (local┃rescue)
+     * All values a VPS netboot mode can be in
      */
     netbootMode?: pulumi.Input<string>;
     /**
-     * All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+     * All offers a VPS can have
      */
     offerType?: pulumi.Input<string>;
     /**
-     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+     * OVH subsidiaries
      */
     ovhSubsidiary?: pulumi.Input<string>;
-    /**
-     * Product Plan to order
-     */
     planOptions?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanOption>[]>;
-    /**
-     * Product Plan to order
-     */
     plans?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlan>[]>;
     slaMonitoring?: pulumi.Input<boolean>;
     /**
-     * State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+     * All states a VPS can be in
      */
     state?: pulumi.Input<string>;
-    /**
-     * Number of vcores
-     */
     vcore?: pulumi.Input<number>;
-    /**
-     * OpenStask region where the VPS is located
-     */
     zone?: pulumi.Input<string>;
 }

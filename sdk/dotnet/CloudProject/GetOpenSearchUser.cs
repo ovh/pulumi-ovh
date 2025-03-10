@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetOpenSearchUser
     {
-        /// <summary>
-        /// Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var osUser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Name = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["osUserAcls"] = osUser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetOpenSearchUserResult> InvokeAsync(GetOpenSearchUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchUserResult>("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args ?? new GetOpenSearchUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var osUser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Name = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["osUserAcls"] = osUser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetOpenSearchUserResult> Invoke(GetOpenSearchUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchUserResult>("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args ?? new GetOpenSearchUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var osUser = Ovh.CloudProject.GetOpenSearchUser.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Name = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["osUserAcls"] = osUser.Apply(getOpenSearchUserResult =&gt; getOpenSearchUserResult.Acls),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetOpenSearchUserResult> Invoke(GetOpenSearchUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchUserResult>("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", args ?? new GetOpenSearchUserInvokeArgs(), options.WithDefaults());
     }
@@ -105,22 +24,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetOpenSearchUserArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the user.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -132,22 +41,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetOpenSearchUserInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the user.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -161,33 +60,15 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetOpenSearchUserResult
     {
-        /// <summary>
-        /// Acls of the user.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchUserAclResult> Acls;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// Date of the creation of the user.
-        /// </summary>
         public readonly string CreatedAt;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Name of the user.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Current status of the user.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Current status of the user.
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -7,11 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the floating IPs of a public cloud project.
 func GetFloatingIPs(ctx *pulumi.Context, args *GetFloatingIPsArgs, opts ...pulumi.InvokeOption) (*GetFloatingIPsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFloatingIPsResult
@@ -24,9 +23,7 @@ func GetFloatingIPs(ctx *pulumi.Context, args *GetFloatingIPsArgs, opts ...pulum
 
 // A collection of arguments for invoking getFloatingIPs.
 type GetFloatingIPsArgs struct {
-	// Public cloud region name
-	RegionName string `pulumi:"regionName"`
-	// The id of the public cloud project
+	RegionName  string `pulumi:"regionName"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -34,8 +31,7 @@ type GetFloatingIPsArgs struct {
 type GetFloatingIPsResult struct {
 	CloudProjectFloatingips []GetFloatingIPsCloudProjectFloatingip `pulumi:"cloudProjectFloatingips"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Floating IP region
+	Id          string `pulumi:"id"`
 	RegionName  string `pulumi:"regionName"`
 	ServiceName string `pulumi:"serviceName"`
 }
@@ -51,9 +47,7 @@ func GetFloatingIPsOutput(ctx *pulumi.Context, args GetFloatingIPsOutputArgs, op
 
 // A collection of arguments for invoking getFloatingIPs.
 type GetFloatingIPsOutputArgs struct {
-	// Public cloud region name
-	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// The id of the public cloud project
+	RegionName  pulumi.StringInput `pulumi:"regionName"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -85,7 +79,6 @@ func (o GetFloatingIPsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Floating IP region
 func (o GetFloatingIPsResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsResult) string { return v.RegionName }).(pulumi.StringOutput)
 }

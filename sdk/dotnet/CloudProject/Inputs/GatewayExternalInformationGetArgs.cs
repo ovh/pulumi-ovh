@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputList<Inputs.GatewayExternalInformationIpGetArgs>? _ips;
 
         /// <summary>
-        /// List of external ips of the gateway.
+        /// List of external ips of the gateway
         /// </summary>
         public InputList<Inputs.GatewayExternalInformationIpGetArgs> Ips
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         }
 
         /// <summary>
-        /// ID of the private network.
+        /// External network ID of the gateway
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }

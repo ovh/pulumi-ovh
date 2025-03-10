@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.Vps.Inputs
     {
         [Input("availableOptions")]
         private InputList<string>? _availableOptions;
-
-        /// <summary>
-        /// All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
-        /// </summary>
         public InputList<string> AvailableOptions
         {
             get => _availableOptions ?? (_availableOptions = new InputList<string>());
@@ -26,54 +22,32 @@ namespace Pulumi.Ovh.Vps.Inputs
 
         [Input("datacenters")]
         private InputList<string>? _datacenters;
-
-        /// <summary>
-        /// Datacenters where this model is available
-        /// </summary>
         public InputList<string> Datacenters
         {
             get => _datacenters ?? (_datacenters = new InputList<string>());
             set => _datacenters = value;
         }
 
-        /// <summary>
-        /// Disk capacity of this VPS
-        /// </summary>
         [Input("disk")]
         public Input<double>? Disk { get; set; }
 
-        /// <summary>
-        /// Maximum number of additional IPs
-        /// </summary>
         [Input("maximumAdditionnalIp")]
         public Input<double>? MaximumAdditionnalIp { get; set; }
 
-        /// <summary>
-        /// RAM of the VPS
-        /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
-        /// <summary>
-        /// Name of the VPS
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Description of this VPS offer
-        /// </summary>
         [Input("offer")]
         public Input<string>? Offer { get; set; }
 
-        /// <summary>
-        /// Number of vcores
-        /// </summary>
         [Input("vcore")]
         public Input<double>? Vcore { get; set; }
 
         /// <summary>
-        /// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        /// All versions that VPS can have
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

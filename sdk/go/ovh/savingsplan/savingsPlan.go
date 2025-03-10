@@ -8,46 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create and manage an OVHcloud Savings Plan
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/savingsplan"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := savingsplan.NewSavingsPlan(ctx, "plan", &savingsplan.SavingsPlanArgs{
-//				AutoRenewal: pulumi.Bool(true),
-//				DisplayName: pulumi.String("one_month_rancher_savings_plan"),
-//				Flavor:      pulumi.String("Rancher"),
-//				Period:      pulumi.String("P1M"),
-//				ServiceName: pulumi.String("<public cloud project ID>"),
-//				Size:        pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// A savings plan can be imported using the following format: `serviceName` and `id` of the savings plan, separated by "/" e.g.
 type SavingsPlan struct {
 	pulumi.CustomResourceState
 
@@ -57,17 +21,17 @@ type SavingsPlan struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// End date of the Savings Plan
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
-	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+	// Savings Plan flavor
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period pulumi.StringOutput `pulumi:"period"`
-	// Action performed when reaching the end of the period (controles by the `autoRenewal` parameter)
+	// Action performed when reaching the end of the period
 	PeriodEndAction pulumi.StringOutput `pulumi:"periodEndAction"`
 	// End date of the current period
 	PeriodEndDate pulumi.StringOutput `pulumi:"periodEndDate"`
 	// Start date of the current period
 	PeriodStartDate pulumi.StringOutput `pulumi:"periodStartDate"`
-	// Billing ID of the service
+	// ID of the service
 	ServiceId pulumi.IntOutput `pulumi:"serviceId"`
 	// ID of the public cloud project
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -130,17 +94,17 @@ type savingsPlanState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// End date of the Savings Plan
 	EndDate *string `pulumi:"endDate"`
-	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+	// Savings Plan flavor
 	Flavor *string `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period *string `pulumi:"period"`
-	// Action performed when reaching the end of the period (controles by the `autoRenewal` parameter)
+	// Action performed when reaching the end of the period
 	PeriodEndAction *string `pulumi:"periodEndAction"`
 	// End date of the current period
 	PeriodEndDate *string `pulumi:"periodEndDate"`
 	// Start date of the current period
 	PeriodStartDate *string `pulumi:"periodStartDate"`
-	// Billing ID of the service
+	// ID of the service
 	ServiceId *int `pulumi:"serviceId"`
 	// ID of the public cloud project
 	ServiceName *string `pulumi:"serviceName"`
@@ -159,17 +123,17 @@ type SavingsPlanState struct {
 	DisplayName pulumi.StringPtrInput
 	// End date of the Savings Plan
 	EndDate pulumi.StringPtrInput
-	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+	// Savings Plan flavor
 	Flavor pulumi.StringPtrInput
 	// Periodicity of the Savings Plan
 	Period pulumi.StringPtrInput
-	// Action performed when reaching the end of the period (controles by the `autoRenewal` parameter)
+	// Action performed when reaching the end of the period
 	PeriodEndAction pulumi.StringPtrInput
 	// End date of the current period
 	PeriodEndDate pulumi.StringPtrInput
 	// Start date of the current period
 	PeriodStartDate pulumi.StringPtrInput
-	// Billing ID of the service
+	// ID of the service
 	ServiceId pulumi.IntPtrInput
 	// ID of the public cloud project
 	ServiceName pulumi.StringPtrInput
@@ -190,7 +154,7 @@ type savingsPlanArgs struct {
 	AutoRenewal *bool `pulumi:"autoRenewal"`
 	// Custom display name, used in invoices
 	DisplayName string `pulumi:"displayName"`
-	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+	// Savings Plan flavor
 	Flavor string `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period string `pulumi:"period"`
@@ -206,7 +170,7 @@ type SavingsPlanArgs struct {
 	AutoRenewal pulumi.BoolPtrInput
 	// Custom display name, used in invoices
 	DisplayName pulumi.StringInput
-	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+	// Savings Plan flavor
 	Flavor pulumi.StringInput
 	// Periodicity of the Savings Plan
 	Period pulumi.StringInput
@@ -318,7 +282,7 @@ func (o SavingsPlanOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
+// Savings Plan flavor
 func (o SavingsPlanOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
@@ -328,7 +292,7 @@ func (o SavingsPlanOutput) Period() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.Period }).(pulumi.StringOutput)
 }
 
-// Action performed when reaching the end of the period (controles by the `autoRenewal` parameter)
+// Action performed when reaching the end of the period
 func (o SavingsPlanOutput) PeriodEndAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.PeriodEndAction }).(pulumi.StringOutput)
 }
@@ -343,7 +307,7 @@ func (o SavingsPlanOutput) PeriodStartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.PeriodStartDate }).(pulumi.StringOutput)
 }
 
-// Billing ID of the service
+// ID of the service
 func (o SavingsPlanOutput) ServiceId() pulumi.IntOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.IntOutput { return v.ServiceId }).(pulumi.IntOutput)
 }

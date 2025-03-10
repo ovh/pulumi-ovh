@@ -8,51 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this resource to manage an IP permanent mitigation.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewMitigation(ctx, "mitigation", &ip.MitigationArgs{
-//				Ip:             pulumi.String("XXXXXX"),
-//				IpOnMitigation: pulumi.String("XXXXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Mitigation struct {
 	pulumi.CustomResourceState
 
-	// Set on true if the IP is on auto-mitigation
+	// Set on true if your ip is on auto-mitigation
 	Auto pulumi.BoolOutput `pulumi:"auto"`
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnMitigation pulumi.StringOutput `pulumi:"ipOnMitigation"`
 	// Set on true if your ip is on permanent mitigation
 	Permanent pulumi.BoolOutput `pulumi:"permanent"`
-	// Current state of the IP on mitigation
+	// Current state of your ip on mitigation
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -92,30 +63,28 @@ func GetMitigation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Mitigation resources.
 type mitigationState struct {
-	// Set on true if the IP is on auto-mitigation
+	// Set on true if your ip is on auto-mitigation
 	Auto *bool `pulumi:"auto"`
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip *string `pulumi:"ip"`
-	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnMitigation *string `pulumi:"ipOnMitigation"`
 	// Set on true if your ip is on permanent mitigation
 	Permanent *bool `pulumi:"permanent"`
-	// Current state of the IP on mitigation
+	// Current state of your ip on mitigation
 	State *string `pulumi:"state"`
 }
 
 type MitigationState struct {
-	// Set on true if the IP is on auto-mitigation
+	// Set on true if your ip is on auto-mitigation
 	Auto pulumi.BoolPtrInput
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip pulumi.StringPtrInput
-	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnMitigation pulumi.StringPtrInput
 	// Set on true if your ip is on permanent mitigation
 	Permanent pulumi.BoolPtrInput
-	// Current state of the IP on mitigation
+	// Current state of your ip on mitigation
 	State pulumi.StringPtrInput
 }
 
@@ -124,10 +93,9 @@ func (MitigationState) ElementType() reflect.Type {
 }
 
 type mitigationArgs struct {
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip string `pulumi:"ip"`
-	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnMitigation string `pulumi:"ipOnMitigation"`
 	// Set on true if your ip is on permanent mitigation
 	Permanent *bool `pulumi:"permanent"`
@@ -135,10 +103,9 @@ type mitigationArgs struct {
 
 // The set of arguments for constructing a Mitigation resource.
 type MitigationArgs struct {
-	// The IP or the CIDR
+	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 	Ip pulumi.StringInput
-	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// IPv4 address (e.g., 192.0.2.0)
 	IpOnMitigation pulumi.StringInput
 	// Set on true if your ip is on permanent mitigation
 	Permanent pulumi.BoolPtrInput
@@ -231,18 +198,17 @@ func (o MitigationOutput) ToMitigationOutputWithContext(ctx context.Context) Mit
 	return o
 }
 
-// Set on true if the IP is on auto-mitigation
+// Set on true if your ip is on auto-mitigation
 func (o MitigationOutput) Auto() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.BoolOutput { return v.Auto }).(pulumi.BoolOutput)
 }
 
-// The IP or the CIDR
+// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
 func (o MitigationOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IPv4 address
-// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+// IPv4 address (e.g., 192.0.2.0)
 func (o MitigationOutput) IpOnMitigation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.StringOutput { return v.IpOnMitigation }).(pulumi.StringOutput)
 }
@@ -252,7 +218,7 @@ func (o MitigationOutput) Permanent() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.BoolOutput { return v.Permanent }).(pulumi.BoolOutput)
 }
 
-// Current state of the IP on mitigation
+// Current state of your ip on mitigation
 func (o MitigationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

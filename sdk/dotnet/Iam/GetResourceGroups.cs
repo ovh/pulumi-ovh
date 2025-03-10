@@ -11,66 +11,12 @@ namespace Pulumi.Ovh.Iam
 {
     public static class GetResourceGroups
     {
-        /// <summary>
-        /// Use this data source to list the existing IAM policies of an account.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myGroups = Ovh.Iam.GetResourceGroups.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetResourceGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("ovh:Iam/getResourceGroups:getResourceGroups", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to list the existing IAM policies of an account.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myGroups = Ovh.Iam.GetResourceGroups.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetResourceGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("ovh:Iam/getResourceGroups:getResourceGroups", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to list the existing IAM policies of an account.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myGroups = Ovh.Iam.GetResourceGroups.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetResourceGroupsResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("ovh:Iam/getResourceGroups:getResourceGroups", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -83,9 +29,6 @@ namespace Pulumi.Ovh.Iam
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// List of the resource groups IDs.
-        /// </summary>
         public readonly ImmutableArray<string> ResourceGroups;
 
         [OutputConstructor]

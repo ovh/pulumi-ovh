@@ -7,39 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List your public cloud loadbalancers.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lbsLoadBalancers, err := cloudproject.GetLoadBalancers(ctx, &cloudproject.GetLoadBalancersArgs{
-//				ServiceName: "XXXXXX",
-//				RegionName:  "XXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("lbs", lbsLoadBalancers)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancersResult
@@ -52,23 +23,17 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersArgs struct {
-	// Region of the loadbalancers.
-	RegionName string `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	RegionName  string `pulumi:"regionName"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// List of loadbalancer
+	Id            string                         `pulumi:"id"`
 	Loadbalancers []GetLoadBalancersLoadbalancer `pulumi:"loadbalancers"`
-	// Region of the loadbalancers
-	RegionName string `pulumi:"regionName"`
-	// ID of the public cloud project
-	ServiceName string `pulumi:"serviceName"`
+	RegionName    string                         `pulumi:"regionName"`
+	ServiceName   string                         `pulumi:"serviceName"`
 }
 
 func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
@@ -82,10 +47,7 @@ func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersOutputArgs struct {
-	// Region of the loadbalancers.
-	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	RegionName  pulumi.StringInput `pulumi:"regionName"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -113,17 +75,14 @@ func (o GetLoadBalancersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of loadbalancer
 func (o GetLoadBalancersResultOutput) Loadbalancers() GetLoadBalancersLoadbalancerArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []GetLoadBalancersLoadbalancer { return v.Loadbalancers }).(GetLoadBalancersLoadbalancerArrayOutput)
 }
 
-// Region of the loadbalancers
 func (o GetLoadBalancersResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// ID of the public cloud project
 func (o GetLoadBalancersResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

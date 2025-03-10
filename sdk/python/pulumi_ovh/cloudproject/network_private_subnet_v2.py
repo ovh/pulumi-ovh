@@ -35,28 +35,18 @@ class NetworkPrivateSubnetV2Args:
                  use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a NetworkPrivateSubnetV2 resource.
-        :param pulumi.Input[str] cidr: IP range of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[str] network_id: The id of the network.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: List of IP allocation pools
-               Changing this value recreates the resource.
-        :param pulumi.Input[bool] dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: DNS nameservers used by DHCP
-               Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
-        :param pulumi.Input[bool] enable_gateway_ip: Set to true if you want to set a default gateway IP.
-               Changing this value recreates the resource. Defaults to true.
-        :param pulumi.Input[str] gateway_ip: See Argument Reference above.
+        :param pulumi.Input[str] cidr: CIDR of subnet
+        :param pulumi.Input[str] network_id: Network ID of subnet
+        :param pulumi.Input[str] region: Region of network/subnet
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[bool] dhcp: Enable DHCP in subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: List of DNS nameservers, default: 213.186.33.99
+        :param pulumi.Input[bool] enable_gateway_ip: Enable gateway IP in subnet
+        :param pulumi.Input[str] gateway_ip: Gateway IP of subnet
         :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: Static host routes of subnet
-        :param pulumi.Input[str] name: Name of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
-               Changing this value recreates the resource.
+        :param pulumi.Input[str] name: Name of subnet
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Use OVH default DNS
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "network_id", network_id)
@@ -83,8 +73,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter
     def cidr(self) -> pulumi.Input[str]:
         """
-        IP range of the subnet
-        Changing this value recreates the subnet.
+        CIDR of subnet
         """
         return pulumi.get(self, "cidr")
 
@@ -96,8 +85,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[str]:
         """
-        The id of the network.
-        Changing this forces a new resource to be created.
+        Network ID of subnet
         """
         return pulumi.get(self, "network_id")
 
@@ -109,8 +97,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
+        Region of network/subnet
         """
         return pulumi.get(self, "region")
 
@@ -122,8 +109,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the id of the cloud project.
         """
         return pulumi.get(self, "service_name")
 
@@ -135,8 +121,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]]]:
         """
-        List of IP allocation pools
-        Changing this value recreates the resource.
+        DHCP allocation pools of subnet
         """
         return pulumi.get(self, "allocation_pools")
 
@@ -148,8 +133,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to true.
+        Enable DHCP in subnet
         """
         return pulumi.get(self, "dhcp")
 
@@ -161,8 +145,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="dnsNameservers")
     def dns_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNS nameservers used by DHCP
-        Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+        List of DNS nameservers, default: 213.186.33.99
         """
         return pulumi.get(self, "dns_nameservers")
 
@@ -174,8 +157,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="enableGatewayIp")
     def enable_gateway_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to true if you want to set a default gateway IP.
-        Changing this value recreates the resource. Defaults to true.
+        Enable gateway IP in subnet
         """
         return pulumi.get(self, "enable_gateway_ip")
 
@@ -187,7 +169,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Gateway IP of subnet
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -211,8 +193,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the subnet
-        Changing this value recreates the subnet.
+        Name of subnet
         """
         return pulumi.get(self, "name")
 
@@ -224,8 +205,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="useDefaultPublicDnsResolver")
     def use_default_public_dns_resolver(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to false if you want to use your DNS resolver.
-        Changing this value recreates the resource.
+        Use OVH default DNS
         """
         return pulumi.get(self, "use_default_public_dns_resolver")
 
@@ -251,28 +231,18 @@ class _NetworkPrivateSubnetV2State:
                  use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering NetworkPrivateSubnetV2 resources.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: List of IP allocation pools
-               Changing this value recreates the resource.
-        :param pulumi.Input[str] cidr: IP range of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[bool] dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: DNS nameservers used by DHCP
-               Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
-        :param pulumi.Input[bool] enable_gateway_ip: Set to true if you want to set a default gateway IP.
-               Changing this value recreates the resource. Defaults to true.
-        :param pulumi.Input[str] gateway_ip: See Argument Reference above.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[str] cidr: CIDR of subnet
+        :param pulumi.Input[bool] dhcp: Enable DHCP in subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: List of DNS nameservers, default: 213.186.33.99
+        :param pulumi.Input[bool] enable_gateway_ip: Enable gateway IP in subnet
+        :param pulumi.Input[str] gateway_ip: Gateway IP of subnet
         :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: Static host routes of subnet
-        :param pulumi.Input[str] name: Name of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[str] network_id: The id of the network.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
-               Changing this value recreates the resource.
+        :param pulumi.Input[str] name: Name of subnet
+        :param pulumi.Input[str] network_id: Network ID of subnet
+        :param pulumi.Input[str] region: Region of network/subnet
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Use OVH default DNS
         """
         if allocation_pools is not None:
             pulumi.set(__self__, "allocation_pools", allocation_pools)
@@ -303,8 +273,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2AllocationPoolArgs']]]]:
         """
-        List of IP allocation pools
-        Changing this value recreates the resource.
+        DHCP allocation pools of subnet
         """
         return pulumi.get(self, "allocation_pools")
 
@@ -316,8 +285,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        IP range of the subnet
-        Changing this value recreates the subnet.
+        CIDR of subnet
         """
         return pulumi.get(self, "cidr")
 
@@ -329,8 +297,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to true.
+        Enable DHCP in subnet
         """
         return pulumi.get(self, "dhcp")
 
@@ -342,8 +309,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="dnsNameservers")
     def dns_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNS nameservers used by DHCP
-        Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+        List of DNS nameservers, default: 213.186.33.99
         """
         return pulumi.get(self, "dns_nameservers")
 
@@ -355,8 +321,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="enableGatewayIp")
     def enable_gateway_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to true if you want to set a default gateway IP.
-        Changing this value recreates the resource. Defaults to true.
+        Enable gateway IP in subnet
         """
         return pulumi.get(self, "enable_gateway_ip")
 
@@ -368,7 +333,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        See Argument Reference above.
+        Gateway IP of subnet
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -392,8 +357,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the subnet
-        Changing this value recreates the subnet.
+        Name of subnet
         """
         return pulumi.get(self, "name")
 
@@ -405,8 +369,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the network.
-        Changing this forces a new resource to be created.
+        Network ID of subnet
         """
         return pulumi.get(self, "network_id")
 
@@ -418,8 +381,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
+        Region of network/subnet
         """
         return pulumi.get(self, "region")
 
@@ -431,8 +393,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the id of the cloud project.
         """
         return pulumi.get(self, "service_name")
 
@@ -444,8 +405,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="useDefaultPublicDnsResolver")
     def use_default_public_dns_resolver(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to false if you want to use your DNS resolver.
-        Changing this value recreates the resource.
+        Use OVH default DNS
         """
         return pulumi.get(self, "use_default_public_dns_resolver")
 
@@ -473,59 +433,21 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
                  use_default_public_dns_resolver: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Creates a subnet in a private network of a public cloud region.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        subnet = ovh.cloud_project.NetworkPrivateSubnetV2("subnet",
-            cidr="192.168.168.0/24",
-            dhcp=True,
-            dns_nameservers=["1.1.1.1"],
-            enable_gateway_ip=True,
-            network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            region="XXX1",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            use_default_public_dns_resolver=False)
-        ```
-
-        ## Import
-
-        Subnet in a private network of a public cloud project can be imported using the `service_name`, `region`, `network_id` and `subnet_id`, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2 mysubnet 5ceb661434891538b54a4f2c66fc4b746e/BHS5/25807101-8aaa-4ea5-b507-61f0d661b101/0f0b73a4-403b-45e4-86d0-b438f1291909
-        ```
-
+        Create a NetworkPrivateSubnetV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: List of IP allocation pools
-               Changing this value recreates the resource.
-        :param pulumi.Input[str] cidr: IP range of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[bool] dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: DNS nameservers used by DHCP
-               Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
-        :param pulumi.Input[bool] enable_gateway_ip: Set to true if you want to set a default gateway IP.
-               Changing this value recreates the resource. Defaults to true.
-        :param pulumi.Input[str] gateway_ip: See Argument Reference above.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[str] cidr: CIDR of subnet
+        :param pulumi.Input[bool] dhcp: Enable DHCP in subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: List of DNS nameservers, default: 213.186.33.99
+        :param pulumi.Input[bool] enable_gateway_ip: Enable gateway IP in subnet
+        :param pulumi.Input[str] gateway_ip: Gateway IP of subnet
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2HostRouteArgs', 'NetworkPrivateSubnetV2HostRouteArgsDict']]]] host_routes: Static host routes of subnet
-        :param pulumi.Input[str] name: Name of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[str] network_id: The id of the network.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
-               Changing this value recreates the resource.
+        :param pulumi.Input[str] name: Name of subnet
+        :param pulumi.Input[str] network_id: Network ID of subnet
+        :param pulumi.Input[str] region: Region of network/subnet
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Use OVH default DNS
         """
         ...
     @overload
@@ -534,35 +456,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
                  args: NetworkPrivateSubnetV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a subnet in a private network of a public cloud region.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        subnet = ovh.cloud_project.NetworkPrivateSubnetV2("subnet",
-            cidr="192.168.168.0/24",
-            dhcp=True,
-            dns_nameservers=["1.1.1.1"],
-            enable_gateway_ip=True,
-            network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            region="XXX1",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            use_default_public_dns_resolver=False)
-        ```
-
-        ## Import
-
-        Subnet in a private network of a public cloud project can be imported using the `service_name`, `region`, `network_id` and `subnet_id`, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2 mysubnet 5ceb661434891538b54a4f2c66fc4b746e/BHS5/25807101-8aaa-4ea5-b507-61f0d661b101/0f0b73a4-403b-45e4-86d0-b438f1291909
-        ```
-
+        Create a NetworkPrivateSubnetV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NetworkPrivateSubnetV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -648,28 +542,18 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: List of IP allocation pools
-               Changing this value recreates the resource.
-        :param pulumi.Input[str] cidr: IP range of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[bool] dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: DNS nameservers used by DHCP
-               Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
-        :param pulumi.Input[bool] enable_gateway_ip: Set to true if you want to set a default gateway IP.
-               Changing this value recreates the resource. Defaults to true.
-        :param pulumi.Input[str] gateway_ip: See Argument Reference above.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2AllocationPoolArgs', 'NetworkPrivateSubnetV2AllocationPoolArgsDict']]]] allocation_pools: DHCP allocation pools of subnet
+        :param pulumi.Input[str] cidr: CIDR of subnet
+        :param pulumi.Input[bool] dhcp: Enable DHCP in subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: List of DNS nameservers, default: 213.186.33.99
+        :param pulumi.Input[bool] enable_gateway_ip: Enable gateway IP in subnet
+        :param pulumi.Input[str] gateway_ip: Gateway IP of subnet
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2HostRouteArgs', 'NetworkPrivateSubnetV2HostRouteArgsDict']]]] host_routes: Static host routes of subnet
-        :param pulumi.Input[str] name: Name of the subnet
-               Changing this value recreates the subnet.
-        :param pulumi.Input[str] network_id: The id of the network.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver.
-               Changing this value recreates the resource.
+        :param pulumi.Input[str] name: Name of subnet
+        :param pulumi.Input[str] network_id: Network ID of subnet
+        :param pulumi.Input[str] region: Region of network/subnet
+        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project.
+        :param pulumi.Input[bool] use_default_public_dns_resolver: Use OVH default DNS
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -693,8 +577,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> pulumi.Output[Sequence['outputs.NetworkPrivateSubnetV2AllocationPool']]:
         """
-        List of IP allocation pools
-        Changing this value recreates the resource.
+        DHCP allocation pools of subnet
         """
         return pulumi.get(self, "allocation_pools")
 
@@ -702,8 +585,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter
     def cidr(self) -> pulumi.Output[str]:
         """
-        IP range of the subnet
-        Changing this value recreates the subnet.
+        CIDR of subnet
         """
         return pulumi.get(self, "cidr")
 
@@ -711,8 +593,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter
     def dhcp(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to true.
+        Enable DHCP in subnet
         """
         return pulumi.get(self, "dhcp")
 
@@ -720,8 +601,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="dnsNameservers")
     def dns_nameservers(self) -> pulumi.Output[Sequence[str]]:
         """
-        DNS nameservers used by DHCP
-        Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+        List of DNS nameservers, default: 213.186.33.99
         """
         return pulumi.get(self, "dns_nameservers")
 
@@ -729,8 +609,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="enableGatewayIp")
     def enable_gateway_ip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Set to true if you want to set a default gateway IP.
-        Changing this value recreates the resource. Defaults to true.
+        Enable gateway IP in subnet
         """
         return pulumi.get(self, "enable_gateway_ip")
 
@@ -738,7 +617,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> pulumi.Output[str]:
         """
-        See Argument Reference above.
+        Gateway IP of subnet
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -754,8 +633,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the subnet
-        Changing this value recreates the subnet.
+        Name of subnet
         """
         return pulumi.get(self, "name")
 
@@ -763,8 +641,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[str]:
         """
-        The id of the network.
-        Changing this forces a new resource to be created.
+        Network ID of subnet
         """
         return pulumi.get(self, "network_id")
 
@@ -772,8 +649,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
+        Region of network/subnet
         """
         return pulumi.get(self, "region")
 
@@ -781,8 +657,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        Service name of the resource representing the id of the cloud project.
         """
         return pulumi.get(self, "service_name")
 
@@ -790,8 +665,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="useDefaultPublicDnsResolver")
     def use_default_public_dns_resolver(self) -> pulumi.Output[Optional[bool]]:
         """
-        Set to false if you want to use your DNS resolver.
-        Changing this value recreates the resource.
+        Use OVH default DNS
         """
         return pulumi.get(self, "use_default_public_dns_resolver")
 

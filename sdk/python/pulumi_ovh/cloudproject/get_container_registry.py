@@ -67,9 +67,6 @@ class GetContainerRegistryResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Registry creation date
-        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -83,25 +80,16 @@ class GetContainerRegistryResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Registry name
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        Project ID of your registry
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        Region of the registry
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -117,41 +105,26 @@ class GetContainerRegistryResult:
     @property
     @pulumi.getter
     def size(self) -> int:
-        """
-        Current size of the registry (bytes)
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Registry status
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        Registry last update date
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def url(self) -> str:
-        """
-        Access url of the registry
-        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def version(self) -> str:
-        """
-        Version of your registry
-        """
         return pulumi.get(self, "version")
 
 
@@ -179,22 +152,7 @@ def get_container_registry(registry_id: Optional[str] = None,
                            service_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRegistryResult:
     """
-    Use this data source to get information about a container registry associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str registry_id: Registry ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id
@@ -219,22 +177,7 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryResult]:
     """
-    Use this data source to get information about a container registry associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str registry_id: Registry ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id

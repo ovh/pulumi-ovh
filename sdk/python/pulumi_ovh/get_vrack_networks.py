@@ -54,9 +54,6 @@ class GetVrackNetworksResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence[int]:
-        """
-        The list of vrack network ids.
-        """
         return pulumi.get(self, "results")
 
     @property
@@ -93,22 +90,7 @@ def get_vrack_networks(service_name: Optional[str] = None,
                        vlan_id: Optional[int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVrackNetworksResult:
     """
-    Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    lb_networks = ovh.get_vrack_networks(service_name="XXXXXX",
-        subnet="10.0.0.0/24")
-    ```
-
-
-    :param str service_name: The internal name of your IP load balancing
-    :param str subnet: Filters networks on the subnet.
-    :param int vlan_id: Filters networks on the vlan id.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -128,22 +110,7 @@ def get_vrack_networks_output(service_name: Optional[pulumi.Input[str]] = None,
                               vlan_id: Optional[pulumi.Input[Optional[int]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVrackNetworksResult]:
     """
-    Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    lb_networks = ovh.get_vrack_networks(service_name="XXXXXX",
-        subnet="10.0.0.0/24")
-    ```
-
-
-    :param str service_name: The internal name of your IP load balancing
-    :param str subnet: Filters networks on the subnet.
-    :param int vlan_id: Filters networks on the vlan id.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

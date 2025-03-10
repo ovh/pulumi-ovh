@@ -50,19 +50,11 @@ class GetRegionResult:
     @property
     @pulumi.getter(name="continentCode")
     def continent_code(self) -> str:
-        """
-        the code of the geographic continent the region is running.
-        E.g.: EU for Europe, US for America...
-        """
         return pulumi.get(self, "continent_code")
 
     @property
     @pulumi.getter(name="datacenterLocation")
     def datacenter_location(self) -> str:
-        """
-        The location code of the datacenter.
-        E.g.: "GRA", meaning Gravelines, for region "GRA1"
-        """
         return pulumi.get(self, "datacenter_location")
 
     @property
@@ -76,9 +68,6 @@ class GetRegionResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        the name of the public cloud service
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -89,9 +78,6 @@ class GetRegionResult:
     @property
     @pulumi.getter
     def services(self) -> Sequence['outputs.GetRegionServiceResult']:
-        """
-        The list of public cloud services running within the region
-        """
         return pulumi.get(self, "services")
 
 
@@ -113,23 +99,7 @@ def get_region(name: Optional[str] = None,
                service_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
-    Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    g_ra1 = ovh.CloudProject.get_region(name="GRA1",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str name: The name of the region associated with the public cloud
-           project.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -148,23 +118,7 @@ def get_region_output(name: Optional[pulumi.Input[str]] = None,
                       service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
     """
-    Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    g_ra1 = ovh.CloudProject.get_region(name="GRA1",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str name: The name of the region associated with the public cloud
-           project.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

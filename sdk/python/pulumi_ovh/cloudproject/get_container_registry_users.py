@@ -57,9 +57,6 @@ class GetContainerRegistryUsersResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetContainerRegistryUsersResultResult']:
-        """
-        The list of users of the container registry associated with the project.
-        """
         return pulumi.get(self, "results")
 
     @property
@@ -84,24 +81,7 @@ def get_container_registry_users(registry_id: Optional[str] = None,
                                  service_name: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRegistryUsersResult:
     """
-    Use this data source to get the list of users of a container registry associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
-        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    users = ovh.CloudProject.get_container_registry_users(service_name=ovh_cloud_project_containerregistry["my_registry"]["service_name"],
-        registry_id=ovh_cloud_project_containerregistry["my_registry"]["id"])
-    ```
-
-
-    :param str registry_id: Registry ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id
@@ -118,24 +98,7 @@ def get_container_registry_users_output(registry_id: Optional[pulumi.Input[str]]
                                         service_name: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryUsersResult]:
     """
-    Use this data source to get the list of users of a container registry associated with a public cloud project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
-        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    users = ovh.CloudProject.get_container_registry_users(service_name=ovh_cloud_project_containerregistry["my_registry"]["service_name"],
-        registry_id=ovh_cloud_project_containerregistry["my_registry"]["id"])
-    ```
-
-
-    :param str registry_id: Registry ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id

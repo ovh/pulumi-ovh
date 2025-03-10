@@ -105,94 +105,56 @@ class GetKubeNodePoolResult:
     @property
     @pulumi.getter(name="antiAffinity")
     def anti_affinity(self) -> bool:
-        """
-        (Optional) should the pool use the anti-affinity feature. Default to `false`.
-        """
         return pulumi.get(self, "anti_affinity")
 
     @property
     @pulumi.getter
     def autoscale(self) -> bool:
-        """
-        (Optional) Enable auto-scaling for the pool. Default to `false`.
-        """
         return pulumi.get(self, "autoscale")
 
     @property
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> int:
-        """
-        (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
-        """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
     @property
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> int:
-        """
-        (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
-        """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
     @property
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> float:
-        """
-        (Optional) scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
     @property
     @pulumi.getter(name="availableNodes")
     def available_nodes(self) -> int:
-        """
-        Number of nodes which are actually ready in the pool
-        """
         return pulumi.get(self, "available_nodes")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        Creation date
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="currentNodes")
     def current_nodes(self) -> int:
-        """
-        Number of nodes present in the pool
-        """
         return pulumi.get(self, "current_nodes")
 
     @property
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> int:
-        """
-        Number of nodes you desire in the pool
-        """
         return pulumi.get(self, "desired_nodes")
 
     @property
     @pulumi.getter
     def flavor(self) -> str:
-        """
-        Flavor name
-        """
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> str:
-        """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-        Ex: "b2-7". Changing this value recreates the resource.
-        You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
-        """
         return pulumi.get(self, "flavor_name")
 
     @property
@@ -206,77 +168,46 @@ class GetKubeNodePoolResult:
     @property
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "kube_id")
 
     @property
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> int:
-        """
-        maximum number of nodes allowed in the pool.
-        Setting `desired_nodes` over this value will raise an error.
-        """
         return pulumi.get(self, "max_nodes")
 
     @property
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> int:
-        """
-        minimum number of nodes allowed in the pool.
-        Setting `desired_nodes` under this value will raise an error.
-        """
         return pulumi.get(self, "min_nodes")
 
     @property
     @pulumi.getter(name="monthlyBilled")
     def monthly_billed(self) -> bool:
-        """
-        (Optional) should the nodes be billed on a monthly basis. Default to `false`.
-        """
         return pulumi.get(self, "monthly_billed")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        (Optional) The name of the nodepool.
-        Changing this value recreates the resource.
-        Warning: "_" char is not allowed!
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        Project id
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="sizeStatus")
     def size_status(self) -> str:
-        """
-        Status describing the state between number of nodes wanted and available ones
-        """
         return pulumi.get(self, "size_status")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Current status
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -287,17 +218,11 @@ class GetKubeNodePoolResult:
     @property
     @pulumi.getter(name="upToDateNodes")
     def up_to_date_nodes(self) -> int:
-        """
-        Number of nodes with the latest version installed in the pool
-        """
         return pulumi.get(self, "up_to_date_nodes")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        Last update date
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -339,25 +264,7 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
                        template: Optional[Union['GetKubeNodePoolTemplateArgs', 'GetKubeNodePoolTemplateArgsDict']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubeNodePoolResult:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes node pool.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    nodepool = ovh.CloudProject.get_kube_node_pool(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        name="xxxxxx")
-    pulumi.export("maxNodes", nodepool.max_nodes)
-    ```
-
-
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str name: The name of the node pool.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id
@@ -398,25 +305,7 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
                               template: Optional[pulumi.Input[Optional[Union['GetKubeNodePoolTemplateArgs', 'GetKubeNodePoolTemplateArgsDict']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeNodePoolResult]:
     """
-    Use this data source to get a OVHcloud Managed Kubernetes node pool.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    nodepool = ovh.CloudProject.get_kube_node_pool(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        name="xxxxxx")
-    pulumi.export("maxNodes", nodepool.max_nodes)
-    ```
-
-
-    :param str kube_id: The id of the managed kubernetes cluster.
-    :param str name: The name of the node pool.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id

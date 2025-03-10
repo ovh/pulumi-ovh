@@ -9,131 +9,45 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Creates an OIDC configuration in an OVHcloud Managed Private Registry.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myOidc = new Ovh.CloudProject.ContainerRegistryOIDC("myOidc", new()
-    ///     {
-    ///         ServiceName = "XXXXXX",
-    ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-    ///         OidcName = "my-oidc-provider",
-    ///         OidcEndpoint = "https://xxxx.yyy.com",
-    ///         OidcClientId = "xxx",
-    ///         OidcClientSecret = "xxx",
-    ///         OidcScope = "openid,profile,email,offline_access",
-    ///         OidcGroupsClaim = "groups",
-    ///         OidcAdminGroup = "harbor-admin",
-    ///         OidcVerifyCert = true,
-    ///         OidcAutoOnboard = true,
-    ///         OidcUserClaim = "preferred_username",
-    ///         DeleteUsers = false,
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["oidcClientSecret"] = myOidc.OidcClientSecret,
-    ///     };
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC")]
     public partial class ContainerRegistryOIDC : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
-        /// </summary>
         [Output("deleteUsers")]
         public Output<bool?> DeleteUsers { get; private set; } = null!;
 
-        /// <summary>
-        /// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
-        /// </summary>
         [Output("oidcAdminGroup")]
         public Output<string?> OidcAdminGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
-        /// </summary>
         [Output("oidcAutoOnboard")]
         public Output<bool?> OidcAutoOnboard { get; private set; } = null!;
 
-        /// <summary>
-        /// The client ID with which Harbor is registered as client application with the OIDC provider.
-        /// </summary>
         [Output("oidcClientId")]
         public Output<string> OidcClientId { get; private set; } = null!;
 
-        /// <summary>
-        /// The secret for the Harbor client application.
-        /// </summary>
         [Output("oidcClientSecret")]
         public Output<string> OidcClientSecret { get; private set; } = null!;
 
-        /// <summary>
-        /// The URL of an OIDC-compliant server.
-        /// </summary>
         [Output("oidcEndpoint")]
         public Output<string> OidcEndpoint { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of Claim in the ID token whose value is the list of group names.
-        /// </summary>
         [Output("oidcGroupsClaim")]
         public Output<string?> OidcGroupsClaim { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the OIDC provider.
-        /// </summary>
         [Output("oidcName")]
         public Output<string> OidcName { get; private set; } = null!;
 
-        /// <summary>
-        /// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
-        /// </summary>
         [Output("oidcScope")]
         public Output<string> OidcScope { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
-        /// </summary>
         [Output("oidcUserClaim")]
         public Output<string?> OidcUserClaim { get; private set; } = null!;
 
-        /// <summary>
-        /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
-        /// </summary>
         [Output("oidcVerifyCert")]
         public Output<bool?> OidcVerifyCert { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
-        /// </summary>
         [Output("registryId")]
         public Output<string> RegistryId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -188,36 +102,20 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class ContainerRegistryOIDCArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
-        /// </summary>
         [Input("deleteUsers")]
         public Input<bool>? DeleteUsers { get; set; }
 
-        /// <summary>
-        /// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
-        /// </summary>
         [Input("oidcAdminGroup")]
         public Input<string>? OidcAdminGroup { get; set; }
 
-        /// <summary>
-        /// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
-        /// </summary>
         [Input("oidcAutoOnboard")]
         public Input<bool>? OidcAutoOnboard { get; set; }
 
-        /// <summary>
-        /// The client ID with which Harbor is registered as client application with the OIDC provider.
-        /// </summary>
         [Input("oidcClientId", required: true)]
         public Input<string> OidcClientId { get; set; } = null!;
 
         [Input("oidcClientSecret", required: true)]
         private Input<string>? _oidcClientSecret;
-
-        /// <summary>
-        /// The secret for the Harbor client application.
-        /// </summary>
         public Input<string>? OidcClientSecret
         {
             get => _oidcClientSecret;
@@ -228,51 +126,27 @@ namespace Pulumi.Ovh.CloudProject
             }
         }
 
-        /// <summary>
-        /// The URL of an OIDC-compliant server.
-        /// </summary>
         [Input("oidcEndpoint", required: true)]
         public Input<string> OidcEndpoint { get; set; } = null!;
 
-        /// <summary>
-        /// The name of Claim in the ID token whose value is the list of group names.
-        /// </summary>
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
 
-        /// <summary>
-        /// The name of the OIDC provider.
-        /// </summary>
         [Input("oidcName", required: true)]
         public Input<string> OidcName { get; set; } = null!;
 
-        /// <summary>
-        /// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
-        /// </summary>
         [Input("oidcScope", required: true)]
         public Input<string> OidcScope { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
-        /// </summary>
         [Input("oidcUserClaim")]
         public Input<string>? OidcUserClaim { get; set; }
 
-        /// <summary>
-        /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
-        /// </summary>
         [Input("oidcVerifyCert")]
         public Input<bool>? OidcVerifyCert { get; set; }
 
-        /// <summary>
-        /// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
-        /// </summary>
         [Input("registryId", required: true)]
         public Input<string> RegistryId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -284,36 +158,20 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class ContainerRegistryOIDCState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
-        /// </summary>
         [Input("deleteUsers")]
         public Input<bool>? DeleteUsers { get; set; }
 
-        /// <summary>
-        /// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
-        /// </summary>
         [Input("oidcAdminGroup")]
         public Input<string>? OidcAdminGroup { get; set; }
 
-        /// <summary>
-        /// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
-        /// </summary>
         [Input("oidcAutoOnboard")]
         public Input<bool>? OidcAutoOnboard { get; set; }
 
-        /// <summary>
-        /// The client ID with which Harbor is registered as client application with the OIDC provider.
-        /// </summary>
         [Input("oidcClientId")]
         public Input<string>? OidcClientId { get; set; }
 
         [Input("oidcClientSecret")]
         private Input<string>? _oidcClientSecret;
-
-        /// <summary>
-        /// The secret for the Harbor client application.
-        /// </summary>
         public Input<string>? OidcClientSecret
         {
             get => _oidcClientSecret;
@@ -324,51 +182,27 @@ namespace Pulumi.Ovh.CloudProject
             }
         }
 
-        /// <summary>
-        /// The URL of an OIDC-compliant server.
-        /// </summary>
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
-        /// <summary>
-        /// The name of Claim in the ID token whose value is the list of group names.
-        /// </summary>
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
 
-        /// <summary>
-        /// The name of the OIDC provider.
-        /// </summary>
         [Input("oidcName")]
         public Input<string>? OidcName { get; set; }
 
-        /// <summary>
-        /// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
-        /// </summary>
         [Input("oidcScope")]
         public Input<string>? OidcScope { get; set; }
 
-        /// <summary>
-        /// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
-        /// </summary>
         [Input("oidcUserClaim")]
         public Input<string>? OidcUserClaim { get; set; }
 
-        /// <summary>
-        /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
-        /// </summary>
         [Input("oidcVerifyCert")]
         public Input<bool>? OidcVerifyCert { get; set; }
 
-        /// <summary>
-        /// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
-        /// </summary>
         [Input("registryId")]
         public Input<string>? RegistryId { get; set; }
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

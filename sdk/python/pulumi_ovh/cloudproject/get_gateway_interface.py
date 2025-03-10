@@ -52,57 +52,36 @@ class GetGatewayInterfaceResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        ID of the gateway
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="interfaceId")
     def interface_id(self) -> str:
-        """
-        ID of the interface
-        """
         return pulumi.get(self, "interface_id")
 
     @property
     @pulumi.getter
     def ip(self) -> str:
-        """
-        IP of the interface
-        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
-        """
-        Network ID of the interface
-        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        Region of the gateway
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        ID of the cloud project
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
-        """
-        ID of the subnet to add
-        """
         return pulumi.get(self, "subnet_id")
 
 
@@ -127,25 +106,7 @@ def get_gateway_interface(id: Optional[str] = None,
                           service_name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayInterfaceResult:
     """
-    Use this datasource to get a public cloud project Gateway Interface.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    interface = ovh.CloudProject.get_gateway_interface(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        interface_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        region="GRA11",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str id: ID of the gateway
-    :param str interface_id: ID of the interface
-    :param str region: Region of the gateway
-    :param str service_name: ID of the cloud project
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -169,25 +130,7 @@ def get_gateway_interface_output(id: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayInterfaceResult]:
     """
-    Use this datasource to get a public cloud project Gateway Interface.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    interface = ovh.CloudProject.get_gateway_interface(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        interface_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        region="GRA11",
-        service_name="XXXXXX")
-    ```
-
-
-    :param str id: ID of the gateway
-    :param str interface_id: ID of the interface
-    :param str region: Region of the gateway
-    :param str service_name: ID of the cloud project
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

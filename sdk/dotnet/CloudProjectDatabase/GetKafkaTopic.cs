@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetKafkaTopic
     {
-        /// <summary>
-        /// Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var topic = Ovh.CloudProjectDatabase.GetKafkaTopic.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Id = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["topicName"] = topic.Apply(getKafkaTopicResult =&gt; getKafkaTopicResult.Name),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetKafkaTopicResult> InvokeAsync(GetKafkaTopicArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var topic = Ovh.CloudProjectDatabase.GetKafkaTopic.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Id = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["topicName"] = topic.Apply(getKafkaTopicResult =&gt; getKafkaTopicResult.Name),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetKafkaTopicResult> Invoke(GetKafkaTopicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicResult>("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var topic = Ovh.CloudProjectDatabase.GetKafkaTopic.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXX",
-        ///         ClusterId = "YYY",
-        ///         Id = "ZZZ",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["topicName"] = topic.Apply(getKafkaTopicResult =&gt; getKafkaTopicResult.Name),
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetKafkaTopicResult> Invoke(GetKafkaTopicInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicResult>("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicInvokeArgs(), options.WithDefaults());
     }
@@ -105,22 +24,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetKafkaTopicArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Topic ID
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -132,22 +41,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetKafkaTopicInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cluster ID
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        /// <summary>
-        /// Topic ID
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -161,41 +60,14 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetKafkaTopicResult
     {
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ClusterId;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Minimum insync replica accepted for this topic.
-        /// </summary>
         public readonly int MinInsyncReplicas;
-        /// <summary>
-        /// Name of the topic.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Number of partitions for this topic.
-        /// </summary>
         public readonly int Partitions;
-        /// <summary>
-        /// Number of replication for this topic.
-        /// </summary>
         public readonly int Replication;
-        /// <summary>
-        /// Number of bytes for the retention of the data for this topic. Inferior to 0 mean Unlimited
-        /// </summary>
         public readonly int RetentionBytes;
-        /// <summary>
-        /// Number of hours for the retention of the data for this topic. Inferior to 0 mean Unlimited
-        /// </summary>
         public readonly int RetentionHours;
-        /// <summary>
-        /// See Argument Reference above.
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

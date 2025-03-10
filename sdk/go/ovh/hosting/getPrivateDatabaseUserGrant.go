@@ -7,39 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about an hosting privatedatabase user grant.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hosting.GetPrivateDatabaseUserGrant(ctx, &hosting.GetPrivateDatabaseUserGrantArgs{
-//				DatabaseName: "XXXXXX",
-//				ServiceName:  "XXXXXX",
-//				UserName:     "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPrivateDatabaseUserGrant(ctx *pulumi.Context, args *LookupPrivateDatabaseUserGrantArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseUserGrantResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseUserGrantResult
@@ -52,21 +23,16 @@ func LookupPrivateDatabaseUserGrant(ctx *pulumi.Context, args *LookupPrivateData
 
 // A collection of arguments for invoking getPrivateDatabaseUserGrant.
 type LookupPrivateDatabaseUserGrantArgs struct {
-	// The database name on which grant the user
 	DatabaseName string `pulumi:"databaseName"`
-	// The internal name of your private database
-	ServiceName string `pulumi:"serviceName"`
-	// The user name
-	UserName string `pulumi:"userName"`
+	ServiceName  string `pulumi:"serviceName"`
+	UserName     string `pulumi:"userName"`
 }
 
 // A collection of values returned by getPrivateDatabaseUserGrant.
 type LookupPrivateDatabaseUserGrantResult struct {
-	// Creation date of the database
 	CreationDate string `pulumi:"creationDate"`
 	DatabaseName string `pulumi:"databaseName"`
-	// Grant name
-	Grant string `pulumi:"grant"`
+	Grant        string `pulumi:"grant"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	ServiceName string `pulumi:"serviceName"`
@@ -84,12 +50,9 @@ func LookupPrivateDatabaseUserGrantOutput(ctx *pulumi.Context, args LookupPrivat
 
 // A collection of arguments for invoking getPrivateDatabaseUserGrant.
 type LookupPrivateDatabaseUserGrantOutputArgs struct {
-	// The database name on which grant the user
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The internal name of your private database
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The user name
-	UserName pulumi.StringInput `pulumi:"userName"`
+	ServiceName  pulumi.StringInput `pulumi:"serviceName"`
+	UserName     pulumi.StringInput `pulumi:"userName"`
 }
 
 func (LookupPrivateDatabaseUserGrantOutputArgs) ElementType() reflect.Type {
@@ -111,7 +74,6 @@ func (o LookupPrivateDatabaseUserGrantResultOutput) ToLookupPrivateDatabaseUserG
 	return o
 }
 
-// Creation date of the database
 func (o LookupPrivateDatabaseUserGrantResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseUserGrantResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
@@ -120,7 +82,6 @@ func (o LookupPrivateDatabaseUserGrantResultOutput) DatabaseName() pulumi.String
 	return o.ApplyT(func(v LookupPrivateDatabaseUserGrantResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// Grant name
 func (o LookupPrivateDatabaseUserGrantResultOutput) Grant() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseUserGrantResult) string { return v.Grant }).(pulumi.StringOutput)
 }

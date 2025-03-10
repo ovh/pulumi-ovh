@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Hosting.Outputs
     public sealed class PrivateDatabaseOrderDetail
     {
         /// <summary>
-        /// Custom description on your privatedatabase order.
+        /// description
         /// </summary>
         public readonly string? Description;
         /// <summary>

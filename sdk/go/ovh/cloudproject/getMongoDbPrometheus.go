@@ -7,39 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			prometheus, err := cloudproject.GetMongoDbPrometheus(ctx, &cloudproject.GetMongoDbPrometheusArgs{
-//				ServiceName: "XXX",
-//				ClusterId:   "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("name", prometheus.Username)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMongoDbPrometheus(ctx *pulumi.Context, args *GetMongoDbPrometheusArgs, opts ...pulumi.InvokeOption) (*GetMongoDbPrometheusResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoDbPrometheusResult
@@ -52,25 +23,18 @@ func GetMongoDbPrometheus(ctx *pulumi.Context, args *GetMongoDbPrometheusArgs, o
 
 // A collection of arguments for invoking getMongoDbPrometheus.
 type GetMongoDbPrometheusArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getMongoDbPrometheus.
 type GetMongoDbPrometheusResult struct {
-	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
+	Id          string `pulumi:"id"`
 	ServiceName string `pulumi:"serviceName"`
-	// Name of the srv domain endpoint.
-	SrvDomain string `pulumi:"srvDomain"`
-	// name of the prometheus user.
-	Username string `pulumi:"username"`
+	SrvDomain   string `pulumi:"srvDomain"`
+	Username    string `pulumi:"username"`
 }
 
 func GetMongoDbPrometheusOutput(ctx *pulumi.Context, args GetMongoDbPrometheusOutputArgs, opts ...pulumi.InvokeOption) GetMongoDbPrometheusResultOutput {
@@ -84,10 +48,7 @@ func GetMongoDbPrometheusOutput(ctx *pulumi.Context, args GetMongoDbPrometheusOu
 
 // A collection of arguments for invoking getMongoDbPrometheus.
 type GetMongoDbPrometheusOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -110,7 +71,6 @@ func (o GetMongoDbPrometheusResultOutput) ToGetMongoDbPrometheusResultOutputWith
 	return o
 }
 
-// See Argument Reference above.
 func (o GetMongoDbPrometheusResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbPrometheusResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -120,17 +80,14 @@ func (o GetMongoDbPrometheusResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbPrometheusResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetMongoDbPrometheusResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbPrometheusResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Name of the srv domain endpoint.
 func (o GetMongoDbPrometheusResultOutput) SrvDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbPrometheusResult) string { return v.SrvDomain }).(pulumi.StringOutput)
 }
 
-// name of the prometheus user.
 func (o GetMongoDbPrometheusResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbPrometheusResult) string { return v.Username }).(pulumi.StringOutput)
 }

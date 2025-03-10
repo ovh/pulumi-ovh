@@ -9,58 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Ip
 {
-    /// <summary>
-    /// Use this resource to manage a rule on an IP firewall.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myFirewallRule = new Ovh.Ip.FirewallRule("myFirewallRule", new()
-    ///     {
-    ///         Action = "deny",
-    ///         Ip = "XXXXXX",
-    ///         IpOnFirewall = "XXXXXX",
-    ///         Protocol = "tcp",
-    ///         Sequence = 0,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Ip/firewallRule:FirewallRule")]
     public partial class FirewallRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Possible values for action (deny|permit)
+        /// Possible values for action
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
-        /// <summary>
-        /// Creation date of the rule
-        /// </summary>
         [Output("creationDate")]
         public Output<string> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// Destination IP for your rule
+        /// Destination ip for your rule
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -72,7 +34,7 @@ namespace Pulumi.Ovh.Ip
         public Output<double> DestinationPort { get; private set; } = null!;
 
         /// <summary>
-        /// String description of field `destination_port`
+        /// Destination port range for your rule. Only with TCP/UDP protocol
         /// </summary>
         [Output("destinationPortDesc")]
         public Output<string> DestinationPortDesc { get; private set; } = null!;
@@ -84,31 +46,28 @@ namespace Pulumi.Ovh.Ip
         public Output<bool> Fragments { get; private set; } = null!;
 
         /// <summary>
-        /// The IP or the CIDR
+        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 address
+        /// IPv4 address (e.g., 192.0.2.0)
         /// </summary>
         [Output("ipOnFirewall")]
         public Output<string> IpOnFirewall { get; private set; } = null!;
 
         /// <summary>
-        /// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        /// Possible values for protocol
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the rule
-        /// </summary>
         [Output("rule")]
         public Output<string> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Rule position in the rules array
+        /// Possible values for action
         /// </summary>
         [Output("sequence")]
         public Output<double> Sequence { get; private set; } = null!;
@@ -126,7 +85,7 @@ namespace Pulumi.Ovh.Ip
         public Output<double> SourcePort { get; private set; } = null!;
 
         /// <summary>
-        /// String description of field `source_port`
+        /// Source port for your rule. Only with TCP/UDP protocol
         /// </summary>
         [Output("sourcePortDesc")]
         public Output<string> SourcePortDesc { get; private set; } = null!;
@@ -138,7 +97,7 @@ namespace Pulumi.Ovh.Ip
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// TCP option on your rule (syn|established)
+        /// TCP option on your rule
         /// </summary>
         [Output("tcpOption")]
         public Output<string> TcpOption { get; private set; } = null!;
@@ -191,7 +150,7 @@ namespace Pulumi.Ovh.Ip
     public sealed class FirewallRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Possible values for action (deny|permit)
+        /// Possible values for action
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -209,25 +168,25 @@ namespace Pulumi.Ovh.Ip
         public Input<bool>? Fragments { get; set; }
 
         /// <summary>
-        /// The IP or the CIDR
+        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// IPv4 address
+        /// IPv4 address (e.g., 192.0.2.0)
         /// </summary>
         [Input("ipOnFirewall", required: true)]
         public Input<string> IpOnFirewall { get; set; } = null!;
 
         /// <summary>
-        /// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        /// Possible values for protocol
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// Rule position in the rules array
+        /// Possible values for action
         /// </summary>
         [Input("sequence", required: true)]
         public Input<double> Sequence { get; set; } = null!;
@@ -245,7 +204,7 @@ namespace Pulumi.Ovh.Ip
         public Input<double>? SourcePort { get; set; }
 
         /// <summary>
-        /// TCP option on your rule (syn|established)
+        /// TCP option on your rule
         /// </summary>
         [Input("tcpOption")]
         public Input<string>? TcpOption { get; set; }
@@ -259,19 +218,16 @@ namespace Pulumi.Ovh.Ip
     public sealed class FirewallRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Possible values for action (deny|permit)
+        /// Possible values for action
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// Creation date of the rule
-        /// </summary>
         [Input("creationDate")]
         public Input<string>? CreationDate { get; set; }
 
         /// <summary>
-        /// Destination IP for your rule
+        /// Destination ip for your rule
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
@@ -283,7 +239,7 @@ namespace Pulumi.Ovh.Ip
         public Input<double>? DestinationPort { get; set; }
 
         /// <summary>
-        /// String description of field `destination_port`
+        /// Destination port range for your rule. Only with TCP/UDP protocol
         /// </summary>
         [Input("destinationPortDesc")]
         public Input<string>? DestinationPortDesc { get; set; }
@@ -295,31 +251,28 @@ namespace Pulumi.Ovh.Ip
         public Input<bool>? Fragments { get; set; }
 
         /// <summary>
-        /// The IP or the CIDR
+        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// IPv4 address
+        /// IPv4 address (e.g., 192.0.2.0)
         /// </summary>
         [Input("ipOnFirewall")]
         public Input<string>? IpOnFirewall { get; set; }
 
         /// <summary>
-        /// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        /// Possible values for protocol
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
-        /// <summary>
-        /// Description of the rule
-        /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule position in the rules array
+        /// Possible values for action
         /// </summary>
         [Input("sequence")]
         public Input<double>? Sequence { get; set; }
@@ -337,7 +290,7 @@ namespace Pulumi.Ovh.Ip
         public Input<double>? SourcePort { get; set; }
 
         /// <summary>
-        /// String description of field `source_port`
+        /// Source port for your rule. Only with TCP/UDP protocol
         /// </summary>
         [Input("sourcePortDesc")]
         public Input<string>? SourcePortDesc { get; set; }
@@ -349,7 +302,7 @@ namespace Pulumi.Ovh.Ip
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// TCP option on your rule (syn|established)
+        /// TCP option on your rule
         /// </summary>
         [Input("tcpOption")]
         public Input<string>? TcpOption { get; set; }

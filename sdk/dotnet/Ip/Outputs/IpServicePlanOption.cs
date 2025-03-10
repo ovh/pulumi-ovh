@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.Ip.Outputs
         /// </summary>
         public readonly string? CatalogName;
         /// <summary>
-        /// Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
+        /// Representation of a configuration item for personalizing product
         /// </summary>
         public readonly ImmutableArray<Outputs.IpServicePlanOptionConfiguration> Configurations;
         /// <summary>

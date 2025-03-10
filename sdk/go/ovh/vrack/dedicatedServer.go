@@ -8,48 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attach a legacy dedicated server to a vRack.
-//
-// > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
-// Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vrack.NewDedicatedServer(ctx, "vds", &vrack.DedicatedServerArgs{
-//				ServerId:    pulumi.String("67890"),
-//				ServiceName: pulumi.String("XXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DedicatedServer struct {
 	pulumi.CustomResourceState
 
-	// The id of the dedicated server.
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
-	// The service name of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -89,18 +56,14 @@ func GetDedicatedServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DedicatedServer resources.
 type dedicatedServerState struct {
-	// The id of the dedicated server.
 	ServerId *string `pulumi:"serverId"`
-	// The service name of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type DedicatedServerState struct {
-	// The id of the dedicated server.
 	ServerId pulumi.StringPtrInput
-	// The service name of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -109,19 +72,15 @@ func (DedicatedServerState) ElementType() reflect.Type {
 }
 
 type dedicatedServerArgs struct {
-	// The id of the dedicated server.
 	ServerId string `pulumi:"serverId"`
-	// The service name of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a DedicatedServer resource.
 type DedicatedServerArgs struct {
-	// The id of the dedicated server.
 	ServerId pulumi.StringInput
-	// The service name of the vrack. If omitted,
-	// the `OVH_VRACK_SERVICE` environment variable is used.
+	// Service name of the resource representing the id of the cloud project.
 	ServiceName pulumi.StringInput
 }
 
@@ -212,13 +171,11 @@ func (o DedicatedServerOutput) ToDedicatedServerOutputWithContext(ctx context.Co
 	return o
 }
 
-// The id of the dedicated server.
 func (o DedicatedServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedServer) pulumi.StringOutput { return v.ServerId }).(pulumi.StringOutput)
 }
 
-// The service name of the vrack. If omitted,
-// the `OVH_VRACK_SERVICE` environment variable is used.
+// Service name of the resource representing the id of the cloud project.
 func (o DedicatedServerOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedServer) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

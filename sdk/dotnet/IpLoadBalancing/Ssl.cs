@@ -9,47 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
-    /// <summary>
-    /// Creates a new custom SSL certificate on your IP Load Balancing
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
-    ///     {
-    ///         ServiceName = "ip-1.2.3.4",
-    ///         State = "ok",
-    ///     });
-    /// 
-    ///     var sslname = new Ovh.IpLoadBalancing.Ssl("sslname", new()
-    ///     {
-    ///         Certificate = "...",
-    ///         Chain = "...",
-    ///         DisplayName = "test",
-    ///         Key = "...",
-    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:IpLoadBalancing/ssl:Ssl sslname service_name/ssl_id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/ssl:Ssl")]
     public partial class Ssl : global::Pulumi.CustomResource
     {
@@ -66,19 +25,19 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string?> Chain { get; private set; } = null!;
 
         /// <summary>
-        /// Readable label for loadbalancer ssl
+        /// Human readable name for your ssl certificate, this field is for you
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Expire date of your SSL certificate.
+        /// Expire date of your SSL certificate
         /// </summary>
         [Output("expireDate")]
         public Output<string> ExpireDate { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of your SSL certificate.
+        /// Fingerprint of your SSL certificate
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -90,13 +49,13 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Subject Alternative Name of your SSL certificate.
+        /// Subject Alternative Name of your SSL certificate
         /// </summary>
         [Output("sans")]
         public Output<ImmutableArray<string>> Sans { get; private set; } = null!;
 
         /// <summary>
-        /// Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+        /// Serial of your SSL certificate (Deprecated, use fingerprint instead!)
         /// </summary>
         [Output("serial")]
         public Output<string> Serial { get; private set; } = null!;
@@ -108,13 +67,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Subject of your SSL certificate.
+        /// Subject of your SSL certificate
         /// </summary>
         [Output("subject")]
         public Output<string> Subject { get; private set; } = null!;
 
         /// <summary>
-        /// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+        /// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+        /// certificates.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -183,7 +143,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? Chain { get; set; }
 
         /// <summary>
-        /// Readable label for loadbalancer ssl
+        /// Human readable name for your ssl certificate, this field is for you
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -231,19 +191,19 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? Chain { get; set; }
 
         /// <summary>
-        /// Readable label for loadbalancer ssl
+        /// Human readable name for your ssl certificate, this field is for you
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Expire date of your SSL certificate.
+        /// Expire date of your SSL certificate
         /// </summary>
         [Input("expireDate")]
         public Input<string>? ExpireDate { get; set; }
 
         /// <summary>
-        /// Fingerprint of your SSL certificate.
+        /// Fingerprint of your SSL certificate
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -268,7 +228,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         private InputList<string>? _sans;
 
         /// <summary>
-        /// Subject Alternative Name of your SSL certificate.
+        /// Subject Alternative Name of your SSL certificate
         /// </summary>
         public InputList<string> Sans
         {
@@ -277,7 +237,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         }
 
         /// <summary>
-        /// Serial of your SSL certificate (Deprecated, use fingerprint instead !)
+        /// Serial of your SSL certificate (Deprecated, use fingerprint instead!)
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
@@ -289,13 +249,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Subject of your SSL certificate.
+        /// Subject of your SSL certificate
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 
         /// <summary>
-        /// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
+        /// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
+        /// certificates.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

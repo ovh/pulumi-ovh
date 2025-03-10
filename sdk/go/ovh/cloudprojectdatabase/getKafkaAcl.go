@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			acl, err := cloudprojectdatabase.GetKafkaAcl(ctx, &cloudprojectdatabase.GetKafkaAclArgs{
-//				ServiceName: "XXX",
-//				ClusterId:   "YYY",
-//				Id:          "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("aclPermission", acl.Permission)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulumi.InvokeOption) (*LookupKafkaAclResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaAclResult
@@ -53,29 +23,19 @@ func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulum
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// ACL ID
-	Id string `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Id          string `pulumi:"id"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getKafkaAcl.
 type LookupKafkaAclResult struct {
-	// See Argument Reference above.
-	ClusterId string `pulumi:"clusterId"`
-	// See Argument Reference above.
-	Id string `pulumi:"id"`
-	// Permission to give to this username on this topic.
-	Permission string `pulumi:"permission"`
-	// See Argument Reference above.
+	ClusterId   string `pulumi:"clusterId"`
+	Id          string `pulumi:"id"`
+	Permission  string `pulumi:"permission"`
 	ServiceName string `pulumi:"serviceName"`
-	// Topic affected by this ACL.
-	Topic string `pulumi:"topic"`
-	// Username affected by this ACL.
-	Username string `pulumi:"username"`
+	Topic       string `pulumi:"topic"`
+	Username    string `pulumi:"username"`
 }
 
 func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaAclResultOutput {
@@ -89,12 +49,8 @@ func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, op
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// ACL ID
-	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Id          pulumi.StringInput `pulumi:"id"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -117,32 +73,26 @@ func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx 
 	return o
 }
 
-// See Argument Reference above.
 func (o LookupKafkaAclResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o LookupKafkaAclResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Permission to give to this username on this topic.
 func (o LookupKafkaAclResultOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o LookupKafkaAclResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Topic affected by this ACL.
 func (o LookupKafkaAclResultOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-// Username affected by this ACL.
 func (o LookupKafkaAclResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Username }).(pulumi.StringOutput)
 }

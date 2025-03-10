@@ -60,16 +60,7 @@ class AwaitableGetPermissionsGroupsResult(GetPermissionsGroupsResult):
 
 def get_permissions_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPermissionsGroupsResult:
     """
-    Use this data source to retrieve an IAM permissions group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    website = ovh.Iam.get_permissions_group(urn="urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -80,16 +71,7 @@ def get_permissions_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Await
         urns=pulumi.get(__ret__, 'urns'))
 def get_permissions_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPermissionsGroupsResult]:
     """
-    Use this data source to retrieve an IAM permissions group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    website = ovh.Iam.get_permissions_group(urn="urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

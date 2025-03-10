@@ -8,85 +8,35 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a namespace for a M3DB cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			m3db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
-//				ServiceName: "XXX",
-//				Engine:      "m3db",
-//				Id:          "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudprojectdatabase.NewM3DbNamespace(ctx, "namespace", &cloudprojectdatabase.M3DbNamespaceArgs{
-//				ServiceName:             pulumi.String(m3db.ServiceName),
-//				ClusterId:               pulumi.String(m3db.Id),
-//				Resolution:              pulumi.String("P2D"),
-//				RetentionPeriodDuration: pulumi.String("PT48H"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Managed M3DB clusters namespaces can be imported using the `service_name`, `cluster_id` and `id` of the namespace, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace my_namespace service_name/cluster_id/id
-// ```
 type M3DbNamespace struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+	// Name of the namespace
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Resolution for an aggregated namespace
 	Resolution pulumi.StringOutput `pulumi:"resolution"`
-	// Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long we wait before expiring stale data
 	RetentionBlockDataExpirationDuration pulumi.StringPtrOutput `pulumi:"retentionBlockDataExpirationDuration"`
-	// Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long to keep a block in memory before flushing to a fileset on disk
 	RetentionBlockSizeDuration pulumi.StringOutput `pulumi:"retentionBlockSizeDuration"`
-	// Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the future writes to the namespace will be accepted
 	RetentionBufferFutureDuration pulumi.StringPtrOutput `pulumi:"retentionBufferFutureDuration"`
-	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the past writes to the namespace will be accepted
 	RetentionBufferPastDuration pulumi.StringPtrOutput `pulumi:"retentionBufferPastDuration"`
-	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls the duration of time that M3DB will retain data for the namespace
 	RetentionPeriodDuration pulumi.StringOutput `pulumi:"retentionPeriodDuration"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Defines whether M3DB will create snapshot files for this namespace.
+	ServiceName             pulumi.StringOutput `pulumi:"serviceName"`
+	// Defines whether M3db will create snapshot files for this namespace
 	SnapshotEnabled pulumi.BoolOutput `pulumi:"snapshotEnabled"`
-	// Type of namespace.
+	// Type of namespace
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Defines whether M3DB will include writes to this namespace in the commit log.
+	// Defines whether M3db will include writes to this namespace in the commit log
 	WritesToCommitLogEnabled pulumi.BoolOutput `pulumi:"writesToCommitLogEnabled"`
 }
 
@@ -129,58 +79,54 @@ func GetM3DbNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering M3DbNamespace resources.
 type m3dbNamespaceState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+	// Name of the namespace
 	Name *string `pulumi:"name"`
-	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Resolution for an aggregated namespace
 	Resolution *string `pulumi:"resolution"`
-	// Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long we wait before expiring stale data
 	RetentionBlockDataExpirationDuration *string `pulumi:"retentionBlockDataExpirationDuration"`
-	// Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long to keep a block in memory before flushing to a fileset on disk
 	RetentionBlockSizeDuration *string `pulumi:"retentionBlockSizeDuration"`
-	// Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the future writes to the namespace will be accepted
 	RetentionBufferFutureDuration *string `pulumi:"retentionBufferFutureDuration"`
-	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the past writes to the namespace will be accepted
 	RetentionBufferPastDuration *string `pulumi:"retentionBufferPastDuration"`
-	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls the duration of time that M3DB will retain data for the namespace
 	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName *string `pulumi:"serviceName"`
-	// Defines whether M3DB will create snapshot files for this namespace.
+	ServiceName             *string `pulumi:"serviceName"`
+	// Defines whether M3db will create snapshot files for this namespace
 	SnapshotEnabled *bool `pulumi:"snapshotEnabled"`
-	// Type of namespace.
+	// Type of namespace
 	Type *string `pulumi:"type"`
-	// Defines whether M3DB will include writes to this namespace in the commit log.
+	// Defines whether M3db will include writes to this namespace in the commit log
 	WritesToCommitLogEnabled *bool `pulumi:"writesToCommitLogEnabled"`
 }
 
 type M3DbNamespaceState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+	// Name of the namespace
 	Name pulumi.StringPtrInput
-	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Resolution for an aggregated namespace
 	Resolution pulumi.StringPtrInput
-	// Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long we wait before expiring stale data
 	RetentionBlockDataExpirationDuration pulumi.StringPtrInput
-	// Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long to keep a block in memory before flushing to a fileset on disk
 	RetentionBlockSizeDuration pulumi.StringPtrInput
-	// Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the future writes to the namespace will be accepted
 	RetentionBufferFutureDuration pulumi.StringPtrInput
-	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the past writes to the namespace will be accepted
 	RetentionBufferPastDuration pulumi.StringPtrInput
-	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls the duration of time that M3DB will retain data for the namespace
 	RetentionPeriodDuration pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringPtrInput
-	// Defines whether M3DB will create snapshot files for this namespace.
+	ServiceName             pulumi.StringPtrInput
+	// Defines whether M3db will create snapshot files for this namespace
 	SnapshotEnabled pulumi.BoolPtrInput
-	// Type of namespace.
+	// Type of namespace
 	Type pulumi.StringPtrInput
-	// Defines whether M3DB will include writes to this namespace in the commit log.
+	// Defines whether M3db will include writes to this namespace in the commit log
 	WritesToCommitLogEnabled pulumi.BoolPtrInput
 }
 
@@ -189,55 +135,51 @@ func (M3DbNamespaceState) ElementType() reflect.Type {
 }
 
 type m3dbNamespaceArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+	// Name of the namespace
 	Name *string `pulumi:"name"`
-	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Resolution for an aggregated namespace
 	Resolution string `pulumi:"resolution"`
-	// Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long we wait before expiring stale data
 	RetentionBlockDataExpirationDuration *string `pulumi:"retentionBlockDataExpirationDuration"`
-	// Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long to keep a block in memory before flushing to a fileset on disk
 	RetentionBlockSizeDuration *string `pulumi:"retentionBlockSizeDuration"`
-	// Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the future writes to the namespace will be accepted
 	RetentionBufferFutureDuration *string `pulumi:"retentionBufferFutureDuration"`
-	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the past writes to the namespace will be accepted
 	RetentionBufferPastDuration *string `pulumi:"retentionBufferPastDuration"`
-	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls the duration of time that M3DB will retain data for the namespace
 	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
-	// Defines whether M3DB will create snapshot files for this namespace.
+	ServiceName             string  `pulumi:"serviceName"`
+	// Defines whether M3db will create snapshot files for this namespace
 	SnapshotEnabled *bool `pulumi:"snapshotEnabled"`
-	// Defines whether M3DB will include writes to this namespace in the commit log.
+	// Defines whether M3db will include writes to this namespace in the commit log
 	WritesToCommitLogEnabled *bool `pulumi:"writesToCommitLogEnabled"`
 }
 
 // The set of arguments for constructing a M3DbNamespace resource.
 type M3DbNamespaceArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+	// Name of the namespace
 	Name pulumi.StringPtrInput
-	// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Resolution for an aggregated namespace
 	Resolution pulumi.StringInput
-	// Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long we wait before expiring stale data
 	RetentionBlockDataExpirationDuration pulumi.StringPtrInput
-	// Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how long to keep a block in memory before flushing to a fileset on disk
 	RetentionBlockSizeDuration pulumi.StringPtrInput
-	// Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the future writes to the namespace will be accepted
 	RetentionBufferFutureDuration pulumi.StringPtrInput
-	// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls how far into the past writes to the namespace will be accepted
 	RetentionBufferPastDuration pulumi.StringPtrInput
-	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+	// Controls the duration of time that M3DB will retain data for the namespace
 	RetentionPeriodDuration pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
-	// Defines whether M3DB will create snapshot files for this namespace.
+	ServiceName             pulumi.StringInput
+	// Defines whether M3db will create snapshot files for this namespace
 	SnapshotEnabled pulumi.BoolPtrInput
-	// Defines whether M3DB will include writes to this namespace in the commit log.
+	// Defines whether M3db will include writes to this namespace in the commit log
 	WritesToCommitLogEnabled pulumi.BoolPtrInput
 }
 
@@ -328,63 +270,61 @@ func (o M3DbNamespaceOutput) ToM3DbNamespaceOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o M3DbNamespaceOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
+// Name of the namespace
 func (o M3DbNamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
+// Resolution for an aggregated namespace
 func (o M3DbNamespaceOutput) Resolution() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.Resolution }).(pulumi.StringOutput)
 }
 
-// Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
+// Controls how long we wait before expiring stale data
 func (o M3DbNamespaceOutput) RetentionBlockDataExpirationDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringPtrOutput { return v.RetentionBlockDataExpirationDuration }).(pulumi.StringPtrOutput)
 }
 
-// Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
+// Controls how long to keep a block in memory before flushing to a fileset on disk
 func (o M3DbNamespaceOutput) RetentionBlockSizeDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.RetentionBlockSizeDuration }).(pulumi.StringOutput)
 }
 
-// Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+// Controls how far into the future writes to the namespace will be accepted
 func (o M3DbNamespaceOutput) RetentionBufferFutureDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringPtrOutput { return v.RetentionBufferFutureDuration }).(pulumi.StringPtrOutput)
 }
 
-// Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
+// Controls how far into the past writes to the namespace will be accepted
 func (o M3DbNamespaceOutput) RetentionBufferPastDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringPtrOutput { return v.RetentionBufferPastDuration }).(pulumi.StringPtrOutput)
 }
 
-// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
+// Controls the duration of time that M3DB will retain data for the namespace
 func (o M3DbNamespaceOutput) RetentionPeriodDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.RetentionPeriodDuration }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o M3DbNamespaceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Defines whether M3DB will create snapshot files for this namespace.
+// Defines whether M3db will create snapshot files for this namespace
 func (o M3DbNamespaceOutput) SnapshotEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.BoolOutput { return v.SnapshotEnabled }).(pulumi.BoolOutput)
 }
 
-// Type of namespace.
+// Type of namespace
 func (o M3DbNamespaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Defines whether M3DB will include writes to this namespace in the commit log.
+// Defines whether M3db will include writes to this namespace in the commit log
 func (o M3DbNamespaceOutput) WritesToCommitLogEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.BoolOutput { return v.WritesToCommitLogEnabled }).(pulumi.BoolOutput)
 }

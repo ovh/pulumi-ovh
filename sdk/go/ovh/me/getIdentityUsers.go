@@ -7,35 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve list of user logins of the account's identity users.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.GetIdentityUsers(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetIdentityUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIdentityUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIdentityUsersResult
@@ -49,8 +24,7 @@ func GetIdentityUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIde
 // A collection of values returned by getIdentityUsers.
 type GetIdentityUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The list of the user's logins of all the identity users.
+	Id    string   `pulumi:"id"`
 	Users []string `pulumi:"users"`
 }
 
@@ -81,7 +55,6 @@ func (o GetIdentityUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIdentityUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of the user's logins of all the identity users.
 func (o GetIdentityUsersResultOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIdentityUsersResult) []string { return v.Users }).(pulumi.StringArrayOutput)
 }

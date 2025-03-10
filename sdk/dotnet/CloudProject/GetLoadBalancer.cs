@@ -11,93 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetLoadBalancer
     {
-        /// <summary>
-        /// Get the details of a public cloud project loadbalancer.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var lbLoadBalancer = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         RegionName = "XXX",
-        ///         Id = "XXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["lb"] = lbLoadBalancer,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Get the details of a public cloud project loadbalancer.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var lbLoadBalancer = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         RegionName = "XXX",
-        ///         Id = "XXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["lb"] = lbLoadBalancer,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Get the details of a public cloud project loadbalancer.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var lbLoadBalancer = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
-        ///     {
-        ///         ServiceName = "XXXXXX",
-        ///         RegionName = "XXX",
-        ///         Id = "XXX",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["lb"] = lbLoadBalancer,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetLoadBalancerResult> Invoke(GetLoadBalancerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerResult>("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerInvokeArgs(), options.WithDefaults());
     }
@@ -105,22 +24,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetLoadBalancerArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the loadbalancer
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// Region of the loadbalancer.
-        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -132,22 +41,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetLoadBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the loadbalancer
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// Region of the loadbalancer.
-        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -161,57 +60,18 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetLoadBalancerResult
     {
-        /// <summary>
-        /// Date of creation of the loadbalancer
-        /// </summary>
         public readonly string CreatedAt;
-        /// <summary>
-        /// ID of the flavor
-        /// </summary>
         public readonly string FlavorId;
-        /// <summary>
-        /// Information about the floating IP
-        /// </summary>
         public readonly Outputs.GetLoadBalancerFloatingIpResult FloatingIp;
-        /// <summary>
-        /// ID of the floating IP
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Name of the loadbalancer
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Operating status of the loadbalancer
-        /// </summary>
         public readonly string OperatingStatus;
-        /// <summary>
-        /// Provisioning status of the loadbalancer
-        /// </summary>
         public readonly string ProvisioningStatus;
-        /// <summary>
-        /// Region of the loadbalancer
-        /// </summary>
         public readonly string RegionName;
-        /// <summary>
-        /// ID of the public cloud project
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Last update date of the loadbalancer
-        /// </summary>
         public readonly string UpdatedAt;
-        /// <summary>
-        /// IP address of the Virtual IP
-        /// </summary>
         public readonly string VipAddress;
-        /// <summary>
-        /// Openstack ID of the network for the Virtual IP
-        /// </summary>
         public readonly string VipNetworkId;
-        /// <summary>
-        /// ID of the subnet for the Virtual IP
-        /// </summary>
         public readonly string VipSubnetId;
 
         [OutputConstructor]

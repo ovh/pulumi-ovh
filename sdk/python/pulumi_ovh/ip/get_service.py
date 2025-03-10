@@ -59,25 +59,16 @@ class GetServiceResult:
     @property
     @pulumi.getter(name="canBeTerminated")
     def can_be_terminated(self) -> bool:
-        """
-        can be terminated
-        """
         return pulumi.get(self, "can_be_terminated")
 
     @property
     @pulumi.getter
     def country(self) -> str:
-        """
-        country
-        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Custom description on your ip
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -91,41 +82,26 @@ class GetServiceResult:
     @property
     @pulumi.getter
     def ip(self) -> str:
-        """
-        ip block
-        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="organisationId")
     def organisation_id(self) -> str:
-        """
-        IP block organisation Id
-        """
         return pulumi.get(self, "organisation_id")
 
     @property
     @pulumi.getter(name="routedTos")
     def routed_tos(self) -> Sequence['outputs.GetServiceRoutedToResult']:
-        """
-        Routage information
-        """
         return pulumi.get(self, "routed_tos")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Service where ip is routed to
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hosted_ssl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
-        """
         return pulumi.get(self, "type")
 
 
@@ -149,19 +125,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Use this data source to retrieve information about an IP service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_ip = ovh.Ip.get_service(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The service name
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -181,19 +145,7 @@ def get_service(service_name: Optional[str] = None,
 def get_service_output(service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
-    Use this data source to retrieve information about an IP service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    my_ip = ovh.Ip.get_service(service_name="XXXXXX")
-    ```
-
-
-    :param str service_name: The service name
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

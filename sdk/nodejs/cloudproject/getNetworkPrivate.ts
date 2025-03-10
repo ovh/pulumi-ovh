@@ -6,26 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Get the details of a public cloud project private network.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * export = async () => {
- *     const privateNetworkPrivate = await ovh.CloudProject.getNetworkPrivate({
- *         serviceName: "XXXXXX",
- *         networkId: "XXX",
- *     });
- *     return {
- *         "private": privateNetworkPrivate,
- *     };
- * }
- * ```
- */
 export function getNetworkPrivate(args: GetNetworkPrivateArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPrivateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getNetworkPrivate:getNetworkPrivate", {
@@ -38,13 +18,7 @@ export function getNetworkPrivate(args: GetNetworkPrivateArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getNetworkPrivate.
  */
 export interface GetNetworkPrivateArgs {
-    /**
-     * ID of the network
-     */
     networkId: string;
-    /**
-     * The ID of the public cloud project.
-     */
     serviceName: string;
 }
 
@@ -56,55 +30,14 @@ export interface GetNetworkPrivateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Name of the network
-     */
     readonly name: string;
-    /**
-     * ID of the network
-     */
     readonly networkId: string;
-    /**
-     * Information about the private network in the openstack region
-     */
     readonly regions: outputs.CloudProject.GetNetworkPrivateRegion[];
-    /**
-     * ID of the public cloud project
-     */
     readonly serviceName: string;
-    /**
-     * Status of the network
-     */
     readonly status: string;
-    /**
-     * Type of the network
-     */
     readonly type: string;
-    /**
-     * VLAN ID of the network
-     */
     readonly vlanId: number;
 }
-/**
- * Get the details of a public cloud project private network.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * export = async () => {
- *     const privateNetworkPrivate = await ovh.CloudProject.getNetworkPrivate({
- *         serviceName: "XXXXXX",
- *         networkId: "XXX",
- *     });
- *     return {
- *         "private": privateNetworkPrivate,
- *     };
- * }
- * ```
- */
 export function getNetworkPrivateOutput(args: GetNetworkPrivateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPrivateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getNetworkPrivate:getNetworkPrivate", {
@@ -117,12 +50,6 @@ export function getNetworkPrivateOutput(args: GetNetworkPrivateOutputArgs, opts?
  * A collection of arguments for invoking getNetworkPrivate.
  */
 export interface GetNetworkPrivateOutputArgs {
-    /**
-     * ID of the network
-     */
     networkId: pulumi.Input<string>;
-    /**
-     * The ID of the public cloud project.
-     */
     serviceName: pulumi.Input<string>;
 }

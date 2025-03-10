@@ -55,33 +55,21 @@ class GetKubeNodePoolNodesResult:
     @property
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "kube_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the node.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetKubeNodePoolNodesNodeResult']:
-        """
-        List of all nodes composing the kubernetes cluster.
-        """
         return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -103,25 +91,7 @@ def get_kube_node_pool_nodes(kube_id: Optional[str] = None,
                              service_name: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubeNodePoolNodesResult:
     """
-    Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    nodes_kube_node_pool_nodes = ovh.CloudProject.get_kube_node_pool_nodes(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        name="XXXXXX")
-    pulumi.export("nodes", nodes_kube_node_pool_nodes)
-    ```
-
-
-    :param str kube_id: The ID of the managed kubernetes cluster.
-    :param str name: Name of the node pool from which we want the nodes.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id
@@ -141,25 +111,7 @@ def get_kube_node_pool_nodes_output(kube_id: Optional[pulumi.Input[str]] = None,
                                     service_name: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubeNodePoolNodesResult]:
     """
-    Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    nodes_kube_node_pool_nodes = ovh.CloudProject.get_kube_node_pool_nodes(service_name="XXXXXX",
-        kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
-        name="XXXXXX")
-    pulumi.export("nodes", nodes_kube_node_pool_nodes)
-    ```
-
-
-    :param str kube_id: The ID of the managed kubernetes cluster.
-    :param str name: Name of the node pool from which we want the nodes.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id

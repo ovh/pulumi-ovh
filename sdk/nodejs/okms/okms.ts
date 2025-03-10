@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const newKms = new ovh.okms.Okms("newKms", {
- *     displayName: "terraformed KMS",
- *     ovhSubsidiary: "FR",
- *     region: "eu-west-rbx",
- * });
- * ```
- */
 export class Okms extends pulumi.CustomResource {
     /**
      * Get an existing Okms resource's state with the given name, ID, and optional extra
@@ -49,15 +35,15 @@ export class Okms extends pulumi.CustomResource {
     }
 
     /**
-     * (String) Resource display name
+     * Set the name displayed in Manager for this KMS
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * (Attributes) IAM resource metadata (see below for nested schema)
+     * IAM resource metadata
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Okms.OkmsIam>;
     /**
-     * (String) KMS kmip API endpoint
+     * KMS kmip API endpoint
      */
     public /*out*/ readonly kmipEndpoint!: pulumi.Output<string>;
     /**
@@ -65,7 +51,7 @@ export class Okms extends pulumi.CustomResource {
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
-     * (String) KMS public CA (Certificate Authority)
+     * KMS public CA (Certificate Authority)
      */
     public /*out*/ readonly publicCa!: pulumi.Output<string>;
     /**
@@ -73,11 +59,11 @@ export class Okms extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * (String) KMS rest API endpoint
+     * KMS rest API endpoint
      */
     public /*out*/ readonly restEndpoint!: pulumi.Output<string>;
     /**
-     * (String) KMS rest API swagger UI
+     * KMS rest API swagger UI
      */
     public /*out*/ readonly swaggerEndpoint!: pulumi.Output<string>;
 
@@ -129,15 +115,15 @@ export class Okms extends pulumi.CustomResource {
  */
 export interface OkmsState {
     /**
-     * (String) Resource display name
+     * Set the name displayed in Manager for this KMS
      */
     displayName?: pulumi.Input<string>;
     /**
-     * (Attributes) IAM resource metadata (see below for nested schema)
+     * IAM resource metadata
      */
     iam?: pulumi.Input<inputs.Okms.OkmsIam>;
     /**
-     * (String) KMS kmip API endpoint
+     * KMS kmip API endpoint
      */
     kmipEndpoint?: pulumi.Input<string>;
     /**
@@ -145,7 +131,7 @@ export interface OkmsState {
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
-     * (String) KMS public CA (Certificate Authority)
+     * KMS public CA (Certificate Authority)
      */
     publicCa?: pulumi.Input<string>;
     /**
@@ -153,11 +139,11 @@ export interface OkmsState {
      */
     region?: pulumi.Input<string>;
     /**
-     * (String) KMS rest API endpoint
+     * KMS rest API endpoint
      */
     restEndpoint?: pulumi.Input<string>;
     /**
-     * (String) KMS rest API swagger UI
+     * KMS rest API swagger UI
      */
     swaggerEndpoint?: pulumi.Input<string>;
 }
@@ -167,7 +153,7 @@ export interface OkmsState {
  */
 export interface OkmsArgs {
     /**
-     * (String) Resource display name
+     * Set the name displayed in Manager for this KMS
      */
     displayName?: pulumi.Input<string>;
     /**

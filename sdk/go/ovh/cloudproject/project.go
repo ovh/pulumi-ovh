@@ -7,48 +7,19 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// Cloud project can be imported using the `project_id`.
-//
-// Using the following configuration:
-//
-// hcl
-//
-// import {
-//
-//	to = ovh_cloud_project.my_cloud_project
-//
-//	id = "<project ID>"
-//
-// }
-//
-// You can then run:
-//
-// bash
-//
-// $ pulumi preview -generate-config-out=cloudproject.tf
-//
-// $ pulumi up
-//
-// The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Project struct {
 	pulumi.CustomResourceState
 
-	// The URN of the cloud project
-	ProjectURN pulumi.StringOutput `pulumi:"ProjectURN"`
-	Access     pulumi.StringOutput `pulumi:"access"`
-	// A description associated with the user.
+	ProjectURN  pulumi.StringOutput `pulumi:"ProjectURN"`
+	Access      pulumi.StringOutput `pulumi:"access"`
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Details about the order that was used to create the public cloud project
+	// Details about an Order
 	Orders ProjectOrderArrayOutput `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -58,12 +29,9 @@ type Project struct {
 	Plan ProjectPlanOutput `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions ProjectPlanOptionArrayOutput `pulumi:"planOptions"`
-	// openstack project id
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// openstack project name
-	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// project status
-	Status pulumi.StringOutput `pulumi:"status"`
+	ProjectId   pulumi.StringOutput          `pulumi:"projectId"`
+	ProjectName pulumi.StringOutput          `pulumi:"projectName"`
+	Status      pulumi.StringOutput          `pulumi:"status"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -96,14 +64,12 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// The URN of the cloud project
-	ProjectURN *string `pulumi:"ProjectURN"`
-	Access     *string `pulumi:"access"`
-	// A description associated with the user.
+	ProjectURN  *string `pulumi:"ProjectURN"`
+	Access      *string `pulumi:"access"`
 	Description *string `pulumi:"description"`
-	// Details about the order that was used to create the public cloud project
+	// Details about an Order
 	Orders []ProjectOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -113,23 +79,18 @@ type projectState struct {
 	Plan *ProjectPlan `pulumi:"plan"`
 	// Product Plan to order
 	PlanOptions []ProjectPlanOption `pulumi:"planOptions"`
-	// openstack project id
-	ProjectId *string `pulumi:"projectId"`
-	// openstack project name
-	ProjectName *string `pulumi:"projectName"`
-	// project status
-	Status *string `pulumi:"status"`
+	ProjectId   *string             `pulumi:"projectId"`
+	ProjectName *string             `pulumi:"projectName"`
+	Status      *string             `pulumi:"status"`
 }
 
 type ProjectState struct {
-	// The URN of the cloud project
-	ProjectURN pulumi.StringPtrInput
-	Access     pulumi.StringPtrInput
-	// A description associated with the user.
+	ProjectURN  pulumi.StringPtrInput
+	Access      pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// Details about the order that was used to create the public cloud project
+	// Details about an Order
 	Orders ProjectOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -139,12 +100,9 @@ type ProjectState struct {
 	Plan ProjectPlanPtrInput
 	// Product Plan to order
 	PlanOptions ProjectPlanOptionArrayInput
-	// openstack project id
-	ProjectId pulumi.StringPtrInput
-	// openstack project name
+	ProjectId   pulumi.StringPtrInput
 	ProjectName pulumi.StringPtrInput
-	// project status
-	Status pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -152,11 +110,10 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// A description associated with the user.
 	Description *string `pulumi:"description"`
-	// Details about the order that was used to create the public cloud project
+	// Details about an Order
 	Orders []ProjectOrder `pulumi:"orders"`
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
 	// Ovh payment mode
 	//
@@ -170,11 +127,10 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// A description associated with the user.
 	Description pulumi.StringPtrInput
-	// Details about the order that was used to create the public cloud project
+	// Details about an Order
 	Orders ProjectOrderArrayInput
-	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	// Ovh Subsidiary
 	OvhSubsidiary pulumi.StringPtrInput
 	// Ovh payment mode
 	//
@@ -273,7 +229,6 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// The URN of the cloud project
 func (o ProjectOutput) ProjectURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectURN }).(pulumi.StringOutput)
 }
@@ -282,17 +237,16 @@ func (o ProjectOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
 }
 
-// A description associated with the user.
 func (o ProjectOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Details about the order that was used to create the public cloud project
+// Details about an Order
 func (o ProjectOutput) Orders() ProjectOrderArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectOrderArrayOutput { return v.Orders }).(ProjectOrderArrayOutput)
 }
 
-// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+// Ovh Subsidiary
 func (o ProjectOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
@@ -314,17 +268,14 @@ func (o ProjectOutput) PlanOptions() ProjectPlanOptionArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectPlanOptionArrayOutput { return v.PlanOptions }).(ProjectPlanOptionArrayOutput)
 }
 
-// openstack project id
 func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// openstack project name
 func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// project status
 func (o ProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

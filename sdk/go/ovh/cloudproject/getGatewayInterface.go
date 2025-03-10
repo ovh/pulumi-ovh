@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this datasource to get a public cloud project Gateway Interface.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetGatewayInterface(ctx, &cloudproject.GetGatewayInterfaceArgs{
-//				Id:          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-//				InterfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-//				Region:      "GRA11",
-//				ServiceName: "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGatewayInterface(ctx *pulumi.Context, args *LookupGatewayInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupGatewayInterfaceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayInterfaceResult
@@ -53,32 +23,21 @@ func LookupGatewayInterface(ctx *pulumi.Context, args *LookupGatewayInterfaceArg
 
 // A collection of arguments for invoking getGatewayInterface.
 type LookupGatewayInterfaceArgs struct {
-	// ID of the gateway
-	Id string `pulumi:"id"`
-	// ID of the interface
+	Id          string `pulumi:"id"`
 	InterfaceId string `pulumi:"interfaceId"`
-	// Region of the gateway
-	Region string `pulumi:"region"`
-	// ID of the cloud project
+	Region      string `pulumi:"region"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getGatewayInterface.
 type LookupGatewayInterfaceResult struct {
-	// ID of the gateway
-	Id string `pulumi:"id"`
-	// ID of the interface
+	Id          string `pulumi:"id"`
 	InterfaceId string `pulumi:"interfaceId"`
-	// IP of the interface
-	Ip string `pulumi:"ip"`
-	// Network ID of the interface
-	NetworkId string `pulumi:"networkId"`
-	// Region of the gateway
-	Region string `pulumi:"region"`
-	// ID of the cloud project
+	Ip          string `pulumi:"ip"`
+	NetworkId   string `pulumi:"networkId"`
+	Region      string `pulumi:"region"`
 	ServiceName string `pulumi:"serviceName"`
-	// ID of the subnet to add
-	SubnetId string `pulumi:"subnetId"`
+	SubnetId    string `pulumi:"subnetId"`
 }
 
 func LookupGatewayInterfaceOutput(ctx *pulumi.Context, args LookupGatewayInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayInterfaceResultOutput {
@@ -92,13 +51,9 @@ func LookupGatewayInterfaceOutput(ctx *pulumi.Context, args LookupGatewayInterfa
 
 // A collection of arguments for invoking getGatewayInterface.
 type LookupGatewayInterfaceOutputArgs struct {
-	// ID of the gateway
-	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the interface
+	Id          pulumi.StringInput `pulumi:"id"`
 	InterfaceId pulumi.StringInput `pulumi:"interfaceId"`
-	// Region of the gateway
-	Region pulumi.StringInput `pulumi:"region"`
-	// ID of the cloud project
+	Region      pulumi.StringInput `pulumi:"region"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -121,37 +76,30 @@ func (o LookupGatewayInterfaceResultOutput) ToLookupGatewayInterfaceResultOutput
 	return o
 }
 
-// ID of the gateway
 func (o LookupGatewayInterfaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of the interface
 func (o LookupGatewayInterfaceResultOutput) InterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.InterfaceId }).(pulumi.StringOutput)
 }
 
-// IP of the interface
 func (o LookupGatewayInterfaceResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Network ID of the interface
 func (o LookupGatewayInterfaceResultOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Region of the gateway
 func (o LookupGatewayInterfaceResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// ID of the cloud project
 func (o LookupGatewayInterfaceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// ID of the subnet to add
 func (o LookupGatewayInterfaceResultOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayInterfaceResult) string { return v.SubnetId }).(pulumi.StringOutput)
 }

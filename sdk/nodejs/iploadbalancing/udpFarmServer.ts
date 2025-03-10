@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a backend server entry linked to loadbalancing group (farm)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const farmName = new ovh.iploadbalancing.UdpFarm("farmName", {
- *     displayName: "ingress-8080-gra",
- *     port: 80,
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "gra",
- * });
- * const backend = new ovh.iploadbalancing.UdpFarmServer("backend", {
- *     address: "4.5.6.7",
- *     displayName: "mybackend",
- *     farmId: farmName.farmId,
- *     port: 80,
- *     serviceName: lb.then(lb => lb.serviceName),
- *     status: "active",
- * });
- * ```
- *
- * ## Import
- *
- * UDP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
- */
 export class UdpFarmServer extends pulumi.CustomResource {
     /**
      * Get an existing UdpFarmServer resource's state with the given name, ID, and optional extra
@@ -67,27 +33,27 @@ export class UdpFarmServer extends pulumi.CustomResource {
     }
 
     /**
-     * Address of the backend server (IP from either internal or OVHcloud network)
+     * IPv4 address (e.g., 192.0.2.0)
      */
     public readonly address!: pulumi.Output<string>;
     /**
-     * Synonym for `farmId`.
+     * Synonym for farm_id
      */
     public /*out*/ readonly backendId!: pulumi.Output<number>;
     /**
-     * Label for the server
+     * Human readable name for your server, this field is for you
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * ID of the farm this server is attached to
+     * Id of your farm
      */
     public readonly farmId!: pulumi.Output<number>;
     /**
-     * Port that backend will respond on
+     * Port attached to your server ([1..49151]). Inherited from farm if null
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * Id of your server.
+     * Id of your server
      */
     public /*out*/ readonly serverId!: pulumi.Output<number>;
     /**
@@ -95,7 +61,7 @@ export class UdpFarmServer extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * backend status - `active` or `inactive`
+     * Possible values for server status
      */
     public readonly status!: pulumi.Output<string>;
 
@@ -153,27 +119,27 @@ export class UdpFarmServer extends pulumi.CustomResource {
  */
 export interface UdpFarmServerState {
     /**
-     * Address of the backend server (IP from either internal or OVHcloud network)
+     * IPv4 address (e.g., 192.0.2.0)
      */
     address?: pulumi.Input<string>;
     /**
-     * Synonym for `farmId`.
+     * Synonym for farm_id
      */
     backendId?: pulumi.Input<number>;
     /**
-     * Label for the server
+     * Human readable name for your server, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
-     * ID of the farm this server is attached to
+     * Id of your farm
      */
     farmId?: pulumi.Input<number>;
     /**
-     * Port that backend will respond on
+     * Port attached to your server ([1..49151]). Inherited from farm if null
      */
     port?: pulumi.Input<number>;
     /**
-     * Id of your server.
+     * Id of your server
      */
     serverId?: pulumi.Input<number>;
     /**
@@ -181,7 +147,7 @@ export interface UdpFarmServerState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * backend status - `active` or `inactive`
+     * Possible values for server status
      */
     status?: pulumi.Input<string>;
 }
@@ -191,19 +157,19 @@ export interface UdpFarmServerState {
  */
 export interface UdpFarmServerArgs {
     /**
-     * Address of the backend server (IP from either internal or OVHcloud network)
+     * IPv4 address (e.g., 192.0.2.0)
      */
     address: pulumi.Input<string>;
     /**
-     * Label for the server
+     * Human readable name for your server, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
-     * ID of the farm this server is attached to
+     * Id of your farm
      */
     farmId: pulumi.Input<number>;
     /**
-     * Port that backend will respond on
+     * Port attached to your server ([1..49151]). Inherited from farm if null
      */
     port?: pulumi.Input<number>;
     /**
@@ -211,7 +177,7 @@ export interface UdpFarmServerArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * backend status - `active` or `inactive`
+     * Possible values for server status
      */
     status: pulumi.Input<string>;
 }

@@ -13,21 +13,9 @@ namespace Pulumi.Ovh.Iam.Outputs
     [OutputType]
     public sealed class GetReferenceActionsActionResult
     {
-        /// <summary>
-        /// Name of the action
-        /// </summary>
         public readonly string Action;
-        /// <summary>
-        /// List of the categories of the action
-        /// </summary>
         public readonly ImmutableArray<string> Categories;
-        /// <summary>
-        /// Description of the action
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Resource type the action is related to
-        /// </summary>
         public readonly string ResourceType;
 
         [OutputConstructor]

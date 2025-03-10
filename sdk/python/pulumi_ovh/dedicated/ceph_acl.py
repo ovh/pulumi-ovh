@@ -24,9 +24,6 @@ class CephAclArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a CephAcl resource.
-        :param pulumi.Input[str] netmask: The network mask to apply
-        :param pulumi.Input[str] network: The network IP to authorize
-        :param pulumi.Input[str] service_name: The internal name of your dedicated CEPH
         """
         pulumi.set(__self__, "netmask", netmask)
         pulumi.set(__self__, "network", network)
@@ -35,9 +32,6 @@ class CephAclArgs:
     @property
     @pulumi.getter
     def netmask(self) -> pulumi.Input[str]:
-        """
-        The network mask to apply
-        """
         return pulumi.get(self, "netmask")
 
     @netmask.setter
@@ -47,9 +41,6 @@ class CephAclArgs:
     @property
     @pulumi.getter
     def network(self) -> pulumi.Input[str]:
-        """
-        The network IP to authorize
-        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -59,9 +50,6 @@ class CephAclArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        The internal name of your dedicated CEPH
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -78,10 +66,6 @@ class _CephAclState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CephAcl resources.
-        :param pulumi.Input[str] family: IP family. `IPv4` or `IPv6`
-        :param pulumi.Input[str] netmask: The network mask to apply
-        :param pulumi.Input[str] network: The network IP to authorize
-        :param pulumi.Input[str] service_name: The internal name of your dedicated CEPH
         """
         if family is not None:
             pulumi.set(__self__, "family", family)
@@ -95,9 +79,6 @@ class _CephAclState:
     @property
     @pulumi.getter
     def family(self) -> Optional[pulumi.Input[str]]:
-        """
-        IP family. `IPv4` or `IPv6`
-        """
         return pulumi.get(self, "family")
 
     @family.setter
@@ -107,9 +88,6 @@ class _CephAclState:
     @property
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
-        """
-        The network mask to apply
-        """
         return pulumi.get(self, "netmask")
 
     @netmask.setter
@@ -119,9 +97,6 @@ class _CephAclState:
     @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The network IP to authorize
-        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -131,9 +106,6 @@ class _CephAclState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The internal name of your dedicated CEPH
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -151,26 +123,9 @@ class CephAcl(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Add a new access ACL for the given network/mask.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_ceph = ovh.Dedicated.get_ceph(service_name="94d423da-0e55-45f2-9812-836460a19939")
-        my_acl = ovh.dedicated.CephAcl("my-acl",
-            service_name=my_ceph.id,
-            network="1.2.3.4",
-            netmask="255.255.255.255")
-        ```
-
+        Create a CephAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] netmask: The network mask to apply
-        :param pulumi.Input[str] network: The network IP to authorize
-        :param pulumi.Input[str] service_name: The internal name of your dedicated CEPH
         """
         ...
     @overload
@@ -179,21 +134,7 @@ class CephAcl(pulumi.CustomResource):
                  args: CephAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Add a new access ACL for the given network/mask.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_ceph = ovh.Dedicated.get_ceph(service_name="94d423da-0e55-45f2-9812-836460a19939")
-        my_acl = ovh.dedicated.CephAcl("my-acl",
-            service_name=my_ceph.id,
-            network="1.2.3.4",
-            netmask="255.255.255.255")
-        ```
-
+        Create a CephAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CephAclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -252,10 +193,6 @@ class CephAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] family: IP family. `IPv4` or `IPv6`
-        :param pulumi.Input[str] netmask: The network mask to apply
-        :param pulumi.Input[str] network: The network IP to authorize
-        :param pulumi.Input[str] service_name: The internal name of your dedicated CEPH
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -270,32 +207,20 @@ class CephAcl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def family(self) -> pulumi.Output[str]:
-        """
-        IP family. `IPv4` or `IPv6`
-        """
         return pulumi.get(self, "family")
 
     @property
     @pulumi.getter
     def netmask(self) -> pulumi.Output[str]:
-        """
-        The network mask to apply
-        """
         return pulumi.get(self, "netmask")
 
     @property
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
-        """
-        The network IP to authorize
-        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The internal name of your dedicated CEPH
-        """
         return pulumi.get(self, "service_name")
 

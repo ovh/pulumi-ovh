@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get information about a user of a database cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const user = ovh.CloudProjectDatabase.getUser({
- *     serviceName: "XXX",
- *     engine: "YYY",
- *     clusterId: "ZZZ",
- *     name: "UUU",
- * });
- * export const userName = user.then(user => user.name);
- * ```
- */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getUser:getUser", {
@@ -36,24 +18,9 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
-    /**
-     * Cluster ID
-     */
     clusterId: string;
-    /**
-     * The engine of the database cluster you want user information. To get a full list of available engine visit :
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
-     */
     engine: string;
-    /**
-     * Name of the user.
-     */
     name: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
 }
 
@@ -61,53 +28,17 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
-    /**
-     * See Argument Reference above.
-     */
     readonly clusterId: string;
-    /**
-     * Date of the creation of the user.
-     */
     readonly createdAt: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly engine: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Name of the user.
-     */
     readonly name: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly serviceName: string;
-    /**
-     * Current status of the user.
-     */
     readonly status: string;
 }
-/**
- * Use this data source to get information about a user of a database cluster associated with a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const user = ovh.CloudProjectDatabase.getUser({
- *     serviceName: "XXX",
- *     engine: "YYY",
- *     clusterId: "ZZZ",
- *     name: "UUU",
- * });
- * export const userName = user.then(user => user.name);
- * ```
- */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getUser:getUser", {
@@ -122,23 +53,8 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
-    /**
-     * Cluster ID
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * The engine of the database cluster you want user information. To get a full list of available engine visit :
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
-     */
     engine: pulumi.Input<string>;
-    /**
-     * Name of the user.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

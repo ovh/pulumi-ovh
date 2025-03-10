@@ -4,38 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const testFrontend = new ovh.iploadbalancing.UdpFrontend("testFrontend", {
- *     serviceName: lb.then(lb => lb.serviceName),
- *     displayName: "ingress-8080-gra",
- *     zone: "all",
- *     port: "10,11",
- * });
- * ```
- *
- * ## Import
- *
- * UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
- * ```
- */
 export class UdpFrontend extends pulumi.CustomResource {
     /**
      * Get an existing UdpFrontend resource's state with the given name, ID, and optional extra
@@ -65,7 +33,7 @@ export class UdpFrontend extends pulumi.CustomResource {
     }
 
     /**
-     * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+     * Only attach frontend on these ip. No restriction if null
      */
     public readonly dedicatedIpfos!: pulumi.Output<string[] | undefined>;
     /**
@@ -77,7 +45,7 @@ export class UdpFrontend extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Human readable name for your frontend
+     * Human readable name for your frontend, this field is for you
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
@@ -85,9 +53,8 @@ export class UdpFrontend extends pulumi.CustomResource {
      */
     public /*out*/ readonly frontendId!: pulumi.Output<number>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value), 
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+     * comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
      */
     public readonly port!: pulumi.Output<string>;
     /**
@@ -95,7 +62,7 @@ export class UdpFrontend extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+     * Zone of your frontend. Use "all" for all owned zone.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -150,7 +117,7 @@ export class UdpFrontend extends pulumi.CustomResource {
  */
 export interface UdpFrontendState {
     /**
-     * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+     * Only attach frontend on these ip. No restriction if null
      */
     dedicatedIpfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -162,7 +129,7 @@ export interface UdpFrontendState {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Human readable name for your frontend
+     * Human readable name for your frontend, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -170,9 +137,8 @@ export interface UdpFrontendState {
      */
     frontendId?: pulumi.Input<number>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value), 
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+     * comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
      */
     port?: pulumi.Input<string>;
     /**
@@ -180,7 +146,7 @@ export interface UdpFrontendState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+     * Zone of your frontend. Use "all" for all owned zone.
      */
     zone?: pulumi.Input<string>;
 }
@@ -190,7 +156,7 @@ export interface UdpFrontendState {
  */
 export interface UdpFrontendArgs {
     /**
-     * Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+     * Only attach frontend on these ip. No restriction if null
      */
     dedicatedIpfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -202,13 +168,12 @@ export interface UdpFrontendArgs {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Human readable name for your frontend
+     * Human readable name for your frontend, this field is for you
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value), 
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
+     * comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
      */
     port: pulumi.Input<string>;
     /**
@@ -216,7 +181,7 @@ export interface UdpFrontendArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+     * Zone of your frontend. Use "all" for all owned zone.
      */
     zone: pulumi.Input<string>;
 }

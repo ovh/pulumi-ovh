@@ -8,32 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create am IAM permissions group.
 type PermissionsGroup struct {
 	pulumi.CustomResourceState
 
-	// Set of actions allowed by the permissions group.
-	Allows pulumi.StringArrayOutput `pulumi:"allows"`
-	// Creation date of this group.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Set of actions that will be denied no matter what permissions group exists.
-	Denies pulumi.StringArrayOutput `pulumi:"denies"`
-	// Group description.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Set of actions that will be subtracted from the `allow` list.
-	Excepts pulumi.StringArrayOutput `pulumi:"excepts"`
-	// Name of the permissions group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Owner of the permissions group.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Date of the last update of this group.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// URN of the permissions group.
-	Urn pulumi.StringOutput `pulumi:"urn"`
+	Allows      pulumi.StringArrayOutput `pulumi:"allows"`
+	CreatedAt   pulumi.StringOutput      `pulumi:"createdAt"`
+	Denies      pulumi.StringArrayOutput `pulumi:"denies"`
+	Description pulumi.StringOutput      `pulumi:"description"`
+	Excepts     pulumi.StringArrayOutput `pulumi:"excepts"`
+	Name        pulumi.StringOutput      `pulumi:"name"`
+	Owner       pulumi.StringOutput      `pulumi:"owner"`
+	UpdatedAt   pulumi.StringOutput      `pulumi:"updatedAt"`
+	Urn         pulumi.StringOutput      `pulumi:"urn"`
 }
 
 // NewPermissionsGroup registers a new resource with the given unique name, arguments, and options.
@@ -69,45 +59,27 @@ func GetPermissionsGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PermissionsGroup resources.
 type permissionsGroupState struct {
-	// Set of actions allowed by the permissions group.
-	Allows []string `pulumi:"allows"`
-	// Creation date of this group.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Set of actions that will be denied no matter what permissions group exists.
-	Denies []string `pulumi:"denies"`
-	// Group description.
-	Description *string `pulumi:"description"`
-	// Set of actions that will be subtracted from the `allow` list.
-	Excepts []string `pulumi:"excepts"`
-	// Name of the permissions group.
-	Name *string `pulumi:"name"`
-	// Owner of the permissions group.
-	Owner *string `pulumi:"owner"`
-	// Date of the last update of this group.
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// URN of the permissions group.
-	Urn *string `pulumi:"urn"`
+	Allows      []string `pulumi:"allows"`
+	CreatedAt   *string  `pulumi:"createdAt"`
+	Denies      []string `pulumi:"denies"`
+	Description *string  `pulumi:"description"`
+	Excepts     []string `pulumi:"excepts"`
+	Name        *string  `pulumi:"name"`
+	Owner       *string  `pulumi:"owner"`
+	UpdatedAt   *string  `pulumi:"updatedAt"`
+	Urn         *string  `pulumi:"urn"`
 }
 
 type PermissionsGroupState struct {
-	// Set of actions allowed by the permissions group.
-	Allows pulumi.StringArrayInput
-	// Creation date of this group.
-	CreatedAt pulumi.StringPtrInput
-	// Set of actions that will be denied no matter what permissions group exists.
-	Denies pulumi.StringArrayInput
-	// Group description.
+	Allows      pulumi.StringArrayInput
+	CreatedAt   pulumi.StringPtrInput
+	Denies      pulumi.StringArrayInput
 	Description pulumi.StringPtrInput
-	// Set of actions that will be subtracted from the `allow` list.
-	Excepts pulumi.StringArrayInput
-	// Name of the permissions group.
-	Name pulumi.StringPtrInput
-	// Owner of the permissions group.
-	Owner pulumi.StringPtrInput
-	// Date of the last update of this group.
-	UpdatedAt pulumi.StringPtrInput
-	// URN of the permissions group.
-	Urn pulumi.StringPtrInput
+	Excepts     pulumi.StringArrayInput
+	Name        pulumi.StringPtrInput
+	Owner       pulumi.StringPtrInput
+	UpdatedAt   pulumi.StringPtrInput
+	Urn         pulumi.StringPtrInput
 }
 
 func (PermissionsGroupState) ElementType() reflect.Type {
@@ -115,34 +87,22 @@ func (PermissionsGroupState) ElementType() reflect.Type {
 }
 
 type permissionsGroupArgs struct {
-	// Set of actions allowed by the permissions group.
-	Allows []string `pulumi:"allows"`
-	// Set of actions that will be denied no matter what permissions group exists.
-	Denies []string `pulumi:"denies"`
-	// Group description.
-	Description string `pulumi:"description"`
-	// Set of actions that will be subtracted from the `allow` list.
-	Excepts []string `pulumi:"excepts"`
-	// Name of the permissions group.
-	Name *string `pulumi:"name"`
-	// Date of the last update of this group.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Allows      []string `pulumi:"allows"`
+	Denies      []string `pulumi:"denies"`
+	Description string   `pulumi:"description"`
+	Excepts     []string `pulumi:"excepts"`
+	Name        *string  `pulumi:"name"`
+	UpdatedAt   *string  `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a PermissionsGroup resource.
 type PermissionsGroupArgs struct {
-	// Set of actions allowed by the permissions group.
-	Allows pulumi.StringArrayInput
-	// Set of actions that will be denied no matter what permissions group exists.
-	Denies pulumi.StringArrayInput
-	// Group description.
+	Allows      pulumi.StringArrayInput
+	Denies      pulumi.StringArrayInput
 	Description pulumi.StringInput
-	// Set of actions that will be subtracted from the `allow` list.
-	Excepts pulumi.StringArrayInput
-	// Name of the permissions group.
-	Name pulumi.StringPtrInput
-	// Date of the last update of this group.
-	UpdatedAt pulumi.StringPtrInput
+	Excepts     pulumi.StringArrayInput
+	Name        pulumi.StringPtrInput
+	UpdatedAt   pulumi.StringPtrInput
 }
 
 func (PermissionsGroupArgs) ElementType() reflect.Type {
@@ -232,47 +192,38 @@ func (o PermissionsGroupOutput) ToPermissionsGroupOutputWithContext(ctx context.
 	return o
 }
 
-// Set of actions allowed by the permissions group.
 func (o PermissionsGroupOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringArrayOutput { return v.Allows }).(pulumi.StringArrayOutput)
 }
 
-// Creation date of this group.
 func (o PermissionsGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Set of actions that will be denied no matter what permissions group exists.
 func (o PermissionsGroupOutput) Denies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringArrayOutput { return v.Denies }).(pulumi.StringArrayOutput)
 }
 
-// Group description.
 func (o PermissionsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Set of actions that will be subtracted from the `allow` list.
 func (o PermissionsGroupOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringArrayOutput { return v.Excepts }).(pulumi.StringArrayOutput)
 }
 
-// Name of the permissions group.
 func (o PermissionsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Owner of the permissions group.
 func (o PermissionsGroupOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Date of the last update of this group.
 func (o PermissionsGroupOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// URN of the permissions group.
 func (o PermissionsGroupOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionsGroup) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }

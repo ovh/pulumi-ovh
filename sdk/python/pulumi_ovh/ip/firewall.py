@@ -24,9 +24,8 @@ class FirewallArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Firewall resource.
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_on_firewall", ip_on_firewall)
@@ -37,7 +36,7 @@ class FirewallArgs:
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
         """
-        The IP or the CIDR
+        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         """
         return pulumi.get(self, "ip")
 
@@ -49,8 +48,7 @@ class FirewallArgs:
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> pulumi.Input[str]:
         """
-        IPv4 address
-        * `enabled ` - Whether firewall should be enabled
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -77,9 +75,8 @@ class _FirewallState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
         :param pulumi.Input[str] state: Current state of your ip on firewall
         """
         if enabled is not None:
@@ -104,7 +101,7 @@ class _FirewallState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP or the CIDR
+        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         """
         return pulumi.get(self, "ip")
 
@@ -116,8 +113,7 @@ class _FirewallState:
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address
-        * `enabled ` - Whether firewall should be enabled
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -148,24 +144,11 @@ class Firewall(pulumi.CustomResource):
                  ip_on_firewall: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Use this resource to manage an IP firewall.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_firewall = ovh.ip.Firewall("myFirewall",
-            ip="XXXXXX",
-            ip_on_firewall="XXXXXX")
-        ```
-
+        Create a Firewall resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
         """
         ...
     @overload
@@ -174,19 +157,7 @@ class Firewall(pulumi.CustomResource):
                  args: FirewallArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to manage an IP firewall.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_firewall = ovh.ip.Firewall("myFirewall",
-            ip="XXXXXX",
-            ip_on_firewall="XXXXXX")
-        ```
-
+        Create a Firewall resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -243,9 +214,8 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: The IP or the CIDR
-        :param pulumi.Input[str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
+        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        :param pulumi.Input[str] ip_on_firewall: IPv4 address (e.g., 192.0.2.0)
         :param pulumi.Input[str] state: Current state of your ip on firewall
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -267,7 +237,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        The IP or the CIDR
+        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
         """
         return pulumi.get(self, "ip")
 
@@ -275,8 +245,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> pulumi.Output[str]:
         """
-        IPv4 address
-        * `enabled ` - Whether firewall should be enabled
+        IPv4 address (e.g., 192.0.2.0)
         """
         return pulumi.get(self, "ip_on_firewall")
 

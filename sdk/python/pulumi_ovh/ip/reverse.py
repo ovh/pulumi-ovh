@@ -24,9 +24,6 @@ class ReverseArgs:
                  ip: pulumi.Input[str]):
         """
         The set of arguments for constructing a Reverse resource.
-        :param pulumi.Input[str] reverse_ip: The IP to set the reverse of
-        :param pulumi.Input[str] reverse_value: The value of the reverse
-        :param pulumi.Input[str] ip: The IP block to which the IP belongs
         """
         pulumi.set(__self__, "reverse_ip", reverse_ip)
         pulumi.set(__self__, "reverse_value", reverse_value)
@@ -35,9 +32,6 @@ class ReverseArgs:
     @property
     @pulumi.getter(name="ReverseIp")
     def reverse_ip(self) -> pulumi.Input[str]:
-        """
-        The IP to set the reverse of
-        """
         return pulumi.get(self, "reverse_ip")
 
     @reverse_ip.setter
@@ -47,9 +41,6 @@ class ReverseArgs:
     @property
     @pulumi.getter(name="ReverseValue")
     def reverse_value(self) -> pulumi.Input[str]:
-        """
-        The value of the reverse
-        """
         return pulumi.get(self, "reverse_value")
 
     @reverse_value.setter
@@ -59,9 +50,6 @@ class ReverseArgs:
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
-        """
-        The IP block to which the IP belongs
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -77,9 +65,6 @@ class _ReverseState:
                  ip: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Reverse resources.
-        :param pulumi.Input[str] reverse_ip: The IP to set the reverse of
-        :param pulumi.Input[str] reverse_value: The value of the reverse
-        :param pulumi.Input[str] ip: The IP block to which the IP belongs
         """
         if reverse_ip is not None:
             pulumi.set(__self__, "reverse_ip", reverse_ip)
@@ -91,9 +76,6 @@ class _ReverseState:
     @property
     @pulumi.getter(name="ReverseIp")
     def reverse_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP to set the reverse of
-        """
         return pulumi.get(self, "reverse_ip")
 
     @reverse_ip.setter
@@ -103,9 +85,6 @@ class _ReverseState:
     @property
     @pulumi.getter(name="ReverseValue")
     def reverse_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the reverse
-        """
         return pulumi.get(self, "reverse_value")
 
     @reverse_value.setter
@@ -115,9 +94,6 @@ class _ReverseState:
     @property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP block to which the IP belongs
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -135,36 +111,9 @@ class Reverse(pulumi.CustomResource):
                  ip: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a OVHcloud IP reverse.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        # Set the reverse of an IP
-        test = ovh.ip.Reverse("test",
-            ip="192.0.2.0/24",
-            reverse_ip="192.0.2.1",
-            reverse_value="example.com")
-        ```
-
-        ## Import
-
-        The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
-        ```
-
+        Create a Reverse resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] reverse_ip: The IP to set the reverse of
-        :param pulumi.Input[str] reverse_value: The value of the reverse
-        :param pulumi.Input[str] ip: The IP block to which the IP belongs
         """
         ...
     @overload
@@ -173,31 +122,7 @@ class Reverse(pulumi.CustomResource):
                  args: ReverseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a OVHcloud IP reverse.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        # Set the reverse of an IP
-        test = ovh.ip.Reverse("test",
-            ip="192.0.2.0/24",
-            reverse_ip="192.0.2.1",
-            reverse_value="example.com")
-        ```
-
-        ## Import
-
-        The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
-        ```
-
+        Create a Reverse resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ReverseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -254,9 +179,6 @@ class Reverse(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] reverse_ip: The IP to set the reverse of
-        :param pulumi.Input[str] reverse_value: The value of the reverse
-        :param pulumi.Input[str] ip: The IP block to which the IP belongs
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -270,24 +192,15 @@ class Reverse(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ReverseIp")
     def reverse_ip(self) -> pulumi.Output[str]:
-        """
-        The IP to set the reverse of
-        """
         return pulumi.get(self, "reverse_ip")
 
     @property
     @pulumi.getter(name="ReverseValue")
     def reverse_value(self) -> pulumi.Output[str]:
-        """
-        The value of the reverse
-        """
         return pulumi.get(self, "reverse_value")
 
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
-        """
-        The IP block to which the IP belongs
-        """
         return pulumi.get(self, "ip")
 

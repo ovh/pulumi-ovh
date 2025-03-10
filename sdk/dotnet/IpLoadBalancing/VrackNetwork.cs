@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
-    /// <summary>
-    /// Manage a vrack network for your IP Loadbalancing service.
-    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork")]
     public partial class VrackNetwork : global::Pulumi.CustomResource
     {
@@ -22,19 +19,21 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
+        /// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+        /// farms `vrack_network_id` attribute
         /// </summary>
         [Output("farmIds")]
         public Output<ImmutableArray<int>> FarmIds { get; private set; } = null!;
 
         /// <summary>
-        /// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        /// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+        /// be in the private network and reserved for the Load Balancer
         /// </summary>
         [Output("natIp")]
         public Output<string> NatIp { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your IP load balancing
+        /// The internal name of your IPloadbalancer
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -52,7 +51,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<int> Vlan { get; private set; } = null!;
 
         /// <summary>
-        /// (Required) Internal Load Balancer identifier of the vRack private network
+        /// Internal Load Balancer identifier of the vRack private network
         /// </summary>
         [Output("vrackNetworkId")]
         public Output<int> VrackNetworkId { get; private set; } = null!;
@@ -114,7 +113,8 @@ namespace Pulumi.Ovh.IpLoadBalancing
         private InputList<int>? _farmIds;
 
         /// <summary>
-        /// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
+        /// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+        /// farms `vrack_network_id` attribute
         /// </summary>
         public InputList<int> FarmIds
         {
@@ -123,13 +123,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
         }
 
         /// <summary>
-        /// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        /// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+        /// be in the private network and reserved for the Load Balancer
         /// </summary>
         [Input("natIp", required: true)]
         public Input<string> NatIp { get; set; } = null!;
 
         /// <summary>
-        /// The internal name of your IP load balancing
+        /// The internal name of your IPloadbalancer
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -164,7 +165,8 @@ namespace Pulumi.Ovh.IpLoadBalancing
         private InputList<int>? _farmIds;
 
         /// <summary>
-        /// This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
+        /// This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+        /// farms `vrack_network_id` attribute
         /// </summary>
         public InputList<int> FarmIds
         {
@@ -173,13 +175,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
         }
 
         /// <summary>
-        /// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        /// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+        /// be in the private network and reserved for the Load Balancer
         /// </summary>
         [Input("natIp")]
         public Input<string>? NatIp { get; set; }
 
         /// <summary>
-        /// The internal name of your IP load balancing
+        /// The internal name of your IPloadbalancer
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -197,7 +200,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<int>? Vlan { get; set; }
 
         /// <summary>
-        /// (Required) Internal Load Balancer identifier of the vRack private network
+        /// Internal Load Balancer identifier of the vRack private network
         /// </summary>
         [Input("vrackNetworkId")]
         public Input<int>? VrackNetworkId { get; set; }

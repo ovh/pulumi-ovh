@@ -8,44 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
-// ```
 type RedisUser struct {
 	pulumi.CustomResourceState
 
-	// Categories of the user.
+	// Categories of the user
 	Categories pulumi.StringArrayOutput `pulumi:"categories"`
-	// Channels of the user.
+	// Channels of the user
 	Channels pulumi.StringArrayOutput `pulumi:"channels"`
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Commands of the user.
+	// Commands of the user
 	Commands pulumi.StringArrayOutput `pulumi:"commands"`
-	// Date of the creation of the user.
+	// Date of the creation of the user
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Keys of the user.
+	// Keys of the user
 	Keys pulumi.StringArrayOutput `pulumi:"keys"`
-	// Name of the user.
+	// Name of the user
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Current status of the user.
+	ServiceName   pulumi.StringOutput    `pulumi:"serviceName"`
+	// Current status of the user
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -89,54 +78,50 @@ func GetRedisUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RedisUser resources.
 type redisUserState struct {
-	// Categories of the user.
+	// Categories of the user
 	Categories []string `pulumi:"categories"`
-	// Channels of the user.
+	// Channels of the user
 	Channels []string `pulumi:"channels"`
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// Commands of the user.
+	// Commands of the user
 	Commands []string `pulumi:"commands"`
-	// Date of the creation of the user.
+	// Date of the creation of the user
 	CreatedAt *string `pulumi:"createdAt"`
-	// Keys of the user.
+	// Keys of the user
 	Keys []string `pulumi:"keys"`
-	// Name of the user.
+	// Name of the user
 	Name *string `pulumi:"name"`
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName *string `pulumi:"serviceName"`
-	// Current status of the user.
+	ServiceName   *string `pulumi:"serviceName"`
+	// Current status of the user
 	Status *string `pulumi:"status"`
 }
 
 type RedisUserState struct {
-	// Categories of the user.
+	// Categories of the user
 	Categories pulumi.StringArrayInput
-	// Channels of the user.
+	// Channels of the user
 	Channels pulumi.StringArrayInput
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// Commands of the user.
+	// Commands of the user
 	Commands pulumi.StringArrayInput
-	// Date of the creation of the user.
+	// Date of the creation of the user
 	CreatedAt pulumi.StringPtrInput
-	// Keys of the user.
+	// Keys of the user
 	Keys pulumi.StringArrayInput
-	// Name of the user.
+	// Name of the user
 	Name pulumi.StringPtrInput
-	// (Sensitive) Password of the user.
+	// Password of the user
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringPtrInput
-	// Current status of the user.
+	ServiceName   pulumi.StringPtrInput
+	// Current status of the user
 	Status pulumi.StringPtrInput
 }
 
@@ -145,44 +130,40 @@ func (RedisUserState) ElementType() reflect.Type {
 }
 
 type redisUserArgs struct {
-	// Categories of the user.
+	// Categories of the user
 	Categories []string `pulumi:"categories"`
-	// Channels of the user.
+	// Channels of the user
 	Channels []string `pulumi:"channels"`
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// Commands of the user.
+	// Commands of the user
 	Commands []string `pulumi:"commands"`
-	// Keys of the user.
+	// Keys of the user
 	Keys []string `pulumi:"keys"`
-	// Name of the user.
+	// Name of the user
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName   string  `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a RedisUser resource.
 type RedisUserArgs struct {
-	// Categories of the user.
+	// Categories of the user
 	Categories pulumi.StringArrayInput
-	// Channels of the user.
+	// Channels of the user
 	Channels pulumi.StringArrayInput
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// Commands of the user.
+	// Commands of the user
 	Commands pulumi.StringArrayInput
-	// Keys of the user.
+	// Keys of the user
 	Keys pulumi.StringArrayInput
-	// Name of the user.
+	// Name of the user
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
+	ServiceName   pulumi.StringInput
 }
 
 func (RedisUserArgs) ElementType() reflect.Type {
@@ -272,42 +253,42 @@ func (o RedisUserOutput) ToRedisUserOutputWithContext(ctx context.Context) Redis
 	return o
 }
 
-// Categories of the user.
+// Categories of the user
 func (o RedisUserOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
-// Channels of the user.
+// Channels of the user
 func (o RedisUserOutput) Channels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.Channels }).(pulumi.StringArrayOutput)
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o RedisUserOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Commands of the user.
+// Commands of the user
 func (o RedisUserOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// Date of the creation of the user.
+// Date of the creation of the user
 func (o RedisUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Keys of the user.
+// Keys of the user
 func (o RedisUserOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringArrayOutput { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// Name of the user.
+// Name of the user
 func (o RedisUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Sensitive) Password of the user.
+// Password of the user
 func (o RedisUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -317,13 +298,11 @@ func (o RedisUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o RedisUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Current status of the user.
+// Current status of the user
 func (o RedisUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

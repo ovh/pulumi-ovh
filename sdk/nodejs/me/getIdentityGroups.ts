@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve the list of the account's identity groups
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const groups = ovh.Me.getIdentityGroups({});
- * ```
- */
 export function getIdentityGroups(opts?: pulumi.InvokeOptions): Promise<GetIdentityGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getIdentityGroups:getIdentityGroups", {
@@ -26,27 +14,12 @@ export function getIdentityGroups(opts?: pulumi.InvokeOptions): Promise<GetIdent
  * A collection of values returned by getIdentityGroups.
  */
 export interface GetIdentityGroupsResult {
-    /**
-     * The list of the group names of all the identity groups.
-     */
     readonly groups: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
-/**
- * Use this data source to retrieve the list of the account's identity groups
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const groups = ovh.Me.getIdentityGroups({});
- * ```
- */
 export function getIdentityGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getIdentityGroups:getIdentityGroups", {

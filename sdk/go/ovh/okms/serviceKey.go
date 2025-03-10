@@ -8,67 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a Service Key in an OVHcloud KMS.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := okms.NewServiceKey(ctx, "keySymetric", &okms.ServiceKeyArgs{
-//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				Operations: pulumi.StringArray{
-//					pulumi.String("encrypt"),
-//					pulumi.String("decrypt"),
-//				},
-//				Size: pulumi.Float64(256),
-//				Type: pulumi.String("oct"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = okms.NewServiceKey(ctx, "keyRsa", &okms.ServiceKeyArgs{
-//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				Operations: pulumi.StringArray{
-//					pulumi.String("sign"),
-//					pulumi.String("verify"),
-//				},
-//				Size: pulumi.Float64(2048),
-//				Type: pulumi.String("RSA"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = okms.NewServiceKey(ctx, "keyEcdsa", &okms.ServiceKeyArgs{
-//				Curve:  pulumi.String("P-256"),
-//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				Operations: pulumi.StringArray{
-//					pulumi.String("sign"),
-//					pulumi.String("verify"),
-//				},
-//				Type: pulumi.String("EC"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ServiceKey struct {
 	pulumi.CustomResourceState
 

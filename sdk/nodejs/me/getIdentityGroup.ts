@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about an identity group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myGroup = ovh.Me.getIdentityGroup({
- *     name: "my_group_name",
- * });
- * ```
- */
 export function getIdentityGroup(args: GetIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getIdentityGroup:getIdentityGroup", {
@@ -29,9 +15,6 @@ export function getIdentityGroup(args: GetIdentityGroupArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getIdentityGroup.
  */
 export interface GetIdentityGroupArgs {
-    /**
-     * Group name.
-     */
     name: string;
 }
 
@@ -39,50 +22,18 @@ export interface GetIdentityGroupArgs {
  * A collection of values returned by getIdentityGroup.
  */
 export interface GetIdentityGroupResult {
-    /**
-     * Identity URN of the group.
-     */
     readonly GroupURN: string;
-    /**
-     * Creation date of this group.
-     */
     readonly creation: string;
-    /**
-     * Is the group a default and immutable one.
-     */
     readonly defaultGroup: boolean;
-    /**
-     * Group description.
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Date of the last update of this group.
-     */
     readonly lastUpdate: string;
     readonly name: string;
-    /**
-     * Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-     */
     readonly role: string;
 }
-/**
- * Use this data source to retrieve information about an identity group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myGroup = ovh.Me.getIdentityGroup({
- *     name: "my_group_name",
- * });
- * ```
- */
 export function getIdentityGroupOutput(args: GetIdentityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getIdentityGroup:getIdentityGroup", {
@@ -94,8 +45,5 @@ export function getIdentityGroupOutput(args: GetIdentityGroupOutputArgs, opts?: 
  * A collection of arguments for invoking getIdentityGroup.
  */
 export interface GetIdentityGroupOutputArgs {
-    /**
-     * Group name.
-     */
     name: pulumi.Input<string>;
 }

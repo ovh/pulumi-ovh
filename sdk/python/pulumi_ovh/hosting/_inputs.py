@@ -127,7 +127,7 @@ if not MYPY:
     class PrivateDatabaseOrderDetailArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[str]]
         """
-        Custom description on your privatedatabase order.
+        description
         """
         domain: NotRequired[pulumi.Input[str]]
         """
@@ -152,7 +152,7 @@ class PrivateDatabaseOrderDetailArgs:
                  order_detail_id: Optional[pulumi.Input[int]] = None,
                  quantity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: Custom description on your privatedatabase order.
+        :param pulumi.Input[str] description: description
         :param pulumi.Input[str] domain: expiration date
         :param pulumi.Input[int] order_detail_id: order detail id
         :param pulumi.Input[str] quantity: quantity
@@ -170,7 +170,7 @@ class PrivateDatabaseOrderDetailArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description on your privatedatabase order.
+        description
         """
         return pulumi.get(self, "description")
 
@@ -219,11 +219,11 @@ if not MYPY:
     class PrivateDatabasePlanArgsDict(TypedDict):
         duration: pulumi.Input[str]
         """
-        duration.
+        duration
         """
         plan_code: pulumi.Input[str]
         """
-        Plan code.
+        Plan code
         """
         pricing_mode: pulumi.Input[str]
         """
@@ -249,8 +249,8 @@ class PrivateDatabasePlanArgs:
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanConfigurationArgs']]]] = None):
         """
-        :param pulumi.Input[str] duration: duration.
-        :param pulumi.Input[str] plan_code: Plan code.
+        :param pulumi.Input[str] duration: duration
+        :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
         :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
@@ -267,7 +267,7 @@ class PrivateDatabasePlanArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
         """
-        duration.
+        duration
         """
         return pulumi.get(self, "duration")
 
@@ -279,7 +279,7 @@ class PrivateDatabasePlanArgs:
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Input[str]:
         """
-        Plan code.
+        Plan code
         """
         return pulumi.get(self, "plan_code")
 
@@ -333,8 +333,6 @@ if not MYPY:
         value: pulumi.Input[str]
         """
         Path to the resource in API.OVH.COM
-
-        Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
 elif False:
     PrivateDatabasePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -347,8 +345,6 @@ class PrivateDatabasePlanConfigurationArgs:
         """
         :param pulumi.Input[str] label: Identifier of the resource
         :param pulumi.Input[str] value: Path to the resource in API.OVH.COM
-               
-               Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -370,8 +366,6 @@ class PrivateDatabasePlanConfigurationArgs:
     def value(self) -> pulumi.Input[str]:
         """
         Path to the resource in API.OVH.COM
-
-        Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
         return pulumi.get(self, "value")
 
@@ -384,7 +378,7 @@ if not MYPY:
     class PrivateDatabasePlanOptionArgsDict(TypedDict):
         duration: pulumi.Input[str]
         """
-        Service duration
+        duration
         """
         plan_code: pulumi.Input[str]
         """
@@ -414,7 +408,7 @@ class PrivateDatabasePlanOptionArgs:
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionConfigurationArgs']]]] = None):
         """
-        :param pulumi.Input[str] duration: Service duration
+        :param pulumi.Input[str] duration: duration
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
@@ -432,7 +426,7 @@ class PrivateDatabasePlanOptionArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
         """
-        Service duration
+        duration
         """
         return pulumi.get(self, "duration")
 

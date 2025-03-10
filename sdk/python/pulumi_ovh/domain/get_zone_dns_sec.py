@@ -48,9 +48,6 @@ class GetZoneDNSSecResult:
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -73,19 +70,7 @@ class AwaitableGetZoneDNSSecResult(GetZoneDNSSecResult):
 def get_zone_dns_sec(zone_name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneDNSSecResult:
     """
-    Use this data source to retrieve information about a domain zone DNSSEC status.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    dnssec = ovh.Domain.get_zone_dns_sec(zone_name="mysite.ovh")
-    ```
-
-
-    :param str zone_name: The name of the domain zone
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['zoneName'] = zone_name
@@ -99,19 +84,7 @@ def get_zone_dns_sec(zone_name: Optional[str] = None,
 def get_zone_dns_sec_output(zone_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneDNSSecResult]:
     """
-    Use this data source to retrieve information about a domain zone DNSSEC status.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    dnssec = ovh.Domain.get_zone_dns_sec(zone_name="mysite.ovh")
-    ```
-
-
-    :param str zone_name: The name of the domain zone
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['zoneName'] = zone_name

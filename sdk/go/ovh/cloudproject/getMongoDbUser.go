@@ -7,40 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mongoUser, err := cloudproject.GetMongoDbUser(ctx, &cloudproject.GetMongoDbUserArgs{
-//				ServiceName: "XXX",
-//				ClusterId:   "YYY",
-//				Name:        "ZZZ@admin",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("mongoUserRoles", mongoUser.Roles)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMongoDbUser(ctx *pulumi.Context, args *GetMongoDbUserArgs, opts ...pulumi.InvokeOption) (*GetMongoDbUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoDbUserResult
@@ -53,31 +23,21 @@ func GetMongoDbUser(ctx *pulumi.Context, args *GetMongoDbUserArgs, opts ...pulum
 
 // A collection of arguments for invoking getMongoDbUser.
 type GetMongoDbUserArgs struct {
-	// Cluster ID
-	ClusterId string `pulumi:"clusterId"`
-	// Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
-	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   string `pulumi:"clusterId"`
+	Name        string `pulumi:"name"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getMongoDbUser.
 type GetMongoDbUserResult struct {
-	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
-	// Date of the creation of the user.
 	CreatedAt string `pulumi:"createdAt"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// See Argument Reference above.
-	Name string `pulumi:"name"`
-	// Roles the user belongs to
-	Roles []string `pulumi:"roles"`
-	// Current status of the user.
-	ServiceName string `pulumi:"serviceName"`
-	// Current status of the user.
-	Status string `pulumi:"status"`
+	Id          string   `pulumi:"id"`
+	Name        string   `pulumi:"name"`
+	Roles       []string `pulumi:"roles"`
+	ServiceName string   `pulumi:"serviceName"`
+	Status      string   `pulumi:"status"`
 }
 
 func GetMongoDbUserOutput(ctx *pulumi.Context, args GetMongoDbUserOutputArgs, opts ...pulumi.InvokeOption) GetMongoDbUserResultOutput {
@@ -91,12 +51,8 @@ func GetMongoDbUserOutput(ctx *pulumi.Context, args GetMongoDbUserOutputArgs, op
 
 // A collection of arguments for invoking getMongoDbUser.
 type GetMongoDbUserOutputArgs struct {
-	// Cluster ID
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
-	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	Name        pulumi.StringInput `pulumi:"name"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -119,12 +75,10 @@ func (o GetMongoDbUserResultOutput) ToGetMongoDbUserResultOutputWithContext(ctx 
 	return o
 }
 
-// See Argument Reference above.
 func (o GetMongoDbUserResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Date of the creation of the user.
 func (o GetMongoDbUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -134,22 +88,18 @@ func (o GetMongoDbUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// See Argument Reference above.
 func (o GetMongoDbUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Roles the user belongs to
 func (o GetMongoDbUserResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// Current status of the user.
 func (o GetMongoDbUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Current status of the user.
 func (o GetMongoDbUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoDbUserResult) string { return v.Status }).(pulumi.StringOutput)
 }

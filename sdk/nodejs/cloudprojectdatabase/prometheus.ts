@@ -6,17 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * OVHcloud Managed database clusters prometheus can be imported using the `service_name`, `engine` and `cluster_id`, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProjectDatabase/prometheus:Prometheus my_prometheus service_name/engine/cluster_id
- * ```
- */
 export class Prometheus extends pulumi.CustomResource {
     /**
      * Get an existing Prometheus resource's state with the given name, ID, and optional extra
@@ -46,35 +35,28 @@ export class Prometheus extends pulumi.CustomResource {
     }
 
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * Name of the engine of the service
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * (Sensitive) Password of the user.
+     * Password of the user
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * List of all endpoint targets.
-     * * `Host` - Host of the endpoint.
-     * * `Port` - Connection port for the endpoint.
+     * List of all endpoint targets
      */
     public /*out*/ readonly targets!: pulumi.Output<outputs.CloudProjectDatabase.PrometheusTarget[]>;
     /**
-     * name of the prometheus user.
+     * Name of the user
      */
     public /*out*/ readonly username!: pulumi.Output<string>;
 
@@ -129,35 +111,28 @@ export class Prometheus extends pulumi.CustomResource {
  */
 export interface PrometheusState {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * Name of the engine of the service
      */
     engine?: pulumi.Input<string>;
     /**
-     * (Sensitive) Password of the user.
+     * Password of the user
      */
     password?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName?: pulumi.Input<string>;
     /**
-     * List of all endpoint targets.
-     * * `Host` - Host of the endpoint.
-     * * `Port` - Connection port for the endpoint.
+     * List of all endpoint targets
      */
     targets?: pulumi.Input<pulumi.Input<inputs.CloudProjectDatabase.PrometheusTarget>[]>;
     /**
-     * name of the prometheus user.
+     * Name of the user
      */
     username?: pulumi.Input<string>;
 }
@@ -167,21 +142,16 @@ export interface PrometheusState {
  */
 export interface PrometheusArgs {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * Name of the engine of the service
      */
     engine: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

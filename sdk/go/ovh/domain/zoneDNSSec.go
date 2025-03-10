@@ -8,43 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Enable / disable DNSSEC on a domain zone.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := domain.NewZoneDNSSec(ctx, "dnssec", &domain.ZoneDNSSecArgs{
-//				ZoneName: pulumi.String("mysite.ovh"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ZoneDNSSec struct {
 	pulumi.CustomResourceState
 
-	// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+	// DNSSEC Status
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The name of the domain zone
+	// The internal name of your zone
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
@@ -81,16 +54,16 @@ func GetZoneDNSSec(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneDNSSec resources.
 type zoneDNSSecState struct {
-	// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+	// DNSSEC Status
 	Status *string `pulumi:"status"`
-	// The name of the domain zone
+	// The internal name of your zone
 	ZoneName *string `pulumi:"zoneName"`
 }
 
 type ZoneDNSSecState struct {
-	// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+	// DNSSEC Status
 	Status pulumi.StringPtrInput
-	// The name of the domain zone
+	// The internal name of your zone
 	ZoneName pulumi.StringPtrInput
 }
 
@@ -99,13 +72,13 @@ func (ZoneDNSSecState) ElementType() reflect.Type {
 }
 
 type zoneDNSSecArgs struct {
-	// The name of the domain zone
+	// The internal name of your zone
 	ZoneName string `pulumi:"zoneName"`
 }
 
 // The set of arguments for constructing a ZoneDNSSec resource.
 type ZoneDNSSecArgs struct {
-	// The name of the domain zone
+	// The internal name of your zone
 	ZoneName pulumi.StringInput
 }
 
@@ -196,12 +169,12 @@ func (o ZoneDNSSecOutput) ToZoneDNSSecOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
-// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+// DNSSEC Status
 func (o ZoneDNSSecOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDNSSec) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of the domain zone
+// The internal name of your zone
 func (o ZoneDNSSecOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDNSSec) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }

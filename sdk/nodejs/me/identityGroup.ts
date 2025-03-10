@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an identity group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myGroup = new ovh.me.IdentityGroup("myGroup", {
- *     description: "Some custom description",
- *     role: "NONE",
- * });
- * ```
- */
 export class IdentityGroup extends pulumi.CustomResource {
     /**
      * Get an existing IdentityGroup resource's state with the given name, ID, and optional extra
@@ -47,33 +32,12 @@ export class IdentityGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === IdentityGroup.__pulumiType;
     }
 
-    /**
-     * URN of the user group, used when writing IAM policies
-     */
     public /*out*/ readonly GroupURN!: pulumi.Output<string>;
-    /**
-     * Creation date of this group.
-     */
     public /*out*/ readonly creation!: pulumi.Output<string>;
-    /**
-     * Is the group a default and immutable one.
-     */
     public /*out*/ readonly defaultGroup!: pulumi.Output<boolean>;
-    /**
-     * Group description.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Date of the last update of this group.
-     */
     public /*out*/ readonly lastUpdate!: pulumi.Output<string>;
-    /**
-     * Group name.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-     */
     public readonly role!: pulumi.Output<string | undefined>;
 
     /**
@@ -115,33 +79,12 @@ export class IdentityGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IdentityGroup resources.
  */
 export interface IdentityGroupState {
-    /**
-     * URN of the user group, used when writing IAM policies
-     */
     GroupURN?: pulumi.Input<string>;
-    /**
-     * Creation date of this group.
-     */
     creation?: pulumi.Input<string>;
-    /**
-     * Is the group a default and immutable one.
-     */
     defaultGroup?: pulumi.Input<boolean>;
-    /**
-     * Group description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Date of the last update of this group.
-     */
     lastUpdate?: pulumi.Input<string>;
-    /**
-     * Group name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-     */
     role?: pulumi.Input<string>;
 }
 
@@ -149,16 +92,7 @@ export interface IdentityGroupState {
  * The set of arguments for constructing a IdentityGroup resource.
  */
 export interface IdentityGroupArgs {
-    /**
-     * Group description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Group name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-     */
     role?: pulumi.Input<string>;
 }

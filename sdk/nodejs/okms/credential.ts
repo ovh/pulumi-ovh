@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a credential for an OVHcloud KMS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myaccount = ovh.Me.getMe({});
- * const credNoCsr = new ovh.okms.Credential("credNoCsr", {
- *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
- *     identityUrns: [`urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}`],
- *     description: "Credential without CSR",
- * });
- * const credFromCsr = new ovh.okms.Credential("credFromCsr", {
- *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
- *     identityUrns: [`urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}`],
- *     csr: fs.readFileSync("cred.csr", "utf8"),
- *     description: "Credential from CSR",
- * });
- * ```
- */
 export class Credential extends pulumi.CustomResource {
     /**
      * Get an existing Credential resource's state with the given name, ID, and optional extra
@@ -58,11 +33,11 @@ export class Credential extends pulumi.CustomResource {
     }
 
     /**
-     * (String) Certificate PEM of the credential.
+     * Certificate PEM of the credential
      */
     public /*out*/ readonly certificatePem!: pulumi.Output<string>;
     /**
-     * (String) Creation time of the credential
+     * Creation time of the credential
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -74,11 +49,11 @@ export class Credential extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * (String) Expiration time of the credential
+     * Expiration time of the credential
      */
     public /*out*/ readonly expiredAt!: pulumi.Output<string>;
     /**
-     * (Boolean) Whether the credential was generated from a CSR
+     * Is the credential generated from CSR
      */
     public /*out*/ readonly fromCsr!: pulumi.Output<boolean>;
     /**
@@ -94,11 +69,11 @@ export class Credential extends pulumi.CustomResource {
      */
     public readonly okmsId!: pulumi.Output<string>;
     /**
-     * (String, Sensitive) Private Key PEM of the credential if no CSR is provided
+     * Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
      */
     public /*out*/ readonly privateKeyPem!: pulumi.Output<string>;
     /**
-     * (String) Status of the credential
+     * Status of the credential
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -164,11 +139,11 @@ export class Credential extends pulumi.CustomResource {
  */
 export interface CredentialState {
     /**
-     * (String) Certificate PEM of the credential.
+     * Certificate PEM of the credential
      */
     certificatePem?: pulumi.Input<string>;
     /**
-     * (String) Creation time of the credential
+     * Creation time of the credential
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -180,11 +155,11 @@ export interface CredentialState {
      */
     description?: pulumi.Input<string>;
     /**
-     * (String) Expiration time of the credential
+     * Expiration time of the credential
      */
     expiredAt?: pulumi.Input<string>;
     /**
-     * (Boolean) Whether the credential was generated from a CSR
+     * Is the credential generated from CSR
      */
     fromCsr?: pulumi.Input<boolean>;
     /**
@@ -200,11 +175,11 @@ export interface CredentialState {
      */
     okmsId?: pulumi.Input<string>;
     /**
-     * (String, Sensitive) Private Key PEM of the credential if no CSR is provided
+     * Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
      */
     privateKeyPem?: pulumi.Input<string>;
     /**
-     * (String) Status of the credential
+     * Status of the credential
      */
     status?: pulumi.Input<string>;
     /**

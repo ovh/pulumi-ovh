@@ -141,7 +141,7 @@ def get_okms_service_key_pem(id: Optional[str] = None,
                              okms_id: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOkmsServiceKeyPemResult:
     """
-    Use this data source to retrieve information about a KMS service key, in the PEM format.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -165,7 +165,7 @@ def get_okms_service_key_pem_output(id: Optional[pulumi.Input[str]] = None,
                                     okms_id: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsServiceKeyPemResult]:
     """
-    Use this data source to retrieve information about a KMS service key, in the PEM format.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

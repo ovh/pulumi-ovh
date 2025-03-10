@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.IpLoadBalancing.Inputs
     public sealed class TcpRouteActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Farm ID for "farm" action type, empty for others.
+        /// Farm ID for "farm" action type, empty for others
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

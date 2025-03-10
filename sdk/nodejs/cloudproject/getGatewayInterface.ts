@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this datasource to get a public cloud project Gateway Interface.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const interface = ovh.CloudProject.getGatewayInterface({
- *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- *     interfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
- *     region: "GRA11",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getGatewayInterface(args: GetGatewayInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getGatewayInterface:getGatewayInterface", {
@@ -35,21 +18,9 @@ export function getGatewayInterface(args: GetGatewayInterfaceArgs, opts?: pulumi
  * A collection of arguments for invoking getGatewayInterface.
  */
 export interface GetGatewayInterfaceArgs {
-    /**
-     * ID of the gateway
-     */
     id: string;
-    /**
-     * ID of the interface
-     */
     interfaceId: string;
-    /**
-     * Region of the gateway
-     */
     region: string;
-    /**
-     * ID of the cloud project
-     */
     serviceName: string;
 }
 
@@ -57,52 +28,14 @@ export interface GetGatewayInterfaceArgs {
  * A collection of values returned by getGatewayInterface.
  */
 export interface GetGatewayInterfaceResult {
-    /**
-     * ID of the gateway
-     */
     readonly id: string;
-    /**
-     * ID of the interface
-     */
     readonly interfaceId: string;
-    /**
-     * IP of the interface
-     */
     readonly ip: string;
-    /**
-     * Network ID of the interface
-     */
     readonly networkId: string;
-    /**
-     * Region of the gateway
-     */
     readonly region: string;
-    /**
-     * ID of the cloud project
-     */
     readonly serviceName: string;
-    /**
-     * ID of the subnet to add
-     */
     readonly subnetId: string;
 }
-/**
- * Use this datasource to get a public cloud project Gateway Interface.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const interface = ovh.CloudProject.getGatewayInterface({
- *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- *     interfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
- *     region: "GRA11",
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getGatewayInterfaceOutput(args: GetGatewayInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getGatewayInterface:getGatewayInterface", {
@@ -117,20 +50,8 @@ export function getGatewayInterfaceOutput(args: GetGatewayInterfaceOutputArgs, o
  * A collection of arguments for invoking getGatewayInterface.
  */
 export interface GetGatewayInterfaceOutputArgs {
-    /**
-     * ID of the gateway
-     */
     id: pulumi.Input<string>;
-    /**
-     * ID of the interface
-     */
     interfaceId: pulumi.Input<string>;
-    /**
-     * Region of the gateway
-     */
     region: pulumi.Input<string>;
-    /**
-     * ID of the cloud project
-     */
     serviceName: pulumi.Input<string>;
 }

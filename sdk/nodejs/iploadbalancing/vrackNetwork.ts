@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manage a vrack network for your IP Loadbalancing service.
- */
 export class VrackNetwork extends pulumi.CustomResource {
     /**
      * Get an existing VrackNetwork resource's state with the given name, ID, and optional extra
@@ -40,15 +37,17 @@ export class VrackNetwork extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+     * This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+     * farms `vrackNetworkId` attribute
      */
     public readonly farmIds!: pulumi.Output<number[] | undefined>;
     /**
-     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+     * be in the private network and reserved for the Load Balancer
      */
     public readonly natIp!: pulumi.Output<string>;
     /**
-     * The internal name of your IP load balancing
+     * The internal name of your IPloadbalancer
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -60,7 +59,7 @@ export class VrackNetwork extends pulumi.CustomResource {
      */
     public readonly vlan!: pulumi.Output<number>;
     /**
-     * (Required) Internal Load Balancer identifier of the vRack private network
+     * Internal Load Balancer identifier of the vRack private network
      */
     public /*out*/ readonly vrackNetworkId!: pulumi.Output<number>;
 
@@ -117,15 +116,17 @@ export interface VrackNetworkState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+     * This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+     * farms `vrackNetworkId` attribute
      */
     farmIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+     * be in the private network and reserved for the Load Balancer
      */
     natIp?: pulumi.Input<string>;
     /**
-     * The internal name of your IP load balancing
+     * The internal name of your IPloadbalancer
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -137,7 +138,7 @@ export interface VrackNetworkState {
      */
     vlan?: pulumi.Input<number>;
     /**
-     * (Required) Internal Load Balancer identifier of the vRack private network
+     * Internal Load Balancer identifier of the vRack private network
      */
     vrackNetworkId?: pulumi.Input<number>;
 }
@@ -151,15 +152,17 @@ export interface VrackNetworkArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrackNetworkId` attribute
+     * This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
+     * farms `vrackNetworkId` attribute
      */
     farmIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
+     * be in the private network and reserved for the Load Balancer
      */
     natIp: pulumi.Input<string>;
     /**
-     * The internal name of your IP load balancing
+     * The internal name of your IPloadbalancer
      */
     serviceName: pulumi.Input<string>;
     /**

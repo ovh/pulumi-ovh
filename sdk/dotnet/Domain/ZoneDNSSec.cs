@@ -9,38 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Domain
 {
-    /// <summary>
-    /// Enable / disable DNSSEC on a domain zone.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dnssec = new Ovh.Domain.ZoneDNSSec("dnssec", new()
-    ///     {
-    ///         ZoneName = "mysite.ovh",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Domain/zoneDNSSec:ZoneDNSSec")]
     public partial class ZoneDNSSec : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+        /// DNSSEC Status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the domain zone
+        /// The internal name of your zone
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -93,7 +72,7 @@ namespace Pulumi.Ovh.Domain
     public sealed class ZoneDNSSecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the domain zone
+        /// The internal name of your zone
         /// </summary>
         [Input("zoneName", required: true)]
         public Input<string> ZoneName { get; set; } = null!;
@@ -107,13 +86,13 @@ namespace Pulumi.Ovh.Domain
     public sealed class ZoneDNSSecState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
+        /// DNSSEC Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The name of the domain zone
+        /// The internal name of your zone
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

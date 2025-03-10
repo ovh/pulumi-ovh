@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to retrieve information about a dedicated CEPH.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myCeph = ovh.Dedicated.getCeph({
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getCeph(args: GetCephArgs, opts?: pulumi.InvokeOptions): Promise<GetCephResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dedicated/getCeph:getCeph", {
@@ -31,17 +17,8 @@ export function getCeph(args: GetCephArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getCeph.
  */
 export interface GetCephArgs {
-    /**
-     * CEPH cluster version
-     */
     cephVersion?: string;
-    /**
-     * The service name of the dedicated CEPH cluster.
-     */
     serviceName: string;
-    /**
-     * the status of the service
-     */
     status?: string;
 }
 
@@ -49,70 +26,21 @@ export interface GetCephArgs {
  * A collection of values returned by getCeph.
  */
 export interface GetCephResult {
-    /**
-     * URN of the CEPH instance
-     */
     readonly CephURN: string;
-    /**
-     * list of CEPH monitors IPs
-     */
     readonly cephMons: string[];
-    /**
-     * CEPH cluster version
-     */
     readonly cephVersion: string;
-    /**
-     * CRUSH algorithm settings. Possible values
-     * * OPTIMAL
-     * * DEFAULT
-     * * LEGACY
-     * * BOBTAIL
-     * * ARGONAUT
-     * * FIREFLY
-     * * HAMMER
-     * * JEWEL
-     */
     readonly crushTunables: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * CEPH cluster label
-     */
     readonly label: string;
-    /**
-     * cluster region
-     */
     readonly region: string;
     readonly serviceName: string;
-    /**
-     * Cluster size in TB
-     */
     readonly size: number;
-    /**
-     * the state of the cluster
-     */
     readonly state: string;
-    /**
-     * the status of the service
-     */
     readonly status: string;
 }
-/**
- * Use this data source to retrieve information about a dedicated CEPH.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myCeph = ovh.Dedicated.getCeph({
- *     serviceName: "XXXXXX",
- * });
- * ```
- */
 export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCephResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dedicated/getCeph:getCeph", {
@@ -126,16 +54,7 @@ export function getCephOutput(args: GetCephOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getCeph.
  */
 export interface GetCephOutputArgs {
-    /**
-     * CEPH cluster version
-     */
     cephVersion?: pulumi.Input<string>;
-    /**
-     * The service name of the dedicated CEPH cluster.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * the status of the service
-     */
     status?: pulumi.Input<string>;
 }

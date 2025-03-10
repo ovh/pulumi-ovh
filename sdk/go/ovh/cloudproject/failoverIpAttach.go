@@ -8,61 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attaches a failover IP address to a compute instance
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewFailoverIpAttach(ctx, "myFailoverIp", &cloudproject.FailoverIpAttachArgs{
-//				Ip:          pulumi.String("XXXXXX"),
-//				RoutedTo:    pulumi.String("XXXXXX"),
-//				ServiceName: pulumi.String("XXXXXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type FailoverIpAttach struct {
 	pulumi.CustomResourceState
 
-	// The IP block
-	// * `continentCode` - The Ip continent
+	// IP block
 	Block pulumi.StringOutput `pulumi:"block"`
 	// Ip continent
 	ContinentCode pulumi.StringOutput `pulumi:"continentCode"`
 	// Ip location
 	GeoLoc pulumi.StringOutput `pulumi:"geoLoc"`
-	// The failover ip address to attach
+	// Ip
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// Current operation progress in percent
-	// * `routedTo` - Instance where ip is routed to
 	Progress pulumi.IntOutput `pulumi:"progress"`
-	// The GUID of an instance to which the failover IP address is be attached
+	// Instance where ip is routed to
 	RoutedTo pulumi.StringOutput `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Ip status, can be `ok` or `operationPending`
-	// * `subType` - IP sub type, can be `cloud` or `ovh`
+	// Ip status
 	Status pulumi.StringOutput `pulumi:"status"`
 	// IP sub type
 	SubType pulumi.StringOutput `pulumi:"subType"`
@@ -101,50 +68,42 @@ func GetFailoverIpAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FailoverIpAttach resources.
 type failoverIpAttachState struct {
-	// The IP block
-	// * `continentCode` - The Ip continent
+	// IP block
 	Block *string `pulumi:"block"`
 	// Ip continent
 	ContinentCode *string `pulumi:"continentCode"`
 	// Ip location
 	GeoLoc *string `pulumi:"geoLoc"`
-	// The failover ip address to attach
+	// Ip
 	Ip *string `pulumi:"ip"`
 	// Current operation progress in percent
-	// * `routedTo` - Instance where ip is routed to
 	Progress *int `pulumi:"progress"`
-	// The GUID of an instance to which the failover IP address is be attached
+	// Instance where ip is routed to
 	RoutedTo *string `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The service name
 	ServiceName *string `pulumi:"serviceName"`
-	// Ip status, can be `ok` or `operationPending`
-	// * `subType` - IP sub type, can be `cloud` or `ovh`
+	// Ip status
 	Status *string `pulumi:"status"`
 	// IP sub type
 	SubType *string `pulumi:"subType"`
 }
 
 type FailoverIpAttachState struct {
-	// The IP block
-	// * `continentCode` - The Ip continent
+	// IP block
 	Block pulumi.StringPtrInput
 	// Ip continent
 	ContinentCode pulumi.StringPtrInput
 	// Ip location
 	GeoLoc pulumi.StringPtrInput
-	// The failover ip address to attach
+	// Ip
 	Ip pulumi.StringPtrInput
 	// Current operation progress in percent
-	// * `routedTo` - Instance where ip is routed to
 	Progress pulumi.IntPtrInput
-	// The GUID of an instance to which the failover IP address is be attached
+	// Instance where ip is routed to
 	RoutedTo pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The service name
 	ServiceName pulumi.StringPtrInput
-	// Ip status, can be `ok` or `operationPending`
-	// * `subType` - IP sub type, can be `cloud` or `ovh`
+	// Ip status
 	Status pulumi.StringPtrInput
 	// IP sub type
 	SubType pulumi.StringPtrInput
@@ -155,37 +114,33 @@ func (FailoverIpAttachState) ElementType() reflect.Type {
 }
 
 type failoverIpAttachArgs struct {
-	// The IP block
-	// * `continentCode` - The Ip continent
+	// IP block
 	Block *string `pulumi:"block"`
 	// Ip continent
 	ContinentCode *string `pulumi:"continentCode"`
 	// Ip location
 	GeoLoc *string `pulumi:"geoLoc"`
-	// The failover ip address to attach
+	// Ip
 	Ip *string `pulumi:"ip"`
-	// The GUID of an instance to which the failover IP address is be attached
+	// Instance where ip is routed to
 	RoutedTo *string `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a FailoverIpAttach resource.
 type FailoverIpAttachArgs struct {
-	// The IP block
-	// * `continentCode` - The Ip continent
+	// IP block
 	Block pulumi.StringPtrInput
 	// Ip continent
 	ContinentCode pulumi.StringPtrInput
 	// Ip location
 	GeoLoc pulumi.StringPtrInput
-	// The failover ip address to attach
+	// Ip
 	Ip pulumi.StringPtrInput
-	// The GUID of an instance to which the failover IP address is be attached
+	// Instance where ip is routed to
 	RoutedTo pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The service name
 	ServiceName pulumi.StringInput
 }
 
@@ -276,8 +231,7 @@ func (o FailoverIpAttachOutput) ToFailoverIpAttachOutputWithContext(ctx context.
 	return o
 }
 
-// The IP block
-// * `continentCode` - The Ip continent
+// IP block
 func (o FailoverIpAttachOutput) Block() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.Block }).(pulumi.StringOutput)
 }
@@ -292,30 +246,27 @@ func (o FailoverIpAttachOutput) GeoLoc() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.GeoLoc }).(pulumi.StringOutput)
 }
 
-// The failover ip address to attach
+// Ip
 func (o FailoverIpAttachOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
 // Current operation progress in percent
-// * `routedTo` - Instance where ip is routed to
 func (o FailoverIpAttachOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.IntOutput { return v.Progress }).(pulumi.IntOutput)
 }
 
-// The GUID of an instance to which the failover IP address is be attached
+// Instance where ip is routed to
 func (o FailoverIpAttachOutput) RoutedTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.RoutedTo }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The service name
 func (o FailoverIpAttachOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Ip status, can be `ok` or `operationPending`
-// * `subType` - IP sub type, can be `cloud` or `ovh`
+// Ip status
 func (o FailoverIpAttachOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

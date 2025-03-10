@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogsOutputOpenSearchAlias{}
 	case "ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex":
 		r = &LogsOutputOpenSearchIndex{}
+	case "ovh:Dbaas/logsRole:LogsRole":
+		r = &LogsRole{}
+	case "ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream":
+		r = &LogsRolePermissionStream{}
 	case "ovh:Dbaas/logsToken:LogsToken":
 		r = &LogsToken{}
 	default:
@@ -69,6 +73,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Dbaas/logsOutputOpenSearchIndex",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dbaas/logsRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dbaas/logsRolePermissionStream",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

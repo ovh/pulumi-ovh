@@ -125,7 +125,7 @@ class PrivateDatabaseOrderDetail(dict):
                  order_detail_id: Optional[int] = None,
                  quantity: Optional[str] = None):
         """
-        :param str description: Custom description on your privatedatabase order.
+        :param str description: description
         :param str domain: expiration date
         :param int order_detail_id: order detail id
         :param str quantity: quantity
@@ -143,7 +143,7 @@ class PrivateDatabaseOrderDetail(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Custom description on your privatedatabase order.
+        description
         """
         return pulumi.get(self, "description")
 
@@ -202,8 +202,8 @@ class PrivateDatabasePlan(dict):
                  catalog_name: Optional[str] = None,
                  configurations: Optional[Sequence['outputs.PrivateDatabasePlanConfiguration']] = None):
         """
-        :param str duration: duration.
-        :param str plan_code: Plan code.
+        :param str duration: duration
+        :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
         :param Sequence['PrivateDatabasePlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
@@ -220,7 +220,7 @@ class PrivateDatabasePlan(dict):
     @pulumi.getter
     def duration(self) -> str:
         """
-        duration.
+        duration
         """
         return pulumi.get(self, "duration")
 
@@ -228,7 +228,7 @@ class PrivateDatabasePlan(dict):
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
         """
-        Plan code.
+        Plan code
         """
         return pulumi.get(self, "plan_code")
 
@@ -265,8 +265,6 @@ class PrivateDatabasePlanConfiguration(dict):
         """
         :param str label: Identifier of the resource
         :param str value: Path to the resource in API.OVH.COM
-               
-               Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -284,8 +282,6 @@ class PrivateDatabasePlanConfiguration(dict):
     def value(self) -> str:
         """
         Path to the resource in API.OVH.COM
-
-        Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
         """
         return pulumi.get(self, "value")
 
@@ -320,7 +316,7 @@ class PrivateDatabasePlanOption(dict):
                  catalog_name: Optional[str] = None,
                  configurations: Optional[Sequence['outputs.PrivateDatabasePlanOptionConfiguration']] = None):
         """
-        :param str duration: Service duration
+        :param str duration: duration
         :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
@@ -338,7 +334,7 @@ class PrivateDatabasePlanOption(dict):
     @pulumi.getter
     def duration(self) -> str:
         """
-        Service duration
+        duration
         """
         return pulumi.get(self, "duration")
 
@@ -410,7 +406,7 @@ class GetPrivateDatabaseDbUserResult(dict):
                  grant_type: str,
                  user_name: str):
         """
-        :param str grant_type: Grant of this user for this database
+        :param str grant_type: User's rights on this database
         :param str user_name: User's name granted on this database
         """
         pulumi.set(__self__, "grant_type", grant_type)
@@ -420,7 +416,7 @@ class GetPrivateDatabaseDbUserResult(dict):
     @pulumi.getter(name="grantType")
     def grant_type(self) -> str:
         """
-        Grant of this user for this database
+        User's rights on this database
         """
         return pulumi.get(self, "grant_type")
 

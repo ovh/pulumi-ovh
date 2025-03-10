@@ -9,38 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Creates a network in a public cloud project.
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/regionNetwork:RegionNetwork")]
     public partial class RegionNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the network
+        /// Network name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Network region returned by the API
+        /// Network region
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Network region
+        /// Region name
         /// </summary>
         [Output("regionName")]
         public Output<string> RegionName { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project
+        /// Service name
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters to create a subnet
+        /// Parameters to create a subnet from another resource creation
         /// </summary>
         [Output("subnet")]
         public Output<Outputs.RegionNetworkSubnet> Subnet { get; private set; } = null!;
@@ -52,7 +49,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Visibility { get; private set; } = null!;
 
         /// <summary>
-        /// VLAN ID, between 1 and 4000
+        /// VLAN id, between 1 and 4000
         /// </summary>
         [Output("vlanId")]
         public Output<double> VlanId { get; private set; } = null!;
@@ -105,31 +102,31 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the network
+        /// Network name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Network region
+        /// Region name
         /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project
+        /// Service name
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Parameters to create a subnet
+        /// Parameters to create a subnet from another resource creation
         /// </summary>
         [Input("subnet", required: true)]
         public Input<Inputs.RegionNetworkSubnetArgs> Subnet { get; set; } = null!;
 
         /// <summary>
-        /// VLAN ID, between 1 and 4000
+        /// VLAN id, between 1 and 4000
         /// </summary>
         [Input("vlanId")]
         public Input<double>? VlanId { get; set; }
@@ -143,31 +140,31 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the network
+        /// Network name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Network region returned by the API
+        /// Network region
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Network region
+        /// Region name
         /// </summary>
         [Input("regionName")]
         public Input<string>? RegionName { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project
+        /// Service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Parameters to create a subnet
+        /// Parameters to create a subnet from another resource creation
         /// </summary>
         [Input("subnet")]
         public Input<Inputs.RegionNetworkSubnetGetArgs>? Subnet { get; set; }
@@ -179,7 +176,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Visibility { get; set; }
 
         /// <summary>
-        /// VLAN ID, between 1 and 4000
+        /// VLAN id, between 1 and 4000
         /// </summary>
         [Input("vlanId")]
         public Input<double>? VlanId { get; set; }

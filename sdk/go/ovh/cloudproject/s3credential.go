@@ -8,33 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an S3 Credential for a user in a public cloud project.
-//
-// ## Import
-//
-// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
-// ```
 type S3Credential struct {
 	pulumi.CustomResourceState
 
-	// the Access Key ID
-	AccessKeyId    pulumi.StringOutput `pulumi:"accessKeyId"`
-	InternalUserId pulumi.StringOutput `pulumi:"internalUserId"`
-	// (Sensitive) the Secret Access Key
+	AccessKeyId     pulumi.StringOutput `pulumi:"accessKeyId"`
+	InternalUserId  pulumi.StringOutput `pulumi:"internalUserId"`
 	SecretAccessKey pulumi.StringOutput `pulumi:"secretAccessKey"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The ID of a public cloud project's user.
+	// The user ID
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -78,28 +64,22 @@ func GetS3Credential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering S3Credential resources.
 type s3credentialState struct {
-	// the Access Key ID
-	AccessKeyId    *string `pulumi:"accessKeyId"`
-	InternalUserId *string `pulumi:"internalUserId"`
-	// (Sensitive) the Secret Access Key
+	AccessKeyId     *string `pulumi:"accessKeyId"`
+	InternalUserId  *string `pulumi:"internalUserId"`
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project.
 	ServiceName *string `pulumi:"serviceName"`
-	// The ID of a public cloud project's user.
+	// The user ID
 	UserId *string `pulumi:"userId"`
 }
 
 type S3CredentialState struct {
-	// the Access Key ID
-	AccessKeyId    pulumi.StringPtrInput
-	InternalUserId pulumi.StringPtrInput
-	// (Sensitive) the Secret Access Key
+	AccessKeyId     pulumi.StringPtrInput
+	InternalUserId  pulumi.StringPtrInput
 	SecretAccessKey pulumi.StringPtrInput
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project.
 	ServiceName pulumi.StringPtrInput
-	// The ID of a public cloud project's user.
+	// The user ID
 	UserId pulumi.StringPtrInput
 }
 
@@ -108,19 +88,17 @@ func (S3CredentialState) ElementType() reflect.Type {
 }
 
 type s3credentialArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project.
 	ServiceName string `pulumi:"serviceName"`
-	// The ID of a public cloud project's user.
+	// The user ID
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a S3Credential resource.
 type S3CredentialArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Service name of the resource representing the ID of the cloud project.
 	ServiceName pulumi.StringInput
-	// The ID of a public cloud project's user.
+	// The user ID
 	UserId pulumi.StringInput
 }
 
@@ -211,7 +189,6 @@ func (o S3CredentialOutput) ToS3CredentialOutputWithContext(ctx context.Context)
 	return o
 }
 
-// the Access Key ID
 func (o S3CredentialOutput) AccessKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Credential) pulumi.StringOutput { return v.AccessKeyId }).(pulumi.StringOutput)
 }
@@ -220,18 +197,16 @@ func (o S3CredentialOutput) InternalUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Credential) pulumi.StringOutput { return v.InternalUserId }).(pulumi.StringOutput)
 }
 
-// (Sensitive) the Secret Access Key
 func (o S3CredentialOutput) SecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Credential) pulumi.StringOutput { return v.SecretAccessKey }).(pulumi.StringOutput)
 }
 
-// The ID of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// Service name of the resource representing the ID of the cloud project.
 func (o S3CredentialOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Credential) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The ID of a public cloud project's user.
+// The user ID
 func (o S3CredentialOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Credential) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

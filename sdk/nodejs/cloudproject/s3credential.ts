@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates an S3 Credential for a user in a public cloud project.
- *
- * ## Import
- *
- * OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
- * ```
- */
 export class S3Credential extends pulumi.CustomResource {
     /**
      * Get an existing S3Credential resource's state with the given name, ID, and optional extra
@@ -45,22 +32,15 @@ export class S3Credential extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3Credential.__pulumiType;
     }
 
-    /**
-     * the Access Key ID
-     */
     public /*out*/ readonly accessKeyId!: pulumi.Output<string>;
     public /*out*/ readonly internalUserId!: pulumi.Output<string>;
-    /**
-     * (Sensitive) the Secret Access Key
-     */
     public /*out*/ readonly secretAccessKey!: pulumi.Output<string>;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the ID of the cloud project.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * The ID of a public cloud project's user.
+     * The user ID
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -107,22 +87,15 @@ export class S3Credential extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3Credential resources.
  */
 export interface S3CredentialState {
-    /**
-     * the Access Key ID
-     */
     accessKeyId?: pulumi.Input<string>;
     internalUserId?: pulumi.Input<string>;
-    /**
-     * (Sensitive) the Secret Access Key
-     */
     secretAccessKey?: pulumi.Input<string>;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the ID of the cloud project.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The ID of a public cloud project's user.
+     * The user ID
      */
     userId?: pulumi.Input<string>;
 }
@@ -132,12 +105,11 @@ export interface S3CredentialState {
  */
 export interface S3CredentialArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * Service name of the resource representing the ID of the cloud project.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The ID of a public cloud project's user.
+     * The user ID
      */
     userId: pulumi.Input<string>;
 }

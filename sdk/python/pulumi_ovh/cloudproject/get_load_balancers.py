@@ -52,25 +52,16 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter
     def loadbalancers(self) -> Sequence['outputs.GetLoadBalancersLoadbalancerResult']:
-        """
-        List of loadbalancer
-        """
         return pulumi.get(self, "loadbalancers")
 
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
-        """
-        Region of the loadbalancers
-        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        ID of the public cloud project
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -90,23 +81,7 @@ def get_load_balancers(region_name: Optional[str] = None,
                        service_name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
     """
-    List your public cloud loadbalancers.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    lbs_load_balancers = ovh.CloudProject.get_load_balancers(service_name="XXXXXX",
-        region_name="XXX")
-    pulumi.export("lbs", lbs_load_balancers)
-    ```
-
-
-    :param str region_name: Region of the loadbalancers.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['regionName'] = region_name
@@ -123,23 +98,7 @@ def get_load_balancers_output(region_name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
-    List your public cloud loadbalancers.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    lbs_load_balancers = ovh.CloudProject.get_load_balancers(service_name="XXXXXX",
-        region_name="XXX")
-    pulumi.export("lbs", lbs_load_balancers)
-    ```
-
-
-    :param str region_name: Region of the loadbalancers.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['regionName'] = region_name

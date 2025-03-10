@@ -9,122 +9,68 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
-    /// <summary>
-    /// Creates a log subscription for a cluster associated with a public cloud project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Create a log subscription for a database.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
-    ///     {
-    ///         ServiceName = "ldp-xx-xxxxx",
-    ///         Title = "my stream",
-    ///     });
-    /// 
-    ///     var db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
-    ///     {
-    ///         ServiceName = "XXX",
-    ///         Engine = "YYY",
-    ///         Id = "ZZZ",
-    ///     });
-    /// 
-    ///     var subscription = new Ovh.CloudProjectDatabase.LogSubscription("subscription", new()
-    ///     {
-    ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
-    ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
-    ///         ClusterId = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
-    ///         StreamId = stream.Apply(getLogsOutputGraylogStreamResult =&gt; getLogsOutputGraylogStreamResult.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud Managed clusters logs subscription can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the subscription, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProjectDatabase/logSubscription:LogSubscription sub service_name/engine/cluster_id/id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/logSubscription:LogSubscription")]
     public partial class LogSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Creation date of the subscription.
+        /// Creation date of the subscription
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Name of the engine of the service
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// Log kind name of this subscription.
+        /// Log kind name of this subscription
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the destination log service.
+        /// Name of the destination log service
         /// </summary>
         [Output("ldpServiceName")]
         public Output<string> LdpServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the operation.
+        /// Identifier of the operation
         /// </summary>
         [Output("operationId")]
         public Output<string> OperationId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of subscribed resource, where the logs come from.
+        /// Name of subscribed resource, where the logs come from
         /// </summary>
         [Output("resourceName")]
         public Output<string> ResourceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of subscribed resource, where the logs come from.
+        /// Type of subscribed resource, where the logs come from
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Id of the target Log data platform stream.
+        /// Id of the target Log data platform stream
         /// </summary>
         [Output("streamId")]
         public Output<string> StreamId { get; private set; } = null!;
 
         /// <summary>
-        /// Last update date of the subscription.
+        /// Last update date of the subscription
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -181,27 +127,22 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class LogSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Name of the engine of the service
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Id of the target Log data platform stream.
+        /// Id of the target Log data platform stream
         /// </summary>
         [Input("streamId", required: true)]
         public Input<string> StreamId { get; set; } = null!;
@@ -215,26 +156,25 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class LogSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID.
+        /// Id of the database cluster
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Creation date of the subscription.
+        /// Creation date of the subscription
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Name of the engine of the service
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// Log kind name of this subscription.
+        /// Log kind name of this subscription
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -243,7 +183,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private Input<string>? _ldpServiceName;
 
         /// <summary>
-        /// Name of the destination log service.
+        /// Name of the destination log service
         /// </summary>
         public Input<string>? LdpServiceName
         {
@@ -256,38 +196,34 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Identifier of the operation.
+        /// Identifier of the operation
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
 
         /// <summary>
-        /// Name of subscribed resource, where the logs come from.
+        /// Name of subscribed resource, where the logs come from
         /// </summary>
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
 
         /// <summary>
-        /// Type of subscribed resource, where the logs come from.
+        /// Type of subscribed resource, where the logs come from
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Id of the target Log data platform stream.
+        /// Id of the target Log data platform stream
         /// </summary>
         [Input("streamId")]
         public Input<string>? StreamId { get; set; }
 
         /// <summary>
-        /// Last update date of the subscription.
+        /// Last update date of the subscription
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Vrack.Inputs
     public sealed class VrackOrderDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// yourvrackdescription
+        /// description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

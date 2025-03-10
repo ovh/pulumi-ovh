@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attach a Dedicated Server Network Interface to a vRack.
- *
- * > **NOTE:** The resource `ovh.Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br />
- * Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServer` instead.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const server = ovh.getServer({
- *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
- * });
- * const vdsi = new ovh.vrack.DedicatedServerInterface("vdsi", {
- *     serviceName: "pn-xxxxxxx",
- *     interfaceId: server.then(server => server.enabledVrackVnis?.[0]),
- * });
- * ```
- */
 export class DedicatedServerInterface extends pulumi.CustomResource {
     /**
      * Get an existing DedicatedServerInterface resource's state with the given name, ID, and optional extra
@@ -54,13 +32,9 @@ export class DedicatedServerInterface extends pulumi.CustomResource {
         return obj['__pulumiType'] === DedicatedServerInterface.__pulumiType;
     }
 
-    /**
-     * The id of dedicated server network interface.
-     */
     public readonly interfaceId!: pulumi.Output<string>;
     /**
-     * The id of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * Service name of the vrack resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -99,13 +73,9 @@ export class DedicatedServerInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DedicatedServerInterface resources.
  */
 export interface DedicatedServerInterfaceState {
-    /**
-     * The id of dedicated server network interface.
-     */
     interfaceId?: pulumi.Input<string>;
     /**
-     * The id of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * Service name of the vrack resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -114,13 +84,9 @@ export interface DedicatedServerInterfaceState {
  * The set of arguments for constructing a DedicatedServerInterface resource.
  */
 export interface DedicatedServerInterfaceArgs {
-    /**
-     * The id of dedicated server network interface.
-     */
     interfaceId: pulumi.Input<string>;
     /**
-     * The id of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * Service name of the vrack resource.
      */
     serviceName: pulumi.Input<string>;
 }

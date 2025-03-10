@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * // Add a record to a sub-domain
- * const test = new ovh.domain.ZoneRecord("test", {
- *     fieldtype: "A",
- *     subdomain: "test",
- *     target: "0.0.0.0",
- *     ttl: 3600,
- *     zone: "testdemo.ovh",
- * });
- * ```
- *
- * ## Import
- *
- * OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
- * ```
- */
 export class ZoneRecord extends pulumi.CustomResource {
     /**
      * Get an existing ZoneRecord resource's state with the given name, ID, and optional extra
@@ -59,25 +32,10 @@ export class ZoneRecord extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZoneRecord.__pulumiType;
     }
 
-    /**
-     * The type of the record
-     */
     public readonly fieldtype!: pulumi.Output<string>;
-    /**
-     * The name of the record. It can be an empty string.
-     */
     public readonly subdomain!: pulumi.Output<string | undefined>;
-    /**
-     * The value of the record
-     */
     public readonly target!: pulumi.Output<string>;
-    /**
-     * The TTL of the record, it shall be >= to 60.
-     */
     public readonly ttl!: pulumi.Output<number | undefined>;
-    /**
-     * The domain to add the record to
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -124,25 +82,10 @@ export class ZoneRecord extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZoneRecord resources.
  */
 export interface ZoneRecordState {
-    /**
-     * The type of the record
-     */
     fieldtype?: pulumi.Input<string>;
-    /**
-     * The name of the record. It can be an empty string.
-     */
     subdomain?: pulumi.Input<string>;
-    /**
-     * The value of the record
-     */
     target?: pulumi.Input<string>;
-    /**
-     * The TTL of the record, it shall be >= to 60.
-     */
     ttl?: pulumi.Input<number>;
-    /**
-     * The domain to add the record to
-     */
     zone?: pulumi.Input<string>;
 }
 
@@ -150,24 +93,9 @@ export interface ZoneRecordState {
  * The set of arguments for constructing a ZoneRecord resource.
  */
 export interface ZoneRecordArgs {
-    /**
-     * The type of the record
-     */
     fieldtype: pulumi.Input<string>;
-    /**
-     * The name of the record. It can be an empty string.
-     */
     subdomain?: pulumi.Input<string>;
-    /**
-     * The value of the record
-     */
     target: pulumi.Input<string>;
-    /**
-     * The TTL of the record, it shall be >= to 60.
-     */
     ttl?: pulumi.Input<number>;
-    /**
-     * The domain to add the record to
-     */
     zone: pulumi.Input<string>;
 }

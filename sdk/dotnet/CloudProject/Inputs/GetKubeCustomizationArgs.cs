@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("apiservers", required: true)]
         private InputList<Inputs.GetKubeCustomizationApiserverInputArgs>? _apiservers;
-
-        /// <summary>
-        /// Kubernetes API server customization
-        /// </summary>
         [Obsolete(@"Use customization_apiserver instead")]
         public InputList<Inputs.GetKubeCustomizationApiserverInputArgs> Apiservers
         {

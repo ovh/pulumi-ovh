@@ -7,41 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the list of all users of a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			projectUsers, err := cloudproject.GetUsers(ctx, &cloudproject.GetUsersArgs{
-//				ServiceName: "XXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Get the user ID of a previously created user with the description "S3-User"
-//			users := "TODO: For expression"
-//			s3UserId := users[0]
-//			ctx.Export("userId", s3UserId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
@@ -54,18 +23,15 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	ServiceName string `pulumi:"serviceName"`
-	// The list of users of a public cloud project.
-	Users []GetUsersUser `pulumi:"users"`
+	Id          string         `pulumi:"id"`
+	ServiceName string         `pulumi:"serviceName"`
+	Users       []GetUsersUser `pulumi:"users"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -79,8 +45,6 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -112,7 +76,6 @@ func (o GetUsersResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The list of users of a public cloud project.
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

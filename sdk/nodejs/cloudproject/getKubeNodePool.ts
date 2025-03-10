@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a OVHcloud Managed Kubernetes node pool.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const nodepool = ovh.CloudProject.getKubeNodePool({
- *     serviceName: "XXXXXX",
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
- *     name: "xxxxxx",
- * });
- * export const maxNodes = nodepool.then(nodepool => nodepool.maxNodes);
- * ```
- */
 export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
@@ -37,18 +20,8 @@ export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getKubeNodePool.
  */
 export interface GetKubeNodePoolArgs {
-    /**
-     * The id of the managed kubernetes cluster.
-     */
     kubeId: string;
-    /**
-     * The name of the node pool.
-     */
     name: string;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: string;
     template?: inputs.CloudProject.GetKubeNodePoolTemplate;
 }
@@ -57,126 +30,34 @@ export interface GetKubeNodePoolArgs {
  * A collection of values returned by getKubeNodePool.
  */
 export interface GetKubeNodePoolResult {
-    /**
-     * (Optional) should the pool use the anti-affinity feature. Default to `false`.
-     */
     readonly antiAffinity: boolean;
-    /**
-     * (Optional) Enable auto-scaling for the pool. Default to `false`.
-     */
     readonly autoscale: boolean;
-    /**
-     * (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
-     */
     readonly autoscalingScaleDownUnneededTimeSeconds: number;
-    /**
-     * (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
-     */
     readonly autoscalingScaleDownUnreadyTimeSeconds: number;
-    /**
-     * (Optional) scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-     */
     readonly autoscalingScaleDownUtilizationThreshold: number;
-    /**
-     * Number of nodes which are actually ready in the pool
-     */
     readonly availableNodes: number;
-    /**
-     * Creation date
-     */
     readonly createdAt: string;
-    /**
-     * Number of nodes present in the pool
-     */
     readonly currentNodes: number;
-    /**
-     * Number of nodes you desire in the pool
-     */
     readonly desiredNodes: number;
-    /**
-     * Flavor name
-     */
     readonly flavor: string;
-    /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-     * Ex: "b2-7". Changing this value recreates the resource.
-     * You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
-     */
     readonly flavorName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly kubeId: string;
-    /**
-     * maximum number of nodes allowed in the pool.
-     * Setting `desiredNodes` over this value will raise an error.
-     */
     readonly maxNodes: number;
-    /**
-     * minimum number of nodes allowed in the pool.
-     * Setting `desiredNodes` under this value will raise an error.
-     */
     readonly minNodes: number;
-    /**
-     * (Optional) should the nodes be billed on a monthly basis. Default to `false`.
-     */
     readonly monthlyBilled: boolean;
-    /**
-     * (Optional) The name of the nodepool.
-     * Changing this value recreates the resource.
-     * Warning: "_" char is not allowed!
-     */
     readonly name: string;
-    /**
-     * Project id
-     */
     readonly projectId: string;
-    /**
-     * See Argument Reference above.
-     */
     readonly serviceName: string;
-    /**
-     * Status describing the state between number of nodes wanted and available ones
-     */
     readonly sizeStatus: string;
-    /**
-     * Current status
-     */
     readonly status: string;
     readonly template?: outputs.CloudProject.GetKubeNodePoolTemplate;
-    /**
-     * Number of nodes with the latest version installed in the pool
-     */
     readonly upToDateNodes: number;
-    /**
-     * Last update date
-     */
     readonly updatedAt: string;
 }
-/**
- * Use this data source to get a OVHcloud Managed Kubernetes node pool.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const nodepool = ovh.CloudProject.getKubeNodePool({
- *     serviceName: "XXXXXX",
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
- *     name: "xxxxxx",
- * });
- * export const maxNodes = nodepool.then(nodepool => nodepool.maxNodes);
- * ```
- */
 export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
@@ -191,18 +72,8 @@ export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pu
  * A collection of arguments for invoking getKubeNodePool.
  */
 export interface GetKubeNodePoolOutputArgs {
-    /**
-     * The id of the managed kubernetes cluster.
-     */
     kubeId: pulumi.Input<string>;
-    /**
-     * The name of the node pool.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
     template?: pulumi.Input<inputs.CloudProject.GetKubeNodePoolTemplateArgs>;
 }

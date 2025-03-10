@@ -8,73 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an ACL for a kafka cluster associated with a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			kafka, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
-//				ServiceName: "XXX",
-//				Engine:      "kafka",
-//				Id:          "ZZZ",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudprojectdatabase.NewKafkaAcl(ctx, "acl", &cloudprojectdatabase.KafkaAclArgs{
-//				ServiceName: pulumi.String(kafka.ServiceName),
-//				ClusterId:   pulumi.String(kafka.Id),
-//				Permission:  pulumi.String("read"),
-//				Topic:       pulumi.String("mytopic"),
-//				Username:    pulumi.String("johndoe"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
-//
-// bash
-//
-// ```sh
-// $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
-// ```
 type KafkaAcl struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Permission to give to this username on this topic.
-	// Available permissions:
-	Permission pulumi.StringOutput `pulumi:"permission"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Permission to give to this username on this topic
+	Permission  pulumi.StringOutput `pulumi:"permission"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Topic affected by this ACL.
+	// Topic affected by this acl
 	Topic pulumi.StringOutput `pulumi:"topic"`
-	// Username affected by this ACL.
+	// Username affected by this acl
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -123,32 +71,26 @@ func GetKafkaAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaAcl resources.
 type kafkaAclState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId *string `pulumi:"clusterId"`
-	// Permission to give to this username on this topic.
-	// Available permissions:
-	Permission *string `pulumi:"permission"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Permission to give to this username on this topic
+	Permission  *string `pulumi:"permission"`
 	ServiceName *string `pulumi:"serviceName"`
-	// Topic affected by this ACL.
+	// Topic affected by this acl
 	Topic *string `pulumi:"topic"`
-	// Username affected by this ACL.
+	// Username affected by this acl
 	Username *string `pulumi:"username"`
 }
 
 type KafkaAclState struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringPtrInput
-	// Permission to give to this username on this topic.
-	// Available permissions:
-	Permission pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Permission to give to this username on this topic
+	Permission  pulumi.StringPtrInput
 	ServiceName pulumi.StringPtrInput
-	// Topic affected by this ACL.
+	// Topic affected by this acl
 	Topic pulumi.StringPtrInput
-	// Username affected by this ACL.
+	// Username affected by this acl
 	Username pulumi.StringPtrInput
 }
 
@@ -157,33 +99,27 @@ func (KafkaAclState) ElementType() reflect.Type {
 }
 
 type kafkaAclArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId string `pulumi:"clusterId"`
-	// Permission to give to this username on this topic.
-	// Available permissions:
-	Permission string `pulumi:"permission"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Permission to give to this username on this topic
+	Permission  string `pulumi:"permission"`
 	ServiceName string `pulumi:"serviceName"`
-	// Topic affected by this ACL.
+	// Topic affected by this acl
 	Topic string `pulumi:"topic"`
-	// Username affected by this ACL.
+	// Username affected by this acl
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaAcl resource.
 type KafkaAclArgs struct {
-	// Cluster ID.
+	// Id of the database cluster
 	ClusterId pulumi.StringInput
-	// Permission to give to this username on this topic.
-	// Available permissions:
-	Permission pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// Permission to give to this username on this topic
+	Permission  pulumi.StringInput
 	ServiceName pulumi.StringInput
-	// Topic affected by this ACL.
+	// Topic affected by this acl
 	Topic pulumi.StringInput
-	// Username affected by this ACL.
+	// Username affected by this acl
 	Username pulumi.StringInput
 }
 
@@ -274,29 +210,26 @@ func (o KafkaAclOutput) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAc
 	return o
 }
 
-// Cluster ID.
+// Id of the database cluster
 func (o KafkaAclOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Permission to give to this username on this topic.
-// Available permissions:
+// Permission to give to this username on this topic
 func (o KafkaAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o KafkaAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Topic affected by this ACL.
+// Topic affected by this acl
 func (o KafkaAclOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }
 
-// Username affected by this ACL.
+// Username affected by this acl
 func (o KafkaAclOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

@@ -38,20 +38,14 @@ class VpsArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vps resource.
-        :param pulumi.Input[str] display_name: Custom display name
+        :param pulumi.Input[str] display_name: Set the name displayed in Manager for your VPS (max 50 chars)
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
-        :param pulumi.Input[float] memory_limit: RAM of this VPS
-        :param pulumi.Input['VpsModelArgs'] model: Structure describing characteristics of a VPS model
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: IP blocks for OVH monitoring servers
-        :param pulumi.Input[str] name: Name of the VPS
-        :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
-        :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]] plans: Product Plan to order
-        :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
-        :param pulumi.Input[float] vcore: Number of vcores
-        :param pulumi.Input[str] zone: OpenStask region where the VPS is located
+        :param pulumi.Input['VpsModelArgs'] model: A structure describing characteristics of a VPS model
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: Ip blocks for OVH monitoring servers
+        :param pulumi.Input[str] netboot_mode: All values a VPS netboot mode can be in
+        :param pulumi.Input[str] offer_type: All offers a VPS can have
+        :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
+        :param pulumi.Input[str] state: All states a VPS can be in
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -88,7 +82,7 @@ class VpsArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom display name
+        Set the name displayed in Manager for your VPS (max 50 chars)
         """
         return pulumi.get(self, "display_name")
 
@@ -111,9 +105,6 @@ class VpsArgs:
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[float]]:
-        """
-        RAM of this VPS
-        """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
@@ -124,7 +115,7 @@ class VpsArgs:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input['VpsModelArgs']]:
         """
-        Structure describing characteristics of a VPS model
+        A structure describing characteristics of a VPS model
         """
         return pulumi.get(self, "model")
 
@@ -136,7 +127,7 @@ class VpsArgs:
     @pulumi.getter(name="monitoringIpBlocks")
     def monitoring_ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IP blocks for OVH monitoring servers
+        Ip blocks for OVH monitoring servers
         """
         return pulumi.get(self, "monitoring_ip_blocks")
 
@@ -147,9 +138,6 @@ class VpsArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the VPS
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -160,7 +148,7 @@ class VpsArgs:
     @pulumi.getter(name="netbootMode")
     def netboot_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        VPS netboot mode (local┃rescue)
+        All values a VPS netboot mode can be in
         """
         return pulumi.get(self, "netboot_mode")
 
@@ -172,7 +160,7 @@ class VpsArgs:
     @pulumi.getter(name="offerType")
     def offer_type(self) -> Optional[pulumi.Input[str]]:
         """
-        All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+        All offers a VPS can have
         """
         return pulumi.get(self, "offer_type")
 
@@ -184,7 +172,7 @@ class VpsArgs:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+        OVH subsidiaries
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -195,9 +183,6 @@ class VpsArgs:
     @property
     @pulumi.getter(name="planOptions")
     def plan_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]]]:
-        """
-        Product Plan to order
-        """
         return pulumi.get(self, "plan_options")
 
     @plan_options.setter
@@ -207,9 +192,6 @@ class VpsArgs:
     @property
     @pulumi.getter
     def plans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]]]:
-        """
-        Product Plan to order
-        """
         return pulumi.get(self, "plans")
 
     @plans.setter
@@ -229,7 +211,7 @@ class VpsArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+        All states a VPS can be in
         """
         return pulumi.get(self, "state")
 
@@ -240,9 +222,6 @@ class VpsArgs:
     @property
     @pulumi.getter
     def vcore(self) -> Optional[pulumi.Input[float]]:
-        """
-        Number of vcores
-        """
         return pulumi.get(self, "vcore")
 
     @vcore.setter
@@ -252,9 +231,6 @@ class VpsArgs:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        OpenStask region where the VPS is located
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -286,24 +262,17 @@ class _VpsState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vps resources.
-        :param pulumi.Input[str] cluster: VPS cluster
-        :param pulumi.Input[str] display_name: Custom display name
-        :param pulumi.Input['VpsIamArgs'] iam: IAM resource information
+        :param pulumi.Input[str] display_name: Set the name displayed in Manager for your VPS (max 50 chars)
+        :param pulumi.Input['VpsIamArgs'] iam: IAM resource metadata
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
-        :param pulumi.Input[float] memory_limit: RAM of this VPS
-        :param pulumi.Input['VpsModelArgs'] model: Structure describing characteristics of a VPS model
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: IP blocks for OVH monitoring servers
-        :param pulumi.Input[str] name: Name of the VPS
-        :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
-        :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+        :param pulumi.Input['VpsModelArgs'] model: A structure describing characteristics of a VPS model
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: Ip blocks for OVH monitoring servers
+        :param pulumi.Input[str] netboot_mode: All values a VPS netboot mode can be in
+        :param pulumi.Input[str] offer_type: All offers a VPS can have
         :param pulumi.Input['VpsOrderArgs'] order: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]] plans: Product Plan to order
+        :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[str] service_name: The internal name of your VPS offer
-        :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
-        :param pulumi.Input[float] vcore: Number of vcores
-        :param pulumi.Input[str] zone: OpenStask region where the VPS is located
+        :param pulumi.Input[str] state: All states a VPS can be in
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -347,9 +316,6 @@ class _VpsState:
     @property
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
-        """
-        VPS cluster
-        """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
@@ -360,7 +326,7 @@ class _VpsState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom display name
+        Set the name displayed in Manager for your VPS (max 50 chars)
         """
         return pulumi.get(self, "display_name")
 
@@ -372,7 +338,7 @@ class _VpsState:
     @pulumi.getter
     def iam(self) -> Optional[pulumi.Input['VpsIamArgs']]:
         """
-        IAM resource information
+        IAM resource metadata
         """
         return pulumi.get(self, "iam")
 
@@ -395,9 +361,6 @@ class _VpsState:
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[float]]:
-        """
-        RAM of this VPS
-        """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
@@ -408,7 +371,7 @@ class _VpsState:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input['VpsModelArgs']]:
         """
-        Structure describing characteristics of a VPS model
+        A structure describing characteristics of a VPS model
         """
         return pulumi.get(self, "model")
 
@@ -420,7 +383,7 @@ class _VpsState:
     @pulumi.getter(name="monitoringIpBlocks")
     def monitoring_ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IP blocks for OVH monitoring servers
+        Ip blocks for OVH monitoring servers
         """
         return pulumi.get(self, "monitoring_ip_blocks")
 
@@ -431,9 +394,6 @@ class _VpsState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the VPS
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -444,7 +404,7 @@ class _VpsState:
     @pulumi.getter(name="netbootMode")
     def netboot_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        VPS netboot mode (local┃rescue)
+        All values a VPS netboot mode can be in
         """
         return pulumi.get(self, "netboot_mode")
 
@@ -456,7 +416,7 @@ class _VpsState:
     @pulumi.getter(name="offerType")
     def offer_type(self) -> Optional[pulumi.Input[str]]:
         """
-        All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+        All offers a VPS can have
         """
         return pulumi.get(self, "offer_type")
 
@@ -480,7 +440,7 @@ class _VpsState:
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+        OVH subsidiaries
         """
         return pulumi.get(self, "ovh_subsidiary")
 
@@ -491,9 +451,6 @@ class _VpsState:
     @property
     @pulumi.getter(name="planOptions")
     def plan_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]]]:
-        """
-        Product Plan to order
-        """
         return pulumi.get(self, "plan_options")
 
     @plan_options.setter
@@ -503,9 +460,6 @@ class _VpsState:
     @property
     @pulumi.getter
     def plans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]]]:
-        """
-        Product Plan to order
-        """
         return pulumi.get(self, "plans")
 
     @plans.setter
@@ -537,7 +491,7 @@ class _VpsState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+        All states a VPS can be in
         """
         return pulumi.get(self, "state")
 
@@ -548,9 +502,6 @@ class _VpsState:
     @property
     @pulumi.getter
     def vcore(self) -> Optional[pulumi.Input[float]]:
-        """
-        Number of vcores
-        """
         return pulumi.get(self, "vcore")
 
     @vcore.setter
@@ -560,9 +511,6 @@ class _VpsState:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        OpenStask region where the VPS is located
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -592,24 +540,17 @@ class Vps(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
+        Create a Vps resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Custom display name
+        :param pulumi.Input[str] display_name: Set the name displayed in Manager for your VPS (max 50 chars)
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
-        :param pulumi.Input[float] memory_limit: RAM of this VPS
-        :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: IP blocks for OVH monitoring servers
-        :param pulumi.Input[str] name: Name of the VPS
-        :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
-        :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]] plans: Product Plan to order
-        :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
-        :param pulumi.Input[float] vcore: Number of vcores
-        :param pulumi.Input[str] zone: OpenStask region where the VPS is located
+        :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: A structure describing characteristics of a VPS model
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: Ip blocks for OVH monitoring servers
+        :param pulumi.Input[str] netboot_mode: All values a VPS netboot mode can be in
+        :param pulumi.Input[str] offer_type: All offers a VPS can have
+        :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
+        :param pulumi.Input[str] state: All states a VPS can be in
         """
         ...
     @overload
@@ -618,8 +559,7 @@ class Vps(pulumi.CustomResource):
                  args: Optional[VpsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
+        Create a Vps resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -714,24 +654,17 @@ class Vps(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster: VPS cluster
-        :param pulumi.Input[str] display_name: Custom display name
-        :param pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']] iam: IAM resource information
+        :param pulumi.Input[str] display_name: Set the name displayed in Manager for your VPS (max 50 chars)
+        :param pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']] iam: IAM resource metadata
         :param pulumi.Input[str] keymap: KVM keyboard layout on VPS Cloud
-        :param pulumi.Input[float] memory_limit: RAM of this VPS
-        :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: IP blocks for OVH monitoring servers
-        :param pulumi.Input[str] name: Name of the VPS
-        :param pulumi.Input[str] netboot_mode: VPS netboot mode (local┃rescue)
-        :param pulumi.Input[str] offer_type: All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+        :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: A structure describing characteristics of a VPS model
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_ip_blocks: Ip blocks for OVH monitoring servers
+        :param pulumi.Input[str] netboot_mode: All values a VPS netboot mode can be in
+        :param pulumi.Input[str] offer_type: All offers a VPS can have
         :param pulumi.Input[Union['VpsOrderArgs', 'VpsOrderArgsDict']] order: Details about an Order
-        :param pulumi.Input[str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]] plan_options: Product Plan to order
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]] plans: Product Plan to order
+        :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[str] service_name: The internal name of your VPS offer
-        :param pulumi.Input[str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
-        :param pulumi.Input[float] vcore: Number of vcores
-        :param pulumi.Input[str] zone: OpenStask region where the VPS is located
+        :param pulumi.Input[str] state: All states a VPS can be in
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -761,16 +694,13 @@ class Vps(pulumi.CustomResource):
     @property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
-        """
-        VPS cluster
-        """
         return pulumi.get(self, "cluster")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Custom display name
+        Set the name displayed in Manager for your VPS (max 50 chars)
         """
         return pulumi.get(self, "display_name")
 
@@ -778,7 +708,7 @@ class Vps(pulumi.CustomResource):
     @pulumi.getter
     def iam(self) -> pulumi.Output['outputs.VpsIam']:
         """
-        IAM resource information
+        IAM resource metadata
         """
         return pulumi.get(self, "iam")
 
@@ -793,16 +723,13 @@ class Vps(pulumi.CustomResource):
     @property
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> pulumi.Output[float]:
-        """
-        RAM of this VPS
-        """
         return pulumi.get(self, "memory_limit")
 
     @property
     @pulumi.getter
     def model(self) -> pulumi.Output['outputs.VpsModel']:
         """
-        Structure describing characteristics of a VPS model
+        A structure describing characteristics of a VPS model
         """
         return pulumi.get(self, "model")
 
@@ -810,23 +737,20 @@ class Vps(pulumi.CustomResource):
     @pulumi.getter(name="monitoringIpBlocks")
     def monitoring_ip_blocks(self) -> pulumi.Output[Sequence[str]]:
         """
-        IP blocks for OVH monitoring servers
+        Ip blocks for OVH monitoring servers
         """
         return pulumi.get(self, "monitoring_ip_blocks")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the VPS
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="netbootMode")
     def netboot_mode(self) -> pulumi.Output[str]:
         """
-        VPS netboot mode (local┃rescue)
+        All values a VPS netboot mode can be in
         """
         return pulumi.get(self, "netboot_mode")
 
@@ -834,7 +758,7 @@ class Vps(pulumi.CustomResource):
     @pulumi.getter(name="offerType")
     def offer_type(self) -> pulumi.Output[str]:
         """
-        All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
+        All offers a VPS can have
         """
         return pulumi.get(self, "offer_type")
 
@@ -850,24 +774,18 @@ class Vps(pulumi.CustomResource):
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> pulumi.Output[Optional[str]]:
         """
-        OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+        OVH subsidiaries
         """
         return pulumi.get(self, "ovh_subsidiary")
 
     @property
     @pulumi.getter(name="planOptions")
     def plan_options(self) -> pulumi.Output[Sequence['outputs.VpsPlanOption']]:
-        """
-        Product Plan to order
-        """
         return pulumi.get(self, "plan_options")
 
     @property
     @pulumi.getter
     def plans(self) -> pulumi.Output[Sequence['outputs.VpsPlan']]:
-        """
-        Product Plan to order
-        """
         return pulumi.get(self, "plans")
 
     @property
@@ -887,23 +805,17 @@ class Vps(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+        All states a VPS can be in
         """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def vcore(self) -> pulumi.Output[float]:
-        """
-        Number of vcores
-        """
         return pulumi.get(self, "vcore")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
-        """
-        OpenStask region where the VPS is located
-        """
         return pulumi.get(self, "zone")
 

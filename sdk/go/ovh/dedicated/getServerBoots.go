@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
-//				BootType:    pulumi.StringRef("harddisk"),
-//				ServiceName: "myserver",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServerBoots(ctx *pulumi.Context, args *GetServerBootsArgs, opts ...pulumi.InvokeOption) (*GetServerBootsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerBootsResult
@@ -51,23 +23,19 @@ func GetServerBoots(ctx *pulumi.Context, args *GetServerBootsArgs, opts ...pulum
 
 // A collection of arguments for invoking getServerBoots.
 type GetServerBootsArgs struct {
-	// Filter the value of bootType property (harddisk, rescue, internal, network)
-	BootType *string `pulumi:"bootType"`
-	// Filter the value of kernel property (iPXE script name)
-	Kernel *string `pulumi:"kernel"`
-	// The internal name of your dedicated server.
-	ServiceName string `pulumi:"serviceName"`
+	BootType    *string `pulumi:"bootType"`
+	Kernel      *string `pulumi:"kernel"`
+	ServiceName string  `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getServerBoots.
 type GetServerBootsResult struct {
 	BootType *string `pulumi:"bootType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
-	Kernel *string `pulumi:"kernel"`
-	// The list of dedicated server netboots.
-	Results     []int  `pulumi:"results"`
-	ServiceName string `pulumi:"serviceName"`
+	Id          string  `pulumi:"id"`
+	Kernel      *string `pulumi:"kernel"`
+	Results     []int   `pulumi:"results"`
+	ServiceName string  `pulumi:"serviceName"`
 }
 
 func GetServerBootsOutput(ctx *pulumi.Context, args GetServerBootsOutputArgs, opts ...pulumi.InvokeOption) GetServerBootsResultOutput {
@@ -81,12 +49,9 @@ func GetServerBootsOutput(ctx *pulumi.Context, args GetServerBootsOutputArgs, op
 
 // A collection of arguments for invoking getServerBoots.
 type GetServerBootsOutputArgs struct {
-	// Filter the value of bootType property (harddisk, rescue, internal, network)
-	BootType pulumi.StringPtrInput `pulumi:"bootType"`
-	// Filter the value of kernel property (iPXE script name)
-	Kernel pulumi.StringPtrInput `pulumi:"kernel"`
-	// The internal name of your dedicated server.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	BootType    pulumi.StringPtrInput `pulumi:"bootType"`
+	Kernel      pulumi.StringPtrInput `pulumi:"kernel"`
+	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
 }
 
 func (GetServerBootsOutputArgs) ElementType() reflect.Type {
@@ -121,7 +86,6 @@ func (o GetServerBootsResultOutput) Kernel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerBootsResult) *string { return v.Kernel }).(pulumi.StringPtrOutput)
 }
 
-// The list of dedicated server netboots.
 func (o GetServerBootsResultOutput) Results() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetServerBootsResult) []int { return v.Results }).(pulumi.IntArrayOutput)
 }

@@ -9,30 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Creates an alert on a public cloud project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myAlert = new Ovh.CloudProject.Alerting("myAlert", new()
-    ///     {
-    ///         Delay = 3600,
-    ///         Email = "aaa.bbb@domain.com",
-    ///         MonthlyThreshold = 1000,
-    ///         ServiceName = "XXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/alerting:Alerting")]
     public partial class Alerting : global::Pulumi.CustomResource
     {
@@ -43,7 +19,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// Delay between two alerts in seconds
+        /// Possible values for delay between two alerts in seconds
         /// </summary>
         [Output("delay")]
         public Output<double> Delay { get; private set; } = null!;
@@ -67,8 +43,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<double> MonthlyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The project id
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -121,7 +96,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class AlertingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Delay between two alerts in seconds
+        /// Possible values for delay between two alerts in seconds
         /// </summary>
         [Input("delay", required: true)]
         public Input<double> Delay { get; set; } = null!;
@@ -139,8 +114,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<double> MonthlyThreshold { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The project id
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -160,7 +134,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? CreationDate { get; set; }
 
         /// <summary>
-        /// Delay between two alerts in seconds
+        /// Possible values for delay between two alerts in seconds
         /// </summary>
         [Input("delay")]
         public Input<double>? Delay { get; set; }
@@ -184,8 +158,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<double>? MonthlyThreshold { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The project id
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

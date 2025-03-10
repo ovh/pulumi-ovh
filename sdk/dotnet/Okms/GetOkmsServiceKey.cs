@@ -11,78 +11,12 @@ namespace Pulumi.Ovh.Okms
 {
     public static class GetOkmsServiceKey
     {
-        /// <summary>
-        /// Use this data source to retrieve information about a KMS service key.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetOkmsServiceKeyResult> InvokeAsync(GetOkmsServiceKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOkmsServiceKeyResult>("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args ?? new GetOkmsServiceKeyArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about a KMS service key.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetOkmsServiceKeyResult> Invoke(GetOkmsServiceKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyResult>("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args ?? new GetOkmsServiceKeyInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information about a KMS service key.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetOkmsServiceKeyResult> Invoke(GetOkmsServiceKeyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyResult>("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", args ?? new GetOkmsServiceKeyInvokeArgs(), options.WithDefaults());
     }
@@ -90,15 +24,9 @@ namespace Pulumi.Ovh.Okms
 
     public sealed class GetOkmsServiceKeyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the service key
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the KMS
-        /// </summary>
         [Input("okmsId", required: true)]
         public string OkmsId { get; set; } = null!;
 
@@ -110,15 +38,9 @@ namespace Pulumi.Ovh.Okms
 
     public sealed class GetOkmsServiceKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the service key
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the KMS
-        /// </summary>
         [Input("okmsId", required: true)]
         public Input<string> OkmsId { get; set; } = null!;
 

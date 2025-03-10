@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * OVHcloud Managed PostgreSQL clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser my_user service_name/cluster_id/id
- * ```
- */
 export class PostgresSqlUser extends pulumi.CustomResource {
     /**
      * Get an existing PostgresSqlUser resource's state with the given name, ID, and optional extra
@@ -44,19 +33,19 @@ export class PostgresSqlUser extends pulumi.CustomResource {
     }
 
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Date of the creation of the user.
+     * Date of the creation of the user
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+     * Name of the user
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Sensitive) Password of the user.
+     * Password of the user
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
@@ -64,17 +53,12 @@ export class PostgresSqlUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to
      */
     public readonly roles!: pulumi.Output<string[]>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Current status of the user.
+     * Current status of the user
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -128,19 +112,19 @@ export class PostgresSqlUser extends pulumi.CustomResource {
  */
 export interface PostgresSqlUserState {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Date of the creation of the user.
+     * Date of the creation of the user
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+     * Name of the user
      */
     name?: pulumi.Input<string>;
     /**
-     * (Sensitive) Password of the user.
+     * Password of the user
      */
     password?: pulumi.Input<string>;
     /**
@@ -148,17 +132,12 @@ export interface PostgresSqlUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Current status of the user.
+     * Current status of the user
      */
     status?: pulumi.Input<string>;
 }
@@ -168,11 +147,11 @@ export interface PostgresSqlUserState {
  */
 export interface PostgresSqlUserArgs {
     /**
-     * Cluster ID.
+     * Id of the database cluster
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
+     * Name of the user
      */
     name?: pulumi.Input<string>;
     /**
@@ -180,13 +159,8 @@ export interface PostgresSqlUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-     */
     serviceName: pulumi.Input<string>;
 }

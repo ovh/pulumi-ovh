@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.GetRegion(ctx, &cloudproject.GetRegionArgs{
-//				Name:        "GRA1",
-//				ServiceName: "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionResult
@@ -51,29 +23,19 @@ func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getRegion.
 type GetRegionArgs struct {
-	// The name of the region associated with the public cloud
-	// project.
-	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	Name        string `pulumi:"name"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
-	// the code of the geographic continent the region is running.
-	// E.g.: EU for Europe, US for America...
-	ContinentCode string `pulumi:"continentCode"`
-	// The location code of the datacenter.
-	// E.g.: "GRA", meaning Gravelines, for region "GRA1"
+	ContinentCode      string `pulumi:"continentCode"`
 	DatacenterLocation string `pulumi:"datacenterLocation"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// the name of the public cloud service
-	Name        string `pulumi:"name"`
-	ServiceName string `pulumi:"serviceName"`
-	// The list of public cloud services running within the region
-	Services []GetRegionService `pulumi:"services"`
+	Id          string             `pulumi:"id"`
+	Name        string             `pulumi:"name"`
+	ServiceName string             `pulumi:"serviceName"`
+	Services    []GetRegionService `pulumi:"services"`
 }
 
 func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulumi.InvokeOption) GetRegionResultOutput {
@@ -87,11 +49,7 @@ func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getRegion.
 type GetRegionOutputArgs struct {
-	// The name of the region associated with the public cloud
-	// project.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	Name        pulumi.StringInput `pulumi:"name"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -114,14 +72,10 @@ func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// the code of the geographic continent the region is running.
-// E.g.: EU for Europe, US for America...
 func (o GetRegionResultOutput) ContinentCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.ContinentCode }).(pulumi.StringOutput)
 }
 
-// The location code of the datacenter.
-// E.g.: "GRA", meaning Gravelines, for region "GRA1"
 func (o GetRegionResultOutput) DatacenterLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.DatacenterLocation }).(pulumi.StringOutput)
 }
@@ -131,7 +85,6 @@ func (o GetRegionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// the name of the public cloud service
 func (o GetRegionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -140,7 +93,6 @@ func (o GetRegionResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The list of public cloud services running within the region
 func (o GetRegionResultOutput) Services() GetRegionServiceArrayOutput {
 	return o.ApplyT(func(v GetRegionResult) []GetRegionService { return v.Services }).(GetRegionServiceArrayOutput)
 }

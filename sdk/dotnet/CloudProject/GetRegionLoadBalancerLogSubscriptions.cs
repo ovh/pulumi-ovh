@@ -11,81 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetRegionLoadBalancerLogSubscriptions
     {
-        /// <summary>
-        /// Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var subs = Ovh.CloudProject.GetRegionLoadBalancerLogSubscriptions.Invoke(new()
-        ///     {
-        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        ///         RegionName = "gggg",
-        ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetRegionLoadBalancerLogSubscriptionsResult> InvokeAsync(GetRegionLoadBalancerLogSubscriptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionLoadBalancerLogSubscriptionsResult>("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", args ?? new GetRegionLoadBalancerLogSubscriptionsArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var subs = Ovh.CloudProject.GetRegionLoadBalancerLogSubscriptions.Invoke(new()
-        ///     {
-        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        ///         RegionName = "gggg",
-        ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetRegionLoadBalancerLogSubscriptionsResult> Invoke(GetRegionLoadBalancerLogSubscriptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionLoadBalancerLogSubscriptionsResult>("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", args ?? new GetRegionLoadBalancerLogSubscriptionsInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var subs = Ovh.CloudProject.GetRegionLoadBalancerLogSubscriptions.Invoke(new()
-        ///     {
-        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        ///         RegionName = "gggg",
-        ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetRegionLoadBalancerLogSubscriptionsResult> Invoke(GetRegionLoadBalancerLogSubscriptionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionLoadBalancerLogSubscriptionsResult>("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", args ?? new GetRegionLoadBalancerLogSubscriptionsInvokeArgs(), options.WithDefaults());
     }
@@ -93,27 +24,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRegionLoadBalancerLogSubscriptionsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// currently only "haproxy" is available
-        /// </summary>
         [Input("kind")]
         public string? Kind { get; set; }
 
-        /// <summary>
-        /// Loadbalancer id to get the logs
-        /// </summary>
         [Input("loadbalancerId", required: true)]
         public string LoadbalancerId { get; set; } = null!;
 
-        /// <summary>
-        /// A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
-        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -125,27 +44,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRegionLoadBalancerLogSubscriptionsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// currently only "haproxy" is available
-        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        /// <summary>
-        /// Loadbalancer id to get the logs
-        /// </summary>
         [Input("loadbalancerId", required: true)]
         public Input<string> LoadbalancerId { get; set; } = null!;
 
-        /// <summary>
-        /// A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
-        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -163,25 +70,10 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Router used for forwarding log
-        /// </summary>
         public readonly string? Kind;
-        /// <summary>
-        /// Loadbalancer id to get the logs
-        /// </summary>
         public readonly string LoadbalancerId;
-        /// <summary>
-        /// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11".
-        /// </summary>
         public readonly string RegionName;
-        /// <summary>
-        /// The id of the public cloud project.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// The list of the subscription id
-        /// </summary>
         public readonly ImmutableArray<string> SubscriptionIds;
 
         [OutputConstructor]

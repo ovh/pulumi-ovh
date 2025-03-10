@@ -11,84 +11,12 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetGatewayInterface
     {
-        /// <summary>
-        /// Use this datasource to get a public cloud project Gateway Interface.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        ///         Region = "GRA11",
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetGatewayInterfaceResult> InvokeAsync(GetGatewayInterfaceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayInterfaceResult>("ovh:CloudProject/getGatewayInterface:getGatewayInterface", args ?? new GetGatewayInterfaceArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this datasource to get a public cloud project Gateway Interface.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        ///         Region = "GRA11",
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetGatewayInterfaceResult> Invoke(GetGatewayInterfaceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayInterfaceResult>("ovh:CloudProject/getGatewayInterface:getGatewayInterface", args ?? new GetGatewayInterfaceInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this datasource to get a public cloud project Gateway Interface.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
-        ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        ///         Region = "GRA11",
-        ///         ServiceName = "XXXXXX",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetGatewayInterfaceResult> Invoke(GetGatewayInterfaceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayInterfaceResult>("ovh:CloudProject/getGatewayInterface:getGatewayInterface", args ?? new GetGatewayInterfaceInvokeArgs(), options.WithDefaults());
     }
@@ -96,27 +24,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetGatewayInterfaceArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the gateway
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the interface
-        /// </summary>
         [Input("interfaceId", required: true)]
         public string InterfaceId { get; set; } = null!;
 
-        /// <summary>
-        /// Region of the gateway
-        /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the cloud project
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -128,27 +44,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetGatewayInterfaceInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the gateway
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the interface
-        /// </summary>
         [Input("interfaceId", required: true)]
         public Input<string> InterfaceId { get; set; } = null!;
 
-        /// <summary>
-        /// Region of the gateway
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the cloud project
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -162,33 +66,12 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetGatewayInterfaceResult
     {
-        /// <summary>
-        /// ID of the gateway
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// ID of the interface
-        /// </summary>
         public readonly string InterfaceId;
-        /// <summary>
-        /// IP of the interface
-        /// </summary>
         public readonly string Ip;
-        /// <summary>
-        /// Network ID of the interface
-        /// </summary>
         public readonly string NetworkId;
-        /// <summary>
-        /// Region of the gateway
-        /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// ID of the cloud project
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// ID of the subnet to add
-        /// </summary>
         public readonly string SubnetId;
 
         [OutputConstructor]

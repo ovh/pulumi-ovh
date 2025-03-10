@@ -49,17 +49,11 @@ class GetNetworkPrivatesResult:
     @property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetNetworkPrivatesNetworkResult']:
-        """
-        List of network
-        """
         return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        ID of the public cloud project
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -77,20 +71,7 @@ class AwaitableGetNetworkPrivatesResult(GetNetworkPrivatesResult):
 def get_network_privates(service_name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkPrivatesResult:
     """
-    List public cloud project private networks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    private_network_privates = ovh.CloudProject.get_network_privates(service_name="XXXXXX")
-    pulumi.export("private", private_network_privates)
-    ```
-
-
-    :param str service_name: The ID of the public cloud project.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -104,20 +85,7 @@ def get_network_privates(service_name: Optional[str] = None,
 def get_network_privates_output(service_name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPrivatesResult]:
     """
-    List public cloud project private networks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_ovh as ovh
-
-    private_network_privates = ovh.CloudProject.get_network_privates(service_name="XXXXXX")
-    pulumi.export("private", private_network_privates)
-    ```
-
-
-    :param str service_name: The ID of the public cloud project.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

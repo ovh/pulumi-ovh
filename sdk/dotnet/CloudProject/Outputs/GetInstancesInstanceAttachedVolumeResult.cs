@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetInstancesInstanceAttachedVolumeResult
     {
         /// <summary>
-        /// Instance id
+        /// Volume id
         /// </summary>
         public readonly string Id;
 

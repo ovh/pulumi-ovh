@@ -7,55 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an identity group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewIdentityGroup(ctx, "myGroup", &me.IdentityGroupArgs{
-//				Description: pulumi.String("Some custom description"),
-//				Role:        pulumi.String("NONE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type IdentityGroup struct {
 	pulumi.CustomResourceState
 
-	// URN of the user group, used when writing IAM policies
-	GroupURN pulumi.StringOutput `pulumi:"GroupURN"`
-	// Creation date of this group.
-	Creation pulumi.StringOutput `pulumi:"creation"`
-	// Is the group a default and immutable one.
-	DefaultGroup pulumi.BoolOutput `pulumi:"defaultGroup"`
-	// Group description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Date of the last update of this group.
-	LastUpdate pulumi.StringOutput `pulumi:"lastUpdate"`
-	// Group name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-	Role pulumi.StringPtrOutput `pulumi:"role"`
+	GroupURN     pulumi.StringOutput    `pulumi:"GroupURN"`
+	Creation     pulumi.StringOutput    `pulumi:"creation"`
+	DefaultGroup pulumi.BoolOutput      `pulumi:"defaultGroup"`
+	Description  pulumi.StringPtrOutput `pulumi:"description"`
+	LastUpdate   pulumi.StringOutput    `pulumi:"lastUpdate"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
+	Role         pulumi.StringPtrOutput `pulumi:"role"`
 }
 
 // NewIdentityGroup registers a new resource with the given unique name, arguments, and options.
@@ -88,37 +53,23 @@ func GetIdentityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityGroup resources.
 type identityGroupState struct {
-	// URN of the user group, used when writing IAM policies
-	GroupURN *string `pulumi:"GroupURN"`
-	// Creation date of this group.
-	Creation *string `pulumi:"creation"`
-	// Is the group a default and immutable one.
-	DefaultGroup *bool `pulumi:"defaultGroup"`
-	// Group description.
-	Description *string `pulumi:"description"`
-	// Date of the last update of this group.
-	LastUpdate *string `pulumi:"lastUpdate"`
-	// Group name.
-	Name *string `pulumi:"name"`
-	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-	Role *string `pulumi:"role"`
+	GroupURN     *string `pulumi:"GroupURN"`
+	Creation     *string `pulumi:"creation"`
+	DefaultGroup *bool   `pulumi:"defaultGroup"`
+	Description  *string `pulumi:"description"`
+	LastUpdate   *string `pulumi:"lastUpdate"`
+	Name         *string `pulumi:"name"`
+	Role         *string `pulumi:"role"`
 }
 
 type IdentityGroupState struct {
-	// URN of the user group, used when writing IAM policies
-	GroupURN pulumi.StringPtrInput
-	// Creation date of this group.
-	Creation pulumi.StringPtrInput
-	// Is the group a default and immutable one.
+	GroupURN     pulumi.StringPtrInput
+	Creation     pulumi.StringPtrInput
 	DefaultGroup pulumi.BoolPtrInput
-	// Group description.
-	Description pulumi.StringPtrInput
-	// Date of the last update of this group.
-	LastUpdate pulumi.StringPtrInput
-	// Group name.
-	Name pulumi.StringPtrInput
-	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-	Role pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
+	LastUpdate   pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
+	Role         pulumi.StringPtrInput
 }
 
 func (IdentityGroupState) ElementType() reflect.Type {
@@ -126,22 +77,16 @@ func (IdentityGroupState) ElementType() reflect.Type {
 }
 
 type identityGroupArgs struct {
-	// Group description.
 	Description *string `pulumi:"description"`
-	// Group name.
-	Name *string `pulumi:"name"`
-	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-	Role *string `pulumi:"role"`
+	Name        *string `pulumi:"name"`
+	Role        *string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a IdentityGroup resource.
 type IdentityGroupArgs struct {
-	// Group description.
 	Description pulumi.StringPtrInput
-	// Group name.
-	Name pulumi.StringPtrInput
-	// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
-	Role pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Role        pulumi.StringPtrInput
 }
 
 func (IdentityGroupArgs) ElementType() reflect.Type {
@@ -231,37 +176,30 @@ func (o IdentityGroupOutput) ToIdentityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// URN of the user group, used when writing IAM policies
 func (o IdentityGroupOutput) GroupURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.GroupURN }).(pulumi.StringOutput)
 }
 
-// Creation date of this group.
 func (o IdentityGroupOutput) Creation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.Creation }).(pulumi.StringOutput)
 }
 
-// Is the group a default and immutable one.
 func (o IdentityGroupOutput) DefaultGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.BoolOutput { return v.DefaultGroup }).(pulumi.BoolOutput)
 }
 
-// Group description.
 func (o IdentityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Date of the last update of this group.
 func (o IdentityGroupOutput) LastUpdate() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.LastUpdate }).(pulumi.StringOutput)
 }
 
-// Group name.
 func (o IdentityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
 func (o IdentityGroupOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityGroup) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }

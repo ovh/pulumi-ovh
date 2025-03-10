@@ -8,47 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a DBaaS Logs Opensearch output index.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dbaas.NewLogsOutputOpenSearchIndex(ctx, "index", &dbaas.LogsOutputOpenSearchIndexArgs{
-//				Description: pulumi.String("my opensearch index"),
-//				ServiceName: pulumi.String("...."),
-//				Suffix:      pulumi.String("index"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type LogsOutputOpenSearchIndex struct {
 	pulumi.CustomResourceState
 
 	// If set, notify when size is near 80, 90 or 100 % of its maximum capacity
 	AlertNotifyEnabled pulumi.BoolOutput `pulumi:"alertNotifyEnabled"`
-	// Index creation
+	// Operation creation
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Current index size (in bytes)
+	// Current Index size (in bytes)
 	CurrentSize pulumi.IntOutput `pulumi:"currentSize"`
 	// Index description
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -60,13 +31,13 @@ type LogsOutputOpenSearchIndex struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// Index name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of shards
+	// Number of shard
 	NbShard pulumi.IntOutput `pulumi:"nbShard"`
 	// The service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Index suffix
 	Suffix pulumi.StringOutput `pulumi:"suffix"`
-	// Index last update
+	// Operation last update
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -114,9 +85,9 @@ func GetLogsOutputOpenSearchIndex(ctx *pulumi.Context,
 type logsOutputOpenSearchIndexState struct {
 	// If set, notify when size is near 80, 90 or 100 % of its maximum capacity
 	AlertNotifyEnabled *bool `pulumi:"alertNotifyEnabled"`
-	// Index creation
+	// Operation creation
 	CreatedAt *string `pulumi:"createdAt"`
-	// Current index size (in bytes)
+	// Current Index size (in bytes)
 	CurrentSize *int `pulumi:"currentSize"`
 	// Index description
 	Description *string `pulumi:"description"`
@@ -128,22 +99,22 @@ type logsOutputOpenSearchIndexState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// Index name
 	Name *string `pulumi:"name"`
-	// Number of shards
+	// Number of shard
 	NbShard *int `pulumi:"nbShard"`
 	// The service name
 	ServiceName *string `pulumi:"serviceName"`
 	// Index suffix
 	Suffix *string `pulumi:"suffix"`
-	// Index last update
+	// Operation last update
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type LogsOutputOpenSearchIndexState struct {
 	// If set, notify when size is near 80, 90 or 100 % of its maximum capacity
 	AlertNotifyEnabled pulumi.BoolPtrInput
-	// Index creation
+	// Operation creation
 	CreatedAt pulumi.StringPtrInput
-	// Current index size (in bytes)
+	// Current Index size (in bytes)
 	CurrentSize pulumi.IntPtrInput
 	// Index description
 	Description pulumi.StringPtrInput
@@ -155,13 +126,13 @@ type LogsOutputOpenSearchIndexState struct {
 	MaxSize pulumi.IntPtrInput
 	// Index name
 	Name pulumi.StringPtrInput
-	// Number of shards
+	// Number of shard
 	NbShard pulumi.IntPtrInput
 	// The service name
 	ServiceName pulumi.StringPtrInput
 	// Index suffix
 	Suffix pulumi.StringPtrInput
-	// Index last update
+	// Operation last update
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -172,7 +143,7 @@ func (LogsOutputOpenSearchIndexState) ElementType() reflect.Type {
 type logsOutputOpenSearchIndexArgs struct {
 	// Index description
 	Description string `pulumi:"description"`
-	// Number of shards
+	// Number of shard
 	NbShard int `pulumi:"nbShard"`
 	// The service name
 	ServiceName string `pulumi:"serviceName"`
@@ -184,7 +155,7 @@ type logsOutputOpenSearchIndexArgs struct {
 type LogsOutputOpenSearchIndexArgs struct {
 	// Index description
 	Description pulumi.StringInput
-	// Number of shards
+	// Number of shard
 	NbShard pulumi.IntInput
 	// The service name
 	ServiceName pulumi.StringInput
@@ -284,12 +255,12 @@ func (o LogsOutputOpenSearchIndexOutput) AlertNotifyEnabled() pulumi.BoolOutput 
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.BoolOutput { return v.AlertNotifyEnabled }).(pulumi.BoolOutput)
 }
 
-// Index creation
+// Operation creation
 func (o LogsOutputOpenSearchIndexOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Current index size (in bytes)
+// Current Index size (in bytes)
 func (o LogsOutputOpenSearchIndexOutput) CurrentSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.IntOutput { return v.CurrentSize }).(pulumi.IntOutput)
 }
@@ -319,7 +290,7 @@ func (o LogsOutputOpenSearchIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of shards
+// Number of shard
 func (o LogsOutputOpenSearchIndexOutput) NbShard() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.IntOutput { return v.NbShard }).(pulumi.IntOutput)
 }
@@ -334,7 +305,7 @@ func (o LogsOutputOpenSearchIndexOutput) Suffix() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.StringOutput { return v.Suffix }).(pulumi.StringOutput)
 }
 
-// Index last update
+// Operation last update
 func (o LogsOutputOpenSearchIndexOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputOpenSearchIndex) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

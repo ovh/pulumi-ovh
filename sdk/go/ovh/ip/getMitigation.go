@@ -7,38 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this resource to retrieve information about an IP permanent mitigation.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.GetMitigation(ctx, &ip.GetMitigationArgs{
-//				Ip:             "XXXXXX",
-//				IpOnMitigation: "XXXXXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupMitigation(ctx *pulumi.Context, args *LookupMitigationArgs, opts ...pulumi.InvokeOption) (*LookupMitigationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMitigationResult
@@ -51,26 +23,19 @@ func LookupMitigation(ctx *pulumi.Context, args *LookupMitigationArgs, opts ...p
 
 // A collection of arguments for invoking getMitigation.
 type LookupMitigationArgs struct {
-	// The IP or the CIDR
-	Ip string `pulumi:"ip"`
-	// IPv4 address
+	Ip             string `pulumi:"ip"`
 	IpOnMitigation string `pulumi:"ipOnMitigation"`
 }
 
 // A collection of values returned by getMitigation.
 type LookupMitigationResult struct {
-	// Set on true if the IP is on auto-mitigation
 	Auto bool `pulumi:"auto"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The IP or the CIDR
-	Ip string `pulumi:"ip"`
-	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	Id             string `pulumi:"id"`
+	Ip             string `pulumi:"ip"`
 	IpOnMitigation string `pulumi:"ipOnMitigation"`
 	Permanent      bool   `pulumi:"permanent"`
-	// Current state of the IP on mitigation
-	State string `pulumi:"state"`
+	State          string `pulumi:"state"`
 }
 
 func LookupMitigationOutput(ctx *pulumi.Context, args LookupMitigationOutputArgs, opts ...pulumi.InvokeOption) LookupMitigationResultOutput {
@@ -84,9 +49,7 @@ func LookupMitigationOutput(ctx *pulumi.Context, args LookupMitigationOutputArgs
 
 // A collection of arguments for invoking getMitigation.
 type LookupMitigationOutputArgs struct {
-	// The IP or the CIDR
-	Ip pulumi.StringInput `pulumi:"ip"`
-	// IPv4 address
+	Ip             pulumi.StringInput `pulumi:"ip"`
 	IpOnMitigation pulumi.StringInput `pulumi:"ipOnMitigation"`
 }
 
@@ -109,7 +72,6 @@ func (o LookupMitigationResultOutput) ToLookupMitigationResultOutputWithContext(
 	return o
 }
 
-// Set on true if the IP is on auto-mitigation
 func (o LookupMitigationResultOutput) Auto() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMitigationResult) bool { return v.Auto }).(pulumi.BoolOutput)
 }
@@ -119,13 +81,10 @@ func (o LookupMitigationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMitigationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IP or the CIDR
 func (o LookupMitigationResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMitigationResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IPv4 address
-// * ` permanent  ` - Set on true if the IP is on permanent mitigation
 func (o LookupMitigationResultOutput) IpOnMitigation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMitigationResult) string { return v.IpOnMitigation }).(pulumi.StringOutput)
 }
@@ -134,7 +93,6 @@ func (o LookupMitigationResultOutput) Permanent() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMitigationResult) bool { return v.Permanent }).(pulumi.BoolOutput)
 }
 
-// Current state of the IP on mitigation
 func (o LookupMitigationResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMitigationResult) string { return v.State }).(pulumi.StringOutput)
 }

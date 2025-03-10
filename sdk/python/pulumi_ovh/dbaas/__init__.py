@@ -16,6 +16,8 @@ from .logs_input import *
 from .logs_output_graylog_stream import *
 from .logs_output_open_search_alias import *
 from .logs_output_open_search_index import *
+from .logs_role import *
+from .logs_role_permission_stream import *
 from .logs_token import *
 from ._inputs import *
 from . import outputs

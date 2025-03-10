@@ -9,74 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
-    /// <summary>
-    /// Creates a dbaas logs input.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
-    ///     {
-    ///         Name = "logstash",
-    ///         Version = "7.x",
-    ///     });
-    /// 
-    ///     var stream = new Ovh.Dbaas.LogsOutputGraylogStream("stream", new()
-    ///     {
-    ///         ServiceName = "....",
-    ///         Title = "my stream",
-    ///         Description = "my graylog stream",
-    ///     });
-    /// 
-    ///     var input = new Ovh.Dbaas.LogsInput("input", new()
-    ///     {
-    ///         ServiceName = stream.ServiceName,
-    ///         Description = stream.Description,
-    ///         Title = stream.Title,
-    ///         EngineId = logstash.Apply(getLogsInputEngineResult =&gt; getLogsInputEngineResult.Id),
-    ///         StreamId = stream.Id,
-    ///         AllowedNetworks = new[]
-    ///         {
-    ///             "10.0.0.0/16",
-    ///         },
-    ///         ExposedPort = "6154",
-    ///         NbInstance = 2,
-    ///         Configuration = new Ovh.Dbaas.Inputs.LogsInputConfigurationArgs
-    ///         {
-    ///             Logstash = new Ovh.Dbaas.Inputs.LogsInputConfigurationLogstashArgs
-    ///             {
-    ///                 InputSection = @"  beats {
-    ///     port =&gt; 6514
-    ///     ssl =&gt; true
-    ///     ssl_certificate =&gt; ""/etc/ssl/private/server.crt""
-    ///     ssl_key =&gt; ""/etc/ssl/private/server.key""
-    ///   }
-    /// ",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsInput:LogsInput")]
     public partial class LogsInput : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of IP blocks
+        /// IP blocks
         /// </summary>
         [Output("allowedNetworks")]
         public Output<ImmutableArray<string>> AllowedNetworks { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        /// Whether the workload is auto-scaled
         /// </summary>
         [Output("autoscale")]
         public Output<bool?> Autoscale { get; private set; } = null!;
@@ -148,7 +91,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<int?> MinScaleInstance { get; private set; } = null!;
 
         /// <summary>
-        /// Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        /// Number of instance running
         /// </summary>
         [Output("nbInstance")]
         public Output<int?> NbInstance { get; private set; } = null!;
@@ -159,9 +102,6 @@ namespace Pulumi.Ovh.Dbaas
         [Output("publicAddress")]
         public Output<string> PublicAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// service name
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -250,7 +190,7 @@ namespace Pulumi.Ovh.Dbaas
         private InputList<string>? _allowedNetworks;
 
         /// <summary>
-        /// List of IP blocks
+        /// IP blocks
         /// </summary>
         public InputList<string> AllowedNetworks
         {
@@ -259,7 +199,7 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
-        /// Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        /// Whether the workload is auto-scaled
         /// </summary>
         [Input("autoscale")]
         public Input<bool>? Autoscale { get; set; }
@@ -301,14 +241,11 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? MinScaleInstance { get; set; }
 
         /// <summary>
-        /// Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        /// Number of instance running
         /// </summary>
         [Input("nbInstance")]
         public Input<int>? NbInstance { get; set; }
 
-        /// <summary>
-        /// service name
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -336,7 +273,7 @@ namespace Pulumi.Ovh.Dbaas
         private InputList<string>? _allowedNetworks;
 
         /// <summary>
-        /// List of IP blocks
+        /// IP blocks
         /// </summary>
         public InputList<string> AllowedNetworks
         {
@@ -345,7 +282,7 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
-        /// Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        /// Whether the workload is auto-scaled
         /// </summary>
         [Input("autoscale")]
         public Input<bool>? Autoscale { get; set; }
@@ -417,7 +354,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? MinScaleInstance { get; set; }
 
         /// <summary>
-        /// Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        /// Number of instance running
         /// </summary>
         [Input("nbInstance")]
         public Input<int>? NbInstance { get; set; }
@@ -428,9 +365,6 @@ namespace Pulumi.Ovh.Dbaas
         [Input("publicAddress")]
         public Input<string>? PublicAddress { get; set; }
 
-        /// <summary>
-        /// service name
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

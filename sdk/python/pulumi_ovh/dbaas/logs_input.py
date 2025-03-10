@@ -38,15 +38,14 @@ class LogsInputArgs:
         :param pulumi.Input['LogsInputConfigurationArgs'] configuration: Input configuration
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID
-        :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] stream_id: Associated Graylog stream
         :param pulumi.Input[str] title: Input title
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: IP blocks
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled
         :param pulumi.Input[str] exposed_port: Port
         :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
         :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
-        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        :param pulumi.Input[int] nb_instance: Number of instance running
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "description", description)
@@ -106,9 +105,6 @@ class LogsInputArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        service name
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -143,7 +139,7 @@ class LogsInputArgs:
     @pulumi.getter(name="allowedNetworks")
     def allowed_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP blocks
+        IP blocks
         """
         return pulumi.get(self, "allowed_networks")
 
@@ -155,7 +151,7 @@ class LogsInputArgs:
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        Whether the workload is auto-scaled
         """
         return pulumi.get(self, "autoscale")
 
@@ -203,7 +199,7 @@ class LogsInputArgs:
     @pulumi.getter(name="nbInstance")
     def nb_instance(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        Number of instance running
         """
         return pulumi.get(self, "nb_instance")
 
@@ -238,8 +234,8 @@ class _LogsInputState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogsInput resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: IP blocks
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled
         :param pulumi.Input['LogsInputConfigurationArgs'] configuration: Input configuration
         :param pulumi.Input[str] created_at: Input creation
         :param pulumi.Input[int] current_nb_instance: Number of instance running (returned by the API)
@@ -251,9 +247,8 @@ class _LogsInputState:
         :param pulumi.Input[bool] is_restart_required: Indicate if input need to be restarted
         :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
         :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
-        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        :param pulumi.Input[int] nb_instance: Number of instance running
         :param pulumi.Input[str] public_address: Input IP address
-        :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] ssl_certificate: Input SSL certificate
         :param pulumi.Input[str] status: init: configuration required, pending: ready to start, running: available
         :param pulumi.Input[str] stream_id: Associated Graylog stream
@@ -307,7 +302,7 @@ class _LogsInputState:
     @pulumi.getter(name="allowedNetworks")
     def allowed_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP blocks
+        IP blocks
         """
         return pulumi.get(self, "allowed_networks")
 
@@ -319,7 +314,7 @@ class _LogsInputState:
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        Whether the workload is auto-scaled
         """
         return pulumi.get(self, "autoscale")
 
@@ -463,7 +458,7 @@ class _LogsInputState:
     @pulumi.getter(name="nbInstance")
     def nb_instance(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        Number of instance running
         """
         return pulumi.get(self, "nb_instance")
 
@@ -486,9 +481,6 @@ class _LogsInputState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        service name
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -575,54 +567,18 @@ class LogsInput(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a dbaas logs input.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        logstash = ovh.Dbaas.get_logs_input_engine(name="logstash",
-            version="7.x")
-        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
-            service_name="....",
-            title="my stream",
-            description="my graylog stream")
-        input = ovh.dbaas.LogsInput("input",
-            service_name=stream.service_name,
-            description=stream.description,
-            title=stream.title,
-            engine_id=logstash.id,
-            stream_id=stream.id,
-            allowed_networks=["10.0.0.0/16"],
-            exposed_port="6154",
-            nb_instance=2,
-            configuration={
-                "logstash": {
-                    "input_section": \"\"\"  beats {
-            port => 6514
-            ssl => true
-            ssl_certificate => "/etc/ssl/private/server.crt"
-            ssl_key => "/etc/ssl/private/server.key"
-          }
-        \"\"\",
-                },
-            })
-        ```
-
+        Create a LogsInput resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: IP blocks
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled
         :param pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']] configuration: Input configuration
         :param pulumi.Input[str] description: Input description
         :param pulumi.Input[str] engine_id: Input engine ID
         :param pulumi.Input[str] exposed_port: Port
         :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
         :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
-        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
-        :param pulumi.Input[str] service_name: service name
+        :param pulumi.Input[int] nb_instance: Number of instance running
         :param pulumi.Input[str] stream_id: Associated Graylog stream
         :param pulumi.Input[str] title: Input title
         """
@@ -633,42 +589,7 @@ class LogsInput(pulumi.CustomResource):
                  args: LogsInputArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a dbaas logs input.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        logstash = ovh.Dbaas.get_logs_input_engine(name="logstash",
-            version="7.x")
-        stream = ovh.dbaas.LogsOutputGraylogStream("stream",
-            service_name="....",
-            title="my stream",
-            description="my graylog stream")
-        input = ovh.dbaas.LogsInput("input",
-            service_name=stream.service_name,
-            description=stream.description,
-            title=stream.title,
-            engine_id=logstash.id,
-            stream_id=stream.id,
-            allowed_networks=["10.0.0.0/16"],
-            exposed_port="6154",
-            nb_instance=2,
-            configuration={
-                "logstash": {
-                    "input_section": \"\"\"  beats {
-            port => 6514
-            ssl => true
-            ssl_certificate => "/etc/ssl/private/server.crt"
-            ssl_key => "/etc/ssl/private/server.key"
-          }
-        \"\"\",
-                },
-            })
-        ```
-
+        Create a LogsInput resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param LogsInputArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -778,8 +699,8 @@ class LogsInput(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: List of IP blocks
-        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_networks: IP blocks
+        :param pulumi.Input[bool] autoscale: Whether the workload is auto-scaled
         :param pulumi.Input[Union['LogsInputConfigurationArgs', 'LogsInputConfigurationArgsDict']] configuration: Input configuration
         :param pulumi.Input[str] created_at: Input creation
         :param pulumi.Input[int] current_nb_instance: Number of instance running (returned by the API)
@@ -791,9 +712,8 @@ class LogsInput(pulumi.CustomResource):
         :param pulumi.Input[bool] is_restart_required: Indicate if input need to be restarted
         :param pulumi.Input[int] max_scale_instance: Maximum number of instances in auto-scaled mode
         :param pulumi.Input[int] min_scale_instance: Minimum number of instances in auto-scaled mode
-        :param pulumi.Input[int] nb_instance: Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        :param pulumi.Input[int] nb_instance: Number of instance running
         :param pulumi.Input[str] public_address: Input IP address
-        :param pulumi.Input[str] service_name: service name
         :param pulumi.Input[str] ssl_certificate: Input SSL certificate
         :param pulumi.Input[str] status: init: configuration required, pending: ready to start, running: available
         :param pulumi.Input[str] stream_id: Associated Graylog stream
@@ -831,7 +751,7 @@ class LogsInput(pulumi.CustomResource):
     @pulumi.getter(name="allowedNetworks")
     def allowed_networks(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of IP blocks
+        IP blocks
         """
         return pulumi.get(self, "allowed_networks")
 
@@ -839,7 +759,7 @@ class LogsInput(pulumi.CustomResource):
     @pulumi.getter
     def autoscale(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the workload is auto-scaled (mutually exclusive with parameter `nb_instance`)
+        Whether the workload is auto-scaled
         """
         return pulumi.get(self, "autoscale")
 
@@ -935,7 +855,7 @@ class LogsInput(pulumi.CustomResource):
     @pulumi.getter(name="nbInstance")
     def nb_instance(self) -> pulumi.Output[Optional[int]]:
         """
-        Number of instance running (input, mutually exclusive with parameter `autoscale`)
+        Number of instance running
         """
         return pulumi.get(self, "nb_instance")
 
@@ -950,9 +870,6 @@ class LogsInput(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        service name
-        """
         return pulumi.get(self, "service_name")
 
     @property

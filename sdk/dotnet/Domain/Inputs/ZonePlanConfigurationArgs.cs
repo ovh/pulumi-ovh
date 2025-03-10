@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.Domain.Inputs
     public sealed class ZonePlanConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of the resource : `zone` or `template`
+        /// Identifier of the resource
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        /// Path to the resource in API.OVH.COM
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

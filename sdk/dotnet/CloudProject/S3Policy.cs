@@ -9,100 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Set the S3 Policy of a public cloud project user.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var user = new Ovh.CloudProject.User("user", new()
-    ///     {
-    ///         ServiceName = "XXX",
-    ///         Description = "my user",
-    ///         RoleNames = new[]
-    ///         {
-    ///             "objectstore_operator",
-    ///         },
-    ///     });
-    /// 
-    ///     var myS3Credentials = new Ovh.CloudProject.S3Credential("myS3Credentials", new()
-    ///     {
-    ///         ServiceName = user.ServiceName,
-    ///         UserId = user.Id,
-    ///     });
-    /// 
-    ///     var policy = new Ovh.CloudProject.S3Policy("policy", new()
-    ///     {
-    ///         ServiceName = user.ServiceName,
-    ///         UserId = user.Id,
-    ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["Statement"] = new[]
-    ///             {
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["Sid"] = "RWContainer",
-    ///                     ["Effect"] = "Allow",
-    ///                     ["Action"] = new[]
-    ///                     {
-    ///                         "s3:GetObject",
-    ///                         "s3:PutObject",
-    ///                         "s3:DeleteObject",
-    ///                         "s3:ListBucket",
-    ///                         "s3:ListMultipartUploadParts",
-    ///                         "s3:ListBucketMultipartUploads",
-    ///                         "s3:AbortMultipartUpload",
-    ///                         "s3:GetBucketLocation",
-    ///                     },
-    ///                     ["Resource"] = new[]
-    ///                     {
-    ///                         "arn:aws:s3:::hp-bucket",
-    ///                         "arn:aws:s3:::hp-bucket/*",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/s3Policy:S3Policy")]
     public partial class S3Policy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        /// The policy document. This is a JSON formatted string.
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name of the resource representing the ID of the cloud project.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a public cloud project's user.
+        /// The user ID
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -155,20 +78,19 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class S3PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        /// The policy document. This is a JSON formatted string.
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name of the resource representing the ID of the cloud project.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a public cloud project's user.
+        /// The user ID
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -182,20 +104,19 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class S3PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        /// The policy document. This is a JSON formatted string.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// Service name of the resource representing the ID of the cloud project.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The ID of a public cloud project's user.
+        /// The user ID
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

@@ -9,99 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myaccount = Ovh.Me.GetMe.Invoke();
-    /// 
-    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
-    ///     {
-    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
-    ///     });
-    /// 
-    ///     var iplb = Ovh.Order.GetCartProductPlan.Invoke(new()
-    ///     {
-    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
-    ///         PriceCapacity = "renew",
-    ///         Product = "ipLoadbalancing",
-    ///         PlanCode = "iplb-lb1",
-    ///     });
-    /// 
-    ///     var bhs = Ovh.Order.GetCartProductOptionsPlan.Invoke(new()
-    ///     {
-    ///         CartId = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.CartId),
-    ///         PriceCapacity = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PriceCapacity),
-    ///         Product = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.Product),
-    ///         PlanCode = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///         OptionsPlanCode = "iplb-zone-lb1-rbx",
-    ///     });
-    /// 
-    ///     var iplb_lb1 = new Ovh.IpLoadBalancing.LoadBalancer("iplb-lb1", new()
-    ///     {
-    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
-    ///         DisplayName = "my ip loadbalancing",
-    ///         Plan = new Ovh.IpLoadBalancing.Inputs.LoadBalancerPlanArgs
-    ///         {
-    ///             Duration = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
-    ///             PlanCode = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = iplb.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
-    ///         },
-    ///         PlanOptions = new[]
-    ///         {
-    ///             new Ovh.IpLoadBalancing.Inputs.LoadBalancerPlanOptionArgs
-    ///             {
-    ///                 Duration = bhs.Apply(getCartProductOptionsPlanResult =&gt; getCartProductOptionsPlanResult.SelectedPrices[0]?.Duration),
-    ///                 PlanCode = bhs.Apply(getCartProductOptionsPlanResult =&gt; getCartProductOptionsPlanResult.PlanCode),
-    ///                 PricingMode = bhs.Apply(getCartProductOptionsPlanResult =&gt; getCartProductOptionsPlanResult.SelectedPrices[0]?.PricingMode),
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// OVHcloud IP load balancing services can be imported using its `service_name`.
-    /// 
-    /// Using the following configuration:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = ovh_iploadbalancing.iplb
-    /// 
-    ///   id = "&lt;service name&gt;"
-    /// 
-    /// }
-    /// 
-    /// You can then run:
-    /// 
-    /// bash
-    /// 
-    /// $ pulumi preview -generate-config-out=iplb.tf
-    /// 
-    /// $ pulumi up
-    /// 
-    /// The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
-    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// URN of the load balancer, used when writing IAM policies
-        /// </summary>
         [Output("LoadBalancerURN")]
         public Output<string> LoadBalancerURN { get; private set; } = null!;
 
@@ -154,7 +64,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<ImmutableArray<Outputs.LoadBalancerOrder>> Orders { get; private set; } = null!;
 
         /// <summary>
-        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// Ovh Subsidiary
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -184,7 +94,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+        /// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+        /// 2.3, Java 7. Intermediate if null.
         /// </summary>
         [Output("sslConfiguration")]
         public Output<string> SslConfiguration { get; private set; } = null!;
@@ -283,7 +195,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         }
 
         /// <summary>
-        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// Ovh Subsidiary
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -313,7 +225,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         }
 
         /// <summary>
-        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+        /// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+        /// 2.3, Java 7. Intermediate if null.
         /// </summary>
         [Input("sslConfiguration")]
         public Input<string>? SslConfiguration { get; set; }
@@ -326,9 +240,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
 
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// URN of the load balancer, used when writing IAM policies
-        /// </summary>
         [Input("LoadBalancerURN")]
         public Input<string>? LoadBalancerURN { get; set; }
 
@@ -403,7 +314,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         }
 
         /// <summary>
-        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// Ovh Subsidiary
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -439,7 +350,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. one of "intermediate", "modern".
+        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and
+        /// Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android
+        /// 2.3, Java 7. Intermediate if null.
         /// </summary>
         [Input("sslConfiguration")]
         public Input<string>? SslConfiguration { get; set; }

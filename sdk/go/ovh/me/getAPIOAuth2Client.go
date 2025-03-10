@@ -7,37 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about an existing OAuth2 service account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.GetAPIOAuth2Client(ctx, &me.GetAPIOAuth2ClientArgs{
-//				ClientId: "5f8969a993ec8b4b",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAPIOAuth2Client(ctx *pulumi.Context, args *LookupAPIOAuth2ClientArgs, opts ...pulumi.InvokeOption) (*LookupAPIOAuth2ClientResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAPIOAuth2ClientResult
@@ -50,25 +23,19 @@ func LookupAPIOAuth2Client(ctx *pulumi.Context, args *LookupAPIOAuth2ClientArgs,
 
 // A collection of arguments for invoking getAPIOAuth2Client.
 type LookupAPIOAuth2ClientArgs struct {
-	// Client ID of an existing OAuth2 service account.
 	ClientId string `pulumi:"clientId"`
 }
 
 // A collection of values returned by getAPIOAuth2Client.
 type LookupAPIOAuth2ClientResult struct {
-	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls []string `pulumi:"callbackUrls"`
-	// Client ID of the created service account.
-	ClientId string `pulumi:"clientId"`
-	// OAuth2 client description.
-	Description string `pulumi:"description"`
-	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
-	Flow string `pulumi:"flow"`
+	ClientId     string   `pulumi:"clientId"`
+	Description  string   `pulumi:"description"`
+	Flow         string   `pulumi:"flow"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	Identity string `pulumi:"identity"`
-	// OAuth2 client name.
-	Name string `pulumi:"name"`
+	Name     string `pulumi:"name"`
 }
 
 func LookupAPIOAuth2ClientOutput(ctx *pulumi.Context, args LookupAPIOAuth2ClientOutputArgs, opts ...pulumi.InvokeOption) LookupAPIOAuth2ClientResultOutput {
@@ -82,7 +49,6 @@ func LookupAPIOAuth2ClientOutput(ctx *pulumi.Context, args LookupAPIOAuth2Client
 
 // A collection of arguments for invoking getAPIOAuth2Client.
 type LookupAPIOAuth2ClientOutputArgs struct {
-	// Client ID of an existing OAuth2 service account.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 }
 
@@ -105,22 +71,18 @@ func (o LookupAPIOAuth2ClientResultOutput) ToLookupAPIOAuth2ClientResultOutputWi
 	return o
 }
 
-// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 func (o LookupAPIOAuth2ClientResultOutput) CallbackUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) []string { return v.CallbackUrls }).(pulumi.StringArrayOutput)
 }
 
-// Client ID of the created service account.
 func (o LookupAPIOAuth2ClientResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// OAuth2 client description.
 func (o LookupAPIOAuth2ClientResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 func (o LookupAPIOAuth2ClientResultOutput) Flow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.Flow }).(pulumi.StringOutput)
 }
@@ -134,7 +96,6 @@ func (o LookupAPIOAuth2ClientResultOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.Identity }).(pulumi.StringOutput)
 }
 
-// OAuth2 client name.
 func (o LookupAPIOAuth2ClientResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -11,75 +11,12 @@ namespace Pulumi.Ovh.Iam
 {
     public static class GetPermissionsGroups
     {
-        /// <summary>
-        /// Use this data source to retrieve an IAM permissions group.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
-        ///     {
-        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetPermissionsGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve an IAM permissions group.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
-        ///     {
-        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetPermissionsGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve an IAM permissions group.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Ovh = Pulumi.Ovh;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
-        ///     {
-        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetPermissionsGroupsResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());
     }

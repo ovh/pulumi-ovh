@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lbNetwork = ovh.IpLoadBalancing.getVrackNetwork({
- *     serviceName: "XXXXXX",
- *     vrackNetworkId: "yyy",
- * });
- * ```
- */
 export function getVrackNetwork(args: GetVrackNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetVrackNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", {
@@ -31,13 +16,7 @@ export function getVrackNetwork(args: GetVrackNetworkArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getVrackNetwork.
  */
 export interface GetVrackNetworkArgs {
-    /**
-     * The internal name of your IP load balancing
-     */
     serviceName: string;
-    /**
-     * Internal Load Balancer identifier of the vRack private network
-     */
     vrackNetworkId: number;
 }
 
@@ -45,44 +24,17 @@ export interface GetVrackNetworkArgs {
  * A collection of values returned by getVrackNetwork.
  */
 export interface GetVrackNetworkResult {
-    /**
-     * Human readable name for your vrack network
-     */
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
-     */
     readonly natIp: string;
     readonly serviceName: string;
-    /**
-     * IP block of the private network in the vRack
-     */
     readonly subnet: string;
-    /**
-     * VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
-     */
     readonly vlan: number;
     readonly vrackNetworkId: number;
 }
-/**
- * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lbNetwork = ovh.IpLoadBalancing.getVrackNetwork({
- *     serviceName: "XXXXXX",
- *     vrackNetworkId: "yyy",
- * });
- * ```
- */
 export function getVrackNetworkOutput(args: GetVrackNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVrackNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", {
@@ -95,12 +47,6 @@ export function getVrackNetworkOutput(args: GetVrackNetworkOutputArgs, opts?: pu
  * A collection of arguments for invoking getVrackNetwork.
  */
 export interface GetVrackNetworkOutputArgs {
-    /**
-     * The internal name of your IP load balancing
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Internal Load Balancer identifier of the vRack private network
-     */
     vrackNetworkId: pulumi.Input<number>;
 }

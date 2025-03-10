@@ -7,31 +7,22 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type HttpFarmProbe struct {
-	// Force use of SSL (TLS)
-	ForceSsl *bool `pulumi:"forceSsl"`
-	// probe interval, Value between 30 and 3600 seconds, default 30
-	Interval *int `pulumi:"interval"`
-	// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
-	Match *string `pulumi:"match"`
-	// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
-	Method *string `pulumi:"method"`
-	// Negate probe result
-	Negate *bool `pulumi:"negate"`
-	// Pattern to match against `match`
-	Pattern *string `pulumi:"pattern"`
-	// Port for backends to receive traffic on.
-	Port *int `pulumi:"port"`
-	// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
-	Type string `pulumi:"type"`
-	// URL for HTTP probe type.
-	Url *string `pulumi:"url"`
+	ForceSsl *bool   `pulumi:"forceSsl"`
+	Interval *int    `pulumi:"interval"`
+	Match    *string `pulumi:"match"`
+	Method   *string `pulumi:"method"`
+	Negate   *bool   `pulumi:"negate"`
+	Pattern  *string `pulumi:"pattern"`
+	Port     *int    `pulumi:"port"`
+	Type     string  `pulumi:"type"`
+	Url      *string `pulumi:"url"`
 }
 
 // HttpFarmProbeInput is an input type that accepts HttpFarmProbeArgs and HttpFarmProbeOutput values.
@@ -46,24 +37,15 @@ type HttpFarmProbeInput interface {
 }
 
 type HttpFarmProbeArgs struct {
-	// Force use of SSL (TLS)
-	ForceSsl pulumi.BoolPtrInput `pulumi:"forceSsl"`
-	// probe interval, Value between 30 and 3600 seconds, default 30
-	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
-	Match pulumi.StringPtrInput `pulumi:"match"`
-	// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
-	Method pulumi.StringPtrInput `pulumi:"method"`
-	// Negate probe result
-	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	// Pattern to match against `match`
-	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
-	// Port for backends to receive traffic on.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
-	Type pulumi.StringInput `pulumi:"type"`
-	// URL for HTTP probe type.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	ForceSsl pulumi.BoolPtrInput   `pulumi:"forceSsl"`
+	Interval pulumi.IntPtrInput    `pulumi:"interval"`
+	Match    pulumi.StringPtrInput `pulumi:"match"`
+	Method   pulumi.StringPtrInput `pulumi:"method"`
+	Negate   pulumi.BoolPtrInput   `pulumi:"negate"`
+	Pattern  pulumi.StringPtrInput `pulumi:"pattern"`
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Type     pulumi.StringInput    `pulumi:"type"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (HttpFarmProbeArgs) ElementType() reflect.Type {
@@ -143,47 +125,38 @@ func (o HttpFarmProbeOutput) ToHttpFarmProbePtrOutputWithContext(ctx context.Con
 	}).(HttpFarmProbePtrOutput)
 }
 
-// Force use of SSL (TLS)
 func (o HttpFarmProbeOutput) ForceSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *bool { return v.ForceSsl }).(pulumi.BoolPtrOutput)
 }
 
-// probe interval, Value between 30 and 3600 seconds, default 30
 func (o HttpFarmProbeOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
 func (o HttpFarmProbeOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
 func (o HttpFarmProbeOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// Negate probe result
 func (o HttpFarmProbeOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
 
-// Pattern to match against `match`
 func (o HttpFarmProbeOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
-// Port for backends to receive traffic on.
 func (o HttpFarmProbeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
 func (o HttpFarmProbeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpFarmProbe) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// URL for HTTP probe type.
 func (o HttpFarmProbeOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpFarmProbe) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -212,7 +185,6 @@ func (o HttpFarmProbePtrOutput) Elem() HttpFarmProbeOutput {
 	}).(HttpFarmProbeOutput)
 }
 
-// Force use of SSL (TLS)
 func (o HttpFarmProbePtrOutput) ForceSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *bool {
 		if v == nil {
@@ -222,7 +194,6 @@ func (o HttpFarmProbePtrOutput) ForceSsl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// probe interval, Value between 30 and 3600 seconds, default 30
 func (o HttpFarmProbePtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *int {
 		if v == nil {
@@ -232,7 +203,6 @@ func (o HttpFarmProbePtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
 func (o HttpFarmProbePtrOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *string {
 		if v == nil {
@@ -242,7 +212,6 @@ func (o HttpFarmProbePtrOutput) Match() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
 func (o HttpFarmProbePtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *string {
 		if v == nil {
@@ -252,7 +221,6 @@ func (o HttpFarmProbePtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Negate probe result
 func (o HttpFarmProbePtrOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *bool {
 		if v == nil {
@@ -262,7 +230,6 @@ func (o HttpFarmProbePtrOutput) Negate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Pattern to match against `match`
 func (o HttpFarmProbePtrOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *string {
 		if v == nil {
@@ -272,7 +239,6 @@ func (o HttpFarmProbePtrOutput) Pattern() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port for backends to receive traffic on.
 func (o HttpFarmProbePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *int {
 		if v == nil {
@@ -282,7 +248,6 @@ func (o HttpFarmProbePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
 func (o HttpFarmProbePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *string {
 		if v == nil {
@@ -292,7 +257,6 @@ func (o HttpFarmProbePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL for HTTP probe type.
 func (o HttpFarmProbePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFarmProbe) *string {
 		if v == nil {
@@ -478,9 +442,9 @@ func (o HttpRouteActionPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type HttpRouteRuleType struct {
-	// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
 	Field *string `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "availableRules"
+	// Matching operator. Not all operators are available for all fields. See "/availableRules"
 	Match *string `pulumi:"match"`
 	// Invert the matching operator effect
 	Negate *bool `pulumi:"negate"`
@@ -504,9 +468,9 @@ type HttpRouteRuleTypeInput interface {
 }
 
 type HttpRouteRuleTypeArgs struct {
-	// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
 	Field pulumi.StringPtrInput `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "availableRules"
+	// Matching operator. Not all operators are available for all fields. See "/availableRules"
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// Invert the matching operator effect
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
@@ -569,12 +533,12 @@ func (o HttpRouteRuleTypeOutput) ToHttpRouteRuleTypeOutputWithContext(ctx contex
 	return o
 }
 
-// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
 func (o HttpRouteRuleTypeOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleType) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
-// Matching operator. Not all operators are available for all fields. See "availableRules"
+// Matching operator. Not all operators are available for all fields. See "/availableRules"
 func (o HttpRouteRuleTypeOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleType) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -1532,24 +1496,15 @@ func (o LoadBalancerPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type TcpFarmProbe struct {
-	// Force use of SSL (TLS)
-	ForceSsl *bool `pulumi:"forceSsl"`
-	// probe interval, Value between 30 and 3600 seconds, default 30
-	Interval *int `pulumi:"interval"`
-	// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
-	Match *string `pulumi:"match"`
-	// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
-	Method *string `pulumi:"method"`
-	// Negate probe result
-	Negate *bool `pulumi:"negate"`
-	// Pattern to match against `match`
-	Pattern *string `pulumi:"pattern"`
-	// Port for backends to receive traffic on.
-	Port *int `pulumi:"port"`
-	// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
-	Type string `pulumi:"type"`
-	// URL for HTTP probe type.
-	Url *string `pulumi:"url"`
+	ForceSsl *bool   `pulumi:"forceSsl"`
+	Interval *int    `pulumi:"interval"`
+	Match    *string `pulumi:"match"`
+	Method   *string `pulumi:"method"`
+	Negate   *bool   `pulumi:"negate"`
+	Pattern  *string `pulumi:"pattern"`
+	Port     *int    `pulumi:"port"`
+	Type     string  `pulumi:"type"`
+	Url      *string `pulumi:"url"`
 }
 
 // TcpFarmProbeInput is an input type that accepts TcpFarmProbeArgs and TcpFarmProbeOutput values.
@@ -1564,24 +1519,15 @@ type TcpFarmProbeInput interface {
 }
 
 type TcpFarmProbeArgs struct {
-	// Force use of SSL (TLS)
-	ForceSsl pulumi.BoolPtrInput `pulumi:"forceSsl"`
-	// probe interval, Value between 30 and 3600 seconds, default 30
-	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
-	Match pulumi.StringPtrInput `pulumi:"match"`
-	// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
-	Method pulumi.StringPtrInput `pulumi:"method"`
-	// Negate probe result
-	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	// Pattern to match against `match`
-	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
-	// Port for backends to receive traffic on.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
-	Type pulumi.StringInput `pulumi:"type"`
-	// URL for HTTP probe type.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	ForceSsl pulumi.BoolPtrInput   `pulumi:"forceSsl"`
+	Interval pulumi.IntPtrInput    `pulumi:"interval"`
+	Match    pulumi.StringPtrInput `pulumi:"match"`
+	Method   pulumi.StringPtrInput `pulumi:"method"`
+	Negate   pulumi.BoolPtrInput   `pulumi:"negate"`
+	Pattern  pulumi.StringPtrInput `pulumi:"pattern"`
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Type     pulumi.StringInput    `pulumi:"type"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (TcpFarmProbeArgs) ElementType() reflect.Type {
@@ -1661,47 +1607,38 @@ func (o TcpFarmProbeOutput) ToTcpFarmProbePtrOutputWithContext(ctx context.Conte
 	}).(TcpFarmProbePtrOutput)
 }
 
-// Force use of SSL (TLS)
 func (o TcpFarmProbeOutput) ForceSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *bool { return v.ForceSsl }).(pulumi.BoolPtrOutput)
 }
 
-// probe interval, Value between 30 and 3600 seconds, default 30
 func (o TcpFarmProbeOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
 func (o TcpFarmProbeOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
 func (o TcpFarmProbeOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// Negate probe result
 func (o TcpFarmProbeOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
 
-// Pattern to match against `match`
 func (o TcpFarmProbeOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
-// Port for backends to receive traffic on.
 func (o TcpFarmProbeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
 func (o TcpFarmProbeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TcpFarmProbe) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// URL for HTTP probe type.
 func (o TcpFarmProbeOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpFarmProbe) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -1730,7 +1667,6 @@ func (o TcpFarmProbePtrOutput) Elem() TcpFarmProbeOutput {
 	}).(TcpFarmProbeOutput)
 }
 
-// Force use of SSL (TLS)
 func (o TcpFarmProbePtrOutput) ForceSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *bool {
 		if v == nil {
@@ -1740,7 +1676,6 @@ func (o TcpFarmProbePtrOutput) ForceSsl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// probe interval, Value between 30 and 3600 seconds, default 30
 func (o TcpFarmProbePtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *int {
 		if v == nil {
@@ -1750,7 +1685,6 @@ func (o TcpFarmProbePtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
 func (o TcpFarmProbePtrOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *string {
 		if v == nil {
@@ -1760,7 +1694,6 @@ func (o TcpFarmProbePtrOutput) Match() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
 func (o TcpFarmProbePtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *string {
 		if v == nil {
@@ -1770,7 +1703,6 @@ func (o TcpFarmProbePtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Negate probe result
 func (o TcpFarmProbePtrOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *bool {
 		if v == nil {
@@ -1780,7 +1712,6 @@ func (o TcpFarmProbePtrOutput) Negate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Pattern to match against `match`
 func (o TcpFarmProbePtrOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *string {
 		if v == nil {
@@ -1790,7 +1721,6 @@ func (o TcpFarmProbePtrOutput) Pattern() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port for backends to receive traffic on.
 func (o TcpFarmProbePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *int {
 		if v == nil {
@@ -1800,7 +1730,6 @@ func (o TcpFarmProbePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
 func (o TcpFarmProbePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *string {
 		if v == nil {
@@ -1810,7 +1739,6 @@ func (o TcpFarmProbePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL for HTTP probe type.
 func (o TcpFarmProbePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmProbe) *string {
 		if v == nil {
@@ -1821,7 +1749,7 @@ func (o TcpFarmProbePtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type TcpRouteAction struct {
-	// Farm ID for "farm" action type, empty for others.
+	// Farm ID for "farm" action type, empty for others
 	Target *string `pulumi:"target"`
 	// Action to trigger if all the rules of this route matches
 	Type string `pulumi:"type"`
@@ -1839,7 +1767,7 @@ type TcpRouteActionInput interface {
 }
 
 type TcpRouteActionArgs struct {
-	// Farm ID for "farm" action type, empty for others.
+	// Farm ID for "farm" action type, empty for others
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// Action to trigger if all the rules of this route matches
 	Type pulumi.StringInput `pulumi:"type"`
@@ -1922,7 +1850,7 @@ func (o TcpRouteActionOutput) ToTcpRouteActionPtrOutputWithContext(ctx context.C
 	}).(TcpRouteActionPtrOutput)
 }
 
-// Farm ID for "farm" action type, empty for others.
+// Farm ID for "farm" action type, empty for others
 func (o TcpRouteActionOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpRouteAction) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -1956,7 +1884,7 @@ func (o TcpRouteActionPtrOutput) Elem() TcpRouteActionOutput {
 	}).(TcpRouteActionOutput)
 }
 
-// Farm ID for "farm" action type, empty for others.
+// Farm ID for "farm" action type, empty for others
 func (o TcpRouteActionPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpRouteAction) *string {
 		if v == nil {
@@ -1977,9 +1905,9 @@ func (o TcpRouteActionPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type TcpRouteRuleType struct {
-	// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
 	Field *string `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "availableRules"
+	// Matching operator. Not all operators are available for all fields. See "/availableRules"
 	Match *string `pulumi:"match"`
 	// Invert the matching operator effect
 	Negate *bool `pulumi:"negate"`
@@ -2003,9 +1931,9 @@ type TcpRouteRuleTypeInput interface {
 }
 
 type TcpRouteRuleTypeArgs struct {
-	// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
 	Field pulumi.StringPtrInput `pulumi:"field"`
-	// Matching operator. Not all operators are available for all fields. See "availableRules"
+	// Matching operator. Not all operators are available for all fields. See "/availableRules"
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// Invert the matching operator effect
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
@@ -2068,12 +1996,12 @@ func (o TcpRouteRuleTypeOutput) ToTcpRouteRuleTypeOutputWithContext(ctx context.
 	return o
 }
 
-// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
 func (o TcpRouteRuleTypeOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpRouteRuleType) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
-// Matching operator. Not all operators are available for all fields. See "availableRules"
+// Matching operator. Not all operators are available for all fields. See "/availableRules"
 func (o TcpRouteRuleTypeOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TcpRouteRuleType) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -2119,9 +2047,7 @@ func (o TcpRouteRuleTypeArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleTypeOu
 }
 
 type GetIpLoadBalancingOrderableZone struct {
-	// The zone three letter code
-	Name string `pulumi:"name"`
-	// The billing planCode for this zone
+	Name     string `pulumi:"name"`
 	PlanCode string `pulumi:"planCode"`
 }
 
@@ -2137,9 +2063,7 @@ type GetIpLoadBalancingOrderableZoneInput interface {
 }
 
 type GetIpLoadBalancingOrderableZoneArgs struct {
-	// The zone three letter code
-	Name pulumi.StringInput `pulumi:"name"`
-	// The billing planCode for this zone
+	Name     pulumi.StringInput `pulumi:"name"`
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
 }
 
@@ -2194,12 +2118,10 @@ func (o GetIpLoadBalancingOrderableZoneOutput) ToGetIpLoadBalancingOrderableZone
 	return o
 }
 
-// The zone three letter code
 func (o GetIpLoadBalancingOrderableZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpLoadBalancingOrderableZone) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The billing planCode for this zone
 func (o GetIpLoadBalancingOrderableZoneOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpLoadBalancingOrderableZone) string { return v.PlanCode }).(pulumi.StringOutput)
 }

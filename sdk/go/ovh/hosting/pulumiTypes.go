@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -138,7 +138,7 @@ func (o PrivateDatabaseOrderArrayOutput) Index(i pulumi.IntInput) PrivateDatabas
 }
 
 type PrivateDatabaseOrderDetail struct {
-	// Custom description on your privatedatabase order.
+	// description
 	Description *string `pulumi:"description"`
 	// expiration date
 	Domain *string `pulumi:"domain"`
@@ -160,7 +160,7 @@ type PrivateDatabaseOrderDetailInput interface {
 }
 
 type PrivateDatabaseOrderDetailArgs struct {
-	// Custom description on your privatedatabase order.
+	// description
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// expiration date
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -221,7 +221,7 @@ func (o PrivateDatabaseOrderDetailOutput) ToPrivateDatabaseOrderDetailOutputWith
 	return o
 }
 
-// Custom description on your privatedatabase order.
+// description
 func (o PrivateDatabaseOrderDetailOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateDatabaseOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -266,9 +266,9 @@ type PrivateDatabasePlan struct {
 	CatalogName *string `pulumi:"catalogName"`
 	// Representation of a configuration item for personalizing product
 	Configurations []PrivateDatabasePlanConfiguration `pulumi:"configurations"`
-	// duration.
+	// duration
 	Duration string `pulumi:"duration"`
-	// Plan code.
+	// Plan code
 	PlanCode string `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode string `pulumi:"pricingMode"`
@@ -290,9 +290,9 @@ type PrivateDatabasePlanArgs struct {
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
 	// Representation of a configuration item for personalizing product
 	Configurations PrivateDatabasePlanConfigurationArrayInput `pulumi:"configurations"`
-	// duration.
+	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// Plan code.
+	// Plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
@@ -385,12 +385,12 @@ func (o PrivateDatabasePlanOutput) Configurations() PrivateDatabasePlanConfigura
 	return o.ApplyT(func(v PrivateDatabasePlan) []PrivateDatabasePlanConfiguration { return v.Configurations }).(PrivateDatabasePlanConfigurationArrayOutput)
 }
 
-// duration.
+// duration
 func (o PrivateDatabasePlanOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateDatabasePlan) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Plan code.
+// Plan code
 func (o PrivateDatabasePlanOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateDatabasePlan) string { return v.PlanCode }).(pulumi.StringOutput)
 }
@@ -444,7 +444,7 @@ func (o PrivateDatabasePlanPtrOutput) Configurations() PrivateDatabasePlanConfig
 	}).(PrivateDatabasePlanConfigurationArrayOutput)
 }
 
-// duration.
+// duration
 func (o PrivateDatabasePlanPtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateDatabasePlan) *string {
 		if v == nil {
@@ -454,7 +454,7 @@ func (o PrivateDatabasePlanPtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Plan code.
+// Plan code
 func (o PrivateDatabasePlanPtrOutput) PlanCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateDatabasePlan) *string {
 		if v == nil {
@@ -478,8 +478,6 @@ type PrivateDatabasePlanConfiguration struct {
 	// Identifier of the resource
 	Label string `pulumi:"label"`
 	// Path to the resource in API.OVH.COM
-	//
-	// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
 	Value string `pulumi:"value"`
 }
 
@@ -498,8 +496,6 @@ type PrivateDatabasePlanConfigurationArgs struct {
 	// Identifier of the resource
 	Label pulumi.StringInput `pulumi:"label"`
 	// Path to the resource in API.OVH.COM
-	//
-	// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -560,8 +556,6 @@ func (o PrivateDatabasePlanConfigurationOutput) Label() pulumi.StringOutput {
 }
 
 // Path to the resource in API.OVH.COM
-//
-// Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
 func (o PrivateDatabasePlanConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateDatabasePlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -591,7 +585,7 @@ type PrivateDatabasePlanOption struct {
 	CatalogName *string `pulumi:"catalogName"`
 	// Representation of a configuration item for personalizing product
 	Configurations []PrivateDatabasePlanOptionConfiguration `pulumi:"configurations"`
-	// Service duration
+	// duration
 	Duration string `pulumi:"duration"`
 	// Plan code
 	PlanCode string `pulumi:"planCode"`
@@ -615,7 +609,7 @@ type PrivateDatabasePlanOptionArgs struct {
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
 	// Representation of a configuration item for personalizing product
 	Configurations PrivateDatabasePlanOptionConfigurationArrayInput `pulumi:"configurations"`
-	// Service duration
+	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
 	// Plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
@@ -684,7 +678,7 @@ func (o PrivateDatabasePlanOptionOutput) Configurations() PrivateDatabasePlanOpt
 	return o.ApplyT(func(v PrivateDatabasePlanOption) []PrivateDatabasePlanOptionConfiguration { return v.Configurations }).(PrivateDatabasePlanOptionConfigurationArrayOutput)
 }
 
-// Service duration
+// duration
 func (o PrivateDatabasePlanOptionOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateDatabasePlanOption) string { return v.Duration }).(pulumi.StringOutput)
 }
@@ -826,7 +820,7 @@ func (o PrivateDatabasePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetPrivateDatabaseDbUser struct {
-	// Grant of this user for this database
+	// User's rights on this database
 	GrantType string `pulumi:"grantType"`
 	// User's name granted on this database
 	UserName string `pulumi:"userName"`
@@ -844,7 +838,7 @@ type GetPrivateDatabaseDbUserInput interface {
 }
 
 type GetPrivateDatabaseDbUserArgs struct {
-	// Grant of this user for this database
+	// User's rights on this database
 	GrantType pulumi.StringInput `pulumi:"grantType"`
 	// User's name granted on this database
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -901,7 +895,7 @@ func (o GetPrivateDatabaseDbUserOutput) ToGetPrivateDatabaseDbUserOutputWithCont
 	return o
 }
 
-// Grant of this user for this database
+// User's rights on this database
 func (o GetPrivateDatabaseDbUserOutput) GrantType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateDatabaseDbUser) string { return v.GrantType }).(pulumi.StringOutput)
 }
