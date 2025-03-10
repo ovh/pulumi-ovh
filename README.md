@@ -60,7 +60,7 @@ To use from Java, add the dependency below to your `pom.xml` file:
 <dependency>
     <groupId>com.ovhcloud.pulumi.ovh</groupId>
     <artifactId>pulumi-ovh</artifactId>
-    <version>[0.48.9,)</version>
+    <version>[2.0.0,)</version>
 </dependency>
 ```
 
