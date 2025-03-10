@@ -89,8 +89,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "ovh",
+		P: p,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "OVHCloud",
@@ -123,8 +122,11 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/ovh/pulumi-ovh",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "ovh",
-		Version:   version.Version,
+		GitHubHost:              "github.com",
+		GitHubOrg:               "ovh",
+		Name:                    "ovh",
+		TFProviderModuleVersion: "v2",
+		Version:                 version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"endpoint": {
 				Default: &tfbridge.DefaultInfo{
