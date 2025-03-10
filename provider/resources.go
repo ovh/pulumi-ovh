@@ -84,7 +84,7 @@ func Provider() tfbridge.ProviderInfo {
 	// ComputeID
 	delegateID := func(pulumiField string) tfbridge.ComputeID {
 		return tfbridge.DelegateIDField(resource.PropertyKey(pulumiField),
-			"ovh", "https://github.com/ovh/pulumi-ovh")
+			"ovh", "https://github.com/ovh/pulumi-ovh/v2")
 	}
 
 	// Create a Pulumi provider mapping
