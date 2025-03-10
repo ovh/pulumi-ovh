@@ -27,7 +27,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/ovh/pulumi-ovh/provider/pkg/version"
-	"github.com/ovh/terraform-provider-ovh/v2/ovh"
+	"github.com/ovh/terraform-provider-ovh/ovh"
 )
 
 // all of the token components used below.
@@ -84,12 +84,13 @@ func Provider() tfbridge.ProviderInfo {
 	// ComputeID
 	delegateID := func(pulumiField string) tfbridge.ComputeID {
 		return tfbridge.DelegateIDField(resource.PropertyKey(pulumiField),
-			"ovh", "https://github.com/ovh/pulumi-ovh/v2")
+			"ovh", "https://github.com/ovh/pulumi-ovh")
 	}
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P: p,
+		P:    p,
+		Name: "ovh",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "OVHCloud",
@@ -119,14 +120,11 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "ovh", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/ovh/pulumi-ovh",
+		Repository: "https://github.com/ovh/pulumi-ovh/v2",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubHost:              "github.com",
-		GitHubOrg:               "ovh",
-		Name:                    "ovh",
-		TFProviderModuleVersion: "v2",
-		Version:                 version.Version,
+		GitHubOrg: "ovh",
+		Version:   version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"endpoint": {
 				Default: &tfbridge.DefaultInfo{
@@ -259,9 +257,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_instance": {
 				Tok: ovhResource(cloudProjectMod, "Instance"),
 			},
-			"ovh_cloud_project_loadbalancer": {
-				Tok: ovhResource(cloudProjectMod, "Loadbalancer"),
-			},
 			"ovh_cloud_project_network_private": {
 				Tok: ovhResource(cloudProjectMod, "NetworkPrivate"),
 			},
@@ -271,15 +266,8 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_network_private_subnet_v2": {
 				Tok: ovhResource(cloudProjectMod, "NetworkPrivateSubnetV2"),
 			},
-			"ovh_cloud_project_rancher": {
-				Tok: ovhResource(cloudProjectMod, "Rancher"),
-			},
 			"ovh_cloud_project_region_network": {
 				Tok: ovhResource(cloudProjectMod, "RegionNetwork"),
-			},
-			"ovh_cloud_project_storage": {
-				Tok:       ovhResource(cloudProjectMod, "Storage"),
-				ComputeID: delegateID("id"),
 			},
 			"ovh_cloud_project_region_storage_presign": {
 				Tok: ovhResource(cloudProjectMod, "RegionStoragePresign"),
@@ -299,9 +287,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_volume": {
 				Tok: ovhResource(cloudProjectMod, "Volume"),
 			},
-			"ovh_cloud_project_volume_backup": {
-				Tok: ovhResource(cloudProjectMod, "VolumeBackup"),
-			},
 			"ovh_dbaas_logs_input": {
 				Tok: ovhResource(dbaasMod, "LogsInput"),
 			},
@@ -313,12 +298,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dbaas_logs_output_opensearch_index": {
 				Tok: ovhResource(dbaasMod, "LogsOutputOpenSearchIndex"),
-			},
-			"ovh_dbaas_logs_role": {
-				Tok: ovhResource(dbaasMod, "LogsRole"),
-			},
-			"ovh_dbaas_logs_role_permission_stream": {
-				Tok: ovhResource(dbaasMod, "LogsRolePermissionStream"),
 			},
 			"ovh_dedicated_ceph_acl": {
 				Tok: ovhResource(dedicatedMod, "CephAcl"),
@@ -336,8 +315,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:       ovhResource(dedicatedMod, "Server"),
 				ComputeID: delegateID("display_name"),
 			},
-			"ovh_dedicated_server_reinstall_task": {
-				Tok: ovhResource(dedicatedMod, "ServerReinstallTask"),
+			"ovh_dedicated_server_install_task": {
+				Tok: ovhResource(dedicatedMod, "ServerInstallTask"),
 			},
 			"ovh_dedicated_server_networking": {
 				Tok: ovhResource(dedicatedMod, "ServerNetworking"),
@@ -347,15 +326,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dedicated_server_update": {
 				Tok: ovhResource(dedicatedMod, "ServerUpdate"),
-			},
-			"ovh_domain_ds_records": {
-				Tok: ovhResource(domainMod, "DsRecords"),
-			},
-			"ovh_domain_name": {
-				Tok: ovhResource(domainMod, "Name"),
-			},
-			"ovh_domain_name_servers": {
-				Tok: ovhResource(domainMod, "NameServers"),
 			},
 			"ovh_domain_zone": {
 				Tok: ovhResource(domainMod, "Zone"),
@@ -496,6 +466,18 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"ovh_me_installation_template": {
+				Tok: ovhResource(meMod, "InstallationTemplate"),
+			},
+			"ovh_me_installation_template_partition_scheme": {
+				Tok: ovhResource(meMod, "InstallationTemplatePartitionScheme"),
+			},
+			"ovh_me_installation_template_partition_scheme_hardware_raid": {
+				Tok: ovhResource(meMod, "InstallationTemplatePartitionSchemeHardwareRaid"),
+			},
+			"ovh_me_installation_template_partition_scheme_partition": {
+				Tok: ovhResource(meMod, "InstallationTemplatePartitionSchemePartition"),
+			},
 			"ovh_okms": {
 				Tok: ovhResource(okmsMod, "Okms"),
 			},
@@ -531,9 +513,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_vrack_ip": {
 				Tok: ovhResource(vrackMod, "IpAddress"),
 			},
-			"ovh_vrack_ipv6": {
-				Tok: ovhResource(vrackMod, "Ipv6Address"),
-			},
 			"ovh_vrack_iploadbalancing": {
 				Tok: ovhResource(vrackMod, "IpLoadbalancing"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -541,13 +520,6 @@ func Provider() tfbridge.ProviderInfo {
 						Name: "LoadbalancingId",
 					},
 				},
-			},
-			"ovh_vrack_ovhcloudconnect": {
-				Tok:       ovhResource(vrackMod, "OVHCloudConnect"),
-				ComputeID: delegateID("id"),
-			},
-			"ovh_vrack_vrackservices": {
-				Tok: ovhResource(vrackMod, "Services"),
 			},
 			"ovh_cloud_project_workflow_backup": {
 				Tok: ovhResource(cloudProjectMod, "WorkflowBackup"),
@@ -689,9 +661,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_failover_ip_attach": {
 				Tok: ovhDataSource(cloudProjectMod, "getFailoverIpAttach"),
 			},
-			"ovh_cloud_project_flavors": {
-				Tok: ovhDataSource(cloudProjectMod, "getFlavors"),
-			},
 			"ovh_cloud_project_floatingips": {
 				Tok: ovhDataSource(cloudProjectMod, "getFloatingIPs"),
 			},
@@ -749,9 +718,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_loadbalancer": {
 				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancer"),
 			},
-			"ovh_cloud_project_loadbalancer_flavors": {
-				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancerFlavors"),
-			},
 			"ovh_cloud_project_instance": {
 				Tok: ovhDataSource(cloudProjectMod, "getInstance"),
 			},
@@ -773,15 +739,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_network_private_subnets": {
 				Tok: ovhDataSource(cloudProjectMod, "getNetworkPrivateSubnets"),
 			},
-			"ovh_cloud_project_rancher": {
-				Tok: ovhDataSource(cloudProjectMod, "getRancher"),
-			},
-			"ovh_cloud_project_rancher_plan": {
-				Tok: ovhDataSource(cloudProjectMod, "getRancherPlan"),
-			},
-			"ovh_cloud_project_rancher_version": {
-				Tok: ovhDataSource(cloudProjectMod, "getRancherVersion"),
-			},
 			"ovh_cloud_project_regions": {
 				Tok: ovhDataSource(cloudProjectMod, "getRegions"),
 			},
@@ -790,12 +747,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_region_loadbalancer_log_subscriptions": {
 				Tok: ovhDataSource(cloudProjectMod, "getRegionLoadBalancerLogSubscriptions"),
-			},
-			"ovh_cloud_project_storage": {
-				Tok: ovhDataSource(cloudProjectMod, "getStorage"),
-			},
-			"ovh_cloud_project_storages": {
-				Tok: ovhDataSource(cloudProjectMod, "getStorages"),
 			},
 			"ovh_cloud_project_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getUser"),
@@ -946,12 +897,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_okms_service_key_pem": {
 				Tok: ovhDataSource(okmsMod, "getOkmsServiceKeyPem"),
 			},
-			"ovh_ovhcloud_connect": {
-				Tok: ovhDataSource(okmsMod, "getOvhCloudConnect"),
-			},
-			"ovh_ovhcloud_connects": {
-				Tok: ovhDataSource(okmsMod, "getOvhCloudConnects"),
-			},
 			"ovh_me": {
 				Tok: ovhDataSource(meMod, "getMe"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -970,6 +915,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_me_identity_users": {
 				Tok: ovhDataSource(meMod, "getIdentityUsers"),
+			},
+			"ovh_me_installation_template": {
+				Tok: ovhDataSource(meMod, "getInstallationTemplate"),
+			},
+			"ovh_me_installation_templates": {
+				Tok: ovhDataSource(meMod, "getInstallationTemplates"),
 			},
 			"ovh_me_paymentmean_bankaccount": {
 				Tok: ovhDataSource(meMod, "getPaymentmeanBankAccount"),
