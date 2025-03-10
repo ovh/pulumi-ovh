@@ -123,8 +123,9 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/ovh/pulumi-ovh",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "ovh",
-		Version:   version.Version,
+		GitHubOrg:               "ovh",
+		TFProviderModuleVersion: "v2",
+		Version:                 version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"endpoint": {
 				Default: &tfbridge.DefaultInfo{
