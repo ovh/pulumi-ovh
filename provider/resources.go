@@ -27,7 +27,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/ovh/pulumi-ovh/provider/pkg/version"
-	"github.com/ovh/terraform-provider-ovh/ovh"
+	"github.com/ovh/terraform-provider-ovh/v2/ovh"
 )
 
 // all of the token components used below.
@@ -120,11 +120,12 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "ovh", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/ovh/pulumi-ovh/v2",
+		Repository: "https://github.com/ovh/pulumi-ovh",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "ovh",
-		Version:   version.Version,
+		GitHubOrg:               "ovh",
+		TFProviderModuleVersion: "v2",
+		Version:                 version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"endpoint": {
 				Default: &tfbridge.DefaultInfo{
