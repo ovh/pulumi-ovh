@@ -2117,8 +2117,8 @@ github.com/opentracing/opentracing-go v1.2.0/go.mod h1:GxEUsuufX4nBwe+T+Wl9TAgYr
 github.com/orisano/pixelmatch v0.0.0-20220722002657-fb0b55479cde/go.mod h1:nZgzbfBr3hhjoZnS66nKrHmduYNpc34ny7RK4z5/HM0=
 github.com/ovh/go-ovh v1.7.0 h1:V14nF7FwDjQrZt9g7jzcvAAQ3HN6DNShRFRMC3jLoPw=
 github.com/ovh/go-ovh v1.7.0/go.mod h1:cTVDnl94z4tl8pP1uZ/8jlVxntjSIf09bNcQ5TJSC7c=
-github.com/ovh/terraform-provider-ovh v1.6.0 h1:qj9KMkkKjzi7876b+Yl5LK8zMl69inGR/mXoGsF5ESU=
-github.com/ovh/terraform-provider-ovh v1.6.0/go.mod h1:9oyqVysBpG72Oy61iBO4+Gd3xWrxU/F21i3hV+qop3I=
+github.com/ovh/terraform-provider-ovh/v2 v2.0.0 h1:YXfbYLsAfrKgKgwKxbyvHGb75pA1HBgRrF0l+UPTK+o=
+github.com/ovh/terraform-provider-ovh/v2 v2.0.0/go.mod h1:ltAMexJFE21sNM2FfyGwqPDY5BPkRSoZhNO8h+DS304=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=
 github.com/pgavlin/fx v0.1.6/go.mod h1:KWZJ6fqBBSh8GxHYqwYCf3rYE7Gp2p0N8tJp8xv9u9M=
 github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 h1:LoCV5cscNVWyK5ChN/uCoIFJz8jZD63VQiGJIRgr6uo=
