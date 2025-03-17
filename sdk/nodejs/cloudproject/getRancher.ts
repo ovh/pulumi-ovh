@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieve information about a Managed Rancher Service in the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rancher = ovh.CloudProject.getRancher({
+ *     id: "<Rancher service ID>",
+ *     projectId: "<public cloud project ID>",
+ * });
+ * ```
+ */
 export function getRancher(args: GetRancherArgs, opts?: pulumi.InvokeOptions): Promise<GetRancherResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRancher:getRancher", {
@@ -18,7 +33,13 @@ export function getRancher(args: GetRancherArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getRancher.
  */
 export interface GetRancherArgs {
+    /**
+     * Unique identifier
+     */
     id: string;
+    /**
+     * Project ID
+     */
     projectId: string;
 }
 
@@ -26,15 +47,54 @@ export interface GetRancherArgs {
  * A collection of values returned by getRancher.
  */
 export interface GetRancherResult {
+    /**
+     * Date of the managed Rancher service creation
+     */
     readonly createdAt: string;
+    /**
+     * Current configuration applied to the managed Rancher service
+     */
     readonly currentState: outputs.CloudProject.GetRancherCurrentState;
+    /**
+     * Asynchronous operations ongoing on the managed Rancher service
+     */
     readonly currentTasks: outputs.CloudProject.GetRancherCurrentTask[];
+    /**
+     * Unique identifier
+     */
     readonly id: string;
+    /**
+     * Project ID
+     */
     readonly projectId: string;
+    /**
+     * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
+     */
     readonly resourceStatus: string;
+    /**
+     * Last target specification of the managed Rancher service
+     */
     readonly targetSpec: outputs.CloudProject.GetRancherTargetSpec;
+    /**
+     * Date of the last managed Rancher service update
+     */
     readonly updatedAt: string;
 }
+/**
+ * Retrieve information about a Managed Rancher Service in the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rancher = ovh.CloudProject.getRancher({
+ *     id: "<Rancher service ID>",
+ *     projectId: "<public cloud project ID>",
+ * });
+ * ```
+ */
 export function getRancherOutput(args: GetRancherOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRancherResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRancher:getRancher", {
@@ -47,6 +107,12 @@ export function getRancherOutput(args: GetRancherOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getRancher.
  */
 export interface GetRancherOutputArgs {
+    /**
+     * Unique identifier
+     */
     id: pulumi.Input<string>;
+    /**
+     * Project ID
+     */
     projectId: pulumi.Input<string>;
 }

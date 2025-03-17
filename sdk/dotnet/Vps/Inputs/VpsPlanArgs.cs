@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.Vps.Inputs
     {
         [Input("configurations")]
         private InputList<Inputs.VpsPlanConfigurationArgs>? _configurations;
+
+        /// <summary>
+        /// Representation of a configuration item for personalizing product
+        /// </summary>
         public InputList<Inputs.VpsPlanConfigurationArgs> Configurations
         {
             get => _configurations ?? (_configurations = new InputList<Inputs.VpsPlanConfigurationArgs>());
@@ -21,7 +25,7 @@ namespace Pulumi.Ovh.Vps.Inputs
         }
 
         /// <summary>
-        /// Duration selected for the purchase of the product
+        /// duration
         /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;
@@ -33,13 +37,13 @@ namespace Pulumi.Ovh.Vps.Inputs
         public Input<double>? ItemId { get; set; }
 
         /// <summary>
-        /// Identifier of the option offer
+        /// Plan code
         /// </summary>
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
 
         /// <summary>
-        /// Pricing mode selected for the purchase of the product
+        /// Pricing model identifier
         /// </summary>
         [Input("pricingMode", required: true)]
         public Input<string> PricingMode { get; set; } = null!;

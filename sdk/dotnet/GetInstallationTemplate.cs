@@ -11,12 +11,87 @@ namespace Pulumi.Ovh
 {
     public static class GetInstallationTemplate
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a specific OVH dedicated server installation template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ovhTemplate = Ovh.GetInstallationTemplate.Invoke(new()
+        ///     {
+        ///         TemplateName = "debian12_64",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["template"] = ovhTemplate,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetInstallationTemplateResult> InvokeAsync(GetInstallationTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstallationTemplateResult>("ovh:index/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a specific OVH dedicated server installation template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ovhTemplate = Ovh.GetInstallationTemplate.Invoke(new()
+        ///     {
+        ///         TemplateName = "debian12_64",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["template"] = ovhTemplate,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:index/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a specific OVH dedicated server installation template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ovhTemplate = Ovh.GetInstallationTemplate.Invoke(new()
+        ///     {
+        ///         TemplateName = "debian12_64",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["template"] = ovhTemplate,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstallationTemplateResult> Invoke(GetInstallationTemplateInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstallationTemplateResult>("ovh:index/getInstallationTemplate:getInstallationTemplate", args ?? new GetInstallationTemplateInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +99,9 @@ namespace Pulumi.Ovh
 
     public sealed class GetInstallationTemplateArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the template.
+        /// </summary>
         [Input("templateName", required: true)]
         public string TemplateName { get; set; } = null!;
 
@@ -35,6 +113,9 @@ namespace Pulumi.Ovh
 
     public sealed class GetInstallationTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the template.
+        /// </summary>
         [Input("templateName", required: true)]
         public Input<string> TemplateName { get; set; } = null!;
 
@@ -48,24 +129,66 @@ namespace Pulumi.Ovh
     [OutputType]
     public sealed class GetInstallationTemplateResult
     {
+        /// <summary>
+        /// Template bit format (32 or 64).
+        /// </summary>
         public readonly int BitFormat;
+        /// <summary>
+        /// Category of this template (informative only).
+        /// </summary>
         public readonly string Category;
+        /// <summary>
+        /// Information about this template.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Distribution this template is based on.
+        /// </summary>
         public readonly string Distribution;
+        /// <summary>
+        /// End of install date of the template.
+        /// </summary>
         public readonly string EndOfInstall;
+        /// <summary>
+        /// Template family type.
+        /// </summary>
         public readonly string Family;
+        /// <summary>
+        /// Filesystems available.
+        /// </summary>
         public readonly ImmutableArray<string> Filesystems;
         public readonly bool HardRaidConfiguration;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Represents the questions of the expected answers in the userMetadata field.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstallationTemplateInputResult> Inputs;
+        /// <summary>
+        /// License available for this template.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstallationTemplateLicenseResult> Licenses;
+        /// <summary>
+        /// Whether this template supports LVM.
+        /// </summary>
         public readonly bool LvmReady;
+        /// <summary>
+        /// Partitioning customization is not available for this OS template.
+        /// </summary>
         public readonly bool NoPartitioning;
+        /// <summary>
+        /// Distribution project details.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstallationTemplateProjectResult> Projects;
+        /// <summary>
+        /// Template supports RAID0 and RAID1 on 2 disks.
+        /// </summary>
         public readonly bool SoftRaidOnlyMirroring;
+        /// <summary>
+        /// Subfamily of the template.
+        /// </summary>
         public readonly string Subfamily;
         public readonly string TemplateName;
 

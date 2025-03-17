@@ -9,32 +9,79 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
+    /// <summary>
+    /// Creates an ACL for a kafka cluster associated with a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "kafka",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var acl = new Ovh.CloudProjectDatabase.KafkaAcl("acl", new()
+    ///     {
+    ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Permission = "read",
+    ///         Topic = "mytopic",
+    ///         Username = "johndoe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl")]
     public partial class KafkaAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Permission to give to this username on this topic
+        /// Permission to give to this username on this topic.
+        /// Available permissions:
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Topic affected by this acl
+        /// Topic affected by this ACL.
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
 
         /// <summary>
-        /// Username affected by this acl
+        /// Username affected by this ACL.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -87,28 +134,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class KafkaAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Permission to give to this username on this topic
+        /// Permission to give to this username on this topic.
+        /// Available permissions:
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic affected by this acl
+        /// Topic affected by this ACL.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username affected by this acl
+        /// Username affected by this ACL.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -122,28 +174,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class KafkaAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Permission to give to this username on this topic
+        /// Permission to give to this username on this topic.
+        /// Available permissions:
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Topic affected by this acl
+        /// Topic affected by this ACL.
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
 
         /// <summary>
-        /// Username affected by this acl
+        /// Username affected by this ACL.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

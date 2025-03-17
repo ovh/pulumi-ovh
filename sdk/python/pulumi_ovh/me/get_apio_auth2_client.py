@@ -52,21 +52,33 @@ class GetAPIOAuth2ClientResult:
     @property
     @pulumi.getter(name="callbackUrls")
     def callback_urls(self) -> Sequence[str]:
+        """
+        List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        """
         return pulumi.get(self, "callback_urls")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        Client ID of the created service account.
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        OAuth2 client description.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def flow(self) -> str:
+        """
+        The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        """
         return pulumi.get(self, "flow")
 
     @property
@@ -85,6 +97,9 @@ class GetAPIOAuth2ClientResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        OAuth2 client name.
+        """
         return pulumi.get(self, "name")
 
 
@@ -106,7 +121,19 @@ class AwaitableGetAPIOAuth2ClientResult(GetAPIOAuth2ClientResult):
 def get_apio_auth2_client(client_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAPIOAuth2ClientResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an existing OAuth2 service account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_oauth2_client = ovh.Me.get_apio_auth2_client(client_id="5f8969a993ec8b4b")
+    ```
+
+
+    :param str client_id: Client ID of an existing OAuth2 service account.
     """
     __args__ = dict()
     __args__['clientId'] = client_id
@@ -124,7 +151,19 @@ def get_apio_auth2_client(client_id: Optional[str] = None,
 def get_apio_auth2_client_output(client_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAPIOAuth2ClientResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an existing OAuth2 service account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_oauth2_client = ovh.Me.get_apio_auth2_client(client_id="5f8969a993ec8b4b")
+    ```
+
+
+    :param str client_id: Client ID of an existing OAuth2 service account.
     """
     __args__ = dict()
     __args__['clientId'] = client_id

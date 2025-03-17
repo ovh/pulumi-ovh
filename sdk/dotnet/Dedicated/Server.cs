@@ -9,26 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Dedicated servers can be imported using the `service_name`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_dedicated_server.server
+    /// 
+    ///   id = "&lt;service name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// pulumi preview -generate-config-out=dedicated.tf
+    /// 
+    /// pulumi up
+    /// 
+    /// The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See &lt;https://developer.hashicorp.com/terraform/language/import/generating-configuration&gt; for more details.
+    /// </summary>
     [OvhResourceType("ovh:Dedicated/server:Server")]
     public partial class Server : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// dedicated AZ localisation
+        /// Dedicated AZ localisation
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
+        /// <summary>
+        /// Boot id of the server
+        /// </summary>
         [Output("bootId")]
         public Output<double> BootId { get; private set; } = null!;
 
         /// <summary>
-        /// Ipxe script served on boot
+        /// Boot script of the server
         /// </summary>
         [Output("bootScript")]
         public Output<string> BootScript { get; private set; } = null!;
 
         /// <summary>
-        /// dedicater server commercial range
+        /// Dedicated server commercial range
         /// </summary>
         [Output("commercialRange")]
         public Output<string> CommercialRange { get; private set; } = null!;
@@ -40,35 +72,38 @@ namespace Pulumi.Ovh.Dedicated
         public Output<Outputs.ServerCustomizations?> Customizations { get; private set; } = null!;
 
         /// <summary>
-        /// dedicated datacenter localisation
+        /// Dedicated datacenter localisation (bhs1,bhs2,...)
         /// </summary>
         [Output("datacenter")]
         public Output<string> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of your dedicated server
+        /// Resource display name
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Path of the EFI bootloader served on boot
+        /// Path of the EFI bootloader
         /// </summary>
         [Output("efiBootloaderPath")]
         public Output<string> EfiBootloaderPath { get; private set; } = null!;
 
         /// <summary>
-        /// IAM resource metadata
+        /// IAM resource information
         /// </summary>
         [Output("iam")]
         public Output<Outputs.ServerIam> Iam { get; private set; } = null!;
 
         /// <summary>
-        /// dedicated server ip
+        /// Dedicated server ip (IPv4)
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
+        /// <summary>
+        /// Link speed of the server
+        /// </summary>
         [Output("linkSpeed")]
         public Output<double> LinkSpeed { get; private set; } = null!;
 
@@ -79,7 +114,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<bool> Monitoring { get; private set; } = null!;
 
         /// <summary>
-        /// dedicated server name
+        /// Dedicated server name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -118,7 +153,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<ImmutableArray<Outputs.ServerPlan>> Plans { get; private set; } = null!;
 
         /// <summary>
-        /// Power state of the server
+        /// Power state of the server (poweron, poweroff)
         /// </summary>
         [Output("powerState")]
         public Output<string> PowerState { get; private set; } = null!;
@@ -135,17 +170,20 @@ namespace Pulumi.Ovh.Dedicated
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
+        /// <summary>
+        /// Rack id of the server
+        /// </summary>
         [Output("rack")]
         public Output<string> Rack { get; private set; } = null!;
 
         /// <summary>
-        /// dedicated region localisation
+        /// Dedicated region localisation
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Custom email used to receive rescue credentials
+        /// Rescue mail of the server
         /// </summary>
         [Output("rescueMail")]
         public Output<string> RescueMail { get; private set; } = null!;
@@ -157,11 +195,14 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> RescueSshKey { get; private set; } = null!;
 
         /// <summary>
-        /// dedicated server reverse
+        /// Dedicated server reverse
         /// </summary>
         [Output("reverse")]
         public Output<string> Reverse { get; private set; } = null!;
 
+        /// <summary>
+        /// Root device of the server
+        /// </summary>
         [Output("rootDevice")]
         public Output<string> RootDevice { get; private set; } = null!;
 
@@ -172,13 +213,13 @@ namespace Pulumi.Ovh.Dedicated
         public Output<double> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your dedicated server
+        /// The service_name of your dedicated server
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// All states a Dedicated can be in
+        /// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -190,7 +231,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<ImmutableArray<Outputs.ServerStorage>> Storages { get; private set; } = null!;
 
         /// <summary>
-        /// Dedicated server support level
+        /// Dedicated server support level (critical, fastpath, gs, pro)
         /// </summary>
         [Output("supportLevel")]
         public Output<string> SupportLevel { get; private set; } = null!;
@@ -242,11 +283,14 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class ServerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boot id of the server
+        /// </summary>
         [Input("bootId")]
         public Input<double>? BootId { get; set; }
 
         /// <summary>
-        /// Ipxe script served on boot
+        /// Boot script of the server
         /// </summary>
         [Input("bootScript")]
         public Input<string>? BootScript { get; set; }
@@ -258,13 +302,13 @@ namespace Pulumi.Ovh.Dedicated
         public Input<Inputs.ServerCustomizationsArgs>? Customizations { get; set; }
 
         /// <summary>
-        /// The display name of your dedicated server
+        /// Resource display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Path of the EFI bootloader served on boot
+        /// Path of the EFI bootloader
         /// </summary>
         [Input("efiBootloaderPath")]
         public Input<string>? EfiBootloaderPath { get; set; }
@@ -322,7 +366,7 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// Custom email used to receive rescue credentials
+        /// Rescue mail of the server
         /// </summary>
         [Input("rescueMail")]
         public Input<string>? RescueMail { get; set; }
@@ -333,11 +377,14 @@ namespace Pulumi.Ovh.Dedicated
         [Input("rescueSshKey")]
         public Input<string>? RescueSshKey { get; set; }
 
+        /// <summary>
+        /// Root device of the server
+        /// </summary>
         [Input("rootDevice")]
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// All states a Dedicated can be in
+        /// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -363,22 +410,25 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// dedicated AZ localisation
+        /// Dedicated AZ localisation
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Boot id of the server
+        /// </summary>
         [Input("bootId")]
         public Input<double>? BootId { get; set; }
 
         /// <summary>
-        /// Ipxe script served on boot
+        /// Boot script of the server
         /// </summary>
         [Input("bootScript")]
         public Input<string>? BootScript { get; set; }
 
         /// <summary>
-        /// dedicater server commercial range
+        /// Dedicated server commercial range
         /// </summary>
         [Input("commercialRange")]
         public Input<string>? CommercialRange { get; set; }
@@ -390,35 +440,38 @@ namespace Pulumi.Ovh.Dedicated
         public Input<Inputs.ServerCustomizationsGetArgs>? Customizations { get; set; }
 
         /// <summary>
-        /// dedicated datacenter localisation
+        /// Dedicated datacenter localisation (bhs1,bhs2,...)
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// The display name of your dedicated server
+        /// Resource display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Path of the EFI bootloader served on boot
+        /// Path of the EFI bootloader
         /// </summary>
         [Input("efiBootloaderPath")]
         public Input<string>? EfiBootloaderPath { get; set; }
 
         /// <summary>
-        /// IAM resource metadata
+        /// IAM resource information
         /// </summary>
         [Input("iam")]
         public Input<Inputs.ServerIamGetArgs>? Iam { get; set; }
 
         /// <summary>
-        /// dedicated server ip
+        /// Dedicated server ip (IPv4)
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// Link speed of the server
+        /// </summary>
         [Input("linkSpeed")]
         public Input<double>? LinkSpeed { get; set; }
 
@@ -429,7 +482,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// dedicated server name
+        /// Dedicated server name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -478,7 +531,7 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// Power state of the server
+        /// Power state of the server (poweron, poweroff)
         /// </summary>
         [Input("powerState")]
         public Input<string>? PowerState { get; set; }
@@ -501,17 +554,20 @@ namespace Pulumi.Ovh.Dedicated
             set => _properties = value;
         }
 
+        /// <summary>
+        /// Rack id of the server
+        /// </summary>
         [Input("rack")]
         public Input<string>? Rack { get; set; }
 
         /// <summary>
-        /// dedicated region localisation
+        /// Dedicated region localisation
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Custom email used to receive rescue credentials
+        /// Rescue mail of the server
         /// </summary>
         [Input("rescueMail")]
         public Input<string>? RescueMail { get; set; }
@@ -523,11 +579,14 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string>? RescueSshKey { get; set; }
 
         /// <summary>
-        /// dedicated server reverse
+        /// Dedicated server reverse
         /// </summary>
         [Input("reverse")]
         public Input<string>? Reverse { get; set; }
 
+        /// <summary>
+        /// Root device of the server
+        /// </summary>
         [Input("rootDevice")]
         public Input<string>? RootDevice { get; set; }
 
@@ -538,13 +597,13 @@ namespace Pulumi.Ovh.Dedicated
         public Input<double>? ServerId { get; set; }
 
         /// <summary>
-        /// The internal name of your dedicated server
+        /// The service_name of your dedicated server
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// All states a Dedicated can be in
+        /// All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -562,7 +621,7 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// Dedicated server support level
+        /// Dedicated server support level (critical, fastpath, gs, pro)
         /// </summary>
         [Input("supportLevel")]
         public Input<string>? SupportLevel { get; set; }

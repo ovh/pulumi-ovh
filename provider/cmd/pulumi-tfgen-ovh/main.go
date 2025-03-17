@@ -15,7 +15,7 @@
 package main
 
 import (
-	ovh "github.com/ovh/pulumi-ovh/provider"
+	ovh "github.com/ovh/pulumi-ovh/provider/v2"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 

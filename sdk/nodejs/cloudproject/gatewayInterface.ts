@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Create a new Gateway Interface for existing subnet in the specified public cloud project.
+ *
+ * ## Import
+ *
+ * A gateway interface can be imported using the `service_name`, `region`, `id` (identifier of the gateway) and `interface_id` properties, separated by a `/`.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+ * ```
+ */
 export class GatewayInterface extends pulumi.CustomResource {
     /**
      * Get an existing GatewayInterface resource's state with the given name, ID, and optional extra
@@ -33,7 +46,7 @@ export class GatewayInterface extends pulumi.CustomResource {
     }
 
     /**
-     * Interface ID
+     * ID of the interface
      */
     public readonly interfaceId!: pulumi.Output<string>;
     /**
@@ -45,15 +58,15 @@ export class GatewayInterface extends pulumi.CustomResource {
      */
     public /*out*/ readonly networkId!: pulumi.Output<string>;
     /**
-     * Region name
+     * Region of the gateway
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Service name
+     * ID of the cloud project
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Subnet id to add
+     * ID of the subnet to add
      */
     public readonly subnetId!: pulumi.Output<string>;
 
@@ -104,7 +117,7 @@ export class GatewayInterface extends pulumi.CustomResource {
  */
 export interface GatewayInterfaceState {
     /**
-     * Interface ID
+     * ID of the interface
      */
     interfaceId?: pulumi.Input<string>;
     /**
@@ -116,15 +129,15 @@ export interface GatewayInterfaceState {
      */
     networkId?: pulumi.Input<string>;
     /**
-     * Region name
+     * Region of the gateway
      */
     region?: pulumi.Input<string>;
     /**
-     * Service name
+     * ID of the cloud project
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Subnet id to add
+     * ID of the subnet to add
      */
     subnetId?: pulumi.Input<string>;
 }
@@ -134,19 +147,19 @@ export interface GatewayInterfaceState {
  */
 export interface GatewayInterfaceArgs {
     /**
-     * Interface ID
+     * ID of the interface
      */
     interfaceId?: pulumi.Input<string>;
     /**
-     * Region name
+     * Region of the gateway
      */
     region: pulumi.Input<string>;
     /**
-     * Service name
+     * ID of the cloud project
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Subnet id to add
+     * ID of the subnet to add
      */
     subnetId: pulumi.Input<string>;
 }

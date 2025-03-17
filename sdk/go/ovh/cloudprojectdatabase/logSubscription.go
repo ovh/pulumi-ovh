@@ -8,33 +8,94 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a log subscription for a cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// Create a log subscription for a database.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			stream, err := dbaas.GetLogsOutputGraylogStream(ctx, &dbaas.GetLogsOutputGraylogStreamArgs{
+//				ServiceName: "ldp-xx-xxxxx",
+//				Title:       "my stream",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudprojectdatabase.NewLogSubscription(ctx, "subscription", &cloudprojectdatabase.LogSubscriptionArgs{
+//				ServiceName: pulumi.String(db.ServiceName),
+//				Engine:      pulumi.String(db.Engine),
+//				ClusterId:   pulumi.String(db.Id),
+//				StreamId:    pulumi.String(stream.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud Managed clusters logs subscription can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the subscription, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProjectDatabase/logSubscription:LogSubscription sub service_name/engine/cluster_id/id
+// ```
 type LogSubscription struct {
 	pulumi.CustomResourceState
 
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Creation date of the subscription
+	// Creation date of the subscription.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Name of the engine of the service
+	// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// Log kind name of this subscription
+	// Log kind name of this subscription.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Name of the destination log service
+	// Name of the destination log service.
 	LdpServiceName pulumi.StringOutput `pulumi:"ldpServiceName"`
-	// Identifier of the operation
+	// Identifier of the operation.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
-	// Name of subscribed resource, where the logs come from
+	// Name of subscribed resource, where the logs come from.
 	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
-	// Type of subscribed resource, where the logs come from
+	// Type of subscribed resource, where the logs come from.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	ServiceName  pulumi.StringOutput `pulumi:"serviceName"`
-	// Id of the target Log data platform stream
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Id of the target Log data platform stream.
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
-	// Last update date of the subscription
+	// Last update date of the subscription.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -84,50 +145,56 @@ func GetLogSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogSubscription resources.
 type logSubscriptionState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Creation date of the subscription
+	// Creation date of the subscription.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Name of the engine of the service
+	// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine *string `pulumi:"engine"`
-	// Log kind name of this subscription
+	// Log kind name of this subscription.
 	Kind *string `pulumi:"kind"`
-	// Name of the destination log service
+	// Name of the destination log service.
 	LdpServiceName *string `pulumi:"ldpServiceName"`
-	// Identifier of the operation
+	// Identifier of the operation.
 	OperationId *string `pulumi:"operationId"`
-	// Name of subscribed resource, where the logs come from
+	// Name of subscribed resource, where the logs come from.
 	ResourceName *string `pulumi:"resourceName"`
-	// Type of subscribed resource, where the logs come from
+	// Type of subscribed resource, where the logs come from.
 	ResourceType *string `pulumi:"resourceType"`
-	ServiceName  *string `pulumi:"serviceName"`
-	// Id of the target Log data platform stream
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
+	// Id of the target Log data platform stream.
 	StreamId *string `pulumi:"streamId"`
-	// Last update date of the subscription
+	// Last update date of the subscription.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type LogSubscriptionState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Creation date of the subscription
+	// Creation date of the subscription.
 	CreatedAt pulumi.StringPtrInput
-	// Name of the engine of the service
+	// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringPtrInput
-	// Log kind name of this subscription
+	// Log kind name of this subscription.
 	Kind pulumi.StringPtrInput
-	// Name of the destination log service
+	// Name of the destination log service.
 	LdpServiceName pulumi.StringPtrInput
-	// Identifier of the operation
+	// Identifier of the operation.
 	OperationId pulumi.StringPtrInput
-	// Name of subscribed resource, where the logs come from
+	// Name of subscribed resource, where the logs come from.
 	ResourceName pulumi.StringPtrInput
-	// Type of subscribed resource, where the logs come from
+	// Type of subscribed resource, where the logs come from.
 	ResourceType pulumi.StringPtrInput
-	ServiceName  pulumi.StringPtrInput
-	// Id of the target Log data platform stream
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
+	// Id of the target Log data platform stream.
 	StreamId pulumi.StringPtrInput
-	// Last update date of the subscription
+	// Last update date of the subscription.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -136,23 +203,29 @@ func (LogSubscriptionState) ElementType() reflect.Type {
 }
 
 type logSubscriptionArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Name of the engine of the service
-	Engine      string `pulumi:"engine"`
+	// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	Engine string `pulumi:"engine"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
-	// Id of the target Log data platform stream
+	// Id of the target Log data platform stream.
 	StreamId string `pulumi:"streamId"`
 }
 
 // The set of arguments for constructing a LogSubscription resource.
 type LogSubscriptionArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Name of the engine of the service
-	Engine      pulumi.StringInput
+	// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	Engine pulumi.StringInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
-	// Id of the target Log data platform stream
+	// Id of the target Log data platform stream.
 	StreamId pulumi.StringInput
 }
 
@@ -243,56 +316,59 @@ func (o LogSubscriptionOutput) ToLogSubscriptionOutputWithContext(ctx context.Co
 	return o
 }
 
-// Id of the database cluster
+// Cluster ID.
 func (o LogSubscriptionOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Creation date of the subscription
+// Creation date of the subscription.
 func (o LogSubscriptionOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Name of the engine of the service
+// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 func (o LogSubscriptionOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Log kind name of this subscription
+// Log kind name of this subscription.
 func (o LogSubscriptionOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the destination log service
+// Name of the destination log service.
 func (o LogSubscriptionOutput) LdpServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.LdpServiceName }).(pulumi.StringOutput)
 }
 
-// Identifier of the operation
+// Identifier of the operation.
 func (o LogSubscriptionOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
 }
 
-// Name of subscribed resource, where the logs come from
+// Name of subscribed resource, where the logs come from.
 func (o LogSubscriptionOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
 }
 
-// Type of subscribed resource, where the logs come from
+// Type of subscribed resource, where the logs come from.
 func (o LogSubscriptionOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o LogSubscriptionOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Id of the target Log data platform stream
+// Id of the target Log data platform stream.
 func (o LogSubscriptionOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
 }
 
-// Last update date of the subscription
+// Last update date of the subscription.
 func (o LogSubscriptionOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogSubscription) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

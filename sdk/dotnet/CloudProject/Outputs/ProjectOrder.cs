@@ -26,7 +26,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string? ExpirationDate;
         /// <summary>
-        /// order id
+        /// order id, the same as the `id`
         /// </summary>
         public readonly int? OrderId;
 

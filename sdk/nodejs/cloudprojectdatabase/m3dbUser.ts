@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
+ * ```
+ */
 export class M3DbUser extends pulumi.CustomResource {
     /**
      * Get an existing M3DbUser resource's state with the given name, ID, and optional extra
@@ -33,32 +44,36 @@ export class M3DbUser extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Date of the creation of the user
+     * Date of the creation of the user.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Group of the user
+     * Group of the user.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
-     * Name of the user
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Current status of the user
+     * Current status of the user.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -112,32 +127,36 @@ export class M3DbUser extends pulumi.CustomResource {
  */
 export interface M3DbUserState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Date of the creation of the user
+     * Date of the creation of the user.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Group of the user
+     * Group of the user.
      */
     group?: pulumi.Input<string>;
     /**
-     * Name of the user
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     password?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Current status of the user
+     * Current status of the user.
      */
     status?: pulumi.Input<string>;
 }
@@ -147,20 +166,24 @@ export interface M3DbUserState {
  */
 export interface M3DbUserArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Group of the user
+     * Group of the user.
      */
     group?: pulumi.Input<string>;
     /**
-     * Name of the user
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

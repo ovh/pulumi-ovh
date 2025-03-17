@@ -6,6 +6,72 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myaccount = ovh.Me.getMe({});
+ * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myaccount.ovhSubsidiary,
+ * }));
+ * const zoneCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ *     cartId: mycart.id,
+ *     priceCapacity: "renew",
+ *     product: "dns",
+ *     planCode: "zone",
+ * }));
+ * const zoneZone = new ovh.domain.Zone("zoneZone", {
+ *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
+ *     plan: {
+ *         duration: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.selectedPrices?.[0]?.duration),
+ *         planCode: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.planCode),
+ *         pricingMode: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         configurations: [
+ *             {
+ *                 label: "zone",
+ *                 value: "myzone.mydomain.com",
+ *             },
+ *             {
+ *                 label: "template",
+ *                 value: "minimized",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Zone can be imported using its `name`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_domain_zone.zone
+ *
+ *   id = "<zone name>"
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=zone.tf
+ *
+ * $ pulumi up
+ *
+ * The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ */
 export class Zone extends pulumi.CustomResource {
     /**
      * Get an existing Zone resource's state with the given name, ID, and optional extra
@@ -60,7 +126,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly orders!: pulumi.Output<outputs.Domain.ZoneOrder[]>;
     /**
-     * Ovh Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     public readonly ovhSubsidiary!: pulumi.Output<string>;
     /**
@@ -151,7 +217,7 @@ export interface ZoneState {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Domain.ZoneOrder>[]>;
     /**
-     * Ovh Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**
@@ -179,7 +245,7 @@ export interface ZoneArgs {
      */
     orders?: pulumi.Input<pulumi.Input<inputs.Domain.ZoneOrder>[]>;
     /**
-     * Ovh Subsidiary
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
      */
     ovhSubsidiary?: pulumi.Input<string>;
     /**

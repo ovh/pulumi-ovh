@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const namespaces = ovh.CloudProject.getM3dbNamespaces({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ * });
+ * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
+ * ```
+ */
 export function getM3dbNamespaces(args: GetM3dbNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetM3dbNamespacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", {
@@ -16,7 +32,14 @@ export function getM3dbNamespaces(args: GetM3dbNamespacesArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getM3dbNamespaces.
  */
 export interface GetM3dbNamespacesArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -24,14 +47,39 @@ export interface GetM3dbNamespacesArgs {
  * A collection of values returned by getM3dbNamespaces.
  */
 export interface GetM3dbNamespacesResult {
+    /**
+     * See Argument Reference above.
+     */
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The list of namespaces ids of the M3DB cluster associated with the project.
+     */
     readonly namespaceIds: string[];
+    /**
+     * See Argument Reference above.
+     */
     readonly serviceName: string;
 }
+/**
+ * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const namespaces = ovh.CloudProject.getM3dbNamespaces({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ * });
+ * export const namespaceIds = namespaces.then(namespaces => namespaces.namespaceIds);
+ * ```
+ */
 export function getM3dbNamespacesOutput(args: GetM3dbNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3dbNamespacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", {
@@ -44,6 +92,13 @@ export function getM3dbNamespacesOutput(args: GetM3dbNamespacesOutputArgs, opts?
  * A collection of arguments for invoking getM3dbNamespaces.
  */
 export interface GetM3dbNamespacesOutputArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

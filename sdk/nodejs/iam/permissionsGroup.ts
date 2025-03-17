@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Create am IAM permissions group.
+ */
 export class PermissionsGroup extends pulumi.CustomResource {
     /**
      * Get an existing PermissionsGroup resource's state with the given name, ID, and optional extra
@@ -32,14 +35,41 @@ export class PermissionsGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === PermissionsGroup.__pulumiType;
     }
 
+    /**
+     * Set of actions allowed by the permissions group.
+     */
     public readonly allows!: pulumi.Output<string[] | undefined>;
+    /**
+     * Creation date of this group.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Set of actions that will be denied no matter what permissions group exists.
+     */
     public readonly denies!: pulumi.Output<string[] | undefined>;
+    /**
+     * Group description.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Set of actions that will be subtracted from the `allow` list.
+     */
     public readonly excepts!: pulumi.Output<string[] | undefined>;
+    /**
+     * Name of the permissions group.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Owner of the permissions group.
+     */
     public /*out*/ readonly owner!: pulumi.Output<string>;
+    /**
+     * Date of the last update of this group.
+     */
     public readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * URN of the permissions group.
+     */
     public /*out*/ readonly urn!: pulumi.Output<string>;
 
     /**
@@ -88,14 +118,41 @@ export class PermissionsGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PermissionsGroup resources.
  */
 export interface PermissionsGroupState {
+    /**
+     * Set of actions allowed by the permissions group.
+     */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Creation date of this group.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Set of actions that will be denied no matter what permissions group exists.
+     */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Group description.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Set of actions that will be subtracted from the `allow` list.
+     */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the permissions group.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Owner of the permissions group.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * Date of the last update of this group.
+     */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * URN of the permissions group.
+     */
     urn?: pulumi.Input<string>;
 }
 
@@ -103,10 +160,28 @@ export interface PermissionsGroupState {
  * The set of arguments for constructing a PermissionsGroup resource.
  */
 export interface PermissionsGroupArgs {
+    /**
+     * Set of actions allowed by the permissions group.
+     */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of actions that will be denied no matter what permissions group exists.
+     */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Group description.
+     */
     description: pulumi.Input<string>;
+    /**
+     * Set of actions that will be subtracted from the `allow` list.
+     */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the permissions group.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Date of the last update of this group.
+     */
     updatedAt?: pulumi.Input<string>;
 }

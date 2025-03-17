@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,8 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KubeNodePool{}
 	case "ovh:CloudProject/kubeOidc:KubeOidc":
 		r = &KubeOidc{}
-	case "ovh:CloudProject/loadbalancer:Loadbalancer":
-		r = &Loadbalancer{}
+	case "ovh:CloudProject/loadBalancer:LoadBalancer":
+		r = &LoadBalancer{}
 	case "ovh:CloudProject/networkPrivate:NetworkPrivate":
 		r = &NetworkPrivate{}
 	case "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet":
@@ -173,7 +173,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
-		"CloudProject/loadbalancer",
+		"CloudProject/loadBalancer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -13,9 +13,21 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class UserRole
     {
+        /// <summary>
+        /// A description associated with the user.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// id of the role
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// name of the role
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// list of permissions associated with the role
+        /// </summary>
         public readonly ImmutableArray<string> Permissions;
 
         [OutputConstructor]

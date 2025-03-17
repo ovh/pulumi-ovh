@@ -9,6 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.SavingsPlan
 {
+    /// <summary>
+    /// Create and manage an OVHcloud Savings Plan
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var plan = new Ovh.SavingsPlan.SavingsPlan("plan", new()
+    ///     {
+    ///         AutoRenewal = true,
+    ///         DisplayName = "one_month_rancher_savings_plan",
+    ///         Flavor = "Rancher",
+    ///         Period = "P1M",
+    ///         ServiceName = "&lt;public cloud project ID&gt;",
+    ///         Size = 2,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by "/" e.g.
+    /// </summary>
     [OvhResourceType("ovh:SavingsPlan/savingsPlan:SavingsPlan")]
     public partial class SavingsPlan : global::Pulumi.CustomResource
     {
@@ -31,7 +61,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// Savings Plan flavor
+        /// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         /// </summary>
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
@@ -43,7 +73,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Output<string> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Action performed when reaching the end of the period
+        /// Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
         /// </summary>
         [Output("periodEndAction")]
         public Output<string> PeriodEndAction { get; private set; } = null!;
@@ -61,7 +91,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Output<string> PeriodStartDate { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the service
+        /// Billing ID of the service
         /// </summary>
         [Output("serviceId")]
         public Output<int> ServiceId { get; private set; } = null!;
@@ -150,7 +180,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Savings Plan flavor
+        /// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         /// </summary>
         [Input("flavor", required: true)]
         public Input<string> Flavor { get; set; } = null!;
@@ -200,7 +230,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// Savings Plan flavor
+        /// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
@@ -212,7 +242,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// Action performed when reaching the end of the period
+        /// Action performed when reaching the end of the period (controles by the `auto_renewal` parameter)
         /// </summary>
         [Input("periodEndAction")]
         public Input<string>? PeriodEndAction { get; set; }
@@ -230,7 +260,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string>? PeriodStartDate { get; set; }
 
         /// <summary>
-        /// ID of the service
+        /// Billing ID of the service
         /// </summary>
         [Input("serviceId")]
         public Input<int>? ServiceId { get; set; }

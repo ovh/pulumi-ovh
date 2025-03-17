@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * List loadbalancer flavors in the given public cloud region.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const flavors = ovh.CloudProject.getLoadBalancerFlavors({
+ *     regionName: "GRA9",
+ *     serviceName: "<public cloud project ID>",
+ * });
+ * ```
+ */
 export function getLoadBalancerFlavors(args: GetLoadBalancerFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", {
@@ -18,7 +33,13 @@ export function getLoadBalancerFlavors(args: GetLoadBalancerFlavorsArgs, opts?: 
  * A collection of arguments for invoking getLoadBalancerFlavors.
  */
 export interface GetLoadBalancerFlavorsArgs {
+    /**
+     * Region name
+     */
     regionName: string;
+    /**
+     * Service name
+     */
     serviceName: string;
 }
 
@@ -31,9 +52,30 @@ export interface GetLoadBalancerFlavorsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Region name
+     */
     readonly regionName: string;
+    /**
+     * Service name
+     */
     readonly serviceName: string;
 }
+/**
+ * List loadbalancer flavors in the given public cloud region.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const flavors = ovh.CloudProject.getLoadBalancerFlavors({
+ *     regionName: "GRA9",
+ *     serviceName: "<public cloud project ID>",
+ * });
+ * ```
+ */
 export function getLoadBalancerFlavorsOutput(args: GetLoadBalancerFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", {
@@ -46,6 +88,12 @@ export function getLoadBalancerFlavorsOutput(args: GetLoadBalancerFlavorsOutputA
  * A collection of arguments for invoking getLoadBalancerFlavors.
  */
 export interface GetLoadBalancerFlavorsOutputArgs {
+    /**
+     * Region name
+     */
     regionName: pulumi.Input<string>;
+    /**
+     * Service name
+     */
     serviceName: pulumi.Input<string>;
 }

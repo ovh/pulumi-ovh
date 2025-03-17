@@ -25,6 +25,12 @@ class GetReferenceActionsActionResult(dict):
                  categories: Sequence[str],
                  description: str,
                  resource_type: str):
+        """
+        :param str action: Name of the action
+        :param Sequence[str] categories: List of the categories of the action
+        :param str description: Description of the action
+        :param str resource_type: Resource type the action is related to
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "categories", categories)
         pulumi.set(__self__, "description", description)
@@ -33,21 +39,33 @@ class GetReferenceActionsActionResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Name of the action
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def categories(self) -> Sequence[str]:
+        """
+        List of the categories of the action
+        """
         return pulumi.get(self, "categories")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the action
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        Resource type the action is related to
+        """
         return pulumi.get(self, "resource_type")
 
 

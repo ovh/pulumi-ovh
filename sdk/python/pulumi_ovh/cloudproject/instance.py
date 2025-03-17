@@ -37,18 +37,19 @@ class InstanceArgs:
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] billing_period: Billing period - hourly | monthly
+        :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input['InstanceBootFromArgs'] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input['InstanceFlavorArgs'] flavor: Flavor information
         :param pulumi.Input['InstanceNetworkArgs'] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project
-        :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up.
         :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
         :param pulumi.Input[int] bulk: Create multiple instances
         :param pulumi.Input['InstanceGroupArgs'] group: Start instance in group
         :param pulumi.Input[str] name: Instance name
-        :param pulumi.Input['InstanceSshKeyArgs'] ssh_key: Existing SSH Key pair
+        :param pulumi.Input['InstanceSshKeyArgs'] ssh_key: Existing SSH Keypair
         :param pulumi.Input['InstanceSshKeyCreateArgs'] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] user_data: Configuration information or scripts to use upon launch
         """
@@ -79,7 +80,7 @@ class InstanceArgs:
     @pulumi.getter(name="billingPeriod")
     def billing_period(self) -> pulumi.Input[str]:
         """
-        Billing period - hourly | monthly
+        Billing period - hourly or monthly
         """
         return pulumi.get(self, "billing_period")
 
@@ -139,7 +140,8 @@ class InstanceArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name of the resource representing the id of the cloud project
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         """
         return pulumi.get(self, "service_name")
 
@@ -151,7 +153,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoBackup")
     def auto_backup(self) -> Optional[pulumi.Input['InstanceAutoBackupArgs']]:
         """
-        Create an autobackup workflow after instance start up
+        Create an autobackup workflow after instance start up.
         """
         return pulumi.get(self, "auto_backup")
 
@@ -211,7 +213,7 @@ class InstanceArgs:
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input['InstanceSshKeyArgs']]:
         """
-        Existing SSH Key pair
+        Existing SSH Keypair
         """
         return pulumi.get(self, "ssh_key")
 
@@ -271,9 +273,9 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAddressArgs']]] addresses: Instance IP addresses
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedVolumeArgs']]] attached_volumes: Volumes attached to the instance
-        :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up
+        :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up.
         :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
-        :param pulumi.Input[str] billing_period: Billing period - hourly | monthly
+        :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input['InstanceBootFromArgs'] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input[int] bulk: Create multiple instances
         :param pulumi.Input['InstanceFlavorArgs'] flavor: Flavor information
@@ -284,8 +286,9 @@ class _InstanceState:
         :param pulumi.Input[str] name: Instance name
         :param pulumi.Input['InstanceNetworkArgs'] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project
-        :param pulumi.Input['InstanceSshKeyArgs'] ssh_key: Existing SSH Key pair
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input['InstanceSshKeyArgs'] ssh_key: Existing SSH Keypair
         :param pulumi.Input['InstanceSshKeyCreateArgs'] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] task_state: Instance task state
         :param pulumi.Input[str] user_data: Configuration information or scripts to use upon launch
@@ -359,7 +362,7 @@ class _InstanceState:
     @pulumi.getter(name="autoBackup")
     def auto_backup(self) -> Optional[pulumi.Input['InstanceAutoBackupArgs']]:
         """
-        Create an autobackup workflow after instance start up
+        Create an autobackup workflow after instance start up.
         """
         return pulumi.get(self, "auto_backup")
 
@@ -383,7 +386,7 @@ class _InstanceState:
     @pulumi.getter(name="billingPeriod")
     def billing_period(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing period - hourly | monthly
+        Billing period - hourly or monthly
         """
         return pulumi.get(self, "billing_period")
 
@@ -515,7 +518,8 @@ class _InstanceState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name of the resource representing the id of the cloud project
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         """
         return pulumi.get(self, "service_name")
 
@@ -527,7 +531,7 @@ class _InstanceState:
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input['InstanceSshKeyArgs']]:
         """
-        Existing SSH Key pair
+        Existing SSH Keypair
         """
         return pulumi.get(self, "ssh_key")
 
@@ -593,12 +597,40 @@ class Instance(pulumi.CustomResource):
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        **This resource uses a Beta API**
+        Creates an instance associated with a public cloud project.
+
+        ## Example Usage
+
+        Create a instance.
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        instance = ovh.cloud_project.Instance("instance",
+            billing_period="hourly",
+            boot_from={
+                "image_id": "UUID",
+            },
+            flavor={
+                "flavor_id": "UUID",
+            },
+            network={
+                "public": True,
+            },
+            region="RRRR",
+            service_name="XXX",
+            ssh_key={
+                "name": "sshname",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']] auto_backup: Create an autobackup workflow after instance start up
+        :param pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']] auto_backup: Create an autobackup workflow after instance start up.
         :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
-        :param pulumi.Input[str] billing_period: Billing period - hourly | monthly
+        :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input[int] bulk: Create multiple instances
         :param pulumi.Input[Union['InstanceFlavorArgs', 'InstanceFlavorArgsDict']] flavor: Flavor information
@@ -606,8 +638,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Instance name
         :param pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project
-        :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Key pair
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Keypair
         :param pulumi.Input[Union['InstanceSshKeyCreateArgs', 'InstanceSshKeyCreateArgsDict']] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] user_data: Configuration information or scripts to use upon launch
         """
@@ -618,7 +651,35 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        **This resource uses a Beta API**
+        Creates an instance associated with a public cloud project.
+
+        ## Example Usage
+
+        Create a instance.
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        instance = ovh.cloud_project.Instance("instance",
+            billing_period="hourly",
+            boot_from={
+                "image_id": "UUID",
+            },
+            flavor={
+                "flavor_id": "UUID",
+            },
+            network={
+                "public": True,
+            },
+            region="RRRR",
+            service_name="XXX",
+            ssh_key={
+                "name": "sshname",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -728,9 +789,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAddressArgs', 'InstanceAddressArgsDict']]]] addresses: Instance IP addresses
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedVolumeArgs', 'InstanceAttachedVolumeArgsDict']]]] attached_volumes: Volumes attached to the instance
-        :param pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']] auto_backup: Create an autobackup workflow after instance start up
+        :param pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']] auto_backup: Create an autobackup workflow after instance start up.
         :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
-        :param pulumi.Input[str] billing_period: Billing period - hourly | monthly
+        :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input[int] bulk: Create multiple instances
         :param pulumi.Input[Union['InstanceFlavorArgs', 'InstanceFlavorArgsDict']] flavor: Flavor information
@@ -741,8 +802,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Instance name
         :param pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: Service name of the resource representing the id of the cloud project
-        :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Key pair
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Keypair
         :param pulumi.Input[Union['InstanceSshKeyCreateArgs', 'InstanceSshKeyCreateArgsDict']] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] task_state: Instance task state
         :param pulumi.Input[str] user_data: Configuration information or scripts to use upon launch
@@ -793,7 +855,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoBackup")
     def auto_backup(self) -> pulumi.Output[Optional['outputs.InstanceAutoBackup']]:
         """
-        Create an autobackup workflow after instance start up
+        Create an autobackup workflow after instance start up.
         """
         return pulumi.get(self, "auto_backup")
 
@@ -809,7 +871,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="billingPeriod")
     def billing_period(self) -> pulumi.Output[str]:
         """
-        Billing period - hourly | monthly
+        Billing period - hourly or monthly
         """
         return pulumi.get(self, "billing_period")
 
@@ -897,7 +959,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name of the resource representing the id of the cloud project
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         """
         return pulumi.get(self, "service_name")
 
@@ -905,7 +968,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> pulumi.Output[Optional['outputs.InstanceSshKey']]:
         """
-        Existing SSH Key pair
+        Existing SSH Keypair
         """
         return pulumi.get(self, "ssh_key")
 

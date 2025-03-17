@@ -13,16 +13,40 @@ namespace Pulumi.Ovh.Vps.Outputs
     [OutputType]
     public sealed class VpsModel
     {
+        /// <summary>
+        /// All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+        /// </summary>
         public readonly ImmutableArray<string> AvailableOptions;
+        /// <summary>
+        /// Datacenters where this model is available
+        /// </summary>
         public readonly ImmutableArray<string> Datacenters;
+        /// <summary>
+        /// Disk capacity of this VPS
+        /// </summary>
         public readonly double? Disk;
+        /// <summary>
+        /// Maximum number of additional IPs
+        /// </summary>
         public readonly double? MaximumAdditionnalIp;
+        /// <summary>
+        /// RAM of the VPS
+        /// </summary>
         public readonly double? Memory;
+        /// <summary>
+        /// Name of the VPS
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Description of this VPS offer
+        /// </summary>
         public readonly string? Offer;
+        /// <summary>
+        /// Number of vcores
+        /// </summary>
         public readonly double? Vcore;
         /// <summary>
-        /// All versions that VPS can have
+        /// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
         /// </summary>
         public readonly string? Version;
 

@@ -35,6 +35,9 @@ class GetInstallationTemplateInputResult(dict):
                  mandatory: bool,
                  name: str,
                  type: str):
+        """
+        :param str description: Information about this template.
+        """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enums", enums)
@@ -50,6 +53,9 @@ class GetInstallationTemplateInputResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Information about this template.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -294,7 +300,7 @@ class GetServerVniResult(dict):
         :param str mode: VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
         :param str name: User defined VirtualNetworkInterface name
         :param Sequence[str] nics: NetworkInterfaceControllers bound to this VirtualNetworkInterface
-        :param str server_name: Server name
+        :param str server_name: Server bound to this VirtualNetworkInterface
         :param str uuid: VirtualNetworkInterface unique id
         :param str vrack: vRack name
         """
@@ -342,7 +348,7 @@ class GetServerVniResult(dict):
     @pulumi.getter(name="serverName")
     def server_name(self) -> str:
         """
-        Server name
+        Server bound to this VirtualNetworkInterface
         """
         return pulumi.get(self, "server_name")
 

@@ -9,53 +9,91 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rescue = Ovh.Dedicated.GetServerBoots.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootType = "rescue",
+    ///         Kernel = "rescue64-pro",
+    ///     });
+    /// 
+    ///     var serverOnRescue = new Ovh.Dedicated.ServerUpdate("serverOnRescue", new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///         BootId = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
+    ///         Monitoring = true,
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var serverReboot = new Ovh.Dedicated.ServerRebootTask("serverReboot", new()
+    ///     {
+    ///         ServiceName = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.ServiceName),
+    ///         Keepers = new[]
+    ///         {
+    ///             serverOnRescue.BootId,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dedicated/serverRebootTask:ServerRebootTask")]
     public partial class ServerRebootTask : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Details of this task
+        /// Details of this task. (should be `Reboot asked`)
         /// </summary>
         [Output("comment")]
         public Output<string> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Completion date
+        /// Completion date in RFC3339 format.
         /// </summary>
         [Output("doneDate")]
         public Output<string> DoneDate { get; private set; } = null!;
 
         /// <summary>
-        /// Function name
+        /// Function name (should be `hardReboot`).
         /// </summary>
         [Output("function")]
         public Output<string> Function { get; private set; } = null!;
 
         /// <summary>
-        /// Change this value to recreate a reboot task.
+        /// List of values tracked to trigger reboot, used also to form implicit dependencies.
         /// </summary>
         [Output("keepers")]
         public Output<ImmutableArray<string>> Keepers { get; private set; } = null!;
 
         /// <summary>
-        /// Last update
+        /// Last update in RFC3339 format.
         /// </summary>
         [Output("lastUpdate")]
         public Output<string> LastUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your dedicated server.
+        /// The service_name of your dedicated server.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Task Creation date
+        /// Task creation date in RFC3339 format.
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// Task status
+        /// Task status (should be `done`)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -111,7 +149,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputList<string>? _keepers;
 
         /// <summary>
-        /// Change this value to recreate a reboot task.
+        /// List of values tracked to trigger reboot, used also to form implicit dependencies.
         /// </summary>
         public InputList<string> Keepers
         {
@@ -120,7 +158,7 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// The internal name of your dedicated server.
+        /// The service_name of your dedicated server.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -134,19 +172,19 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerRebootTaskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Details of this task
+        /// Details of this task. (should be `Reboot asked`)
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Completion date
+        /// Completion date in RFC3339 format.
         /// </summary>
         [Input("doneDate")]
         public Input<string>? DoneDate { get; set; }
 
         /// <summary>
-        /// Function name
+        /// Function name (should be `hardReboot`).
         /// </summary>
         [Input("function")]
         public Input<string>? Function { get; set; }
@@ -155,7 +193,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputList<string>? _keepers;
 
         /// <summary>
-        /// Change this value to recreate a reboot task.
+        /// List of values tracked to trigger reboot, used also to form implicit dependencies.
         /// </summary>
         public InputList<string> Keepers
         {
@@ -164,25 +202,25 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// Last update
+        /// Last update in RFC3339 format.
         /// </summary>
         [Input("lastUpdate")]
         public Input<string>? LastUpdate { get; set; }
 
         /// <summary>
-        /// The internal name of your dedicated server.
+        /// The service_name of your dedicated server.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Task Creation date
+        /// Task creation date in RFC3339 format.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// Task status
+        /// Task status (should be `done`)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

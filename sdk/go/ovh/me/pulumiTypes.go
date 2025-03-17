@@ -7,16 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type GetMeCurrency struct {
-	// Currency code
+	// Currency code used by this account (e.g EUR, USD, ...)
 	Code string `pulumi:"code"`
-	// Currency symbol
+	// Currency symbol used by this account (e.g €, $, ...)
 	Symbol string `pulumi:"symbol"`
 }
 
@@ -32,9 +32,9 @@ type GetMeCurrencyInput interface {
 }
 
 type GetMeCurrencyArgs struct {
-	// Currency code
+	// Currency code used by this account (e.g EUR, USD, ...)
 	Code pulumi.StringInput `pulumi:"code"`
-	// Currency symbol
+	// Currency symbol used by this account (e.g €, $, ...)
 	Symbol pulumi.StringInput `pulumi:"symbol"`
 }
 
@@ -89,12 +89,12 @@ func (o GetMeCurrencyOutput) ToGetMeCurrencyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Currency code
+// Currency code used by this account (e.g EUR, USD, ...)
 func (o GetMeCurrencyOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeCurrency) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// Currency symbol
+// Currency symbol used by this account (e.g €, $, ...)
 func (o GetMeCurrencyOutput) Symbol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeCurrency) string { return v.Symbol }).(pulumi.StringOutput)
 }

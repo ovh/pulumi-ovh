@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			integrations, err := cloudprojectdatabase.GetDatabaseIntegrations(ctx, &cloudprojectdatabase.GetDatabaseIntegrationsArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				ClusterId:   "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("integrationIds", integrations.IntegrationIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseIntegrations(ctx *pulumi.Context, args *GetDatabaseIntegrationsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseIntegrationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseIntegrationsResult
@@ -23,19 +53,29 @@ func GetDatabaseIntegrations(ctx *pulumi.Context, args *GetDatabaseIntegrationsA
 
 // A collection of arguments for invoking getDatabaseIntegrations.
 type GetDatabaseIntegrationsArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Engine      string `pulumi:"engine"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// The engine of the database cluster you want to list integrations. To get a full list of available engine visit:
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// All engines available exept `mongodb`
+	Engine string `pulumi:"engine"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getDatabaseIntegrations.
 type GetDatabaseIntegrationsResult struct {
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
-	Engine    string `pulumi:"engine"`
+	// See Argument Reference above.
+	Engine string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of integrations ids of the database cluster associated with the project.
 	IntegrationIds []string `pulumi:"integrationIds"`
-	ServiceName    string   `pulumi:"serviceName"`
+	// See Argument Reference above.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 func GetDatabaseIntegrationsOutput(ctx *pulumi.Context, args GetDatabaseIntegrationsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseIntegrationsResultOutput {
@@ -49,8 +89,14 @@ func GetDatabaseIntegrationsOutput(ctx *pulumi.Context, args GetDatabaseIntegrat
 
 // A collection of arguments for invoking getDatabaseIntegrations.
 type GetDatabaseIntegrationsOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Engine      pulumi.StringInput `pulumi:"engine"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The engine of the database cluster you want to list integrations. To get a full list of available engine visit:
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// All engines available exept `mongodb`
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -73,10 +119,12 @@ func (o GetDatabaseIntegrationsResultOutput) ToGetDatabaseIntegrationsResultOutp
 	return o
 }
 
+// See Argument Reference above.
 func (o GetDatabaseIntegrationsResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseIntegrationsResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetDatabaseIntegrationsResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseIntegrationsResult) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -86,10 +134,12 @@ func (o GetDatabaseIntegrationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseIntegrationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of integrations ids of the database cluster associated with the project.
 func (o GetDatabaseIntegrationsResultOutput) IntegrationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseIntegrationsResult) []string { return v.IntegrationIds }).(pulumi.StringArrayOutput)
 }
 
+// See Argument Reference above.
 func (o GetDatabaseIntegrationsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseIntegrationsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -105,6 +105,10 @@ class GetIpLoadBalancingResult:
     @property
     @pulumi.getter(name="metricsToken")
     def metrics_token(self) -> str:
+        """
+        The metrics token associated with your IP load balancing
+        This attribute is sensitive.
+        """
         return pulumi.get(self, "metrics_token")
 
     @property
@@ -115,6 +119,9 @@ class GetIpLoadBalancingResult:
     @property
     @pulumi.getter(name="orderableZones")
     def orderable_zones(self) -> Sequence['outputs.GetIpLoadBalancingOrderableZoneResult']:
+        """
+        Available additional zone for your Load Balancer
+        """
         return pulumi.get(self, "orderable_zones")
 
     @property
@@ -135,6 +142,9 @@ class GetIpLoadBalancingResult:
     @property
     @pulumi.getter
     def urn(self) -> str:
+        """
+        The URN of the load balancer, to be used in IAM policies
+        """
         return pulumi.get(self, "urn")
 
     @property
@@ -189,7 +199,36 @@ def get_ip_load_balancing(display_name: Optional[str] = None,
                           zones: Optional[Sequence[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpLoadBalancingResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an IP Load Balancing product
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="XXXXXX",
+        state="ok")
+    ```
+
+
+    :param str display_name: the name displayed in ManagerV6 for your iplb (max 50 chars)
+    :param str ip_loadbalancing: Your IP load balancing
+    :param str ipv4: The IPV4 associated to your IP load balancing
+    :param str ipv6: The IPV6 associated to your IP load balancing
+    :param str offer: The offer of your IP load balancing
+    :param str service_name: The internal name of your IP load balancing
+    :param str ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30,
+           IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
+           Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
+           Safari 1, Windows XP IE8, Android 2.3, Java 7.
+           Can take any of the following value: "intermediate", "modern"
+    :param str state: Current state of your IP. Can take any of the following value:
+           "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+    :param bool vrack_eligibility: Vrack eligibility. Takes a boolean value.
+    :param str vrack_name: Name of the vRack on which the current Load Balancer is
+           attached to, as it is named on vRack product
+    :param Sequence[str] zones: Location where your service is. This takes an array of values.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -235,7 +274,36 @@ def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[st
                                  zones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpLoadBalancingResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an IP Load Balancing product
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="XXXXXX",
+        state="ok")
+    ```
+
+
+    :param str display_name: the name displayed in ManagerV6 for your iplb (max 50 chars)
+    :param str ip_loadbalancing: Your IP load balancing
+    :param str ipv4: The IPV4 associated to your IP load balancing
+    :param str ipv6: The IPV6 associated to your IP load balancing
+    :param str offer: The offer of your IP load balancing
+    :param str service_name: The internal name of your IP load balancing
+    :param str ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30,
+           IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
+           Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
+           Safari 1, Windows XP IE8, Android 2.3, Java 7.
+           Can take any of the following value: "intermediate", "modern"
+    :param str state: Current state of your IP. Can take any of the following value:
+           "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+    :param bool vrack_eligibility: Vrack eligibility. Takes a boolean value.
+    :param str vrack_name: Name of the vRack on which the current Load Balancer is
+           attached to, as it is named on vRack product
+    :param Sequence[str] zones: Location where your service is. This takes an array of values.
     """
     __args__ = dict()
     __args__['displayName'] = display_name

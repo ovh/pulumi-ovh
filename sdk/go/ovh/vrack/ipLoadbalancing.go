@@ -8,16 +8,44 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Attach an IP Load Balancing to a VRack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vrack.NewIpLoadbalancing(ctx, "viplb", &vrack.IpLoadbalancingArgs{
+//				LoadbalancingId: pulumi.String("yyy"),
+//				ServiceName:     pulumi.String("xxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IpLoadbalancing struct {
 	pulumi.CustomResourceState
 
-	// Your ipLoadbalancing
+	// The id of the IP Load Balancing.
 	LoadbalancingId pulumi.StringOutput `pulumi:"LoadbalancingId"`
-	// The internal name of your vrack
+	// The id of the vrack.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -57,16 +85,16 @@ func GetIpLoadbalancing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IpLoadbalancing resources.
 type ipLoadbalancingState struct {
-	// Your ipLoadbalancing
+	// The id of the IP Load Balancing.
 	LoadbalancingId *string `pulumi:"LoadbalancingId"`
-	// The internal name of your vrack
+	// The id of the vrack.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type IpLoadbalancingState struct {
-	// Your ipLoadbalancing
+	// The id of the IP Load Balancing.
 	LoadbalancingId pulumi.StringPtrInput
-	// The internal name of your vrack
+	// The id of the vrack.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -75,17 +103,17 @@ func (IpLoadbalancingState) ElementType() reflect.Type {
 }
 
 type ipLoadbalancingArgs struct {
-	// Your ipLoadbalancing
+	// The id of the IP Load Balancing.
 	LoadbalancingId string `pulumi:"LoadbalancingId"`
-	// The internal name of your vrack
+	// The id of the vrack.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a IpLoadbalancing resource.
 type IpLoadbalancingArgs struct {
-	// Your ipLoadbalancing
+	// The id of the IP Load Balancing.
 	LoadbalancingId pulumi.StringInput
-	// The internal name of your vrack
+	// The id of the vrack.
 	ServiceName pulumi.StringInput
 }
 
@@ -176,12 +204,12 @@ func (o IpLoadbalancingOutput) ToIpLoadbalancingOutputWithContext(ctx context.Co
 	return o
 }
 
-// Your ipLoadbalancing
+// The id of the IP Load Balancing.
 func (o IpLoadbalancingOutput) LoadbalancingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpLoadbalancing) pulumi.StringOutput { return v.LoadbalancingId }).(pulumi.StringOutput)
 }
 
-// The internal name of your vrack
+// The id of the vrack.
 func (o IpLoadbalancingOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpLoadbalancing) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class ProjectOrderDetail
     {
         /// <summary>
-        /// description
+        /// A description associated with the user.
         /// </summary>
         public readonly string? Description;
         /// <summary>

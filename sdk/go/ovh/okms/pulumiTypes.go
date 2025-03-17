@@ -7,20 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type OkmsIam struct {
-	// Resource display name
+	// (String) Resource display name
 	DisplayName *string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// (String) Unique identifier of the resource
 	Id *string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
+	// (String) Unique resource name used in policies
 	Urn *string `pulumi:"urn"`
 }
 
@@ -36,13 +36,13 @@ type OkmsIamInput interface {
 }
 
 type OkmsIamArgs struct {
-	// Resource display name
+	// (String) Resource display name
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// (String) Unique identifier of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
+	// (String) Unique resource name used in policies
 	Urn pulumi.StringPtrInput `pulumi:"urn"`
 }
 
@@ -123,22 +123,22 @@ func (o OkmsIamOutput) ToOkmsIamPtrOutputWithContext(ctx context.Context) OkmsIa
 	}).(OkmsIamPtrOutput)
 }
 
-// Resource display name
+// (String) Resource display name
 func (o OkmsIamOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OkmsIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource
+// (String) Unique identifier of the resource
 func (o OkmsIamOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OkmsIam) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 func (o OkmsIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OkmsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// (String) Unique resource name used in policies
 func (o OkmsIamOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OkmsIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
 }
@@ -167,7 +167,7 @@ func (o OkmsIamPtrOutput) Elem() OkmsIamOutput {
 	}).(OkmsIamOutput)
 }
 
-// Resource display name
+// (String) Resource display name
 func (o OkmsIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OkmsIam) *string {
 		if v == nil {
@@ -177,7 +177,7 @@ func (o OkmsIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource
+// (String) Unique identifier of the resource
 func (o OkmsIamPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OkmsIam) *string {
 		if v == nil {
@@ -187,7 +187,7 @@ func (o OkmsIamPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 func (o OkmsIamPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *OkmsIam) map[string]string {
 		if v == nil {
@@ -197,7 +197,7 @@ func (o OkmsIamPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// (String) Unique resource name used in policies
 func (o OkmsIamPtrOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OkmsIam) *string {
 		if v == nil {
@@ -643,13 +643,13 @@ func (o ServiceKeyJWKKeyArrayOutput) Index(i pulumi.IntInput) ServiceKeyJWKKeyOu
 }
 
 type GetOkmsResourceIam struct {
-	// Resource display name
+	// (String) Resource display name
 	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Should be set to the ID of your KMS
 	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
+	// (String) Unique resource name used in policies
 	Urn string `pulumi:"urn"`
 }
 
@@ -665,13 +665,13 @@ type GetOkmsResourceIamInput interface {
 }
 
 type GetOkmsResourceIamArgs struct {
-	// Resource display name
+	// (String) Resource display name
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Should be set to the ID of your KMS
 	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
+	// (String) Unique resource name used in policies
 	Urn pulumi.StringInput `pulumi:"urn"`
 }
 
@@ -701,22 +701,22 @@ func (o GetOkmsResourceIamOutput) ToGetOkmsResourceIamOutputWithContext(ctx cont
 	return o
 }
 
-// Resource display name
+// (String) Resource display name
 func (o GetOkmsResourceIamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceIam) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Should be set to the ID of your KMS
 func (o GetOkmsResourceIamOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceIam) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
 func (o GetOkmsResourceIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetOkmsResourceIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// (String) Unique resource name used in policies
 func (o GetOkmsResourceIamOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsResourceIam) string { return v.Urn }).(pulumi.StringOutput)
 }
@@ -724,7 +724,7 @@ func (o GetOkmsResourceIamOutput) Urn() pulumi.StringOutput {
 type GetOkmsServiceKeyIam struct {
 	// Resource display name
 	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// ID of the service key
 	Id string `pulumi:"id"`
 	// Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags map[string]string `pulumi:"tags"`
@@ -746,7 +746,7 @@ type GetOkmsServiceKeyIamInput interface {
 type GetOkmsServiceKeyIamArgs struct {
 	// Resource display name
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// ID of the service key
 	Id pulumi.StringInput `pulumi:"id"`
 	// Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -785,7 +785,7 @@ func (o GetOkmsServiceKeyIamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsServiceKeyIam) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// ID of the service key
 func (o GetOkmsServiceKeyIamOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsServiceKeyIam) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -803,7 +803,7 @@ func (o GetOkmsServiceKeyIamOutput) Urn() pulumi.StringOutput {
 type GetOkmsServiceKeyJwkIam struct {
 	// Resource display name
 	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// ID of the service key
 	Id string `pulumi:"id"`
 	// Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags map[string]string `pulumi:"tags"`
@@ -825,7 +825,7 @@ type GetOkmsServiceKeyJwkIamInput interface {
 type GetOkmsServiceKeyJwkIamArgs struct {
 	// Resource display name
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// ID of the service key
 	Id pulumi.StringInput `pulumi:"id"`
 	// Resource tags. Tags that were internally computed are prefixed with ovh:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -864,7 +864,7 @@ func (o GetOkmsServiceKeyJwkIamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsServiceKeyJwkIam) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// ID of the service key
 func (o GetOkmsServiceKeyJwkIamOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsServiceKeyJwkIam) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1233,360 +1233,6 @@ func (o GetOkmsServiceKeyPemKeysPemArrayOutput) Index(i pulumi.IntInput) GetOkms
 	}).(GetOkmsServiceKeyPemKeysPemOutput)
 }
 
-type GetOvhCloudConnectIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn string `pulumi:"urn"`
-}
-
-// GetOvhCloudConnectIamInput is an input type that accepts GetOvhCloudConnectIamArgs and GetOvhCloudConnectIamOutput values.
-// You can construct a concrete instance of `GetOvhCloudConnectIamInput` via:
-//
-//	GetOvhCloudConnectIamArgs{...}
-type GetOvhCloudConnectIamInput interface {
-	pulumi.Input
-
-	ToGetOvhCloudConnectIamOutput() GetOvhCloudConnectIamOutput
-	ToGetOvhCloudConnectIamOutputWithContext(context.Context) GetOvhCloudConnectIamOutput
-}
-
-type GetOvhCloudConnectIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetOvhCloudConnectIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhCloudConnectIam)(nil)).Elem()
-}
-
-func (i GetOvhCloudConnectIamArgs) ToGetOvhCloudConnectIamOutput() GetOvhCloudConnectIamOutput {
-	return i.ToGetOvhCloudConnectIamOutputWithContext(context.Background())
-}
-
-func (i GetOvhCloudConnectIamArgs) ToGetOvhCloudConnectIamOutputWithContext(ctx context.Context) GetOvhCloudConnectIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhCloudConnectIamOutput)
-}
-
-type GetOvhCloudConnectIamOutput struct{ *pulumi.OutputState }
-
-func (GetOvhCloudConnectIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhCloudConnectIam)(nil)).Elem()
-}
-
-func (o GetOvhCloudConnectIamOutput) ToGetOvhCloudConnectIamOutput() GetOvhCloudConnectIamOutput {
-	return o
-}
-
-func (o GetOvhCloudConnectIamOutput) ToGetOvhCloudConnectIamOutputWithContext(ctx context.Context) GetOvhCloudConnectIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetOvhCloudConnectIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the resource
-func (o GetOvhCloudConnectIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetOvhCloudConnectIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Unique resource name used in policies
-func (o GetOvhCloudConnectIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetOvhCloudConnectsOcc struct {
-	// Service bandwidth
-	Bandwidth string `pulumi:"bandwidth"`
-	// Service description
-	Description string `pulumi:"description"`
-	// IAM resource metadata
-	Iam GetOvhCloudConnectsOccIam `pulumi:"iam"`
-	// List of interfaces linked to a service
-	InterfaceLists []float64 `pulumi:"interfaceLists"`
-	// Pop reference where the service is delivered
-	Pop string `pulumi:"pop"`
-	// Port quantity
-	PortQuantity string `pulumi:"portQuantity"`
-	// Product name of the service
-	Product string `pulumi:"product"`
-	// Service provider
-	ProviderName string `pulumi:"providerName"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
-	// Service status
-	Status string `pulumi:"status"`
-	// Service UUID
-	Uuid string `pulumi:"uuid"`
-	// vrack linked to the service
-	Vrack string `pulumi:"vrack"`
-}
-
-// GetOvhCloudConnectsOccInput is an input type that accepts GetOvhCloudConnectsOccArgs and GetOvhCloudConnectsOccOutput values.
-// You can construct a concrete instance of `GetOvhCloudConnectsOccInput` via:
-//
-//	GetOvhCloudConnectsOccArgs{...}
-type GetOvhCloudConnectsOccInput interface {
-	pulumi.Input
-
-	ToGetOvhCloudConnectsOccOutput() GetOvhCloudConnectsOccOutput
-	ToGetOvhCloudConnectsOccOutputWithContext(context.Context) GetOvhCloudConnectsOccOutput
-}
-
-type GetOvhCloudConnectsOccArgs struct {
-	// Service bandwidth
-	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
-	// Service description
-	Description pulumi.StringInput `pulumi:"description"`
-	// IAM resource metadata
-	Iam GetOvhCloudConnectsOccIamInput `pulumi:"iam"`
-	// List of interfaces linked to a service
-	InterfaceLists pulumi.Float64ArrayInput `pulumi:"interfaceLists"`
-	// Pop reference where the service is delivered
-	Pop pulumi.StringInput `pulumi:"pop"`
-	// Port quantity
-	PortQuantity pulumi.StringInput `pulumi:"portQuantity"`
-	// Product name of the service
-	Product pulumi.StringInput `pulumi:"product"`
-	// Service provider
-	ProviderName pulumi.StringInput `pulumi:"providerName"`
-	// Service name
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Service status
-	Status pulumi.StringInput `pulumi:"status"`
-	// Service UUID
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-	// vrack linked to the service
-	Vrack pulumi.StringInput `pulumi:"vrack"`
-}
-
-func (GetOvhCloudConnectsOccArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhCloudConnectsOcc)(nil)).Elem()
-}
-
-func (i GetOvhCloudConnectsOccArgs) ToGetOvhCloudConnectsOccOutput() GetOvhCloudConnectsOccOutput {
-	return i.ToGetOvhCloudConnectsOccOutputWithContext(context.Background())
-}
-
-func (i GetOvhCloudConnectsOccArgs) ToGetOvhCloudConnectsOccOutputWithContext(ctx context.Context) GetOvhCloudConnectsOccOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhCloudConnectsOccOutput)
-}
-
-// GetOvhCloudConnectsOccArrayInput is an input type that accepts GetOvhCloudConnectsOccArray and GetOvhCloudConnectsOccArrayOutput values.
-// You can construct a concrete instance of `GetOvhCloudConnectsOccArrayInput` via:
-//
-//	GetOvhCloudConnectsOccArray{ GetOvhCloudConnectsOccArgs{...} }
-type GetOvhCloudConnectsOccArrayInput interface {
-	pulumi.Input
-
-	ToGetOvhCloudConnectsOccArrayOutput() GetOvhCloudConnectsOccArrayOutput
-	ToGetOvhCloudConnectsOccArrayOutputWithContext(context.Context) GetOvhCloudConnectsOccArrayOutput
-}
-
-type GetOvhCloudConnectsOccArray []GetOvhCloudConnectsOccInput
-
-func (GetOvhCloudConnectsOccArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhCloudConnectsOcc)(nil)).Elem()
-}
-
-func (i GetOvhCloudConnectsOccArray) ToGetOvhCloudConnectsOccArrayOutput() GetOvhCloudConnectsOccArrayOutput {
-	return i.ToGetOvhCloudConnectsOccArrayOutputWithContext(context.Background())
-}
-
-func (i GetOvhCloudConnectsOccArray) ToGetOvhCloudConnectsOccArrayOutputWithContext(ctx context.Context) GetOvhCloudConnectsOccArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhCloudConnectsOccArrayOutput)
-}
-
-type GetOvhCloudConnectsOccOutput struct{ *pulumi.OutputState }
-
-func (GetOvhCloudConnectsOccOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhCloudConnectsOcc)(nil)).Elem()
-}
-
-func (o GetOvhCloudConnectsOccOutput) ToGetOvhCloudConnectsOccOutput() GetOvhCloudConnectsOccOutput {
-	return o
-}
-
-func (o GetOvhCloudConnectsOccOutput) ToGetOvhCloudConnectsOccOutputWithContext(ctx context.Context) GetOvhCloudConnectsOccOutput {
-	return o
-}
-
-// Service bandwidth
-func (o GetOvhCloudConnectsOccOutput) Bandwidth() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Bandwidth }).(pulumi.StringOutput)
-}
-
-// Service description
-func (o GetOvhCloudConnectsOccOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// IAM resource metadata
-func (o GetOvhCloudConnectsOccOutput) Iam() GetOvhCloudConnectsOccIamOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) GetOvhCloudConnectsOccIam { return v.Iam }).(GetOvhCloudConnectsOccIamOutput)
-}
-
-// List of interfaces linked to a service
-func (o GetOvhCloudConnectsOccOutput) InterfaceLists() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) []float64 { return v.InterfaceLists }).(pulumi.Float64ArrayOutput)
-}
-
-// Pop reference where the service is delivered
-func (o GetOvhCloudConnectsOccOutput) Pop() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Pop }).(pulumi.StringOutput)
-}
-
-// Port quantity
-func (o GetOvhCloudConnectsOccOutput) PortQuantity() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.PortQuantity }).(pulumi.StringOutput)
-}
-
-// Product name of the service
-func (o GetOvhCloudConnectsOccOutput) Product() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Product }).(pulumi.StringOutput)
-}
-
-// Service provider
-func (o GetOvhCloudConnectsOccOutput) ProviderName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.ProviderName }).(pulumi.StringOutput)
-}
-
-// Service name
-func (o GetOvhCloudConnectsOccOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.ServiceName }).(pulumi.StringOutput)
-}
-
-// Service status
-func (o GetOvhCloudConnectsOccOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Service UUID
-func (o GetOvhCloudConnectsOccOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-// vrack linked to the service
-func (o GetOvhCloudConnectsOccOutput) Vrack() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOcc) string { return v.Vrack }).(pulumi.StringOutput)
-}
-
-type GetOvhCloudConnectsOccArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOvhCloudConnectsOccArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhCloudConnectsOcc)(nil)).Elem()
-}
-
-func (o GetOvhCloudConnectsOccArrayOutput) ToGetOvhCloudConnectsOccArrayOutput() GetOvhCloudConnectsOccArrayOutput {
-	return o
-}
-
-func (o GetOvhCloudConnectsOccArrayOutput) ToGetOvhCloudConnectsOccArrayOutputWithContext(ctx context.Context) GetOvhCloudConnectsOccArrayOutput {
-	return o
-}
-
-func (o GetOvhCloudConnectsOccArrayOutput) Index(i pulumi.IntInput) GetOvhCloudConnectsOccOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhCloudConnectsOcc {
-		return vs[0].([]GetOvhCloudConnectsOcc)[vs[1].(int)]
-	}).(GetOvhCloudConnectsOccOutput)
-}
-
-type GetOvhCloudConnectsOccIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn string `pulumi:"urn"`
-}
-
-// GetOvhCloudConnectsOccIamInput is an input type that accepts GetOvhCloudConnectsOccIamArgs and GetOvhCloudConnectsOccIamOutput values.
-// You can construct a concrete instance of `GetOvhCloudConnectsOccIamInput` via:
-//
-//	GetOvhCloudConnectsOccIamArgs{...}
-type GetOvhCloudConnectsOccIamInput interface {
-	pulumi.Input
-
-	ToGetOvhCloudConnectsOccIamOutput() GetOvhCloudConnectsOccIamOutput
-	ToGetOvhCloudConnectsOccIamOutputWithContext(context.Context) GetOvhCloudConnectsOccIamOutput
-}
-
-type GetOvhCloudConnectsOccIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetOvhCloudConnectsOccIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhCloudConnectsOccIam)(nil)).Elem()
-}
-
-func (i GetOvhCloudConnectsOccIamArgs) ToGetOvhCloudConnectsOccIamOutput() GetOvhCloudConnectsOccIamOutput {
-	return i.ToGetOvhCloudConnectsOccIamOutputWithContext(context.Background())
-}
-
-func (i GetOvhCloudConnectsOccIamArgs) ToGetOvhCloudConnectsOccIamOutputWithContext(ctx context.Context) GetOvhCloudConnectsOccIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhCloudConnectsOccIamOutput)
-}
-
-type GetOvhCloudConnectsOccIamOutput struct{ *pulumi.OutputState }
-
-func (GetOvhCloudConnectsOccIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhCloudConnectsOccIam)(nil)).Elem()
-}
-
-func (o GetOvhCloudConnectsOccIamOutput) ToGetOvhCloudConnectsOccIamOutput() GetOvhCloudConnectsOccIamOutput {
-	return o
-}
-
-func (o GetOvhCloudConnectsOccIamOutput) ToGetOvhCloudConnectsOccIamOutputWithContext(ctx context.Context) GetOvhCloudConnectsOccIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetOvhCloudConnectsOccIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOccIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the resource
-func (o GetOvhCloudConnectsOccIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOccIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetOvhCloudConnectsOccIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOccIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Unique resource name used in policies
-func (o GetOvhCloudConnectsOccIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhCloudConnectsOccIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OkmsIamInput)(nil)).Elem(), OkmsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OkmsIamPtrInput)(nil)).Elem(), OkmsIamArgs{})
@@ -1602,10 +1248,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemIamInput)(nil)).Elem(), GetOkmsServiceKeyPemIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemKeysPemInput)(nil)).Elem(), GetOkmsServiceKeyPemKeysPemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemKeysPemArrayInput)(nil)).Elem(), GetOkmsServiceKeyPemKeysPemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhCloudConnectIamInput)(nil)).Elem(), GetOvhCloudConnectIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhCloudConnectsOccInput)(nil)).Elem(), GetOvhCloudConnectsOccArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhCloudConnectsOccArrayInput)(nil)).Elem(), GetOvhCloudConnectsOccArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhCloudConnectsOccIamInput)(nil)).Elem(), GetOvhCloudConnectsOccIamArgs{})
 	pulumi.RegisterOutputType(OkmsIamOutput{})
 	pulumi.RegisterOutputType(OkmsIamPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKeyJWKIamOutput{})
@@ -1620,8 +1262,4 @@ func init() {
 	pulumi.RegisterOutputType(GetOkmsServiceKeyPemIamOutput{})
 	pulumi.RegisterOutputType(GetOkmsServiceKeyPemKeysPemOutput{})
 	pulumi.RegisterOutputType(GetOkmsServiceKeyPemKeysPemArrayOutput{})
-	pulumi.RegisterOutputType(GetOvhCloudConnectIamOutput{})
-	pulumi.RegisterOutputType(GetOvhCloudConnectsOccOutput{})
-	pulumi.RegisterOutputType(GetOvhCloudConnectsOccArrayOutput{})
-	pulumi.RegisterOutputType(GetOvhCloudConnectsOccIamOutput{})
 }

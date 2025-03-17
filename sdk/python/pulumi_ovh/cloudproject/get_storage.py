@@ -86,11 +86,17 @@ class GetStorageResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The date and timestamp when the resource was created
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def encryption(self) -> 'outputs.GetStorageEncryptionResult':
+        """
+        Encryption configuration
+        """
         return pulumi.get(self, "encryption")
 
     @property
@@ -104,76 +110,121 @@ class GetStorageResult:
     @property
     @pulumi.getter
     def limit(self) -> float:
+        """
+        Limit the number of objects returned (1000 maximum, defaults to 1000)
+        """
         return pulumi.get(self, "limit")
 
     @property
     @pulumi.getter
     def marker(self) -> str:
+        """
+        Key to start with when listing objects
+        """
         return pulumi.get(self, "marker")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def objects(self) -> Sequence['outputs.GetStorageObjectResult']:
+        """
+        Container objects
+        """
         return pulumi.get(self, "objects")
 
     @property
     @pulumi.getter(name="objectsCount")
     def objects_count(self) -> float:
+        """
+        Container total objects count
+        """
         return pulumi.get(self, "objects_count")
 
     @property
     @pulumi.getter(name="objectsSize")
     def objects_size(self) -> float:
+        """
+        Container total objects size (bytes)
+        """
         return pulumi.get(self, "objects_size")
 
     @property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> float:
+        """
+        Container owner user ID
+        """
         return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter
     def prefix(self) -> str:
+        """
+        List objects whose key begins with this prefix
+        """
         return pulumi.get(self, "prefix")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Container region
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
+        """
+        Region name
+        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter
     def replication(self) -> 'outputs.GetStorageReplicationResult':
+        """
+        Replication configuration
+        """
         return pulumi.get(self, "replication")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Service name
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
+        """
+        Container tags
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def versioning(self) -> 'outputs.GetStorageVersioningResult':
+        """
+        Versioning configuration
+        """
         return pulumi.get(self, "versioning")
 
     @property
     @pulumi.getter(name="virtualHost")
     def virtual_host(self) -> str:
+        """
+        Container virtual host
+        """
         return pulumi.get(self, "virtual_host")
 
 
@@ -211,7 +262,27 @@ def get_storage(limit: Optional[float] = None,
                 service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageResult:
     """
-    Use this data source to access information about an existing resource.
+    Get S3™* compatible storage container.
+    \\* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    storage = ovh.CloudProject.get_storage(name="my-storage-name",
+        region_name="GRA",
+        service_name="<public cloud project ID>")
+    ```
+
+
+    :param float limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
+    :param str marker: Key to start with when listing objects
+    :param str name: Name
+    :param str prefix: List objects whose key begins with this prefix
+    :param str region_name: Region name
+    :param str service_name: Service name
     """
     __args__ = dict()
     __args__['limit'] = limit
@@ -250,7 +321,27 @@ def get_storage_output(limit: Optional[pulumi.Input[Optional[float]]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get S3™* compatible storage container.
+    \\* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    storage = ovh.CloudProject.get_storage(name="my-storage-name",
+        region_name="GRA",
+        service_name="<public cloud project ID>")
+    ```
+
+
+    :param float limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
+    :param str marker: Key to start with when listing objects
+    :param str name: Name
+    :param str prefix: List objects whose key begins with this prefix
+    :param str region_name: Region name
+    :param str service_name: Service name
     """
     __args__ = dict()
     __args__['limit'] = limit

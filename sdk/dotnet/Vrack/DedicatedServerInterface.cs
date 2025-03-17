@@ -9,14 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Vrack
 {
+    /// <summary>
+    /// Attach a Dedicated Server Network Interface to a vRack.
+    /// 
+    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.&lt;br /&gt;
+    /// Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServer` instead.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var server = Ovh.GetServer.Invoke(new()
+    ///     {
+    ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
+    ///     });
+    /// 
+    ///     var vdsi = new Ovh.Vrack.DedicatedServerInterface("vdsi", new()
+    ///     {
+    ///         ServiceName = "pn-xxxxxxx",
+    ///         InterfaceId = server.Apply(getServerResult =&gt; getServerResult.EnabledVrackVnis[0]),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface")]
     public partial class DedicatedServerInterface : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The id of dedicated server network interface.
+        /// </summary>
         [Output("interfaceId")]
         public Output<string> InterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the vrack resource.
+        /// The id of the vrack. If omitted,
+        /// the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -68,11 +102,15 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class DedicatedServerInterfaceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of dedicated server network interface.
+        /// </summary>
         [Input("interfaceId", required: true)]
         public Input<string> InterfaceId { get; set; } = null!;
 
         /// <summary>
-        /// Service name of the vrack resource.
+        /// The id of the vrack. If omitted,
+        /// the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -85,11 +123,15 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class DedicatedServerInterfaceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of dedicated server network interface.
+        /// </summary>
         [Input("interfaceId")]
         public Input<string>? InterfaceId { get; set; }
 
         /// <summary>
-        /// Service name of the vrack resource.
+        /// The id of the vrack. If omitted,
+        /// the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

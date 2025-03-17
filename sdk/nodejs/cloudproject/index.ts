@@ -345,10 +345,10 @@ export type KubeOidc = import("./kubeOidc").KubeOidc;
 export const KubeOidc: typeof import("./kubeOidc").KubeOidc = null as any;
 utilities.lazyLoad(exports, ["KubeOidc"], () => require("./kubeOidc"));
 
-export { LoadbalancerArgs, LoadbalancerState } from "./loadbalancer";
-export type Loadbalancer = import("./loadbalancer").Loadbalancer;
-export const Loadbalancer: typeof import("./loadbalancer").Loadbalancer = null as any;
-utilities.lazyLoad(exports, ["Loadbalancer"], () => require("./loadbalancer"));
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
 export { NetworkPrivateArgs, NetworkPrivateState } from "./networkPrivate";
 export type NetworkPrivate = import("./networkPrivate").NetworkPrivate;
@@ -460,8 +460,8 @@ const _module = {
                 return new KubeNodePool(name, <any>undefined, { urn })
             case "ovh:CloudProject/kubeOidc:KubeOidc":
                 return new KubeOidc(name, <any>undefined, { urn })
-            case "ovh:CloudProject/loadbalancer:Loadbalancer":
-                return new Loadbalancer(name, <any>undefined, { urn })
+            case "ovh:CloudProject/loadBalancer:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
             case "ovh:CloudProject/networkPrivate:NetworkPrivate":
                 return new NetworkPrivate(name, <any>undefined, { urn })
             case "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet":
@@ -512,7 +512,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/kube", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeIpRestrictions", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeOidc", _module)
-pulumi.runtime.registerResourceModule("ovh", "CloudProject/loadbalancer", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivate", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnet", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnetV2", _module)

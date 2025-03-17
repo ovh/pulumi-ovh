@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this resource to retrieve information about an IP permanent mitigation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mitigationData = ovh.Ip.getMitigation({
+ *     ip: "XXXXXX",
+ *     ipOnMitigation: "XXXXXX",
+ * });
+ * ```
+ */
 export function getMitigation(args: GetMitigationArgs, opts?: pulumi.InvokeOptions): Promise<GetMitigationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Ip/getMitigation:getMitigation", {
@@ -16,7 +31,13 @@ export function getMitigation(args: GetMitigationArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getMitigation.
  */
 export interface GetMitigationArgs {
+    /**
+     * The IP or the CIDR
+     */
     ip: string;
+    /**
+     * IPv4 address
+     */
     ipOnMitigation: string;
 }
 
@@ -24,16 +45,44 @@ export interface GetMitigationArgs {
  * A collection of values returned by getMitigation.
  */
 export interface GetMitigationResult {
+    /**
+     * Set on true if the IP is on auto-mitigation
+     */
     readonly auto: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The IP or the CIDR
+     */
     readonly ip: string;
+    /**
+     * IPv4 address
+     * * `permanent ` - Set on true if the IP is on permanent mitigation
+     */
     readonly ipOnMitigation: string;
     readonly permanent: boolean;
+    /**
+     * Current state of the IP on mitigation
+     */
     readonly state: string;
 }
+/**
+ * Use this resource to retrieve information about an IP permanent mitigation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const mitigationData = ovh.Ip.getMitigation({
+ *     ip: "XXXXXX",
+ *     ipOnMitigation: "XXXXXX",
+ * });
+ * ```
+ */
 export function getMitigationOutput(args: GetMitigationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMitigationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Ip/getMitigation:getMitigation", {
@@ -46,6 +95,12 @@ export function getMitigationOutput(args: GetMitigationOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getMitigation.
  */
 export interface GetMitigationOutputArgs {
+    /**
+     * The IP or the CIDR
+     */
     ip: pulumi.Input<string>;
+    /**
+     * IPv4 address
+     */
     ipOnMitigation: pulumi.Input<string>;
 }

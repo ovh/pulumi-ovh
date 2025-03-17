@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Attach an IP Load Balancing to a VRack.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const viplb = new ovh.vrack.IpLoadbalancing("viplb", {
+ *     LoadbalancingId: "yyy",
+ *     serviceName: "xxx",
+ * });
+ * ```
+ */
 export class IpLoadbalancing extends pulumi.CustomResource {
     /**
      * Get an existing IpLoadbalancing resource's state with the given name, ID, and optional extra
@@ -33,11 +48,11 @@ export class IpLoadbalancing extends pulumi.CustomResource {
     }
 
     /**
-     * Your ipLoadbalancing
+     * The id of the IP Load Balancing.
      */
     public readonly LoadbalancingId!: pulumi.Output<string>;
     /**
-     * The internal name of your vrack
+     * The id of the vrack.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -77,11 +92,11 @@ export class IpLoadbalancing extends pulumi.CustomResource {
  */
 export interface IpLoadbalancingState {
     /**
-     * Your ipLoadbalancing
+     * The id of the IP Load Balancing.
      */
     LoadbalancingId?: pulumi.Input<string>;
     /**
-     * The internal name of your vrack
+     * The id of the vrack.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -91,11 +106,11 @@ export interface IpLoadbalancingState {
  */
 export interface IpLoadbalancingArgs {
     /**
-     * Your ipLoadbalancing
+     * The id of the IP Load Balancing.
      */
     LoadbalancingId: pulumi.Input<string>;
     /**
-     * The internal name of your vrack
+     * The id of the vrack.
      */
     serviceName: pulumi.Input<string>;
 }

@@ -9,17 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Okms
 {
+    /// <summary>
+    /// Creates a credential for an OVHcloud KMS.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var credNoCsr = new Ovh.Okms.Credential("credNoCsr", new()
+    ///     {
+    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         IdentityUrns = new[]
+    ///         {
+    ///             $"urn:v1:eu:identity:account:{data.Ovh_me.Current_account.Nichandle}",
+    ///         },
+    ///         Description = "Credential without CSR",
+    ///     });
+    /// 
+    ///     var credFromCsr = new Ovh.Okms.Credential("credFromCsr", new()
+    ///     {
+    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         IdentityUrns = new[]
+    ///         {
+    ///             $"urn:v1:eu:identity:account:{data.Ovh_me.Current_account.Nichandle}",
+    ///         },
+    ///         Csr = File.ReadAllText("cred.csr"),
+    ///         Description = "Credential from CSR",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Okms/credential:Credential")]
     public partial class Credential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Certificate PEM of the credential
+        /// (String) Certificate PEM of the credential.
         /// </summary>
         [Output("certificatePem")]
         public Output<string> CertificatePem { get; private set; } = null!;
 
         /// <summary>
-        /// Creation time of the credential
+        /// (String) Creation time of the credential
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -37,13 +77,13 @@ namespace Pulumi.Ovh.Okms
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Expiration time of the credential
+        /// (String) Expiration time of the credential
         /// </summary>
         [Output("expiredAt")]
         public Output<string> ExpiredAt { get; private set; } = null!;
 
         /// <summary>
-        /// Is the credential generated from CSR
+        /// (Boolean) Whether the credential was generated from a CSR
         /// </summary>
         [Output("fromCsr")]
         public Output<bool> FromCsr { get; private set; } = null!;
@@ -67,13 +107,13 @@ namespace Pulumi.Ovh.Okms
         public Output<string> OkmsId { get; private set; } = null!;
 
         /// <summary>
-        /// Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+        /// (String, Sensitive) Private Key PEM of the credential if no CSR is provided
         /// </summary>
         [Output("privateKeyPem")]
         public Output<string> PrivateKeyPem { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the credential
+        /// (String) Status of the credential
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -186,13 +226,13 @@ namespace Pulumi.Ovh.Okms
     public sealed class CredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate PEM of the credential
+        /// (String) Certificate PEM of the credential.
         /// </summary>
         [Input("certificatePem")]
         public Input<string>? CertificatePem { get; set; }
 
         /// <summary>
-        /// Creation time of the credential
+        /// (String) Creation time of the credential
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -210,13 +250,13 @@ namespace Pulumi.Ovh.Okms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Expiration time of the credential
+        /// (String) Expiration time of the credential
         /// </summary>
         [Input("expiredAt")]
         public Input<string>? ExpiredAt { get; set; }
 
         /// <summary>
-        /// Is the credential generated from CSR
+        /// (Boolean) Whether the credential was generated from a CSR
         /// </summary>
         [Input("fromCsr")]
         public Input<bool>? FromCsr { get; set; }
@@ -249,7 +289,7 @@ namespace Pulumi.Ovh.Okms
         private Input<string>? _privateKeyPem;
 
         /// <summary>
-        /// Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+        /// (String, Sensitive) Private Key PEM of the credential if no CSR is provided
         /// </summary>
         public Input<string>? PrivateKeyPem
         {
@@ -262,7 +302,7 @@ namespace Pulumi.Ovh.Okms
         }
 
         /// <summary>
-        /// Status of the credential
+        /// (String) Status of the credential
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

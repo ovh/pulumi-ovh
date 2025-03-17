@@ -11,12 +11,96 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetDatabaseInstance
     {
+        /// <summary>
+        /// Use this data source to get information about a database of a database cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var database = Ovh.CloudProjectDatabase.GetDatabaseInstance.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///         Name = "UUU",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseName"] = database.Apply(getDatabaseInstanceResult =&gt; getDatabaseInstanceResult.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetDatabaseInstanceResult> InvokeAsync(GetDatabaseInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceResult>("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a database of a database cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var database = Ovh.CloudProjectDatabase.GetDatabaseInstance.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///         Name = "UUU",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseName"] = database.Apply(getDatabaseInstanceResult =&gt; getDatabaseInstanceResult.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetDatabaseInstanceResult> Invoke(GetDatabaseInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceResult>("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a database of a database cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var database = Ovh.CloudProjectDatabase.GetDatabaseInstance.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///         Name = "UUU",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseName"] = database.Apply(getDatabaseInstanceResult =&gt; getDatabaseInstanceResult.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetDatabaseInstanceResult> Invoke(GetDatabaseInstanceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceResult>("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +108,30 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetDatabaseInstanceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The engine of the database cluster you want database information. To get a full list of available engine visit:
+        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
+        /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the database.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -44,15 +143,30 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetDatabaseInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The engine of the database cluster you want database information. To get a full list of available engine visit:
+        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
+        /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the database.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -66,14 +180,29 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetDatabaseInstanceResult
     {
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// Defines if the database has been created by default.
+        /// </summary>
         public readonly bool Default;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string Engine;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Name of the database.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Current status of the database.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

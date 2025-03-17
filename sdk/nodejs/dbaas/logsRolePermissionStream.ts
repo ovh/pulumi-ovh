@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Reference a DBaaS logs role stream permission.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const permission = new ovh.dbaas.LogsRolePermissionStream("permission", {
+ *     serviceName: "ldp-xx-xxxxx",
+ *     roleId: ovh_dbaas_logs_role.ro.id,
+ *     streamId: ovh_dbaas_logs_output_graylog_stream.mystream.stream_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+ * ```
+ */
 export class LogsRolePermissionStream extends pulumi.CustomResource {
     /**
      * Get an existing LogsRolePermissionStream resource's state with the given name, ID, and optional extra
@@ -41,15 +67,15 @@ export class LogsRolePermissionStream extends pulumi.CustomResource {
      */
     public /*out*/ readonly permissionType!: pulumi.Output<string>;
     /**
-     * Role ID to which the permission will be appended
+     * The DBaaS Logs role id
      */
     public readonly roleId!: pulumi.Output<string>;
     /**
-     * Service name
+     * The service name
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Graylog stream ID to be associated as a permission
+     * The DBaaS Logs Graylog output stream id
      */
     public readonly streamId!: pulumi.Output<string>;
 
@@ -106,15 +132,15 @@ export interface LogsRolePermissionStreamState {
      */
     permissionType?: pulumi.Input<string>;
     /**
-     * Role ID to which the permission will be appended
+     * The DBaaS Logs role id
      */
     roleId?: pulumi.Input<string>;
     /**
-     * Service name
+     * The service name
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Graylog stream ID to be associated as a permission
+     * The DBaaS Logs Graylog output stream id
      */
     streamId?: pulumi.Input<string>;
 }
@@ -124,15 +150,15 @@ export interface LogsRolePermissionStreamState {
  */
 export interface LogsRolePermissionStreamArgs {
     /**
-     * Role ID to which the permission will be appended
+     * The DBaaS Logs role id
      */
     roleId: pulumi.Input<string>;
     /**
-     * Service name
+     * The service name
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Graylog stream ID to be associated as a permission
+     * The DBaaS Logs Graylog output stream id
      */
     streamId: pulumi.Input<string>;
 }

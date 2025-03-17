@@ -127,7 +127,7 @@ if not MYPY:
     class VrackOrderDetailArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[str]]
         """
-        description
+        yourvrackdescription
         """
         domain: NotRequired[pulumi.Input[str]]
         """
@@ -152,7 +152,7 @@ class VrackOrderDetailArgs:
                  order_detail_id: Optional[pulumi.Input[int]] = None,
                  quantity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: description
+        :param pulumi.Input[str] description: yourvrackdescription
         :param pulumi.Input[str] domain: expiration date
         :param pulumi.Input[int] order_detail_id: order detail id
         :param pulumi.Input[str] quantity: quantity
@@ -170,7 +170,7 @@ class VrackOrderDetailArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        description
+        yourvrackdescription
         """
         return pulumi.get(self, "description")
 

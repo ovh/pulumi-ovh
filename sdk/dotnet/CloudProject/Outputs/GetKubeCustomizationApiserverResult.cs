@@ -13,6 +13,9 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetKubeCustomizationApiserverResult
     {
+        /// <summary>
+        /// Kubernetes API server admission plugins customization
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKubeCustomizationApiserverAdmissionpluginResult> Admissionplugins;
 
         [OutputConstructor]

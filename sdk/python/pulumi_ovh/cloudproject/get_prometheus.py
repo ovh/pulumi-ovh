@@ -50,11 +50,17 @@ class GetPrometheusResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "engine")
 
     @property
@@ -68,16 +74,27 @@ class GetPrometheusResult:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def targets(self) -> Sequence['outputs.GetPrometheusTargetResult']:
+        """
+        List of all endpoint targets.
+        * `Host` - Host of the endpoint.
+        * `Port` - Connection port for the endpoint.
+        """
         return pulumi.get(self, "targets")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        name of the prometheus user.
+        """
         return pulumi.get(self, "username")
 
 
@@ -100,7 +117,27 @@ def get_prometheus(cluster_id: Optional[str] = None,
                    service_name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrometheusResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use CloudProjectDatabase.MongoDbPrometheus datasource
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    prometheus = ovh.CloudProject.get_prometheus(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ")
+    pulumi.export("name", prometheus.username)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str engine: The engine of the database cluster you want user information. To get a full list of available engine visit :
+           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+           Available engines:
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -121,7 +158,27 @@ def get_prometheus_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           service_name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrometheusResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use CloudProjectDatabase.MongoDbPrometheus datasource
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    prometheus = ovh.CloudProject.get_prometheus(service_name="XXX",
+        engine="YYY",
+        cluster_id="ZZZ")
+    pulumi.export("name", prometheus.username)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str engine: The engine of the database cluster you want user information. To get a full list of available engine visit :
+           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+           Available engines:
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

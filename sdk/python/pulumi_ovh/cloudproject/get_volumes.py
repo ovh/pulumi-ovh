@@ -52,11 +52,17 @@ class GetVolumesResult:
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
+        """
+        The region name where volumes are available
+        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The id of the public cloud project.
+        """
         return pulumi.get(self, "service_name")
 
     @property
@@ -81,7 +87,21 @@ def get_volumes(region_name: Optional[str] = None,
                 service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
-    Use this data source to access information about an existing resource.
+    Get all the volume from a region of a public cloud project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    volume = ovh.CloudProject.get_volume(region_name="xxx",
+        service_name="yyy")
+    ```
+
+
+    :param str region_name: A valid OVHcloud public cloud region name in which the volumes are available. Ex.: "GRA11".
+    :param str service_name: The id of the public cloud project.
     """
     __args__ = dict()
     __args__['regionName'] = region_name
@@ -98,7 +118,21 @@ def get_volumes_output(region_name: Optional[pulumi.Input[str]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get all the volume from a region of a public cloud project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    volume = ovh.CloudProject.get_volume(region_name="xxx",
+        service_name="yyy")
+    ```
+
+
+    :param str region_name: A valid OVHcloud public cloud region name in which the volumes are available. Ex.: "GRA11".
+    :param str service_name: The id of the public cloud project.
     """
     __args__ = dict()
     __args__['regionName'] = region_name

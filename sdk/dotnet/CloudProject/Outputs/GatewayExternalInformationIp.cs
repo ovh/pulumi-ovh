@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GatewayExternalInformationIp
     {
         /// <summary>
-        /// External IP of the gateway
+        /// IP of the interface.
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Subnet ID of the ip
+        /// ID of the subnet.
         /// </summary>
         public readonly string? SubnetId;
 

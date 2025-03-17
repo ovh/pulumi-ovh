@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about an hosting database.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const database = ovh.Hosting.getPrivateDatabase({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
+ */
 export function getPrivateDatabase(args: GetPrivateDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", {
@@ -15,6 +29,9 @@ export function getPrivateDatabase(args: GetPrivateDatabaseArgs, opts?: pulumi.I
  * A collection of arguments for invoking getPrivateDatabase.
  */
 export interface GetPrivateDatabaseArgs {
+    /**
+     * The internal name of your private database
+     */
     serviceName: string;
 }
 
@@ -22,31 +39,99 @@ export interface GetPrivateDatabaseArgs {
  * A collection of values returned by getPrivateDatabase.
  */
 export interface GetPrivateDatabaseResult {
+    /**
+     * Number of CPU on your private database
+     */
     readonly cpu: number;
+    /**
+     * Datacenter where this private database is located
+     */
     readonly datacenter: string;
+    /**
+     * Name displayed in customer panel for your private database
+     */
     readonly displayName: string;
+    /**
+     * Private database hostname
+     */
     readonly hostname: string;
+    /**
+     * Private database FTP hostname
+     */
     readonly hostnameFtp: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Infrastructure where service was stored
+     */
     readonly infrastructure: string;
+    /**
+     * Type of the private database offer
+     */
     readonly offer: string;
+    /**
+     * Private database service port
+     */
     readonly port: number;
+    /**
+     * Private database FTP port
+     */
     readonly portFtp: number;
+    /**
+     * Space allowed (in MB) on your private database
+     */
     readonly quotaSize: number;
+    /**
+     * Sapce used (in MB) on your private database
+     */
     readonly quotaUsed: number;
+    /**
+     * Amount of ram (in MB) on your private database
+     */
     readonly ram: number;
+    /**
+     * Private database server name
+     */
     readonly server: string;
     readonly serviceName: string;
+    /**
+     * Private database state
+     */
     readonly state: string;
     readonly type: string;
+    /**
+     * URN of the private database
+     */
     readonly urn: string;
+    /**
+     * Private database available versions
+     */
     readonly version: string;
+    /**
+     * Private database version label
+     */
     readonly versionLabel: string;
+    /**
+     * Private database version number
+     */
     readonly versionNumber: number;
 }
+/**
+ * Use this data source to retrieve information about an hosting database.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const database = ovh.Hosting.getPrivateDatabase({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
+ */
 export function getPrivateDatabaseOutput(args: GetPrivateDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabase:getPrivateDatabase", {
@@ -58,5 +143,8 @@ export function getPrivateDatabaseOutput(args: GetPrivateDatabaseOutputArgs, opt
  * A collection of arguments for invoking getPrivateDatabase.
  */
 export interface GetPrivateDatabaseOutputArgs {
+    /**
+     * The internal name of your private database
+     */
     serviceName: pulumi.Input<string>;
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerStoragePartitioningLayoutExtrasLv
     {
         /// <summary>
-        /// Logical volume name
+        /// Dedicated server name
         /// </summary>
         public readonly string? Name;
 

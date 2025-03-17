@@ -8,26 +8,105 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates an OAuth2 service account.
+//
+// ## Example Usage
+//
+// An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := me.NewAPIOAuth2Client(ctx, "myOauth2ClientAuthCode", &me.APIOAuth2ClientArgs{
+//				CallbackUrls: pulumi.StringArray{
+//					pulumi.String("https://my-app.com/callback"),
+//				},
+//				Description: pulumi.String("An OAuth2 client using the authorization code flow for my-app.com"),
+//				Flow:        pulumi.String("AUTHORIZATION_CODE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := me.NewAPIOAuth2Client(ctx, "myOauth2ClientClientCreds", &me.APIOAuth2ClientArgs{
+//				Description: pulumi.String("An OAuth2 client using the client credentials flow for my app"),
+//				Flow:        pulumi.String("CLIENT_CREDENTIALS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OAuth2 clients can be imported using their `client_id`:
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id
+// ```
+//
+// Because the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
+// ```
 type APIOAuth2Client struct {
 	pulumi.CustomResourceState
 
-	// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls pulumi.StringArrayOutput `pulumi:"callbackUrls"`
-	// Client ID for the oauth2 client, generated during the resource creation.
+	// Client ID of the created service account.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// Secret for the oauth2 client, generated during the oauth2 client creation.
+	// Client secret of the created service account.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	// A description of your oauth2 client.
+	// OAuth2 client description.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
+	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringOutput `pulumi:"flow"`
 	// URN that will allow you to associate this oauth2 client with an access policy
 	Identity pulumi.StringOutput `pulumi:"identity"`
-	Name     pulumi.StringOutput `pulumi:"name"`
+	// OAuth2 client name.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewAPIOAuth2Client registers a new resource with the given unique name, arguments, and options.
@@ -70,35 +149,37 @@ func GetAPIOAuth2Client(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering APIOAuth2Client resources.
 type apioauth2ClientState struct {
-	// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls []string `pulumi:"callbackUrls"`
-	// Client ID for the oauth2 client, generated during the resource creation.
+	// Client ID of the created service account.
 	ClientId *string `pulumi:"clientId"`
-	// Secret for the oauth2 client, generated during the oauth2 client creation.
+	// Client secret of the created service account.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// A description of your oauth2 client.
+	// OAuth2 client description.
 	Description *string `pulumi:"description"`
-	// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
+	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow *string `pulumi:"flow"`
 	// URN that will allow you to associate this oauth2 client with an access policy
 	Identity *string `pulumi:"identity"`
-	Name     *string `pulumi:"name"`
+	// OAuth2 client name.
+	Name *string `pulumi:"name"`
 }
 
 type APIOAuth2ClientState struct {
-	// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls pulumi.StringArrayInput
-	// Client ID for the oauth2 client, generated during the resource creation.
+	// Client ID of the created service account.
 	ClientId pulumi.StringPtrInput
-	// Secret for the oauth2 client, generated during the oauth2 client creation.
+	// Client secret of the created service account.
 	ClientSecret pulumi.StringPtrInput
-	// A description of your oauth2 client.
+	// OAuth2 client description.
 	Description pulumi.StringPtrInput
-	// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
+	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringPtrInput
 	// URN that will allow you to associate this oauth2 client with an access policy
 	Identity pulumi.StringPtrInput
-	Name     pulumi.StringPtrInput
+	// OAuth2 client name.
+	Name pulumi.StringPtrInput
 }
 
 func (APIOAuth2ClientState) ElementType() reflect.Type {
@@ -106,23 +187,25 @@ func (APIOAuth2ClientState) ElementType() reflect.Type {
 }
 
 type apioauth2ClientArgs struct {
-	// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls []string `pulumi:"callbackUrls"`
-	// A description of your oauth2 client.
+	// OAuth2 client description.
 	Description string `pulumi:"description"`
-	// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
-	Flow string  `pulumi:"flow"`
+	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+	Flow string `pulumi:"flow"`
+	// OAuth2 client name.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a APIOAuth2Client resource.
 type APIOAuth2ClientArgs struct {
-	// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls pulumi.StringArrayInput
-	// A description of your oauth2 client.
+	// OAuth2 client description.
 	Description pulumi.StringInput
-	// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
+	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringInput
+	// OAuth2 client name.
 	Name pulumi.StringPtrInput
 }
 
@@ -213,27 +296,27 @@ func (o APIOAuth2ClientOutput) ToAPIOAuth2ClientOutputWithContext(ctx context.Co
 	return o
 }
 
-// Callback URLs of the applications using this oauth2 client. Required if using the AUTHORIZATION_CODE flow.
+// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 func (o APIOAuth2ClientOutput) CallbackUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringArrayOutput { return v.CallbackUrls }).(pulumi.StringArrayOutput)
 }
 
-// Client ID for the oauth2 client, generated during the resource creation.
+// Client ID of the created service account.
 func (o APIOAuth2ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Secret for the oauth2 client, generated during the oauth2 client creation.
+// Client secret of the created service account.
 func (o APIOAuth2ClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// A description of your oauth2 client.
+// OAuth2 client description.
 func (o APIOAuth2ClientOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// OAuth2 flow type implemented for this oauth2 client. Can be either AUTHORIZATION_CODE or CLIENT_CREDENTIALS
+// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 func (o APIOAuth2ClientOutput) Flow() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Flow }).(pulumi.StringOutput)
 }
@@ -243,6 +326,7 @@ func (o APIOAuth2ClientOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }
 
+// OAuth2 client name.
 func (o APIOAuth2ClientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

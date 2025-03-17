@@ -14,35 +14,35 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class GetServerSpecificationsHardwareDiskGroupResult
     {
         /// <summary>
-        /// default hardware raid size for this disk group
+        /// Default hardware raid size for this disk group
         /// </summary>
         public readonly Outputs.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult DefaultHardwareRaidSize;
         /// <summary>
-        /// default hardware raid type for this disk group
+        /// Default hardware raid type for this disk group
         /// </summary>
         public readonly string DefaultHardwareRaidType;
         /// <summary>
-        /// human readable description of this disk group
+        /// Expansion card description
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// identifier of this disk group
+        /// Identifier of this disk group
         /// </summary>
         public readonly double DiskGroupId;
         /// <summary>
-        /// disk capacity
+        /// Disk capacity
         /// </summary>
         public readonly Outputs.GetServerSpecificationsHardwareDiskGroupDiskSizeResult DiskSize;
         /// <summary>
-        /// type of the disk (SSD, SATA, SAS, ...)
+        /// Type of the disk (SSD, SATA, SAS, ...)
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// number of disks in this group
+        /// Number of disks in this group
         /// </summary>
         public readonly double NumberOfDisks;
         /// <summary>
-        /// raid controller, if any, managing this group of disks
+        /// Raid controller, if any, managing this group of disks
         /// </summary>
         public readonly string RaidController;
 

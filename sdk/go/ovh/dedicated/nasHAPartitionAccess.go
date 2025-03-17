@@ -8,19 +8,62 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a resource for managing access rights to partitions on HA-NAS services
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dedicated.NewNasHAPartitionAccess(ctx, "myPartition", &dedicated.NasHAPartitionAccessArgs{
+//				AclDescription: pulumi.String("Description of the ACL"),
+//				Ip:             pulumi.String("123.123.123.123/32"),
+//				PartitionName:  pulumi.String("my-partition"),
+//				ServiceName:    pulumi.String("zpool-12345"),
+//				Type:           pulumi.String("readwrite"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+//
+// ```sh
+// $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+// ```
 type NasHAPartitionAccess struct {
 	pulumi.CustomResourceState
 
-	// A brief description of the ACL
+	// A brief description of the acl
 	AclDescription pulumi.StringPtrOutput `pulumi:"aclDescription"`
-	Ip             pulumi.StringOutput    `pulumi:"ip"`
-	PartitionName  pulumi.StringOutput    `pulumi:"partitionName"`
-	ServiceName    pulumi.StringOutput    `pulumi:"serviceName"`
-	Type           pulumi.StringPtrOutput `pulumi:"type"`
+	// IP block in x.x.x.x/x format
+	Ip pulumi.StringOutput `pulumi:"ip"`
+	// Name of the partition
+	PartitionName pulumi.StringOutput `pulumi:"partitionName"`
+	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// One of "readwrite", "readonly"
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewNasHAPartitionAccess registers a new resource with the given unique name, arguments, and options.
@@ -62,21 +105,29 @@ func GetNasHAPartitionAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NasHAPartitionAccess resources.
 type nasHAPartitionAccessState struct {
-	// A brief description of the ACL
+	// A brief description of the acl
 	AclDescription *string `pulumi:"aclDescription"`
-	Ip             *string `pulumi:"ip"`
-	PartitionName  *string `pulumi:"partitionName"`
-	ServiceName    *string `pulumi:"serviceName"`
-	Type           *string `pulumi:"type"`
+	// IP block in x.x.x.x/x format
+	Ip *string `pulumi:"ip"`
+	// Name of the partition
+	PartitionName *string `pulumi:"partitionName"`
+	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+	ServiceName *string `pulumi:"serviceName"`
+	// One of "readwrite", "readonly"
+	Type *string `pulumi:"type"`
 }
 
 type NasHAPartitionAccessState struct {
-	// A brief description of the ACL
+	// A brief description of the acl
 	AclDescription pulumi.StringPtrInput
-	Ip             pulumi.StringPtrInput
-	PartitionName  pulumi.StringPtrInput
-	ServiceName    pulumi.StringPtrInput
-	Type           pulumi.StringPtrInput
+	// IP block in x.x.x.x/x format
+	Ip pulumi.StringPtrInput
+	// Name of the partition
+	PartitionName pulumi.StringPtrInput
+	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+	ServiceName pulumi.StringPtrInput
+	// One of "readwrite", "readonly"
+	Type pulumi.StringPtrInput
 }
 
 func (NasHAPartitionAccessState) ElementType() reflect.Type {
@@ -84,22 +135,30 @@ func (NasHAPartitionAccessState) ElementType() reflect.Type {
 }
 
 type nasHAPartitionAccessArgs struct {
-	// A brief description of the ACL
+	// A brief description of the acl
 	AclDescription *string `pulumi:"aclDescription"`
-	Ip             string  `pulumi:"ip"`
-	PartitionName  string  `pulumi:"partitionName"`
-	ServiceName    string  `pulumi:"serviceName"`
-	Type           *string `pulumi:"type"`
+	// IP block in x.x.x.x/x format
+	Ip string `pulumi:"ip"`
+	// Name of the partition
+	PartitionName string `pulumi:"partitionName"`
+	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+	ServiceName string `pulumi:"serviceName"`
+	// One of "readwrite", "readonly"
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NasHAPartitionAccess resource.
 type NasHAPartitionAccessArgs struct {
-	// A brief description of the ACL
+	// A brief description of the acl
 	AclDescription pulumi.StringPtrInput
-	Ip             pulumi.StringInput
-	PartitionName  pulumi.StringInput
-	ServiceName    pulumi.StringInput
-	Type           pulumi.StringPtrInput
+	// IP block in x.x.x.x/x format
+	Ip pulumi.StringInput
+	// Name of the partition
+	PartitionName pulumi.StringInput
+	// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+	ServiceName pulumi.StringInput
+	// One of "readwrite", "readonly"
+	Type pulumi.StringPtrInput
 }
 
 func (NasHAPartitionAccessArgs) ElementType() reflect.Type {
@@ -189,23 +248,27 @@ func (o NasHAPartitionAccessOutput) ToNasHAPartitionAccessOutputWithContext(ctx 
 	return o
 }
 
-// A brief description of the ACL
+// A brief description of the acl
 func (o NasHAPartitionAccessOutput) AclDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringPtrOutput { return v.AclDescription }).(pulumi.StringPtrOutput)
 }
 
+// IP block in x.x.x.x/x format
 func (o NasHAPartitionAccessOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
+// Name of the partition
 func (o NasHAPartitionAccessOutput) PartitionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringOutput { return v.PartitionName }).(pulumi.StringOutput)
 }
 
+// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
 func (o NasHAPartitionAccessOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// One of "readwrite", "readonly"
 func (o NasHAPartitionAccessOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasHAPartitionAccess) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

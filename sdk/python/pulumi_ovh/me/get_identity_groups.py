@@ -37,6 +37,9 @@ class GetIdentityGroupsResult:
     @property
     @pulumi.getter
     def groups(self) -> Sequence[str]:
+        """
+        The list of the group names of all the identity groups.
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -60,7 +63,16 @@ class AwaitableGetIdentityGroupsResult(GetIdentityGroupsResult):
 
 def get_identity_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIdentityGroupsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve the list of the account's identity groups
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    groups = ovh.Me.get_identity_groups()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -71,7 +83,16 @@ def get_identity_groups(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         id=pulumi.get(__ret__, 'id'))
 def get_identity_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityGroupsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve the list of the account's identity groups
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    groups = ovh.Me.get_identity_groups()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -8,24 +8,82 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a credential for an OVHcloud KMS.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//	"os"
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := me.GetMe(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = okms.NewCredential(ctx, "credNoCsr", &okms.CredentialArgs{
+//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				IdentityUrns: pulumi.StringArray{
+//					pulumi.Sprintf("urn:v1:eu:identity:account:%v", data.Ovh_me.Current_account.Nichandle),
+//				},
+//				Description: pulumi.String("Credential without CSR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = okms.NewCredential(ctx, "credFromCsr", &okms.CredentialArgs{
+//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				IdentityUrns: pulumi.StringArray{
+//					pulumi.Sprintf("urn:v1:eu:identity:account:%v", data.Ovh_me.Current_account.Nichandle),
+//				},
+//				Csr:         pulumi.String(readFileOrPanic("cred.csr")),
+//				Description: pulumi.String("Credential from CSR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Credential struct {
 	pulumi.CustomResourceState
 
-	// Certificate PEM of the credential
+	// (String) Certificate PEM of the credential.
 	CertificatePem pulumi.StringOutput `pulumi:"certificatePem"`
-	// Creation time of the credential
+	// (String) Creation time of the credential
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Valid Certificate Signing Request
 	Csr pulumi.StringOutput `pulumi:"csr"`
 	// Description of the credential (max 200)
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Expiration time of the credential
+	// (String) Expiration time of the credential
 	ExpiredAt pulumi.StringOutput `pulumi:"expiredAt"`
-	// Is the credential generated from CSR
+	// (Boolean) Whether the credential was generated from a CSR
 	FromCsr pulumi.BoolOutput `pulumi:"fromCsr"`
 	// List of identity URNs associated with the credential (max 25)
 	IdentityUrns pulumi.StringArrayOutput `pulumi:"identityUrns"`
@@ -33,9 +91,9 @@ type Credential struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Okms ID
 	OkmsId pulumi.StringOutput `pulumi:"okmsId"`
-	// Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+	// (String, Sensitive) Private Key PEM of the credential if no CSR is provided
 	PrivateKeyPem pulumi.StringOutput `pulumi:"privateKeyPem"`
-	// Status of the credential
+	// (String) Status of the credential
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Validity in days (default 365, max 365)
 	Validity pulumi.Float64Output `pulumi:"validity"`
@@ -81,17 +139,17 @@ func GetCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Credential resources.
 type credentialState struct {
-	// Certificate PEM of the credential
+	// (String) Certificate PEM of the credential.
 	CertificatePem *string `pulumi:"certificatePem"`
-	// Creation time of the credential
+	// (String) Creation time of the credential
 	CreatedAt *string `pulumi:"createdAt"`
 	// Valid Certificate Signing Request
 	Csr *string `pulumi:"csr"`
 	// Description of the credential (max 200)
 	Description *string `pulumi:"description"`
-	// Expiration time of the credential
+	// (String) Expiration time of the credential
 	ExpiredAt *string `pulumi:"expiredAt"`
-	// Is the credential generated from CSR
+	// (Boolean) Whether the credential was generated from a CSR
 	FromCsr *bool `pulumi:"fromCsr"`
 	// List of identity URNs associated with the credential (max 25)
 	IdentityUrns []string `pulumi:"identityUrns"`
@@ -99,26 +157,26 @@ type credentialState struct {
 	Name *string `pulumi:"name"`
 	// Okms ID
 	OkmsId *string `pulumi:"okmsId"`
-	// Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+	// (String, Sensitive) Private Key PEM of the credential if no CSR is provided
 	PrivateKeyPem *string `pulumi:"privateKeyPem"`
-	// Status of the credential
+	// (String) Status of the credential
 	Status *string `pulumi:"status"`
 	// Validity in days (default 365, max 365)
 	Validity *float64 `pulumi:"validity"`
 }
 
 type CredentialState struct {
-	// Certificate PEM of the credential
+	// (String) Certificate PEM of the credential.
 	CertificatePem pulumi.StringPtrInput
-	// Creation time of the credential
+	// (String) Creation time of the credential
 	CreatedAt pulumi.StringPtrInput
 	// Valid Certificate Signing Request
 	Csr pulumi.StringPtrInput
 	// Description of the credential (max 200)
 	Description pulumi.StringPtrInput
-	// Expiration time of the credential
+	// (String) Expiration time of the credential
 	ExpiredAt pulumi.StringPtrInput
-	// Is the credential generated from CSR
+	// (Boolean) Whether the credential was generated from a CSR
 	FromCsr pulumi.BoolPtrInput
 	// List of identity URNs associated with the credential (max 25)
 	IdentityUrns pulumi.StringArrayInput
@@ -126,9 +184,9 @@ type CredentialState struct {
 	Name pulumi.StringPtrInput
 	// Okms ID
 	OkmsId pulumi.StringPtrInput
-	// Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+	// (String, Sensitive) Private Key PEM of the credential if no CSR is provided
 	PrivateKeyPem pulumi.StringPtrInput
-	// Status of the credential
+	// (String) Status of the credential
 	Status pulumi.StringPtrInput
 	// Validity in days (default 365, max 365)
 	Validity pulumi.Float64PtrInput
@@ -256,12 +314,12 @@ func (o CredentialOutput) ToCredentialOutputWithContext(ctx context.Context) Cre
 	return o
 }
 
-// Certificate PEM of the credential
+// (String) Certificate PEM of the credential.
 func (o CredentialOutput) CertificatePem() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CertificatePem }).(pulumi.StringOutput)
 }
 
-// Creation time of the credential
+// (String) Creation time of the credential
 func (o CredentialOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -276,12 +334,12 @@ func (o CredentialOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Expiration time of the credential
+// (String) Expiration time of the credential
 func (o CredentialOutput) ExpiredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.ExpiredAt }).(pulumi.StringOutput)
 }
 
-// Is the credential generated from CSR
+// (Boolean) Whether the credential was generated from a CSR
 func (o CredentialOutput) FromCsr() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Credential) pulumi.BoolOutput { return v.FromCsr }).(pulumi.BoolOutput)
 }
@@ -301,12 +359,12 @@ func (o CredentialOutput) OkmsId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.OkmsId }).(pulumi.StringOutput)
 }
 
-// Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+// (String, Sensitive) Private Key PEM of the credential if no CSR is provided
 func (o CredentialOutput) PrivateKeyPem() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.PrivateKeyPem }).(pulumi.StringOutput)
 }
 
-// Status of the credential
+// (String) Status of the credential
 func (o CredentialOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

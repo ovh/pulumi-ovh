@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about a KMS service key, in the PEM format.
+ */
 export function getOkmsServiceKeyPem(args: GetOkmsServiceKeyPemArgs, opts?: pulumi.InvokeOptions): Promise<GetOkmsServiceKeyPemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", {
@@ -38,6 +41,9 @@ export interface GetOkmsServiceKeyPemResult {
     readonly state: string;
     readonly type: string;
 }
+/**
+ * Use this data source to retrieve information about a KMS service key, in the PEM format.
+ */
 export function getOkmsServiceKeyPemOutput(args: GetOkmsServiceKeyPemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsServiceKeyPemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", {

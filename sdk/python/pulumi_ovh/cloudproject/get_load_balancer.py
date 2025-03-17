@@ -71,66 +71,105 @@ class GetLoadBalancerResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Date of creation of the loadbalancer
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> str:
+        """
+        ID of the flavor
+        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> 'outputs.GetLoadBalancerFloatingIpResult':
+        """
+        Information about the floating IP
+        """
         return pulumi.get(self, "floating_ip")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the floating IP
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the loadbalancer
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="operatingStatus")
     def operating_status(self) -> str:
+        """
+        Operating status of the loadbalancer
+        """
         return pulumi.get(self, "operating_status")
 
     @property
     @pulumi.getter(name="provisioningStatus")
     def provisioning_status(self) -> str:
+        """
+        Provisioning status of the loadbalancer
+        """
         return pulumi.get(self, "provisioning_status")
 
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
+        """
+        Region of the loadbalancer
+        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        ID of the public cloud project
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        Last update date of the loadbalancer
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="vipAddress")
     def vip_address(self) -> str:
+        """
+        IP address of the Virtual IP
+        """
         return pulumi.get(self, "vip_address")
 
     @property
     @pulumi.getter(name="vipNetworkId")
     def vip_network_id(self) -> str:
+        """
+        Openstack ID of the network for the Virtual IP
+        """
         return pulumi.get(self, "vip_network_id")
 
     @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> str:
+        """
+        ID of the subnet for the Virtual IP
+        """
         return pulumi.get(self, "vip_subnet_id")
 
 
@@ -160,7 +199,25 @@ def get_load_balancer(id: Optional[str] = None,
                       service_name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
-    Use this data source to access information about an existing resource.
+    Get the details of a public cloud project loadbalancer.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb_load_balancer = ovh.CloudProject.get_load_balancer(service_name="XXXXXX",
+        region_name="XXX",
+        id="XXX")
+    pulumi.export("lb", lb_load_balancer)
+    ```
+
+
+    :param str id: ID of the loadbalancer
+    :param str region_name: Region of the loadbalancer.
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -188,7 +245,25 @@ def get_load_balancer_output(id: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get the details of a public cloud project loadbalancer.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb_load_balancer = ovh.CloudProject.get_load_balancer(service_name="XXXXXX",
+        region_name="XXX",
+        id="XXX")
+    pulumi.export("lb", lb_load_balancer)
+    ```
+
+
+    :param str id: ID of the loadbalancer
+    :param str region_name: Region of the loadbalancer.
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['id'] = id

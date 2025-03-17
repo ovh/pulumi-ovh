@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.getServers({});
+ * ```
+ */
 export function getServers(opts?: pulumi.InvokeOptions): Promise<GetServersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getServers:getServers", {
@@ -18,8 +30,23 @@ export interface GetServersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The list of dedicated servers IDs associated with your OVHcloud Account.
+     */
     readonly results: string[];
 }
+/**
+ * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.getServers({});
+ * ```
+ */
 export function getServersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:index/getServers:getServers", {

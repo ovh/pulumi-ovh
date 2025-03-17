@@ -54,26 +54,41 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the volume (E.g.: "GRA", meaning Gravelines, for region "GRA1")
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
+        """
+        The region name where volume is available
+        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The id of the public cloud project.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def size(self) -> float:
+        """
+        The size of the volume
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> str:
+        """
+        The id of the volume
+        """
         return pulumi.get(self, "volume_id")
 
 
@@ -96,7 +111,23 @@ def get_volume(region_name: Optional[str] = None,
                volume_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a volume in a public cloud project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    volume = ovh.CloudProject.get_volume(region_name="xxx",
+        service_name="yyy",
+        volume_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+    ```
+
+
+    :param str region_name: A valid OVHcloud public cloud region name in which the volume is available. Ex.: "GRA11".
+    :param str service_name: The id of the public cloud project.
+    :param str volume_id: Volume id to get the informations
     """
     __args__ = dict()
     __args__['regionName'] = region_name
@@ -117,7 +148,23 @@ def get_volume_output(region_name: Optional[pulumi.Input[str]] = None,
                       volume_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a volume in a public cloud project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    volume = ovh.CloudProject.get_volume(region_name="xxx",
+        service_name="yyy",
+        volume_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+    ```
+
+
+    :param str region_name: A valid OVHcloud public cloud region name in which the volume is available. Ex.: "GRA11".
+    :param str service_name: The id of the public cloud project.
+    :param str volume_id: Volume id to get the informations
     """
     __args__ = dict()
     __args__['regionName'] = region_name

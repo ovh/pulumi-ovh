@@ -12,17 +12,30 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
     public sealed class UserRoleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A description associated with the user.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// id of the role
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// name of the role
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("permissions")]
         private InputList<string>? _permissions;
+
+        /// <summary>
+        /// list of permissions associated with the role
+        /// </summary>
         public InputList<string> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<string>());

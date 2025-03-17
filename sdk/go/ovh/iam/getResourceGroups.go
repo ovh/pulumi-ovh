@@ -7,10 +7,35 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to list the existing IAM policies of an account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.GetResourceGroups(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetResourceGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetResourceGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceGroupsResult
@@ -24,7 +49,8 @@ func GetResourceGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRe
 // A collection of values returned by getResourceGroups.
 type GetResourceGroupsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id             string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of the resource groups IDs.
 	ResourceGroups []string `pulumi:"resourceGroups"`
 }
 
@@ -55,6 +81,7 @@ func (o GetResourceGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of the resource groups IDs.
 func (o GetResourceGroupsResultOutput) ResourceGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupsResult) []string { return v.ResourceGroups }).(pulumi.StringArrayOutput)
 }

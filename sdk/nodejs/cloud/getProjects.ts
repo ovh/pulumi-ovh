@@ -6,6 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get the details of your public cloud projects.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projects = ovh.Cloud.getProjects({});
+ * ```
+ */
 export function getProjects(opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Cloud/getProjects:getProjects", {
@@ -22,6 +34,18 @@ export interface GetProjectsResult {
     readonly id: string;
     readonly projects: outputs.Cloud.GetProjectsProject[];
 }
+/**
+ * Get the details of your public cloud projects.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projects = ovh.Cloud.getProjects({});
+ * ```
+ */
 export function getProjectsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Cloud/getProjects:getProjects", {

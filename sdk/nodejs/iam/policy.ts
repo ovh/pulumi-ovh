@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates an IAM policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const account = ovh.Me.getMe({});
+ * const myGroup = new ovh.me.IdentityGroup("myGroup", {description: "my_group created in Terraform"});
+ * const manager = new ovh.iam.Policy("manager", {
+ *     description: "Users are allowed to use the OVH manager",
+ *     identities: [myGroup.GroupURN],
+ *     resources: [account.then(account => account.AccountURN)],
+ *     allows: [
+ *         "account:apiovh:me/get",
+ *         "account:apiovh:me/supportLevel/get",
+ *         "account:apiovh:me/certificates/get",
+ *         "account:apiovh:me/tag/get",
+ *         "account:apiovh:services/get",
+ *         "account:apiovh:*",
+ *     ],
+ * });
+ * ```
+ */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -32,17 +59,53 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
+    /**
+     * List of actions allowed on resources by identities
+     */
     public readonly allows!: pulumi.Output<string[] | undefined>;
+    /**
+     * Creation date of this group.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * List of actions that will always be denied even if also allowed by this policy or another one.
+     */
     public readonly denies!: pulumi.Output<string[] | undefined>;
+    /**
+     * Description of the policy
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+     */
     public readonly excepts!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of identities affected by the policy
+     */
     public readonly identities!: pulumi.Output<string[]>;
+    /**
+     * Name of the policy, must be unique
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Owner of the policy.
+     */
     public /*out*/ readonly owner!: pulumi.Output<string>;
+    /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     */
     public readonly permissionsGroups!: pulumi.Output<string[] | undefined>;
+    /**
+     * Indicates that the policy is a default one.
+     */
     public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
+    /**
+     * List of resources affected by the policy
+     */
     public readonly resources!: pulumi.Output<string[]>;
+    /**
+     * Date of the last update of this group.
+     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
@@ -100,17 +163,53 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
+    /**
+     * List of actions allowed on resources by identities
+     */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Creation date of this group.
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * List of actions that will always be denied even if also allowed by this policy or another one.
+     */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Description of the policy
+     */
     description?: pulumi.Input<string>;
+    /**
+     * List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+     */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of identities affected by the policy
+     */
     identities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the policy, must be unique
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Owner of the policy.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     */
     permissionsGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates that the policy is a default one.
+     */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * List of resources affected by the policy
+     */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Date of the last update of this group.
+     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -118,12 +217,36 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
+    /**
+     * List of actions allowed on resources by identities
+     */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of actions that will always be denied even if also allowed by this policy or another one.
+     */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Description of the policy
+     */
     description?: pulumi.Input<string>;
+    /**
+     * List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+     */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of identities affected by the policy
+     */
     identities: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the policy, must be unique
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+     */
     permissionsGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of resources affected by the policy
+     */
     resources: pulumi.Input<pulumi.Input<string>[]>;
 }

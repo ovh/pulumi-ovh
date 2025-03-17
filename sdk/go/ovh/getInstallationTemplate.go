@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about a specific OVH dedicated server installation template.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ovhTemplate, err := ovh.GetInstallationTemplate(ctx, &ovh.GetInstallationTemplateArgs{
+//				TemplateName: "debian12_64",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("template", ovhTemplate)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstallationTemplate(ctx *pulumi.Context, args *GetInstallationTemplateArgs, opts ...pulumi.InvokeOption) (*GetInstallationTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstallationTemplateResult
@@ -23,29 +51,44 @@ func GetInstallationTemplate(ctx *pulumi.Context, args *GetInstallationTemplateA
 
 // A collection of arguments for invoking getInstallationTemplate.
 type GetInstallationTemplateArgs struct {
+	// The name of the template.
 	TemplateName string `pulumi:"templateName"`
 }
 
 // A collection of values returned by getInstallationTemplate.
 type GetInstallationTemplateResult struct {
-	BitFormat             int      `pulumi:"bitFormat"`
-	Category              string   `pulumi:"category"`
-	Description           string   `pulumi:"description"`
-	Distribution          string   `pulumi:"distribution"`
-	EndOfInstall          string   `pulumi:"endOfInstall"`
-	Family                string   `pulumi:"family"`
+	// Template bit format (32 or 64).
+	BitFormat int `pulumi:"bitFormat"`
+	// Category of this template (informative only).
+	Category string `pulumi:"category"`
+	// Information about this template.
+	Description string `pulumi:"description"`
+	// Distribution this template is based on.
+	Distribution string `pulumi:"distribution"`
+	// End of install date of the template.
+	EndOfInstall string `pulumi:"endOfInstall"`
+	// Template family type.
+	Family string `pulumi:"family"`
+	// Filesystems available.
 	Filesystems           []string `pulumi:"filesystems"`
 	HardRaidConfiguration bool     `pulumi:"hardRaidConfiguration"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                           `pulumi:"id"`
-	Inputs                []GetInstallationTemplateInput   `pulumi:"inputs"`
-	Licenses              []GetInstallationTemplateLicense `pulumi:"licenses"`
-	LvmReady              bool                             `pulumi:"lvmReady"`
-	NoPartitioning        bool                             `pulumi:"noPartitioning"`
-	Projects              []GetInstallationTemplateProject `pulumi:"projects"`
-	SoftRaidOnlyMirroring bool                             `pulumi:"softRaidOnlyMirroring"`
-	Subfamily             string                           `pulumi:"subfamily"`
-	TemplateName          string                           `pulumi:"templateName"`
+	Id string `pulumi:"id"`
+	// Represents the questions of the expected answers in the userMetadata field.
+	Inputs []GetInstallationTemplateInput `pulumi:"inputs"`
+	// License available for this template.
+	Licenses []GetInstallationTemplateLicense `pulumi:"licenses"`
+	// Whether this template supports LVM.
+	LvmReady bool `pulumi:"lvmReady"`
+	// Partitioning customization is not available for this OS template.
+	NoPartitioning bool `pulumi:"noPartitioning"`
+	// Distribution project details.
+	Projects []GetInstallationTemplateProject `pulumi:"projects"`
+	// Template supports RAID0 and RAID1 on 2 disks.
+	SoftRaidOnlyMirroring bool `pulumi:"softRaidOnlyMirroring"`
+	// Subfamily of the template.
+	Subfamily    string `pulumi:"subfamily"`
+	TemplateName string `pulumi:"templateName"`
 }
 
 func GetInstallationTemplateOutput(ctx *pulumi.Context, args GetInstallationTemplateOutputArgs, opts ...pulumi.InvokeOption) GetInstallationTemplateResultOutput {
@@ -59,6 +102,7 @@ func GetInstallationTemplateOutput(ctx *pulumi.Context, args GetInstallationTemp
 
 // A collection of arguments for invoking getInstallationTemplate.
 type GetInstallationTemplateOutputArgs struct {
+	// The name of the template.
 	TemplateName pulumi.StringInput `pulumi:"templateName"`
 }
 
@@ -81,30 +125,37 @@ func (o GetInstallationTemplateResultOutput) ToGetInstallationTemplateResultOutp
 	return o
 }
 
+// Template bit format (32 or 64).
 func (o GetInstallationTemplateResultOutput) BitFormat() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) int { return v.BitFormat }).(pulumi.IntOutput)
 }
 
+// Category of this template (informative only).
 func (o GetInstallationTemplateResultOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// Information about this template.
 func (o GetInstallationTemplateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Distribution this template is based on.
 func (o GetInstallationTemplateResultOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.Distribution }).(pulumi.StringOutput)
 }
 
+// End of install date of the template.
 func (o GetInstallationTemplateResultOutput) EndOfInstall() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.EndOfInstall }).(pulumi.StringOutput)
 }
 
+// Template family type.
 func (o GetInstallationTemplateResultOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.Family }).(pulumi.StringOutput)
 }
 
+// Filesystems available.
 func (o GetInstallationTemplateResultOutput) Filesystems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) []string { return v.Filesystems }).(pulumi.StringArrayOutput)
 }
@@ -118,30 +169,37 @@ func (o GetInstallationTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Represents the questions of the expected answers in the userMetadata field.
 func (o GetInstallationTemplateResultOutput) Inputs() GetInstallationTemplateInputArrayOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) []GetInstallationTemplateInput { return v.Inputs }).(GetInstallationTemplateInputArrayOutput)
 }
 
+// License available for this template.
 func (o GetInstallationTemplateResultOutput) Licenses() GetInstallationTemplateLicenseArrayOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) []GetInstallationTemplateLicense { return v.Licenses }).(GetInstallationTemplateLicenseArrayOutput)
 }
 
+// Whether this template supports LVM.
 func (o GetInstallationTemplateResultOutput) LvmReady() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) bool { return v.LvmReady }).(pulumi.BoolOutput)
 }
 
+// Partitioning customization is not available for this OS template.
 func (o GetInstallationTemplateResultOutput) NoPartitioning() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) bool { return v.NoPartitioning }).(pulumi.BoolOutput)
 }
 
+// Distribution project details.
 func (o GetInstallationTemplateResultOutput) Projects() GetInstallationTemplateProjectArrayOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) []GetInstallationTemplateProject { return v.Projects }).(GetInstallationTemplateProjectArrayOutput)
 }
 
+// Template supports RAID0 and RAID1 on 2 disks.
 func (o GetInstallationTemplateResultOutput) SoftRaidOnlyMirroring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) bool { return v.SoftRaidOnlyMirroring }).(pulumi.BoolOutput)
 }
 
+// Subfamily of the template.
 func (o GetInstallationTemplateResultOutput) Subfamily() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateResult) string { return v.Subfamily }).(pulumi.StringOutput)
 }

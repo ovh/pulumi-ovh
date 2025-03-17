@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Okms
 {
+    /// <summary>
+    /// Import an existing key in the JWK format in an OVHcloud KMS.
+    /// </summary>
     [OvhResourceType("ovh:Okms/serviceKeyJWK:ServiceKeyJWK")]
     public partial class ServiceKeyJWK : global::Pulumi.CustomResource
     {

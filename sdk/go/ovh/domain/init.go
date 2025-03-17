@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "ovh:Domain/dsRecords:DsRecords":
-		r = &DsRecords{}
+	case "ovh:Domain/dSRecords:DSRecords":
+		r = &DSRecords{}
 	case "ovh:Domain/name:Name":
 		r = &Name{}
 	case "ovh:Domain/nameServers:NameServers":
@@ -52,7 +52,7 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"ovh",
-		"Domain/dsRecords",
+		"Domain/dSRecords",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

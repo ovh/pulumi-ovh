@@ -11,12 +11,21 @@ namespace Pulumi.Ovh.Okms
 {
     public static class GetOkmsServiceKeyPem
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a KMS service key, in the PEM format.
+        /// </summary>
         public static Task<GetOkmsServiceKeyPemResult> InvokeAsync(GetOkmsServiceKeyPemArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOkmsServiceKeyPemResult>("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", args ?? new GetOkmsServiceKeyPemArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a KMS service key, in the PEM format.
+        /// </summary>
         public static Output<GetOkmsServiceKeyPemResult> Invoke(GetOkmsServiceKeyPemInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyPemResult>("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", args ?? new GetOkmsServiceKeyPemInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a KMS service key, in the PEM format.
+        /// </summary>
         public static Output<GetOkmsServiceKeyPemResult> Invoke(GetOkmsServiceKeyPemInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyPemResult>("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", args ?? new GetOkmsServiceKeyPemInvokeArgs(), options.WithDefaults());
     }

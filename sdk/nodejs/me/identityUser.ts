@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates an identity user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const myUser = new ovh.me.IdentityUser("myUser", {
+ *     description: "Some custom description",
+ *     email: "my_login@example.com",
+ *     group: "DEFAULT",
+ *     login: "my_login",
+ *     password: "super-s3cr3t!password",
+ * });
+ * ```
+ */
 export class IdentityUser extends pulumi.CustomResource {
     /**
      * Get an existing IdentityUser resource's state with the given name, ID, and optional extra
@@ -32,41 +50,44 @@ export class IdentityUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === IdentityUser.__pulumiType;
     }
 
+    /**
+     * URN of the user, used when writing IAM policies
+     */
     public /*out*/ readonly UserURN!: pulumi.Output<string>;
     /**
-     * Creation date of this user
+     * Creation date of this user.
      */
     public /*out*/ readonly creation!: pulumi.Output<string>;
     /**
-     * User description
+     * User description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * User's email
+     * User's email.
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * User's group
+     * User's group.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
-     * Last update of this user
+     * Last update of this user.
      */
     public /*out*/ readonly lastUpdate!: pulumi.Output<string>;
     /**
-     * User's login suffix
+     * User's login suffix.
      */
     public readonly login!: pulumi.Output<string>;
     /**
-     * User's password
+     * User's password.
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * When the user changed his password for the last time
+     * When the user changed his password for the last time.
      */
     public /*out*/ readonly passwordLastUpdate!: pulumi.Output<string>;
     /**
-     * Current user's status
+     * Current user's status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -126,41 +147,44 @@ export class IdentityUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IdentityUser resources.
  */
 export interface IdentityUserState {
+    /**
+     * URN of the user, used when writing IAM policies
+     */
     UserURN?: pulumi.Input<string>;
     /**
-     * Creation date of this user
+     * Creation date of this user.
      */
     creation?: pulumi.Input<string>;
     /**
-     * User description
+     * User description.
      */
     description?: pulumi.Input<string>;
     /**
-     * User's email
+     * User's email.
      */
     email?: pulumi.Input<string>;
     /**
-     * User's group
+     * User's group.
      */
     group?: pulumi.Input<string>;
     /**
-     * Last update of this user
+     * Last update of this user.
      */
     lastUpdate?: pulumi.Input<string>;
     /**
-     * User's login suffix
+     * User's login suffix.
      */
     login?: pulumi.Input<string>;
     /**
-     * User's password
+     * User's password.
      */
     password?: pulumi.Input<string>;
     /**
-     * When the user changed his password for the last time
+     * When the user changed his password for the last time.
      */
     passwordLastUpdate?: pulumi.Input<string>;
     /**
-     * Current user's status
+     * Current user's status.
      */
     status?: pulumi.Input<string>;
 }
@@ -170,23 +194,23 @@ export interface IdentityUserState {
  */
 export interface IdentityUserArgs {
     /**
-     * User description
+     * User description.
      */
     description?: pulumi.Input<string>;
     /**
-     * User's email
+     * User's email.
      */
     email: pulumi.Input<string>;
     /**
-     * User's group
+     * User's group.
      */
     group?: pulumi.Input<string>;
     /**
-     * User's login suffix
+     * User's login suffix.
      */
     login: pulumi.Input<string>;
     /**
-     * User's password
+     * User's password.
      */
     password: pulumi.Input<string>;
 }

@@ -9,27 +9,72 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
+    /// <summary>
+    /// Creates a pattern for a opensearch cluster associated with a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var opensearch = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "opensearch",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var pattern = new Ovh.CloudProjectDatabase.OpensearchPattern("pattern", new()
+    ///     {
+    ///         ServiceName = opensearch.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = opensearch.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         MaxIndexCount = 2,
+    ///         Pattern = "logs_*",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern")]
     public partial class OpensearchPattern : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of index for this pattern
+        /// Maximum number of index for this pattern.
         /// </summary>
         [Output("maxIndexCount")]
         public Output<int?> MaxIndexCount { get; private set; } = null!;
 
         /// <summary>
-        /// Pattern format
+        /// Pattern format.
         /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -81,23 +126,27 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class OpensearchPatternArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Maximum number of index for this pattern
+        /// Maximum number of index for this pattern.
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
 
         /// <summary>
-        /// Pattern format
+        /// Pattern format.
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -110,23 +159,27 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class OpensearchPatternState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Maximum number of index for this pattern
+        /// Maximum number of index for this pattern.
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
 
         /// <summary>
-        /// Pattern format
+        /// Pattern format.
         /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

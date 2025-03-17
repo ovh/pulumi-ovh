@@ -9,6 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
+    /// <summary>
+    /// Manage HTTP route for a loadbalancer service
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Route which redirect all url to https.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("httpsRedirect", new()
+    ///     {
+    ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
+    ///         {
+    ///             Status = 302,
+    ///             Target = "https://${host}${path}${arguments}",
+    ///             Type = "redirect",
+    ///         },
+    ///         DisplayName = "Redirect to HTTPS",
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         Weight = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
+    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRoute:HttpRoute")]
     public partial class HttpRoute : global::Pulumi.CustomResource
     {
@@ -49,8 +84,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-        /// trigger an action
+        /// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
         /// </summary>
         [Output("weight")]
         public Output<int> Weight { get; private set; } = null!;
@@ -127,8 +161,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-        /// trigger an action
+        /// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
@@ -184,8 +217,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-        /// trigger an action
+        /// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

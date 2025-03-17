@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieve information about a Managed Rancher Service in the given public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetRancher(ctx, &cloudproject.GetRancherArgs{
+//				Id:        "<Rancher service ID>",
+//				ProjectId: "<public cloud project ID>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRancher(ctx *pulumi.Context, args *LookupRancherArgs, opts ...pulumi.InvokeOption) (*LookupRancherResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRancherResult
@@ -23,20 +51,30 @@ func LookupRancher(ctx *pulumi.Context, args *LookupRancherArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getRancher.
 type LookupRancherArgs struct {
-	Id        string `pulumi:"id"`
+	// Unique identifier
+	Id string `pulumi:"id"`
+	// Project ID
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getRancher.
 type LookupRancherResult struct {
-	CreatedAt      string                  `pulumi:"createdAt"`
-	CurrentState   GetRancherCurrentState  `pulumi:"currentState"`
-	CurrentTasks   []GetRancherCurrentTask `pulumi:"currentTasks"`
-	Id             string                  `pulumi:"id"`
-	ProjectId      string                  `pulumi:"projectId"`
-	ResourceStatus string                  `pulumi:"resourceStatus"`
-	TargetSpec     GetRancherTargetSpec    `pulumi:"targetSpec"`
-	UpdatedAt      string                  `pulumi:"updatedAt"`
+	// Date of the managed Rancher service creation
+	CreatedAt string `pulumi:"createdAt"`
+	// Current configuration applied to the managed Rancher service
+	CurrentState GetRancherCurrentState `pulumi:"currentState"`
+	// Asynchronous operations ongoing on the managed Rancher service
+	CurrentTasks []GetRancherCurrentTask `pulumi:"currentTasks"`
+	// Unique identifier
+	Id string `pulumi:"id"`
+	// Project ID
+	ProjectId string `pulumi:"projectId"`
+	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last target specification of the managed Rancher service
+	TargetSpec GetRancherTargetSpec `pulumi:"targetSpec"`
+	// Date of the last managed Rancher service update
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupRancherOutput(ctx *pulumi.Context, args LookupRancherOutputArgs, opts ...pulumi.InvokeOption) LookupRancherResultOutput {
@@ -50,7 +88,9 @@ func LookupRancherOutput(ctx *pulumi.Context, args LookupRancherOutputArgs, opts
 
 // A collection of arguments for invoking getRancher.
 type LookupRancherOutputArgs struct {
-	Id        pulumi.StringInput `pulumi:"id"`
+	// Unique identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// Project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -73,34 +113,42 @@ func (o LookupRancherResultOutput) ToLookupRancherResultOutputWithContext(ctx co
 	return o
 }
 
+// Date of the managed Rancher service creation
 func (o LookupRancherResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRancherResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Current configuration applied to the managed Rancher service
 func (o LookupRancherResultOutput) CurrentState() GetRancherCurrentStateOutput {
 	return o.ApplyT(func(v LookupRancherResult) GetRancherCurrentState { return v.CurrentState }).(GetRancherCurrentStateOutput)
 }
 
+// Asynchronous operations ongoing on the managed Rancher service
 func (o LookupRancherResultOutput) CurrentTasks() GetRancherCurrentTaskArrayOutput {
 	return o.ApplyT(func(v LookupRancherResult) []GetRancherCurrentTask { return v.CurrentTasks }).(GetRancherCurrentTaskArrayOutput)
 }
 
+// Unique identifier
 func (o LookupRancherResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRancherResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Project ID
 func (o LookupRancherResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRancherResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 func (o LookupRancherResultOutput) ResourceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRancherResult) string { return v.ResourceStatus }).(pulumi.StringOutput)
 }
 
+// Last target specification of the managed Rancher service
 func (o LookupRancherResultOutput) TargetSpec() GetRancherTargetSpecOutput {
 	return o.ApplyT(func(v LookupRancherResult) GetRancherTargetSpec { return v.TargetSpec }).(GetRancherTargetSpecOutput)
 }
 
+// Date of the last managed Rancher service update
 func (o LookupRancherResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRancherResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

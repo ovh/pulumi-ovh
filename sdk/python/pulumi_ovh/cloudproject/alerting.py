@@ -27,10 +27,11 @@ class AlertingArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a Alerting resource.
-        :param pulumi.Input[float] delay: Possible values for delay between two alerts in seconds
+        :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The project id
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "delay", delay)
         pulumi.set(__self__, "email", email)
@@ -41,7 +42,7 @@ class AlertingArgs:
     @pulumi.getter
     def delay(self) -> pulumi.Input[float]:
         """
-        Possible values for delay between two alerts in seconds
+        Delay between two alerts in seconds
         """
         return pulumi.get(self, "delay")
 
@@ -77,7 +78,8 @@ class AlertingArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The project id
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -98,11 +100,12 @@ class _AlertingState:
         """
         Input properties used for looking up and filtering Alerting resources.
         :param pulumi.Input[str] creation_date: Alerting creation date
-        :param pulumi.Input[float] delay: Possible values for delay between two alerts in seconds
+        :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input['AlertingFormattedMonthlyThresholdArgs'] formatted_monthly_threshold: Formatted monthly threshold for this alerting
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The project id
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -133,7 +136,7 @@ class _AlertingState:
     @pulumi.getter
     def delay(self) -> Optional[pulumi.Input[float]]:
         """
-        Possible values for delay between two alerts in seconds
+        Delay between two alerts in seconds
         """
         return pulumi.get(self, "delay")
 
@@ -181,7 +184,8 @@ class _AlertingState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The project id
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -201,13 +205,28 @@ class Alerting(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Alerting resource with the given unique name, props, and options.
+        Creates an alert on a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_alert = ovh.cloud_project.Alerting("myAlert",
+            delay=3600,
+            email="aaa.bbb@domain.com",
+            monthly_threshold=1000,
+            service_name="XXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] delay: Possible values for delay between two alerts in seconds
+        :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The project id
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -216,7 +235,21 @@ class Alerting(pulumi.CustomResource):
                  args: AlertingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Alerting resource with the given unique name, props, and options.
+        Creates an alert on a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_alert = ovh.cloud_project.Alerting("myAlert",
+            delay=3600,
+            email="aaa.bbb@domain.com",
+            monthly_threshold=1000,
+            service_name="XXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param AlertingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -283,11 +316,12 @@ class Alerting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_date: Alerting creation date
-        :param pulumi.Input[float] delay: Possible values for delay between two alerts in seconds
+        :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input[Union['AlertingFormattedMonthlyThresholdArgs', 'AlertingFormattedMonthlyThresholdArgsDict']] formatted_monthly_threshold: Formatted monthly threshold for this alerting
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The project id
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -313,7 +347,7 @@ class Alerting(pulumi.CustomResource):
     @pulumi.getter
     def delay(self) -> pulumi.Output[float]:
         """
-        Possible values for delay between two alerts in seconds
+        Delay between two alerts in seconds
         """
         return pulumi.get(self, "delay")
 
@@ -345,7 +379,8 @@ class Alerting(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The project id
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a user for a container registry associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const registry = ovh.CloudProject.getContainerRegistry({
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * const user = new ovh.cloudproject.ContainerRegistryUser("user", {
+ *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
+ *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ *     email: "foo@bar.com",
+ *     login: "foobar",
+ * });
+ * ```
+ */
 export class ContainerRegistryUser extends pulumi.CustomResource {
     /**
      * Get an existing ContainerRegistryUser resource's state with the given name, ID, and optional extra
@@ -33,7 +55,7 @@ export class ContainerRegistryUser extends pulumi.CustomResource {
     }
 
     /**
-     * User email.
+     * User email
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -41,15 +63,16 @@ export class ContainerRegistryUser extends pulumi.CustomResource {
      */
     public readonly login!: pulumi.Output<string>;
     /**
-     * User password
+     * (Sensitive) User password
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
-     * RegistryID
+     * Registry ID
      */
     public readonly registryId!: pulumi.Output<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -109,7 +132,7 @@ export class ContainerRegistryUser extends pulumi.CustomResource {
  */
 export interface ContainerRegistryUserState {
     /**
-     * User email.
+     * User email
      */
     email?: pulumi.Input<string>;
     /**
@@ -117,15 +140,16 @@ export interface ContainerRegistryUserState {
      */
     login?: pulumi.Input<string>;
     /**
-     * User password
+     * (Sensitive) User password
      */
     password?: pulumi.Input<string>;
     /**
-     * RegistryID
+     * Registry ID
      */
     registryId?: pulumi.Input<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -139,7 +163,7 @@ export interface ContainerRegistryUserState {
  */
 export interface ContainerRegistryUserArgs {
     /**
-     * User email.
+     * User email
      */
     email: pulumi.Input<string>;
     /**
@@ -147,11 +171,12 @@ export interface ContainerRegistryUserArgs {
      */
     login: pulumi.Input<string>;
     /**
-     * RegistryID
+     * Registry ID
      */
     registryId: pulumi.Input<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

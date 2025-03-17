@@ -11,12 +11,81 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetStorages
     {
+        /// <summary>
+        /// List your S3™* compatible storage container.
+        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var storage = Ovh.CloudProject.GetStorage.Invoke(new()
+        ///     {
+        ///         RegionName = "GRA",
+        ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetStoragesResult> InvokeAsync(GetStoragesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStoragesResult>("ovh:CloudProject/getStorages:getStorages", args ?? new GetStoragesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// List your S3™* compatible storage container.
+        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var storage = Ovh.CloudProject.GetStorage.Invoke(new()
+        ///     {
+        ///         RegionName = "GRA",
+        ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetStoragesResult> Invoke(GetStoragesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStoragesResult>("ovh:CloudProject/getStorages:getStorages", args ?? new GetStoragesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// List your S3™* compatible storage container.
+        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var storage = Ovh.CloudProject.GetStorage.Invoke(new()
+        ///     {
+        ///         RegionName = "GRA",
+        ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetStoragesResult> Invoke(GetStoragesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetStoragesResult>("ovh:CloudProject/getStorages:getStorages", args ?? new GetStoragesInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +93,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetStoragesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Region name
+        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +113,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetStoragesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Region name
+        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -59,7 +140,13 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Region name
+        /// </summary>
         public readonly string RegionName;
+        /// <summary>
+        /// Service name
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

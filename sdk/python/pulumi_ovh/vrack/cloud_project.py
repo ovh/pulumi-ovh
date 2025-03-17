@@ -23,7 +23,10 @@ class CloudProjectArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a CloudProject resource.
-        :param pulumi.Input[str] service_name: Service name of the vrack resource.
+        :param pulumi.Input[str] project_id: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
+               the `OVH_VRACK_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -31,6 +34,10 @@ class CloudProjectArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -41,7 +48,8 @@ class CloudProjectArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name of the vrack resource.
+        The service name of the vrack. If omitted,
+        the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -57,7 +65,10 @@ class _CloudProjectState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CloudProject resources.
-        :param pulumi.Input[str] service_name: Service name of the vrack resource.
+        :param pulumi.Input[str] project_id: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
+               the `OVH_VRACK_SERVICE` environment variable is used.
         """
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
@@ -67,6 +78,10 @@ class _CloudProjectState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -77,7 +92,8 @@ class _CloudProjectState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name of the vrack resource.
+        The service name of the vrack. If omitted,
+        the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -95,10 +111,35 @@ class CloudProject(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a CloudProject resource with the given unique name, props, and options.
+        Attach a Public Cloud Project to a VRack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vcp = ovh.vrack.CloudProject("vcp",
+            project_id="67890",
+            service_name="12345")
+        ```
+
+        ## Import
+
+        Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] service_name: Service name of the vrack resource.
+        :param pulumi.Input[str] project_id: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
+               the `OVH_VRACK_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -107,7 +148,29 @@ class CloudProject(pulumi.CustomResource):
                  args: CloudProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a CloudProject resource with the given unique name, props, and options.
+        Attach a Public Cloud Project to a VRack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vcp = ovh.vrack.CloudProject("vcp",
+            project_id="67890",
+            service_name="12345")
+        ```
+
+        ## Import
+
+        Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param CloudProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,7 +222,10 @@ class CloudProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] service_name: Service name of the vrack resource.
+        :param pulumi.Input[str] project_id: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
+               the `OVH_VRACK_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,13 +238,18 @@ class CloudProject(pulumi.CustomResource):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name of the vrack resource.
+        The service name of the vrack. If omitted,
+        the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

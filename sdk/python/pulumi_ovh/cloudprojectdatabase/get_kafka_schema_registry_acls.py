@@ -43,11 +43,17 @@ class GetKafkaSchemaRegistryAclsResult:
     @property
     @pulumi.getter(name="aclIds")
     def acl_ids(self) -> Sequence[str]:
+        """
+        The list of schema refistry ACLs ids of the kafka cluster associated with the project.
+        """
         return pulumi.get(self, "acl_ids")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -61,6 +67,9 @@ class GetKafkaSchemaRegistryAclsResult:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -80,7 +89,23 @@ def get_kafka_schema_registry_acls(cluster_id: Optional[str] = None,
                                    service_name: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaSchemaRegistryAclsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    schema_registry_acls = ovh.CloudProjectDatabase.get_kafka_schema_registry_acls(service_name="XXX",
+        cluster_id="YYY")
+    pulumi.export("aclIds", schema_registry_acls.acl_ids)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -97,7 +122,23 @@ def get_kafka_schema_registry_acls_output(cluster_id: Optional[pulumi.Input[str]
                                           service_name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaSchemaRegistryAclsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    schema_registry_acls = ovh.CloudProjectDatabase.get_kafka_schema_registry_acls(service_name="XXX",
+        cluster_id="YYY")
+    pulumi.export("aclIds", schema_registry_acls.acl_ids)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

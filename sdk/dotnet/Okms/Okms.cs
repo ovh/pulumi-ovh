@@ -9,23 +9,44 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Okms
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var newKms = new Ovh.Okms.Okms("newKms", new()
+    ///     {
+    ///         DisplayName = "terraformed KMS",
+    ///         OvhSubsidiary = "FR",
+    ///         Region = "eu-west-rbx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Okms/okms:Okms")]
     public partial class Okms : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set the name displayed in Manager for this KMS
+        /// (String) Resource display name
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// IAM resource metadata
+        /// (Attributes) IAM resource metadata (see below for nested schema)
         /// </summary>
         [Output("iam")]
         public Output<Outputs.OkmsIam> Iam { get; private set; } = null!;
 
         /// <summary>
-        /// KMS kmip API endpoint
+        /// (String) KMS kmip API endpoint
         /// </summary>
         [Output("kmipEndpoint")]
         public Output<string> KmipEndpoint { get; private set; } = null!;
@@ -37,7 +58,7 @@ namespace Pulumi.Ovh.Okms
         public Output<string> OvhSubsidiary { get; private set; } = null!;
 
         /// <summary>
-        /// KMS public CA (Certificate Authority)
+        /// (String) KMS public CA (Certificate Authority)
         /// </summary>
         [Output("publicCa")]
         public Output<string> PublicCa { get; private set; } = null!;
@@ -49,13 +70,13 @@ namespace Pulumi.Ovh.Okms
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// KMS rest API endpoint
+        /// (String) KMS rest API endpoint
         /// </summary>
         [Output("restEndpoint")]
         public Output<string> RestEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// KMS rest API swagger UI
+        /// (String) KMS rest API swagger UI
         /// </summary>
         [Output("swaggerEndpoint")]
         public Output<string> SwaggerEndpoint { get; private set; } = null!;
@@ -108,7 +129,7 @@ namespace Pulumi.Ovh.Okms
     public sealed class OkmsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the name displayed in Manager for this KMS
+        /// (String) Resource display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -134,19 +155,19 @@ namespace Pulumi.Ovh.Okms
     public sealed class OkmsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the name displayed in Manager for this KMS
+        /// (String) Resource display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// IAM resource metadata
+        /// (Attributes) IAM resource metadata (see below for nested schema)
         /// </summary>
         [Input("iam")]
         public Input<Inputs.OkmsIamGetArgs>? Iam { get; set; }
 
         /// <summary>
-        /// KMS kmip API endpoint
+        /// (String) KMS kmip API endpoint
         /// </summary>
         [Input("kmipEndpoint")]
         public Input<string>? KmipEndpoint { get; set; }
@@ -158,7 +179,7 @@ namespace Pulumi.Ovh.Okms
         public Input<string>? OvhSubsidiary { get; set; }
 
         /// <summary>
-        /// KMS public CA (Certificate Authority)
+        /// (String) KMS public CA (Certificate Authority)
         /// </summary>
         [Input("publicCa")]
         public Input<string>? PublicCa { get; set; }
@@ -170,13 +191,13 @@ namespace Pulumi.Ovh.Okms
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// KMS rest API endpoint
+        /// (String) KMS rest API endpoint
         /// </summary>
         [Input("restEndpoint")]
         public Input<string>? RestEndpoint { get; set; }
 
         /// <summary>
-        /// KMS rest API swagger UI
+        /// (String) KMS rest API swagger UI
         /// </summary>
         [Input("swaggerEndpoint")]
         public Input<string>? SwaggerEndpoint { get; set; }

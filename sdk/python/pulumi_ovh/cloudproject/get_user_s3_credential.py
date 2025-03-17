@@ -59,6 +59,9 @@ class GetUserS3CredentialResult:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> str:
+        """
+        (Sensitive) the Secret Access Key
+        """
         return pulumi.get(self, "secret_access_key")
 
     @property
@@ -90,7 +93,32 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
                            user_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserS3CredentialResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name=project_users.service_name,
+        user_id=s3_user_id)
+    my_s3_credential = ovh.CloudProject.get_user_s3_credential(service_name=my_s3_credentials.service_name,
+        user_id=my_s3_credentials.user_id,
+        access_key_id=my_s3_credentials.access_key_ids[0])
+    pulumi.export("myAccessKeyId", my_s3_credential.access_key_id)
+    pulumi.export("mySecretAccessKey", my_s3_credential.secret_access_key)
+    ```
+
+
+    :param str access_key_id: the Access Key ID
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()
     __args__['accessKeyId'] = access_key_id
@@ -110,7 +138,32 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
                                   user_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserS3CredentialResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    my_s3_credentials = ovh.CloudProject.get_user_s3_credentials(service_name=project_users.service_name,
+        user_id=s3_user_id)
+    my_s3_credential = ovh.CloudProject.get_user_s3_credential(service_name=my_s3_credentials.service_name,
+        user_id=my_s3_credentials.user_id,
+        access_key_id=my_s3_credentials.access_key_ids[0])
+    pulumi.export("myAccessKeyId", my_s3_credential.access_key_id)
+    pulumi.export("mySecretAccessKey", my_s3_credential.secret_access_key)
+    ```
+
+
+    :param str access_key_id: the Access Key ID
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()
     __args__['accessKeyId'] = access_key_id

@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerReinstallTaskStoragePartitioningLayoutExtra
     {
         /// <summary>
-        /// LVM-specific parameters
+        /// LVM-specific parameters (when applicable)
         /// </summary>
         public readonly ImmutableArray<Outputs.ServerReinstallTaskStoragePartitioningLayoutExtraLv> Lvs;
         /// <summary>
-        /// ZFS-specific parameters
+        /// ZFS-specific parameters (when applicable)
         /// </summary>
         public readonly ImmutableArray<Outputs.ServerReinstallTaskStoragePartitioningLayoutExtraZp> Zps;
 

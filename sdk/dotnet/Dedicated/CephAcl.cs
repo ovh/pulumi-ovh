@@ -9,18 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
+    /// <summary>
+    /// Add a new access ACL for the given network/mask.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
+    ///     {
+    ///         ServiceName = "94d423da-0e55-45f2-9812-836460a19939",
+    ///     });
+    /// 
+    ///     var my_acl = new Ovh.Dedicated.CephAcl("my-acl", new()
+    ///     {
+    ///         ServiceName = myCeph.Apply(getCephResult =&gt; getCephResult.Id),
+    ///         Network = "1.2.3.4",
+    ///         Netmask = "255.255.255.255",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dedicated/cephAcl:CephAcl")]
     public partial class CephAcl : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// IP family. `IPv4` or `IPv6`
+        /// </summary>
         [Output("family")]
         public Output<string> Family { get; private set; } = null!;
 
+        /// <summary>
+        /// The network mask to apply
+        /// </summary>
         [Output("netmask")]
         public Output<string> Netmask { get; private set; } = null!;
 
+        /// <summary>
+        /// The network IP to authorize
+        /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
+        /// <summary>
+        /// The internal name of your dedicated CEPH
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -71,12 +111,21 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class CephAclArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network mask to apply
+        /// </summary>
         [Input("netmask", required: true)]
         public Input<string> Netmask { get; set; } = null!;
 
+        /// <summary>
+        /// The network IP to authorize
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your dedicated CEPH
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -88,15 +137,27 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class CephAclState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IP family. `IPv4` or `IPv6`
+        /// </summary>
         [Input("family")]
         public Input<string>? Family { get; set; }
 
+        /// <summary>
+        /// The network mask to apply
+        /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
+        /// <summary>
+        /// The network IP to authorize
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The internal name of your dedicated CEPH
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

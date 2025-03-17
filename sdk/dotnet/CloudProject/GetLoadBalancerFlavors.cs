@@ -11,12 +11,78 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetLoadBalancerFlavors
     {
+        /// <summary>
+        /// List loadbalancer flavors in the given public cloud region.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavors = Ovh.CloudProject.GetLoadBalancerFlavors.Invoke(new()
+        ///     {
+        ///         RegionName = "GRA9",
+        ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetLoadBalancerFlavorsResult> InvokeAsync(GetLoadBalancerFlavorsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerFlavorsResult>("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", args ?? new GetLoadBalancerFlavorsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// List loadbalancer flavors in the given public cloud region.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavors = Ovh.CloudProject.GetLoadBalancerFlavors.Invoke(new()
+        ///     {
+        ///         RegionName = "GRA9",
+        ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLoadBalancerFlavorsResult> Invoke(GetLoadBalancerFlavorsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerFlavorsResult>("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", args ?? new GetLoadBalancerFlavorsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// List loadbalancer flavors in the given public cloud region.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavors = Ovh.CloudProject.GetLoadBalancerFlavors.Invoke(new()
+        ///     {
+        ///         RegionName = "GRA9",
+        ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLoadBalancerFlavorsResult> Invoke(GetLoadBalancerFlavorsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerFlavorsResult>("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", args ?? new GetLoadBalancerFlavorsInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +90,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetLoadBalancerFlavorsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Region name
+        /// </summary>
         [Input("regionName", required: true)]
         public string RegionName { get; set; } = null!;
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +110,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetLoadBalancerFlavorsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Region name
+        /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -59,7 +137,13 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Region name
+        /// </summary>
         public readonly string RegionName;
+        /// <summary>
+        /// Service name
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

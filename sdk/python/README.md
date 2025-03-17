@@ -41,7 +41,7 @@ pip install pulumi-ovh
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/ovh/pulumi-ovh/sdk/go/...
+go get github.com/ovh/pulumi-ovh/sdk/v2/go/...
 ```
 
 ### .NET

@@ -34,6 +34,18 @@ class HttpFarmServerArgs:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HttpFarmServer resource.
+        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
+        :param pulumi.Input[int] farm_id: ID of the farm this server is attached to
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[bool] backup: is it a backup server used in case of failure of all the non-backup backends
+        :param pulumi.Input[str] display_name: Label for the server
+        :param pulumi.Input[str] on_marked_down: enable action when backend marked down. (`shutdown-sessions`)
+        :param pulumi.Input[int] port: Port that backend will respond on
+        :param pulumi.Input[bool] probe: defines if backend will be probed to determine health and keep as active in farm if healthy
+        :param pulumi.Input[str] proxy_protocol_version: version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        :param pulumi.Input[bool] ssl: is the connection ciphered with SSL (TLS)
+        :param pulumi.Input[int] weight: used in loadbalancing algorithm
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "farm_id", farm_id)
@@ -61,6 +73,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        Address of the backend server (IP from either internal or OVHcloud network)
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -70,6 +85,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter(name="farmId")
     def farm_id(self) -> pulumi.Input[int]:
+        """
+        ID of the farm this server is attached to
+        """
         return pulumi.get(self, "farm_id")
 
     @farm_id.setter
@@ -79,6 +97,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The internal name of your IP load balancing
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -88,6 +109,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
+        """
+        backend status - `active` or `inactive`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -97,6 +121,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        is it a backup server used in case of failure of all the non-backup backends
+        """
         return pulumi.get(self, "backup")
 
     @backup.setter
@@ -115,6 +142,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Label for the server
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -124,6 +154,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter(name="onMarkedDown")
     def on_marked_down(self) -> Optional[pulumi.Input[str]]:
+        """
+        enable action when backend marked down. (`shutdown-sessions`)
+        """
         return pulumi.get(self, "on_marked_down")
 
     @on_marked_down.setter
@@ -133,6 +166,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port that backend will respond on
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -142,6 +178,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def probe(self) -> Optional[pulumi.Input[bool]]:
+        """
+        defines if backend will be probed to determine health and keep as active in farm if healthy
+        """
         return pulumi.get(self, "probe")
 
     @probe.setter
@@ -151,6 +190,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter(name="proxyProtocolVersion")
     def proxy_protocol_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        """
         return pulumi.get(self, "proxy_protocol_version")
 
     @proxy_protocol_version.setter
@@ -160,6 +202,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        is the connection ciphered with SSL (TLS)
+        """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
@@ -169,6 +214,9 @@ class HttpFarmServerArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        used in loadbalancing algorithm
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -195,6 +243,19 @@ class _HttpFarmServerState:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering HttpFarmServer resources.
+        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
+        :param pulumi.Input[bool] backup: is it a backup server used in case of failure of all the non-backup backends
+        :param pulumi.Input[str] cookie: Value of the stickiness cookie used for this backend.
+        :param pulumi.Input[str] display_name: Label for the server
+        :param pulumi.Input[int] farm_id: ID of the farm this server is attached to
+        :param pulumi.Input[str] on_marked_down: enable action when backend marked down. (`shutdown-sessions`)
+        :param pulumi.Input[int] port: Port that backend will respond on
+        :param pulumi.Input[bool] probe: defines if backend will be probed to determine health and keep as active in farm if healthy
+        :param pulumi.Input[str] proxy_protocol_version: version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[bool] ssl: is the connection ciphered with SSL (TLS)
+        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[int] weight: used in loadbalancing algorithm
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -228,6 +289,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Address of the backend server (IP from either internal or OVHcloud network)
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -237,6 +301,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        is it a backup server used in case of failure of all the non-backup backends
+        """
         return pulumi.get(self, "backup")
 
     @backup.setter
@@ -255,6 +322,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def cookie(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the stickiness cookie used for this backend.
+        """
         return pulumi.get(self, "cookie")
 
     @cookie.setter
@@ -264,6 +334,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Label for the server
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -273,6 +346,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter(name="farmId")
     def farm_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        ID of the farm this server is attached to
+        """
         return pulumi.get(self, "farm_id")
 
     @farm_id.setter
@@ -282,6 +358,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter(name="onMarkedDown")
     def on_marked_down(self) -> Optional[pulumi.Input[str]]:
+        """
+        enable action when backend marked down. (`shutdown-sessions`)
+        """
         return pulumi.get(self, "on_marked_down")
 
     @on_marked_down.setter
@@ -291,6 +370,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port that backend will respond on
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -300,6 +382,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def probe(self) -> Optional[pulumi.Input[bool]]:
+        """
+        defines if backend will be probed to determine health and keep as active in farm if healthy
+        """
         return pulumi.get(self, "probe")
 
     @probe.setter
@@ -309,6 +394,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter(name="proxyProtocolVersion")
     def proxy_protocol_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        """
         return pulumi.get(self, "proxy_protocol_version")
 
     @proxy_protocol_version.setter
@@ -318,6 +406,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal name of your IP load balancing
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -327,6 +418,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        is the connection ciphered with SSL (TLS)
+        """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
@@ -336,6 +430,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        backend status - `active` or `inactive`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -345,6 +442,9 @@ class _HttpFarmServerState:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        used in loadbalancing algorithm
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -372,9 +472,52 @@ class HttpFarmServer(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a HttpFarmServer resource with the given unique name, props, and options.
+        Creates a backend server entry linked to HTTP loadbalancing group (farm)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            port=8080,
+            service_name=lb.service_name,
+            zone="all")
+        backend = ovh.ip_load_balancing.HttpFarmServer("backend",
+            address="4.5.6.7",
+            backup=True,
+            display_name="mybackend",
+            farm_id=farmname.id,
+            port=80,
+            probe=True,
+            proxy_protocol_version="v2",
+            service_name=lb.service_name,
+            ssl=False,
+            status="active",
+            weight=2)
+        ```
+
+        ## Import
+
+        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
+        :param pulumi.Input[bool] backup: is it a backup server used in case of failure of all the non-backup backends
+        :param pulumi.Input[str] display_name: Label for the server
+        :param pulumi.Input[int] farm_id: ID of the farm this server is attached to
+        :param pulumi.Input[str] on_marked_down: enable action when backend marked down. (`shutdown-sessions`)
+        :param pulumi.Input[int] port: Port that backend will respond on
+        :param pulumi.Input[bool] probe: defines if backend will be probed to determine health and keep as active in farm if healthy
+        :param pulumi.Input[str] proxy_protocol_version: version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[bool] ssl: is the connection ciphered with SSL (TLS)
+        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[int] weight: used in loadbalancing algorithm
         """
         ...
     @overload
@@ -383,7 +526,38 @@ class HttpFarmServer(pulumi.CustomResource):
                  args: HttpFarmServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a HttpFarmServer resource with the given unique name, props, and options.
+        Creates a backend server entry linked to HTTP loadbalancing group (farm)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            port=8080,
+            service_name=lb.service_name,
+            zone="all")
+        backend = ovh.ip_load_balancing.HttpFarmServer("backend",
+            address="4.5.6.7",
+            backup=True,
+            display_name="mybackend",
+            farm_id=farmname.id,
+            port=80,
+            probe=True,
+            proxy_protocol_version="v2",
+            service_name=lb.service_name,
+            ssl=False,
+            status="active",
+            weight=2)
+        ```
+
+        ## Import
+
+        HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param HttpFarmServerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -474,6 +648,19 @@ class HttpFarmServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
+        :param pulumi.Input[bool] backup: is it a backup server used in case of failure of all the non-backup backends
+        :param pulumi.Input[str] cookie: Value of the stickiness cookie used for this backend.
+        :param pulumi.Input[str] display_name: Label for the server
+        :param pulumi.Input[int] farm_id: ID of the farm this server is attached to
+        :param pulumi.Input[str] on_marked_down: enable action when backend marked down. (`shutdown-sessions`)
+        :param pulumi.Input[int] port: Port that backend will respond on
+        :param pulumi.Input[bool] probe: defines if backend will be probed to determine health and keep as active in farm if healthy
+        :param pulumi.Input[str] proxy_protocol_version: version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[bool] ssl: is the connection ciphered with SSL (TLS)
+        :param pulumi.Input[str] status: backend status - `active` or `inactive`
+        :param pulumi.Input[int] weight: used in loadbalancing algorithm
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -498,11 +685,17 @@ class HttpFarmServer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
+        """
+        Address of the backend server (IP from either internal or OVHcloud network)
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def backup(self) -> pulumi.Output[Optional[bool]]:
+        """
+        is it a backup server used in case of failure of all the non-backup backends
+        """
         return pulumi.get(self, "backup")
 
     @property
@@ -513,55 +706,88 @@ class HttpFarmServer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def cookie(self) -> pulumi.Output[str]:
+        """
+        Value of the stickiness cookie used for this backend.
+        """
         return pulumi.get(self, "cookie")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Label for the server
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="farmId")
     def farm_id(self) -> pulumi.Output[int]:
+        """
+        ID of the farm this server is attached to
+        """
         return pulumi.get(self, "farm_id")
 
     @property
     @pulumi.getter(name="onMarkedDown")
     def on_marked_down(self) -> pulumi.Output[Optional[str]]:
+        """
+        enable action when backend marked down. (`shutdown-sessions`)
+        """
         return pulumi.get(self, "on_marked_down")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[int]]:
+        """
+        Port that backend will respond on
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def probe(self) -> pulumi.Output[Optional[bool]]:
+        """
+        defines if backend will be probed to determine health and keep as active in farm if healthy
+        """
         return pulumi.get(self, "probe")
 
     @property
     @pulumi.getter(name="proxyProtocolVersion")
     def proxy_protocol_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+        """
         return pulumi.get(self, "proxy_protocol_version")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The internal name of your IP load balancing
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def ssl(self) -> pulumi.Output[Optional[bool]]:
+        """
+        is the connection ciphered with SSL (TLS)
+        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        backend status - `active` or `inactive`
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def weight(self) -> pulumi.Output[Optional[int]]:
+        """
+        used in loadbalancing algorithm
+        """
         return pulumi.get(self, "weight")
 

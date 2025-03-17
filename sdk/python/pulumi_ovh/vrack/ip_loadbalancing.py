@@ -23,8 +23,8 @@ class IpLoadbalancingArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a IpLoadbalancing resource.
-        :param pulumi.Input[str] loadbalancing_id: Your ipLoadbalancing
-        :param pulumi.Input[str] service_name: The internal name of your vrack
+        :param pulumi.Input[str] loadbalancing_id: The id of the IP Load Balancing.
+        :param pulumi.Input[str] service_name: The id of the vrack.
         """
         pulumi.set(__self__, "loadbalancing_id", loadbalancing_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -33,7 +33,7 @@ class IpLoadbalancingArgs:
     @pulumi.getter(name="LoadbalancingId")
     def loadbalancing_id(self) -> pulumi.Input[str]:
         """
-        Your ipLoadbalancing
+        The id of the IP Load Balancing.
         """
         return pulumi.get(self, "loadbalancing_id")
 
@@ -45,7 +45,7 @@ class IpLoadbalancingArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your vrack
+        The id of the vrack.
         """
         return pulumi.get(self, "service_name")
 
@@ -61,8 +61,8 @@ class _IpLoadbalancingState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IpLoadbalancing resources.
-        :param pulumi.Input[str] loadbalancing_id: Your ipLoadbalancing
-        :param pulumi.Input[str] service_name: The internal name of your vrack
+        :param pulumi.Input[str] loadbalancing_id: The id of the IP Load Balancing.
+        :param pulumi.Input[str] service_name: The id of the vrack.
         """
         if loadbalancing_id is not None:
             pulumi.set(__self__, "loadbalancing_id", loadbalancing_id)
@@ -73,7 +73,7 @@ class _IpLoadbalancingState:
     @pulumi.getter(name="LoadbalancingId")
     def loadbalancing_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Your ipLoadbalancing
+        The id of the IP Load Balancing.
         """
         return pulumi.get(self, "loadbalancing_id")
 
@@ -85,7 +85,7 @@ class _IpLoadbalancingState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your vrack
+        The id of the vrack.
         """
         return pulumi.get(self, "service_name")
 
@@ -103,11 +103,23 @@ class IpLoadbalancing(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IpLoadbalancing resource with the given unique name, props, and options.
+        Attach an IP Load Balancing to a VRack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        viplb = ovh.vrack.IpLoadbalancing("viplb",
+            loadbalancing_id="yyy",
+            service_name="xxx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] loadbalancing_id: Your ipLoadbalancing
-        :param pulumi.Input[str] service_name: The internal name of your vrack
+        :param pulumi.Input[str] loadbalancing_id: The id of the IP Load Balancing.
+        :param pulumi.Input[str] service_name: The id of the vrack.
         """
         ...
     @overload
@@ -116,7 +128,19 @@ class IpLoadbalancing(pulumi.CustomResource):
                  args: IpLoadbalancingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IpLoadbalancing resource with the given unique name, props, and options.
+        Attach an IP Load Balancing to a VRack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        viplb = ovh.vrack.IpLoadbalancing("viplb",
+            loadbalancing_id="yyy",
+            service_name="xxx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param IpLoadbalancingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -168,8 +192,8 @@ class IpLoadbalancing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] loadbalancing_id: Your ipLoadbalancing
-        :param pulumi.Input[str] service_name: The internal name of your vrack
+        :param pulumi.Input[str] loadbalancing_id: The id of the IP Load Balancing.
+        :param pulumi.Input[str] service_name: The id of the vrack.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -183,7 +207,7 @@ class IpLoadbalancing(pulumi.CustomResource):
     @pulumi.getter(name="LoadbalancingId")
     def loadbalancing_id(self) -> pulumi.Output[str]:
         """
-        Your ipLoadbalancing
+        The id of the IP Load Balancing.
         """
         return pulumi.get(self, "loadbalancing_id")
 
@@ -191,7 +215,7 @@ class IpLoadbalancing(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your vrack
+        The id of the vrack.
         """
         return pulumi.get(self, "service_name")
 

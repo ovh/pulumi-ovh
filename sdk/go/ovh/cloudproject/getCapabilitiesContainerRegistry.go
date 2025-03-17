@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the container registry capabilities of a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetCapabilitiesContainerRegistry(ctx, &cloudproject.GetCapabilitiesContainerRegistryArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCapabilitiesContainerRegistry(ctx *pulumi.Context, args *LookupCapabilitiesContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupCapabilitiesContainerRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilitiesContainerRegistryResult
@@ -23,13 +50,16 @@ func LookupCapabilitiesContainerRegistry(ctx *pulumi.Context, args *LookupCapabi
 
 // A collection of arguments for invoking getCapabilitiesContainerRegistry.
 type LookupCapabilitiesContainerRegistryArgs struct {
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getCapabilitiesContainerRegistry.
 type LookupCapabilitiesContainerRegistryResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                                   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of container registry capability for a single region
 	Results     []GetCapabilitiesContainerRegistryResult `pulumi:"results"`
 	ServiceName string                                   `pulumi:"serviceName"`
 }
@@ -45,6 +75,8 @@ func LookupCapabilitiesContainerRegistryOutput(ctx *pulumi.Context, args LookupC
 
 // A collection of arguments for invoking getCapabilitiesContainerRegistry.
 type LookupCapabilitiesContainerRegistryOutputArgs struct {
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -72,6 +104,7 @@ func (o LookupCapabilitiesContainerRegistryResultOutput) Id() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupCapabilitiesContainerRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of container registry capability for a single region
 func (o LookupCapabilitiesContainerRegistryResultOutput) Results() GetCapabilitiesContainerRegistryResultArrayOutput {
 	return o.ApplyT(func(v LookupCapabilitiesContainerRegistryResult) []GetCapabilitiesContainerRegistryResult {
 		return v.Results

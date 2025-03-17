@@ -8,26 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a network in a public cloud project.
 type RegionNetwork struct {
 	pulumi.CustomResourceState
 
-	// Network name
+	// Name of the network
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network region
+	// Network region returned by the API
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Region name
+	// Network region
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
-	// Service name
+	// The id of the public cloud project
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Parameters to create a subnet from another resource creation
+	// Parameters to create a subnet
 	Subnet RegionNetworkSubnetOutput `pulumi:"subnet"`
 	// Network visibility
 	Visibility pulumi.StringOutput `pulumi:"visibility"`
-	// VLAN id, between 1 and 4000
+	// VLAN ID, between 1 and 4000
 	VlanId pulumi.Float64Output `pulumi:"vlanId"`
 }
 
@@ -70,36 +71,36 @@ func GetRegionNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionNetwork resources.
 type regionNetworkState struct {
-	// Network name
+	// Name of the network
 	Name *string `pulumi:"name"`
-	// Network region
+	// Network region returned by the API
 	Region *string `pulumi:"region"`
-	// Region name
+	// Network region
 	RegionName *string `pulumi:"regionName"`
-	// Service name
+	// The id of the public cloud project
 	ServiceName *string `pulumi:"serviceName"`
-	// Parameters to create a subnet from another resource creation
+	// Parameters to create a subnet
 	Subnet *RegionNetworkSubnet `pulumi:"subnet"`
 	// Network visibility
 	Visibility *string `pulumi:"visibility"`
-	// VLAN id, between 1 and 4000
+	// VLAN ID, between 1 and 4000
 	VlanId *float64 `pulumi:"vlanId"`
 }
 
 type RegionNetworkState struct {
-	// Network name
+	// Name of the network
 	Name pulumi.StringPtrInput
-	// Network region
+	// Network region returned by the API
 	Region pulumi.StringPtrInput
-	// Region name
+	// Network region
 	RegionName pulumi.StringPtrInput
-	// Service name
+	// The id of the public cloud project
 	ServiceName pulumi.StringPtrInput
-	// Parameters to create a subnet from another resource creation
+	// Parameters to create a subnet
 	Subnet RegionNetworkSubnetPtrInput
 	// Network visibility
 	Visibility pulumi.StringPtrInput
-	// VLAN id, between 1 and 4000
+	// VLAN ID, between 1 and 4000
 	VlanId pulumi.Float64PtrInput
 }
 
@@ -108,29 +109,29 @@ func (RegionNetworkState) ElementType() reflect.Type {
 }
 
 type regionNetworkArgs struct {
-	// Network name
+	// Name of the network
 	Name *string `pulumi:"name"`
-	// Region name
+	// Network region
 	RegionName string `pulumi:"regionName"`
-	// Service name
+	// The id of the public cloud project
 	ServiceName string `pulumi:"serviceName"`
-	// Parameters to create a subnet from another resource creation
+	// Parameters to create a subnet
 	Subnet RegionNetworkSubnet `pulumi:"subnet"`
-	// VLAN id, between 1 and 4000
+	// VLAN ID, between 1 and 4000
 	VlanId *float64 `pulumi:"vlanId"`
 }
 
 // The set of arguments for constructing a RegionNetwork resource.
 type RegionNetworkArgs struct {
-	// Network name
+	// Name of the network
 	Name pulumi.StringPtrInput
-	// Region name
+	// Network region
 	RegionName pulumi.StringInput
-	// Service name
+	// The id of the public cloud project
 	ServiceName pulumi.StringInput
-	// Parameters to create a subnet from another resource creation
+	// Parameters to create a subnet
 	Subnet RegionNetworkSubnetInput
-	// VLAN id, between 1 and 4000
+	// VLAN ID, between 1 and 4000
 	VlanId pulumi.Float64PtrInput
 }
 
@@ -221,27 +222,27 @@ func (o RegionNetworkOutput) ToRegionNetworkOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Network name
+// Name of the network
 func (o RegionNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network region
+// Network region returned by the API
 func (o RegionNetworkOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Region name
+// Network region
 func (o RegionNetworkOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// Service name
+// The id of the public cloud project
 func (o RegionNetworkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Parameters to create a subnet from another resource creation
+// Parameters to create a subnet
 func (o RegionNetworkOutput) Subnet() RegionNetworkSubnetOutput {
 	return o.ApplyT(func(v *RegionNetwork) RegionNetworkSubnetOutput { return v.Subnet }).(RegionNetworkSubnetOutput)
 }
@@ -251,7 +252,7 @@ func (o RegionNetworkOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.Visibility }).(pulumi.StringOutput)
 }
 
-// VLAN id, between 1 and 4000
+// VLAN ID, between 1 and 4000
 func (o RegionNetworkOutput) VlanId() pulumi.Float64Output {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.Float64Output { return v.VlanId }).(pulumi.Float64Output)
 }

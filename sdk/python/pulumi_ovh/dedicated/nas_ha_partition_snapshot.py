@@ -24,6 +24,9 @@ class NasHAPartitionSnapshotArgs:
                  type: pulumi.Input[str]):
         """
         The set of arguments for constructing a NasHAPartitionSnapshot resource.
+        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[str] type: Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
         """
         pulumi.set(__self__, "partition_name", partition_name)
         pulumi.set(__self__, "service_name", service_name)
@@ -32,6 +35,9 @@ class NasHAPartitionSnapshotArgs:
     @property
     @pulumi.getter(name="partitionName")
     def partition_name(self) -> pulumi.Input[str]:
+        """
+        name of the partition
+        """
         return pulumi.get(self, "partition_name")
 
     @partition_name.setter
@@ -41,6 +47,9 @@ class NasHAPartitionSnapshotArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -50,6 +59,9 @@ class NasHAPartitionSnapshotArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -65,6 +77,9 @@ class _NasHAPartitionSnapshotState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NasHAPartitionSnapshot resources.
+        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[str] type: Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
         """
         if partition_name is not None:
             pulumi.set(__self__, "partition_name", partition_name)
@@ -76,6 +91,9 @@ class _NasHAPartitionSnapshotState:
     @property
     @pulumi.getter(name="partitionName")
     def partition_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the partition
+        """
         return pulumi.get(self, "partition_name")
 
     @partition_name.setter
@@ -85,6 +103,9 @@ class _NasHAPartitionSnapshotState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -94,6 +115,9 @@ class _NasHAPartitionSnapshotState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -111,9 +135,33 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NasHAPartitionSnapshot resource with the given unique name, props, and options.
+        Provides a resource for managing **snapshot** to partitions on HA-NAS services
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartitionSnapshot("myPartition",
+            partition_name="my-partition",
+            service_name="zpool-12345",
+            type="day-3")
+        ```
+
+        ## Import
+
+        HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
+
+        ```sh
+        $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[str] type: Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
         """
         ...
     @overload
@@ -122,7 +170,28 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
                  args: NasHAPartitionSnapshotArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NasHAPartitionSnapshot resource with the given unique name, props, and options.
+        Provides a resource for managing **snapshot** to partitions on HA-NAS services
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartitionSnapshot("myPartition",
+            partition_name="my-partition",
+            service_name="zpool-12345",
+            type="day-3")
+        ```
+
+        ## Import
+
+        HA-NAS partition snapshot can be imported using the `{service_name}/{partition_name}/{type}`, e.g.
+
+        ```sh
+        $ pulumi import ovh:Dedicated/nasHAPartitionSnapshot:NasHAPartitionSnapshot my-partition zpool-12345/my-partition/day-3`
+        ```
+
         :param str resource_name: The name of the resource.
         :param NasHAPartitionSnapshotArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -179,6 +248,9 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] partition_name: name of the partition
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[str] type: Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -192,15 +264,24 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
     @property
     @pulumi.getter(name="partitionName")
     def partition_name(self) -> pulumi.Output[str]:
+        """
+        name of the partition
+        """
         return pulumi.get(self, "partition_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        Snapshot interval, allowed : day-1, day-2, day-3, day-7, hour-1, hour-6
+        """
         return pulumi.get(self, "type")
 

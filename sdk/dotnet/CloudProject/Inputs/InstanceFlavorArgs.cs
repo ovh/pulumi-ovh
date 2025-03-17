@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class InstanceFlavorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flavor id
+        /// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
         /// </summary>
         [Input("flavorId", required: true)]
         public Input<string> FlavorId { get; set; } = null!;

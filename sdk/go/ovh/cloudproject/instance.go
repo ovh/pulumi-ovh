@@ -8,10 +8,54 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **This resource uses a Beta API**
+// Creates an instance associated with a public cloud project.
+//
+// ## Example Usage
+//
+// Create a instance.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewInstance(ctx, "instance", &cloudproject.InstanceArgs{
+//				BillingPeriod: pulumi.String("hourly"),
+//				BootFrom: &cloudproject.InstanceBootFromArgs{
+//					ImageId: pulumi.String("UUID"),
+//				},
+//				Flavor: &cloudproject.InstanceFlavorArgs{
+//					FlavorId: pulumi.String("UUID"),
+//				},
+//				Network: &cloudproject.InstanceNetworkArgs{
+//					Public: pulumi.Bool(true),
+//				},
+//				Region:      pulumi.String("RRRR"),
+//				ServiceName: pulumi.String("XXX"),
+//				SshKey: &cloudproject.InstanceSshKeyArgs{
+//					Name: pulumi.String("sshname"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -19,11 +63,11 @@ type Instance struct {
 	Addresses InstanceAddressArrayOutput `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes InstanceAttachedVolumeArrayOutput `pulumi:"attachedVolumes"`
-	// Create an autobackup workflow after instance start up
+	// Create an autobackup workflow after instance start up.
 	AutoBackup InstanceAutoBackupPtrOutput `pulumi:"autoBackup"`
 	// The availability zone where the instance will be created
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Billing period - hourly | monthly
+	// Billing period - hourly or monthly
 	BillingPeriod pulumi.StringOutput `pulumi:"billingPeriod"`
 	// Boot the instance from an image or a volume
 	BootFrom InstanceBootFromOutput `pulumi:"bootFrom"`
@@ -45,9 +89,10 @@ type Instance struct {
 	Network InstanceNetworkOutput `pulumi:"network"`
 	// Instance region
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Service name of the resource representing the id of the cloud project
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Existing SSH Key pair
+	// Existing SSH Keypair
 	SshKey InstanceSshKeyPtrOutput `pulumi:"sshKey"`
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate InstanceSshKeyCreatePtrOutput `pulumi:"sshKeyCreate"`
@@ -109,11 +154,11 @@ type instanceState struct {
 	Addresses []InstanceAddress `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes []InstanceAttachedVolume `pulumi:"attachedVolumes"`
-	// Create an autobackup workflow after instance start up
+	// Create an autobackup workflow after instance start up.
 	AutoBackup *InstanceAutoBackup `pulumi:"autoBackup"`
 	// The availability zone where the instance will be created
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Billing period - hourly | monthly
+	// Billing period - hourly or monthly
 	BillingPeriod *string `pulumi:"billingPeriod"`
 	// Boot the instance from an image or a volume
 	BootFrom *InstanceBootFrom `pulumi:"bootFrom"`
@@ -135,9 +180,10 @@ type instanceState struct {
 	Network *InstanceNetwork `pulumi:"network"`
 	// Instance region
 	Region *string `pulumi:"region"`
-	// Service name of the resource representing the id of the cloud project
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName *string `pulumi:"serviceName"`
-	// Existing SSH Key pair
+	// Existing SSH Keypair
 	SshKey *InstanceSshKey `pulumi:"sshKey"`
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate *InstanceSshKeyCreate `pulumi:"sshKeyCreate"`
@@ -152,11 +198,11 @@ type InstanceState struct {
 	Addresses InstanceAddressArrayInput
 	// Volumes attached to the instance
 	AttachedVolumes InstanceAttachedVolumeArrayInput
-	// Create an autobackup workflow after instance start up
+	// Create an autobackup workflow after instance start up.
 	AutoBackup InstanceAutoBackupPtrInput
 	// The availability zone where the instance will be created
 	AvailabilityZone pulumi.StringPtrInput
-	// Billing period - hourly | monthly
+	// Billing period - hourly or monthly
 	BillingPeriod pulumi.StringPtrInput
 	// Boot the instance from an image or a volume
 	BootFrom InstanceBootFromPtrInput
@@ -178,9 +224,10 @@ type InstanceState struct {
 	Network InstanceNetworkPtrInput
 	// Instance region
 	Region pulumi.StringPtrInput
-	// Service name of the resource representing the id of the cloud project
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringPtrInput
-	// Existing SSH Key pair
+	// Existing SSH Keypair
 	SshKey InstanceSshKeyPtrInput
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate InstanceSshKeyCreatePtrInput
@@ -195,11 +242,11 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Create an autobackup workflow after instance start up
+	// Create an autobackup workflow after instance start up.
 	AutoBackup *InstanceAutoBackup `pulumi:"autoBackup"`
 	// The availability zone where the instance will be created
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Billing period - hourly | monthly
+	// Billing period - hourly or monthly
 	BillingPeriod string `pulumi:"billingPeriod"`
 	// Boot the instance from an image or a volume
 	BootFrom InstanceBootFrom `pulumi:"bootFrom"`
@@ -215,9 +262,10 @@ type instanceArgs struct {
 	Network InstanceNetwork `pulumi:"network"`
 	// Instance region
 	Region string `pulumi:"region"`
-	// Service name of the resource representing the id of the cloud project
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName string `pulumi:"serviceName"`
-	// Existing SSH Key pair
+	// Existing SSH Keypair
 	SshKey *InstanceSshKey `pulumi:"sshKey"`
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate *InstanceSshKeyCreate `pulumi:"sshKeyCreate"`
@@ -227,11 +275,11 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Create an autobackup workflow after instance start up
+	// Create an autobackup workflow after instance start up.
 	AutoBackup InstanceAutoBackupPtrInput
 	// The availability zone where the instance will be created
 	AvailabilityZone pulumi.StringPtrInput
-	// Billing period - hourly | monthly
+	// Billing period - hourly or monthly
 	BillingPeriod pulumi.StringInput
 	// Boot the instance from an image or a volume
 	BootFrom InstanceBootFromInput
@@ -247,9 +295,10 @@ type InstanceArgs struct {
 	Network InstanceNetworkInput
 	// Instance region
 	Region pulumi.StringInput
-	// Service name of the resource representing the id of the cloud project
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringInput
-	// Existing SSH Key pair
+	// Existing SSH Keypair
 	SshKey InstanceSshKeyPtrInput
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate InstanceSshKeyCreatePtrInput
@@ -354,7 +403,7 @@ func (o InstanceOutput) AttachedVolumes() InstanceAttachedVolumeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceAttachedVolumeArrayOutput { return v.AttachedVolumes }).(InstanceAttachedVolumeArrayOutput)
 }
 
-// Create an autobackup workflow after instance start up
+// Create an autobackup workflow after instance start up.
 func (o InstanceOutput) AutoBackup() InstanceAutoBackupPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceAutoBackupPtrOutput { return v.AutoBackup }).(InstanceAutoBackupPtrOutput)
 }
@@ -364,7 +413,7 @@ func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Billing period - hourly | monthly
+// Billing period - hourly or monthly
 func (o InstanceOutput) BillingPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BillingPeriod }).(pulumi.StringOutput)
 }
@@ -419,12 +468,13 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Service name of the resource representing the id of the cloud project
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 func (o InstanceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Existing SSH Key pair
+// Existing SSH Keypair
 func (o InstanceOutput) SshKey() InstanceSshKeyPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceSshKeyPtrOutput { return v.SshKey }).(InstanceSshKeyPtrOutput)
 }

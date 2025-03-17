@@ -9,72 +9,145 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/kube:Kube")]
     public partial class Kube : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// True if control-plane is up-to-date.
+        /// </summary>
         [Output("controlPlaneIsUpToDate")]
         public Output<bool> ControlPlaneIsUpToDate { get; private set; } = null!;
 
+        /// <summary>
+        /// Kubernetes API server customization
+        /// </summary>
         [Output("customizationApiservers")]
         public Output<ImmutableArray<Outputs.KubeCustomizationApiserver>> CustomizationApiservers { get; private set; } = null!;
 
+        /// <summary>
+        /// Kubernetes kube-proxy customization
+        /// </summary>
         [Output("customizationKubeProxy")]
         public Output<Outputs.KubeCustomizationKubeProxy?> CustomizationKubeProxy { get; private set; } = null!;
 
+        /// <summary>
+        /// **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        /// </summary>
         [Output("customizations")]
         public Output<ImmutableArray<Outputs.KubeCustomization>> Customizations { get; private set; } = null!;
 
+        /// <summary>
+        /// True if all nodes and control-plane are up-to-date.
+        /// </summary>
         [Output("isUpToDate")]
         public Output<bool> IsUpToDate { get; private set; } = null!;
 
+        /// <summary>
+        /// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+        /// </summary>
         [Output("kubeProxyMode")]
         public Output<string> KubeProxyMode { get; private set; } = null!;
 
+        /// <summary>
+        /// The kubeconfig file. Use this file to connect to your kubernetes cluster.
+        /// </summary>
         [Output("kubeconfig")]
         public Output<string> Kubeconfig { get; private set; } = null!;
 
         /// <summary>
-        /// The kubeconfig configuration file of the Kubernetes cluster
+        /// The kubeconfig file attributes.
         /// </summary>
         [Output("kubeconfigAttributes")]
         public Output<ImmutableArray<Outputs.KubeKubeconfigAttribute>> KubeconfigAttributes { get; private set; } = null!;
 
+        /// <summary>
+        /// Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
+        /// </summary>
         [Output("loadBalancersSubnetId")]
         public Output<string?> LoadBalancersSubnetId { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the kubernetes cluster.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Kubernetes versions available for upgrade.
+        /// </summary>
         [Output("nextUpgradeVersions")]
         public Output<ImmutableArray<string>> NextUpgradeVersions { get; private set; } = null!;
 
+        /// <summary>
+        /// Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// </summary>
         [Output("nodesSubnetId")]
         public Output<string> NodesSubnetId { get; private set; } = null!;
 
+        /// <summary>
+        /// Cluster nodes URL.
+        /// </summary>
         [Output("nodesUrl")]
         public Output<string> NodesUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
+        /// </summary>
         [Output("privateNetworkConfiguration")]
         public Output<Outputs.KubePrivateNetworkConfiguration?> PrivateNetworkConfiguration { get; private set; } = null!;
 
+        /// <summary>
+        /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        /// 
+        /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        /// </summary>
         [Output("privateNetworkId")]
         public Output<string?> PrivateNetworkId { get; private set; } = null!;
 
+        /// <summary>
+        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// Cluster status. Should be normally set to 'READY'.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+        /// </summary>
         [Output("updatePolicy")]
         public Output<string> UpdatePolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Management URL of your cluster.
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -132,17 +205,28 @@ namespace Pulumi.Ovh.CloudProject
     {
         [Input("customizationApiservers")]
         private InputList<Inputs.KubeCustomizationApiserverArgs>? _customizationApiservers;
+
+        /// <summary>
+        /// Kubernetes API server customization
+        /// </summary>
         public InputList<Inputs.KubeCustomizationApiserverArgs> CustomizationApiservers
         {
             get => _customizationApiservers ?? (_customizationApiservers = new InputList<Inputs.KubeCustomizationApiserverArgs>());
             set => _customizationApiservers = value;
         }
 
+        /// <summary>
+        /// Kubernetes kube-proxy customization
+        /// </summary>
         [Input("customizationKubeProxy")]
         public Input<Inputs.KubeCustomizationKubeProxyArgs>? CustomizationKubeProxy { get; set; }
 
         [Input("customizations")]
         private InputList<Inputs.KubeCustomizationArgs>? _customizations;
+
+        /// <summary>
+        /// **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        /// </summary>
         [Obsolete(@"Use customization_apiserver instead")]
         public InputList<Inputs.KubeCustomizationArgs> Customizations
         {
@@ -150,33 +234,65 @@ namespace Pulumi.Ovh.CloudProject
             set => _customizations = value;
         }
 
+        /// <summary>
+        /// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+        /// </summary>
         [Input("kubeProxyMode")]
         public Input<string>? KubeProxyMode { get; set; }
 
+        /// <summary>
+        /// Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
+        /// </summary>
         [Input("loadBalancersSubnetId")]
         public Input<string>? LoadBalancersSubnetId { get; set; }
 
+        /// <summary>
+        /// The name of the kubernetes cluster.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// </summary>
         [Input("nodesSubnetId")]
         public Input<string>? NodesSubnetId { get; set; }
 
+        /// <summary>
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
+        /// </summary>
         [Input("privateNetworkConfiguration")]
         public Input<Inputs.KubePrivateNetworkConfigurationArgs>? PrivateNetworkConfiguration { get; set; }
 
+        /// <summary>
+        /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        /// 
+        /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        /// </summary>
         [Input("privateNetworkId")]
         public Input<string>? PrivateNetworkId { get; set; }
 
+        /// <summary>
+        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+        /// </summary>
         [Input("updatePolicy")]
         public Input<string>? UpdatePolicy { get; set; }
 
+        /// <summary>
+        /// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -188,22 +304,36 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class KubeState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// True if control-plane is up-to-date.
+        /// </summary>
         [Input("controlPlaneIsUpToDate")]
         public Input<bool>? ControlPlaneIsUpToDate { get; set; }
 
         [Input("customizationApiservers")]
         private InputList<Inputs.KubeCustomizationApiserverGetArgs>? _customizationApiservers;
+
+        /// <summary>
+        /// Kubernetes API server customization
+        /// </summary>
         public InputList<Inputs.KubeCustomizationApiserverGetArgs> CustomizationApiservers
         {
             get => _customizationApiservers ?? (_customizationApiservers = new InputList<Inputs.KubeCustomizationApiserverGetArgs>());
             set => _customizationApiservers = value;
         }
 
+        /// <summary>
+        /// Kubernetes kube-proxy customization
+        /// </summary>
         [Input("customizationKubeProxy")]
         public Input<Inputs.KubeCustomizationKubeProxyGetArgs>? CustomizationKubeProxy { get; set; }
 
         [Input("customizations")]
         private InputList<Inputs.KubeCustomizationGetArgs>? _customizations;
+
+        /// <summary>
+        /// **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        /// </summary>
         [Obsolete(@"Use customization_apiserver instead")]
         public InputList<Inputs.KubeCustomizationGetArgs> Customizations
         {
@@ -211,14 +341,24 @@ namespace Pulumi.Ovh.CloudProject
             set => _customizations = value;
         }
 
+        /// <summary>
+        /// True if all nodes and control-plane are up-to-date.
+        /// </summary>
         [Input("isUpToDate")]
         public Input<bool>? IsUpToDate { get; set; }
 
+        /// <summary>
+        /// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+        /// </summary>
         [Input("kubeProxyMode")]
         public Input<string>? KubeProxyMode { get; set; }
 
         [Input("kubeconfig")]
         private Input<string>? _kubeconfig;
+
+        /// <summary>
+        /// The kubeconfig file. Use this file to connect to your kubernetes cluster.
+        /// </summary>
         public Input<string>? Kubeconfig
         {
             get => _kubeconfig;
@@ -233,7 +373,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.KubeKubeconfigAttributeGetArgs>? _kubeconfigAttributes;
 
         /// <summary>
-        /// The kubeconfig configuration file of the Kubernetes cluster
+        /// The kubeconfig file attributes.
         /// </summary>
         public InputList<Inputs.KubeKubeconfigAttributeGetArgs> KubeconfigAttributes
         {
@@ -245,47 +385,89 @@ namespace Pulumi.Ovh.CloudProject
             }
         }
 
+        /// <summary>
+        /// Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&amp;sysparm_article=KB0062873) for more information.
+        /// </summary>
         [Input("loadBalancersSubnetId")]
         public Input<string>? LoadBalancersSubnetId { get; set; }
 
+        /// <summary>
+        /// The name of the kubernetes cluster.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("nextUpgradeVersions")]
         private InputList<string>? _nextUpgradeVersions;
+
+        /// <summary>
+        /// Kubernetes versions available for upgrade.
+        /// </summary>
         public InputList<string> NextUpgradeVersions
         {
             get => _nextUpgradeVersions ?? (_nextUpgradeVersions = new InputList<string>());
             set => _nextUpgradeVersions = value;
         }
 
+        /// <summary>
+        /// Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+        /// </summary>
         [Input("nodesSubnetId")]
         public Input<string>? NodesSubnetId { get; set; }
 
+        /// <summary>
+        /// Cluster nodes URL.
+        /// </summary>
         [Input("nodesUrl")]
         public Input<string>? NodesUrl { get; set; }
 
+        /// <summary>
+        /// The private network configuration. If this is set then the 2 parameters below shall be defined.
+        /// </summary>
         [Input("privateNetworkConfiguration")]
         public Input<Inputs.KubePrivateNetworkConfigurationGetArgs>? PrivateNetworkConfiguration { get; set; }
 
+        /// <summary>
+        /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+        /// 
+        /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        /// </summary>
         [Input("privateNetworkId")]
         public Input<string>? PrivateNetworkId { get; set; }
 
+        /// <summary>
+        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// Cluster status. Should be normally set to 'READY'.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+        /// </summary>
         [Input("updatePolicy")]
         public Input<string>? UpdatePolicy { get; set; }
 
+        /// <summary>
+        /// Management URL of your cluster.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

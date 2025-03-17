@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the available flavors on the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const flavors = ovh.CloudProject.getFlavors({
+ *     serviceName: "YYYY",
+ * });
+ * ```
+ */
 export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getFlavors:getFlavors", {
@@ -18,7 +32,13 @@ export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsArgs {
+    /**
+     * Flavor region
+     */
     region?: string;
+    /**
+     * Service name
+     */
     serviceName: string;
 }
 
@@ -31,9 +51,29 @@ export interface GetFlavorsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Flavor region
+     */
     readonly region: string;
+    /**
+     * Service name
+     */
     readonly serviceName: string;
 }
+/**
+ * Retrieves the available flavors on the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const flavors = ovh.CloudProject.getFlavors({
+ *     serviceName: "YYYY",
+ * });
+ * ```
+ */
 export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getFlavors:getFlavors", {
@@ -46,6 +86,12 @@ export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsOutputArgs {
+    /**
+     * Flavor region
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Service name
+     */
     serviceName: pulumi.Input<string>;
 }

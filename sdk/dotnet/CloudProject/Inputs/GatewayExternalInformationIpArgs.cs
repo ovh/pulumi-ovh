@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class GatewayExternalInformationIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// External IP of the gateway
+        /// IP of the interface.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Subnet ID of the ip
+        /// ID of the subnet.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

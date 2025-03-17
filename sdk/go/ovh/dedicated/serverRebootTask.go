@@ -8,28 +8,73 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rescue, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//				BootType:    pulumi.StringRef("rescue"),
+//				Kernel:      pulumi.StringRef("rescue64-pro"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			serverOnRescue, err := dedicated.NewServerUpdate(ctx, "serverOnRescue", &dedicated.ServerUpdateArgs{
+//				ServiceName: pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
+//				BootId:      pulumi.Int(rescue.Results[0]),
+//				Monitoring:  pulumi.Bool(true),
+//				State:       pulumi.String("ok"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dedicated.NewServerRebootTask(ctx, "serverReboot", &dedicated.ServerRebootTaskArgs{
+//				ServiceName: pulumi.String(rescue.ServiceName),
+//				Keepers: pulumi.StringArray{
+//					serverOnRescue.BootId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ServerRebootTask struct {
 	pulumi.CustomResourceState
 
-	// Details of this task
+	// Details of this task. (should be `Reboot asked`)
 	Comment pulumi.StringOutput `pulumi:"comment"`
-	// Completion date
+	// Completion date in RFC3339 format.
 	DoneDate pulumi.StringOutput `pulumi:"doneDate"`
-	// Function name
+	// Function name (should be `hardReboot`).
 	Function pulumi.StringOutput `pulumi:"function"`
-	// Change this value to recreate a reboot task.
+	// List of values tracked to trigger reboot, used also to form implicit dependencies.
 	Keepers pulumi.StringArrayOutput `pulumi:"keepers"`
-	// Last update
+	// Last update in RFC3339 format.
 	LastUpdate pulumi.StringOutput `pulumi:"lastUpdate"`
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Task Creation date
+	// Task creation date in RFC3339 format.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
-	// Task status
+	// Task status (should be `done`)
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -69,40 +114,40 @@ func GetServerRebootTask(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerRebootTask resources.
 type serverRebootTaskState struct {
-	// Details of this task
+	// Details of this task. (should be `Reboot asked`)
 	Comment *string `pulumi:"comment"`
-	// Completion date
+	// Completion date in RFC3339 format.
 	DoneDate *string `pulumi:"doneDate"`
-	// Function name
+	// Function name (should be `hardReboot`).
 	Function *string `pulumi:"function"`
-	// Change this value to recreate a reboot task.
+	// List of values tracked to trigger reboot, used also to form implicit dependencies.
 	Keepers []string `pulumi:"keepers"`
-	// Last update
+	// Last update in RFC3339 format.
 	LastUpdate *string `pulumi:"lastUpdate"`
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName *string `pulumi:"serviceName"`
-	// Task Creation date
+	// Task creation date in RFC3339 format.
 	StartDate *string `pulumi:"startDate"`
-	// Task status
+	// Task status (should be `done`)
 	Status *string `pulumi:"status"`
 }
 
 type ServerRebootTaskState struct {
-	// Details of this task
+	// Details of this task. (should be `Reboot asked`)
 	Comment pulumi.StringPtrInput
-	// Completion date
+	// Completion date in RFC3339 format.
 	DoneDate pulumi.StringPtrInput
-	// Function name
+	// Function name (should be `hardReboot`).
 	Function pulumi.StringPtrInput
-	// Change this value to recreate a reboot task.
+	// List of values tracked to trigger reboot, used also to form implicit dependencies.
 	Keepers pulumi.StringArrayInput
-	// Last update
+	// Last update in RFC3339 format.
 	LastUpdate pulumi.StringPtrInput
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringPtrInput
-	// Task Creation date
+	// Task creation date in RFC3339 format.
 	StartDate pulumi.StringPtrInput
-	// Task status
+	// Task status (should be `done`)
 	Status pulumi.StringPtrInput
 }
 
@@ -111,17 +156,17 @@ func (ServerRebootTaskState) ElementType() reflect.Type {
 }
 
 type serverRebootTaskArgs struct {
-	// Change this value to recreate a reboot task.
+	// List of values tracked to trigger reboot, used also to form implicit dependencies.
 	Keepers []string `pulumi:"keepers"`
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a ServerRebootTask resource.
 type ServerRebootTaskArgs struct {
-	// Change this value to recreate a reboot task.
+	// List of values tracked to trigger reboot, used also to form implicit dependencies.
 	Keepers pulumi.StringArrayInput
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringInput
 }
 
@@ -212,42 +257,42 @@ func (o ServerRebootTaskOutput) ToServerRebootTaskOutputWithContext(ctx context.
 	return o
 }
 
-// Details of this task
+// Details of this task. (should be `Reboot asked`)
 func (o ServerRebootTaskOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
 }
 
-// Completion date
+// Completion date in RFC3339 format.
 func (o ServerRebootTaskOutput) DoneDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.DoneDate }).(pulumi.StringOutput)
 }
 
-// Function name
+// Function name (should be `hardReboot`).
 func (o ServerRebootTaskOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.Function }).(pulumi.StringOutput)
 }
 
-// Change this value to recreate a reboot task.
+// List of values tracked to trigger reboot, used also to form implicit dependencies.
 func (o ServerRebootTaskOutput) Keepers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringArrayOutput { return v.Keepers }).(pulumi.StringArrayOutput)
 }
 
-// Last update
+// Last update in RFC3339 format.
 func (o ServerRebootTaskOutput) LastUpdate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.LastUpdate }).(pulumi.StringOutput)
 }
 
-// The internal name of your dedicated server.
+// The serviceName of your dedicated server.
 func (o ServerRebootTaskOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Task Creation date
+// Task creation date in RFC3339 format.
 func (o ServerRebootTaskOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }
 
-// Task status
+// Task status (should be `done`)
 func (o ServerRebootTaskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerRebootTask) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

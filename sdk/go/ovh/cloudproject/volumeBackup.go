@@ -8,10 +8,67 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manage backups for the given volume in a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewVolumeBackup(ctx, "backup", &cloudproject.VolumeBackupArgs{
+//				RegionName:  pulumi.String("GRA9"),
+//				ServiceName: pulumi.String("<public cloud project ID>"),
+//				VolumeId:    pulumi.String("<volume ID>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// A volume backup in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	id = "<service_name>/<region_name>/<id>"
+//
+//	to = ovh_cloud_project_volume_backup.backup
+//
+// }
+//
+// You can then run:
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=backup.tf
+//
+// $ pulumi up
+//
+// The file `backup.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type VolumeBackup struct {
 	pulumi.CustomResourceState
 

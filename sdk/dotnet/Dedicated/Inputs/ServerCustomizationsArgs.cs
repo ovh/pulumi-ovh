@@ -19,7 +19,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<string>? ConfigDriveUserData { get; set; }
 
         /// <summary>
-        /// Path of the EFI bootloader from the OS installed on the server
+        /// Path of the EFI bootloader
         /// </summary>
         [Input("efiBootloaderPath")]
         public Input<string>? EfiBootloaderPath { get; set; }

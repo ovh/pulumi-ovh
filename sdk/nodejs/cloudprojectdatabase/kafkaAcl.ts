@@ -4,6 +4,40 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates an ACL for a kafka cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const kafka = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "kafka",
+ *     id: "ZZZ",
+ * });
+ * const acl = new ovh.cloudprojectdatabase.KafkaAcl("acl", {
+ *     serviceName: kafka.then(kafka => kafka.serviceName),
+ *     clusterId: kafka.then(kafka => kafka.id),
+ *     permission: "read",
+ *     topic: "mytopic",
+ *     username: "johndoe",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud Managed kafka clusters ACLs can be imported using the `service_name`, `cluster_id` and `id` of the acl, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl my_acl service_name/cluster_id/id
+ * ```
+ */
 export class KafkaAcl extends pulumi.CustomResource {
     /**
      * Get an existing KafkaAcl resource's state with the given name, ID, and optional extra
@@ -33,20 +67,25 @@ export class KafkaAcl extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Permission to give to this username on this topic
+     * Permission to give to this username on this topic.
+     * Available permissions:
      */
     public readonly permission!: pulumi.Output<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Topic affected by this acl
+     * Topic affected by this ACL.
      */
     public readonly topic!: pulumi.Output<string>;
     /**
-     * Username affected by this acl
+     * Username affected by this ACL.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -101,20 +140,25 @@ export class KafkaAcl extends pulumi.CustomResource {
  */
 export interface KafkaAclState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Permission to give to this username on this topic
+     * Permission to give to this username on this topic.
+     * Available permissions:
      */
     permission?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Topic affected by this acl
+     * Topic affected by this ACL.
      */
     topic?: pulumi.Input<string>;
     /**
-     * Username affected by this acl
+     * Username affected by this ACL.
      */
     username?: pulumi.Input<string>;
 }
@@ -124,20 +168,25 @@ export interface KafkaAclState {
  */
 export interface KafkaAclArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Permission to give to this username on this topic
+     * Permission to give to this username on this topic.
+     * Available permissions:
      */
     permission: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
     /**
-     * Topic affected by this acl
+     * Topic affected by this ACL.
      */
     topic: pulumi.Input<string>;
     /**
-     * Username affected by this acl
+     * Username affected by this ACL.
      */
     username: pulumi.Input<string>;
 }

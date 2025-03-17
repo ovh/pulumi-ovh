@@ -55,21 +55,33 @@ class GetIdentityGroupResult:
     @property
     @pulumi.getter(name="GroupURN")
     def group_urn(self) -> str:
+        """
+        Identity URN of the group.
+        """
         return pulumi.get(self, "group_urn")
 
     @property
     @pulumi.getter
     def creation(self) -> str:
+        """
+        Creation date of this group.
+        """
         return pulumi.get(self, "creation")
 
     @property
     @pulumi.getter(name="defaultGroup")
     def default_group(self) -> bool:
+        """
+        Is the group a default and immutable one.
+        """
         return pulumi.get(self, "default_group")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Group description.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -83,6 +95,9 @@ class GetIdentityGroupResult:
     @property
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> str:
+        """
+        Date of the last update of this group.
+        """
         return pulumi.get(self, "last_update")
 
     @property
@@ -93,6 +108,9 @@ class GetIdentityGroupResult:
     @property
     @pulumi.getter
     def role(self) -> str:
+        """
+        Role associated with the group. Valid roles are ADMIN, REGULAR, UNPRIVILEGED, and NONE.
+        """
         return pulumi.get(self, "role")
 
 
@@ -115,7 +133,19 @@ class AwaitableGetIdentityGroupResult(GetIdentityGroupResult):
 def get_identity_group(name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIdentityGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an identity group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_group = ovh.Me.get_identity_group(name="my_group_name")
+    ```
+
+
+    :param str name: Group name.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -134,7 +164,19 @@ def get_identity_group(name: Optional[str] = None,
 def get_identity_group_output(name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an identity group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_group = ovh.Me.get_identity_group(name="my_group_name")
+    ```
+
+
+    :param str name: Group name.
     """
     __args__ = dict()
     __args__['name'] = name

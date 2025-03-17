@@ -8,21 +8,115 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manage rules for HTTP route.
+//
+// ## Example Usage
+//
+// Route which redirect all URL to HTTPs for example.com (Vhost).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			httpsRedirect, err := iploadbalancing.NewHttpRoute(ctx, "httpsRedirect", &iploadbalancing.HttpRouteArgs{
+//				Action: &iploadbalancing.HttpRouteActionArgs{
+//					Status: pulumi.Int(302),
+//					Target: pulumi.String("https://${host}${path}${arguments}"),
+//					Type:   pulumi.String("redirect"),
+//				},
+//				DisplayName: pulumi.String("Redirect to HTTPS"),
+//				FrontendId:  pulumi.Int(11111),
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				Weight:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewHttpRouteRule(ctx, "exampleRule", &iploadbalancing.HttpRouteRuleArgs{
+//				DisplayName: pulumi.String("Match example.com host"),
+//				Field:       pulumi.String("host"),
+//				Match:       pulumi.String("is"),
+//				Negate:      pulumi.Bool(false),
+//				Pattern:     pulumi.String("example.com"),
+//				RouteId:     httpsRedirect.ID(),
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Rule which match a specific header (same effect as the host match above).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iploadbalancing.NewHttpRouteRule(ctx, "exampleRule", &iploadbalancing.HttpRouteRuleArgs{
+//				DisplayName: pulumi.String("Match example.com Host header"),
+//				Field:       pulumi.String("headers"),
+//				Match:       pulumi.String("is"),
+//				Negate:      pulumi.Bool(false),
+//				Pattern:     pulumi.String("example.com"),
+//				RouteId:     pulumi.Any(ovh_iploadbalancing_http_route.Https_redirect.Id),
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				SubField:    pulumi.String("Host"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 type HttpRouteRule struct {
 	pulumi.CustomResourceState
 
+	// Human readable name for your rule, this field is for you
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	Field       pulumi.StringOutput    `pulumi:"field"`
-	Match       pulumi.StringOutput    `pulumi:"match"`
-	Negate      pulumi.BoolOutput      `pulumi:"negate"`
-	Pattern     pulumi.StringPtrOutput `pulumi:"pattern"`
-	RouteId     pulumi.StringOutput    `pulumi:"routeId"`
-	ServiceName pulumi.StringOutput    `pulumi:"serviceName"`
-	SubField    pulumi.StringPtrOutput `pulumi:"subField"`
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+	Field pulumi.StringOutput `pulumi:"field"`
+	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+	Match pulumi.StringOutput `pulumi:"match"`
+	// Invert the matching operator effect
+	Negate pulumi.BoolOutput `pulumi:"negate"`
+	// Value to match against this match. Interpretation if this field depends on the match and field
+	Pattern pulumi.StringPtrOutput `pulumi:"pattern"`
+	// The route to apply this rule
+	RouteId pulumi.StringOutput `pulumi:"routeId"`
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+	SubField pulumi.StringPtrOutput `pulumi:"subField"`
 }
 
 // NewHttpRouteRule registers a new resource with the given unique name, arguments, and options.
@@ -67,25 +161,41 @@ func GetHttpRouteRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpRouteRule resources.
 type httpRouteRuleState struct {
+	// Human readable name for your rule, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	Field       *string `pulumi:"field"`
-	Match       *string `pulumi:"match"`
-	Negate      *bool   `pulumi:"negate"`
-	Pattern     *string `pulumi:"pattern"`
-	RouteId     *string `pulumi:"routeId"`
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+	Field *string `pulumi:"field"`
+	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+	Match *string `pulumi:"match"`
+	// Invert the matching operator effect
+	Negate *bool `pulumi:"negate"`
+	// Value to match against this match. Interpretation if this field depends on the match and field
+	Pattern *string `pulumi:"pattern"`
+	// The route to apply this rule
+	RouteId *string `pulumi:"routeId"`
+	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	SubField    *string `pulumi:"subField"`
+	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+	SubField *string `pulumi:"subField"`
 }
 
 type HttpRouteRuleState struct {
+	// Human readable name for your rule, this field is for you
 	DisplayName pulumi.StringPtrInput
-	Field       pulumi.StringPtrInput
-	Match       pulumi.StringPtrInput
-	Negate      pulumi.BoolPtrInput
-	Pattern     pulumi.StringPtrInput
-	RouteId     pulumi.StringPtrInput
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+	Field pulumi.StringPtrInput
+	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+	Match pulumi.StringPtrInput
+	// Invert the matching operator effect
+	Negate pulumi.BoolPtrInput
+	// Value to match against this match. Interpretation if this field depends on the match and field
+	Pattern pulumi.StringPtrInput
+	// The route to apply this rule
+	RouteId pulumi.StringPtrInput
+	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	SubField    pulumi.StringPtrInput
+	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+	SubField pulumi.StringPtrInput
 }
 
 func (HttpRouteRuleState) ElementType() reflect.Type {
@@ -93,26 +203,42 @@ func (HttpRouteRuleState) ElementType() reflect.Type {
 }
 
 type httpRouteRuleArgs struct {
+	// Human readable name for your rule, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	Field       string  `pulumi:"field"`
-	Match       string  `pulumi:"match"`
-	Negate      *bool   `pulumi:"negate"`
-	Pattern     *string `pulumi:"pattern"`
-	RouteId     string  `pulumi:"routeId"`
-	ServiceName string  `pulumi:"serviceName"`
-	SubField    *string `pulumi:"subField"`
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+	Field string `pulumi:"field"`
+	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+	Match string `pulumi:"match"`
+	// Invert the matching operator effect
+	Negate *bool `pulumi:"negate"`
+	// Value to match against this match. Interpretation if this field depends on the match and field
+	Pattern *string `pulumi:"pattern"`
+	// The route to apply this rule
+	RouteId string `pulumi:"routeId"`
+	// The internal name of your IP load balancing
+	ServiceName string `pulumi:"serviceName"`
+	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+	SubField *string `pulumi:"subField"`
 }
 
 // The set of arguments for constructing a HttpRouteRule resource.
 type HttpRouteRuleArgs struct {
+	// Human readable name for your rule, this field is for you
 	DisplayName pulumi.StringPtrInput
-	Field       pulumi.StringInput
-	Match       pulumi.StringInput
-	Negate      pulumi.BoolPtrInput
-	Pattern     pulumi.StringPtrInput
-	RouteId     pulumi.StringInput
+	// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+	Field pulumi.StringInput
+	// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+	Match pulumi.StringInput
+	// Invert the matching operator effect
+	Negate pulumi.BoolPtrInput
+	// Value to match against this match. Interpretation if this field depends on the match and field
+	Pattern pulumi.StringPtrInput
+	// The route to apply this rule
+	RouteId pulumi.StringInput
+	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
-	SubField    pulumi.StringPtrInput
+	// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+	SubField pulumi.StringPtrInput
 }
 
 func (HttpRouteRuleArgs) ElementType() reflect.Type {
@@ -202,34 +328,42 @@ func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Human readable name for your rule, this field is for you
 func (o HttpRouteRuleOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
 func (o HttpRouteRuleOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringOutput { return v.Field }).(pulumi.StringOutput)
 }
 
+// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
 func (o HttpRouteRuleOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringOutput { return v.Match }).(pulumi.StringOutput)
 }
 
+// Invert the matching operator effect
 func (o HttpRouteRuleOutput) Negate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.BoolOutput { return v.Negate }).(pulumi.BoolOutput)
 }
 
+// Value to match against this match. Interpretation if this field depends on the match and field
 func (o HttpRouteRuleOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringPtrOutput { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
+// The route to apply this rule
 func (o HttpRouteRuleOutput) RouteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringOutput { return v.RouteId }).(pulumi.StringOutput)
 }
 
+// The internal name of your IP load balancing
 func (o HttpRouteRuleOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
 func (o HttpRouteRuleOutput) SubField() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRule) pulumi.StringPtrOutput { return v.SubField }).(pulumi.StringPtrOutput)
 }

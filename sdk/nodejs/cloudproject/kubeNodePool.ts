@@ -6,6 +6,74 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.
+ *
+ * ## Example Usage
+ *
+ * Create a simple node pool in your Kubernetes cluster:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const nodePool = new ovh.cloudproject.KubeNodePool("nodePool", {
+ *     desiredNodes: 3,
+ *     flavorName: "b2-7",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     maxNodes: 3,
+ *     minNodes: 3,
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ * });
+ * ```
+ *
+ * Create an advanced node pool in your Kubernetes cluster:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const pool = new ovh.cloudproject.KubeNodePool("pool", {
+ *     desiredNodes: 3,
+ *     flavorName: "b2-7",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     maxNodes: 3,
+ *     minNodes: 3,
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     template: {
+ *         metadata: {
+ *             annotations: {
+ *                 k1: "v1",
+ *                 k2: "v2",
+ *             },
+ *             finalizers: [],
+ *             labels: {
+ *                 k3: "v3",
+ *                 k4: "v4",
+ *             },
+ *         },
+ *         spec: {
+ *             taints: [{
+ *                 effect: "PreferNoSchedule",
+ *                 key: "k",
+ *                 value: "v",
+ *             }],
+ *             unschedulable: false,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid
+ * ```
+ */
 export class KubeNodePool extends pulumi.CustomResource {
     /**
      * Get an existing KubeNodePool resource's state with the given name, ID, and optional extra
@@ -35,23 +103,27 @@ export class KubeNodePool extends pulumi.CustomResource {
     }
 
     /**
-     * Enable anti affinity groups for nodes in the pool
+     * should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
      */
     public readonly antiAffinity!: pulumi.Output<boolean>;
     /**
-     * Enable auto-scaling for the pool
+     * Enable auto-scaling for the pool. Default to `false`.
      */
     public readonly autoscale!: pulumi.Output<boolean>;
     /**
-     * scaleDownUnneededTimeSeconds for autoscaling
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
      */
     public readonly autoscalingScaleDownUnneededTimeSeconds!: pulumi.Output<number>;
     /**
-     * scaleDownUnreadyTimeSeconds for autoscaling
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
      */
     public readonly autoscalingScaleDownUnreadyTimeSeconds!: pulumi.Output<number>;
     /**
-     * scaleDownUtilizationThreshold for autoscaling
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     public readonly autoscalingScaleDownUtilizationThreshold!: pulumi.Output<number>;
     /**
@@ -67,7 +139,7 @@ export class KubeNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentNodes!: pulumi.Output<number>;
     /**
-     * Number of nodes you desire in the pool
+     * number of nodes to start.
      */
     public readonly desiredNodes!: pulumi.Output<number>;
     /**
@@ -75,27 +147,28 @@ export class KubeNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly flavor!: pulumi.Output<string>;
     /**
-     * Flavor name
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
+     * **Changing this value recreates the resource.**
      */
     public readonly flavorName!: pulumi.Output<string>;
     /**
-     * Kube ID
+     * The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
      */
     public readonly kubeId!: pulumi.Output<string>;
     /**
-     * Number of nodes you desire in the pool
+     * maximum number of nodes allowed in the pool. Setting `desiredNodes` over this value will raise an error.
      */
     public readonly maxNodes!: pulumi.Output<number>;
     /**
-     * Number of nodes you desire in the pool
+     * minimum number of nodes allowed in the pool. Setting `desiredNodes` under this value will raise an error.
      */
     public readonly minNodes!: pulumi.Output<number>;
     /**
-     * Enable monthly billing on all nodes in the pool
+     * should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
      */
     public readonly monthlyBilled!: pulumi.Output<boolean>;
     /**
-     * NodePool resource name
+     * The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -103,7 +176,7 @@ export class KubeNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly projectId!: pulumi.Output<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -119,7 +192,7 @@ export class KubeNodePool extends pulumi.CustomResource {
      */
     public readonly template!: pulumi.Output<outputs.CloudProject.KubeNodePoolTemplate | undefined>;
     /**
-     * Number of nodes with latest version installed in the pool
+     * Number of nodes with the latest version installed in the pool
      */
     public /*out*/ readonly upToDateNodes!: pulumi.Output<number>;
     /**
@@ -208,23 +281,27 @@ export class KubeNodePool extends pulumi.CustomResource {
  */
 export interface KubeNodePoolState {
     /**
-     * Enable anti affinity groups for nodes in the pool
+     * should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
      */
     antiAffinity?: pulumi.Input<boolean>;
     /**
-     * Enable auto-scaling for the pool
+     * Enable auto-scaling for the pool. Default to `false`.
      */
     autoscale?: pulumi.Input<boolean>;
     /**
-     * scaleDownUnneededTimeSeconds for autoscaling
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnneededTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUnreadyTimeSeconds for autoscaling
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnreadyTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUtilizationThreshold for autoscaling
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
     /**
@@ -240,7 +317,7 @@ export interface KubeNodePoolState {
      */
     currentNodes?: pulumi.Input<number>;
     /**
-     * Number of nodes you desire in the pool
+     * number of nodes to start.
      */
     desiredNodes?: pulumi.Input<number>;
     /**
@@ -248,27 +325,28 @@ export interface KubeNodePoolState {
      */
     flavor?: pulumi.Input<string>;
     /**
-     * Flavor name
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
+     * **Changing this value recreates the resource.**
      */
     flavorName?: pulumi.Input<string>;
     /**
-     * Kube ID
+     * The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
      */
     kubeId?: pulumi.Input<string>;
     /**
-     * Number of nodes you desire in the pool
+     * maximum number of nodes allowed in the pool. Setting `desiredNodes` over this value will raise an error.
      */
     maxNodes?: pulumi.Input<number>;
     /**
-     * Number of nodes you desire in the pool
+     * minimum number of nodes allowed in the pool. Setting `desiredNodes` under this value will raise an error.
      */
     minNodes?: pulumi.Input<number>;
     /**
-     * Enable monthly billing on all nodes in the pool
+     * should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
      */
     monthlyBilled?: pulumi.Input<boolean>;
     /**
-     * NodePool resource name
+     * The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
      */
     name?: pulumi.Input<string>;
     /**
@@ -276,7 +354,7 @@ export interface KubeNodePoolState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -292,7 +370,7 @@ export interface KubeNodePoolState {
      */
     template?: pulumi.Input<inputs.CloudProject.KubeNodePoolTemplate>;
     /**
-     * Number of nodes with latest version installed in the pool
+     * Number of nodes with the latest version installed in the pool
      */
     upToDateNodes?: pulumi.Input<number>;
     /**
@@ -306,55 +384,60 @@ export interface KubeNodePoolState {
  */
 export interface KubeNodePoolArgs {
     /**
-     * Enable anti affinity groups for nodes in the pool
+     * should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
      */
     antiAffinity?: pulumi.Input<boolean>;
     /**
-     * Enable auto-scaling for the pool
+     * Enable auto-scaling for the pool. Default to `false`.
      */
     autoscale?: pulumi.Input<boolean>;
     /**
-     * scaleDownUnneededTimeSeconds for autoscaling
+     * scaleDownUnneededTimeSeconds autoscaling parameter
+     * How long a node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnneededTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUnreadyTimeSeconds for autoscaling
+     * scaleDownUnreadyTimeSeconds autoscaling parameter
+     * How long an unready node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnreadyTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUtilizationThreshold for autoscaling
+     * scaleDownUtilizationThreshold autoscaling parameter
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
     /**
-     * Number of nodes you desire in the pool
+     * number of nodes to start.
      */
     desiredNodes?: pulumi.Input<number>;
     /**
-     * Flavor name
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
+     * **Changing this value recreates the resource.**
      */
     flavorName: pulumi.Input<string>;
     /**
-     * Kube ID
+     * The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
      */
     kubeId: pulumi.Input<string>;
     /**
-     * Number of nodes you desire in the pool
+     * maximum number of nodes allowed in the pool. Setting `desiredNodes` over this value will raise an error.
      */
     maxNodes?: pulumi.Input<number>;
     /**
-     * Number of nodes you desire in the pool
+     * minimum number of nodes allowed in the pool. Setting `desiredNodes` under this value will raise an error.
      */
     minNodes?: pulumi.Input<number>;
     /**
-     * Enable monthly billing on all nodes in the pool
+     * should the nodes be billed on a monthly basis. Default to `false`. **Changing this value recreates the resource.**
      */
     monthlyBilled?: pulumi.Input<boolean>;
     /**
-     * NodePool resource name
+     * The name of the nodepool. Warning: `_` char is not allowed! **Changing this value recreates the resource.**
      */
     name?: pulumi.Input<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     serviceName: pulumi.Input<string>;
     /**

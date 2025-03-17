@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Applies changes from other `ovh_iploadbalancing_*` resources to the production configuration of loadbalancers.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farmName = new ovh.iploadbalancing.TcpFarm("farmName", {
+ *     port: 8080,
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * const backend = new ovh.iploadbalancing.TcpFarmServer("backend", {
+ *     address: "4.5.6.7",
+ *     backup: true,
+ *     displayName: "mybackend",
+ *     farmId: farmName.id,
+ *     port: 80,
+ *     probe: true,
+ *     proxyProtocolVersion: "v2",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     ssl: false,
+ *     status: "active",
+ *     weight: 2,
+ * });
+ * const mylb = new ovh.iploadbalancing.Refresh("mylb", {
+ *     keepers: [[backend].map(__item => __item.address)],
+ *     serviceName: lb.then(lb => lb.serviceName),
+ * });
+ * ```
+ */
 export class Refresh extends pulumi.CustomResource {
     /**
      * Get an existing Refresh resource's state with the given name, ID, and optional extra
@@ -32,7 +70,13 @@ export class Refresh extends pulumi.CustomResource {
         return obj['__pulumiType'] === Refresh.__pulumiType;
     }
 
+    /**
+     * List of values tracked to trigger refresh, used also to form implicit dependencies
+     */
     public readonly keepers!: pulumi.Output<string[]>;
+    /**
+     * The internal name of your IP load balancing
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -70,7 +114,13 @@ export class Refresh extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Refresh resources.
  */
 export interface RefreshState {
+    /**
+     * List of values tracked to trigger refresh, used also to form implicit dependencies
+     */
     keepers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -78,6 +128,12 @@ export interface RefreshState {
  * The set of arguments for constructing a Refresh resource.
  */
 export interface RefreshArgs {
+    /**
+     * List of values tracked to trigger refresh, used also to form implicit dependencies
+     */
     keepers: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName: pulumi.Input<string>;
 }

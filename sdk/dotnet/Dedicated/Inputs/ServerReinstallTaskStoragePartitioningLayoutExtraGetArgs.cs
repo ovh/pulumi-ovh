@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         private InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutExtraLvGetArgs>? _lvs;
 
         /// <summary>
-        /// LVM-specific parameters
+        /// LVM-specific parameters (when applicable)
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutExtraLvGetArgs> Lvs
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         private InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutExtraZpGetArgs>? _zps;
 
         /// <summary>
-        /// ZFS-specific parameters
+        /// ZFS-specific parameters (when applicable)
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutExtraZpGetArgs> Zps
         {

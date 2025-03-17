@@ -86,8 +86,8 @@ class _LogsRoleState:
         :param pulumi.Input[str] created_at: Role creation date
         :param pulumi.Input[str] description: The role description
         :param pulumi.Input[str] name: The role name
-        :param pulumi.Input[int] nb_member: Number of members in the role
-        :param pulumi.Input[int] nb_permission: Number of permissions assigned to the role
+        :param pulumi.Input[int] nb_member: number of member for the role
+        :param pulumi.Input[int] nb_permission: number of configured permission for the role
         :param pulumi.Input[str] role_id: Role identifier
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] updated_at: Role last update date
@@ -149,7 +149,7 @@ class _LogsRoleState:
     @pulumi.getter(name="nbMember")
     def nb_member(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of members in the role
+        number of member for the role
         """
         return pulumi.get(self, "nb_member")
 
@@ -161,7 +161,7 @@ class _LogsRoleState:
     @pulumi.getter(name="nbPermission")
     def nb_permission(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of permissions assigned to the role
+        number of configured permission for the role
         """
         return pulumi.get(self, "nb_permission")
 
@@ -216,7 +216,29 @@ class LogsRole(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LogsRole resource with the given unique name, props, and options.
+        Reference a DBaaS logs role.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ro = ovh.dbaas.LogsRole("ro",
+            description="Devops - RO",
+            service_name="ldp-xx-xxxxx")
+        ```
+
+        ## Import
+
+        OVHcloud DBaaS Log Role can be imported using the `service_name` and `role_id` of the role, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The role description
@@ -230,7 +252,29 @@ class LogsRole(pulumi.CustomResource):
                  args: LogsRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogsRole resource with the given unique name, props, and options.
+        Reference a DBaaS logs role.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ro = ovh.dbaas.LogsRole("ro",
+            description="Devops - RO",
+            service_name="ldp-xx-xxxxx")
+        ```
+
+        ## Import
+
+        OVHcloud DBaaS Log Role can be imported using the `service_name` and `role_id` of the role, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogsRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -298,8 +342,8 @@ class LogsRole(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Role creation date
         :param pulumi.Input[str] description: The role description
         :param pulumi.Input[str] name: The role name
-        :param pulumi.Input[int] nb_member: Number of members in the role
-        :param pulumi.Input[int] nb_permission: Number of permissions assigned to the role
+        :param pulumi.Input[int] nb_member: number of member for the role
+        :param pulumi.Input[int] nb_permission: number of configured permission for the role
         :param pulumi.Input[str] role_id: Role identifier
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] updated_at: Role last update date
@@ -346,7 +390,7 @@ class LogsRole(pulumi.CustomResource):
     @pulumi.getter(name="nbMember")
     def nb_member(self) -> pulumi.Output[int]:
         """
-        Number of members in the role
+        number of member for the role
         """
         return pulumi.get(self, "nb_member")
 
@@ -354,7 +398,7 @@ class LogsRole(pulumi.CustomResource):
     @pulumi.getter(name="nbPermission")
     def nb_permission(self) -> pulumi.Output[int]:
         """
-        Number of permissions assigned to the role
+        number of configured permission for the role
         """
         return pulumi.get(self, "nb_permission")
 

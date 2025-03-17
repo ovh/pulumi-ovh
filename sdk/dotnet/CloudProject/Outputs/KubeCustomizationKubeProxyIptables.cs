@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class KubeCustomizationKubeProxyIptables
     {
+        /// <summary>
+        /// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+        /// </summary>
         public readonly string? MinSyncPeriod;
+        /// <summary>
+        /// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+        /// </summary>
         public readonly string? SyncPeriod;
 
         [OutputConstructor]

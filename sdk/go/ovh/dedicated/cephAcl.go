@@ -8,16 +8,55 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Add a new access ACL for the given network/mask.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myCeph, err := dedicated.GetCeph(ctx, &dedicated.GetCephArgs{
+//				ServiceName: "94d423da-0e55-45f2-9812-836460a19939",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dedicated.NewCephAcl(ctx, "my-acl", &dedicated.CephAclArgs{
+//				ServiceName: pulumi.String(myCeph.Id),
+//				Network:     pulumi.String("1.2.3.4"),
+//				Netmask:     pulumi.String("255.255.255.255"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type CephAcl struct {
 	pulumi.CustomResourceState
 
-	Family      pulumi.StringOutput `pulumi:"family"`
-	Netmask     pulumi.StringOutput `pulumi:"netmask"`
-	Network     pulumi.StringOutput `pulumi:"network"`
+	// IP family. `IPv4` or `IPv6`
+	Family pulumi.StringOutput `pulumi:"family"`
+	// The network mask to apply
+	Netmask pulumi.StringOutput `pulumi:"netmask"`
+	// The network IP to authorize
+	Network pulumi.StringOutput `pulumi:"network"`
+	// The internal name of your dedicated CEPH
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -60,16 +99,24 @@ func GetCephAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CephAcl resources.
 type cephAclState struct {
-	Family      *string `pulumi:"family"`
-	Netmask     *string `pulumi:"netmask"`
-	Network     *string `pulumi:"network"`
+	// IP family. `IPv4` or `IPv6`
+	Family *string `pulumi:"family"`
+	// The network mask to apply
+	Netmask *string `pulumi:"netmask"`
+	// The network IP to authorize
+	Network *string `pulumi:"network"`
+	// The internal name of your dedicated CEPH
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type CephAclState struct {
-	Family      pulumi.StringPtrInput
-	Netmask     pulumi.StringPtrInput
-	Network     pulumi.StringPtrInput
+	// IP family. `IPv4` or `IPv6`
+	Family pulumi.StringPtrInput
+	// The network mask to apply
+	Netmask pulumi.StringPtrInput
+	// The network IP to authorize
+	Network pulumi.StringPtrInput
+	// The internal name of your dedicated CEPH
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -78,15 +125,21 @@ func (CephAclState) ElementType() reflect.Type {
 }
 
 type cephAclArgs struct {
-	Netmask     string `pulumi:"netmask"`
-	Network     string `pulumi:"network"`
+	// The network mask to apply
+	Netmask string `pulumi:"netmask"`
+	// The network IP to authorize
+	Network string `pulumi:"network"`
+	// The internal name of your dedicated CEPH
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a CephAcl resource.
 type CephAclArgs struct {
-	Netmask     pulumi.StringInput
-	Network     pulumi.StringInput
+	// The network mask to apply
+	Netmask pulumi.StringInput
+	// The network IP to authorize
+	Network pulumi.StringInput
+	// The internal name of your dedicated CEPH
 	ServiceName pulumi.StringInput
 }
 
@@ -177,18 +230,22 @@ func (o CephAclOutput) ToCephAclOutputWithContext(ctx context.Context) CephAclOu
 	return o
 }
 
+// IP family. `IPv4` or `IPv6`
 func (o CephAclOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v *CephAcl) pulumi.StringOutput { return v.Family }).(pulumi.StringOutput)
 }
 
+// The network mask to apply
 func (o CephAclOutput) Netmask() pulumi.StringOutput {
 	return o.ApplyT(func(v *CephAcl) pulumi.StringOutput { return v.Netmask }).(pulumi.StringOutput)
 }
 
+// The network IP to authorize
 func (o CephAclOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *CephAcl) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
+// The internal name of your dedicated CEPH
 func (o CephAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CephAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

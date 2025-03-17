@@ -11,12 +11,78 @@ namespace Pulumi.Ovh.Ip
 {
     public static class GetFirewall
     {
+        /// <summary>
+        /// Use this data source to retrieve information about an IP firewall.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myFirewall = Ovh.Ip.GetFirewall.Invoke(new()
+        ///     {
+        ///         Ip = "XXXXXX",
+        ///         IpOnFirewall = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetFirewallResult> InvokeAsync(GetFirewallArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFirewallResult>("ovh:Ip/getFirewall:getFirewall", args ?? new GetFirewallArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an IP firewall.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myFirewall = Ovh.Ip.GetFirewall.Invoke(new()
+        ///     {
+        ///         Ip = "XXXXXX",
+        ///         IpOnFirewall = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("ovh:Ip/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an IP firewall.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myFirewall = Ovh.Ip.GetFirewall.Invoke(new()
+        ///     {
+        ///         Ip = "XXXXXX",
+        ///         IpOnFirewall = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetFirewallResult> Invoke(GetFirewallInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallResult>("ovh:Ip/getFirewall:getFirewall", args ?? new GetFirewallInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +90,15 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class GetFirewallArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The IP or the CIDR
+        /// </summary>
         [Input("ip", required: true)]
         public string Ip { get; set; } = null!;
 
+        /// <summary>
+        /// IPv4 address
+        /// </summary>
         [Input("ipOnFirewall", required: true)]
         public string IpOnFirewall { get; set; } = null!;
 
@@ -38,9 +110,15 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class GetFirewallInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The IP or the CIDR
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// IPv4 address
+        /// </summary>
         [Input("ipOnFirewall", required: true)]
         public Input<string> IpOnFirewall { get; set; } = null!;
 
@@ -59,8 +137,18 @@ namespace Pulumi.Ovh.Ip
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The IP or the CIDR
+        /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// IPv4 address
+        /// * `enabled ` - Whether firewall is enabled
+        /// </summary>
         public readonly string IpOnFirewall;
+        /// <summary>
+        /// Current state of your ip on firewall
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

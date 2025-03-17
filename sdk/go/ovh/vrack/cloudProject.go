@@ -8,15 +8,56 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Attach a Public Cloud Project to a VRack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vrack.NewCloudProject(ctx, "vcp", &vrack.CloudProjectArgs{
+//				ProjectId:   pulumi.String("67890"),
+//				ServiceName: pulumi.String("12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
+// ```
 type CloudProject struct {
 	pulumi.CustomResourceState
 
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Service name of the vrack resource.
+	// The service name of the vrack. If omitted,
+	// the `OVH_VRACK_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -56,14 +97,20 @@ func GetCloudProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudProject resources.
 type cloudProjectState struct {
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ProjectId *string `pulumi:"projectId"`
-	// Service name of the vrack resource.
+	// The service name of the vrack. If omitted,
+	// the `OVH_VRACK_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type CloudProjectState struct {
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ProjectId pulumi.StringPtrInput
-	// Service name of the vrack resource.
+	// The service name of the vrack. If omitted,
+	// the `OVH_VRACK_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -72,15 +119,21 @@ func (CloudProjectState) ElementType() reflect.Type {
 }
 
 type cloudProjectArgs struct {
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ProjectId string `pulumi:"projectId"`
-	// Service name of the vrack resource.
+	// The service name of the vrack. If omitted,
+	// the `OVH_VRACK_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a CloudProject resource.
 type CloudProjectArgs struct {
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ProjectId pulumi.StringInput
-	// Service name of the vrack resource.
+	// The service name of the vrack. If omitted,
+	// the `OVH_VRACK_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -171,11 +224,14 @@ func (o CloudProjectOutput) ToCloudProjectOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o CloudProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Service name of the vrack resource.
+// The service name of the vrack. If omitted,
+// the `OVH_VRACK_SERVICE` environment variable is used.
 func (o CloudProjectOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudProject) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -9,12 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Domain
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [OvhResourceType("ovh:Domain/name:Name")]
     public partial class Name : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-        /// value
+        /// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         /// </summary>
         [Output("checksum")]
         public Output<string> Checksum { get; private set; } = null!;
@@ -62,8 +64,7 @@ namespace Pulumi.Ovh.Domain
         public Output<ImmutableArray<Outputs.NamePlan>> Plans { get; private set; } = null!;
 
         /// <summary>
-        /// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-        /// `UPDATING` or `ERROR` status
+        /// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
         /// </summary>
         [Output("resourceStatus")]
         public Output<string> ResourceStatus { get; private set; } = null!;
@@ -122,8 +123,7 @@ namespace Pulumi.Ovh.Domain
     public sealed class NameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-        /// value
+        /// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
@@ -171,8 +171,7 @@ namespace Pulumi.Ovh.Domain
     public sealed class NameState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-        /// value
+        /// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
@@ -236,8 +235,7 @@ namespace Pulumi.Ovh.Domain
         }
 
         /// <summary>
-        /// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-        /// `UPDATING` or `ERROR` status
+        /// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
         /// </summary>
         [Input("resourceStatus")]
         public Input<string>? ResourceStatus { get; set; }

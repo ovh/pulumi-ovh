@@ -8,20 +8,58 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a OVHcloud domain zone redirection.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a redirection to a sub-domain
+//			_, err := domain.NewZoneRedirection(ctx, "test", &domain.ZoneRedirectionArgs{
+//				Subdomain: pulumi.String("test"),
+//				Target:    pulumi.String("http://www.ovh"),
+//				Type:      pulumi.String("visiblePermanent"),
+//				Zone:      pulumi.String("testdemo.ovh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ZoneRedirection struct {
 	pulumi.CustomResourceState
 
+	// A description of this redirection
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Keywords    pulumi.StringPtrOutput `pulumi:"keywords"`
-	Subdomain   pulumi.StringPtrOutput `pulumi:"subdomain"`
-	Target      pulumi.StringOutput    `pulumi:"target"`
-	Title       pulumi.StringPtrOutput `pulumi:"title"`
-	Type        pulumi.StringOutput    `pulumi:"type"`
-	Zone        pulumi.StringOutput    `pulumi:"zone"`
+	// Keywords to describe this redirection
+	Keywords pulumi.StringPtrOutput `pulumi:"keywords"`
+	// The name of the redirection
+	Subdomain pulumi.StringPtrOutput `pulumi:"subdomain"`
+	// The value of the redirection
+	Target pulumi.StringOutput `pulumi:"target"`
+	// Title of this redirection
+	Title pulumi.StringPtrOutput `pulumi:"title"`
+	// The type of the redirection, with values:
+	Type pulumi.StringOutput `pulumi:"type"`
+	// The domain to add the redirection to
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewZoneRedirection registers a new resource with the given unique name, arguments, and options.
@@ -63,23 +101,37 @@ func GetZoneRedirection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneRedirection resources.
 type zoneRedirectionState struct {
+	// A description of this redirection
 	Description *string `pulumi:"description"`
-	Keywords    *string `pulumi:"keywords"`
-	Subdomain   *string `pulumi:"subdomain"`
-	Target      *string `pulumi:"target"`
-	Title       *string `pulumi:"title"`
-	Type        *string `pulumi:"type"`
-	Zone        *string `pulumi:"zone"`
+	// Keywords to describe this redirection
+	Keywords *string `pulumi:"keywords"`
+	// The name of the redirection
+	Subdomain *string `pulumi:"subdomain"`
+	// The value of the redirection
+	Target *string `pulumi:"target"`
+	// Title of this redirection
+	Title *string `pulumi:"title"`
+	// The type of the redirection, with values:
+	Type *string `pulumi:"type"`
+	// The domain to add the redirection to
+	Zone *string `pulumi:"zone"`
 }
 
 type ZoneRedirectionState struct {
+	// A description of this redirection
 	Description pulumi.StringPtrInput
-	Keywords    pulumi.StringPtrInput
-	Subdomain   pulumi.StringPtrInput
-	Target      pulumi.StringPtrInput
-	Title       pulumi.StringPtrInput
-	Type        pulumi.StringPtrInput
-	Zone        pulumi.StringPtrInput
+	// Keywords to describe this redirection
+	Keywords pulumi.StringPtrInput
+	// The name of the redirection
+	Subdomain pulumi.StringPtrInput
+	// The value of the redirection
+	Target pulumi.StringPtrInput
+	// Title of this redirection
+	Title pulumi.StringPtrInput
+	// The type of the redirection, with values:
+	Type pulumi.StringPtrInput
+	// The domain to add the redirection to
+	Zone pulumi.StringPtrInput
 }
 
 func (ZoneRedirectionState) ElementType() reflect.Type {
@@ -87,24 +139,38 @@ func (ZoneRedirectionState) ElementType() reflect.Type {
 }
 
 type zoneRedirectionArgs struct {
+	// A description of this redirection
 	Description *string `pulumi:"description"`
-	Keywords    *string `pulumi:"keywords"`
-	Subdomain   *string `pulumi:"subdomain"`
-	Target      string  `pulumi:"target"`
-	Title       *string `pulumi:"title"`
-	Type        string  `pulumi:"type"`
-	Zone        string  `pulumi:"zone"`
+	// Keywords to describe this redirection
+	Keywords *string `pulumi:"keywords"`
+	// The name of the redirection
+	Subdomain *string `pulumi:"subdomain"`
+	// The value of the redirection
+	Target string `pulumi:"target"`
+	// Title of this redirection
+	Title *string `pulumi:"title"`
+	// The type of the redirection, with values:
+	Type string `pulumi:"type"`
+	// The domain to add the redirection to
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ZoneRedirection resource.
 type ZoneRedirectionArgs struct {
+	// A description of this redirection
 	Description pulumi.StringPtrInput
-	Keywords    pulumi.StringPtrInput
-	Subdomain   pulumi.StringPtrInput
-	Target      pulumi.StringInput
-	Title       pulumi.StringPtrInput
-	Type        pulumi.StringInput
-	Zone        pulumi.StringInput
+	// Keywords to describe this redirection
+	Keywords pulumi.StringPtrInput
+	// The name of the redirection
+	Subdomain pulumi.StringPtrInput
+	// The value of the redirection
+	Target pulumi.StringInput
+	// Title of this redirection
+	Title pulumi.StringPtrInput
+	// The type of the redirection, with values:
+	Type pulumi.StringInput
+	// The domain to add the redirection to
+	Zone pulumi.StringInput
 }
 
 func (ZoneRedirectionArgs) ElementType() reflect.Type {
@@ -194,30 +260,37 @@ func (o ZoneRedirectionOutput) ToZoneRedirectionOutputWithContext(ctx context.Co
 	return o
 }
 
+// A description of this redirection
 func (o ZoneRedirectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Keywords to describe this redirection
 func (o ZoneRedirectionOutput) Keywords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringPtrOutput { return v.Keywords }).(pulumi.StringPtrOutput)
 }
 
+// The name of the redirection
 func (o ZoneRedirectionOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringPtrOutput { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
+// The value of the redirection
 func (o ZoneRedirectionOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }
 
+// Title of this redirection
 func (o ZoneRedirectionOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The type of the redirection, with values:
 func (o ZoneRedirectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// The domain to add the redirection to
 func (o ZoneRedirectionOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRedirection) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

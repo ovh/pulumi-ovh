@@ -48,14 +48,41 @@ MYPY = False
 if not MYPY:
     class HttpFarmProbeArgsDict(TypedDict):
         type: pulumi.Input[str]
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
         force_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Force use of SSL (TLS)
+        """
         interval: NotRequired[pulumi.Input[int]]
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
         match: NotRequired[pulumi.Input[str]]
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
         method: NotRequired[pulumi.Input[str]]
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
         negate: NotRequired[pulumi.Input[bool]]
+        """
+        Negate probe result
+        """
         pattern: NotRequired[pulumi.Input[str]]
+        """
+        Pattern to match against `match`
+        """
         port: NotRequired[pulumi.Input[int]]
+        """
+        Port for backends to receive traffic on.
+        """
         url: NotRequired[pulumi.Input[str]]
+        """
+        URL for HTTP probe type.
+        """
 elif False:
     HttpFarmProbeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -71,6 +98,17 @@ class HttpFarmProbeArgs:
                  pattern: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        :param pulumi.Input[bool] force_ssl: Force use of SSL (TLS)
+        :param pulumi.Input[int] interval: probe interval, Value between 30 and 3600 seconds, default 30
+        :param pulumi.Input[str] match: What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        :param pulumi.Input[str] method: HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        :param pulumi.Input[bool] negate: Negate probe result
+        :param pulumi.Input[str] pattern: Pattern to match against `match`
+        :param pulumi.Input[int] port: Port for backends to receive traffic on.
+        :param pulumi.Input[str] url: URL for HTTP probe type.
+        """
         pulumi.set(__self__, "type", type)
         if force_ssl is not None:
             pulumi.set(__self__, "force_ssl", force_ssl)
@@ -92,6 +130,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -101,6 +142,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter(name="forceSsl")
     def force_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Force use of SSL (TLS)
+        """
         return pulumi.get(self, "force_ssl")
 
     @force_ssl.setter
@@ -110,6 +154,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
         return pulumi.get(self, "interval")
 
     @interval.setter
@@ -119,6 +166,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -128,6 +178,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
         return pulumi.get(self, "method")
 
     @method.setter
@@ -137,6 +190,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Negate probe result
+        """
         return pulumi.get(self, "negate")
 
     @negate.setter
@@ -146,6 +202,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pattern to match against `match`
+        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -155,6 +214,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port for backends to receive traffic on.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -164,6 +226,9 @@ class HttpFarmProbeArgs:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL for HTTP probe type.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -246,11 +311,11 @@ if not MYPY:
     class HttpRouteRuleArgsDict(TypedDict):
         field: NotRequired[pulumi.Input[str]]
         """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         """
         match: NotRequired[pulumi.Input[str]]
         """
-        Matching operator. Not all operators are available for all fields. See "/availableRules"
+        Matching operator. Not all operators are available for all fields. See "availableRules"
         """
         negate: NotRequired[pulumi.Input[bool]]
         """
@@ -281,8 +346,8 @@ class HttpRouteRuleArgs:
                  rule_id: Optional[pulumi.Input[int]] = None,
                  sub_field: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/availableRules"
+        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "availableRules"
         :param pulumi.Input[bool] negate: Invert the matching operator effect
         :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
         :param pulumi.Input[int] rule_id: Id of your rule
@@ -305,7 +370,7 @@ class HttpRouteRuleArgs:
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         """
         return pulumi.get(self, "field")
 
@@ -317,7 +382,7 @@ class HttpRouteRuleArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching operator. Not all operators are available for all fields. See "/availableRules"
+        Matching operator. Not all operators are available for all fields. See "availableRules"
         """
         return pulumi.get(self, "match")
 
@@ -931,14 +996,41 @@ class LoadBalancerPlanOptionConfigurationArgs:
 if not MYPY:
     class TcpFarmProbeArgsDict(TypedDict):
         type: pulumi.Input[str]
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
         force_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Force use of SSL (TLS)
+        """
         interval: NotRequired[pulumi.Input[int]]
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
         match: NotRequired[pulumi.Input[str]]
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
         method: NotRequired[pulumi.Input[str]]
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
         negate: NotRequired[pulumi.Input[bool]]
+        """
+        Negate probe result
+        """
         pattern: NotRequired[pulumi.Input[str]]
+        """
+        Pattern to match against `match`
+        """
         port: NotRequired[pulumi.Input[int]]
+        """
+        Port for backends to receive traffic on.
+        """
         url: NotRequired[pulumi.Input[str]]
+        """
+        URL for HTTP probe type.
+        """
 elif False:
     TcpFarmProbeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -954,6 +1046,17 @@ class TcpFarmProbeArgs:
                  pattern: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        :param pulumi.Input[bool] force_ssl: Force use of SSL (TLS)
+        :param pulumi.Input[int] interval: probe interval, Value between 30 and 3600 seconds, default 30
+        :param pulumi.Input[str] match: What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        :param pulumi.Input[str] method: HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        :param pulumi.Input[bool] negate: Negate probe result
+        :param pulumi.Input[str] pattern: Pattern to match against `match`
+        :param pulumi.Input[int] port: Port for backends to receive traffic on.
+        :param pulumi.Input[str] url: URL for HTTP probe type.
+        """
         pulumi.set(__self__, "type", type)
         if force_ssl is not None:
             pulumi.set(__self__, "force_ssl", force_ssl)
@@ -975,6 +1078,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -984,6 +1090,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter(name="forceSsl")
     def force_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Force use of SSL (TLS)
+        """
         return pulumi.get(self, "force_ssl")
 
     @force_ssl.setter
@@ -993,6 +1102,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
         return pulumi.get(self, "interval")
 
     @interval.setter
@@ -1002,6 +1114,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -1011,6 +1126,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
         return pulumi.get(self, "method")
 
     @method.setter
@@ -1020,6 +1138,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def negate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Negate probe result
+        """
         return pulumi.get(self, "negate")
 
     @negate.setter
@@ -1029,6 +1150,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pattern to match against `match`
+        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -1038,6 +1162,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port for backends to receive traffic on.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1047,6 +1174,9 @@ class TcpFarmProbeArgs:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL for HTTP probe type.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -1062,7 +1192,7 @@ if not MYPY:
         """
         target: NotRequired[pulumi.Input[str]]
         """
-        Farm ID for "farm" action type, empty for others
+        Farm ID for "farm" action type, empty for others.
         """
 elif False:
     TcpRouteActionArgsDict: TypeAlias = Mapping[str, Any]
@@ -1074,7 +1204,7 @@ class TcpRouteActionArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Action to trigger if all the rules of this route matches
-        :param pulumi.Input[str] target: Farm ID for "farm" action type, empty for others
+        :param pulumi.Input[str] target: Farm ID for "farm" action type, empty for others.
         """
         pulumi.set(__self__, "type", type)
         if target is not None:
@@ -1096,7 +1226,7 @@ class TcpRouteActionArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        Farm ID for "farm" action type, empty for others
+        Farm ID for "farm" action type, empty for others.
         """
         return pulumi.get(self, "target")
 
@@ -1109,11 +1239,11 @@ if not MYPY:
     class TcpRouteRuleArgsDict(TypedDict):
         field: NotRequired[pulumi.Input[str]]
         """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         """
         match: NotRequired[pulumi.Input[str]]
         """
-        Matching operator. Not all operators are available for all fields. See "/availableRules"
+        Matching operator. Not all operators are available for all fields. See "availableRules"
         """
         negate: NotRequired[pulumi.Input[bool]]
         """
@@ -1144,8 +1274,8 @@ class TcpRouteRuleArgs:
                  rule_id: Optional[pulumi.Input[int]] = None,
                  sub_field: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
-        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "/availableRules"
+        :param pulumi.Input[str] field: Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        :param pulumi.Input[str] match: Matching operator. Not all operators are available for all fields. See "availableRules"
         :param pulumi.Input[bool] negate: Invert the matching operator effect
         :param pulumi.Input[str] pattern: Value to match against this match. Interpretation if this field depends on the match and field
         :param pulumi.Input[int] rule_id: Id of your rule
@@ -1168,7 +1298,7 @@ class TcpRouteRuleArgs:
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         """
         return pulumi.get(self, "field")
 
@@ -1180,7 +1310,7 @@ class TcpRouteRuleArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching operator. Not all operators are available for all fields. See "/availableRules"
+        Matching operator. Not all operators are available for all fields. See "availableRules"
         """
         return pulumi.get(self, "match")
 

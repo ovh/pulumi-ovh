@@ -9,6 +9,60 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Manage a Rancher service in a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rancher = new Ovh.CloudProject.Rancher("rancher", new()
+    ///     {
+    ///         ProjectId = "&lt;public cloud project ID&gt;",
+    ///         TargetSpec = new Ovh.CloudProject.Inputs.RancherTargetSpecArgs
+    ///         {
+    ///             Name = "MyRancher",
+    ///             Plan = "STANDARD",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   id = "&lt;project_id&gt;/&lt;id&gt;"
+    /// 
+    ///   to = ovh_cloud_project_rancher.rancher
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=rancher.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/rancher:Rancher")]
     public partial class Rancher : global::Pulumi.CustomResource
     {
@@ -37,8 +91,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-        /// `READY` status
+        /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         /// </summary>
         [Output("resourceStatus")]
         public Output<string> ResourceStatus { get; private set; } = null!;
@@ -153,8 +206,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-        /// `READY` status
+        /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         /// </summary>
         [Input("resourceStatus")]
         public Input<string>? ResourceStatus { get; set; }

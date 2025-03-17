@@ -11,12 +11,90 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetContainerRegistryOIDC
     {
+        /// <summary>
+        /// Use this data source to get a OVHcloud Managed Private Registry OIDC.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidc-client-id"] = myOidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetContainerRegistryOIDCResult> InvokeAsync(GetContainerRegistryOIDCArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get a OVHcloud Managed Private Registry OIDC.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidc-client-id"] = myOidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetContainerRegistryOIDCResult> Invoke(GetContainerRegistryOIDCInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get a OVHcloud Managed Private Registry OIDC.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOidc = Ovh.CloudProject.GetContainerRegistryOIDC.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidc-client-id"] = myOidc.Apply(getContainerRegistryOIDCResult =&gt; getContainerRegistryOIDCResult.OidcClientId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetContainerRegistryOIDCResult> Invoke(GetContainerRegistryOIDCInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryOIDCResult>("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", args ?? new GetContainerRegistryOIDCInvokeArgs(), options.WithDefaults());
     }
@@ -24,36 +102,69 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetContainerRegistryOIDCArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+        /// </summary>
         [Input("oidcAdminGroup")]
         public string? OidcAdminGroup { get; set; }
 
+        /// <summary>
+        /// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+        /// </summary>
         [Input("oidcAutoOnboard")]
         public bool? OidcAutoOnboard { get; set; }
 
+        /// <summary>
+        /// The client ID with which Harbor is registered as client application with the OIDC provider.
+        /// </summary>
         [Input("oidcClientId")]
         public string? OidcClientId { get; set; }
 
+        /// <summary>
+        /// The URL of an OIDC-compliant server.
+        /// </summary>
         [Input("oidcEndpoint")]
         public string? OidcEndpoint { get; set; }
 
+        /// <summary>
+        /// The name of Claim in the ID token whose value is the list of group names.
+        /// </summary>
         [Input("oidcGroupsClaim")]
         public string? OidcGroupsClaim { get; set; }
 
+        /// <summary>
+        /// The name of the OIDC provider.
+        /// </summary>
         [Input("oidcName")]
         public string? OidcName { get; set; }
 
+        /// <summary>
+        /// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+        /// </summary>
         [Input("oidcScope")]
         public string? OidcScope { get; set; }
 
+        /// <summary>
+        /// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+        /// </summary>
         [Input("oidcUserClaim")]
         public string? OidcUserClaim { get; set; }
 
+        /// <summary>
+        /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+        /// </summary>
         [Input("oidcVerifyCert")]
         public bool? OidcVerifyCert { get; set; }
 
+        /// <summary>
+        /// The id of the Managed Private Registry.
+        /// </summary>
         [Input("registryId", required: true)]
         public string RegistryId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -65,36 +176,69 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetContainerRegistryOIDCInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+        /// </summary>
         [Input("oidcAdminGroup")]
         public Input<string>? OidcAdminGroup { get; set; }
 
+        /// <summary>
+        /// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+        /// </summary>
         [Input("oidcAutoOnboard")]
         public Input<bool>? OidcAutoOnboard { get; set; }
 
+        /// <summary>
+        /// The client ID with which Harbor is registered as client application with the OIDC provider.
+        /// </summary>
         [Input("oidcClientId")]
         public Input<string>? OidcClientId { get; set; }
 
+        /// <summary>
+        /// The URL of an OIDC-compliant server.
+        /// </summary>
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
+        /// <summary>
+        /// The name of Claim in the ID token whose value is the list of group names.
+        /// </summary>
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
 
+        /// <summary>
+        /// The name of the OIDC provider.
+        /// </summary>
         [Input("oidcName")]
         public Input<string>? OidcName { get; set; }
 
+        /// <summary>
+        /// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+        /// </summary>
         [Input("oidcScope")]
         public Input<string>? OidcScope { get; set; }
 
+        /// <summary>
+        /// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+        /// </summary>
         [Input("oidcUserClaim")]
         public Input<string>? OidcUserClaim { get; set; }
 
+        /// <summary>
+        /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+        /// </summary>
         [Input("oidcVerifyCert")]
         public Input<bool>? OidcVerifyCert { get; set; }
 
+        /// <summary>
+        /// The id of the Managed Private Registry.
+        /// </summary>
         [Input("registryId", required: true)]
         public Input<string> RegistryId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -112,16 +256,49 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+        /// </summary>
         public readonly string? OidcAdminGroup;
+        /// <summary>
+        /// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+        /// </summary>
         public readonly bool? OidcAutoOnboard;
+        /// <summary>
+        /// The client ID with which Harbor is registered as client application with the OIDC provider.
+        /// </summary>
         public readonly string? OidcClientId;
+        /// <summary>
+        /// The URL of an OIDC-compliant server.
+        /// </summary>
         public readonly string? OidcEndpoint;
+        /// <summary>
+        /// The name of Claim in the ID token whose value is the list of group names.
+        /// </summary>
         public readonly string? OidcGroupsClaim;
+        /// <summary>
+        /// The name of the OIDC provider.
+        /// </summary>
         public readonly string? OidcName;
+        /// <summary>
+        /// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+        /// </summary>
         public readonly string? OidcScope;
+        /// <summary>
+        /// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+        /// </summary>
         public readonly string? OidcUserClaim;
+        /// <summary>
+        /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+        /// </summary>
         public readonly bool? OidcVerifyCert;
+        /// <summary>
+        /// The ID of the Managed Private Registry.
+        /// </summary>
         public readonly string RegistryId;
+        /// <summary>
+        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

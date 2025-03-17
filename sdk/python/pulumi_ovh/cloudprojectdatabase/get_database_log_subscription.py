@@ -64,56 +64,89 @@ class GetDatabaseLogSubscriptionResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Creation date of the subscription.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def engine(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "engine")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the log subscription.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        Log kind name of this subscription.
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter(name="ldpServiceName")
     def ldp_service_name(self) -> str:
+        """
+        Name of the destination log service.
+        """
         return pulumi.get(self, "ldp_service_name")
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        Name of subscribed resource, where the logs come from.
+        """
         return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        Type of subscribed resource, where the logs come from.
+        """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="streamId")
     def stream_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "stream_id")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        Last update date of the subscription.
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -142,7 +175,28 @@ def get_database_log_subscription(cluster_id: Optional[str] = None,
                                   service_name: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseLogSubscriptionResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    subscription = ovh.CloudProjectDatabase.get_database_log_subscription(service_name="VVV",
+        engine="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("subscriptionLdpName", subscription.ldp_service_name)
+    ```
+
+
+    :param str cluster_id: Cluster ID.
+    :param str engine: The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
+           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+    :param str id: Id of the log subscription.
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -170,7 +224,28 @@ def get_database_log_subscription_output(cluster_id: Optional[pulumi.Input[str]]
                                          service_name: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseLogSubscriptionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    subscription = ovh.CloudProjectDatabase.get_database_log_subscription(service_name="VVV",
+        engine="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("subscriptionLdpName", subscription.ldp_service_name)
+    ```
+
+
+    :param str cluster_id: Cluster ID.
+    :param str engine: The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
+           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+    :param str id: Id of the log subscription.
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

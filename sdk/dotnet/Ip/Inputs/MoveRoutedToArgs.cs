@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Ip.Inputs
     public sealed class MoveRoutedToArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Service where ip is routed to
+        /// Name of the service to route the IP to. IP will be parked if this value is an empty string
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Dedicated
 {
     public static class GetCeph
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a dedicated CEPH. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetCephResult> InvokeAsync(GetCephArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a dedicated CEPH. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCephResult> Invoke(GetCephInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a dedicated CEPH. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCeph = Ovh.Dedicated.GetCeph.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCephResult> Invoke(GetCephInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +87,21 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class GetCephArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// CEPH cluster version
+        /// </summary>
         [Input("cephVersion")]
         public string? CephVersion { get; set; }
 
+        /// <summary>
+        /// The service name of the dedicated CEPH cluster.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// the status of the service
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -41,12 +113,21 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class GetCephInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// CEPH cluster version
+        /// </summary>
         [Input("cephVersion")]
         public Input<string>? CephVersion { get; set; }
 
+        /// <summary>
+        /// The service name of the dedicated CEPH cluster.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// the status of the service
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -60,19 +141,54 @@ namespace Pulumi.Ovh.Dedicated
     [OutputType]
     public sealed class GetCephResult
     {
+        /// <summary>
+        /// URN of the CEPH instance
+        /// </summary>
         public readonly string CephURN;
+        /// <summary>
+        /// list of CEPH monitors IPs
+        /// </summary>
         public readonly ImmutableArray<string> CephMons;
+        /// <summary>
+        /// CEPH cluster version
+        /// </summary>
         public readonly string CephVersion;
+        /// <summary>
+        /// CRUSH algorithm settings. Possible values
+        /// * OPTIMAL
+        /// * DEFAULT
+        /// * LEGACY
+        /// * BOBTAIL
+        /// * ARGONAUT
+        /// * FIREFLY
+        /// * HAMMER
+        /// * JEWEL
+        /// </summary>
         public readonly string CrushTunables;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// CEPH cluster label
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// cluster region
+        /// </summary>
         public readonly string Region;
         public readonly string ServiceName;
+        /// <summary>
+        /// Cluster size in TB
+        /// </summary>
         public readonly double Size;
+        /// <summary>
+        /// the state of the cluster
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// the status of the service
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Handle a whole DNS zone using a zone file.
+ *
+ * > __WARNING__ This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const _import = new ovh.domain.ZoneImport("import", {
+ *     zoneName: "mysite.ovh",
+ *     zoneFile: fs.readFileSync("./example.zone", "utf8"),
+ * });
+ * ```
+ */
 export class ZoneImport extends pulumi.CustomResource {
     /**
      * Get an existing ZoneImport resource's state with the given name, ID, and optional extra
@@ -37,11 +55,11 @@ export class ZoneImport extends pulumi.CustomResource {
      */
     public /*out*/ readonly exportedContent!: pulumi.Output<string>;
     /**
-     * Zone file that will be imported
+     * Content of the zone file to import
      */
     public readonly zoneFile!: pulumi.Output<string>;
     /**
-     * Zone name
+     * The name of the domain zone
      */
     public readonly zoneName!: pulumi.Output<string>;
 
@@ -87,11 +105,11 @@ export interface ZoneImportState {
      */
     exportedContent?: pulumi.Input<string>;
     /**
-     * Zone file that will be imported
+     * Content of the zone file to import
      */
     zoneFile?: pulumi.Input<string>;
     /**
-     * Zone name
+     * The name of the domain zone
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -101,11 +119,11 @@ export interface ZoneImportState {
  */
 export interface ZoneImportArgs {
     /**
-     * Zone file that will be imported
+     * Content of the zone file to import
      */
     zoneFile: pulumi.Input<string>;
     /**
-     * Zone name
+     * The name of the domain zone
      */
     zoneName: pulumi.Input<string>;
 }

@@ -19,7 +19,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// SSH Public Key
+        /// SSH Public key
         /// </summary>
         [Input("publicKey", required: true)]
         public Input<string> PublicKey { get; set; } = null!;

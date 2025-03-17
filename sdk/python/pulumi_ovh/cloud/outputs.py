@@ -30,9 +30,9 @@ class GetProjectIamResult(dict):
                  urn: str):
         """
         :param str display_name: Resource display name
-        :param str id: Unique identifier of the resource
-        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param str urn: Unique resource name used in policies
+        :param str id: Unique identifier of the resource in the IAM
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        :param str urn: URN of the private database, used when writing IAM policies
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "id", id)
@@ -51,7 +51,7 @@ class GetProjectIamResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource in the IAM
         """
         return pulumi.get(self, "id")
 
@@ -59,7 +59,7 @@ class GetProjectIamResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
         """
         return pulumi.get(self, "tags")
 
@@ -67,7 +67,7 @@ class GetProjectIamResult(dict):
     @pulumi.getter
     def urn(self) -> str:
         """
-        Unique resource name used in policies
+        URN of the private database, used when writing IAM policies
         """
         return pulumi.get(self, "urn")
 
@@ -93,13 +93,13 @@ class GetProjectsProjectResult(dict):
         :param str creation_date: Project creation date
         :param str description: Description of your project
         :param str expiration: Expiration date of your project. After this date, your project will be deleted
-        :param 'GetProjectsProjectIamArgs' iam: IAM resource metadata
+        :param 'GetProjectsProjectIamArgs' iam: IAM resource information
         :param bool manual_quota: Manual quota prevent automatic quota upgrade
-        :param float order_id: Project order id
+        :param float order_id: Project order ID
         :param str plan_code: Order plan code
-        :param str project_id: Project id
+        :param str project_id: Project ID
         :param str project_name: Project name
-        :param str service_name: Service name
+        :param str service_name: ID of the public cloud project
         :param str status: Current status
         :param bool unleash: Project unleashed
         """
@@ -153,7 +153,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def iam(self) -> 'outputs.GetProjectsProjectIamResult':
         """
-        IAM resource metadata
+        IAM resource information
         """
         return pulumi.get(self, "iam")
 
@@ -169,7 +169,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="orderId")
     def order_id(self) -> float:
         """
-        Project order id
+        Project order ID
         """
         return pulumi.get(self, "order_id")
 
@@ -185,7 +185,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Project id
+        Project ID
         """
         return pulumi.get(self, "project_id")
 
@@ -201,7 +201,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Service name
+        ID of the public cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -231,9 +231,9 @@ class GetProjectsProjectIamResult(dict):
                  urn: str):
         """
         :param str display_name: Resource display name
-        :param str id: Unique identifier of the resource
-        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param str urn: Unique resource name used in policies
+        :param str id: Unique identifier of the resource in the IAM
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        :param str urn: URN of the private database, used when writing IAM policies
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "id", id)
@@ -252,7 +252,7 @@ class GetProjectsProjectIamResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource in the IAM
         """
         return pulumi.get(self, "id")
 
@@ -260,7 +260,7 @@ class GetProjectsProjectIamResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
         """
         return pulumi.get(self, "tags")
 
@@ -268,7 +268,7 @@ class GetProjectsProjectIamResult(dict):
     @pulumi.getter
     def urn(self) -> str:
         """
-        Unique resource name used in policies
+        URN of the private database, used when writing IAM policies
         """
         return pulumi.get(self, "urn")
 

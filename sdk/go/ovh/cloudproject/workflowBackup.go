@@ -8,22 +8,63 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manage a worflow that schedules backups of public cloud instance.
+// Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewWorkflowBackup(ctx, "myBackup", &cloudproject.WorkflowBackupArgs{
+//				Cron:              pulumi.String("50 4 * * *"),
+//				InstanceId:        pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
+//				MaxExecutionCount: pulumi.Int(0),
+//				RegionName:        pulumi.String("GRA11"),
+//				Rotation:          pulumi.Int(7),
+//				ServiceName:       pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type WorkflowBackup struct {
 	pulumi.CustomResourceState
 
-	BackupName        pulumi.StringOutput `pulumi:"backupName"`
-	CreatedAt         pulumi.StringOutput `pulumi:"createdAt"`
-	Cron              pulumi.StringOutput `pulumi:"cron"`
-	InstanceId        pulumi.StringOutput `pulumi:"instanceId"`
+	// The name of the backup files that are created. If empty, the `name` attribute is used.
+	BackupName pulumi.StringOutput `pulumi:"backupName"`
+	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
+	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
+	Cron       pulumi.StringOutput `pulumi:"cron"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount pulumi.IntPtrOutput `pulumi:"maxExecutionCount"`
-	Name              pulumi.StringOutput `pulumi:"name"`
-	// Region name.
-	RegionName  pulumi.StringOutput `pulumi:"regionName"`
-	Rotation    pulumi.IntOutput    `pulumi:"rotation"`
+	// The worflow name that is used in the UI
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the openstack region.
+	RegionName pulumi.StringOutput `pulumi:"regionName"`
+	// The number of backup that are retained.
+	Rotation pulumi.IntOutput `pulumi:"rotation"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -72,28 +113,44 @@ func GetWorkflowBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkflowBackup resources.
 type workflowBackupState struct {
-	BackupName        *string `pulumi:"backupName"`
-	CreatedAt         *string `pulumi:"createdAt"`
-	Cron              *string `pulumi:"cron"`
-	InstanceId        *string `pulumi:"instanceId"`
-	MaxExecutionCount *int    `pulumi:"maxExecutionCount"`
-	Name              *string `pulumi:"name"`
-	// Region name.
-	RegionName  *string `pulumi:"regionName"`
-	Rotation    *int    `pulumi:"rotation"`
+	// The name of the backup files that are created. If empty, the `name` attribute is used.
+	BackupName *string `pulumi:"backupName"`
+	CreatedAt  *string `pulumi:"createdAt"`
+	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
+	Cron       *string `pulumi:"cron"`
+	InstanceId *string `pulumi:"instanceId"`
+	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
+	MaxExecutionCount *int `pulumi:"maxExecutionCount"`
+	// The worflow name that is used in the UI
+	Name *string `pulumi:"name"`
+	// The name of the openstack region.
+	RegionName *string `pulumi:"regionName"`
+	// The number of backup that are retained.
+	Rotation *int `pulumi:"rotation"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type WorkflowBackupState struct {
-	BackupName        pulumi.StringPtrInput
-	CreatedAt         pulumi.StringPtrInput
-	Cron              pulumi.StringPtrInput
-	InstanceId        pulumi.StringPtrInput
+	// The name of the backup files that are created. If empty, the `name` attribute is used.
+	BackupName pulumi.StringPtrInput
+	CreatedAt  pulumi.StringPtrInput
+	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
+	Cron       pulumi.StringPtrInput
+	InstanceId pulumi.StringPtrInput
+	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount pulumi.IntPtrInput
-	Name              pulumi.StringPtrInput
-	// Region name.
-	RegionName  pulumi.StringPtrInput
-	Rotation    pulumi.IntPtrInput
+	// The worflow name that is used in the UI
+	Name pulumi.StringPtrInput
+	// The name of the openstack region.
+	RegionName pulumi.StringPtrInput
+	// The number of backup that are retained.
+	Rotation pulumi.IntPtrInput
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -102,27 +159,43 @@ func (WorkflowBackupState) ElementType() reflect.Type {
 }
 
 type workflowBackupArgs struct {
-	BackupName        *string `pulumi:"backupName"`
-	Cron              string  `pulumi:"cron"`
-	InstanceId        string  `pulumi:"instanceId"`
-	MaxExecutionCount *int    `pulumi:"maxExecutionCount"`
-	Name              *string `pulumi:"name"`
-	// Region name.
-	RegionName  string `pulumi:"regionName"`
-	Rotation    int    `pulumi:"rotation"`
+	// The name of the backup files that are created. If empty, the `name` attribute is used.
+	BackupName *string `pulumi:"backupName"`
+	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
+	Cron       string `pulumi:"cron"`
+	InstanceId string `pulumi:"instanceId"`
+	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
+	MaxExecutionCount *int `pulumi:"maxExecutionCount"`
+	// The worflow name that is used in the UI
+	Name *string `pulumi:"name"`
+	// The name of the openstack region.
+	RegionName string `pulumi:"regionName"`
+	// The number of backup that are retained.
+	Rotation int `pulumi:"rotation"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a WorkflowBackup resource.
 type WorkflowBackupArgs struct {
-	BackupName        pulumi.StringPtrInput
-	Cron              pulumi.StringInput
-	InstanceId        pulumi.StringInput
+	// The name of the backup files that are created. If empty, the `name` attribute is used.
+	BackupName pulumi.StringPtrInput
+	// The cron periodicity at which the backup workflow is scheduled
+	//
+	// * `instanceId` the id of the instance to back up
+	Cron       pulumi.StringInput
+	InstanceId pulumi.StringInput
+	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount pulumi.IntPtrInput
-	Name              pulumi.StringPtrInput
-	// Region name.
-	RegionName  pulumi.StringInput
-	Rotation    pulumi.IntInput
+	// The worflow name that is used in the UI
+	Name pulumi.StringPtrInput
+	// The name of the openstack region.
+	RegionName pulumi.StringInput
+	// The number of backup that are retained.
+	Rotation pulumi.IntInput
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -213,6 +286,7 @@ func (o WorkflowBackupOutput) ToWorkflowBackupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The name of the backup files that are created. If empty, the `name` attribute is used.
 func (o WorkflowBackupOutput) BackupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.BackupName }).(pulumi.StringOutput)
 }
@@ -221,6 +295,9 @@ func (o WorkflowBackupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The cron periodicity at which the backup workflow is scheduled
+//
+// * `instanceId` the id of the instance to back up
 func (o WorkflowBackupOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.Cron }).(pulumi.StringOutput)
 }
@@ -229,23 +306,27 @@ func (o WorkflowBackupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 func (o WorkflowBackupOutput) MaxExecutionCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.IntPtrOutput { return v.MaxExecutionCount }).(pulumi.IntPtrOutput)
 }
 
+// The worflow name that is used in the UI
 func (o WorkflowBackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Region name.
+// The name of the openstack region.
 func (o WorkflowBackupOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
+// The number of backup that are retained.
 func (o WorkflowBackupOutput) Rotation() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.IntOutput { return v.Rotation }).(pulumi.IntOutput)
 }
 
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o WorkflowBackupOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

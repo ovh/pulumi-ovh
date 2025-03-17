@@ -8,25 +8,71 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a backend server group (farm) to be used by loadbalancing frontend(s)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewUdpFarm(ctx, "farmName", &iploadbalancing.UdpFarmArgs{
+//				DisplayName: pulumi.String("ingress-8080-gra"),
+//				Port:        pulumi.Float64(80),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("gra"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// UDP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/udpFarm:UdpFarm farmname service_name/farm_id
+// ```
 type UdpFarm struct {
 	pulumi.CustomResourceState
 
-	// Human readable name for your backend, this field is for you
+	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Id of your farm
+	// Id of your farm.
 	FarmId pulumi.Float64Output `pulumi:"farmId"`
 	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.Float64Output `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-	// is attached to a vRack
+	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 	VrackNetworkId pulumi.Float64PtrOutput `pulumi:"vrackNetworkId"`
-	// Zone of your farm
+	// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -69,34 +115,32 @@ func GetUdpFarm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UdpFarm resources.
 type udpFarmState struct {
-	// Human readable name for your backend, this field is for you
+	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
-	// Id of your farm
+	// Id of your farm.
 	FarmId *float64 `pulumi:"farmId"`
 	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port *float64 `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-	// is attached to a vRack
+	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 	VrackNetworkId *float64 `pulumi:"vrackNetworkId"`
-	// Zone of your farm
+	// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 	Zone *string `pulumi:"zone"`
 }
 
 type UdpFarmState struct {
-	// Human readable name for your backend, this field is for you
+	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
-	// Id of your farm
+	// Id of your farm.
 	FarmId pulumi.Float64PtrInput
 	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.Float64PtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-	// is attached to a vRack
+	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 	VrackNetworkId pulumi.Float64PtrInput
-	// Zone of your farm
+	// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 	Zone pulumi.StringPtrInput
 }
 
@@ -105,31 +149,29 @@ func (UdpFarmState) ElementType() reflect.Type {
 }
 
 type udpFarmArgs struct {
-	// Human readable name for your backend, this field is for you
+	// Readable label for loadbalancer farm
 	DisplayName *string `pulumi:"displayName"`
 	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port float64 `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName string `pulumi:"serviceName"`
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-	// is attached to a vRack
+	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 	VrackNetworkId *float64 `pulumi:"vrackNetworkId"`
-	// Zone of your farm
+	// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a UdpFarm resource.
 type UdpFarmArgs struct {
-	// Human readable name for your backend, this field is for you
+	// Readable label for loadbalancer farm
 	DisplayName pulumi.StringPtrInput
 	// Port attached to your farm ([1..49151]). Inherited from frontend if null
 	Port pulumi.Float64Input
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
-	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-	// is attached to a vRack
+	// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 	VrackNetworkId pulumi.Float64PtrInput
-	// Zone of your farm
+	// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 	Zone pulumi.StringInput
 }
 
@@ -220,12 +262,12 @@ func (o UdpFarmOutput) ToUdpFarmOutputWithContext(ctx context.Context) UdpFarmOu
 	return o
 }
 
-// Human readable name for your backend, this field is for you
+// Readable label for loadbalancer farm
 func (o UdpFarmOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UdpFarm) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Id of your farm
+// Id of your farm.
 func (o UdpFarmOutput) FarmId() pulumi.Float64Output {
 	return o.ApplyT(func(v *UdpFarm) pulumi.Float64Output { return v.FarmId }).(pulumi.Float64Output)
 }
@@ -240,13 +282,12 @@ func (o UdpFarmOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFarm) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-// is attached to a vRack
+// Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
 func (o UdpFarmOutput) VrackNetworkId() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *UdpFarm) pulumi.Float64PtrOutput { return v.VrackNetworkId }).(pulumi.Float64PtrOutput)
 }
 
-// Zone of your farm
+// Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
 func (o UdpFarmOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFarm) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

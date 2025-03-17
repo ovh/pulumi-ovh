@@ -24,7 +24,7 @@ class PrivateDatabaseDbArgs:
         """
         The set of arguments for constructing a PrivateDatabaseDb resource.
         :param pulumi.Input[str] database_name: Name of your new database
-        :param pulumi.Input[str] service_name: The internal name of your private database
+        :param pulumi.Input[str] service_name: The internal name of your private database.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "service_name", service_name)
@@ -45,7 +45,7 @@ class PrivateDatabaseDbArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -62,7 +62,7 @@ class _PrivateDatabaseDbState:
         """
         Input properties used for looking up and filtering PrivateDatabaseDb resources.
         :param pulumi.Input[str] database_name: Name of your new database
-        :param pulumi.Input[str] service_name: The internal name of your private database
+        :param pulumi.Input[str] service_name: The internal name of your private database.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -85,7 +85,7 @@ class _PrivateDatabaseDbState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -103,11 +103,31 @@ class PrivateDatabaseDb(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PrivateDatabaseDb resource with the given unique name, props, and options.
+        Create a new database on your private cloud database service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        database = ovh.hosting.PrivateDatabaseDb("database",
+            database_name="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
+        ## Import
+
+        OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
+
+        ```sh
+        $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: Name of your new database
-        :param pulumi.Input[str] service_name: The internal name of your private database
+        :param pulumi.Input[str] service_name: The internal name of your private database.
         """
         ...
     @overload
@@ -116,7 +136,27 @@ class PrivateDatabaseDb(pulumi.CustomResource):
                  args: PrivateDatabaseDbArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PrivateDatabaseDb resource with the given unique name, props, and options.
+        Create a new database on your private cloud database service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        database = ovh.hosting.PrivateDatabaseDb("database",
+            database_name="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
+        ## Import
+
+        OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
+
+        ```sh
+        $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseDbArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -169,7 +209,7 @@ class PrivateDatabaseDb(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: Name of your new database
-        :param pulumi.Input[str] service_name: The internal name of your private database
+        :param pulumi.Input[str] service_name: The internal name of your private database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -191,7 +231,7 @@ class PrivateDatabaseDb(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 

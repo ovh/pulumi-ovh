@@ -11,12 +11,21 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetCapabilities
     {
+        /// <summary>
+        /// Use this data source to get information about capabilities of a public cloud project.
+        /// </summary>
         public static Task<GetCapabilitiesResult> InvokeAsync(GetCapabilitiesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about capabilities of a public cloud project.
+        /// </summary>
         public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about capabilities of a public cloud project.
+        /// </summary>
         public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +33,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetCapabilitiesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -35,6 +48,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetCapabilitiesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -48,14 +65,29 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetCapabilitiesResult
     {
+        /// <summary>
+        /// Database engines available.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCapabilitiesEngineResult> Engines;
+        /// <summary>
+        /// Flavors available.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCapabilitiesFlavorResult> Flavors;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Options available.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCapabilitiesOptionResult> Options;
+        /// <summary>
+        /// Plans available.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCapabilitiesPlanResult> Plans;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

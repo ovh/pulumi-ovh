@@ -267,7 +267,8 @@ class ServiceKeyJWK(pulumi.CustomResource):
                  okms_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServiceKeyJWK resource with the given unique name, props, and options.
+        Import an existing key in the JWK format in an OVHcloud KMS.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] context: Context of the key
@@ -282,7 +283,8 @@ class ServiceKeyJWK(pulumi.CustomResource):
                  args: ServiceKeyJWKArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceKeyJWK resource with the given unique name, props, and options.
+        Import an existing key in the JWK format in an OVHcloud KMS.
+
         :param str resource_name: The name of the resource.
         :param ServiceKeyJWKArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

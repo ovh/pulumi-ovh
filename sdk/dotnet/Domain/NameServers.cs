@@ -9,17 +9,78 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Domain
 {
+    /// <summary>
+    /// Use this resource to manage a domain's name servers.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nameServers = new Ovh.Domain.NameServers("nameServers", new()
+    ///     {
+    ///         Domain = "mydomain.ovh",
+    ///         Servers = new[]
+    ///         {
+    ///             new Ovh.Domain.Inputs.NameServersServerArgs
+    ///             {
+    ///                 Host = "dns105.ovh.net",
+    ///                 Ip = "213.251.188.144",
+    ///             },
+    ///             new Ovh.Domain.Inputs.NameServersServerArgs
+    ///             {
+    ///                 Host = "ns105.ovh.net",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Name servers can be imported using their `domain`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_domain_name_servers.name_servers
+    /// 
+    ///   id = "&lt;domain name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=name_servers.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:Domain/nameServers:NameServers")]
     public partial class NameServers : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Domain name
+        /// Domain name for which to manage name servers
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Name servers for the domain
+        /// Details about a name server
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.NameServersServer>> Servers { get; private set; } = null!;
@@ -72,7 +133,7 @@ namespace Pulumi.Ovh.Domain
     public sealed class NameServersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Domain name
+        /// Domain name for which to manage name servers
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -81,7 +142,7 @@ namespace Pulumi.Ovh.Domain
         private InputList<Inputs.NameServersServerArgs>? _servers;
 
         /// <summary>
-        /// Name servers for the domain
+        /// Details about a name server
         /// </summary>
         public InputList<Inputs.NameServersServerArgs> Servers
         {
@@ -98,7 +159,7 @@ namespace Pulumi.Ovh.Domain
     public sealed class NameServersState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Domain name
+        /// Domain name for which to manage name servers
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -107,7 +168,7 @@ namespace Pulumi.Ovh.Domain
         private InputList<Inputs.NameServersServerGetArgs>? _servers;
 
         /// <summary>
-        /// Name servers for the domain
+        /// Details about a name server
         /// </summary>
         public InputList<Inputs.NameServersServerGetArgs> Servers
         {

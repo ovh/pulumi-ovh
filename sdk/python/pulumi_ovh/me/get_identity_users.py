@@ -45,6 +45,9 @@ class GetIdentityUsersResult:
     @property
     @pulumi.getter
     def users(self) -> Sequence[str]:
+        """
+        The list of the user's logins of all the identity users.
+        """
         return pulumi.get(self, "users")
 
 
@@ -60,7 +63,16 @@ class AwaitableGetIdentityUsersResult(GetIdentityUsersResult):
 
 def get_identity_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIdentityUsersResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve list of user logins of the account's identity users.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    users = ovh.Me.get_identity_users()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -71,7 +83,16 @@ def get_identity_users(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
         users=pulumi.get(__ret__, 'users'))
 def get_identity_users_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityUsersResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve list of user logins of the account's identity users.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    users = ovh.Me.get_identity_users()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -4,6 +4,49 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about a DBaas logs cluster retention.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     retentionId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ *
+ * It is also possible to retrieve a retention using its duration:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     duration: "P14D",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ *
+ * Additionnaly, you can filter retentions on their type:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     duration: "P14D",
+ *     retentionType: "LOGS_INDEXING",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ */
 export function getLogsClustersRetention(args: GetLogsClustersRetentionArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClustersRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", {
@@ -19,10 +62,25 @@ export function getLogsClustersRetention(args: GetLogsClustersRetentionArgs, opt
  * A collection of arguments for invoking getLogsClustersRetention.
  */
 export interface GetLogsClustersRetentionArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: string;
+    /**
+     * Indexed duration expressed in ISO-8601 format. Cannot be used if `retentionId` is defined.
+     */
     duration?: string;
+    /**
+     * ID of the retention object. Cannot be used if `duration` or `retentionType` is defined.
+     */
     retentionId?: string;
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retentionId` is defined. Defaults to `LOGS_INDEXING` if not defined.
+     */
     retentionType?: string;
+    /**
+     * The service name. It's the ID of your Logs Data Platform instance.
+     */
     serviceName: string;
 }
 
@@ -31,16 +89,71 @@ export interface GetLogsClustersRetentionArgs {
  */
 export interface GetLogsClustersRetentionResult {
     readonly clusterId: string;
+    /**
+     * Indexed duration expressed in ISO-8601 format
+     */
     readonly duration: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Indicates if a new stream can use it
+     */
     readonly isSupported: boolean;
+    /**
+     * ID of the retention that can be used when creating a stream
+     */
     readonly retentionId: string;
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT)
+     */
     readonly retentionType: string;
     readonly serviceName: string;
 }
+/**
+ * Use this data source to retrieve information about a DBaas logs cluster retention.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     retentionId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ *
+ * It is also possible to retrieve a retention using its duration:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     duration: "P14D",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ *
+ * Additionnaly, you can filter retentions on their type:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     duration: "P14D",
+ *     retentionType: "LOGS_INDEXING",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ */
 export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsClustersRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", {
@@ -56,9 +169,24 @@ export function getLogsClustersRetentionOutput(args: GetLogsClustersRetentionOut
  * A collection of arguments for invoking getLogsClustersRetention.
  */
 export interface GetLogsClustersRetentionOutputArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * Indexed duration expressed in ISO-8601 format. Cannot be used if `retentionId` is defined.
+     */
     duration?: pulumi.Input<string>;
+    /**
+     * ID of the retention object. Cannot be used if `duration` or `retentionType` is defined.
+     */
     retentionId?: pulumi.Input<string>;
+    /**
+     * Type of the retention (LOGS_INDEXING | LOGS_COLD_STORAGE | METRICS_TENANT). Cannot be used if `retentionId` is defined. Defaults to `LOGS_INDEXING` if not defined.
+     */
     retentionType?: pulumi.Input<string>;
+    /**
+     * The service name. It's the ID of your Logs Data Platform instance.
+     */
     serviceName: pulumi.Input<string>;
 }

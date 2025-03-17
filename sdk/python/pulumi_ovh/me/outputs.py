@@ -24,8 +24,8 @@ class GetMeCurrencyResult(dict):
                  code: str,
                  symbol: str):
         """
-        :param str code: Currency code
-        :param str symbol: Currency symbol
+        :param str code: Currency code used by this account (e.g EUR, USD, ...)
+        :param str symbol: Currency symbol used by this account (e.g €, $, ...)
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "symbol", symbol)
@@ -34,7 +34,7 @@ class GetMeCurrencyResult(dict):
     @pulumi.getter
     def code(self) -> str:
         """
-        Currency code
+        Currency code used by this account (e.g EUR, USD, ...)
         """
         return pulumi.get(self, "code")
 
@@ -42,7 +42,7 @@ class GetMeCurrencyResult(dict):
     @pulumi.getter
     def symbol(self) -> str:
         """
-        Currency symbol
+        Currency symbol used by this account (e.g €, $, ...)
         """
         return pulumi.get(self, "symbol")
 

@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetNetworkPrivateSubnetsSubnetIpPoolResult
     {
         /// <summary>
-        /// Enable DHCP
+        /// Whether or not if DHCP is enabled
         /// </summary>
         public readonly bool Dhcp;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Region of the subnet
+        /// Region associated to the subnet
         /// </summary>
         public readonly string Region;
         /// <summary>

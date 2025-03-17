@@ -4,6 +4,61 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manage rules for HTTP route.
+ *
+ * ## Example Usage
+ *
+ * Route which redirect all URL to HTTPs for example.com (Vhost).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const httpsRedirect = new ovh.iploadbalancing.HttpRoute("httpsRedirect", {
+ *     action: {
+ *         status: 302,
+ *         target: "https://${host}${path}${arguments}",
+ *         type: "redirect",
+ *     },
+ *     displayName: "Redirect to HTTPS",
+ *     frontendId: 11111,
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     weight: 1,
+ * });
+ * const exampleRule = new ovh.iploadbalancing.HttpRouteRule("exampleRule", {
+ *     displayName: "Match example.com host",
+ *     field: "host",
+ *     match: "is",
+ *     negate: false,
+ *     pattern: "example.com",
+ *     routeId: httpsRedirect.id,
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ * });
+ * ```
+ *
+ * Rule which match a specific header (same effect as the host match above).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const exampleRule = new ovh.iploadbalancing.HttpRouteRule("exampleRule", {
+ *     displayName: "Match example.com Host header",
+ *     field: "headers",
+ *     match: "is",
+ *     negate: false,
+ *     pattern: "example.com",
+ *     routeId: ovh_iploadbalancing_http_route.https_redirect.id,
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     subField: "Host",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+ */
 export class HttpRouteRule extends pulumi.CustomResource {
     /**
      * Get an existing HttpRouteRule resource's state with the given name, ID, and optional extra
@@ -32,13 +87,37 @@ export class HttpRouteRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === HttpRouteRule.__pulumiType;
     }
 
+    /**
+     * Human readable name for your rule, this field is for you
+     */
     public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+     */
     public readonly field!: pulumi.Output<string>;
+    /**
+     * Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+     */
     public readonly match!: pulumi.Output<string>;
+    /**
+     * Invert the matching operator effect
+     */
     public readonly negate!: pulumi.Output<boolean>;
+    /**
+     * Value to match against this match. Interpretation if this field depends on the match and field
+     */
     public readonly pattern!: pulumi.Output<string | undefined>;
+    /**
+     * The route to apply this rule
+     */
     public readonly routeId!: pulumi.Output<string>;
+    /**
+     * The internal name of your IP load balancing
+     */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+     */
     public readonly subField!: pulumi.Output<string | undefined>;
 
     /**
@@ -94,13 +173,37 @@ export class HttpRouteRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HttpRouteRule resources.
  */
 export interface HttpRouteRuleState {
+    /**
+     * Human readable name for your rule, this field is for you
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+     */
     field?: pulumi.Input<string>;
+    /**
+     * Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+     */
     match?: pulumi.Input<string>;
+    /**
+     * Invert the matching operator effect
+     */
     negate?: pulumi.Input<boolean>;
+    /**
+     * Value to match against this match. Interpretation if this field depends on the match and field
+     */
     pattern?: pulumi.Input<string>;
+    /**
+     * The route to apply this rule
+     */
     routeId?: pulumi.Input<string>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+     */
     subField?: pulumi.Input<string>;
 }
 
@@ -108,12 +211,36 @@ export interface HttpRouteRuleState {
  * The set of arguments for constructing a HttpRouteRule resource.
  */
 export interface HttpRouteRuleArgs {
+    /**
+     * Human readable name for your rule, this field is for you
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+     */
     field: pulumi.Input<string>;
+    /**
+     * Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+     */
     match: pulumi.Input<string>;
+    /**
+     * Invert the matching operator effect
+     */
     negate?: pulumi.Input<boolean>;
+    /**
+     * Value to match against this match. Interpretation if this field depends on the match and field
+     */
     pattern?: pulumi.Input<string>;
+    /**
+     * The route to apply this rule
+     */
     routeId: pulumi.Input<string>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+     */
     subField?: pulumi.Input<string>;
 }

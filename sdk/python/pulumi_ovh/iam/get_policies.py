@@ -45,6 +45,9 @@ class GetPoliciesResult:
     @property
     @pulumi.getter
     def policies(self) -> Sequence[str]:
+        """
+        List of the policies IDs.
+        """
         return pulumi.get(self, "policies")
 
 
@@ -60,7 +63,16 @@ class AwaitableGetPoliciesResult(GetPoliciesResult):
 
 def get_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoliciesResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to list the existing IAM policies of an account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_policies = ovh.Iam.get_policies()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -71,7 +83,16 @@ def get_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPol
         policies=pulumi.get(__ret__, 'policies'))
 def get_policies_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to list the existing IAM policies of an account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_policies = ovh.Iam.get_policies()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

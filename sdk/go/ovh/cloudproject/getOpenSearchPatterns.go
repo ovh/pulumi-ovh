@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			patterns, err := cloudproject.GetOpenSearchPatterns(ctx, &cloudproject.GetOpenSearchPatternsArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("patternIds", patterns.PatternIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOpenSearchPatterns(ctx *pulumi.Context, args *GetOpenSearchPatternsArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchPatternsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchPatternsResult
@@ -23,17 +52,23 @@ func GetOpenSearchPatterns(ctx *pulumi.Context, args *GetOpenSearchPatternsArgs,
 
 // A collection of arguments for invoking getOpenSearchPatterns.
 type GetOpenSearchPatternsArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getOpenSearchPatterns.
 type GetOpenSearchPatternsResult struct {
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string   `pulumi:"id"`
-	PatternIds  []string `pulumi:"patternIds"`
-	ServiceName string   `pulumi:"serviceName"`
+	Id string `pulumi:"id"`
+	// The list of patterns ids of the opensearch cluster associated with the project.
+	PatternIds []string `pulumi:"patternIds"`
+	// See Argument Reference above.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 func GetOpenSearchPatternsOutput(ctx *pulumi.Context, args GetOpenSearchPatternsOutputArgs, opts ...pulumi.InvokeOption) GetOpenSearchPatternsResultOutput {
@@ -47,7 +82,10 @@ func GetOpenSearchPatternsOutput(ctx *pulumi.Context, args GetOpenSearchPatterns
 
 // A collection of arguments for invoking getOpenSearchPatterns.
 type GetOpenSearchPatternsOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -70,6 +108,7 @@ func (o GetOpenSearchPatternsResultOutput) ToGetOpenSearchPatternsResultOutputWi
 	return o
 }
 
+// See Argument Reference above.
 func (o GetOpenSearchPatternsResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternsResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -79,10 +118,12 @@ func (o GetOpenSearchPatternsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of patterns ids of the opensearch cluster associated with the project.
 func (o GetOpenSearchPatternsResultOutput) PatternIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternsResult) []string { return v.PatternIds }).(pulumi.StringArrayOutput)
 }
 
+// See Argument Reference above.
 func (o GetOpenSearchPatternsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about an IP service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ip.GetService(ctx, &ip.GetServiceArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceResult
@@ -23,21 +50,30 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
+	// The service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getService.
 type GetServiceResult struct {
-	CanBeTerminated bool   `pulumi:"canBeTerminated"`
-	Country         string `pulumi:"country"`
-	Description     string `pulumi:"description"`
+	// can be terminated
+	CanBeTerminated bool `pulumi:"canBeTerminated"`
+	// country
+	Country string `pulumi:"country"`
+	// Custom description on your ip
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string               `pulumi:"id"`
-	Ip             string               `pulumi:"ip"`
-	OrganisationId string               `pulumi:"organisationId"`
-	RoutedTos      []GetServiceRoutedTo `pulumi:"routedTos"`
-	ServiceName    string               `pulumi:"serviceName"`
-	Type           string               `pulumi:"type"`
+	Id string `pulumi:"id"`
+	// ip block
+	Ip string `pulumi:"ip"`
+	// IP block organisation Id
+	OrganisationId string `pulumi:"organisationId"`
+	// Routage information
+	RoutedTos []GetServiceRoutedTo `pulumi:"routedTos"`
+	// Service where ip is routed to
+	ServiceName string `pulumi:"serviceName"`
+	// Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
+	Type string `pulumi:"type"`
 }
 
 func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pulumi.InvokeOption) GetServiceResultOutput {
@@ -51,6 +87,7 @@ func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getService.
 type GetServiceOutputArgs struct {
+	// The service name
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -73,14 +110,17 @@ func (o GetServiceResultOutput) ToGetServiceResultOutputWithContext(ctx context.
 	return o
 }
 
+// can be terminated
 func (o GetServiceResultOutput) CanBeTerminated() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceResult) bool { return v.CanBeTerminated }).(pulumi.BoolOutput)
 }
 
+// country
 func (o GetServiceResultOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Country }).(pulumi.StringOutput)
 }
 
+// Custom description on your ip
 func (o GetServiceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -90,22 +130,27 @@ func (o GetServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// ip block
 func (o GetServiceResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// IP block organisation Id
 func (o GetServiceResultOutput) OrganisationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.OrganisationId }).(pulumi.StringOutput)
 }
 
+// Routage information
 func (o GetServiceResultOutput) RoutedTos() GetServiceRoutedToArrayOutput {
 	return o.ApplyT(func(v GetServiceResult) []GetServiceRoutedTo { return v.RoutedTos }).(GetServiceRoutedToArrayOutput)
 }
 
+// Service where ip is routed to
 func (o GetServiceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
 func (o GetServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

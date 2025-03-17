@@ -9,23 +9,46 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Ip
 {
+    /// <summary>
+    /// Use this resource to manage an IP permanent mitigation.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mitigation = new Ovh.Ip.Mitigation("mitigation", new()
+    ///     {
+    ///         Ip = "XXXXXX",
+    ///         IpOnMitigation = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Ip/mitigation:Mitigation")]
     public partial class Mitigation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set on true if your ip is on auto-mitigation
+        /// Set on true if the IP is on auto-mitigation
         /// </summary>
         [Output("auto")]
         public Output<bool> Auto { get; private set; } = null!;
 
         /// <summary>
-        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        /// The IP or the CIDR
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 address (e.g., 192.0.2.0)
+        /// IPv4 address
+        /// * `permanent ` - Set on true if the IP is on permanent mitigation
         /// </summary>
         [Output("ipOnMitigation")]
         public Output<string> IpOnMitigation { get; private set; } = null!;
@@ -37,7 +60,7 @@ namespace Pulumi.Ovh.Ip
         public Output<bool> Permanent { get; private set; } = null!;
 
         /// <summary>
-        /// Current state of your ip on mitigation
+        /// Current state of the IP on mitigation
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -90,13 +113,14 @@ namespace Pulumi.Ovh.Ip
     public sealed class MitigationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        /// The IP or the CIDR
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// IPv4 address (e.g., 192.0.2.0)
+        /// IPv4 address
+        /// * `permanent ` - Set on true if the IP is on permanent mitigation
         /// </summary>
         [Input("ipOnMitigation", required: true)]
         public Input<string> IpOnMitigation { get; set; } = null!;
@@ -116,19 +140,20 @@ namespace Pulumi.Ovh.Ip
     public sealed class MitigationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set on true if your ip is on auto-mitigation
+        /// Set on true if the IP is on auto-mitigation
         /// </summary>
         [Input("auto")]
         public Input<bool>? Auto { get; set; }
 
         /// <summary>
-        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        /// The IP or the CIDR
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// IPv4 address (e.g., 192.0.2.0)
+        /// IPv4 address
+        /// * `permanent ` - Set on true if the IP is on permanent mitigation
         /// </summary>
         [Input("ipOnMitigation")]
         public Input<string>? IpOnMitigation { get; set; }
@@ -140,7 +165,7 @@ namespace Pulumi.Ovh.Ip
         public Input<bool>? Permanent { get; set; }
 
         /// <summary>
-        /// Current state of your ip on mitigation
+        /// Current state of the IP on mitigation
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

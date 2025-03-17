@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get S3™* compatible storage container.
+// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetStorage(ctx, &cloudproject.GetStorageArgs{
+//				Name:        "my-storage-name",
+//				RegionName:  "GRA",
+//				ServiceName: "<public cloud project ID>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupStorage(ctx *pulumi.Context, args *LookupStorageArgs, opts ...pulumi.InvokeOption) (*LookupStorageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageResult
@@ -23,35 +53,58 @@ func LookupStorage(ctx *pulumi.Context, args *LookupStorageArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getStorage.
 type LookupStorageArgs struct {
-	Limit       *float64 `pulumi:"limit"`
-	Marker      *string  `pulumi:"marker"`
-	Name        string   `pulumi:"name"`
-	Prefix      *string  `pulumi:"prefix"`
-	RegionName  string   `pulumi:"regionName"`
-	ServiceName string   `pulumi:"serviceName"`
+	// Limit the number of objects returned (1000 maximum, defaults to 1000)
+	Limit *float64 `pulumi:"limit"`
+	// Key to start with when listing objects
+	Marker *string `pulumi:"marker"`
+	// Name
+	Name string `pulumi:"name"`
+	// List objects whose key begins with this prefix
+	Prefix *string `pulumi:"prefix"`
+	// Region name
+	RegionName string `pulumi:"regionName"`
+	// Service name
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getStorage.
 type LookupStorageResult struct {
-	CreatedAt  string               `pulumi:"createdAt"`
+	// The date and timestamp when the resource was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Encryption configuration
 	Encryption GetStorageEncryption `pulumi:"encryption"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                `pulumi:"id"`
-	Limit        float64               `pulumi:"limit"`
-	Marker       string                `pulumi:"marker"`
-	Name         string                `pulumi:"name"`
-	Objects      []GetStorageObject    `pulumi:"objects"`
-	ObjectsCount float64               `pulumi:"objectsCount"`
-	ObjectsSize  float64               `pulumi:"objectsSize"`
-	OwnerId      float64               `pulumi:"ownerId"`
-	Prefix       string                `pulumi:"prefix"`
-	Region       string                `pulumi:"region"`
-	RegionName   string                `pulumi:"regionName"`
-	Replication  GetStorageReplication `pulumi:"replication"`
-	ServiceName  string                `pulumi:"serviceName"`
-	Tags         map[string]string     `pulumi:"tags"`
-	Versioning   GetStorageVersioning  `pulumi:"versioning"`
-	VirtualHost  string                `pulumi:"virtualHost"`
+	Id string `pulumi:"id"`
+	// Limit the number of objects returned (1000 maximum, defaults to 1000)
+	Limit float64 `pulumi:"limit"`
+	// Key to start with when listing objects
+	Marker string `pulumi:"marker"`
+	// Name
+	Name string `pulumi:"name"`
+	// Container objects
+	Objects []GetStorageObject `pulumi:"objects"`
+	// Container total objects count
+	ObjectsCount float64 `pulumi:"objectsCount"`
+	// Container total objects size (bytes)
+	ObjectsSize float64 `pulumi:"objectsSize"`
+	// Container owner user ID
+	OwnerId float64 `pulumi:"ownerId"`
+	// List objects whose key begins with this prefix
+	Prefix string `pulumi:"prefix"`
+	// Container region
+	Region string `pulumi:"region"`
+	// Region name
+	RegionName string `pulumi:"regionName"`
+	// Replication configuration
+	Replication GetStorageReplication `pulumi:"replication"`
+	// Service name
+	ServiceName string `pulumi:"serviceName"`
+	// Container tags
+	Tags map[string]string `pulumi:"tags"`
+	// Versioning configuration
+	Versioning GetStorageVersioning `pulumi:"versioning"`
+	// Container virtual host
+	VirtualHost string `pulumi:"virtualHost"`
 }
 
 func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts ...pulumi.InvokeOption) LookupStorageResultOutput {
@@ -65,12 +118,18 @@ func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts
 
 // A collection of arguments for invoking getStorage.
 type LookupStorageOutputArgs struct {
-	Limit       pulumi.Float64PtrInput `pulumi:"limit"`
-	Marker      pulumi.StringPtrInput  `pulumi:"marker"`
-	Name        pulumi.StringInput     `pulumi:"name"`
-	Prefix      pulumi.StringPtrInput  `pulumi:"prefix"`
-	RegionName  pulumi.StringInput     `pulumi:"regionName"`
-	ServiceName pulumi.StringInput     `pulumi:"serviceName"`
+	// Limit the number of objects returned (1000 maximum, defaults to 1000)
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	// Key to start with when listing objects
+	Marker pulumi.StringPtrInput `pulumi:"marker"`
+	// Name
+	Name pulumi.StringInput `pulumi:"name"`
+	// List objects whose key begins with this prefix
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Region name
+	RegionName pulumi.StringInput `pulumi:"regionName"`
+	// Service name
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupStorageOutputArgs) ElementType() reflect.Type {
@@ -92,10 +151,12 @@ func (o LookupStorageResultOutput) ToLookupStorageResultOutputWithContext(ctx co
 	return o
 }
 
+// The date and timestamp when the resource was created
 func (o LookupStorageResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Encryption configuration
 func (o LookupStorageResultOutput) Encryption() GetStorageEncryptionOutput {
 	return o.ApplyT(func(v LookupStorageResult) GetStorageEncryption { return v.Encryption }).(GetStorageEncryptionOutput)
 }
@@ -105,62 +166,77 @@ func (o LookupStorageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Limit the number of objects returned (1000 maximum, defaults to 1000)
 func (o LookupStorageResultOutput) Limit() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStorageResult) float64 { return v.Limit }).(pulumi.Float64Output)
 }
 
+// Key to start with when listing objects
 func (o LookupStorageResultOutput) Marker() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Marker }).(pulumi.StringOutput)
 }
 
+// Name
 func (o LookupStorageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Container objects
 func (o LookupStorageResultOutput) Objects() GetStorageObjectArrayOutput {
 	return o.ApplyT(func(v LookupStorageResult) []GetStorageObject { return v.Objects }).(GetStorageObjectArrayOutput)
 }
 
+// Container total objects count
 func (o LookupStorageResultOutput) ObjectsCount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStorageResult) float64 { return v.ObjectsCount }).(pulumi.Float64Output)
 }
 
+// Container total objects size (bytes)
 func (o LookupStorageResultOutput) ObjectsSize() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStorageResult) float64 { return v.ObjectsSize }).(pulumi.Float64Output)
 }
 
+// Container owner user ID
 func (o LookupStorageResultOutput) OwnerId() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStorageResult) float64 { return v.OwnerId }).(pulumi.Float64Output)
 }
 
+// List objects whose key begins with this prefix
 func (o LookupStorageResultOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
+// Container region
 func (o LookupStorageResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Region name
 func (o LookupStorageResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
+// Replication configuration
 func (o LookupStorageResultOutput) Replication() GetStorageReplicationOutput {
 	return o.ApplyT(func(v LookupStorageResult) GetStorageReplication { return v.Replication }).(GetStorageReplicationOutput)
 }
 
+// Service name
 func (o LookupStorageResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Container tags
 func (o LookupStorageResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStorageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Versioning configuration
 func (o LookupStorageResultOutput) Versioning() GetStorageVersioningOutput {
 	return o.ApplyT(func(v LookupStorageResult) GetStorageVersioning { return v.Versioning }).(GetStorageVersioningOutput)
 }
 
+// Container virtual host
 func (o LookupStorageResultOutput) VirtualHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageResult) string { return v.VirtualHost }).(pulumi.StringOutput)
 }

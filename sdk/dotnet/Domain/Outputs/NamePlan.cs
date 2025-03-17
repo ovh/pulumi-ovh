@@ -15,7 +15,7 @@ namespace Pulumi.Ovh.Domain.Outputs
     {
         public readonly ImmutableArray<Outputs.NamePlanConfiguration> Configurations;
         /// <summary>
-        /// Duration selected for the purchase of the product
+        /// Duration selected for the purchase of the product (defaults to "P1Y")
         /// </summary>
         public readonly string Duration;
         /// <summary>

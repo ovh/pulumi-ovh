@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to list the IAM action associated with a resource type.
+ */
 export function getReferenceActions(args: GetReferenceActionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceActionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getReferenceActions:getReferenceActions", {
@@ -17,6 +20,9 @@ export function getReferenceActions(args: GetReferenceActionsArgs, opts?: pulumi
  * A collection of arguments for invoking getReferenceActions.
  */
 export interface GetReferenceActionsArgs {
+    /**
+     * Kind of resource we want the actions for
+     */
     type: string;
 }
 
@@ -24,6 +30,9 @@ export interface GetReferenceActionsArgs {
  * A collection of values returned by getReferenceActions.
  */
 export interface GetReferenceActionsResult {
+    /**
+     * List of actions
+     */
     readonly actions: outputs.Iam.GetReferenceActionsAction[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -31,6 +40,9 @@ export interface GetReferenceActionsResult {
     readonly id: string;
     readonly type: string;
 }
+/**
+ * Use this data source to list the IAM action associated with a resource type.
+ */
 export function getReferenceActionsOutput(args: GetReferenceActionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReferenceActionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getReferenceActions:getReferenceActions", {
@@ -42,5 +54,8 @@ export function getReferenceActionsOutput(args: GetReferenceActionsOutputArgs, o
  * A collection of arguments for invoking getReferenceActions.
  */
 export interface GetReferenceActionsOutputArgs {
+    /**
+     * Kind of resource we want the actions for
+     */
     type: pulumi.Input<string>;
 }

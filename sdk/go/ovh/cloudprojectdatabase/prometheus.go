@@ -8,25 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// OVHcloud Managed database clusters prometheus can be imported using the `service_name`, `engine` and `cluster_id`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProjectDatabase/prometheus:Prometheus my_prometheus service_name/engine/cluster_id
+// ```
 type Prometheus struct {
 	pulumi.CustomResourceState
 
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	ServiceName   pulumi.StringOutput    `pulumi:"serviceName"`
-	// List of all endpoint targets
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// List of all endpoint targets.
+	// * `Host` - Host of the endpoint.
+	// * `Port` - Connection port for the endpoint.
 	Targets PrometheusTargetArrayOutput `pulumi:"targets"`
-	// Name of the user
+	// name of the prometheus user.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -73,34 +87,44 @@ func GetPrometheus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Prometheus resources.
 type prometheusState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine *string `pulumi:"engine"`
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	ServiceName   *string `pulumi:"serviceName"`
-	// List of all endpoint targets
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
+	// List of all endpoint targets.
+	// * `Host` - Host of the endpoint.
+	// * `Port` - Connection port for the endpoint.
 	Targets []PrometheusTarget `pulumi:"targets"`
-	// Name of the user
+	// name of the prometheus user.
 	Username *string `pulumi:"username"`
 }
 
 type PrometheusState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine pulumi.StringPtrInput
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	ServiceName   pulumi.StringPtrInput
-	// List of all endpoint targets
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
+	// List of all endpoint targets.
+	// * `Host` - Host of the endpoint.
+	// * `Port` - Connection port for the endpoint.
 	Targets PrometheusTargetArrayInput
-	// Name of the user
+	// name of the prometheus user.
 	Username pulumi.StringPtrInput
 }
 
@@ -109,24 +133,30 @@ func (PrometheusState) ElementType() reflect.Type {
 }
 
 type prometheusArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine string `pulumi:"engine"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	ServiceName   string  `pulumi:"serviceName"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a Prometheus resource.
 type PrometheusArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine pulumi.StringInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	ServiceName   pulumi.StringInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringInput
 }
 
 func (PrometheusArgs) ElementType() reflect.Type {
@@ -216,17 +246,18 @@ func (o PrometheusOutput) ToPrometheusOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
-// Id of the database cluster
+// Cluster ID.
 func (o PrometheusOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Name of the engine of the service
+// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+// Available engines:
 func (o PrometheusOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Password of the user
+// (Sensitive) Password of the user.
 func (o PrometheusOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -236,16 +267,20 @@ func (o PrometheusOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o PrometheusOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// List of all endpoint targets
+// List of all endpoint targets.
+// * `Host` - Host of the endpoint.
+// * `Port` - Connection port for the endpoint.
 func (o PrometheusOutput) Targets() PrometheusTargetArrayOutput {
 	return o.ApplyT(func(v *Prometheus) PrometheusTargetArrayOutput { return v.Targets }).(PrometheusTargetArrayOutput)
 }
 
-// Name of the user
+// name of the prometheus user.
 func (o PrometheusOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

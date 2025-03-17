@@ -15,8 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
-    'DsRecordsDsRecordArgs',
-    'DsRecordsDsRecordArgsDict',
+    'DSRecordsDsRecordArgs',
+    'DSRecordsDsRecordArgsDict',
     'NameCurrentStateArgs',
     'NameCurrentStateArgsDict',
     'NameCurrentStateDnsConfigurationArgs',
@@ -64,38 +64,38 @@ __all__ = [
 MYPY = False
 
 if not MYPY:
-    class DsRecordsDsRecordArgsDict(TypedDict):
+    class DSRecordsDsRecordArgsDict(TypedDict):
         algorithm: pulumi.Input[str]
         """
-        Algorithm name of the DNSSEC key
+        The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
         """
         flags: pulumi.Input[str]
         """
-        Flag name of the DNSSEC key
+        The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
         """
         public_key: pulumi.Input[str]
         """
-        Public key
+        The record base64 encoded public key
         """
         tag: pulumi.Input[int]
         """
-        Tag of the DNSSEC key
+        The record tag
         """
 elif False:
-    DsRecordsDsRecordArgsDict: TypeAlias = Mapping[str, Any]
+    DSRecordsDsRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class DsRecordsDsRecordArgs:
+class DSRecordsDsRecordArgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input[str],
                  flags: pulumi.Input[str],
                  public_key: pulumi.Input[str],
                  tag: pulumi.Input[int]):
         """
-        :param pulumi.Input[str] algorithm: Algorithm name of the DNSSEC key
-        :param pulumi.Input[str] flags: Flag name of the DNSSEC key
-        :param pulumi.Input[str] public_key: Public key
-        :param pulumi.Input[int] tag: Tag of the DNSSEC key
+        :param pulumi.Input[str] algorithm: The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+        :param pulumi.Input[str] flags: The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+        :param pulumi.Input[str] public_key: The record base64 encoded public key
+        :param pulumi.Input[int] tag: The record tag
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "flags", flags)
@@ -106,7 +106,7 @@ class DsRecordsDsRecordArgs:
     @pulumi.getter
     def algorithm(self) -> pulumi.Input[str]:
         """
-        Algorithm name of the DNSSEC key
+        The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
         """
         return pulumi.get(self, "algorithm")
 
@@ -118,7 +118,7 @@ class DsRecordsDsRecordArgs:
     @pulumi.getter
     def flags(self) -> pulumi.Input[str]:
         """
-        Flag name of the DNSSEC key
+        The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
         """
         return pulumi.get(self, "flags")
 
@@ -130,7 +130,7 @@ class DsRecordsDsRecordArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Input[str]:
         """
-        Public key
+        The record base64 encoded public key
         """
         return pulumi.get(self, "public_key")
 
@@ -142,7 +142,7 @@ class DsRecordsDsRecordArgs:
     @pulumi.getter
     def tag(self) -> pulumi.Input[int]:
         """
-        Tag of the DNSSEC key
+        The record tag
         """
         return pulumi.get(self, "tag")
 
@@ -861,7 +861,7 @@ if not MYPY:
     class NamePlanArgsDict(TypedDict):
         duration: pulumi.Input[str]
         """
-        Duration selected for the purchase of the product
+        Duration selected for the purchase of the product (defaults to "P1Y")
         """
         plan_code: pulumi.Input[str]
         """
@@ -893,7 +893,7 @@ class NamePlanArgs:
                  item_id: Optional[pulumi.Input[float]] = None,
                  quantity: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[str] duration: Duration selected for the purchase of the product
+        :param pulumi.Input[str] duration: Duration selected for the purchase of the product (defaults to "P1Y")
         :param pulumi.Input[str] plan_code: Identifier of the option offer
         :param pulumi.Input[str] pricing_mode: Pricing mode selected for the purchase of the product
         :param pulumi.Input[float] item_id: Cart item to be linked
@@ -913,7 +913,7 @@ class NamePlanArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[str]:
         """
-        Duration selected for the purchase of the product
+        Duration selected for the purchase of the product (defaults to "P1Y")
         """
         return pulumi.get(self, "duration")
 
@@ -1184,11 +1184,11 @@ if not MYPY:
     class NameServersServerArgsDict(TypedDict):
         host: pulumi.Input[str]
         """
-        DNS name server hostname
+        The server hostname
         """
         ip: NotRequired[pulumi.Input[str]]
         """
-        DNS name server IP address
+        The server IP
         """
 elif False:
     NameServersServerArgsDict: TypeAlias = Mapping[str, Any]
@@ -1199,8 +1199,8 @@ class NameServersServerArgs:
                  host: pulumi.Input[str],
                  ip: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] host: DNS name server hostname
-        :param pulumi.Input[str] ip: DNS name server IP address
+        :param pulumi.Input[str] host: The server hostname
+        :param pulumi.Input[str] ip: The server IP
         """
         pulumi.set(__self__, "host", host)
         if ip is not None:
@@ -1210,7 +1210,7 @@ class NameServersServerArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        DNS name server hostname
+        The server hostname
         """
         return pulumi.get(self, "host")
 
@@ -1222,7 +1222,7 @@ class NameServersServerArgs:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        DNS name server IP address
+        The server IP
         """
         return pulumi.get(self, "ip")
 
@@ -1571,7 +1571,7 @@ if not MYPY:
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgsDict']]]]
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
 elif False:
     ZonePlanArgsDict: TypeAlias = Mapping[str, Any]
@@ -1589,7 +1589,7 @@ class ZonePlanArgs:
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
-        :param pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
+        :param pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -1651,7 +1651,7 @@ class ZonePlanArgs:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanConfigurationArgs']]]]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
         return pulumi.get(self, "configurations")
 
@@ -1664,11 +1664,11 @@ if not MYPY:
     class ZonePlanConfigurationArgsDict(TypedDict):
         label: pulumi.Input[str]
         """
-        Identifier of the resource
+        Identifier of the resource : `zone` or `template`
         """
         value: pulumi.Input[str]
         """
-        Path to the resource in API.OVH.COM
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
 elif False:
     ZonePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -1679,8 +1679,8 @@ class ZonePlanConfigurationArgs:
                  label: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] label: Identifier of the resource
-        :param pulumi.Input[str] value: Path to the resource in API.OVH.COM
+        :param pulumi.Input[str] label: Identifier of the resource : `zone` or `template`
+        :param pulumi.Input[str] value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -1689,7 +1689,7 @@ class ZonePlanConfigurationArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Identifier of the resource
+        Identifier of the resource : `zone` or `template`
         """
         return pulumi.get(self, "label")
 
@@ -1701,7 +1701,7 @@ class ZonePlanConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Path to the resource in API.OVH.COM
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         return pulumi.get(self, "value")
 

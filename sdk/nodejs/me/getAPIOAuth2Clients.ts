@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
+ * ```
+ */
 export function getAPIOAuth2Clients(opts?: pulumi.InvokeOptions): Promise<GetAPIOAuth2ClientsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", {
@@ -14,12 +26,27 @@ export function getAPIOAuth2Clients(opts?: pulumi.InvokeOptions): Promise<GetAPI
  * A collection of values returned by getAPIOAuth2Clients.
  */
 export interface GetAPIOAuth2ClientsResult {
+    /**
+     * The list of all the existing client IDs.
+     */
     readonly clientIds: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
+/**
+ * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
+ * ```
+ */
 export function getAPIOAuth2ClientsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAPIOAuth2ClientsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", {

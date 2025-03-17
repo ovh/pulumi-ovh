@@ -9,6 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
+    /// <summary>
+    /// Creates a DBaaS Logs Graylog output stream.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var stream = new Ovh.Dbaas.LogsOutputGraylogStream("stream", new()
+    ///     {
+    ///         Description = "my graylog stream",
+    ///         ServiceName = "....",
+    ///         Title = "my stream",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To define the retention of the stream, you can use the following configuration:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
+    ///     {
+    ///         ServiceName = "ldp-xx-xxxxx",
+    ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Duration = "P14D",
+    ///     });
+    /// 
+    ///     var stream = new Ovh.Dbaas.LogsOutputGraylogStream("stream", new()
+    ///     {
+    ///         ServiceName = "....",
+    ///         Title = "my stream",
+    ///         Description = "my graylog stream",
+    ///         RetentionId = retention.Apply(getLogsClustersRetentionResult =&gt; getLogsClustersRetentionResult.RetentionId),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream")]
     public partial class LogsOutputGraylogStream : global::Pulumi.CustomResource
     {
@@ -19,13 +70,13 @@ namespace Pulumi.Ovh.Dbaas
         public Output<bool> CanAlert { get; private set; } = null!;
 
         /// <summary>
-        /// Cold storage compression method
+        /// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         /// </summary>
         [Output("coldStorageCompression")]
         public Output<string> ColdStorageCompression { get; private set; } = null!;
 
         /// <summary>
-        /// ColdStorage content
+        /// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         /// </summary>
         [Output("coldStorageContent")]
         public Output<string> ColdStorageContent { get; private set; } = null!;
@@ -49,7 +100,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<int> ColdStorageRetention { get; private set; } = null!;
 
         /// <summary>
-        /// ColdStorage destination
+        /// ColdStorage destination. One of "PCA", "PCS"
         /// </summary>
         [Output("coldStorageTarget")]
         public Output<string> ColdStorageTarget { get; private set; } = null!;
@@ -103,7 +154,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<int> NbAlertCondition { get; private set; } = null!;
 
         /// <summary>
-        /// Number of coldstored archives
+        /// Number of coldstored archivesr
         /// </summary>
         [Output("nbArchive")]
         public Output<int> NbArchive { get; private set; } = null!;
@@ -145,7 +196,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// Stream last update
+        /// Stream last updater
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -157,7 +208,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<bool> WebSocketEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Write token of the stream
+        /// Write token of the stream (empty if the caller is not the owner of the stream)
         /// </summary>
         [Output("writeToken")]
         public Output<string> WriteToken { get; private set; } = null!;
@@ -214,13 +265,13 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class LogsOutputGraylogStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cold storage compression method
+        /// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         /// </summary>
         [Input("coldStorageCompression")]
         public Input<string>? ColdStorageCompression { get; set; }
 
         /// <summary>
-        /// ColdStorage content
+        /// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         /// </summary>
         [Input("coldStorageContent")]
         public Input<string>? ColdStorageContent { get; set; }
@@ -244,7 +295,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? ColdStorageRetention { get; set; }
 
         /// <summary>
-        /// ColdStorage destination
+        /// ColdStorage destination. One of "PCA", "PCS"
         /// </summary>
         [Input("coldStorageTarget")]
         public Input<string>? ColdStorageTarget { get; set; }
@@ -324,13 +375,13 @@ namespace Pulumi.Ovh.Dbaas
         public Input<bool>? CanAlert { get; set; }
 
         /// <summary>
-        /// Cold storage compression method
+        /// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         /// </summary>
         [Input("coldStorageCompression")]
         public Input<string>? ColdStorageCompression { get; set; }
 
         /// <summary>
-        /// ColdStorage content
+        /// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         /// </summary>
         [Input("coldStorageContent")]
         public Input<string>? ColdStorageContent { get; set; }
@@ -354,7 +405,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? ColdStorageRetention { get; set; }
 
         /// <summary>
-        /// ColdStorage destination
+        /// ColdStorage destination. One of "PCA", "PCS"
         /// </summary>
         [Input("coldStorageTarget")]
         public Input<string>? ColdStorageTarget { get; set; }
@@ -408,7 +459,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? NbAlertCondition { get; set; }
 
         /// <summary>
-        /// Number of coldstored archives
+        /// Number of coldstored archivesr
         /// </summary>
         [Input("nbArchive")]
         public Input<int>? NbArchive { get; set; }
@@ -450,7 +501,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// Stream last update
+        /// Stream last updater
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
@@ -465,7 +516,7 @@ namespace Pulumi.Ovh.Dbaas
         private Input<string>? _writeToken;
 
         /// <summary>
-        /// Write token of the stream
+        /// Write token of the stream (empty if the caller is not the owner of the stream)
         /// </summary>
         public Input<string>? WriteToken
         {

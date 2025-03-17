@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     public sealed class ServerReinstallTaskStoragePartitioningLayoutExtraZpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// zpool name (generated automatically if not specified)
+        /// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

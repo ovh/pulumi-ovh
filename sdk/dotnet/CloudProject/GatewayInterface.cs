@@ -9,11 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Create a new Gateway Interface for existing subnet in the specified public cloud project.
+    /// 
+    /// ## Import
+    /// 
+    /// A gateway interface can be imported using the `service_name`, `region`, `id` (identifier of the gateway) and `interface_id` properties, separated by a `/`.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/gatewayInterface:GatewayInterface")]
     public partial class GatewayInterface : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Interface ID
+        /// ID of the interface
         /// </summary>
         [Output("interfaceId")]
         public Output<string> InterfaceId { get; private set; } = null!;
@@ -31,19 +44,19 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// Region name
+        /// Region of the gateway
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// ID of the cloud project
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Subnet id to add
+        /// ID of the subnet to add
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -96,25 +109,25 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GatewayInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Interface ID
+        /// ID of the interface
         /// </summary>
         [Input("interfaceId")]
         public Input<string>? InterfaceId { get; set; }
 
         /// <summary>
-        /// Region name
+        /// Region of the gateway
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// ID of the cloud project
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Subnet id to add
+        /// ID of the subnet to add
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
@@ -128,7 +141,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GatewayInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Interface ID
+        /// ID of the interface
         /// </summary>
         [Input("interfaceId")]
         public Input<string>? InterfaceId { get; set; }
@@ -146,19 +159,19 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Region name
+        /// Region of the gateway
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Service name
+        /// ID of the cloud project
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Subnet id to add
+        /// ID of the subnet to add
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

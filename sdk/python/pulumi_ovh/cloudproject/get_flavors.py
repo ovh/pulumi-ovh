@@ -57,11 +57,17 @@ class GetFlavorsResult:
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Flavor region
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Service name
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -81,7 +87,20 @@ def get_flavors(region: Optional[str] = None,
                 service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the available flavors on the given public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    flavors = ovh.CloudProject.get_flavors(service_name="YYYY")
+    ```
+
+
+    :param str region: Flavor region
+    :param str service_name: Service name
     """
     __args__ = dict()
     __args__['region'] = region
@@ -98,7 +117,20 @@ def get_flavors_output(region: Optional[pulumi.Input[Optional[str]]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the available flavors on the given public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    flavors = ovh.CloudProject.get_flavors(service_name="YYYY")
+    ```
+
+
+    :param str region: Flavor region
+    :param str service_name: Service name
     """
     __args__ = dict()
     __args__['region'] = region

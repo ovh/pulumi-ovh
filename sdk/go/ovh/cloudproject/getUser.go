@@ -7,10 +7,47 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get the user details of a previously created public cloud project user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			projectUsers, err := cloudproject.GetUsers(ctx, &cloudproject.GetUsersArgs{
+//				ServiceName: "XXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Get the user ID of a previously created user with the description "S3-User"
+//			users := "TODO: For expression"
+//			s3UserId := users[0]
+//			_, err = cloudproject.GetUser(ctx, &cloudproject.GetUserArgs{
+//				ServiceName: projectUsers.ServiceName,
+//				UserId:      s3UserId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
@@ -23,21 +60,30 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
-	UserId      string `pulumi:"userId"`
+	// The ID of a public cloud project's user.
+	UserId string `pulumi:"userId"`
 }
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
+	// the date the user was created.
 	CreationDate string `pulumi:"creationDate"`
-	Description  string `pulumi:"description"`
+	// description of the role
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string        `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of roles associated with the user.
 	Roles       []GetUserRole `pulumi:"roles"`
 	ServiceName string        `pulumi:"serviceName"`
-	Status      string        `pulumi:"status"`
-	UserId      string        `pulumi:"userId"`
-	Username    string        `pulumi:"username"`
+	// the status of the user. should be normally set to 'ok'.
+	Status string `pulumi:"status"`
+	UserId string `pulumi:"userId"`
+	// the username generated for the user. This username can be used with
+	// the Openstack API.
+	Username string `pulumi:"username"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -51,8 +97,11 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	UserId      pulumi.StringInput `pulumi:"userId"`
+	// The ID of a public cloud project's user.
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (LookupUserOutputArgs) ElementType() reflect.Type {
@@ -74,10 +123,12 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// the date the user was created.
 func (o LookupUserResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// description of the role
 func (o LookupUserResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -87,6 +138,7 @@ func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of roles associated with the user.
 func (o LookupUserResultOutput) Roles() GetUserRoleArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserRole { return v.Roles }).(GetUserRoleArrayOutput)
 }
@@ -95,6 +147,7 @@ func (o LookupUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// the status of the user. should be normally set to 'ok'.
 func (o LookupUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -103,6 +156,8 @@ func (o LookupUserResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.UserId }).(pulumi.StringOutput)
 }
 
+// the username generated for the user. This username can be used with
+// the Openstack API.
 func (o LookupUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

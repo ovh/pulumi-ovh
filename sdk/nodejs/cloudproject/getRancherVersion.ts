@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const versions = ovh.CloudProject.getRancherVersion({
+ *     projectId: "XXXXXX",
+ * });
+ * ```
+ */
 export function getRancherVersion(args: GetRancherVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetRancherVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRancherVersion:getRancherVersion", {
@@ -17,6 +31,9 @@ export function getRancherVersion(args: GetRancherVersionArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getRancherVersion.
  */
 export interface GetRancherVersionArgs {
+    /**
+     * Project ID
+     */
     projectId: string;
 }
 
@@ -28,9 +45,26 @@ export interface GetRancherVersionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Project ID
+     */
     readonly projectId: string;
     readonly versions: outputs.CloudProject.GetRancherVersionVersion[];
 }
+/**
+ * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const versions = ovh.CloudProject.getRancherVersion({
+ *     projectId: "XXXXXX",
+ * });
+ * ```
+ */
 export function getRancherVersionOutput(args: GetRancherVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRancherVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRancherVersion:getRancherVersion", {
@@ -42,5 +76,8 @@ export function getRancherVersionOutput(args: GetRancherVersionOutputArgs, opts?
  * A collection of arguments for invoking getRancherVersion.
  */
 export interface GetRancherVersionOutputArgs {
+    /**
+     * Project ID
+     */
     projectId: pulumi.Input<string>;
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerReinstallTaskStoragePartitioningLayout
     {
         /// <summary>
-        /// Partition extras parameters
+        /// Partition extras parameters (when applicable)
         /// </summary>
         public readonly ImmutableArray<Outputs.ServerReinstallTaskStoragePartitioningLayoutExtra> Extras;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly int? RaidLevel;
         /// <summary>
-        /// Partition size in MiB (default value is 0)
+        /// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         /// </summary>
         public readonly int? Size;
 

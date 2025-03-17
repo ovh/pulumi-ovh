@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class InstanceBootFrom
     {
         /// <summary>
-        /// Instance image id
+        /// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
         /// </summary>
         public readonly string? ImageId;
         /// <summary>

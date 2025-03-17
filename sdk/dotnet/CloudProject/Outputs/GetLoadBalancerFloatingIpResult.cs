@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetLoadBalancerFloatingIpResult
     {
         /// <summary>
-        /// ID of the floating IP
+        /// ID of the loadbalancer
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// IP Address of the floating IP
+        /// Value of the floating IP
         /// </summary>
         public readonly string Ip;
 

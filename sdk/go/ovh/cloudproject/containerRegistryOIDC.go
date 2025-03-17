@@ -8,26 +8,89 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates an OIDC configuration in an OVHcloud Managed Private Registry.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myOidc, err := cloudproject.NewContainerRegistryOIDC(ctx, "myOidc", &cloudproject.ContainerRegistryOIDCArgs{
+//				ServiceName:      pulumi.String("XXXXXX"),
+//				RegistryId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
+//				OidcName:         pulumi.String("my-oidc-provider"),
+//				OidcEndpoint:     pulumi.String("https://xxxx.yyy.com"),
+//				OidcClientId:     pulumi.String("xxx"),
+//				OidcClientSecret: pulumi.String("xxx"),
+//				OidcScope:        pulumi.String("openid,profile,email,offline_access"),
+//				OidcGroupsClaim:  pulumi.String("groups"),
+//				OidcAdminGroup:   pulumi.String("harbor-admin"),
+//				OidcVerifyCert:   pulumi.Bool(true),
+//				OidcAutoOnboard:  pulumi.Bool(true),
+//				OidcUserClaim:    pulumi.String("preferred_username"),
+//				DeleteUsers:      pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oidcClientSecret", myOidc.OidcClientSecret)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id
+// ```
 type ContainerRegistryOIDC struct {
 	pulumi.CustomResourceState
 
-	DeleteUsers      pulumi.BoolPtrOutput   `pulumi:"deleteUsers"`
-	OidcAdminGroup   pulumi.StringPtrOutput `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard  pulumi.BoolPtrOutput   `pulumi:"oidcAutoOnboard"`
-	OidcClientId     pulumi.StringOutput    `pulumi:"oidcClientId"`
-	OidcClientSecret pulumi.StringOutput    `pulumi:"oidcClientSecret"`
-	OidcEndpoint     pulumi.StringOutput    `pulumi:"oidcEndpoint"`
-	OidcGroupsClaim  pulumi.StringPtrOutput `pulumi:"oidcGroupsClaim"`
-	OidcName         pulumi.StringOutput    `pulumi:"oidcName"`
-	OidcScope        pulumi.StringOutput    `pulumi:"oidcScope"`
-	OidcUserClaim    pulumi.StringPtrOutput `pulumi:"oidcUserClaim"`
-	OidcVerifyCert   pulumi.BoolPtrOutput   `pulumi:"oidcVerifyCert"`
-	RegistryId       pulumi.StringOutput    `pulumi:"registryId"`
-	ServiceName      pulumi.StringOutput    `pulumi:"serviceName"`
+	// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
+	DeleteUsers pulumi.BoolPtrOutput `pulumi:"deleteUsers"`
+	// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+	OidcAdminGroup pulumi.StringPtrOutput `pulumi:"oidcAdminGroup"`
+	// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+	OidcAutoOnboard pulumi.BoolPtrOutput `pulumi:"oidcAutoOnboard"`
+	// The client ID with which Harbor is registered as client application with the OIDC provider.
+	OidcClientId pulumi.StringOutput `pulumi:"oidcClientId"`
+	// The secret for the Harbor client application.
+	OidcClientSecret pulumi.StringOutput `pulumi:"oidcClientSecret"`
+	// The URL of an OIDC-compliant server.
+	OidcEndpoint pulumi.StringOutput `pulumi:"oidcEndpoint"`
+	// The name of Claim in the ID token whose value is the list of group names.
+	OidcGroupsClaim pulumi.StringPtrOutput `pulumi:"oidcGroupsClaim"`
+	// The name of the OIDC provider.
+	OidcName pulumi.StringOutput `pulumi:"oidcName"`
+	// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+	OidcScope pulumi.StringOutput `pulumi:"oidcScope"`
+	// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+	OidcUserClaim pulumi.StringPtrOutput `pulumi:"oidcUserClaim"`
+	// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+	OidcVerifyCert pulumi.BoolPtrOutput `pulumi:"oidcVerifyCert"`
+	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
+	RegistryId pulumi.StringOutput `pulumi:"registryId"`
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
 // NewContainerRegistryOIDC registers a new resource with the given unique name, arguments, and options.
@@ -88,35 +151,61 @@ func GetContainerRegistryOIDC(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerRegistryOIDC resources.
 type containerRegistryOIDCState struct {
-	DeleteUsers      *bool   `pulumi:"deleteUsers"`
-	OidcAdminGroup   *string `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard  *bool   `pulumi:"oidcAutoOnboard"`
-	OidcClientId     *string `pulumi:"oidcClientId"`
+	// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
+	DeleteUsers *bool `pulumi:"deleteUsers"`
+	// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+	OidcAdminGroup *string `pulumi:"oidcAdminGroup"`
+	// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+	OidcAutoOnboard *bool `pulumi:"oidcAutoOnboard"`
+	// The client ID with which Harbor is registered as client application with the OIDC provider.
+	OidcClientId *string `pulumi:"oidcClientId"`
+	// The secret for the Harbor client application.
 	OidcClientSecret *string `pulumi:"oidcClientSecret"`
-	OidcEndpoint     *string `pulumi:"oidcEndpoint"`
-	OidcGroupsClaim  *string `pulumi:"oidcGroupsClaim"`
-	OidcName         *string `pulumi:"oidcName"`
-	OidcScope        *string `pulumi:"oidcScope"`
-	OidcUserClaim    *string `pulumi:"oidcUserClaim"`
-	OidcVerifyCert   *bool   `pulumi:"oidcVerifyCert"`
-	RegistryId       *string `pulumi:"registryId"`
-	ServiceName      *string `pulumi:"serviceName"`
+	// The URL of an OIDC-compliant server.
+	OidcEndpoint *string `pulumi:"oidcEndpoint"`
+	// The name of Claim in the ID token whose value is the list of group names.
+	OidcGroupsClaim *string `pulumi:"oidcGroupsClaim"`
+	// The name of the OIDC provider.
+	OidcName *string `pulumi:"oidcName"`
+	// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+	OidcScope *string `pulumi:"oidcScope"`
+	// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+	OidcUserClaim *string `pulumi:"oidcUserClaim"`
+	// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+	OidcVerifyCert *bool `pulumi:"oidcVerifyCert"`
+	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
+	RegistryId *string `pulumi:"registryId"`
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 type ContainerRegistryOIDCState struct {
-	DeleteUsers      pulumi.BoolPtrInput
-	OidcAdminGroup   pulumi.StringPtrInput
-	OidcAutoOnboard  pulumi.BoolPtrInput
-	OidcClientId     pulumi.StringPtrInput
+	// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
+	DeleteUsers pulumi.BoolPtrInput
+	// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+	OidcAdminGroup pulumi.StringPtrInput
+	// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+	OidcAutoOnboard pulumi.BoolPtrInput
+	// The client ID with which Harbor is registered as client application with the OIDC provider.
+	OidcClientId pulumi.StringPtrInput
+	// The secret for the Harbor client application.
 	OidcClientSecret pulumi.StringPtrInput
-	OidcEndpoint     pulumi.StringPtrInput
-	OidcGroupsClaim  pulumi.StringPtrInput
-	OidcName         pulumi.StringPtrInput
-	OidcScope        pulumi.StringPtrInput
-	OidcUserClaim    pulumi.StringPtrInput
-	OidcVerifyCert   pulumi.BoolPtrInput
-	RegistryId       pulumi.StringPtrInput
-	ServiceName      pulumi.StringPtrInput
+	// The URL of an OIDC-compliant server.
+	OidcEndpoint pulumi.StringPtrInput
+	// The name of Claim in the ID token whose value is the list of group names.
+	OidcGroupsClaim pulumi.StringPtrInput
+	// The name of the OIDC provider.
+	OidcName pulumi.StringPtrInput
+	// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+	OidcScope pulumi.StringPtrInput
+	// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+	OidcUserClaim pulumi.StringPtrInput
+	// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+	OidcVerifyCert pulumi.BoolPtrInput
+	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
+	RegistryId pulumi.StringPtrInput
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringPtrInput
 }
 
 func (ContainerRegistryOIDCState) ElementType() reflect.Type {
@@ -124,36 +213,62 @@ func (ContainerRegistryOIDCState) ElementType() reflect.Type {
 }
 
 type containerRegistryOIDCArgs struct {
-	DeleteUsers      *bool   `pulumi:"deleteUsers"`
-	OidcAdminGroup   *string `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard  *bool   `pulumi:"oidcAutoOnboard"`
-	OidcClientId     string  `pulumi:"oidcClientId"`
-	OidcClientSecret string  `pulumi:"oidcClientSecret"`
-	OidcEndpoint     string  `pulumi:"oidcEndpoint"`
-	OidcGroupsClaim  *string `pulumi:"oidcGroupsClaim"`
-	OidcName         string  `pulumi:"oidcName"`
-	OidcScope        string  `pulumi:"oidcScope"`
-	OidcUserClaim    *string `pulumi:"oidcUserClaim"`
-	OidcVerifyCert   *bool   `pulumi:"oidcVerifyCert"`
-	RegistryId       string  `pulumi:"registryId"`
-	ServiceName      string  `pulumi:"serviceName"`
+	// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
+	DeleteUsers *bool `pulumi:"deleteUsers"`
+	// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+	OidcAdminGroup *string `pulumi:"oidcAdminGroup"`
+	// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+	OidcAutoOnboard *bool `pulumi:"oidcAutoOnboard"`
+	// The client ID with which Harbor is registered as client application with the OIDC provider.
+	OidcClientId string `pulumi:"oidcClientId"`
+	// The secret for the Harbor client application.
+	OidcClientSecret string `pulumi:"oidcClientSecret"`
+	// The URL of an OIDC-compliant server.
+	OidcEndpoint string `pulumi:"oidcEndpoint"`
+	// The name of Claim in the ID token whose value is the list of group names.
+	OidcGroupsClaim *string `pulumi:"oidcGroupsClaim"`
+	// The name of the OIDC provider.
+	OidcName string `pulumi:"oidcName"`
+	// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+	OidcScope string `pulumi:"oidcScope"`
+	// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+	OidcUserClaim *string `pulumi:"oidcUserClaim"`
+	// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+	OidcVerifyCert *bool `pulumi:"oidcVerifyCert"`
+	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
+	RegistryId string `pulumi:"registryId"`
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a ContainerRegistryOIDC resource.
 type ContainerRegistryOIDCArgs struct {
-	DeleteUsers      pulumi.BoolPtrInput
-	OidcAdminGroup   pulumi.StringPtrInput
-	OidcAutoOnboard  pulumi.BoolPtrInput
-	OidcClientId     pulumi.StringInput
+	// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
+	DeleteUsers pulumi.BoolPtrInput
+	// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
+	OidcAdminGroup pulumi.StringPtrInput
+	// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+	OidcAutoOnboard pulumi.BoolPtrInput
+	// The client ID with which Harbor is registered as client application with the OIDC provider.
+	OidcClientId pulumi.StringInput
+	// The secret for the Harbor client application.
 	OidcClientSecret pulumi.StringInput
-	OidcEndpoint     pulumi.StringInput
-	OidcGroupsClaim  pulumi.StringPtrInput
-	OidcName         pulumi.StringInput
-	OidcScope        pulumi.StringInput
-	OidcUserClaim    pulumi.StringPtrInput
-	OidcVerifyCert   pulumi.BoolPtrInput
-	RegistryId       pulumi.StringInput
-	ServiceName      pulumi.StringInput
+	// The URL of an OIDC-compliant server.
+	OidcEndpoint pulumi.StringInput
+	// The name of Claim in the ID token whose value is the list of group names.
+	OidcGroupsClaim pulumi.StringPtrInput
+	// The name of the OIDC provider.
+	OidcName pulumi.StringInput
+	// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
+	OidcScope pulumi.StringInput
+	// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
+	OidcUserClaim pulumi.StringPtrInput
+	// Set it to `false` if your OIDC server is hosted via self-signed certificate.
+	OidcVerifyCert pulumi.BoolPtrInput
+	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
+	RegistryId pulumi.StringInput
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringInput
 }
 
 func (ContainerRegistryOIDCArgs) ElementType() reflect.Type {
@@ -243,54 +358,67 @@ func (o ContainerRegistryOIDCOutput) ToContainerRegistryOIDCOutputWithContext(ct
 	return o
 }
 
+// Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
 func (o ContainerRegistryOIDCOutput) DeleteUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.BoolPtrOutput { return v.DeleteUsers }).(pulumi.BoolPtrOutput)
 }
 
+// Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
 func (o ContainerRegistryOIDCOutput) OidcAdminGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringPtrOutput { return v.OidcAdminGroup }).(pulumi.StringPtrOutput)
 }
 
+// Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
 func (o ContainerRegistryOIDCOutput) OidcAutoOnboard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.BoolPtrOutput { return v.OidcAutoOnboard }).(pulumi.BoolPtrOutput)
 }
 
+// The client ID with which Harbor is registered as client application with the OIDC provider.
 func (o ContainerRegistryOIDCOutput) OidcClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.OidcClientId }).(pulumi.StringOutput)
 }
 
+// The secret for the Harbor client application.
 func (o ContainerRegistryOIDCOutput) OidcClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.OidcClientSecret }).(pulumi.StringOutput)
 }
 
+// The URL of an OIDC-compliant server.
 func (o ContainerRegistryOIDCOutput) OidcEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.OidcEndpoint }).(pulumi.StringOutput)
 }
 
+// The name of Claim in the ID token whose value is the list of group names.
 func (o ContainerRegistryOIDCOutput) OidcGroupsClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringPtrOutput { return v.OidcGroupsClaim }).(pulumi.StringPtrOutput)
 }
 
+// The name of the OIDC provider.
 func (o ContainerRegistryOIDCOutput) OidcName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.OidcName }).(pulumi.StringOutput)
 }
 
+// The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
 func (o ContainerRegistryOIDCOutput) OidcScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.OidcScope }).(pulumi.StringOutput)
 }
 
+// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
 func (o ContainerRegistryOIDCOutput) OidcUserClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringPtrOutput { return v.OidcUserClaim }).(pulumi.StringPtrOutput)
 }
 
+// Set it to `false` if your OIDC server is hosted via self-signed certificate.
 func (o ContainerRegistryOIDCOutput) OidcVerifyCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.BoolPtrOutput { return v.OidcVerifyCert }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
 func (o ContainerRegistryOIDCOutput) RegistryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.RegistryId }).(pulumi.StringOutput)
 }
 
+// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 func (o ContainerRegistryOIDCOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

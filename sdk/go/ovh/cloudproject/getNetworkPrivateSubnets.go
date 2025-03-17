@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// List public cloud project subnets of a private network.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			privateNetworkPrivateSubnets, err := cloudproject.GetNetworkPrivateSubnets(ctx, &cloudproject.GetNetworkPrivateSubnetsArgs{
+//				ServiceName: "XXXXXX",
+//				NetworkId:   "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("private", privateNetworkPrivateSubnets)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetworkPrivateSubnets(ctx *pulumi.Context, args *GetNetworkPrivateSubnetsArgs, opts ...pulumi.InvokeOption) (*GetNetworkPrivateSubnetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkPrivateSubnetsResult
@@ -23,17 +52,22 @@ func GetNetworkPrivateSubnets(ctx *pulumi.Context, args *GetNetworkPrivateSubnet
 
 // A collection of arguments for invoking getNetworkPrivateSubnets.
 type GetNetworkPrivateSubnetsArgs struct {
-	NetworkId   string `pulumi:"networkId"`
+	// ID of the network
+	NetworkId string `pulumi:"networkId"`
+	// The ID of the public cloud project.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getNetworkPrivateSubnets.
 type GetNetworkPrivateSubnetsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                           `pulumi:"id"`
-	NetworkId   string                           `pulumi:"networkId"`
-	ServiceName string                           `pulumi:"serviceName"`
-	Subnets     []GetNetworkPrivateSubnetsSubnet `pulumi:"subnets"`
+	Id string `pulumi:"id"`
+	// ID of the network
+	NetworkId string `pulumi:"networkId"`
+	// ID of the public cloud project
+	ServiceName string `pulumi:"serviceName"`
+	// List of subnets
+	Subnets []GetNetworkPrivateSubnetsSubnet `pulumi:"subnets"`
 }
 
 func GetNetworkPrivateSubnetsOutput(ctx *pulumi.Context, args GetNetworkPrivateSubnetsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkPrivateSubnetsResultOutput {
@@ -47,7 +81,9 @@ func GetNetworkPrivateSubnetsOutput(ctx *pulumi.Context, args GetNetworkPrivateS
 
 // A collection of arguments for invoking getNetworkPrivateSubnets.
 type GetNetworkPrivateSubnetsOutputArgs struct {
-	NetworkId   pulumi.StringInput `pulumi:"networkId"`
+	// ID of the network
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The ID of the public cloud project.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -75,14 +111,17 @@ func (o GetNetworkPrivateSubnetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// ID of the network
 func (o GetNetworkPrivateSubnetsResultOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsResult) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
+// ID of the public cloud project
 func (o GetNetworkPrivateSubnetsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// List of subnets
 func (o GetNetworkPrivateSubnetsResultOutput) Subnets() GetNetworkPrivateSubnetsSubnetArrayOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsResult) []GetNetworkPrivateSubnetsSubnet { return v.Subnets }).(GetNetworkPrivateSubnetsSubnetArrayOutput)
 }

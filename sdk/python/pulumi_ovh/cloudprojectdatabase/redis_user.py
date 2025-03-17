@@ -29,12 +29,14 @@ class RedisUserArgs:
                  password_reset: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RedisUser resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user
-        :param pulumi.Input[str] name: Name of the user
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
+        :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -56,7 +58,7 @@ class RedisUserArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -67,6 +69,10 @@ class RedisUserArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -77,7 +83,7 @@ class RedisUserArgs:
     @pulumi.getter
     def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Categories of the user
+        Categories of the user.
         """
         return pulumi.get(self, "categories")
 
@@ -89,7 +95,7 @@ class RedisUserArgs:
     @pulumi.getter
     def channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Channels of the user
+        Channels of the user.
         """
         return pulumi.get(self, "channels")
 
@@ -101,7 +107,7 @@ class RedisUserArgs:
     @pulumi.getter
     def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Commands of the user
+        Commands of the user.
         """
         return pulumi.get(self, "commands")
 
@@ -113,7 +119,7 @@ class RedisUserArgs:
     @pulumi.getter
     def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Keys of the user
+        Keys of the user.
         """
         return pulumi.get(self, "keys")
 
@@ -125,7 +131,7 @@ class RedisUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user
+        Name of the user.
         """
         return pulumi.get(self, "name")
 
@@ -162,16 +168,18 @@ class _RedisUserState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RedisUser resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user
-        :param pulumi.Input[str] created_at: Date of the creation of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user
-        :param pulumi.Input[str] name: Name of the user
-        :param pulumi.Input[str] password: Password of the user
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user.
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
+        :param pulumi.Input[str] created_at: Date of the creation of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
+        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] status: Current status of the user
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] status: Current status of the user.
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
@@ -200,7 +208,7 @@ class _RedisUserState:
     @pulumi.getter
     def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Categories of the user
+        Categories of the user.
         """
         return pulumi.get(self, "categories")
 
@@ -212,7 +220,7 @@ class _RedisUserState:
     @pulumi.getter
     def channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Channels of the user
+        Channels of the user.
         """
         return pulumi.get(self, "channels")
 
@@ -224,7 +232,7 @@ class _RedisUserState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -236,7 +244,7 @@ class _RedisUserState:
     @pulumi.getter
     def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Commands of the user
+        Commands of the user.
         """
         return pulumi.get(self, "commands")
 
@@ -248,7 +256,7 @@ class _RedisUserState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Date of the creation of the user
+        Date of the creation of the user.
         """
         return pulumi.get(self, "created_at")
 
@@ -260,7 +268,7 @@ class _RedisUserState:
     @pulumi.getter
     def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Keys of the user
+        Keys of the user.
         """
         return pulumi.get(self, "keys")
 
@@ -272,7 +280,7 @@ class _RedisUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user
+        Name of the user.
         """
         return pulumi.get(self, "name")
 
@@ -284,7 +292,7 @@ class _RedisUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password of the user
+        (Sensitive) Password of the user.
         """
         return pulumi.get(self, "password")
 
@@ -307,6 +315,10 @@ class _RedisUserState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -317,7 +329,7 @@ class _RedisUserState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Current status of the user
+        Current status of the user.
         """
         return pulumi.get(self, "status")
 
@@ -341,16 +353,27 @@ class RedisUser(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RedisUser resource with the given unique name, props, and options.
+        ## Import
+
+        OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user
-        :param pulumi.Input[str] name: Name of the user
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user.
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
+        :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -359,7 +382,16 @@ class RedisUser(pulumi.CustomResource):
                  args: RedisUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RedisUser resource with the given unique name, props, and options.
+        ## Import
+
+        OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param RedisUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -437,16 +469,18 @@ class RedisUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user
-        :param pulumi.Input[str] created_at: Date of the creation of the user
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user
-        :param pulumi.Input[str] name: Name of the user
-        :param pulumi.Input[str] password: Password of the user
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] channels: Channels of the user.
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands of the user.
+        :param pulumi.Input[str] created_at: Date of the creation of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: Keys of the user.
+        :param pulumi.Input[str] name: Name of the user.
+        :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] status: Current status of the user
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] status: Current status of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -469,7 +503,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def categories(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Categories of the user
+        Categories of the user.
         """
         return pulumi.get(self, "categories")
 
@@ -477,7 +511,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def channels(self) -> pulumi.Output[Sequence[str]]:
         """
-        Channels of the user
+        Channels of the user.
         """
         return pulumi.get(self, "channels")
 
@@ -485,7 +519,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -493,7 +527,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def commands(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Commands of the user
+        Commands of the user.
         """
         return pulumi.get(self, "commands")
 
@@ -501,7 +535,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Date of the creation of the user
+        Date of the creation of the user.
         """
         return pulumi.get(self, "created_at")
 
@@ -509,7 +543,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Keys of the user
+        Keys of the user.
         """
         return pulumi.get(self, "keys")
 
@@ -517,7 +551,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the user
+        Name of the user.
         """
         return pulumi.get(self, "name")
 
@@ -525,7 +559,7 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        Password of the user
+        (Sensitive) Password of the user.
         """
         return pulumi.get(self, "password")
 
@@ -540,13 +574,17 @@ class RedisUser(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Current status of the user
+        Current status of the user.
         """
         return pulumi.get(self, "status")
 

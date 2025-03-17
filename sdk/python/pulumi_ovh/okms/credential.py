@@ -135,17 +135,17 @@ class _CredentialState:
                  validity: Optional[pulumi.Input[float]] = None):
         """
         Input properties used for looking up and filtering Credential resources.
-        :param pulumi.Input[str] certificate_pem: Certificate PEM of the credential
-        :param pulumi.Input[str] created_at: Creation time of the credential
+        :param pulumi.Input[str] certificate_pem: (String) Certificate PEM of the credential.
+        :param pulumi.Input[str] created_at: (String) Creation time of the credential
         :param pulumi.Input[str] csr: Valid Certificate Signing Request
         :param pulumi.Input[str] description: Description of the credential (max 200)
-        :param pulumi.Input[str] expired_at: Expiration time of the credential
-        :param pulumi.Input[bool] from_csr: Is the credential generated from CSR
+        :param pulumi.Input[str] expired_at: (String) Expiration time of the credential
+        :param pulumi.Input[bool] from_csr: (Boolean) Whether the credential was generated from a CSR
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_urns: List of identity URNs associated with the credential (max 25)
         :param pulumi.Input[str] name: Name of the credential (max 50)
         :param pulumi.Input[str] okms_id: Okms ID
-        :param pulumi.Input[str] private_key_pem: Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
-        :param pulumi.Input[str] status: Status of the credential
+        :param pulumi.Input[str] private_key_pem: (String, Sensitive) Private Key PEM of the credential if no CSR is provided
+        :param pulumi.Input[str] status: (String) Status of the credential
         :param pulumi.Input[float] validity: Validity in days (default 365, max 365)
         """
         if certificate_pem is not None:
@@ -177,7 +177,7 @@ class _CredentialState:
     @pulumi.getter(name="certificatePem")
     def certificate_pem(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate PEM of the credential
+        (String) Certificate PEM of the credential.
         """
         return pulumi.get(self, "certificate_pem")
 
@@ -189,7 +189,7 @@ class _CredentialState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation time of the credential
+        (String) Creation time of the credential
         """
         return pulumi.get(self, "created_at")
 
@@ -225,7 +225,7 @@ class _CredentialState:
     @pulumi.getter(name="expiredAt")
     def expired_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Expiration time of the credential
+        (String) Expiration time of the credential
         """
         return pulumi.get(self, "expired_at")
 
@@ -237,7 +237,7 @@ class _CredentialState:
     @pulumi.getter(name="fromCsr")
     def from_csr(self) -> Optional[pulumi.Input[bool]]:
         """
-        Is the credential generated from CSR
+        (Boolean) Whether the credential was generated from a CSR
         """
         return pulumi.get(self, "from_csr")
 
@@ -285,7 +285,7 @@ class _CredentialState:
     @pulumi.getter(name="privateKeyPem")
     def private_key_pem(self) -> Optional[pulumi.Input[str]]:
         """
-        Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+        (String, Sensitive) Private Key PEM of the credential if no CSR is provided
         """
         return pulumi.get(self, "private_key_pem")
 
@@ -297,7 +297,7 @@ class _CredentialState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the credential
+        (String) Status of the credential
         """
         return pulumi.get(self, "status")
 
@@ -331,7 +331,26 @@ class Credential(pulumi.CustomResource):
                  validity: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-        Create a Credential resource with the given unique name, props, and options.
+        Creates a credential for an OVHcloud KMS.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        cred_no_csr = ovh.okms.Credential("credNoCsr",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
+            description="Credential without CSR")
+        cred_from_csr = ovh.okms.Credential("credFromCsr",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
+            csr=(lambda path: open(path).read())("cred.csr"),
+            description="Credential from CSR")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csr: Valid Certificate Signing Request
@@ -348,7 +367,26 @@ class Credential(pulumi.CustomResource):
                  args: CredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Credential resource with the given unique name, props, and options.
+        Creates a credential for an OVHcloud KMS.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        myaccount = ovh.Me.get_me()
+        cred_no_csr = ovh.okms.Credential("credNoCsr",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
+            description="Credential without CSR")
+        cred_from_csr = ovh.okms.Credential("credFromCsr",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
+            csr=(lambda path: open(path).read())("cred.csr"),
+            description="Credential from CSR")
+        ```
+
         :param str resource_name: The name of the resource.
         :param CredentialArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -426,17 +464,17 @@ class Credential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_pem: Certificate PEM of the credential
-        :param pulumi.Input[str] created_at: Creation time of the credential
+        :param pulumi.Input[str] certificate_pem: (String) Certificate PEM of the credential.
+        :param pulumi.Input[str] created_at: (String) Creation time of the credential
         :param pulumi.Input[str] csr: Valid Certificate Signing Request
         :param pulumi.Input[str] description: Description of the credential (max 200)
-        :param pulumi.Input[str] expired_at: Expiration time of the credential
-        :param pulumi.Input[bool] from_csr: Is the credential generated from CSR
+        :param pulumi.Input[str] expired_at: (String) Expiration time of the credential
+        :param pulumi.Input[bool] from_csr: (Boolean) Whether the credential was generated from a CSR
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_urns: List of identity URNs associated with the credential (max 25)
         :param pulumi.Input[str] name: Name of the credential (max 50)
         :param pulumi.Input[str] okms_id: Okms ID
-        :param pulumi.Input[str] private_key_pem: Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
-        :param pulumi.Input[str] status: Status of the credential
+        :param pulumi.Input[str] private_key_pem: (String, Sensitive) Private Key PEM of the credential if no CSR is provided
+        :param pulumi.Input[str] status: (String) Status of the credential
         :param pulumi.Input[float] validity: Validity in days (default 365, max 365)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,7 +499,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter(name="certificatePem")
     def certificate_pem(self) -> pulumi.Output[str]:
         """
-        Certificate PEM of the credential
+        (String) Certificate PEM of the credential.
         """
         return pulumi.get(self, "certificate_pem")
 
@@ -469,7 +507,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Creation time of the credential
+        (String) Creation time of the credential
         """
         return pulumi.get(self, "created_at")
 
@@ -493,7 +531,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter(name="expiredAt")
     def expired_at(self) -> pulumi.Output[str]:
         """
-        Expiration time of the credential
+        (String) Expiration time of the credential
         """
         return pulumi.get(self, "expired_at")
 
@@ -501,7 +539,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter(name="fromCsr")
     def from_csr(self) -> pulumi.Output[bool]:
         """
-        Is the credential generated from CSR
+        (Boolean) Whether the credential was generated from a CSR
         """
         return pulumi.get(self, "from_csr")
 
@@ -533,7 +571,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter(name="privateKeyPem")
     def private_key_pem(self) -> pulumi.Output[str]:
         """
-        Private Key PEM of the credential if no CSR is provided (cannot be retrieve later)
+        (String, Sensitive) Private Key PEM of the credential if no CSR is provided
         """
         return pulumi.get(self, "private_key_pem")
 
@@ -541,7 +579,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the credential
+        (String) Status of the credential
         """
         return pulumi.get(self, "status")
 

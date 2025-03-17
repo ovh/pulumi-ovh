@@ -24,9 +24,9 @@ class ContainerRegistryIPRestrictionsRegistryArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ContainerRegistryIPRestrictionsRegistry resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: List your IP restrictions applied on artifact manager component
-        :param pulumi.Input[str] registry_id: RegistryID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: IP restrictions applied on artifact manager component.
+        :param pulumi.Input[str] registry_id: The id of the Managed Private Registry.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         pulumi.set(__self__, "registry_id", registry_id)
@@ -36,7 +36,7 @@ class ContainerRegistryIPRestrictionsRegistryArgs:
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]:
         """
-        List your IP restrictions applied on artifact manager component
+        IP restrictions applied on artifact manager component.
         """
         return pulumi.get(self, "ip_restrictions")
 
@@ -48,7 +48,7 @@ class ContainerRegistryIPRestrictionsRegistryArgs:
     @pulumi.getter(name="registryId")
     def registry_id(self) -> pulumi.Input[str]:
         """
-        RegistryID
+        The id of the Managed Private Registry.
         """
         return pulumi.get(self, "registry_id")
 
@@ -60,7 +60,7 @@ class ContainerRegistryIPRestrictionsRegistryArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -77,9 +77,9 @@ class _ContainerRegistryIPRestrictionsRegistryState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContainerRegistryIPRestrictionsRegistry resources.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: List your IP restrictions applied on artifact manager component
-        :param pulumi.Input[str] registry_id: RegistryID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: IP restrictions applied on artifact manager component.
+        :param pulumi.Input[str] registry_id: The id of the Managed Private Registry.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if ip_restrictions is not None:
             pulumi.set(__self__, "ip_restrictions", ip_restrictions)
@@ -92,7 +92,7 @@ class _ContainerRegistryIPRestrictionsRegistryState:
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
-        List your IP restrictions applied on artifact manager component
+        IP restrictions applied on artifact manager component.
         """
         return pulumi.get(self, "ip_restrictions")
 
@@ -104,7 +104,7 @@ class _ContainerRegistryIPRestrictionsRegistryState:
     @pulumi.getter(name="registryId")
     def registry_id(self) -> Optional[pulumi.Input[str]]:
         """
-        RegistryID
+        The id of the Managed Private Registry.
         """
         return pulumi.get(self, "registry_id")
 
@@ -116,7 +116,7 @@ class _ContainerRegistryIPRestrictionsRegistryState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -135,12 +135,30 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ContainerRegistryIPRestrictionsRegistry resource with the given unique name, props, and options.
+        Apply IP restrictions container registry associated with a public cloud project on artifact manager component.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
+            registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+        my_registry_iprestrictions = ovh.cloud_project.ContainerRegistryIPRestrictionsRegistry("myRegistryIprestrictions",
+            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
+            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+            ip_restrictions=[{
+                "ip_block": "xxx.xxx.xxx.xxx/xx",
+                "description": "xxxxxxx",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: List your IP restrictions applied on artifact manager component
-        :param pulumi.Input[str] registry_id: RegistryID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: IP restrictions applied on artifact manager component.
+        :param pulumi.Input[str] registry_id: The id of the Managed Private Registry.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -149,7 +167,25 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
                  args: ContainerRegistryIPRestrictionsRegistryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ContainerRegistryIPRestrictionsRegistry resource with the given unique name, props, and options.
+        Apply IP restrictions container registry associated with a public cloud project on artifact manager component.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
+            registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+        my_registry_iprestrictions = ovh.cloud_project.ContainerRegistryIPRestrictionsRegistry("myRegistryIprestrictions",
+            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
+            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+            ip_restrictions=[{
+                "ip_block": "xxx.xxx.xxx.xxx/xx",
+                "description": "xxxxxxx",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param ContainerRegistryIPRestrictionsRegistryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,9 +242,9 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: List your IP restrictions applied on artifact manager component
-        :param pulumi.Input[str] registry_id: RegistryID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] ip_restrictions: IP restrictions applied on artifact manager component.
+        :param pulumi.Input[str] registry_id: The id of the Managed Private Registry.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,7 +259,7 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
         """
-        List your IP restrictions applied on artifact manager component
+        IP restrictions applied on artifact manager component.
         """
         return pulumi.get(self, "ip_restrictions")
 
@@ -231,7 +267,7 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
     @pulumi.getter(name="registryId")
     def registry_id(self) -> pulumi.Output[str]:
         """
-        RegistryID
+        The id of the Managed Private Registry.
         """
         return pulumi.get(self, "registry_id")
 
@@ -239,7 +275,7 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

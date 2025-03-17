@@ -14,19 +14,19 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GatewayInterface
     {
         /// <summary>
-        /// ID of the interface
+        /// ID of the interface.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// IP of the interface
+        /// IP of the interface.
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Network ID of the interface
+        /// ID of the private network.
         /// </summary>
         public readonly string? NetworkId;
         /// <summary>
-        /// Subnet ID of the interface
+        /// ID of the subnet.
         /// </summary>
         public readonly string? SubnetId;
 

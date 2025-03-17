@@ -11,12 +11,66 @@ namespace Pulumi.Ovh.Vrack
 {
     public static class GetVracks
     {
+        /// <summary>
+        /// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vracks = Ovh.Vrack.GetVracks.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetVracksResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vracks = Ovh.Vrack.GetVracks.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVracksResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vracks = Ovh.Vrack.GetVracks.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVracksResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVracksResult>("ovh:Vrack/getVracks:getVracks", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -29,6 +83,9 @@ namespace Pulumi.Ovh.Vrack
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The list of vrack service name available for your OVHcloud account.
+        /// </summary>
         public readonly ImmutableArray<string> Results;
 
         [OutputConstructor]

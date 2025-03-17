@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to list the existing IAM policies of an account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myGroups = ovh.Iam.getResourceGroups({});
+ * ```
+ */
 export function getResourceGroups(opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getResourceGroups:getResourceGroups", {
@@ -18,8 +30,23 @@ export interface GetResourceGroupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of the resource groups IDs.
+     */
     readonly resourceGroups: string[];
 }
+/**
+ * Use this data source to list the existing IAM policies of an account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myGroups = ovh.Iam.getResourceGroups({});
+ * ```
+ */
 export function getResourceGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getResourceGroups:getResourceGroups", {

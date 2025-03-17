@@ -40,18 +40,20 @@ class ServerArgs:
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]] = None):
         """
         The set of arguments for constructing a Server resource.
-        :param pulumi.Input[str] boot_script: Ipxe script served on boot
+        :param pulumi.Input[float] boot_id: Boot id of the server
+        :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input['ServerCustomizationsArgs'] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] display_name: The display name of your dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader served on boot
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] rescue_mail: Custom email used to receive rescue credentials
+        :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
-        :param pulumi.Input[str] state: All states a Dedicated can be in
+        :param pulumi.Input[str] root_device: Root device of the server
+        :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         :param pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]] storages: OS reinstallation storage configurations
         """
         if boot_id is not None:
@@ -92,6 +94,9 @@ class ServerArgs:
     @property
     @pulumi.getter(name="bootId")
     def boot_id(self) -> Optional[pulumi.Input[float]]:
+        """
+        Boot id of the server
+        """
         return pulumi.get(self, "boot_id")
 
     @boot_id.setter
@@ -102,7 +107,7 @@ class ServerArgs:
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> Optional[pulumi.Input[str]]:
         """
-        Ipxe script served on boot
+        Boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -126,7 +131,7 @@ class ServerArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of your dedicated server
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -138,7 +143,7 @@ class ServerArgs:
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Path of the EFI bootloader served on boot
+        Path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -228,7 +233,7 @@ class ServerArgs:
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom email used to receive rescue credentials
+        Rescue mail of the server
         """
         return pulumi.get(self, "rescue_mail")
 
@@ -251,6 +256,9 @@ class ServerArgs:
     @property
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root device of the server
+        """
         return pulumi.get(self, "root_device")
 
     @root_device.setter
@@ -261,7 +269,7 @@ class ServerArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        All states a Dedicated can be in
+        All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         """
         return pulumi.get(self, "state")
 
@@ -321,33 +329,37 @@ class _ServerState:
                  support_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
-        :param pulumi.Input[str] availability_zone: dedicated AZ localisation
-        :param pulumi.Input[str] boot_script: Ipxe script served on boot
-        :param pulumi.Input[str] commercial_range: dedicater server commercial range
+        :param pulumi.Input[str] availability_zone: Dedicated AZ localisation
+        :param pulumi.Input[float] boot_id: Boot id of the server
+        :param pulumi.Input[str] boot_script: Boot script of the server
+        :param pulumi.Input[str] commercial_range: Dedicated server commercial range
         :param pulumi.Input['ServerCustomizationsArgs'] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] datacenter: dedicated datacenter localisation
-        :param pulumi.Input[str] display_name: The display name of your dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader served on boot
-        :param pulumi.Input['ServerIamArgs'] iam: IAM resource metadata
-        :param pulumi.Input[str] ip: dedicated server ip
+        :param pulumi.Input[str] datacenter: Dedicated datacenter localisation (bhs1,bhs2,...)
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
+        :param pulumi.Input['ServerIamArgs'] iam: IAM resource information
+        :param pulumi.Input[str] ip: Dedicated server ip (IPv4)
+        :param pulumi.Input[float] link_speed: Link speed of the server
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
-        :param pulumi.Input[str] name: dedicated server name
+        :param pulumi.Input[str] name: Dedicated server name
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input['ServerOrderArgs'] order: Details about an Order
         :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] power_state: Power state of the server
+        :param pulumi.Input[str] power_state: Power state of the server (poweron, poweroff)
         :param pulumi.Input[bool] professional_use: Does this server have professional use option
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] region: dedicated region localisation
-        :param pulumi.Input[str] rescue_mail: Custom email used to receive rescue credentials
+        :param pulumi.Input[str] rack: Rack id of the server
+        :param pulumi.Input[str] region: Dedicated region localisation
+        :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
-        :param pulumi.Input[str] reverse: dedicated server reverse
+        :param pulumi.Input[str] reverse: Dedicated server reverse
+        :param pulumi.Input[str] root_device: Root device of the server
         :param pulumi.Input[float] server_id: Server id
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server
-        :param pulumi.Input[str] state: All states a Dedicated can be in
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server
+        :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         :param pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]] storages: OS reinstallation storage configurations
-        :param pulumi.Input[str] support_level: Dedicated server support level
+        :param pulumi.Input[str] support_level: Dedicated server support level (critical, fastpath, gs, pro)
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
@@ -422,7 +434,7 @@ class _ServerState:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicated AZ localisation
+        Dedicated AZ localisation
         """
         return pulumi.get(self, "availability_zone")
 
@@ -433,6 +445,9 @@ class _ServerState:
     @property
     @pulumi.getter(name="bootId")
     def boot_id(self) -> Optional[pulumi.Input[float]]:
+        """
+        Boot id of the server
+        """
         return pulumi.get(self, "boot_id")
 
     @boot_id.setter
@@ -443,7 +458,7 @@ class _ServerState:
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> Optional[pulumi.Input[str]]:
         """
-        Ipxe script served on boot
+        Boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -455,7 +470,7 @@ class _ServerState:
     @pulumi.getter(name="commercialRange")
     def commercial_range(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicater server commercial range
+        Dedicated server commercial range
         """
         return pulumi.get(self, "commercial_range")
 
@@ -479,7 +494,7 @@ class _ServerState:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicated datacenter localisation
+        Dedicated datacenter localisation (bhs1,bhs2,...)
         """
         return pulumi.get(self, "datacenter")
 
@@ -491,7 +506,7 @@ class _ServerState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of your dedicated server
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -503,7 +518,7 @@ class _ServerState:
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Path of the EFI bootloader served on boot
+        Path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -515,7 +530,7 @@ class _ServerState:
     @pulumi.getter
     def iam(self) -> Optional[pulumi.Input['ServerIamArgs']]:
         """
-        IAM resource metadata
+        IAM resource information
         """
         return pulumi.get(self, "iam")
 
@@ -527,7 +542,7 @@ class _ServerState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicated server ip
+        Dedicated server ip (IPv4)
         """
         return pulumi.get(self, "ip")
 
@@ -538,6 +553,9 @@ class _ServerState:
     @property
     @pulumi.getter(name="linkSpeed")
     def link_speed(self) -> Optional[pulumi.Input[float]]:
+        """
+        Link speed of the server
+        """
         return pulumi.get(self, "link_speed")
 
     @link_speed.setter
@@ -560,7 +578,7 @@ class _ServerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicated server name
+        Dedicated server name
         """
         return pulumi.get(self, "name")
 
@@ -647,7 +665,7 @@ class _ServerState:
     @pulumi.getter(name="powerState")
     def power_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Power state of the server
+        Power state of the server (poweron, poweroff)
         """
         return pulumi.get(self, "power_state")
 
@@ -682,6 +700,9 @@ class _ServerState:
     @property
     @pulumi.getter
     def rack(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rack id of the server
+        """
         return pulumi.get(self, "rack")
 
     @rack.setter
@@ -692,7 +713,7 @@ class _ServerState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicated region localisation
+        Dedicated region localisation
         """
         return pulumi.get(self, "region")
 
@@ -704,7 +725,7 @@ class _ServerState:
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom email used to receive rescue credentials
+        Rescue mail of the server
         """
         return pulumi.get(self, "rescue_mail")
 
@@ -728,7 +749,7 @@ class _ServerState:
     @pulumi.getter
     def reverse(self) -> Optional[pulumi.Input[str]]:
         """
-        dedicated server reverse
+        Dedicated server reverse
         """
         return pulumi.get(self, "reverse")
 
@@ -739,6 +760,9 @@ class _ServerState:
     @property
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root device of the server
+        """
         return pulumi.get(self, "root_device")
 
     @root_device.setter
@@ -761,7 +785,7 @@ class _ServerState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your dedicated server
+        The service_name of your dedicated server
         """
         return pulumi.get(self, "service_name")
 
@@ -773,7 +797,7 @@ class _ServerState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        All states a Dedicated can be in
+        All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         """
         return pulumi.get(self, "state")
 
@@ -797,7 +821,7 @@ class _ServerState:
     @pulumi.getter(name="supportLevel")
     def support_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Dedicated server support level
+        Dedicated server support level (critical, fastpath, gs, pro)
         """
         return pulumi.get(self, "support_level")
 
@@ -830,21 +854,50 @@ class Server(pulumi.CustomResource):
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a Server resource with the given unique name, props, and options.
+        ## Import
+
+        Dedicated servers can be imported using the `service_name`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_dedicated_server.server
+
+          id = "<service name>"
+
+        }
+
+        You can then run:
+
+        bash
+
+        pulumi preview -generate-config-out=dedicated.tf
+
+        pulumi up
+
+        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] boot_script: Ipxe script served on boot
+        :param pulumi.Input[float] boot_id: Boot id of the server
+        :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] display_name: The display name of your dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader served on boot
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] rescue_mail: Custom email used to receive rescue credentials
+        :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
-        :param pulumi.Input[str] state: All states a Dedicated can be in
+        :param pulumi.Input[str] root_device: Root device of the server
+        :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]] storages: OS reinstallation storage configurations
         """
         ...
@@ -854,7 +907,34 @@ class Server(pulumi.CustomResource):
                  args: Optional[ServerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Server resource with the given unique name, props, and options.
+        ## Import
+
+        Dedicated servers can be imported using the `service_name`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_dedicated_server.server
+
+          id = "<service name>"
+
+        }
+
+        You can then run:
+
+        bash
+
+        pulumi preview -generate-config-out=dedicated.tf
+
+        pulumi up
+
+        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
+
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -981,33 +1061,37 @@ class Server(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: dedicated AZ localisation
-        :param pulumi.Input[str] boot_script: Ipxe script served on boot
-        :param pulumi.Input[str] commercial_range: dedicater server commercial range
+        :param pulumi.Input[str] availability_zone: Dedicated AZ localisation
+        :param pulumi.Input[float] boot_id: Boot id of the server
+        :param pulumi.Input[str] boot_script: Boot script of the server
+        :param pulumi.Input[str] commercial_range: Dedicated server commercial range
         :param pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] datacenter: dedicated datacenter localisation
-        :param pulumi.Input[str] display_name: The display name of your dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader served on boot
-        :param pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']] iam: IAM resource metadata
-        :param pulumi.Input[str] ip: dedicated server ip
+        :param pulumi.Input[str] datacenter: Dedicated datacenter localisation (bhs1,bhs2,...)
+        :param pulumi.Input[str] display_name: Resource display name
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
+        :param pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']] iam: IAM resource information
+        :param pulumi.Input[str] ip: Dedicated server ip (IPv4)
+        :param pulumi.Input[float] link_speed: Link speed of the server
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
-        :param pulumi.Input[str] name: dedicated server name
+        :param pulumi.Input[str] name: Dedicated server name
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[Union['ServerOrderArgs', 'ServerOrderArgsDict']] order: Details about an Order
         :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] power_state: Power state of the server
+        :param pulumi.Input[str] power_state: Power state of the server (poweron, poweroff)
         :param pulumi.Input[bool] professional_use: Does this server have professional use option
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] region: dedicated region localisation
-        :param pulumi.Input[str] rescue_mail: Custom email used to receive rescue credentials
+        :param pulumi.Input[str] rack: Rack id of the server
+        :param pulumi.Input[str] region: Dedicated region localisation
+        :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
-        :param pulumi.Input[str] reverse: dedicated server reverse
+        :param pulumi.Input[str] reverse: Dedicated server reverse
+        :param pulumi.Input[str] root_device: Root device of the server
         :param pulumi.Input[float] server_id: Server id
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server
-        :param pulumi.Input[str] state: All states a Dedicated can be in
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server
+        :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]] storages: OS reinstallation storage configurations
-        :param pulumi.Input[str] support_level: Dedicated server support level
+        :param pulumi.Input[str] support_level: Dedicated server support level (critical, fastpath, gs, pro)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1053,20 +1137,23 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
         """
-        dedicated AZ localisation
+        Dedicated AZ localisation
         """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="bootId")
     def boot_id(self) -> pulumi.Output[float]:
+        """
+        Boot id of the server
+        """
         return pulumi.get(self, "boot_id")
 
     @property
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> pulumi.Output[str]:
         """
-        Ipxe script served on boot
+        Boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -1074,7 +1161,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="commercialRange")
     def commercial_range(self) -> pulumi.Output[str]:
         """
-        dedicater server commercial range
+        Dedicated server commercial range
         """
         return pulumi.get(self, "commercial_range")
 
@@ -1090,7 +1177,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[str]:
         """
-        dedicated datacenter localisation
+        Dedicated datacenter localisation (bhs1,bhs2,...)
         """
         return pulumi.get(self, "datacenter")
 
@@ -1098,7 +1185,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name of your dedicated server
+        Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -1106,7 +1193,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> pulumi.Output[str]:
         """
-        Path of the EFI bootloader served on boot
+        Path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -1114,7 +1201,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter
     def iam(self) -> pulumi.Output['outputs.ServerIam']:
         """
-        IAM resource metadata
+        IAM resource information
         """
         return pulumi.get(self, "iam")
 
@@ -1122,13 +1209,16 @@ class Server(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        dedicated server ip
+        Dedicated server ip (IPv4)
         """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="linkSpeed")
     def link_speed(self) -> pulumi.Output[float]:
+        """
+        Link speed of the server
+        """
         return pulumi.get(self, "link_speed")
 
     @property
@@ -1143,7 +1233,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        dedicated server name
+        Dedicated server name
         """
         return pulumi.get(self, "name")
 
@@ -1198,7 +1288,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="powerState")
     def power_state(self) -> pulumi.Output[str]:
         """
-        Power state of the server
+        Power state of the server (poweron, poweroff)
         """
         return pulumi.get(self, "power_state")
 
@@ -1221,13 +1311,16 @@ class Server(pulumi.CustomResource):
     @property
     @pulumi.getter
     def rack(self) -> pulumi.Output[str]:
+        """
+        Rack id of the server
+        """
         return pulumi.get(self, "rack")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        dedicated region localisation
+        Dedicated region localisation
         """
         return pulumi.get(self, "region")
 
@@ -1235,7 +1328,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> pulumi.Output[str]:
         """
-        Custom email used to receive rescue credentials
+        Rescue mail of the server
         """
         return pulumi.get(self, "rescue_mail")
 
@@ -1251,13 +1344,16 @@ class Server(pulumi.CustomResource):
     @pulumi.getter
     def reverse(self) -> pulumi.Output[str]:
         """
-        dedicated server reverse
+        Dedicated server reverse
         """
         return pulumi.get(self, "reverse")
 
     @property
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> pulumi.Output[str]:
+        """
+        Root device of the server
+        """
         return pulumi.get(self, "root_device")
 
     @property
@@ -1272,7 +1368,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your dedicated server
+        The service_name of your dedicated server
         """
         return pulumi.get(self, "service_name")
 
@@ -1280,7 +1376,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        All states a Dedicated can be in
+        All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         """
         return pulumi.get(self, "state")
 
@@ -1296,7 +1392,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="supportLevel")
     def support_level(self) -> pulumi.Output[str]:
         """
-        Dedicated server support level
+        Dedicated server support level (critical, fastpath, gs, pro)
         """
         return pulumi.get(self, "support_level")
 

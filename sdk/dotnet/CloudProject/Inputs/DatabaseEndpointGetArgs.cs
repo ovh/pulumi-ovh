@@ -13,49 +13,49 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class DatabaseEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of component the URI relates to
+        /// Type of component the URI relates to.
         /// </summary>
         [Input("component")]
         public Input<string>? Component { get; set; }
 
         /// <summary>
-        /// Domain of the cluster
+        /// Domain of the cluster.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Path of the endpoint
+        /// Path of the endpoint.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Connection port for the endpoint
+        /// Connection port for the endpoint.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Scheme used to generate the URI
+        /// Scheme used to generate the URI.
         /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 
         /// <summary>
-        /// Defines whether the endpoint uses SSL
+        /// Defines whether the endpoint uses SSL.
         /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
         /// <summary>
-        /// SSL mode used to connect to the service if the SSL is enabled
+        /// SSL mode used to connect to the service if the SSL is enabled.
         /// </summary>
         [Input("sslMode")]
         public Input<string>? SslMode { get; set; }
 
         /// <summary>
-        /// URI of the endpoint
+        /// URI of the endpoint.
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

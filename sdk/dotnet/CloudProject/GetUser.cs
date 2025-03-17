@@ -11,12 +11,117 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetUser
     {
+        /// <summary>
+        /// Get the user details of a previously created public cloud project user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var myUser = Ovh.CloudProject.GetUser.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("ovh:CloudProject/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Get the user details of a previously created public cloud project user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var myUser = Ovh.CloudProject.GetUser.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("ovh:CloudProject/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Get the user details of a previously created public cloud project user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var myUser = Ovh.CloudProject.GetUser.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("ovh:CloudProject/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +129,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of a public cloud project's user.
+        /// </summary>
         [Input("userId", required: true)]
         public string UserId { get; set; } = null!;
 
@@ -38,9 +150,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of a public cloud project's user.
+        /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
 
@@ -54,16 +173,32 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetUserResult
     {
+        /// <summary>
+        /// the date the user was created.
+        /// </summary>
         public readonly string CreationDate;
+        /// <summary>
+        /// description of the role
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of roles associated with the user.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserRoleResult> Roles;
         public readonly string ServiceName;
+        /// <summary>
+        /// the status of the user. should be normally set to 'ok'.
+        /// </summary>
         public readonly string Status;
         public readonly string UserId;
+        /// <summary>
+        /// the username generated for the user. This username can be used with
+        /// the Openstack API.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

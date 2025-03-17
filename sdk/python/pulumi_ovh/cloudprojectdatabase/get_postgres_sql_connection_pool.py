@@ -64,11 +64,17 @@ class GetPostgresSqlConnectionPoolResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> str:
+        """
+        Database ID for a database that belongs to the Database cluster given above.
+        """
         return pulumi.get(self, "database_id")
 
     @property
@@ -82,41 +88,66 @@ class GetPostgresSqlConnectionPoolResult:
     @property
     @pulumi.getter
     def mode(self) -> str:
+        """
+        Connection mode to the connection pool
+        Available modes:
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        See Argument Reference above
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port of the connection pool.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        Size of the connection pool.
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
+        """
+        Ssl connection mode for the pool.
+        """
         return pulumi.get(self, "ssl_mode")
 
     @property
     @pulumi.getter
     def uri(self) -> str:
+        """
+        Connection URI to the pool.
+        """
         return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
+        """
+        Database user authorized to connect to the pool, if none all the users are allowed.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -144,7 +175,36 @@ def get_postgres_sql_connection_pool(cluster_id: Optional[str] = None,
                                      service_name: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresSqlConnectionPoolResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    test_pool_postgres_sql_connection_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("testPool", {
+        "service_name": test_pool_postgres_sql_connection_pool.service_name,
+        "cluster_id": test_pool_postgres_sql_connection_pool.cluster_id,
+        "name": test_pool_postgres_sql_connection_pool.name,
+        "database_id": test_pool_postgres_sql_connection_pool.database_id,
+        "mode": test_pool_postgres_sql_connection_pool.mode,
+        "size": test_pool_postgres_sql_connection_pool.size,
+        "port": test_pool_postgres_sql_connection_pool.port,
+        "ssl_mode": test_pool_postgres_sql_connection_pool.ssl_mode,
+        "uri": test_pool_postgres_sql_connection_pool.uri,
+        "user_id": test_pool_postgres_sql_connection_pool.user_id,
+    })
+    ```
+
+
+    :param str cluster_id: Cluster ID.
+    :param str name: Name of the Connection pool.
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -170,7 +230,36 @@ def get_postgres_sql_connection_pool_output(cluster_id: Optional[pulumi.Input[st
                                             service_name: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresSqlConnectionPoolResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    test_pool_postgres_sql_connection_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name="XXX",
+        cluster_id="YYY",
+        name="ZZZ")
+    pulumi.export("testPool", {
+        "service_name": test_pool_postgres_sql_connection_pool.service_name,
+        "cluster_id": test_pool_postgres_sql_connection_pool.cluster_id,
+        "name": test_pool_postgres_sql_connection_pool.name,
+        "database_id": test_pool_postgres_sql_connection_pool.database_id,
+        "mode": test_pool_postgres_sql_connection_pool.mode,
+        "size": test_pool_postgres_sql_connection_pool.size,
+        "port": test_pool_postgres_sql_connection_pool.port,
+        "ssl_mode": test_pool_postgres_sql_connection_pool.ssl_mode,
+        "uri": test_pool_postgres_sql_connection_pool.uri,
+        "user_id": test_pool_postgres_sql_connection_pool.user_id,
+    })
+    ```
+
+
+    :param str cluster_id: Cluster ID.
+    :param str name: Name of the Connection pool.
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

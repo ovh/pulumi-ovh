@@ -9,17 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Hosting
 {
+    /// <summary>
+    /// Create a new user on your private cloud database instance.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user = new Ovh.Hosting.PrivateDatabaseUser("user", new()
+    ///     {
+    ///         Password = "XXXXXX",
+    ///         ServiceName = "XXXXXX",
+    ///         UserName = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser")]
     public partial class PrivateDatabaseUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Password for the new user ( alphanumeric and 8 characters minimum )
+        /// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your private database
+        /// The internal name of your private database.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -85,7 +116,7 @@ namespace Pulumi.Ovh.Hosting
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for the new user ( alphanumeric and 8 characters minimum )
+        /// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
         /// </summary>
         public Input<string>? Password
         {
@@ -98,7 +129,7 @@ namespace Pulumi.Ovh.Hosting
         }
 
         /// <summary>
-        /// The internal name of your private database
+        /// The internal name of your private database.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -121,7 +152,7 @@ namespace Pulumi.Ovh.Hosting
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for the new user ( alphanumeric and 8 characters minimum )
+        /// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
         /// </summary>
         public Input<string>? Password
         {
@@ -134,7 +165,7 @@ namespace Pulumi.Ovh.Hosting
         }
 
         /// <summary>
-        /// The internal name of your private database
+        /// The internal name of your private database.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

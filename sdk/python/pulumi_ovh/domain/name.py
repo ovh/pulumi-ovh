@@ -30,8 +30,7 @@ class NameArgs:
         """
         The set of arguments for constructing a Name resource.
         :param pulumi.Input[str] domain_name: Domain name
-        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-               value
+        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input['NameTargetSpecArgs'] target_spec: Latest target specification of the domain name resource.
         """
@@ -63,8 +62,7 @@ class NameArgs:
     @pulumi.getter
     def checksum(self) -> Optional[pulumi.Input[str]]:
         """
-        Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-        value
+        Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         """
         return pulumi.get(self, "checksum")
 
@@ -131,16 +129,14 @@ class _NameState:
                  target_spec: Optional[pulumi.Input['NameTargetSpecArgs']] = None):
         """
         Input properties used for looking up and filtering Name resources.
-        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-               value
+        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         :param pulumi.Input['NameCurrentStateArgs'] current_state: Current state of the domain name
         :param pulumi.Input[Sequence[pulumi.Input['NameCurrentTaskArgs']]] current_tasks: Ongoing asynchronous tasks related to the domain name resource
         :param pulumi.Input[str] domain_name: Domain name
         :param pulumi.Input['NameIamArgs'] iam: IAM resource metadata
         :param pulumi.Input['NameOrderArgs'] order: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] resource_status: Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-               `UPDATING` or `ERROR` status
+        :param pulumi.Input[str] resource_status: Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
         :param pulumi.Input['NameTargetSpecArgs'] target_spec: Latest target specification of the domain name resource.
         """
         if checksum is not None:
@@ -170,8 +166,7 @@ class _NameState:
     @pulumi.getter
     def checksum(self) -> Optional[pulumi.Input[str]]:
         """
-        Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-        value
+        Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         """
         return pulumi.get(self, "checksum")
 
@@ -273,8 +268,7 @@ class _NameState:
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-        `UPDATING` or `ERROR` status
+        Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
         """
         return pulumi.get(self, "resource_status")
 
@@ -308,11 +302,11 @@ class Name(pulumi.CustomResource):
                  target_spec: Optional[pulumi.Input[Union['NameTargetSpecArgs', 'NameTargetSpecArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Name resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-               value
+        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         :param pulumi.Input[str] domain_name: Domain name
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[Union['NameTargetSpecArgs', 'NameTargetSpecArgsDict']] target_spec: Latest target specification of the domain name resource.
@@ -324,7 +318,8 @@ class Name(pulumi.CustomResource):
                  args: NameArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Name resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param NameArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -396,16 +391,14 @@ class Name(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-               value
+        :param pulumi.Input[str] checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         :param pulumi.Input[Union['NameCurrentStateArgs', 'NameCurrentStateArgsDict']] current_state: Current state of the domain name
         :param pulumi.Input[Sequence[pulumi.Input[Union['NameCurrentTaskArgs', 'NameCurrentTaskArgsDict']]]] current_tasks: Ongoing asynchronous tasks related to the domain name resource
         :param pulumi.Input[str] domain_name: Domain name
         :param pulumi.Input[Union['NameIamArgs', 'NameIamArgsDict']] iam: IAM resource metadata
         :param pulumi.Input[Union['NameOrderArgs', 'NameOrderArgsDict']] order: Details about an Order
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] resource_status: Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-               `UPDATING` or `ERROR` status
+        :param pulumi.Input[str] resource_status: Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
         :param pulumi.Input[Union['NameTargetSpecArgs', 'NameTargetSpecArgsDict']] target_spec: Latest target specification of the domain name resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -429,8 +422,7 @@ class Name(pulumi.CustomResource):
     @pulumi.getter
     def checksum(self) -> pulumi.Output[str]:
         """
-        Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-        value
+        Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
         """
         return pulumi.get(self, "checksum")
 
@@ -496,8 +488,7 @@ class Name(pulumi.CustomResource):
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> pulumi.Output[str]:
         """
-        Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-        `UPDATING` or `ERROR` status
+        Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
         """
         return pulumi.get(self, "resource_status")
 

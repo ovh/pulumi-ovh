@@ -11,12 +11,66 @@ namespace Pulumi.Ovh.Iam
 {
     public static class GetPolicies
     {
+        /// <summary>
+        /// Use this data source to list the existing IAM policies of an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicies = Ovh.Iam.GetPolicies.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to list the existing IAM policies of an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicies = Ovh.Iam.GetPolicies.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPoliciesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to list the existing IAM policies of an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPolicies = Ovh.Iam.GetPolicies.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPoliciesResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("ovh:Iam/getPolicies:getPolicies", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -29,6 +83,9 @@ namespace Pulumi.Ovh.Iam
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of the policies IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Policies;
 
         [OutputConstructor]

@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Create and manage an OVHcloud Savings Plan
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const plan = new ovh.savingsplan.SavingsPlan("plan", {
+ *     autoRenewal: true,
+ *     displayName: "one_month_rancher_savings_plan",
+ *     flavor: "Rancher",
+ *     period: "P1M",
+ *     serviceName: "<public cloud project ID>",
+ *     size: 2,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A savings plan can be imported using the following format: `serviceName` and `id` of the savings plan, separated by "/" e.g.
+ */
 export class SavingsPlan extends pulumi.CustomResource {
     /**
      * Get an existing SavingsPlan resource's state with the given name, ID, and optional extra
@@ -45,7 +68,7 @@ export class SavingsPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly endDate!: pulumi.Output<string>;
     /**
-     * Savings Plan flavor
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      */
     public readonly flavor!: pulumi.Output<string>;
     /**
@@ -53,7 +76,7 @@ export class SavingsPlan extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<string>;
     /**
-     * Action performed when reaching the end of the period
+     * Action performed when reaching the end of the period (controles by the `autoRenewal` parameter)
      */
     public /*out*/ readonly periodEndAction!: pulumi.Output<string>;
     /**
@@ -65,7 +88,7 @@ export class SavingsPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly periodStartDate!: pulumi.Output<string>;
     /**
-     * ID of the service
+     * Billing ID of the service
      */
     public /*out*/ readonly serviceId!: pulumi.Output<number>;
     /**
@@ -164,7 +187,7 @@ export interface SavingsPlanState {
      */
     endDate?: pulumi.Input<string>;
     /**
-     * Savings Plan flavor
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      */
     flavor?: pulumi.Input<string>;
     /**
@@ -172,7 +195,7 @@ export interface SavingsPlanState {
      */
     period?: pulumi.Input<string>;
     /**
-     * Action performed when reaching the end of the period
+     * Action performed when reaching the end of the period (controles by the `autoRenewal` parameter)
      */
     periodEndAction?: pulumi.Input<string>;
     /**
@@ -184,7 +207,7 @@ export interface SavingsPlanState {
      */
     periodStartDate?: pulumi.Input<string>;
     /**
-     * ID of the service
+     * Billing ID of the service
      */
     serviceId?: pulumi.Input<number>;
     /**
@@ -218,7 +241,7 @@ export interface SavingsPlanArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Savings Plan flavor
+     * Savings Plan flavor. The list of available flavors can be retrieved in the next section.
      */
     flavor: pulumi.Input<string>;
     /**

@@ -13,11 +13,30 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetUsersUserResult
     {
+        /// <summary>
+        /// the date the user was created.
+        /// </summary>
         public readonly string CreationDate;
+        /// <summary>
+        /// description of the role
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// A list of roles associated with the user.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserRoleResult> Roles;
+        /// <summary>
+        /// the status of the user. should be normally set to 'ok'.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The ID of a public cloud project's user.
+        /// </summary>
         public readonly string UserId;
+        /// <summary>
+        /// the username generated for the user. This username can be used with
+        /// the Openstack API.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

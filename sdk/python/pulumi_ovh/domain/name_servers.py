@@ -25,8 +25,8 @@ class NameServersArgs:
                  servers: pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]]):
         """
         The set of arguments for constructing a NameServers resource.
-        :param pulumi.Input[str] domain: Domain name
-        :param pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]] servers: Name servers for the domain
+        :param pulumi.Input[str] domain: Domain name for which to manage name servers
+        :param pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]] servers: Details about a name server
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "servers", servers)
@@ -35,7 +35,7 @@ class NameServersArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        Domain name
+        Domain name for which to manage name servers
         """
         return pulumi.get(self, "domain")
 
@@ -47,7 +47,7 @@ class NameServersArgs:
     @pulumi.getter
     def servers(self) -> pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]]:
         """
-        Name servers for the domain
+        Details about a name server
         """
         return pulumi.get(self, "servers")
 
@@ -63,8 +63,8 @@ class _NameServersState:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]]] = None):
         """
         Input properties used for looking up and filtering NameServers resources.
-        :param pulumi.Input[str] domain: Domain name
-        :param pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]] servers: Name servers for the domain
+        :param pulumi.Input[str] domain: Domain name for which to manage name servers
+        :param pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]] servers: Details about a name server
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -75,7 +75,7 @@ class _NameServersState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain name
+        Domain name for which to manage name servers
         """
         return pulumi.get(self, "domain")
 
@@ -87,7 +87,7 @@ class _NameServersState:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NameServersServerArgs']]]]:
         """
-        Name servers for the domain
+        Details about a name server
         """
         return pulumi.get(self, "servers")
 
@@ -105,11 +105,59 @@ class NameServers(pulumi.CustomResource):
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NameServersServerArgs', 'NameServersServerArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a NameServers resource with the given unique name, props, and options.
+        Use this resource to manage a domain's name servers.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        name_servers = ovh.domain.NameServers("nameServers",
+            domain="mydomain.ovh",
+            servers=[
+                {
+                    "host": "dns105.ovh.net",
+                    "ip": "213.251.188.144",
+                },
+                {
+                    "host": "ns105.ovh.net",
+                },
+            ])
+        ```
+
+        ## Import
+
+        Name servers can be imported using their `domain`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_domain_name_servers.name_servers
+
+          id = "<domain name>"
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=name_servers.tf
+
+        $ pulumi up
+
+        The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: Domain name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NameServersServerArgs', 'NameServersServerArgsDict']]]] servers: Name servers for the domain
+        :param pulumi.Input[str] domain: Domain name for which to manage name servers
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NameServersServerArgs', 'NameServersServerArgsDict']]]] servers: Details about a name server
         """
         ...
     @overload
@@ -118,7 +166,55 @@ class NameServers(pulumi.CustomResource):
                  args: NameServersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NameServers resource with the given unique name, props, and options.
+        Use this resource to manage a domain's name servers.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        name_servers = ovh.domain.NameServers("nameServers",
+            domain="mydomain.ovh",
+            servers=[
+                {
+                    "host": "dns105.ovh.net",
+                    "ip": "213.251.188.144",
+                },
+                {
+                    "host": "ns105.ovh.net",
+                },
+            ])
+        ```
+
+        ## Import
+
+        Name servers can be imported using their `domain`.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          to = ovh_domain_name_servers.name_servers
+
+          id = "<domain name>"
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=name_servers.tf
+
+        $ pulumi up
+
+        The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param NameServersArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,8 +266,8 @@ class NameServers(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: Domain name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NameServersServerArgs', 'NameServersServerArgsDict']]]] servers: Name servers for the domain
+        :param pulumi.Input[str] domain: Domain name for which to manage name servers
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NameServersServerArgs', 'NameServersServerArgsDict']]]] servers: Details about a name server
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -185,7 +281,7 @@ class NameServers(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        Domain name
+        Domain name for which to manage name servers
         """
         return pulumi.get(self, "domain")
 
@@ -193,7 +289,7 @@ class NameServers(pulumi.CustomResource):
     @pulumi.getter
     def servers(self) -> pulumi.Output[Sequence['outputs.NameServersServer']]:
         """
-        Name servers for the domain
+        Details about a name server
         """
         return pulumi.get(self, "servers")
 

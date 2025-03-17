@@ -62,11 +62,17 @@ class GetServerSpecificationsNetworkResult:
     @property
     @pulumi.getter
     def bandwidth(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthResult':
+        """
+        vrack bandwidth limitation
+        """
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="connectionVal")
     def connection_val(self) -> 'outputs.GetServerSpecificationsNetworkConnectionValResult':
+        """
+        Network connection flow rate
+        """
         return pulumi.get(self, "connection_val")
 
     @property
@@ -80,11 +86,17 @@ class GetServerSpecificationsNetworkResult:
     @property
     @pulumi.getter
     def ola(self) -> 'outputs.GetServerSpecificationsNetworkOlaResult':
+        """
+        OLA details
+        """
         return pulumi.get(self, "ola")
 
     @property
     @pulumi.getter
     def routing(self) -> 'outputs.GetServerSpecificationsNetworkRoutingResult':
+        """
+        Routing details
+        """
         return pulumi.get(self, "routing")
 
     @property
@@ -95,21 +107,33 @@ class GetServerSpecificationsNetworkResult:
     @property
     @pulumi.getter
     def switching(self) -> 'outputs.GetServerSpecificationsNetworkSwitchingResult':
+        """
+        Switching details
+        """
         return pulumi.get(self, "switching")
 
     @property
     @pulumi.getter
     def traffic(self) -> 'outputs.GetServerSpecificationsNetworkTrafficResult':
+        """
+        Traffic details
+        """
         return pulumi.get(self, "traffic")
 
     @property
     @pulumi.getter
     def vmac(self) -> 'outputs.GetServerSpecificationsNetworkVmacResult':
+        """
+        VMAC information for this dedicated server
+        """
         return pulumi.get(self, "vmac")
 
     @property
     @pulumi.getter
     def vrack(self) -> 'outputs.GetServerSpecificationsNetworkVrackResult':
+        """
+        vRack details
+        """
         return pulumi.get(self, "vrack")
 
 
@@ -134,7 +158,19 @@ class AwaitableGetServerSpecificationsNetworkResult(GetServerSpecificationsNetwo
 def get_server_specifications_network(service_name: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerSpecificationsNetworkResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    spec = ovh.Dedicated.get_server_specifications_network(service_name="myserver")
+    ```
+
+
+    :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -155,7 +191,19 @@ def get_server_specifications_network(service_name: Optional[str] = None,
 def get_server_specifications_network_output(service_name: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerSpecificationsNetworkResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    spec = ovh.Dedicated.get_server_specifications_network(service_name="myserver")
+    ```
+
+
+    :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

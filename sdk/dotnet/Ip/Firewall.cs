@@ -9,6 +9,28 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Ip
 {
+    /// <summary>
+    /// Use this resource to manage an IP firewall.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myFirewall = new Ovh.Ip.Firewall("myFirewall", new()
+    ///     {
+    ///         Ip = "XXXXXX",
+    ///         IpOnFirewall = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Ip/firewall:Firewall")]
     public partial class Firewall : global::Pulumi.CustomResource
     {
@@ -16,13 +38,14 @@ namespace Pulumi.Ovh.Ip
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        /// The IP or the CIDR
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 address (e.g., 192.0.2.0)
+        /// IPv4 address
+        /// * `enabled ` - Whether firewall should be enabled
         /// </summary>
         [Output("ipOnFirewall")]
         public Output<string> IpOnFirewall { get; private set; } = null!;
@@ -84,13 +107,14 @@ namespace Pulumi.Ovh.Ip
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        /// The IP or the CIDR
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// IPv4 address (e.g., 192.0.2.0)
+        /// IPv4 address
+        /// * `enabled ` - Whether firewall should be enabled
         /// </summary>
         [Input("ipOnFirewall", required: true)]
         public Input<string> IpOnFirewall { get; set; } = null!;
@@ -107,13 +131,14 @@ namespace Pulumi.Ovh.Ip
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        /// The IP or the CIDR
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// IPv4 address (e.g., 192.0.2.0)
+        /// IPv4 address
+        /// * `enabled ` - Whether firewall should be enabled
         /// </summary>
         [Input("ipOnFirewall")]
         public Input<string>? IpOnFirewall { get; set; }

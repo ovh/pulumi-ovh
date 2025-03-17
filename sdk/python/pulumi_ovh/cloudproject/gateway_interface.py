@@ -25,10 +25,10 @@ class GatewayInterfaceInitArgs:
                  interface_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GatewayInterface resource.
-        :param pulumi.Input[str] region: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] subnet_id: Subnet id to add
-        :param pulumi.Input[str] interface_id: Interface ID
+        :param pulumi.Input[str] region: Region of the gateway
+        :param pulumi.Input[str] service_name: ID of the cloud project
+        :param pulumi.Input[str] subnet_id: ID of the subnet to add
+        :param pulumi.Input[str] interface_id: ID of the interface
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service_name", service_name)
@@ -40,7 +40,7 @@ class GatewayInterfaceInitArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        Region name
+        Region of the gateway
         """
         return pulumi.get(self, "region")
 
@@ -52,7 +52,7 @@ class GatewayInterfaceInitArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name
+        ID of the cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -64,7 +64,7 @@ class GatewayInterfaceInitArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
         """
-        Subnet id to add
+        ID of the subnet to add
         """
         return pulumi.get(self, "subnet_id")
 
@@ -76,7 +76,7 @@ class GatewayInterfaceInitArgs:
     @pulumi.getter(name="interfaceId")
     def interface_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Interface ID
+        ID of the interface
         """
         return pulumi.get(self, "interface_id")
 
@@ -96,12 +96,12 @@ class _GatewayInterfaceState:
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayInterface resources.
-        :param pulumi.Input[str] interface_id: Interface ID
+        :param pulumi.Input[str] interface_id: ID of the interface
         :param pulumi.Input[str] ip: IP of the interface
         :param pulumi.Input[str] network_id: Network ID of the interface
-        :param pulumi.Input[str] region: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] subnet_id: Subnet id to add
+        :param pulumi.Input[str] region: Region of the gateway
+        :param pulumi.Input[str] service_name: ID of the cloud project
+        :param pulumi.Input[str] subnet_id: ID of the subnet to add
         """
         if interface_id is not None:
             pulumi.set(__self__, "interface_id", interface_id)
@@ -120,7 +120,7 @@ class _GatewayInterfaceState:
     @pulumi.getter(name="interfaceId")
     def interface_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Interface ID
+        ID of the interface
         """
         return pulumi.get(self, "interface_id")
 
@@ -156,7 +156,7 @@ class _GatewayInterfaceState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region name
+        Region of the gateway
         """
         return pulumi.get(self, "region")
 
@@ -168,7 +168,7 @@ class _GatewayInterfaceState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name
+        ID of the cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -180,7 +180,7 @@ class _GatewayInterfaceState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Subnet id to add
+        ID of the subnet to add
         """
         return pulumi.get(self, "subnet_id")
 
@@ -200,13 +200,24 @@ class GatewayInterface(pulumi.CustomResource):
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a GatewayInterface resource with the given unique name, props, and options.
+        Create a new Gateway Interface for existing subnet in the specified public cloud project.
+
+        ## Import
+
+        A gateway interface can be imported using the `service_name`, `region`, `id` (identifier of the gateway) and `interface_id` properties, separated by a `/`.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] interface_id: Interface ID
-        :param pulumi.Input[str] region: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] subnet_id: Subnet id to add
+        :param pulumi.Input[str] interface_id: ID of the interface
+        :param pulumi.Input[str] region: Region of the gateway
+        :param pulumi.Input[str] service_name: ID of the cloud project
+        :param pulumi.Input[str] subnet_id: ID of the subnet to add
         """
         ...
     @overload
@@ -215,7 +226,18 @@ class GatewayInterface(pulumi.CustomResource):
                  args: GatewayInterfaceInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GatewayInterface resource with the given unique name, props, and options.
+        Create a new Gateway Interface for existing subnet in the specified public cloud project.
+
+        ## Import
+
+        A gateway interface can be imported using the `service_name`, `region`, `id` (identifier of the gateway) and `interface_id` properties, separated by a `/`.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param GatewayInterfaceInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -279,12 +301,12 @@ class GatewayInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] interface_id: Interface ID
+        :param pulumi.Input[str] interface_id: ID of the interface
         :param pulumi.Input[str] ip: IP of the interface
         :param pulumi.Input[str] network_id: Network ID of the interface
-        :param pulumi.Input[str] region: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] subnet_id: Subnet id to add
+        :param pulumi.Input[str] region: Region of the gateway
+        :param pulumi.Input[str] service_name: ID of the cloud project
+        :param pulumi.Input[str] subnet_id: ID of the subnet to add
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +324,7 @@ class GatewayInterface(pulumi.CustomResource):
     @pulumi.getter(name="interfaceId")
     def interface_id(self) -> pulumi.Output[str]:
         """
-        Interface ID
+        ID of the interface
         """
         return pulumi.get(self, "interface_id")
 
@@ -326,7 +348,7 @@ class GatewayInterface(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Region name
+        Region of the gateway
         """
         return pulumi.get(self, "region")
 
@@ -334,7 +356,7 @@ class GatewayInterface(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        ID of the cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -342,7 +364,7 @@ class GatewayInterface(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
         """
-        Subnet id to add
+        ID of the subnet to add
         """
         return pulumi.get(self, "subnet_id")
 

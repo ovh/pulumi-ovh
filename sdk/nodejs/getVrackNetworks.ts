@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lbNetworks = ovh.getVrackNetworks({
+ *     serviceName: "XXXXXX",
+ *     subnet: "10.0.0.0/24",
+ * });
+ * ```
+ */
 export function getVrackNetworks(args: GetVrackNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetVrackNetworksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:index/getVrackNetworks:getVrackNetworks", {
@@ -17,8 +32,17 @@ export function getVrackNetworks(args: GetVrackNetworksArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getVrackNetworks.
  */
 export interface GetVrackNetworksArgs {
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName: string;
+    /**
+     * Filters networks on the subnet.
+     */
     subnet?: string;
+    /**
+     * Filters networks on the vlan id.
+     */
     vlanId?: number;
 }
 
@@ -30,11 +54,29 @@ export interface GetVrackNetworksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The list of vrack network ids.
+     */
     readonly results: number[];
     readonly serviceName: string;
     readonly subnet?: string;
     readonly vlanId?: number;
 }
+/**
+ * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lbNetworks = ovh.getVrackNetworks({
+ *     serviceName: "XXXXXX",
+ *     subnet: "10.0.0.0/24",
+ * });
+ * ```
+ */
 export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVrackNetworksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:index/getVrackNetworks:getVrackNetworks", {
@@ -48,7 +90,16 @@ export function getVrackNetworksOutput(args: GetVrackNetworksOutputArgs, opts?: 
  * A collection of arguments for invoking getVrackNetworks.
  */
 export interface GetVrackNetworksOutputArgs {
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * Filters networks on the subnet.
+     */
     subnet?: pulumi.Input<string>;
+    /**
+     * Filters networks on the vlan id.
+     */
     vlanId?: pulumi.Input<number>;
 }

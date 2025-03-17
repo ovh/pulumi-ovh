@@ -7,10 +7,35 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of VPS associated with your OVH Account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vps"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vps.GetVpss(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVpss(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVpssResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpssResult
@@ -24,7 +49,8 @@ func GetVpss(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVpssResult, 
 // A collection of values returned by getVpss.
 type GetVpssResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id      string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of VPS IDs associated with your OVH Account.
 	Results []string `pulumi:"results"`
 }
 
@@ -55,6 +81,7 @@ func (o GetVpssResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpssResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of VPS IDs associated with your OVH Account.
 func (o GetVpssResultOutput) Results() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpssResult) []string { return v.Results }).(pulumi.StringArrayOutput)
 }

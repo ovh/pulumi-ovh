@@ -55,11 +55,17 @@ class GetResourceGroupResult:
     @property
     @pulumi.getter(name="GroupURN")
     def group_urn(self) -> str:
+        """
+        URN of the resource group, used when writing policies
+        """
         return pulumi.get(self, "group_urn")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Date of the creation of the resource group
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -70,26 +76,41 @@ class GetResourceGroupResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the resource group
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> str:
+        """
+        Name of the account owning the resource group
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
+        """
+        Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
+        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence[str]:
+        """
+        Set of the URNs of the resources contained in the resource group
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        Date of the last modification of the resource group
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -112,7 +133,19 @@ class AwaitableGetResourceGroupResult(GetResourceGroupResult):
 def get_resource_group(id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source get details about a resource group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_resource_group = ovh.Iam.get_resource_group(id="my_resource_group_id")
+    ```
+
+
+    :param str id: Id of the resource group
     """
     __args__ = dict()
     __args__['id'] = id
@@ -131,7 +164,19 @@ def get_resource_group(id: Optional[str] = None,
 def get_resource_group_output(id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source get details about a resource group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_resource_group = ovh.Iam.get_resource_group(id="my_resource_group_id")
+    ```
+
+
+    :param str id: Id of the resource group
     """
     __args__ = dict()
     __args__['id'] = id

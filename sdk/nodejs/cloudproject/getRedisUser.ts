@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const redisUser = ovh.CloudProject.getRedisUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ",
+ * });
+ * export const redisUserCommands = redisUser.then(redisUser => redisUser.commands);
+ * ```
+ */
 export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRedisUser:getRedisUser", {
@@ -17,8 +34,18 @@ export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getRedisUser.
  */
 export interface GetRedisUserArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: string;
+    /**
+     * Name of the user
+     */
     name: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -26,20 +53,64 @@ export interface GetRedisUserArgs {
  * A collection of values returned by getRedisUser.
  */
 export interface GetRedisUserResult {
+    /**
+     * Categories of the user.
+     */
     readonly categories: string[];
+    /**
+     * Channels of the user.
+     */
     readonly channels: string[];
+    /**
+     * See Argument Reference above.
+     */
     readonly clusterId: string;
+    /**
+     * Commands of the user.
+     */
     readonly commands: string[];
+    /**
+     * Date of the creation of the user.
+     */
     readonly createdAt: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Keys of the user.
+     */
     readonly keys: string[];
+    /**
+     * See Argument Reference above.
+     */
     readonly name: string;
+    /**
+     * Current status of the user.
+     */
     readonly serviceName: string;
+    /**
+     * Current status of the user.
+     */
     readonly status: string;
 }
+/**
+ * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const redisUser = ovh.CloudProject.getRedisUser({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     name: "ZZZ",
+ * });
+ * export const redisUserCommands = redisUser.then(redisUser => redisUser.commands);
+ * ```
+ */
 export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRedisUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRedisUser:getRedisUser", {
@@ -53,7 +124,17 @@ export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getRedisUser.
  */
 export interface GetRedisUserOutputArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * Name of the user
+     */
     name: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

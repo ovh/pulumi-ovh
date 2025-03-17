@@ -8,28 +8,81 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a topic for a kafka cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			kafka, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXX",
+//				Engine:      "kafka",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudprojectdatabase.NewKafkaTopic(ctx, "topic", &cloudprojectdatabase.KafkaTopicArgs{
+//				ServiceName:       pulumi.String(kafka.ServiceName),
+//				ClusterId:         pulumi.String(kafka.Id),
+//				MinInsyncReplicas: pulumi.Int(1),
+//				Partitions:        pulumi.Int(3),
+//				Replication:       pulumi.Int(2),
+//				RetentionBytes:    pulumi.Int(4),
+//				RetentionHours:    pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+// ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Minimum insync replica accepted for this topic
+	// Minimum insync replica accepted for this topic. Should be superior to 0
 	MinInsyncReplicas pulumi.IntOutput `pulumi:"minInsyncReplicas"`
-	// Name of the topic
+	// Name of the topic. No spaces allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of partitions for this topic
+	// Number of partitions for this topic. Should be superior to 0
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// Number of replication for this topic
+	// Number of replication for this topic. Should be superior to 1
 	Replication pulumi.IntOutput `pulumi:"replication"`
-	// Number of bytes for the retention of the data for this topic
+	// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
 	RetentionBytes pulumi.IntOutput `pulumi:"retentionBytes"`
-	// Number of hours for the retention of the data for this topic
-	RetentionHours pulumi.IntOutput    `pulumi:"retentionHours"`
-	ServiceName    pulumi.StringOutput `pulumi:"serviceName"`
+	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+	RetentionHours pulumi.IntOutput `pulumi:"retentionHours"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
 // NewKafkaTopic registers a new resource with the given unique name, arguments, and options.
@@ -68,39 +121,43 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Minimum insync replica accepted for this topic
+	// Minimum insync replica accepted for this topic. Should be superior to 0
 	MinInsyncReplicas *int `pulumi:"minInsyncReplicas"`
-	// Name of the topic
+	// Name of the topic. No spaces allowed.
 	Name *string `pulumi:"name"`
-	// Number of partitions for this topic
+	// Number of partitions for this topic. Should be superior to 0
 	Partitions *int `pulumi:"partitions"`
-	// Number of replication for this topic
+	// Number of replication for this topic. Should be superior to 1
 	Replication *int `pulumi:"replication"`
-	// Number of bytes for the retention of the data for this topic
+	// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
 	RetentionBytes *int `pulumi:"retentionBytes"`
-	// Number of hours for the retention of the data for this topic
-	RetentionHours *int    `pulumi:"retentionHours"`
-	ServiceName    *string `pulumi:"serviceName"`
+	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+	RetentionHours *int `pulumi:"retentionHours"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 type KafkaTopicState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Minimum insync replica accepted for this topic
+	// Minimum insync replica accepted for this topic. Should be superior to 0
 	MinInsyncReplicas pulumi.IntPtrInput
-	// Name of the topic
+	// Name of the topic. No spaces allowed.
 	Name pulumi.StringPtrInput
-	// Number of partitions for this topic
+	// Number of partitions for this topic. Should be superior to 0
 	Partitions pulumi.IntPtrInput
-	// Number of replication for this topic
+	// Number of replication for this topic. Should be superior to 1
 	Replication pulumi.IntPtrInput
-	// Number of bytes for the retention of the data for this topic
+	// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
 	RetentionBytes pulumi.IntPtrInput
-	// Number of hours for the retention of the data for this topic
+	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours pulumi.IntPtrInput
-	ServiceName    pulumi.StringPtrInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 }
 
 func (KafkaTopicState) ElementType() reflect.Type {
@@ -108,40 +165,44 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Minimum insync replica accepted for this topic
+	// Minimum insync replica accepted for this topic. Should be superior to 0
 	MinInsyncReplicas *int `pulumi:"minInsyncReplicas"`
-	// Name of the topic
+	// Name of the topic. No spaces allowed.
 	Name *string `pulumi:"name"`
-	// Number of partitions for this topic
+	// Number of partitions for this topic. Should be superior to 0
 	Partitions *int `pulumi:"partitions"`
-	// Number of replication for this topic
+	// Number of replication for this topic. Should be superior to 1
 	Replication *int `pulumi:"replication"`
-	// Number of bytes for the retention of the data for this topic
+	// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
 	RetentionBytes *int `pulumi:"retentionBytes"`
-	// Number of hours for the retention of the data for this topic
-	RetentionHours *int   `pulumi:"retentionHours"`
-	ServiceName    string `pulumi:"serviceName"`
+	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
+	RetentionHours *int `pulumi:"retentionHours"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Minimum insync replica accepted for this topic
+	// Minimum insync replica accepted for this topic. Should be superior to 0
 	MinInsyncReplicas pulumi.IntPtrInput
-	// Name of the topic
+	// Name of the topic. No spaces allowed.
 	Name pulumi.StringPtrInput
-	// Number of partitions for this topic
+	// Number of partitions for this topic. Should be superior to 0
 	Partitions pulumi.IntPtrInput
-	// Number of replication for this topic
+	// Number of replication for this topic. Should be superior to 1
 	Replication pulumi.IntPtrInput
-	// Number of bytes for the retention of the data for this topic
+	// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
 	RetentionBytes pulumi.IntPtrInput
-	// Number of hours for the retention of the data for this topic
+	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours pulumi.IntPtrInput
-	ServiceName    pulumi.StringInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringInput
 }
 
 func (KafkaTopicArgs) ElementType() reflect.Type {
@@ -231,41 +292,43 @@ func (o KafkaTopicOutput) ToKafkaTopicOutputWithContext(ctx context.Context) Kaf
 	return o
 }
 
-// Id of the database cluster
+// Cluster ID.
 func (o KafkaTopicOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Minimum insync replica accepted for this topic
+// Minimum insync replica accepted for this topic. Should be superior to 0
 func (o KafkaTopicOutput) MinInsyncReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.MinInsyncReplicas }).(pulumi.IntOutput)
 }
 
-// Name of the topic
+// Name of the topic. No spaces allowed.
 func (o KafkaTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of partitions for this topic
+// Number of partitions for this topic. Should be superior to 0
 func (o KafkaTopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// Number of replication for this topic
+// Number of replication for this topic. Should be superior to 1
 func (o KafkaTopicOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Replication }).(pulumi.IntOutput)
 }
 
-// Number of bytes for the retention of the data for this topic
+// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
 func (o KafkaTopicOutput) RetentionBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.RetentionBytes }).(pulumi.IntOutput)
 }
 
-// Number of hours for the retention of the data for this topic
+// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 func (o KafkaTopicOutput) RetentionHours() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.RetentionHours }).(pulumi.IntOutput)
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o KafkaTopicOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

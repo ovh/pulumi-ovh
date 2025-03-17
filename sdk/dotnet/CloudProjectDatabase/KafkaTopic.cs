@@ -9,51 +9,99 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
+    /// <summary>
+    /// Creates a topic for a kafka cluster associated with a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kafka = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Engine = "kafka",
+    ///         Id = "ZZZ",
+    ///     });
+    /// 
+    ///     var topic = new Ovh.CloudProjectDatabase.KafkaTopic("topic", new()
+    ///     {
+    ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         MinInsyncReplicas = 1,
+    ///         Partitions = 3,
+    ///         Replication = 2,
+    ///         RetentionBytes = 4,
+    ///         RetentionHours = 5,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum insync replica accepted for this topic
+        /// Minimum insync replica accepted for this topic. Should be superior to 0
         /// </summary>
         [Output("minInsyncReplicas")]
         public Output<int> MinInsyncReplicas { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the topic
+        /// Name of the topic. No spaces allowed.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of partitions for this topic
+        /// Number of partitions for this topic. Should be superior to 0
         /// </summary>
         [Output("partitions")]
         public Output<int> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// Number of replication for this topic
+        /// Number of replication for this topic. Should be superior to 1
         /// </summary>
         [Output("replication")]
         public Output<int> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// Number of bytes for the retention of the data for this topic
+        /// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         /// </summary>
         [Output("retentionBytes")]
         public Output<int> RetentionBytes { get; private set; } = null!;
 
         /// <summary>
-        /// Number of hours for the retention of the data for this topic
+        /// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
         /// </summary>
         [Output("retentionHours")]
         public Output<int> RetentionHours { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -105,47 +153,51 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class KafkaTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Minimum insync replica accepted for this topic
+        /// Minimum insync replica accepted for this topic. Should be superior to 0
         /// </summary>
         [Input("minInsyncReplicas")]
         public Input<int>? MinInsyncReplicas { get; set; }
 
         /// <summary>
-        /// Name of the topic
+        /// Name of the topic. No spaces allowed.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of partitions for this topic
+        /// Number of partitions for this topic. Should be superior to 0
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// Number of replication for this topic
+        /// Number of replication for this topic. Should be superior to 1
         /// </summary>
         [Input("replication")]
         public Input<int>? Replication { get; set; }
 
         /// <summary>
-        /// Number of bytes for the retention of the data for this topic
+        /// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         /// </summary>
         [Input("retentionBytes")]
         public Input<int>? RetentionBytes { get; set; }
 
         /// <summary>
-        /// Number of hours for the retention of the data for this topic
+        /// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
         /// </summary>
         [Input("retentionHours")]
         public Input<int>? RetentionHours { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -158,47 +210,51 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class KafkaTopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Minimum insync replica accepted for this topic
+        /// Minimum insync replica accepted for this topic. Should be superior to 0
         /// </summary>
         [Input("minInsyncReplicas")]
         public Input<int>? MinInsyncReplicas { get; set; }
 
         /// <summary>
-        /// Name of the topic
+        /// Name of the topic. No spaces allowed.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of partitions for this topic
+        /// Number of partitions for this topic. Should be superior to 0
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// Number of replication for this topic
+        /// Number of replication for this topic. Should be superior to 1
         /// </summary>
         [Input("replication")]
         public Input<int>? Replication { get; set; }
 
         /// <summary>
-        /// Number of bytes for the retention of the data for this topic
+        /// Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         /// </summary>
         [Input("retentionBytes")]
         public Input<int>? RetentionBytes { get; set; }
 
         /// <summary>
-        /// Number of hours for the retention of the data for this topic
+        /// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
         /// </summary>
         [Input("retentionHours")]
         public Input<int>? RetentionHours { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

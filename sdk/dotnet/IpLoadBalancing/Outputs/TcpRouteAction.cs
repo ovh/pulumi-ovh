@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.IpLoadBalancing.Outputs
     public sealed class TcpRouteAction
     {
         /// <summary>
-        /// Farm ID for "farm" action type, empty for others
+        /// Farm ID for "farm" action type, empty for others.
         /// </summary>
         public readonly string? Target;
         /// <summary>

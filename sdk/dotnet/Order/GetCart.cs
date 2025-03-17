@@ -11,12 +11,81 @@ namespace Pulumi.Ovh.Order
 {
     public static class GetCart
     {
+        /// <summary>
+        /// Use this data source to create a temporary order cart to retrieve information order cart products.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetCartResult> InvokeAsync(GetCartArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to create a temporary order cart to retrieve information order cart products.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCartResult> Invoke(GetCartInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to create a temporary order cart to retrieve information order cart products.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAccount = Ovh.Me.GetMe.Invoke();
+        /// 
+        ///     var myCart = Ovh.Order.GetCart.Invoke(new()
+        ///     {
+        ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCartResult> Invoke(GetCartInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCartResult>("ovh:Order/getCart:getCart", args ?? new GetCartInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +93,27 @@ namespace Pulumi.Ovh.Order
 
     public sealed class GetCartArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+        /// </summary>
         [Input("assign")]
         public bool? Assign { get; set; }
 
+        /// <summary>
+        /// Description of your cart
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Expiration time (format: 2006-01-02T15:04:05+00:00)
+        /// </summary>
         [Input("expire")]
         public string? Expire { get; set; }
 
+        /// <summary>
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// </summary>
         [Input("ovhSubsidiary", required: true)]
         public string OvhSubsidiary { get; set; } = null!;
 
@@ -44,15 +125,27 @@ namespace Pulumi.Ovh.Order
 
     public sealed class GetCartInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+        /// </summary>
         [Input("assign")]
         public Input<bool>? Assign { get; set; }
 
+        /// <summary>
+        /// Description of your cart
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Expiration time (format: 2006-01-02T15:04:05+00:00)
+        /// </summary>
         [Input("expire")]
         public Input<string>? Expire { get; set; }
 
+        /// <summary>
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+        /// </summary>
         [Input("ovhSubsidiary", required: true)]
         public Input<string> OvhSubsidiary { get; set; } = null!;
 
@@ -67,6 +160,9 @@ namespace Pulumi.Ovh.Order
     public sealed class GetCartResult
     {
         public readonly bool? Assign;
+        /// <summary>
+        /// Cart identifier
+        /// </summary>
         public readonly string CartId;
         public readonly string? Description;
         public readonly string Expire;
@@ -74,8 +170,14 @@ namespace Pulumi.Ovh.Order
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Items of your cart
+        /// </summary>
         public readonly ImmutableArray<int> Items;
         public readonly string OvhSubsidiary;
+        /// <summary>
+        /// Indicates if the cart has already been validated
+        /// </summary>
         public readonly bool ReadOnly;
 
         [OutputConstructor]

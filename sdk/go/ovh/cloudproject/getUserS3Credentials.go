@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve the list of all the S3 accessKeyId associated with a public cloud project's user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myS3Credentials, err := cloudproject.GetUserS3Credentials(ctx, &cloudproject.GetUserS3CredentialsArgs{
+//				ServiceName: "XXXXXX",
+//				UserId:      "1234",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("accessKeyIds", myS3Credentials.AccessKeyIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetUserS3Credentials(ctx *pulumi.Context, args *GetUserS3CredentialsArgs, opts ...pulumi.InvokeOption) (*GetUserS3CredentialsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserS3CredentialsResult
@@ -23,12 +52,16 @@ func GetUserS3Credentials(ctx *pulumi.Context, args *GetUserS3CredentialsArgs, o
 
 // A collection of arguments for invoking getUserS3Credentials.
 type GetUserS3CredentialsArgs struct {
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
-	UserId      string `pulumi:"userId"`
+	// The ID of a public cloud project's user.
+	UserId string `pulumi:"userId"`
 }
 
 // A collection of values returned by getUserS3Credentials.
 type GetUserS3CredentialsResult struct {
+	// The list of the Access Key ID associated with this user.
 	AccessKeyIds []string `pulumi:"accessKeyIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
@@ -47,8 +80,11 @@ func GetUserS3CredentialsOutput(ctx *pulumi.Context, args GetUserS3CredentialsOu
 
 // A collection of arguments for invoking getUserS3Credentials.
 type GetUserS3CredentialsOutputArgs struct {
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	UserId      pulumi.StringInput `pulumi:"userId"`
+	// The ID of a public cloud project's user.
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (GetUserS3CredentialsOutputArgs) ElementType() reflect.Type {
@@ -70,6 +106,7 @@ func (o GetUserS3CredentialsResultOutput) ToGetUserS3CredentialsResultOutputWith
 	return o
 }
 
+// The list of the Access Key ID associated with this user.
 func (o GetUserS3CredentialsResultOutput) AccessKeyIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUserS3CredentialsResult) []string { return v.AccessKeyIds }).(pulumi.StringArrayOutput)
 }

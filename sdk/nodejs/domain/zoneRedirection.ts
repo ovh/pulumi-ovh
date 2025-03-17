@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a OVHcloud domain zone redirection.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * // Add a redirection to a sub-domain
+ * const test = new ovh.domain.ZoneRedirection("test", {
+ *     subdomain: "test",
+ *     target: "http://www.ovh",
+ *     type: "visiblePermanent",
+ *     zone: "testdemo.ovh",
+ * });
+ * ```
+ */
 export class ZoneRedirection extends pulumi.CustomResource {
     /**
      * Get an existing ZoneRedirection resource's state with the given name, ID, and optional extra
@@ -32,12 +50,33 @@ export class ZoneRedirection extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZoneRedirection.__pulumiType;
     }
 
+    /**
+     * A description of this redirection
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Keywords to describe this redirection
+     */
     public readonly keywords!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the redirection
+     */
     public readonly subdomain!: pulumi.Output<string | undefined>;
+    /**
+     * The value of the redirection
+     */
     public readonly target!: pulumi.Output<string>;
+    /**
+     * Title of this redirection
+     */
     public readonly title!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the redirection, with values:
+     */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * The domain to add the redirection to
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -88,12 +127,33 @@ export class ZoneRedirection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZoneRedirection resources.
  */
 export interface ZoneRedirectionState {
+    /**
+     * A description of this redirection
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Keywords to describe this redirection
+     */
     keywords?: pulumi.Input<string>;
+    /**
+     * The name of the redirection
+     */
     subdomain?: pulumi.Input<string>;
+    /**
+     * The value of the redirection
+     */
     target?: pulumi.Input<string>;
+    /**
+     * Title of this redirection
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The type of the redirection, with values:
+     */
     type?: pulumi.Input<string>;
+    /**
+     * The domain to add the redirection to
+     */
     zone?: pulumi.Input<string>;
 }
 
@@ -101,11 +161,32 @@ export interface ZoneRedirectionState {
  * The set of arguments for constructing a ZoneRedirection resource.
  */
 export interface ZoneRedirectionArgs {
+    /**
+     * A description of this redirection
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Keywords to describe this redirection
+     */
     keywords?: pulumi.Input<string>;
+    /**
+     * The name of the redirection
+     */
     subdomain?: pulumi.Input<string>;
+    /**
+     * The value of the redirection
+     */
     target: pulumi.Input<string>;
+    /**
+     * Title of this redirection
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The type of the redirection, with values:
+     */
     type: pulumi.Input<string>;
+    /**
+     * The domain to add the redirection to
+     */
     zone: pulumi.Input<string>;
 }

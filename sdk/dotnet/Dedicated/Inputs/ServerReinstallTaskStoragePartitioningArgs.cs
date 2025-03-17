@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         private InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutArgs>? _layouts;
 
         /// <summary>
-        /// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        /// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutArgs> Layouts
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         }
 
         /// <summary>
-        /// Partitioning scheme name
+        /// Partitioning scheme (if applicable with selected operating system)
         /// </summary>
         [Input("schemeName")]
         public Input<string>? SchemeName { get; set; }

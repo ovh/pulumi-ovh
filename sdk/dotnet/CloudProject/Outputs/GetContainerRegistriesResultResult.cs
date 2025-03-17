@@ -30,7 +30,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Region of the registry.
+        /// Region of the registry
         /// </summary>
         public readonly string Region;
         /// <summary>

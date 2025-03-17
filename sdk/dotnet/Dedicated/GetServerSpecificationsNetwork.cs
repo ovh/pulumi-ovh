@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Dedicated
 {
     public static class GetServerSpecificationsNetwork
     {
+        /// <summary>
+        /// Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var spec = Ovh.Dedicated.GetServerSpecificationsNetwork.Invoke(new()
+        ///     {
+        ///         ServiceName = "myserver",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetServerSpecificationsNetworkResult> InvokeAsync(GetServerSpecificationsNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerSpecificationsNetworkResult>("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args ?? new GetServerSpecificationsNetworkArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var spec = Ovh.Dedicated.GetServerSpecificationsNetwork.Invoke(new()
+        ///     {
+        ///         ServiceName = "myserver",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetServerSpecificationsNetworkResult> Invoke(GetServerSpecificationsNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSpecificationsNetworkResult>("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args ?? new GetServerSpecificationsNetworkInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var spec = Ovh.Dedicated.GetServerSpecificationsNetwork.Invoke(new()
+        ///     {
+        ///         ServiceName = "myserver",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetServerSpecificationsNetworkResult> Invoke(GetServerSpecificationsNetworkInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSpecificationsNetworkResult>("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", args ?? new GetServerSpecificationsNetworkInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class GetServerSpecificationsNetworkArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The internal name of your dedicated server.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.Ovh.Dedicated
 
     public sealed class GetServerSpecificationsNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The internal name of your dedicated server.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -48,18 +117,42 @@ namespace Pulumi.Ovh.Dedicated
     [OutputType]
     public sealed class GetServerSpecificationsNetworkResult
     {
+        /// <summary>
+        /// vrack bandwidth limitation
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkBandwidthResult Bandwidth;
+        /// <summary>
+        /// Network connection flow rate
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkConnectionValResult ConnectionVal;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// OLA details
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkOlaResult Ola;
+        /// <summary>
+        /// Routing details
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkRoutingResult Routing;
         public readonly string ServiceName;
+        /// <summary>
+        /// Switching details
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkSwitchingResult Switching;
+        /// <summary>
+        /// Traffic details
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkTrafficResult Traffic;
+        /// <summary>
+        /// VMAC information for this dedicated server
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkVmacResult Vmac;
+        /// <summary>
+        /// vRack details
+        /// </summary>
         public readonly Outputs.GetServerSpecificationsNetworkVrackResult Vrack;
 
         [OutputConstructor]

@@ -11,12 +11,66 @@ namespace Pulumi.Ovh.Cloud
 {
     public static class GetProjects
     {
+        /// <summary>
+        /// Get the details of your public cloud projects.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projects = Ovh.Cloud.GetProjects.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("ovh:Cloud/getProjects:getProjects", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Get the details of your public cloud projects.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projects = Ovh.Cloud.GetProjects.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetProjectsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("ovh:Cloud/getProjects:getProjects", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Get the details of your public cloud projects.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projects = Ovh.Cloud.GetProjects.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetProjectsResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("ovh:Cloud/getProjects:getProjects", InvokeArgs.Empty, options.WithDefaults());
     }

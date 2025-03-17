@@ -43,6 +43,8 @@ if typing.TYPE_CHECKING:
     okms = __okms
     import pulumi_ovh.order as __order
     order = __order
+    import pulumi_ovh.ovhcloud as __ovhcloud
+    ovhcloud = __ovhcloud
     import pulumi_ovh.savingsplan as __savingsplan
     savingsplan = __savingsplan
     import pulumi_ovh.vps as __vps
@@ -64,6 +66,7 @@ else:
     me = _utilities.lazy_import('pulumi_ovh.me')
     okms = _utilities.lazy_import('pulumi_ovh.okms')
     order = _utilities.lazy_import('pulumi_ovh.order')
+    ovhcloud = _utilities.lazy_import('pulumi_ovh.ovhcloud')
     savingsplan = _utilities.lazy_import('pulumi_ovh.savingsplan')
     vps = _utilities.lazy_import('pulumi_ovh.vps')
     vrack = _utilities.lazy_import('pulumi_ovh.vrack')
@@ -193,10 +196,10 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "CloudProject/loadbalancer",
+  "mod": "CloudProject/loadBalancer",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
-   "ovh:CloudProject/loadbalancer:Loadbalancer": "Loadbalancer"
+   "ovh:CloudProject/loadBalancer:LoadBalancer": "LoadBalancer"
   }
  },
  {
@@ -601,10 +604,10 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "Domain/dsRecords",
+  "mod": "Domain/dSRecords",
   "fqn": "pulumi_ovh.domain",
   "classes": {
-   "ovh:Domain/dsRecords:DsRecords": "DsRecords"
+   "ovh:Domain/dSRecords:DSRecords": "DSRecords"
   }
  },
  {
@@ -1025,26 +1028,18 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "Vrack/ipv6Address",
+  "mod": "Vrack/ipV6",
   "fqn": "pulumi_ovh.vrack",
   "classes": {
-   "ovh:Vrack/ipv6Address:Ipv6Address": "Ipv6Address"
+   "ovh:Vrack/ipV6:IpV6": "IpV6"
   }
  },
  {
   "pkg": "ovh",
-  "mod": "Vrack/oVHCloudConnect",
+  "mod": "Vrack/oVHcloudConnect",
   "fqn": "pulumi_ovh.vrack",
   "classes": {
-   "ovh:Vrack/oVHCloudConnect:OVHCloudConnect": "OVHCloudConnect"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Vrack/services",
-  "fqn": "pulumi_ovh.vrack",
-  "classes": {
-   "ovh:Vrack/services:Services": "Services"
+   "ovh:Vrack/oVHcloudConnect:OVHcloudConnect": "OVHcloudConnect"
   }
  },
  {
@@ -1053,6 +1048,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/vrack:Vrack": "Vrack"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Vrack/vrackservices",
+  "fqn": "pulumi_ovh.vrack",
+  "classes": {
+   "ovh:Vrack/vrackservices:Vrackservices": "Vrackservices"
   }
  }
 ]

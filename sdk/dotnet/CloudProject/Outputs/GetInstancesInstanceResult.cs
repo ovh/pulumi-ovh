@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceAttachedVolumeResult> AttachedVolumes;
         /// <summary>
-        /// Availability Zone
+        /// Availability zone of the instance
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// SSH Key pair name
+        /// SSH Keypair
         /// </summary>
         public readonly string SshKey;
         /// <summary>

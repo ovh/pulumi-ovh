@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Attach a legacy dedicated server to a vRack.
+ *
+ * > **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
+ * Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const vds = new ovh.vrack.DedicatedServer("vds", {
+ *     serverId: "67890",
+ *     serviceName: "XXXX",
+ * });
+ * ```
+ */
 export class DedicatedServer extends pulumi.CustomResource {
     /**
      * Get an existing DedicatedServer resource's state with the given name, ID, and optional extra
@@ -32,9 +50,13 @@ export class DedicatedServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === DedicatedServer.__pulumiType;
     }
 
+    /**
+     * The id of the dedicated server.
+     */
     public readonly serverId!: pulumi.Output<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * The service name of the vrack. If omitted,
+     * the `OVH_VRACK_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -73,9 +95,13 @@ export class DedicatedServer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DedicatedServer resources.
  */
 export interface DedicatedServerState {
+    /**
+     * The id of the dedicated server.
+     */
     serverId?: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * The service name of the vrack. If omitted,
+     * the `OVH_VRACK_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -84,9 +110,13 @@ export interface DedicatedServerState {
  * The set of arguments for constructing a DedicatedServer resource.
  */
 export interface DedicatedServerArgs {
+    /**
+     * The id of the dedicated server.
+     */
     serverId: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * The service name of the vrack. If omitted,
+     * the `OVH_VRACK_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

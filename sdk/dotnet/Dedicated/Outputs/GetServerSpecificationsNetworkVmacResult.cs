@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class GetServerSpecificationsNetworkVmacResult
     {
         /// <summary>
-        /// Server is compatible vmac or not
+        /// Whether server is compatible vmac
         /// </summary>
         public readonly bool Supported;
 

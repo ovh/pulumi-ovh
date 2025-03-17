@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class InstanceNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the new instance as public
+        /// Set the new instance as public boolean
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }

@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// List public cloud project private networks.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			privateNetworkPrivates, err := cloudproject.GetNetworkPrivates(ctx, &cloudproject.GetNetworkPrivatesArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("private", privateNetworkPrivates)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetworkPrivates(ctx *pulumi.Context, args *GetNetworkPrivatesArgs, opts ...pulumi.InvokeOption) (*GetNetworkPrivatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkPrivatesResult
@@ -23,15 +51,18 @@ func GetNetworkPrivates(ctx *pulumi.Context, args *GetNetworkPrivatesArgs, opts 
 
 // A collection of arguments for invoking getNetworkPrivates.
 type GetNetworkPrivatesArgs struct {
+	// The ID of the public cloud project.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getNetworkPrivates.
 type GetNetworkPrivatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                      `pulumi:"id"`
-	Networks    []GetNetworkPrivatesNetwork `pulumi:"networks"`
-	ServiceName string                      `pulumi:"serviceName"`
+	Id string `pulumi:"id"`
+	// List of network
+	Networks []GetNetworkPrivatesNetwork `pulumi:"networks"`
+	// ID of the public cloud project
+	ServiceName string `pulumi:"serviceName"`
 }
 
 func GetNetworkPrivatesOutput(ctx *pulumi.Context, args GetNetworkPrivatesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkPrivatesResultOutput {
@@ -45,6 +76,7 @@ func GetNetworkPrivatesOutput(ctx *pulumi.Context, args GetNetworkPrivatesOutput
 
 // A collection of arguments for invoking getNetworkPrivates.
 type GetNetworkPrivatesOutputArgs struct {
+	// The ID of the public cloud project.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -72,10 +104,12 @@ func (o GetNetworkPrivatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of network
 func (o GetNetworkPrivatesResultOutput) Networks() GetNetworkPrivatesNetworkArrayOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesResult) []GetNetworkPrivatesNetwork { return v.Networks }).(GetNetworkPrivatesNetworkArrayOutput)
 }
 
+// ID of the public cloud project
 func (o GetNetworkPrivatesResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

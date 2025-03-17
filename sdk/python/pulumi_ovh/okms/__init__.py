@@ -11,8 +11,6 @@ from .get_okms_resource import *
 from .get_okms_service_key import *
 from .get_okms_service_key_jwk import *
 from .get_okms_service_key_pem import *
-from .get_ovh_cloud_connect import *
-from .get_ovh_cloud_connects import *
 from .okms import *
 from .service_key import *
 from .service_key_jwk import *

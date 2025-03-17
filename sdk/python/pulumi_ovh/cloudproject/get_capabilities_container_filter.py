@@ -62,16 +62,25 @@ class GetCapabilitiesContainerFilterResult:
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        Plan code from the catalog
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Plan creation date
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def features(self) -> Sequence['outputs.GetCapabilitiesContainerFilterFeatureResult']:
+        """
+        Features of the plan
+        """
         return pulumi.get(self, "features")
 
     @property
@@ -85,6 +94,9 @@ class GetCapabilitiesContainerFilterResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Plan name
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -100,6 +112,9 @@ class GetCapabilitiesContainerFilterResult:
     @property
     @pulumi.getter(name="registryLimits")
     def registry_limits(self) -> Sequence['outputs.GetCapabilitiesContainerFilterRegistryLimitResult']:
+        """
+        Container registry limits
+        """
         return pulumi.get(self, "registry_limits")
 
     @property
@@ -110,6 +125,9 @@ class GetCapabilitiesContainerFilterResult:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        Plan last update date
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -136,7 +154,24 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
                                       service_name: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCapabilitiesContainerFilterResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capability = ovh.CloudProject.get_capabilities_container_filter(plan_name="SMALL",
+        region="GRA",
+        service_name="XXXXXX")
+    ```
+
+
+    :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.
+    :param str region: The region name
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['planName'] = plan_name
@@ -161,7 +196,24 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
                                              service_name: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapabilitiesContainerFilterResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capability = ovh.CloudProject.get_capabilities_container_filter(plan_name="SMALL",
+        region="GRA",
+        service_name="XXXXXX")
+    ```
+
+
+    :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.
+    :param str region: The region name
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['planName'] = plan_name

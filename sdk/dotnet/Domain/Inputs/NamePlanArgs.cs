@@ -21,7 +21,7 @@ namespace Pulumi.Ovh.Domain.Inputs
         }
 
         /// <summary>
-        /// Duration selected for the purchase of the product
+        /// Duration selected for the purchase of the product (defaults to "P1Y")
         /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;

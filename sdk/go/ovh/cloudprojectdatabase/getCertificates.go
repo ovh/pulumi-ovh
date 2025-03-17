@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about certificates of a cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			certificates, err := cloudprojectdatabase.GetCertificates(ctx, &cloudprojectdatabase.GetCertificatesArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				ClusterId:   "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("certificatesCa", certificates.Ca)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificatesResult
@@ -23,18 +53,28 @@ func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pul
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Engine      string `pulumi:"engine"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// The engine of the database cluster you want database information. To get a full list of available engine visit:
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
+	Engine string `pulumi:"engine"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getCertificates.
 type GetCertificatesResult struct {
-	Ca        string `pulumi:"ca"`
+	// CA certificate used for the service.
+	Ca string `pulumi:"ca"`
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
-	Engine    string `pulumi:"engine"`
+	// See Argument Reference above.
+	Engine string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -49,8 +89,14 @@ func GetCertificatesOutput(ctx *pulumi.Context, args GetCertificatesOutputArgs, 
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Engine      pulumi.StringInput `pulumi:"engine"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The engine of the database cluster you want database information. To get a full list of available engine visit:
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -73,14 +119,17 @@ func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ct
 	return o
 }
 
+// CA certificate used for the service.
 func (o GetCertificatesResultOutput) Ca() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.Ca }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetCertificatesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetCertificatesResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -90,6 +139,7 @@ func (o GetCertificatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetCertificatesResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

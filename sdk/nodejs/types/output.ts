@@ -7,6 +7,9 @@ import * as outputs from "../types/output";
 
 export interface GetInstallationTemplateInput {
     default: string;
+    /**
+     * Information about this template.
+     */
     description: string;
     enums: string[];
     mandatory: boolean;
@@ -101,7 +104,7 @@ export interface GetServerVni {
      */
     nics: string[];
     /**
-     * Server name
+     * Server bound to this VirtualNetworkInterface
      */
     serverName: string;
     /**
@@ -121,15 +124,15 @@ export namespace Cloud {
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * Unique identifier of the resource in the IAM
          */
         id: string;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
          */
         tags: {[key: string]: string};
         /**
-         * Unique resource name used in policies
+         * URN of the private database, used when writing IAM policies
          */
         urn: string;
     }
@@ -152,7 +155,7 @@ export namespace Cloud {
          */
         expiration: string;
         /**
-         * IAM resource metadata
+         * IAM resource information
          */
         iam: outputs.Cloud.GetProjectsProjectIam;
         /**
@@ -160,7 +163,7 @@ export namespace Cloud {
          */
         manualQuota: boolean;
         /**
-         * Project order id
+         * Project order ID
          */
         orderId: number;
         /**
@@ -168,7 +171,7 @@ export namespace Cloud {
          */
         planCode: string;
         /**
-         * Project id
+         * Project ID
          */
         projectId: string;
         /**
@@ -176,7 +179,7 @@ export namespace Cloud {
          */
         projectName: string;
         /**
-         * Service name
+         * ID of the public cloud project
          */
         serviceName: string;
         /**
@@ -195,15 +198,15 @@ export namespace Cloud {
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * Unique identifier of the resource in the IAM
          */
         id: string;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
          */
         tags: {[key: string]: string};
         /**
-         * Unique resource name used in policies
+         * URN of the private database, used when writing IAM policies
          */
         urn: string;
     }
@@ -212,14 +215,23 @@ export namespace Cloud {
 
 export namespace CloudProject {
     export interface AlertingFormattedMonthlyThreshold {
+        /**
+         * Currency of the monthly threshold
+         */
         currencyCode: string;
+        /**
+         * Text representation of the monthly threshold
+         */
         text: string;
+        /**
+         * Value of the monthly threshold
+         */
         value: number;
     }
 
     export interface ContainerRegistryPlan {
         /**
-         * Plan code from catalog
+         * Plan code from the catalog
          */
         code: string;
         /**
@@ -235,7 +247,7 @@ export namespace CloudProject {
          */
         id: string;
         /**
-         * Plan name
+         * Registry name
          */
         name: string;
         /**
@@ -243,7 +255,7 @@ export namespace CloudProject {
          */
         registryLimits: outputs.CloudProject.ContainerRegistryPlanRegistryLimit[];
         /**
-         * Plan last update date
+         * Registry last update date
          */
         updatedAt: string;
     }
@@ -268,35 +280,35 @@ export namespace CloudProject {
 
     export interface DatabaseEndpoint {
         /**
-         * Type of component the URI relates to
+         * Type of component the URI relates to.
          */
         component: string;
         /**
-         * Domain of the cluster
+         * Domain of the cluster.
          */
         domain: string;
         /**
-         * Path of the endpoint
+         * Path of the endpoint.
          */
         path: string;
         /**
-         * Connection port for the endpoint
+         * Connection port for the endpoint.
          */
         port: number;
         /**
-         * Scheme used to generate the URI
+         * Scheme used to generate the URI.
          */
         scheme: string;
         /**
-         * Defines whether the endpoint uses SSL
+         * Defines whether the endpoint uses SSL.
          */
         ssl: boolean;
         /**
-         * SSL mode used to connect to the service if the SSL is enabled
+         * SSL mode used to connect to the service if the SSL is enabled.
          */
         sslMode: string;
         /**
-         * URI of the endpoint
+         * URI of the endpoint.
          */
         uri: string;
     }
@@ -311,63 +323,64 @@ export namespace CloudProject {
          */
         ip?: string;
         /**
-         * Current status of the IP restriction
+         * Current status of the cluster.
          */
         status: string;
     }
 
     export interface DatabaseNode {
         /**
-         * Private network ID in which the node is. It's the regional openstackId of the private network.
+         * Private network id in which the node should be deployed. It's the regional openstackId of the private network
          */
         networkId?: string;
         /**
-         * Region of the node
+         * Public cloud region in which the node should be deployed.
+         * Ex: "GRA'.
          */
         region: string;
         /**
-         * Private subnet ID in which the node is
+         * Private subnet ID in which the node is.
          */
         subnetId?: string;
     }
 
     export interface GatewayExternalInformation {
         /**
-         * List of external ips of the gateway
+         * List of external ips of the gateway.
          */
         ips: outputs.CloudProject.GatewayExternalInformationIp[];
         /**
-         * External network ID of the gateway
+         * ID of the private network.
          */
         networkId: string;
     }
 
     export interface GatewayExternalInformationIp {
         /**
-         * External IP of the gateway
+         * IP of the interface.
          */
         ip: string;
         /**
-         * Subnet ID of the ip
+         * ID of the subnet.
          */
         subnetId: string;
     }
 
     export interface GatewayInterface {
         /**
-         * ID of the interface
+         * ID of the interface.
          */
         id: string;
         /**
-         * IP of the interface
+         * IP of the interface.
          */
         ip: string;
         /**
-         * Network ID of the interface
+         * ID of the private network.
          */
         networkId: string;
         /**
-         * Subnet ID of the interface
+         * ID of the subnet.
          */
         subnetId: string;
     }
@@ -403,7 +416,7 @@ export namespace CloudProject {
 
     export interface GetCapabilitiesContainerRegistryResultPlan {
         /**
-         * Plan code from catalog
+         * Plan code from the catalog
          */
         code: string;
         /**
@@ -468,7 +481,7 @@ export namespace CloudProject {
          */
         projectId: string;
         /**
-         * Region of the registry.
+         * Region of the registry
          */
         region: string;
         /**
@@ -591,15 +604,15 @@ export namespace CloudProject {
 
     export interface GetFloatingIPsCloudProjectFloatingip {
         /**
-         * Associated entity with the floating ip
+         * Associated entity with the floating IP
          */
         associatedEntity: outputs.CloudProject.GetFloatingIPsCloudProjectFloatingipAssociatedEntity;
         /**
-         * ID of the floating ip
+         * ID of the floating IP
          */
         id: string;
         /**
-         * Value of the floating ip
+         * Value of the floating IP
          */
         ip: string;
         /**
@@ -611,7 +624,7 @@ export namespace CloudProject {
          */
         region: string;
         /**
-         * Status of the floating ip
+         * Status of the floating IP (active┃down┃error)
          */
         status: string;
     }
@@ -622,15 +635,15 @@ export namespace CloudProject {
          */
         gatewayId: string;
         /**
-         * ID of the port
+         * ID of the floating IP
          */
         id: string;
         /**
-         * IP of the port
+         * Value of the floating IP
          */
         ip: string;
         /**
-         * Type of the port
+         * Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
          */
         type: string;
     }
@@ -648,7 +661,7 @@ export namespace CloudProject {
 
     export interface GetInstanceAttachedVolume {
         /**
-         * Volume id
+         * Instance id
          */
         id: string;
     }
@@ -663,7 +676,7 @@ export namespace CloudProject {
          */
         attachedVolumes: outputs.CloudProject.GetInstancesInstanceAttachedVolume[];
         /**
-         * Availability Zone
+         * Availability zone of the instance
          */
         availabilityZone: string;
         /**
@@ -687,7 +700,7 @@ export namespace CloudProject {
          */
         name: string;
         /**
-         * SSH Key pair name
+         * SSH Keypair
          */
         sshKey: string;
         /**
@@ -709,93 +722,134 @@ export namespace CloudProject {
 
     export interface GetInstancesInstanceAttachedVolume {
         /**
-         * Volume id
+         * Instance id
          */
         id: string;
     }
 
     export interface GetKubeCustomization {
         /**
+         * Kubernetes API server customization
+         *
          * @deprecated Use customizationApiserver instead
          */
         apiservers: outputs.CloudProject.GetKubeCustomizationApiserver[];
     }
 
     export interface GetKubeCustomizationApiserver {
+        /**
+         * Kubernetes API server admission plugins customization
+         */
         admissionplugins: outputs.CloudProject.GetKubeCustomizationApiserverAdmissionplugin[];
     }
 
     export interface GetKubeCustomizationApiserverAdmissionplugin {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds: string[];
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds: string[];
     }
 
     export interface GetKubeCustomizationKubeProxy {
+        /**
+         * Kubernetes cluster kube-proxy customization of iptables specific config.
+         */
         iptables?: outputs.CloudProject.GetKubeCustomizationKubeProxyIptables;
+        /**
+         * Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         ipvs?: outputs.CloudProject.GetKubeCustomizationKubeProxyIpvs;
     }
 
     export interface GetKubeCustomizationKubeProxyIptables {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         minSyncPeriod?: string;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+         */
         syncPeriod?: string;
     }
 
     export interface GetKubeCustomizationKubeProxyIpvs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         minSyncPeriod?: string;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: string;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+         */
         syncPeriod?: string;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
+         */
         tcpFinTimeout?: string;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         tcpTimeout?: string;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         udpTimeout?: string;
     }
 
     export interface GetKubeNodePoolNodesNode {
         /**
-         * Creation date
+         * Creation date.
          */
         createdAt: string;
         /**
-         * Node deployment date
+         * (Optional) Date of the effective deployment.
          */
         deployedAt: string;
         /**
-         * Flavor name
+         * Flavor name.
          */
         flavor: string;
         /**
-         * Node ID
+         * ID of the node.
          */
         id: string;
         /**
-         * Public Cloud instance ID
+         * Openstack ID of the underlying VM of the node.
          */
         instanceId: string;
         /**
-         * True if the node is up to date
+         * Is the node in the target version of the cluster.
          */
         isUpToDate: boolean;
         /**
-         * Node name
+         * Name of the node pool from which we want the nodes.
          */
         name: string;
         /**
-         * NodePool parent ID
+         * Managed kubernetes node pool ID.
          */
         nodePoolId: string;
         /**
-         * Project ID
+         * Public cloud project ID.
          */
         projectId: string;
         /**
-         * Current status
+         * Current status.
          */
         status: string;
         /**
-         * Last update date
+         * Last update date.
          */
         updatedAt: string;
         /**
-         * Node version
+         * Version in which the node is.
          */
         version: string;
     }
@@ -843,7 +897,7 @@ export namespace CloudProject {
          */
         createdAt: string;
         /**
-         * Node deployment date
+         * (Optional) Date of the effective deployment
          */
         deployedAt: string;
         /**
@@ -851,27 +905,27 @@ export namespace CloudProject {
          */
         flavor: string;
         /**
-         * Node ID
+         * ID of the node
          */
         id: string;
         /**
-         * Public Cloud instance ID
+         * Openstack ID of the underlying VM of the node
          */
         instanceId: string;
         /**
-         * True if the node is up to date
+         * Is the node in the target version of the cluster
          */
         isUpToDate: boolean;
         /**
-         * Node name
+         * Name of the node
          */
         name: string;
         /**
-         * NodePool parent ID
+         * Managed kubernetes node pool ID
          */
         nodePoolId: string;
         /**
-         * Project ID
+         * Public cloud project ID
          */
         projectId: string;
         /**
@@ -883,7 +937,7 @@ export namespace CloudProject {
          */
         updatedAt: string;
         /**
-         * Node version
+         * Version in which the node is
          */
         version: string;
     }
@@ -905,18 +959,18 @@ export namespace CloudProject {
 
     export interface GetLoadBalancerFloatingIp {
         /**
-         * ID of the floating IP
+         * ID of the loadbalancer
          */
         id: string;
         /**
-         * IP Address of the floating IP
+         * Value of the floating IP
          */
         ip: string;
     }
 
     export interface GetLoadBalancersLoadbalancer {
         /**
-         * The UTC date and timestamp when the loadbalancer was created
+         * Date of creation of the loadbalancer
          */
         createdAt: string;
         /**
@@ -924,11 +978,11 @@ export namespace CloudProject {
          */
         flavorId: string;
         /**
-         * Information about floating IP
+         * Information about the floating IP
          */
         floatingIp: outputs.CloudProject.GetLoadBalancersLoadbalancerFloatingIp;
         /**
-         * ID of the loadbalancer
+         * ID of the floating IP
          */
         id: string;
         /**
@@ -948,7 +1002,7 @@ export namespace CloudProject {
          */
         region: string;
         /**
-         * UTC date and timestamp when the loadbalancer was updated
+         * Last update date of the loadbalancer
          */
         updatedAt: string;
         /**
@@ -971,52 +1025,52 @@ export namespace CloudProject {
          */
         id: string;
         /**
-         * IP Address of the floating IP
+         * Value of the floating IP
          */
         ip: string;
     }
 
     export interface GetNetworkPrivateRegion {
         /**
-         * Network id on openstack region
+         * Network ID on openstack region
          */
         openstackId: string;
         /**
-         * Network region
+         * Name of the region
          */
         region: string;
         /**
-         * Network region status
+         * Status of the network
          */
         status: string;
     }
 
     export interface GetNetworkPrivateSubnetsSubnet {
         /**
-         * Subnet CIDR
+         * CIDR of the subnet
          */
         cidr: string;
         /**
-         * Is DHCP enabled for the subnet
+         * Whether or not if DHCP is enabled for the subnet
          */
         dhcpEnabled: boolean;
         /**
-         * Gateway IP in the subnet
+         * Gateway IP of the subnet
          */
         gatewayIp: string;
         /**
-         * Subnet id
+         * ID of the subnet
          */
         id: string;
         /**
-         * List of ip pools allocated in subnet
+         * List of ip pools allocated in the subnet
          */
         ipPools: outputs.CloudProject.GetNetworkPrivateSubnetsSubnetIpPool[];
     }
 
     export interface GetNetworkPrivateSubnetsSubnetIpPool {
         /**
-         * Enable DHCP
+         * Whether or not if DHCP is enabled
          */
         dhcp: boolean;
         /**
@@ -1028,7 +1082,7 @@ export namespace CloudProject {
          */
         network: string;
         /**
-         * Region of the subnet
+         * Region associated to the subnet
          */
         region: string;
         /**
@@ -1039,53 +1093,53 @@ export namespace CloudProject {
 
     export interface GetNetworkPrivatesNetwork {
         /**
-         * Network id
+         * ID of the network
          */
         id: string;
         /**
-         * Network name
+         * Name of the network
          */
         name: string;
         /**
-         * Details about private network in region
+         * Information about the private network in the openstack region
          */
         regions: outputs.CloudProject.GetNetworkPrivatesNetworkRegion[];
         /**
-         * Network status
+         * Status of the network
          */
         status: string;
         /**
-         * Network type
+         * Type of the network
          */
         type: string;
         /**
-         * Network VLAN id
+         * VLAN ID of the network
          */
         vlanId: number;
     }
 
     export interface GetNetworkPrivatesNetworkRegion {
         /**
-         * Network id on openstack region
+         * Network ID on openstack region
          */
         openstackId: string;
         /**
-         * Network region
+         * Name of the region
          */
         region: string;
         /**
-         * Network region status
+         * Status of the network
          */
         status: string;
     }
 
     export interface GetOpenSearchUserAcl {
         /**
-         * Pattern of the ACL
+         * Pattern of the ACL.
          */
         pattern: string;
         /**
-         * Permission of the ACL
+         * Permission of the ACL.
          */
         permission: string;
     }
@@ -1261,7 +1315,14 @@ export namespace CloudProject {
     }
 
     export interface GetRegionService {
+        /**
+         * The name of the region associated with the public cloud
+         * project.
+         */
         name: string;
+        /**
+         * the status of the service
+         */
         status: string;
     }
 
@@ -1535,39 +1596,82 @@ export namespace CloudProject {
     }
 
     export interface GetUserRole {
+        /**
+         * description of the role
+         */
         description: string;
+        /**
+         * id of the role
+         */
         id: string;
+        /**
+         * name of the role
+         */
         name: string;
+        /**
+         * list of permissions associated with the role
+         */
         permissions: string[];
     }
 
     export interface GetUsersUser {
+        /**
+         * the date the user was created.
+         */
         creationDate: string;
+        /**
+         * description of the role
+         */
         description: string;
+        /**
+         * A list of roles associated with the user.
+         */
         roles: outputs.CloudProject.GetUsersUserRole[];
+        /**
+         * the status of the user. should be normally set to 'ok'.
+         */
         status: string;
+        /**
+         * The ID of a public cloud project's user.
+         */
         userId: string;
+        /**
+         * the username generated for the user. This username can be used with
+         * the Openstack API.
+         */
         username: string;
     }
 
     export interface GetUsersUserRole {
+        /**
+         * description of the role
+         */
         description: string;
+        /**
+         * id of the role
+         */
         id: string;
+        /**
+         * name of the role
+         */
         name: string;
+        /**
+         * list of permissions associated with the role
+         */
         permissions: string[];
     }
 
     export interface GetVolumesVolume {
         /**
-         * Volume ID
+         * The id of the volume
          */
         id: string;
         /**
-         * Volume name
+         * The name of the volume
          */
         name: string;
         /**
-         * Volume size
+         * The size of the volume
          */
         size: number;
     }
@@ -1585,7 +1689,7 @@ export namespace CloudProject {
 
     export interface InstanceAttachedVolume {
         /**
-         * Volume id
+         * Instance id
          */
         id: string;
     }
@@ -1603,7 +1707,7 @@ export namespace CloudProject {
 
     export interface InstanceBootFrom {
         /**
-         * Instance image id
+         * Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
          */
         imageId?: string;
         /**
@@ -1614,7 +1718,7 @@ export namespace CloudProject {
 
     export interface InstanceFlavor {
         /**
-         * Flavor id
+         * Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
          */
         flavorId: string;
     }
@@ -1628,14 +1732,14 @@ export namespace CloudProject {
 
     export interface InstanceNetwork {
         /**
-         * Set the new instance as public
+         * Set the new instance as public boolean
          */
         public?: boolean;
     }
 
     export interface InstanceSshKey {
         /**
-         * SSH Key pair name
+         * SSH Keypair name
          */
         name: string;
     }
@@ -1646,50 +1750,103 @@ export namespace CloudProject {
          */
         name: string;
         /**
-         * SSH Public Key
+         * SSH Public key
          */
         publicKey: string;
     }
 
     export interface KubeCustomization {
         /**
+         * Kubernetes API server customization
+         *
          * @deprecated Use customizationApiserver instead
          */
         apiservers: outputs.CloudProject.KubeCustomizationApiserver[];
     }
 
     export interface KubeCustomizationApiserver {
+        /**
+         * Kubernetes API server admission plugins customization
+         */
         admissionplugins: outputs.CloudProject.KubeCustomizationApiserverAdmissionplugin[];
     }
 
     export interface KubeCustomizationApiserverAdmissionplugin {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds: string[];
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds: string[];
     }
 
     export interface KubeCustomizationKubeProxy {
+        /**
+         * Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
+         */
         iptables?: outputs.CloudProject.KubeCustomizationKubeProxyIptables;
+        /**
+         * Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
+         */
         ipvs?: outputs.CloudProject.KubeCustomizationKubeProxyIpvs;
     }
 
     export interface KubeCustomizationKubeProxyIptables {
+        /**
+         * Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+         */
         minSyncPeriod?: string;
+        /**
+         * Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: string;
     }
 
     export interface KubeCustomizationKubeProxyIpvs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+         */
         minSyncPeriod?: string;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: string;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: string;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpFinTimeout?: string;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpTimeout?: string;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         udpTimeout?: string;
     }
 
     export interface KubeKubeconfigAttribute {
+        /**
+         * The kubernetes API server client certificate.
+         */
         clientCertificate: string;
+        /**
+         * The kubernetes API server client key.
+         */
         clientKey: string;
+        /**
+         * The kubernetes API server CA certificate.
+         */
         clusterCaCertificate: string;
+        /**
+         * The kubernetes API server URL.
+         */
         host: string;
     }
 
@@ -1737,11 +1894,16 @@ export namespace CloudProject {
         defaultVrackGateway: string;
         /**
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+         *
+         * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         privateNetworkRoutingAsDefault: boolean;
     }
 
-    export interface LoadbalancerFloatingIp {
+    export interface LoadBalancerFloatingIp {
         /**
          * ID of the resource
          */
@@ -1752,7 +1914,7 @@ export namespace CloudProject {
         ip: string;
     }
 
-    export interface LoadbalancerListener {
+    export interface LoadBalancerListener {
         /**
          * The allowed CIDRs
          */
@@ -1768,7 +1930,7 @@ export namespace CloudProject {
         /**
          * Listener pool
          */
-        pool?: outputs.CloudProject.LoadbalancerListenerPool;
+        pool?: outputs.CloudProject.LoadBalancerListenerPool;
         /**
          * Listener port
          */
@@ -1795,7 +1957,7 @@ export namespace CloudProject {
         tlsVersions?: string[];
     }
 
-    export interface LoadbalancerListenerPool {
+    export interface LoadBalancerListenerPool {
         /**
          * Pool algorithm to split traffic between members
          */
@@ -1803,11 +1965,11 @@ export namespace CloudProject {
         /**
          * Pool health monitor
          */
-        healthMonitor?: outputs.CloudProject.LoadbalancerListenerPoolHealthMonitor;
+        healthMonitor?: outputs.CloudProject.LoadBalancerListenerPoolHealthMonitor;
         /**
          * Pool members
          */
-        members: outputs.CloudProject.LoadbalancerListenerPoolMember[];
+        members: outputs.CloudProject.LoadBalancerListenerPoolMember[];
         /**
          * Name of the pool
          */
@@ -1819,10 +1981,10 @@ export namespace CloudProject {
         /**
          * Pool session persistence
          */
-        sessionPersistence?: outputs.CloudProject.LoadbalancerListenerPoolSessionPersistence;
+        sessionPersistence?: outputs.CloudProject.LoadBalancerListenerPoolSessionPersistence;
     }
 
-    export interface LoadbalancerListenerPoolHealthMonitor {
+    export interface LoadBalancerListenerPoolHealthMonitor {
         /**
          * Duration between sending probes to members, in seconds
          */
@@ -1830,7 +1992,7 @@ export namespace CloudProject {
         /**
          * Monitor HTTP configuration
          */
-        httpConfiguration: outputs.CloudProject.LoadbalancerListenerPoolHealthMonitorHttpConfiguration;
+        httpConfiguration: outputs.CloudProject.LoadBalancerListenerPoolHealthMonitorHttpConfiguration;
         /**
          * Number of successful checks before changing the operating status of the member to ONLINE
          */
@@ -1861,7 +2023,7 @@ export namespace CloudProject {
         timeout?: number;
     }
 
-    export interface LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+    export interface LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
         /**
          * Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
          */
@@ -1884,7 +2046,7 @@ export namespace CloudProject {
         urlPath: string;
     }
 
-    export interface LoadbalancerListenerPoolMember {
+    export interface LoadBalancerListenerPoolMember {
         /**
          * IP address of the resource
          */
@@ -1903,7 +2065,7 @@ export namespace CloudProject {
         weight: number;
     }
 
-    export interface LoadbalancerListenerPoolSessionPersistence {
+    export interface LoadBalancerListenerPoolSessionPersistence {
         /**
          * Cookie name, only applicable to session persistence through cookie
          */
@@ -1914,58 +2076,58 @@ export namespace CloudProject {
         type: string;
     }
 
-    export interface LoadbalancerNetwork {
+    export interface LoadBalancerNetwork {
         /**
          * Information to private network
          */
-        private: outputs.CloudProject.LoadbalancerNetworkPrivate;
+        private: outputs.CloudProject.LoadBalancerNetworkPrivate;
     }
 
-    export interface LoadbalancerNetworkPrivate {
+    export interface LoadBalancerNetworkPrivate {
         /**
          * Floating IP to associate
          */
-        floatingIp?: outputs.CloudProject.LoadbalancerNetworkPrivateFloatingIp;
+        floatingIp?: outputs.CloudProject.LoadBalancerNetworkPrivateFloatingIp;
         /**
          * Floating IP to create
          */
-        floatingIpCreate?: outputs.CloudProject.LoadbalancerNetworkPrivateFloatingIpCreate;
+        floatingIpCreate?: outputs.CloudProject.LoadBalancerNetworkPrivateFloatingIpCreate;
         /**
          * Gateway to associate
          */
-        gateway?: outputs.CloudProject.LoadbalancerNetworkPrivateGateway;
+        gateway?: outputs.CloudProject.LoadBalancerNetworkPrivateGateway;
         /**
          * Gateway to create
          */
-        gatewayCreate?: outputs.CloudProject.LoadbalancerNetworkPrivateGatewayCreate;
+        gatewayCreate?: outputs.CloudProject.LoadBalancerNetworkPrivateGatewayCreate;
         /**
          * Network to associate
          */
-        network: outputs.CloudProject.LoadbalancerNetworkPrivateNetwork;
+        network: outputs.CloudProject.LoadBalancerNetworkPrivateNetwork;
     }
 
-    export interface LoadbalancerNetworkPrivateFloatingIp {
+    export interface LoadBalancerNetworkPrivateFloatingIp {
         /**
          * ID of the floatingIp
          */
         id?: string;
     }
 
-    export interface LoadbalancerNetworkPrivateFloatingIpCreate {
+    export interface LoadBalancerNetworkPrivateFloatingIpCreate {
         /**
          * Description for the floatingIp
          */
         description?: string;
     }
 
-    export interface LoadbalancerNetworkPrivateGateway {
+    export interface LoadBalancerNetworkPrivateGateway {
         /**
          * ID of the gateway
          */
         id?: string;
     }
 
-    export interface LoadbalancerNetworkPrivateGatewayCreate {
+    export interface LoadBalancerNetworkPrivateGatewayCreate {
         /**
          * Model of the gateway
          */
@@ -1976,7 +2138,7 @@ export namespace CloudProject {
         name?: string;
     }
 
-    export interface LoadbalancerNetworkPrivateNetwork {
+    export interface LoadBalancerNetworkPrivateNetwork {
         /**
          * Private network ID
          */
@@ -1990,19 +2152,45 @@ export namespace CloudProject {
     export interface NetworkPrivateRegionsAttribute {
         openstackid: string;
         region: string;
+        /**
+         * the status of the network. should be normally set to 'ACTIVE'.
+         */
         status: string;
     }
 
     export interface NetworkPrivateRegionsStatus {
         region: string;
+        /**
+         * the status of the network. should be normally set to 'ACTIVE'.
+         */
         status: string;
     }
 
     export interface NetworkPrivateSubnetIpPool {
+        /**
+         * Enable DHCP.
+         * Changing this forces a new resource to be created. Defaults to false.
+         */
         dhcp: boolean;
+        /**
+         * Last ip for this region.
+         * Changing this value recreates the subnet.
+         */
         end: string;
+        /**
+         * Global network in CIDR format.
+         * Changing this value recreates the subnet
+         */
         network: string;
+        /**
+         * The region in which the network subnet will be created.
+         * Ex.: "GRA1". Changing this value recreates the resource.
+         */
         region: string;
+        /**
+         * First ip for this region.
+         * Changing this value recreates the subnet.
+         */
         start: string;
     }
 
@@ -2030,14 +2218,14 @@ export namespace CloudProject {
          */
         expirationDate: string;
         /**
-         * order id
+         * order id, the same as the `id`
          */
         orderId: number;
     }
 
     export interface ProjectOrderDetail {
         /**
-         * description
+         * A description associated with the user.
          */
         description: string;
         /**
@@ -2068,7 +2256,7 @@ export namespace CloudProject {
          */
         duration: string;
         /**
-         * Plan code
+         * Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
          */
         planCode: string;
         /**
@@ -2241,7 +2429,7 @@ export namespace CloudProject {
 
     export interface RegionNetworkSubnet {
         /**
-         * List of ip pools allocated in subnet
+         * List of IP pools allocated in subnet
          */
         allocationPools?: outputs.CloudProject.RegionNetworkSubnetAllocationPool[];
         /**
@@ -2425,9 +2613,21 @@ export namespace CloudProject {
     }
 
     export interface UserRole {
+        /**
+         * A description associated with the user.
+         */
         description: string;
+        /**
+         * id of the role
+         */
         id: string;
+        /**
+         * name of the role
+         */
         name: string;
+        /**
+         * list of permissions associated with the role
+         */
         permissions: string[];
     }
 
@@ -2447,103 +2647,103 @@ export namespace CloudProject {
 export namespace CloudProjectDatabase {
     export interface GetCapabilitiesEngine {
         /**
-         * Default version used for the engine
+         * Default version used for the engine.
          */
         defaultVersion: string;
         /**
-         * Description of the engine
+         * Description of the plan.
          */
         description: string;
         /**
-         * Engine name
+         * Name of the plan.
          */
         name: string;
         /**
-         * SSL modes for this engine
+         * SSL modes for this engine.
          */
         sslModes: string[];
         /**
-         * Versions available for this engine
+         * Versions available for this engine.
          */
         versions: string[];
     }
 
     export interface GetCapabilitiesFlavor {
         /**
-         * Flavor core number
+         * Flavor core number.
          */
         core: number;
         /**
-         * Flavor ram size in GB
+         * Flavor ram size in GB.
          */
         memory: number;
         /**
-         * Name of the flavor
+         * Name of the plan.
          */
         name: string;
         /**
-         * Flavor disk size in GB
+         * Flavor disk size in GB.
          */
         storage: number;
     }
 
     export interface GetCapabilitiesOption {
         /**
-         * Name of the option
+         * Name of the plan.
          */
         name: string;
         /**
-         * Type of the option
+         * Type of the option.
          */
         type: string;
     }
 
     export interface GetCapabilitiesPlan {
         /**
-         * Automatic backup retention duration
+         * Automatic backup retention duration.
          */
         backupRetention: string;
         /**
-         * Description of the plan
+         * Description of the plan.
          */
         description: string;
         /**
-         * Name of the plan
+         * Name of the plan.
          */
         name: string;
     }
 
     export interface GetDatabaseEndpoint {
         /**
-         * Type of component the URI relates to
+         * Type of component the URI relates to.
          */
         component: string;
         /**
-         * Domain of the cluster
+         * Domain of the cluster.
          */
         domain: string;
         /**
-         * Path of the endpoint
+         * Path of the endpoint.
          */
         path: string;
         /**
-         * Connection port for the endpoint
+         * Connection port for the endpoint.
          */
         port: number;
         /**
-         * Scheme used to generate the URI
+         * Scheme used to generate the URI.
          */
         scheme: string;
         /**
-         * Defines whether the endpoint uses SSL
+         * Defines whether the endpoint uses SSL.
          */
         ssl: boolean;
         /**
-         * SSL mode used to connect to the service if the SSL is enabled
+         * SSL mode used to connect to the service if the SSL is enabled.
          */
         sslMode: string;
         /**
-         * URI of the endpoint
+         * URI of the endpoint.
          */
         uri: string;
     }
@@ -2558,33 +2758,34 @@ export namespace CloudProjectDatabase {
          */
         ip: string;
         /**
-         * Current status of the IP restriction
+         * Current status of the cluster.
          */
         status: string;
     }
 
     export interface GetDatabaseNode {
         /**
-         * Private network ID in which the node is
+         * Private network id in which the node should be deployed. It's the regional openstackId of the private network
          */
         networkId: string;
         /**
-         * Region of the node
+         * Public cloud region in which the node should be deployed.
          */
         region: string;
         /**
-         * Private subnet ID in which the node is
+         * Private subnet ID in which the node is.
          */
         subnetId: string;
     }
 
     export interface OpensearchUserAcl {
         /**
-         * Pattern of the ACL
+         * Pattern of the ACL.
          */
         pattern: string;
         /**
          * Permission of the ACL
+         * Available permission:
          */
         permission: string;
     }
@@ -2616,11 +2817,11 @@ export namespace Dbaas {
 
     export interface LogsInputConfigurationFlowgger {
         /**
-         * Type of format to decode
+         * Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
          */
         logFormat: string;
         /**
-         * Indicates how messages are delimited
+         * Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
          */
         logFraming: string;
     }
@@ -2650,35 +2851,35 @@ export namespace Dedicated {
 
     export interface GetServerSpecificationsHardwareDiskGroup {
         /**
-         * default hardware raid size for this disk group
+         * Default hardware raid size for this disk group
          */
         defaultHardwareRaidSize: outputs.Dedicated.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize;
         /**
-         * default hardware raid type for this disk group
+         * Default hardware raid type for this disk group
          */
         defaultHardwareRaidType: string;
         /**
-         * human readable description of this disk group
+         * Expansion card description
          */
         description: string;
         /**
-         * identifier of this disk group
+         * Identifier of this disk group
          */
         diskGroupId: number;
         /**
-         * disk capacity
+         * Disk capacity
          */
         diskSize: outputs.Dedicated.GetServerSpecificationsHardwareDiskGroupDiskSize;
         /**
-         * type of the disk (SSD, SATA, SAS, ...)
+         * Type of the disk (SSD, SATA, SAS, ...)
          */
         diskType: string;
         /**
-         * number of disks in this group
+         * Number of disks in this group
          */
         numberOfDisks: number;
         /**
-         * raid controller, if any, managing this group of disks
+         * Raid controller, if any, managing this group of disks
          */
         raidController: string;
     }
@@ -2695,7 +2896,7 @@ export namespace Dedicated {
 
     export interface GetServerSpecificationsHardwareExpansionCard {
         /**
-         * expansion card description
+         * Expansion card description
          */
         description: string;
         /**
@@ -2716,19 +2917,19 @@ export namespace Dedicated {
 
     export interface GetServerSpecificationsNetworkBandwidth {
         /**
-         * bandwidth limitation Internet to OVH
+         * Bandwidth limitation Internet to OVH
          */
         internetToOvh: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthInternetToOvh;
         /**
-         * bandwidth limitation OVH to Internet
+         * Bandwidth limitation OVH to Internet
          */
         ovhToInternet: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthOvhToInternet;
         /**
-         * bandwidth limitation OVH to OVH
+         * Bandwidth limitation OVH to OVH
          */
         ovhToOvh: outputs.Dedicated.GetServerSpecificationsNetworkBandwidthOvhToOvh;
         /**
-         * bandwidth offer type
+         * Bandwidth offer type (included┃standard)
          */
         type: string;
     }
@@ -2759,18 +2960,18 @@ export namespace Dedicated {
          */
         available: boolean;
         /**
-         * What modes are supported
+         * Supported modes
          */
         availableModes: outputs.Dedicated.GetServerSpecificationsNetworkOlaAvailableMode[];
         /**
-         * (DEPRECATED) What modes are supported
+         * Supported modes (DEPRECATED)
          */
         supportedModes: string[];
     }
 
     export interface GetServerSpecificationsNetworkOlaAvailableMode {
         /**
-         * Is it the default configuration of the server
+         * Whether it is the default configuration of the server
          */
         default: boolean;
         /**
@@ -2778,7 +2979,7 @@ export namespace Dedicated {
          */
         interfaces: outputs.Dedicated.GetServerSpecificationsNetworkOlaAvailableModeInterface[];
         /**
-         * Mode name
+         * Switch name
          */
         name: string;
     }
@@ -2793,7 +2994,7 @@ export namespace Dedicated {
          */
         count: number;
         /**
-         * An enum describing OVH Link Aggregation interface types
+         * Bandwidth offer type (included┃standard)
          */
         type: string;
     }
@@ -2856,7 +3057,7 @@ export namespace Dedicated {
          */
         inputQuotaUsed: outputs.Dedicated.GetServerSpecificationsNetworkTrafficInputQuotaUsed;
         /**
-         * Is bandwidth throttleted for being over quota
+         * Whether bandwidth is throttleted for being over quota
          */
         isThrottled: boolean;
         /**
@@ -2895,7 +3096,7 @@ export namespace Dedicated {
 
     export interface GetServerSpecificationsNetworkVmac {
         /**
-         * Server is compatible vmac or not
+         * Whether server is compatible vmac
          */
         supported: boolean;
     }
@@ -2906,7 +3107,7 @@ export namespace Dedicated {
          */
         bandwidth: outputs.Dedicated.GetServerSpecificationsNetworkVrackBandwidth;
         /**
-         * bandwidth offer type
+         * Bandwidth offer type (included┃standard)
          */
         type: string;
     }
@@ -2922,7 +3123,7 @@ export namespace Dedicated {
          */
         configDriveUserData?: string;
         /**
-         * Path of the EFI bootloader from the OS installed on the server
+         * Path of the EFI bootloader
          */
         efiBootloaderPath?: string;
         /**
@@ -2973,15 +3174,15 @@ export namespace Dedicated {
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * Unique identifier of the resource in the IAM
          */
         id: string;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
          */
         tags: {[key: string]: string};
         /**
-         * Unique resource name used in policies
+         * URN of the private database, used when writing IAM policies
          */
         urn: string;
     }
@@ -3134,11 +3335,11 @@ export namespace Dedicated {
 
     export interface ServerReinstallTaskStorage {
         /**
-         * Disk group id (default is 0, meaning automatic)
+         * Disk group id to install the OS to (default is 0, meaning automatic).
          */
         diskGroupId?: number;
         /**
-         * Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+         * Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
          */
         hardwareRaids?: outputs.Dedicated.ServerReinstallTaskStorageHardwareRaid[];
         /**
@@ -3172,18 +3373,18 @@ export namespace Dedicated {
          */
         disks?: number;
         /**
-         * Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+         * Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
          */
         layouts?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayout[];
         /**
-         * Partitioning scheme name
+         * Partitioning scheme (if applicable with selected operating system)
          */
         schemeName?: string;
     }
 
     export interface ServerReinstallTaskStoragePartitioningLayout {
         /**
-         * Partition extras parameters
+         * Partition extras parameters (when applicable)
          */
         extras?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtra[];
         /**
@@ -3199,18 +3400,18 @@ export namespace Dedicated {
          */
         raidLevel?: number;
         /**
-         * Partition size in MiB (default value is 0)
+         * Partition size in MiB (default value is 0 which means to fill the disk with that partition)
          */
         size?: number;
     }
 
     export interface ServerReinstallTaskStoragePartitioningLayoutExtra {
         /**
-         * LVM-specific parameters
+         * LVM-specific parameters (when applicable)
          */
         lvs?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtraLv[];
         /**
-         * ZFS-specific parameters
+         * ZFS-specific parameters (when applicable)
          */
         zps?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtraZp[];
     }
@@ -3224,7 +3425,7 @@ export namespace Dedicated {
 
     export interface ServerReinstallTaskStoragePartitioningLayoutExtraZp {
         /**
-         * zpool name (generated automatically if not specified)
+         * zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
          */
         name?: string;
     }
@@ -3314,14 +3515,14 @@ export namespace Dedicated {
 
     export interface ServerStoragePartitioningLayoutExtrasLv {
         /**
-         * Logical volume name
+         * Dedicated server name
          */
         name?: string;
     }
 
     export interface ServerStoragePartitioningLayoutExtrasZp {
         /**
-         * zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+         * Dedicated server name
          */
         name?: string;
     }
@@ -3329,21 +3530,21 @@ export namespace Dedicated {
 }
 
 export namespace Domain {
-    export interface DsRecordsDsRecord {
+    export interface DSRecordsDsRecord {
         /**
-         * Algorithm name of the DNSSEC key
+         * The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
          */
         algorithm: string;
         /**
-         * Flag name of the DNSSEC key
+         * The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
          */
         flags: string;
         /**
-         * Public key
+         * The record base64 encoded public key
          */
         publicKey: string;
         /**
-         * Tag of the DNSSEC key
+         * The record tag
          */
         tag: number;
     }
@@ -3484,7 +3685,7 @@ export namespace Domain {
     export interface NamePlan {
         configurations: outputs.Domain.NamePlanConfiguration[];
         /**
-         * Duration selected for the purchase of the product
+         * Duration selected for the purchase of the product (defaults to "P1Y")
          */
         duration: string;
         /**
@@ -3549,11 +3750,11 @@ export namespace Domain {
 
     export interface NameServersServer {
         /**
-         * DNS name server hostname
+         * The server hostname
          */
         host: string;
         /**
-         * DNS name server IP address
+         * The server IP
          */
         ip?: string;
     }
@@ -3631,7 +3832,7 @@ export namespace Domain {
          */
         catalogName?: string;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          */
         configurations?: outputs.Domain.ZonePlanConfiguration[];
         /**
@@ -3650,11 +3851,11 @@ export namespace Domain {
 
     export interface ZonePlanConfiguration {
         /**
-         * Identifier of the resource
+         * Identifier of the resource : `zone` or `template`
          */
         label: string;
         /**
-         * Path to the resource in API.OVH.COM
+         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          */
         value: string;
     }
@@ -3698,7 +3899,7 @@ export namespace Domain {
 export namespace Hosting {
     export interface GetPrivateDatabaseDbUser {
         /**
-         * User's rights on this database
+         * Grant of this user for this database
          */
         grantType: string;
         /**
@@ -3739,7 +3940,7 @@ export namespace Hosting {
 
     export interface PrivateDatabaseOrderDetail {
         /**
-         * description
+         * Custom description on your privatedatabase order.
          */
         description: string;
         /**
@@ -3766,11 +3967,11 @@ export namespace Hosting {
          */
         configurations?: outputs.Hosting.PrivateDatabasePlanConfiguration[];
         /**
-         * duration
+         * duration.
          */
         duration: string;
         /**
-         * Plan code
+         * Plan code.
          */
         planCode: string;
         /**
@@ -3786,6 +3987,8 @@ export namespace Hosting {
         label: string;
         /**
          * Path to the resource in API.OVH.COM
+         *
+         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: string;
     }
@@ -3800,7 +4003,7 @@ export namespace Hosting {
          */
         configurations?: outputs.Hosting.PrivateDatabasePlanOptionConfiguration[];
         /**
-         * duration
+         * Service duration
          */
         duration: string;
         /**
@@ -3828,9 +4031,21 @@ export namespace Hosting {
 
 export namespace Iam {
     export interface GetReferenceActionsAction {
+        /**
+         * Name of the action
+         */
         action: string;
+        /**
+         * List of the categories of the action
+         */
         categories: string[];
+        /**
+         * Description of the action
+         */
         description: string;
+        /**
+         * Resource type the action is related to
+         */
         resourceType: string;
     }
 
@@ -3839,7 +4054,7 @@ export namespace Iam {
 export namespace Ip {
     export interface GetServiceRoutedTo {
         /**
-         * Service where ip is routed to
+         * The service name
          */
         serviceName: string;
     }
@@ -3865,7 +4080,7 @@ export namespace Ip {
 
     export interface IpServiceOrderDetail {
         /**
-         * description
+         * Custom description on your ip.
          */
         description: string;
         /**
@@ -3922,7 +4137,7 @@ export namespace Ip {
          */
         catalogName?: string;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          */
         configurations?: outputs.Ip.IpServicePlanOptionConfiguration[];
         /**
@@ -3952,14 +4167,14 @@ export namespace Ip {
 
     export interface IpServiceRoutedTo {
         /**
-         * Service where ip is routed to
+         * service name
          */
         serviceName: string;
     }
 
     export interface MoveRoutedTo {
         /**
-         * Service where ip is routed to
+         * Name of the service to route the IP to. IP will be parked if this value is an empty string
          */
         serviceName: string;
     }
@@ -3968,19 +4183,52 @@ export namespace Ip {
 
 export namespace IpLoadBalancing {
     export interface GetIpLoadBalancingOrderableZone {
+        /**
+         * The zone three letter code
+         */
         name: string;
+        /**
+         * The billing planCode for this zone
+         */
         planCode: string;
     }
 
     export interface HttpFarmProbe {
+        /**
+         * Force use of SSL (TLS)
+         */
         forceSsl?: boolean;
+        /**
+         * probe interval, Value between 30 and 3600 seconds, default 30
+         */
         interval?: number;
+        /**
+         * What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+         */
         match: string;
+        /**
+         * HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+         */
         method: string;
+        /**
+         * Negate probe result
+         */
         negate?: boolean;
+        /**
+         * Pattern to match against `match`
+         */
         pattern: string;
+        /**
+         * Port for backends to receive traffic on.
+         */
         port: number;
+        /**
+         * Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+         */
         type: string;
+        /**
+         * URL for HTTP probe type.
+         */
         url: string;
     }
 
@@ -4001,11 +4249,11 @@ export namespace IpLoadBalancing {
 
     export interface HttpRouteRule {
         /**
-         * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+         * Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
          */
         field: string;
         /**
-         * Matching operator. Not all operators are available for all fields. See "/availableRules"
+         * Matching operator. Not all operators are available for all fields. See "availableRules"
          */
         match: string;
         /**
@@ -4144,20 +4392,47 @@ export namespace IpLoadBalancing {
     }
 
     export interface TcpFarmProbe {
+        /**
+         * Force use of SSL (TLS)
+         */
         forceSsl?: boolean;
+        /**
+         * probe interval, Value between 30 and 3600 seconds, default 30
+         */
         interval?: number;
+        /**
+         * What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+         */
         match: string;
+        /**
+         * HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+         */
         method?: string;
+        /**
+         * Negate probe result
+         */
         negate?: boolean;
+        /**
+         * Pattern to match against `match`
+         */
         pattern?: string;
+        /**
+         * Port for backends to receive traffic on.
+         */
         port?: number;
+        /**
+         * Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+         */
         type: string;
+        /**
+         * URL for HTTP probe type.
+         */
         url?: string;
     }
 
     export interface TcpRouteAction {
         /**
-         * Farm ID for "farm" action type, empty for others
+         * Farm ID for "farm" action type, empty for others.
          */
         target?: string;
         /**
@@ -4168,11 +4443,11 @@ export namespace IpLoadBalancing {
 
     export interface TcpRouteRule {
         /**
-         * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+         * Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
          */
         field: string;
         /**
-         * Matching operator. Not all operators are available for all fields. See "/availableRules"
+         * Matching operator. Not all operators are available for all fields. See "availableRules"
          */
         match: string;
         /**
@@ -4198,13 +4473,105 @@ export namespace IpLoadBalancing {
 export namespace Me {
     export interface GetMeCurrency {
         /**
-         * Currency code
+         * Currency code used by this account (e.g EUR, USD, ...)
          */
         code: string;
         /**
-         * Currency symbol
+         * Currency symbol used by this account (e.g €, $, ...)
          */
         symbol: string;
+    }
+
+}
+
+export namespace OVHcloud {
+    export interface ConnectIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
+    }
+
+    export interface ConnectsOcc {
+        /**
+         * Service bandwidth
+         */
+        bandwidth: string;
+        /**
+         * Service description
+         */
+        description: string;
+        /**
+         * IAM resource information
+         */
+        iam: outputs.OVHcloud.ConnectsOccIam;
+        /**
+         * List of interfaces linked to a service
+         */
+        interfaceLists: number[];
+        /**
+         * Pop reference where the service is delivered
+         */
+        pop: string;
+        /**
+         * Port quantity
+         */
+        portQuantity: string;
+        /**
+         * Product name of the service
+         */
+        product: string;
+        /**
+         * Service provider
+         */
+        providerName: string;
+        /**
+         * Service name
+         */
+        serviceName: string;
+        /**
+         * Service status
+         */
+        status: string;
+        /**
+         * uuid of the Ovhcloud Connect service
+         */
+        uuid: string;
+        /**
+         * vrack linked to the service
+         */
+        vrack: string;
+    }
+
+    export interface ConnectsOccIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
     }
 
 }
@@ -4212,19 +4579,19 @@ export namespace Me {
 export namespace Okms {
     export interface GetOkmsResourceIam {
         /**
-         * Resource display name
+         * (String) Resource display name
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * Should be set to the ID of your KMS
          */
         id: string;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
          */
         tags: {[key: string]: string};
         /**
-         * Unique resource name used in policies
+         * (String) Unique resource name used in policies
          */
         urn: string;
     }
@@ -4235,7 +4602,7 @@ export namespace Okms {
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * ID of the service key
          */
         id: string;
         /**
@@ -4254,7 +4621,7 @@ export namespace Okms {
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * ID of the service key
          */
         id: string;
         /**
@@ -4336,110 +4703,21 @@ export namespace Okms {
         pem: string;
     }
 
-    export interface GetOvhCloudConnectIam {
-        /**
-         * Resource display name
-         */
-        displayName: string;
-        /**
-         * Unique identifier of the resource
-         */
-        id: string;
-        /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
-         */
-        tags: {[key: string]: string};
-        /**
-         * Unique resource name used in policies
-         */
-        urn: string;
-    }
-
-    export interface GetOvhCloudConnectsOcc {
-        /**
-         * Service bandwidth
-         */
-        bandwidth: string;
-        /**
-         * Service description
-         */
-        description: string;
-        /**
-         * IAM resource metadata
-         */
-        iam: outputs.Okms.GetOvhCloudConnectsOccIam;
-        /**
-         * List of interfaces linked to a service
-         */
-        interfaceLists: number[];
-        /**
-         * Pop reference where the service is delivered
-         */
-        pop: string;
-        /**
-         * Port quantity
-         */
-        portQuantity: string;
-        /**
-         * Product name of the service
-         */
-        product: string;
-        /**
-         * Service provider
-         */
-        providerName: string;
-        /**
-         * Service name
-         */
-        serviceName: string;
-        /**
-         * Service status
-         */
-        status: string;
-        /**
-         * Service UUID
-         */
-        uuid: string;
-        /**
-         * vrack linked to the service
-         */
-        vrack: string;
-    }
-
-    export interface GetOvhCloudConnectsOccIam {
-        /**
-         * Resource display name
-         */
-        displayName: string;
-        /**
-         * Unique identifier of the resource
-         */
-        id: string;
-        /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
-         */
-        tags: {[key: string]: string};
-        /**
-         * Unique resource name used in policies
-         */
-        urn: string;
-    }
-
     export interface OkmsIam {
         /**
-         * Resource display name
+         * (String) Resource display name
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * (String) Unique identifier of the resource
          */
         id: string;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
          */
         tags: {[key: string]: string};
         /**
-         * Unique resource name used in policies
+         * (String) Unique resource name used in policies
          */
         urn: string;
     }
@@ -4988,34 +5266,58 @@ export namespace Order {
 export namespace Vps {
     export interface VpsIam {
         /**
-         * Resource display name
+         * Custom display name
          */
         displayName: string;
         /**
-         * Unique identifier of the resource
+         * Unique identifier of the resource in the IAM
          */
         id: string;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
          */
         tags: {[key: string]: string};
         /**
-         * Unique resource name used in policies
+         * URN of the private database, used when writing IAM policies
          */
         urn: string;
     }
 
     export interface VpsModel {
+        /**
+         * All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+         */
         availableOptions: string[];
+        /**
+         * Datacenters where this model is available
+         */
         datacenters: string[];
+        /**
+         * Disk capacity of this VPS
+         */
         disk: number;
+        /**
+         * Maximum number of additional IPs
+         */
         maximumAdditionnalIp: number;
+        /**
+         * RAM of the VPS
+         */
         memory: number;
+        /**
+         * Name of the VPS
+         */
         name: string;
+        /**
+         * Description of this VPS offer
+         */
         offer: string;
+        /**
+         * Number of vcores
+         */
         vcore: number;
         /**
-         * All versions that VPS can have
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
          */
         version: string;
     }
@@ -5039,9 +5341,12 @@ export namespace Vps {
     }
 
     export interface VpsPlan {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
         configurations: outputs.Vps.VpsPlanConfiguration[];
         /**
-         * Duration selected for the purchase of the product
+         * duration
          */
         duration: string;
         /**
@@ -5049,11 +5354,11 @@ export namespace Vps {
          */
         itemId?: number;
         /**
-         * Identifier of the option offer
+         * Plan code
          */
         planCode: string;
         /**
-         * Pricing mode selected for the purchase of the product
+         * Pricing model identifier
          */
         pricingMode: string;
         /**
@@ -5064,27 +5369,30 @@ export namespace Vps {
 
     export interface VpsPlanConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: string;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: string;
     }
 
     export interface VpsPlanOption {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
         configurations?: outputs.Vps.VpsPlanOptionConfiguration[];
         /**
-         * Duration selected for the purchase of the product
+         * duration
          */
         duration: string;
         /**
-         * Identifier of the option offer
+         * Plan code
          */
         planCode: string;
         /**
-         * Pricing mode selected for the purchase of the product
+         * Pricing model identifier
          */
         pricingMode: string;
         /**
@@ -5095,11 +5403,11 @@ export namespace Vps {
 
     export interface VpsPlanOptionConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: string;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: string;
     }
@@ -5128,7 +5436,7 @@ export namespace Vrack {
 
     export interface VrackOrderDetail {
         /**
-         * description
+         * yourvrackdescription
          */
         description: string;
         /**

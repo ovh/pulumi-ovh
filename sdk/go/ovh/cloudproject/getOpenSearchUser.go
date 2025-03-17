@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			osUser, err := cloudproject.GetOpenSearchUser(ctx, &cloudproject.GetOpenSearchUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("osUserAcls", osUser.Acls)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOpenSearchUser(ctx *pulumi.Context, args *GetOpenSearchUserArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchUserResult
@@ -23,21 +53,31 @@ func GetOpenSearchUser(ctx *pulumi.Context, args *GetOpenSearchUserArgs, opts ..
 
 // A collection of arguments for invoking getOpenSearchUser.
 type GetOpenSearchUserArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Name        string `pulumi:"name"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getOpenSearchUser.
 type GetOpenSearchUserResult struct {
-	Acls      []GetOpenSearchUserAcl `pulumi:"acls"`
-	ClusterId string                 `pulumi:"clusterId"`
-	CreatedAt string                 `pulumi:"createdAt"`
+	// Acls of the user.
+	Acls []GetOpenSearchUserAcl `pulumi:"acls"`
+	// See Argument Reference above.
+	ClusterId string `pulumi:"clusterId"`
+	// Date of the creation of the user.
+	CreatedAt string `pulumi:"createdAt"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// Current status of the user.
 	ServiceName string `pulumi:"serviceName"`
-	Status      string `pulumi:"status"`
+	// Current status of the user.
+	Status string `pulumi:"status"`
 }
 
 func GetOpenSearchUserOutput(ctx *pulumi.Context, args GetOpenSearchUserOutputArgs, opts ...pulumi.InvokeOption) GetOpenSearchUserResultOutput {
@@ -51,8 +91,12 @@ func GetOpenSearchUserOutput(ctx *pulumi.Context, args GetOpenSearchUserOutputAr
 
 // A collection of arguments for invoking getOpenSearchUser.
 type GetOpenSearchUserOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -75,14 +119,17 @@ func (o GetOpenSearchUserResultOutput) ToGetOpenSearchUserResultOutputWithContex
 	return o
 }
 
+// Acls of the user.
 func (o GetOpenSearchUserResultOutput) Acls() GetOpenSearchUserAclArrayOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) []GetOpenSearchUserAcl { return v.Acls }).(GetOpenSearchUserAclArrayOutput)
 }
 
+// See Argument Reference above.
 func (o GetOpenSearchUserResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// Date of the creation of the user.
 func (o GetOpenSearchUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -92,14 +139,17 @@ func (o GetOpenSearchUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the user.
 func (o GetOpenSearchUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Current status of the user.
 func (o GetOpenSearchUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Current status of the user.
 func (o GetOpenSearchUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.Status }).(pulumi.StringOutput)
 }

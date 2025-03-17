@@ -30,7 +30,7 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Nics;
         /// <summary>
-        /// Server name
+        /// Server bound to this VirtualNetworkInterface
         /// </summary>
         public readonly string ServerName;
         /// <summary>

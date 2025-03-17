@@ -9,11 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Creates a user for a container registry associated with a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var registry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXXXX",
+    ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+    ///     });
+    /// 
+    ///     var user = new Ovh.CloudProject.ContainerRegistryUser("user", new()
+    ///     {
+    ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
+    ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+    ///         Email = "foo@bar.com",
+    ///         Login = "foobar",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser")]
     public partial class ContainerRegistryUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// User email.
+        /// User email
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -25,19 +55,20 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Login { get; private set; } = null!;
 
         /// <summary>
-        /// User password
+        /// (Sensitive) User password
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// RegistryID
+        /// Registry ID
         /// </summary>
         [Output("registryId")]
         public Output<string> RegistryId { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -100,7 +131,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class ContainerRegistryUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User email.
+        /// User email
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -112,13 +143,14 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Login { get; set; } = null!;
 
         /// <summary>
-        /// RegistryID
+        /// Registry ID
         /// </summary>
         [Input("registryId", required: true)]
         public Input<string> RegistryId { get; set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -132,7 +164,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class ContainerRegistryUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User email.
+        /// User email
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -147,7 +179,7 @@ namespace Pulumi.Ovh.CloudProject
         private Input<string>? _password;
 
         /// <summary>
-        /// User password
+        /// (Sensitive) User password
         /// </summary>
         public Input<string>? Password
         {
@@ -160,13 +192,14 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// RegistryID
+        /// Registry ID
         /// </summary>
         [Input("registryId")]
         public Input<string>? RegistryId { get; set; }
 
         /// <summary>
-        /// Service name
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

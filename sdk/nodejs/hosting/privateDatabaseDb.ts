@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Create a new database on your private cloud database service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const database = new ovh.hosting.PrivateDatabaseDb("database", {
+ *     databaseName: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud Webhosting database can be imported using the `service_name` and the `database_name`, separated by "/" E.g.,
+ *
+ * ```sh
+ * $ pulumi import ovh:Hosting/privateDatabaseDb:PrivateDatabaseDb database service_name/database_name
+ * ```
+ */
 export class PrivateDatabaseDb extends pulumi.CustomResource {
     /**
      * Get an existing PrivateDatabaseDb resource's state with the given name, ID, and optional extra
@@ -37,7 +60,7 @@ export class PrivateDatabaseDb extends pulumi.CustomResource {
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -81,7 +104,7 @@ export interface PrivateDatabaseDbState {
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -95,7 +118,7 @@ export interface PrivateDatabaseDbArgs {
      */
     databaseName: pulumi.Input<string>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     serviceName: pulumi.Input<string>;
 }

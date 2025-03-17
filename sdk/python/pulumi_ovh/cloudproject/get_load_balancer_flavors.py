@@ -57,11 +57,17 @@ class GetLoadBalancerFlavorsResult:
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
+        """
+        Region name
+        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Service name
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -81,7 +87,21 @@ def get_load_balancer_flavors(region_name: Optional[str] = None,
                               service_name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerFlavorsResult:
     """
-    Use this data source to access information about an existing resource.
+    List loadbalancer flavors in the given public cloud region.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    flavors = ovh.CloudProject.get_load_balancer_flavors(region_name="GRA9",
+        service_name="<public cloud project ID>")
+    ```
+
+
+    :param str region_name: Region name
+    :param str service_name: Service name
     """
     __args__ = dict()
     __args__['regionName'] = region_name
@@ -98,7 +118,21 @@ def get_load_balancer_flavors_output(region_name: Optional[pulumi.Input[str]] = 
                                      service_name: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerFlavorsResult]:
     """
-    Use this data source to access information about an existing resource.
+    List loadbalancer flavors in the given public cloud region.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    flavors = ovh.CloudProject.get_load_balancer_flavors(region_name="GRA9",
+        service_name="<public cloud project ID>")
+    ```
+
+
+    :param str region_name: Region name
+    :param str service_name: Service name
     """
     __args__ = dict()
     __args__['regionName'] = region_name

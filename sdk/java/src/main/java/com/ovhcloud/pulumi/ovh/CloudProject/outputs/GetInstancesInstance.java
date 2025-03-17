@@ -24,6 +24,11 @@ public final class GetInstancesInstance {
      */
     private List<GetInstancesInstanceAttachedVolume> attachedVolumes;
     /**
+     * @return Availability zone of the instance
+     * 
+     */
+    private String availabilityZone;
+    /**
      * @return Flavor id
      * 
      */
@@ -73,6 +78,13 @@ public final class GetInstancesInstance {
      */
     public List<GetInstancesInstanceAttachedVolume> attachedVolumes() {
         return this.attachedVolumes;
+    }
+    /**
+     * @return Availability zone of the instance
+     * 
+     */
+    public String availabilityZone() {
+        return this.availabilityZone;
     }
     /**
      * @return Flavor id
@@ -135,6 +147,7 @@ public final class GetInstancesInstance {
     public static final class Builder {
         private List<GetInstancesInstanceAddress> addresses;
         private List<GetInstancesInstanceAttachedVolume> attachedVolumes;
+        private String availabilityZone;
         private String flavorId;
         private String flavorName;
         private String id;
@@ -147,6 +160,7 @@ public final class GetInstancesInstance {
     	      Objects.requireNonNull(defaults);
     	      this.addresses = defaults.addresses;
     	      this.attachedVolumes = defaults.attachedVolumes;
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.flavorId = defaults.flavorId;
     	      this.flavorName = defaults.flavorName;
     	      this.id = defaults.id;
@@ -177,6 +191,14 @@ public final class GetInstancesInstance {
         }
         public Builder attachedVolumes(GetInstancesInstanceAttachedVolume... attachedVolumes) {
             return attachedVolumes(List.of(attachedVolumes));
+        }
+        @CustomType.Setter
+        public Builder availabilityZone(String availabilityZone) {
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
+            return this;
         }
         @CustomType.Setter
         public Builder flavorId(String flavorId) {
@@ -238,6 +260,7 @@ public final class GetInstancesInstance {
             final var _resultValue = new GetInstancesInstance();
             _resultValue.addresses = addresses;
             _resultValue.attachedVolumes = attachedVolumes;
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.flavorId = flavorId;
             _resultValue.flavorName = flavorName;
             _resultValue.id = id;

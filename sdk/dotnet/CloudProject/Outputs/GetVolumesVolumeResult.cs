@@ -14,15 +14,15 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetVolumesVolumeResult
     {
         /// <summary>
-        /// Volume ID
+        /// The id of the volume
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Volume name
+        /// The name of the volume
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Volume size
+        /// The size of the volume
         /// </summary>
         public readonly double Size;
 

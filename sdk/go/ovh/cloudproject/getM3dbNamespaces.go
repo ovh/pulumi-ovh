@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			namespaces, err := cloudproject.GetM3dbNamespaces(ctx, &cloudproject.GetM3dbNamespacesArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("namespaceIds", namespaces.NamespaceIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetM3dbNamespaces(ctx *pulumi.Context, args *GetM3dbNamespacesArgs, opts ...pulumi.InvokeOption) (*GetM3dbNamespacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbNamespacesResult
@@ -23,17 +52,23 @@ func GetM3dbNamespaces(ctx *pulumi.Context, args *GetM3dbNamespacesArgs, opts ..
 
 // A collection of arguments for invoking getM3dbNamespaces.
 type GetM3dbNamespacesArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getM3dbNamespaces.
 type GetM3dbNamespacesResult struct {
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of namespaces ids of the M3DB cluster associated with the project.
 	NamespaceIds []string `pulumi:"namespaceIds"`
-	ServiceName  string   `pulumi:"serviceName"`
+	// See Argument Reference above.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 func GetM3dbNamespacesOutput(ctx *pulumi.Context, args GetM3dbNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetM3dbNamespacesResultOutput {
@@ -47,7 +82,10 @@ func GetM3dbNamespacesOutput(ctx *pulumi.Context, args GetM3dbNamespacesOutputAr
 
 // A collection of arguments for invoking getM3dbNamespaces.
 type GetM3dbNamespacesOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -70,6 +108,7 @@ func (o GetM3dbNamespacesResultOutput) ToGetM3dbNamespacesResultOutputWithContex
 	return o
 }
 
+// See Argument Reference above.
 func (o GetM3dbNamespacesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespacesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -79,10 +118,12 @@ func (o GetM3dbNamespacesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of namespaces ids of the M3DB cluster associated with the project.
 func (o GetM3dbNamespacesResultOutput) NamespaceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetM3dbNamespacesResult) []string { return v.NamespaceIds }).(pulumi.StringArrayOutput)
 }
 
+// See Argument Reference above.
 func (o GetM3dbNamespacesResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbNamespacesResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

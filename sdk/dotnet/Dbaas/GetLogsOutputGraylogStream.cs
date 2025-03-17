@@ -11,12 +11,78 @@ namespace Pulumi.Ovh.Dbaas
 {
     public static class GetLogsOutputGraylogStream
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs output graylog stream.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Title = "my stream",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetLogsOutputGraylogStreamResult> InvokeAsync(GetLogsOutputGraylogStreamArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs output graylog stream.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Title = "my stream",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a DBaas logs output graylog stream.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var stream = Ovh.Dbaas.GetLogsOutputGraylogStream.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Title = "my stream",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLogsOutputGraylogStreamResult> Invoke(GetLogsOutputGraylogStreamInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsOutputGraylogStreamResult>("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", args ?? new GetLogsOutputGraylogStreamInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +90,15 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsOutputGraylogStreamArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The service name. It's the ID of your Logs Data Platform instance.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Stream description
+        /// </summary>
         [Input("title", required: true)]
         public string Title { get; set; } = null!;
 
@@ -38,9 +110,15 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsOutputGraylogStreamInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The service name. It's the ID of your Logs Data Platform instance.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Stream description
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -55,33 +133,99 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class GetLogsOutputGraylogStreamResult
     {
         public readonly bool CanAlert;
+        /// <summary>
+        /// Cold storage compression method
+        /// </summary>
         public readonly string ColdStorageCompression;
+        /// <summary>
+        /// ColdStorage content
+        /// </summary>
         public readonly string ColdStorageContent;
+        /// <summary>
+        /// Is Cold storage enabled?
+        /// </summary>
         public readonly bool ColdStorageEnabled;
+        /// <summary>
+        /// Notify on new Cold storage archive
+        /// </summary>
         public readonly bool ColdStorageNotifyEnabled;
+        /// <summary>
+        /// Cold storage retention in year
+        /// </summary>
         public readonly int ColdStorageRetention;
+        /// <summary>
+        /// ColdStorage destination
+        /// </summary>
         public readonly string ColdStorageTarget;
+        /// <summary>
+        /// Stream creation
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Stream description
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Enable ES indexing
+        /// </summary>
         public readonly bool IndexingEnabled;
+        /// <summary>
+        /// Maximum indexing size (in GB)
+        /// </summary>
         public readonly int IndexingMaxSize;
+        /// <summary>
+        /// If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        /// </summary>
         public readonly bool IndexingNotifyEnabled;
+        /// <summary>
+        /// Indicates if you are allowed to edit entry
+        /// </summary>
         public readonly bool IsEditable;
+        /// <summary>
+        /// Indicates if you are allowed to share entry
+        /// </summary>
         public readonly bool IsShareable;
+        /// <summary>
+        /// Number of alert condition
+        /// </summary>
         public readonly int NbAlertCondition;
+        /// <summary>
+        /// Number of coldstored archives
+        /// </summary>
         public readonly int NbArchive;
+        /// <summary>
+        /// Parent stream ID
+        /// </summary>
         public readonly string ParentStreamId;
+        /// <summary>
+        /// If set, pause indexing when maximum size is reach
+        /// </summary>
         public readonly bool PauseIndexingOnMaxSize;
+        /// <summary>
+        /// Retention ID
+        /// </summary>
         public readonly string RetentionId;
         public readonly string ServiceName;
+        /// <summary>
+        /// Stream ID
+        /// </summary>
         public readonly string StreamId;
         public readonly string Title;
+        /// <summary>
+        /// Stream last update
+        /// </summary>
         public readonly string UpdatedAt;
+        /// <summary>
+        /// Enable Websocket
+        /// </summary>
         public readonly bool WebSocketEnabled;
+        /// <summary>
+        /// Write token of the stream (empty if the caller is not the owner of the stream)
+        /// </summary>
         public readonly string WriteToken;
 
         [OutputConstructor]

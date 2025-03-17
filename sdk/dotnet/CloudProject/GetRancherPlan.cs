@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetRancherPlan
     {
+        /// <summary>
+        /// Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var plans = Ovh.CloudProject.GetRancherPlan.Invoke(new()
+        ///     {
+        ///         ProjectId = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRancherPlanResult> InvokeAsync(GetRancherPlanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRancherPlanResult>("ovh:CloudProject/getRancherPlan:getRancherPlan", args ?? new GetRancherPlanArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var plans = Ovh.CloudProject.GetRancherPlan.Invoke(new()
+        ///     {
+        ///         ProjectId = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRancherPlanResult> Invoke(GetRancherPlanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRancherPlanResult>("ovh:CloudProject/getRancherPlan:getRancherPlan", args ?? new GetRancherPlanInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var plans = Ovh.CloudProject.GetRancherPlan.Invoke(new()
+        ///     {
+        ///         ProjectId = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRancherPlanResult> Invoke(GetRancherPlanInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRancherPlanResult>("ovh:CloudProject/getRancherPlan:getRancherPlan", args ?? new GetRancherPlanInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRancherPlanArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Project ID
+        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRancherPlanInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Project ID
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -53,6 +122,9 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetRancherPlanPlanResult> Plans;
+        /// <summary>
+        /// Project ID
+        /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]

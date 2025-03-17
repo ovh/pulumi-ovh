@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get the container registry capabilities of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const capabilities = ovh.CloudProject.getCapabilitiesContainerRegistry({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
+ */
 export function getCapabilitiesContainerRegistry(args: GetCapabilitiesContainerRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesContainerRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", {
@@ -17,6 +31,10 @@ export function getCapabilitiesContainerRegistry(args: GetCapabilitiesContainerR
  * A collection of arguments for invoking getCapabilitiesContainerRegistry.
  */
 export interface GetCapabilitiesContainerRegistryArgs {
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -28,9 +46,26 @@ export interface GetCapabilitiesContainerRegistryResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of container registry capability for a single region
+     */
     readonly results: outputs.CloudProject.GetCapabilitiesContainerRegistryResult[];
     readonly serviceName: string;
 }
+/**
+ * Use this data source to get the container registry capabilities of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const capabilities = ovh.CloudProject.getCapabilitiesContainerRegistry({
+ *     serviceName: "XXXXXX",
+ * });
+ * ```
+ */
 export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesContainerRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapabilitiesContainerRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", {
@@ -42,5 +77,9 @@ export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesCont
  * A collection of arguments for invoking getCapabilitiesContainerRegistry.
  */
 export interface GetCapabilitiesContainerRegistryOutputArgs {
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

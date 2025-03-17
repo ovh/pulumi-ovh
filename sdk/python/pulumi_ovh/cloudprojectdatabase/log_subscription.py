@@ -25,9 +25,12 @@ class LogSubscriptionArgs:
                  stream_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a LogSubscription resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] engine: The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "engine", engine)
@@ -38,7 +41,7 @@ class LogSubscriptionArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -50,7 +53,8 @@ class LogSubscriptionArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Name of the engine of the service
+        The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -61,6 +65,10 @@ class LogSubscriptionArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -71,7 +79,7 @@ class LogSubscriptionArgs:
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Input[str]:
         """
-        Id of the target Log data platform stream
+        Id of the target Log data platform stream.
         """
         return pulumi.get(self, "stream_id")
 
@@ -96,16 +104,19 @@ class _LogSubscriptionState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogSubscription resources.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] created_at: Creation date of the subscription
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] kind: Log kind name of this subscription
-        :param pulumi.Input[str] ldp_service_name: Name of the destination log service
-        :param pulumi.Input[str] operation_id: Identifier of the operation
-        :param pulumi.Input[str] resource_name: Name of subscribed resource, where the logs come from
-        :param pulumi.Input[str] resource_type: Type of subscribed resource, where the logs come from
-        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream
-        :param pulumi.Input[str] updated_at: Last update date of the subscription
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] created_at: Creation date of the subscription.
+        :param pulumi.Input[str] engine: The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] kind: Log kind name of this subscription.
+        :param pulumi.Input[str] ldp_service_name: Name of the destination log service.
+        :param pulumi.Input[str] operation_id: Identifier of the operation.
+        :param pulumi.Input[str] resource_name: Name of subscribed resource, where the logs come from.
+        :param pulumi.Input[str] resource_type: Type of subscribed resource, where the logs come from.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream.
+        :param pulumi.Input[str] updated_at: Last update date of the subscription.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -134,7 +145,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -146,7 +157,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation date of the subscription
+        Creation date of the subscription.
         """
         return pulumi.get(self, "created_at")
 
@@ -158,7 +169,8 @@ class _LogSubscriptionState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the engine of the service
+        The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -170,7 +182,7 @@ class _LogSubscriptionState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        Log kind name of this subscription
+        Log kind name of this subscription.
         """
         return pulumi.get(self, "kind")
 
@@ -182,7 +194,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="ldpServiceName")
     def ldp_service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the destination log service
+        Name of the destination log service.
         """
         return pulumi.get(self, "ldp_service_name")
 
@@ -194,7 +206,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the operation
+        Identifier of the operation.
         """
         return pulumi.get(self, "operation_id")
 
@@ -206,7 +218,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of subscribed resource, where the logs come from
+        Name of subscribed resource, where the logs come from.
         """
         return pulumi.get(self, "resource_name")
 
@@ -218,7 +230,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of subscribed resource, where the logs come from
+        Type of subscribed resource, where the logs come from.
         """
         return pulumi.get(self, "resource_type")
 
@@ -229,6 +241,10 @@ class _LogSubscriptionState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -239,7 +255,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="streamId")
     def stream_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Id of the target Log data platform stream
+        Id of the target Log data platform stream.
         """
         return pulumi.get(self, "stream_id")
 
@@ -251,7 +267,7 @@ class _LogSubscriptionState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Last update date of the subscription
+        Last update date of the subscription.
         """
         return pulumi.get(self, "updated_at")
 
@@ -271,12 +287,46 @@ class LogSubscription(pulumi.CustomResource):
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LogSubscription resource with the given unique name, props, and options.
+        Creates a log subscription for a cluster associated with a public cloud project.
+
+        ## Example Usage
+
+        Create a log subscription for a database.
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
+            title="my stream")
+        db = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="YYY",
+            id="ZZZ")
+        subscription = ovh.cloud_project_database.LogSubscription("subscription",
+            service_name=db.service_name,
+            engine=db.engine,
+            cluster_id=db.id,
+            stream_id=stream.id)
+        ```
+
+        ## Import
+
+        OVHcloud Managed clusters logs subscription can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the subscription, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/logSubscription:LogSubscription sub service_name/engine/cluster_id/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] engine: The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream.
         """
         ...
     @overload
@@ -285,7 +335,38 @@ class LogSubscription(pulumi.CustomResource):
                  args: LogSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogSubscription resource with the given unique name, props, and options.
+        Creates a log subscription for a cluster associated with a public cloud project.
+
+        ## Example Usage
+
+        Create a log subscription for a database.
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
+            title="my stream")
+        db = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="YYY",
+            id="ZZZ")
+        subscription = ovh.cloud_project_database.LogSubscription("subscription",
+            service_name=db.service_name,
+            engine=db.engine,
+            cluster_id=db.id,
+            stream_id=stream.id)
+        ```
+
+        ## Import
+
+        OVHcloud Managed clusters logs subscription can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the subscription, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/logSubscription:LogSubscription sub service_name/engine/cluster_id/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogSubscriptionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -363,16 +444,19 @@ class LogSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] created_at: Creation date of the subscription
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] kind: Log kind name of this subscription
-        :param pulumi.Input[str] ldp_service_name: Name of the destination log service
-        :param pulumi.Input[str] operation_id: Identifier of the operation
-        :param pulumi.Input[str] resource_name_: Name of subscribed resource, where the logs come from
-        :param pulumi.Input[str] resource_type: Type of subscribed resource, where the logs come from
-        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream
-        :param pulumi.Input[str] updated_at: Last update date of the subscription
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] created_at: Creation date of the subscription.
+        :param pulumi.Input[str] engine: The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] kind: Log kind name of this subscription.
+        :param pulumi.Input[str] ldp_service_name: Name of the destination log service.
+        :param pulumi.Input[str] operation_id: Identifier of the operation.
+        :param pulumi.Input[str] resource_name_: Name of subscribed resource, where the logs come from.
+        :param pulumi.Input[str] resource_type: Type of subscribed resource, where the logs come from.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] stream_id: Id of the target Log data platform stream.
+        :param pulumi.Input[str] updated_at: Last update date of the subscription.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -395,7 +479,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -403,7 +487,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Creation date of the subscription
+        Creation date of the subscription.
         """
         return pulumi.get(self, "created_at")
 
@@ -411,7 +495,8 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Name of the engine of the service
+        The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -419,7 +504,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        Log kind name of this subscription
+        Log kind name of this subscription.
         """
         return pulumi.get(self, "kind")
 
@@ -427,7 +512,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="ldpServiceName")
     def ldp_service_name(self) -> pulumi.Output[str]:
         """
-        Name of the destination log service
+        Name of the destination log service.
         """
         return pulumi.get(self, "ldp_service_name")
 
@@ -435,7 +520,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="operationId")
     def operation_id(self) -> pulumi.Output[str]:
         """
-        Identifier of the operation
+        Identifier of the operation.
         """
         return pulumi.get(self, "operation_id")
 
@@ -443,7 +528,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Output[str]:
         """
-        Name of subscribed resource, where the logs come from
+        Name of subscribed resource, where the logs come from.
         """
         return pulumi.get(self, "resource_name")
 
@@ -451,20 +536,24 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        Type of subscribed resource, where the logs come from
+        Type of subscribed resource, where the logs come from.
         """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Output[str]:
         """
-        Id of the target Log data platform stream
+        Id of the target Log data platform stream.
         """
         return pulumi.get(self, "stream_id")
 
@@ -472,7 +561,7 @@ class LogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        Last update date of the subscription
+        Last update date of the subscription.
         """
         return pulumi.get(self, "updated_at")
 

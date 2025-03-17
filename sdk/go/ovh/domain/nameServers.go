@@ -8,16 +8,80 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this resource to manage a domain's name servers.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := domain.NewNameServers(ctx, "nameServers", &domain.NameServersArgs{
+//				Domain: pulumi.String("mydomain.ovh"),
+//				Servers: domain.NameServersServerArray{
+//					&domain.NameServersServerArgs{
+//						Host: pulumi.String("dns105.ovh.net"),
+//						Ip:   pulumi.String("213.251.188.144"),
+//					},
+//					&domain.NameServersServerArgs{
+//						Host: pulumi.String("ns105.ovh.net"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Name servers can be imported using their `domain`.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	to = ovh_domain_name_servers.name_servers
+//
+//	id = "<domain name>"
+//
+// }
+//
+// You can then run:
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=name_servers.tf
+//
+// $ pulumi up
+//
+// The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type NameServers struct {
 	pulumi.CustomResourceState
 
-	// Domain name
+	// Domain name for which to manage name servers
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Name servers for the domain
+	// Details about a name server
 	Servers NameServersServerArrayOutput `pulumi:"servers"`
 }
 
@@ -57,16 +121,16 @@ func GetNameServers(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NameServers resources.
 type nameServersState struct {
-	// Domain name
+	// Domain name for which to manage name servers
 	Domain *string `pulumi:"domain"`
-	// Name servers for the domain
+	// Details about a name server
 	Servers []NameServersServer `pulumi:"servers"`
 }
 
 type NameServersState struct {
-	// Domain name
+	// Domain name for which to manage name servers
 	Domain pulumi.StringPtrInput
-	// Name servers for the domain
+	// Details about a name server
 	Servers NameServersServerArrayInput
 }
 
@@ -75,17 +139,17 @@ func (NameServersState) ElementType() reflect.Type {
 }
 
 type nameServersArgs struct {
-	// Domain name
+	// Domain name for which to manage name servers
 	Domain string `pulumi:"domain"`
-	// Name servers for the domain
+	// Details about a name server
 	Servers []NameServersServer `pulumi:"servers"`
 }
 
 // The set of arguments for constructing a NameServers resource.
 type NameServersArgs struct {
-	// Domain name
+	// Domain name for which to manage name servers
 	Domain pulumi.StringInput
-	// Name servers for the domain
+	// Details about a name server
 	Servers NameServersServerArrayInput
 }
 
@@ -176,12 +240,12 @@ func (o NameServersOutput) ToNameServersOutputWithContext(ctx context.Context) N
 	return o
 }
 
-// Domain name
+// Domain name for which to manage name servers
 func (o NameServersOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *NameServers) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Name servers for the domain
+// Details about a name server
 func (o NameServersOutput) Servers() NameServersServerArrayOutput {
 	return o.ApplyT(func(v *NameServers) NameServersServerArrayOutput { return v.Servers }).(NameServersServerArrayOutput)
 }

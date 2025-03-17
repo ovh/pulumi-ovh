@@ -60,6 +60,9 @@ class GetCartResult:
     @property
     @pulumi.getter(name="cartId")
     def cart_id(self) -> str:
+        """
+        Cart identifier
+        """
         return pulumi.get(self, "cart_id")
 
     @property
@@ -83,6 +86,9 @@ class GetCartResult:
     @property
     @pulumi.getter
     def items(self) -> Sequence[int]:
+        """
+        Items of your cart
+        """
         return pulumi.get(self, "items")
 
     @property
@@ -93,6 +99,9 @@ class GetCartResult:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
+        """
+        Indicates if the cart has already been validated
+        """
         return pulumi.get(self, "read_only")
 
 
@@ -118,7 +127,23 @@ def get_cart(assign: Optional[bool] = None,
              ovh_subsidiary: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCartResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to create a temporary order cart to retrieve information order cart products.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    ```
+
+
+    :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+    :param str description: Description of your cart
+    :param str expire: Expiration time (format: 2006-01-02T15:04:05+00:00)
+    :param str ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
     """
     __args__ = dict()
     __args__['assign'] = assign
@@ -143,7 +168,23 @@ def get_cart_output(assign: Optional[pulumi.Input[Optional[bool]]] = None,
                     ovh_subsidiary: Optional[pulumi.Input[str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to create a temporary order cart to retrieve information order cart products.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    ```
+
+
+    :param bool assign: Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+    :param str description: Description of your cart
+    :param str expire: Expiration time (format: 2006-01-02T15:04:05+00:00)
+    :param str ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
     """
     __args__ = dict()
     __args__['assign'] = assign

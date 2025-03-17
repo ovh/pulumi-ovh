@@ -26,11 +26,11 @@ class PrivateDatabaseAllowlistArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PrivateDatabaseAllowlist resource.
-        :param pulumi.Input[str] ip: The whitelisted IP in your instance
-        :param pulumi.Input[bool] service: Authorize this IP to access service port
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port
-        :param pulumi.Input[str] name: Custom name for your Whitelisted IP
+        :param pulumi.Input[str] ip: The whitelisted IP in your instance.
+        :param pulumi.Input[bool] service: Authorize this IP to access service port. Values can be `true` or `false`
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port. Values can be `true` or `false`
+        :param pulumi.Input[str] name: Custom name for your Whitelisted IP.
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "service", service)
@@ -43,7 +43,7 @@ class PrivateDatabaseAllowlistArgs:
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
         """
-        The whitelisted IP in your instance
+        The whitelisted IP in your instance.
         """
         return pulumi.get(self, "ip")
 
@@ -55,7 +55,7 @@ class PrivateDatabaseAllowlistArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[bool]:
         """
-        Authorize this IP to access service port
+        Authorize this IP to access service port. Values can be `true` or `false`
         """
         return pulumi.get(self, "service")
 
@@ -67,7 +67,7 @@ class PrivateDatabaseAllowlistArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -79,7 +79,7 @@ class PrivateDatabaseAllowlistArgs:
     @pulumi.getter
     def sftp(self) -> pulumi.Input[bool]:
         """
-        Authorize this IP to access SFTP port
+        Authorize this IP to access SFTP port. Values can be `true` or `false`
         """
         return pulumi.get(self, "sftp")
 
@@ -91,7 +91,7 @@ class PrivateDatabaseAllowlistArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom name for your Whitelisted IP
+        Custom name for your Whitelisted IP.
         """
         return pulumi.get(self, "name")
 
@@ -110,11 +110,11 @@ class _PrivateDatabaseAllowlistState:
                  sftp: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering PrivateDatabaseAllowlist resources.
-        :param pulumi.Input[str] ip: The whitelisted IP in your instance
-        :param pulumi.Input[str] name: Custom name for your Whitelisted IP
-        :param pulumi.Input[bool] service: Authorize this IP to access service port
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port
+        :param pulumi.Input[str] ip: The whitelisted IP in your instance.
+        :param pulumi.Input[str] name: Custom name for your Whitelisted IP.
+        :param pulumi.Input[bool] service: Authorize this IP to access service port. Values can be `true` or `false`
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port. Values can be `true` or `false`
         """
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
@@ -131,7 +131,7 @@ class _PrivateDatabaseAllowlistState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The whitelisted IP in your instance
+        The whitelisted IP in your instance.
         """
         return pulumi.get(self, "ip")
 
@@ -143,7 +143,7 @@ class _PrivateDatabaseAllowlistState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom name for your Whitelisted IP
+        Custom name for your Whitelisted IP.
         """
         return pulumi.get(self, "name")
 
@@ -155,7 +155,7 @@ class _PrivateDatabaseAllowlistState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[bool]]:
         """
-        Authorize this IP to access service port
+        Authorize this IP to access service port. Values can be `true` or `false`
         """
         return pulumi.get(self, "service")
 
@@ -167,7 +167,7 @@ class _PrivateDatabaseAllowlistState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -179,7 +179,7 @@ class _PrivateDatabaseAllowlistState:
     @pulumi.getter
     def sftp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Authorize this IP to access SFTP port
+        Authorize this IP to access SFTP port. Values can be `true` or `false`
         """
         return pulumi.get(self, "sftp")
 
@@ -200,14 +200,36 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
                  sftp: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a PrivateDatabaseAllowlist resource with the given unique name, props, and options.
+        Create a new IP whitelist on your private cloud database instance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ip = ovh.hosting.PrivateDatabaseAllowlist("ip",
+            ip="1.2.3.4",
+            service=True,
+            service_name="XXXXXX",
+            sftp=True)
+        ```
+
+        ## Import
+
+        OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+
+        ```sh
+        $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: The whitelisted IP in your instance
-        :param pulumi.Input[str] name: Custom name for your Whitelisted IP
-        :param pulumi.Input[bool] service: Authorize this IP to access service port
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port
+        :param pulumi.Input[str] ip: The whitelisted IP in your instance.
+        :param pulumi.Input[str] name: Custom name for your Whitelisted IP.
+        :param pulumi.Input[bool] service: Authorize this IP to access service port. Values can be `true` or `false`
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port. Values can be `true` or `false`
         """
         ...
     @overload
@@ -216,7 +238,29 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
                  args: PrivateDatabaseAllowlistArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PrivateDatabaseAllowlist resource with the given unique name, props, and options.
+        Create a new IP whitelist on your private cloud database instance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        ip = ovh.hosting.PrivateDatabaseAllowlist("ip",
+            ip="1.2.3.4",
+            service=True,
+            service_name="XXXXXX",
+            sftp=True)
+        ```
+
+        ## Import
+
+        OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+
+        ```sh
+        $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+        ```
+
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseAllowlistArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,11 +325,11 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: The whitelisted IP in your instance
-        :param pulumi.Input[str] name: Custom name for your Whitelisted IP
-        :param pulumi.Input[bool] service: Authorize this IP to access service port
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port
+        :param pulumi.Input[str] ip: The whitelisted IP in your instance.
+        :param pulumi.Input[str] name: Custom name for your Whitelisted IP.
+        :param pulumi.Input[bool] service: Authorize this IP to access service port. Values can be `true` or `false`
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[bool] sftp: Authorize this IP to access SFTP port. Values can be `true` or `false`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +346,7 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        The whitelisted IP in your instance
+        The whitelisted IP in your instance.
         """
         return pulumi.get(self, "ip")
 
@@ -310,7 +354,7 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Custom name for your Whitelisted IP
+        Custom name for your Whitelisted IP.
         """
         return pulumi.get(self, "name")
 
@@ -318,7 +362,7 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[bool]:
         """
-        Authorize this IP to access service port
+        Authorize this IP to access service port. Values can be `true` or `false`
         """
         return pulumi.get(self, "service")
 
@@ -326,7 +370,7 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -334,7 +378,7 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
     @pulumi.getter
     def sftp(self) -> pulumi.Output[bool]:
         """
-        Authorize this IP to access SFTP port
+        Authorize this IP to access SFTP port. Values can be `true` or `false`
         """
         return pulumi.get(self, "sftp")
 

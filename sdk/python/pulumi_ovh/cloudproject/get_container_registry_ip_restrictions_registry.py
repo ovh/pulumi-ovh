@@ -51,16 +51,25 @@ class GetContainerRegistryIPRestrictionsRegistryResult:
     @property
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> Sequence[Mapping[str, str]]:
+        """
+        IP restrictions applied on artifact manager component.
+        """
         return pulumi.get(self, "ip_restrictions")
 
     @property
     @pulumi.getter(name="registryId")
     def registry_id(self) -> str:
+        """
+        The ID of the Managed Private Registry.
+        """
         return pulumi.get(self, "registry_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -80,7 +89,11 @@ def get_container_registry_ip_restrictions_registry(registry_id: Optional[str] =
                                                     service_name: Optional[str] = None,
                                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRegistryIPRestrictionsRegistryResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+
+
+    :param str registry_id: The id of the Managed Private Registry.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id
@@ -97,7 +110,11 @@ def get_container_registry_ip_restrictions_registry_output(registry_id: Optional
                                                            service_name: Optional[pulumi.Input[str]] = None,
                                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryIPRestrictionsRegistryResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+
+
+    :param str registry_id: The id of the Managed Private Registry.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id

@@ -9,33 +9,83 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
+    /// <summary>
+    /// Creates a database for a database cluster associated with a public cloud project.
+    /// 
+    /// With this resource you can create a database for the following database engine:
+    /// 
+    ///   * `mysql`
+    ///   * `postgresql`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()
+    ///     {
+    ///         ServiceName = "XXXX",
+    ///         Engine = "YYYY",
+    ///         Id = "ZZZZ",
+    ///     });
+    /// 
+    ///     var database = new Ovh.CloudProjectDatabase.DatabaseInstance("database", new()
+    ///     {
+    ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
+    ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
+    ///         ClusterId = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud Managed database clusters databases can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the database, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance my_database service_name/engine/cluster_id/id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance")]
     public partial class DatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Defines if the database has been created by default
+        /// Defines if the database has been created by default.
         /// </summary>
         [Output("default")]
         public Output<bool> Default { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the engine of the service
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// Database name
+        /// Name of the database.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -87,23 +137,28 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the engine of the service
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// Database name
+        /// Name of the database.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -116,29 +171,34 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class DatabaseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Defines if the database has been created by default
+        /// Defines if the database has been created by default.
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }
 
         /// <summary>
-        /// Name of the engine of the service
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// Database name
+        /// Name of the database.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

@@ -8,10 +8,48 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Reference a DBaaS logs role.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbaas.NewLogsRole(ctx, "ro", &dbaas.LogsRoleArgs{
+//				Description: pulumi.String("Devops - RO"),
+//				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud DBaaS Log Role can be imported using the `service_name` and `role_id` of the role, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+// ```
 type LogsRole struct {
 	pulumi.CustomResourceState
 
@@ -21,9 +59,9 @@ type LogsRole struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The role name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of members in the role
+	// number of member for the role
 	NbMember pulumi.IntOutput `pulumi:"nbMember"`
-	// Number of permissions assigned to the role
+	// number of configured permission for the role
 	NbPermission pulumi.IntOutput `pulumi:"nbPermission"`
 	// Role identifier
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
@@ -75,9 +113,9 @@ type logsRoleState struct {
 	Description *string `pulumi:"description"`
 	// The role name
 	Name *string `pulumi:"name"`
-	// Number of members in the role
+	// number of member for the role
 	NbMember *int `pulumi:"nbMember"`
-	// Number of permissions assigned to the role
+	// number of configured permission for the role
 	NbPermission *int `pulumi:"nbPermission"`
 	// Role identifier
 	RoleId *string `pulumi:"roleId"`
@@ -94,9 +132,9 @@ type LogsRoleState struct {
 	Description pulumi.StringPtrInput
 	// The role name
 	Name pulumi.StringPtrInput
-	// Number of members in the role
+	// number of member for the role
 	NbMember pulumi.IntPtrInput
-	// Number of permissions assigned to the role
+	// number of configured permission for the role
 	NbPermission pulumi.IntPtrInput
 	// Role identifier
 	RoleId pulumi.StringPtrInput
@@ -231,12 +269,12 @@ func (o LogsRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of members in the role
+// number of member for the role
 func (o LogsRoleOutput) NbMember() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsRole) pulumi.IntOutput { return v.NbMember }).(pulumi.IntOutput)
 }
 
-// Number of permissions assigned to the role
+// number of configured permission for the role
 func (o LogsRoleOutput) NbPermission() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsRole) pulumi.IntOutput { return v.NbPermission }).(pulumi.IntOutput)
 }

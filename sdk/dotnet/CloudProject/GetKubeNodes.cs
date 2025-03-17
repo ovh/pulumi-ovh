@@ -11,12 +11,90 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetKubeNodes
     {
+        /// <summary>
+        /// Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodes"] = nodesKubeNodes,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetKubeNodesResult> InvokeAsync(GetKubeNodesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubeNodesResult>("ovh:CloudProject/getKubeNodes:getKubeNodes", args ?? new GetKubeNodesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodes"] = nodesKubeNodes,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetKubeNodesResult> Invoke(GetKubeNodesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodesResult>("ovh:CloudProject/getKubeNodes:getKubeNodes", args ?? new GetKubeNodesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nodes"] = nodesKubeNodes,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetKubeNodesResult> Invoke(GetKubeNodesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubeNodesResult>("ovh:CloudProject/getKubeNodes:getKubeNodes", args ?? new GetKubeNodesInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +102,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetKubeNodesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the managed kubernetes cluster.
+        /// </summary>
         [Input("kubeId", required: true)]
         public string KubeId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +123,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetKubeNodesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the managed kubernetes cluster.
+        /// </summary>
         [Input("kubeId", required: true)]
         public Input<string> KubeId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -58,8 +150,17 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string KubeId;
+        /// <summary>
+        /// List of all nodes composing the kubernetes cluster
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKubeNodesNodeResult> Nodes;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

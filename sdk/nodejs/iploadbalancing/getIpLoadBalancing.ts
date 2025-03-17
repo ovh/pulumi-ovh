@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about an IP Load Balancing product
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "XXXXXX",
+ *     state: "ok",
+ * });
+ * ```
+ */
 export function getIpLoadBalancing(args?: GetIpLoadBalancingArgs, opts?: pulumi.InvokeOptions): Promise<GetIpLoadBalancingResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,16 +43,55 @@ export function getIpLoadBalancing(args?: GetIpLoadBalancingArgs, opts?: pulumi.
  * A collection of arguments for invoking getIpLoadBalancing.
  */
 export interface GetIpLoadBalancingArgs {
+    /**
+     * the name displayed in ManagerV6 for your iplb (max 50 chars)
+     */
     displayName?: string;
+    /**
+     * Your IP load balancing
+     */
     ipLoadbalancing?: string;
+    /**
+     * The IPV4 associated to your IP load balancing
+     */
     ipv4?: string;
+    /**
+     * The IPV6 associated to your IP load balancing
+     */
     ipv6?: string;
+    /**
+     * The offer of your IP load balancing
+     */
     offer?: string;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName?: string;
+    /**
+     * Modern oldest compatible clients : Firefox 27, Chrome 30,
+     * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
+     * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
+     * Safari 1, Windows XP IE8, Android 2.3, Java 7.
+     * Can take any of the following value: "intermediate", "modern"
+     */
     sslConfiguration?: string;
+    /**
+     * Current state of your IP. Can take any of the following value:
+     * "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+     */
     state?: string;
+    /**
+     * Vrack eligibility. Takes a boolean value.
+     */
     vrackEligibility?: boolean;
+    /**
+     * Name of the vRack on which the current Load Balancer is
+     * attached to, as it is named on vRack product
+     */
     vrackName?: string;
+    /**
+     * Location where your service is. This takes an array of values.
+     */
     zones?: string[];
 }
 
@@ -53,17 +107,42 @@ export interface GetIpLoadBalancingResult {
     readonly ipLoadbalancing: string;
     readonly ipv4: string;
     readonly ipv6: string;
+    /**
+     * The metrics token associated with your IP load balancing
+     * This attribute is sensitive.
+     */
     readonly metricsToken: string;
     readonly offer: string;
+    /**
+     * Available additional zone for your Load Balancer
+     */
     readonly orderableZones: outputs.IpLoadBalancing.GetIpLoadBalancingOrderableZone[];
     readonly serviceName: string;
     readonly sslConfiguration: string;
     readonly state: string;
+    /**
+     * The URN of the load balancer, to be used in IAM policies
+     */
     readonly urn: string;
     readonly vrackEligibility: boolean;
     readonly vrackName: string;
     readonly zones: string[];
 }
+/**
+ * Use this data source to retrieve information about an IP Load Balancing product
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "XXXXXX",
+ *     state: "ok",
+ * });
+ * ```
+ */
 export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpLoadBalancingResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -86,15 +165,54 @@ export function getIpLoadBalancingOutput(args?: GetIpLoadBalancingOutputArgs, op
  * A collection of arguments for invoking getIpLoadBalancing.
  */
 export interface GetIpLoadBalancingOutputArgs {
+    /**
+     * the name displayed in ManagerV6 for your iplb (max 50 chars)
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * Your IP load balancing
+     */
     ipLoadbalancing?: pulumi.Input<string>;
+    /**
+     * The IPV4 associated to your IP load balancing
+     */
     ipv4?: pulumi.Input<string>;
+    /**
+     * The IPV6 associated to your IP load balancing
+     */
     ipv6?: pulumi.Input<string>;
+    /**
+     * The offer of your IP load balancing
+     */
     offer?: pulumi.Input<string>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Modern oldest compatible clients : Firefox 27, Chrome 30,
+     * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
+     * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
+     * Safari 1, Windows XP IE8, Android 2.3, Java 7.
+     * Can take any of the following value: "intermediate", "modern"
+     */
     sslConfiguration?: pulumi.Input<string>;
+    /**
+     * Current state of your IP. Can take any of the following value:
+     * "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Vrack eligibility. Takes a boolean value.
+     */
     vrackEligibility?: pulumi.Input<boolean>;
+    /**
+     * Name of the vRack on which the current Load Balancer is
+     * attached to, as it is named on vRack product
+     */
     vrackName?: pulumi.Input<string>;
+    /**
+     * Location where your service is. This takes an array of values.
+     */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

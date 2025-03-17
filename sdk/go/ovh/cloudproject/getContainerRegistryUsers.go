@@ -7,10 +7,45 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of users of a container registry associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
+//				ServiceName: "XXXXXX",
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudproject.GetContainerRegistryUsers(ctx, &cloudproject.GetContainerRegistryUsersArgs{
+//				ServiceName: ovh_cloud_project_containerregistry.My_registry.Service_name,
+//				RegistryId:  ovh_cloud_project_containerregistry.My_registry.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupContainerRegistryUsers(ctx *pulumi.Context, args *LookupContainerRegistryUsersArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryUsersResult
@@ -23,15 +58,19 @@ func LookupContainerRegistryUsers(ctx *pulumi.Context, args *LookupContainerRegi
 
 // A collection of arguments for invoking getContainerRegistryUsers.
 type LookupContainerRegistryUsersArgs struct {
-	RegistryId  string `pulumi:"registryId"`
+	// Registry ID
+	RegistryId string `pulumi:"registryId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getContainerRegistryUsers.
 type LookupContainerRegistryUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                            `pulumi:"id"`
-	RegistryId  string                            `pulumi:"registryId"`
+	Id         string `pulumi:"id"`
+	RegistryId string `pulumi:"registryId"`
+	// The list of users of the container registry associated with the project.
 	Results     []GetContainerRegistryUsersResult `pulumi:"results"`
 	ServiceName string                            `pulumi:"serviceName"`
 }
@@ -47,7 +86,10 @@ func LookupContainerRegistryUsersOutput(ctx *pulumi.Context, args LookupContaine
 
 // A collection of arguments for invoking getContainerRegistryUsers.
 type LookupContainerRegistryUsersOutputArgs struct {
-	RegistryId  pulumi.StringInput `pulumi:"registryId"`
+	// Registry ID
+	RegistryId pulumi.StringInput `pulumi:"registryId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -79,6 +121,7 @@ func (o LookupContainerRegistryUsersResultOutput) RegistryId() pulumi.StringOutp
 	return o.ApplyT(func(v LookupContainerRegistryUsersResult) string { return v.RegistryId }).(pulumi.StringOutput)
 }
 
+// The list of users of the container registry associated with the project.
 func (o LookupContainerRegistryUsersResultOutput) Results() GetContainerRegistryUsersResultArrayOutput {
 	return o.ApplyT(func(v LookupContainerRegistryUsersResult) []GetContainerRegistryUsersResult { return v.Results }).(GetContainerRegistryUsersResultArrayOutput)
 }

@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// List your S3™* compatible storage container.
+// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetStorage(ctx, &cloudproject.GetStorageArgs{
+//				RegionName:  "GRA",
+//				ServiceName: "<public cloud project ID>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetStorages(ctx *pulumi.Context, args *GetStoragesArgs, opts ...pulumi.InvokeOption) (*GetStoragesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStoragesResult
@@ -23,7 +52,9 @@ func GetStorages(ctx *pulumi.Context, args *GetStoragesArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getStorages.
 type GetStoragesArgs struct {
-	RegionName  string `pulumi:"regionName"`
+	// Region name
+	RegionName string `pulumi:"regionName"`
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -31,8 +62,10 @@ type GetStoragesArgs struct {
 type GetStoragesResult struct {
 	Containers []GetStoragesContainer `pulumi:"containers"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	RegionName  string `pulumi:"regionName"`
+	Id string `pulumi:"id"`
+	// Region name
+	RegionName string `pulumi:"regionName"`
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -47,7 +80,9 @@ func GetStoragesOutput(ctx *pulumi.Context, args GetStoragesOutputArgs, opts ...
 
 // A collection of arguments for invoking getStorages.
 type GetStoragesOutputArgs struct {
-	RegionName  pulumi.StringInput `pulumi:"regionName"`
+	// Region name
+	RegionName pulumi.StringInput `pulumi:"regionName"`
+	// Service name
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -79,10 +114,12 @@ func (o GetStoragesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Region name
 func (o GetStoragesResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragesResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
+// Service name
 func (o GetStoragesResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragesResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -11,12 +11,21 @@ namespace Pulumi.Ovh.Iam
 {
     public static class GetReferenceActions
     {
+        /// <summary>
+        /// Use this data source to list the IAM action associated with a resource type.
+        /// </summary>
         public static Task<GetReferenceActionsResult> InvokeAsync(GetReferenceActionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to list the IAM action associated with a resource type.
+        /// </summary>
         public static Output<GetReferenceActionsResult> Invoke(GetReferenceActionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to list the IAM action associated with a resource type.
+        /// </summary>
         public static Output<GetReferenceActionsResult> Invoke(GetReferenceActionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetReferenceActionsResult>("ovh:Iam/getReferenceActions:getReferenceActions", args ?? new GetReferenceActionsInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +33,9 @@ namespace Pulumi.Ovh.Iam
 
     public sealed class GetReferenceActionsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kind of resource we want the actions for
+        /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
 
@@ -35,6 +47,9 @@ namespace Pulumi.Ovh.Iam
 
     public sealed class GetReferenceActionsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kind of resource we want the actions for
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -48,6 +63,9 @@ namespace Pulumi.Ovh.Iam
     [OutputType]
     public sealed class GetReferenceActionsResult
     {
+        /// <summary>
+        /// List of actions
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetReferenceActionsActionResult> Actions;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

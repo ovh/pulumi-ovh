@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.Domain.Inputs
     public sealed class NameServersServerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// DNS name server hostname
+        /// The server hostname
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// DNS name server IP address
+        /// The server IP
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }

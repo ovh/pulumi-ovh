@@ -9,42 +9,73 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Create a new Gateway for existing subnet in the specified public cloud project.
+    /// 
+    /// ## Import
+    /// 
+    /// A gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/gateway:Gateway gateway service_name/region/id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/gateway:Gateway")]
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// External information of the gateway
+        /// List of External Information of the gateway.
         /// </summary>
         [Output("externalInformations")]
         public Output<ImmutableArray<Outputs.GatewayExternalInformation>> ExternalInformations { get; private set; } = null!;
 
         /// <summary>
-        /// Interfaces list of the gateway
+        /// Interfaces list of the gateway.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.GatewayInterface>> Interfaces { get; private set; } = null!;
 
+        /// <summary>
+        /// Model of the gateway.
+        /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the gateway.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the private network.
+        /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
 
+        /// <summary>
+        /// Region of the gateway.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// ID of the private network.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the gateway.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the subnet.
+        /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
 
@@ -95,24 +126,39 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Model of the gateway.
+        /// </summary>
         [Input("model", required: true)]
         public Input<string> Model { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the gateway.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// ID of the private network.
+        /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
 
+        /// <summary>
+        /// Region of the gateway.
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// ID of the private network.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the subnet.
+        /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
 
@@ -128,7 +174,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.GatewayExternalInformationGetArgs>? _externalInformations;
 
         /// <summary>
-        /// External information of the gateway
+        /// List of External Information of the gateway.
         /// </summary>
         public InputList<Inputs.GatewayExternalInformationGetArgs> ExternalInformations
         {
@@ -140,7 +186,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.GatewayInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// Interfaces list of the gateway
+        /// Interfaces list of the gateway.
         /// </summary>
         public InputList<Inputs.GatewayInterfaceGetArgs> Interfaces
         {
@@ -148,27 +194,45 @@ namespace Pulumi.Ovh.CloudProject
             set => _interfaces = value;
         }
 
+        /// <summary>
+        /// Model of the gateway.
+        /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        /// <summary>
+        /// Name of the gateway.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// ID of the private network.
+        /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
+        /// <summary>
+        /// Region of the gateway.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// ID of the private network.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// Status of the gateway.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// ID of the subnet.
+        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 

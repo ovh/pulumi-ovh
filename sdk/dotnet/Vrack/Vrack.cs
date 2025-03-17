@@ -9,9 +9,81 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Vrack
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myAccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var myCart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///     });
+    /// 
+    ///     var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "vrack",
+    ///         PlanCode = "vrack",
+    ///     });
+    /// 
+    ///     var vrackVrack = new Ovh.Vrack.Vrack("vrackVrack", new()
+    ///     {
+    ///         OvhSubsidiary = myCart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Description = "my vrack",
+    ///         Plan = new Ovh.Vrack.Inputs.VrackPlanArgs
+    ///         {
+    ///             Duration = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A vRack can be imported using the `service_name`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_vrack.vrack
+    /// 
+    ///   id = "&lt;service name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=vrack.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `vrack.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:Vrack/vrack:Vrack")]
     public partial class Vrack : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The URN of the vrack, used with IAM permissions
+        /// </summary>
         [Output("VrackURN")]
         public Output<string> VrackURN { get; private set; } = null!;
 
@@ -34,7 +106,7 @@ namespace Pulumi.Ovh.Vrack
         public Output<ImmutableArray<Outputs.VrackOrder>> Orders { get; private set; } = null!;
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -135,7 +207,7 @@ namespace Pulumi.Ovh.Vrack
         }
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -172,6 +244,9 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class VrackState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URN of the vrack, used with IAM permissions
+        /// </summary>
         [Input("VrackURN")]
         public Input<string>? VrackURN { get; set; }
 
@@ -200,7 +275,7 @@ namespace Pulumi.Ovh.Vrack
         }
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }

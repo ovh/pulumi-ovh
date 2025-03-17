@@ -6,6 +6,19 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Create a new Gateway for existing subnet in the specified public cloud project.
+ *
+ * ## Import
+ *
+ * A gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/gateway:Gateway gateway service_name/region/id
+ * ```
+ */
 export class Gateway extends pulumi.CustomResource {
     /**
      * Get an existing Gateway resource's state with the given name, ID, and optional extra
@@ -35,22 +48,40 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * External information of the gateway
+     * List of External Information of the gateway.
      */
     public /*out*/ readonly externalInformations!: pulumi.Output<outputs.CloudProject.GatewayExternalInformation[]>;
     /**
-     * Interfaces list of the gateway
+     * Interfaces list of the gateway.
      */
     public /*out*/ readonly interfaces!: pulumi.Output<outputs.CloudProject.GatewayInterface[]>;
+    /**
+     * Model of the gateway.
+     */
     public readonly model!: pulumi.Output<string>;
+    /**
+     * Name of the gateway.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * ID of the private network.
+     */
     public readonly networkId!: pulumi.Output<string>;
+    /**
+     * Region of the gateway.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * ID of the private network.
      */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Status of the gateway.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * ID of the subnet.
+     */
     public readonly subnetId!: pulumi.Output<string>;
 
     /**
@@ -112,22 +143,40 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
-     * External information of the gateway
+     * List of External Information of the gateway.
      */
     externalInformations?: pulumi.Input<pulumi.Input<inputs.CloudProject.GatewayExternalInformation>[]>;
     /**
-     * Interfaces list of the gateway
+     * Interfaces list of the gateway.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.CloudProject.GatewayInterface>[]>;
+    /**
+     * Model of the gateway.
+     */
     model?: pulumi.Input<string>;
+    /**
+     * Name of the gateway.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * ID of the private network.
+     */
     networkId?: pulumi.Input<string>;
+    /**
+     * Region of the gateway.
+     */
     region?: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * ID of the private network.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Status of the gateway.
+     */
     status?: pulumi.Input<string>;
+    /**
+     * ID of the subnet.
+     */
     subnetId?: pulumi.Input<string>;
 }
 
@@ -135,13 +184,28 @@ export interface GatewayState {
  * The set of arguments for constructing a Gateway resource.
  */
 export interface GatewayArgs {
+    /**
+     * Model of the gateway.
+     */
     model: pulumi.Input<string>;
+    /**
+     * Name of the gateway.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * ID of the private network.
+     */
     networkId: pulumi.Input<string>;
+    /**
+     * Region of the gateway.
+     */
     region: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * ID of the private network.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * ID of the subnet.
+     */
     subnetId: pulumi.Input<string>;
 }

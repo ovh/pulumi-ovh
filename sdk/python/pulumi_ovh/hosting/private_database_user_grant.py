@@ -25,10 +25,14 @@ class PrivateDatabaseUserGrantArgs:
                  user_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a PrivateDatabaseUserGrant resource.
-        :param pulumi.Input[str] database_name: Database name where add grant
-        :param pulumi.Input[str] grant: Database name where add grant
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[str] user_name: User name used to connect on your databases
+        :param pulumi.Input[str] database_name: Database name where add grant.
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+               - admin
+               - none
+               - ro
+               - rw
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[str] user_name: User name used to connect on your databases.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "grant", grant)
@@ -39,7 +43,7 @@ class PrivateDatabaseUserGrantArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[str]:
         """
-        Database name where add grant
+        Database name where add grant.
         """
         return pulumi.get(self, "database_name")
 
@@ -51,7 +55,11 @@ class PrivateDatabaseUserGrantArgs:
     @pulumi.getter
     def grant(self) -> pulumi.Input[str]:
         """
-        Database name where add grant
+        Database name where add grant. Values can be: 
+        - admin
+        - none
+        - ro
+        - rw
         """
         return pulumi.get(self, "grant")
 
@@ -63,7 +71,7 @@ class PrivateDatabaseUserGrantArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -75,7 +83,7 @@ class PrivateDatabaseUserGrantArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
         """
-        User name used to connect on your databases
+        User name used to connect on your databases.
         """
         return pulumi.get(self, "user_name")
 
@@ -93,10 +101,14 @@ class _PrivateDatabaseUserGrantState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PrivateDatabaseUserGrant resources.
-        :param pulumi.Input[str] database_name: Database name where add grant
-        :param pulumi.Input[str] grant: Database name where add grant
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[str] user_name: User name used to connect on your databases
+        :param pulumi.Input[str] database_name: Database name where add grant.
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+               - admin
+               - none
+               - ro
+               - rw
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[str] user_name: User name used to connect on your databases.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -111,7 +123,7 @@ class _PrivateDatabaseUserGrantState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Database name where add grant
+        Database name where add grant.
         """
         return pulumi.get(self, "database_name")
 
@@ -123,7 +135,11 @@ class _PrivateDatabaseUserGrantState:
     @pulumi.getter
     def grant(self) -> Optional[pulumi.Input[str]]:
         """
-        Database name where add grant
+        Database name where add grant. Values can be: 
+        - admin
+        - none
+        - ro
+        - rw
         """
         return pulumi.get(self, "grant")
 
@@ -135,7 +151,7 @@ class _PrivateDatabaseUserGrantState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -147,7 +163,7 @@ class _PrivateDatabaseUserGrantState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        User name used to connect on your databases
+        User name used to connect on your databases.
         """
         return pulumi.get(self, "user_name")
 
@@ -167,13 +183,39 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PrivateDatabaseUserGrant resource with the given unique name, props, and options.
+        Add grant on a database in your private cloud database instance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user_grant = ovh.hosting.PrivateDatabaseUserGrant("userGrant",
+            database_name="ovhcloud",
+            grant="admin",
+            service_name="XXXXXX",
+            user_name="terraform")
+        ```
+
+        ## Import
+
+        OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
+
+        ```sh
+        $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: Database name where add grant
-        :param pulumi.Input[str] grant: Database name where add grant
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[str] user_name: User name used to connect on your databases
+        :param pulumi.Input[str] database_name: Database name where add grant.
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+               - admin
+               - none
+               - ro
+               - rw
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[str] user_name: User name used to connect on your databases.
         """
         ...
     @overload
@@ -182,7 +224,29 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
                  args: PrivateDatabaseUserGrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PrivateDatabaseUserGrant resource with the given unique name, props, and options.
+        Add grant on a database in your private cloud database instance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user_grant = ovh.hosting.PrivateDatabaseUserGrant("userGrant",
+            database_name="ovhcloud",
+            grant="admin",
+            service_name="XXXXXX",
+            user_name="terraform")
+        ```
+
+        ## Import
+
+        OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
+
+        ```sh
+        $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+        ```
+
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseUserGrantArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -244,10 +308,14 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: Database name where add grant
-        :param pulumi.Input[str] grant: Database name where add grant
-        :param pulumi.Input[str] service_name: The internal name of your private database
-        :param pulumi.Input[str] user_name: User name used to connect on your databases
+        :param pulumi.Input[str] database_name: Database name where add grant.
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+               - admin
+               - none
+               - ro
+               - rw
+        :param pulumi.Input[str] service_name: The internal name of your private database.
+        :param pulumi.Input[str] user_name: User name used to connect on your databases.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,7 +331,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[str]:
         """
-        Database name where add grant
+        Database name where add grant.
         """
         return pulumi.get(self, "database_name")
 
@@ -271,7 +339,11 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
     @pulumi.getter
     def grant(self) -> pulumi.Output[str]:
         """
-        Database name where add grant
+        Database name where add grant. Values can be: 
+        - admin
+        - none
+        - ro
+        - rw
         """
         return pulumi.get(self, "grant")
 
@@ -279,7 +351,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your private database
+        The internal name of your private database.
         """
         return pulumi.get(self, "service_name")
 
@@ -287,7 +359,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
-        User name used to connect on your databases
+        User name used to connect on your databases.
         """
         return pulumi.get(self, "user_name")
 

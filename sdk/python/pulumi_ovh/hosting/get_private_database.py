@@ -94,26 +94,41 @@ class GetPrivateDatabaseResult:
     @property
     @pulumi.getter
     def cpu(self) -> int:
+        """
+        Number of CPU on your private database
+        """
         return pulumi.get(self, "cpu")
 
     @property
     @pulumi.getter
     def datacenter(self) -> str:
+        """
+        Datacenter where this private database is located
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Name displayed in customer panel for your private database
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        Private database hostname
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter(name="hostnameFtp")
     def hostname_ftp(self) -> str:
+        """
+        Private database FTP hostname
+        """
         return pulumi.get(self, "hostname_ftp")
 
     @property
@@ -127,41 +142,65 @@ class GetPrivateDatabaseResult:
     @property
     @pulumi.getter
     def infrastructure(self) -> str:
+        """
+        Infrastructure where service was stored
+        """
         return pulumi.get(self, "infrastructure")
 
     @property
     @pulumi.getter
     def offer(self) -> str:
+        """
+        Type of the private database offer
+        """
         return pulumi.get(self, "offer")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Private database service port
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="portFtp")
     def port_ftp(self) -> int:
+        """
+        Private database FTP port
+        """
         return pulumi.get(self, "port_ftp")
 
     @property
     @pulumi.getter(name="quotaSize")
     def quota_size(self) -> int:
+        """
+        Space allowed (in MB) on your private database
+        """
         return pulumi.get(self, "quota_size")
 
     @property
     @pulumi.getter(name="quotaUsed")
     def quota_used(self) -> int:
+        """
+        Sapce used (in MB) on your private database
+        """
         return pulumi.get(self, "quota_used")
 
     @property
     @pulumi.getter
     def ram(self) -> int:
+        """
+        Amount of ram (in MB) on your private database
+        """
         return pulumi.get(self, "ram")
 
     @property
     @pulumi.getter
     def server(self) -> str:
+        """
+        Private database server name
+        """
         return pulumi.get(self, "server")
 
     @property
@@ -172,6 +211,9 @@ class GetPrivateDatabaseResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Private database state
+        """
         return pulumi.get(self, "state")
 
     @property
@@ -182,21 +224,33 @@ class GetPrivateDatabaseResult:
     @property
     @pulumi.getter
     def urn(self) -> str:
+        """
+        URN of the private database
+        """
         return pulumi.get(self, "urn")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Private database available versions
+        """
         return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="versionLabel")
     def version_label(self) -> str:
+        """
+        Private database version label
+        """
         return pulumi.get(self, "version_label")
 
     @property
     @pulumi.getter(name="versionNumber")
     def version_number(self) -> float:
+        """
+        Private database version number
+        """
         return pulumi.get(self, "version_number")
 
 
@@ -232,7 +286,19 @@ class AwaitableGetPrivateDatabaseResult(GetPrivateDatabaseResult):
 def get_private_database(service_name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateDatabaseResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an hosting database.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    database = ovh.Hosting.get_private_database(service_name="XXXXXX")
+    ```
+
+
+    :param str service_name: The internal name of your private database
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -264,7 +330,19 @@ def get_private_database(service_name: Optional[str] = None,
 def get_private_database_output(service_name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an hosting database.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    database = ovh.Hosting.get_private_database(service_name="XXXXXX")
+    ```
+
+
+    :param str service_name: The internal name of your private database
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

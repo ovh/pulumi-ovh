@@ -18,6 +18,9 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// the status of the network. should be normally set to 'ACTIVE'.
+        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 

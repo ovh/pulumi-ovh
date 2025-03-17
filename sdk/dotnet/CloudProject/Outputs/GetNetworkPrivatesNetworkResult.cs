@@ -14,27 +14,27 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetNetworkPrivatesNetworkResult
     {
         /// <summary>
-        /// Network id
+        /// ID of the network
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Network name
+        /// Name of the network
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Details about private network in region
+        /// Information about the private network in the openstack region
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkPrivatesNetworkRegionResult> Regions;
         /// <summary>
-        /// Network status
+        /// Status of the network
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Network type
+        /// Type of the network
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Network VLAN id
+        /// VLAN ID of the network
         /// </summary>
         public readonly double VlanId;
 

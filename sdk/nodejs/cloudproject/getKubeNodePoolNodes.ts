@@ -6,6 +6,23 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const nodesKubeNodePoolNodes = ovh.CloudProject.getKubeNodePoolNodes({
+ *     serviceName: "XXXXXX",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+ *     name: "XXXXXX",
+ * });
+ * export const nodes = nodesKubeNodePoolNodes;
+ * ```
+ */
 export function getKubeNodePoolNodes(args: GetKubeNodePoolNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodePoolNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeNodePoolNodes:getKubeNodePoolNodes", {
@@ -19,8 +36,18 @@ export function getKubeNodePoolNodes(args: GetKubeNodePoolNodesArgs, opts?: pulu
  * A collection of arguments for invoking getKubeNodePoolNodes.
  */
 export interface GetKubeNodePoolNodesArgs {
+    /**
+     * The ID of the managed kubernetes cluster.
+     */
     kubeId: string;
+    /**
+     * Name of the node pool from which we want the nodes.
+     */
     name: string;
+    /**
+     * The ID of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -32,11 +59,40 @@ export interface GetKubeNodePoolNodesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly kubeId: string;
+    /**
+     * Name of the node.
+     */
     readonly name: string;
+    /**
+     * List of all nodes composing the kubernetes cluster.
+     */
     readonly nodes: outputs.CloudProject.GetKubeNodePoolNodesNode[];
+    /**
+     * See Argument Reference above.
+     */
     readonly serviceName: string;
 }
+/**
+ * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const nodesKubeNodePoolNodes = ovh.CloudProject.getKubeNodePoolNodes({
+ *     serviceName: "XXXXXX",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+ *     name: "XXXXXX",
+ * });
+ * export const nodes = nodesKubeNodePoolNodes;
+ * ```
+ */
 export function getKubeNodePoolNodesOutput(args: GetKubeNodePoolNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodePoolNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodePoolNodes:getKubeNodePoolNodes", {
@@ -50,7 +106,17 @@ export function getKubeNodePoolNodesOutput(args: GetKubeNodePoolNodesOutputArgs,
  * A collection of arguments for invoking getKubeNodePoolNodes.
  */
 export interface GetKubeNodePoolNodesOutputArgs {
+    /**
+     * The ID of the managed kubernetes cluster.
+     */
     kubeId: pulumi.Input<string>;
+    /**
+     * Name of the node pool from which we want the nodes.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

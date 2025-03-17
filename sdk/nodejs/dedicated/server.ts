@@ -6,6 +6,35 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Dedicated servers can be imported using the `service_name`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_dedicated_server.server
+ *
+ *   id = "<service name>"
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * pulumi preview -generate-config-out=dedicated.tf
+ *
+ * pulumi up
+ *
+ * The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
+ */
 export class Server extends pulumi.CustomResource {
     /**
      * Get an existing Server resource's state with the given name, ID, and optional extra
@@ -35,16 +64,19 @@ export class Server extends pulumi.CustomResource {
     }
 
     /**
-     * dedicated AZ localisation
+     * Dedicated AZ localisation
      */
     public /*out*/ readonly availabilityZone!: pulumi.Output<string>;
+    /**
+     * Boot id of the server
+     */
     public readonly bootId!: pulumi.Output<number>;
     /**
-     * Ipxe script served on boot
+     * Boot script of the server
      */
     public readonly bootScript!: pulumi.Output<string>;
     /**
-     * dedicater server commercial range
+     * Dedicated server commercial range
      */
     public /*out*/ readonly commercialRange!: pulumi.Output<string>;
     /**
@@ -52,32 +84,35 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly customizations!: pulumi.Output<outputs.Dedicated.ServerCustomizations | undefined>;
     /**
-     * dedicated datacenter localisation
+     * Dedicated datacenter localisation (bhs1,bhs2,...)
      */
     public /*out*/ readonly datacenter!: pulumi.Output<string>;
     /**
-     * The display name of your dedicated server
+     * Resource display name
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Path of the EFI bootloader served on boot
+     * Path of the EFI bootloader
      */
     public readonly efiBootloaderPath!: pulumi.Output<string>;
     /**
-     * IAM resource metadata
+     * IAM resource information
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Dedicated.ServerIam>;
     /**
-     * dedicated server ip
+     * Dedicated server ip (IPv4)
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
+    /**
+     * Link speed of the server
+     */
     public /*out*/ readonly linkSpeed!: pulumi.Output<number>;
     /**
      * Icmp monitoring state
      */
     public readonly monitoring!: pulumi.Output<boolean>;
     /**
-     * dedicated server name
+     * Dedicated server name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public /*out*/ readonly newUpgradeSystem!: pulumi.Output<boolean>;
@@ -100,7 +135,7 @@ export class Server extends pulumi.CustomResource {
     public readonly planOptions!: pulumi.Output<outputs.Dedicated.ServerPlanOption[]>;
     public readonly plans!: pulumi.Output<outputs.Dedicated.ServerPlan[]>;
     /**
-     * Power state of the server
+     * Power state of the server (poweron, poweroff)
      */
     public /*out*/ readonly powerState!: pulumi.Output<string>;
     /**
@@ -111,13 +146,16 @@ export class Server extends pulumi.CustomResource {
      * Arbitrary properties to pass to cloud-init's config drive datasource
      */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Rack id of the server
+     */
     public /*out*/ readonly rack!: pulumi.Output<string>;
     /**
-     * dedicated region localisation
+     * Dedicated region localisation
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * Custom email used to receive rescue credentials
+     * Rescue mail of the server
      */
     public readonly rescueMail!: pulumi.Output<string>;
     /**
@@ -125,20 +163,23 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly rescueSshKey!: pulumi.Output<string>;
     /**
-     * dedicated server reverse
+     * Dedicated server reverse
      */
     public /*out*/ readonly reverse!: pulumi.Output<string>;
+    /**
+     * Root device of the server
+     */
     public readonly rootDevice!: pulumi.Output<string>;
     /**
      * Server id
      */
     public /*out*/ readonly serverId!: pulumi.Output<number>;
     /**
-     * The internal name of your dedicated server
+     * The serviceName of your dedicated server
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
-     * All states a Dedicated can be in
+     * All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
      */
     public readonly state!: pulumi.Output<string>;
     /**
@@ -146,7 +187,7 @@ export class Server extends pulumi.CustomResource {
      */
     public readonly storages!: pulumi.Output<outputs.Dedicated.ServerStorage[] | undefined>;
     /**
-     * Dedicated server support level
+     * Dedicated server support level (critical, fastpath, gs, pro)
      */
     public /*out*/ readonly supportLevel!: pulumi.Output<string>;
 
@@ -244,16 +285,19 @@ export class Server extends pulumi.CustomResource {
  */
 export interface ServerState {
     /**
-     * dedicated AZ localisation
+     * Dedicated AZ localisation
      */
     availabilityZone?: pulumi.Input<string>;
+    /**
+     * Boot id of the server
+     */
     bootId?: pulumi.Input<number>;
     /**
-     * Ipxe script served on boot
+     * Boot script of the server
      */
     bootScript?: pulumi.Input<string>;
     /**
-     * dedicater server commercial range
+     * Dedicated server commercial range
      */
     commercialRange?: pulumi.Input<string>;
     /**
@@ -261,32 +305,35 @@ export interface ServerState {
      */
     customizations?: pulumi.Input<inputs.Dedicated.ServerCustomizations>;
     /**
-     * dedicated datacenter localisation
+     * Dedicated datacenter localisation (bhs1,bhs2,...)
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * The display name of your dedicated server
+     * Resource display name
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Path of the EFI bootloader served on boot
+     * Path of the EFI bootloader
      */
     efiBootloaderPath?: pulumi.Input<string>;
     /**
-     * IAM resource metadata
+     * IAM resource information
      */
     iam?: pulumi.Input<inputs.Dedicated.ServerIam>;
     /**
-     * dedicated server ip
+     * Dedicated server ip (IPv4)
      */
     ip?: pulumi.Input<string>;
+    /**
+     * Link speed of the server
+     */
     linkSpeed?: pulumi.Input<number>;
     /**
      * Icmp monitoring state
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * dedicated server name
+     * Dedicated server name
      */
     name?: pulumi.Input<string>;
     newUpgradeSystem?: pulumi.Input<boolean>;
@@ -309,7 +356,7 @@ export interface ServerState {
     planOptions?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlanOption>[]>;
     plans?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerPlan>[]>;
     /**
-     * Power state of the server
+     * Power state of the server (poweron, poweroff)
      */
     powerState?: pulumi.Input<string>;
     /**
@@ -320,13 +367,16 @@ export interface ServerState {
      * Arbitrary properties to pass to cloud-init's config drive datasource
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Rack id of the server
+     */
     rack?: pulumi.Input<string>;
     /**
-     * dedicated region localisation
+     * Dedicated region localisation
      */
     region?: pulumi.Input<string>;
     /**
-     * Custom email used to receive rescue credentials
+     * Rescue mail of the server
      */
     rescueMail?: pulumi.Input<string>;
     /**
@@ -334,20 +384,23 @@ export interface ServerState {
      */
     rescueSshKey?: pulumi.Input<string>;
     /**
-     * dedicated server reverse
+     * Dedicated server reverse
      */
     reverse?: pulumi.Input<string>;
+    /**
+     * Root device of the server
+     */
     rootDevice?: pulumi.Input<string>;
     /**
      * Server id
      */
     serverId?: pulumi.Input<number>;
     /**
-     * The internal name of your dedicated server
+     * The serviceName of your dedicated server
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * All states a Dedicated can be in
+     * All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
      */
     state?: pulumi.Input<string>;
     /**
@@ -355,7 +408,7 @@ export interface ServerState {
      */
     storages?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerStorage>[]>;
     /**
-     * Dedicated server support level
+     * Dedicated server support level (critical, fastpath, gs, pro)
      */
     supportLevel?: pulumi.Input<string>;
 }
@@ -364,9 +417,12 @@ export interface ServerState {
  * The set of arguments for constructing a Server resource.
  */
 export interface ServerArgs {
+    /**
+     * Boot id of the server
+     */
     bootId?: pulumi.Input<number>;
     /**
-     * Ipxe script served on boot
+     * Boot script of the server
      */
     bootScript?: pulumi.Input<string>;
     /**
@@ -374,11 +430,11 @@ export interface ServerArgs {
      */
     customizations?: pulumi.Input<inputs.Dedicated.ServerCustomizations>;
     /**
-     * The display name of your dedicated server
+     * Resource display name
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Path of the EFI bootloader served on boot
+     * Path of the EFI bootloader
      */
     efiBootloaderPath?: pulumi.Input<string>;
     /**
@@ -404,16 +460,19 @@ export interface ServerArgs {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Custom email used to receive rescue credentials
+     * Rescue mail of the server
      */
     rescueMail?: pulumi.Input<string>;
     /**
      * Public SSH Key used in the rescue mode
      */
     rescueSshKey?: pulumi.Input<string>;
+    /**
+     * Root device of the server
+     */
     rootDevice?: pulumi.Input<string>;
     /**
-     * All states a Dedicated can be in
+     * All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
      */
     state?: pulumi.Input<string>;
     /**

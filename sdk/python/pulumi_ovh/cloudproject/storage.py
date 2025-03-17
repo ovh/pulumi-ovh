@@ -465,7 +465,51 @@ class Storage(pulumi.CustomResource):
                  versioning: Optional[pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Storage resource with the given unique name, props, and options.
+        Create S3™* compatible storage container
+        (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        storage = ovh.cloud_project.Storage("storage",
+            region_name="GRA",
+            service_name="<public cloud project ID>",
+            versioning={
+                "status": "enabled",
+            })
+        ```
+
+        ## Import
+
+        A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          id = "<service_name>/<region_name>/<name>"
+
+          to = ovh_cloud_project_storage.storage
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=storage.tf
+
+        $ pulumi up
+
+        The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['StorageEncryptionArgs', 'StorageEncryptionArgsDict']] encryption: Encryption configuration
@@ -486,7 +530,51 @@ class Storage(pulumi.CustomResource):
                  args: StorageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Storage resource with the given unique name, props, and options.
+        Create S3™* compatible storage container
+        (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        storage = ovh.cloud_project.Storage("storage",
+            region_name="GRA",
+            service_name="<public cloud project ID>",
+            versioning={
+                "status": "enabled",
+            })
+        ```
+
+        ## Import
+
+        A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          id = "<service_name>/<region_name>/<name>"
+
+          to = ovh_cloud_project_storage.storage
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=storage.tf
+
+        $ pulumi up
+
+        The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param StorageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

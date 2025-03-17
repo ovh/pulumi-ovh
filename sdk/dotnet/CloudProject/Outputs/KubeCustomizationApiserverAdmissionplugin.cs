@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class KubeCustomizationApiserverAdmissionplugin
     {
+        /// <summary>
+        /// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+        /// </summary>
         public readonly ImmutableArray<string> Disableds;
+        /// <summary>
+        /// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        /// </summary>
         public readonly ImmutableArray<string> Enableds;
 
         [OutputConstructor]

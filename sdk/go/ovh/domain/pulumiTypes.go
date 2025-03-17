@@ -7,134 +7,134 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
-type DsRecordsDsRecord struct {
-	// Algorithm name of the DNSSEC key
+type DSRecordsDsRecord struct {
+	// The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
 	Algorithm string `pulumi:"algorithm"`
-	// Flag name of the DNSSEC key
+	// The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
 	Flags string `pulumi:"flags"`
-	// Public key
+	// The record base64 encoded public key
 	PublicKey string `pulumi:"publicKey"`
-	// Tag of the DNSSEC key
+	// The record tag
 	Tag int `pulumi:"tag"`
 }
 
-// DsRecordsDsRecordInput is an input type that accepts DsRecordsDsRecordArgs and DsRecordsDsRecordOutput values.
-// You can construct a concrete instance of `DsRecordsDsRecordInput` via:
+// DSRecordsDsRecordInput is an input type that accepts DSRecordsDsRecordArgs and DSRecordsDsRecordOutput values.
+// You can construct a concrete instance of `DSRecordsDsRecordInput` via:
 //
-//	DsRecordsDsRecordArgs{...}
-type DsRecordsDsRecordInput interface {
+//	DSRecordsDsRecordArgs{...}
+type DSRecordsDsRecordInput interface {
 	pulumi.Input
 
-	ToDsRecordsDsRecordOutput() DsRecordsDsRecordOutput
-	ToDsRecordsDsRecordOutputWithContext(context.Context) DsRecordsDsRecordOutput
+	ToDSRecordsDsRecordOutput() DSRecordsDsRecordOutput
+	ToDSRecordsDsRecordOutputWithContext(context.Context) DSRecordsDsRecordOutput
 }
 
-type DsRecordsDsRecordArgs struct {
-	// Algorithm name of the DNSSEC key
+type DSRecordsDsRecordArgs struct {
+	// The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// Flag name of the DNSSEC key
+	// The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
 	Flags pulumi.StringInput `pulumi:"flags"`
-	// Public key
+	// The record base64 encoded public key
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
-	// Tag of the DNSSEC key
+	// The record tag
 	Tag pulumi.IntInput `pulumi:"tag"`
 }
 
-func (DsRecordsDsRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DsRecordsDsRecord)(nil)).Elem()
+func (DSRecordsDsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DSRecordsDsRecord)(nil)).Elem()
 }
 
-func (i DsRecordsDsRecordArgs) ToDsRecordsDsRecordOutput() DsRecordsDsRecordOutput {
-	return i.ToDsRecordsDsRecordOutputWithContext(context.Background())
+func (i DSRecordsDsRecordArgs) ToDSRecordsDsRecordOutput() DSRecordsDsRecordOutput {
+	return i.ToDSRecordsDsRecordOutputWithContext(context.Background())
 }
 
-func (i DsRecordsDsRecordArgs) ToDsRecordsDsRecordOutputWithContext(ctx context.Context) DsRecordsDsRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DsRecordsDsRecordOutput)
+func (i DSRecordsDsRecordArgs) ToDSRecordsDsRecordOutputWithContext(ctx context.Context) DSRecordsDsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DSRecordsDsRecordOutput)
 }
 
-// DsRecordsDsRecordArrayInput is an input type that accepts DsRecordsDsRecordArray and DsRecordsDsRecordArrayOutput values.
-// You can construct a concrete instance of `DsRecordsDsRecordArrayInput` via:
+// DSRecordsDsRecordArrayInput is an input type that accepts DSRecordsDsRecordArray and DSRecordsDsRecordArrayOutput values.
+// You can construct a concrete instance of `DSRecordsDsRecordArrayInput` via:
 //
-//	DsRecordsDsRecordArray{ DsRecordsDsRecordArgs{...} }
-type DsRecordsDsRecordArrayInput interface {
+//	DSRecordsDsRecordArray{ DSRecordsDsRecordArgs{...} }
+type DSRecordsDsRecordArrayInput interface {
 	pulumi.Input
 
-	ToDsRecordsDsRecordArrayOutput() DsRecordsDsRecordArrayOutput
-	ToDsRecordsDsRecordArrayOutputWithContext(context.Context) DsRecordsDsRecordArrayOutput
+	ToDSRecordsDsRecordArrayOutput() DSRecordsDsRecordArrayOutput
+	ToDSRecordsDsRecordArrayOutputWithContext(context.Context) DSRecordsDsRecordArrayOutput
 }
 
-type DsRecordsDsRecordArray []DsRecordsDsRecordInput
+type DSRecordsDsRecordArray []DSRecordsDsRecordInput
 
-func (DsRecordsDsRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DsRecordsDsRecord)(nil)).Elem()
+func (DSRecordsDsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DSRecordsDsRecord)(nil)).Elem()
 }
 
-func (i DsRecordsDsRecordArray) ToDsRecordsDsRecordArrayOutput() DsRecordsDsRecordArrayOutput {
-	return i.ToDsRecordsDsRecordArrayOutputWithContext(context.Background())
+func (i DSRecordsDsRecordArray) ToDSRecordsDsRecordArrayOutput() DSRecordsDsRecordArrayOutput {
+	return i.ToDSRecordsDsRecordArrayOutputWithContext(context.Background())
 }
 
-func (i DsRecordsDsRecordArray) ToDsRecordsDsRecordArrayOutputWithContext(ctx context.Context) DsRecordsDsRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DsRecordsDsRecordArrayOutput)
+func (i DSRecordsDsRecordArray) ToDSRecordsDsRecordArrayOutputWithContext(ctx context.Context) DSRecordsDsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DSRecordsDsRecordArrayOutput)
 }
 
-type DsRecordsDsRecordOutput struct{ *pulumi.OutputState }
+type DSRecordsDsRecordOutput struct{ *pulumi.OutputState }
 
-func (DsRecordsDsRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DsRecordsDsRecord)(nil)).Elem()
+func (DSRecordsDsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DSRecordsDsRecord)(nil)).Elem()
 }
 
-func (o DsRecordsDsRecordOutput) ToDsRecordsDsRecordOutput() DsRecordsDsRecordOutput {
+func (o DSRecordsDsRecordOutput) ToDSRecordsDsRecordOutput() DSRecordsDsRecordOutput {
 	return o
 }
 
-func (o DsRecordsDsRecordOutput) ToDsRecordsDsRecordOutputWithContext(ctx context.Context) DsRecordsDsRecordOutput {
+func (o DSRecordsDsRecordOutput) ToDSRecordsDsRecordOutputWithContext(ctx context.Context) DSRecordsDsRecordOutput {
 	return o
 }
 
-// Algorithm name of the DNSSEC key
-func (o DsRecordsDsRecordOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v DsRecordsDsRecord) string { return v.Algorithm }).(pulumi.StringOutput)
+// The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+func (o DSRecordsDsRecordOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Flag name of the DNSSEC key
-func (o DsRecordsDsRecordOutput) Flags() pulumi.StringOutput {
-	return o.ApplyT(func(v DsRecordsDsRecord) string { return v.Flags }).(pulumi.StringOutput)
+// The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+func (o DSRecordsDsRecordOutput) Flags() pulumi.StringOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) string { return v.Flags }).(pulumi.StringOutput)
 }
 
-// Public key
-func (o DsRecordsDsRecordOutput) PublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v DsRecordsDsRecord) string { return v.PublicKey }).(pulumi.StringOutput)
+// The record base64 encoded public key
+func (o DSRecordsDsRecordOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// Tag of the DNSSEC key
-func (o DsRecordsDsRecordOutput) Tag() pulumi.IntOutput {
-	return o.ApplyT(func(v DsRecordsDsRecord) int { return v.Tag }).(pulumi.IntOutput)
+// The record tag
+func (o DSRecordsDsRecordOutput) Tag() pulumi.IntOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) int { return v.Tag }).(pulumi.IntOutput)
 }
 
-type DsRecordsDsRecordArrayOutput struct{ *pulumi.OutputState }
+type DSRecordsDsRecordArrayOutput struct{ *pulumi.OutputState }
 
-func (DsRecordsDsRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DsRecordsDsRecord)(nil)).Elem()
+func (DSRecordsDsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DSRecordsDsRecord)(nil)).Elem()
 }
 
-func (o DsRecordsDsRecordArrayOutput) ToDsRecordsDsRecordArrayOutput() DsRecordsDsRecordArrayOutput {
+func (o DSRecordsDsRecordArrayOutput) ToDSRecordsDsRecordArrayOutput() DSRecordsDsRecordArrayOutput {
 	return o
 }
 
-func (o DsRecordsDsRecordArrayOutput) ToDsRecordsDsRecordArrayOutputWithContext(ctx context.Context) DsRecordsDsRecordArrayOutput {
+func (o DSRecordsDsRecordArrayOutput) ToDSRecordsDsRecordArrayOutputWithContext(ctx context.Context) DSRecordsDsRecordArrayOutput {
 	return o
 }
 
-func (o DsRecordsDsRecordArrayOutput) Index(i pulumi.IntInput) DsRecordsDsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DsRecordsDsRecord {
-		return vs[0].([]DsRecordsDsRecord)[vs[1].(int)]
-	}).(DsRecordsDsRecordOutput)
+func (o DSRecordsDsRecordArrayOutput) Index(i pulumi.IntInput) DSRecordsDsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DSRecordsDsRecord {
+		return vs[0].([]DSRecordsDsRecord)[vs[1].(int)]
+	}).(DSRecordsDsRecordOutput)
 }
 
 type NameCurrentState struct {
@@ -1365,7 +1365,7 @@ func (o NameOrderDetailArrayOutput) Index(i pulumi.IntInput) NameOrderDetailOutp
 
 type NamePlan struct {
 	Configurations []NamePlanConfiguration `pulumi:"configurations"`
-	// Duration selected for the purchase of the product
+	// Duration selected for the purchase of the product (defaults to "P1Y")
 	Duration string `pulumi:"duration"`
 	// Cart item to be linked
 	ItemId *float64 `pulumi:"itemId"`
@@ -1390,7 +1390,7 @@ type NamePlanInput interface {
 
 type NamePlanArgs struct {
 	Configurations NamePlanConfigurationArrayInput `pulumi:"configurations"`
-	// Duration selected for the purchase of the product
+	// Duration selected for the purchase of the product (defaults to "P1Y")
 	Duration pulumi.StringInput `pulumi:"duration"`
 	// Cart item to be linked
 	ItemId pulumi.Float64PtrInput `pulumi:"itemId"`
@@ -1457,7 +1457,7 @@ func (o NamePlanOutput) Configurations() NamePlanConfigurationArrayOutput {
 	return o.ApplyT(func(v NamePlan) []NamePlanConfiguration { return v.Configurations }).(NamePlanConfigurationArrayOutput)
 }
 
-// Duration selected for the purchase of the product
+// Duration selected for the purchase of the product (defaults to "P1Y")
 func (o NamePlanOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v NamePlan) string { return v.Duration }).(pulumi.StringOutput)
 }
@@ -1845,9 +1845,9 @@ func (o NamePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) NamePla
 }
 
 type NameServersServer struct {
-	// DNS name server hostname
+	// The server hostname
 	Host string `pulumi:"host"`
-	// DNS name server IP address
+	// The server IP
 	Ip *string `pulumi:"ip"`
 }
 
@@ -1863,9 +1863,9 @@ type NameServersServerInput interface {
 }
 
 type NameServersServerArgs struct {
-	// DNS name server hostname
+	// The server hostname
 	Host pulumi.StringInput `pulumi:"host"`
-	// DNS name server IP address
+	// The server IP
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
 }
 
@@ -1920,12 +1920,12 @@ func (o NameServersServerOutput) ToNameServersServerOutputWithContext(ctx contex
 	return o
 }
 
-// DNS name server hostname
+// The server hostname
 func (o NameServersServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v NameServersServer) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// DNS name server IP address
+// The server IP
 func (o NameServersServerOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NameServersServer) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
@@ -2592,7 +2592,7 @@ func (o ZoneOrderDetailArrayOutput) Index(i pulumi.IntInput) ZoneOrderDetailOutp
 type ZonePlan struct {
 	// Catalog name
 	CatalogName *string `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 	Configurations []ZonePlanConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
@@ -2616,7 +2616,7 @@ type ZonePlanInput interface {
 type ZonePlanArgs struct {
 	// Catalog name
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 	Configurations ZonePlanConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
@@ -2708,7 +2708,7 @@ func (o ZonePlanOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZonePlan) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// Representation of a configuration item for personalizing product
+// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 func (o ZonePlanOutput) Configurations() ZonePlanConfigurationArrayOutput {
 	return o.ApplyT(func(v ZonePlan) []ZonePlanConfiguration { return v.Configurations }).(ZonePlanConfigurationArrayOutput)
 }
@@ -2762,7 +2762,7 @@ func (o ZonePlanPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Representation of a configuration item for personalizing product
+// Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
 func (o ZonePlanPtrOutput) Configurations() ZonePlanConfigurationArrayOutput {
 	return o.ApplyT(func(v *ZonePlan) []ZonePlanConfiguration {
 		if v == nil {
@@ -2803,9 +2803,9 @@ func (o ZonePlanPtrOutput) PricingMode() pulumi.StringPtrOutput {
 }
 
 type ZonePlanConfiguration struct {
-	// Identifier of the resource
+	// Identifier of the resource : `zone` or `template`
 	Label string `pulumi:"label"`
-	// Path to the resource in API.OVH.COM
+	// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
 	Value string `pulumi:"value"`
 }
 
@@ -2821,9 +2821,9 @@ type ZonePlanConfigurationInput interface {
 }
 
 type ZonePlanConfigurationArgs struct {
-	// Identifier of the resource
+	// Identifier of the resource : `zone` or `template`
 	Label pulumi.StringInput `pulumi:"label"`
-	// Path to the resource in API.OVH.COM
+	// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2878,12 +2878,12 @@ func (o ZonePlanConfigurationOutput) ToZonePlanConfigurationOutputWithContext(ct
 	return o
 }
 
-// Identifier of the resource
+// Identifier of the resource : `zone` or `template`
 func (o ZonePlanConfigurationOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ZonePlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Path to the resource in API.OVH.COM
+// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
 func (o ZonePlanConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ZonePlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3148,8 +3148,8 @@ func (o ZonePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) ZonePla
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*DsRecordsDsRecordInput)(nil)).Elem(), DsRecordsDsRecordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DsRecordsDsRecordArrayInput)(nil)).Elem(), DsRecordsDsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSRecordsDsRecordInput)(nil)).Elem(), DSRecordsDsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSRecordsDsRecordArrayInput)(nil)).Elem(), DSRecordsDsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateInput)(nil)).Elem(), NameCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStatePtrInput)(nil)).Elem(), NameCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateDnsConfigurationInput)(nil)).Elem(), NameCurrentStateDnsConfigurationArgs{})
@@ -3192,8 +3192,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanOptionArrayInput)(nil)).Elem(), ZonePlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanOptionConfigurationInput)(nil)).Elem(), ZonePlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanOptionConfigurationArrayInput)(nil)).Elem(), ZonePlanOptionConfigurationArray{})
-	pulumi.RegisterOutputType(DsRecordsDsRecordOutput{})
-	pulumi.RegisterOutputType(DsRecordsDsRecordArrayOutput{})
+	pulumi.RegisterOutputType(DSRecordsDsRecordOutput{})
+	pulumi.RegisterOutputType(DSRecordsDsRecordArrayOutput{})
 	pulumi.RegisterOutputType(NameCurrentStateOutput{})
 	pulumi.RegisterOutputType(NameCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(NameCurrentStateDnsConfigurationOutput{})

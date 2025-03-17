@@ -7,43 +7,51 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
 type Vps struct {
 	pulumi.CustomResourceState
 
+	// VPS cluster
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
-	// Set the name displayed in Manager for your VPS (max 50 chars)
+	// Custom display name
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// IAM resource metadata
+	// IAM resource information
 	Iam VpsIamOutput `pulumi:"iam"`
 	// KVM keyboard layout on VPS Cloud
-	Keymap      pulumi.StringOutput  `pulumi:"keymap"`
+	Keymap pulumi.StringOutput `pulumi:"keymap"`
+	// RAM of this VPS
 	MemoryLimit pulumi.Float64Output `pulumi:"memoryLimit"`
-	// A structure describing characteristics of a VPS model
+	// Structure describing characteristics of a VPS model
 	Model VpsModelOutput `pulumi:"model"`
-	// Ip blocks for OVH monitoring servers
+	// IP blocks for OVH monitoring servers
 	MonitoringIpBlocks pulumi.StringArrayOutput `pulumi:"monitoringIpBlocks"`
-	Name               pulumi.StringOutput      `pulumi:"name"`
-	// All values a VPS netboot mode can be in
+	// Name of the VPS
+	Name pulumi.StringOutput `pulumi:"name"`
+	// VPS netboot mode (local┃rescue)
 	NetbootMode pulumi.StringOutput `pulumi:"netbootMode"`
-	// All offers a VPS can have
+	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType pulumi.StringOutput `pulumi:"offerType"`
 	// Details about an Order
 	Order VpsOrderOutput `pulumi:"order"`
-	// OVH subsidiaries
-	OvhSubsidiary pulumi.StringPtrOutput   `pulumi:"ovhSubsidiary"`
-	PlanOptions   VpsPlanOptionArrayOutput `pulumi:"planOptions"`
-	Plans         VpsPlanArrayOutput       `pulumi:"plans"`
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+	OvhSubsidiary pulumi.StringPtrOutput `pulumi:"ovhSubsidiary"`
+	// Product Plan to order
+	PlanOptions VpsPlanOptionArrayOutput `pulumi:"planOptions"`
+	// Product Plan to order
+	Plans VpsPlanArrayOutput `pulumi:"plans"`
 	// The internal name of your VPS offer
 	ServiceName   pulumi.StringOutput `pulumi:"serviceName"`
 	SlaMonitoring pulumi.BoolOutput   `pulumi:"slaMonitoring"`
-	// All states a VPS can be in
-	State pulumi.StringOutput  `pulumi:"state"`
+	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+	State pulumi.StringOutput `pulumi:"state"`
+	// Number of vcores
 	Vcore pulumi.Float64Output `pulumi:"vcore"`
-	Zone  pulumi.StringOutput  `pulumi:"zone"`
+	// OpenStask region where the VPS is located
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewVps registers a new resource with the given unique name, arguments, and options.
@@ -76,69 +84,83 @@ func GetVps(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vps resources.
 type vpsState struct {
+	// VPS cluster
 	Cluster *string `pulumi:"cluster"`
-	// Set the name displayed in Manager for your VPS (max 50 chars)
+	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
-	// IAM resource metadata
+	// IAM resource information
 	Iam *VpsIam `pulumi:"iam"`
 	// KVM keyboard layout on VPS Cloud
-	Keymap      *string  `pulumi:"keymap"`
+	Keymap *string `pulumi:"keymap"`
+	// RAM of this VPS
 	MemoryLimit *float64 `pulumi:"memoryLimit"`
-	// A structure describing characteristics of a VPS model
+	// Structure describing characteristics of a VPS model
 	Model *VpsModel `pulumi:"model"`
-	// Ip blocks for OVH monitoring servers
+	// IP blocks for OVH monitoring servers
 	MonitoringIpBlocks []string `pulumi:"monitoringIpBlocks"`
-	Name               *string  `pulumi:"name"`
-	// All values a VPS netboot mode can be in
+	// Name of the VPS
+	Name *string `pulumi:"name"`
+	// VPS netboot mode (local┃rescue)
 	NetbootMode *string `pulumi:"netbootMode"`
-	// All offers a VPS can have
+	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType *string `pulumi:"offerType"`
 	// Details about an Order
 	Order *VpsOrder `pulumi:"order"`
-	// OVH subsidiaries
-	OvhSubsidiary *string         `pulumi:"ovhSubsidiary"`
-	PlanOptions   []VpsPlanOption `pulumi:"planOptions"`
-	Plans         []VpsPlan       `pulumi:"plans"`
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
+	// Product Plan to order
+	PlanOptions []VpsPlanOption `pulumi:"planOptions"`
+	// Product Plan to order
+	Plans []VpsPlan `pulumi:"plans"`
 	// The internal name of your VPS offer
 	ServiceName   *string `pulumi:"serviceName"`
 	SlaMonitoring *bool   `pulumi:"slaMonitoring"`
-	// All states a VPS can be in
-	State *string  `pulumi:"state"`
+	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+	State *string `pulumi:"state"`
+	// Number of vcores
 	Vcore *float64 `pulumi:"vcore"`
-	Zone  *string  `pulumi:"zone"`
+	// OpenStask region where the VPS is located
+	Zone *string `pulumi:"zone"`
 }
 
 type VpsState struct {
+	// VPS cluster
 	Cluster pulumi.StringPtrInput
-	// Set the name displayed in Manager for your VPS (max 50 chars)
+	// Custom display name
 	DisplayName pulumi.StringPtrInput
-	// IAM resource metadata
+	// IAM resource information
 	Iam VpsIamPtrInput
 	// KVM keyboard layout on VPS Cloud
-	Keymap      pulumi.StringPtrInput
+	Keymap pulumi.StringPtrInput
+	// RAM of this VPS
 	MemoryLimit pulumi.Float64PtrInput
-	// A structure describing characteristics of a VPS model
+	// Structure describing characteristics of a VPS model
 	Model VpsModelPtrInput
-	// Ip blocks for OVH monitoring servers
+	// IP blocks for OVH monitoring servers
 	MonitoringIpBlocks pulumi.StringArrayInput
-	Name               pulumi.StringPtrInput
-	// All values a VPS netboot mode can be in
+	// Name of the VPS
+	Name pulumi.StringPtrInput
+	// VPS netboot mode (local┃rescue)
 	NetbootMode pulumi.StringPtrInput
-	// All offers a VPS can have
+	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType pulumi.StringPtrInput
 	// Details about an Order
 	Order VpsOrderPtrInput
-	// OVH subsidiaries
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
 	OvhSubsidiary pulumi.StringPtrInput
-	PlanOptions   VpsPlanOptionArrayInput
-	Plans         VpsPlanArrayInput
+	// Product Plan to order
+	PlanOptions VpsPlanOptionArrayInput
+	// Product Plan to order
+	Plans VpsPlanArrayInput
 	// The internal name of your VPS offer
 	ServiceName   pulumi.StringPtrInput
 	SlaMonitoring pulumi.BoolPtrInput
-	// All states a VPS can be in
+	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
 	State pulumi.StringPtrInput
+	// Number of vcores
 	Vcore pulumi.Float64PtrInput
-	Zone  pulumi.StringPtrInput
+	// OpenStask region where the VPS is located
+	Zone pulumi.StringPtrInput
 }
 
 func (VpsState) ElementType() reflect.Type {
@@ -146,56 +168,68 @@ func (VpsState) ElementType() reflect.Type {
 }
 
 type vpsArgs struct {
-	// Set the name displayed in Manager for your VPS (max 50 chars)
+	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
 	// KVM keyboard layout on VPS Cloud
-	Keymap      *string  `pulumi:"keymap"`
+	Keymap *string `pulumi:"keymap"`
+	// RAM of this VPS
 	MemoryLimit *float64 `pulumi:"memoryLimit"`
-	// A structure describing characteristics of a VPS model
+	// Structure describing characteristics of a VPS model
 	Model *VpsModel `pulumi:"model"`
-	// Ip blocks for OVH monitoring servers
+	// IP blocks for OVH monitoring servers
 	MonitoringIpBlocks []string `pulumi:"monitoringIpBlocks"`
-	Name               *string  `pulumi:"name"`
-	// All values a VPS netboot mode can be in
+	// Name of the VPS
+	Name *string `pulumi:"name"`
+	// VPS netboot mode (local┃rescue)
 	NetbootMode *string `pulumi:"netbootMode"`
-	// All offers a VPS can have
+	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType *string `pulumi:"offerType"`
-	// OVH subsidiaries
-	OvhSubsidiary *string         `pulumi:"ovhSubsidiary"`
-	PlanOptions   []VpsPlanOption `pulumi:"planOptions"`
-	Plans         []VpsPlan       `pulumi:"plans"`
-	SlaMonitoring *bool           `pulumi:"slaMonitoring"`
-	// All states a VPS can be in
-	State *string  `pulumi:"state"`
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
+	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
+	// Product Plan to order
+	PlanOptions []VpsPlanOption `pulumi:"planOptions"`
+	// Product Plan to order
+	Plans         []VpsPlan `pulumi:"plans"`
+	SlaMonitoring *bool     `pulumi:"slaMonitoring"`
+	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
+	State *string `pulumi:"state"`
+	// Number of vcores
 	Vcore *float64 `pulumi:"vcore"`
-	Zone  *string  `pulumi:"zone"`
+	// OpenStask region where the VPS is located
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Vps resource.
 type VpsArgs struct {
-	// Set the name displayed in Manager for your VPS (max 50 chars)
+	// Custom display name
 	DisplayName pulumi.StringPtrInput
 	// KVM keyboard layout on VPS Cloud
-	Keymap      pulumi.StringPtrInput
+	Keymap pulumi.StringPtrInput
+	// RAM of this VPS
 	MemoryLimit pulumi.Float64PtrInput
-	// A structure describing characteristics of a VPS model
+	// Structure describing characteristics of a VPS model
 	Model VpsModelPtrInput
-	// Ip blocks for OVH monitoring servers
+	// IP blocks for OVH monitoring servers
 	MonitoringIpBlocks pulumi.StringArrayInput
-	Name               pulumi.StringPtrInput
-	// All values a VPS netboot mode can be in
+	// Name of the VPS
+	Name pulumi.StringPtrInput
+	// VPS netboot mode (local┃rescue)
 	NetbootMode pulumi.StringPtrInput
-	// All offers a VPS can have
+	// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 	OfferType pulumi.StringPtrInput
-	// OVH subsidiaries
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
 	OvhSubsidiary pulumi.StringPtrInput
-	PlanOptions   VpsPlanOptionArrayInput
+	// Product Plan to order
+	PlanOptions VpsPlanOptionArrayInput
+	// Product Plan to order
 	Plans         VpsPlanArrayInput
 	SlaMonitoring pulumi.BoolPtrInput
-	// All states a VPS can be in
+	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
 	State pulumi.StringPtrInput
+	// Number of vcores
 	Vcore pulumi.Float64PtrInput
-	Zone  pulumi.StringPtrInput
+	// OpenStask region where the VPS is located
+	Zone pulumi.StringPtrInput
 }
 
 func (VpsArgs) ElementType() reflect.Type {
@@ -285,16 +319,17 @@ func (o VpsOutput) ToVpsOutputWithContext(ctx context.Context) VpsOutput {
 	return o
 }
 
+// VPS cluster
 func (o VpsOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// Set the name displayed in Manager for your VPS (max 50 chars)
+// Custom display name
 func (o VpsOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// IAM resource metadata
+// IAM resource information
 func (o VpsOutput) Iam() VpsIamOutput {
 	return o.ApplyT(func(v *Vps) VpsIamOutput { return v.Iam }).(VpsIamOutput)
 }
@@ -304,30 +339,32 @@ func (o VpsOutput) Keymap() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.Keymap }).(pulumi.StringOutput)
 }
 
+// RAM of this VPS
 func (o VpsOutput) MemoryLimit() pulumi.Float64Output {
 	return o.ApplyT(func(v *Vps) pulumi.Float64Output { return v.MemoryLimit }).(pulumi.Float64Output)
 }
 
-// A structure describing characteristics of a VPS model
+// Structure describing characteristics of a VPS model
 func (o VpsOutput) Model() VpsModelOutput {
 	return o.ApplyT(func(v *Vps) VpsModelOutput { return v.Model }).(VpsModelOutput)
 }
 
-// Ip blocks for OVH monitoring servers
+// IP blocks for OVH monitoring servers
 func (o VpsOutput) MonitoringIpBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringArrayOutput { return v.MonitoringIpBlocks }).(pulumi.StringArrayOutput)
 }
 
+// Name of the VPS
 func (o VpsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// All values a VPS netboot mode can be in
+// VPS netboot mode (local┃rescue)
 func (o VpsOutput) NetbootMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.NetbootMode }).(pulumi.StringOutput)
 }
 
-// All offers a VPS can have
+// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
 func (o VpsOutput) OfferType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.OfferType }).(pulumi.StringOutput)
 }
@@ -337,15 +374,17 @@ func (o VpsOutput) Order() VpsOrderOutput {
 	return o.ApplyT(func(v *Vps) VpsOrderOutput { return v.Order }).(VpsOrderOutput)
 }
 
-// OVH subsidiaries
+// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
 func (o VpsOutput) OvhSubsidiary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringPtrOutput { return v.OvhSubsidiary }).(pulumi.StringPtrOutput)
 }
 
+// Product Plan to order
 func (o VpsOutput) PlanOptions() VpsPlanOptionArrayOutput {
 	return o.ApplyT(func(v *Vps) VpsPlanOptionArrayOutput { return v.PlanOptions }).(VpsPlanOptionArrayOutput)
 }
 
+// Product Plan to order
 func (o VpsOutput) Plans() VpsPlanArrayOutput {
 	return o.ApplyT(func(v *Vps) VpsPlanArrayOutput { return v.Plans }).(VpsPlanArrayOutput)
 }
@@ -359,15 +398,17 @@ func (o VpsOutput) SlaMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Vps) pulumi.BoolOutput { return v.SlaMonitoring }).(pulumi.BoolOutput)
 }
 
-// All states a VPS can be in
+// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
 func (o VpsOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// Number of vcores
 func (o VpsOutput) Vcore() pulumi.Float64Output {
 	return o.ApplyT(func(v *Vps) pulumi.Float64Output { return v.Vcore }).(pulumi.Float64Output)
 }
 
+// OpenStask region where the VPS is located
 func (o VpsOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

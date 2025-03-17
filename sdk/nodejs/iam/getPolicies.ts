@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to list the existing IAM policies of an account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myPolicies = ovh.Iam.getPolicies({});
+ * ```
+ */
 export function getPolicies(opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getPolicies:getPolicies", {
@@ -18,8 +30,23 @@ export interface GetPoliciesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of the policies IDs.
+     */
     readonly policies: string[];
 }
+/**
+ * Use this data source to list the existing IAM policies of an account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myPolicies = ovh.Iam.getPolicies({});
+ * ```
+ */
 export function getPoliciesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getPolicies:getPolicies", {

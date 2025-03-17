@@ -8,24 +8,51 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Allows to manipulate LDP tokens.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbaas.NewLogsToken(ctx, "token", &dbaas.LogsTokenArgs{
+//				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type LogsToken struct {
 	pulumi.CustomResourceState
 
-	// Cluster ID
+	// Cluster ID. If not provided, the default clusterId is used
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Token creation
+	// Token creation date
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Token name
+	// Name of the token
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Service name
+	// The LDP service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Token used
+	// ID of the token
 	TokenId pulumi.StringOutput `pulumi:"tokenId"`
-	// Token last update
+	// Token last update date
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Token value
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -68,34 +95,34 @@ func GetLogsToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogsToken resources.
 type logsTokenState struct {
-	// Cluster ID
+	// Cluster ID. If not provided, the default clusterId is used
 	ClusterId *string `pulumi:"clusterId"`
-	// Token creation
+	// Token creation date
 	CreatedAt *string `pulumi:"createdAt"`
-	// Token name
+	// Name of the token
 	Name *string `pulumi:"name"`
-	// Service name
+	// The LDP service name
 	ServiceName *string `pulumi:"serviceName"`
-	// Token used
+	// ID of the token
 	TokenId *string `pulumi:"tokenId"`
-	// Token last update
+	// Token last update date
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Token value
 	Value *string `pulumi:"value"`
 }
 
 type LogsTokenState struct {
-	// Cluster ID
+	// Cluster ID. If not provided, the default clusterId is used
 	ClusterId pulumi.StringPtrInput
-	// Token creation
+	// Token creation date
 	CreatedAt pulumi.StringPtrInput
-	// Token name
+	// Name of the token
 	Name pulumi.StringPtrInput
-	// Service name
+	// The LDP service name
 	ServiceName pulumi.StringPtrInput
-	// Token used
+	// ID of the token
 	TokenId pulumi.StringPtrInput
-	// Token last update
+	// Token last update date
 	UpdatedAt pulumi.StringPtrInput
 	// Token value
 	Value pulumi.StringPtrInput
@@ -106,21 +133,21 @@ func (LogsTokenState) ElementType() reflect.Type {
 }
 
 type logsTokenArgs struct {
-	// Cluster ID
+	// Cluster ID. If not provided, the default clusterId is used
 	ClusterId *string `pulumi:"clusterId"`
-	// Token name
+	// Name of the token
 	Name *string `pulumi:"name"`
-	// Service name
+	// The LDP service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a LogsToken resource.
 type LogsTokenArgs struct {
-	// Cluster ID
+	// Cluster ID. If not provided, the default clusterId is used
 	ClusterId pulumi.StringPtrInput
-	// Token name
+	// Name of the token
 	Name pulumi.StringPtrInput
-	// Service name
+	// The LDP service name
 	ServiceName pulumi.StringInput
 }
 
@@ -211,32 +238,32 @@ func (o LogsTokenOutput) ToLogsTokenOutputWithContext(ctx context.Context) LogsT
 	return o
 }
 
-// Cluster ID
+// Cluster ID. If not provided, the default clusterId is used
 func (o LogsTokenOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsToken) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Token creation
+// Token creation date
 func (o LogsTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Token name
+// Name of the token
 func (o LogsTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Service name
+// The LDP service name
 func (o LogsTokenOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsToken) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Token used
+// ID of the token
 func (o LogsTokenOutput) TokenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsToken) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }
 
-// Token last update
+// Token last update date
 func (o LogsTokenOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsToken) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

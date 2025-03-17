@@ -9,21 +9,113 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Ip
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = "fr",
+    ///     });
+    /// 
+    ///     var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "ip",
+    ///         PlanCode = "ip-v4-s30-ripe",
+    ///     });
+    /// 
+    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblockIpService", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Description = "my ip block",
+    ///         Plan = new Ovh.Ip.Inputs.IpServicePlanArgs
+    ///         {
+    ///             Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Configurations = new[]
+    ///             {
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "country",
+    ///                     Value = "FR",
+    ///                 },
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "region",
+    ///                     Value = "europe",
+    ///                 },
+    ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "destination",
+    ///                     Value = "parking",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource can be imported using its `service_name`, E.g.,
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_ip_service.ipblock
+    /// 
+    ///   id = "ip-xx.xx.xx.xx"
+    /// 
+    /// }
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=ipblock.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:Ip/ipService:IpService")]
     public partial class IpService : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// can be terminated
+        /// </summary>
         [Output("canBeTerminated")]
         public Output<bool> CanBeTerminated { get; private set; } = null!;
 
+        /// <summary>
+        /// country
+        /// </summary>
         [Output("country")]
         public Output<string> Country { get; private set; } = null!;
 
         /// <summary>
-        /// Custom description on your ip
+        /// Custom description on your ip.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// ip block
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
@@ -33,11 +125,14 @@ namespace Pulumi.Ovh.Ip
         [Output("orders")]
         public Output<ImmutableArray<Outputs.IpServiceOrder>> Orders { get; private set; } = null!;
 
+        /// <summary>
+        /// IP block organisation Id
+        /// </summary>
         [Output("organisationId")]
         public Output<string> OrganisationId { get; private set; } = null!;
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -66,6 +161,9 @@ namespace Pulumi.Ovh.Ip
         [Output("routedTos")]
         public Output<ImmutableArray<Outputs.IpServiceRoutedTo>> RoutedTos { get; private set; } = null!;
 
+        /// <summary>
+        /// service name
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -123,7 +221,7 @@ namespace Pulumi.Ovh.Ip
     public sealed class IpServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom description on your ip
+        /// Custom description on your ip.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -141,7 +239,7 @@ namespace Pulumi.Ovh.Ip
         }
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -178,18 +276,27 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class IpServiceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// can be terminated
+        /// </summary>
         [Input("canBeTerminated")]
         public Input<bool>? CanBeTerminated { get; set; }
 
+        /// <summary>
+        /// country
+        /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }
 
         /// <summary>
-        /// Custom description on your ip
+        /// Custom description on your ip.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// ip block
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
@@ -205,11 +312,14 @@ namespace Pulumi.Ovh.Ip
             set => _orders = value;
         }
 
+        /// <summary>
+        /// IP block organisation Id
+        /// </summary>
         [Input("organisationId")]
         public Input<string>? OrganisationId { get; set; }
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -250,6 +360,9 @@ namespace Pulumi.Ovh.Ip
             set => _routedTos = value;
         }
 
+        /// <summary>
+        /// service name
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

@@ -67,6 +67,9 @@ class GetRegionLoadBalancerLogSubscriptionResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The date of the subscription creation
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -80,51 +83,81 @@ class GetRegionLoadBalancerLogSubscriptionResult:
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        Router used for forwarding log
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter(name="ldpServiceName")
     def ldp_service_name(self) -> str:
+        """
+        LDP service name
+        """
         return pulumi.get(self, "ldp_service_name")
 
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> str:
+        """
+        Loadbalancer id to get the logs
+        """
         return pulumi.get(self, "loadbalancer_id")
 
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
+        """
+        A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11".
+        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        The resource name
+        """
         return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        The resource type
+        """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The id of the public cloud project.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="streamId")
     def stream_id(self) -> str:
+        """
+        Data stream id to use for the subscription
+        """
         return pulumi.get(self, "stream_id")
 
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> str:
+        """
+        The subscription id
+        """
         return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The last update of the subscription
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -154,7 +187,25 @@ def get_region_load_balancer_log_subscription(loadbalancer_id: Optional[str] = N
                                               subscription_id: Optional[str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionLoadBalancerLogSubscriptionResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    sub = ovh.CloudProject.get_region_load_balancer_log_subscription(loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        region_name="gggg",
+        service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        subscription_id="zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+    ```
+
+
+    :param str loadbalancer_id: Loadbalancer id to get the logs
+    :param str region_name: A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str subscription_id: Subscription id
     """
     __args__ = dict()
     __args__['loadbalancerId'] = loadbalancer_id
@@ -183,7 +234,25 @@ def get_region_load_balancer_log_subscription_output(loadbalancer_id: Optional[p
                                                      subscription_id: Optional[pulumi.Input[str]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionLoadBalancerLogSubscriptionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    sub = ovh.CloudProject.get_region_load_balancer_log_subscription(loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        region_name="gggg",
+        service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        subscription_id="zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+    ```
+
+
+    :param str loadbalancer_id: Loadbalancer id to get the logs
+    :param str region_name: A valid OVHcloud public cloud region name in which the loadbalancer is available. Ex.: "GRA11".
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str subscription_id: Subscription id
     """
     __args__ = dict()
     __args__['loadbalancerId'] = loadbalancer_id

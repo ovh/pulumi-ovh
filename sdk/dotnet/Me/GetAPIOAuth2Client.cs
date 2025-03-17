@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Me
 {
     public static class GetAPIOAuth2Client
     {
+        /// <summary>
+        /// Use this data source to retrieve information about an existing OAuth2 service account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOauth2Client = Ovh.Me.GetAPIOAuth2Client.Invoke(new()
+        ///     {
+        ///         ClientId = "5f8969a993ec8b4b",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAPIOAuth2ClientResult> InvokeAsync(GetAPIOAuth2ClientArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAPIOAuth2ClientResult>("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args ?? new GetAPIOAuth2ClientArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an existing OAuth2 service account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOauth2Client = Ovh.Me.GetAPIOAuth2Client.Invoke(new()
+        ///     {
+        ///         ClientId = "5f8969a993ec8b4b",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAPIOAuth2ClientResult> Invoke(GetAPIOAuth2ClientInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAPIOAuth2ClientResult>("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args ?? new GetAPIOAuth2ClientInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an existing OAuth2 service account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myOauth2Client = Ovh.Me.GetAPIOAuth2Client.Invoke(new()
+        ///     {
+        ///         ClientId = "5f8969a993ec8b4b",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAPIOAuth2ClientResult> Invoke(GetAPIOAuth2ClientInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAPIOAuth2ClientResult>("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", args ?? new GetAPIOAuth2ClientInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.Ovh.Me
 
     public sealed class GetAPIOAuth2ClientArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Client ID of an existing OAuth2 service account.
+        /// </summary>
         [Input("clientId", required: true)]
         public string ClientId { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.Ovh.Me
 
     public sealed class GetAPIOAuth2ClientInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Client ID of an existing OAuth2 service account.
+        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
@@ -48,15 +117,30 @@ namespace Pulumi.Ovh.Me
     [OutputType]
     public sealed class GetAPIOAuth2ClientResult
     {
+        /// <summary>
+        /// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+        /// </summary>
         public readonly ImmutableArray<string> CallbackUrls;
+        /// <summary>
+        /// Client ID of the created service account.
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// OAuth2 client description.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+        /// </summary>
         public readonly string Flow;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Identity;
+        /// <summary>
+        /// OAuth2 client name.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

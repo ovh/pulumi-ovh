@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myKubeCluster, err := cloudproject.GetKube(ctx, &cloudproject.GetKubeArgs{
+//				ServiceName: "XXXXXX",
+//				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("version", myKubeCluster.Version)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKube(ctx *pulumi.Context, args *LookupKubeArgs, opts ...pulumi.InvokeOption) (*LookupKubeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubeResult
@@ -23,43 +52,74 @@ func LookupKube(ctx *pulumi.Context, args *LookupKubeArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getKube.
 type LookupKubeArgs struct {
+	// Kubernetes API server customization
 	CustomizationApiservers []GetKubeCustomizationApiserver `pulumi:"customizationApiservers"`
-	CustomizationKubeProxy  *GetKubeCustomizationKubeProxy  `pulumi:"customizationKubeProxy"`
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy *GetKubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations []GetKubeCustomization `pulumi:"customizations"`
-	KubeId         string                 `pulumi:"kubeId"`
-	KubeProxyMode  *string                `pulumi:"kubeProxyMode"`
-	Name           *string                `pulumi:"name"`
-	Region         *string                `pulumi:"region"`
-	ServiceName    string                 `pulumi:"serviceName"`
-	UpdatePolicy   *string                `pulumi:"updatePolicy"`
-	Version        *string                `pulumi:"version"`
+	// The id of the managed kubernetes cluster.
+	KubeId string `pulumi:"kubeId"`
+	// Selected mode for kube-proxy.
+	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// The name of the managed kubernetes cluster.
+	Name *string `pulumi:"name"`
+	// The OVHcloud public cloud region ID of the managed kubernetes cluster.
+	Region *string `pulumi:"region"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName string `pulumi:"serviceName"`
+	// Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
+	UpdatePolicy *string `pulumi:"updatePolicy"`
+	// Kubernetes version of the managed kubernetes cluster.
+	Version *string `pulumi:"version"`
 }
 
 // A collection of values returned by getKube.
 type LookupKubeResult struct {
-	ControlPlaneIsUpToDate  bool                            `pulumi:"controlPlaneIsUpToDate"`
+	// True if control-plane is up-to-date.
+	ControlPlaneIsUpToDate bool `pulumi:"controlPlaneIsUpToDate"`
+	// Kubernetes API server customization
 	CustomizationApiservers []GetKubeCustomizationApiserver `pulumi:"customizationApiservers"`
-	CustomizationKubeProxy  *GetKubeCustomizationKubeProxy  `pulumi:"customizationKubeProxy"`
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy *GetKubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations []GetKubeCustomization `pulumi:"customizations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string   `pulumi:"id"`
-	IsUpToDate            bool     `pulumi:"isUpToDate"`
-	KubeId                string   `pulumi:"kubeId"`
-	KubeProxyMode         *string  `pulumi:"kubeProxyMode"`
-	LoadBalancersSubnetId string   `pulumi:"loadBalancersSubnetId"`
-	Name                  *string  `pulumi:"name"`
-	NextUpgradeVersions   []string `pulumi:"nextUpgradeVersions"`
-	NodesSubnetId         string   `pulumi:"nodesSubnetId"`
-	NodesUrl              string   `pulumi:"nodesUrl"`
-	PrivateNetworkId      string   `pulumi:"privateNetworkId"`
-	Region                *string  `pulumi:"region"`
-	ServiceName           string   `pulumi:"serviceName"`
-	Status                string   `pulumi:"status"`
-	UpdatePolicy          *string  `pulumi:"updatePolicy"`
-	Url                   string   `pulumi:"url"`
-	Version               *string  `pulumi:"version"`
+	Id string `pulumi:"id"`
+	// True if all nodes and control-plane are up-to-date.
+	IsUpToDate bool `pulumi:"isUpToDate"`
+	// See Argument Reference above.
+	KubeId string `pulumi:"kubeId"`
+	// Selected mode for kube-proxy.
+	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// Openstack private network (or vRack) ID to use for load balancers.
+	LoadBalancersSubnetId string `pulumi:"loadBalancersSubnetId"`
+	// The name of the managed kubernetes cluster.
+	Name *string `pulumi:"name"`
+	// Kubernetes versions available for upgrade.
+	NextUpgradeVersions []string `pulumi:"nextUpgradeVersions"`
+	// Openstack private network (or vRack) ID to use for nodes.
+	NodesSubnetId string `pulumi:"nodesSubnetId"`
+	// Cluster nodes URL.
+	NodesUrl string `pulumi:"nodesUrl"`
+	// OpenStack private network (or vrack) ID to use.
+	PrivateNetworkId string `pulumi:"privateNetworkId"`
+	// The OVHcloud public cloud region ID of the managed kubernetes cluster.
+	Region *string `pulumi:"region"`
+	// See Argument Reference above.
+	ServiceName string `pulumi:"serviceName"`
+	// Cluster status. Should be normally set to 'READY'.
+	Status string `pulumi:"status"`
+	// Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
+	UpdatePolicy *string `pulumi:"updatePolicy"`
+	// Management URL of your cluster.
+	Url string `pulumi:"url"`
+	// Kubernetes version of the managed kubernetes cluster.
+	Version *string `pulumi:"version"`
 }
 
 func LookupKubeOutput(ctx *pulumi.Context, args LookupKubeOutputArgs, opts ...pulumi.InvokeOption) LookupKubeResultOutput {
@@ -73,17 +133,28 @@ func LookupKubeOutput(ctx *pulumi.Context, args LookupKubeOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getKube.
 type LookupKubeOutputArgs struct {
+	// Kubernetes API server customization
 	CustomizationApiservers GetKubeCustomizationApiserverArrayInput `pulumi:"customizationApiservers"`
-	CustomizationKubeProxy  GetKubeCustomizationKubeProxyPtrInput   `pulumi:"customizationKubeProxy"`
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy GetKubeCustomizationKubeProxyPtrInput `pulumi:"customizationKubeProxy"`
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations GetKubeCustomizationArrayInput `pulumi:"customizations"`
-	KubeId         pulumi.StringInput             `pulumi:"kubeId"`
-	KubeProxyMode  pulumi.StringPtrInput          `pulumi:"kubeProxyMode"`
-	Name           pulumi.StringPtrInput          `pulumi:"name"`
-	Region         pulumi.StringPtrInput          `pulumi:"region"`
-	ServiceName    pulumi.StringInput             `pulumi:"serviceName"`
-	UpdatePolicy   pulumi.StringPtrInput          `pulumi:"updatePolicy"`
-	Version        pulumi.StringPtrInput          `pulumi:"version"`
+	// The id of the managed kubernetes cluster.
+	KubeId pulumi.StringInput `pulumi:"kubeId"`
+	// Selected mode for kube-proxy.
+	KubeProxyMode pulumi.StringPtrInput `pulumi:"kubeProxyMode"`
+	// The name of the managed kubernetes cluster.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The OVHcloud public cloud region ID of the managed kubernetes cluster.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
+	UpdatePolicy pulumi.StringPtrInput `pulumi:"updatePolicy"`
+	// Kubernetes version of the managed kubernetes cluster.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (LookupKubeOutputArgs) ElementType() reflect.Type {
@@ -105,18 +176,23 @@ func (o LookupKubeResultOutput) ToLookupKubeResultOutputWithContext(ctx context.
 	return o
 }
 
+// True if control-plane is up-to-date.
 func (o LookupKubeResultOutput) ControlPlaneIsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKubeResult) bool { return v.ControlPlaneIsUpToDate }).(pulumi.BoolOutput)
 }
 
+// Kubernetes API server customization
 func (o LookupKubeResultOutput) CustomizationApiservers() GetKubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v LookupKubeResult) []GetKubeCustomizationApiserver { return v.CustomizationApiservers }).(GetKubeCustomizationApiserverArrayOutput)
 }
 
+// Kubernetes kube-proxy customization
 func (o LookupKubeResultOutput) CustomizationKubeProxy() GetKubeCustomizationKubeProxyPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *GetKubeCustomizationKubeProxy { return v.CustomizationKubeProxy }).(GetKubeCustomizationKubeProxyPtrOutput)
 }
 
+// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+//
 // Deprecated: Use customizationApiserver instead
 func (o LookupKubeResultOutput) Customizations() GetKubeCustomizationArrayOutput {
 	return o.ApplyT(func(v LookupKubeResult) []GetKubeCustomization { return v.Customizations }).(GetKubeCustomizationArrayOutput)
@@ -127,62 +203,77 @@ func (o LookupKubeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// True if all nodes and control-plane are up-to-date.
 func (o LookupKubeResultOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKubeResult) bool { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
+// See Argument Reference above.
 func (o LookupKubeResultOutput) KubeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.KubeId }).(pulumi.StringOutput)
 }
 
+// Selected mode for kube-proxy.
 func (o LookupKubeResultOutput) KubeProxyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.KubeProxyMode }).(pulumi.StringPtrOutput)
 }
 
+// Openstack private network (or vRack) ID to use for load balancers.
 func (o LookupKubeResultOutput) LoadBalancersSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.LoadBalancersSubnetId }).(pulumi.StringOutput)
 }
 
+// The name of the managed kubernetes cluster.
 func (o LookupKubeResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Kubernetes versions available for upgrade.
 func (o LookupKubeResultOutput) NextUpgradeVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKubeResult) []string { return v.NextUpgradeVersions }).(pulumi.StringArrayOutput)
 }
 
+// Openstack private network (or vRack) ID to use for nodes.
 func (o LookupKubeResultOutput) NodesSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.NodesSubnetId }).(pulumi.StringOutput)
 }
 
+// Cluster nodes URL.
 func (o LookupKubeResultOutput) NodesUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.NodesUrl }).(pulumi.StringOutput)
 }
 
+// OpenStack private network (or vrack) ID to use.
 func (o LookupKubeResultOutput) PrivateNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.PrivateNetworkId }).(pulumi.StringOutput)
 }
 
+// The OVHcloud public cloud region ID of the managed kubernetes cluster.
 func (o LookupKubeResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// See Argument Reference above.
 func (o LookupKubeResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Cluster status. Should be normally set to 'READY'.
 func (o LookupKubeResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
 func (o LookupKubeResultOutput) UpdatePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.UpdatePolicy }).(pulumi.StringPtrOutput)
 }
 
+// Management URL of your cluster.
 func (o LookupKubeResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Kubernetes version of the managed kubernetes cluster.
 func (o LookupKubeResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

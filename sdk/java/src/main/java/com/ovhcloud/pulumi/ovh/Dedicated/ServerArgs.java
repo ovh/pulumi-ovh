@@ -3,16 +3,17 @@
 
 package com.ovhcloud.pulumi.ovh.Dedicated;
 
-import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerDetailsArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerCustomizationsArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerPlanArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerPlanOptionArgs;
-import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerUserMetadataArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -53,18 +54,18 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A structure describing informations about installation custom
+     * OS reinstallation customizations
      * 
      */
-    @Import(name="details")
-    private @Nullable Output<ServerDetailsArgs> details;
+    @Import(name="customizations")
+    private @Nullable Output<ServerCustomizationsArgs> customizations;
 
     /**
-     * @return A structure describing informations about installation custom
+     * @return OS reinstallation customizations
      * 
      */
-    public Optional<Output<ServerDetailsArgs>> details() {
-        return Optional.ofNullable(this.details);
+    public Optional<Output<ServerCustomizationsArgs>> customizations() {
+        return Optional.ofNullable(this.customizations);
     }
 
     /**
@@ -128,6 +129,21 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Operating system
+     * 
+     */
+    @Import(name="os")
+    private @Nullable Output<String> os;
+
+    /**
+     * @return Operating system
+     * 
+     */
+    public Optional<Output<String>> os() {
+        return Optional.ofNullable(this.os);
+    }
+
+    /**
      * OVH subsidiaries
      * 
      */
@@ -142,21 +158,6 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ovhSubsidiary);
     }
 
-    /**
-     * Partition scheme name
-     * 
-     */
-    @Import(name="partitionSchemeName")
-    private @Nullable Output<String> partitionSchemeName;
-
-    /**
-     * @return Partition scheme name
-     * 
-     */
-    public Optional<Output<String>> partitionSchemeName() {
-        return Optional.ofNullable(this.partitionSchemeName);
-    }
-
     @Import(name="planOptions")
     private @Nullable Output<List<ServerPlanOptionArgs>> planOptions;
 
@@ -169,6 +170,21 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<List<ServerPlanArgs>>> plans() {
         return Optional.ofNullable(this.plans);
+    }
+
+    /**
+     * Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+     * 
+     */
+    @Import(name="properties")
+    private @Nullable Output<Map<String,String>> properties;
+
+    /**
+     * @return Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> properties() {
+        return Optional.ofNullable(this.properties);
     }
 
     /**
@@ -232,33 +248,18 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Template name
+     * OS reinstallation storage configurations
      * 
      */
-    @Import(name="templateName")
-    private @Nullable Output<String> templateName;
+    @Import(name="storages")
+    private @Nullable Output<List<ServerStorageArgs>> storages;
 
     /**
-     * @return Template name
+     * @return OS reinstallation storage configurations
      * 
      */
-    public Optional<Output<String>> templateName() {
-        return Optional.ofNullable(this.templateName);
-    }
-
-    /**
-     * Metadata
-     * 
-     */
-    @Import(name="userMetadatas")
-    private @Nullable Output<List<ServerUserMetadataArgs>> userMetadatas;
-
-    /**
-     * @return Metadata
-     * 
-     */
-    public Optional<Output<List<ServerUserMetadataArgs>>> userMetadatas() {
-        return Optional.ofNullable(this.userMetadatas);
+    public Optional<Output<List<ServerStorageArgs>>> storages() {
+        return Optional.ofNullable(this.storages);
     }
 
     private ServerArgs() {}
@@ -266,21 +267,21 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     private ServerArgs(ServerArgs $) {
         this.bootId = $.bootId;
         this.bootScript = $.bootScript;
-        this.details = $.details;
+        this.customizations = $.customizations;
         this.displayName = $.displayName;
         this.efiBootloaderPath = $.efiBootloaderPath;
         this.monitoring = $.monitoring;
         this.noIntervention = $.noIntervention;
+        this.os = $.os;
         this.ovhSubsidiary = $.ovhSubsidiary;
-        this.partitionSchemeName = $.partitionSchemeName;
         this.planOptions = $.planOptions;
         this.plans = $.plans;
+        this.properties = $.properties;
         this.rescueMail = $.rescueMail;
         this.rescueSshKey = $.rescueSshKey;
         this.rootDevice = $.rootDevice;
         this.state = $.state;
-        this.templateName = $.templateName;
-        this.userMetadatas = $.userMetadatas;
+        this.storages = $.storages;
     }
 
     public static Builder builder() {
@@ -344,24 +345,24 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param details A structure describing informations about installation custom
+         * @param customizations OS reinstallation customizations
          * 
          * @return builder
          * 
          */
-        public Builder details(@Nullable Output<ServerDetailsArgs> details) {
-            $.details = details;
+        public Builder customizations(@Nullable Output<ServerCustomizationsArgs> customizations) {
+            $.customizations = customizations;
             return this;
         }
 
         /**
-         * @param details A structure describing informations about installation custom
+         * @param customizations OS reinstallation customizations
          * 
          * @return builder
          * 
          */
-        public Builder details(ServerDetailsArgs details) {
-            return details(Output.of(details));
+        public Builder customizations(ServerCustomizationsArgs customizations) {
+            return customizations(Output.of(customizations));
         }
 
         /**
@@ -449,6 +450,27 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param os Operating system
+         * 
+         * @return builder
+         * 
+         */
+        public Builder os(@Nullable Output<String> os) {
+            $.os = os;
+            return this;
+        }
+
+        /**
+         * @param os Operating system
+         * 
+         * @return builder
+         * 
+         */
+        public Builder os(String os) {
+            return os(Output.of(os));
+        }
+
+        /**
          * @param ovhSubsidiary OVH subsidiaries
          * 
          * @return builder
@@ -467,27 +489,6 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ovhSubsidiary(String ovhSubsidiary) {
             return ovhSubsidiary(Output.of(ovhSubsidiary));
-        }
-
-        /**
-         * @param partitionSchemeName Partition scheme name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder partitionSchemeName(@Nullable Output<String> partitionSchemeName) {
-            $.partitionSchemeName = partitionSchemeName;
-            return this;
-        }
-
-        /**
-         * @param partitionSchemeName Partition scheme name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder partitionSchemeName(String partitionSchemeName) {
-            return partitionSchemeName(Output.of(partitionSchemeName));
         }
 
         public Builder planOptions(@Nullable Output<List<ServerPlanOptionArgs>> planOptions) {
@@ -514,6 +515,27 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder plans(ServerPlanArgs... plans) {
             return plans(List.of(plans));
+        }
+
+        /**
+         * @param properties Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(@Nullable Output<Map<String,String>> properties) {
+            $.properties = properties;
+            return this;
+        }
+
+        /**
+         * @param properties Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(Map<String,String> properties) {
+            return properties(Output.of(properties));
         }
 
         /**
@@ -601,55 +623,34 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateName Template name
+         * @param storages OS reinstallation storage configurations
          * 
          * @return builder
          * 
          */
-        public Builder templateName(@Nullable Output<String> templateName) {
-            $.templateName = templateName;
+        public Builder storages(@Nullable Output<List<ServerStorageArgs>> storages) {
+            $.storages = storages;
             return this;
         }
 
         /**
-         * @param templateName Template name
+         * @param storages OS reinstallation storage configurations
          * 
          * @return builder
          * 
          */
-        public Builder templateName(String templateName) {
-            return templateName(Output.of(templateName));
+        public Builder storages(List<ServerStorageArgs> storages) {
+            return storages(Output.of(storages));
         }
 
         /**
-         * @param userMetadatas Metadata
+         * @param storages OS reinstallation storage configurations
          * 
          * @return builder
          * 
          */
-        public Builder userMetadatas(@Nullable Output<List<ServerUserMetadataArgs>> userMetadatas) {
-            $.userMetadatas = userMetadatas;
-            return this;
-        }
-
-        /**
-         * @param userMetadatas Metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userMetadatas(List<ServerUserMetadataArgs> userMetadatas) {
-            return userMetadatas(Output.of(userMetadatas));
-        }
-
-        /**
-         * @param userMetadatas Metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userMetadatas(ServerUserMetadataArgs... userMetadatas) {
-            return userMetadatas(List.of(userMetadatas));
+        public Builder storages(ServerStorageArgs... storages) {
+            return storages(List.of(storages));
         }
 
         public ServerArgs build() {

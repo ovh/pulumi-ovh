@@ -24,9 +24,9 @@ class KubeIpRestrictionsArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a KubeIpRestrictions resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of IP restrictions for the cluster
-        :param pulumi.Input[str] kube_id: Kube ID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of CIDR authorized to interact with the managed Kubernetes cluster.
+        :param pulumi.Input[str] kube_id: The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         pulumi.set(__self__, "ips", ips)
         pulumi.set(__self__, "kube_id", kube_id)
@@ -36,7 +36,7 @@ class KubeIpRestrictionsArgs:
     @pulumi.getter
     def ips(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of IP restrictions for the cluster
+        List of CIDR authorized to interact with the managed Kubernetes cluster.
         """
         return pulumi.get(self, "ips")
 
@@ -48,7 +48,7 @@ class KubeIpRestrictionsArgs:
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> pulumi.Input[str]:
         """
-        Kube ID
+        The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "kube_id")
 
@@ -60,7 +60,7 @@ class KubeIpRestrictionsArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 
@@ -77,9 +77,9 @@ class _KubeIpRestrictionsState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KubeIpRestrictions resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of IP restrictions for the cluster
-        :param pulumi.Input[str] kube_id: Kube ID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of CIDR authorized to interact with the managed Kubernetes cluster.
+        :param pulumi.Input[str] kube_id: The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
@@ -92,7 +92,7 @@ class _KubeIpRestrictionsState:
     @pulumi.getter
     def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP restrictions for the cluster
+        List of CIDR authorized to interact with the managed Kubernetes cluster.
         """
         return pulumi.get(self, "ips")
 
@@ -104,7 +104,7 @@ class _KubeIpRestrictionsState:
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Kube ID
+        The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "kube_id")
 
@@ -116,7 +116,7 @@ class _KubeIpRestrictionsState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 
@@ -135,12 +135,35 @@ class KubeIpRestrictions(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a KubeIpRestrictions resource with the given unique name, props, and options.
+        Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrackOnly",
+            ips=["10.42.0.0/16"],
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
+        ## Import
+
+        OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of IP restrictions for the cluster
-        :param pulumi.Input[str] kube_id: Kube ID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of CIDR authorized to interact with the managed Kubernetes cluster.
+        :param pulumi.Input[str] kube_id: The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         ...
     @overload
@@ -149,7 +172,30 @@ class KubeIpRestrictions(pulumi.CustomResource):
                  args: KubeIpRestrictionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a KubeIpRestrictions resource with the given unique name, props, and options.
+        Apply IP restrictions to an OVHcloud Managed Kubernetes cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrackOnly",
+            ips=["10.42.0.0/16"],
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        ```
+
+        ## Import
+
+        OVHcloud Managed Kubernetes Service cluster IP restrictions can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions iprestrictions service_name/kube_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param KubeIpRestrictionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,9 +252,9 @@ class KubeIpRestrictions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of IP restrictions for the cluster
-        :param pulumi.Input[str] kube_id: Kube ID
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: List of CIDR authorized to interact with the managed Kubernetes cluster.
+        :param pulumi.Input[str] kube_id: The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,7 +269,7 @@ class KubeIpRestrictions(pulumi.CustomResource):
     @pulumi.getter
     def ips(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of IP restrictions for the cluster
+        List of CIDR authorized to interact with the managed Kubernetes cluster.
         """
         return pulumi.get(self, "ips")
 
@@ -231,7 +277,7 @@ class KubeIpRestrictions(pulumi.CustomResource):
     @pulumi.getter(name="kubeId")
     def kube_id(self) -> pulumi.Output[str]:
         """
-        Kube ID
+        The id of the managed Kubernetes cluster. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "kube_id")
 
@@ -239,7 +285,7 @@ class KubeIpRestrictions(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 

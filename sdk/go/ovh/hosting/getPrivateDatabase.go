@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about an hosting database.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hosting.GetPrivateDatabase(ctx, &hosting.GetPrivateDatabaseArgs{
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPrivateDatabase(ctx *pulumi.Context, args *LookupPrivateDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseResult
@@ -23,33 +50,52 @@ func LookupPrivateDatabase(ctx *pulumi.Context, args *LookupPrivateDatabaseArgs,
 
 // A collection of arguments for invoking getPrivateDatabase.
 type LookupPrivateDatabaseArgs struct {
+	// The internal name of your private database
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getPrivateDatabase.
 type LookupPrivateDatabaseResult struct {
-	Cpu         int    `pulumi:"cpu"`
-	Datacenter  string `pulumi:"datacenter"`
+	// Number of CPU on your private database
+	Cpu int `pulumi:"cpu"`
+	// Datacenter where this private database is located
+	Datacenter string `pulumi:"datacenter"`
+	// Name displayed in customer panel for your private database
 	DisplayName string `pulumi:"displayName"`
-	Hostname    string `pulumi:"hostname"`
+	// Private database hostname
+	Hostname string `pulumi:"hostname"`
+	// Private database FTP hostname
 	HostnameFtp string `pulumi:"hostnameFtp"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string  `pulumi:"id"`
-	Infrastructure string  `pulumi:"infrastructure"`
-	Offer          string  `pulumi:"offer"`
-	Port           int     `pulumi:"port"`
-	PortFtp        int     `pulumi:"portFtp"`
-	QuotaSize      int     `pulumi:"quotaSize"`
-	QuotaUsed      int     `pulumi:"quotaUsed"`
-	Ram            int     `pulumi:"ram"`
-	Server         string  `pulumi:"server"`
-	ServiceName    string  `pulumi:"serviceName"`
-	State          string  `pulumi:"state"`
-	Type           string  `pulumi:"type"`
-	Urn            string  `pulumi:"urn"`
-	Version        string  `pulumi:"version"`
-	VersionLabel   string  `pulumi:"versionLabel"`
-	VersionNumber  float64 `pulumi:"versionNumber"`
+	Id string `pulumi:"id"`
+	// Infrastructure where service was stored
+	Infrastructure string `pulumi:"infrastructure"`
+	// Type of the private database offer
+	Offer string `pulumi:"offer"`
+	// Private database service port
+	Port int `pulumi:"port"`
+	// Private database FTP port
+	PortFtp int `pulumi:"portFtp"`
+	// Space allowed (in MB) on your private database
+	QuotaSize int `pulumi:"quotaSize"`
+	// Sapce used (in MB) on your private database
+	QuotaUsed int `pulumi:"quotaUsed"`
+	// Amount of ram (in MB) on your private database
+	Ram int `pulumi:"ram"`
+	// Private database server name
+	Server      string `pulumi:"server"`
+	ServiceName string `pulumi:"serviceName"`
+	// Private database state
+	State string `pulumi:"state"`
+	Type  string `pulumi:"type"`
+	// URN of the private database
+	Urn string `pulumi:"urn"`
+	// Private database available versions
+	Version string `pulumi:"version"`
+	// Private database version label
+	VersionLabel string `pulumi:"versionLabel"`
+	// Private database version number
+	VersionNumber float64 `pulumi:"versionNumber"`
 }
 
 func LookupPrivateDatabaseOutput(ctx *pulumi.Context, args LookupPrivateDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateDatabaseResultOutput {
@@ -63,6 +109,7 @@ func LookupPrivateDatabaseOutput(ctx *pulumi.Context, args LookupPrivateDatabase
 
 // A collection of arguments for invoking getPrivateDatabase.
 type LookupPrivateDatabaseOutputArgs struct {
+	// The internal name of your private database
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -85,22 +132,27 @@ func (o LookupPrivateDatabaseResultOutput) ToLookupPrivateDatabaseResultOutputWi
 	return o
 }
 
+// Number of CPU on your private database
 func (o LookupPrivateDatabaseResultOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) int { return v.Cpu }).(pulumi.IntOutput)
 }
 
+// Datacenter where this private database is located
 func (o LookupPrivateDatabaseResultOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Datacenter }).(pulumi.StringOutput)
 }
 
+// Name displayed in customer panel for your private database
 func (o LookupPrivateDatabaseResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Private database hostname
 func (o LookupPrivateDatabaseResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// Private database FTP hostname
 func (o LookupPrivateDatabaseResultOutput) HostnameFtp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.HostnameFtp }).(pulumi.StringOutput)
 }
@@ -110,34 +162,42 @@ func (o LookupPrivateDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Infrastructure where service was stored
 func (o LookupPrivateDatabaseResultOutput) Infrastructure() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Infrastructure }).(pulumi.StringOutput)
 }
 
+// Type of the private database offer
 func (o LookupPrivateDatabaseResultOutput) Offer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Offer }).(pulumi.StringOutput)
 }
 
+// Private database service port
 func (o LookupPrivateDatabaseResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Private database FTP port
 func (o LookupPrivateDatabaseResultOutput) PortFtp() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) int { return v.PortFtp }).(pulumi.IntOutput)
 }
 
+// Space allowed (in MB) on your private database
 func (o LookupPrivateDatabaseResultOutput) QuotaSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) int { return v.QuotaSize }).(pulumi.IntOutput)
 }
 
+// Sapce used (in MB) on your private database
 func (o LookupPrivateDatabaseResultOutput) QuotaUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) int { return v.QuotaUsed }).(pulumi.IntOutput)
 }
 
+// Amount of ram (in MB) on your private database
 func (o LookupPrivateDatabaseResultOutput) Ram() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) int { return v.Ram }).(pulumi.IntOutput)
 }
 
+// Private database server name
 func (o LookupPrivateDatabaseResultOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Server }).(pulumi.StringOutput)
 }
@@ -146,6 +206,7 @@ func (o LookupPrivateDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Private database state
 func (o LookupPrivateDatabaseResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -154,18 +215,22 @@ func (o LookupPrivateDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// URN of the private database
 func (o LookupPrivateDatabaseResultOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
+// Private database available versions
 func (o LookupPrivateDatabaseResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
+// Private database version label
 func (o LookupPrivateDatabaseResultOutput) VersionLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) string { return v.VersionLabel }).(pulumi.StringOutput)
 }
 
+// Private database version number
 func (o LookupPrivateDatabaseResultOutput) VersionNumber() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPrivateDatabaseResult) float64 { return v.VersionNumber }).(pulumi.Float64Output)
 }

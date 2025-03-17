@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about a domain zone DNSSEC status.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := domain.GetZoneDNSSec(ctx, &domain.GetZoneDNSSecArgs{
+//				ZoneName: "mysite.ovh",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZoneDNSSec(ctx *pulumi.Context, args *LookupZoneDNSSecArgs, opts ...pulumi.InvokeOption) (*LookupZoneDNSSecResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneDNSSecResult
@@ -23,13 +50,15 @@ func LookupZoneDNSSec(ctx *pulumi.Context, args *LookupZoneDNSSecArgs, opts ...p
 
 // A collection of arguments for invoking getZoneDNSSec.
 type LookupZoneDNSSecArgs struct {
+	// The name of the domain zone
 	ZoneName string `pulumi:"zoneName"`
 }
 
 // A collection of values returned by getZoneDNSSec.
 type LookupZoneDNSSecResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
 	Status   string `pulumi:"status"`
 	ZoneName string `pulumi:"zoneName"`
 }
@@ -45,6 +74,7 @@ func LookupZoneDNSSecOutput(ctx *pulumi.Context, args LookupZoneDNSSecOutputArgs
 
 // A collection of arguments for invoking getZoneDNSSec.
 type LookupZoneDNSSecOutputArgs struct {
+	// The name of the domain zone
 	ZoneName pulumi.StringInput `pulumi:"zoneName"`
 }
 
@@ -72,6 +102,7 @@ func (o LookupZoneDNSSecResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDNSSecResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
 func (o LookupZoneDNSSecResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDNSSecResult) string { return v.Status }).(pulumi.StringOutput)
 }

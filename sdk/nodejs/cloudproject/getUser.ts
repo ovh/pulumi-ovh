@@ -6,6 +6,27 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get the user details of a previously created public cloud project user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * // Get the user ID of a previously created user with the description "S3-User"
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * const myUser = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUser({
+ *     serviceName: projectUsers.serviceName,
+ *     userId: s3UserId,
+ * }));
+ * ```
+ */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getUser:getUser", {
@@ -18,7 +39,14 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The ID of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
+    /**
+     * The ID of a public cloud project's user.
+     */
     userId: string;
 }
 
@@ -26,18 +54,55 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
+    /**
+     * the date the user was created.
+     */
     readonly creationDate: string;
+    /**
+     * description of the role
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of roles associated with the user.
+     */
     readonly roles: outputs.CloudProject.GetUserRole[];
     readonly serviceName: string;
+    /**
+     * the status of the user. should be normally set to 'ok'.
+     */
     readonly status: string;
     readonly userId: string;
+    /**
+     * the username generated for the user. This username can be used with
+     * the Openstack API.
+     */
     readonly username: string;
 }
+/**
+ * Get the user details of a previously created public cloud project user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * // Get the user ID of a previously created user with the description "S3-User"
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * const myUser = Promise.all([projectUsers, s3UserId]).then(([projectUsers, s3UserId]) => ovh.CloudProject.getUser({
+ *     serviceName: projectUsers.serviceName,
+ *     userId: s3UserId,
+ * }));
+ * ```
+ */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getUser:getUser", {
@@ -50,6 +115,13 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    /**
+     * The ID of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * The ID of a public cloud project's user.
+     */
     userId: pulumi.Input<string>;
 }

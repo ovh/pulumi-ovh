@@ -8,36 +8,68 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+// ```
 type Kube struct {
 	pulumi.CustomResourceState
 
-	ControlPlaneIsUpToDate  pulumi.BoolOutput                     `pulumi:"controlPlaneIsUpToDate"`
+	// True if control-plane is up-to-date.
+	ControlPlaneIsUpToDate pulumi.BoolOutput `pulumi:"controlPlaneIsUpToDate"`
+	// Kubernetes API server customization
 	CustomizationApiservers KubeCustomizationApiserverArrayOutput `pulumi:"customizationApiservers"`
-	CustomizationKubeProxy  KubeCustomizationKubeProxyPtrOutput   `pulumi:"customizationKubeProxy"`
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy KubeCustomizationKubeProxyPtrOutput `pulumi:"customizationKubeProxy"`
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayOutput `pulumi:"customizations"`
-	IsUpToDate     pulumi.BoolOutput            `pulumi:"isUpToDate"`
-	KubeProxyMode  pulumi.StringOutput          `pulumi:"kubeProxyMode"`
-	Kubeconfig     pulumi.StringOutput          `pulumi:"kubeconfig"`
-	// The kubeconfig configuration file of the Kubernetes cluster
-	KubeconfigAttributes        KubeKubeconfigAttributeArrayOutput       `pulumi:"kubeconfigAttributes"`
-	LoadBalancersSubnetId       pulumi.StringPtrOutput                   `pulumi:"loadBalancersSubnetId"`
-	Name                        pulumi.StringOutput                      `pulumi:"name"`
-	NextUpgradeVersions         pulumi.StringArrayOutput                 `pulumi:"nextUpgradeVersions"`
-	NodesSubnetId               pulumi.StringOutput                      `pulumi:"nodesSubnetId"`
-	NodesUrl                    pulumi.StringOutput                      `pulumi:"nodesUrl"`
+	// True if all nodes and control-plane are up-to-date.
+	IsUpToDate pulumi.BoolOutput `pulumi:"isUpToDate"`
+	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+	KubeProxyMode pulumi.StringOutput `pulumi:"kubeProxyMode"`
+	// The kubeconfig file. Use this file to connect to your kubernetes cluster.
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
+	// The kubeconfig file attributes.
+	KubeconfigAttributes KubeKubeconfigAttributeArrayOutput `pulumi:"kubeconfigAttributes"`
+	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+	LoadBalancersSubnetId pulumi.StringPtrOutput `pulumi:"loadBalancersSubnetId"`
+	// The name of the kubernetes cluster.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Kubernetes versions available for upgrade.
+	NextUpgradeVersions pulumi.StringArrayOutput `pulumi:"nextUpgradeVersions"`
+	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId pulumi.StringOutput `pulumi:"nodesSubnetId"`
+	// Cluster nodes URL.
+	NodesUrl pulumi.StringOutput `pulumi:"nodesUrl"`
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrOutput `pulumi:"privateNetworkConfiguration"`
-	PrivateNetworkId            pulumi.StringPtrOutput                   `pulumi:"privateNetworkId"`
-	Region                      pulumi.StringOutput                      `pulumi:"region"`
-	ServiceName                 pulumi.StringOutput                      `pulumi:"serviceName"`
-	Status                      pulumi.StringOutput                      `pulumi:"status"`
-	UpdatePolicy                pulumi.StringOutput                      `pulumi:"updatePolicy"`
-	Url                         pulumi.StringOutput                      `pulumi:"url"`
-	Version                     pulumi.StringOutput                      `pulumi:"version"`
+	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+	//
+	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	PrivateNetworkId pulumi.StringPtrOutput `pulumi:"privateNetworkId"`
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	Region pulumi.StringOutput `pulumi:"region"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Cluster status. Should be normally set to 'READY'.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+	UpdatePolicy pulumi.StringOutput `pulumi:"updatePolicy"`
+	// Management URL of your cluster.
+	Url pulumi.StringOutput `pulumi:"url"`
+	// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewKube registers a new resource with the given unique name, arguments, and options.
@@ -81,55 +113,101 @@ func GetKube(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Kube resources.
 type kubeState struct {
-	ControlPlaneIsUpToDate  *bool                        `pulumi:"controlPlaneIsUpToDate"`
+	// True if control-plane is up-to-date.
+	ControlPlaneIsUpToDate *bool `pulumi:"controlPlaneIsUpToDate"`
+	// Kubernetes API server customization
 	CustomizationApiservers []KubeCustomizationApiserver `pulumi:"customizationApiservers"`
-	CustomizationKubeProxy  *KubeCustomizationKubeProxy  `pulumi:"customizationKubeProxy"`
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy *KubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations []KubeCustomization `pulumi:"customizations"`
-	IsUpToDate     *bool               `pulumi:"isUpToDate"`
-	KubeProxyMode  *string             `pulumi:"kubeProxyMode"`
-	Kubeconfig     *string             `pulumi:"kubeconfig"`
-	// The kubeconfig configuration file of the Kubernetes cluster
-	KubeconfigAttributes        []KubeKubeconfigAttribute        `pulumi:"kubeconfigAttributes"`
-	LoadBalancersSubnetId       *string                          `pulumi:"loadBalancersSubnetId"`
-	Name                        *string                          `pulumi:"name"`
-	NextUpgradeVersions         []string                         `pulumi:"nextUpgradeVersions"`
-	NodesSubnetId               *string                          `pulumi:"nodesSubnetId"`
-	NodesUrl                    *string                          `pulumi:"nodesUrl"`
+	// True if all nodes and control-plane are up-to-date.
+	IsUpToDate *bool `pulumi:"isUpToDate"`
+	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// The kubeconfig file. Use this file to connect to your kubernetes cluster.
+	Kubeconfig *string `pulumi:"kubeconfig"`
+	// The kubeconfig file attributes.
+	KubeconfigAttributes []KubeKubeconfigAttribute `pulumi:"kubeconfigAttributes"`
+	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+	LoadBalancersSubnetId *string `pulumi:"loadBalancersSubnetId"`
+	// The name of the kubernetes cluster.
+	Name *string `pulumi:"name"`
+	// Kubernetes versions available for upgrade.
+	NextUpgradeVersions []string `pulumi:"nextUpgradeVersions"`
+	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId *string `pulumi:"nodesSubnetId"`
+	// Cluster nodes URL.
+	NodesUrl *string `pulumi:"nodesUrl"`
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
-	PrivateNetworkId            *string                          `pulumi:"privateNetworkId"`
-	Region                      *string                          `pulumi:"region"`
-	ServiceName                 *string                          `pulumi:"serviceName"`
-	Status                      *string                          `pulumi:"status"`
-	UpdatePolicy                *string                          `pulumi:"updatePolicy"`
-	Url                         *string                          `pulumi:"url"`
-	Version                     *string                          `pulumi:"version"`
+	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+	//
+	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	PrivateNetworkId *string `pulumi:"privateNetworkId"`
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName *string `pulumi:"serviceName"`
+	// Cluster status. Should be normally set to 'READY'.
+	Status *string `pulumi:"status"`
+	// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+	UpdatePolicy *string `pulumi:"updatePolicy"`
+	// Management URL of your cluster.
+	Url *string `pulumi:"url"`
+	// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+	Version *string `pulumi:"version"`
 }
 
 type KubeState struct {
-	ControlPlaneIsUpToDate  pulumi.BoolPtrInput
+	// True if control-plane is up-to-date.
+	ControlPlaneIsUpToDate pulumi.BoolPtrInput
+	// Kubernetes API server customization
 	CustomizationApiservers KubeCustomizationApiserverArrayInput
-	CustomizationKubeProxy  KubeCustomizationKubeProxyPtrInput
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy KubeCustomizationKubeProxyPtrInput
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayInput
-	IsUpToDate     pulumi.BoolPtrInput
-	KubeProxyMode  pulumi.StringPtrInput
-	Kubeconfig     pulumi.StringPtrInput
-	// The kubeconfig configuration file of the Kubernetes cluster
-	KubeconfigAttributes        KubeKubeconfigAttributeArrayInput
-	LoadBalancersSubnetId       pulumi.StringPtrInput
-	Name                        pulumi.StringPtrInput
-	NextUpgradeVersions         pulumi.StringArrayInput
-	NodesSubnetId               pulumi.StringPtrInput
-	NodesUrl                    pulumi.StringPtrInput
+	// True if all nodes and control-plane are up-to-date.
+	IsUpToDate pulumi.BoolPtrInput
+	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+	KubeProxyMode pulumi.StringPtrInput
+	// The kubeconfig file. Use this file to connect to your kubernetes cluster.
+	Kubeconfig pulumi.StringPtrInput
+	// The kubeconfig file attributes.
+	KubeconfigAttributes KubeKubeconfigAttributeArrayInput
+	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+	LoadBalancersSubnetId pulumi.StringPtrInput
+	// The name of the kubernetes cluster.
+	Name pulumi.StringPtrInput
+	// Kubernetes versions available for upgrade.
+	NextUpgradeVersions pulumi.StringArrayInput
+	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId pulumi.StringPtrInput
+	// Cluster nodes URL.
+	NodesUrl pulumi.StringPtrInput
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
-	PrivateNetworkId            pulumi.StringPtrInput
-	Region                      pulumi.StringPtrInput
-	ServiceName                 pulumi.StringPtrInput
-	Status                      pulumi.StringPtrInput
-	UpdatePolicy                pulumi.StringPtrInput
-	Url                         pulumi.StringPtrInput
-	Version                     pulumi.StringPtrInput
+	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+	//
+	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	PrivateNetworkId pulumi.StringPtrInput
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringPtrInput
+	// Cluster status. Should be normally set to 'READY'.
+	Status pulumi.StringPtrInput
+	// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+	UpdatePolicy pulumi.StringPtrInput
+	// Management URL of your cluster.
+	Url pulumi.StringPtrInput
+	// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+	Version pulumi.StringPtrInput
 }
 
 func (KubeState) ElementType() reflect.Type {
@@ -137,38 +215,70 @@ func (KubeState) ElementType() reflect.Type {
 }
 
 type kubeArgs struct {
+	// Kubernetes API server customization
 	CustomizationApiservers []KubeCustomizationApiserver `pulumi:"customizationApiservers"`
-	CustomizationKubeProxy  *KubeCustomizationKubeProxy  `pulumi:"customizationKubeProxy"`
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy *KubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
-	Customizations              []KubeCustomization              `pulumi:"customizations"`
-	KubeProxyMode               *string                          `pulumi:"kubeProxyMode"`
-	LoadBalancersSubnetId       *string                          `pulumi:"loadBalancersSubnetId"`
-	Name                        *string                          `pulumi:"name"`
-	NodesSubnetId               *string                          `pulumi:"nodesSubnetId"`
+	Customizations []KubeCustomization `pulumi:"customizations"`
+	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+	LoadBalancersSubnetId *string `pulumi:"loadBalancersSubnetId"`
+	// The name of the kubernetes cluster.
+	Name *string `pulumi:"name"`
+	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId *string `pulumi:"nodesSubnetId"`
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
-	PrivateNetworkId            *string                          `pulumi:"privateNetworkId"`
-	Region                      string                           `pulumi:"region"`
-	ServiceName                 string                           `pulumi:"serviceName"`
-	UpdatePolicy                *string                          `pulumi:"updatePolicy"`
-	Version                     *string                          `pulumi:"version"`
+	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+	//
+	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	PrivateNetworkId *string `pulumi:"privateNetworkId"`
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	Region string `pulumi:"region"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName string `pulumi:"serviceName"`
+	// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+	UpdatePolicy *string `pulumi:"updatePolicy"`
+	// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Kube resource.
 type KubeArgs struct {
+	// Kubernetes API server customization
 	CustomizationApiservers KubeCustomizationApiserverArrayInput
-	CustomizationKubeProxy  KubeCustomizationKubeProxyPtrInput
+	// Kubernetes kube-proxy customization
+	CustomizationKubeProxy KubeCustomizationKubeProxyPtrInput
+	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+	//
 	// Deprecated: Use customizationApiserver instead
-	Customizations              KubeCustomizationArrayInput
-	KubeProxyMode               pulumi.StringPtrInput
-	LoadBalancersSubnetId       pulumi.StringPtrInput
-	Name                        pulumi.StringPtrInput
-	NodesSubnetId               pulumi.StringPtrInput
+	Customizations KubeCustomizationArrayInput
+	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+	KubeProxyMode pulumi.StringPtrInput
+	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+	LoadBalancersSubnetId pulumi.StringPtrInput
+	// The name of the kubernetes cluster.
+	Name pulumi.StringPtrInput
+	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+	NodesSubnetId pulumi.StringPtrInput
+	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
-	PrivateNetworkId            pulumi.StringPtrInput
-	Region                      pulumi.StringInput
-	ServiceName                 pulumi.StringInput
-	UpdatePolicy                pulumi.StringPtrInput
-	Version                     pulumi.StringPtrInput
+	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+	//
+	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	PrivateNetworkId pulumi.StringPtrInput
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	Region pulumi.StringInput
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringInput
+	// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+	UpdatePolicy pulumi.StringPtrInput
+	// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+	Version pulumi.StringPtrInput
 }
 
 func (KubeArgs) ElementType() reflect.Type {
@@ -258,88 +368,111 @@ func (o KubeOutput) ToKubeOutputWithContext(ctx context.Context) KubeOutput {
 	return o
 }
 
+// True if control-plane is up-to-date.
 func (o KubeOutput) ControlPlaneIsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Kube) pulumi.BoolOutput { return v.ControlPlaneIsUpToDate }).(pulumi.BoolOutput)
 }
 
+// Kubernetes API server customization
 func (o KubeOutput) CustomizationApiservers() KubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v *Kube) KubeCustomizationApiserverArrayOutput { return v.CustomizationApiservers }).(KubeCustomizationApiserverArrayOutput)
 }
 
+// Kubernetes kube-proxy customization
 func (o KubeOutput) CustomizationKubeProxy() KubeCustomizationKubeProxyPtrOutput {
 	return o.ApplyT(func(v *Kube) KubeCustomizationKubeProxyPtrOutput { return v.CustomizationKubeProxy }).(KubeCustomizationKubeProxyPtrOutput)
 }
 
+// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+//
 // Deprecated: Use customizationApiserver instead
 func (o KubeOutput) Customizations() KubeCustomizationArrayOutput {
 	return o.ApplyT(func(v *Kube) KubeCustomizationArrayOutput { return v.Customizations }).(KubeCustomizationArrayOutput)
 }
 
+// True if all nodes and control-plane are up-to-date.
 func (o KubeOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Kube) pulumi.BoolOutput { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
+// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 func (o KubeOutput) KubeProxyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.KubeProxyMode }).(pulumi.StringOutput)
 }
 
+// The kubeconfig file. Use this file to connect to your kubernetes cluster.
 func (o KubeOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
-// The kubeconfig configuration file of the Kubernetes cluster
+// The kubeconfig file attributes.
 func (o KubeOutput) KubeconfigAttributes() KubeKubeconfigAttributeArrayOutput {
 	return o.ApplyT(func(v *Kube) KubeKubeconfigAttributeArrayOutput { return v.KubeconfigAttributes }).(KubeKubeconfigAttributeArrayOutput)
 }
 
+// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
 func (o KubeOutput) LoadBalancersSubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringPtrOutput { return v.LoadBalancersSubnetId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the kubernetes cluster.
 func (o KubeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Kubernetes versions available for upgrade.
 func (o KubeOutput) NextUpgradeVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringArrayOutput { return v.NextUpgradeVersions }).(pulumi.StringArrayOutput)
 }
 
+// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
 func (o KubeOutput) NodesSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.NodesSubnetId }).(pulumi.StringOutput)
 }
 
+// Cluster nodes URL.
 func (o KubeOutput) NodesUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.NodesUrl }).(pulumi.StringOutput)
 }
 
+// The private network configuration. If this is set then the 2 parameters below shall be defined.
 func (o KubeOutput) PrivateNetworkConfiguration() KubePrivateNetworkConfigurationPtrOutput {
 	return o.ApplyT(func(v *Kube) KubePrivateNetworkConfigurationPtrOutput { return v.PrivateNetworkConfiguration }).(KubePrivateNetworkConfigurationPtrOutput)
 }
 
+// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+//
+// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
 func (o KubeOutput) PrivateNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringPtrOutput { return v.PrivateNetworkId }).(pulumi.StringPtrOutput)
 }
 
+// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 func (o KubeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 func (o KubeOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Cluster status. Should be normally set to 'READY'.
 func (o KubeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
 func (o KubeOutput) UpdatePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.UpdatePolicy }).(pulumi.StringOutput)
 }
 
+// Management URL of your cluster.
 func (o KubeOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
+// kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
 func (o KubeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

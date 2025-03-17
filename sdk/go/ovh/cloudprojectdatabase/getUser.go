@@ -7,10 +7,41 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a user of a database cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := cloudprojectdatabase.GetUser(ctx, &cloudprojectdatabase.GetUserArgs{
+//				ServiceName: "XXX",
+//				Engine:      "YYY",
+//				ClusterId:   "ZZZ",
+//				Name:        "UUU",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("userName", user.Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
@@ -23,22 +54,35 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Engine      string `pulumi:"engine"`
-	Name        string `pulumi:"name"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// The engine of the database cluster you want user information. To get a full list of available engine visit :
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
+	Engine string `pulumi:"engine"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
+	// Date of the creation of the user.
 	CreatedAt string `pulumi:"createdAt"`
-	Engine    string `pulumi:"engine"`
+	// See Argument Reference above.
+	Engine string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
-	Status      string `pulumi:"status"`
+	// Current status of the user.
+	Status string `pulumi:"status"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -52,9 +96,16 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Engine      pulumi.StringInput `pulumi:"engine"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The engine of the database cluster you want user information. To get a full list of available engine visit :
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// Name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -77,14 +128,17 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
+// See Argument Reference above.
 func (o LookupUserResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// Date of the creation of the user.
 func (o LookupUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o LookupUserResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -94,14 +148,17 @@ func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the user.
 func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o LookupUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Current status of the user.
 func (o LookupUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Status }).(pulumi.StringOutput)
 }

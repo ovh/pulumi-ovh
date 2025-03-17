@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iploadbalancing.GetVrackNetwork(ctx, &iploadbalancing.GetVrackNetworkArgs{
+//				ServiceName:    "XXXXXX",
+//				VrackNetworkId: "yyy",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupVrackNetwork(ctx *pulumi.Context, args *LookupVrackNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVrackNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVrackNetworkResult
@@ -23,20 +51,26 @@ func LookupVrackNetwork(ctx *pulumi.Context, args *LookupVrackNetworkArgs, opts 
 
 // A collection of arguments for invoking getVrackNetwork.
 type LookupVrackNetworkArgs struct {
-	ServiceName    string `pulumi:"serviceName"`
-	VrackNetworkId int    `pulumi:"vrackNetworkId"`
+	// The internal name of your IP load balancing
+	ServiceName string `pulumi:"serviceName"`
+	// Internal Load Balancer identifier of the vRack private network
+	VrackNetworkId int `pulumi:"vrackNetworkId"`
 }
 
 // A collection of values returned by getVrackNetwork.
 type LookupVrackNetworkResult struct {
+	// Human readable name for your vrack network
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string `pulumi:"id"`
-	NatIp          string `pulumi:"natIp"`
-	ServiceName    string `pulumi:"serviceName"`
-	Subnet         string `pulumi:"subnet"`
-	Vlan           int    `pulumi:"vlan"`
-	VrackNetworkId int    `pulumi:"vrackNetworkId"`
+	Id string `pulumi:"id"`
+	// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+	NatIp       string `pulumi:"natIp"`
+	ServiceName string `pulumi:"serviceName"`
+	// IP block of the private network in the vRack
+	Subnet string `pulumi:"subnet"`
+	// VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
+	Vlan           int `pulumi:"vlan"`
+	VrackNetworkId int `pulumi:"vrackNetworkId"`
 }
 
 func LookupVrackNetworkOutput(ctx *pulumi.Context, args LookupVrackNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupVrackNetworkResultOutput {
@@ -50,8 +84,10 @@ func LookupVrackNetworkOutput(ctx *pulumi.Context, args LookupVrackNetworkOutput
 
 // A collection of arguments for invoking getVrackNetwork.
 type LookupVrackNetworkOutputArgs struct {
-	ServiceName    pulumi.StringInput `pulumi:"serviceName"`
-	VrackNetworkId pulumi.IntInput    `pulumi:"vrackNetworkId"`
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Internal Load Balancer identifier of the vRack private network
+	VrackNetworkId pulumi.IntInput `pulumi:"vrackNetworkId"`
 }
 
 func (LookupVrackNetworkOutputArgs) ElementType() reflect.Type {
@@ -73,6 +109,7 @@ func (o LookupVrackNetworkResultOutput) ToLookupVrackNetworkResultOutputWithCont
 	return o
 }
 
+// Human readable name for your vrack network
 func (o LookupVrackNetworkResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVrackNetworkResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -82,6 +119,7 @@ func (o LookupVrackNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVrackNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
 func (o LookupVrackNetworkResultOutput) NatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVrackNetworkResult) string { return v.NatIp }).(pulumi.StringOutput)
 }
@@ -90,10 +128,12 @@ func (o LookupVrackNetworkResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVrackNetworkResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// IP block of the private network in the vRack
 func (o LookupVrackNetworkResultOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVrackNetworkResult) string { return v.Subnet }).(pulumi.StringOutput)
 }
 
+// VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
 func (o LookupVrackNetworkResultOutput) Vlan() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVrackNetworkResult) int { return v.Vlan }).(pulumi.IntOutput)
 }

@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about a KMS associated with this account
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const kms = ovh.Okms.getOkmsResource({
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ * });
+ * ```
+ */
 export function getOkmsResource(args: GetOkmsResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetOkmsResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Okms/getOkmsResource:getOkmsResource", {
@@ -17,6 +31,9 @@ export function getOkmsResource(args: GetOkmsResourceArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getOkmsResource.
  */
 export interface GetOkmsResourceArgs {
+    /**
+     * Should be set to the ID of your KMS
+     */
     id: string;
 }
 
@@ -24,14 +41,49 @@ export interface GetOkmsResourceArgs {
  * A collection of values returned by getOkmsResource.
  */
 export interface GetOkmsResourceResult {
+    /**
+     * (Attributes) IAM resource metadata (see below for nested schema)
+     */
     readonly iam: outputs.Okms.GetOkmsResourceIam;
+    /**
+     * (String) Unique identifier of the resource
+     */
     readonly id: string;
+    /**
+     * (String) KMS kmip API endpoint
+     */
     readonly kmipEndpoint: string;
+    /**
+     * (String) KMS public CA (Certificate Authority)
+     */
     readonly publicCa: string;
+    /**
+     * (String) Region
+     */
     readonly region: string;
+    /**
+     * (String) KMS rest API endpoint
+     */
     readonly restEndpoint: string;
+    /**
+     * (String) KMS rest API swagger UI
+     */
     readonly swaggerEndpoint: string;
 }
+/**
+ * Use this data source to retrieve information about a KMS associated with this account
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const kms = ovh.Okms.getOkmsResource({
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ * });
+ * ```
+ */
 export function getOkmsResourceOutput(args: GetOkmsResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Okms/getOkmsResource:getOkmsResource", {
@@ -43,5 +95,8 @@ export function getOkmsResourceOutput(args: GetOkmsResourceOutputArgs, opts?: pu
  * A collection of arguments for invoking getOkmsResource.
  */
 export interface GetOkmsResourceOutputArgs {
+    /**
+     * Should be set to the ID of your KMS
+     */
     id: pulumi.Input<string>;
 }

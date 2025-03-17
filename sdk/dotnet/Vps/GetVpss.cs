@@ -11,12 +11,66 @@ namespace Pulumi.Ovh.Vps
 {
     public static class GetVpss
     {
+        /// <summary>
+        /// Use this data source to get the list of VPS associated with your OVH Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var servers = Ovh.Vps.GetVpss.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetVpssResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpssResult>("ovh:Vps/getVpss:getVpss", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of VPS associated with your OVH Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var servers = Ovh.Vps.GetVpss.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVpssResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpssResult>("ovh:Vps/getVpss:getVpss", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of VPS associated with your OVH Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var servers = Ovh.Vps.GetVpss.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVpssResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpssResult>("ovh:Vps/getVpss:getVpss", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -29,6 +83,9 @@ namespace Pulumi.Ovh.Vps
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The list of VPS IDs associated with your OVH Account.
+        /// </summary>
         public readonly ImmutableArray<string> Results;
 
         [OutputConstructor]

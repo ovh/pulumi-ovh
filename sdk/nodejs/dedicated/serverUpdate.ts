@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const rescue = ovh.Dedicated.getServerBoots({
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootType: "rescue",
+ *     kernel: "rescue64-pro",
+ * });
+ * const server = new ovh.dedicated.ServerUpdate("server", {
+ *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+ *     bootId: rescue.then(rescue => rescue.results?.[0]),
+ *     monitoring: true,
+ *     state: "ok",
+ *     displayName: "Some human-readable name",
+ * });
+ * ```
+ */
 export class ServerUpdate extends pulumi.CustomResource {
     /**
      * Get an existing ServerUpdate resource's state with the given name, ID, and optional extra
@@ -33,19 +55,19 @@ export class ServerUpdate extends pulumi.CustomResource {
     }
 
     /**
-     * The boot id of your dedicated server.
+     * boot id of the server
      */
     public readonly bootId!: pulumi.Output<number>;
     /**
-     * The boot script of your dedicated server.
+     * boot script of the server
      */
     public readonly bootScript!: pulumi.Output<string | undefined>;
     /**
-     * Display name of the dedicated server
+     * display name of the dedicated server
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The path of the EFI bootloader.
+     * path of the EFI bootloader
      */
     public readonly efiBootloaderPath!: pulumi.Output<string>;
     /**
@@ -53,7 +75,7 @@ export class ServerUpdate extends pulumi.CustomResource {
      */
     public readonly monitoring!: pulumi.Output<boolean>;
     /**
-     * The internal name of your dedicated server.
+     * The serviceName of your dedicated server.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -104,19 +126,19 @@ export class ServerUpdate extends pulumi.CustomResource {
  */
 export interface ServerUpdateState {
     /**
-     * The boot id of your dedicated server.
+     * boot id of the server
      */
     bootId?: pulumi.Input<number>;
     /**
-     * The boot script of your dedicated server.
+     * boot script of the server
      */
     bootScript?: pulumi.Input<string>;
     /**
-     * Display name of the dedicated server
+     * display name of the dedicated server
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The path of the EFI bootloader.
+     * path of the EFI bootloader
      */
     efiBootloaderPath?: pulumi.Input<string>;
     /**
@@ -124,7 +146,7 @@ export interface ServerUpdateState {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * The internal name of your dedicated server.
+     * The serviceName of your dedicated server.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -138,19 +160,19 @@ export interface ServerUpdateState {
  */
 export interface ServerUpdateArgs {
     /**
-     * The boot id of your dedicated server.
+     * boot id of the server
      */
     bootId?: pulumi.Input<number>;
     /**
-     * The boot script of your dedicated server.
+     * boot script of the server
      */
     bootScript?: pulumi.Input<string>;
     /**
-     * Display name of the dedicated server
+     * display name of the dedicated server
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The path of the EFI bootloader.
+     * path of the EFI bootloader
      */
     efiBootloaderPath?: pulumi.Input<string>;
     /**
@@ -158,7 +180,7 @@ export interface ServerUpdateArgs {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * The internal name of your dedicated server.
+     * The serviceName of your dedicated server.
      */
     serviceName: pulumi.Input<string>;
     /**

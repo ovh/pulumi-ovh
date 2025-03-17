@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly string? ConfigDriveUserData;
         /// <summary>
-        /// Path of the EFI bootloader from the OS installed on the server
+        /// Path of the EFI bootloader
         /// </summary>
         public readonly string? EfiBootloaderPath;
         /// <summary>

@@ -11,12 +11,90 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetInstances
     {
+        /// <summary>
+        /// **This datasource uses a Beta API**
+        /// 
+        /// Use this data source to get the list of instances in a region of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To list your instances:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Ovh.CloudProject.GetInstances.Invoke(new()
+        ///     {
+        ///         Region = "XXXX",
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("ovh:CloudProject/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// **This datasource uses a Beta API**
+        /// 
+        /// Use this data source to get the list of instances in a region of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To list your instances:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Ovh.CloudProject.GetInstances.Invoke(new()
+        ///     {
+        ///         Region = "XXXX",
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("ovh:CloudProject/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// **This datasource uses a Beta API**
+        /// 
+        /// Use this data source to get the list of instances in a region of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To list your instances:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Ovh.CloudProject.GetInstances.Invoke(new()
+        ///     {
+        ///         Region = "XXXX",
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("ovh:CloudProject/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +102,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Instance region.
+        /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +123,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Instance region.
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -58,6 +150,9 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of instances
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string Region;
         public readonly string ServiceName;

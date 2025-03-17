@@ -9,23 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// OVHcloud Managed database clusters prometheus can be imported using the `service_name`, `engine` and `cluster_id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProjectDatabase/prometheus:Prometheus my_prometheus service_name/engine/cluster_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/prometheus:Prometheus")]
     public partial class Prometheus : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the engine of the service
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// Password of the user
+        /// (Sensitive) Password of the user.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -36,17 +48,23 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Output("passwordReset")]
         public Output<string?> PasswordReset { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// List of all endpoint targets
+        /// List of all endpoint targets.
+        /// * `Host` - Host of the endpoint.
+        /// * `Port` - Connection port for the endpoint.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.PrometheusTarget>> Targets { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user
+        /// name of the prometheus user.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -103,13 +121,14 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class PrometheusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the engine of the service
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -120,6 +139,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -132,13 +155,14 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class PrometheusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Name of the engine of the service
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -147,7 +171,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private Input<string>? _password;
 
         /// <summary>
-        /// Password of the user
+        /// (Sensitive) Password of the user.
         /// </summary>
         public Input<string>? Password
         {
@@ -165,6 +189,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
@@ -172,7 +200,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<Inputs.PrometheusTargetGetArgs>? _targets;
 
         /// <summary>
-        /// List of all endpoint targets
+        /// List of all endpoint targets.
+        /// * `Host` - Host of the endpoint.
+        /// * `Port` - Connection port for the endpoint.
         /// </summary>
         public InputList<Inputs.PrometheusTargetGetArgs> Targets
         {
@@ -181,7 +211,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Name of the user
+        /// name of the prometheus user.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

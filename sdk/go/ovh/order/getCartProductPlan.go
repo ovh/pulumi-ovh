@@ -7,10 +7,51 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information of order cart product plan.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myAccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			myCart, err := order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myAccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//				CartId:        myCart.Id,
+//				PriceCapacity: "renew",
+//				Product:       "cloud",
+//				PlanCode:      "project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCartProductPlan(ctx *pulumi.Context, args *GetCartProductPlanArgs, opts ...pulumi.InvokeOption) (*GetCartProductPlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCartProductPlanResult
@@ -23,11 +64,16 @@ func GetCartProductPlan(ctx *pulumi.Context, args *GetCartProductPlanArgs, opts 
 
 // A collection of arguments for invoking getCartProductPlan.
 type GetCartProductPlanArgs struct {
-	CartId        string  `pulumi:"cartId"`
-	CatalogName   *string `pulumi:"catalogName"`
-	PlanCode      string  `pulumi:"planCode"`
-	PriceCapacity string  `pulumi:"priceCapacity"`
-	Product       string  `pulumi:"product"`
+	// Cart identifier
+	CartId string `pulumi:"cartId"`
+	// Catalog name
+	CatalogName *string `pulumi:"catalogName"`
+	// Product offer identifier
+	PlanCode string `pulumi:"planCode"`
+	// Capacity of the pricing (type of pricing)
+	PriceCapacity string `pulumi:"priceCapacity"`
+	// Product
+	Product string `pulumi:"product"`
 }
 
 // A collection of values returned by getCartProductPlan.
@@ -35,13 +81,18 @@ type GetCartProductPlanResult struct {
 	CartId      string  `pulumi:"cartId"`
 	CatalogName *string `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                            `pulumi:"id"`
-	PlanCode       string                            `pulumi:"planCode"`
-	PriceCapacity  string                            `pulumi:"priceCapacity"`
-	Prices         []GetCartProductPlanPrice         `pulumi:"prices"`
-	Product        string                            `pulumi:"product"`
-	ProductName    string                            `pulumi:"productName"`
-	ProductType    string                            `pulumi:"productType"`
+	Id string `pulumi:"id"`
+	// Product offer identifier
+	PlanCode      string `pulumi:"planCode"`
+	PriceCapacity string `pulumi:"priceCapacity"`
+	// Prices of the product offer
+	Prices  []GetCartProductPlanPrice `pulumi:"prices"`
+	Product string                    `pulumi:"product"`
+	// Name of the product
+	ProductName string `pulumi:"productName"`
+	// Product type
+	ProductType string `pulumi:"productType"`
+	// Selected Price according to capacity
 	SelectedPrices []GetCartProductPlanSelectedPrice `pulumi:"selectedPrices"`
 }
 
@@ -56,11 +107,16 @@ func GetCartProductPlanOutput(ctx *pulumi.Context, args GetCartProductPlanOutput
 
 // A collection of arguments for invoking getCartProductPlan.
 type GetCartProductPlanOutputArgs struct {
-	CartId        pulumi.StringInput    `pulumi:"cartId"`
-	CatalogName   pulumi.StringPtrInput `pulumi:"catalogName"`
-	PlanCode      pulumi.StringInput    `pulumi:"planCode"`
-	PriceCapacity pulumi.StringInput    `pulumi:"priceCapacity"`
-	Product       pulumi.StringInput    `pulumi:"product"`
+	// Cart identifier
+	CartId pulumi.StringInput `pulumi:"cartId"`
+	// Catalog name
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// Product offer identifier
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Capacity of the pricing (type of pricing)
+	PriceCapacity pulumi.StringInput `pulumi:"priceCapacity"`
+	// Product
+	Product pulumi.StringInput `pulumi:"product"`
 }
 
 func (GetCartProductPlanOutputArgs) ElementType() reflect.Type {
@@ -95,6 +151,7 @@ func (o GetCartProductPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Product offer identifier
 func (o GetCartProductPlanResultOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) string { return v.PlanCode }).(pulumi.StringOutput)
 }
@@ -103,6 +160,7 @@ func (o GetCartProductPlanResultOutput) PriceCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) string { return v.PriceCapacity }).(pulumi.StringOutput)
 }
 
+// Prices of the product offer
 func (o GetCartProductPlanResultOutput) Prices() GetCartProductPlanPriceArrayOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) []GetCartProductPlanPrice { return v.Prices }).(GetCartProductPlanPriceArrayOutput)
 }
@@ -111,14 +169,17 @@ func (o GetCartProductPlanResultOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) string { return v.Product }).(pulumi.StringOutput)
 }
 
+// Name of the product
 func (o GetCartProductPlanResultOutput) ProductName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) string { return v.ProductName }).(pulumi.StringOutput)
 }
 
+// Product type
 func (o GetCartProductPlanResultOutput) ProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) string { return v.ProductType }).(pulumi.StringOutput)
 }
 
+// Selected Price according to capacity
 func (o GetCartProductPlanResultOutput) SelectedPrices() GetCartProductPlanSelectedPriceArrayOutput {
 	return o.ApplyT(func(v GetCartProductPlanResult) []GetCartProductPlanSelectedPrice { return v.SelectedPrices }).(GetCartProductPlanSelectedPriceArrayOutput)
 }

@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get information about a database of a database cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const database = ovh.CloudProjectDatabase.getDatabaseInstance({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ *     name: "UUU",
+ * });
+ * export const databaseName = database.then(database => database.name);
+ * ```
+ */
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", {
@@ -18,9 +36,24 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
  * A collection of arguments for invoking getDatabaseInstance.
  */
 export interface GetDatabaseInstanceArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: string;
+    /**
+     * The engine of the database cluster you want database information. To get a full list of available engine visit:
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
+     */
     engine: string;
+    /**
+     * Name of the database.
+     */
     name: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -28,16 +61,49 @@ export interface GetDatabaseInstanceArgs {
  * A collection of values returned by getDatabaseInstance.
  */
 export interface GetDatabaseInstanceResult {
+    /**
+     * See Argument Reference above.
+     */
     readonly clusterId: string;
+    /**
+     * Defines if the database has been created by default.
+     */
     readonly default: boolean;
+    /**
+     * See Argument Reference above.
+     */
     readonly engine: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Name of the database.
+     */
     readonly name: string;
+    /**
+     * Current status of the database.
+     */
     readonly serviceName: string;
 }
+/**
+ * Use this data source to get information about a database of a database cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const database = ovh.CloudProjectDatabase.getDatabaseInstance({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ *     name: "UUU",
+ * });
+ * export const databaseName = database.then(database => database.name);
+ * ```
+ */
 export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", {
@@ -52,8 +118,23 @@ export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, o
  * A collection of arguments for invoking getDatabaseInstance.
  */
 export interface GetDatabaseInstanceOutputArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * The engine of the database cluster you want database information. To get a full list of available engine visit:
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
+     */
     engine: pulumi.Input<string>;
+    /**
+     * Name of the database.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

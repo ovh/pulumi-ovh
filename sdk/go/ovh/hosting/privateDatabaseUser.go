@@ -8,16 +8,53 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Create a new user on your private cloud database instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hosting.NewPrivateDatabaseUser(ctx, "user", &hosting.PrivateDatabaseUserArgs{
+//				Password:    pulumi.String("XXXXXX"),
+//				ServiceName: pulumi.String("XXXXXX"),
+//				UserName:    pulumi.String("XXXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+//
+// ```sh
+// $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+// ```
 type PrivateDatabaseUser struct {
 	pulumi.CustomResourceState
 
-	// Password for the new user ( alphanumeric and 8 characters minimum )
+	// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// User name used to connect on your databases
 	UserName pulumi.StringOutput `pulumi:"userName"`
@@ -69,18 +106,18 @@ func GetPrivateDatabaseUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateDatabaseUser resources.
 type privateDatabaseUserState struct {
-	// Password for the new user ( alphanumeric and 8 characters minimum )
+	// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
 	Password *string `pulumi:"password"`
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName *string `pulumi:"serviceName"`
 	// User name used to connect on your databases
 	UserName *string `pulumi:"userName"`
 }
 
 type PrivateDatabaseUserState struct {
-	// Password for the new user ( alphanumeric and 8 characters minimum )
+	// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
 	Password pulumi.StringPtrInput
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName pulumi.StringPtrInput
 	// User name used to connect on your databases
 	UserName pulumi.StringPtrInput
@@ -91,9 +128,9 @@ func (PrivateDatabaseUserState) ElementType() reflect.Type {
 }
 
 type privateDatabaseUserArgs struct {
-	// Password for the new user ( alphanumeric and 8 characters minimum )
+	// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
 	Password string `pulumi:"password"`
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName string `pulumi:"serviceName"`
 	// User name used to connect on your databases
 	UserName string `pulumi:"userName"`
@@ -101,9 +138,9 @@ type privateDatabaseUserArgs struct {
 
 // The set of arguments for constructing a PrivateDatabaseUser resource.
 type PrivateDatabaseUserArgs struct {
-	// Password for the new user ( alphanumeric and 8 characters minimum )
+	// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
 	Password pulumi.StringInput
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName pulumi.StringInput
 	// User name used to connect on your databases
 	UserName pulumi.StringInput
@@ -196,12 +233,12 @@ func (o PrivateDatabaseUserOutput) ToPrivateDatabaseUserOutputWithContext(ctx co
 	return o
 }
 
-// Password for the new user ( alphanumeric and 8 characters minimum )
+// Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
 func (o PrivateDatabaseUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// The internal name of your private database
+// The internal name of your private database.
 func (o PrivateDatabaseUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

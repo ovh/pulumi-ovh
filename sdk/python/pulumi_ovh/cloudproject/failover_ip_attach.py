@@ -27,12 +27,14 @@ class FailoverIpAttachArgs:
                  routed_to: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FailoverIpAttach resource.
-        :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[str] block: IP block
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] block: The IP block
+               * `continentCode` - The Ip continent
         :param pulumi.Input[str] continent_code: Ip continent
         :param pulumi.Input[str] geo_loc: Ip location
-        :param pulumi.Input[str] ip: Ip
-        :param pulumi.Input[str] routed_to: Instance where ip is routed to
+        :param pulumi.Input[str] ip: The failover ip address to attach
+        :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
         """
         pulumi.set(__self__, "service_name", service_name)
         if block is not None:
@@ -50,7 +52,8 @@ class FailoverIpAttachArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The service name
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -62,7 +65,8 @@ class FailoverIpAttachArgs:
     @pulumi.getter
     def block(self) -> Optional[pulumi.Input[str]]:
         """
-        IP block
+        The IP block
+        * `continentCode` - The Ip continent
         """
         return pulumi.get(self, "block")
 
@@ -98,7 +102,7 @@ class FailoverIpAttachArgs:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        Ip
+        The failover ip address to attach
         """
         return pulumi.get(self, "ip")
 
@@ -110,7 +114,7 @@ class FailoverIpAttachArgs:
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance where ip is routed to
+        The GUID of an instance to which the failover IP address is be attached
         """
         return pulumi.get(self, "routed_to")
 
@@ -133,14 +137,18 @@ class _FailoverIpAttachState:
                  sub_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FailoverIpAttach resources.
-        :param pulumi.Input[str] block: IP block
+        :param pulumi.Input[str] block: The IP block
+               * `continentCode` - The Ip continent
         :param pulumi.Input[str] continent_code: Ip continent
         :param pulumi.Input[str] geo_loc: Ip location
-        :param pulumi.Input[str] ip: Ip
+        :param pulumi.Input[str] ip: The failover ip address to attach
         :param pulumi.Input[int] progress: Current operation progress in percent
-        :param pulumi.Input[str] routed_to: Instance where ip is routed to
-        :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[str] status: Ip status
+               * `routedTo` - Instance where ip is routed to
+        :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] status: Ip status, can be `ok` or `operationPending`
+               * `subType` - IP sub type, can be `cloud` or `ovh`
         :param pulumi.Input[str] sub_type: IP sub type
         """
         if block is not None:
@@ -166,7 +174,8 @@ class _FailoverIpAttachState:
     @pulumi.getter
     def block(self) -> Optional[pulumi.Input[str]]:
         """
-        IP block
+        The IP block
+        * `continentCode` - The Ip continent
         """
         return pulumi.get(self, "block")
 
@@ -202,7 +211,7 @@ class _FailoverIpAttachState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        Ip
+        The failover ip address to attach
         """
         return pulumi.get(self, "ip")
 
@@ -215,6 +224,7 @@ class _FailoverIpAttachState:
     def progress(self) -> Optional[pulumi.Input[int]]:
         """
         Current operation progress in percent
+        * `routedTo` - Instance where ip is routed to
         """
         return pulumi.get(self, "progress")
 
@@ -226,7 +236,7 @@ class _FailoverIpAttachState:
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance where ip is routed to
+        The GUID of an instance to which the failover IP address is be attached
         """
         return pulumi.get(self, "routed_to")
 
@@ -238,7 +248,8 @@ class _FailoverIpAttachState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The service name
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -250,7 +261,8 @@ class _FailoverIpAttachState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Ip status
+        Ip status, can be `ok` or `operationPending`
+        * `subType` - IP sub type, can be `cloud` or `ovh`
         """
         return pulumi.get(self, "status")
 
@@ -284,15 +296,30 @@ class FailoverIpAttach(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a FailoverIpAttach resource with the given unique name, props, and options.
+        Attaches a failover IP address to a compute instance
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_failover_ip = ovh.cloud_project.FailoverIpAttach("myFailoverIp",
+            ip="XXXXXX",
+            routed_to="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] block: IP block
+        :param pulumi.Input[str] block: The IP block
+               * `continentCode` - The Ip continent
         :param pulumi.Input[str] continent_code: Ip continent
         :param pulumi.Input[str] geo_loc: Ip location
-        :param pulumi.Input[str] ip: Ip
-        :param pulumi.Input[str] routed_to: Instance where ip is routed to
-        :param pulumi.Input[str] service_name: The service name
+        :param pulumi.Input[str] ip: The failover ip address to attach
+        :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -301,7 +328,20 @@ class FailoverIpAttach(pulumi.CustomResource):
                  args: FailoverIpAttachArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FailoverIpAttach resource with the given unique name, props, and options.
+        Attaches a failover IP address to a compute instance
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_failover_ip = ovh.cloud_project.FailoverIpAttach("myFailoverIp",
+            ip="XXXXXX",
+            routed_to="XXXXXX",
+            service_name="XXXXXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param FailoverIpAttachArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -369,14 +409,18 @@ class FailoverIpAttach(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] block: IP block
+        :param pulumi.Input[str] block: The IP block
+               * `continentCode` - The Ip continent
         :param pulumi.Input[str] continent_code: Ip continent
         :param pulumi.Input[str] geo_loc: Ip location
-        :param pulumi.Input[str] ip: Ip
+        :param pulumi.Input[str] ip: The failover ip address to attach
         :param pulumi.Input[int] progress: Current operation progress in percent
-        :param pulumi.Input[str] routed_to: Instance where ip is routed to
-        :param pulumi.Input[str] service_name: The service name
-        :param pulumi.Input[str] status: Ip status
+               * `routedTo` - Instance where ip is routed to
+        :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] status: Ip status, can be `ok` or `operationPending`
+               * `subType` - IP sub type, can be `cloud` or `ovh`
         :param pulumi.Input[str] sub_type: IP sub type
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -398,7 +442,8 @@ class FailoverIpAttach(pulumi.CustomResource):
     @pulumi.getter
     def block(self) -> pulumi.Output[str]:
         """
-        IP block
+        The IP block
+        * `continentCode` - The Ip continent
         """
         return pulumi.get(self, "block")
 
@@ -422,7 +467,7 @@ class FailoverIpAttach(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        Ip
+        The failover ip address to attach
         """
         return pulumi.get(self, "ip")
 
@@ -431,6 +476,7 @@ class FailoverIpAttach(pulumi.CustomResource):
     def progress(self) -> pulumi.Output[int]:
         """
         Current operation progress in percent
+        * `routedTo` - Instance where ip is routed to
         """
         return pulumi.get(self, "progress")
 
@@ -438,7 +484,7 @@ class FailoverIpAttach(pulumi.CustomResource):
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> pulumi.Output[str]:
         """
-        Instance where ip is routed to
+        The GUID of an instance to which the failover IP address is be attached
         """
         return pulumi.get(self, "routed_to")
 
@@ -446,7 +492,8 @@ class FailoverIpAttach(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The service name
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -454,7 +501,8 @@ class FailoverIpAttach(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Ip status
+        Ip status, can be `ok` or `operationPending`
+        * `subType` - IP sub type, can be `cloud` or `ovh`
         """
         return pulumi.get(self, "status")
 

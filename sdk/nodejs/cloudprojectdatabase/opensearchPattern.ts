@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a pattern for a opensearch cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const opensearch = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "opensearch",
+ *     id: "ZZZ",
+ * });
+ * const pattern = new ovh.cloudprojectdatabase.OpensearchPattern("pattern", {
+ *     serviceName: opensearch.then(opensearch => opensearch.serviceName),
+ *     clusterId: opensearch.then(opensearch => opensearch.id),
+ *     maxIndexCount: 2,
+ *     pattern: "logs_*",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+ * ```
+ */
 export class OpensearchPattern extends pulumi.CustomResource {
     /**
      * Get an existing OpensearchPattern resource's state with the given name, ID, and optional extra
@@ -33,17 +66,21 @@ export class OpensearchPattern extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Maximum number of index for this pattern
+     * Maximum number of index for this pattern.
      */
     public readonly maxIndexCount!: pulumi.Output<number | undefined>;
     /**
-     * Pattern format
+     * Pattern format.
      */
     public readonly pattern!: pulumi.Output<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -89,17 +126,21 @@ export class OpensearchPattern extends pulumi.CustomResource {
  */
 export interface OpensearchPatternState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Maximum number of index for this pattern
+     * Maximum number of index for this pattern.
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
-     * Pattern format
+     * Pattern format.
      */
     pattern?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -108,16 +149,20 @@ export interface OpensearchPatternState {
  */
 export interface OpensearchPatternArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Maximum number of index for this pattern
+     * Maximum number of index for this pattern.
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
-     * Pattern format
+     * Pattern format.
      */
     pattern: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

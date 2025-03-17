@@ -114,41 +114,65 @@ class GetLogsOutputGraylogStreamResult:
     @property
     @pulumi.getter(name="coldStorageCompression")
     def cold_storage_compression(self) -> str:
+        """
+        Cold storage compression method
+        """
         return pulumi.get(self, "cold_storage_compression")
 
     @property
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> str:
+        """
+        ColdStorage content
+        """
         return pulumi.get(self, "cold_storage_content")
 
     @property
     @pulumi.getter(name="coldStorageEnabled")
     def cold_storage_enabled(self) -> bool:
+        """
+        Is Cold storage enabled?
+        """
         return pulumi.get(self, "cold_storage_enabled")
 
     @property
     @pulumi.getter(name="coldStorageNotifyEnabled")
     def cold_storage_notify_enabled(self) -> bool:
+        """
+        Notify on new Cold storage archive
+        """
         return pulumi.get(self, "cold_storage_notify_enabled")
 
     @property
     @pulumi.getter(name="coldStorageRetention")
     def cold_storage_retention(self) -> int:
+        """
+        Cold storage retention in year
+        """
         return pulumi.get(self, "cold_storage_retention")
 
     @property
     @pulumi.getter(name="coldStorageTarget")
     def cold_storage_target(self) -> str:
+        """
+        ColdStorage destination
+        """
         return pulumi.get(self, "cold_storage_target")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Stream creation
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Stream description
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -162,51 +186,81 @@ class GetLogsOutputGraylogStreamResult:
     @property
     @pulumi.getter(name="indexingEnabled")
     def indexing_enabled(self) -> bool:
+        """
+        Enable ES indexing
+        """
         return pulumi.get(self, "indexing_enabled")
 
     @property
     @pulumi.getter(name="indexingMaxSize")
     def indexing_max_size(self) -> int:
+        """
+        Maximum indexing size (in GB)
+        """
         return pulumi.get(self, "indexing_max_size")
 
     @property
     @pulumi.getter(name="indexingNotifyEnabled")
     def indexing_notify_enabled(self) -> bool:
+        """
+        If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
+        """
         return pulumi.get(self, "indexing_notify_enabled")
 
     @property
     @pulumi.getter(name="isEditable")
     def is_editable(self) -> bool:
+        """
+        Indicates if you are allowed to edit entry
+        """
         return pulumi.get(self, "is_editable")
 
     @property
     @pulumi.getter(name="isShareable")
     def is_shareable(self) -> bool:
+        """
+        Indicates if you are allowed to share entry
+        """
         return pulumi.get(self, "is_shareable")
 
     @property
     @pulumi.getter(name="nbAlertCondition")
     def nb_alert_condition(self) -> int:
+        """
+        Number of alert condition
+        """
         return pulumi.get(self, "nb_alert_condition")
 
     @property
     @pulumi.getter(name="nbArchive")
     def nb_archive(self) -> int:
+        """
+        Number of coldstored archives
+        """
         return pulumi.get(self, "nb_archive")
 
     @property
     @pulumi.getter(name="parentStreamId")
     def parent_stream_id(self) -> str:
+        """
+        Parent stream ID
+        """
         return pulumi.get(self, "parent_stream_id")
 
     @property
     @pulumi.getter(name="pauseIndexingOnMaxSize")
     def pause_indexing_on_max_size(self) -> bool:
+        """
+        If set, pause indexing when maximum size is reach
+        """
         return pulumi.get(self, "pause_indexing_on_max_size")
 
     @property
     @pulumi.getter(name="retentionId")
     def retention_id(self) -> str:
+        """
+        Retention ID
+        """
         return pulumi.get(self, "retention_id")
 
     @property
@@ -217,6 +271,9 @@ class GetLogsOutputGraylogStreamResult:
     @property
     @pulumi.getter(name="streamId")
     def stream_id(self) -> str:
+        """
+        Stream ID
+        """
         return pulumi.get(self, "stream_id")
 
     @property
@@ -227,16 +284,25 @@ class GetLogsOutputGraylogStreamResult:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        Stream last update
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="webSocketEnabled")
     def web_socket_enabled(self) -> bool:
+        """
+        Enable Websocket
+        """
         return pulumi.get(self, "web_socket_enabled")
 
     @property
     @pulumi.getter(name="writeToken")
     def write_token(self) -> str:
+        """
+        Write token of the stream (empty if the caller is not the owner of the stream)
+        """
         return pulumi.get(self, "write_token")
 
 
@@ -278,7 +344,21 @@ def get_logs_output_graylog_stream(service_name: Optional[str] = None,
                                    title: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogsOutputGraylogStreamResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a DBaas logs output graylog stream.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
+        title="my stream")
+    ```
+
+
+    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    :param str title: Stream description
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -317,7 +397,21 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[st
                                           title: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsOutputGraylogStreamResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a DBaas logs output graylog stream.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    stream = ovh.Dbaas.get_logs_output_graylog_stream(service_name="ldp-xx-xxxxx",
+        title="my stream")
+    ```
+
+
+    :param str service_name: The service name. It's the ID of your Logs Data Platform instance.
+    :param str title: Stream description
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

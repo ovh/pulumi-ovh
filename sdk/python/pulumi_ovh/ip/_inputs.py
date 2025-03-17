@@ -131,7 +131,7 @@ if not MYPY:
     class IpServiceOrderDetailArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[str]]
         """
-        description
+        Custom description on your ip.
         """
         domain: NotRequired[pulumi.Input[str]]
         """
@@ -156,7 +156,7 @@ class IpServiceOrderDetailArgs:
                  order_detail_id: Optional[pulumi.Input[int]] = None,
                  quantity: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: description
+        :param pulumi.Input[str] description: Custom description on your ip.
         :param pulumi.Input[str] domain: expiration date
         :param pulumi.Input[int] order_detail_id: order detail id
         :param pulumi.Input[str] quantity: quantity
@@ -174,7 +174,7 @@ class IpServiceOrderDetailArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        description
+        Custom description on your ip.
         """
         return pulumi.get(self, "description")
 
@@ -398,7 +398,7 @@ if not MYPY:
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgsDict']]]]
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
 elif False:
     IpServicePlanOptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -416,7 +416,7 @@ class IpServicePlanOptionArgs:
         :param pulumi.Input[str] plan_code: Plan code
         :param pulumi.Input[str] pricing_mode: Pricing model identifier
         :param pulumi.Input[str] catalog_name: Catalog name
-        :param pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
+        :param pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -478,7 +478,7 @@ class IpServicePlanOptionArgs:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpServicePlanOptionConfigurationArgs']]]]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
         """
         return pulumi.get(self, "configurations")
 
@@ -541,7 +541,7 @@ if not MYPY:
     class IpServiceRoutedToArgsDict(TypedDict):
         service_name: NotRequired[pulumi.Input[str]]
         """
-        Service where ip is routed to
+        service name
         """
 elif False:
     IpServiceRoutedToArgsDict: TypeAlias = Mapping[str, Any]
@@ -551,7 +551,7 @@ class IpServiceRoutedToArgs:
     def __init__(__self__, *,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] service_name: Service where ip is routed to
+        :param pulumi.Input[str] service_name: service name
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -560,7 +560,7 @@ class IpServiceRoutedToArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service where ip is routed to
+        service name
         """
         return pulumi.get(self, "service_name")
 
@@ -573,7 +573,7 @@ if not MYPY:
     class MoveRoutedToArgsDict(TypedDict):
         service_name: pulumi.Input[str]
         """
-        Service where ip is routed to
+        Name of the service to route the IP to. IP will be parked if this value is an empty string
         """
 elif False:
     MoveRoutedToArgsDict: TypeAlias = Mapping[str, Any]
@@ -583,7 +583,7 @@ class MoveRoutedToArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] service_name: Service where ip is routed to
+        :param pulumi.Input[str] service_name: Name of the service to route the IP to. IP will be parked if this value is an empty string
         """
         pulumi.set(__self__, "service_name", service_name)
 
@@ -591,7 +591,7 @@ class MoveRoutedToArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service where ip is routed to
+        Name of the service to route the IP to. IP will be parked if this value is an empty string
         """
         return pulumi.get(self, "service_name")
 

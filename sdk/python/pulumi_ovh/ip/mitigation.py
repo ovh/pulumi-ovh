@@ -24,8 +24,9 @@ class MitigationArgs:
                  permanent: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Mitigation resource.
-        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
-        :param pulumi.Input[str] ip_on_mitigation: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] ip: The IP or the CIDR
+        :param pulumi.Input[str] ip_on_mitigation: IPv4 address
+               * `permanent ` - Set on true if the IP is on permanent mitigation
         :param pulumi.Input[bool] permanent: Set on true if your ip is on permanent mitigation
         """
         pulumi.set(__self__, "ip", ip)
@@ -37,7 +38,7 @@ class MitigationArgs:
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
         """
-        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        The IP or the CIDR
         """
         return pulumi.get(self, "ip")
 
@@ -49,7 +50,8 @@ class MitigationArgs:
     @pulumi.getter(name="ipOnMitigation")
     def ip_on_mitigation(self) -> pulumi.Input[str]:
         """
-        IPv4 address (e.g., 192.0.2.0)
+        IPv4 address
+        * `permanent ` - Set on true if the IP is on permanent mitigation
         """
         return pulumi.get(self, "ip_on_mitigation")
 
@@ -80,11 +82,12 @@ class _MitigationState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Mitigation resources.
-        :param pulumi.Input[bool] auto: Set on true if your ip is on auto-mitigation
-        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
-        :param pulumi.Input[str] ip_on_mitigation: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[bool] auto: Set on true if the IP is on auto-mitigation
+        :param pulumi.Input[str] ip: The IP or the CIDR
+        :param pulumi.Input[str] ip_on_mitigation: IPv4 address
+               * `permanent ` - Set on true if the IP is on permanent mitigation
         :param pulumi.Input[bool] permanent: Set on true if your ip is on permanent mitigation
-        :param pulumi.Input[str] state: Current state of your ip on mitigation
+        :param pulumi.Input[str] state: Current state of the IP on mitigation
         """
         if auto is not None:
             pulumi.set(__self__, "auto", auto)
@@ -101,7 +104,7 @@ class _MitigationState:
     @pulumi.getter
     def auto(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set on true if your ip is on auto-mitigation
+        Set on true if the IP is on auto-mitigation
         """
         return pulumi.get(self, "auto")
 
@@ -113,7 +116,7 @@ class _MitigationState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        The IP or the CIDR
         """
         return pulumi.get(self, "ip")
 
@@ -125,7 +128,8 @@ class _MitigationState:
     @pulumi.getter(name="ipOnMitigation")
     def ip_on_mitigation(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address (e.g., 192.0.2.0)
+        IPv4 address
+        * `permanent ` - Set on true if the IP is on permanent mitigation
         """
         return pulumi.get(self, "ip_on_mitigation")
 
@@ -149,7 +153,7 @@ class _MitigationState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Current state of your ip on mitigation
+        Current state of the IP on mitigation
         """
         return pulumi.get(self, "state")
 
@@ -168,11 +172,24 @@ class Mitigation(pulumi.CustomResource):
                  permanent: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Mitigation resource with the given unique name, props, and options.
+        Use this resource to manage an IP permanent mitigation.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mitigation = ovh.ip.Mitigation("mitigation",
+            ip="XXXXXX",
+            ip_on_mitigation="XXXXXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
-        :param pulumi.Input[str] ip_on_mitigation: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[str] ip: The IP or the CIDR
+        :param pulumi.Input[str] ip_on_mitigation: IPv4 address
+               * `permanent ` - Set on true if the IP is on permanent mitigation
         :param pulumi.Input[bool] permanent: Set on true if your ip is on permanent mitigation
         """
         ...
@@ -182,7 +199,19 @@ class Mitigation(pulumi.CustomResource):
                  args: MitigationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Mitigation resource with the given unique name, props, and options.
+        Use this resource to manage an IP permanent mitigation.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mitigation = ovh.ip.Mitigation("mitigation",
+            ip="XXXXXX",
+            ip_on_mitigation="XXXXXX")
+        ```
+
         :param str resource_name: The name of the resource.
         :param MitigationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -241,11 +270,12 @@ class Mitigation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto: Set on true if your ip is on auto-mitigation
-        :param pulumi.Input[str] ip: IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
-        :param pulumi.Input[str] ip_on_mitigation: IPv4 address (e.g., 192.0.2.0)
+        :param pulumi.Input[bool] auto: Set on true if the IP is on auto-mitigation
+        :param pulumi.Input[str] ip: The IP or the CIDR
+        :param pulumi.Input[str] ip_on_mitigation: IPv4 address
+               * `permanent ` - Set on true if the IP is on permanent mitigation
         :param pulumi.Input[bool] permanent: Set on true if your ip is on permanent mitigation
-        :param pulumi.Input[str] state: Current state of your ip on mitigation
+        :param pulumi.Input[str] state: Current state of the IP on mitigation
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,7 +292,7 @@ class Mitigation(pulumi.CustomResource):
     @pulumi.getter
     def auto(self) -> pulumi.Output[bool]:
         """
-        Set on true if your ip is on auto-mitigation
+        Set on true if the IP is on auto-mitigation
         """
         return pulumi.get(self, "auto")
 
@@ -270,7 +300,7 @@ class Mitigation(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+        The IP or the CIDR
         """
         return pulumi.get(self, "ip")
 
@@ -278,7 +308,8 @@ class Mitigation(pulumi.CustomResource):
     @pulumi.getter(name="ipOnMitigation")
     def ip_on_mitigation(self) -> pulumi.Output[str]:
         """
-        IPv4 address (e.g., 192.0.2.0)
+        IPv4 address
+        * `permanent ` - Set on true if the IP is on permanent mitigation
         """
         return pulumi.get(self, "ip_on_mitigation")
 
@@ -294,7 +325,7 @@ class Mitigation(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Current state of your ip on mitigation
+        Current state of the IP on mitigation
         """
         return pulumi.get(self, "state")
 

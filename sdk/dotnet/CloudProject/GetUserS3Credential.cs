@@ -11,12 +11,153 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetUserS3Credential
     {
+        /// <summary>
+        /// Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var myS3Credentials = Ovh.CloudProject.GetUserS3Credentials.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        ///     var myS3Credential = Ovh.CloudProject.GetUserS3Credential.Invoke(new()
+        ///     {
+        ///         ServiceName = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.ServiceName),
+        ///         UserId = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.UserId),
+        ///         AccessKeyId = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.AccessKeyIds[0]),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myAccessKeyId"] = myS3Credential.Apply(getUserS3CredentialResult =&gt; getUserS3CredentialResult.AccessKeyId),
+        ///         ["mySecretAccessKey"] = myS3Credential.Apply(getUserS3CredentialResult =&gt; getUserS3CredentialResult.SecretAccessKey),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetUserS3CredentialResult> InvokeAsync(GetUserS3CredentialArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserS3CredentialResult>("ovh:CloudProject/getUserS3Credential:getUserS3Credential", args ?? new GetUserS3CredentialArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var myS3Credentials = Ovh.CloudProject.GetUserS3Credentials.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        ///     var myS3Credential = Ovh.CloudProject.GetUserS3Credential.Invoke(new()
+        ///     {
+        ///         ServiceName = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.ServiceName),
+        ///         UserId = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.UserId),
+        ///         AccessKeyId = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.AccessKeyIds[0]),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myAccessKeyId"] = myS3Credential.Apply(getUserS3CredentialResult =&gt; getUserS3CredentialResult.AccessKeyId),
+        ///         ["mySecretAccessKey"] = myS3Credential.Apply(getUserS3CredentialResult =&gt; getUserS3CredentialResult.SecretAccessKey),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetUserS3CredentialResult> Invoke(GetUserS3CredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserS3CredentialResult>("ovh:CloudProject/getUserS3Credential:getUserS3Credential", args ?? new GetUserS3CredentialInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project's user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectUsers = Ovh.CloudProject.GetUsers.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     // Get the user ID of a previously created user with the description "S3-User"
+        ///     var users = .Where(user =&gt; user.Description == "S3-User").Select(user =&gt; 
+        ///     {
+        ///         return user.UserId;
+        ///     }).ToList();
+        /// 
+        ///     var s3UserId = users[0];
+        /// 
+        ///     var myS3Credentials = Ovh.CloudProject.GetUserS3Credentials.Invoke(new()
+        ///     {
+        ///         ServiceName = projectUsers.Apply(getUsersResult =&gt; getUsersResult.ServiceName),
+        ///         UserId = s3UserId,
+        ///     });
+        /// 
+        ///     var myS3Credential = Ovh.CloudProject.GetUserS3Credential.Invoke(new()
+        ///     {
+        ///         ServiceName = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.ServiceName),
+        ///         UserId = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.UserId),
+        ///         AccessKeyId = myS3Credentials.Apply(getUserS3CredentialsResult =&gt; getUserS3CredentialsResult.AccessKeyIds[0]),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myAccessKeyId"] = myS3Credential.Apply(getUserS3CredentialResult =&gt; getUserS3CredentialResult.AccessKeyId),
+        ///         ["mySecretAccessKey"] = myS3Credential.Apply(getUserS3CredentialResult =&gt; getUserS3CredentialResult.SecretAccessKey),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetUserS3CredentialResult> Invoke(GetUserS3CredentialInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserS3CredentialResult>("ovh:CloudProject/getUserS3Credential:getUserS3Credential", args ?? new GetUserS3CredentialInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +165,22 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetUserS3CredentialArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// the Access Key ID
+        /// </summary>
         [Input("accessKeyId", required: true)]
         public string AccessKeyId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of a public cloud project's user.
+        /// </summary>
         [Input("userId", required: true)]
         public string UserId { get; set; } = null!;
 
@@ -41,12 +192,22 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetUserS3CredentialInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// the Access Key ID
+        /// </summary>
         [Input("accessKeyId", required: true)]
         public Input<string> AccessKeyId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of a public cloud project's user.
+        /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
 
@@ -65,6 +226,9 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Sensitive) the Secret Access Key
+        /// </summary>
         public readonly string SecretAccessKey;
         public readonly string ServiceName;
         public readonly string UserId;

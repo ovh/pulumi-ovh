@@ -13,25 +13,25 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class GatewayInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the interface
+        /// ID of the interface.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// IP of the interface
+        /// IP of the interface.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Network ID of the interface
+        /// ID of the private network.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Subnet ID of the interface
+        /// ID of the subnet.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

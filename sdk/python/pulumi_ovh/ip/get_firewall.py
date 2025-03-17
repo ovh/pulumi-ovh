@@ -59,16 +59,26 @@ class GetFirewallResult:
     @property
     @pulumi.getter
     def ip(self) -> str:
+        """
+        The IP or the CIDR
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> str:
+        """
+        IPv4 address
+        * `enabled ` - Whether firewall is enabled
+        """
         return pulumi.get(self, "ip_on_firewall")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Current state of your ip on firewall
+        """
         return pulumi.get(self, "state")
 
 
@@ -89,7 +99,21 @@ def get_firewall(ip: Optional[str] = None,
                  ip_on_firewall: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an IP firewall.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_firewall = ovh.Ip.get_firewall(ip="XXXXXX",
+        ip_on_firewall="XXXXXX")
+    ```
+
+
+    :param str ip: The IP or the CIDR
+    :param str ip_on_firewall: IPv4 address
     """
     __args__ = dict()
     __args__['ip'] = ip
@@ -107,7 +131,21 @@ def get_firewall_output(ip: Optional[pulumi.Input[str]] = None,
                         ip_on_firewall: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an IP firewall.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_firewall = ovh.Ip.get_firewall(ip="XXXXXX",
+        ip_on_firewall="XXXXXX")
+    ```
+
+
+    :param str ip: The IP or the CIDR
+    :param str ip_on_firewall: IPv4 address
     """
     __args__ = dict()
     __args__['ip'] = ip

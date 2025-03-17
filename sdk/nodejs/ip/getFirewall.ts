@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about an IP firewall.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myFirewall = ovh.Ip.getFirewall({
+ *     ip: "XXXXXX",
+ *     ipOnFirewall: "XXXXXX",
+ * });
+ * ```
+ */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Ip/getFirewall:getFirewall", {
@@ -16,7 +31,13 @@ export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getFirewall.
  */
 export interface GetFirewallArgs {
+    /**
+     * The IP or the CIDR
+     */
     ip: string;
+    /**
+     * IPv4 address
+     */
     ipOnFirewall: string;
 }
 
@@ -29,10 +50,35 @@ export interface GetFirewallResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The IP or the CIDR
+     */
     readonly ip: string;
+    /**
+     * IPv4 address
+     * * `enabled ` - Whether firewall is enabled
+     */
     readonly ipOnFirewall: string;
+    /**
+     * Current state of your ip on firewall
+     */
     readonly state: string;
 }
+/**
+ * Use this data source to retrieve information about an IP firewall.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myFirewall = ovh.Ip.getFirewall({
+ *     ip: "XXXXXX",
+ *     ipOnFirewall: "XXXXXX",
+ * });
+ * ```
+ */
 export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Ip/getFirewall:getFirewall", {
@@ -45,6 +91,12 @@ export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getFirewall.
  */
 export interface GetFirewallOutputArgs {
+    /**
+     * The IP or the CIDR
+     */
     ip: pulumi.Input<string>;
+    /**
+     * IPv4 address
+     */
     ipOnFirewall: pulumi.Input<string>;
 }

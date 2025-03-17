@@ -49,6 +49,9 @@ class GetMitigationResult:
     @property
     @pulumi.getter
     def auto(self) -> bool:
+        """
+        Set on true if the IP is on auto-mitigation
+        """
         return pulumi.get(self, "auto")
 
     @property
@@ -62,11 +65,18 @@ class GetMitigationResult:
     @property
     @pulumi.getter
     def ip(self) -> str:
+        """
+        The IP or the CIDR
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="ipOnMitigation")
     def ip_on_mitigation(self) -> str:
+        """
+        IPv4 address
+        * `permanent ` - Set on true if the IP is on permanent mitigation
+        """
         return pulumi.get(self, "ip_on_mitigation")
 
     @property
@@ -77,6 +87,9 @@ class GetMitigationResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Current state of the IP on mitigation
+        """
         return pulumi.get(self, "state")
 
 
@@ -98,7 +111,21 @@ def get_mitigation(ip: Optional[str] = None,
                    ip_on_mitigation: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMitigationResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this resource to retrieve information about an IP permanent mitigation.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mitigation_data = ovh.Ip.get_mitigation(ip="XXXXXX",
+        ip_on_mitigation="XXXXXX")
+    ```
+
+
+    :param str ip: The IP or the CIDR
+    :param str ip_on_mitigation: IPv4 address
     """
     __args__ = dict()
     __args__['ip'] = ip
@@ -117,7 +144,21 @@ def get_mitigation_output(ip: Optional[pulumi.Input[str]] = None,
                           ip_on_mitigation: Optional[pulumi.Input[str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMitigationResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this resource to retrieve information about an IP permanent mitigation.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mitigation_data = ovh.Ip.get_mitigation(ip="XXXXXX",
+        ip_on_mitigation="XXXXXX")
+    ```
+
+
+    :param str ip: The IP or the CIDR
+    :param str ip_on_mitigation: IPv4 address
     """
     __args__ = dict()
     __args__['ip'] = ip

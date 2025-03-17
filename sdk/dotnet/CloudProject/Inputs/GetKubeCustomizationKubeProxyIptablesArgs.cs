@@ -12,9 +12,15 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
     public sealed class GetKubeCustomizationKubeProxyIptablesInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        /// </summary>
         [Input("minSyncPeriod")]
         public Input<string>? MinSyncPeriod { get; set; }
 
+        /// <summary>
+        /// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+        /// </summary>
         [Input("syncPeriod")]
         public Input<string>? SyncPeriod { get; set; }
 

@@ -8,25 +8,66 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a container registry associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			regcap, err := cloudproject.GetCapabilitiesContainerFilter(ctx, &cloudproject.GetCapabilitiesContainerFilterArgs{
+//				ServiceName: "XXXXXX",
+//				PlanName:    "SMALL",
+//				Region:      "GRA",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudproject.NewContainerRegistry(ctx, "myRegistry", &cloudproject.ContainerRegistryArgs{
+//				ServiceName: pulumi.String(regcap.ServiceName),
+//				PlanId:      pulumi.String(regcap.Id),
+//				Region:      pulumi.String(regcap.Region),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
 
-	// Registry creation date
+	// Plan creation date
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Registry name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Plan ID of the registry.
+	// Plan ID of the registry
 	PlanId pulumi.StringOutput `pulumi:"planId"`
 	// Plan of the registry
 	Plans ContainerRegistryPlanArrayOutput `pulumi:"plans"`
 	// Project ID of your registry
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Region of the registry.
-	Region      pulumi.StringOutput `pulumi:"region"`
+	// Region of the registry
+	Region pulumi.StringOutput `pulumi:"region"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current size of the registry (bytes)
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -76,18 +117,20 @@ func GetContainerRegistry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerRegistry resources.
 type containerRegistryState struct {
-	// Registry creation date
+	// Plan creation date
 	CreatedAt *string `pulumi:"createdAt"`
 	// Registry name
 	Name *string `pulumi:"name"`
-	// Plan ID of the registry.
+	// Plan ID of the registry
 	PlanId *string `pulumi:"planId"`
 	// Plan of the registry
 	Plans []ContainerRegistryPlan `pulumi:"plans"`
 	// Project ID of your registry
 	ProjectId *string `pulumi:"projectId"`
-	// Region of the registry.
-	Region      *string `pulumi:"region"`
+	// Region of the registry
+	Region *string `pulumi:"region"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current size of the registry (bytes)
 	Size *int `pulumi:"size"`
@@ -102,18 +145,20 @@ type containerRegistryState struct {
 }
 
 type ContainerRegistryState struct {
-	// Registry creation date
+	// Plan creation date
 	CreatedAt pulumi.StringPtrInput
 	// Registry name
 	Name pulumi.StringPtrInput
-	// Plan ID of the registry.
+	// Plan ID of the registry
 	PlanId pulumi.StringPtrInput
 	// Plan of the registry
 	Plans ContainerRegistryPlanArrayInput
 	// Project ID of your registry
 	ProjectId pulumi.StringPtrInput
-	// Region of the registry.
-	Region      pulumi.StringPtrInput
+	// Region of the registry
+	Region pulumi.StringPtrInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current size of the registry (bytes)
 	Size pulumi.IntPtrInput
@@ -134,10 +179,12 @@ func (ContainerRegistryState) ElementType() reflect.Type {
 type containerRegistryArgs struct {
 	// Registry name
 	Name *string `pulumi:"name"`
-	// Plan ID of the registry.
+	// Plan ID of the registry
 	PlanId *string `pulumi:"planId"`
-	// Region of the registry.
-	Region      string `pulumi:"region"`
+	// Region of the registry
+	Region string `pulumi:"region"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -145,10 +192,12 @@ type containerRegistryArgs struct {
 type ContainerRegistryArgs struct {
 	// Registry name
 	Name pulumi.StringPtrInput
-	// Plan ID of the registry.
+	// Plan ID of the registry
 	PlanId pulumi.StringPtrInput
-	// Region of the registry.
-	Region      pulumi.StringInput
+	// Region of the registry
+	Region pulumi.StringInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -239,7 +288,7 @@ func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx contex
 	return o
 }
 
-// Registry creation date
+// Plan creation date
 func (o ContainerRegistryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -249,7 +298,7 @@ func (o ContainerRegistryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Plan ID of the registry.
+// Plan ID of the registry
 func (o ContainerRegistryOutput) PlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.PlanId }).(pulumi.StringOutput)
 }
@@ -264,11 +313,13 @@ func (o ContainerRegistryOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Region of the registry.
+// Region of the registry
 func (o ContainerRegistryOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o ContainerRegistryOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

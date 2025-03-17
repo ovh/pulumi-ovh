@@ -8,28 +8,55 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/okms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := okms.NewOkms(ctx, "newKms", &okms.OkmsArgs{
+//				DisplayName:   pulumi.String("terraformed KMS"),
+//				OvhSubsidiary: pulumi.String("FR"),
+//				Region:        pulumi.String("eu-west-rbx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Okms struct {
 	pulumi.CustomResourceState
 
-	// Set the name displayed in Manager for this KMS
+	// (String) Resource display name
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// IAM resource metadata
+	// (Attributes) IAM resource metadata (see below for nested schema)
 	Iam OkmsIamOutput `pulumi:"iam"`
-	// KMS kmip API endpoint
+	// (String) KMS kmip API endpoint
 	KmipEndpoint pulumi.StringOutput `pulumi:"kmipEndpoint"`
 	// OVH subsidiaries
 	OvhSubsidiary pulumi.StringOutput `pulumi:"ovhSubsidiary"`
-	// KMS public CA (Certificate Authority)
+	// (String) KMS public CA (Certificate Authority)
 	PublicCa pulumi.StringOutput `pulumi:"publicCa"`
 	// KMS region
 	Region pulumi.StringOutput `pulumi:"region"`
-	// KMS rest API endpoint
+	// (String) KMS rest API endpoint
 	RestEndpoint pulumi.StringOutput `pulumi:"restEndpoint"`
-	// KMS rest API swagger UI
+	// (String) KMS rest API swagger UI
 	SwaggerEndpoint pulumi.StringOutput `pulumi:"swaggerEndpoint"`
 }
 
@@ -69,40 +96,40 @@ func GetOkms(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Okms resources.
 type okmsState struct {
-	// Set the name displayed in Manager for this KMS
+	// (String) Resource display name
 	DisplayName *string `pulumi:"displayName"`
-	// IAM resource metadata
+	// (Attributes) IAM resource metadata (see below for nested schema)
 	Iam *OkmsIam `pulumi:"iam"`
-	// KMS kmip API endpoint
+	// (String) KMS kmip API endpoint
 	KmipEndpoint *string `pulumi:"kmipEndpoint"`
 	// OVH subsidiaries
 	OvhSubsidiary *string `pulumi:"ovhSubsidiary"`
-	// KMS public CA (Certificate Authority)
+	// (String) KMS public CA (Certificate Authority)
 	PublicCa *string `pulumi:"publicCa"`
 	// KMS region
 	Region *string `pulumi:"region"`
-	// KMS rest API endpoint
+	// (String) KMS rest API endpoint
 	RestEndpoint *string `pulumi:"restEndpoint"`
-	// KMS rest API swagger UI
+	// (String) KMS rest API swagger UI
 	SwaggerEndpoint *string `pulumi:"swaggerEndpoint"`
 }
 
 type OkmsState struct {
-	// Set the name displayed in Manager for this KMS
+	// (String) Resource display name
 	DisplayName pulumi.StringPtrInput
-	// IAM resource metadata
+	// (Attributes) IAM resource metadata (see below for nested schema)
 	Iam OkmsIamPtrInput
-	// KMS kmip API endpoint
+	// (String) KMS kmip API endpoint
 	KmipEndpoint pulumi.StringPtrInput
 	// OVH subsidiaries
 	OvhSubsidiary pulumi.StringPtrInput
-	// KMS public CA (Certificate Authority)
+	// (String) KMS public CA (Certificate Authority)
 	PublicCa pulumi.StringPtrInput
 	// KMS region
 	Region pulumi.StringPtrInput
-	// KMS rest API endpoint
+	// (String) KMS rest API endpoint
 	RestEndpoint pulumi.StringPtrInput
-	// KMS rest API swagger UI
+	// (String) KMS rest API swagger UI
 	SwaggerEndpoint pulumi.StringPtrInput
 }
 
@@ -111,7 +138,7 @@ func (OkmsState) ElementType() reflect.Type {
 }
 
 type okmsArgs struct {
-	// Set the name displayed in Manager for this KMS
+	// (String) Resource display name
 	DisplayName *string `pulumi:"displayName"`
 	// OVH subsidiaries
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
@@ -121,7 +148,7 @@ type okmsArgs struct {
 
 // The set of arguments for constructing a Okms resource.
 type OkmsArgs struct {
-	// Set the name displayed in Manager for this KMS
+	// (String) Resource display name
 	DisplayName pulumi.StringPtrInput
 	// OVH subsidiaries
 	OvhSubsidiary pulumi.StringInput
@@ -216,17 +243,17 @@ func (o OkmsOutput) ToOkmsOutputWithContext(ctx context.Context) OkmsOutput {
 	return o
 }
 
-// Set the name displayed in Manager for this KMS
+// (String) Resource display name
 func (o OkmsOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// IAM resource metadata
+// (Attributes) IAM resource metadata (see below for nested schema)
 func (o OkmsOutput) Iam() OkmsIamOutput {
 	return o.ApplyT(func(v *Okms) OkmsIamOutput { return v.Iam }).(OkmsIamOutput)
 }
 
-// KMS kmip API endpoint
+// (String) KMS kmip API endpoint
 func (o OkmsOutput) KmipEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.KmipEndpoint }).(pulumi.StringOutput)
 }
@@ -236,7 +263,7 @@ func (o OkmsOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
 
-// KMS public CA (Certificate Authority)
+// (String) KMS public CA (Certificate Authority)
 func (o OkmsOutput) PublicCa() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.PublicCa }).(pulumi.StringOutput)
 }
@@ -246,12 +273,12 @@ func (o OkmsOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// KMS rest API endpoint
+// (String) KMS rest API endpoint
 func (o OkmsOutput) RestEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.RestEndpoint }).(pulumi.StringOutput)
 }
 
-// KMS rest API swagger UI
+// (String) KMS rest API swagger UI
 func (o OkmsOutput) SwaggerEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Okms) pulumi.StringOutput { return v.SwaggerEndpoint }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Ip.Outputs
     public sealed class MoveRoutedTo
     {
         /// <summary>
-        /// Service where ip is routed to
+        /// Name of the service to route the IP to. IP will be parked if this value is an empty string
         /// </summary>
         public readonly string ServiceName;
 

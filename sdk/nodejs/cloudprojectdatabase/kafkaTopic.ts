@@ -4,6 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a topic for a kafka cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const kafka = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "kafka",
+ *     id: "ZZZ",
+ * });
+ * const topic = new ovh.cloudprojectdatabase.KafkaTopic("topic", {
+ *     serviceName: kafka.then(kafka => kafka.serviceName),
+ *     clusterId: kafka.then(kafka => kafka.id),
+ *     minInsyncReplicas: 1,
+ *     partitions: 3,
+ *     replication: 2,
+ *     retentionBytes: 4,
+ *     retentionHours: 5,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud Managed kafka clusters topics can be imported using the `service_name`, `cluster_id` and `id` of the topic, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic my_topic service_name/cluster_id/id
+ * ```
+ */
 export class KafkaTopic extends pulumi.CustomResource {
     /**
      * Get an existing KafkaTopic resource's state with the given name, ID, and optional extra
@@ -33,33 +69,37 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Minimum insync replica accepted for this topic
+     * Minimum insync replica accepted for this topic. Should be superior to 0
      */
     public readonly minInsyncReplicas!: pulumi.Output<number>;
     /**
-     * Name of the topic
+     * Name of the topic. No spaces allowed.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of partitions for this topic
+     * Number of partitions for this topic. Should be superior to 0
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
-     * Number of replication for this topic
+     * Number of replication for this topic. Should be superior to 1
      */
     public readonly replication!: pulumi.Output<number>;
     /**
-     * Number of bytes for the retention of the data for this topic
+     * Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
      */
     public readonly retentionBytes!: pulumi.Output<number>;
     /**
-     * Number of hours for the retention of the data for this topic
+     * Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
      */
     public readonly retentionHours!: pulumi.Output<number>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
@@ -110,33 +150,37 @@ export class KafkaTopic extends pulumi.CustomResource {
  */
 export interface KafkaTopicState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Minimum insync replica accepted for this topic
+     * Minimum insync replica accepted for this topic. Should be superior to 0
      */
     minInsyncReplicas?: pulumi.Input<number>;
     /**
-     * Name of the topic
+     * Name of the topic. No spaces allowed.
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of partitions for this topic
+     * Number of partitions for this topic. Should be superior to 0
      */
     partitions?: pulumi.Input<number>;
     /**
-     * Number of replication for this topic
+     * Number of replication for this topic. Should be superior to 1
      */
     replication?: pulumi.Input<number>;
     /**
-     * Number of bytes for the retention of the data for this topic
+     * Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
      */
     retentionBytes?: pulumi.Input<number>;
     /**
-     * Number of hours for the retention of the data for this topic
+     * Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
      */
     retentionHours?: pulumi.Input<number>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -145,32 +189,36 @@ export interface KafkaTopicState {
  */
 export interface KafkaTopicArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Minimum insync replica accepted for this topic
+     * Minimum insync replica accepted for this topic. Should be superior to 0
      */
     minInsyncReplicas?: pulumi.Input<number>;
     /**
-     * Name of the topic
+     * Name of the topic. No spaces allowed.
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of partitions for this topic
+     * Number of partitions for this topic. Should be superior to 0
      */
     partitions?: pulumi.Input<number>;
     /**
-     * Number of replication for this topic
+     * Number of replication for this topic. Should be superior to 1
      */
     replication?: pulumi.Input<number>;
     /**
-     * Number of bytes for the retention of the data for this topic
+     * Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
      */
     retentionBytes?: pulumi.Input<number>;
     /**
-     * Number of hours for the retention of the data for this topic
+     * Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
      */
     retentionHours?: pulumi.Input<number>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

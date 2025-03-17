@@ -7,10 +7,42 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the managed database of a public cloud project.
+//
+// ## Example Usage
+//
+// To get information of a database cluster service:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			db, err := cloudprojectdatabase.GetDatabase(ctx, &cloudprojectdatabase.GetDatabaseArgs{
+//				ServiceName: "XXXXXX",
+//				Engine:      "YYYY",
+//				Id:          "ZZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("clusterId", db.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabase(ctx *pulumi.Context, args *GetDatabaseArgs, opts ...pulumi.InvokeOption) (*GetDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseResult
@@ -23,35 +55,61 @@ func GetDatabase(ctx *pulumi.Context, args *GetDatabaseArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getDatabase.
 type GetDatabaseArgs struct {
-	Engine      string `pulumi:"engine"`
-	Id          string `pulumi:"id"`
+	// The database engine you want to get information. To get a full list of available engine visit:
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	Engine string `pulumi:"engine"`
+	// Cluster ID
+	Id string `pulumi:"id"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getDatabase.
 type GetDatabaseResult struct {
-	AdvancedConfiguration map[string]string          `pulumi:"advancedConfiguration"`
-	BackupRegions         []string                   `pulumi:"backupRegions"`
-	BackupTime            string                     `pulumi:"backupTime"`
-	CreatedAt             string                     `pulumi:"createdAt"`
-	Description           string                     `pulumi:"description"`
-	DiskSize              int                        `pulumi:"diskSize"`
-	DiskType              string                     `pulumi:"diskType"`
-	Endpoints             []GetDatabaseEndpoint      `pulumi:"endpoints"`
-	Engine                string                     `pulumi:"engine"`
-	Flavor                string                     `pulumi:"flavor"`
-	Id                    string                     `pulumi:"id"`
-	IpRestrictions        []GetDatabaseIpRestriction `pulumi:"ipRestrictions"`
-	KafkaRestApi          bool                       `pulumi:"kafkaRestApi"`
-	KafkaSchemaRegistry   bool                       `pulumi:"kafkaSchemaRegistry"`
-	MaintenanceTime       string                     `pulumi:"maintenanceTime"`
-	NetworkType           string                     `pulumi:"networkType"`
-	Nodes                 []GetDatabaseNode          `pulumi:"nodes"`
-	OpensearchAclsEnabled bool                       `pulumi:"opensearchAclsEnabled"`
-	Plan                  string                     `pulumi:"plan"`
-	ServiceName           string                     `pulumi:"serviceName"`
-	Status                string                     `pulumi:"status"`
-	Version               string                     `pulumi:"version"`
+	// Advanced configuration key / value.
+	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
+	// List of region where backups are pushed.
+	BackupRegions []string `pulumi:"backupRegions"`
+	// Time on which backups start every day.
+	BackupTime string `pulumi:"backupTime"`
+	// Date of the creation of the cluster.
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the IP restriction
+	Description string `pulumi:"description"`
+	// The disk size (in GB) of the database service.
+	DiskSize int `pulumi:"diskSize"`
+	// The disk type of the database service.
+	DiskType string `pulumi:"diskType"`
+	// List of all endpoints objects of the service.
+	Endpoints []GetDatabaseEndpoint `pulumi:"endpoints"`
+	// See Argument Reference above.
+	Engine string `pulumi:"engine"`
+	// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+	Flavor string `pulumi:"flavor"`
+	// See Argument Reference above.
+	Id string `pulumi:"id"`
+	// IP Blocks authorized to access to the cluster.
+	IpRestrictions []GetDatabaseIpRestriction `pulumi:"ipRestrictions"`
+	// Defines whether the REST API is enabled on a kafka cluster.
+	KafkaRestApi bool `pulumi:"kafkaRestApi"`
+	// Defines whether the schema registry is enabled on a Kafka cluster
+	KafkaSchemaRegistry bool `pulumi:"kafkaSchemaRegistry"`
+	// Time on which maintenances can start every day.
+	MaintenanceTime string `pulumi:"maintenanceTime"`
+	// Type of network of the cluster.
+	NetworkType string `pulumi:"networkType"`
+	// List of nodes object.
+	Nodes                 []GetDatabaseNode `pulumi:"nodes"`
+	OpensearchAclsEnabled bool              `pulumi:"opensearchAclsEnabled"`
+	// Plan of the cluster.
+	Plan string `pulumi:"plan"`
+	// See Argument Reference above.
+	ServiceName string `pulumi:"serviceName"`
+	// Current status of the cluster.
+	Status string `pulumi:"status"`
+	// The version of the engine in which the service should be deployed
+	Version string `pulumi:"version"`
 }
 
 func GetDatabaseOutput(ctx *pulumi.Context, args GetDatabaseOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseResultOutput {
@@ -65,8 +123,13 @@ func GetDatabaseOutput(ctx *pulumi.Context, args GetDatabaseOutputArgs, opts ...
 
 // A collection of arguments for invoking getDatabase.
 type GetDatabaseOutputArgs struct {
-	Engine      pulumi.StringInput `pulumi:"engine"`
-	Id          pulumi.StringInput `pulumi:"id"`
+	// The database engine you want to get information. To get a full list of available engine visit:
+	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// Cluster ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -89,70 +152,87 @@ func (o GetDatabaseResultOutput) ToGetDatabaseResultOutputWithContext(ctx contex
 	return o
 }
 
+// Advanced configuration key / value.
 func (o GetDatabaseResultOutput) AdvancedConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDatabaseResult) map[string]string { return v.AdvancedConfiguration }).(pulumi.StringMapOutput)
 }
 
+// List of region where backups are pushed.
 func (o GetDatabaseResultOutput) BackupRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseResult) []string { return v.BackupRegions }).(pulumi.StringArrayOutput)
 }
 
+// Time on which backups start every day.
 func (o GetDatabaseResultOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.BackupTime }).(pulumi.StringOutput)
 }
 
+// Date of the creation of the cluster.
 func (o GetDatabaseResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Description of the IP restriction
 func (o GetDatabaseResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The disk size (in GB) of the database service.
 func (o GetDatabaseResultOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseResult) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
+// The disk type of the database service.
 func (o GetDatabaseResultOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
+// List of all endpoints objects of the service.
 func (o GetDatabaseResultOutput) Endpoints() GetDatabaseEndpointArrayOutput {
 	return o.ApplyT(func(v GetDatabaseResult) []GetDatabaseEndpoint { return v.Endpoints }).(GetDatabaseEndpointArrayOutput)
 }
 
+// See Argument Reference above.
 func (o GetDatabaseResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
 func (o GetDatabaseResultOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// IP Blocks authorized to access to the cluster.
 func (o GetDatabaseResultOutput) IpRestrictions() GetDatabaseIpRestrictionArrayOutput {
 	return o.ApplyT(func(v GetDatabaseResult) []GetDatabaseIpRestriction { return v.IpRestrictions }).(GetDatabaseIpRestrictionArrayOutput)
 }
 
+// Defines whether the REST API is enabled on a kafka cluster.
 func (o GetDatabaseResultOutput) KafkaRestApi() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseResult) bool { return v.KafkaRestApi }).(pulumi.BoolOutput)
 }
 
+// Defines whether the schema registry is enabled on a Kafka cluster
 func (o GetDatabaseResultOutput) KafkaSchemaRegistry() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseResult) bool { return v.KafkaSchemaRegistry }).(pulumi.BoolOutput)
 }
 
+// Time on which maintenances can start every day.
 func (o GetDatabaseResultOutput) MaintenanceTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.MaintenanceTime }).(pulumi.StringOutput)
 }
 
+// Type of network of the cluster.
 func (o GetDatabaseResultOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
+// List of nodes object.
 func (o GetDatabaseResultOutput) Nodes() GetDatabaseNodeArrayOutput {
 	return o.ApplyT(func(v GetDatabaseResult) []GetDatabaseNode { return v.Nodes }).(GetDatabaseNodeArrayOutput)
 }
@@ -161,18 +241,22 @@ func (o GetDatabaseResultOutput) OpensearchAclsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseResult) bool { return v.OpensearchAclsEnabled }).(pulumi.BoolOutput)
 }
 
+// Plan of the cluster.
 func (o GetDatabaseResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Current status of the cluster.
 func (o GetDatabaseResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The version of the engine in which the service should be deployed
 func (o GetDatabaseResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.Version }).(pulumi.StringOutput)
 }

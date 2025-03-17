@@ -46,6 +46,9 @@ class GetMongoDbPrometheusResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -59,16 +62,25 @@ class GetMongoDbPrometheusResult:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="srvDomain")
     def srv_domain(self) -> str:
+        """
+        Name of the srv domain endpoint.
+        """
         return pulumi.get(self, "srv_domain")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        name of the prometheus user.
+        """
         return pulumi.get(self, "username")
 
 
@@ -89,7 +101,23 @@ def get_mongo_db_prometheus(cluster_id: Optional[str] = None,
                             service_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMongoDbPrometheusResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    prometheus = ovh.CloudProject.get_mongo_db_prometheus(service_name="XXX",
+        cluster_id="ZZZ")
+    pulumi.export("name", prometheus.username)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -107,7 +135,23 @@ def get_mongo_db_prometheus_output(cluster_id: Optional[pulumi.Input[str]] = Non
                                    service_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMongoDbPrometheusResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    prometheus = ovh.CloudProject.get_mongo_db_prometheus(service_name="XXX",
+        cluster_id="ZZZ")
+    pulumi.export("name", prometheus.username)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

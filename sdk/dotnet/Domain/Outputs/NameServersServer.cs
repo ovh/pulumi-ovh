@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Domain.Outputs
     public sealed class NameServersServer
     {
         /// <summary>
-        /// DNS name server hostname
+        /// The server hostname
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// DNS name server IP address
+        /// The server IP
         /// </summary>
         public readonly string? Ip;
 

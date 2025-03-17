@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const plans = ovh.CloudProject.getRancherPlan({
+ *     projectId: "XXXXXX",
+ * });
+ * ```
+ */
 export function getRancherPlan(args: GetRancherPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetRancherPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getRancherPlan:getRancherPlan", {
@@ -17,6 +31,9 @@ export function getRancherPlan(args: GetRancherPlanArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getRancherPlan.
  */
 export interface GetRancherPlanArgs {
+    /**
+     * Project ID
+     */
     projectId: string;
 }
 
@@ -29,8 +46,25 @@ export interface GetRancherPlanResult {
      */
     readonly id: string;
     readonly plans: outputs.CloudProject.GetRancherPlanPlan[];
+    /**
+     * Project ID
+     */
     readonly projectId: string;
 }
+/**
+ * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const plans = ovh.CloudProject.getRancherPlan({
+ *     projectId: "XXXXXX",
+ * });
+ * ```
+ */
 export function getRancherPlanOutput(args: GetRancherPlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRancherPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getRancherPlan:getRancherPlan", {
@@ -42,5 +76,8 @@ export function getRancherPlanOutput(args: GetRancherPlanOutputArgs, opts?: pulu
  * A collection of arguments for invoking getRancherPlan.
  */
 export interface GetRancherPlanOutputArgs {
+    /**
+     * Project ID
+     */
     projectId: pulumi.Input<string>;
 }

@@ -73,7 +73,7 @@ from .kube import *
 from .kube_ip_restrictions import *
 from .kube_node_pool import *
 from .kube_oidc import *
-from .loadbalancer import *
+from .load_balancer import *
 from .network_private import *
 from .network_private_subnet import *
 from .network_private_subnet_v2 import *

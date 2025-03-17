@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Create a new user on your private cloud database instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const user = new ovh.hosting.PrivateDatabaseUser("user", {
+ *     password: "XXXXXX",
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud database user can be imported using the `service_name` and the `user_name`, separated by "/" E.g.,
+ *
+ * ```sh
+ * $ pulumi import ovh:Hosting/privateDatabaseUser:PrivateDatabaseUser user service_name/user_name
+ * ```
+ */
 export class PrivateDatabaseUser extends pulumi.CustomResource {
     /**
      * Get an existing PrivateDatabaseUser resource's state with the given name, ID, and optional extra
@@ -33,11 +57,11 @@ export class PrivateDatabaseUser extends pulumi.CustomResource {
     }
 
     /**
-     * Password for the new user ( alphanumeric and 8 characters minimum )
+     * Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -88,11 +112,11 @@ export class PrivateDatabaseUser extends pulumi.CustomResource {
  */
 export interface PrivateDatabaseUserState {
     /**
-     * Password for the new user ( alphanumeric and 8 characters minimum )
+     * Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
      */
     password?: pulumi.Input<string>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -106,11 +130,11 @@ export interface PrivateDatabaseUserState {
  */
 export interface PrivateDatabaseUserArgs {
     /**
-     * Password for the new user ( alphanumeric and 8 characters minimum )
+     * Password for the new user (alphanumeric, minimum one number and 8 characters minimum)
      */
     password: pulumi.Input<string>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     serviceName: pulumi.Input<string>;
     /**

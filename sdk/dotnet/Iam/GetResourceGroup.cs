@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Iam
 {
     public static class GetResourceGroup
     {
+        /// <summary>
+        /// Use this data source get details about a resource group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myResourceGroup = Ovh.Iam.GetResourceGroup.Invoke(new()
+        ///     {
+        ///         Id = "my_resource_group_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetResourceGroupResult> InvokeAsync(GetResourceGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupResult>("ovh:Iam/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source get details about a resource group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myResourceGroup = Ovh.Iam.GetResourceGroup.Invoke(new()
+        ///     {
+        ///         Id = "my_resource_group_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetResourceGroupResult> Invoke(GetResourceGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupResult>("ovh:Iam/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source get details about a resource group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myResourceGroup = Ovh.Iam.GetResourceGroup.Invoke(new()
+        ///     {
+        ///         Id = "my_resource_group_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetResourceGroupResult> Invoke(GetResourceGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupResult>("ovh:Iam/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.Ovh.Iam
 
     public sealed class GetResourceGroupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Id of the resource group
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.Ovh.Iam
 
     public sealed class GetResourceGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Id of the resource group
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -48,13 +117,34 @@ namespace Pulumi.Ovh.Iam
     [OutputType]
     public sealed class GetResourceGroupResult
     {
+        /// <summary>
+        /// URN of the resource group, used when writing policies
+        /// </summary>
         public readonly string GroupURN;
+        /// <summary>
+        /// Date of the creation of the resource group
+        /// </summary>
         public readonly string CreatedAt;
         public readonly string Id;
+        /// <summary>
+        /// Name of the resource group
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Name of the account owning the resource group
+        /// </summary>
         public readonly string Owner;
+        /// <summary>
+        /// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
+        /// </summary>
         public readonly bool ReadOnly;
+        /// <summary>
+        /// Set of the URNs of the resources contained in the resource group
+        /// </summary>
         public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// Date of the last modification of the resource group
+        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]

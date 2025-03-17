@@ -8,24 +8,61 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dedicated"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rescue, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
+//				ServiceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
+//				BootType:    pulumi.StringRef("rescue"),
+//				Kernel:      pulumi.StringRef("rescue64-pro"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dedicated.NewServerUpdate(ctx, "server", &dedicated.ServerUpdateArgs{
+//				ServiceName: pulumi.String("nsxxxxxxx.ip-xx-xx-xx.eu"),
+//				BootId:      pulumi.Int(rescue.Results[0]),
+//				Monitoring:  pulumi.Bool(true),
+//				State:       pulumi.String("ok"),
+//				DisplayName: pulumi.String("Some human-readable name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ServerUpdate struct {
 	pulumi.CustomResourceState
 
-	// The boot id of your dedicated server.
+	// boot id of the server
 	BootId pulumi.IntOutput `pulumi:"bootId"`
-	// The boot script of your dedicated server.
+	// boot script of the server
 	BootScript pulumi.StringPtrOutput `pulumi:"bootScript"`
-	// Display name of the dedicated server
+	// display name of the dedicated server
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The path of the EFI bootloader.
+	// path of the EFI bootloader
 	EfiBootloaderPath pulumi.StringOutput `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring pulumi.BoolOutput `pulumi:"monitoring"`
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// error, hacked, hackedBlocked, ok
 	State pulumi.StringOutput `pulumi:"state"`
@@ -64,34 +101,34 @@ func GetServerUpdate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerUpdate resources.
 type serverUpdateState struct {
-	// The boot id of your dedicated server.
+	// boot id of the server
 	BootId *int `pulumi:"bootId"`
-	// The boot script of your dedicated server.
+	// boot script of the server
 	BootScript *string `pulumi:"bootScript"`
-	// Display name of the dedicated server
+	// display name of the dedicated server
 	DisplayName *string `pulumi:"displayName"`
-	// The path of the EFI bootloader.
+	// path of the EFI bootloader
 	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName *string `pulumi:"serviceName"`
 	// error, hacked, hackedBlocked, ok
 	State *string `pulumi:"state"`
 }
 
 type ServerUpdateState struct {
-	// The boot id of your dedicated server.
+	// boot id of the server
 	BootId pulumi.IntPtrInput
-	// The boot script of your dedicated server.
+	// boot script of the server
 	BootScript pulumi.StringPtrInput
-	// Display name of the dedicated server
+	// display name of the dedicated server
 	DisplayName pulumi.StringPtrInput
-	// The path of the EFI bootloader.
+	// path of the EFI bootloader
 	EfiBootloaderPath pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringPtrInput
 	// error, hacked, hackedBlocked, ok
 	State pulumi.StringPtrInput
@@ -102,17 +139,17 @@ func (ServerUpdateState) ElementType() reflect.Type {
 }
 
 type serverUpdateArgs struct {
-	// The boot id of your dedicated server.
+	// boot id of the server
 	BootId *int `pulumi:"bootId"`
-	// The boot script of your dedicated server.
+	// boot script of the server
 	BootScript *string `pulumi:"bootScript"`
-	// Display name of the dedicated server
+	// display name of the dedicated server
 	DisplayName *string `pulumi:"displayName"`
-	// The path of the EFI bootloader.
+	// path of the EFI bootloader
 	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Icmp monitoring state
 	Monitoring *bool `pulumi:"monitoring"`
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName string `pulumi:"serviceName"`
 	// error, hacked, hackedBlocked, ok
 	State *string `pulumi:"state"`
@@ -120,17 +157,17 @@ type serverUpdateArgs struct {
 
 // The set of arguments for constructing a ServerUpdate resource.
 type ServerUpdateArgs struct {
-	// The boot id of your dedicated server.
+	// boot id of the server
 	BootId pulumi.IntPtrInput
-	// The boot script of your dedicated server.
+	// boot script of the server
 	BootScript pulumi.StringPtrInput
-	// Display name of the dedicated server
+	// display name of the dedicated server
 	DisplayName pulumi.StringPtrInput
-	// The path of the EFI bootloader.
+	// path of the EFI bootloader
 	EfiBootloaderPath pulumi.StringPtrInput
 	// Icmp monitoring state
 	Monitoring pulumi.BoolPtrInput
-	// The internal name of your dedicated server.
+	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringInput
 	// error, hacked, hackedBlocked, ok
 	State pulumi.StringPtrInput
@@ -223,22 +260,22 @@ func (o ServerUpdateOutput) ToServerUpdateOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The boot id of your dedicated server.
+// boot id of the server
 func (o ServerUpdateOutput) BootId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.IntOutput { return v.BootId }).(pulumi.IntOutput)
 }
 
-// The boot script of your dedicated server.
+// boot script of the server
 func (o ServerUpdateOutput) BootScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.StringPtrOutput { return v.BootScript }).(pulumi.StringPtrOutput)
 }
 
-// Display name of the dedicated server
+// display name of the dedicated server
 func (o ServerUpdateOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The path of the EFI bootloader.
+// path of the EFI bootloader
 func (o ServerUpdateOutput) EfiBootloaderPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.StringOutput { return v.EfiBootloaderPath }).(pulumi.StringOutput)
 }
@@ -248,7 +285,7 @@ func (o ServerUpdateOutput) Monitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.BoolOutput { return v.Monitoring }).(pulumi.BoolOutput)
 }
 
-// The internal name of your dedicated server.
+// The serviceName of your dedicated server.
 func (o ServerUpdateOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerUpdate) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

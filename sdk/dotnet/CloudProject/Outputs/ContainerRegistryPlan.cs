@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class ContainerRegistryPlan
     {
         /// <summary>
-        /// Plan code from catalog
+        /// Plan code from the catalog
         /// </summary>
         public readonly string? Code;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Plan name
+        /// Registry name
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerRegistryPlanRegistryLimit> RegistryLimits;
         /// <summary>
-        /// Plan last update date
+        /// Registry last update date
         /// </summary>
         public readonly string? UpdatedAt;
 

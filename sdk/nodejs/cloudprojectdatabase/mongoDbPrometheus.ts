@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * OVHcloud Managed MongoDB clusters prometheus can be imported using the `service_name` and `cluster_id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus my_prometheus service_name/engine/cluster_id
+ * ```
+ */
 export class MongoDbPrometheus extends pulumi.CustomResource {
     /**
      * Get an existing MongoDbPrometheus resource's state with the given name, ID, and optional extra
@@ -33,24 +44,28 @@ export class MongoDbPrometheus extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Name of the srv domain endpoint
+     * Name of the srv domain endpoint.
      */
     public /*out*/ readonly srvDomain!: pulumi.Output<string>;
     /**
-     * Name of the user
+     * name of the prometheus user.
      */
     public /*out*/ readonly username!: pulumi.Output<string>;
 
@@ -100,24 +115,28 @@ export class MongoDbPrometheus extends pulumi.CustomResource {
  */
 export interface MongoDbPrometheusState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     password?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Name of the srv domain endpoint
+     * Name of the srv domain endpoint.
      */
     srvDomain?: pulumi.Input<string>;
     /**
-     * Name of the user
+     * name of the prometheus user.
      */
     username?: pulumi.Input<string>;
 }
@@ -127,12 +146,16 @@ export interface MongoDbPrometheusState {
  */
 export interface MongoDbPrometheusArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

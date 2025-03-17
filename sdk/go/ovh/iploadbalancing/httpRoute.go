@@ -8,10 +8,50 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manage HTTP route for a loadbalancer service
+//
+// ## Example Usage
+//
+// Route which redirect all url to https.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iploadbalancing.NewHttpRoute(ctx, "httpsRedirect", &iploadbalancing.HttpRouteArgs{
+//				Action: &iploadbalancing.HttpRouteActionArgs{
+//					Status: pulumi.Int(302),
+//					Target: pulumi.String("https://${host}${path}${arguments}"),
+//					Type:   pulumi.String("redirect"),
+//				},
+//				DisplayName: pulumi.String("Redirect to HTTPS"),
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				Weight:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// HTTP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
 type HttpRoute struct {
 	pulumi.CustomResourceState
 
@@ -27,8 +67,7 @@ type HttpRoute struct {
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Route status. Routes in "ok" state are ready to operate
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-	// trigger an action
+	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight pulumi.IntOutput `pulumi:"weight"`
 }
 
@@ -80,8 +119,7 @@ type httpRouteState struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// Route status. Routes in "ok" state are ready to operate
 	Status *string `pulumi:"status"`
-	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-	// trigger an action
+	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight *int `pulumi:"weight"`
 }
 
@@ -98,8 +136,7 @@ type HttpRouteState struct {
 	ServiceName pulumi.StringPtrInput
 	// Route status. Routes in "ok" state are ready to operate
 	Status pulumi.StringPtrInput
-	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-	// trigger an action
+	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight pulumi.IntPtrInput
 }
 
@@ -116,8 +153,7 @@ type httpRouteArgs struct {
 	FrontendId *int `pulumi:"frontendId"`
 	// The internal name of your IP load balancing
 	ServiceName string `pulumi:"serviceName"`
-	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-	// trigger an action
+	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight *int `pulumi:"weight"`
 }
 
@@ -131,8 +167,7 @@ type HttpRouteArgs struct {
 	FrontendId pulumi.IntPtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
-	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-	// trigger an action
+	// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 	Weight pulumi.IntPtrInput
 }
 
@@ -253,8 +288,7 @@ func (o HttpRouteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-// trigger an action
+// Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
 func (o HttpRouteOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
 }

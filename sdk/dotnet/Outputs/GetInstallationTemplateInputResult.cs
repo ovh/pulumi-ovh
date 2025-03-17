@@ -14,6 +14,9 @@ namespace Pulumi.Ovh.Outputs
     public sealed class GetInstallationTemplateInputResult
     {
         public readonly string Default;
+        /// <summary>
+        /// Information about this template.
+        /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<string> Enums;
         public readonly bool Mandatory;

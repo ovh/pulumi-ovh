@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about an hosting privatedatabase user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hosting.GetPrivateDatabaseUser(ctx, &hosting.GetPrivateDatabaseUserArgs{
+//				ServiceName: "XXXXXX",
+//				UserName:    "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPrivateDatabaseUser(ctx *pulumi.Context, args *LookupPrivateDatabaseUserArgs, opts ...pulumi.InvokeOption) (*LookupPrivateDatabaseUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateDatabaseUserResult
@@ -23,14 +51,18 @@ func LookupPrivateDatabaseUser(ctx *pulumi.Context, args *LookupPrivateDatabaseU
 
 // A collection of arguments for invoking getPrivateDatabaseUser.
 type LookupPrivateDatabaseUserArgs struct {
+	// The internal name of your private database
 	ServiceName string `pulumi:"serviceName"`
-	UserName    string `pulumi:"userName"`
+	// User name
+	UserName string `pulumi:"userName"`
 }
 
 // A collection of values returned by getPrivateDatabaseUser.
 type LookupPrivateDatabaseUserResult struct {
-	CreationDate string                           `pulumi:"creationDate"`
-	Databases    []GetPrivateDatabaseUserDatabase `pulumi:"databases"`
+	// Creation date of the database
+	CreationDate string `pulumi:"creationDate"`
+	// Users granted to this database
+	Databases []GetPrivateDatabaseUserDatabase `pulumi:"databases"`
 	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	ServiceName string `pulumi:"serviceName"`
@@ -48,8 +80,10 @@ func LookupPrivateDatabaseUserOutput(ctx *pulumi.Context, args LookupPrivateData
 
 // A collection of arguments for invoking getPrivateDatabaseUser.
 type LookupPrivateDatabaseUserOutputArgs struct {
+	// The internal name of your private database
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	UserName    pulumi.StringInput `pulumi:"userName"`
+	// User name
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (LookupPrivateDatabaseUserOutputArgs) ElementType() reflect.Type {
@@ -71,10 +105,12 @@ func (o LookupPrivateDatabaseUserResultOutput) ToLookupPrivateDatabaseUserResult
 	return o
 }
 
+// Creation date of the database
 func (o LookupPrivateDatabaseUserResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseUserResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// Users granted to this database
 func (o LookupPrivateDatabaseUserResultOutput) Databases() GetPrivateDatabaseUserDatabaseArrayOutput {
 	return o.ApplyT(func(v LookupPrivateDatabaseUserResult) []GetPrivateDatabaseUserDatabase { return v.Databases }).(GetPrivateDatabaseUserDatabaseArrayOutput)
 }

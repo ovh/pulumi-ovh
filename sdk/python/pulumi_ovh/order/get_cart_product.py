@@ -62,6 +62,9 @@ class GetCartProductResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetCartProductResultResult']:
+        """
+        products results
+        """
         return pulumi.get(self, "results")
 
 
@@ -81,7 +84,23 @@ def get_cart_product(cart_id: Optional[str] = None,
                      product: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCartProductResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information of order cart product products.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    plans = ovh.Order.get_cart_product(cart_id=my_cart.id,
+        product="...")
+    ```
+
+
+    :param str cart_id: Cart identifier
+    :param str product: product
     """
     __args__ = dict()
     __args__['cartId'] = cart_id
@@ -98,7 +117,23 @@ def get_cart_product_output(cart_id: Optional[pulumi.Input[str]] = None,
                             product: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartProductResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information of order cart product products.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    plans = ovh.Order.get_cart_product(cart_id=my_cart.id,
+        product="...")
+    ```
+
+
+    :param str cart_id: Cart identifier
+    :param str product: product
     """
     __args__ = dict()
     __args__['cartId'] = cart_id

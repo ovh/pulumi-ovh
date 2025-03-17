@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerReinstallTaskStorage
     {
         /// <summary>
-        /// Disk group id (default is 0, meaning automatic)
+        /// Disk group id to install the OS to (default is 0, meaning automatic).
         /// </summary>
         public readonly int? DiskGroupId;
         /// <summary>
-        /// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        /// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         /// </summary>
         public readonly ImmutableArray<Outputs.ServerReinstallTaskStorageHardwareRaid> HardwareRaids;
         /// <summary>

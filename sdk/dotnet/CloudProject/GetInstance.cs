@@ -11,12 +11,90 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetInstance
     {
+        /// <summary>
+        /// **This datasource uses a Beta API**
+        /// Use this data source to get the instance of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To get information of an instance:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Ovh.CloudProject.GetInstance.Invoke(new()
+        ///     {
+        ///         InstanceId = "ZZZZZ",
+        ///         Region = "XXXX",
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("ovh:CloudProject/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// **This datasource uses a Beta API**
+        /// Use this data source to get the instance of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To get information of an instance:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Ovh.CloudProject.GetInstance.Invoke(new()
+        ///     {
+        ///         InstanceId = "ZZZZZ",
+        ///         Region = "XXXX",
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("ovh:CloudProject/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// **This datasource uses a Beta API**
+        /// Use this data source to get the instance of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To get information of an instance:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Ovh.CloudProject.GetInstance.Invoke(new()
+        ///     {
+        ///         InstanceId = "ZZZZZ",
+        ///         Region = "XXXX",
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("ovh:CloudProject/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +102,22 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Instance id
+        /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// Instance region
+        /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -41,12 +129,22 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Instance id
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// Instance region
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -60,21 +158,48 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetInstanceResult
     {
+        /// <summary>
+        /// Instance IP addresses
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceAddressResult> Addresses;
+        /// <summary>
+        /// Volumes attached to the instance
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceAttachedVolumeResult> AttachedVolumes;
+        /// <summary>
+        /// Availability zone of the instance
+        /// </summary>
         public readonly string AvailabilityZone;
+        /// <summary>
+        /// Flavor id
+        /// </summary>
         public readonly string FlavorId;
+        /// <summary>
+        /// Flavor name
+        /// </summary>
         public readonly string FlavorName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Image id
+        /// </summary>
         public readonly string ImageId;
         public readonly string InstanceId;
+        /// <summary>
+        /// Instance name
+        /// </summary>
         public readonly string Name;
         public readonly string Region;
         public readonly string ServiceName;
+        /// <summary>
+        /// SSH Keypair
+        /// </summary>
         public readonly string SshKey;
+        /// <summary>
+        /// Instance task state
+        /// </summary>
         public readonly string TaskState;
 
         [OutputConstructor]

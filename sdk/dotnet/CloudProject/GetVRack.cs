@@ -11,12 +11,87 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetVRack
     {
+        /// <summary>
+        /// Use this data source to get the linked vrack on your public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vrack"] = vrackVRack,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetVRackResult> InvokeAsync(GetVRackArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the linked vrack on your public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vrack"] = vrackVRack,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVRackResult> Invoke(GetVRackInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the linked vrack on your public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vrack"] = vrackVRack,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVRackResult> Invoke(GetVRackInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVRackResult>("ovh:CloudProject/getVRack:getVRack", args ?? new GetVRackInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +99,10 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetVRackArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -35,6 +114,10 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetVRackInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -49,8 +132,17 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetVRackResult
     {
         public readonly string Description;
+        /// <summary>
+        /// The id of the vrack
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the vrack
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The id of the public cloud project
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

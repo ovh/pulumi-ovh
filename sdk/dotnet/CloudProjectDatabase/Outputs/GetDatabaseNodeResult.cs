@@ -14,15 +14,15 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
     public sealed class GetDatabaseNodeResult
     {
         /// <summary>
-        /// Private network ID in which the node is
+        /// Private network id in which the node should be deployed. It's the regional openstackId of the private network
         /// </summary>
         public readonly string NetworkId;
         /// <summary>
-        /// Region of the node
+        /// Public cloud region in which the node should be deployed.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Private subnet ID in which the node is
+        /// Private subnet ID in which the node is.
         /// </summary>
         public readonly string SubnetId;
 

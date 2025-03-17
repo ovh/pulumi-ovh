@@ -6,6 +6,28 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manage TCP route for a loadbalancer service
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const tcpReject = new ovh.iploadbalancing.TcpRoute("tcpReject", {
+ *     action: {
+ *         type: "reject",
+ *     },
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     weight: 1,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
+ */
 export class TcpRoute extends pulumi.CustomResource {
     /**
      * Get an existing TcpRoute resource's state with the given name, ID, and optional extra
@@ -59,8 +81,7 @@ export class TcpRoute extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-     * trigger an action
+     * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
      */
     public readonly weight!: pulumi.Output<number>;
 
@@ -134,8 +155,7 @@ export interface TcpRouteState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-     * trigger an action
+     * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
      */
     weight?: pulumi.Input<number>;
 }
@@ -161,8 +181,7 @@ export interface TcpRouteArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will
-     * trigger an action
+     * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated first. Only the first matching route will trigger an action
      */
     weight?: pulumi.Input<number>;
 }

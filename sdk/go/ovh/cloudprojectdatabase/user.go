@@ -8,27 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Date of the creation of the user
+	// Date of the creation of the user.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	ServiceName   pulumi.StringOutput    `pulumi:"serviceName"`
-	// Current status of the user
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Current status of the user.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -75,38 +87,44 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Date of the creation of the user
+	// Date of the creation of the user.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine *string `pulumi:"engine"`
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name *string `pulumi:"name"`
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	ServiceName   *string `pulumi:"serviceName"`
-	// Current status of the user
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
+	// Current status of the user.
 	Status *string `pulumi:"status"`
 }
 
 type UserState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Date of the creation of the user
+	// Date of the creation of the user.
 	CreatedAt pulumi.StringPtrInput
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine pulumi.StringPtrInput
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name pulumi.StringPtrInput
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	ServiceName   pulumi.StringPtrInput
-	// Current status of the user
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
+	// Current status of the user.
 	Status pulumi.StringPtrInput
 }
 
@@ -115,28 +133,34 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine string `pulumi:"engine"`
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	ServiceName   string  `pulumi:"serviceName"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Name of the engine of the service
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// Available engines:
 	Engine pulumi.StringInput
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	ServiceName   pulumi.StringInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringInput
 }
 
 func (UserArgs) ElementType() reflect.Type {
@@ -226,27 +250,28 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// Id of the database cluster
+// Cluster ID.
 func (o UserOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Date of the creation of the user
+// Date of the creation of the user.
 func (o UserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Name of the engine of the service
+// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+// Available engines:
 func (o UserOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Name of the user
+// Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
 func (o UserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Password of the user
+// (Sensitive) Password of the user.
 func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -256,11 +281,13 @@ func (o UserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o UserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Current status of the user
+// Current status of the user.
 func (o UserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

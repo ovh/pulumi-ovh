@@ -7,10 +7,39 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get the details of a public cloud project private network.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			privateNetworkPrivate, err := cloudproject.GetNetworkPrivate(ctx, &cloudproject.GetNetworkPrivateArgs{
+//				ServiceName: "XXXXXX",
+//				NetworkId:   "XXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("private", privateNetworkPrivate)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNetworkPrivate(ctx *pulumi.Context, args *LookupNetworkPrivateArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPrivateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPrivateResult
@@ -23,21 +52,30 @@ func LookupNetworkPrivate(ctx *pulumi.Context, args *LookupNetworkPrivateArgs, o
 
 // A collection of arguments for invoking getNetworkPrivate.
 type LookupNetworkPrivateArgs struct {
-	NetworkId   string `pulumi:"networkId"`
+	// ID of the network
+	NetworkId string `pulumi:"networkId"`
+	// The ID of the public cloud project.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getNetworkPrivate.
 type LookupNetworkPrivateResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                    `pulumi:"id"`
-	Name        string                    `pulumi:"name"`
-	NetworkId   string                    `pulumi:"networkId"`
-	Regions     []GetNetworkPrivateRegion `pulumi:"regions"`
-	ServiceName string                    `pulumi:"serviceName"`
-	Status      string                    `pulumi:"status"`
-	Type        string                    `pulumi:"type"`
-	VlanId      float64                   `pulumi:"vlanId"`
+	Id string `pulumi:"id"`
+	// Name of the network
+	Name string `pulumi:"name"`
+	// ID of the network
+	NetworkId string `pulumi:"networkId"`
+	// Information about the private network in the openstack region
+	Regions []GetNetworkPrivateRegion `pulumi:"regions"`
+	// ID of the public cloud project
+	ServiceName string `pulumi:"serviceName"`
+	// Status of the network
+	Status string `pulumi:"status"`
+	// Type of the network
+	Type string `pulumi:"type"`
+	// VLAN ID of the network
+	VlanId float64 `pulumi:"vlanId"`
 }
 
 func LookupNetworkPrivateOutput(ctx *pulumi.Context, args LookupNetworkPrivateOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPrivateResultOutput {
@@ -51,7 +89,9 @@ func LookupNetworkPrivateOutput(ctx *pulumi.Context, args LookupNetworkPrivateOu
 
 // A collection of arguments for invoking getNetworkPrivate.
 type LookupNetworkPrivateOutputArgs struct {
-	NetworkId   pulumi.StringInput `pulumi:"networkId"`
+	// ID of the network
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The ID of the public cloud project.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -79,30 +119,37 @@ func (o LookupNetworkPrivateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the network
 func (o LookupNetworkPrivateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ID of the network
 func (o LookupNetworkPrivateResultOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
+// Information about the private network in the openstack region
 func (o LookupNetworkPrivateResultOutput) Regions() GetNetworkPrivateRegionArrayOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) []GetNetworkPrivateRegion { return v.Regions }).(GetNetworkPrivateRegionArrayOutput)
 }
 
+// ID of the public cloud project
 func (o LookupNetworkPrivateResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Status of the network
 func (o LookupNetworkPrivateResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Type of the network
 func (o LookupNetworkPrivateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// VLAN ID of the network
 func (o LookupNetworkPrivateResultOutput) VlanId() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) float64 { return v.VlanId }).(pulumi.Float64Output)
 }

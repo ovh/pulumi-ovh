@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information about a DBaas logs output opensearch index.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbaas.GetLogsOutputOpenSearchIndex(ctx, &dbaas.GetLogsOutputOpenSearchIndexArgs{
+//				Name:        "index-name",
+//				ServiceName: "ldp-xx-xxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupLogsOutputOpenSearchIndex(ctx *pulumi.Context, args *LookupLogsOutputOpenSearchIndexArgs, opts ...pulumi.InvokeOption) (*LookupLogsOutputOpenSearchIndexResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogsOutputOpenSearchIndexResult
@@ -23,26 +51,39 @@ func LookupLogsOutputOpenSearchIndex(ctx *pulumi.Context, args *LookupLogsOutput
 
 // A collection of arguments for invoking getLogsOutputOpenSearchIndex.
 type LookupLogsOutputOpenSearchIndexArgs struct {
-	Name        string `pulumi:"name"`
-	NbShard     *int   `pulumi:"nbShard"`
+	// Index name
+	Name string `pulumi:"name"`
+	// Number of shard
+	NbShard *int `pulumi:"nbShard"`
+	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getLogsOutputOpenSearchIndex.
 type LookupLogsOutputOpenSearchIndexResult struct {
-	AlertNotifyEnabled bool   `pulumi:"alertNotifyEnabled"`
-	CreatedAt          string `pulumi:"createdAt"`
-	CurrentSize        int    `pulumi:"currentSize"`
-	Description        string `pulumi:"description"`
+	// If set, notify when size is near 80, 90 or 100 % of its maximum capacity
+	AlertNotifyEnabled bool `pulumi:"alertNotifyEnabled"`
+	// Index creation
+	CreatedAt string `pulumi:"createdAt"`
+	// Current index size (in bytes)
+	CurrentSize int `pulumi:"currentSize"`
+	// Index description
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	IndexId     string `pulumi:"indexId"`
-	IsEditable  bool   `pulumi:"isEditable"`
-	MaxSize     int    `pulumi:"maxSize"`
-	Name        string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// Index ID
+	IndexId string `pulumi:"indexId"`
+	// Indicates if you are allowed to edit entry
+	IsEditable bool `pulumi:"isEditable"`
+	// Maximum index size (in bytes)
+	MaxSize int `pulumi:"maxSize"`
+	// Index name
+	Name string `pulumi:"name"`
+	// Number of shard
 	NbShard     int    `pulumi:"nbShard"`
 	ServiceName string `pulumi:"serviceName"`
-	UpdatedAt   string `pulumi:"updatedAt"`
+	// Index last update
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupLogsOutputOpenSearchIndexOutput(ctx *pulumi.Context, args LookupLogsOutputOpenSearchIndexOutputArgs, opts ...pulumi.InvokeOption) LookupLogsOutputOpenSearchIndexResultOutput {
@@ -56,8 +97,11 @@ func LookupLogsOutputOpenSearchIndexOutput(ctx *pulumi.Context, args LookupLogsO
 
 // A collection of arguments for invoking getLogsOutputOpenSearchIndex.
 type LookupLogsOutputOpenSearchIndexOutputArgs struct {
-	Name        pulumi.StringInput `pulumi:"name"`
-	NbShard     pulumi.IntPtrInput `pulumi:"nbShard"`
+	// Index name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Number of shard
+	NbShard pulumi.IntPtrInput `pulumi:"nbShard"`
+	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -80,18 +124,22 @@ func (o LookupLogsOutputOpenSearchIndexResultOutput) ToLookupLogsOutputOpenSearc
 	return o
 }
 
+// If set, notify when size is near 80, 90 or 100 % of its maximum capacity
 func (o LookupLogsOutputOpenSearchIndexResultOutput) AlertNotifyEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) bool { return v.AlertNotifyEnabled }).(pulumi.BoolOutput)
 }
 
+// Index creation
 func (o LookupLogsOutputOpenSearchIndexResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Current index size (in bytes)
 func (o LookupLogsOutputOpenSearchIndexResultOutput) CurrentSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) int { return v.CurrentSize }).(pulumi.IntOutput)
 }
 
+// Index description
 func (o LookupLogsOutputOpenSearchIndexResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -101,22 +149,27 @@ func (o LookupLogsOutputOpenSearchIndexResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Index ID
 func (o LookupLogsOutputOpenSearchIndexResultOutput) IndexId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.IndexId }).(pulumi.StringOutput)
 }
 
+// Indicates if you are allowed to edit entry
 func (o LookupLogsOutputOpenSearchIndexResultOutput) IsEditable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) bool { return v.IsEditable }).(pulumi.BoolOutput)
 }
 
+// Maximum index size (in bytes)
 func (o LookupLogsOutputOpenSearchIndexResultOutput) MaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) int { return v.MaxSize }).(pulumi.IntOutput)
 }
 
+// Index name
 func (o LookupLogsOutputOpenSearchIndexResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Number of shard
 func (o LookupLogsOutputOpenSearchIndexResultOutput) NbShard() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) int { return v.NbShard }).(pulumi.IntOutput)
 }
@@ -125,6 +178,7 @@ func (o LookupLogsOutputOpenSearchIndexResultOutput) ServiceName() pulumi.String
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Index last update
 func (o LookupLogsOutputOpenSearchIndexResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputOpenSearchIndexResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

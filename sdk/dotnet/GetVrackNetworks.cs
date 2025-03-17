@@ -11,12 +11,78 @@ namespace Pulumi.Ovh
 {
     public static class GetVrackNetworks
     {
+        /// <summary>
+        /// Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lbNetworks = Ovh.GetVrackNetworks.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Subnet = "10.0.0.0/24",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetVrackNetworksResult> InvokeAsync(GetVrackNetworksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lbNetworks = Ovh.GetVrackNetworks.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Subnet = "10.0.0.0/24",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVrackNetworksResult> Invoke(GetVrackNetworksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var lbNetworks = Ovh.GetVrackNetworks.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Subnet = "10.0.0.0/24",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetVrackNetworksResult> Invoke(GetVrackNetworksInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrackNetworksResult>("ovh:index/getVrackNetworks:getVrackNetworks", args ?? new GetVrackNetworksInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +90,21 @@ namespace Pulumi.Ovh
 
     public sealed class GetVrackNetworksArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Filters networks on the subnet.
+        /// </summary>
         [Input("subnet")]
         public string? Subnet { get; set; }
 
+        /// <summary>
+        /// Filters networks on the vlan id.
+        /// </summary>
         [Input("vlanId")]
         public int? VlanId { get; set; }
 
@@ -41,12 +116,21 @@ namespace Pulumi.Ovh
 
     public sealed class GetVrackNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Filters networks on the subnet.
+        /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
 
+        /// <summary>
+        /// Filters networks on the vlan id.
+        /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
 
@@ -64,6 +148,9 @@ namespace Pulumi.Ovh
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The list of vrack network ids.
+        /// </summary>
         public readonly ImmutableArray<int> Results;
         public readonly string ServiceName;
         public readonly string? Subnet;

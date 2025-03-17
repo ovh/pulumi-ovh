@@ -61,6 +61,17 @@ class HttpFarmProbe(dict):
                  pattern: Optional[str] = None,
                  port: Optional[int] = None,
                  url: Optional[str] = None):
+        """
+        :param str type: Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        :param bool force_ssl: Force use of SSL (TLS)
+        :param int interval: probe interval, Value between 30 and 3600 seconds, default 30
+        :param str match: What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        :param str method: HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        :param bool negate: Negate probe result
+        :param str pattern: Pattern to match against `match`
+        :param int port: Port for backends to receive traffic on.
+        :param str url: URL for HTTP probe type.
+        """
         pulumi.set(__self__, "type", type)
         if force_ssl is not None:
             pulumi.set(__self__, "force_ssl", force_ssl)
@@ -82,46 +93,73 @@ class HttpFarmProbe(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="forceSsl")
     def force_ssl(self) -> Optional[bool]:
+        """
+        Force use of SSL (TLS)
+        """
         return pulumi.get(self, "force_ssl")
 
     @property
     @pulumi.getter
     def interval(self) -> Optional[int]:
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter
     def match(self) -> Optional[str]:
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def method(self) -> Optional[str]:
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
         return pulumi.get(self, "method")
 
     @property
     @pulumi.getter
     def negate(self) -> Optional[bool]:
+        """
+        Negate probe result
+        """
         return pulumi.get(self, "negate")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        Pattern to match against `match`
+        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        Port for backends to receive traffic on.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        URL for HTTP probe type.
+        """
         return pulumi.get(self, "url")
 
 
@@ -196,8 +234,8 @@ class HttpRouteRule(dict):
                  rule_id: Optional[int] = None,
                  sub_field: Optional[str] = None):
         """
-        :param str field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
-        :param str match: Matching operator. Not all operators are available for all fields. See "/availableRules"
+        :param str field: Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        :param str match: Matching operator. Not all operators are available for all fields. See "availableRules"
         :param bool negate: Invert the matching operator effect
         :param str pattern: Value to match against this match. Interpretation if this field depends on the match and field
         :param int rule_id: Id of your rule
@@ -220,7 +258,7 @@ class HttpRouteRule(dict):
     @pulumi.getter
     def field(self) -> Optional[str]:
         """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         """
         return pulumi.get(self, "field")
 
@@ -228,7 +266,7 @@ class HttpRouteRule(dict):
     @pulumi.getter
     def match(self) -> Optional[str]:
         """
-        Matching operator. Not all operators are available for all fields. See "/availableRules"
+        Matching operator. Not all operators are available for all fields. See "availableRules"
         """
         return pulumi.get(self, "match")
 
@@ -716,6 +754,17 @@ class TcpFarmProbe(dict):
                  pattern: Optional[str] = None,
                  port: Optional[int] = None,
                  url: Optional[str] = None):
+        """
+        :param str type: Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        :param bool force_ssl: Force use of SSL (TLS)
+        :param int interval: probe interval, Value between 30 and 3600 seconds, default 30
+        :param str match: What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        :param str method: HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        :param bool negate: Negate probe result
+        :param str pattern: Pattern to match against `match`
+        :param int port: Port for backends to receive traffic on.
+        :param str url: URL for HTTP probe type.
+        """
         pulumi.set(__self__, "type", type)
         if force_ssl is not None:
             pulumi.set(__self__, "force_ssl", force_ssl)
@@ -737,46 +786,73 @@ class TcpFarmProbe(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="forceSsl")
     def force_ssl(self) -> Optional[bool]:
+        """
+        Force use of SSL (TLS)
+        """
         return pulumi.get(self, "force_ssl")
 
     @property
     @pulumi.getter
     def interval(self) -> Optional[int]:
+        """
+        probe interval, Value between 30 and 3600 seconds, default 30
+        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter
     def match(self) -> Optional[str]:
+        """
+        What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def method(self) -> Optional[str]:
+        """
+        HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+        """
         return pulumi.get(self, "method")
 
     @property
     @pulumi.getter
     def negate(self) -> Optional[bool]:
+        """
+        Negate probe result
+        """
         return pulumi.get(self, "negate")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        Pattern to match against `match`
+        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        Port for backends to receive traffic on.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        URL for HTTP probe type.
+        """
         return pulumi.get(self, "url")
 
 
@@ -787,7 +863,7 @@ class TcpRouteAction(dict):
                  target: Optional[str] = None):
         """
         :param str type: Action to trigger if all the rules of this route matches
-        :param str target: Farm ID for "farm" action type, empty for others
+        :param str target: Farm ID for "farm" action type, empty for others.
         """
         pulumi.set(__self__, "type", type)
         if target is not None:
@@ -805,7 +881,7 @@ class TcpRouteAction(dict):
     @pulumi.getter
     def target(self) -> Optional[str]:
         """
-        Farm ID for "farm" action type, empty for others
+        Farm ID for "farm" action type, empty for others.
         """
         return pulumi.get(self, "target")
 
@@ -839,8 +915,8 @@ class TcpRouteRule(dict):
                  rule_id: Optional[int] = None,
                  sub_field: Optional[str] = None):
         """
-        :param str field: Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
-        :param str match: Matching operator. Not all operators are available for all fields. See "/availableRules"
+        :param str field: Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        :param str match: Matching operator. Not all operators are available for all fields. See "availableRules"
         :param bool negate: Invert the matching operator effect
         :param str pattern: Value to match against this match. Interpretation if this field depends on the match and field
         :param int rule_id: Id of your rule
@@ -863,7 +939,7 @@ class TcpRouteRule(dict):
     @pulumi.getter
     def field(self) -> Optional[str]:
         """
-        Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         """
         return pulumi.get(self, "field")
 
@@ -871,7 +947,7 @@ class TcpRouteRule(dict):
     @pulumi.getter
     def match(self) -> Optional[str]:
         """
-        Matching operator. Not all operators are available for all fields. See "/availableRules"
+        Matching operator. Not all operators are available for all fields. See "availableRules"
         """
         return pulumi.get(self, "match")
 
@@ -913,17 +989,27 @@ class GetIpLoadBalancingOrderableZoneResult(dict):
     def __init__(__self__, *,
                  name: str,
                  plan_code: str):
+        """
+        :param str name: The zone three letter code
+        :param str plan_code: The billing planCode for this zone
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "plan_code", plan_code)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The zone three letter code
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
+        """
+        The billing planCode for this zone
+        """
         return pulumi.get(self, "plan_code")
 
 

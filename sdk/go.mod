@@ -1,4 +1,4 @@
-module github.com/ovh/pulumi-ovh/sdk
+module github.com/ovh/pulumi-ovh/sdk/v2
 
 go 1.22
 

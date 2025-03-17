@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+ */
 export function getContainerRegistryIPRestrictionsRegistry(args: GetContainerRegistryIPRestrictionsRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryIPRestrictionsRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", {
@@ -16,7 +19,13 @@ export function getContainerRegistryIPRestrictionsRegistry(args: GetContainerReg
  * A collection of arguments for invoking getContainerRegistryIPRestrictionsRegistry.
  */
 export interface GetContainerRegistryIPRestrictionsRegistryArgs {
+    /**
+     * The id of the Managed Private Registry.
+     */
     registryId: string;
+    /**
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -28,10 +37,22 @@ export interface GetContainerRegistryIPRestrictionsRegistryResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * IP restrictions applied on artifact manager component.
+     */
     readonly ipRestrictions: {[key: string]: string}[];
+    /**
+     * The ID of the Managed Private Registry.
+     */
     readonly registryId: string;
+    /**
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     readonly serviceName: string;
 }
+/**
+ * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+ */
 export function getContainerRegistryIPRestrictionsRegistryOutput(args: GetContainerRegistryIPRestrictionsRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerRegistryIPRestrictionsRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", {
@@ -44,6 +65,12 @@ export function getContainerRegistryIPRestrictionsRegistryOutput(args: GetContai
  * A collection of arguments for invoking getContainerRegistryIPRestrictionsRegistry.
  */
 export interface GetContainerRegistryIPRestrictionsRegistryOutputArgs {
+    /**
+     * The id of the Managed Private Registry.
+     */
     registryId: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

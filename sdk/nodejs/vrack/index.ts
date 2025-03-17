@@ -35,25 +35,25 @@ export type IpLoadbalancing = import("./ipLoadbalancing").IpLoadbalancing;
 export const IpLoadbalancing: typeof import("./ipLoadbalancing").IpLoadbalancing = null as any;
 utilities.lazyLoad(exports, ["IpLoadbalancing"], () => require("./ipLoadbalancing"));
 
-export { Ipv6AddressArgs, Ipv6AddressState } from "./ipv6Address";
-export type Ipv6Address = import("./ipv6Address").Ipv6Address;
-export const Ipv6Address: typeof import("./ipv6Address").Ipv6Address = null as any;
-utilities.lazyLoad(exports, ["Ipv6Address"], () => require("./ipv6Address"));
+export { IpV6Args, IpV6State } from "./ipV6";
+export type IpV6 = import("./ipV6").IpV6;
+export const IpV6: typeof import("./ipV6").IpV6 = null as any;
+utilities.lazyLoad(exports, ["IpV6"], () => require("./ipV6"));
 
-export { OVHCloudConnectArgs, OVHCloudConnectState } from "./ovhcloudConnect";
-export type OVHCloudConnect = import("./ovhcloudConnect").OVHCloudConnect;
-export const OVHCloudConnect: typeof import("./ovhcloudConnect").OVHCloudConnect = null as any;
-utilities.lazyLoad(exports, ["OVHCloudConnect"], () => require("./ovhcloudConnect"));
-
-export { ServicesArgs, ServicesState } from "./services";
-export type Services = import("./services").Services;
-export const Services: typeof import("./services").Services = null as any;
-utilities.lazyLoad(exports, ["Services"], () => require("./services"));
+export { OVHcloudConnectArgs, OVHcloudConnectState } from "./ovhcloudConnect";
+export type OVHcloudConnect = import("./ovhcloudConnect").OVHcloudConnect;
+export const OVHcloudConnect: typeof import("./ovhcloudConnect").OVHcloudConnect = null as any;
+utilities.lazyLoad(exports, ["OVHcloudConnect"], () => require("./ovhcloudConnect"));
 
 export { VrackArgs, VrackState } from "./vrack";
 export type Vrack = import("./vrack").Vrack;
 export const Vrack: typeof import("./vrack").Vrack = null as any;
 utilities.lazyLoad(exports, ["Vrack"], () => require("./vrack"));
+
+export { VrackservicesArgs, VrackservicesState } from "./vrackservices";
+export type Vrackservices = import("./vrackservices").Vrackservices;
+export const Vrackservices: typeof import("./vrackservices").Vrackservices = null as any;
+utilities.lazyLoad(exports, ["Vrackservices"], () => require("./vrackservices"));
 
 
 const _module = {
@@ -70,14 +70,14 @@ const _module = {
                 return new IpAddress(name, <any>undefined, { urn })
             case "ovh:Vrack/ipLoadbalancing:IpLoadbalancing":
                 return new IpLoadbalancing(name, <any>undefined, { urn })
-            case "ovh:Vrack/ipv6Address:Ipv6Address":
-                return new Ipv6Address(name, <any>undefined, { urn })
-            case "ovh:Vrack/oVHCloudConnect:OVHCloudConnect":
-                return new OVHCloudConnect(name, <any>undefined, { urn })
-            case "ovh:Vrack/services:Services":
-                return new Services(name, <any>undefined, { urn })
+            case "ovh:Vrack/ipV6:IpV6":
+                return new IpV6(name, <any>undefined, { urn })
+            case "ovh:Vrack/oVHcloudConnect:OVHcloudConnect":
+                return new OVHcloudConnect(name, <any>undefined, { urn })
             case "ovh:Vrack/vrack:Vrack":
                 return new Vrack(name, <any>undefined, { urn })
+            case "ovh:Vrack/vrackservices:Vrackservices":
+                return new Vrackservices(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -88,7 +88,7 @@ pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServer", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServerInterface", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipAddress", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipLoadbalancing", _module)
-pulumi.runtime.registerResourceModule("ovh", "Vrack/ipv6Address", _module)
-pulumi.runtime.registerResourceModule("ovh", "Vrack/oVHCloudConnect", _module)
-pulumi.runtime.registerResourceModule("ovh", "Vrack/services", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/ipV6", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/oVHcloudConnect", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/vrack", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/vrackservices", _module)

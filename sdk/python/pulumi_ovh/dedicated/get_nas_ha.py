@@ -67,26 +67,41 @@ class GetNasHAResult:
     @property
     @pulumi.getter(name="NasHAURN")
     def nas_haurn(self) -> str:
+        """
+        the URN of the HA-NAS instance
+        """
         return pulumi.get(self, "nas_haurn")
 
     @property
     @pulumi.getter(name="canCreatePartition")
     def can_create_partition(self) -> bool:
+        """
+        True, if partition creation is allowed on this HA-NAS
+        """
         return pulumi.get(self, "can_create_partition")
 
     @property
     @pulumi.getter(name="customName")
     def custom_name(self) -> str:
+        """
+        The name you give to the HA-NAS
+        """
         return pulumi.get(self, "custom_name")
 
     @property
     @pulumi.getter
     def datacenter(self) -> str:
+        """
+        area of HA-NAS
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
+        """
+        the disk type of the HA-NAS. Possible values are: `hdd`, `ssd`, `nvme`
+        """
         return pulumi.get(self, "disk_type")
 
     @property
@@ -100,31 +115,49 @@ class GetNasHAResult:
     @property
     @pulumi.getter
     def ip(self) -> str:
+        """
+        Access IP of HA-NAS
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter
     def monitored(self) -> bool:
+        """
+        Send an email to customer if any issue is detected
+        """
         return pulumi.get(self, "monitored")
 
     @property
     @pulumi.getter(name="partitionsLists")
     def partitions_lists(self) -> Sequence[str]:
+        """
+        the list of the HA-NAS partitions name
+        """
         return pulumi.get(self, "partitions_lists")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The storage service name
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="zpoolCapacity")
     def zpool_capacity(self) -> float:
+        """
+        percentage of HA-NAS space used in %
+        """
         return pulumi.get(self, "zpool_capacity")
 
     @property
     @pulumi.getter(name="zpoolSize")
     def zpool_size(self) -> float:
+        """
+        the size of the HA-NAS in GB
+        """
         return pulumi.get(self, "zpool_size")
 
 
@@ -151,7 +184,19 @@ class AwaitableGetNasHAResult(GetNasHAResult):
 def get_nas_ha(service_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNasHAResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated HA-NAS.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_nas_ha = ovh.Dedicated.get_nas_ha(service_name="zpool-12345")
+    ```
+
+
+    :param str service_name: The service_name of your dedicated HA-NAS.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -174,7 +219,19 @@ def get_nas_ha(service_name: Optional[str] = None,
 def get_nas_ha_output(service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNasHAResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated HA-NAS.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_nas_ha = ovh.Dedicated.get_nas_ha(service_name="zpool-12345")
+    ```
+
+
+    :param str service_name: The service_name of your dedicated HA-NAS.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetRancherVersion
     {
+        /// <summary>
+        /// Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var versions = Ovh.CloudProject.GetRancherVersion.Invoke(new()
+        ///     {
+        ///         ProjectId = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRancherVersionResult> InvokeAsync(GetRancherVersionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRancherVersionResult>("ovh:CloudProject/getRancherVersion:getRancherVersion", args ?? new GetRancherVersionArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var versions = Ovh.CloudProject.GetRancherVersion.Invoke(new()
+        ///     {
+        ///         ProjectId = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRancherVersionResult> Invoke(GetRancherVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRancherVersionResult>("ovh:CloudProject/getRancherVersion:getRancherVersion", args ?? new GetRancherVersionInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var versions = Ovh.CloudProject.GetRancherVersion.Invoke(new()
+        ///     {
+        ///         ProjectId = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRancherVersionResult> Invoke(GetRancherVersionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRancherVersionResult>("ovh:CloudProject/getRancherVersion:getRancherVersion", args ?? new GetRancherVersionInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRancherVersionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Project ID
+        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRancherVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Project ID
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -52,6 +121,9 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Project ID
+        /// </summary>
         public readonly string ProjectId;
         public readonly ImmutableArray<Outputs.GetRancherVersionVersionResult> Versions;
 

@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class ProjectOrderDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// description
+        /// A description associated with the user.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

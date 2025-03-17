@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/user:User my_user service_name/engine/cluster_id/id
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -33,32 +44,37 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Date of the creation of the user
+     * Date of the creation of the user.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the engine of the service
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * Name of the user
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Current status of the user
+     * Current status of the user.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -115,32 +131,37 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Date of the creation of the user
+     * Date of the creation of the user.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the engine of the service
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
      */
     engine?: pulumi.Input<string>;
     /**
-     * Name of the user
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
      */
     name?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     password?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Current status of the user
+     * Current status of the user.
      */
     status?: pulumi.Input<string>;
 }
@@ -150,20 +171,25 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the engine of the service
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
      */
     engine: pulumi.Input<string>;
     /**
-     * Name of the user
+     * Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user. The "Grafana" engine only allows the "avnadmin" mapping.
      */
     name?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

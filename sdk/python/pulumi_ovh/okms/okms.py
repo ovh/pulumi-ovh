@@ -28,7 +28,7 @@ class OkmsArgs:
         The set of arguments for constructing a Okms resource.
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[str] region: KMS region
-        :param pulumi.Input[str] display_name: Set the name displayed in Manager for this KMS
+        :param pulumi.Input[str] display_name: (String) Resource display name
         """
         pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
         pulumi.set(__self__, "region", region)
@@ -63,7 +63,7 @@ class OkmsArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the name displayed in Manager for this KMS
+        (String) Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -85,14 +85,14 @@ class _OkmsState:
                  swagger_endpoint: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Okms resources.
-        :param pulumi.Input[str] display_name: Set the name displayed in Manager for this KMS
-        :param pulumi.Input['OkmsIamArgs'] iam: IAM resource metadata
-        :param pulumi.Input[str] kmip_endpoint: KMS kmip API endpoint
+        :param pulumi.Input[str] display_name: (String) Resource display name
+        :param pulumi.Input['OkmsIamArgs'] iam: (Attributes) IAM resource metadata (see below for nested schema)
+        :param pulumi.Input[str] kmip_endpoint: (String) KMS kmip API endpoint
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] public_ca: KMS public CA (Certificate Authority)
+        :param pulumi.Input[str] public_ca: (String) KMS public CA (Certificate Authority)
         :param pulumi.Input[str] region: KMS region
-        :param pulumi.Input[str] rest_endpoint: KMS rest API endpoint
-        :param pulumi.Input[str] swagger_endpoint: KMS rest API swagger UI
+        :param pulumi.Input[str] rest_endpoint: (String) KMS rest API endpoint
+        :param pulumi.Input[str] swagger_endpoint: (String) KMS rest API swagger UI
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -115,7 +115,7 @@ class _OkmsState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the name displayed in Manager for this KMS
+        (String) Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -127,7 +127,7 @@ class _OkmsState:
     @pulumi.getter
     def iam(self) -> Optional[pulumi.Input['OkmsIamArgs']]:
         """
-        IAM resource metadata
+        (Attributes) IAM resource metadata (see below for nested schema)
         """
         return pulumi.get(self, "iam")
 
@@ -139,7 +139,7 @@ class _OkmsState:
     @pulumi.getter(name="kmipEndpoint")
     def kmip_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        KMS kmip API endpoint
+        (String) KMS kmip API endpoint
         """
         return pulumi.get(self, "kmip_endpoint")
 
@@ -163,7 +163,7 @@ class _OkmsState:
     @pulumi.getter(name="publicCa")
     def public_ca(self) -> Optional[pulumi.Input[str]]:
         """
-        KMS public CA (Certificate Authority)
+        (String) KMS public CA (Certificate Authority)
         """
         return pulumi.get(self, "public_ca")
 
@@ -187,7 +187,7 @@ class _OkmsState:
     @pulumi.getter(name="restEndpoint")
     def rest_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        KMS rest API endpoint
+        (String) KMS rest API endpoint
         """
         return pulumi.get(self, "rest_endpoint")
 
@@ -199,7 +199,7 @@ class _OkmsState:
     @pulumi.getter(name="swaggerEndpoint")
     def swagger_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        KMS rest API swagger UI
+        (String) KMS rest API swagger UI
         """
         return pulumi.get(self, "swagger_endpoint")
 
@@ -218,10 +218,21 @@ class Okms(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Okms resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        new_kms = ovh.okms.Okms("newKms",
+            display_name="terraformed KMS",
+            ovh_subsidiary="FR",
+            region="eu-west-rbx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Set the name displayed in Manager for this KMS
+        :param pulumi.Input[str] display_name: (String) Resource display name
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[str] region: KMS region
         """
@@ -232,7 +243,18 @@ class Okms(pulumi.CustomResource):
                  args: OkmsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Okms resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        new_kms = ovh.okms.Okms("newKms",
+            display_name="terraformed KMS",
+            ovh_subsidiary="FR",
+            region="eu-west-rbx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param OkmsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -297,14 +319,14 @@ class Okms(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Set the name displayed in Manager for this KMS
-        :param pulumi.Input[Union['OkmsIamArgs', 'OkmsIamArgsDict']] iam: IAM resource metadata
-        :param pulumi.Input[str] kmip_endpoint: KMS kmip API endpoint
+        :param pulumi.Input[str] display_name: (String) Resource display name
+        :param pulumi.Input[Union['OkmsIamArgs', 'OkmsIamArgsDict']] iam: (Attributes) IAM resource metadata (see below for nested schema)
+        :param pulumi.Input[str] kmip_endpoint: (String) KMS kmip API endpoint
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] public_ca: KMS public CA (Certificate Authority)
+        :param pulumi.Input[str] public_ca: (String) KMS public CA (Certificate Authority)
         :param pulumi.Input[str] region: KMS region
-        :param pulumi.Input[str] rest_endpoint: KMS rest API endpoint
-        :param pulumi.Input[str] swagger_endpoint: KMS rest API swagger UI
+        :param pulumi.Input[str] rest_endpoint: (String) KMS rest API endpoint
+        :param pulumi.Input[str] swagger_endpoint: (String) KMS rest API swagger UI
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -324,7 +346,7 @@ class Okms(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Set the name displayed in Manager for this KMS
+        (String) Resource display name
         """
         return pulumi.get(self, "display_name")
 
@@ -332,7 +354,7 @@ class Okms(pulumi.CustomResource):
     @pulumi.getter
     def iam(self) -> pulumi.Output['outputs.OkmsIam']:
         """
-        IAM resource metadata
+        (Attributes) IAM resource metadata (see below for nested schema)
         """
         return pulumi.get(self, "iam")
 
@@ -340,7 +362,7 @@ class Okms(pulumi.CustomResource):
     @pulumi.getter(name="kmipEndpoint")
     def kmip_endpoint(self) -> pulumi.Output[str]:
         """
-        KMS kmip API endpoint
+        (String) KMS kmip API endpoint
         """
         return pulumi.get(self, "kmip_endpoint")
 
@@ -356,7 +378,7 @@ class Okms(pulumi.CustomResource):
     @pulumi.getter(name="publicCa")
     def public_ca(self) -> pulumi.Output[str]:
         """
-        KMS public CA (Certificate Authority)
+        (String) KMS public CA (Certificate Authority)
         """
         return pulumi.get(self, "public_ca")
 
@@ -372,7 +394,7 @@ class Okms(pulumi.CustomResource):
     @pulumi.getter(name="restEndpoint")
     def rest_endpoint(self) -> pulumi.Output[str]:
         """
-        KMS rest API endpoint
+        (String) KMS rest API endpoint
         """
         return pulumi.get(self, "rest_endpoint")
 
@@ -380,7 +402,7 @@ class Okms(pulumi.CustomResource):
     @pulumi.getter(name="swaggerEndpoint")
     def swagger_endpoint(self) -> pulumi.Output[str]:
         """
-        KMS rest API swagger UI
+        (String) KMS rest API swagger UI
         """
         return pulumi.get(self, "swagger_endpoint")
 

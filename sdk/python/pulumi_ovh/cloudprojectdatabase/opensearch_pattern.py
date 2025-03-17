@@ -25,9 +25,11 @@ class OpensearchPatternArgs:
                  max_index_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a OpensearchPattern resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] pattern: Pattern format
-        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] pattern: Pattern format.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "pattern", pattern)
@@ -39,7 +41,7 @@ class OpensearchPatternArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -51,7 +53,7 @@ class OpensearchPatternArgs:
     @pulumi.getter
     def pattern(self) -> pulumi.Input[str]:
         """
-        Pattern format
+        Pattern format.
         """
         return pulumi.get(self, "pattern")
 
@@ -62,6 +64,10 @@ class OpensearchPatternArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -72,7 +78,7 @@ class OpensearchPatternArgs:
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of index for this pattern
+        Maximum number of index for this pattern.
         """
         return pulumi.get(self, "max_index_count")
 
@@ -90,9 +96,11 @@ class _OpensearchPatternState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OpensearchPattern resources.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern
-        :param pulumi.Input[str] pattern: Pattern format
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
+        :param pulumi.Input[str] pattern: Pattern format.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -107,7 +115,7 @@ class _OpensearchPatternState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -119,7 +127,7 @@ class _OpensearchPatternState:
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of index for this pattern
+        Maximum number of index for this pattern.
         """
         return pulumi.get(self, "max_index_count")
 
@@ -131,7 +139,7 @@ class _OpensearchPatternState:
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
         """
-        Pattern format
+        Pattern format.
         """
         return pulumi.get(self, "pattern")
 
@@ -142,6 +150,10 @@ class _OpensearchPatternState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -160,12 +172,41 @@ class OpensearchPattern(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a OpensearchPattern resource with the given unique name, props, and options.
+        Creates a pattern for a opensearch cluster associated with a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="opensearch",
+            id="ZZZ")
+        pattern = ovh.cloud_project_database.OpensearchPattern("pattern",
+            service_name=opensearch.service_name,
+            cluster_id=opensearch.id,
+            max_index_count=2,
+            pattern="logs_*")
+        ```
+
+        ## Import
+
+        OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern
-        :param pulumi.Input[str] pattern: Pattern format
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
+        :param pulumi.Input[str] pattern: Pattern format.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -174,7 +215,34 @@ class OpensearchPattern(pulumi.CustomResource):
                  args: OpensearchPatternArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OpensearchPattern resource with the given unique name, props, and options.
+        Creates a pattern for a opensearch cluster associated with a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        opensearch = ovh.CloudProjectDatabase.get_database(service_name="XXX",
+            engine="opensearch",
+            id="ZZZ")
+        pattern = ovh.cloud_project_database.OpensearchPattern("pattern",
+            service_name=opensearch.service_name,
+            cluster_id=opensearch.id,
+            max_index_count=2,
+            pattern="logs_*")
+        ```
+
+        ## Import
+
+        OVHcloud Managed opensearch clusters patterns can be imported using the `service_name`, `cluster_id` and `id` of the pattern, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern my_pattern service_name/cluster_id/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param OpensearchPatternArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -234,9 +302,11 @@ class OpensearchPattern(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern
-        :param pulumi.Input[str] pattern: Pattern format
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
+        :param pulumi.Input[str] pattern: Pattern format.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -252,7 +322,7 @@ class OpensearchPattern(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -260,7 +330,7 @@ class OpensearchPattern(pulumi.CustomResource):
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum number of index for this pattern
+        Maximum number of index for this pattern.
         """
         return pulumi.get(self, "max_index_count")
 
@@ -268,12 +338,16 @@ class OpensearchPattern(pulumi.CustomResource):
     @pulumi.getter
     def pattern(self) -> pulumi.Output[str]:
         """
-        Pattern format
+        Pattern format.
         """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 

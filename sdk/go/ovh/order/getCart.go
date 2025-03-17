@@ -7,10 +7,42 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to create a temporary order cart to retrieve information order cart products.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myAccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = order.GetCart(ctx, &order.GetCartArgs{
+//				OvhSubsidiary: myAccount.OvhSubsidiary,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCart(ctx *pulumi.Context, args *GetCartArgs, opts ...pulumi.InvokeOption) (*GetCartResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCartResult
@@ -23,23 +55,30 @@ func GetCart(ctx *pulumi.Context, args *GetCartArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getCart.
 type GetCartArgs struct {
-	Assign        *bool   `pulumi:"assign"`
-	Description   *string `pulumi:"description"`
-	Expire        *string `pulumi:"expire"`
-	OvhSubsidiary string  `pulumi:"ovhSubsidiary"`
+	// Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+	Assign *bool `pulumi:"assign"`
+	// Description of your cart
+	Description *string `pulumi:"description"`
+	// Expiration time (format: 2006-01-02T15:04:05+00:00)
+	Expire *string `pulumi:"expire"`
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
 }
 
 // A collection of values returned by getCart.
 type GetCartResult struct {
-	Assign      *bool   `pulumi:"assign"`
+	Assign *bool `pulumi:"assign"`
+	// Cart identifier
 	CartId      string  `pulumi:"cartId"`
 	Description *string `pulumi:"description"`
 	Expire      string  `pulumi:"expire"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Items of your cart
 	Items         []int  `pulumi:"items"`
 	OvhSubsidiary string `pulumi:"ovhSubsidiary"`
-	ReadOnly      bool   `pulumi:"readOnly"`
+	// Indicates if the cart has already been validated
+	ReadOnly bool `pulumi:"readOnly"`
 }
 
 func GetCartOutput(ctx *pulumi.Context, args GetCartOutputArgs, opts ...pulumi.InvokeOption) GetCartResultOutput {
@@ -53,10 +92,14 @@ func GetCartOutput(ctx *pulumi.Context, args GetCartOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getCart.
 type GetCartOutputArgs struct {
-	Assign        pulumi.BoolPtrInput   `pulumi:"assign"`
-	Description   pulumi.StringPtrInput `pulumi:"description"`
-	Expire        pulumi.StringPtrInput `pulumi:"expire"`
-	OvhSubsidiary pulumi.StringInput    `pulumi:"ovhSubsidiary"`
+	// Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+	Assign pulumi.BoolPtrInput `pulumi:"assign"`
+	// Description of your cart
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Expiration time (format: 2006-01-02T15:04:05+00:00)
+	Expire pulumi.StringPtrInput `pulumi:"expire"`
+	// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+	OvhSubsidiary pulumi.StringInput `pulumi:"ovhSubsidiary"`
 }
 
 func (GetCartOutputArgs) ElementType() reflect.Type {
@@ -82,6 +125,7 @@ func (o GetCartResultOutput) Assign() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCartResult) *bool { return v.Assign }).(pulumi.BoolPtrOutput)
 }
 
+// Cart identifier
 func (o GetCartResultOutput) CartId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartResult) string { return v.CartId }).(pulumi.StringOutput)
 }
@@ -99,6 +143,7 @@ func (o GetCartResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Items of your cart
 func (o GetCartResultOutput) Items() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetCartResult) []int { return v.Items }).(pulumi.IntArrayOutput)
 }
@@ -107,6 +152,7 @@ func (o GetCartResultOutput) OvhSubsidiary() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCartResult) string { return v.OvhSubsidiary }).(pulumi.StringOutput)
 }
 
+// Indicates if the cart has already been validated
 func (o GetCartResultOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCartResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }

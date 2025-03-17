@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const integration = ovh.CloudProjectDatabase.getDatabaseIntegration({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ *     id: "UUU",
+ * });
+ * export const integrationType = integration.then(integration => integration.type);
+ * ```
+ */
 export function getDatabaseIntegration(args: GetDatabaseIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseIntegrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", {
@@ -18,9 +36,23 @@ export function getDatabaseIntegration(args: GetDatabaseIntegrationArgs, opts?: 
  * A collection of arguments for invoking getDatabaseIntegration.
  */
 export interface GetDatabaseIntegrationArgs {
+    /**
+     * Cluster ID.
+     */
     clusterId: string;
+    /**
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * All engines available exept `mongodb`
+     */
     engine: string;
+    /**
+     * Integration ID
+     */
     id: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -28,16 +60,61 @@ export interface GetDatabaseIntegrationArgs {
  * A collection of values returned by getDatabaseIntegration.
  */
 export interface GetDatabaseIntegrationResult {
+    /**
+     * See Argument Reference above.
+     */
     readonly clusterId: string;
+    /**
+     * ID of the destination service.
+     */
     readonly destinationServiceId: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly engine: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly id: string;
+    /**
+     * Parameters for the integration.
+     */
     readonly parameters: {[key: string]: string};
+    /**
+     * See Argument Reference above.
+     */
     readonly serviceName: string;
+    /**
+     * ID of the source service.
+     */
     readonly sourceServiceId: string;
+    /**
+     * Current status of the integration.
+     */
     readonly status: string;
+    /**
+     * Type of the integration.
+     */
     readonly type: string;
 }
+/**
+ * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const integration = ovh.CloudProjectDatabase.getDatabaseIntegration({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     clusterId: "ZZZ",
+ *     id: "UUU",
+ * });
+ * export const integrationType = integration.then(integration => integration.type);
+ * ```
+ */
 export function getDatabaseIntegrationOutput(args: GetDatabaseIntegrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseIntegrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", {
@@ -52,8 +129,22 @@ export function getDatabaseIntegrationOutput(args: GetDatabaseIntegrationOutputA
  * A collection of arguments for invoking getDatabaseIntegration.
  */
 export interface GetDatabaseIntegrationOutputArgs {
+    /**
+     * Cluster ID.
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * All engines available exept `mongodb`
+     */
     engine: pulumi.Input<string>;
+    /**
+     * Integration ID
+     */
     id: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

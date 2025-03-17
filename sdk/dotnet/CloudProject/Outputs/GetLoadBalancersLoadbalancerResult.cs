@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetLoadBalancersLoadbalancerResult
     {
         /// <summary>
-        /// The UTC date and timestamp when the loadbalancer was created
+        /// Date of creation of the loadbalancer
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string FlavorId;
         /// <summary>
-        /// Information about floating IP
+        /// Information about the floating IP
         /// </summary>
         public readonly Outputs.GetLoadBalancersLoadbalancerFloatingIpResult FloatingIp;
         /// <summary>
-        /// ID of the loadbalancer
+        /// ID of the floating IP
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// UTC date and timestamp when the loadbalancer was updated
+        /// Last update date of the loadbalancer
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>

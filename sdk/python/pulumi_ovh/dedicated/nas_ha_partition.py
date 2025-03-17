@@ -26,6 +26,11 @@ class NasHAPartitionArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NasHAPartition resource.
+        :param pulumi.Input[str] protocol: one of "NFS", "CIFS" or "NFS_CIFS"
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[int] size: size of the partition in GB
+        :param pulumi.Input[str] description: A brief description of the partition
+        :param pulumi.Input[str] name: name of the partition
         """
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "service_name", service_name)
@@ -38,6 +43,9 @@ class NasHAPartitionArgs:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
+        """
+        one of "NFS", "CIFS" or "NFS_CIFS"
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -47,6 +55,9 @@ class NasHAPartitionArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -56,6 +67,9 @@ class NasHAPartitionArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
+        """
+        size of the partition in GB
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -65,6 +79,9 @@ class NasHAPartitionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of the partition
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -74,6 +91,9 @@ class NasHAPartitionArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the partition
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -93,6 +113,13 @@ class _NasHAPartitionState:
                  used_by_snapshots: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering NasHAPartition resources.
+        :param pulumi.Input[int] capacity: Percentage of partition space used in %
+        :param pulumi.Input[str] description: A brief description of the partition
+        :param pulumi.Input[str] name: name of the partition
+        :param pulumi.Input[str] protocol: one of "NFS", "CIFS" or "NFS_CIFS"
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[int] size: size of the partition in GB
+        :param pulumi.Input[int] used_by_snapshots: Percentage of partition space used by snapshots in %
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
@@ -112,6 +139,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter
     def capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Percentage of partition space used in %
+        """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
@@ -121,6 +151,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A brief description of the partition
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -130,6 +163,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the partition
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -139,6 +175,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        one of "NFS", "CIFS" or "NFS_CIFS"
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -148,6 +187,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -157,6 +199,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        size of the partition in GB
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -166,6 +211,9 @@ class _NasHAPartitionState:
     @property
     @pulumi.getter(name="usedBySnapshots")
     def used_by_snapshots(self) -> Optional[pulumi.Input[int]]:
+        """
+        Percentage of partition space used by snapshots in %
+        """
         return pulumi.get(self, "used_by_snapshots")
 
     @used_by_snapshots.setter
@@ -185,9 +233,35 @@ class NasHAPartition(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a NasHAPartition resource with the given unique name, props, and options.
+        Provides a resource for managing partitions on HA-NAS services
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartition("myPartition",
+            protocol="NFS",
+            service_name="zpool-12345",
+            size=20)
+        ```
+
+        ## Import
+
+        HA-NAS can be imported using the `{service_name}/{name}`, e.g.
+
+        ```sh
+        $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A brief description of the partition
+        :param pulumi.Input[str] name: name of the partition
+        :param pulumi.Input[str] protocol: one of "NFS", "CIFS" or "NFS_CIFS"
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[int] size: size of the partition in GB
         """
         ...
     @overload
@@ -196,7 +270,28 @@ class NasHAPartition(pulumi.CustomResource):
                  args: NasHAPartitionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NasHAPartition resource with the given unique name, props, and options.
+        Provides a resource for managing partitions on HA-NAS services
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_partition = ovh.dedicated.NasHAPartition("myPartition",
+            protocol="NFS",
+            service_name="zpool-12345",
+            size=20)
+        ```
+
+        ## Import
+
+        HA-NAS can be imported using the `{service_name}/{name}`, e.g.
+
+        ```sh
+        $ pulumi import ovh:Dedicated/nasHAPartition:NasHAPartition my-partition zpool-12345/my-partition`
+        ```
+
         :param str resource_name: The name of the resource.
         :param NasHAPartitionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -263,6 +358,13 @@ class NasHAPartition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] capacity: Percentage of partition space used in %
+        :param pulumi.Input[str] description: A brief description of the partition
+        :param pulumi.Input[str] name: name of the partition
+        :param pulumi.Input[str] protocol: one of "NFS", "CIFS" or "NFS_CIFS"
+        :param pulumi.Input[str] service_name: The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        :param pulumi.Input[int] size: size of the partition in GB
+        :param pulumi.Input[int] used_by_snapshots: Percentage of partition space used by snapshots in %
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -280,35 +382,56 @@ class NasHAPartition(pulumi.CustomResource):
     @property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[int]:
+        """
+        Percentage of partition space used in %
+        """
         return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A brief description of the partition
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        name of the partition
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
+        """
+        one of "NFS", "CIFS" or "NFS_CIFS"
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
+        """
+        size of the partition in GB
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="usedBySnapshots")
     def used_by_snapshots(self) -> pulumi.Output[int]:
+        """
+        Percentage of partition space used by snapshots in %
+        """
         return pulumi.get(self, "used_by_snapshots")
 

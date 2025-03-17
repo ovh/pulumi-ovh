@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,14 +31,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpAddress{}
 	case "ovh:Vrack/ipLoadbalancing:IpLoadbalancing":
 		r = &IpLoadbalancing{}
-	case "ovh:Vrack/ipv6Address:Ipv6Address":
-		r = &Ipv6Address{}
-	case "ovh:Vrack/oVHCloudConnect:OVHCloudConnect":
-		r = &OVHCloudConnect{}
-	case "ovh:Vrack/services:Services":
-		r = &Services{}
+	case "ovh:Vrack/ipV6:IpV6":
+		r = &IpV6{}
+	case "ovh:Vrack/oVHcloudConnect:OVHcloudConnect":
+		r = &OVHcloudConnect{}
 	case "ovh:Vrack/vrack:Vrack":
 		r = &Vrack{}
+	case "ovh:Vrack/vrackservices:Vrackservices":
+		r = &Vrackservices{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -79,22 +79,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
-		"Vrack/ipv6Address",
+		"Vrack/ipV6",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
-		"Vrack/oVHCloudConnect",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"Vrack/services",
+		"Vrack/oVHcloudConnect",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Vrack/vrack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Vrack/vrackservices",
 		&module{version},
 	)
 }

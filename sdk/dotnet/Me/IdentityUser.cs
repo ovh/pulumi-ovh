@@ -9,62 +9,90 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Me
 {
+    /// <summary>
+    /// Creates an identity user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myUser = new Ovh.Me.IdentityUser("myUser", new()
+    ///     {
+    ///         Description = "Some custom description",
+    ///         Email = "my_login@example.com",
+    ///         Group = "DEFAULT",
+    ///         Login = "my_login",
+    ///         Password = "super-s3cr3t!password",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Me/identityUser:IdentityUser")]
     public partial class IdentityUser : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// URN of the user, used when writing IAM policies
+        /// </summary>
         [Output("UserURN")]
         public Output<string> UserURN { get; private set; } = null!;
 
         /// <summary>
-        /// Creation date of this user
+        /// Creation date of this user.
         /// </summary>
         [Output("creation")]
         public Output<string> Creation { get; private set; } = null!;
 
         /// <summary>
-        /// User description
+        /// User description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// User's email
+        /// User's email.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// User's group
+        /// User's group.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Last update of this user
+        /// Last update of this user.
         /// </summary>
         [Output("lastUpdate")]
         public Output<string> LastUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// User's login suffix
+        /// User's login suffix.
         /// </summary>
         [Output("login")]
         public Output<string> Login { get; private set; } = null!;
 
         /// <summary>
-        /// User's password
+        /// User's password.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// When the user changed his password for the last time
+        /// When the user changed his password for the last time.
         /// </summary>
         [Output("passwordLastUpdate")]
         public Output<string> PasswordLastUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// Current user's status
+        /// Current user's status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -121,25 +149,25 @@ namespace Pulumi.Ovh.Me
     public sealed class IdentityUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User description
+        /// User description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// User's email
+        /// User's email.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// User's group
+        /// User's group.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// User's login suffix
+        /// User's login suffix.
         /// </summary>
         [Input("login", required: true)]
         public Input<string> Login { get; set; } = null!;
@@ -148,7 +176,7 @@ namespace Pulumi.Ovh.Me
         private Input<string>? _password;
 
         /// <summary>
-        /// User's password
+        /// User's password.
         /// </summary>
         public Input<string>? Password
         {
@@ -168,41 +196,44 @@ namespace Pulumi.Ovh.Me
 
     public sealed class IdentityUserState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// URN of the user, used when writing IAM policies
+        /// </summary>
         [Input("UserURN")]
         public Input<string>? UserURN { get; set; }
 
         /// <summary>
-        /// Creation date of this user
+        /// Creation date of this user.
         /// </summary>
         [Input("creation")]
         public Input<string>? Creation { get; set; }
 
         /// <summary>
-        /// User description
+        /// User description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// User's email
+        /// User's email.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// User's group
+        /// User's group.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Last update of this user
+        /// Last update of this user.
         /// </summary>
         [Input("lastUpdate")]
         public Input<string>? LastUpdate { get; set; }
 
         /// <summary>
-        /// User's login suffix
+        /// User's login suffix.
         /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }
@@ -211,7 +242,7 @@ namespace Pulumi.Ovh.Me
         private Input<string>? _password;
 
         /// <summary>
-        /// User's password
+        /// User's password.
         /// </summary>
         public Input<string>? Password
         {
@@ -224,13 +255,13 @@ namespace Pulumi.Ovh.Me
         }
 
         /// <summary>
-        /// When the user changed his password for the last time
+        /// When the user changed his password for the last time.
         /// </summary>
         [Input("passwordLastUpdate")]
         public Input<string>? PasswordLastUpdate { get; set; }
 
         /// <summary>
-        /// Current user's status
+        /// Current user's status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

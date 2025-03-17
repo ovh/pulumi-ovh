@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// IP Address of the floating IP
+        /// Value of the floating IP
         /// </summary>
         public readonly string Ip;
 

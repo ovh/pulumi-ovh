@@ -77,8 +77,8 @@ class LogsInputConfigurationFlowgger(dict):
                  log_format: str,
                  log_framing: str):
         """
-        :param str log_format: Type of format to decode
-        :param str log_framing: Indicates how messages are delimited
+        :param str log_format: Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
+        :param str log_framing: Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
         """
         pulumi.set(__self__, "log_format", log_format)
         pulumi.set(__self__, "log_framing", log_framing)
@@ -87,7 +87,7 @@ class LogsInputConfigurationFlowgger(dict):
     @pulumi.getter(name="logFormat")
     def log_format(self) -> str:
         """
-        Type of format to decode
+        Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
         """
         return pulumi.get(self, "log_format")
 
@@ -95,7 +95,7 @@ class LogsInputConfigurationFlowgger(dict):
     @pulumi.getter(name="logFraming")
     def log_framing(self) -> str:
         """
-        Indicates how messages are delimited
+        Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
         """
         return pulumi.get(self, "log_framing")
 

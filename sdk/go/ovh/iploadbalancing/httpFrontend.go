@@ -8,26 +8,142 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a backend HTTP server group (frontend) to be used by loadbalancing frontend(s)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			farm80, err := iploadbalancing.NewHttpFarm(ctx, "farm80", &iploadbalancing.HttpFarmArgs{
+//				DisplayName: pulumi.String("ingress-8080-gra"),
+//				Port:        pulumi.Int(80),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewHttpFrontend(ctx, "testFrontend", &iploadbalancing.HttpFrontendArgs{
+//				DefaultFarmId: farm80.ID(),
+//				DisplayName:   pulumi.String("ingress-8080-gra"),
+//				Port:          pulumi.String("80,443"),
+//				ServiceName:   pulumi.String(lb.ServiceName),
+//				Zone:          pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### With HTTP Header
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			farm80, err := iploadbalancing.NewHttpFarm(ctx, "farm80", &iploadbalancing.HttpFarmArgs{
+//				DisplayName: pulumi.String("ingress-8080-gra"),
+//				Port:        pulumi.Int(80),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewHttpFrontend(ctx, "testFrontend", &iploadbalancing.HttpFrontendArgs{
+//				DefaultFarmId: farm80.ID(),
+//				DisplayName:   pulumi.String("ingress-8080-gra"),
+//				HttpHeaders: pulumi.StringArray{
+//					pulumi.String("X-Ip-Header %%ci"),
+//					pulumi.String("X-Port-Header %%cp"),
+//				},
+//				Port:        pulumi.String("80,443"),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
 type HttpFrontend struct {
 	pulumi.CustomResourceState
 
-	AllowedSources   pulumi.StringArrayOutput `pulumi:"allowedSources"`
-	DedicatedIpfos   pulumi.StringArrayOutput `pulumi:"dedicatedIpfos"`
-	DefaultFarmId    pulumi.IntOutput         `pulumi:"defaultFarmId"`
-	DefaultSslId     pulumi.IntOutput         `pulumi:"defaultSslId"`
-	Disabled         pulumi.BoolPtrOutput     `pulumi:"disabled"`
-	DisplayName      pulumi.StringPtrOutput   `pulumi:"displayName"`
-	Hsts             pulumi.BoolPtrOutput     `pulumi:"hsts"`
-	HttpHeaders      pulumi.StringArrayOutput `pulumi:"httpHeaders"`
-	Port             pulumi.StringOutput      `pulumi:"port"`
-	RedirectLocation pulumi.StringPtrOutput   `pulumi:"redirectLocation"`
-	ServiceName      pulumi.StringOutput      `pulumi:"serviceName"`
-	Ssl              pulumi.BoolPtrOutput     `pulumi:"ssl"`
-	Zone             pulumi.StringOutput      `pulumi:"zone"`
+	// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+	AllowedSources pulumi.StringArrayOutput `pulumi:"allowedSources"`
+	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	DedicatedIpfos pulumi.StringArrayOutput `pulumi:"dedicatedIpfos"`
+	// Default TCP Farm of your frontend
+	DefaultFarmId pulumi.IntOutput `pulumi:"defaultFarmId"`
+	// Default ssl served to your customer
+	DefaultSslId pulumi.IntOutput `pulumi:"defaultSslId"`
+	// Disable your frontend. Default: 'false'
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// Human readable name for your frontend, this field is for you
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// HTTP Strict Transport Security. Default: 'false'
+	Hsts pulumi.BoolPtrOutput `pulumi:"hsts"`
+	// HTTP headers to add to the frontend. List of string.
+	HttpHeaders pulumi.StringArrayOutput `pulumi:"httpHeaders"`
+	// Port(s) attached to your frontend. Supports single port (numerical value),
+	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+	// and/or 'range'. Each port must be in the [1;49151] range
+	Port pulumi.StringOutput `pulumi:"port"`
+	// Redirection HTTP'
+	RedirectLocation pulumi.StringPtrOutput `pulumi:"redirectLocation"`
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// SSL deciphering. Default: 'false'
+	Ssl pulumi.BoolPtrOutput `pulumi:"ssl"`
+	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewHttpFrontend registers a new resource with the given unique name, arguments, and options.
@@ -69,35 +185,65 @@ func GetHttpFrontend(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpFrontend resources.
 type httpFrontendState struct {
-	AllowedSources   []string `pulumi:"allowedSources"`
-	DedicatedIpfos   []string `pulumi:"dedicatedIpfos"`
-	DefaultFarmId    *int     `pulumi:"defaultFarmId"`
-	DefaultSslId     *int     `pulumi:"defaultSslId"`
-	Disabled         *bool    `pulumi:"disabled"`
-	DisplayName      *string  `pulumi:"displayName"`
-	Hsts             *bool    `pulumi:"hsts"`
-	HttpHeaders      []string `pulumi:"httpHeaders"`
-	Port             *string  `pulumi:"port"`
-	RedirectLocation *string  `pulumi:"redirectLocation"`
-	ServiceName      *string  `pulumi:"serviceName"`
-	Ssl              *bool    `pulumi:"ssl"`
-	Zone             *string  `pulumi:"zone"`
+	// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+	AllowedSources []string `pulumi:"allowedSources"`
+	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	DedicatedIpfos []string `pulumi:"dedicatedIpfos"`
+	// Default TCP Farm of your frontend
+	DefaultFarmId *int `pulumi:"defaultFarmId"`
+	// Default ssl served to your customer
+	DefaultSslId *int `pulumi:"defaultSslId"`
+	// Disable your frontend. Default: 'false'
+	Disabled *bool `pulumi:"disabled"`
+	// Human readable name for your frontend, this field is for you
+	DisplayName *string `pulumi:"displayName"`
+	// HTTP Strict Transport Security. Default: 'false'
+	Hsts *bool `pulumi:"hsts"`
+	// HTTP headers to add to the frontend. List of string.
+	HttpHeaders []string `pulumi:"httpHeaders"`
+	// Port(s) attached to your frontend. Supports single port (numerical value),
+	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+	// and/or 'range'. Each port must be in the [1;49151] range
+	Port *string `pulumi:"port"`
+	// Redirection HTTP'
+	RedirectLocation *string `pulumi:"redirectLocation"`
+	// The internal name of your IP load balancing
+	ServiceName *string `pulumi:"serviceName"`
+	// SSL deciphering. Default: 'false'
+	Ssl *bool `pulumi:"ssl"`
+	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	Zone *string `pulumi:"zone"`
 }
 
 type HttpFrontendState struct {
-	AllowedSources   pulumi.StringArrayInput
-	DedicatedIpfos   pulumi.StringArrayInput
-	DefaultFarmId    pulumi.IntPtrInput
-	DefaultSslId     pulumi.IntPtrInput
-	Disabled         pulumi.BoolPtrInput
-	DisplayName      pulumi.StringPtrInput
-	Hsts             pulumi.BoolPtrInput
-	HttpHeaders      pulumi.StringArrayInput
-	Port             pulumi.StringPtrInput
+	// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+	AllowedSources pulumi.StringArrayInput
+	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	DedicatedIpfos pulumi.StringArrayInput
+	// Default TCP Farm of your frontend
+	DefaultFarmId pulumi.IntPtrInput
+	// Default ssl served to your customer
+	DefaultSslId pulumi.IntPtrInput
+	// Disable your frontend. Default: 'false'
+	Disabled pulumi.BoolPtrInput
+	// Human readable name for your frontend, this field is for you
+	DisplayName pulumi.StringPtrInput
+	// HTTP Strict Transport Security. Default: 'false'
+	Hsts pulumi.BoolPtrInput
+	// HTTP headers to add to the frontend. List of string.
+	HttpHeaders pulumi.StringArrayInput
+	// Port(s) attached to your frontend. Supports single port (numerical value),
+	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+	// and/or 'range'. Each port must be in the [1;49151] range
+	Port pulumi.StringPtrInput
+	// Redirection HTTP'
 	RedirectLocation pulumi.StringPtrInput
-	ServiceName      pulumi.StringPtrInput
-	Ssl              pulumi.BoolPtrInput
-	Zone             pulumi.StringPtrInput
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringPtrInput
+	// SSL deciphering. Default: 'false'
+	Ssl pulumi.BoolPtrInput
+	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	Zone pulumi.StringPtrInput
 }
 
 func (HttpFrontendState) ElementType() reflect.Type {
@@ -105,36 +251,66 @@ func (HttpFrontendState) ElementType() reflect.Type {
 }
 
 type httpFrontendArgs struct {
-	AllowedSources   []string `pulumi:"allowedSources"`
-	DedicatedIpfos   []string `pulumi:"dedicatedIpfos"`
-	DefaultFarmId    *int     `pulumi:"defaultFarmId"`
-	DefaultSslId     *int     `pulumi:"defaultSslId"`
-	Disabled         *bool    `pulumi:"disabled"`
-	DisplayName      *string  `pulumi:"displayName"`
-	Hsts             *bool    `pulumi:"hsts"`
-	HttpHeaders      []string `pulumi:"httpHeaders"`
-	Port             string   `pulumi:"port"`
-	RedirectLocation *string  `pulumi:"redirectLocation"`
-	ServiceName      string   `pulumi:"serviceName"`
-	Ssl              *bool    `pulumi:"ssl"`
-	Zone             string   `pulumi:"zone"`
+	// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+	AllowedSources []string `pulumi:"allowedSources"`
+	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	DedicatedIpfos []string `pulumi:"dedicatedIpfos"`
+	// Default TCP Farm of your frontend
+	DefaultFarmId *int `pulumi:"defaultFarmId"`
+	// Default ssl served to your customer
+	DefaultSslId *int `pulumi:"defaultSslId"`
+	// Disable your frontend. Default: 'false'
+	Disabled *bool `pulumi:"disabled"`
+	// Human readable name for your frontend, this field is for you
+	DisplayName *string `pulumi:"displayName"`
+	// HTTP Strict Transport Security. Default: 'false'
+	Hsts *bool `pulumi:"hsts"`
+	// HTTP headers to add to the frontend. List of string.
+	HttpHeaders []string `pulumi:"httpHeaders"`
+	// Port(s) attached to your frontend. Supports single port (numerical value),
+	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+	// and/or 'range'. Each port must be in the [1;49151] range
+	Port string `pulumi:"port"`
+	// Redirection HTTP'
+	RedirectLocation *string `pulumi:"redirectLocation"`
+	// The internal name of your IP load balancing
+	ServiceName string `pulumi:"serviceName"`
+	// SSL deciphering. Default: 'false'
+	Ssl *bool `pulumi:"ssl"`
+	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a HttpFrontend resource.
 type HttpFrontendArgs struct {
-	AllowedSources   pulumi.StringArrayInput
-	DedicatedIpfos   pulumi.StringArrayInput
-	DefaultFarmId    pulumi.IntPtrInput
-	DefaultSslId     pulumi.IntPtrInput
-	Disabled         pulumi.BoolPtrInput
-	DisplayName      pulumi.StringPtrInput
-	Hsts             pulumi.BoolPtrInput
-	HttpHeaders      pulumi.StringArrayInput
-	Port             pulumi.StringInput
+	// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+	AllowedSources pulumi.StringArrayInput
+	// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+	DedicatedIpfos pulumi.StringArrayInput
+	// Default TCP Farm of your frontend
+	DefaultFarmId pulumi.IntPtrInput
+	// Default ssl served to your customer
+	DefaultSslId pulumi.IntPtrInput
+	// Disable your frontend. Default: 'false'
+	Disabled pulumi.BoolPtrInput
+	// Human readable name for your frontend, this field is for you
+	DisplayName pulumi.StringPtrInput
+	// HTTP Strict Transport Security. Default: 'false'
+	Hsts pulumi.BoolPtrInput
+	// HTTP headers to add to the frontend. List of string.
+	HttpHeaders pulumi.StringArrayInput
+	// Port(s) attached to your frontend. Supports single port (numerical value),
+	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+	// and/or 'range'. Each port must be in the [1;49151] range
+	Port pulumi.StringInput
+	// Redirection HTTP'
 	RedirectLocation pulumi.StringPtrInput
-	ServiceName      pulumi.StringInput
-	Ssl              pulumi.BoolPtrInput
-	Zone             pulumi.StringInput
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringInput
+	// SSL deciphering. Default: 'false'
+	Ssl pulumi.BoolPtrInput
+	// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+	Zone pulumi.StringInput
 }
 
 func (HttpFrontendArgs) ElementType() reflect.Type {
@@ -224,54 +400,69 @@ func (o HttpFrontendOutput) ToHttpFrontendOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
 func (o HttpFrontendOutput) AllowedSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringArrayOutput { return v.AllowedSources }).(pulumi.StringArrayOutput)
 }
 
+// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
 func (o HttpFrontendOutput) DedicatedIpfos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringArrayOutput { return v.DedicatedIpfos }).(pulumi.StringArrayOutput)
 }
 
+// Default TCP Farm of your frontend
 func (o HttpFrontendOutput) DefaultFarmId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.IntOutput { return v.DefaultFarmId }).(pulumi.IntOutput)
 }
 
+// Default ssl served to your customer
 func (o HttpFrontendOutput) DefaultSslId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.IntOutput { return v.DefaultSslId }).(pulumi.IntOutput)
 }
 
+// Disable your frontend. Default: 'false'
 func (o HttpFrontendOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Human readable name for your frontend, this field is for you
 func (o HttpFrontendOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// HTTP Strict Transport Security. Default: 'false'
 func (o HttpFrontendOutput) Hsts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.BoolPtrOutput { return v.Hsts }).(pulumi.BoolPtrOutput)
 }
 
+// HTTP headers to add to the frontend. List of string.
 func (o HttpFrontendOutput) HttpHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringArrayOutput { return v.HttpHeaders }).(pulumi.StringArrayOutput)
 }
 
+// Port(s) attached to your frontend. Supports single port (numerical value),
+// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+// and/or 'range'. Each port must be in the [1;49151] range
 func (o HttpFrontendOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
+// Redirection HTTP'
 func (o HttpFrontendOutput) RedirectLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringPtrOutput { return v.RedirectLocation }).(pulumi.StringPtrOutput)
 }
 
+// The internal name of your IP load balancing
 func (o HttpFrontendOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// SSL deciphering. Default: 'false'
 func (o HttpFrontendOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.BoolPtrOutput { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
+// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
 func (o HttpFrontendOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

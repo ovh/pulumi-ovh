@@ -6,6 +6,25 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * **This datasource uses a Beta API**
+ * Use this data source to get the instance of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * To get information of an instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const instance = ovh.CloudProject.getInstance({
+ *     instanceId: "ZZZZZ",
+ *     region: "XXXX",
+ *     serviceName: "YYYY",
+ * });
+ * ```
+ */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getInstance:getInstance", {
@@ -19,8 +38,18 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getInstance.
  */
 export interface GetInstanceArgs {
+    /**
+     * Instance id
+     */
     instanceId: string;
+    /**
+     * Instance region
+     */
     region: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     */
     serviceName: string;
 }
 
@@ -28,23 +57,69 @@ export interface GetInstanceArgs {
  * A collection of values returned by getInstance.
  */
 export interface GetInstanceResult {
+    /**
+     * Instance IP addresses
+     */
     readonly addresses: outputs.CloudProject.GetInstanceAddress[];
+    /**
+     * Volumes attached to the instance
+     */
     readonly attachedVolumes: outputs.CloudProject.GetInstanceAttachedVolume[];
+    /**
+     * Availability zone of the instance
+     */
     readonly availabilityZone: string;
+    /**
+     * Flavor id
+     */
     readonly flavorId: string;
+    /**
+     * Flavor name
+     */
     readonly flavorName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Image id
+     */
     readonly imageId: string;
     readonly instanceId: string;
+    /**
+     * Instance name
+     */
     readonly name: string;
     readonly region: string;
     readonly serviceName: string;
+    /**
+     * SSH Keypair
+     */
     readonly sshKey: string;
+    /**
+     * Instance task state
+     */
     readonly taskState: string;
 }
+/**
+ * **This datasource uses a Beta API**
+ * Use this data source to get the instance of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * To get information of an instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const instance = ovh.CloudProject.getInstance({
+ *     instanceId: "ZZZZZ",
+ *     region: "XXXX",
+ *     serviceName: "YYYY",
+ * });
+ * ```
+ */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getInstance:getInstance", {
@@ -58,7 +133,17 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getInstance.
  */
 export interface GetInstanceOutputArgs {
+    /**
+     * Instance id
+     */
     instanceId: pulumi.Input<string>;
+    /**
+     * Instance region
+     */
     region: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     */
     serviceName: pulumi.Input<string>;
 }

@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about an existing OAuth2 service account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myOauth2Client = ovh.Me.getAPIOAuth2Client({
+ *     clientId: "5f8969a993ec8b4b",
+ * });
+ * ```
+ */
 export function getAPIOAuth2Client(args: GetAPIOAuth2ClientArgs, opts?: pulumi.InvokeOptions): Promise<GetAPIOAuth2ClientResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", {
@@ -15,6 +29,9 @@ export function getAPIOAuth2Client(args: GetAPIOAuth2ClientArgs, opts?: pulumi.I
  * A collection of arguments for invoking getAPIOAuth2Client.
  */
 export interface GetAPIOAuth2ClientArgs {
+    /**
+     * Client ID of an existing OAuth2 service account.
+     */
     clientId: string;
 }
 
@@ -22,17 +39,46 @@ export interface GetAPIOAuth2ClientArgs {
  * A collection of values returned by getAPIOAuth2Client.
  */
 export interface GetAPIOAuth2ClientResult {
+    /**
+     * List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
+     */
     readonly callbackUrls: string[];
+    /**
+     * Client ID of the created service account.
+     */
     readonly clientId: string;
+    /**
+     * OAuth2 client description.
+     */
     readonly description: string;
+    /**
+     * The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
+     */
     readonly flow: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly identity: string;
+    /**
+     * OAuth2 client name.
+     */
     readonly name: string;
 }
+/**
+ * Use this data source to retrieve information about an existing OAuth2 service account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myOauth2Client = ovh.Me.getAPIOAuth2Client({
+ *     clientId: "5f8969a993ec8b4b",
+ * });
+ * ```
+ */
 export function getAPIOAuth2ClientOutput(args: GetAPIOAuth2ClientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAPIOAuth2ClientResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", {
@@ -44,5 +90,8 @@ export function getAPIOAuth2ClientOutput(args: GetAPIOAuth2ClientOutputArgs, opt
  * A collection of arguments for invoking getAPIOAuth2Client.
  */
 export interface GetAPIOAuth2ClientOutputArgs {
+    /**
+     * Client ID of an existing OAuth2 service account.
+     */
     clientId: pulumi.Input<string>;
 }

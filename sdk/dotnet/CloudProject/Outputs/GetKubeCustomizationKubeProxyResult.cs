@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class GetKubeCustomizationKubeProxyResult
     {
+        /// <summary>
+        /// Kubernetes cluster kube-proxy customization of iptables specific config.
+        /// </summary>
         public readonly Outputs.GetKubeCustomizationKubeProxyIptablesResult? Iptables;
+        /// <summary>
+        /// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+        /// </summary>
         public readonly Outputs.GetKubeCustomizationKubeProxyIpvsResult? Ipvs;
 
         [OutputConstructor]

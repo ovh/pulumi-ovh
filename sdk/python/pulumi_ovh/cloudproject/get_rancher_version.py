@@ -49,6 +49,9 @@ class GetRancherVersionResult:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project ID
+        """
         return pulumi.get(self, "project_id")
 
     @property
@@ -71,7 +74,19 @@ class AwaitableGetRancherVersionResult(GetRancherVersionResult):
 def get_rancher_version(project_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRancherVersionResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    versions = ovh.CloudProject.get_rancher_version(project_id="XXXXXX")
+    ```
+
+
+    :param str project_id: Project ID
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -85,7 +100,19 @@ def get_rancher_version(project_id: Optional[str] = None,
 def get_rancher_version_output(project_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRancherVersionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    versions = ovh.CloudProject.get_rancher_version(project_id="XXXXXX")
+    ```
+
+
+    :param str project_id: Project ID
     """
     __args__ = dict()
     __args__['projectId'] = project_id

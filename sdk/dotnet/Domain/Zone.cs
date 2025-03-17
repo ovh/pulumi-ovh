@@ -9,6 +9,87 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Domain
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = Ovh.Me.GetMe.Invoke();
+    /// 
+    ///     var mycart = Ovh.Order.GetCart.Invoke(new()
+    ///     {
+    ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
+    ///     });
+    /// 
+    ///     var zoneCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     {
+    ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
+    ///         PriceCapacity = "renew",
+    ///         Product = "dns",
+    ///         PlanCode = "zone",
+    ///     });
+    /// 
+    ///     var zoneZone = new Ovh.Domain.Zone("zoneZone", new()
+    ///     {
+    ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Plan = new Ovh.Domain.Inputs.ZonePlanArgs
+    ///         {
+    ///             Duration = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Configurations = new[]
+    ///             {
+    ///                 new Ovh.Domain.Inputs.ZonePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "zone",
+    ///                     Value = "myzone.mydomain.com",
+    ///                 },
+    ///                 new Ovh.Domain.Inputs.ZonePlanConfigurationArgs
+    ///                 {
+    ///                     Label = "template",
+    ///                     Value = "minimized",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Zone can be imported using its `name`.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_domain_zone.zone
+    /// 
+    ///   id = "&lt;zone name&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=zone.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
     {
@@ -52,7 +133,7 @@ namespace Pulumi.Ovh.Domain
         public Output<ImmutableArray<Outputs.ZoneOrder>> Orders { get; private set; } = null!;
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string> OvhSubsidiary { get; private set; } = null!;
@@ -135,7 +216,7 @@ namespace Pulumi.Ovh.Domain
         }
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
@@ -224,7 +305,7 @@ namespace Pulumi.Ovh.Domain
         }
 
         /// <summary>
-        /// Ovh Subsidiary
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }

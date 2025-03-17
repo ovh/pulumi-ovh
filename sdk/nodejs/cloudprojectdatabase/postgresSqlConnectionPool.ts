@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * OVHcloud Managed PostgreSQL clusters connection pools can be imported using the `service_name`, `cluster_id` and `id` of the connection pool, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool my_connection_pool service_name/cluster_id/id
+ * ```
+ */
 export class PostgresSqlConnectionPool extends pulumi.CustomResource {
     /**
      * Get an existing PostgresSqlConnectionPool resource's state with the given name, ID, and optional extra
@@ -33,40 +44,45 @@ export class PostgresSqlConnectionPool extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Database used for the connection pool
+     * Database ID for a database that belongs to the Database cluster given above.
      */
     public readonly databaseId!: pulumi.Output<string>;
     /**
      * Connection mode to the connection pool
+     * Available modes:
      */
     public readonly mode!: pulumi.Output<string>;
     /**
-     * Name of the connection pool
+     * Name of the connection pool.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Port of the connection pool
+     * Port of the connection pool.
      */
     public /*out*/ readonly port!: pulumi.Output<number>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Size of the connection pool
+     * Size of the connection pool.
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * SSL connection mode for the pool
+     * Ssl connection mode for the pool.
      */
     public /*out*/ readonly sslMode!: pulumi.Output<string>;
     /**
-     * Connection URI to the pool
+     * Connection URI to the pool.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
     /**
-     * Database user authorized to connect to the pool, if none all the users are allowed
+     * Database user authorized to connect to the pool, if none all the users are allowed.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -131,40 +147,45 @@ export class PostgresSqlConnectionPool extends pulumi.CustomResource {
  */
 export interface PostgresSqlConnectionPoolState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Database used for the connection pool
+     * Database ID for a database that belongs to the Database cluster given above.
      */
     databaseId?: pulumi.Input<string>;
     /**
      * Connection mode to the connection pool
+     * Available modes:
      */
     mode?: pulumi.Input<string>;
     /**
-     * Name of the connection pool
+     * Name of the connection pool.
      */
     name?: pulumi.Input<string>;
     /**
-     * Port of the connection pool
+     * Port of the connection pool.
      */
     port?: pulumi.Input<number>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Size of the connection pool
+     * Size of the connection pool.
      */
     size?: pulumi.Input<number>;
     /**
-     * SSL connection mode for the pool
+     * Ssl connection mode for the pool.
      */
     sslMode?: pulumi.Input<string>;
     /**
-     * Connection URI to the pool
+     * Connection URI to the pool.
      */
     uri?: pulumi.Input<string>;
     /**
-     * Database user authorized to connect to the pool, if none all the users are allowed
+     * Database user authorized to connect to the pool, if none all the users are allowed.
      */
     userId?: pulumi.Input<string>;
 }
@@ -174,28 +195,33 @@ export interface PostgresSqlConnectionPoolState {
  */
 export interface PostgresSqlConnectionPoolArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Database used for the connection pool
+     * Database ID for a database that belongs to the Database cluster given above.
      */
     databaseId: pulumi.Input<string>;
     /**
      * Connection mode to the connection pool
+     * Available modes:
      */
     mode: pulumi.Input<string>;
     /**
-     * Name of the connection pool
+     * Name of the connection pool.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
     /**
-     * Size of the connection pool
+     * Size of the connection pool.
      */
     size: pulumi.Input<number>;
     /**
-     * Database user authorized to connect to the pool, if none all the users are allowed
+     * Database user authorized to connect to the pool, if none all the users are allowed.
      */
     userId?: pulumi.Input<string>;
 }

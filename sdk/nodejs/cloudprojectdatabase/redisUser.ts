@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * OVHcloud Managed Redis clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/redisUser:RedisUser my_user service_name/cluster_id/id
+ * ```
+ */
 export class RedisUser extends pulumi.CustomResource {
     /**
      * Get an existing RedisUser resource's state with the given name, ID, and optional extra
@@ -33,44 +44,48 @@ export class RedisUser extends pulumi.CustomResource {
     }
 
     /**
-     * Categories of the user
+     * Categories of the user.
      */
     public readonly categories!: pulumi.Output<string[] | undefined>;
     /**
-     * Channels of the user
+     * Channels of the user.
      */
     public readonly channels!: pulumi.Output<string[]>;
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Commands of the user
+     * Commands of the user.
      */
     public readonly commands!: pulumi.Output<string[] | undefined>;
     /**
-     * Date of the creation of the user
+     * Date of the creation of the user.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Keys of the user
+     * Keys of the user.
      */
     public readonly keys!: pulumi.Output<string[] | undefined>;
     /**
-     * Name of the user
+     * Name of the user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Current status of the user
+     * Current status of the user.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -130,44 +145,48 @@ export class RedisUser extends pulumi.CustomResource {
  */
 export interface RedisUserState {
     /**
-     * Categories of the user
+     * Categories of the user.
      */
     categories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Channels of the user
+     * Channels of the user.
      */
     channels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Commands of the user
+     * Commands of the user.
      */
     commands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Date of the creation of the user
+     * Date of the creation of the user.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Keys of the user
+     * Keys of the user.
      */
     keys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the user
+     * Name of the user.
      */
     name?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * (Sensitive) Password of the user.
      */
     password?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Current status of the user
+     * Current status of the user.
      */
     status?: pulumi.Input<string>;
 }
@@ -177,32 +196,36 @@ export interface RedisUserState {
  */
 export interface RedisUserArgs {
     /**
-     * Categories of the user
+     * Categories of the user.
      */
     categories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Channels of the user
+     * Channels of the user.
      */
     channels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Commands of the user
+     * Commands of the user.
      */
     commands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Keys of the user
+     * Keys of the user.
      */
     keys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the user
+     * Name of the user.
      */
     name?: pulumi.Input<string>;
     /**
      * Arbitrary string to change to trigger a password update
      */
     passwordReset?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

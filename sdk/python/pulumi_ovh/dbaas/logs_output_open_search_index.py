@@ -26,7 +26,7 @@ class LogsOutputOpenSearchIndexArgs:
         """
         The set of arguments for constructing a LogsOutputOpenSearchIndex resource.
         :param pulumi.Input[str] description: Index description
-        :param pulumi.Input[int] nb_shard: Number of shard
+        :param pulumi.Input[int] nb_shard: Number of shards
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] suffix: Index suffix
         """
@@ -51,7 +51,7 @@ class LogsOutputOpenSearchIndexArgs:
     @pulumi.getter(name="nbShard")
     def nb_shard(self) -> pulumi.Input[int]:
         """
-        Number of shard
+        Number of shards
         """
         return pulumi.get(self, "nb_shard")
 
@@ -102,17 +102,17 @@ class _LogsOutputOpenSearchIndexState:
         """
         Input properties used for looking up and filtering LogsOutputOpenSearchIndex resources.
         :param pulumi.Input[bool] alert_notify_enabled: If set, notify when size is near 80, 90 or 100 % of its maximum capacity
-        :param pulumi.Input[str] created_at: Operation creation
-        :param pulumi.Input[int] current_size: Current Index size (in bytes)
+        :param pulumi.Input[str] created_at: Index creation
+        :param pulumi.Input[int] current_size: Current index size (in bytes)
         :param pulumi.Input[str] description: Index description
         :param pulumi.Input[str] index_id: Index ID
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[int] max_size: Maximum index size (in bytes)
         :param pulumi.Input[str] name: Index name
-        :param pulumi.Input[int] nb_shard: Number of shard
+        :param pulumi.Input[int] nb_shard: Number of shards
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] suffix: Index suffix
-        :param pulumi.Input[str] updated_at: Operation last update
+        :param pulumi.Input[str] updated_at: Index last update
         """
         if alert_notify_enabled is not None:
             pulumi.set(__self__, "alert_notify_enabled", alert_notify_enabled)
@@ -155,7 +155,7 @@ class _LogsOutputOpenSearchIndexState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation creation
+        Index creation
         """
         return pulumi.get(self, "created_at")
 
@@ -167,7 +167,7 @@ class _LogsOutputOpenSearchIndexState:
     @pulumi.getter(name="currentSize")
     def current_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Current Index size (in bytes)
+        Current index size (in bytes)
         """
         return pulumi.get(self, "current_size")
 
@@ -239,7 +239,7 @@ class _LogsOutputOpenSearchIndexState:
     @pulumi.getter(name="nbShard")
     def nb_shard(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of shard
+        Number of shards
         """
         return pulumi.get(self, "nb_shard")
 
@@ -275,7 +275,7 @@ class _LogsOutputOpenSearchIndexState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation last update
+        Index last update
         """
         return pulumi.get(self, "updated_at")
 
@@ -295,11 +295,24 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
                  suffix: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LogsOutputOpenSearchIndex resource with the given unique name, props, and options.
+        Creates a DBaaS Logs Opensearch output index.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        index = ovh.dbaas.LogsOutputOpenSearchIndex("index",
+            description="my opensearch index",
+            service_name="....",
+            suffix="index")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Index description
-        :param pulumi.Input[int] nb_shard: Number of shard
+        :param pulumi.Input[int] nb_shard: Number of shards
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] suffix: Index suffix
         """
@@ -310,7 +323,20 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
                  args: LogsOutputOpenSearchIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogsOutputOpenSearchIndex resource with the given unique name, props, and options.
+        Creates a DBaaS Logs Opensearch output index.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        index = ovh.dbaas.LogsOutputOpenSearchIndex("index",
+            description="my opensearch index",
+            service_name="....",
+            suffix="index")
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogsOutputOpenSearchIndexArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -389,17 +415,17 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] alert_notify_enabled: If set, notify when size is near 80, 90 or 100 % of its maximum capacity
-        :param pulumi.Input[str] created_at: Operation creation
-        :param pulumi.Input[int] current_size: Current Index size (in bytes)
+        :param pulumi.Input[str] created_at: Index creation
+        :param pulumi.Input[int] current_size: Current index size (in bytes)
         :param pulumi.Input[str] description: Index description
         :param pulumi.Input[str] index_id: Index ID
         :param pulumi.Input[bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[int] max_size: Maximum index size (in bytes)
         :param pulumi.Input[str] name: Index name
-        :param pulumi.Input[int] nb_shard: Number of shard
+        :param pulumi.Input[int] nb_shard: Number of shards
         :param pulumi.Input[str] service_name: The service name
         :param pulumi.Input[str] suffix: Index suffix
-        :param pulumi.Input[str] updated_at: Operation last update
+        :param pulumi.Input[str] updated_at: Index last update
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -431,7 +457,7 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Operation creation
+        Index creation
         """
         return pulumi.get(self, "created_at")
 
@@ -439,7 +465,7 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="currentSize")
     def current_size(self) -> pulumi.Output[int]:
         """
-        Current Index size (in bytes)
+        Current index size (in bytes)
         """
         return pulumi.get(self, "current_size")
 
@@ -487,7 +513,7 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="nbShard")
     def nb_shard(self) -> pulumi.Output[int]:
         """
-        Number of shard
+        Number of shards
         """
         return pulumi.get(self, "nb_shard")
 
@@ -511,7 +537,7 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        Operation last update
+        Index last update
         """
         return pulumi.get(self, "updated_at")
 

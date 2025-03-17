@@ -41,6 +41,9 @@ class GetReferenceActionsResult:
     @property
     @pulumi.getter
     def actions(self) -> Sequence['outputs.GetReferenceActionsActionResult']:
+        """
+        List of actions
+        """
         return pulumi.get(self, "actions")
 
     @property
@@ -71,7 +74,10 @@ class AwaitableGetReferenceActionsResult(GetReferenceActionsResult):
 def get_reference_actions(type: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReferenceActionsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to list the IAM action associated with a resource type.
+
+
+    :param str type: Kind of resource we want the actions for
     """
     __args__ = dict()
     __args__['type'] = type
@@ -85,7 +91,10 @@ def get_reference_actions(type: Optional[str] = None,
 def get_reference_actions_output(type: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReferenceActionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to list the IAM action associated with a resource type.
+
+
+    :param str type: Kind of resource we want the actions for
     """
     __args__ = dict()
     __args__['type'] = type

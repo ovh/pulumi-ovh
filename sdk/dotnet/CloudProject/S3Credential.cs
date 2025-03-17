@@ -9,26 +9,46 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Creates an S3 Credential for a user in a public cloud project.
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/s3Credential:S3Credential")]
     public partial class S3Credential : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// the Access Key ID
+        /// </summary>
         [Output("accessKeyId")]
         public Output<string> AccessKeyId { get; private set; } = null!;
 
         [Output("internalUserId")]
         public Output<string> InternalUserId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Sensitive) the Secret Access Key
+        /// </summary>
         [Output("secretAccessKey")]
         public Output<string> SecretAccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the ID of the cloud project.
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The user ID
+        /// The ID of a public cloud project's user.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -85,13 +105,14 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class S3CredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Service name of the resource representing the ID of the cloud project.
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The user ID
+        /// The ID of a public cloud project's user.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -104,6 +125,9 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class S3CredentialState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the Access Key ID
+        /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
 
@@ -112,6 +136,10 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("secretAccessKey")]
         private Input<string>? _secretAccessKey;
+
+        /// <summary>
+        /// (Sensitive) the Secret Access Key
+        /// </summary>
         public Input<string>? SecretAccessKey
         {
             get => _secretAccessKey;
@@ -123,13 +151,14 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Service name of the resource representing the ID of the cloud project.
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The user ID
+        /// The ID of a public cloud project's user.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

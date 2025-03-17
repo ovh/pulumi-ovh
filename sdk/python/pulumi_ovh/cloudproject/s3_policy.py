@@ -24,9 +24,10 @@ class S3PolicyArgs:
                  user_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a S3Policy resource.
-        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "service_name", service_name)
@@ -36,7 +37,7 @@ class S3PolicyArgs:
     @pulumi.getter
     def policy(self) -> pulumi.Input[str]:
         """
-        The policy document. This is a JSON formatted string.
+        The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
         """
         return pulumi.get(self, "policy")
 
@@ -48,7 +49,8 @@ class S3PolicyArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name of the resource representing the ID of the cloud project.
+        The ID of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -60,7 +62,7 @@ class S3PolicyArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
-        The user ID
+        The ID of a public cloud project's user.
         """
         return pulumi.get(self, "user_id")
 
@@ -77,9 +79,10 @@ class _S3PolicyState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering S3Policy resources.
-        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -92,7 +95,7 @@ class _S3PolicyState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The policy document. This is a JSON formatted string.
+        The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
         """
         return pulumi.get(self, "policy")
 
@@ -104,7 +107,8 @@ class _S3PolicyState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name of the resource representing the ID of the cloud project.
+        The ID of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -116,7 +120,7 @@ class _S3PolicyState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The user ID
+        The ID of a public cloud project's user.
         """
         return pulumi.get(self, "user_id")
 
@@ -135,12 +139,63 @@ class S3Policy(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a S3Policy resource with the given unique name, props, and options.
+        Set the S3 Policy of a public cloud project user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_ovh as ovh
+
+        user = ovh.cloud_project.User("user",
+            service_name="XXX",
+            description="my user",
+            role_names=["objectstore_operator"])
+        my_s3_credentials = ovh.cloud_project.S3Credential("myS3Credentials",
+            service_name=user.service_name,
+            user_id=user.id)
+        policy = ovh.cloud_project.S3Policy("policy",
+            service_name=user.service_name,
+            user_id=user.id,
+            policy=json.dumps({
+                "Statement": [{
+                    "Sid": "RWContainer",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:DeleteObject",
+                        "s3:ListBucket",
+                        "s3:ListMultipartUploadParts",
+                        "s3:ListBucketMultipartUploads",
+                        "s3:AbortMultipartUpload",
+                        "s3:GetBucketLocation",
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::hp-bucket",
+                        "arn:aws:s3:::hp-bucket/*",
+                    ],
+                }],
+            }))
+        ```
+
+        ## Import
+
+        OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         ...
     @overload
@@ -149,7 +204,57 @@ class S3Policy(pulumi.CustomResource):
                  args: S3PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a S3Policy resource with the given unique name, props, and options.
+        Set the S3 Policy of a public cloud project user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_ovh as ovh
+
+        user = ovh.cloud_project.User("user",
+            service_name="XXX",
+            description="my user",
+            role_names=["objectstore_operator"])
+        my_s3_credentials = ovh.cloud_project.S3Credential("myS3Credentials",
+            service_name=user.service_name,
+            user_id=user.id)
+        policy = ovh.cloud_project.S3Policy("policy",
+            service_name=user.service_name,
+            user_id=user.id,
+            policy=json.dumps({
+                "Statement": [{
+                    "Sid": "RWContainer",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:DeleteObject",
+                        "s3:ListBucket",
+                        "s3:ListMultipartUploadParts",
+                        "s3:ListBucketMultipartUploads",
+                        "s3:AbortMultipartUpload",
+                        "s3:GetBucketLocation",
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::hp-bucket",
+                        "arn:aws:s3:::hp-bucket/*",
+                    ],
+                }],
+            }))
+        ```
+
+        ## Import
+
+        OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param S3PolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,9 +311,10 @@ class S3Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,7 +329,7 @@ class S3Policy(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[str]:
         """
-        The policy document. This is a JSON formatted string.
+        The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
         """
         return pulumi.get(self, "policy")
 
@@ -231,7 +337,8 @@ class S3Policy(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name of the resource representing the ID of the cloud project.
+        The ID of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -239,7 +346,7 @@ class S3Policy(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        The user ID
+        The ID of a public cloud project's user.
         """
         return pulumi.get(self, "user_id")
 

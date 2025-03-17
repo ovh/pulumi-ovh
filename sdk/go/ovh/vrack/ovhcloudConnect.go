@@ -8,22 +8,60 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type OVHCloudConnect struct {
+// Attach an OVH Cloud Connect to the vrack.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vrack.NewOVHcloudConnect(ctx, "vrackOvhcloudconnect", &vrack.OVHcloudConnectArgs{
+//				OvhCloudConnect: pulumi.String("<OVH Cloud Connect service name>"),
+//				ServiceName:     pulumi.String("<vRack service name>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Attachment of an OVH Cloud Connect and a vRack can be imported using the `service_name` (vRack identifier) and the `ovh_cloud_connect` (OVH Cloud Connect service name), separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Vrack/oVHcloudConnect:OVHcloudConnect myattach "<service_name>/<OVH Cloud Connect service name>"
+// ```
+type OVHcloudConnect struct {
 	pulumi.CustomResourceState
 
-	// ovhCloudConnect service name
+	// Your OVH Cloud Connect service name.
 	OvhCloudConnect pulumi.StringOutput `pulumi:"ovhCloudConnect"`
 	// The internal name of your vrack
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
-// NewOVHCloudConnect registers a new resource with the given unique name, arguments, and options.
-func NewOVHCloudConnect(ctx *pulumi.Context,
-	name string, args *OVHCloudConnectArgs, opts ...pulumi.ResourceOption) (*OVHCloudConnect, error) {
+// NewOVHcloudConnect registers a new resource with the given unique name, arguments, and options.
+func NewOVHcloudConnect(ctx *pulumi.Context,
+	name string, args *OVHcloudConnectArgs, opts ...pulumi.ResourceOption) (*OVHcloudConnect, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -35,202 +73,202 @@ func NewOVHCloudConnect(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource OVHCloudConnect
-	err := ctx.RegisterResource("ovh:Vrack/oVHCloudConnect:OVHCloudConnect", name, args, &resource, opts...)
+	var resource OVHcloudConnect
+	err := ctx.RegisterResource("ovh:Vrack/oVHcloudConnect:OVHcloudConnect", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetOVHCloudConnect gets an existing OVHCloudConnect resource's state with the given name, ID, and optional
+// GetOVHcloudConnect gets an existing OVHcloudConnect resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetOVHCloudConnect(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *OVHCloudConnectState, opts ...pulumi.ResourceOption) (*OVHCloudConnect, error) {
-	var resource OVHCloudConnect
-	err := ctx.ReadResource("ovh:Vrack/oVHCloudConnect:OVHCloudConnect", name, id, state, &resource, opts...)
+func GetOVHcloudConnect(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *OVHcloudConnectState, opts ...pulumi.ResourceOption) (*OVHcloudConnect, error) {
+	var resource OVHcloudConnect
+	err := ctx.ReadResource("ovh:Vrack/oVHcloudConnect:OVHcloudConnect", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering OVHCloudConnect resources.
+// Input properties used for looking up and filtering OVHcloudConnect resources.
 type ovhcloudConnectState struct {
-	// ovhCloudConnect service name
+	// Your OVH Cloud Connect service name.
 	OvhCloudConnect *string `pulumi:"ovhCloudConnect"`
 	// The internal name of your vrack
 	ServiceName *string `pulumi:"serviceName"`
 }
 
-type OVHCloudConnectState struct {
-	// ovhCloudConnect service name
+type OVHcloudConnectState struct {
+	// Your OVH Cloud Connect service name.
 	OvhCloudConnect pulumi.StringPtrInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringPtrInput
 }
 
-func (OVHCloudConnectState) ElementType() reflect.Type {
+func (OVHcloudConnectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ovhcloudConnectState)(nil)).Elem()
 }
 
 type ovhcloudConnectArgs struct {
-	// ovhCloudConnect service name
+	// Your OVH Cloud Connect service name.
 	OvhCloudConnect string `pulumi:"ovhCloudConnect"`
 	// The internal name of your vrack
 	ServiceName string `pulumi:"serviceName"`
 }
 
-// The set of arguments for constructing a OVHCloudConnect resource.
-type OVHCloudConnectArgs struct {
-	// ovhCloudConnect service name
+// The set of arguments for constructing a OVHcloudConnect resource.
+type OVHcloudConnectArgs struct {
+	// Your OVH Cloud Connect service name.
 	OvhCloudConnect pulumi.StringInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringInput
 }
 
-func (OVHCloudConnectArgs) ElementType() reflect.Type {
+func (OVHcloudConnectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ovhcloudConnectArgs)(nil)).Elem()
 }
 
-type OVHCloudConnectInput interface {
+type OVHcloudConnectInput interface {
 	pulumi.Input
 
-	ToOVHCloudConnectOutput() OVHCloudConnectOutput
-	ToOVHCloudConnectOutputWithContext(ctx context.Context) OVHCloudConnectOutput
+	ToOVHcloudConnectOutput() OVHcloudConnectOutput
+	ToOVHcloudConnectOutputWithContext(ctx context.Context) OVHcloudConnectOutput
 }
 
-func (*OVHCloudConnect) ElementType() reflect.Type {
-	return reflect.TypeOf((**OVHCloudConnect)(nil)).Elem()
+func (*OVHcloudConnect) ElementType() reflect.Type {
+	return reflect.TypeOf((**OVHcloudConnect)(nil)).Elem()
 }
 
-func (i *OVHCloudConnect) ToOVHCloudConnectOutput() OVHCloudConnectOutput {
-	return i.ToOVHCloudConnectOutputWithContext(context.Background())
+func (i *OVHcloudConnect) ToOVHcloudConnectOutput() OVHcloudConnectOutput {
+	return i.ToOVHcloudConnectOutputWithContext(context.Background())
 }
 
-func (i *OVHCloudConnect) ToOVHCloudConnectOutputWithContext(ctx context.Context) OVHCloudConnectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OVHCloudConnectOutput)
+func (i *OVHcloudConnect) ToOVHcloudConnectOutputWithContext(ctx context.Context) OVHcloudConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OVHcloudConnectOutput)
 }
 
-// OVHCloudConnectArrayInput is an input type that accepts OVHCloudConnectArray and OVHCloudConnectArrayOutput values.
-// You can construct a concrete instance of `OVHCloudConnectArrayInput` via:
+// OVHcloudConnectArrayInput is an input type that accepts OVHcloudConnectArray and OVHcloudConnectArrayOutput values.
+// You can construct a concrete instance of `OVHcloudConnectArrayInput` via:
 //
-//	OVHCloudConnectArray{ OVHCloudConnectArgs{...} }
-type OVHCloudConnectArrayInput interface {
+//	OVHcloudConnectArray{ OVHcloudConnectArgs{...} }
+type OVHcloudConnectArrayInput interface {
 	pulumi.Input
 
-	ToOVHCloudConnectArrayOutput() OVHCloudConnectArrayOutput
-	ToOVHCloudConnectArrayOutputWithContext(context.Context) OVHCloudConnectArrayOutput
+	ToOVHcloudConnectArrayOutput() OVHcloudConnectArrayOutput
+	ToOVHcloudConnectArrayOutputWithContext(context.Context) OVHcloudConnectArrayOutput
 }
 
-type OVHCloudConnectArray []OVHCloudConnectInput
+type OVHcloudConnectArray []OVHcloudConnectInput
 
-func (OVHCloudConnectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*OVHCloudConnect)(nil)).Elem()
+func (OVHcloudConnectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*OVHcloudConnect)(nil)).Elem()
 }
 
-func (i OVHCloudConnectArray) ToOVHCloudConnectArrayOutput() OVHCloudConnectArrayOutput {
-	return i.ToOVHCloudConnectArrayOutputWithContext(context.Background())
+func (i OVHcloudConnectArray) ToOVHcloudConnectArrayOutput() OVHcloudConnectArrayOutput {
+	return i.ToOVHcloudConnectArrayOutputWithContext(context.Background())
 }
 
-func (i OVHCloudConnectArray) ToOVHCloudConnectArrayOutputWithContext(ctx context.Context) OVHCloudConnectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OVHCloudConnectArrayOutput)
+func (i OVHcloudConnectArray) ToOVHcloudConnectArrayOutputWithContext(ctx context.Context) OVHcloudConnectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OVHcloudConnectArrayOutput)
 }
 
-// OVHCloudConnectMapInput is an input type that accepts OVHCloudConnectMap and OVHCloudConnectMapOutput values.
-// You can construct a concrete instance of `OVHCloudConnectMapInput` via:
+// OVHcloudConnectMapInput is an input type that accepts OVHcloudConnectMap and OVHcloudConnectMapOutput values.
+// You can construct a concrete instance of `OVHcloudConnectMapInput` via:
 //
-//	OVHCloudConnectMap{ "key": OVHCloudConnectArgs{...} }
-type OVHCloudConnectMapInput interface {
+//	OVHcloudConnectMap{ "key": OVHcloudConnectArgs{...} }
+type OVHcloudConnectMapInput interface {
 	pulumi.Input
 
-	ToOVHCloudConnectMapOutput() OVHCloudConnectMapOutput
-	ToOVHCloudConnectMapOutputWithContext(context.Context) OVHCloudConnectMapOutput
+	ToOVHcloudConnectMapOutput() OVHcloudConnectMapOutput
+	ToOVHcloudConnectMapOutputWithContext(context.Context) OVHcloudConnectMapOutput
 }
 
-type OVHCloudConnectMap map[string]OVHCloudConnectInput
+type OVHcloudConnectMap map[string]OVHcloudConnectInput
 
-func (OVHCloudConnectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*OVHCloudConnect)(nil)).Elem()
+func (OVHcloudConnectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*OVHcloudConnect)(nil)).Elem()
 }
 
-func (i OVHCloudConnectMap) ToOVHCloudConnectMapOutput() OVHCloudConnectMapOutput {
-	return i.ToOVHCloudConnectMapOutputWithContext(context.Background())
+func (i OVHcloudConnectMap) ToOVHcloudConnectMapOutput() OVHcloudConnectMapOutput {
+	return i.ToOVHcloudConnectMapOutputWithContext(context.Background())
 }
 
-func (i OVHCloudConnectMap) ToOVHCloudConnectMapOutputWithContext(ctx context.Context) OVHCloudConnectMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OVHCloudConnectMapOutput)
+func (i OVHcloudConnectMap) ToOVHcloudConnectMapOutputWithContext(ctx context.Context) OVHcloudConnectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OVHcloudConnectMapOutput)
 }
 
-type OVHCloudConnectOutput struct{ *pulumi.OutputState }
+type OVHcloudConnectOutput struct{ *pulumi.OutputState }
 
-func (OVHCloudConnectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OVHCloudConnect)(nil)).Elem()
+func (OVHcloudConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OVHcloudConnect)(nil)).Elem()
 }
 
-func (o OVHCloudConnectOutput) ToOVHCloudConnectOutput() OVHCloudConnectOutput {
+func (o OVHcloudConnectOutput) ToOVHcloudConnectOutput() OVHcloudConnectOutput {
 	return o
 }
 
-func (o OVHCloudConnectOutput) ToOVHCloudConnectOutputWithContext(ctx context.Context) OVHCloudConnectOutput {
+func (o OVHcloudConnectOutput) ToOVHcloudConnectOutputWithContext(ctx context.Context) OVHcloudConnectOutput {
 	return o
 }
 
-// ovhCloudConnect service name
-func (o OVHCloudConnectOutput) OvhCloudConnect() pulumi.StringOutput {
-	return o.ApplyT(func(v *OVHCloudConnect) pulumi.StringOutput { return v.OvhCloudConnect }).(pulumi.StringOutput)
+// Your OVH Cloud Connect service name.
+func (o OVHcloudConnectOutput) OvhCloudConnect() pulumi.StringOutput {
+	return o.ApplyT(func(v *OVHcloudConnect) pulumi.StringOutput { return v.OvhCloudConnect }).(pulumi.StringOutput)
 }
 
 // The internal name of your vrack
-func (o OVHCloudConnectOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *OVHCloudConnect) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+func (o OVHcloudConnectOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OVHcloudConnect) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-type OVHCloudConnectArrayOutput struct{ *pulumi.OutputState }
+type OVHcloudConnectArrayOutput struct{ *pulumi.OutputState }
 
-func (OVHCloudConnectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*OVHCloudConnect)(nil)).Elem()
+func (OVHcloudConnectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*OVHcloudConnect)(nil)).Elem()
 }
 
-func (o OVHCloudConnectArrayOutput) ToOVHCloudConnectArrayOutput() OVHCloudConnectArrayOutput {
+func (o OVHcloudConnectArrayOutput) ToOVHcloudConnectArrayOutput() OVHcloudConnectArrayOutput {
 	return o
 }
 
-func (o OVHCloudConnectArrayOutput) ToOVHCloudConnectArrayOutputWithContext(ctx context.Context) OVHCloudConnectArrayOutput {
+func (o OVHcloudConnectArrayOutput) ToOVHcloudConnectArrayOutputWithContext(ctx context.Context) OVHcloudConnectArrayOutput {
 	return o
 }
 
-func (o OVHCloudConnectArrayOutput) Index(i pulumi.IntInput) OVHCloudConnectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OVHCloudConnect {
-		return vs[0].([]*OVHCloudConnect)[vs[1].(int)]
-	}).(OVHCloudConnectOutput)
+func (o OVHcloudConnectArrayOutput) Index(i pulumi.IntInput) OVHcloudConnectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OVHcloudConnect {
+		return vs[0].([]*OVHcloudConnect)[vs[1].(int)]
+	}).(OVHcloudConnectOutput)
 }
 
-type OVHCloudConnectMapOutput struct{ *pulumi.OutputState }
+type OVHcloudConnectMapOutput struct{ *pulumi.OutputState }
 
-func (OVHCloudConnectMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*OVHCloudConnect)(nil)).Elem()
+func (OVHcloudConnectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*OVHcloudConnect)(nil)).Elem()
 }
 
-func (o OVHCloudConnectMapOutput) ToOVHCloudConnectMapOutput() OVHCloudConnectMapOutput {
+func (o OVHcloudConnectMapOutput) ToOVHcloudConnectMapOutput() OVHcloudConnectMapOutput {
 	return o
 }
 
-func (o OVHCloudConnectMapOutput) ToOVHCloudConnectMapOutputWithContext(ctx context.Context) OVHCloudConnectMapOutput {
+func (o OVHcloudConnectMapOutput) ToOVHcloudConnectMapOutputWithContext(ctx context.Context) OVHcloudConnectMapOutput {
 	return o
 }
 
-func (o OVHCloudConnectMapOutput) MapIndex(k pulumi.StringInput) OVHCloudConnectOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OVHCloudConnect {
-		return vs[0].(map[string]*OVHCloudConnect)[vs[1].(string)]
-	}).(OVHCloudConnectOutput)
+func (o OVHcloudConnectMapOutput) MapIndex(k pulumi.StringInput) OVHcloudConnectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OVHcloudConnect {
+		return vs[0].(map[string]*OVHcloudConnect)[vs[1].(string)]
+	}).(OVHcloudConnectOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*OVHCloudConnectInput)(nil)).Elem(), &OVHCloudConnect{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OVHCloudConnectArrayInput)(nil)).Elem(), OVHCloudConnectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OVHCloudConnectMapInput)(nil)).Elem(), OVHCloudConnectMap{})
-	pulumi.RegisterOutputType(OVHCloudConnectOutput{})
-	pulumi.RegisterOutputType(OVHCloudConnectArrayOutput{})
-	pulumi.RegisterOutputType(OVHCloudConnectMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OVHcloudConnectInput)(nil)).Elem(), &OVHcloudConnect{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OVHcloudConnectArrayInput)(nil)).Elem(), OVHcloudConnectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OVHcloudConnectMapInput)(nil)).Elem(), OVHcloudConnectMap{})
+	pulumi.RegisterOutputType(OVHcloudConnectOutput{})
+	pulumi.RegisterOutputType(OVHcloudConnectArrayOutput{})
+	pulumi.RegisterOutputType(OVHcloudConnectMapOutput{})
 }

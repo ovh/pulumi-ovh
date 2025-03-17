@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly double Count;
         /// <summary>
-        /// An enum describing OVH Link Aggregation interface types
+        /// Bandwidth offer type (included┃standard)
         /// </summary>
         public readonly string Type;
 

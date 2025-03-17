@@ -24,9 +24,9 @@ class LogsRolePermissionStreamArgs:
                  stream_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a LogsRolePermissionStream resource.
-        :param pulumi.Input[str] role_id: Role ID to which the permission will be appended
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] stream_id: Graylog stream ID to be associated as a permission
+        :param pulumi.Input[str] role_id: The DBaaS Logs role id
+        :param pulumi.Input[str] service_name: The service name
+        :param pulumi.Input[str] stream_id: The DBaaS Logs Graylog output stream id
         """
         pulumi.set(__self__, "role_id", role_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -36,7 +36,7 @@ class LogsRolePermissionStreamArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[str]:
         """
-        Role ID to which the permission will be appended
+        The DBaaS Logs role id
         """
         return pulumi.get(self, "role_id")
 
@@ -48,7 +48,7 @@ class LogsRolePermissionStreamArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name
+        The service name
         """
         return pulumi.get(self, "service_name")
 
@@ -60,7 +60,7 @@ class LogsRolePermissionStreamArgs:
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Input[str]:
         """
-        Graylog stream ID to be associated as a permission
+        The DBaaS Logs Graylog output stream id
         """
         return pulumi.get(self, "stream_id")
 
@@ -81,9 +81,9 @@ class _LogsRolePermissionStreamState:
         Input properties used for looking up and filtering LogsRolePermissionStream resources.
         :param pulumi.Input[str] permission_id: Permission ID
         :param pulumi.Input[str] permission_type: Permission type (e.g., READ_ONLY)
-        :param pulumi.Input[str] role_id: Role ID to which the permission will be appended
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] stream_id: Graylog stream ID to be associated as a permission
+        :param pulumi.Input[str] role_id: The DBaaS Logs role id
+        :param pulumi.Input[str] service_name: The service name
+        :param pulumi.Input[str] stream_id: The DBaaS Logs Graylog output stream id
         """
         if permission_id is not None:
             pulumi.set(__self__, "permission_id", permission_id)
@@ -124,7 +124,7 @@ class _LogsRolePermissionStreamState:
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Role ID to which the permission will be appended
+        The DBaaS Logs role id
         """
         return pulumi.get(self, "role_id")
 
@@ -136,7 +136,7 @@ class _LogsRolePermissionStreamState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name
+        The service name
         """
         return pulumi.get(self, "service_name")
 
@@ -148,7 +148,7 @@ class _LogsRolePermissionStreamState:
     @pulumi.getter(name="streamId")
     def stream_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Graylog stream ID to be associated as a permission
+        The DBaaS Logs Graylog output stream id
         """
         return pulumi.get(self, "stream_id")
 
@@ -167,12 +167,35 @@ class LogsRolePermissionStream(pulumi.CustomResource):
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LogsRolePermissionStream resource with the given unique name, props, and options.
+        Reference a DBaaS logs role stream permission.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        permission = ovh.dbaas.LogsRolePermissionStream("permission",
+            service_name="ldp-xx-xxxxx",
+            role_id=ovh_dbaas_logs_role["ro"]["id"],
+            stream_id=ovh_dbaas_logs_output_graylog_stream["mystream"]["stream_id"])
+        ```
+
+        ## Import
+
+        DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] role_id: Role ID to which the permission will be appended
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] stream_id: Graylog stream ID to be associated as a permission
+        :param pulumi.Input[str] role_id: The DBaaS Logs role id
+        :param pulumi.Input[str] service_name: The service name
+        :param pulumi.Input[str] stream_id: The DBaaS Logs Graylog output stream id
         """
         ...
     @overload
@@ -181,7 +204,30 @@ class LogsRolePermissionStream(pulumi.CustomResource):
                  args: LogsRolePermissionStreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogsRolePermissionStream resource with the given unique name, props, and options.
+        Reference a DBaaS logs role stream permission.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        permission = ovh.dbaas.LogsRolePermissionStream("permission",
+            service_name="ldp-xx-xxxxx",
+            role_id=ovh_dbaas_logs_role["ro"]["id"],
+            stream_id=ovh_dbaas_logs_output_graylog_stream["mystream"]["stream_id"])
+        ```
+
+        ## Import
+
+        DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogsRolePermissionStreamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -244,9 +290,9 @@ class LogsRolePermissionStream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] permission_id: Permission ID
         :param pulumi.Input[str] permission_type: Permission type (e.g., READ_ONLY)
-        :param pulumi.Input[str] role_id: Role ID to which the permission will be appended
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] stream_id: Graylog stream ID to be associated as a permission
+        :param pulumi.Input[str] role_id: The DBaaS Logs role id
+        :param pulumi.Input[str] service_name: The service name
+        :param pulumi.Input[str] stream_id: The DBaaS Logs Graylog output stream id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -279,7 +325,7 @@ class LogsRolePermissionStream(pulumi.CustomResource):
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[str]:
         """
-        Role ID to which the permission will be appended
+        The DBaaS Logs role id
         """
         return pulumi.get(self, "role_id")
 
@@ -287,7 +333,7 @@ class LogsRolePermissionStream(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        The service name
         """
         return pulumi.get(self, "service_name")
 
@@ -295,7 +341,7 @@ class LogsRolePermissionStream(pulumi.CustomResource):
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Output[str]:
         """
-        Graylog stream ID to be associated as a permission
+        The DBaaS Logs Graylog output stream id
         """
         return pulumi.get(self, "stream_id")
 

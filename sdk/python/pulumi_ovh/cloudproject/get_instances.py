@@ -52,6 +52,9 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        List of instances
+        """
         return pulumi.get(self, "instances")
 
     @property
@@ -81,7 +84,26 @@ def get_instances(region: Optional[str] = None,
                   service_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    **This datasource uses a Beta API**
+
+    Use this data source to get the list of instances in a region of a public cloud project.
+
+    ## Example Usage
+
+    To list your instances:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    instance = ovh.CloudProject.get_instances(region="XXXX",
+        service_name="YYYY")
+    ```
+
+
+    :param str region: Instance region.
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -98,7 +120,26 @@ def get_instances_output(region: Optional[pulumi.Input[str]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    **This datasource uses a Beta API**
+
+    Use this data source to get the list of instances in a region of a public cloud project.
+
+    ## Example Usage
+
+    To list your instances:
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    instance = ovh.CloudProject.get_instances(region="XXXX",
+        service_name="YYYY")
+    ```
+
+
+    :param str region: Instance region.
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['region'] = region

@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pattern, err := cloudproject.GetOpenSearchPattern(ctx, &cloudproject.GetOpenSearchPatternArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Id:          "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("patternPattern", pattern.Pattern)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOpenSearchPattern(ctx *pulumi.Context, args *GetOpenSearchPatternArgs, opts ...pulumi.InvokeOption) (*GetOpenSearchPatternResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenSearchPatternResult
@@ -23,18 +53,27 @@ func GetOpenSearchPattern(ctx *pulumi.Context, args *GetOpenSearchPatternArgs, o
 
 // A collection of arguments for invoking getOpenSearchPattern.
 type GetOpenSearchPatternArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Id          string `pulumi:"id"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// Pattern ID.
+	Id string `pulumi:"id"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getOpenSearchPattern.
 type GetOpenSearchPatternResult struct {
-	ClusterId     string `pulumi:"clusterId"`
-	Id            string `pulumi:"id"`
-	MaxIndexCount int    `pulumi:"maxIndexCount"`
-	Pattern       string `pulumi:"pattern"`
-	ServiceName   string `pulumi:"serviceName"`
+	// See Argument Reference above.
+	ClusterId string `pulumi:"clusterId"`
+	// See Argument Reference above.
+	Id string `pulumi:"id"`
+	// Maximum number of index for this pattern.
+	MaxIndexCount int `pulumi:"maxIndexCount"`
+	// Pattern format.
+	Pattern string `pulumi:"pattern"`
+	// Current status of the pattern.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 func GetOpenSearchPatternOutput(ctx *pulumi.Context, args GetOpenSearchPatternOutputArgs, opts ...pulumi.InvokeOption) GetOpenSearchPatternResultOutput {
@@ -48,8 +87,12 @@ func GetOpenSearchPatternOutput(ctx *pulumi.Context, args GetOpenSearchPatternOu
 
 // A collection of arguments for invoking getOpenSearchPattern.
 type GetOpenSearchPatternOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Id          pulumi.StringInput `pulumi:"id"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Pattern ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -72,22 +115,27 @@ func (o GetOpenSearchPatternResultOutput) ToGetOpenSearchPatternResultOutputWith
 	return o
 }
 
+// See Argument Reference above.
 func (o GetOpenSearchPatternResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetOpenSearchPatternResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Maximum number of index for this pattern.
 func (o GetOpenSearchPatternResultOutput) MaxIndexCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) int { return v.MaxIndexCount }).(pulumi.IntOutput)
 }
 
+// Pattern format.
 func (o GetOpenSearchPatternResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
+// Current status of the pattern.
 func (o GetOpenSearchPatternResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

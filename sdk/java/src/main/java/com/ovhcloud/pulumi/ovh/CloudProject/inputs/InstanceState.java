@@ -72,6 +72,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The availability zone where the instance will be created
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return The availability zone where the instance will be created
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
+
+    /**
      * Billing period - hourly or monthly
      * 
      */
@@ -319,6 +334,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.addresses = $.addresses;
         this.attachedVolumes = $.attachedVolumes;
         this.autoBackup = $.autoBackup;
+        this.availabilityZone = $.availabilityZone;
         this.billingPeriod = $.billingPeriod;
         this.bootFrom = $.bootFrom;
         this.bulk = $.bulk;
@@ -436,6 +452,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoBackup(InstanceAutoBackupArgs autoBackup) {
             return autoBackup(Output.of(autoBackup));
+        }
+
+        /**
+         * @param availabilityZone The availability zone where the instance will be created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone The availability zone where the instance will be created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**

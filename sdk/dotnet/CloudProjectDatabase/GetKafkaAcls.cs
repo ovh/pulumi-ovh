@@ -11,12 +11,90 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetKafkaAcls
     {
+        /// <summary>
+        /// Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acls = Ovh.CloudProjectDatabase.GetKafkaAcls.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclIds"] = acls.Apply(getKafkaAclsResult =&gt; getKafkaAclsResult.AclIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetKafkaAclsResult> InvokeAsync(GetKafkaAclsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclsResult>("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", args ?? new GetKafkaAclsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acls = Ovh.CloudProjectDatabase.GetKafkaAcls.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclIds"] = acls.Apply(getKafkaAclsResult =&gt; getKafkaAclsResult.AclIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetKafkaAclsResult> Invoke(GetKafkaAclsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclsResult>("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", args ?? new GetKafkaAclsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acls = Ovh.CloudProjectDatabase.GetKafkaAcls.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aclIds"] = acls.Apply(getKafkaAclsResult =&gt; getKafkaAclsResult.AclIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetKafkaAclsResult> Invoke(GetKafkaAclsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaAclsResult>("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", args ?? new GetKafkaAclsInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +102,16 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetKafkaAclsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +123,16 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetKafkaAclsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -54,12 +146,21 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetKafkaAclsResult
     {
+        /// <summary>
+        /// The list of ACLs ids of the kafka cluster associated with the project.
+        /// </summary>
         public readonly ImmutableArray<string> AclIds;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

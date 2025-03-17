@@ -9,44 +9,80 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Generates a temporary presigned S3 URLs to download or upload an object.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var presignedUrlRegionStoragePresign = new Ovh.CloudProject.RegionStoragePresign("presignedUrlRegionStoragePresign", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxx",
+    ///         RegionName = "GRA",
+    ///         Expire = 3600,
+    ///         Method = "GET",
+    ///         Object = "an-object-in-the-bucket",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["presignedUrl"] = presignedUrlRegionStoragePresign.Url,
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/regionStoragePresign:RegionStoragePresign")]
     public partial class RegionStoragePresign : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// How long (in seconds) the URL will be valid
+        /// Define, in seconds, for how long your URL will be
+        /// valid.
         /// </summary>
         [Output("expire")]
         public Output<int> Expire { get; private set; } = null!;
 
+        /// <summary>
+        /// The method you want to use to interact with your
+        /// object. Can be either 'GET' or 'PUT'.
+        /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
 
         /// <summary>
-        /// The S3 storage container's name
+        /// The name of your S3 storage container/bucket.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the object to download or upload
+        /// The name of the object in your S3 bucket.
         /// </summary>
         [Output("object")]
         public Output<string> Object { get; private set; } = null!;
 
         /// <summary>
-        /// Region name
+        /// The region in which your storage is located. Must
+        /// be in **uppercase**. Ex.: "GRA".
         /// </summary>
         [Output("regionName")]
         public Output<string> RegionName { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the ID of the cloud project
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Presigned URL
+        /// Computed URL result.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -99,34 +135,41 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionStoragePresignArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How long (in seconds) the URL will be valid
+        /// Define, in seconds, for how long your URL will be
+        /// valid.
         /// </summary>
         [Input("expire", required: true)]
         public Input<int> Expire { get; set; } = null!;
 
+        /// <summary>
+        /// The method you want to use to interact with your
+        /// object. Can be either 'GET' or 'PUT'.
+        /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// The S3 storage container's name
+        /// The name of your S3 storage container/bucket.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the object to download or upload
+        /// The name of the object in your S3 bucket.
         /// </summary>
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;
 
         /// <summary>
-        /// Region name
+        /// The region in which your storage is located. Must
+        /// be in **uppercase**. Ex.: "GRA".
         /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the ID of the cloud project
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -140,40 +183,47 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionStoragePresignState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How long (in seconds) the URL will be valid
+        /// Define, in seconds, for how long your URL will be
+        /// valid.
         /// </summary>
         [Input("expire")]
         public Input<int>? Expire { get; set; }
 
+        /// <summary>
+        /// The method you want to use to interact with your
+        /// object. Can be either 'GET' or 'PUT'.
+        /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// The S3 storage container's name
+        /// The name of your S3 storage container/bucket.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the object to download or upload
+        /// The name of the object in your S3 bucket.
         /// </summary>
         [Input("object")]
         public Input<string>? Object { get; set; }
 
         /// <summary>
-        /// Region name
+        /// The region in which your storage is located. Must
+        /// be in **uppercase**. Ex.: "GRA".
         /// </summary>
         [Input("regionName")]
         public Input<string>? RegionName { get; set; }
 
         /// <summary>
-        /// Service name of the resource representing the ID of the cloud project
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Presigned URL
+        /// Computed URL result.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

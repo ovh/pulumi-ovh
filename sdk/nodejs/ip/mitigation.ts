@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this resource to manage an IP permanent mitigation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const mitigation = new ovh.ip.Mitigation("mitigation", {
+ *     ip: "XXXXXX",
+ *     ipOnMitigation: "XXXXXX",
+ * });
+ * ```
+ */
 export class Mitigation extends pulumi.CustomResource {
     /**
      * Get an existing Mitigation resource's state with the given name, ID, and optional extra
@@ -33,15 +48,16 @@ export class Mitigation extends pulumi.CustomResource {
     }
 
     /**
-     * Set on true if your ip is on auto-mitigation
+     * Set on true if the IP is on auto-mitigation
      */
     public /*out*/ readonly auto!: pulumi.Output<boolean>;
     /**
-     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+     * The IP or the CIDR
      */
     public readonly ip!: pulumi.Output<string>;
     /**
-     * IPv4 address (e.g., 192.0.2.0)
+     * IPv4 address
+     * * `permanent ` - Set on true if the IP is on permanent mitigation
      */
     public readonly ipOnMitigation!: pulumi.Output<string>;
     /**
@@ -49,7 +65,7 @@ export class Mitigation extends pulumi.CustomResource {
      */
     public readonly permanent!: pulumi.Output<boolean>;
     /**
-     * Current state of your ip on mitigation
+     * Current state of the IP on mitigation
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -95,15 +111,16 @@ export class Mitigation extends pulumi.CustomResource {
  */
 export interface MitigationState {
     /**
-     * Set on true if your ip is on auto-mitigation
+     * Set on true if the IP is on auto-mitigation
      */
     auto?: pulumi.Input<boolean>;
     /**
-     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+     * The IP or the CIDR
      */
     ip?: pulumi.Input<string>;
     /**
-     * IPv4 address (e.g., 192.0.2.0)
+     * IPv4 address
+     * * `permanent ` - Set on true if the IP is on permanent mitigation
      */
     ipOnMitigation?: pulumi.Input<string>;
     /**
@@ -111,7 +128,7 @@ export interface MitigationState {
      */
     permanent?: pulumi.Input<boolean>;
     /**
-     * Current state of your ip on mitigation
+     * Current state of the IP on mitigation
      */
     state?: pulumi.Input<string>;
 }
@@ -121,11 +138,12 @@ export interface MitigationState {
  */
 export interface MitigationArgs {
     /**
-     * IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+     * The IP or the CIDR
      */
     ip: pulumi.Input<string>;
     /**
-     * IPv4 address (e.g., 192.0.2.0)
+     * IPv4 address
+     * * `permanent ` - Set on true if the IP is on permanent mitigation
      */
     ipOnMitigation: pulumi.Input<string>;
     /**

@@ -13,7 +13,13 @@ namespace Pulumi.Ovh.IpLoadBalancing.Outputs
     [OutputType]
     public sealed class GetIpLoadBalancingOrderableZoneResult
     {
+        /// <summary>
+        /// The zone three letter code
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The billing planCode for this zone
+        /// </summary>
         public readonly string PlanCode;
 
         [OutputConstructor]

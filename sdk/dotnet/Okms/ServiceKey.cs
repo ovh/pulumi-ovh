@@ -9,6 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Okms
 {
+    /// <summary>
+    /// Creates a Service Key in an OVHcloud KMS.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keySymetric = new Ovh.Okms.ServiceKey("keySymetric", new()
+    ///     {
+    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Operations = new[]
+    ///         {
+    ///             "encrypt",
+    ///             "decrypt",
+    ///         },
+    ///         Size = 256,
+    ///         Type = "oct",
+    ///     });
+    /// 
+    ///     var keyRsa = new Ovh.Okms.ServiceKey("keyRsa", new()
+    ///     {
+    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Operations = new[]
+    ///         {
+    ///             "sign",
+    ///             "verify",
+    ///         },
+    ///         Size = 2048,
+    ///         Type = "RSA",
+    ///     });
+    /// 
+    ///     var keyEcdsa = new Ovh.Okms.ServiceKey("keyEcdsa", new()
+    ///     {
+    ///         Curve = "P-256",
+    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Operations = new[]
+    ///         {
+    ///             "sign",
+    ///             "verify",
+    ///         },
+    ///         Type = "EC",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Okms/serviceKey:ServiceKey")]
     public partial class ServiceKey : global::Pulumi.CustomResource
     {

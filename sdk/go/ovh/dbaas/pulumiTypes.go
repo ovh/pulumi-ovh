@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -170,9 +170,9 @@ func (o LogsInputConfigurationPtrOutput) Logstash() LogsInputConfigurationLogsta
 }
 
 type LogsInputConfigurationFlowgger struct {
-	// Type of format to decode
+	// Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
 	LogFormat string `pulumi:"logFormat"`
-	// Indicates how messages are delimited
+	// Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
 	LogFraming string `pulumi:"logFraming"`
 }
 
@@ -188,9 +188,9 @@ type LogsInputConfigurationFlowggerInput interface {
 }
 
 type LogsInputConfigurationFlowggerArgs struct {
-	// Type of format to decode
+	// Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
 	LogFormat pulumi.StringInput `pulumi:"logFormat"`
-	// Indicates how messages are delimited
+	// Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
 	LogFraming pulumi.StringInput `pulumi:"logFraming"`
 }
 
@@ -271,12 +271,12 @@ func (o LogsInputConfigurationFlowggerOutput) ToLogsInputConfigurationFlowggerPt
 	}).(LogsInputConfigurationFlowggerPtrOutput)
 }
 
-// Type of format to decode
+// Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
 func (o LogsInputConfigurationFlowggerOutput) LogFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsInputConfigurationFlowgger) string { return v.LogFormat }).(pulumi.StringOutput)
 }
 
-// Indicates how messages are delimited
+// Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
 func (o LogsInputConfigurationFlowggerOutput) LogFraming() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsInputConfigurationFlowgger) string { return v.LogFraming }).(pulumi.StringOutput)
 }
@@ -305,7 +305,7 @@ func (o LogsInputConfigurationFlowggerPtrOutput) Elem() LogsInputConfigurationFl
 	}).(LogsInputConfigurationFlowggerOutput)
 }
 
-// Type of format to decode
+// Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
 func (o LogsInputConfigurationFlowggerPtrOutput) LogFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogsInputConfigurationFlowgger) *string {
 		if v == nil {
@@ -315,7 +315,7 @@ func (o LogsInputConfigurationFlowggerPtrOutput) LogFormat() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates how messages are delimited
+// Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
 func (o LogsInputConfigurationFlowggerPtrOutput) LogFraming() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogsInputConfigurationFlowgger) *string {
 		if v == nil {

@@ -9,6 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Manage backups for the given volume in a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var backup = new Ovh.CloudProject.VolumeBackup("backup", new()
+    ///     {
+    ///         RegionName = "GRA9",
+    ///         ServiceName = "&lt;public cloud project ID&gt;",
+    ///         VolumeId = "&lt;volume ID&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A volume backup in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   id = "&lt;service_name&gt;/&lt;region_name&gt;/&lt;id&gt;"
+    /// 
+    ///   to = ovh_cloud_project_volume_backup.backup
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=backup.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `backup.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/volumeBackup:VolumeBackup")]
     public partial class VolumeBackup : global::Pulumi.CustomResource
     {

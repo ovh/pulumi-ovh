@@ -47,11 +47,17 @@ class GetPrivateDatabaseUserResult:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        Creation date of the database
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def databases(self) -> Sequence['outputs.GetPrivateDatabaseUserDatabaseResult']:
+        """
+        Users granted to this database
+        """
         return pulumi.get(self, "databases")
 
     @property
@@ -90,7 +96,21 @@ def get_private_database_user(service_name: Optional[str] = None,
                               user_name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateDatabaseUserResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an hosting privatedatabase user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user = ovh.Hosting.get_private_database_user(service_name="XXXXXX",
+        user_name="XXXXXX")
+    ```
+
+
+    :param str service_name: The internal name of your private database
+    :param str user_name: User name
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -108,7 +128,21 @@ def get_private_database_user_output(service_name: Optional[pulumi.Input[str]] =
                                      user_name: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateDatabaseUserResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about an hosting privatedatabase user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    user = ovh.Hosting.get_private_database_user(service_name="XXXXXX",
+        user_name="XXXXXX")
+    ```
+
+
+    :param str service_name: The internal name of your private database
+    :param str user_name: User name
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

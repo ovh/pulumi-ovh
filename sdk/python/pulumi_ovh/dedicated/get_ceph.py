@@ -64,21 +64,41 @@ class GetCephResult:
     @property
     @pulumi.getter(name="CephURN")
     def ceph_urn(self) -> str:
+        """
+        URN of the CEPH instance
+        """
         return pulumi.get(self, "ceph_urn")
 
     @property
     @pulumi.getter(name="cephMons")
     def ceph_mons(self) -> Sequence[str]:
+        """
+        list of CEPH monitors IPs
+        """
         return pulumi.get(self, "ceph_mons")
 
     @property
     @pulumi.getter(name="cephVersion")
     def ceph_version(self) -> str:
+        """
+        CEPH cluster version
+        """
         return pulumi.get(self, "ceph_version")
 
     @property
     @pulumi.getter(name="crushTunables")
     def crush_tunables(self) -> str:
+        """
+        CRUSH algorithm settings. Possible values
+        * OPTIMAL
+        * DEFAULT
+        * LEGACY
+        * BOBTAIL
+        * ARGONAUT
+        * FIREFLY
+        * HAMMER
+        * JEWEL
+        """
         return pulumi.get(self, "crush_tunables")
 
     @property
@@ -92,11 +112,17 @@ class GetCephResult:
     @property
     @pulumi.getter
     def label(self) -> str:
+        """
+        CEPH cluster label
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        cluster region
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -107,16 +133,25 @@ class GetCephResult:
     @property
     @pulumi.getter
     def size(self) -> float:
+        """
+        Cluster size in TB
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        the state of the cluster
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        the status of the service
+        """
         return pulumi.get(self, "status")
 
 
@@ -144,7 +179,21 @@ def get_ceph(ceph_version: Optional[str] = None,
              status: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCephResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated CEPH.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_ceph = ovh.Dedicated.get_ceph(service_name="XXXXXX")
+    ```
+
+
+    :param str ceph_version: CEPH cluster version
+    :param str service_name: The service name of the dedicated CEPH cluster.
+    :param str status: the status of the service
     """
     __args__ = dict()
     __args__['cephVersion'] = ceph_version
@@ -170,7 +219,21 @@ def get_ceph_output(ceph_version: Optional[pulumi.Input[Optional[str]]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCephResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated CEPH.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_ceph = ovh.Dedicated.get_ceph(service_name="XXXXXX")
+    ```
+
+
+    :param str ceph_version: CEPH cluster version
+    :param str service_name: The service name of the dedicated CEPH cluster.
+    :param str status: the status of the service
     """
     __args__ = dict()
     __args__['cephVersion'] = ceph_version

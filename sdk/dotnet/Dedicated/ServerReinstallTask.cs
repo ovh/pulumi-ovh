@@ -9,35 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Dedicated/serverReinstallTask:ServerReinstallTask ovh_dedicated_server_reinstall_task nsXXXX.ipXXXX/operating_system/12345
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dedicated/serverReinstallTask:ServerReinstallTask")]
     public partial class ServerReinstallTask : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If set, reboot the server on the specified boot id during destroy phase
+        /// If set, reboot the server on the specified boot id during destroy phase.
         /// </summary>
         [Output("bootidOnDestroy")]
         public Output<int?> BootidOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Details of this task
+        /// Details of this task. (should be `Install asked`)
         /// </summary>
         [Output("comment")]
         public Output<string> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// OS reinstallation customizations
+        /// Available attributes and their types are OS-dependant. Example: `hostname`.
+        /// 
+        /// &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         /// </summary>
         [Output("customizations")]
         public Output<Outputs.ServerReinstallTaskCustomizations?> Customizations { get; private set; } = null!;
 
         /// <summary>
-        /// Completion date
+        /// Completion date in RFC3339 format.
         /// </summary>
         [Output("doneDate")]
         public Output<string> DoneDate { get; private set; } = null!;
 
         /// <summary>
-        /// Function name
+        /// Function name (should be `hardInstall`).
         /// </summary>
         [Output("function")]
         public Output<string> Function { get; private set; } = null!;
@@ -49,37 +62,37 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> LastUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// Operating System name
+        /// Operating system to install.
         /// </summary>
         [Output("os")]
         public Output<string> Os { get; private set; } = null!;
 
         /// <summary>
-        /// Arbitrary properties to pass to cloud-init's config drive datasource
+        /// Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// The internal name of your dedicated server.
+        /// The service_name of your dedicated server.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Task Creation date
+        /// Task creation date in RFC3339 format.
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// Task status
+        /// Task status (should be `done`)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Storage configuration
+        /// OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&amp;sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         /// </summary>
         [Output("storages")]
         public Output<ImmutableArray<Outputs.ServerReinstallTaskStorage>> Storages { get; private set; } = null!;
@@ -132,19 +145,21 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerReinstallTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set, reboot the server on the specified boot id during destroy phase
+        /// If set, reboot the server on the specified boot id during destroy phase.
         /// </summary>
         [Input("bootidOnDestroy")]
         public Input<int>? BootidOnDestroy { get; set; }
 
         /// <summary>
-        /// OS reinstallation customizations
+        /// Available attributes and their types are OS-dependant. Example: `hostname`.
+        /// 
+        /// &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         /// </summary>
         [Input("customizations")]
         public Input<Inputs.ServerReinstallTaskCustomizationsArgs>? Customizations { get; set; }
 
         /// <summary>
-        /// Operating System name
+        /// Operating system to install.
         /// </summary>
         [Input("os", required: true)]
         public Input<string> Os { get; set; } = null!;
@@ -153,7 +168,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Arbitrary properties to pass to cloud-init's config drive datasource
+        /// Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -162,7 +177,7 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// The internal name of your dedicated server.
+        /// The service_name of your dedicated server.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -171,7 +186,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputList<Inputs.ServerReinstallTaskStorageArgs>? _storages;
 
         /// <summary>
-        /// Storage configuration
+        /// OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&amp;sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStorageArgs> Storages
         {
@@ -188,31 +203,33 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class ServerReinstallTaskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set, reboot the server on the specified boot id during destroy phase
+        /// If set, reboot the server on the specified boot id during destroy phase.
         /// </summary>
         [Input("bootidOnDestroy")]
         public Input<int>? BootidOnDestroy { get; set; }
 
         /// <summary>
-        /// Details of this task
+        /// Details of this task. (should be `Install asked`)
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// OS reinstallation customizations
+        /// Available attributes and their types are OS-dependant. Example: `hostname`.
+        /// 
+        /// &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         /// </summary>
         [Input("customizations")]
         public Input<Inputs.ServerReinstallTaskCustomizationsGetArgs>? Customizations { get; set; }
 
         /// <summary>
-        /// Completion date
+        /// Completion date in RFC3339 format.
         /// </summary>
         [Input("doneDate")]
         public Input<string>? DoneDate { get; set; }
 
         /// <summary>
-        /// Function name
+        /// Function name (should be `hardInstall`).
         /// </summary>
         [Input("function")]
         public Input<string>? Function { get; set; }
@@ -224,7 +241,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string>? LastUpdate { get; set; }
 
         /// <summary>
-        /// Operating System name
+        /// Operating system to install.
         /// </summary>
         [Input("os")]
         public Input<string>? Os { get; set; }
@@ -233,7 +250,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Arbitrary properties to pass to cloud-init's config drive datasource
+        /// Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -242,19 +259,19 @@ namespace Pulumi.Ovh.Dedicated
         }
 
         /// <summary>
-        /// The internal name of your dedicated server.
+        /// The service_name of your dedicated server.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Task Creation date
+        /// Task creation date in RFC3339 format.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// Task status
+        /// Task status (should be `done`)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -263,7 +280,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputList<Inputs.ServerReinstallTaskStorageGetArgs>? _storages;
 
         /// <summary>
-        /// Storage configuration
+        /// OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&amp;sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStorageGetArgs> Storages
         {

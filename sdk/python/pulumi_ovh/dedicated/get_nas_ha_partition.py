@@ -55,11 +55,17 @@ class GetNasHAPartitionResult:
     @property
     @pulumi.getter
     def capacity(self) -> int:
+        """
+        Percentage of partition space used in %
+        """
         return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        A brief description of the partition
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -78,6 +84,9 @@ class GetNasHAPartitionResult:
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        one of "NFS", "CIFS" or "NFS_CIFS"
+        """
         return pulumi.get(self, "protocol")
 
     @property
@@ -88,11 +97,17 @@ class GetNasHAPartitionResult:
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        size of the partition in GB
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="usedBySnapshots")
     def used_by_snapshots(self) -> int:
+        """
+        Percentage of partition space used by snapshots in %
+        """
         return pulumi.get(self, "used_by_snapshots")
 
 
@@ -116,7 +131,21 @@ def get_nas_ha_partition(name: Optional[str] = None,
                          service_name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNasHAPartitionResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated HA-NAS partition.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(name="my-zpool-partition",
+        service_name="zpool-12345")
+    ```
+
+
+    :param str name: The name of your dedicated HA-NAS partition.
+    :param str service_name: The service_name of your dedicated HA-NAS.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -137,7 +166,21 @@ def get_nas_ha_partition_output(name: Optional[pulumi.Input[str]] = None,
                                 service_name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNasHAPartitionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated HA-NAS partition.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(name="my-zpool-partition",
+        service_name="zpool-12345")
+    ```
+
+
+    :param str name: The name of your dedicated HA-NAS partition.
+    :param str service_name: The service_name of your dedicated HA-NAS.
     """
     __args__ = dict()
     __args__['name'] = name

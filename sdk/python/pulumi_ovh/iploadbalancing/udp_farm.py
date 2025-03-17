@@ -28,10 +28,9 @@ class UdpFarmArgs:
         The set of arguments for constructing a UdpFarm resource.
         :param pulumi.Input[float] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[str] zone: Zone of your farm
-        :param pulumi.Input[str] display_name: Human readable name for your backend, this field is for you
-        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-               is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "service_name", service_name)
@@ -69,7 +68,7 @@ class UdpFarmArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        Zone of your farm
+        Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         return pulumi.get(self, "zone")
 
@@ -81,7 +80,7 @@ class UdpFarmArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Human readable name for your backend, this field is for you
+        Readable label for loadbalancer farm
         """
         return pulumi.get(self, "display_name")
 
@@ -93,8 +92,7 @@ class UdpFarmArgs:
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> Optional[pulumi.Input[float]]:
         """
-        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-        is attached to a vRack
+        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
         """
         return pulumi.get(self, "vrack_network_id")
 
@@ -114,13 +112,12 @@ class _UdpFarmState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UdpFarm resources.
-        :param pulumi.Input[str] display_name: Human readable name for your backend, this field is for you
-        :param pulumi.Input[float] farm_id: Id of your farm
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[float] farm_id: Id of your farm.
         :param pulumi.Input[float] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-               is attached to a vRack
-        :param pulumi.Input[str] zone: Zone of your farm
+        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -139,7 +136,7 @@ class _UdpFarmState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Human readable name for your backend, this field is for you
+        Readable label for loadbalancer farm
         """
         return pulumi.get(self, "display_name")
 
@@ -151,7 +148,7 @@ class _UdpFarmState:
     @pulumi.getter(name="farmId")
     def farm_id(self) -> Optional[pulumi.Input[float]]:
         """
-        Id of your farm
+        Id of your farm.
         """
         return pulumi.get(self, "farm_id")
 
@@ -187,8 +184,7 @@ class _UdpFarmState:
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> Optional[pulumi.Input[float]]:
         """
-        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-        is attached to a vRack
+        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
         """
         return pulumi.get(self, "vrack_network_id")
 
@@ -200,7 +196,7 @@ class _UdpFarmState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Zone of your farm
+        Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         return pulumi.get(self, "zone")
 
@@ -221,15 +217,40 @@ class UdpFarm(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a UdpFarm resource with the given unique name, props, and options.
+        Creates a backend server group (farm) to be used by loadbalancing frontend(s)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farm_name = ovh.ip_load_balancing.UdpFarm("farmName",
+            display_name="ingress-8080-gra",
+            port=80,
+            service_name=lb.service_name,
+            zone="gra")
+        ```
+
+        ## Import
+
+        UDP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/udpFarm:UdpFarm farmname service_name/farm_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Human readable name for your backend, this field is for you
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
         :param pulumi.Input[float] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-               is attached to a vRack
-        :param pulumi.Input[str] zone: Zone of your farm
+        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         ...
     @overload
@@ -238,7 +259,33 @@ class UdpFarm(pulumi.CustomResource):
                  args: UdpFarmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a UdpFarm resource with the given unique name, props, and options.
+        Creates a backend server group (farm) to be used by loadbalancing frontend(s)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farm_name = ovh.ip_load_balancing.UdpFarm("farmName",
+            display_name="ingress-8080-gra",
+            port=80,
+            service_name=lb.service_name,
+            zone="gra")
+        ```
+
+        ## Import
+
+        UDP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/udpFarm:UdpFarm farmname service_name/farm_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param UdpFarmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -303,13 +350,12 @@ class UdpFarm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Human readable name for your backend, this field is for you
-        :param pulumi.Input[float] farm_id: Id of your farm
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[float] farm_id: Id of your farm.
         :param pulumi.Input[float] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
-        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-               is attached to a vRack
-        :param pulumi.Input[str] zone: Zone of your farm
+        :param pulumi.Input[float] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -327,7 +373,7 @@ class UdpFarm(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Human readable name for your backend, this field is for you
+        Readable label for loadbalancer farm
         """
         return pulumi.get(self, "display_name")
 
@@ -335,7 +381,7 @@ class UdpFarm(pulumi.CustomResource):
     @pulumi.getter(name="farmId")
     def farm_id(self) -> pulumi.Output[float]:
         """
-        Id of your farm
+        Id of your farm.
         """
         return pulumi.get(self, "farm_id")
 
@@ -359,8 +405,7 @@ class UdpFarm(pulumi.CustomResource):
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> pulumi.Output[Optional[float]]:
         """
-        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer
-        is attached to a vRack
+        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
         """
         return pulumi.get(self, "vrack_network_id")
 
@@ -368,7 +413,7 @@ class UdpFarm(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        Zone of your farm
+        Zone where the farm will be defined (ie. `gra`, `bhs` also supports `all`)
         """
         return pulumi.get(self, "zone")
 

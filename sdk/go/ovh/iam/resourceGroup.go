@@ -7,20 +7,63 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an OVHcloud IAM resource group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewResourceGroup(ctx, "myResourceGroup", &iam.ResourceGroupArgs{
+//				Resources: pulumi.StringArray{
+//					pulumi.String("urn:v1:eu:resource:service1:service1-id"),
+//					pulumi.String("urn:v1:eu:resource:service2:service2-id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Resource groups can be imported by using their id.
+//
+// > Read only resource groups cannot be imported
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
-	GroupURN  pulumi.StringOutput      `pulumi:"GroupURN"`
-	CreatedAt pulumi.StringOutput      `pulumi:"createdAt"`
-	Name      pulumi.StringOutput      `pulumi:"name"`
-	Owner     pulumi.StringOutput      `pulumi:"owner"`
-	ReadOnly  pulumi.BoolOutput        `pulumi:"readOnly"`
+	// URN of the resource group, used when writing policies
+	GroupURN pulumi.StringOutput `pulumi:"GroupURN"`
+	// Date of the creation of the resource group
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Name of the resource group
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of the account owning the resource group
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
+	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
+	// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
 	Resources pulumi.StringArrayOutput `pulumi:"resources"`
-	UpdatedAt pulumi.StringOutput      `pulumi:"updatedAt"`
+	// Date of the last modification of the resource group
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewResourceGroup registers a new resource with the given unique name, arguments, and options.
@@ -53,22 +96,36 @@ func GetResourceGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceGroup resources.
 type resourceGroupState struct {
-	GroupURN  *string  `pulumi:"GroupURN"`
-	CreatedAt *string  `pulumi:"createdAt"`
-	Name      *string  `pulumi:"name"`
-	Owner     *string  `pulumi:"owner"`
-	ReadOnly  *bool    `pulumi:"readOnly"`
+	// URN of the resource group, used when writing policies
+	GroupURN *string `pulumi:"GroupURN"`
+	// Date of the creation of the resource group
+	CreatedAt *string `pulumi:"createdAt"`
+	// Name of the resource group
+	Name *string `pulumi:"name"`
+	// Name of the account owning the resource group
+	Owner *string `pulumi:"owner"`
+	// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
 	Resources []string `pulumi:"resources"`
-	UpdatedAt *string  `pulumi:"updatedAt"`
+	// Date of the last modification of the resource group
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type ResourceGroupState struct {
-	GroupURN  pulumi.StringPtrInput
+	// URN of the resource group, used when writing policies
+	GroupURN pulumi.StringPtrInput
+	// Date of the creation of the resource group
 	CreatedAt pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
-	Owner     pulumi.StringPtrInput
-	ReadOnly  pulumi.BoolPtrInput
+	// Name of the resource group
+	Name pulumi.StringPtrInput
+	// Name of the account owning the resource group
+	Owner pulumi.StringPtrInput
+	// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
+	ReadOnly pulumi.BoolPtrInput
+	// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
 	Resources pulumi.StringArrayInput
+	// Date of the last modification of the resource group
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -77,13 +134,17 @@ func (ResourceGroupState) ElementType() reflect.Type {
 }
 
 type resourceGroupArgs struct {
-	Name      *string  `pulumi:"name"`
+	// Name of the resource group
+	Name *string `pulumi:"name"`
+	// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
 	Resources []string `pulumi:"resources"`
 }
 
 // The set of arguments for constructing a ResourceGroup resource.
 type ResourceGroupArgs struct {
-	Name      pulumi.StringPtrInput
+	// Name of the resource group
+	Name pulumi.StringPtrInput
+	// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
 	Resources pulumi.StringArrayInput
 }
 
@@ -174,30 +235,37 @@ func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// URN of the resource group, used when writing policies
 func (o ResourceGroupOutput) GroupURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.GroupURN }).(pulumi.StringOutput)
 }
 
+// Date of the creation of the resource group
 func (o ResourceGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Name of the resource group
 func (o ResourceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Name of the account owning the resource group
 func (o ResourceGroupOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// Marks that the resource group is not editable. Usually means that this is a default resource group created by OVHcloud
 func (o ResourceGroupOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
+// Set of the URNs of the resources contained in the resource group. All urns must be ones of valid resources
 func (o ResourceGroupOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringArrayOutput { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// Date of the last modification of the resource group
 func (o ResourceGroupOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

@@ -9,33 +9,63 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Iam
 {
+    /// <summary>
+    /// Create am IAM permissions group.
+    /// </summary>
     [OvhResourceType("ovh:Iam/permissionsGroup:PermissionsGroup")]
     public partial class PermissionsGroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Set of actions allowed by the permissions group.
+        /// </summary>
         [Output("allows")]
         public Output<ImmutableArray<string>> Allows { get; private set; } = null!;
 
+        /// <summary>
+        /// Creation date of this group.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Set of actions that will be denied no matter what permissions group exists.
+        /// </summary>
         [Output("denies")]
         public Output<ImmutableArray<string>> Denies { get; private set; } = null!;
 
+        /// <summary>
+        /// Group description.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Set of actions that will be subtracted from the `allow` list.
+        /// </summary>
         [Output("excepts")]
         public Output<ImmutableArray<string>> Excepts { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the permissions group.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Owner of the permissions group.
+        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// Date of the last update of this group.
+        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// URN of the permissions group.
+        /// </summary>
         [Output("urn")]
         public Output<string> Urn { get; private set; } = null!;
 
@@ -88,6 +118,10 @@ namespace Pulumi.Ovh.Iam
     {
         [Input("allows")]
         private InputList<string>? _allows;
+
+        /// <summary>
+        /// Set of actions allowed by the permissions group.
+        /// </summary>
         public InputList<string> Allows
         {
             get => _allows ?? (_allows = new InputList<string>());
@@ -96,26 +130,43 @@ namespace Pulumi.Ovh.Iam
 
         [Input("denies")]
         private InputList<string>? _denies;
+
+        /// <summary>
+        /// Set of actions that will be denied no matter what permissions group exists.
+        /// </summary>
         public InputList<string> Denies
         {
             get => _denies ?? (_denies = new InputList<string>());
             set => _denies = value;
         }
 
+        /// <summary>
+        /// Group description.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         [Input("excepts")]
         private InputList<string>? _excepts;
+
+        /// <summary>
+        /// Set of actions that will be subtracted from the `allow` list.
+        /// </summary>
         public InputList<string> Excepts
         {
             get => _excepts ?? (_excepts = new InputList<string>());
             set => _excepts = value;
         }
 
+        /// <summary>
+        /// Name of the permissions group.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Date of the last update of this group.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
@@ -129,43 +180,73 @@ namespace Pulumi.Ovh.Iam
     {
         [Input("allows")]
         private InputList<string>? _allows;
+
+        /// <summary>
+        /// Set of actions allowed by the permissions group.
+        /// </summary>
         public InputList<string> Allows
         {
             get => _allows ?? (_allows = new InputList<string>());
             set => _allows = value;
         }
 
+        /// <summary>
+        /// Creation date of this group.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         [Input("denies")]
         private InputList<string>? _denies;
+
+        /// <summary>
+        /// Set of actions that will be denied no matter what permissions group exists.
+        /// </summary>
         public InputList<string> Denies
         {
             get => _denies ?? (_denies = new InputList<string>());
             set => _denies = value;
         }
 
+        /// <summary>
+        /// Group description.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("excepts")]
         private InputList<string>? _excepts;
+
+        /// <summary>
+        /// Set of actions that will be subtracted from the `allow` list.
+        /// </summary>
         public InputList<string> Excepts
         {
             get => _excepts ?? (_excepts = new InputList<string>());
             set => _excepts = value;
         }
 
+        /// <summary>
+        /// Name of the permissions group.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owner of the permissions group.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Date of the last update of this group.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// URN of the permissions group.
+        /// </summary>
         [Input("urn")]
         public Input<string>? Urn { get; set; }
 

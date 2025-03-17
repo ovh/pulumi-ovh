@@ -7,10 +7,35 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve information the list of existing OAuth2 service account IDs.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := me.GetAPIOAuth2Client(ctx, &me.GetAPIOAuth2ClientArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAPIOAuth2Clients(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAPIOAuth2ClientsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAPIOAuth2ClientsResult
@@ -23,6 +48,7 @@ func GetAPIOAuth2Clients(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*Get
 
 // A collection of values returned by getAPIOAuth2Clients.
 type GetAPIOAuth2ClientsResult struct {
+	// The list of all the existing client IDs.
 	ClientIds []string `pulumi:"clientIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -50,6 +76,7 @@ func (o GetAPIOAuth2ClientsResultOutput) ToGetAPIOAuth2ClientsResultOutputWithCo
 	return o
 }
 
+// The list of all the existing client IDs.
 func (o GetAPIOAuth2ClientsResultOutput) ClientIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAPIOAuth2ClientsResult) []string { return v.ClientIds }).(pulumi.StringArrayOutput)
 }

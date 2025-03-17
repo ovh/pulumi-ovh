@@ -4,9 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-export class OVHCloudConnect extends pulumi.CustomResource {
+/**
+ * Attach an OVH Cloud Connect to the vrack.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const vrackOvhcloudconnect = new ovh.vrack.OVHcloudConnect("vrackOvhcloudconnect", {
+ *     ovhCloudConnect: "<OVH Cloud Connect service name>",
+ *     serviceName: "<vRack service name>",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Attachment of an OVH Cloud Connect and a vRack can be imported using the `service_name` (vRack identifier) and the `ovh_cloud_connect` (OVH Cloud Connect service name), separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Vrack/oVHcloudConnect:OVHcloudConnect myattach "<service_name>/<OVH Cloud Connect service name>"
+ * ```
+ */
+export class OVHcloudConnect extends pulumi.CustomResource {
     /**
-     * Get an existing OVHCloudConnect resource's state with the given name, ID, and optional extra
+     * Get an existing OVHcloudConnect resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -14,26 +39,26 @@ export class OVHCloudConnect extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OVHCloudConnectState, opts?: pulumi.CustomResourceOptions): OVHCloudConnect {
-        return new OVHCloudConnect(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OVHcloudConnectState, opts?: pulumi.CustomResourceOptions): OVHcloudConnect {
+        return new OVHcloudConnect(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'ovh:Vrack/oVHCloudConnect:OVHCloudConnect';
+    public static readonly __pulumiType = 'ovh:Vrack/oVHcloudConnect:OVHcloudConnect';
 
     /**
-     * Returns true if the given object is an instance of OVHCloudConnect.  This is designed to work even
+     * Returns true if the given object is an instance of OVHcloudConnect.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is OVHCloudConnect {
+    public static isInstance(obj: any): obj is OVHcloudConnect {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === OVHCloudConnect.__pulumiType;
+        return obj['__pulumiType'] === OVHcloudConnect.__pulumiType;
     }
 
     /**
-     * ovhCloudConnect service name
+     * Your OVH Cloud Connect service name.
      */
     public readonly ovhCloudConnect!: pulumi.Output<string>;
     /**
@@ -42,22 +67,22 @@ export class OVHCloudConnect extends pulumi.CustomResource {
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
-     * Create a OVHCloudConnect resource with the given unique name, arguments, and options.
+     * Create a OVHcloudConnect resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OVHCloudConnectArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: OVHCloudConnectArgs | OVHCloudConnectState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: OVHcloudConnectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: OVHcloudConnectArgs | OVHcloudConnectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as OVHCloudConnectState | undefined;
+            const state = argsOrState as OVHcloudConnectState | undefined;
             resourceInputs["ovhCloudConnect"] = state ? state.ovhCloudConnect : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
-            const args = argsOrState as OVHCloudConnectArgs | undefined;
+            const args = argsOrState as OVHcloudConnectArgs | undefined;
             if ((!args || args.ovhCloudConnect === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ovhCloudConnect'");
             }
@@ -68,16 +93,16 @@ export class OVHCloudConnect extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OVHCloudConnect.__pulumiType, name, resourceInputs, opts);
+        super(OVHcloudConnect.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering OVHCloudConnect resources.
+ * Input properties used for looking up and filtering OVHcloudConnect resources.
  */
-export interface OVHCloudConnectState {
+export interface OVHcloudConnectState {
     /**
-     * ovhCloudConnect service name
+     * Your OVH Cloud Connect service name.
      */
     ovhCloudConnect?: pulumi.Input<string>;
     /**
@@ -87,11 +112,11 @@ export interface OVHCloudConnectState {
 }
 
 /**
- * The set of arguments for constructing a OVHCloudConnect resource.
+ * The set of arguments for constructing a OVHcloudConnect resource.
  */
-export interface OVHCloudConnectArgs {
+export interface OVHcloudConnectArgs {
     /**
-     * ovhCloudConnect service name
+     * Your OVH Cloud Connect service name.
      */
     ovhCloudConnect: pulumi.Input<string>;
     /**

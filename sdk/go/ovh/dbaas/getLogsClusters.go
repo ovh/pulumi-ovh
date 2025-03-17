@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to retrieve UUIDs of DBaas logs clusters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbaas.GetLogsClusters(ctx, &dbaas.GetLogsClustersArgs{
+//				ServiceName: "ldp-xx-xxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLogsClusters(ctx *pulumi.Context, args *GetLogsClustersArgs, opts ...pulumi.InvokeOption) (*GetLogsClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogsClustersResult
@@ -23,16 +50,18 @@ func GetLogsClusters(ctx *pulumi.Context, args *GetLogsClustersArgs, opts ...pul
 
 // A collection of arguments for invoking getLogsClusters.
 type GetLogsClustersArgs struct {
+	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getLogsClusters.
 type GetLogsClustersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string   `pulumi:"id"`
-	ServiceName string   `pulumi:"serviceName"`
-	Urn         string   `pulumi:"urn"`
-	Uuids       []string `pulumi:"uuids"`
+	Id          string `pulumi:"id"`
+	ServiceName string `pulumi:"serviceName"`
+	Urn         string `pulumi:"urn"`
+	// is the cluster id
+	Uuids []string `pulumi:"uuids"`
 }
 
 func GetLogsClustersOutput(ctx *pulumi.Context, args GetLogsClustersOutputArgs, opts ...pulumi.InvokeOption) GetLogsClustersResultOutput {
@@ -46,6 +75,7 @@ func GetLogsClustersOutput(ctx *pulumi.Context, args GetLogsClustersOutputArgs, 
 
 // A collection of arguments for invoking getLogsClusters.
 type GetLogsClustersOutputArgs struct {
+	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -81,6 +111,7 @@ func (o GetLogsClustersResultOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogsClustersResult) string { return v.Urn }).(pulumi.StringOutput)
 }
 
+// is the cluster id
 func (o GetLogsClustersResultOutput) Uuids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLogsClustersResult) []string { return v.Uuids }).(pulumi.StringArrayOutput)
 }

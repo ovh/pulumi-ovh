@@ -6,6 +6,52 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manage a Rancher service in a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const rancher = new ovh.cloudproject.Rancher("rancher", {
+ *     projectId: "<public cloud project ID>",
+ *     targetSpec: {
+ *         name: "MyRancher",
+ *         plan: "STANDARD",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   id = "<project_id>/<id>"
+ *
+ *   to = ovh_cloud_project_rancher.rancher
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=rancher.tf
+ *
+ * $ pulumi up
+ *
+ * The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ */
 export class Rancher extends pulumi.CustomResource {
     /**
      * Get an existing Rancher resource's state with the given name, ID, and optional extra
@@ -51,8 +97,7 @@ export class Rancher extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-     * `READY` status
+     * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<string>;
     /**
@@ -126,8 +171,7 @@ export interface RancherState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-     * `READY` status
+     * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
      */
     resourceStatus?: pulumi.Input<string>;
     /**

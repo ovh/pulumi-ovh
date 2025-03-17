@@ -6,6 +6,22 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * List your S3™* compatible storage container.
+ * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const storage = ovh.CloudProject.getStorage({
+ *     regionName: "GRA",
+ *     serviceName: "<public cloud project ID>",
+ * });
+ * ```
+ */
 export function getStorages(args: GetStoragesArgs, opts?: pulumi.InvokeOptions): Promise<GetStoragesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getStorages:getStorages", {
@@ -18,7 +34,13 @@ export function getStorages(args: GetStoragesArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getStorages.
  */
 export interface GetStoragesArgs {
+    /**
+     * Region name
+     */
     regionName: string;
+    /**
+     * Service name
+     */
     serviceName: string;
 }
 
@@ -31,9 +53,31 @@ export interface GetStoragesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Region name
+     */
     readonly regionName: string;
+    /**
+     * Service name
+     */
     readonly serviceName: string;
 }
+/**
+ * List your S3™* compatible storage container.
+ * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const storage = ovh.CloudProject.getStorage({
+ *     regionName: "GRA",
+ *     serviceName: "<public cloud project ID>",
+ * });
+ * ```
+ */
 export function getStoragesOutput(args: GetStoragesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStoragesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getStorages:getStorages", {
@@ -46,6 +90,12 @@ export function getStoragesOutput(args: GetStoragesOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getStorages.
  */
 export interface GetStoragesOutputArgs {
+    /**
+     * Region name
+     */
     regionName: pulumi.Input<string>;
+    /**
+     * Service name
+     */
     serviceName: pulumi.Input<string>;
 }

@@ -72,8 +72,7 @@ class _RancherState:
         :param pulumi.Input['RancherCurrentStateArgs'] current_state: Current configuration applied to the managed Rancher service
         :param pulumi.Input[Sequence[pulumi.Input['RancherCurrentTaskArgs']]] current_tasks: Asynchronous operations ongoing on the managed Rancher service
         :param pulumi.Input[str] project_id: Project ID
-        :param pulumi.Input[str] resource_status: Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-               `READY` status
+        :param pulumi.Input[str] resource_status: Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         :param pulumi.Input['RancherTargetSpecArgs'] target_spec: Target specification for the managed Rancher service
         :param pulumi.Input[str] updated_at: Date of the last managed Rancher service update
         """
@@ -144,8 +143,7 @@ class _RancherState:
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-        `READY` status
+        Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         """
         return pulumi.get(self, "resource_status")
 
@@ -187,7 +185,50 @@ class Rancher(pulumi.CustomResource):
                  target_spec: Optional[pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Rancher resource with the given unique name, props, and options.
+        Manage a Rancher service in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rancher = ovh.cloud_project.Rancher("rancher",
+            project_id="<public cloud project ID>",
+            target_spec={
+                "name": "MyRancher",
+                "plan": "STANDARD",
+            })
+        ```
+
+        ## Import
+
+        A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          id = "<project_id>/<id>"
+
+          to = ovh_cloud_project_rancher.rancher
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=rancher.tf
+
+        $ pulumi up
+
+        The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project_id: Project ID
@@ -200,7 +241,50 @@ class Rancher(pulumi.CustomResource):
                  args: RancherArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Rancher resource with the given unique name, props, and options.
+        Manage a Rancher service in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rancher = ovh.cloud_project.Rancher("rancher",
+            project_id="<public cloud project ID>",
+            target_spec={
+                "name": "MyRancher",
+                "plan": "STANDARD",
+            })
+        ```
+
+        ## Import
+
+        A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+
+        Using the following configuration:
+
+        hcl
+
+        import {
+
+          id = "<project_id>/<id>"
+
+          to = ovh_cloud_project_rancher.rancher
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=rancher.tf
+
+        $ pulumi up
+
+        The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+
+        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param RancherArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -266,8 +350,7 @@ class Rancher(pulumi.CustomResource):
         :param pulumi.Input[Union['RancherCurrentStateArgs', 'RancherCurrentStateArgsDict']] current_state: Current configuration applied to the managed Rancher service
         :param pulumi.Input[Sequence[pulumi.Input[Union['RancherCurrentTaskArgs', 'RancherCurrentTaskArgsDict']]]] current_tasks: Asynchronous operations ongoing on the managed Rancher service
         :param pulumi.Input[str] project_id: Project ID
-        :param pulumi.Input[str] resource_status: Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-               `READY` status
+        :param pulumi.Input[str] resource_status: Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         :param pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']] target_spec: Target specification for the managed Rancher service
         :param pulumi.Input[str] updated_at: Date of the last managed Rancher service update
         """
@@ -320,8 +403,7 @@ class Rancher(pulumi.CustomResource):
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> pulumi.Output[str]:
         """
-        Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-        `READY` status
+        Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         """
         return pulumi.get(self, "resource_status")
 

@@ -6,6 +6,57 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this resource to manage a domain's name servers.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const nameServers = new ovh.domain.NameServers("nameServers", {
+ *     domain: "mydomain.ovh",
+ *     servers: [
+ *         {
+ *             host: "dns105.ovh.net",
+ *             ip: "213.251.188.144",
+ *         },
+ *         {
+ *             host: "ns105.ovh.net",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Name servers can be imported using their `domain`.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = ovh_domain_name_servers.name_servers
+ *
+ *   id = "<domain name>"
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=name_servers.tf
+ *
+ * $ pulumi up
+ *
+ * The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ */
 export class NameServers extends pulumi.CustomResource {
     /**
      * Get an existing NameServers resource's state with the given name, ID, and optional extra
@@ -35,11 +86,11 @@ export class NameServers extends pulumi.CustomResource {
     }
 
     /**
-     * Domain name
+     * Domain name for which to manage name servers
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * Name servers for the domain
+     * Details about a name server
      */
     public readonly servers!: pulumi.Output<outputs.Domain.NameServersServer[]>;
 
@@ -79,11 +130,11 @@ export class NameServers extends pulumi.CustomResource {
  */
 export interface NameServersState {
     /**
-     * Domain name
+     * Domain name for which to manage name servers
      */
     domain?: pulumi.Input<string>;
     /**
-     * Name servers for the domain
+     * Details about a name server
      */
     servers?: pulumi.Input<pulumi.Input<inputs.Domain.NameServersServer>[]>;
 }
@@ -93,11 +144,11 @@ export interface NameServersState {
  */
 export interface NameServersArgs {
     /**
-     * Domain name
+     * Domain name for which to manage name servers
      */
     domain: pulumi.Input<string>;
     /**
-     * Name servers for the domain
+     * Details about a name server
      */
     servers: pulumi.Input<pulumi.Input<inputs.Domain.NameServersServer>[]>;
 }

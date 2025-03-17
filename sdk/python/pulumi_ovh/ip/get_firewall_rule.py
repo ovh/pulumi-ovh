@@ -76,26 +76,41 @@ class GetFirewallRuleResult:
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Possible values for action (deny|permit)
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        Creation date of the rule
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def destination(self) -> str:
+        """
+        Destination IP for your rule
+        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> str:
+        """
+        Destination port for your rule. Only with TCP/UDP protocol
+        """
         return pulumi.get(self, "destination_port")
 
     @property
     @pulumi.getter
     def fragments(self) -> bool:
+        """
+        Fragments option
+        """
         return pulumi.get(self, "fragments")
 
     @property
@@ -109,46 +124,73 @@ class GetFirewallRuleResult:
     @property
     @pulumi.getter
     def ip(self) -> str:
+        """
+        The IP or the CIDR
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="ipOnFirewall")
     def ip_on_firewall(self) -> str:
+        """
+        IPv4 address
+        """
         return pulumi.get(self, "ip_on_firewall")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def rule(self) -> str:
+        """
+        Description of the rule
+        """
         return pulumi.get(self, "rule")
 
     @property
     @pulumi.getter
     def sequence(self) -> float:
+        """
+        Rule position in the rules array
+        """
         return pulumi.get(self, "sequence")
 
     @property
     @pulumi.getter
     def source(self) -> str:
+        """
+        IPv4 CIDR notation (e.g., 192.0.2.0/24)
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> str:
+        """
+        Source port for your rule. Only with TCP/UDP protocol
+        """
         return pulumi.get(self, "source_port")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Current state of your rule
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="tcpOption")
     def tcp_option(self) -> str:
+        """
+        TCP option on your rule (syn|established)
+        """
         return pulumi.get(self, "tcp_option")
 
 
@@ -180,7 +222,23 @@ def get_firewall_rule(ip: Optional[str] = None,
                       sequence: Optional[float] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallRuleResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a rule on an IP firewall.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_firewall_rule = ovh.Ip.get_firewall_rule(ip="XXXXXX",
+        ip_on_firewall="XXXXXX",
+        sequence=0)
+    ```
+
+
+    :param str ip: The IP or the CIDR
+    :param str ip_on_firewall: IPv4 address
+    :param float sequence: Rule position in the rules array
     """
     __args__ = dict()
     __args__['ip'] = ip
@@ -210,7 +268,23 @@ def get_firewall_rule_output(ip: Optional[pulumi.Input[str]] = None,
                              sequence: Optional[pulumi.Input[float]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRuleResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a rule on an IP firewall.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_firewall_rule = ovh.Ip.get_firewall_rule(ip="XXXXXX",
+        ip_on_firewall="XXXXXX",
+        sequence=0)
+    ```
+
+
+    :param str ip: The IP or the CIDR
+    :param str ip_on_firewall: IPv4 address
+    :param float sequence: Rule position in the rules array
     """
     __args__ = dict()
     __args__['ip'] = ip

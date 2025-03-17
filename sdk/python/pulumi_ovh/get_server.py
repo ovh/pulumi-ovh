@@ -131,56 +131,89 @@ class GetServerResult:
     @property
     @pulumi.getter(name="ServerURN")
     def server_urn(self) -> str:
+        """
+        URN of the dedicated server instance
+        """
         return pulumi.get(self, "server_urn")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
+        """
+        Dedicated AZ localisation
+        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="bootId")
     def boot_id(self) -> int:
+        """
+        Boot id of the server
+        """
         return pulumi.get(self, "boot_id")
 
     @property
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> str:
+        """
+        Boot script of the server
+        """
         return pulumi.get(self, "boot_script")
 
     @property
     @pulumi.getter(name="commercialRange")
     def commercial_range(self) -> str:
+        """
+        Dedicated server commercial range
+        """
         return pulumi.get(self, "commercial_range")
 
     @property
     @pulumi.getter
     def datacenter(self) -> str:
+        """
+        Dedicated datacenter localisation (bhs1,bhs2,...)
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Dedicated server display name
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> str:
+        """
+        Path of the EFI bootloader of the dedicated server
+        """
         return pulumi.get(self, "efi_bootloader_path")
 
     @property
     @pulumi.getter(name="enabledPublicVnis")
     def enabled_public_vnis(self) -> Sequence[str]:
+        """
+        List of enabled public VNI uuids
+        """
         return pulumi.get(self, "enabled_public_vnis")
 
     @property
     @pulumi.getter(name="enabledVrackAggregationVnis")
     def enabled_vrack_aggregation_vnis(self) -> Sequence[str]:
+        """
+        List of enabled vrack_aggregation VNI uuids
+        """
         return pulumi.get(self, "enabled_vrack_aggregation_vnis")
 
     @property
     @pulumi.getter(name="enabledVrackVnis")
     def enabled_vrack_vnis(self) -> Sequence[str]:
+        """
+        List of enabled vrack VNI uuids
+        """
         return pulumi.get(self, "enabled_vrack_vnis")
 
     @property
@@ -194,26 +227,41 @@ class GetServerResult:
     @property
     @pulumi.getter
     def ip(self) -> str:
+        """
+        Dedicated server ip (IPv4)
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter
     def ips(self) -> Sequence[str]:
+        """
+        Dedicated server ip blocks
+        """
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter(name="linkSpeed")
     def link_speed(self) -> int:
+        """
+        Link speed of the server
+        """
         return pulumi.get(self, "link_speed")
 
     @property
     @pulumi.getter
     def monitoring(self) -> bool:
+        """
+        Icmp monitoring state
+        """
         return pulumi.get(self, "monitoring")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        User defined VirtualNetworkInterface name
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -224,56 +272,89 @@ class GetServerResult:
     @property
     @pulumi.getter(name="noIntervention")
     def no_intervention(self) -> bool:
+        """
+        Prevent datacenter intervention
+        """
         return pulumi.get(self, "no_intervention")
 
     @property
     @pulumi.getter
     def os(self) -> str:
+        """
+        Operating system
+        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter(name="powerState")
     def power_state(self) -> str:
+        """
+        Power state of the server (poweroff, poweron)
+        """
         return pulumi.get(self, "power_state")
 
     @property
     @pulumi.getter(name="professionalUse")
     def professional_use(self) -> bool:
+        """
+        Does this server have professional use option
+        """
         return pulumi.get(self, "professional_use")
 
     @property
     @pulumi.getter
     def rack(self) -> str:
+        """
+        Rack id of the server
+        """
         return pulumi.get(self, "rack")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Dedicated region localisation
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> str:
+        """
+        Rescue mail of the server
+        """
         return pulumi.get(self, "rescue_mail")
 
     @property
     @pulumi.getter(name="rescueSshKey")
     def rescue_ssh_key(self) -> str:
+        """
+        Public SSH Key used in the rescue mode
+        """
         return pulumi.get(self, "rescue_ssh_key")
 
     @property
     @pulumi.getter
     def reverse(self) -> str:
+        """
+        Dedicated server reverse
+        """
         return pulumi.get(self, "reverse")
 
     @property
     @pulumi.getter(name="rootDevice")
     def root_device(self) -> str:
+        """
+        Root device of the server
+        """
         return pulumi.get(self, "root_device")
 
     @property
     @pulumi.getter(name="serverId")
     def server_id(self) -> int:
+        """
+        Server id
+        """
         return pulumi.get(self, "server_id")
 
     @property
@@ -284,16 +365,25 @@ class GetServerResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Error, hacked, hackedBlocked, ok
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="supportLevel")
     def support_level(self) -> str:
+        """
+        Dedicated server support level (critical, fastpath, gs, pro)
+        """
         return pulumi.get(self, "support_level")
 
     @property
     @pulumi.getter
     def vnis(self) -> Sequence['outputs.GetServerVniResult']:
+        """
+        The list of Virtualnetworkinterface associated with this server
+        """
         return pulumi.get(self, "vnis")
 
 
@@ -341,7 +431,19 @@ class AwaitableGetServerResult(GetServerResult):
 def get_server(service_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    server = ovh.get_server(service_name="XXXXXX")
+    ```
+
+
+    :param str service_name: The service_name of your dedicated server.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -385,7 +487,19 @@ def get_server(service_name: Optional[str] = None,
 def get_server_output(service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    server = ovh.get_server(service_name="XXXXXX")
+    ```
+
+
+    :param str service_name: The service_name of your dedicated server.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

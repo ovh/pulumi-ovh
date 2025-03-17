@@ -7,16 +7,19 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type AlertingFormattedMonthlyThreshold struct {
-	CurrencyCode *string  `pulumi:"currencyCode"`
-	Text         *string  `pulumi:"text"`
-	Value        *float64 `pulumi:"value"`
+	// Currency of the monthly threshold
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// Text representation of the monthly threshold
+	Text *string `pulumi:"text"`
+	// Value of the monthly threshold
+	Value *float64 `pulumi:"value"`
 }
 
 // AlertingFormattedMonthlyThresholdInput is an input type that accepts AlertingFormattedMonthlyThresholdArgs and AlertingFormattedMonthlyThresholdOutput values.
@@ -31,9 +34,12 @@ type AlertingFormattedMonthlyThresholdInput interface {
 }
 
 type AlertingFormattedMonthlyThresholdArgs struct {
-	CurrencyCode pulumi.StringPtrInput  `pulumi:"currencyCode"`
-	Text         pulumi.StringPtrInput  `pulumi:"text"`
-	Value        pulumi.Float64PtrInput `pulumi:"value"`
+	// Currency of the monthly threshold
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// Text representation of the monthly threshold
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Value of the monthly threshold
+	Value pulumi.Float64PtrInput `pulumi:"value"`
 }
 
 func (AlertingFormattedMonthlyThresholdArgs) ElementType() reflect.Type {
@@ -113,14 +119,17 @@ func (o AlertingFormattedMonthlyThresholdOutput) ToAlertingFormattedMonthlyThres
 	}).(AlertingFormattedMonthlyThresholdPtrOutput)
 }
 
+// Currency of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdOutput) CurrencyCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
 }
 
+// Text representation of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
 
+// Value of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AlertingFormattedMonthlyThreshold) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
@@ -149,6 +158,7 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) Elem() AlertingFormattedMont
 	}).(AlertingFormattedMonthlyThresholdOutput)
 }
 
+// Currency of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
 		if v == nil {
@@ -158,6 +168,7 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) CurrencyCode() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Text representation of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *string {
 		if v == nil {
@@ -167,6 +178,7 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) Text() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value of the monthly threshold
 func (o AlertingFormattedMonthlyThresholdPtrOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *AlertingFormattedMonthlyThreshold) *float64 {
 		if v == nil {
@@ -177,7 +189,7 @@ func (o AlertingFormattedMonthlyThresholdPtrOutput) Value() pulumi.Float64PtrOut
 }
 
 type ContainerRegistryPlan struct {
-	// Plan code from catalog
+	// Plan code from the catalog
 	Code *string `pulumi:"code"`
 	// Plan creation date
 	CreatedAt *string `pulumi:"createdAt"`
@@ -185,11 +197,11 @@ type ContainerRegistryPlan struct {
 	Features []ContainerRegistryPlanFeature `pulumi:"features"`
 	// Plan ID
 	Id *string `pulumi:"id"`
-	// Plan name
+	// Registry name
 	Name *string `pulumi:"name"`
 	// Container registry limits
 	RegistryLimits []ContainerRegistryPlanRegistryLimit `pulumi:"registryLimits"`
-	// Plan last update date
+	// Registry last update date
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -205,7 +217,7 @@ type ContainerRegistryPlanInput interface {
 }
 
 type ContainerRegistryPlanArgs struct {
-	// Plan code from catalog
+	// Plan code from the catalog
 	Code pulumi.StringPtrInput `pulumi:"code"`
 	// Plan creation date
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
@@ -213,11 +225,11 @@ type ContainerRegistryPlanArgs struct {
 	Features ContainerRegistryPlanFeatureArrayInput `pulumi:"features"`
 	// Plan ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Plan name
+	// Registry name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Container registry limits
 	RegistryLimits ContainerRegistryPlanRegistryLimitArrayInput `pulumi:"registryLimits"`
-	// Plan last update date
+	// Registry last update date
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
@@ -272,7 +284,7 @@ func (o ContainerRegistryPlanOutput) ToContainerRegistryPlanOutputWithContext(ct
 	return o
 }
 
-// Plan code from catalog
+// Plan code from the catalog
 func (o ContainerRegistryPlanOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +304,7 @@ func (o ContainerRegistryPlanOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Plan name
+// Registry name
 func (o ContainerRegistryPlanOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -302,7 +314,7 @@ func (o ContainerRegistryPlanOutput) RegistryLimits() ContainerRegistryPlanRegis
 	return o.ApplyT(func(v ContainerRegistryPlan) []ContainerRegistryPlanRegistryLimit { return v.RegistryLimits }).(ContainerRegistryPlanRegistryLimitArrayOutput)
 }
 
-// Plan last update date
+// Registry last update date
 func (o ContainerRegistryPlanOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPlan) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -531,21 +543,21 @@ func (o ContainerRegistryPlanRegistryLimitArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type DatabaseEndpoint struct {
-	// Type of component the URI relates to
+	// Type of component the URI relates to.
 	Component *string `pulumi:"component"`
-	// Domain of the cluster
+	// Domain of the cluster.
 	Domain *string `pulumi:"domain"`
-	// Path of the endpoint
+	// Path of the endpoint.
 	Path *string `pulumi:"path"`
-	// Connection port for the endpoint
+	// Connection port for the endpoint.
 	Port *int `pulumi:"port"`
-	// Scheme used to generate the URI
+	// Scheme used to generate the URI.
 	Scheme *string `pulumi:"scheme"`
-	// Defines whether the endpoint uses SSL
+	// Defines whether the endpoint uses SSL.
 	Ssl *bool `pulumi:"ssl"`
-	// SSL mode used to connect to the service if the SSL is enabled
+	// SSL mode used to connect to the service if the SSL is enabled.
 	SslMode *string `pulumi:"sslMode"`
-	// URI of the endpoint
+	// URI of the endpoint.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -561,21 +573,21 @@ type DatabaseEndpointInput interface {
 }
 
 type DatabaseEndpointArgs struct {
-	// Type of component the URI relates to
+	// Type of component the URI relates to.
 	Component pulumi.StringPtrInput `pulumi:"component"`
-	// Domain of the cluster
+	// Domain of the cluster.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// Path of the endpoint
+	// Path of the endpoint.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Connection port for the endpoint
+	// Connection port for the endpoint.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Scheme used to generate the URI
+	// Scheme used to generate the URI.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
-	// Defines whether the endpoint uses SSL
+	// Defines whether the endpoint uses SSL.
 	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
-	// SSL mode used to connect to the service if the SSL is enabled
+	// SSL mode used to connect to the service if the SSL is enabled.
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
-	// URI of the endpoint
+	// URI of the endpoint.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -630,42 +642,42 @@ func (o DatabaseEndpointOutput) ToDatabaseEndpointOutputWithContext(ctx context.
 	return o
 }
 
-// Type of component the URI relates to
+// Type of component the URI relates to.
 func (o DatabaseEndpointOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
-// Domain of the cluster
+// Domain of the cluster.
 func (o DatabaseEndpointOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// Path of the endpoint
+// Path of the endpoint.
 func (o DatabaseEndpointOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Connection port for the endpoint
+// Connection port for the endpoint.
 func (o DatabaseEndpointOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Scheme used to generate the URI
+// Scheme used to generate the URI.
 func (o DatabaseEndpointOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
-// Defines whether the endpoint uses SSL
+// Defines whether the endpoint uses SSL.
 func (o DatabaseEndpointOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
-// SSL mode used to connect to the service if the SSL is enabled
+// SSL mode used to connect to the service if the SSL is enabled.
 func (o DatabaseEndpointOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.SslMode }).(pulumi.StringPtrOutput)
 }
 
-// URI of the endpoint
+// URI of the endpoint.
 func (o DatabaseEndpointOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -695,7 +707,7 @@ type DatabaseIpRestriction struct {
 	Description *string `pulumi:"description"`
 	// Authorized IP
 	Ip *string `pulumi:"ip"`
-	// Current status of the IP restriction
+	// Current status of the cluster.
 	Status *string `pulumi:"status"`
 }
 
@@ -715,7 +727,7 @@ type DatabaseIpRestrictionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Authorized IP
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Current status of the IP restriction
+	// Current status of the cluster.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -780,7 +792,7 @@ func (o DatabaseIpRestrictionOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Current status of the IP restriction
+// Current status of the cluster.
 func (o DatabaseIpRestrictionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseIpRestriction) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -806,11 +818,12 @@ func (o DatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) DatabaseIpRes
 }
 
 type DatabaseNode struct {
-	// Private network ID in which the node is. It's the regional openstackId of the private network.
+	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 	NetworkId *string `pulumi:"networkId"`
-	// Region of the node
+	// Public cloud region in which the node should be deployed.
+	// Ex: "GRA'.
 	Region string `pulumi:"region"`
-	// Private subnet ID in which the node is
+	// Private subnet ID in which the node is.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -826,11 +839,12 @@ type DatabaseNodeInput interface {
 }
 
 type DatabaseNodeArgs struct {
-	// Private network ID in which the node is. It's the regional openstackId of the private network.
+	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
-	// Region of the node
+	// Public cloud region in which the node should be deployed.
+	// Ex: "GRA'.
 	Region pulumi.StringInput `pulumi:"region"`
-	// Private subnet ID in which the node is
+	// Private subnet ID in which the node is.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -885,17 +899,18 @@ func (o DatabaseNodeOutput) ToDatabaseNodeOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Private network ID in which the node is. It's the regional openstackId of the private network.
+// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 func (o DatabaseNodeOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-// Region of the node
+// Public cloud region in which the node should be deployed.
+// Ex: "GRA'.
 func (o DatabaseNodeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseNode) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Private subnet ID in which the node is
+// Private subnet ID in which the node is.
 func (o DatabaseNodeOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -921,9 +936,9 @@ func (o DatabaseNodeArrayOutput) Index(i pulumi.IntInput) DatabaseNodeOutput {
 }
 
 type GatewayExternalInformation struct {
-	// List of external ips of the gateway
+	// List of external ips of the gateway.
 	Ips []GatewayExternalInformationIp `pulumi:"ips"`
-	// External network ID of the gateway
+	// ID of the private network.
 	NetworkId *string `pulumi:"networkId"`
 }
 
@@ -939,9 +954,9 @@ type GatewayExternalInformationInput interface {
 }
 
 type GatewayExternalInformationArgs struct {
-	// List of external ips of the gateway
+	// List of external ips of the gateway.
 	Ips GatewayExternalInformationIpArrayInput `pulumi:"ips"`
-	// External network ID of the gateway
+	// ID of the private network.
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
 }
 
@@ -996,12 +1011,12 @@ func (o GatewayExternalInformationOutput) ToGatewayExternalInformationOutputWith
 	return o
 }
 
-// List of external ips of the gateway
+// List of external ips of the gateway.
 func (o GatewayExternalInformationOutput) Ips() GatewayExternalInformationIpArrayOutput {
 	return o.ApplyT(func(v GatewayExternalInformation) []GatewayExternalInformationIp { return v.Ips }).(GatewayExternalInformationIpArrayOutput)
 }
 
-// External network ID of the gateway
+// ID of the private network.
 func (o GatewayExternalInformationOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayExternalInformation) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
@@ -1027,9 +1042,9 @@ func (o GatewayExternalInformationArrayOutput) Index(i pulumi.IntInput) GatewayE
 }
 
 type GatewayExternalInformationIp struct {
-	// External IP of the gateway
+	// IP of the interface.
 	Ip *string `pulumi:"ip"`
-	// Subnet ID of the ip
+	// ID of the subnet.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -1045,9 +1060,9 @@ type GatewayExternalInformationIpInput interface {
 }
 
 type GatewayExternalInformationIpArgs struct {
-	// External IP of the gateway
+	// IP of the interface.
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Subnet ID of the ip
+	// ID of the subnet.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -1102,12 +1117,12 @@ func (o GatewayExternalInformationIpOutput) ToGatewayExternalInformationIpOutput
 	return o
 }
 
-// External IP of the gateway
+// IP of the interface.
 func (o GatewayExternalInformationIpOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayExternalInformationIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Subnet ID of the ip
+// ID of the subnet.
 func (o GatewayExternalInformationIpOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayExternalInformationIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -1133,13 +1148,13 @@ func (o GatewayExternalInformationIpArrayOutput) Index(i pulumi.IntInput) Gatewa
 }
 
 type GatewayInterfaceType struct {
-	// ID of the interface
+	// ID of the interface.
 	Id *string `pulumi:"id"`
-	// IP of the interface
+	// IP of the interface.
 	Ip *string `pulumi:"ip"`
-	// Network ID of the interface
+	// ID of the private network.
 	NetworkId *string `pulumi:"networkId"`
-	// Subnet ID of the interface
+	// ID of the subnet.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -1155,13 +1170,13 @@ type GatewayInterfaceTypeInput interface {
 }
 
 type GatewayInterfaceTypeArgs struct {
-	// ID of the interface
+	// ID of the interface.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// IP of the interface
+	// IP of the interface.
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
-	// Network ID of the interface
+	// ID of the private network.
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
-	// Subnet ID of the interface
+	// ID of the subnet.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -1216,22 +1231,22 @@ func (o GatewayInterfaceTypeOutput) ToGatewayInterfaceTypeOutputWithContext(ctx 
 	return o
 }
 
-// ID of the interface
+// ID of the interface.
 func (o GatewayInterfaceTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// IP of the interface
+// IP of the interface.
 func (o GatewayInterfaceTypeOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// Network ID of the interface
+// ID of the private network.
 func (o GatewayInterfaceTypeOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-// Subnet ID of the interface
+// ID of the subnet.
 func (o GatewayInterfaceTypeOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayInterfaceType) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -1363,7 +1378,7 @@ func (o InstanceAddressArrayOutput) Index(i pulumi.IntInput) InstanceAddressOutp
 }
 
 type InstanceAttachedVolume struct {
-	// Volume id
+	// Instance id
 	Id *string `pulumi:"id"`
 }
 
@@ -1379,7 +1394,7 @@ type InstanceAttachedVolumeInput interface {
 }
 
 type InstanceAttachedVolumeArgs struct {
-	// Volume id
+	// Instance id
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -1434,7 +1449,7 @@ func (o InstanceAttachedVolumeOutput) ToInstanceAttachedVolumeOutputWithContext(
 	return o
 }
 
-// Volume id
+// Instance id
 func (o InstanceAttachedVolumeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAttachedVolume) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -1616,7 +1631,7 @@ func (o InstanceAutoBackupPtrOutput) Rotation() pulumi.IntPtrOutput {
 }
 
 type InstanceBootFrom struct {
-	// Instance image id
+	// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
 	ImageId *string `pulumi:"imageId"`
 	// Instance volume id
 	VolumeId *string `pulumi:"volumeId"`
@@ -1634,7 +1649,7 @@ type InstanceBootFromInput interface {
 }
 
 type InstanceBootFromArgs struct {
-	// Instance image id
+	// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// Instance volume id
 	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
@@ -1717,7 +1732,7 @@ func (o InstanceBootFromOutput) ToInstanceBootFromPtrOutputWithContext(ctx conte
 	}).(InstanceBootFromPtrOutput)
 }
 
-// Instance image id
+// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
 func (o InstanceBootFromOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBootFrom) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
@@ -1751,7 +1766,7 @@ func (o InstanceBootFromPtrOutput) Elem() InstanceBootFromOutput {
 	}).(InstanceBootFromOutput)
 }
 
-// Instance image id
+// Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
 func (o InstanceBootFromPtrOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBootFrom) *string {
 		if v == nil {
@@ -1772,7 +1787,7 @@ func (o InstanceBootFromPtrOutput) VolumeId() pulumi.StringPtrOutput {
 }
 
 type InstanceFlavor struct {
-	// Flavor id
+	// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
 	FlavorId string `pulumi:"flavorId"`
 }
 
@@ -1788,7 +1803,7 @@ type InstanceFlavorInput interface {
 }
 
 type InstanceFlavorArgs struct {
-	// Flavor id
+	// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
 }
 
@@ -1869,7 +1884,7 @@ func (o InstanceFlavorOutput) ToInstanceFlavorPtrOutputWithContext(ctx context.C
 	}).(InstanceFlavorPtrOutput)
 }
 
-// Flavor id
+// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
 func (o InstanceFlavorOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFlavor) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -1898,7 +1913,7 @@ func (o InstanceFlavorPtrOutput) Elem() InstanceFlavorOutput {
 	}).(InstanceFlavorOutput)
 }
 
-// Flavor id
+// Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
 func (o InstanceFlavorPtrOutput) FlavorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceFlavor) *string {
 		if v == nil {
@@ -2046,7 +2061,7 @@ func (o InstanceGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 type InstanceNetwork struct {
-	// Set the new instance as public
+	// Set the new instance as public boolean
 	Public *bool `pulumi:"public"`
 }
 
@@ -2062,7 +2077,7 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
-	// Set the new instance as public
+	// Set the new instance as public boolean
 	Public pulumi.BoolPtrInput `pulumi:"public"`
 }
 
@@ -2143,7 +2158,7 @@ func (o InstanceNetworkOutput) ToInstanceNetworkPtrOutputWithContext(ctx context
 	}).(InstanceNetworkPtrOutput)
 }
 
-// Set the new instance as public
+// Set the new instance as public boolean
 func (o InstanceNetworkOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *bool { return v.Public }).(pulumi.BoolPtrOutput)
 }
@@ -2172,7 +2187,7 @@ func (o InstanceNetworkPtrOutput) Elem() InstanceNetworkOutput {
 	}).(InstanceNetworkOutput)
 }
 
-// Set the new instance as public
+// Set the new instance as public boolean
 func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceNetwork) *bool {
 		if v == nil {
@@ -2183,7 +2198,7 @@ func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
 }
 
 type InstanceSshKey struct {
-	// SSH Key pair name
+	// SSH Keypair name
 	Name string `pulumi:"name"`
 }
 
@@ -2199,7 +2214,7 @@ type InstanceSshKeyInput interface {
 }
 
 type InstanceSshKeyArgs struct {
-	// SSH Key pair name
+	// SSH Keypair name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2280,7 +2295,7 @@ func (o InstanceSshKeyOutput) ToInstanceSshKeyPtrOutputWithContext(ctx context.C
 	}).(InstanceSshKeyPtrOutput)
 }
 
-// SSH Key pair name
+// SSH Keypair name
 func (o InstanceSshKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSshKey) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2309,7 +2324,7 @@ func (o InstanceSshKeyPtrOutput) Elem() InstanceSshKeyOutput {
 	}).(InstanceSshKeyOutput)
 }
 
-// SSH Key pair name
+// SSH Keypair name
 func (o InstanceSshKeyPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceSshKey) *string {
 		if v == nil {
@@ -2322,7 +2337,7 @@ func (o InstanceSshKeyPtrOutput) Name() pulumi.StringPtrOutput {
 type InstanceSshKeyCreate struct {
 	// SSH Key pair name
 	Name string `pulumi:"name"`
-	// SSH Public Key
+	// SSH Public key
 	PublicKey string `pulumi:"publicKey"`
 }
 
@@ -2340,7 +2355,7 @@ type InstanceSshKeyCreateInput interface {
 type InstanceSshKeyCreateArgs struct {
 	// SSH Key pair name
 	Name pulumi.StringInput `pulumi:"name"`
-	// SSH Public Key
+	// SSH Public key
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
@@ -2426,7 +2441,7 @@ func (o InstanceSshKeyCreateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSshKeyCreate) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SSH Public Key
+// SSH Public key
 func (o InstanceSshKeyCreateOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceSshKeyCreate) string { return v.PublicKey }).(pulumi.StringOutput)
 }
@@ -2465,7 +2480,7 @@ func (o InstanceSshKeyCreatePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSH Public Key
+// SSH Public key
 func (o InstanceSshKeyCreatePtrOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceSshKeyCreate) *string {
 		if v == nil {
@@ -2476,6 +2491,8 @@ func (o InstanceSshKeyCreatePtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 type KubeCustomization struct {
+	// Kubernetes API server customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers []KubeCustomizationApiserver `pulumi:"apiservers"`
 }
@@ -2492,6 +2509,8 @@ type KubeCustomizationInput interface {
 }
 
 type KubeCustomizationArgs struct {
+	// Kubernetes API server customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers KubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
@@ -2547,6 +2566,8 @@ func (o KubeCustomizationOutput) ToKubeCustomizationOutputWithContext(ctx contex
 	return o
 }
 
+// Kubernetes API server customization
+//
 // Deprecated: Use customizationApiserver instead
 func (o KubeCustomizationOutput) Apiservers() KubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v KubeCustomization) []KubeCustomizationApiserver { return v.Apiservers }).(KubeCustomizationApiserverArrayOutput)
@@ -2573,6 +2594,7 @@ func (o KubeCustomizationArrayOutput) Index(i pulumi.IntInput) KubeCustomization
 }
 
 type KubeCustomizationApiserver struct {
+	// Kubernetes API server admission plugins customization
 	Admissionplugins []KubeCustomizationApiserverAdmissionplugin `pulumi:"admissionplugins"`
 }
 
@@ -2588,6 +2610,7 @@ type KubeCustomizationApiserverInput interface {
 }
 
 type KubeCustomizationApiserverArgs struct {
+	// Kubernetes API server admission plugins customization
 	Admissionplugins KubeCustomizationApiserverAdmissionpluginArrayInput `pulumi:"admissionplugins"`
 }
 
@@ -2642,6 +2665,7 @@ func (o KubeCustomizationApiserverOutput) ToKubeCustomizationApiserverOutputWith
 	return o
 }
 
+// Kubernetes API server admission plugins customization
 func (o KubeCustomizationApiserverOutput) Admissionplugins() KubeCustomizationApiserverAdmissionpluginArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserver) []KubeCustomizationApiserverAdmissionplugin {
 		return v.Admissionplugins
@@ -2669,8 +2693,10 @@ func (o KubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) KubeCust
 }
 
 type KubeCustomizationApiserverAdmissionplugin struct {
+	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	Enableds  []string `pulumi:"enableds"`
+	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	Enableds []string `pulumi:"enableds"`
 }
 
 // KubeCustomizationApiserverAdmissionpluginInput is an input type that accepts KubeCustomizationApiserverAdmissionpluginArgs and KubeCustomizationApiserverAdmissionpluginOutput values.
@@ -2685,8 +2711,10 @@ type KubeCustomizationApiserverAdmissionpluginInput interface {
 }
 
 type KubeCustomizationApiserverAdmissionpluginArgs struct {
+	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	Enableds  pulumi.StringArrayInput `pulumi:"enableds"`
+	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
 func (KubeCustomizationApiserverAdmissionpluginArgs) ElementType() reflect.Type {
@@ -2740,10 +2768,12 @@ func (o KubeCustomizationApiserverAdmissionpluginOutput) ToKubeCustomizationApis
 	return o
 }
 
+// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
+// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
 func (o KubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -2769,8 +2799,10 @@ func (o KubeCustomizationApiserverAdmissionpluginArrayOutput) Index(i pulumi.Int
 }
 
 type KubeCustomizationKubeProxy struct {
+	// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 	Iptables *KubeCustomizationKubeProxyIptables `pulumi:"iptables"`
-	Ipvs     *KubeCustomizationKubeProxyIpvs     `pulumi:"ipvs"`
+	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
+	Ipvs *KubeCustomizationKubeProxyIpvs `pulumi:"ipvs"`
 }
 
 // KubeCustomizationKubeProxyInput is an input type that accepts KubeCustomizationKubeProxyArgs and KubeCustomizationKubeProxyOutput values.
@@ -2785,8 +2817,10 @@ type KubeCustomizationKubeProxyInput interface {
 }
 
 type KubeCustomizationKubeProxyArgs struct {
+	// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 	Iptables KubeCustomizationKubeProxyIptablesPtrInput `pulumi:"iptables"`
-	Ipvs     KubeCustomizationKubeProxyIpvsPtrInput     `pulumi:"ipvs"`
+	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
+	Ipvs KubeCustomizationKubeProxyIpvsPtrInput `pulumi:"ipvs"`
 }
 
 func (KubeCustomizationKubeProxyArgs) ElementType() reflect.Type {
@@ -2866,10 +2900,12 @@ func (o KubeCustomizationKubeProxyOutput) ToKubeCustomizationKubeProxyPtrOutputW
 	}).(KubeCustomizationKubeProxyPtrOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyOutput) Iptables() KubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIptables { return v.Iptables }).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyOutput) Ipvs() KubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIpvs { return v.Ipvs }).(KubeCustomizationKubeProxyIpvsPtrOutput)
 }
@@ -2898,6 +2934,7 @@ func (o KubeCustomizationKubeProxyPtrOutput) Elem() KubeCustomizationKubeProxyOu
 	}).(KubeCustomizationKubeProxyOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyPtrOutput) Iptables() KubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIptables {
 		if v == nil {
@@ -2907,6 +2944,7 @@ func (o KubeCustomizationKubeProxyPtrOutput) Iptables() KubeCustomizationKubePro
 	}).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
 func (o KubeCustomizationKubeProxyPtrOutput) Ipvs() KubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxy) *KubeCustomizationKubeProxyIpvs {
 		if v == nil {
@@ -2917,8 +2955,10 @@ func (o KubeCustomizationKubeProxyPtrOutput) Ipvs() KubeCustomizationKubeProxyIp
 }
 
 type KubeCustomizationKubeProxyIptables struct {
+	// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	SyncPeriod    *string `pulumi:"syncPeriod"`
+	// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod *string `pulumi:"syncPeriod"`
 }
 
 // KubeCustomizationKubeProxyIptablesInput is an input type that accepts KubeCustomizationKubeProxyIptablesArgs and KubeCustomizationKubeProxyIptablesOutput values.
@@ -2933,8 +2973,10 @@ type KubeCustomizationKubeProxyIptablesInput interface {
 }
 
 type KubeCustomizationKubeProxyIptablesArgs struct {
+	// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
 }
 
 func (KubeCustomizationKubeProxyIptablesArgs) ElementType() reflect.Type {
@@ -3014,10 +3056,12 @@ func (o KubeCustomizationKubeProxyIptablesOutput) ToKubeCustomizationKubeProxyIp
 	}).(KubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 func (o KubeCustomizationKubeProxyIptablesOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIptables) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
@@ -3046,6 +3090,7 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) Elem() KubeCustomizationKub
 	}).(KubeCustomizationKubeProxyIptablesOutput)
 }
 
+// Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -3055,6 +3100,7 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -3065,12 +3111,18 @@ func (o KubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringP
 }
 
 type KubeCustomizationKubeProxyIpvs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	Scheduler     *string `pulumi:"scheduler"`
-	SyncPeriod    *string `pulumi:"syncPeriod"`
+	// IPVS scheduler.
+	Scheduler *string `pulumi:"scheduler"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod *string `pulumi:"syncPeriod"`
+	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 	TcpFinTimeout *string `pulumi:"tcpFinTimeout"`
-	TcpTimeout    *string `pulumi:"tcpTimeout"`
-	UdpTimeout    *string `pulumi:"udpTimeout"`
+	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	TcpTimeout *string `pulumi:"tcpTimeout"`
+	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	UdpTimeout *string `pulumi:"udpTimeout"`
 }
 
 // KubeCustomizationKubeProxyIpvsInput is an input type that accepts KubeCustomizationKubeProxyIpvsArgs and KubeCustomizationKubeProxyIpvsOutput values.
@@ -3085,12 +3137,18 @@ type KubeCustomizationKubeProxyIpvsInput interface {
 }
 
 type KubeCustomizationKubeProxyIpvsArgs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	Scheduler     pulumi.StringPtrInput `pulumi:"scheduler"`
-	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// IPVS scheduler.
+	Scheduler pulumi.StringPtrInput `pulumi:"scheduler"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 	TcpFinTimeout pulumi.StringPtrInput `pulumi:"tcpFinTimeout"`
-	TcpTimeout    pulumi.StringPtrInput `pulumi:"tcpTimeout"`
-	UdpTimeout    pulumi.StringPtrInput `pulumi:"udpTimeout"`
+	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	TcpTimeout pulumi.StringPtrInput `pulumi:"tcpTimeout"`
+	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+	UdpTimeout pulumi.StringPtrInput `pulumi:"udpTimeout"`
 }
 
 func (KubeCustomizationKubeProxyIpvsArgs) ElementType() reflect.Type {
@@ -3170,26 +3228,32 @@ func (o KubeCustomizationKubeProxyIpvsOutput) ToKubeCustomizationKubeProxyIpvsPt
 	}).(KubeCustomizationKubeProxyIpvsPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpFinTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.TcpTimeout }).(pulumi.StringPtrOutput)
 }
 
+// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeCustomizationKubeProxyIpvs) *string { return v.UdpTimeout }).(pulumi.StringPtrOutput)
 }
@@ -3218,6 +3282,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Elem() KubeCustomizationKubePro
 	}).(KubeCustomizationKubeProxyIpvsOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3227,6 +3292,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// IPVS scheduler.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3236,6 +3302,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3245,6 +3312,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3254,6 +3322,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3263,6 +3332,7 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
 func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -3273,10 +3343,14 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOu
 }
 
 type KubeKubeconfigAttribute struct {
-	ClientCertificate    *string `pulumi:"clientCertificate"`
-	ClientKey            *string `pulumi:"clientKey"`
+	// The kubernetes API server client certificate.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// The kubernetes API server client key.
+	ClientKey *string `pulumi:"clientKey"`
+	// The kubernetes API server CA certificate.
 	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
-	Host                 *string `pulumi:"host"`
+	// The kubernetes API server URL.
+	Host *string `pulumi:"host"`
 }
 
 // KubeKubeconfigAttributeInput is an input type that accepts KubeKubeconfigAttributeArgs and KubeKubeconfigAttributeOutput values.
@@ -3291,10 +3365,14 @@ type KubeKubeconfigAttributeInput interface {
 }
 
 type KubeKubeconfigAttributeArgs struct {
-	ClientCertificate    pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	ClientKey            pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The kubernetes API server client certificate.
+	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// The kubernetes API server client key.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The kubernetes API server CA certificate.
 	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
-	Host                 pulumi.StringPtrInput `pulumi:"host"`
+	// The kubernetes API server URL.
+	Host pulumi.StringPtrInput `pulumi:"host"`
 }
 
 func (KubeKubeconfigAttributeArgs) ElementType() reflect.Type {
@@ -3348,18 +3426,22 @@ func (o KubeKubeconfigAttributeOutput) ToKubeKubeconfigAttributeOutputWithContex
 	return o
 }
 
+// The kubernetes API server client certificate.
 func (o KubeKubeconfigAttributeOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
+// The kubernetes API server client key.
 func (o KubeKubeconfigAttributeOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// The kubernetes API server CA certificate.
 func (o KubeKubeconfigAttributeOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
+// The kubernetes API server URL.
 func (o KubeKubeconfigAttributeOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubeKubeconfigAttribute) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -3875,6 +3957,21 @@ type KubePrivateNetworkConfiguration struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway string `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+	//
+	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	PrivateNetworkRoutingAsDefault bool `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -3893,6 +3990,21 @@ type KubePrivateNetworkConfigurationArgs struct {
 	// If defined, all egress traffic will be routed towards this IP address, which should belong to the private network. Empty string means disabled.
 	DefaultVrackGateway pulumi.StringInput `pulumi:"defaultVrackGateway"`
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+	//
+	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	PrivateNetworkRoutingAsDefault pulumi.BoolInput `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -3979,6 +4091,24 @@ func (o KubePrivateNetworkConfigurationOutput) DefaultVrackGateway() pulumi.Stri
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+//
+// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o KubePrivateNetworkConfigurationOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubePrivateNetworkConfiguration) bool { return v.PrivateNetworkRoutingAsDefault }).(pulumi.BoolOutput)
 }
@@ -4018,6 +4148,24 @@ func (o KubePrivateNetworkConfigurationPtrOutput) DefaultVrackGateway() pulumi.S
 }
 
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+//
+// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubePrivateNetworkConfiguration) *bool {
 		if v == nil {
@@ -4027,145 +4175,145 @@ func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
-type LoadbalancerFloatingIp struct {
+type LoadBalancerFloatingIp struct {
 	// ID of the resource
 	Id *string `pulumi:"id"`
 	// IP Address of the resource
 	Ip *string `pulumi:"ip"`
 }
 
-// LoadbalancerFloatingIpInput is an input type that accepts LoadbalancerFloatingIpArgs and LoadbalancerFloatingIpOutput values.
-// You can construct a concrete instance of `LoadbalancerFloatingIpInput` via:
+// LoadBalancerFloatingIpInput is an input type that accepts LoadBalancerFloatingIpArgs and LoadBalancerFloatingIpOutput values.
+// You can construct a concrete instance of `LoadBalancerFloatingIpInput` via:
 //
-//	LoadbalancerFloatingIpArgs{...}
-type LoadbalancerFloatingIpInput interface {
+//	LoadBalancerFloatingIpArgs{...}
+type LoadBalancerFloatingIpInput interface {
 	pulumi.Input
 
-	ToLoadbalancerFloatingIpOutput() LoadbalancerFloatingIpOutput
-	ToLoadbalancerFloatingIpOutputWithContext(context.Context) LoadbalancerFloatingIpOutput
+	ToLoadBalancerFloatingIpOutput() LoadBalancerFloatingIpOutput
+	ToLoadBalancerFloatingIpOutputWithContext(context.Context) LoadBalancerFloatingIpOutput
 }
 
-type LoadbalancerFloatingIpArgs struct {
+type LoadBalancerFloatingIpArgs struct {
 	// ID of the resource
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// IP Address of the resource
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
 }
 
-func (LoadbalancerFloatingIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerFloatingIp)(nil)).Elem()
+func (LoadBalancerFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerFloatingIp)(nil)).Elem()
 }
 
-func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpOutput() LoadbalancerFloatingIpOutput {
-	return i.ToLoadbalancerFloatingIpOutputWithContext(context.Background())
+func (i LoadBalancerFloatingIpArgs) ToLoadBalancerFloatingIpOutput() LoadBalancerFloatingIpOutput {
+	return i.ToLoadBalancerFloatingIpOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpOutputWithContext(ctx context.Context) LoadbalancerFloatingIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerFloatingIpOutput)
+func (i LoadBalancerFloatingIpArgs) ToLoadBalancerFloatingIpOutputWithContext(ctx context.Context) LoadBalancerFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFloatingIpOutput)
 }
 
-func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
-	return i.ToLoadbalancerFloatingIpPtrOutputWithContext(context.Background())
+func (i LoadBalancerFloatingIpArgs) ToLoadBalancerFloatingIpPtrOutput() LoadBalancerFloatingIpPtrOutput {
+	return i.ToLoadBalancerFloatingIpPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerFloatingIpArgs) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerFloatingIpOutput).ToLoadbalancerFloatingIpPtrOutputWithContext(ctx)
+func (i LoadBalancerFloatingIpArgs) ToLoadBalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFloatingIpOutput).ToLoadBalancerFloatingIpPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerFloatingIpPtrInput is an input type that accepts LoadbalancerFloatingIpArgs, LoadbalancerFloatingIpPtr and LoadbalancerFloatingIpPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerFloatingIpPtrInput` via:
+// LoadBalancerFloatingIpPtrInput is an input type that accepts LoadBalancerFloatingIpArgs, LoadBalancerFloatingIpPtr and LoadBalancerFloatingIpPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerFloatingIpPtrInput` via:
 //
-//	        LoadbalancerFloatingIpArgs{...}
+//	        LoadBalancerFloatingIpArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerFloatingIpPtrInput interface {
+type LoadBalancerFloatingIpPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput
-	ToLoadbalancerFloatingIpPtrOutputWithContext(context.Context) LoadbalancerFloatingIpPtrOutput
+	ToLoadBalancerFloatingIpPtrOutput() LoadBalancerFloatingIpPtrOutput
+	ToLoadBalancerFloatingIpPtrOutputWithContext(context.Context) LoadBalancerFloatingIpPtrOutput
 }
 
-type loadbalancerFloatingIpPtrType LoadbalancerFloatingIpArgs
+type loadBalancerFloatingIpPtrType LoadBalancerFloatingIpArgs
 
-func LoadbalancerFloatingIpPtr(v *LoadbalancerFloatingIpArgs) LoadbalancerFloatingIpPtrInput {
-	return (*loadbalancerFloatingIpPtrType)(v)
+func LoadBalancerFloatingIpPtr(v *LoadBalancerFloatingIpArgs) LoadBalancerFloatingIpPtrInput {
+	return (*loadBalancerFloatingIpPtrType)(v)
 }
 
-func (*loadbalancerFloatingIpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerFloatingIp)(nil)).Elem()
+func (*loadBalancerFloatingIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerFloatingIp)(nil)).Elem()
 }
 
-func (i *loadbalancerFloatingIpPtrType) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
-	return i.ToLoadbalancerFloatingIpPtrOutputWithContext(context.Background())
+func (i *loadBalancerFloatingIpPtrType) ToLoadBalancerFloatingIpPtrOutput() LoadBalancerFloatingIpPtrOutput {
+	return i.ToLoadBalancerFloatingIpPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerFloatingIpPtrType) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerFloatingIpPtrOutput)
+func (i *loadBalancerFloatingIpPtrType) ToLoadBalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerFloatingIpPtrOutput)
 }
 
-type LoadbalancerFloatingIpOutput struct{ *pulumi.OutputState }
+type LoadBalancerFloatingIpOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerFloatingIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerFloatingIp)(nil)).Elem()
+func (LoadBalancerFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerFloatingIp)(nil)).Elem()
 }
 
-func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpOutput() LoadbalancerFloatingIpOutput {
+func (o LoadBalancerFloatingIpOutput) ToLoadBalancerFloatingIpOutput() LoadBalancerFloatingIpOutput {
 	return o
 }
 
-func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpOutputWithContext(ctx context.Context) LoadbalancerFloatingIpOutput {
+func (o LoadBalancerFloatingIpOutput) ToLoadBalancerFloatingIpOutputWithContext(ctx context.Context) LoadBalancerFloatingIpOutput {
 	return o
 }
 
-func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
-	return o.ToLoadbalancerFloatingIpPtrOutputWithContext(context.Background())
+func (o LoadBalancerFloatingIpOutput) ToLoadBalancerFloatingIpPtrOutput() LoadBalancerFloatingIpPtrOutput {
+	return o.ToLoadBalancerFloatingIpPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerFloatingIpOutput) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerFloatingIp) *LoadbalancerFloatingIp {
+func (o LoadBalancerFloatingIpOutput) ToLoadBalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerFloatingIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerFloatingIp) *LoadBalancerFloatingIp {
 		return &v
-	}).(LoadbalancerFloatingIpPtrOutput)
+	}).(LoadBalancerFloatingIpPtrOutput)
 }
 
 // ID of the resource
-func (o LoadbalancerFloatingIpOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LoadBalancerFloatingIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // IP Address of the resource
-func (o LoadbalancerFloatingIpOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerFloatingIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
+func (o LoadBalancerFloatingIpOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerFloatingIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerFloatingIpPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerFloatingIpPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerFloatingIpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerFloatingIp)(nil)).Elem()
+func (LoadBalancerFloatingIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerFloatingIp)(nil)).Elem()
 }
 
-func (o LoadbalancerFloatingIpPtrOutput) ToLoadbalancerFloatingIpPtrOutput() LoadbalancerFloatingIpPtrOutput {
+func (o LoadBalancerFloatingIpPtrOutput) ToLoadBalancerFloatingIpPtrOutput() LoadBalancerFloatingIpPtrOutput {
 	return o
 }
 
-func (o LoadbalancerFloatingIpPtrOutput) ToLoadbalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerFloatingIpPtrOutput {
+func (o LoadBalancerFloatingIpPtrOutput) ToLoadBalancerFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerFloatingIpPtrOutput {
 	return o
 }
 
-func (o LoadbalancerFloatingIpPtrOutput) Elem() LoadbalancerFloatingIpOutput {
-	return o.ApplyT(func(v *LoadbalancerFloatingIp) LoadbalancerFloatingIp {
+func (o LoadBalancerFloatingIpPtrOutput) Elem() LoadBalancerFloatingIpOutput {
+	return o.ApplyT(func(v *LoadBalancerFloatingIp) LoadBalancerFloatingIp {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerFloatingIp
+		var ret LoadBalancerFloatingIp
 		return ret
-	}).(LoadbalancerFloatingIpOutput)
+	}).(LoadBalancerFloatingIpOutput)
 }
 
 // ID of the resource
-func (o LoadbalancerFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerFloatingIp) *string {
+func (o LoadBalancerFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerFloatingIp) *string {
 		if v == nil {
 			return nil
 		}
@@ -4174,8 +4322,8 @@ func (o LoadbalancerFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 // IP Address of the resource
-func (o LoadbalancerFloatingIpPtrOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerFloatingIp) *string {
+func (o LoadBalancerFloatingIpPtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerFloatingIp) *string {
 		if v == nil {
 			return nil
 		}
@@ -4183,7 +4331,7 @@ func (o LoadbalancerFloatingIpPtrOutput) Ip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerListener struct {
+type LoadBalancerListener struct {
 	// The allowed CIDRs
 	AllowedCidrs []string `pulumi:"allowedCidrs"`
 	// The description of the listener
@@ -4191,7 +4339,7 @@ type LoadbalancerListener struct {
 	// Name of the listener
 	Name *string `pulumi:"name"`
 	// Listener pool
-	Pool *LoadbalancerListenerPool `pulumi:"pool"`
+	Pool *LoadBalancerListenerPool `pulumi:"pool"`
 	// Listener port
 	Port float64 `pulumi:"port"`
 	// Protocol for the listener
@@ -4206,18 +4354,18 @@ type LoadbalancerListener struct {
 	TlsVersions []string `pulumi:"tlsVersions"`
 }
 
-// LoadbalancerListenerInput is an input type that accepts LoadbalancerListenerArgs and LoadbalancerListenerOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerInput` via:
+// LoadBalancerListenerInput is an input type that accepts LoadBalancerListenerArgs and LoadBalancerListenerOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerInput` via:
 //
-//	LoadbalancerListenerArgs{...}
-type LoadbalancerListenerInput interface {
+//	LoadBalancerListenerArgs{...}
+type LoadBalancerListenerInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerOutput() LoadbalancerListenerOutput
-	ToLoadbalancerListenerOutputWithContext(context.Context) LoadbalancerListenerOutput
+	ToLoadBalancerListenerOutput() LoadBalancerListenerOutput
+	ToLoadBalancerListenerOutputWithContext(context.Context) LoadBalancerListenerOutput
 }
 
-type LoadbalancerListenerArgs struct {
+type LoadBalancerListenerArgs struct {
 	// The allowed CIDRs
 	AllowedCidrs pulumi.StringArrayInput `pulumi:"allowedCidrs"`
 	// The description of the listener
@@ -4225,7 +4373,7 @@ type LoadbalancerListenerArgs struct {
 	// Name of the listener
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Listener pool
-	Pool LoadbalancerListenerPoolPtrInput `pulumi:"pool"`
+	Pool LoadBalancerListenerPoolPtrInput `pulumi:"pool"`
 	// Listener port
 	Port pulumi.Float64Input `pulumi:"port"`
 	// Protocol for the listener
@@ -4240,304 +4388,304 @@ type LoadbalancerListenerArgs struct {
 	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
 }
 
-func (LoadbalancerListenerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListener)(nil)).Elem()
+func (LoadBalancerListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListener)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerArgs) ToLoadbalancerListenerOutput() LoadbalancerListenerOutput {
-	return i.ToLoadbalancerListenerOutputWithContext(context.Background())
+func (i LoadBalancerListenerArgs) ToLoadBalancerListenerOutput() LoadBalancerListenerOutput {
+	return i.ToLoadBalancerListenerOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerArgs) ToLoadbalancerListenerOutputWithContext(ctx context.Context) LoadbalancerListenerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerOutput)
+func (i LoadBalancerListenerArgs) ToLoadBalancerListenerOutputWithContext(ctx context.Context) LoadBalancerListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerOutput)
 }
 
-// LoadbalancerListenerArrayInput is an input type that accepts LoadbalancerListenerArray and LoadbalancerListenerArrayOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerArrayInput` via:
+// LoadBalancerListenerArrayInput is an input type that accepts LoadBalancerListenerArray and LoadBalancerListenerArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerArrayInput` via:
 //
-//	LoadbalancerListenerArray{ LoadbalancerListenerArgs{...} }
-type LoadbalancerListenerArrayInput interface {
+//	LoadBalancerListenerArray{ LoadBalancerListenerArgs{...} }
+type LoadBalancerListenerArrayInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerArrayOutput() LoadbalancerListenerArrayOutput
-	ToLoadbalancerListenerArrayOutputWithContext(context.Context) LoadbalancerListenerArrayOutput
+	ToLoadBalancerListenerArrayOutput() LoadBalancerListenerArrayOutput
+	ToLoadBalancerListenerArrayOutputWithContext(context.Context) LoadBalancerListenerArrayOutput
 }
 
-type LoadbalancerListenerArray []LoadbalancerListenerInput
+type LoadBalancerListenerArray []LoadBalancerListenerInput
 
-func (LoadbalancerListenerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoadbalancerListener)(nil)).Elem()
+func (LoadBalancerListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerListener)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerArray) ToLoadbalancerListenerArrayOutput() LoadbalancerListenerArrayOutput {
-	return i.ToLoadbalancerListenerArrayOutputWithContext(context.Background())
+func (i LoadBalancerListenerArray) ToLoadBalancerListenerArrayOutput() LoadBalancerListenerArrayOutput {
+	return i.ToLoadBalancerListenerArrayOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerArray) ToLoadbalancerListenerArrayOutputWithContext(ctx context.Context) LoadbalancerListenerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerArrayOutput)
+func (i LoadBalancerListenerArray) ToLoadBalancerListenerArrayOutputWithContext(ctx context.Context) LoadBalancerListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerArrayOutput)
 }
 
-type LoadbalancerListenerOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListener)(nil)).Elem()
+func (LoadBalancerListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListener)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerOutput) ToLoadbalancerListenerOutput() LoadbalancerListenerOutput {
+func (o LoadBalancerListenerOutput) ToLoadBalancerListenerOutput() LoadBalancerListenerOutput {
 	return o
 }
 
-func (o LoadbalancerListenerOutput) ToLoadbalancerListenerOutputWithContext(ctx context.Context) LoadbalancerListenerOutput {
+func (o LoadBalancerListenerOutput) ToLoadBalancerListenerOutputWithContext(ctx context.Context) LoadBalancerListenerOutput {
 	return o
 }
 
 // The allowed CIDRs
-func (o LoadbalancerListenerOutput) AllowedCidrs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LoadbalancerListener) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+func (o LoadBalancerListenerOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerListener) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
 }
 
 // The description of the listener
-func (o LoadbalancerListenerOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListener) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListener) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Name of the listener
-func (o LoadbalancerListenerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListener) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListener) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Listener pool
-func (o LoadbalancerListenerOutput) Pool() LoadbalancerListenerPoolPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListener) *LoadbalancerListenerPool { return v.Pool }).(LoadbalancerListenerPoolPtrOutput)
+func (o LoadBalancerListenerOutput) Pool() LoadBalancerListenerPoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListener) *LoadBalancerListenerPool { return v.Pool }).(LoadBalancerListenerPoolPtrOutput)
 }
 
 // Listener port
-func (o LoadbalancerListenerOutput) Port() pulumi.Float64Output {
-	return o.ApplyT(func(v LoadbalancerListener) float64 { return v.Port }).(pulumi.Float64Output)
+func (o LoadBalancerListenerOutput) Port() pulumi.Float64Output {
+	return o.ApplyT(func(v LoadBalancerListener) float64 { return v.Port }).(pulumi.Float64Output)
 }
 
 // Protocol for the listener
-func (o LoadbalancerListenerOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadbalancerListener) string { return v.Protocol }).(pulumi.StringOutput)
+func (o LoadBalancerListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // Secret ID to get certificate for SSL listener creation
-func (o LoadbalancerListenerOutput) SecretId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListener) *string { return v.SecretId }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerOutput) SecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListener) *string { return v.SecretId }).(pulumi.StringPtrOutput)
 }
 
 // Timeout client data of the listener
-func (o LoadbalancerListenerOutput) TimeoutClientData() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListener) *float64 { return v.TimeoutClientData }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerOutput) TimeoutClientData() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListener) *float64 { return v.TimeoutClientData }).(pulumi.Float64PtrOutput)
 }
 
 // Timeout member data of the listener
-func (o LoadbalancerListenerOutput) TimeoutMemberData() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListener) *float64 { return v.TimeoutMemberData }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerOutput) TimeoutMemberData() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListener) *float64 { return v.TimeoutMemberData }).(pulumi.Float64PtrOutput)
 }
 
 // TLS versions of the listener
-func (o LoadbalancerListenerOutput) TlsVersions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LoadbalancerListener) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+func (o LoadBalancerListenerOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerListener) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
 }
 
-type LoadbalancerListenerArrayOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerArrayOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoadbalancerListener)(nil)).Elem()
+func (LoadBalancerListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerListener)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerArrayOutput) ToLoadbalancerListenerArrayOutput() LoadbalancerListenerArrayOutput {
+func (o LoadBalancerListenerArrayOutput) ToLoadBalancerListenerArrayOutput() LoadBalancerListenerArrayOutput {
 	return o
 }
 
-func (o LoadbalancerListenerArrayOutput) ToLoadbalancerListenerArrayOutputWithContext(ctx context.Context) LoadbalancerListenerArrayOutput {
+func (o LoadBalancerListenerArrayOutput) ToLoadBalancerListenerArrayOutputWithContext(ctx context.Context) LoadBalancerListenerArrayOutput {
 	return o
 }
 
-func (o LoadbalancerListenerArrayOutput) Index(i pulumi.IntInput) LoadbalancerListenerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadbalancerListener {
-		return vs[0].([]LoadbalancerListener)[vs[1].(int)]
-	}).(LoadbalancerListenerOutput)
+func (o LoadBalancerListenerArrayOutput) Index(i pulumi.IntInput) LoadBalancerListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerListener {
+		return vs[0].([]LoadBalancerListener)[vs[1].(int)]
+	}).(LoadBalancerListenerOutput)
 }
 
-type LoadbalancerListenerPool struct {
+type LoadBalancerListenerPool struct {
 	// Pool algorithm to split traffic between members
 	Algorithm *string `pulumi:"algorithm"`
 	// Pool health monitor
-	HealthMonitor *LoadbalancerListenerPoolHealthMonitor `pulumi:"healthMonitor"`
+	HealthMonitor *LoadBalancerListenerPoolHealthMonitor `pulumi:"healthMonitor"`
 	// Pool members
-	Members []LoadbalancerListenerPoolMember `pulumi:"members"`
+	Members []LoadBalancerListenerPoolMember `pulumi:"members"`
 	// Name of the pool
 	Name *string `pulumi:"name"`
 	// Protocol for the pool
 	Protocol *string `pulumi:"protocol"`
 	// Pool session persistence
-	SessionPersistence *LoadbalancerListenerPoolSessionPersistence `pulumi:"sessionPersistence"`
+	SessionPersistence *LoadBalancerListenerPoolSessionPersistence `pulumi:"sessionPersistence"`
 }
 
-// LoadbalancerListenerPoolInput is an input type that accepts LoadbalancerListenerPoolArgs and LoadbalancerListenerPoolOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolInput` via:
+// LoadBalancerListenerPoolInput is an input type that accepts LoadBalancerListenerPoolArgs and LoadBalancerListenerPoolOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolInput` via:
 //
-//	LoadbalancerListenerPoolArgs{...}
-type LoadbalancerListenerPoolInput interface {
+//	LoadBalancerListenerPoolArgs{...}
+type LoadBalancerListenerPoolInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolOutput() LoadbalancerListenerPoolOutput
-	ToLoadbalancerListenerPoolOutputWithContext(context.Context) LoadbalancerListenerPoolOutput
+	ToLoadBalancerListenerPoolOutput() LoadBalancerListenerPoolOutput
+	ToLoadBalancerListenerPoolOutputWithContext(context.Context) LoadBalancerListenerPoolOutput
 }
 
-type LoadbalancerListenerPoolArgs struct {
+type LoadBalancerListenerPoolArgs struct {
 	// Pool algorithm to split traffic between members
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Pool health monitor
-	HealthMonitor LoadbalancerListenerPoolHealthMonitorPtrInput `pulumi:"healthMonitor"`
+	HealthMonitor LoadBalancerListenerPoolHealthMonitorPtrInput `pulumi:"healthMonitor"`
 	// Pool members
-	Members LoadbalancerListenerPoolMemberArrayInput `pulumi:"members"`
+	Members LoadBalancerListenerPoolMemberArrayInput `pulumi:"members"`
 	// Name of the pool
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Protocol for the pool
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// Pool session persistence
-	SessionPersistence LoadbalancerListenerPoolSessionPersistencePtrInput `pulumi:"sessionPersistence"`
+	SessionPersistence LoadBalancerListenerPoolSessionPersistencePtrInput `pulumi:"sessionPersistence"`
 }
 
-func (LoadbalancerListenerPoolArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPool)(nil)).Elem()
+func (LoadBalancerListenerPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPool)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolOutput() LoadbalancerListenerPoolOutput {
-	return i.ToLoadbalancerListenerPoolOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolArgs) ToLoadBalancerListenerPoolOutput() LoadBalancerListenerPoolOutput {
+	return i.ToLoadBalancerListenerPoolOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolOutputWithContext(ctx context.Context) LoadbalancerListenerPoolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolOutput)
+func (i LoadBalancerListenerPoolArgs) ToLoadBalancerListenerPoolOutputWithContext(ctx context.Context) LoadBalancerListenerPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolOutput)
 }
 
-func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
-	return i.ToLoadbalancerListenerPoolPtrOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolArgs) ToLoadBalancerListenerPoolPtrOutput() LoadBalancerListenerPoolPtrOutput {
+	return i.ToLoadBalancerListenerPoolPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolArgs) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolOutput).ToLoadbalancerListenerPoolPtrOutputWithContext(ctx)
+func (i LoadBalancerListenerPoolArgs) ToLoadBalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolOutput).ToLoadBalancerListenerPoolPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerListenerPoolPtrInput is an input type that accepts LoadbalancerListenerPoolArgs, LoadbalancerListenerPoolPtr and LoadbalancerListenerPoolPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolPtrInput` via:
+// LoadBalancerListenerPoolPtrInput is an input type that accepts LoadBalancerListenerPoolArgs, LoadBalancerListenerPoolPtr and LoadBalancerListenerPoolPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolPtrInput` via:
 //
-//	        LoadbalancerListenerPoolArgs{...}
+//	        LoadBalancerListenerPoolArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerListenerPoolPtrInput interface {
+type LoadBalancerListenerPoolPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput
-	ToLoadbalancerListenerPoolPtrOutputWithContext(context.Context) LoadbalancerListenerPoolPtrOutput
+	ToLoadBalancerListenerPoolPtrOutput() LoadBalancerListenerPoolPtrOutput
+	ToLoadBalancerListenerPoolPtrOutputWithContext(context.Context) LoadBalancerListenerPoolPtrOutput
 }
 
-type loadbalancerListenerPoolPtrType LoadbalancerListenerPoolArgs
+type loadBalancerListenerPoolPtrType LoadBalancerListenerPoolArgs
 
-func LoadbalancerListenerPoolPtr(v *LoadbalancerListenerPoolArgs) LoadbalancerListenerPoolPtrInput {
-	return (*loadbalancerListenerPoolPtrType)(v)
+func LoadBalancerListenerPoolPtr(v *LoadBalancerListenerPoolArgs) LoadBalancerListenerPoolPtrInput {
+	return (*loadBalancerListenerPoolPtrType)(v)
 }
 
-func (*loadbalancerListenerPoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPool)(nil)).Elem()
+func (*loadBalancerListenerPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPool)(nil)).Elem()
 }
 
-func (i *loadbalancerListenerPoolPtrType) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
-	return i.ToLoadbalancerListenerPoolPtrOutputWithContext(context.Background())
+func (i *loadBalancerListenerPoolPtrType) ToLoadBalancerListenerPoolPtrOutput() LoadBalancerListenerPoolPtrOutput {
+	return i.ToLoadBalancerListenerPoolPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerListenerPoolPtrType) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolPtrOutput)
+func (i *loadBalancerListenerPoolPtrType) ToLoadBalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolPtrOutput)
 }
 
-type LoadbalancerListenerPoolOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPool)(nil)).Elem()
+func (LoadBalancerListenerPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPool)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolOutput() LoadbalancerListenerPoolOutput {
+func (o LoadBalancerListenerPoolOutput) ToLoadBalancerListenerPoolOutput() LoadBalancerListenerPoolOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolOutputWithContext(ctx context.Context) LoadbalancerListenerPoolOutput {
+func (o LoadBalancerListenerPoolOutput) ToLoadBalancerListenerPoolOutputWithContext(ctx context.Context) LoadBalancerListenerPoolOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
-	return o.ToLoadbalancerListenerPoolPtrOutputWithContext(context.Background())
+func (o LoadBalancerListenerPoolOutput) ToLoadBalancerListenerPoolPtrOutput() LoadBalancerListenerPoolPtrOutput {
+	return o.ToLoadBalancerListenerPoolPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerListenerPoolOutput) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPool) *LoadbalancerListenerPool {
+func (o LoadBalancerListenerPoolOutput) ToLoadBalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerListenerPool) *LoadBalancerListenerPool {
 		return &v
-	}).(LoadbalancerListenerPoolPtrOutput)
+	}).(LoadBalancerListenerPoolPtrOutput)
 }
 
 // Pool algorithm to split traffic between members
-func (o LoadbalancerListenerPoolOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPool) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPool) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
 // Pool health monitor
-func (o LoadbalancerListenerPoolOutput) HealthMonitor() LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPool) *LoadbalancerListenerPoolHealthMonitor { return v.HealthMonitor }).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+func (o LoadBalancerListenerPoolOutput) HealthMonitor() LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPool) *LoadBalancerListenerPoolHealthMonitor { return v.HealthMonitor }).(LoadBalancerListenerPoolHealthMonitorPtrOutput)
 }
 
 // Pool members
-func (o LoadbalancerListenerPoolOutput) Members() LoadbalancerListenerPoolMemberArrayOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPool) []LoadbalancerListenerPoolMember { return v.Members }).(LoadbalancerListenerPoolMemberArrayOutput)
+func (o LoadBalancerListenerPoolOutput) Members() LoadBalancerListenerPoolMemberArrayOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPool) []LoadBalancerListenerPoolMember { return v.Members }).(LoadBalancerListenerPoolMemberArrayOutput)
 }
 
 // Name of the pool
-func (o LoadbalancerListenerPoolOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPool) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Protocol for the pool
-func (o LoadbalancerListenerPoolOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPool) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPool) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Pool session persistence
-func (o LoadbalancerListenerPoolOutput) SessionPersistence() LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPool) *LoadbalancerListenerPoolSessionPersistence {
+func (o LoadBalancerListenerPoolOutput) SessionPersistence() LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPool) *LoadBalancerListenerPoolSessionPersistence {
 		return v.SessionPersistence
-	}).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+	}).(LoadBalancerListenerPoolSessionPersistencePtrOutput)
 }
 
-type LoadbalancerListenerPoolPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPool)(nil)).Elem()
+func (LoadBalancerListenerPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPool)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolPtrOutput) ToLoadbalancerListenerPoolPtrOutput() LoadbalancerListenerPoolPtrOutput {
+func (o LoadBalancerListenerPoolPtrOutput) ToLoadBalancerListenerPoolPtrOutput() LoadBalancerListenerPoolPtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolPtrOutput) ToLoadbalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolPtrOutput {
+func (o LoadBalancerListenerPoolPtrOutput) ToLoadBalancerListenerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolPtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolPtrOutput) Elem() LoadbalancerListenerPoolOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) LoadbalancerListenerPool {
+func (o LoadBalancerListenerPoolPtrOutput) Elem() LoadBalancerListenerPoolOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) LoadBalancerListenerPool {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerListenerPool
+		var ret LoadBalancerListenerPool
 		return ret
-	}).(LoadbalancerListenerPoolOutput)
+	}).(LoadBalancerListenerPoolOutput)
 }
 
 // Pool algorithm to split traffic between members
-func (o LoadbalancerListenerPoolPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) *string {
+func (o LoadBalancerListenerPoolPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) *string {
 		if v == nil {
 			return nil
 		}
@@ -4546,28 +4694,28 @@ func (o LoadbalancerListenerPoolPtrOutput) Algorithm() pulumi.StringPtrOutput {
 }
 
 // Pool health monitor
-func (o LoadbalancerListenerPoolPtrOutput) HealthMonitor() LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) *LoadbalancerListenerPoolHealthMonitor {
+func (o LoadBalancerListenerPoolPtrOutput) HealthMonitor() LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) *LoadBalancerListenerPoolHealthMonitor {
 		if v == nil {
 			return nil
 		}
 		return v.HealthMonitor
-	}).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorPtrOutput)
 }
 
 // Pool members
-func (o LoadbalancerListenerPoolPtrOutput) Members() LoadbalancerListenerPoolMemberArrayOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) []LoadbalancerListenerPoolMember {
+func (o LoadBalancerListenerPoolPtrOutput) Members() LoadBalancerListenerPoolMemberArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) []LoadBalancerListenerPoolMember {
 		if v == nil {
 			return nil
 		}
 		return v.Members
-	}).(LoadbalancerListenerPoolMemberArrayOutput)
+	}).(LoadBalancerListenerPoolMemberArrayOutput)
 }
 
 // Name of the pool
-func (o LoadbalancerListenerPoolPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) *string {
+func (o LoadBalancerListenerPoolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) *string {
 		if v == nil {
 			return nil
 		}
@@ -4576,8 +4724,8 @@ func (o LoadbalancerListenerPoolPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Protocol for the pool
-func (o LoadbalancerListenerPoolPtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) *string {
+func (o LoadBalancerListenerPoolPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) *string {
 		if v == nil {
 			return nil
 		}
@@ -4586,20 +4734,20 @@ func (o LoadbalancerListenerPoolPtrOutput) Protocol() pulumi.StringPtrOutput {
 }
 
 // Pool session persistence
-func (o LoadbalancerListenerPoolPtrOutput) SessionPersistence() LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPool) *LoadbalancerListenerPoolSessionPersistence {
+func (o LoadBalancerListenerPoolPtrOutput) SessionPersistence() LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPool) *LoadBalancerListenerPoolSessionPersistence {
 		if v == nil {
 			return nil
 		}
 		return v.SessionPersistence
-	}).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+	}).(LoadBalancerListenerPoolSessionPersistencePtrOutput)
 }
 
-type LoadbalancerListenerPoolHealthMonitor struct {
+type LoadBalancerListenerPoolHealthMonitor struct {
 	// Duration between sending probes to members, in seconds
 	Delay *float64 `pulumi:"delay"`
 	// Monitor HTTP configuration
-	HttpConfiguration *LoadbalancerListenerPoolHealthMonitorHttpConfiguration `pulumi:"httpConfiguration"`
+	HttpConfiguration *LoadBalancerListenerPoolHealthMonitorHttpConfiguration `pulumi:"httpConfiguration"`
 	// Number of successful checks before changing the operating status of the member to ONLINE
 	MaxRetries *float64 `pulumi:"maxRetries"`
 	// Number of allowed check failures before changing the operating status of the member to ERROR
@@ -4616,22 +4764,22 @@ type LoadbalancerListenerPoolHealthMonitor struct {
 	Timeout *float64 `pulumi:"timeout"`
 }
 
-// LoadbalancerListenerPoolHealthMonitorInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorArgs and LoadbalancerListenerPoolHealthMonitorOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorInput` via:
+// LoadBalancerListenerPoolHealthMonitorInput is an input type that accepts LoadBalancerListenerPoolHealthMonitorArgs and LoadBalancerListenerPoolHealthMonitorOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolHealthMonitorInput` via:
 //
-//	LoadbalancerListenerPoolHealthMonitorArgs{...}
-type LoadbalancerListenerPoolHealthMonitorInput interface {
+//	LoadBalancerListenerPoolHealthMonitorArgs{...}
+type LoadBalancerListenerPoolHealthMonitorInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolHealthMonitorOutput() LoadbalancerListenerPoolHealthMonitorOutput
-	ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorOutput
+	ToLoadBalancerListenerPoolHealthMonitorOutput() LoadBalancerListenerPoolHealthMonitorOutput
+	ToLoadBalancerListenerPoolHealthMonitorOutputWithContext(context.Context) LoadBalancerListenerPoolHealthMonitorOutput
 }
 
-type LoadbalancerListenerPoolHealthMonitorArgs struct {
+type LoadBalancerListenerPoolHealthMonitorArgs struct {
 	// Duration between sending probes to members, in seconds
 	Delay pulumi.Float64PtrInput `pulumi:"delay"`
 	// Monitor HTTP configuration
-	HttpConfiguration LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput `pulumi:"httpConfiguration"`
+	HttpConfiguration LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrInput `pulumi:"httpConfiguration"`
 	// Number of successful checks before changing the operating status of the member to ONLINE
 	MaxRetries pulumi.Float64PtrInput `pulumi:"maxRetries"`
 	// Number of allowed check failures before changing the operating status of the member to ERROR
@@ -4648,157 +4796,157 @@ type LoadbalancerListenerPoolHealthMonitorArgs struct {
 	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
 }
 
-func (LoadbalancerListenerPoolHealthMonitorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+func (LoadBalancerListenerPoolHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitor)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorOutput() LoadbalancerListenerPoolHealthMonitorOutput {
-	return i.ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolHealthMonitorArgs) ToLoadBalancerListenerPoolHealthMonitorOutput() LoadBalancerListenerPoolHealthMonitorOutput {
+	return i.ToLoadBalancerListenerPoolHealthMonitorOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorOutput)
+func (i LoadBalancerListenerPoolHealthMonitorArgs) ToLoadBalancerListenerPoolHealthMonitorOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolHealthMonitorOutput)
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return i.ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolHealthMonitorArgs) ToLoadBalancerListenerPoolHealthMonitorPtrOutput() LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return i.ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorArgs) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorOutput).ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx)
+func (i LoadBalancerListenerPoolHealthMonitorArgs) ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolHealthMonitorOutput).ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerListenerPoolHealthMonitorPtrInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorArgs, LoadbalancerListenerPoolHealthMonitorPtr and LoadbalancerListenerPoolHealthMonitorPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorPtrInput` via:
+// LoadBalancerListenerPoolHealthMonitorPtrInput is an input type that accepts LoadBalancerListenerPoolHealthMonitorArgs, LoadBalancerListenerPoolHealthMonitorPtr and LoadBalancerListenerPoolHealthMonitorPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolHealthMonitorPtrInput` via:
 //
-//	        LoadbalancerListenerPoolHealthMonitorArgs{...}
+//	        LoadBalancerListenerPoolHealthMonitorArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerListenerPoolHealthMonitorPtrInput interface {
+type LoadBalancerListenerPoolHealthMonitorPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput
-	ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput
+	ToLoadBalancerListenerPoolHealthMonitorPtrOutput() LoadBalancerListenerPoolHealthMonitorPtrOutput
+	ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Context) LoadBalancerListenerPoolHealthMonitorPtrOutput
 }
 
-type loadbalancerListenerPoolHealthMonitorPtrType LoadbalancerListenerPoolHealthMonitorArgs
+type loadBalancerListenerPoolHealthMonitorPtrType LoadBalancerListenerPoolHealthMonitorArgs
 
-func LoadbalancerListenerPoolHealthMonitorPtr(v *LoadbalancerListenerPoolHealthMonitorArgs) LoadbalancerListenerPoolHealthMonitorPtrInput {
-	return (*loadbalancerListenerPoolHealthMonitorPtrType)(v)
+func LoadBalancerListenerPoolHealthMonitorPtr(v *LoadBalancerListenerPoolHealthMonitorArgs) LoadBalancerListenerPoolHealthMonitorPtrInput {
+	return (*loadBalancerListenerPoolHealthMonitorPtrType)(v)
 }
 
-func (*loadbalancerListenerPoolHealthMonitorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+func (*loadBalancerListenerPoolHealthMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPoolHealthMonitor)(nil)).Elem()
 }
 
-func (i *loadbalancerListenerPoolHealthMonitorPtrType) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return i.ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
+func (i *loadBalancerListenerPoolHealthMonitorPtrType) ToLoadBalancerListenerPoolHealthMonitorPtrOutput() LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return i.ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerListenerPoolHealthMonitorPtrType) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+func (i *loadBalancerListenerPoolHealthMonitorPtrType) ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolHealthMonitorPtrOutput)
 }
 
-type LoadbalancerListenerPoolHealthMonitorOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolHealthMonitorOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolHealthMonitorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+func (LoadBalancerListenerPoolHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitor)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorOutput() LoadbalancerListenerPoolHealthMonitorOutput {
+func (o LoadBalancerListenerPoolHealthMonitorOutput) ToLoadBalancerListenerPoolHealthMonitorOutput() LoadBalancerListenerPoolHealthMonitorOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorOutput {
+func (o LoadBalancerListenerPoolHealthMonitorOutput) ToLoadBalancerListenerPoolHealthMonitorOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return o.ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
+func (o LoadBalancerListenerPoolHealthMonitorOutput) ToLoadBalancerListenerPoolHealthMonitorPtrOutput() LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPoolHealthMonitor) *LoadbalancerListenerPoolHealthMonitor {
+func (o LoadBalancerListenerPoolHealthMonitorOutput) ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerListenerPoolHealthMonitor) *LoadBalancerListenerPoolHealthMonitor {
 		return &v
-	}).(LoadbalancerListenerPoolHealthMonitorPtrOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorPtrOutput)
 }
 
 // Duration between sending probes to members, in seconds
-func (o LoadbalancerListenerPoolHealthMonitorOutput) Delay() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.Delay }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) Delay() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *float64 { return v.Delay }).(pulumi.Float64PtrOutput)
 }
 
 // Monitor HTTP configuration
-func (o LoadbalancerListenerPoolHealthMonitorOutput) HttpConfiguration() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+func (o LoadBalancerListenerPoolHealthMonitorOutput) HttpConfiguration() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
 		return v.HttpConfiguration
-	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
 }
 
 // Number of successful checks before changing the operating status of the member to ONLINE
-func (o LoadbalancerListenerPoolHealthMonitorOutput) MaxRetries() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.MaxRetries }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) MaxRetries() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *float64 { return v.MaxRetries }).(pulumi.Float64PtrOutput)
 }
 
 // Number of allowed check failures before changing the operating status of the member to ERROR
-func (o LoadbalancerListenerPoolHealthMonitorOutput) MaxRetriesDown() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.MaxRetriesDown }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) MaxRetriesDown() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *float64 { return v.MaxRetriesDown }).(pulumi.Float64PtrOutput)
 }
 
 // Type of the monitor
-func (o LoadbalancerListenerPoolHealthMonitorOutput) MonitorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.MonitorType }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) MonitorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *string { return v.MonitorType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
-func (o LoadbalancerListenerPoolHealthMonitorOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The operating status of the resource
-func (o LoadbalancerListenerPoolHealthMonitorOutput) OperatingStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
 }
 
 // The provisioning status of the resource
-func (o LoadbalancerListenerPoolHealthMonitorOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
 }
 
 // Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
-func (o LoadbalancerListenerPoolHealthMonitorOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitor) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorOutput) Timeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitor) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
 }
 
-type LoadbalancerListenerPoolHealthMonitorPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolHealthMonitorPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolHealthMonitorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitor)(nil)).Elem()
+func (LoadBalancerListenerPoolHealthMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPoolHealthMonitor)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutput() LoadbalancerListenerPoolHealthMonitorPtrOutput {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) ToLoadBalancerListenerPoolHealthMonitorPtrOutput() LoadBalancerListenerPoolHealthMonitorPtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ToLoadbalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorPtrOutput {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) ToLoadBalancerListenerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorPtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Elem() LoadbalancerListenerPoolHealthMonitorOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) LoadbalancerListenerPoolHealthMonitor {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) Elem() LoadBalancerListenerPoolHealthMonitorOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) LoadBalancerListenerPoolHealthMonitor {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerListenerPoolHealthMonitor
+		var ret LoadBalancerListenerPoolHealthMonitor
 		return ret
-	}).(LoadbalancerListenerPoolHealthMonitorOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorOutput)
 }
 
 // Duration between sending probes to members, in seconds
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Delay() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) Delay() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -4807,18 +4955,18 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Delay() pulumi.Float64Pt
 }
 
 // Monitor HTTP configuration
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) HttpConfiguration() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) HttpConfiguration() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.HttpConfiguration
-	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
 }
 
 // Number of successful checks before changing the operating status of the member to ONLINE
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MaxRetries() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) MaxRetries() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -4827,8 +4975,8 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MaxRetries() pulumi.Floa
 }
 
 // Number of allowed check failures before changing the operating status of the member to ERROR
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MaxRetriesDown() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) MaxRetriesDown() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -4837,8 +4985,8 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MaxRetriesDown() pulumi.
 }
 
 // Type of the monitor
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MonitorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) MonitorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *string {
 		if v == nil {
 			return nil
 		}
@@ -4847,8 +4995,8 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) MonitorType() pulumi.Str
 }
 
 // The name of the resource
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *string {
 		if v == nil {
 			return nil
 		}
@@ -4857,8 +5005,8 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Name() pulumi.StringPtrO
 }
 
 // The operating status of the resource
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) OperatingStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *string {
 		if v == nil {
 			return nil
 		}
@@ -4867,8 +5015,8 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) OperatingStatus() pulumi
 }
 
 // The provisioning status of the resource
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *string {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *string {
 		if v == nil {
 			return nil
 		}
@@ -4877,8 +5025,8 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) ProvisioningStatus() pul
 }
 
 // Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
-func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Timeout() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitor) *float64 {
+func (o LoadBalancerListenerPoolHealthMonitorPtrOutput) Timeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitor) *float64 {
 		if v == nil {
 			return nil
 		}
@@ -4886,7 +5034,7 @@ func (o LoadbalancerListenerPoolHealthMonitorPtrOutput) Timeout() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
-type LoadbalancerListenerPoolHealthMonitorHttpConfiguration struct {
+type LoadBalancerListenerPoolHealthMonitorHttpConfiguration struct {
 	// Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
 	DomainName *string `pulumi:"domainName"`
 	// Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
@@ -4899,18 +5047,18 @@ type LoadbalancerListenerPoolHealthMonitorHttpConfiguration struct {
 	UrlPath *string `pulumi:"urlPath"`
 }
 
-// LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs and LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput` via:
+// LoadBalancerListenerPoolHealthMonitorHttpConfigurationInput is an input type that accepts LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs and LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolHealthMonitorHttpConfigurationInput` via:
 //
-//	LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{...}
-type LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput interface {
+//	LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs{...}
+type LoadBalancerListenerPoolHealthMonitorHttpConfigurationInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput
-	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput
+	ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput
+	ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput
 }
 
-type LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs struct {
+type LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs struct {
 	// Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
@@ -4923,135 +5071,135 @@ type LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs struct {
 	UrlPath pulumi.StringPtrInput `pulumi:"urlPath"`
 }
 
-func (LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+func (LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
-	return i.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return i.ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput)
+func (i LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput)
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return i.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return i.ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput).ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx)
+func (i LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput).ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput is an input type that accepts LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs, LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtr and LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput` via:
+// LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrInput is an input type that accepts LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs, LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtr and LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrInput` via:
 //
-//	        LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{...}
+//	        LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput interface {
+type LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput
-	ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput
+	ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput
+	ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput
 }
 
-type loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs
+type loadBalancerListenerPoolHealthMonitorHttpConfigurationPtrType LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs
 
-func LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtr(v *LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput {
-	return (*loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType)(v)
+func LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtr(v *LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs) LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrInput {
+	return (*loadBalancerListenerPoolHealthMonitorHttpConfigurationPtrType)(v)
 }
 
-func (*loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+func (*loadBalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
 }
 
-func (i *loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return i.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
+func (i *loadBalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return i.ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+func (i *loadBalancerListenerPoolHealthMonitorHttpConfigurationPtrType) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
 }
 
-type LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+func (LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return o.ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
 		return &v
-	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput)
 }
 
 // Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.DomainName }).(pulumi.StringPtrOutput)
 }
 
 // Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) ExpectedCodes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
 }
 
 // HTTP method that the health monitor uses for requests
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
 }
 
 // HTTP version that the health monitor uses for requests
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) HttpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.HttpVersion }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.HttpVersion }).(pulumi.StringPtrOutput)
 }
 
 // HTTP URL path of the request sent by the monitor to test the health of a backend member
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput) UrlPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.UrlPath }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string { return v.UrlPath }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
+func (LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPoolHealthMonitorHttpConfiguration)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput() LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ToLoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ToLoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) Elem() LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) Elem() LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitorHttpConfiguration) LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerListenerPoolHealthMonitorHttpConfiguration
+		var ret LoadBalancerListenerPoolHealthMonitorHttpConfiguration
 		return ret
-	}).(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput)
+	}).(LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput)
 }
 
 // Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string {
 		if v == nil {
 			return nil
 		}
@@ -5060,8 +5208,8 @@ func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) DomainN
 }
 
 // Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ExpectedCodes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string {
 		if v == nil {
 			return nil
 		}
@@ -5070,8 +5218,8 @@ func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) Expecte
 }
 
 // HTTP method that the health monitor uses for requests
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string {
 		if v == nil {
 			return nil
 		}
@@ -5080,8 +5228,8 @@ func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpMet
 }
 
 // HTTP version that the health monitor uses for requests
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string {
 		if v == nil {
 			return nil
 		}
@@ -5090,8 +5238,8 @@ func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) HttpVer
 }
 
 // HTTP URL path of the request sent by the monitor to test the health of a backend member
-func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) UrlPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolHealthMonitorHttpConfiguration) *string {
+func (o LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolHealthMonitorHttpConfiguration) *string {
 		if v == nil {
 			return nil
 		}
@@ -5099,7 +5247,7 @@ func (o LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput) UrlPath
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerListenerPoolMember struct {
+type LoadBalancerListenerPoolMember struct {
 	// IP address of the resource
 	Address *string `pulumi:"address"`
 	// Name of the member
@@ -5110,18 +5258,18 @@ type LoadbalancerListenerPoolMember struct {
 	Weight *float64 `pulumi:"weight"`
 }
 
-// LoadbalancerListenerPoolMemberInput is an input type that accepts LoadbalancerListenerPoolMemberArgs and LoadbalancerListenerPoolMemberOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolMemberInput` via:
+// LoadBalancerListenerPoolMemberInput is an input type that accepts LoadBalancerListenerPoolMemberArgs and LoadBalancerListenerPoolMemberOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolMemberInput` via:
 //
-//	LoadbalancerListenerPoolMemberArgs{...}
-type LoadbalancerListenerPoolMemberInput interface {
+//	LoadBalancerListenerPoolMemberArgs{...}
+type LoadBalancerListenerPoolMemberInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolMemberOutput() LoadbalancerListenerPoolMemberOutput
-	ToLoadbalancerListenerPoolMemberOutputWithContext(context.Context) LoadbalancerListenerPoolMemberOutput
+	ToLoadBalancerListenerPoolMemberOutput() LoadBalancerListenerPoolMemberOutput
+	ToLoadBalancerListenerPoolMemberOutputWithContext(context.Context) LoadBalancerListenerPoolMemberOutput
 }
 
-type LoadbalancerListenerPoolMemberArgs struct {
+type LoadBalancerListenerPoolMemberArgs struct {
 	// IP address of the resource
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// Name of the member
@@ -5132,236 +5280,236 @@ type LoadbalancerListenerPoolMemberArgs struct {
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
 }
 
-func (LoadbalancerListenerPoolMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolMember)(nil)).Elem()
+func (LoadBalancerListenerPoolMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolMember)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerPoolMemberArgs) ToLoadbalancerListenerPoolMemberOutput() LoadbalancerListenerPoolMemberOutput {
-	return i.ToLoadbalancerListenerPoolMemberOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolMemberArgs) ToLoadBalancerListenerPoolMemberOutput() LoadBalancerListenerPoolMemberOutput {
+	return i.ToLoadBalancerListenerPoolMemberOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolMemberArgs) ToLoadbalancerListenerPoolMemberOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolMemberOutput)
+func (i LoadBalancerListenerPoolMemberArgs) ToLoadBalancerListenerPoolMemberOutputWithContext(ctx context.Context) LoadBalancerListenerPoolMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolMemberOutput)
 }
 
-// LoadbalancerListenerPoolMemberArrayInput is an input type that accepts LoadbalancerListenerPoolMemberArray and LoadbalancerListenerPoolMemberArrayOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolMemberArrayInput` via:
+// LoadBalancerListenerPoolMemberArrayInput is an input type that accepts LoadBalancerListenerPoolMemberArray and LoadBalancerListenerPoolMemberArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolMemberArrayInput` via:
 //
-//	LoadbalancerListenerPoolMemberArray{ LoadbalancerListenerPoolMemberArgs{...} }
-type LoadbalancerListenerPoolMemberArrayInput interface {
+//	LoadBalancerListenerPoolMemberArray{ LoadBalancerListenerPoolMemberArgs{...} }
+type LoadBalancerListenerPoolMemberArrayInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolMemberArrayOutput() LoadbalancerListenerPoolMemberArrayOutput
-	ToLoadbalancerListenerPoolMemberArrayOutputWithContext(context.Context) LoadbalancerListenerPoolMemberArrayOutput
+	ToLoadBalancerListenerPoolMemberArrayOutput() LoadBalancerListenerPoolMemberArrayOutput
+	ToLoadBalancerListenerPoolMemberArrayOutputWithContext(context.Context) LoadBalancerListenerPoolMemberArrayOutput
 }
 
-type LoadbalancerListenerPoolMemberArray []LoadbalancerListenerPoolMemberInput
+type LoadBalancerListenerPoolMemberArray []LoadBalancerListenerPoolMemberInput
 
-func (LoadbalancerListenerPoolMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoadbalancerListenerPoolMember)(nil)).Elem()
+func (LoadBalancerListenerPoolMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerListenerPoolMember)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerPoolMemberArray) ToLoadbalancerListenerPoolMemberArrayOutput() LoadbalancerListenerPoolMemberArrayOutput {
-	return i.ToLoadbalancerListenerPoolMemberArrayOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolMemberArray) ToLoadBalancerListenerPoolMemberArrayOutput() LoadBalancerListenerPoolMemberArrayOutput {
+	return i.ToLoadBalancerListenerPoolMemberArrayOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolMemberArray) ToLoadbalancerListenerPoolMemberArrayOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolMemberArrayOutput)
+func (i LoadBalancerListenerPoolMemberArray) ToLoadBalancerListenerPoolMemberArrayOutputWithContext(ctx context.Context) LoadBalancerListenerPoolMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolMemberArrayOutput)
 }
 
-type LoadbalancerListenerPoolMemberOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolMemberOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolMember)(nil)).Elem()
+func (LoadBalancerListenerPoolMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolMember)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolMemberOutput) ToLoadbalancerListenerPoolMemberOutput() LoadbalancerListenerPoolMemberOutput {
+func (o LoadBalancerListenerPoolMemberOutput) ToLoadBalancerListenerPoolMemberOutput() LoadBalancerListenerPoolMemberOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolMemberOutput) ToLoadbalancerListenerPoolMemberOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberOutput {
+func (o LoadBalancerListenerPoolMemberOutput) ToLoadBalancerListenerPoolMemberOutputWithContext(ctx context.Context) LoadBalancerListenerPoolMemberOutput {
 	return o
 }
 
 // IP address of the resource
-func (o LoadbalancerListenerPoolMemberOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolMemberOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolMember) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
 // Name of the member
-func (o LoadbalancerListenerPoolMemberOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolMemberOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolMember) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Protocol port number for the resource
-func (o LoadbalancerListenerPoolMemberOutput) ProtocolPort() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *float64 { return v.ProtocolPort }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerPoolMemberOutput) ProtocolPort() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolMember) *float64 { return v.ProtocolPort }).(pulumi.Float64PtrOutput)
 }
 
 // Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
-func (o LoadbalancerListenerPoolMemberOutput) Weight() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolMember) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
+func (o LoadBalancerListenerPoolMemberOutput) Weight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolMember) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
 }
 
-type LoadbalancerListenerPoolMemberArrayOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoadbalancerListenerPoolMember)(nil)).Elem()
+func (LoadBalancerListenerPoolMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerListenerPoolMember)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolMemberArrayOutput) ToLoadbalancerListenerPoolMemberArrayOutput() LoadbalancerListenerPoolMemberArrayOutput {
+func (o LoadBalancerListenerPoolMemberArrayOutput) ToLoadBalancerListenerPoolMemberArrayOutput() LoadBalancerListenerPoolMemberArrayOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolMemberArrayOutput) ToLoadbalancerListenerPoolMemberArrayOutputWithContext(ctx context.Context) LoadbalancerListenerPoolMemberArrayOutput {
+func (o LoadBalancerListenerPoolMemberArrayOutput) ToLoadBalancerListenerPoolMemberArrayOutputWithContext(ctx context.Context) LoadBalancerListenerPoolMemberArrayOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolMemberArrayOutput) Index(i pulumi.IntInput) LoadbalancerListenerPoolMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadbalancerListenerPoolMember {
-		return vs[0].([]LoadbalancerListenerPoolMember)[vs[1].(int)]
-	}).(LoadbalancerListenerPoolMemberOutput)
+func (o LoadBalancerListenerPoolMemberArrayOutput) Index(i pulumi.IntInput) LoadBalancerListenerPoolMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerListenerPoolMember {
+		return vs[0].([]LoadBalancerListenerPoolMember)[vs[1].(int)]
+	}).(LoadBalancerListenerPoolMemberOutput)
 }
 
-type LoadbalancerListenerPoolSessionPersistence struct {
+type LoadBalancerListenerPoolSessionPersistence struct {
 	// Cookie name, only applicable to session persistence through cookie
 	CookieName *string `pulumi:"cookieName"`
 	// Type of session persistence
 	Type *string `pulumi:"type"`
 }
 
-// LoadbalancerListenerPoolSessionPersistenceInput is an input type that accepts LoadbalancerListenerPoolSessionPersistenceArgs and LoadbalancerListenerPoolSessionPersistenceOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolSessionPersistenceInput` via:
+// LoadBalancerListenerPoolSessionPersistenceInput is an input type that accepts LoadBalancerListenerPoolSessionPersistenceArgs and LoadBalancerListenerPoolSessionPersistenceOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolSessionPersistenceInput` via:
 //
-//	LoadbalancerListenerPoolSessionPersistenceArgs{...}
-type LoadbalancerListenerPoolSessionPersistenceInput interface {
+//	LoadBalancerListenerPoolSessionPersistenceArgs{...}
+type LoadBalancerListenerPoolSessionPersistenceInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolSessionPersistenceOutput() LoadbalancerListenerPoolSessionPersistenceOutput
-	ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(context.Context) LoadbalancerListenerPoolSessionPersistenceOutput
+	ToLoadBalancerListenerPoolSessionPersistenceOutput() LoadBalancerListenerPoolSessionPersistenceOutput
+	ToLoadBalancerListenerPoolSessionPersistenceOutputWithContext(context.Context) LoadBalancerListenerPoolSessionPersistenceOutput
 }
 
-type LoadbalancerListenerPoolSessionPersistenceArgs struct {
+type LoadBalancerListenerPoolSessionPersistenceArgs struct {
 	// Cookie name, only applicable to session persistence through cookie
 	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
 	// Type of session persistence
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (LoadbalancerListenerPoolSessionPersistenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+func (LoadBalancerListenerPoolSessionPersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolSessionPersistence)(nil)).Elem()
 }
 
-func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistenceOutput() LoadbalancerListenerPoolSessionPersistenceOutput {
-	return i.ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolSessionPersistenceArgs) ToLoadBalancerListenerPoolSessionPersistenceOutput() LoadBalancerListenerPoolSessionPersistenceOutput {
+	return i.ToLoadBalancerListenerPoolSessionPersistenceOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolSessionPersistenceOutput)
+func (i LoadBalancerListenerPoolSessionPersistenceArgs) ToLoadBalancerListenerPoolSessionPersistenceOutputWithContext(ctx context.Context) LoadBalancerListenerPoolSessionPersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolSessionPersistenceOutput)
 }
 
-func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return i.ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
+func (i LoadBalancerListenerPoolSessionPersistenceArgs) ToLoadBalancerListenerPoolSessionPersistencePtrOutput() LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return i.ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerListenerPoolSessionPersistenceArgs) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolSessionPersistenceOutput).ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx)
+func (i LoadBalancerListenerPoolSessionPersistenceArgs) ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolSessionPersistenceOutput).ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx)
 }
 
-// LoadbalancerListenerPoolSessionPersistencePtrInput is an input type that accepts LoadbalancerListenerPoolSessionPersistenceArgs, LoadbalancerListenerPoolSessionPersistencePtr and LoadbalancerListenerPoolSessionPersistencePtrOutput values.
-// You can construct a concrete instance of `LoadbalancerListenerPoolSessionPersistencePtrInput` via:
+// LoadBalancerListenerPoolSessionPersistencePtrInput is an input type that accepts LoadBalancerListenerPoolSessionPersistenceArgs, LoadBalancerListenerPoolSessionPersistencePtr and LoadBalancerListenerPoolSessionPersistencePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerPoolSessionPersistencePtrInput` via:
 //
-//	        LoadbalancerListenerPoolSessionPersistenceArgs{...}
+//	        LoadBalancerListenerPoolSessionPersistenceArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerListenerPoolSessionPersistencePtrInput interface {
+type LoadBalancerListenerPoolSessionPersistencePtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput
-	ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput
+	ToLoadBalancerListenerPoolSessionPersistencePtrOutput() LoadBalancerListenerPoolSessionPersistencePtrOutput
+	ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Context) LoadBalancerListenerPoolSessionPersistencePtrOutput
 }
 
-type loadbalancerListenerPoolSessionPersistencePtrType LoadbalancerListenerPoolSessionPersistenceArgs
+type loadBalancerListenerPoolSessionPersistencePtrType LoadBalancerListenerPoolSessionPersistenceArgs
 
-func LoadbalancerListenerPoolSessionPersistencePtr(v *LoadbalancerListenerPoolSessionPersistenceArgs) LoadbalancerListenerPoolSessionPersistencePtrInput {
-	return (*loadbalancerListenerPoolSessionPersistencePtrType)(v)
+func LoadBalancerListenerPoolSessionPersistencePtr(v *LoadBalancerListenerPoolSessionPersistenceArgs) LoadBalancerListenerPoolSessionPersistencePtrInput {
+	return (*loadBalancerListenerPoolSessionPersistencePtrType)(v)
 }
 
-func (*loadbalancerListenerPoolSessionPersistencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+func (*loadBalancerListenerPoolSessionPersistencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPoolSessionPersistence)(nil)).Elem()
 }
 
-func (i *loadbalancerListenerPoolSessionPersistencePtrType) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return i.ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
+func (i *loadBalancerListenerPoolSessionPersistencePtrType) ToLoadBalancerListenerPoolSessionPersistencePtrOutput() LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return i.ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerListenerPoolSessionPersistencePtrType) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+func (i *loadBalancerListenerPoolSessionPersistencePtrType) ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerPoolSessionPersistencePtrOutput)
 }
 
-type LoadbalancerListenerPoolSessionPersistenceOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolSessionPersistenceOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolSessionPersistenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+func (LoadBalancerListenerPoolSessionPersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerPoolSessionPersistence)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistenceOutput() LoadbalancerListenerPoolSessionPersistenceOutput {
+func (o LoadBalancerListenerPoolSessionPersistenceOutput) ToLoadBalancerListenerPoolSessionPersistenceOutput() LoadBalancerListenerPoolSessionPersistenceOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistenceOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistenceOutput {
+func (o LoadBalancerListenerPoolSessionPersistenceOutput) ToLoadBalancerListenerPoolSessionPersistenceOutputWithContext(ctx context.Context) LoadBalancerListenerPoolSessionPersistenceOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return o.ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
+func (o LoadBalancerListenerPoolSessionPersistenceOutput) ToLoadBalancerListenerPoolSessionPersistencePtrOutput() LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerListenerPoolSessionPersistenceOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerPoolSessionPersistence) *LoadbalancerListenerPoolSessionPersistence {
+func (o LoadBalancerListenerPoolSessionPersistenceOutput) ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolSessionPersistencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerListenerPoolSessionPersistence) *LoadBalancerListenerPoolSessionPersistence {
 		return &v
-	}).(LoadbalancerListenerPoolSessionPersistencePtrOutput)
+	}).(LoadBalancerListenerPoolSessionPersistencePtrOutput)
 }
 
 // Cookie name, only applicable to session persistence through cookie
-func (o LoadbalancerListenerPoolSessionPersistenceOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolSessionPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolSessionPersistenceOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolSessionPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
 // Type of session persistence
-func (o LoadbalancerListenerPoolSessionPersistenceOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerListenerPoolSessionPersistence) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o LoadBalancerListenerPoolSessionPersistenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerPoolSessionPersistence) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerListenerPoolSessionPersistencePtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerListenerPoolSessionPersistencePtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerListenerPoolSessionPersistencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerListenerPoolSessionPersistence)(nil)).Elem()
+func (LoadBalancerListenerPoolSessionPersistencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerPoolSessionPersistence)(nil)).Elem()
 }
 
-func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutput() LoadbalancerListenerPoolSessionPersistencePtrOutput {
+func (o LoadBalancerListenerPoolSessionPersistencePtrOutput) ToLoadBalancerListenerPoolSessionPersistencePtrOutput() LoadBalancerListenerPoolSessionPersistencePtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) ToLoadbalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadbalancerListenerPoolSessionPersistencePtrOutput {
+func (o LoadBalancerListenerPoolSessionPersistencePtrOutput) ToLoadBalancerListenerPoolSessionPersistencePtrOutputWithContext(ctx context.Context) LoadBalancerListenerPoolSessionPersistencePtrOutput {
 	return o
 }
 
-func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) Elem() LoadbalancerListenerPoolSessionPersistenceOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolSessionPersistence) LoadbalancerListenerPoolSessionPersistence {
+func (o LoadBalancerListenerPoolSessionPersistencePtrOutput) Elem() LoadBalancerListenerPoolSessionPersistenceOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolSessionPersistence) LoadBalancerListenerPoolSessionPersistence {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerListenerPoolSessionPersistence
+		var ret LoadBalancerListenerPoolSessionPersistence
 		return ret
-	}).(LoadbalancerListenerPoolSessionPersistenceOutput)
+	}).(LoadBalancerListenerPoolSessionPersistenceOutput)
 }
 
 // Cookie name, only applicable to session persistence through cookie
-func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolSessionPersistence) *string {
+func (o LoadBalancerListenerPoolSessionPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolSessionPersistence) *string {
 		if v == nil {
 			return nil
 		}
@@ -5370,8 +5518,8 @@ func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) CookieName() pulumi
 }
 
 // Type of session persistence
-func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerListenerPoolSessionPersistence) *string {
+func (o LoadBalancerListenerPoolSessionPersistencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerPoolSessionPersistence) *string {
 		if v == nil {
 			return nil
 		}
@@ -5379,488 +5527,488 @@ func (o LoadbalancerListenerPoolSessionPersistencePtrOutput) Type() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetwork struct {
+type LoadBalancerNetwork struct {
 	// Information to private network
-	Private LoadbalancerNetworkPrivate `pulumi:"private"`
+	Private LoadBalancerNetworkPrivate `pulumi:"private"`
 }
 
-// LoadbalancerNetworkInput is an input type that accepts LoadbalancerNetworkArgs and LoadbalancerNetworkOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkInput` via:
+// LoadBalancerNetworkInput is an input type that accepts LoadBalancerNetworkArgs and LoadBalancerNetworkOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkInput` via:
 //
-//	LoadbalancerNetworkArgs{...}
-type LoadbalancerNetworkInput interface {
+//	LoadBalancerNetworkArgs{...}
+type LoadBalancerNetworkInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkOutput() LoadbalancerNetworkOutput
-	ToLoadbalancerNetworkOutputWithContext(context.Context) LoadbalancerNetworkOutput
+	ToLoadBalancerNetworkOutput() LoadBalancerNetworkOutput
+	ToLoadBalancerNetworkOutputWithContext(context.Context) LoadBalancerNetworkOutput
 }
 
-type LoadbalancerNetworkArgs struct {
+type LoadBalancerNetworkArgs struct {
 	// Information to private network
-	Private LoadbalancerNetworkPrivateInput `pulumi:"private"`
+	Private LoadBalancerNetworkPrivateInput `pulumi:"private"`
 }
 
-func (LoadbalancerNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetwork)(nil)).Elem()
+func (LoadBalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetwork)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkOutput() LoadbalancerNetworkOutput {
-	return i.ToLoadbalancerNetworkOutputWithContext(context.Background())
+func (i LoadBalancerNetworkArgs) ToLoadBalancerNetworkOutput() LoadBalancerNetworkOutput {
+	return i.ToLoadBalancerNetworkOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkOutput)
+func (i LoadBalancerNetworkArgs) ToLoadBalancerNetworkOutputWithContext(ctx context.Context) LoadBalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkOutput)
 }
 
-func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
-	return i.ToLoadbalancerNetworkPtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkArgs) ToLoadBalancerNetworkPtrOutput() LoadBalancerNetworkPtrOutput {
+	return i.ToLoadBalancerNetworkPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkArgs) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkOutput).ToLoadbalancerNetworkPtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkArgs) ToLoadBalancerNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkOutput).ToLoadBalancerNetworkPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPtrInput is an input type that accepts LoadbalancerNetworkArgs, LoadbalancerNetworkPtr and LoadbalancerNetworkPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPtrInput` via:
+// LoadBalancerNetworkPtrInput is an input type that accepts LoadBalancerNetworkArgs, LoadBalancerNetworkPtr and LoadBalancerNetworkPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPtrInput` via:
 //
-//	        LoadbalancerNetworkArgs{...}
+//	        LoadBalancerNetworkArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPtrInput interface {
+type LoadBalancerNetworkPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput
-	ToLoadbalancerNetworkPtrOutputWithContext(context.Context) LoadbalancerNetworkPtrOutput
+	ToLoadBalancerNetworkPtrOutput() LoadBalancerNetworkPtrOutput
+	ToLoadBalancerNetworkPtrOutputWithContext(context.Context) LoadBalancerNetworkPtrOutput
 }
 
-type loadbalancerNetworkPtrType LoadbalancerNetworkArgs
+type loadBalancerNetworkPtrType LoadBalancerNetworkArgs
 
-func LoadbalancerNetworkPtr(v *LoadbalancerNetworkArgs) LoadbalancerNetworkPtrInput {
-	return (*loadbalancerNetworkPtrType)(v)
+func LoadBalancerNetworkPtr(v *LoadBalancerNetworkArgs) LoadBalancerNetworkPtrInput {
+	return (*loadBalancerNetworkPtrType)(v)
 }
 
-func (*loadbalancerNetworkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetwork)(nil)).Elem()
+func (*loadBalancerNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetwork)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPtrType) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
-	return i.ToLoadbalancerNetworkPtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPtrType) ToLoadBalancerNetworkPtrOutput() LoadBalancerNetworkPtrOutput {
+	return i.ToLoadBalancerNetworkPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPtrType) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPtrOutput)
+func (i *loadBalancerNetworkPtrType) ToLoadBalancerNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPtrOutput)
 }
 
-type LoadbalancerNetworkOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetwork)(nil)).Elem()
+func (LoadBalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetwork)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkOutput() LoadbalancerNetworkOutput {
+func (o LoadBalancerNetworkOutput) ToLoadBalancerNetworkOutput() LoadBalancerNetworkOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkOutput {
+func (o LoadBalancerNetworkOutput) ToLoadBalancerNetworkOutputWithContext(ctx context.Context) LoadBalancerNetworkOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
-	return o.ToLoadbalancerNetworkPtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkOutput) ToLoadBalancerNetworkPtrOutput() LoadBalancerNetworkPtrOutput {
+	return o.ToLoadBalancerNetworkPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkOutput) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetwork) *LoadbalancerNetwork {
+func (o LoadBalancerNetworkOutput) ToLoadBalancerNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetwork) *LoadBalancerNetwork {
 		return &v
-	}).(LoadbalancerNetworkPtrOutput)
+	}).(LoadBalancerNetworkPtrOutput)
 }
 
 // Information to private network
-func (o LoadbalancerNetworkOutput) Private() LoadbalancerNetworkPrivateOutput {
-	return o.ApplyT(func(v LoadbalancerNetwork) LoadbalancerNetworkPrivate { return v.Private }).(LoadbalancerNetworkPrivateOutput)
+func (o LoadBalancerNetworkOutput) Private() LoadBalancerNetworkPrivateOutput {
+	return o.ApplyT(func(v LoadBalancerNetwork) LoadBalancerNetworkPrivate { return v.Private }).(LoadBalancerNetworkPrivateOutput)
 }
 
-type LoadbalancerNetworkPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetwork)(nil)).Elem()
+func (LoadBalancerNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetwork)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPtrOutput) ToLoadbalancerNetworkPtrOutput() LoadbalancerNetworkPtrOutput {
+func (o LoadBalancerNetworkPtrOutput) ToLoadBalancerNetworkPtrOutput() LoadBalancerNetworkPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPtrOutput) ToLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPtrOutput {
+func (o LoadBalancerNetworkPtrOutput) ToLoadBalancerNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPtrOutput) Elem() LoadbalancerNetworkOutput {
-	return o.ApplyT(func(v *LoadbalancerNetwork) LoadbalancerNetwork {
+func (o LoadBalancerNetworkPtrOutput) Elem() LoadBalancerNetworkOutput {
+	return o.ApplyT(func(v *LoadBalancerNetwork) LoadBalancerNetwork {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetwork
+		var ret LoadBalancerNetwork
 		return ret
-	}).(LoadbalancerNetworkOutput)
+	}).(LoadBalancerNetworkOutput)
 }
 
 // Information to private network
-func (o LoadbalancerNetworkPtrOutput) Private() LoadbalancerNetworkPrivatePtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetwork) *LoadbalancerNetworkPrivate {
+func (o LoadBalancerNetworkPtrOutput) Private() LoadBalancerNetworkPrivatePtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetwork) *LoadBalancerNetworkPrivate {
 		if v == nil {
 			return nil
 		}
 		return &v.Private
-	}).(LoadbalancerNetworkPrivatePtrOutput)
+	}).(LoadBalancerNetworkPrivatePtrOutput)
 }
 
-type LoadbalancerNetworkPrivate struct {
+type LoadBalancerNetworkPrivate struct {
 	// Floating IP to associate
-	FloatingIp *LoadbalancerNetworkPrivateFloatingIp `pulumi:"floatingIp"`
+	FloatingIp *LoadBalancerNetworkPrivateFloatingIp `pulumi:"floatingIp"`
 	// Floating IP to create
-	FloatingIpCreate *LoadbalancerNetworkPrivateFloatingIpCreate `pulumi:"floatingIpCreate"`
+	FloatingIpCreate *LoadBalancerNetworkPrivateFloatingIpCreate `pulumi:"floatingIpCreate"`
 	// Gateway to associate
-	Gateway *LoadbalancerNetworkPrivateGateway `pulumi:"gateway"`
+	Gateway *LoadBalancerNetworkPrivateGateway `pulumi:"gateway"`
 	// Gateway to create
-	GatewayCreate *LoadbalancerNetworkPrivateGatewayCreate `pulumi:"gatewayCreate"`
+	GatewayCreate *LoadBalancerNetworkPrivateGatewayCreate `pulumi:"gatewayCreate"`
 	// Network to associate
-	Network LoadbalancerNetworkPrivateNetwork `pulumi:"network"`
+	Network LoadBalancerNetworkPrivateNetwork `pulumi:"network"`
 }
 
-// LoadbalancerNetworkPrivateInput is an input type that accepts LoadbalancerNetworkPrivateArgs and LoadbalancerNetworkPrivateOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateInput` via:
+// LoadBalancerNetworkPrivateInput is an input type that accepts LoadBalancerNetworkPrivateArgs and LoadBalancerNetworkPrivateOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateInput` via:
 //
-//	LoadbalancerNetworkPrivateArgs{...}
-type LoadbalancerNetworkPrivateInput interface {
+//	LoadBalancerNetworkPrivateArgs{...}
+type LoadBalancerNetworkPrivateInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateOutput() LoadbalancerNetworkPrivateOutput
-	ToLoadbalancerNetworkPrivateOutputWithContext(context.Context) LoadbalancerNetworkPrivateOutput
+	ToLoadBalancerNetworkPrivateOutput() LoadBalancerNetworkPrivateOutput
+	ToLoadBalancerNetworkPrivateOutputWithContext(context.Context) LoadBalancerNetworkPrivateOutput
 }
 
-type LoadbalancerNetworkPrivateArgs struct {
+type LoadBalancerNetworkPrivateArgs struct {
 	// Floating IP to associate
-	FloatingIp LoadbalancerNetworkPrivateFloatingIpPtrInput `pulumi:"floatingIp"`
+	FloatingIp LoadBalancerNetworkPrivateFloatingIpPtrInput `pulumi:"floatingIp"`
 	// Floating IP to create
-	FloatingIpCreate LoadbalancerNetworkPrivateFloatingIpCreatePtrInput `pulumi:"floatingIpCreate"`
+	FloatingIpCreate LoadBalancerNetworkPrivateFloatingIpCreatePtrInput `pulumi:"floatingIpCreate"`
 	// Gateway to associate
-	Gateway LoadbalancerNetworkPrivateGatewayPtrInput `pulumi:"gateway"`
+	Gateway LoadBalancerNetworkPrivateGatewayPtrInput `pulumi:"gateway"`
 	// Gateway to create
-	GatewayCreate LoadbalancerNetworkPrivateGatewayCreatePtrInput `pulumi:"gatewayCreate"`
+	GatewayCreate LoadBalancerNetworkPrivateGatewayCreatePtrInput `pulumi:"gatewayCreate"`
 	// Network to associate
-	Network LoadbalancerNetworkPrivateNetworkInput `pulumi:"network"`
+	Network LoadBalancerNetworkPrivateNetworkInput `pulumi:"network"`
 }
 
-func (LoadbalancerNetworkPrivateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivate)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivateOutput() LoadbalancerNetworkPrivateOutput {
-	return i.ToLoadbalancerNetworkPrivateOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateArgs) ToLoadBalancerNetworkPrivateOutput() LoadBalancerNetworkPrivateOutput {
+	return i.ToLoadBalancerNetworkPrivateOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateOutput)
+func (i LoadBalancerNetworkPrivateArgs) ToLoadBalancerNetworkPrivateOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateOutput)
 }
 
-func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
-	return i.ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateArgs) ToLoadBalancerNetworkPrivatePtrOutput() LoadBalancerNetworkPrivatePtrOutput {
+	return i.ToLoadBalancerNetworkPrivatePtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateArgs) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateOutput).ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkPrivateArgs) ToLoadBalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateOutput).ToLoadBalancerNetworkPrivatePtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPrivatePtrInput is an input type that accepts LoadbalancerNetworkPrivateArgs, LoadbalancerNetworkPrivatePtr and LoadbalancerNetworkPrivatePtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivatePtrInput` via:
+// LoadBalancerNetworkPrivatePtrInput is an input type that accepts LoadBalancerNetworkPrivateArgs, LoadBalancerNetworkPrivatePtr and LoadBalancerNetworkPrivatePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivatePtrInput` via:
 //
-//	        LoadbalancerNetworkPrivateArgs{...}
+//	        LoadBalancerNetworkPrivateArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPrivatePtrInput interface {
+type LoadBalancerNetworkPrivatePtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput
-	ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Context) LoadbalancerNetworkPrivatePtrOutput
+	ToLoadBalancerNetworkPrivatePtrOutput() LoadBalancerNetworkPrivatePtrOutput
+	ToLoadBalancerNetworkPrivatePtrOutputWithContext(context.Context) LoadBalancerNetworkPrivatePtrOutput
 }
 
-type loadbalancerNetworkPrivatePtrType LoadbalancerNetworkPrivateArgs
+type loadBalancerNetworkPrivatePtrType LoadBalancerNetworkPrivateArgs
 
-func LoadbalancerNetworkPrivatePtr(v *LoadbalancerNetworkPrivateArgs) LoadbalancerNetworkPrivatePtrInput {
-	return (*loadbalancerNetworkPrivatePtrType)(v)
+func LoadBalancerNetworkPrivatePtr(v *LoadBalancerNetworkPrivateArgs) LoadBalancerNetworkPrivatePtrInput {
+	return (*loadBalancerNetworkPrivatePtrType)(v)
 }
 
-func (*loadbalancerNetworkPrivatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivate)(nil)).Elem()
+func (*loadBalancerNetworkPrivatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivate)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPrivatePtrType) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
-	return i.ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPrivatePtrType) ToLoadBalancerNetworkPrivatePtrOutput() LoadBalancerNetworkPrivatePtrOutput {
+	return i.ToLoadBalancerNetworkPrivatePtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPrivatePtrType) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivatePtrOutput)
+func (i *loadBalancerNetworkPrivatePtrType) ToLoadBalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivatePtrOutput)
 }
 
-type LoadbalancerNetworkPrivateOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivate)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivateOutput() LoadbalancerNetworkPrivateOutput {
+func (o LoadBalancerNetworkPrivateOutput) ToLoadBalancerNetworkPrivateOutput() LoadBalancerNetworkPrivateOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateOutput {
+func (o LoadBalancerNetworkPrivateOutput) ToLoadBalancerNetworkPrivateOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
-	return o.ToLoadbalancerNetworkPrivatePtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkPrivateOutput) ToLoadBalancerNetworkPrivatePtrOutput() LoadBalancerNetworkPrivatePtrOutput {
+	return o.ToLoadBalancerNetworkPrivatePtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkPrivateOutput) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivate {
+func (o LoadBalancerNetworkPrivateOutput) ToLoadBalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivate {
 		return &v
-	}).(LoadbalancerNetworkPrivatePtrOutput)
+	}).(LoadBalancerNetworkPrivatePtrOutput)
 }
 
 // Floating IP to associate
-func (o LoadbalancerNetworkPrivateOutput) FloatingIp() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIp { return v.FloatingIp }).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+func (o LoadBalancerNetworkPrivateOutput) FloatingIp() LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateFloatingIp { return v.FloatingIp }).(LoadBalancerNetworkPrivateFloatingIpPtrOutput)
 }
 
 // Floating IP to create
-func (o LoadbalancerNetworkPrivateOutput) FloatingIpCreate() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIpCreate {
+func (o LoadBalancerNetworkPrivateOutput) FloatingIpCreate() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateFloatingIpCreate {
 		return v.FloatingIpCreate
-	}).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput)
 }
 
 // Gateway to associate
-func (o LoadbalancerNetworkPrivateOutput) Gateway() LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGateway { return v.Gateway }).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+func (o LoadBalancerNetworkPrivateOutput) Gateway() LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateGateway { return v.Gateway }).(LoadBalancerNetworkPrivateGatewayPtrOutput)
 }
 
 // Gateway to create
-func (o LoadbalancerNetworkPrivateOutput) GatewayCreate() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGatewayCreate { return v.GatewayCreate }).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+func (o LoadBalancerNetworkPrivateOutput) GatewayCreate() LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateGatewayCreate { return v.GatewayCreate }).(LoadBalancerNetworkPrivateGatewayCreatePtrOutput)
 }
 
 // Network to associate
-func (o LoadbalancerNetworkPrivateOutput) Network() LoadbalancerNetworkPrivateNetworkOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivate) LoadbalancerNetworkPrivateNetwork { return v.Network }).(LoadbalancerNetworkPrivateNetworkOutput)
+func (o LoadBalancerNetworkPrivateOutput) Network() LoadBalancerNetworkPrivateNetworkOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivate) LoadBalancerNetworkPrivateNetwork { return v.Network }).(LoadBalancerNetworkPrivateNetworkOutput)
 }
 
-type LoadbalancerNetworkPrivatePtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivatePtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivate)(nil)).Elem()
+func (LoadBalancerNetworkPrivatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivate)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivatePtrOutput) ToLoadbalancerNetworkPrivatePtrOutput() LoadbalancerNetworkPrivatePtrOutput {
+func (o LoadBalancerNetworkPrivatePtrOutput) ToLoadBalancerNetworkPrivatePtrOutput() LoadBalancerNetworkPrivatePtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivatePtrOutput) ToLoadbalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivatePtrOutput {
+func (o LoadBalancerNetworkPrivatePtrOutput) ToLoadBalancerNetworkPrivatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivatePtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivatePtrOutput) Elem() LoadbalancerNetworkPrivateOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) LoadbalancerNetworkPrivate {
+func (o LoadBalancerNetworkPrivatePtrOutput) Elem() LoadBalancerNetworkPrivateOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivate) LoadBalancerNetworkPrivate {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetworkPrivate
+		var ret LoadBalancerNetworkPrivate
 		return ret
-	}).(LoadbalancerNetworkPrivateOutput)
+	}).(LoadBalancerNetworkPrivateOutput)
 }
 
 // Floating IP to associate
-func (o LoadbalancerNetworkPrivatePtrOutput) FloatingIp() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIp {
+func (o LoadBalancerNetworkPrivatePtrOutput) FloatingIp() LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateFloatingIp {
 		if v == nil {
 			return nil
 		}
 		return v.FloatingIp
-	}).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpPtrOutput)
 }
 
 // Floating IP to create
-func (o LoadbalancerNetworkPrivatePtrOutput) FloatingIpCreate() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateFloatingIpCreate {
+func (o LoadBalancerNetworkPrivatePtrOutput) FloatingIpCreate() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateFloatingIpCreate {
 		if v == nil {
 			return nil
 		}
 		return v.FloatingIpCreate
-	}).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput)
 }
 
 // Gateway to associate
-func (o LoadbalancerNetworkPrivatePtrOutput) Gateway() LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGateway {
+func (o LoadBalancerNetworkPrivatePtrOutput) Gateway() LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateGateway {
 		if v == nil {
 			return nil
 		}
 		return v.Gateway
-	}).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+	}).(LoadBalancerNetworkPrivateGatewayPtrOutput)
 }
 
 // Gateway to create
-func (o LoadbalancerNetworkPrivatePtrOutput) GatewayCreate() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateGatewayCreate {
+func (o LoadBalancerNetworkPrivatePtrOutput) GatewayCreate() LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateGatewayCreate {
 		if v == nil {
 			return nil
 		}
 		return v.GatewayCreate
-	}).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+	}).(LoadBalancerNetworkPrivateGatewayCreatePtrOutput)
 }
 
 // Network to associate
-func (o LoadbalancerNetworkPrivatePtrOutput) Network() LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivate) *LoadbalancerNetworkPrivateNetwork {
+func (o LoadBalancerNetworkPrivatePtrOutput) Network() LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivate) *LoadBalancerNetworkPrivateNetwork {
 		if v == nil {
 			return nil
 		}
 		return &v.Network
-	}).(LoadbalancerNetworkPrivateNetworkPtrOutput)
+	}).(LoadBalancerNetworkPrivateNetworkPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateFloatingIp struct {
+type LoadBalancerNetworkPrivateFloatingIp struct {
 	// ID of the floatingIp
 	Id *string `pulumi:"id"`
 }
 
-// LoadbalancerNetworkPrivateFloatingIpInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpArgs and LoadbalancerNetworkPrivateFloatingIpOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpInput` via:
+// LoadBalancerNetworkPrivateFloatingIpInput is an input type that accepts LoadBalancerNetworkPrivateFloatingIpArgs and LoadBalancerNetworkPrivateFloatingIpOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateFloatingIpInput` via:
 //
-//	LoadbalancerNetworkPrivateFloatingIpArgs{...}
-type LoadbalancerNetworkPrivateFloatingIpInput interface {
+//	LoadBalancerNetworkPrivateFloatingIpArgs{...}
+type LoadBalancerNetworkPrivateFloatingIpInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateFloatingIpOutput() LoadbalancerNetworkPrivateFloatingIpOutput
-	ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpOutput
+	ToLoadBalancerNetworkPrivateFloatingIpOutput() LoadBalancerNetworkPrivateFloatingIpOutput
+	ToLoadBalancerNetworkPrivateFloatingIpOutputWithContext(context.Context) LoadBalancerNetworkPrivateFloatingIpOutput
 }
 
-type LoadbalancerNetworkPrivateFloatingIpArgs struct {
+type LoadBalancerNetworkPrivateFloatingIpArgs struct {
 	// ID of the floatingIp
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
-func (LoadbalancerNetworkPrivateFloatingIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+func (LoadBalancerNetworkPrivateFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIp)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpOutput() LoadbalancerNetworkPrivateFloatingIpOutput {
-	return i.ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateFloatingIpArgs) ToLoadBalancerNetworkPrivateFloatingIpOutput() LoadBalancerNetworkPrivateFloatingIpOutput {
+	return i.ToLoadBalancerNetworkPrivateFloatingIpOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpOutput)
+func (i LoadBalancerNetworkPrivateFloatingIpArgs) ToLoadBalancerNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateFloatingIpOutput)
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return i.ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateFloatingIpArgs) ToLoadBalancerNetworkPrivateFloatingIpPtrOutput() LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return i.ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpArgs) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpOutput).ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkPrivateFloatingIpArgs) ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateFloatingIpOutput).ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPrivateFloatingIpPtrInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpArgs, LoadbalancerNetworkPrivateFloatingIpPtr and LoadbalancerNetworkPrivateFloatingIpPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpPtrInput` via:
+// LoadBalancerNetworkPrivateFloatingIpPtrInput is an input type that accepts LoadBalancerNetworkPrivateFloatingIpArgs, LoadBalancerNetworkPrivateFloatingIpPtr and LoadBalancerNetworkPrivateFloatingIpPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateFloatingIpPtrInput` via:
 //
-//	        LoadbalancerNetworkPrivateFloatingIpArgs{...}
+//	        LoadBalancerNetworkPrivateFloatingIpArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPrivateFloatingIpPtrInput interface {
+type LoadBalancerNetworkPrivateFloatingIpPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput
-	ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput
+	ToLoadBalancerNetworkPrivateFloatingIpPtrOutput() LoadBalancerNetworkPrivateFloatingIpPtrOutput
+	ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Context) LoadBalancerNetworkPrivateFloatingIpPtrOutput
 }
 
-type loadbalancerNetworkPrivateFloatingIpPtrType LoadbalancerNetworkPrivateFloatingIpArgs
+type loadBalancerNetworkPrivateFloatingIpPtrType LoadBalancerNetworkPrivateFloatingIpArgs
 
-func LoadbalancerNetworkPrivateFloatingIpPtr(v *LoadbalancerNetworkPrivateFloatingIpArgs) LoadbalancerNetworkPrivateFloatingIpPtrInput {
-	return (*loadbalancerNetworkPrivateFloatingIpPtrType)(v)
+func LoadBalancerNetworkPrivateFloatingIpPtr(v *LoadBalancerNetworkPrivateFloatingIpArgs) LoadBalancerNetworkPrivateFloatingIpPtrInput {
+	return (*loadBalancerNetworkPrivateFloatingIpPtrType)(v)
 }
 
-func (*loadbalancerNetworkPrivateFloatingIpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+func (*loadBalancerNetworkPrivateFloatingIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateFloatingIp)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPrivateFloatingIpPtrType) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return i.ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPrivateFloatingIpPtrType) ToLoadBalancerNetworkPrivateFloatingIpPtrOutput() LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return i.ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPrivateFloatingIpPtrType) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+func (i *loadBalancerNetworkPrivateFloatingIpPtrType) ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateFloatingIpPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateFloatingIpOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateFloatingIpOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateFloatingIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+func (LoadBalancerNetworkPrivateFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIp)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpOutput() LoadbalancerNetworkPrivateFloatingIpOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpOutput) ToLoadBalancerNetworkPrivateFloatingIpOutput() LoadBalancerNetworkPrivateFloatingIpOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpOutput) ToLoadBalancerNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return o.ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkPrivateFloatingIpOutput) ToLoadBalancerNetworkPrivateFloatingIpPtrOutput() LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateFloatingIp) *LoadbalancerNetworkPrivateFloatingIp {
+func (o LoadBalancerNetworkPrivateFloatingIpOutput) ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetworkPrivateFloatingIp) *LoadBalancerNetworkPrivateFloatingIp {
 		return &v
-	}).(LoadbalancerNetworkPrivateFloatingIpPtrOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpPtrOutput)
 }
 
 // ID of the floatingIp
-func (o LoadbalancerNetworkPrivateFloatingIpOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LoadBalancerNetworkPrivateFloatingIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateFloatingIpPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateFloatingIpPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateFloatingIpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIp)(nil)).Elem()
+func (LoadBalancerNetworkPrivateFloatingIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateFloatingIp)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutput() LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpPtrOutput) ToLoadBalancerNetworkPrivateFloatingIpPtrOutput() LoadBalancerNetworkPrivateFloatingIpPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) ToLoadbalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpPtrOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpPtrOutput) ToLoadBalancerNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) Elem() LoadbalancerNetworkPrivateFloatingIpOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIp) LoadbalancerNetworkPrivateFloatingIp {
+func (o LoadBalancerNetworkPrivateFloatingIpPtrOutput) Elem() LoadBalancerNetworkPrivateFloatingIpOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateFloatingIp) LoadBalancerNetworkPrivateFloatingIp {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetworkPrivateFloatingIp
+		var ret LoadBalancerNetworkPrivateFloatingIp
 		return ret
-	}).(LoadbalancerNetworkPrivateFloatingIpOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpOutput)
 }
 
 // ID of the floatingIp
-func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIp) *string {
+func (o LoadBalancerNetworkPrivateFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateFloatingIp) *string {
 		if v == nil {
 			return nil
 		}
@@ -5868,136 +6016,136 @@ func (o LoadbalancerNetworkPrivateFloatingIpPtrOutput) Id() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateFloatingIpCreate struct {
+type LoadBalancerNetworkPrivateFloatingIpCreate struct {
 	// Description for the floatingIp
 	Description *string `pulumi:"description"`
 }
 
-// LoadbalancerNetworkPrivateFloatingIpCreateInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpCreateArgs and LoadbalancerNetworkPrivateFloatingIpCreateOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpCreateInput` via:
+// LoadBalancerNetworkPrivateFloatingIpCreateInput is an input type that accepts LoadBalancerNetworkPrivateFloatingIpCreateArgs and LoadBalancerNetworkPrivateFloatingIpCreateOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateFloatingIpCreateInput` via:
 //
-//	LoadbalancerNetworkPrivateFloatingIpCreateArgs{...}
-type LoadbalancerNetworkPrivateFloatingIpCreateInput interface {
+//	LoadBalancerNetworkPrivateFloatingIpCreateArgs{...}
+type LoadBalancerNetworkPrivateFloatingIpCreateInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateFloatingIpCreateOutput() LoadbalancerNetworkPrivateFloatingIpCreateOutput
-	ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpCreateOutput
+	ToLoadBalancerNetworkPrivateFloatingIpCreateOutput() LoadBalancerNetworkPrivateFloatingIpCreateOutput
+	ToLoadBalancerNetworkPrivateFloatingIpCreateOutputWithContext(context.Context) LoadBalancerNetworkPrivateFloatingIpCreateOutput
 }
 
-type LoadbalancerNetworkPrivateFloatingIpCreateArgs struct {
+type LoadBalancerNetworkPrivateFloatingIpCreateArgs struct {
 	// Description for the floatingIp
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
-func (LoadbalancerNetworkPrivateFloatingIpCreateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateFloatingIpCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreateOutput() LoadbalancerNetworkPrivateFloatingIpCreateOutput {
-	return i.ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateFloatingIpCreateArgs) ToLoadBalancerNetworkPrivateFloatingIpCreateOutput() LoadBalancerNetworkPrivateFloatingIpCreateOutput {
+	return i.ToLoadBalancerNetworkPrivateFloatingIpCreateOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpCreateOutput)
+func (i LoadBalancerNetworkPrivateFloatingIpCreateArgs) ToLoadBalancerNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateFloatingIpCreateOutput)
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return i.ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateFloatingIpCreateArgs) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return i.ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateFloatingIpCreateArgs) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpCreateOutput).ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkPrivateFloatingIpCreateArgs) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateFloatingIpCreateOutput).ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPrivateFloatingIpCreatePtrInput is an input type that accepts LoadbalancerNetworkPrivateFloatingIpCreateArgs, LoadbalancerNetworkPrivateFloatingIpCreatePtr and LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateFloatingIpCreatePtrInput` via:
+// LoadBalancerNetworkPrivateFloatingIpCreatePtrInput is an input type that accepts LoadBalancerNetworkPrivateFloatingIpCreateArgs, LoadBalancerNetworkPrivateFloatingIpCreatePtr and LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateFloatingIpCreatePtrInput` via:
 //
-//	        LoadbalancerNetworkPrivateFloatingIpCreateArgs{...}
+//	        LoadBalancerNetworkPrivateFloatingIpCreateArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPrivateFloatingIpCreatePtrInput interface {
+type LoadBalancerNetworkPrivateFloatingIpCreatePtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput
-	ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput
+	ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput
+	ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Context) LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput
 }
 
-type loadbalancerNetworkPrivateFloatingIpCreatePtrType LoadbalancerNetworkPrivateFloatingIpCreateArgs
+type loadBalancerNetworkPrivateFloatingIpCreatePtrType LoadBalancerNetworkPrivateFloatingIpCreateArgs
 
-func LoadbalancerNetworkPrivateFloatingIpCreatePtr(v *LoadbalancerNetworkPrivateFloatingIpCreateArgs) LoadbalancerNetworkPrivateFloatingIpCreatePtrInput {
-	return (*loadbalancerNetworkPrivateFloatingIpCreatePtrType)(v)
+func LoadBalancerNetworkPrivateFloatingIpCreatePtr(v *LoadBalancerNetworkPrivateFloatingIpCreateArgs) LoadBalancerNetworkPrivateFloatingIpCreatePtrInput {
+	return (*loadBalancerNetworkPrivateFloatingIpCreatePtrType)(v)
 }
 
-func (*loadbalancerNetworkPrivateFloatingIpCreatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+func (*loadBalancerNetworkPrivateFloatingIpCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPrivateFloatingIpCreatePtrType) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return i.ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPrivateFloatingIpCreatePtrType) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return i.ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPrivateFloatingIpCreatePtrType) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+func (i *loadBalancerNetworkPrivateFloatingIpCreatePtrType) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput)
 }
 
-type LoadbalancerNetworkPrivateFloatingIpCreateOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateFloatingIpCreateOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateFloatingIpCreateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateFloatingIpCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreateOutput() LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpCreateOutput) ToLoadBalancerNetworkPrivateFloatingIpCreateOutput() LoadBalancerNetworkPrivateFloatingIpCreateOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreateOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpCreateOutput) ToLoadBalancerNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpCreateOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return o.ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkPrivateFloatingIpCreateOutput) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateFloatingIpCreate) *LoadbalancerNetworkPrivateFloatingIpCreate {
+func (o LoadBalancerNetworkPrivateFloatingIpCreateOutput) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetworkPrivateFloatingIpCreate) *LoadBalancerNetworkPrivateFloatingIpCreate {
 		return &v
-	}).(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput)
 }
 
 // Description for the floatingIp
-func (o LoadbalancerNetworkPrivateFloatingIpCreateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateFloatingIpCreate) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LoadBalancerNetworkPrivateFloatingIpCreateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateFloatingIpCreate) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateFloatingIpCreate)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutput() LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) ToLoadbalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput {
+func (o LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput) ToLoadBalancerNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) Elem() LoadbalancerNetworkPrivateFloatingIpCreateOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIpCreate) LoadbalancerNetworkPrivateFloatingIpCreate {
+func (o LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput) Elem() LoadBalancerNetworkPrivateFloatingIpCreateOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateFloatingIpCreate) LoadBalancerNetworkPrivateFloatingIpCreate {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetworkPrivateFloatingIpCreate
+		var ret LoadBalancerNetworkPrivateFloatingIpCreate
 		return ret
-	}).(LoadbalancerNetworkPrivateFloatingIpCreateOutput)
+	}).(LoadBalancerNetworkPrivateFloatingIpCreateOutput)
 }
 
 // Description for the floatingIp
-func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateFloatingIpCreate) *string {
+func (o LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateFloatingIpCreate) *string {
 		if v == nil {
 			return nil
 		}
@@ -6005,136 +6153,136 @@ func (o LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput) Description() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateGateway struct {
+type LoadBalancerNetworkPrivateGateway struct {
 	// ID of the gateway
 	Id *string `pulumi:"id"`
 }
 
-// LoadbalancerNetworkPrivateGatewayInput is an input type that accepts LoadbalancerNetworkPrivateGatewayArgs and LoadbalancerNetworkPrivateGatewayOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayInput` via:
+// LoadBalancerNetworkPrivateGatewayInput is an input type that accepts LoadBalancerNetworkPrivateGatewayArgs and LoadBalancerNetworkPrivateGatewayOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateGatewayInput` via:
 //
-//	LoadbalancerNetworkPrivateGatewayArgs{...}
-type LoadbalancerNetworkPrivateGatewayInput interface {
+//	LoadBalancerNetworkPrivateGatewayArgs{...}
+type LoadBalancerNetworkPrivateGatewayInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateGatewayOutput() LoadbalancerNetworkPrivateGatewayOutput
-	ToLoadbalancerNetworkPrivateGatewayOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayOutput
+	ToLoadBalancerNetworkPrivateGatewayOutput() LoadBalancerNetworkPrivateGatewayOutput
+	ToLoadBalancerNetworkPrivateGatewayOutputWithContext(context.Context) LoadBalancerNetworkPrivateGatewayOutput
 }
 
-type LoadbalancerNetworkPrivateGatewayArgs struct {
+type LoadBalancerNetworkPrivateGatewayArgs struct {
 	// ID of the gateway
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
-func (LoadbalancerNetworkPrivateGatewayArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+func (LoadBalancerNetworkPrivateGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateGateway)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayOutput() LoadbalancerNetworkPrivateGatewayOutput {
-	return i.ToLoadbalancerNetworkPrivateGatewayOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateGatewayArgs) ToLoadBalancerNetworkPrivateGatewayOutput() LoadBalancerNetworkPrivateGatewayOutput {
+	return i.ToLoadBalancerNetworkPrivateGatewayOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayOutput)
+func (i LoadBalancerNetworkPrivateGatewayArgs) ToLoadBalancerNetworkPrivateGatewayOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateGatewayOutput)
 }
 
-func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return i.ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateGatewayArgs) ToLoadBalancerNetworkPrivateGatewayPtrOutput() LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return i.ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateGatewayArgs) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayOutput).ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkPrivateGatewayArgs) ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateGatewayOutput).ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPrivateGatewayPtrInput is an input type that accepts LoadbalancerNetworkPrivateGatewayArgs, LoadbalancerNetworkPrivateGatewayPtr and LoadbalancerNetworkPrivateGatewayPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayPtrInput` via:
+// LoadBalancerNetworkPrivateGatewayPtrInput is an input type that accepts LoadBalancerNetworkPrivateGatewayArgs, LoadBalancerNetworkPrivateGatewayPtr and LoadBalancerNetworkPrivateGatewayPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateGatewayPtrInput` via:
 //
-//	        LoadbalancerNetworkPrivateGatewayArgs{...}
+//	        LoadBalancerNetworkPrivateGatewayArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPrivateGatewayPtrInput interface {
+type LoadBalancerNetworkPrivateGatewayPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput
-	ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput
+	ToLoadBalancerNetworkPrivateGatewayPtrOutput() LoadBalancerNetworkPrivateGatewayPtrOutput
+	ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(context.Context) LoadBalancerNetworkPrivateGatewayPtrOutput
 }
 
-type loadbalancerNetworkPrivateGatewayPtrType LoadbalancerNetworkPrivateGatewayArgs
+type loadBalancerNetworkPrivateGatewayPtrType LoadBalancerNetworkPrivateGatewayArgs
 
-func LoadbalancerNetworkPrivateGatewayPtr(v *LoadbalancerNetworkPrivateGatewayArgs) LoadbalancerNetworkPrivateGatewayPtrInput {
-	return (*loadbalancerNetworkPrivateGatewayPtrType)(v)
+func LoadBalancerNetworkPrivateGatewayPtr(v *LoadBalancerNetworkPrivateGatewayArgs) LoadBalancerNetworkPrivateGatewayPtrInput {
+	return (*loadBalancerNetworkPrivateGatewayPtrType)(v)
 }
 
-func (*loadbalancerNetworkPrivateGatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+func (*loadBalancerNetworkPrivateGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateGateway)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPrivateGatewayPtrType) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return i.ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPrivateGatewayPtrType) ToLoadBalancerNetworkPrivateGatewayPtrOutput() LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return i.ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPrivateGatewayPtrType) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+func (i *loadBalancerNetworkPrivateGatewayPtrType) ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateGatewayPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateGatewayOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateGatewayOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+func (LoadBalancerNetworkPrivateGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateGateway)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayOutput() LoadbalancerNetworkPrivateGatewayOutput {
+func (o LoadBalancerNetworkPrivateGatewayOutput) ToLoadBalancerNetworkPrivateGatewayOutput() LoadBalancerNetworkPrivateGatewayOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayOutput {
+func (o LoadBalancerNetworkPrivateGatewayOutput) ToLoadBalancerNetworkPrivateGatewayOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return o.ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkPrivateGatewayOutput) ToLoadBalancerNetworkPrivateGatewayPtrOutput() LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return o.ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkPrivateGatewayOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateGateway) *LoadbalancerNetworkPrivateGateway {
+func (o LoadBalancerNetworkPrivateGatewayOutput) ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetworkPrivateGateway) *LoadBalancerNetworkPrivateGateway {
 		return &v
-	}).(LoadbalancerNetworkPrivateGatewayPtrOutput)
+	}).(LoadBalancerNetworkPrivateGatewayPtrOutput)
 }
 
 // ID of the gateway
-func (o LoadbalancerNetworkPrivateGatewayOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateGateway) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LoadBalancerNetworkPrivateGatewayOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateGateway) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateGatewayPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateGatewayPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateGatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateGateway)(nil)).Elem()
+func (LoadBalancerNetworkPrivateGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateGateway)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateGatewayPtrOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutput() LoadbalancerNetworkPrivateGatewayPtrOutput {
+func (o LoadBalancerNetworkPrivateGatewayPtrOutput) ToLoadBalancerNetworkPrivateGatewayPtrOutput() LoadBalancerNetworkPrivateGatewayPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayPtrOutput) ToLoadbalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayPtrOutput {
+func (o LoadBalancerNetworkPrivateGatewayPtrOutput) ToLoadBalancerNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayPtrOutput) Elem() LoadbalancerNetworkPrivateGatewayOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGateway) LoadbalancerNetworkPrivateGateway {
+func (o LoadBalancerNetworkPrivateGatewayPtrOutput) Elem() LoadBalancerNetworkPrivateGatewayOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateGateway) LoadBalancerNetworkPrivateGateway {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetworkPrivateGateway
+		var ret LoadBalancerNetworkPrivateGateway
 		return ret
-	}).(LoadbalancerNetworkPrivateGatewayOutput)
+	}).(LoadBalancerNetworkPrivateGatewayOutput)
 }
 
 // ID of the gateway
-func (o LoadbalancerNetworkPrivateGatewayPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGateway) *string {
+func (o LoadBalancerNetworkPrivateGatewayPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateGateway) *string {
 		if v == nil {
 			return nil
 		}
@@ -6142,145 +6290,145 @@ func (o LoadbalancerNetworkPrivateGatewayPtrOutput) Id() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateGatewayCreate struct {
+type LoadBalancerNetworkPrivateGatewayCreate struct {
 	// Model of the gateway
 	Model *string `pulumi:"model"`
 	// Name of the gateway
 	Name *string `pulumi:"name"`
 }
 
-// LoadbalancerNetworkPrivateGatewayCreateInput is an input type that accepts LoadbalancerNetworkPrivateGatewayCreateArgs and LoadbalancerNetworkPrivateGatewayCreateOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayCreateInput` via:
+// LoadBalancerNetworkPrivateGatewayCreateInput is an input type that accepts LoadBalancerNetworkPrivateGatewayCreateArgs and LoadBalancerNetworkPrivateGatewayCreateOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateGatewayCreateInput` via:
 //
-//	LoadbalancerNetworkPrivateGatewayCreateArgs{...}
-type LoadbalancerNetworkPrivateGatewayCreateInput interface {
+//	LoadBalancerNetworkPrivateGatewayCreateArgs{...}
+type LoadBalancerNetworkPrivateGatewayCreateInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateGatewayCreateOutput() LoadbalancerNetworkPrivateGatewayCreateOutput
-	ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayCreateOutput
+	ToLoadBalancerNetworkPrivateGatewayCreateOutput() LoadBalancerNetworkPrivateGatewayCreateOutput
+	ToLoadBalancerNetworkPrivateGatewayCreateOutputWithContext(context.Context) LoadBalancerNetworkPrivateGatewayCreateOutput
 }
 
-type LoadbalancerNetworkPrivateGatewayCreateArgs struct {
+type LoadBalancerNetworkPrivateGatewayCreateArgs struct {
 	// Model of the gateway
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Name of the gateway
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (LoadbalancerNetworkPrivateGatewayCreateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateGatewayCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateGatewayCreate)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreateOutput() LoadbalancerNetworkPrivateGatewayCreateOutput {
-	return i.ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateGatewayCreateArgs) ToLoadBalancerNetworkPrivateGatewayCreateOutput() LoadBalancerNetworkPrivateGatewayCreateOutput {
+	return i.ToLoadBalancerNetworkPrivateGatewayCreateOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayCreateOutput)
+func (i LoadBalancerNetworkPrivateGatewayCreateArgs) ToLoadBalancerNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateGatewayCreateOutput)
 }
 
-func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return i.ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateGatewayCreateArgs) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutput() LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return i.ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateGatewayCreateArgs) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayCreateOutput).ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkPrivateGatewayCreateArgs) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateGatewayCreateOutput).ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPrivateGatewayCreatePtrInput is an input type that accepts LoadbalancerNetworkPrivateGatewayCreateArgs, LoadbalancerNetworkPrivateGatewayCreatePtr and LoadbalancerNetworkPrivateGatewayCreatePtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateGatewayCreatePtrInput` via:
+// LoadBalancerNetworkPrivateGatewayCreatePtrInput is an input type that accepts LoadBalancerNetworkPrivateGatewayCreateArgs, LoadBalancerNetworkPrivateGatewayCreatePtr and LoadBalancerNetworkPrivateGatewayCreatePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateGatewayCreatePtrInput` via:
 //
-//	        LoadbalancerNetworkPrivateGatewayCreateArgs{...}
+//	        LoadBalancerNetworkPrivateGatewayCreateArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPrivateGatewayCreatePtrInput interface {
+type LoadBalancerNetworkPrivateGatewayCreatePtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput
-	ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput
+	ToLoadBalancerNetworkPrivateGatewayCreatePtrOutput() LoadBalancerNetworkPrivateGatewayCreatePtrOutput
+	ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Context) LoadBalancerNetworkPrivateGatewayCreatePtrOutput
 }
 
-type loadbalancerNetworkPrivateGatewayCreatePtrType LoadbalancerNetworkPrivateGatewayCreateArgs
+type loadBalancerNetworkPrivateGatewayCreatePtrType LoadBalancerNetworkPrivateGatewayCreateArgs
 
-func LoadbalancerNetworkPrivateGatewayCreatePtr(v *LoadbalancerNetworkPrivateGatewayCreateArgs) LoadbalancerNetworkPrivateGatewayCreatePtrInput {
-	return (*loadbalancerNetworkPrivateGatewayCreatePtrType)(v)
+func LoadBalancerNetworkPrivateGatewayCreatePtr(v *LoadBalancerNetworkPrivateGatewayCreateArgs) LoadBalancerNetworkPrivateGatewayCreatePtrInput {
+	return (*loadBalancerNetworkPrivateGatewayCreatePtrType)(v)
 }
 
-func (*loadbalancerNetworkPrivateGatewayCreatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+func (*loadBalancerNetworkPrivateGatewayCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateGatewayCreate)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPrivateGatewayCreatePtrType) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return i.ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPrivateGatewayCreatePtrType) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutput() LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return i.ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPrivateGatewayCreatePtrType) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+func (i *loadBalancerNetworkPrivateGatewayCreatePtrType) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateGatewayCreatePtrOutput)
 }
 
-type LoadbalancerNetworkPrivateGatewayCreateOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateGatewayCreateOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateGatewayCreateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateGatewayCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateGatewayCreate)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreateOutput() LoadbalancerNetworkPrivateGatewayCreateOutput {
+func (o LoadBalancerNetworkPrivateGatewayCreateOutput) ToLoadBalancerNetworkPrivateGatewayCreateOutput() LoadBalancerNetworkPrivateGatewayCreateOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreateOutput {
+func (o LoadBalancerNetworkPrivateGatewayCreateOutput) ToLoadBalancerNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayCreateOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return o.ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkPrivateGatewayCreateOutput) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutput() LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreateOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateGatewayCreate) *LoadbalancerNetworkPrivateGatewayCreate {
+func (o LoadBalancerNetworkPrivateGatewayCreateOutput) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetworkPrivateGatewayCreate) *LoadBalancerNetworkPrivateGatewayCreate {
 		return &v
-	}).(LoadbalancerNetworkPrivateGatewayCreatePtrOutput)
+	}).(LoadBalancerNetworkPrivateGatewayCreatePtrOutput)
 }
 
 // Model of the gateway
-func (o LoadbalancerNetworkPrivateGatewayCreateOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateGatewayCreate) *string { return v.Model }).(pulumi.StringPtrOutput)
+func (o LoadBalancerNetworkPrivateGatewayCreateOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateGatewayCreate) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
 
 // Name of the gateway
-func (o LoadbalancerNetworkPrivateGatewayCreateOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateGatewayCreate) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LoadBalancerNetworkPrivateGatewayCreateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateGatewayCreate) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateGatewayCreatePtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateGatewayCreatePtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateGatewayCreatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateGatewayCreate)(nil)).Elem()
+func (LoadBalancerNetworkPrivateGatewayCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateGatewayCreate)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutput() LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+func (o LoadBalancerNetworkPrivateGatewayCreatePtrOutput) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutput() LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) ToLoadbalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateGatewayCreatePtrOutput {
+func (o LoadBalancerNetworkPrivateGatewayCreatePtrOutput) ToLoadBalancerNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateGatewayCreatePtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Elem() LoadbalancerNetworkPrivateGatewayCreateOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGatewayCreate) LoadbalancerNetworkPrivateGatewayCreate {
+func (o LoadBalancerNetworkPrivateGatewayCreatePtrOutput) Elem() LoadBalancerNetworkPrivateGatewayCreateOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateGatewayCreate) LoadBalancerNetworkPrivateGatewayCreate {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetworkPrivateGatewayCreate
+		var ret LoadBalancerNetworkPrivateGatewayCreate
 		return ret
-	}).(LoadbalancerNetworkPrivateGatewayCreateOutput)
+	}).(LoadBalancerNetworkPrivateGatewayCreateOutput)
 }
 
 // Model of the gateway
-func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGatewayCreate) *string {
+func (o LoadBalancerNetworkPrivateGatewayCreatePtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateGatewayCreate) *string {
 		if v == nil {
 			return nil
 		}
@@ -6289,8 +6437,8 @@ func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Model() pulumi.StringP
 }
 
 // Name of the gateway
-func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateGatewayCreate) *string {
+func (o LoadBalancerNetworkPrivateGatewayCreatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateGatewayCreate) *string {
 		if v == nil {
 			return nil
 		}
@@ -6298,145 +6446,145 @@ func (o LoadbalancerNetworkPrivateGatewayCreatePtrOutput) Name() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateNetwork struct {
+type LoadBalancerNetworkPrivateNetwork struct {
 	// Private network ID
 	Id string `pulumi:"id"`
 	// Subnet ID
 	SubnetId string `pulumi:"subnetId"`
 }
 
-// LoadbalancerNetworkPrivateNetworkInput is an input type that accepts LoadbalancerNetworkPrivateNetworkArgs and LoadbalancerNetworkPrivateNetworkOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateNetworkInput` via:
+// LoadBalancerNetworkPrivateNetworkInput is an input type that accepts LoadBalancerNetworkPrivateNetworkArgs and LoadBalancerNetworkPrivateNetworkOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateNetworkInput` via:
 //
-//	LoadbalancerNetworkPrivateNetworkArgs{...}
-type LoadbalancerNetworkPrivateNetworkInput interface {
+//	LoadBalancerNetworkPrivateNetworkArgs{...}
+type LoadBalancerNetworkPrivateNetworkInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateNetworkOutput() LoadbalancerNetworkPrivateNetworkOutput
-	ToLoadbalancerNetworkPrivateNetworkOutputWithContext(context.Context) LoadbalancerNetworkPrivateNetworkOutput
+	ToLoadBalancerNetworkPrivateNetworkOutput() LoadBalancerNetworkPrivateNetworkOutput
+	ToLoadBalancerNetworkPrivateNetworkOutputWithContext(context.Context) LoadBalancerNetworkPrivateNetworkOutput
 }
 
-type LoadbalancerNetworkPrivateNetworkArgs struct {
+type LoadBalancerNetworkPrivateNetworkArgs struct {
 	// Private network ID
 	Id pulumi.StringInput `pulumi:"id"`
 	// Subnet ID
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 }
 
-func (LoadbalancerNetworkPrivateNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+func (LoadBalancerNetworkPrivateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateNetwork)(nil)).Elem()
 }
 
-func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkOutput() LoadbalancerNetworkPrivateNetworkOutput {
-	return i.ToLoadbalancerNetworkPrivateNetworkOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateNetworkArgs) ToLoadBalancerNetworkPrivateNetworkOutput() LoadBalancerNetworkPrivateNetworkOutput {
+	return i.ToLoadBalancerNetworkPrivateNetworkOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateNetworkOutput)
+func (i LoadBalancerNetworkPrivateNetworkArgs) ToLoadBalancerNetworkPrivateNetworkOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateNetworkOutput)
 }
 
-func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return i.ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+func (i LoadBalancerNetworkPrivateNetworkArgs) ToLoadBalancerNetworkPrivateNetworkPtrOutput() LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return i.ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
 }
 
-func (i LoadbalancerNetworkPrivateNetworkArgs) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateNetworkOutput).ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx)
+func (i LoadBalancerNetworkPrivateNetworkArgs) ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateNetworkOutput).ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(ctx)
 }
 
-// LoadbalancerNetworkPrivateNetworkPtrInput is an input type that accepts LoadbalancerNetworkPrivateNetworkArgs, LoadbalancerNetworkPrivateNetworkPtr and LoadbalancerNetworkPrivateNetworkPtrOutput values.
-// You can construct a concrete instance of `LoadbalancerNetworkPrivateNetworkPtrInput` via:
+// LoadBalancerNetworkPrivateNetworkPtrInput is an input type that accepts LoadBalancerNetworkPrivateNetworkArgs, LoadBalancerNetworkPrivateNetworkPtr and LoadBalancerNetworkPrivateNetworkPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerNetworkPrivateNetworkPtrInput` via:
 //
-//	        LoadbalancerNetworkPrivateNetworkArgs{...}
+//	        LoadBalancerNetworkPrivateNetworkArgs{...}
 //
 //	or:
 //
 //	        nil
-type LoadbalancerNetworkPrivateNetworkPtrInput interface {
+type LoadBalancerNetworkPrivateNetworkPtrInput interface {
 	pulumi.Input
 
-	ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput
-	ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput
+	ToLoadBalancerNetworkPrivateNetworkPtrOutput() LoadBalancerNetworkPrivateNetworkPtrOutput
+	ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(context.Context) LoadBalancerNetworkPrivateNetworkPtrOutput
 }
 
-type loadbalancerNetworkPrivateNetworkPtrType LoadbalancerNetworkPrivateNetworkArgs
+type loadBalancerNetworkPrivateNetworkPtrType LoadBalancerNetworkPrivateNetworkArgs
 
-func LoadbalancerNetworkPrivateNetworkPtr(v *LoadbalancerNetworkPrivateNetworkArgs) LoadbalancerNetworkPrivateNetworkPtrInput {
-	return (*loadbalancerNetworkPrivateNetworkPtrType)(v)
+func LoadBalancerNetworkPrivateNetworkPtr(v *LoadBalancerNetworkPrivateNetworkArgs) LoadBalancerNetworkPrivateNetworkPtrInput {
+	return (*loadBalancerNetworkPrivateNetworkPtrType)(v)
 }
 
-func (*loadbalancerNetworkPrivateNetworkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+func (*loadBalancerNetworkPrivateNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateNetwork)(nil)).Elem()
 }
 
-func (i *loadbalancerNetworkPrivateNetworkPtrType) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return i.ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+func (i *loadBalancerNetworkPrivateNetworkPtrType) ToLoadBalancerNetworkPrivateNetworkPtrOutput() LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return i.ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
 }
 
-func (i *loadbalancerNetworkPrivateNetworkPtrType) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerNetworkPrivateNetworkPtrOutput)
+func (i *loadBalancerNetworkPrivateNetworkPtrType) ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNetworkPrivateNetworkPtrOutput)
 }
 
-type LoadbalancerNetworkPrivateNetworkOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateNetworkOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+func (LoadBalancerNetworkPrivateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNetworkPrivateNetwork)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkOutput() LoadbalancerNetworkPrivateNetworkOutput {
+func (o LoadBalancerNetworkPrivateNetworkOutput) ToLoadBalancerNetworkPrivateNetworkOutput() LoadBalancerNetworkPrivateNetworkOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkOutput {
+func (o LoadBalancerNetworkPrivateNetworkOutput) ToLoadBalancerNetworkPrivateNetworkOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateNetworkOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return o.ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+func (o LoadBalancerNetworkPrivateNetworkOutput) ToLoadBalancerNetworkPrivateNetworkPtrOutput() LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return o.ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(context.Background())
 }
 
-func (o LoadbalancerNetworkPrivateNetworkOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerNetworkPrivateNetwork) *LoadbalancerNetworkPrivateNetwork {
+func (o LoadBalancerNetworkPrivateNetworkOutput) ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerNetworkPrivateNetwork) *LoadBalancerNetworkPrivateNetwork {
 		return &v
-	}).(LoadbalancerNetworkPrivateNetworkPtrOutput)
+	}).(LoadBalancerNetworkPrivateNetworkPtrOutput)
 }
 
 // Private network ID
-func (o LoadbalancerNetworkPrivateNetworkOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateNetwork) string { return v.Id }).(pulumi.StringOutput)
+func (o LoadBalancerNetworkPrivateNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Subnet ID
-func (o LoadbalancerNetworkPrivateNetworkOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadbalancerNetworkPrivateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+func (o LoadBalancerNetworkPrivateNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerNetworkPrivateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-type LoadbalancerNetworkPrivateNetworkPtrOutput struct{ *pulumi.OutputState }
+type LoadBalancerNetworkPrivateNetworkPtrOutput struct{ *pulumi.OutputState }
 
-func (LoadbalancerNetworkPrivateNetworkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadbalancerNetworkPrivateNetwork)(nil)).Elem()
+func (LoadBalancerNetworkPrivateNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerNetworkPrivateNetwork)(nil)).Elem()
 }
 
-func (o LoadbalancerNetworkPrivateNetworkPtrOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutput() LoadbalancerNetworkPrivateNetworkPtrOutput {
+func (o LoadBalancerNetworkPrivateNetworkPtrOutput) ToLoadBalancerNetworkPrivateNetworkPtrOutput() LoadBalancerNetworkPrivateNetworkPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateNetworkPtrOutput) ToLoadbalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadbalancerNetworkPrivateNetworkPtrOutput {
+func (o LoadBalancerNetworkPrivateNetworkPtrOutput) ToLoadBalancerNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) LoadBalancerNetworkPrivateNetworkPtrOutput {
 	return o
 }
 
-func (o LoadbalancerNetworkPrivateNetworkPtrOutput) Elem() LoadbalancerNetworkPrivateNetworkOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateNetwork) LoadbalancerNetworkPrivateNetwork {
+func (o LoadBalancerNetworkPrivateNetworkPtrOutput) Elem() LoadBalancerNetworkPrivateNetworkOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateNetwork) LoadBalancerNetworkPrivateNetwork {
 		if v != nil {
 			return *v
 		}
-		var ret LoadbalancerNetworkPrivateNetwork
+		var ret LoadBalancerNetworkPrivateNetwork
 		return ret
-	}).(LoadbalancerNetworkPrivateNetworkOutput)
+	}).(LoadBalancerNetworkPrivateNetworkOutput)
 }
 
 // Private network ID
-func (o LoadbalancerNetworkPrivateNetworkPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateNetwork) *string {
+func (o LoadBalancerNetworkPrivateNetworkPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateNetwork) *string {
 		if v == nil {
 			return nil
 		}
@@ -6445,8 +6593,8 @@ func (o LoadbalancerNetworkPrivateNetworkPtrOutput) Id() pulumi.StringPtrOutput 
 }
 
 // Subnet ID
-func (o LoadbalancerNetworkPrivateNetworkPtrOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadbalancerNetworkPrivateNetwork) *string {
+func (o LoadBalancerNetworkPrivateNetworkPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerNetworkPrivateNetwork) *string {
 		if v == nil {
 			return nil
 		}
@@ -6457,7 +6605,8 @@ func (o LoadbalancerNetworkPrivateNetworkPtrOutput) SubnetId() pulumi.StringPtrO
 type NetworkPrivateRegionsAttribute struct {
 	Openstackid *string `pulumi:"openstackid"`
 	Region      *string `pulumi:"region"`
-	Status      string  `pulumi:"status"`
+	// the status of the network. should be normally set to 'ACTIVE'.
+	Status string `pulumi:"status"`
 }
 
 // NetworkPrivateRegionsAttributeInput is an input type that accepts NetworkPrivateRegionsAttributeArgs and NetworkPrivateRegionsAttributeOutput values.
@@ -6474,7 +6623,8 @@ type NetworkPrivateRegionsAttributeInput interface {
 type NetworkPrivateRegionsAttributeArgs struct {
 	Openstackid pulumi.StringPtrInput `pulumi:"openstackid"`
 	Region      pulumi.StringPtrInput `pulumi:"region"`
-	Status      pulumi.StringInput    `pulumi:"status"`
+	// the status of the network. should be normally set to 'ACTIVE'.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (NetworkPrivateRegionsAttributeArgs) ElementType() reflect.Type {
@@ -6536,6 +6686,7 @@ func (o NetworkPrivateRegionsAttributeOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsAttribute) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// the status of the network. should be normally set to 'ACTIVE'.
 func (o NetworkPrivateRegionsAttributeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsAttribute) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6562,7 +6713,8 @@ func (o NetworkPrivateRegionsAttributeArrayOutput) Index(i pulumi.IntInput) Netw
 
 type NetworkPrivateRegionsStatus struct {
 	Region *string `pulumi:"region"`
-	Status string  `pulumi:"status"`
+	// the status of the network. should be normally set to 'ACTIVE'.
+	Status string `pulumi:"status"`
 }
 
 // NetworkPrivateRegionsStatusInput is an input type that accepts NetworkPrivateRegionsStatusArgs and NetworkPrivateRegionsStatusOutput values.
@@ -6578,7 +6730,8 @@ type NetworkPrivateRegionsStatusInput interface {
 
 type NetworkPrivateRegionsStatusArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	Status pulumi.StringInput    `pulumi:"status"`
+	// the status of the network. should be normally set to 'ACTIVE'.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (NetworkPrivateRegionsStatusArgs) ElementType() reflect.Type {
@@ -6636,6 +6789,7 @@ func (o NetworkPrivateRegionsStatusOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsStatus) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// the status of the network. should be normally set to 'ACTIVE'.
 func (o NetworkPrivateRegionsStatusOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPrivateRegionsStatus) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6661,11 +6815,21 @@ func (o NetworkPrivateRegionsStatusArrayOutput) Index(i pulumi.IntInput) Network
 }
 
 type NetworkPrivateSubnetIpPool struct {
-	Dhcp    *bool   `pulumi:"dhcp"`
-	End     *string `pulumi:"end"`
+	// Enable DHCP.
+	// Changing this forces a new resource to be created. Defaults to false.
+	Dhcp *bool `pulumi:"dhcp"`
+	// Last ip for this region.
+	// Changing this value recreates the subnet.
+	End *string `pulumi:"end"`
+	// Global network in CIDR format.
+	// Changing this value recreates the subnet
 	Network *string `pulumi:"network"`
-	Region  *string `pulumi:"region"`
-	Start   *string `pulumi:"start"`
+	// The region in which the network subnet will be created.
+	// Ex.: "GRA1". Changing this value recreates the resource.
+	Region *string `pulumi:"region"`
+	// First ip for this region.
+	// Changing this value recreates the subnet.
+	Start *string `pulumi:"start"`
 }
 
 // NetworkPrivateSubnetIpPoolInput is an input type that accepts NetworkPrivateSubnetIpPoolArgs and NetworkPrivateSubnetIpPoolOutput values.
@@ -6680,11 +6844,21 @@ type NetworkPrivateSubnetIpPoolInput interface {
 }
 
 type NetworkPrivateSubnetIpPoolArgs struct {
-	Dhcp    pulumi.BoolPtrInput   `pulumi:"dhcp"`
-	End     pulumi.StringPtrInput `pulumi:"end"`
+	// Enable DHCP.
+	// Changing this forces a new resource to be created. Defaults to false.
+	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
+	// Last ip for this region.
+	// Changing this value recreates the subnet.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Global network in CIDR format.
+	// Changing this value recreates the subnet
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
-	Start   pulumi.StringPtrInput `pulumi:"start"`
+	// The region in which the network subnet will be created.
+	// Ex.: "GRA1". Changing this value recreates the resource.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// First ip for this region.
+	// Changing this value recreates the subnet.
+	Start pulumi.StringPtrInput `pulumi:"start"`
 }
 
 func (NetworkPrivateSubnetIpPoolArgs) ElementType() reflect.Type {
@@ -6738,22 +6912,32 @@ func (o NetworkPrivateSubnetIpPoolOutput) ToNetworkPrivateSubnetIpPoolOutputWith
 	return o
 }
 
+// Enable DHCP.
+// Changing this forces a new resource to be created. Defaults to false.
 func (o NetworkPrivateSubnetIpPoolOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
+// Last ip for this region.
+// Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetIpPoolOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
+// Global network in CIDR format.
+// Changing this value recreates the subnet
 func (o NetworkPrivateSubnetIpPoolOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// The region in which the network subnet will be created.
+// Ex.: "GRA1". Changing this value recreates the resource.
 func (o NetworkPrivateSubnetIpPoolOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// First ip for this region.
+// Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetIpPoolOutput) Start() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
@@ -6985,7 +7169,7 @@ type ProjectOrder struct {
 	Details []ProjectOrderDetail `pulumi:"details"`
 	// expiration date
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// order id
+	// order id, the same as the `id`
 	OrderId *int `pulumi:"orderId"`
 }
 
@@ -7007,7 +7191,7 @@ type ProjectOrderArgs struct {
 	Details ProjectOrderDetailArrayInput `pulumi:"details"`
 	// expiration date
 	ExpirationDate pulumi.StringPtrInput `pulumi:"expirationDate"`
-	// order id
+	// order id, the same as the `id`
 	OrderId pulumi.IntPtrInput `pulumi:"orderId"`
 }
 
@@ -7077,7 +7261,7 @@ func (o ProjectOrderOutput) ExpirationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectOrder) *string { return v.ExpirationDate }).(pulumi.StringPtrOutput)
 }
 
-// order id
+// order id, the same as the `id`
 func (o ProjectOrderOutput) OrderId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectOrder) *int { return v.OrderId }).(pulumi.IntPtrOutput)
 }
@@ -7103,7 +7287,7 @@ func (o ProjectOrderArrayOutput) Index(i pulumi.IntInput) ProjectOrderOutput {
 }
 
 type ProjectOrderDetail struct {
-	// description
+	// A description associated with the user.
 	Description *string `pulumi:"description"`
 	// expiration date
 	Domain *string `pulumi:"domain"`
@@ -7125,7 +7309,7 @@ type ProjectOrderDetailInput interface {
 }
 
 type ProjectOrderDetailArgs struct {
-	// description
+	// A description associated with the user.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// expiration date
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -7186,7 +7370,7 @@ func (o ProjectOrderDetailOutput) ToProjectOrderDetailOutputWithContext(ctx cont
 	return o
 }
 
-// description
+// A description associated with the user.
 func (o ProjectOrderDetailOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -7233,7 +7417,7 @@ type ProjectPlan struct {
 	Configurations []ProjectPlanConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
-	// Plan code
+	// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 	PlanCode string `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode string `pulumi:"pricingMode"`
@@ -7257,7 +7441,7 @@ type ProjectPlanArgs struct {
 	Configurations ProjectPlanConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// Plan code
+	// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
 	// Pricing model identifier
 	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
@@ -7355,7 +7539,7 @@ func (o ProjectPlanOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectPlan) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Plan code
+// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 func (o ProjectPlanOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectPlan) string { return v.PlanCode }).(pulumi.StringOutput)
 }
@@ -7419,7 +7603,7 @@ func (o ProjectPlanPtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Plan code
+// Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
 func (o ProjectPlanPtrOutput) PlanCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPlan) *string {
 		if v == nil {
@@ -8897,7 +9081,7 @@ func (o RancherTargetSpecIpRestrictionArrayOutput) Index(i pulumi.IntInput) Ranc
 }
 
 type RegionNetworkSubnet struct {
-	// List of ip pools allocated in subnet
+	// List of IP pools allocated in subnet
 	AllocationPools []RegionNetworkSubnetAllocationPool `pulumi:"allocationPools"`
 	// Subnet range in CIDR notation
 	Cidr string `pulumi:"cidr"`
@@ -8931,7 +9115,7 @@ type RegionNetworkSubnetInput interface {
 }
 
 type RegionNetworkSubnetArgs struct {
-	// List of ip pools allocated in subnet
+	// List of IP pools allocated in subnet
 	AllocationPools RegionNetworkSubnetAllocationPoolArrayInput `pulumi:"allocationPools"`
 	// Subnet range in CIDR notation
 	Cidr pulumi.StringInput `pulumi:"cidr"`
@@ -9030,7 +9214,7 @@ func (o RegionNetworkSubnetOutput) ToRegionNetworkSubnetPtrOutputWithContext(ctx
 	}).(RegionNetworkSubnetPtrOutput)
 }
 
-// List of ip pools allocated in subnet
+// List of IP pools allocated in subnet
 func (o RegionNetworkSubnetOutput) AllocationPools() RegionNetworkSubnetAllocationPoolArrayOutput {
 	return o.ApplyT(func(v RegionNetworkSubnet) []RegionNetworkSubnetAllocationPool { return v.AllocationPools }).(RegionNetworkSubnetAllocationPoolArrayOutput)
 }
@@ -9104,7 +9288,7 @@ func (o RegionNetworkSubnetPtrOutput) Elem() RegionNetworkSubnetOutput {
 	}).(RegionNetworkSubnetOutput)
 }
 
-// List of ip pools allocated in subnet
+// List of IP pools allocated in subnet
 func (o RegionNetworkSubnetPtrOutput) AllocationPools() RegionNetworkSubnetAllocationPoolArrayOutput {
 	return o.ApplyT(func(v *RegionNetworkSubnet) []RegionNetworkSubnetAllocationPool {
 		if v == nil {
@@ -10567,9 +10751,13 @@ func (o StorageVersioningPtrOutput) Status() pulumi.StringPtrOutput {
 }
 
 type UserRole struct {
-	Description *string  `pulumi:"description"`
-	Id          *string  `pulumi:"id"`
-	Name        *string  `pulumi:"name"`
+	// A description associated with the user.
+	Description *string `pulumi:"description"`
+	// id of the role
+	Id *string `pulumi:"id"`
+	// name of the role
+	Name *string `pulumi:"name"`
+	// list of permissions associated with the role
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -10585,9 +10773,13 @@ type UserRoleInput interface {
 }
 
 type UserRoleArgs struct {
-	Description pulumi.StringPtrInput   `pulumi:"description"`
-	Id          pulumi.StringPtrInput   `pulumi:"id"`
-	Name        pulumi.StringPtrInput   `pulumi:"name"`
+	// A description associated with the user.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// id of the role
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// name of the role
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// list of permissions associated with the role
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -10642,18 +10834,22 @@ func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRol
 	return o
 }
 
+// A description associated with the user.
 func (o UserRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRole) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// id of the role
 func (o UserRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// name of the role
 func (o UserRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRole) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// list of permissions associated with the role
 func (o UserRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -11096,7 +11292,7 @@ func (o GetCapabilitiesContainerRegistryResultArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetCapabilitiesContainerRegistryResultPlan struct {
-	// Plan code from catalog
+	// Plan code from the catalog
 	Code string `pulumi:"code"`
 	// Plan creation date
 	CreatedAt string `pulumi:"createdAt"`
@@ -11124,7 +11320,7 @@ type GetCapabilitiesContainerRegistryResultPlanInput interface {
 }
 
 type GetCapabilitiesContainerRegistryResultPlanArgs struct {
-	// Plan code from catalog
+	// Plan code from the catalog
 	Code pulumi.StringInput `pulumi:"code"`
 	// Plan creation date
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
@@ -11191,7 +11387,7 @@ func (o GetCapabilitiesContainerRegistryResultPlanOutput) ToGetCapabilitiesConta
 	return o
 }
 
-// Plan code from catalog
+// Plan code from the catalog
 func (o GetCapabilitiesContainerRegistryResultPlanOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCapabilitiesContainerRegistryResultPlan) string { return v.Code }).(pulumi.StringOutput)
 }
@@ -11462,7 +11658,7 @@ type GetContainerRegistriesResult struct {
 	Name string `pulumi:"name"`
 	// Project ID of your registry
 	ProjectId string `pulumi:"projectId"`
-	// Region of the registry.
+	// Region of the registry
 	Region string `pulumi:"region"`
 	// Current size of the registry (bytes)
 	Size int `pulumi:"size"`
@@ -11496,7 +11692,7 @@ type GetContainerRegistriesResultArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Project ID of your registry
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Region of the registry.
+	// Region of the registry
 	Region pulumi.StringInput `pulumi:"region"`
 	// Current size of the registry (bytes)
 	Size pulumi.IntInput `pulumi:"size"`
@@ -11581,7 +11777,7 @@ func (o GetContainerRegistriesResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRegistriesResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Region of the registry.
+// Region of the registry
 func (o GetContainerRegistriesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRegistriesResult) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -12128,17 +12324,17 @@ func (o GetFlavorsFlavorPlanCodesOutput) Monthly() pulumi.StringOutput {
 }
 
 type GetFloatingIPsCloudProjectFloatingip struct {
-	// Associated entity with the floating ip
+	// Associated entity with the floating IP
 	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntity `pulumi:"associatedEntity"`
-	// ID of the floating ip
+	// ID of the floating IP
 	Id string `pulumi:"id"`
-	// Value of the floating ip
+	// Value of the floating IP
 	Ip string `pulumi:"ip"`
 	// ID of the network
 	NetworkId string `pulumi:"networkId"`
 	// Floating ip region
 	Region string `pulumi:"region"`
-	// Status of the floating ip
+	// Status of the floating IP (active┃down┃error)
 	Status string `pulumi:"status"`
 }
 
@@ -12154,17 +12350,17 @@ type GetFloatingIPsCloudProjectFloatingipInput interface {
 }
 
 type GetFloatingIPsCloudProjectFloatingipArgs struct {
-	// Associated entity with the floating ip
+	// Associated entity with the floating IP
 	AssociatedEntity GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput `pulumi:"associatedEntity"`
-	// ID of the floating ip
+	// ID of the floating IP
 	Id pulumi.StringInput `pulumi:"id"`
-	// Value of the floating ip
+	// Value of the floating IP
 	Ip pulumi.StringInput `pulumi:"ip"`
 	// ID of the network
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// Floating ip region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Status of the floating ip
+	// Status of the floating IP (active┃down┃error)
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -12219,19 +12415,19 @@ func (o GetFloatingIPsCloudProjectFloatingipOutput) ToGetFloatingIPsCloudProject
 	return o
 }
 
-// Associated entity with the floating ip
+// Associated entity with the floating IP
 func (o GetFloatingIPsCloudProjectFloatingipOutput) AssociatedEntity() GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) GetFloatingIPsCloudProjectFloatingipAssociatedEntity {
 		return v.AssociatedEntity
 	}).(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput)
 }
 
-// ID of the floating ip
+// ID of the floating IP
 func (o GetFloatingIPsCloudProjectFloatingipOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Value of the floating ip
+// Value of the floating IP
 func (o GetFloatingIPsCloudProjectFloatingipOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Ip }).(pulumi.StringOutput)
 }
@@ -12246,7 +12442,7 @@ func (o GetFloatingIPsCloudProjectFloatingipOutput) Region() pulumi.StringOutput
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Status of the floating ip
+// Status of the floating IP (active┃down┃error)
 func (o GetFloatingIPsCloudProjectFloatingipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingip) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -12274,11 +12470,11 @@ func (o GetFloatingIPsCloudProjectFloatingipArrayOutput) Index(i pulumi.IntInput
 type GetFloatingIPsCloudProjectFloatingipAssociatedEntity struct {
 	// ID of the gateway
 	GatewayId string `pulumi:"gatewayId"`
-	// ID of the port
+	// ID of the floating IP
 	Id string `pulumi:"id"`
-	// IP of the port
+	// Value of the floating IP
 	Ip string `pulumi:"ip"`
-	// Type of the port
+	// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
 	Type string `pulumi:"type"`
 }
 
@@ -12296,11 +12492,11 @@ type GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput interface {
 type GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs struct {
 	// ID of the gateway
 	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
-	// ID of the port
+	// ID of the floating IP
 	Id pulumi.StringInput `pulumi:"id"`
-	// IP of the port
+	// Value of the floating IP
 	Ip pulumi.StringInput `pulumi:"ip"`
-	// Type of the port
+	// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -12335,17 +12531,17 @@ func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) GatewayId() 
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.GatewayId }).(pulumi.StringOutput)
 }
 
-// ID of the port
+// ID of the floating IP
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// IP of the port
+// Value of the floating IP
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Type of the port
+// Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -12457,7 +12653,7 @@ func (o GetInstanceAddressArrayOutput) Index(i pulumi.IntInput) GetInstanceAddre
 }
 
 type GetInstanceAttachedVolume struct {
-	// Volume id
+	// Instance id
 	Id string `pulumi:"id"`
 }
 
@@ -12473,7 +12669,7 @@ type GetInstanceAttachedVolumeInput interface {
 }
 
 type GetInstanceAttachedVolumeArgs struct {
-	// Volume id
+	// Instance id
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -12528,7 +12724,7 @@ func (o GetInstanceAttachedVolumeOutput) ToGetInstanceAttachedVolumeOutputWithCo
 	return o
 }
 
-// Volume id
+// Instance id
 func (o GetInstanceAttachedVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedVolume) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -12558,7 +12754,7 @@ type GetInstancesInstance struct {
 	Addresses []GetInstancesInstanceAddress `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes []GetInstancesInstanceAttachedVolume `pulumi:"attachedVolumes"`
-	// Availability Zone
+	// Availability zone of the instance
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Flavor id
 	FlavorId string `pulumi:"flavorId"`
@@ -12570,7 +12766,7 @@ type GetInstancesInstance struct {
 	ImageId string `pulumi:"imageId"`
 	// Instance name
 	Name string `pulumi:"name"`
-	// SSH Key pair name
+	// SSH Keypair
 	SshKey string `pulumi:"sshKey"`
 	// Instance task state
 	TaskState string `pulumi:"taskState"`
@@ -12592,7 +12788,7 @@ type GetInstancesInstanceArgs struct {
 	Addresses GetInstancesInstanceAddressArrayInput `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes GetInstancesInstanceAttachedVolumeArrayInput `pulumi:"attachedVolumes"`
-	// Availability Zone
+	// Availability zone of the instance
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// Flavor id
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
@@ -12604,7 +12800,7 @@ type GetInstancesInstanceArgs struct {
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Instance name
 	Name pulumi.StringInput `pulumi:"name"`
-	// SSH Key pair name
+	// SSH Keypair
 	SshKey pulumi.StringInput `pulumi:"sshKey"`
 	// Instance task state
 	TaskState pulumi.StringInput `pulumi:"taskState"`
@@ -12671,7 +12867,7 @@ func (o GetInstancesInstanceOutput) AttachedVolumes() GetInstancesInstanceAttach
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceAttachedVolume { return v.AttachedVolumes }).(GetInstancesInstanceAttachedVolumeArrayOutput)
 }
 
-// Availability Zone
+// Availability zone of the instance
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -12701,7 +12897,7 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SSH Key pair name
+// SSH Keypair
 func (o GetInstancesInstanceOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SshKey }).(pulumi.StringOutput)
 }
@@ -12838,7 +13034,7 @@ func (o GetInstancesInstanceAddressArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 type GetInstancesInstanceAttachedVolume struct {
-	// Volume id
+	// Instance id
 	Id string `pulumi:"id"`
 }
 
@@ -12854,7 +13050,7 @@ type GetInstancesInstanceAttachedVolumeInput interface {
 }
 
 type GetInstancesInstanceAttachedVolumeArgs struct {
-	// Volume id
+	// Instance id
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -12909,7 +13105,7 @@ func (o GetInstancesInstanceAttachedVolumeOutput) ToGetInstancesInstanceAttached
 	return o
 }
 
-// Volume id
+// Instance id
 func (o GetInstancesInstanceAttachedVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAttachedVolume) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -12935,6 +13131,8 @@ func (o GetInstancesInstanceAttachedVolumeArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetKubeCustomization struct {
+	// Kubernetes API server customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers []GetKubeCustomizationApiserver `pulumi:"apiservers"`
 }
@@ -12951,6 +13149,8 @@ type GetKubeCustomizationInput interface {
 }
 
 type GetKubeCustomizationArgs struct {
+	// Kubernetes API server customization
+	//
 	// Deprecated: Use customizationApiserver instead
 	Apiservers GetKubeCustomizationApiserverArrayInput `pulumi:"apiservers"`
 }
@@ -13006,6 +13206,8 @@ func (o GetKubeCustomizationOutput) ToGetKubeCustomizationOutputWithContext(ctx 
 	return o
 }
 
+// Kubernetes API server customization
+//
 // Deprecated: Use customizationApiserver instead
 func (o GetKubeCustomizationOutput) Apiservers() GetKubeCustomizationApiserverArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomization) []GetKubeCustomizationApiserver { return v.Apiservers }).(GetKubeCustomizationApiserverArrayOutput)
@@ -13032,6 +13234,7 @@ func (o GetKubeCustomizationArrayOutput) Index(i pulumi.IntInput) GetKubeCustomi
 }
 
 type GetKubeCustomizationApiserver struct {
+	// Kubernetes API server admission plugins customization
 	Admissionplugins []GetKubeCustomizationApiserverAdmissionplugin `pulumi:"admissionplugins"`
 }
 
@@ -13047,6 +13250,7 @@ type GetKubeCustomizationApiserverInput interface {
 }
 
 type GetKubeCustomizationApiserverArgs struct {
+	// Kubernetes API server admission plugins customization
 	Admissionplugins GetKubeCustomizationApiserverAdmissionpluginArrayInput `pulumi:"admissionplugins"`
 }
 
@@ -13101,6 +13305,7 @@ func (o GetKubeCustomizationApiserverOutput) ToGetKubeCustomizationApiserverOutp
 	return o
 }
 
+// Kubernetes API server admission plugins customization
 func (o GetKubeCustomizationApiserverOutput) Admissionplugins() GetKubeCustomizationApiserverAdmissionpluginArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserver) []GetKubeCustomizationApiserverAdmissionplugin {
 		return v.Admissionplugins
@@ -13128,8 +13333,10 @@ func (o GetKubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) GetKu
 }
 
 type GetKubeCustomizationApiserverAdmissionplugin struct {
+	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	Enableds  []string `pulumi:"enableds"`
+	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	Enableds []string `pulumi:"enableds"`
 }
 
 // GetKubeCustomizationApiserverAdmissionpluginInput is an input type that accepts GetKubeCustomizationApiserverAdmissionpluginArgs and GetKubeCustomizationApiserverAdmissionpluginOutput values.
@@ -13144,8 +13351,10 @@ type GetKubeCustomizationApiserverAdmissionpluginInput interface {
 }
 
 type GetKubeCustomizationApiserverAdmissionpluginArgs struct {
+	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	Enableds  pulumi.StringArrayInput `pulumi:"enableds"`
+	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
 func (GetKubeCustomizationApiserverAdmissionpluginArgs) ElementType() reflect.Type {
@@ -13199,10 +13408,12 @@ func (o GetKubeCustomizationApiserverAdmissionpluginOutput) ToGetKubeCustomizati
 	return o
 }
 
+// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 func (o GetKubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
+// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
 func (o GetKubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -13228,8 +13439,10 @@ func (o GetKubeCustomizationApiserverAdmissionpluginArrayOutput) Index(i pulumi.
 }
 
 type GetKubeCustomizationKubeProxy struct {
+	// Kubernetes cluster kube-proxy customization of iptables specific config.
 	Iptables *GetKubeCustomizationKubeProxyIptables `pulumi:"iptables"`
-	Ipvs     *GetKubeCustomizationKubeProxyIpvs     `pulumi:"ipvs"`
+	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+	Ipvs *GetKubeCustomizationKubeProxyIpvs `pulumi:"ipvs"`
 }
 
 // GetKubeCustomizationKubeProxyInput is an input type that accepts GetKubeCustomizationKubeProxyArgs and GetKubeCustomizationKubeProxyOutput values.
@@ -13244,8 +13457,10 @@ type GetKubeCustomizationKubeProxyInput interface {
 }
 
 type GetKubeCustomizationKubeProxyArgs struct {
+	// Kubernetes cluster kube-proxy customization of iptables specific config.
 	Iptables GetKubeCustomizationKubeProxyIptablesPtrInput `pulumi:"iptables"`
-	Ipvs     GetKubeCustomizationKubeProxyIpvsPtrInput     `pulumi:"ipvs"`
+	// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+	Ipvs GetKubeCustomizationKubeProxyIpvsPtrInput `pulumi:"ipvs"`
 }
 
 func (GetKubeCustomizationKubeProxyArgs) ElementType() reflect.Type {
@@ -13325,10 +13540,12 @@ func (o GetKubeCustomizationKubeProxyOutput) ToGetKubeCustomizationKubeProxyPtrO
 	}).(GetKubeCustomizationKubeProxyPtrOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of iptables specific config.
 func (o GetKubeCustomizationKubeProxyOutput) Iptables() GetKubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIptables { return v.Iptables }).(GetKubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyOutput) Ipvs() GetKubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIpvs { return v.Ipvs }).(GetKubeCustomizationKubeProxyIpvsPtrOutput)
 }
@@ -13357,6 +13574,7 @@ func (o GetKubeCustomizationKubeProxyPtrOutput) Elem() GetKubeCustomizationKubeP
 	}).(GetKubeCustomizationKubeProxyOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of iptables specific config.
 func (o GetKubeCustomizationKubeProxyPtrOutput) Iptables() GetKubeCustomizationKubeProxyIptablesPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIptables {
 		if v == nil {
@@ -13366,6 +13584,7 @@ func (o GetKubeCustomizationKubeProxyPtrOutput) Iptables() GetKubeCustomizationK
 	}).(GetKubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyPtrOutput) Ipvs() GetKubeCustomizationKubeProxyIpvsPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxy) *GetKubeCustomizationKubeProxyIpvs {
 		if v == nil {
@@ -13376,8 +13595,10 @@ func (o GetKubeCustomizationKubeProxyPtrOutput) Ipvs() GetKubeCustomizationKubeP
 }
 
 type GetKubeCustomizationKubeProxyIptables struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	SyncPeriod    *string `pulumi:"syncPeriod"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+	SyncPeriod *string `pulumi:"syncPeriod"`
 }
 
 // GetKubeCustomizationKubeProxyIptablesInput is an input type that accepts GetKubeCustomizationKubeProxyIptablesArgs and GetKubeCustomizationKubeProxyIptablesOutput values.
@@ -13392,8 +13613,10 @@ type GetKubeCustomizationKubeProxyIptablesInput interface {
 }
 
 type GetKubeCustomizationKubeProxyIptablesArgs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
 }
 
 func (GetKubeCustomizationKubeProxyIptablesArgs) ElementType() reflect.Type {
@@ -13473,10 +13696,12 @@ func (o GetKubeCustomizationKubeProxyIptablesOutput) ToGetKubeCustomizationKubeP
 	}).(GetKubeCustomizationKubeProxyIptablesPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIptablesOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIptables) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIptablesOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIptables) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
@@ -13505,6 +13730,7 @@ func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) Elem() GetKubeCustomizat
 	}).(GetKubeCustomizationKubeProxyIptablesOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -13514,6 +13740,7 @@ func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) MinSyncPeriod() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIptables) *string {
 		if v == nil {
@@ -13524,12 +13751,18 @@ func (o GetKubeCustomizationKubeProxyIptablesPtrOutput) SyncPeriod() pulumi.Stri
 }
 
 type GetKubeCustomizationKubeProxyIpvs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod *string `pulumi:"minSyncPeriod"`
-	Scheduler     *string `pulumi:"scheduler"`
-	SyncPeriod    *string `pulumi:"syncPeriod"`
+	// IPVS scheduler.
+	Scheduler *string `pulumi:"scheduler"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+	SyncPeriod *string `pulumi:"syncPeriod"`
+	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
 	TcpFinTimeout *string `pulumi:"tcpFinTimeout"`
-	TcpTimeout    *string `pulumi:"tcpTimeout"`
-	UdpTimeout    *string `pulumi:"udpTimeout"`
+	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+	TcpTimeout *string `pulumi:"tcpTimeout"`
+	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+	UdpTimeout *string `pulumi:"udpTimeout"`
 }
 
 // GetKubeCustomizationKubeProxyIpvsInput is an input type that accepts GetKubeCustomizationKubeProxyIpvsArgs and GetKubeCustomizationKubeProxyIpvsOutput values.
@@ -13544,12 +13777,18 @@ type GetKubeCustomizationKubeProxyIpvsInput interface {
 }
 
 type GetKubeCustomizationKubeProxyIpvsArgs struct {
+	// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 	MinSyncPeriod pulumi.StringPtrInput `pulumi:"minSyncPeriod"`
-	Scheduler     pulumi.StringPtrInput `pulumi:"scheduler"`
-	SyncPeriod    pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// IPVS scheduler.
+	Scheduler pulumi.StringPtrInput `pulumi:"scheduler"`
+	// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+	SyncPeriod pulumi.StringPtrInput `pulumi:"syncPeriod"`
+	// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
 	TcpFinTimeout pulumi.StringPtrInput `pulumi:"tcpFinTimeout"`
-	TcpTimeout    pulumi.StringPtrInput `pulumi:"tcpTimeout"`
-	UdpTimeout    pulumi.StringPtrInput `pulumi:"udpTimeout"`
+	// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+	TcpTimeout pulumi.StringPtrInput `pulumi:"tcpTimeout"`
+	// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+	UdpTimeout pulumi.StringPtrInput `pulumi:"udpTimeout"`
 }
 
 func (GetKubeCustomizationKubeProxyIpvsArgs) ElementType() reflect.Type {
@@ -13629,26 +13868,32 @@ func (o GetKubeCustomizationKubeProxyIpvsOutput) ToGetKubeCustomizationKubeProxy
 	}).(GetKubeCustomizationKubeProxyIpvsPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.MinSyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// IPVS scheduler.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.SyncPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.TcpFinTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.TcpTimeout }).(pulumi.StringPtrOutput)
 }
 
+// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubeCustomizationKubeProxyIpvs) *string { return v.UdpTimeout }).(pulumi.StringPtrOutput)
 }
@@ -13677,6 +13922,7 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) Elem() GetKubeCustomizationK
 	}).(GetKubeCustomizationKubeProxyIpvsOutput)
 }
 
+// Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -13686,6 +13932,7 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) MinSyncPeriod() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// IPVS scheduler.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -13695,6 +13942,7 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) Scheduler() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -13704,6 +13952,7 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) SyncPeriod() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -13713,6 +13962,7 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpFinTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -13722,6 +13972,7 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) TcpTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
 func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKubeCustomizationKubeProxyIpvs) *string {
 		if v == nil {
@@ -13732,29 +13983,29 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPt
 }
 
 type GetKubeNodePoolNodesNode struct {
-	// Creation date
+	// Creation date.
 	CreatedAt string `pulumi:"createdAt"`
-	// Node deployment date
+	// (Optional) Date of the effective deployment.
 	DeployedAt string `pulumi:"deployedAt"`
-	// Flavor name
+	// Flavor name.
 	Flavor string `pulumi:"flavor"`
-	// Node ID
+	// ID of the node.
 	Id string `pulumi:"id"`
-	// Public Cloud instance ID
+	// Openstack ID of the underlying VM of the node.
 	InstanceId string `pulumi:"instanceId"`
-	// True if the node is up to date
+	// Is the node in the target version of the cluster.
 	IsUpToDate bool `pulumi:"isUpToDate"`
-	// Node name
+	// Name of the node pool from which we want the nodes.
 	Name string `pulumi:"name"`
-	// NodePool parent ID
+	// Managed kubernetes node pool ID.
 	NodePoolId string `pulumi:"nodePoolId"`
-	// Project ID
+	// Public cloud project ID.
 	ProjectId string `pulumi:"projectId"`
-	// Current status
+	// Current status.
 	Status string `pulumi:"status"`
-	// Last update date
+	// Last update date.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Node version
+	// Version in which the node is.
 	Version string `pulumi:"version"`
 }
 
@@ -13770,29 +14021,29 @@ type GetKubeNodePoolNodesNodeInput interface {
 }
 
 type GetKubeNodePoolNodesNodeArgs struct {
-	// Creation date
+	// Creation date.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Node deployment date
+	// (Optional) Date of the effective deployment.
 	DeployedAt pulumi.StringInput `pulumi:"deployedAt"`
-	// Flavor name
+	// Flavor name.
 	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Node ID
+	// ID of the node.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Public Cloud instance ID
+	// Openstack ID of the underlying VM of the node.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// True if the node is up to date
+	// Is the node in the target version of the cluster.
 	IsUpToDate pulumi.BoolInput `pulumi:"isUpToDate"`
-	// Node name
+	// Name of the node pool from which we want the nodes.
 	Name pulumi.StringInput `pulumi:"name"`
-	// NodePool parent ID
+	// Managed kubernetes node pool ID.
 	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
-	// Project ID
+	// Public cloud project ID.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Current status
+	// Current status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Last update date
+	// Last update date.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Node version
+	// Version in which the node is.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -13847,62 +14098,62 @@ func (o GetKubeNodePoolNodesNodeOutput) ToGetKubeNodePoolNodesNodeOutputWithCont
 	return o
 }
 
-// Creation date
+// Creation date.
 func (o GetKubeNodePoolNodesNodeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Node deployment date
+// (Optional) Date of the effective deployment.
 func (o GetKubeNodePoolNodesNodeOutput) DeployedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.DeployedAt }).(pulumi.StringOutput)
 }
 
-// Flavor name
+// Flavor name.
 func (o GetKubeNodePoolNodesNodeOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Node ID
+// ID of the node.
 func (o GetKubeNodePoolNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Public Cloud instance ID
+// Openstack ID of the underlying VM of the node.
 func (o GetKubeNodePoolNodesNodeOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// True if the node is up to date
+// Is the node in the target version of the cluster.
 func (o GetKubeNodePoolNodesNodeOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) bool { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
-// Node name
+// Name of the node pool from which we want the nodes.
 func (o GetKubeNodePoolNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// NodePool parent ID
+// Managed kubernetes node pool ID.
 func (o GetKubeNodePoolNodesNodeOutput) NodePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.NodePoolId }).(pulumi.StringOutput)
 }
 
-// Project ID
+// Public cloud project ID.
 func (o GetKubeNodePoolNodesNodeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Current status
+// Current status.
 func (o GetKubeNodePoolNodesNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Last update date
+// Last update date.
 func (o GetKubeNodePoolNodesNodeOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Node version
+// Version in which the node is.
 func (o GetKubeNodePoolNodesNodeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodePoolNodesNode) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -14417,27 +14668,27 @@ func (o GetKubeNodePoolTemplateSpecPtrOutput) Unschedulable() pulumi.BoolPtrOutp
 type GetKubeNodesNode struct {
 	// Creation date
 	CreatedAt string `pulumi:"createdAt"`
-	// Node deployment date
+	// (Optional) Date of the effective deployment
 	DeployedAt string `pulumi:"deployedAt"`
 	// Flavor name
 	Flavor string `pulumi:"flavor"`
-	// Node ID
+	// ID of the node
 	Id string `pulumi:"id"`
-	// Public Cloud instance ID
+	// Openstack ID of the underlying VM of the node
 	InstanceId string `pulumi:"instanceId"`
-	// True if the node is up to date
+	// Is the node in the target version of the cluster
 	IsUpToDate bool `pulumi:"isUpToDate"`
-	// Node name
+	// Name of the node
 	Name string `pulumi:"name"`
-	// NodePool parent ID
+	// Managed kubernetes node pool ID
 	NodePoolId string `pulumi:"nodePoolId"`
-	// Project ID
+	// Public cloud project ID
 	ProjectId string `pulumi:"projectId"`
 	// Current status
 	Status string `pulumi:"status"`
 	// Last update date
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Node version
+	// Version in which the node is
 	Version string `pulumi:"version"`
 }
 
@@ -14455,27 +14706,27 @@ type GetKubeNodesNodeInput interface {
 type GetKubeNodesNodeArgs struct {
 	// Creation date
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Node deployment date
+	// (Optional) Date of the effective deployment
 	DeployedAt pulumi.StringInput `pulumi:"deployedAt"`
 	// Flavor name
 	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Node ID
+	// ID of the node
 	Id pulumi.StringInput `pulumi:"id"`
-	// Public Cloud instance ID
+	// Openstack ID of the underlying VM of the node
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// True if the node is up to date
+	// Is the node in the target version of the cluster
 	IsUpToDate pulumi.BoolInput `pulumi:"isUpToDate"`
-	// Node name
+	// Name of the node
 	Name pulumi.StringInput `pulumi:"name"`
-	// NodePool parent ID
+	// Managed kubernetes node pool ID
 	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
-	// Project ID
+	// Public cloud project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Current status
 	Status pulumi.StringInput `pulumi:"status"`
 	// Last update date
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Node version
+	// Version in which the node is
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -14535,7 +14786,7 @@ func (o GetKubeNodesNodeOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Node deployment date
+// (Optional) Date of the effective deployment
 func (o GetKubeNodesNodeOutput) DeployedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.DeployedAt }).(pulumi.StringOutput)
 }
@@ -14545,32 +14796,32 @@ func (o GetKubeNodesNodeOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Node ID
+// ID of the node
 func (o GetKubeNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Public Cloud instance ID
+// Openstack ID of the underlying VM of the node
 func (o GetKubeNodesNodeOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// True if the node is up to date
+// Is the node in the target version of the cluster
 func (o GetKubeNodesNodeOutput) IsUpToDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) bool { return v.IsUpToDate }).(pulumi.BoolOutput)
 }
 
-// Node name
+// Name of the node
 func (o GetKubeNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// NodePool parent ID
+// Managed kubernetes node pool ID
 func (o GetKubeNodesNodeOutput) NodePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.NodePoolId }).(pulumi.StringOutput)
 }
 
-// Project ID
+// Public cloud project ID
 func (o GetKubeNodesNodeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -14585,7 +14836,7 @@ func (o GetKubeNodesNodeOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Node version
+// Version in which the node is
 func (o GetKubeNodesNodeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubeNodesNode) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -14726,9 +14977,9 @@ func (o GetLoadBalancerFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetLoa
 }
 
 type GetLoadBalancerFloatingIp struct {
-	// ID of the floating IP
+	// ID of the loadbalancer
 	Id string `pulumi:"id"`
-	// IP Address of the floating IP
+	// Value of the floating IP
 	Ip string `pulumi:"ip"`
 }
 
@@ -14744,9 +14995,9 @@ type GetLoadBalancerFloatingIpInput interface {
 }
 
 type GetLoadBalancerFloatingIpArgs struct {
-	// ID of the floating IP
+	// ID of the loadbalancer
 	Id pulumi.StringInput `pulumi:"id"`
-	// IP Address of the floating IP
+	// Value of the floating IP
 	Ip pulumi.StringInput `pulumi:"ip"`
 }
 
@@ -14776,24 +15027,24 @@ func (o GetLoadBalancerFloatingIpOutput) ToGetLoadBalancerFloatingIpOutputWithCo
 	return o
 }
 
-// ID of the floating IP
+// ID of the loadbalancer
 func (o GetLoadBalancerFloatingIpOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFloatingIp) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// IP Address of the floating IP
+// Value of the floating IP
 func (o GetLoadBalancerFloatingIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 type GetLoadBalancersLoadbalancer struct {
-	// The UTC date and timestamp when the loadbalancer was created
+	// Date of creation of the loadbalancer
 	CreatedAt string `pulumi:"createdAt"`
 	// ID of the flavor
 	FlavorId string `pulumi:"flavorId"`
-	// Information about floating IP
+	// Information about the floating IP
 	FloatingIp GetLoadBalancersLoadbalancerFloatingIp `pulumi:"floatingIp"`
-	// ID of the loadbalancer
+	// ID of the floating IP
 	Id string `pulumi:"id"`
 	// Name of the loadbalancer
 	Name string `pulumi:"name"`
@@ -14803,7 +15054,7 @@ type GetLoadBalancersLoadbalancer struct {
 	ProvisioningStatus string `pulumi:"provisioningStatus"`
 	// Region of the loadbalancer
 	Region string `pulumi:"region"`
-	// UTC date and timestamp when the loadbalancer was updated
+	// Last update date of the loadbalancer
 	UpdatedAt string `pulumi:"updatedAt"`
 	// IP address of the Virtual IP
 	VipAddress string `pulumi:"vipAddress"`
@@ -14825,13 +15076,13 @@ type GetLoadBalancersLoadbalancerInput interface {
 }
 
 type GetLoadBalancersLoadbalancerArgs struct {
-	// The UTC date and timestamp when the loadbalancer was created
+	// Date of creation of the loadbalancer
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// ID of the flavor
 	FlavorId pulumi.StringInput `pulumi:"flavorId"`
-	// Information about floating IP
+	// Information about the floating IP
 	FloatingIp GetLoadBalancersLoadbalancerFloatingIpInput `pulumi:"floatingIp"`
-	// ID of the loadbalancer
+	// ID of the floating IP
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the loadbalancer
 	Name pulumi.StringInput `pulumi:"name"`
@@ -14841,7 +15092,7 @@ type GetLoadBalancersLoadbalancerArgs struct {
 	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
 	// Region of the loadbalancer
 	Region pulumi.StringInput `pulumi:"region"`
-	// UTC date and timestamp when the loadbalancer was updated
+	// Last update date of the loadbalancer
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// IP address of the Virtual IP
 	VipAddress pulumi.StringInput `pulumi:"vipAddress"`
@@ -14902,7 +15153,7 @@ func (o GetLoadBalancersLoadbalancerOutput) ToGetLoadBalancersLoadbalancerOutput
 	return o
 }
 
-// The UTC date and timestamp when the loadbalancer was created
+// Date of creation of the loadbalancer
 func (o GetLoadBalancersLoadbalancerOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -14912,12 +15163,12 @@ func (o GetLoadBalancersLoadbalancerOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Information about floating IP
+// Information about the floating IP
 func (o GetLoadBalancersLoadbalancerOutput) FloatingIp() GetLoadBalancersLoadbalancerFloatingIpOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) GetLoadBalancersLoadbalancerFloatingIp { return v.FloatingIp }).(GetLoadBalancersLoadbalancerFloatingIpOutput)
 }
 
-// ID of the loadbalancer
+// ID of the floating IP
 func (o GetLoadBalancersLoadbalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -14942,7 +15193,7 @@ func (o GetLoadBalancersLoadbalancerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// UTC date and timestamp when the loadbalancer was updated
+// Last update date of the loadbalancer
 func (o GetLoadBalancersLoadbalancerOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancer) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -14985,7 +15236,7 @@ func (o GetLoadBalancersLoadbalancerArrayOutput) Index(i pulumi.IntInput) GetLoa
 type GetLoadBalancersLoadbalancerFloatingIp struct {
 	// ID of the floating IP
 	Id string `pulumi:"id"`
-	// IP Address of the floating IP
+	// Value of the floating IP
 	Ip string `pulumi:"ip"`
 }
 
@@ -15003,7 +15254,7 @@ type GetLoadBalancersLoadbalancerFloatingIpInput interface {
 type GetLoadBalancersLoadbalancerFloatingIpArgs struct {
 	// ID of the floating IP
 	Id pulumi.StringInput `pulumi:"id"`
-	// IP Address of the floating IP
+	// Value of the floating IP
 	Ip pulumi.StringInput `pulumi:"ip"`
 }
 
@@ -15038,17 +15289,17 @@ func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// IP Address of the floating IP
+// Value of the floating IP
 func (o GetLoadBalancersLoadbalancerFloatingIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadbalancerFloatingIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 type GetNetworkPrivateRegion struct {
-	// Network id on openstack region
+	// Network ID on openstack region
 	OpenstackId string `pulumi:"openstackId"`
-	// Network region
+	// Name of the region
 	Region string `pulumi:"region"`
-	// Network region status
+	// Status of the network
 	Status string `pulumi:"status"`
 }
 
@@ -15064,11 +15315,11 @@ type GetNetworkPrivateRegionInput interface {
 }
 
 type GetNetworkPrivateRegionArgs struct {
-	// Network id on openstack region
+	// Network ID on openstack region
 	OpenstackId pulumi.StringInput `pulumi:"openstackId"`
-	// Network region
+	// Name of the region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Network region status
+	// Status of the network
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -15123,17 +15374,17 @@ func (o GetNetworkPrivateRegionOutput) ToGetNetworkPrivateRegionOutputWithContex
 	return o
 }
 
-// Network id on openstack region
+// Network ID on openstack region
 func (o GetNetworkPrivateRegionOutput) OpenstackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.OpenstackId }).(pulumi.StringOutput)
 }
 
-// Network region
+// Name of the region
 func (o GetNetworkPrivateRegionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Network region status
+// Status of the network
 func (o GetNetworkPrivateRegionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateRegion) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -15159,15 +15410,15 @@ func (o GetNetworkPrivateRegionArrayOutput) Index(i pulumi.IntInput) GetNetworkP
 }
 
 type GetNetworkPrivateSubnetsSubnet struct {
-	// Subnet CIDR
+	// CIDR of the subnet
 	Cidr string `pulumi:"cidr"`
-	// Is DHCP enabled for the subnet
+	// Whether or not if DHCP is enabled for the subnet
 	DhcpEnabled bool `pulumi:"dhcpEnabled"`
-	// Gateway IP in the subnet
+	// Gateway IP of the subnet
 	GatewayIp string `pulumi:"gatewayIp"`
-	// Subnet id
+	// ID of the subnet
 	Id string `pulumi:"id"`
-	// List of ip pools allocated in subnet
+	// List of ip pools allocated in the subnet
 	IpPools []GetNetworkPrivateSubnetsSubnetIpPool `pulumi:"ipPools"`
 }
 
@@ -15183,15 +15434,15 @@ type GetNetworkPrivateSubnetsSubnetInput interface {
 }
 
 type GetNetworkPrivateSubnetsSubnetArgs struct {
-	// Subnet CIDR
+	// CIDR of the subnet
 	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Is DHCP enabled for the subnet
+	// Whether or not if DHCP is enabled for the subnet
 	DhcpEnabled pulumi.BoolInput `pulumi:"dhcpEnabled"`
-	// Gateway IP in the subnet
+	// Gateway IP of the subnet
 	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
-	// Subnet id
+	// ID of the subnet
 	Id pulumi.StringInput `pulumi:"id"`
-	// List of ip pools allocated in subnet
+	// List of ip pools allocated in the subnet
 	IpPools GetNetworkPrivateSubnetsSubnetIpPoolArrayInput `pulumi:"ipPools"`
 }
 
@@ -15246,27 +15497,27 @@ func (o GetNetworkPrivateSubnetsSubnetOutput) ToGetNetworkPrivateSubnetsSubnetOu
 	return o
 }
 
-// Subnet CIDR
+// CIDR of the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Is DHCP enabled for the subnet
+// Whether or not if DHCP is enabled for the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) DhcpEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) bool { return v.DhcpEnabled }).(pulumi.BoolOutput)
 }
 
-// Gateway IP in the subnet
+// Gateway IP of the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
-// Subnet id
+// ID of the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of ip pools allocated in subnet
+// List of ip pools allocated in the subnet
 func (o GetNetworkPrivateSubnetsSubnetOutput) IpPools() GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnet) []GetNetworkPrivateSubnetsSubnetIpPool { return v.IpPools }).(GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput)
 }
@@ -15292,13 +15543,13 @@ func (o GetNetworkPrivateSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetN
 }
 
 type GetNetworkPrivateSubnetsSubnetIpPool struct {
-	// Enable DHCP
+	// Whether or not if DHCP is enabled
 	Dhcp bool `pulumi:"dhcp"`
 	// Last IP for this region (eg: 192.168.1.24)
 	End string `pulumi:"end"`
 	// Global network with cidr (eg: 192.168.1.0/24)
 	Network string `pulumi:"network"`
-	// Region of the subnet
+	// Region associated to the subnet
 	Region string `pulumi:"region"`
 	// First IP for this region (eg: 192.168.1.12)
 	Start string `pulumi:"start"`
@@ -15316,13 +15567,13 @@ type GetNetworkPrivateSubnetsSubnetIpPoolInput interface {
 }
 
 type GetNetworkPrivateSubnetsSubnetIpPoolArgs struct {
-	// Enable DHCP
+	// Whether or not if DHCP is enabled
 	Dhcp pulumi.BoolInput `pulumi:"dhcp"`
 	// Last IP for this region (eg: 192.168.1.24)
 	End pulumi.StringInput `pulumi:"end"`
 	// Global network with cidr (eg: 192.168.1.0/24)
 	Network pulumi.StringInput `pulumi:"network"`
-	// Region of the subnet
+	// Region associated to the subnet
 	Region pulumi.StringInput `pulumi:"region"`
 	// First IP for this region (eg: 192.168.1.12)
 	Start pulumi.StringInput `pulumi:"start"`
@@ -15379,7 +15630,7 @@ func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) ToGetNetworkPrivateSubnetsSu
 	return o
 }
 
-// Enable DHCP
+// Whether or not if DHCP is enabled
 func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Dhcp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) bool { return v.Dhcp }).(pulumi.BoolOutput)
 }
@@ -15394,7 +15645,7 @@ func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Network() pulumi.StringOutpu
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Region of the subnet
+// Region associated to the subnet
 func (o GetNetworkPrivateSubnetsSubnetIpPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivateSubnetsSubnetIpPool) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -15425,17 +15676,17 @@ func (o GetNetworkPrivateSubnetsSubnetIpPoolArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetNetworkPrivatesNetwork struct {
-	// Network id
+	// ID of the network
 	Id string `pulumi:"id"`
-	// Network name
+	// Name of the network
 	Name string `pulumi:"name"`
-	// Details about private network in region
+	// Information about the private network in the openstack region
 	Regions []GetNetworkPrivatesNetworkRegion `pulumi:"regions"`
-	// Network status
+	// Status of the network
 	Status string `pulumi:"status"`
-	// Network type
+	// Type of the network
 	Type string `pulumi:"type"`
-	// Network VLAN id
+	// VLAN ID of the network
 	VlanId float64 `pulumi:"vlanId"`
 }
 
@@ -15451,17 +15702,17 @@ type GetNetworkPrivatesNetworkInput interface {
 }
 
 type GetNetworkPrivatesNetworkArgs struct {
-	// Network id
+	// ID of the network
 	Id pulumi.StringInput `pulumi:"id"`
-	// Network name
+	// Name of the network
 	Name pulumi.StringInput `pulumi:"name"`
-	// Details about private network in region
+	// Information about the private network in the openstack region
 	Regions GetNetworkPrivatesNetworkRegionArrayInput `pulumi:"regions"`
-	// Network status
+	// Status of the network
 	Status pulumi.StringInput `pulumi:"status"`
-	// Network type
+	// Type of the network
 	Type pulumi.StringInput `pulumi:"type"`
-	// Network VLAN id
+	// VLAN ID of the network
 	VlanId pulumi.Float64Input `pulumi:"vlanId"`
 }
 
@@ -15516,32 +15767,32 @@ func (o GetNetworkPrivatesNetworkOutput) ToGetNetworkPrivatesNetworkOutputWithCo
 	return o
 }
 
-// Network id
+// ID of the network
 func (o GetNetworkPrivatesNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Network name
+// Name of the network
 func (o GetNetworkPrivatesNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Details about private network in region
+// Information about the private network in the openstack region
 func (o GetNetworkPrivatesNetworkOutput) Regions() GetNetworkPrivatesNetworkRegionArrayOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) []GetNetworkPrivatesNetworkRegion { return v.Regions }).(GetNetworkPrivatesNetworkRegionArrayOutput)
 }
 
-// Network status
+// Status of the network
 func (o GetNetworkPrivatesNetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Network type
+// Type of the network
 func (o GetNetworkPrivatesNetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Network VLAN id
+// VLAN ID of the network
 func (o GetNetworkPrivatesNetworkOutput) VlanId() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNetworkPrivatesNetwork) float64 { return v.VlanId }).(pulumi.Float64Output)
 }
@@ -15567,11 +15818,11 @@ func (o GetNetworkPrivatesNetworkArrayOutput) Index(i pulumi.IntInput) GetNetwor
 }
 
 type GetNetworkPrivatesNetworkRegion struct {
-	// Network id on openstack region
+	// Network ID on openstack region
 	OpenstackId string `pulumi:"openstackId"`
-	// Network region
+	// Name of the region
 	Region string `pulumi:"region"`
-	// Network region status
+	// Status of the network
 	Status string `pulumi:"status"`
 }
 
@@ -15587,11 +15838,11 @@ type GetNetworkPrivatesNetworkRegionInput interface {
 }
 
 type GetNetworkPrivatesNetworkRegionArgs struct {
-	// Network id on openstack region
+	// Network ID on openstack region
 	OpenstackId pulumi.StringInput `pulumi:"openstackId"`
-	// Network region
+	// Name of the region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Network region status
+	// Status of the network
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -15646,17 +15897,17 @@ func (o GetNetworkPrivatesNetworkRegionOutput) ToGetNetworkPrivatesNetworkRegion
 	return o
 }
 
-// Network id on openstack region
+// Network ID on openstack region
 func (o GetNetworkPrivatesNetworkRegionOutput) OpenstackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.OpenstackId }).(pulumi.StringOutput)
 }
 
-// Network region
+// Name of the region
 func (o GetNetworkPrivatesNetworkRegionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Network region status
+// Status of the network
 func (o GetNetworkPrivatesNetworkRegionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPrivatesNetworkRegion) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -15682,9 +15933,9 @@ func (o GetNetworkPrivatesNetworkRegionArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetOpenSearchUserAcl struct {
-	// Pattern of the ACL
+	// Pattern of the ACL.
 	Pattern string `pulumi:"pattern"`
-	// Permission of the ACL
+	// Permission of the ACL.
 	Permission string `pulumi:"permission"`
 }
 
@@ -15700,9 +15951,9 @@ type GetOpenSearchUserAclInput interface {
 }
 
 type GetOpenSearchUserAclArgs struct {
-	// Pattern of the ACL
+	// Pattern of the ACL.
 	Pattern pulumi.StringInput `pulumi:"pattern"`
-	// Permission of the ACL
+	// Permission of the ACL.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -15757,12 +16008,12 @@ func (o GetOpenSearchUserAclOutput) ToGetOpenSearchUserAclOutputWithContext(ctx 
 	return o
 }
 
-// Pattern of the ACL
+// Pattern of the ACL.
 func (o GetOpenSearchUserAclOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserAcl) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Permission of the ACL
+// Permission of the ACL.
 func (o GetOpenSearchUserAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserAcl) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -16803,7 +17054,10 @@ func (o GetRancherVersionVersionArrayOutput) Index(i pulumi.IntInput) GetRancher
 }
 
 type GetRegionService struct {
-	Name   string `pulumi:"name"`
+	// The name of the region associated with the public cloud
+	// project.
+	Name string `pulumi:"name"`
+	// the status of the service
 	Status string `pulumi:"status"`
 }
 
@@ -16819,7 +17073,10 @@ type GetRegionServiceInput interface {
 }
 
 type GetRegionServiceArgs struct {
-	Name   pulumi.StringInput `pulumi:"name"`
+	// The name of the region associated with the public cloud
+	// project.
+	Name pulumi.StringInput `pulumi:"name"`
+	// the status of the service
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -16874,10 +17131,13 @@ func (o GetRegionServiceOutput) ToGetRegionServiceOutputWithContext(ctx context.
 	return o
 }
 
+// The name of the region associated with the public cloud
+// project.
 func (o GetRegionServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionService) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// the status of the service
 func (o GetRegionServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionService) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -18279,9 +18539,13 @@ func (o GetStoragesContainerVersioningOutput) Status() pulumi.StringOutput {
 }
 
 type GetUserRole struct {
-	Description string   `pulumi:"description"`
-	Id          string   `pulumi:"id"`
-	Name        string   `pulumi:"name"`
+	// description of the role
+	Description string `pulumi:"description"`
+	// id of the role
+	Id string `pulumi:"id"`
+	// name of the role
+	Name string `pulumi:"name"`
+	// list of permissions associated with the role
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -18297,9 +18561,13 @@ type GetUserRoleInput interface {
 }
 
 type GetUserRoleArgs struct {
-	Description pulumi.StringInput      `pulumi:"description"`
-	Id          pulumi.StringInput      `pulumi:"id"`
-	Name        pulumi.StringInput      `pulumi:"name"`
+	// description of the role
+	Description pulumi.StringInput `pulumi:"description"`
+	// id of the role
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the role
+	Name pulumi.StringInput `pulumi:"name"`
+	// list of permissions associated with the role
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -18354,18 +18622,22 @@ func (o GetUserRoleOutput) ToGetUserRoleOutputWithContext(ctx context.Context) G
 	return o
 }
 
+// description of the role
 func (o GetUserRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// id of the role
 func (o GetUserRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// name of the role
 func (o GetUserRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// list of permissions associated with the role
 func (o GetUserRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUserRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -18391,12 +18663,19 @@ func (o GetUserRoleArrayOutput) Index(i pulumi.IntInput) GetUserRoleOutput {
 }
 
 type GetUsersUser struct {
-	CreationDate string             `pulumi:"creationDate"`
-	Description  string             `pulumi:"description"`
-	Roles        []GetUsersUserRole `pulumi:"roles"`
-	Status       string             `pulumi:"status"`
-	UserId       string             `pulumi:"userId"`
-	Username     string             `pulumi:"username"`
+	// the date the user was created.
+	CreationDate string `pulumi:"creationDate"`
+	// description of the role
+	Description string `pulumi:"description"`
+	// A list of roles associated with the user.
+	Roles []GetUsersUserRole `pulumi:"roles"`
+	// the status of the user. should be normally set to 'ok'.
+	Status string `pulumi:"status"`
+	// The ID of a public cloud project's user.
+	UserId string `pulumi:"userId"`
+	// the username generated for the user. This username can be used with
+	// the Openstack API.
+	Username string `pulumi:"username"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -18411,12 +18690,19 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	CreationDate pulumi.StringInput         `pulumi:"creationDate"`
-	Description  pulumi.StringInput         `pulumi:"description"`
-	Roles        GetUsersUserRoleArrayInput `pulumi:"roles"`
-	Status       pulumi.StringInput         `pulumi:"status"`
-	UserId       pulumi.StringInput         `pulumi:"userId"`
-	Username     pulumi.StringInput         `pulumi:"username"`
+	// the date the user was created.
+	CreationDate pulumi.StringInput `pulumi:"creationDate"`
+	// description of the role
+	Description pulumi.StringInput `pulumi:"description"`
+	// A list of roles associated with the user.
+	Roles GetUsersUserRoleArrayInput `pulumi:"roles"`
+	// the status of the user. should be normally set to 'ok'.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of a public cloud project's user.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// the username generated for the user. This username can be used with
+	// the Openstack API.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -18470,26 +18756,33 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
+// the date the user was created.
 func (o GetUsersUserOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// description of the role
 func (o GetUsersUserOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// A list of roles associated with the user.
 func (o GetUsersUserOutput) Roles() GetUsersUserRoleArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []GetUsersUserRole { return v.Roles }).(GetUsersUserRoleArrayOutput)
 }
 
+// the status of the user. should be normally set to 'ok'.
 func (o GetUsersUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The ID of a public cloud project's user.
 func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
 }
 
+// the username generated for the user. This username can be used with
+// the Openstack API.
 func (o GetUsersUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -18515,9 +18808,13 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 type GetUsersUserRole struct {
-	Description string   `pulumi:"description"`
-	Id          string   `pulumi:"id"`
-	Name        string   `pulumi:"name"`
+	// description of the role
+	Description string `pulumi:"description"`
+	// id of the role
+	Id string `pulumi:"id"`
+	// name of the role
+	Name string `pulumi:"name"`
+	// list of permissions associated with the role
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -18533,9 +18830,13 @@ type GetUsersUserRoleInput interface {
 }
 
 type GetUsersUserRoleArgs struct {
-	Description pulumi.StringInput      `pulumi:"description"`
-	Id          pulumi.StringInput      `pulumi:"id"`
-	Name        pulumi.StringInput      `pulumi:"name"`
+	// description of the role
+	Description pulumi.StringInput `pulumi:"description"`
+	// id of the role
+	Id pulumi.StringInput `pulumi:"id"`
+	// name of the role
+	Name pulumi.StringInput `pulumi:"name"`
+	// list of permissions associated with the role
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -18590,18 +18891,22 @@ func (o GetUsersUserRoleOutput) ToGetUsersUserRoleOutputWithContext(ctx context.
 	return o
 }
 
+// description of the role
 func (o GetUsersUserRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// id of the role
 func (o GetUsersUserRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// name of the role
 func (o GetUsersUserRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// list of permissions associated with the role
 func (o GetUsersUserRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersUserRole) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -18627,11 +18932,11 @@ func (o GetUsersUserRoleArrayOutput) Index(i pulumi.IntInput) GetUsersUserRoleOu
 }
 
 type GetVolumesVolume struct {
-	// Volume ID
+	// The id of the volume
 	Id string `pulumi:"id"`
-	// Volume name
+	// The name of the volume
 	Name string `pulumi:"name"`
-	// Volume size
+	// The size of the volume
 	Size float64 `pulumi:"size"`
 }
 
@@ -18647,11 +18952,11 @@ type GetVolumesVolumeInput interface {
 }
 
 type GetVolumesVolumeArgs struct {
-	// Volume ID
+	// The id of the volume
 	Id pulumi.StringInput `pulumi:"id"`
-	// Volume name
+	// The name of the volume
 	Name pulumi.StringInput `pulumi:"name"`
-	// Volume size
+	// The size of the volume
 	Size pulumi.Float64Input `pulumi:"size"`
 }
 
@@ -18706,17 +19011,17 @@ func (o GetVolumesVolumeOutput) ToGetVolumesVolumeOutputWithContext(ctx context.
 	return o
 }
 
-// Volume ID
+// The id of the volume
 func (o GetVolumesVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Volume name
+// The name of the volume
 func (o GetVolumesVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Volume size
+// The size of the volume
 func (o GetVolumesVolumeOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVolumesVolume) float64 { return v.Size }).(pulumi.Float64Output)
 }
@@ -18802,34 +19107,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolTemplateSpecPtrInput)(nil)).Elem(), KubeNodePoolTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubePrivateNetworkConfigurationInput)(nil)).Elem(), KubePrivateNetworkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubePrivateNetworkConfigurationPtrInput)(nil)).Elem(), KubePrivateNetworkConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerFloatingIpInput)(nil)).Elem(), LoadbalancerFloatingIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerFloatingIpPtrInput)(nil)).Elem(), LoadbalancerFloatingIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerInput)(nil)).Elem(), LoadbalancerListenerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerArrayInput)(nil)).Elem(), LoadbalancerListenerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolInput)(nil)).Elem(), LoadbalancerListenerPoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolPtrInput)(nil)).Elem(), LoadbalancerListenerPoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorPtrInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfigurationInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrInput)(nil)).Elem(), LoadbalancerListenerPoolHealthMonitorHttpConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolMemberInput)(nil)).Elem(), LoadbalancerListenerPoolMemberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolMemberArrayInput)(nil)).Elem(), LoadbalancerListenerPoolMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistenceInput)(nil)).Elem(), LoadbalancerListenerPoolSessionPersistenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerPoolSessionPersistencePtrInput)(nil)).Elem(), LoadbalancerListenerPoolSessionPersistenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkInput)(nil)).Elem(), LoadbalancerNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPtrInput)(nil)).Elem(), LoadbalancerNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateInput)(nil)).Elem(), LoadbalancerNetworkPrivateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivatePtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpPtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreateInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpCreateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateFloatingIpCreatePtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateFloatingIpCreateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayPtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreateInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayCreateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateGatewayCreatePtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateGatewayCreateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateNetworkInput)(nil)).Elem(), LoadbalancerNetworkPrivateNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkPrivateNetworkPtrInput)(nil)).Elem(), LoadbalancerNetworkPrivateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFloatingIpInput)(nil)).Elem(), LoadBalancerFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerFloatingIpPtrInput)(nil)).Elem(), LoadBalancerFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerInput)(nil)).Elem(), LoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerArrayInput)(nil)).Elem(), LoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolInput)(nil)).Elem(), LoadBalancerListenerPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolPtrInput)(nil)).Elem(), LoadBalancerListenerPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitorInput)(nil)).Elem(), LoadBalancerListenerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitorPtrInput)(nil)).Elem(), LoadBalancerListenerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitorHttpConfigurationInput)(nil)).Elem(), LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrInput)(nil)).Elem(), LoadBalancerListenerPoolHealthMonitorHttpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolMemberInput)(nil)).Elem(), LoadBalancerListenerPoolMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolMemberArrayInput)(nil)).Elem(), LoadBalancerListenerPoolMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolSessionPersistenceInput)(nil)).Elem(), LoadBalancerListenerPoolSessionPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerPoolSessionPersistencePtrInput)(nil)).Elem(), LoadBalancerListenerPoolSessionPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkInput)(nil)).Elem(), LoadBalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPtrInput)(nil)).Elem(), LoadBalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateInput)(nil)).Elem(), LoadBalancerNetworkPrivateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivatePtrInput)(nil)).Elem(), LoadBalancerNetworkPrivateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIpInput)(nil)).Elem(), LoadBalancerNetworkPrivateFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIpPtrInput)(nil)).Elem(), LoadBalancerNetworkPrivateFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIpCreateInput)(nil)).Elem(), LoadBalancerNetworkPrivateFloatingIpCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateFloatingIpCreatePtrInput)(nil)).Elem(), LoadBalancerNetworkPrivateFloatingIpCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateGatewayInput)(nil)).Elem(), LoadBalancerNetworkPrivateGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateGatewayPtrInput)(nil)).Elem(), LoadBalancerNetworkPrivateGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateGatewayCreateInput)(nil)).Elem(), LoadBalancerNetworkPrivateGatewayCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateGatewayCreatePtrInput)(nil)).Elem(), LoadBalancerNetworkPrivateGatewayCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateNetworkInput)(nil)).Elem(), LoadBalancerNetworkPrivateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerNetworkPrivateNetworkPtrInput)(nil)).Elem(), LoadBalancerNetworkPrivateNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsAttributeInput)(nil)).Elem(), NetworkPrivateRegionsAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsAttributeArrayInput)(nil)).Elem(), NetworkPrivateRegionsAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPrivateRegionsStatusInput)(nil)).Elem(), NetworkPrivateRegionsStatusArgs{})
@@ -19072,34 +19377,34 @@ func init() {
 	pulumi.RegisterOutputType(KubeNodePoolTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(KubePrivateNetworkConfigurationOutput{})
 	pulumi.RegisterOutputType(KubePrivateNetworkConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerFloatingIpOutput{})
-	pulumi.RegisterOutputType(LoadbalancerFloatingIpPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerArrayOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorHttpConfigurationOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolMemberOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolMemberArrayOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolSessionPersistenceOutput{})
-	pulumi.RegisterOutputType(LoadbalancerListenerPoolSessionPersistencePtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivatePtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpCreateOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateFloatingIpCreatePtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayPtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayCreateOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateGatewayCreatePtrOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateNetworkOutput{})
-	pulumi.RegisterOutputType(LoadbalancerNetworkPrivateNetworkPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerFloatingIpOutput{})
+	pulumi.RegisterOutputType(LoadBalancerFloatingIpPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolHealthMonitorOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolHealthMonitorPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolHealthMonitorHttpConfigurationOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolHealthMonitorHttpConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolMemberOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolMemberArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolSessionPersistenceOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerPoolSessionPersistencePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivatePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateFloatingIpOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateFloatingIpPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateFloatingIpCreateOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateFloatingIpCreatePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateGatewayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateGatewayPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateGatewayCreateOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateGatewayCreatePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateNetworkOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNetworkPrivateNetworkPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateRegionsAttributeOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateRegionsAttributeArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPrivateRegionsStatusOutput{})

@@ -9,11 +9,51 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
+    /// <summary>
+    /// Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "ip-1.2.3.4",
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var testFrontend = new Ovh.IpLoadBalancing.UdpFrontend("testFrontend", new()
+    ///     {
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
+    ///         Zone = "all",
+    ///         Port = "10,11",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// UDP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:IpLoadBalancing/udpFrontend:UdpFrontend testfrontend service_name/frontend_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/udpFrontend:UdpFrontend")]
     public partial class UdpFrontend : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Only attach frontend on these ip. No restriction if null
+        /// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         /// </summary>
         [Output("dedicatedIpfos")]
         public Output<ImmutableArray<string>> DedicatedIpfos { get; private set; } = null!;
@@ -31,7 +71,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Human readable name for your frontend, this field is for you
+        /// Human readable name for your frontend
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
@@ -43,8 +83,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<double> FrontendId { get; private set; } = null!;
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
-        /// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
+        /// Port(s) attached to your frontend. Supports single port (numerical value), 
+        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+        /// and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -56,7 +97,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Zone of your frontend. Use "all" for all owned zone.
+        /// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -112,7 +153,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         private InputList<string>? _dedicatedIpfos;
 
         /// <summary>
-        /// Only attach frontend on these ip. No restriction if null
+        /// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         /// </summary>
         public InputList<string> DedicatedIpfos
         {
@@ -133,14 +174,15 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Human readable name for your frontend, this field is for you
+        /// Human readable name for your frontend
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
-        /// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
+        /// Port(s) attached to your frontend. Supports single port (numerical value), 
+        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+        /// and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Input("port", required: true)]
         public Input<string> Port { get; set; } = null!;
@@ -152,7 +194,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Zone of your frontend. Use "all" for all owned zone.
+        /// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -169,7 +211,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         private InputList<string>? _dedicatedIpfos;
 
         /// <summary>
-        /// Only attach frontend on these ip. No restriction if null
+        /// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
         /// </summary>
         public InputList<string> DedicatedIpfos
         {
@@ -190,7 +232,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Human readable name for your frontend, this field is for you
+        /// Human readable name for your frontend
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -202,8 +244,9 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<double>? FrontendId { get; set; }
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and
-        /// comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.
+        /// Port(s) attached to your frontend. Supports single port (numerical value), 
+        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+        /// and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -215,7 +258,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Zone of your frontend. Use "all" for all owned zone.
+        /// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

@@ -45,6 +45,9 @@ class GetVpssResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence[str]:
+        """
+        The list of VPS IDs associated with your OVH Account.
+        """
         return pulumi.get(self, "results")
 
 
@@ -60,7 +63,16 @@ class AwaitableGetVpssResult(GetVpssResult):
 
 def get_vpss(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpssResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of VPS associated with your OVH Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    servers = ovh.Vps.get_vpss()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -71,7 +83,16 @@ def get_vpss(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpssRes
         results=pulumi.get(__ret__, 'results'))
 def get_vpss_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpssResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of VPS associated with your OVH Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    servers = ovh.Vps.get_vpss()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

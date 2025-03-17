@@ -13,9 +13,12 @@ namespace Pulumi.Ovh.Vps.Outputs
     [OutputType]
     public sealed class VpsPlan
     {
+        /// <summary>
+        /// Representation of a configuration item for personalizing product
+        /// </summary>
         public readonly ImmutableArray<Outputs.VpsPlanConfiguration> Configurations;
         /// <summary>
-        /// Duration selected for the purchase of the product
+        /// duration
         /// </summary>
         public readonly string Duration;
         /// <summary>
@@ -23,11 +26,11 @@ namespace Pulumi.Ovh.Vps.Outputs
         /// </summary>
         public readonly double? ItemId;
         /// <summary>
-        /// Identifier of the option offer
+        /// Plan code
         /// </summary>
         public readonly string PlanCode;
         /// <summary>
-        /// Pricing mode selected for the purchase of the product
+        /// Pricing model identifier
         /// </summary>
         public readonly string PricingMode;
         /// <summary>

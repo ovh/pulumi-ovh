@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetRancherVersion(ctx, &cloudproject.GetRancherVersionArgs{
+//				ProjectId: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRancherVersion(ctx *pulumi.Context, args *GetRancherVersionArgs, opts ...pulumi.InvokeOption) (*GetRancherVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRancherVersionResult
@@ -23,13 +50,15 @@ func GetRancherVersion(ctx *pulumi.Context, args *GetRancherVersionArgs, opts ..
 
 // A collection of arguments for invoking getRancherVersion.
 type GetRancherVersionArgs struct {
+	// Project ID
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getRancherVersion.
 type GetRancherVersionResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                     `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Project ID
 	ProjectId string                     `pulumi:"projectId"`
 	Versions  []GetRancherVersionVersion `pulumi:"versions"`
 }
@@ -45,6 +74,7 @@ func GetRancherVersionOutput(ctx *pulumi.Context, args GetRancherVersionOutputAr
 
 // A collection of arguments for invoking getRancherVersion.
 type GetRancherVersionOutputArgs struct {
+	// Project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -72,6 +102,7 @@ func (o GetRancherVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRancherVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Project ID
 func (o GetRancherVersionResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRancherVersionResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }

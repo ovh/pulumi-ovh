@@ -9,41 +9,87 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Creates a subnet in a private network of a public cloud region.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subnet = new Ovh.CloudProject.NetworkPrivateSubnetV2("subnet", new()
+    ///     {
+    ///         Cidr = "192.168.168.0/24",
+    ///         Dhcp = true,
+    ///         DnsNameservers = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///         },
+    ///         EnableGatewayIp = true,
+    ///         NetworkId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Region = "XXX1",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         UseDefaultPublicDnsResolver = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subnet in a private network of a public cloud project can be imported using the `service_name`, `region`, `network_id` and `subnet_id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2 mysubnet 5ceb661434891538b54a4f2c66fc4b746e/BHS5/25807101-8aaa-4ea5-b507-61f0d661b101/0f0b73a4-403b-45e4-86d0-b438f1291909
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2")]
     public partial class NetworkPrivateSubnetV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// DHCP allocation pools of subnet
+        /// List of IP allocation pools
+        /// Changing this value recreates the resource.
         /// </summary>
         [Output("allocationPools")]
         public Output<ImmutableArray<Outputs.NetworkPrivateSubnetV2AllocationPool>> AllocationPools { get; private set; } = null!;
 
         /// <summary>
-        /// CIDR of subnet
+        /// IP range of the subnet
+        /// Changing this value recreates the subnet.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// Enable DHCP in subnet
+        /// Enable DHCP.
+        /// Changing this forces a new resource to be created. Defaults to true.
         /// </summary>
         [Output("dhcp")]
         public Output<bool?> Dhcp { get; private set; } = null!;
 
         /// <summary>
-        /// List of DNS nameservers, default: 213.186.33.99
+        /// DNS nameservers used by DHCP
+        /// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         /// </summary>
         [Output("dnsNameservers")]
         public Output<ImmutableArray<string>> DnsNameservers { get; private set; } = null!;
 
         /// <summary>
-        /// Enable gateway IP in subnet
+        /// Set to true if you want to set a default gateway IP.
+        /// Changing this value recreates the resource. Defaults to true.
         /// </summary>
         [Output("enableGatewayIp")]
         public Output<bool?> EnableGatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway IP of subnet
+        /// See Argument Reference above.
         /// </summary>
         [Output("gatewayIp")]
         public Output<string> GatewayIp { get; private set; } = null!;
@@ -55,31 +101,36 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.NetworkPrivateSubnetV2HostRoute>> HostRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Name of subnet
+        /// Name of the subnet
+        /// Changing this value recreates the subnet.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Network ID of subnet
+        /// The id of the network.
+        /// Changing this forces a new resource to be created.
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// Region of network/subnet
+        /// The region in which the network subnet will be created.
+        /// Ex.: "GRA1". Changing this value recreates the resource.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Use OVH default DNS
+        /// Set to false if you want to use your DNS resolver.
+        /// Changing this value recreates the resource.
         /// </summary>
         [Output("useDefaultPublicDnsResolver")]
         public Output<bool?> UseDefaultPublicDnsResolver { get; private set; } = null!;
@@ -135,7 +186,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolArgs>? _allocationPools;
 
         /// <summary>
-        /// DHCP allocation pools of subnet
+        /// List of IP allocation pools
+        /// Changing this value recreates the resource.
         /// </summary>
         public InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolArgs> AllocationPools
         {
@@ -144,13 +196,15 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// CIDR of subnet
+        /// IP range of the subnet
+        /// Changing this value recreates the subnet.
         /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
         /// <summary>
-        /// Enable DHCP in subnet
+        /// Enable DHCP.
+        /// Changing this forces a new resource to be created. Defaults to true.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
@@ -159,7 +213,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _dnsNameservers;
 
         /// <summary>
-        /// List of DNS nameservers, default: 213.186.33.99
+        /// DNS nameservers used by DHCP
+        /// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         /// </summary>
         public InputList<string> DnsNameservers
         {
@@ -168,13 +223,14 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Enable gateway IP in subnet
+        /// Set to true if you want to set a default gateway IP.
+        /// Changing this value recreates the resource. Defaults to true.
         /// </summary>
         [Input("enableGatewayIp")]
         public Input<bool>? EnableGatewayIp { get; set; }
 
         /// <summary>
-        /// Gateway IP of subnet
+        /// See Argument Reference above.
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
@@ -192,31 +248,36 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Name of subnet
+        /// Name of the subnet
+        /// Changing this value recreates the subnet.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Network ID of subnet
+        /// The id of the network.
+        /// Changing this forces a new resource to be created.
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
 
         /// <summary>
-        /// Region of network/subnet
+        /// The region in which the network subnet will be created.
+        /// Ex.: "GRA1". Changing this value recreates the resource.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Use OVH default DNS
+        /// Set to false if you want to use your DNS resolver.
+        /// Changing this value recreates the resource.
         /// </summary>
         [Input("useDefaultPublicDnsResolver")]
         public Input<bool>? UseDefaultPublicDnsResolver { get; set; }
@@ -233,7 +294,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolGetArgs>? _allocationPools;
 
         /// <summary>
-        /// DHCP allocation pools of subnet
+        /// List of IP allocation pools
+        /// Changing this value recreates the resource.
         /// </summary>
         public InputList<Inputs.NetworkPrivateSubnetV2AllocationPoolGetArgs> AllocationPools
         {
@@ -242,13 +304,15 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// CIDR of subnet
+        /// IP range of the subnet
+        /// Changing this value recreates the subnet.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
         /// <summary>
-        /// Enable DHCP in subnet
+        /// Enable DHCP.
+        /// Changing this forces a new resource to be created. Defaults to true.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
@@ -257,7 +321,8 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _dnsNameservers;
 
         /// <summary>
-        /// List of DNS nameservers, default: 213.186.33.99
+        /// DNS nameservers used by DHCP
+        /// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         /// </summary>
         public InputList<string> DnsNameservers
         {
@@ -266,13 +331,14 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Enable gateway IP in subnet
+        /// Set to true if you want to set a default gateway IP.
+        /// Changing this value recreates the resource. Defaults to true.
         /// </summary>
         [Input("enableGatewayIp")]
         public Input<bool>? EnableGatewayIp { get; set; }
 
         /// <summary>
-        /// Gateway IP of subnet
+        /// See Argument Reference above.
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
@@ -290,31 +356,36 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Name of subnet
+        /// Name of the subnet
+        /// Changing this value recreates the subnet.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Network ID of subnet
+        /// The id of the network.
+        /// Changing this forces a new resource to be created.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Region of network/subnet
+        /// The region in which the network subnet will be created.
+        /// Ex.: "GRA1". Changing this value recreates the resource.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Use OVH default DNS
+        /// Set to false if you want to use your DNS resolver.
+        /// Changing this value recreates the resource.
         /// </summary>
         [Input("useDefaultPublicDnsResolver")]
         public Input<bool>? UseDefaultPublicDnsResolver { get; set; }

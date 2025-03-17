@@ -7,20 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type VpsIam struct {
-	// Resource display name
+	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id *string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn *string `pulumi:"urn"`
 }
 
@@ -36,13 +36,13 @@ type VpsIamInput interface {
 }
 
 type VpsIamArgs struct {
-	// Resource display name
+	// Custom display name
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn pulumi.StringPtrInput `pulumi:"urn"`
 }
 
@@ -123,22 +123,22 @@ func (o VpsIamOutput) ToVpsIamPtrOutputWithContext(ctx context.Context) VpsIamPt
 	}).(VpsIamPtrOutput)
 }
 
-// Resource display name
+// Custom display name
 func (o VpsIamOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource in the IAM
 func (o VpsIamOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsIam) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 func (o VpsIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VpsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// URN of the private database, used when writing IAM policies
 func (o VpsIamOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
 }
@@ -167,7 +167,7 @@ func (o VpsIamPtrOutput) Elem() VpsIamOutput {
 	}).(VpsIamOutput)
 }
 
-// Resource display name
+// Custom display name
 func (o VpsIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsIam) *string {
 		if v == nil {
@@ -177,7 +177,7 @@ func (o VpsIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource in the IAM
 func (o VpsIamPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsIam) *string {
 		if v == nil {
@@ -187,7 +187,7 @@ func (o VpsIamPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 func (o VpsIamPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpsIam) map[string]string {
 		if v == nil {
@@ -197,7 +197,7 @@ func (o VpsIamPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// URN of the private database, used when writing IAM policies
 func (o VpsIamPtrOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsIam) *string {
 		if v == nil {
@@ -208,15 +208,23 @@ func (o VpsIamPtrOutput) Urn() pulumi.StringPtrOutput {
 }
 
 type VpsModel struct {
-	AvailableOptions     []string `pulumi:"availableOptions"`
-	Datacenters          []string `pulumi:"datacenters"`
-	Disk                 *float64 `pulumi:"disk"`
+	// All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+	AvailableOptions []string `pulumi:"availableOptions"`
+	// Datacenters where this model is available
+	Datacenters []string `pulumi:"datacenters"`
+	// Disk capacity of this VPS
+	Disk *float64 `pulumi:"disk"`
+	// Maximum number of additional IPs
 	MaximumAdditionnalIp *float64 `pulumi:"maximumAdditionnalIp"`
-	Memory               *float64 `pulumi:"memory"`
-	Name                 *string  `pulumi:"name"`
-	Offer                *string  `pulumi:"offer"`
-	Vcore                *float64 `pulumi:"vcore"`
-	// All versions that VPS can have
+	// RAM of the VPS
+	Memory *float64 `pulumi:"memory"`
+	// Name of the VPS
+	Name *string `pulumi:"name"`
+	// Description of this VPS offer
+	Offer *string `pulumi:"offer"`
+	// Number of vcores
+	Vcore *float64 `pulumi:"vcore"`
+	// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
 	Version *string `pulumi:"version"`
 }
 
@@ -232,15 +240,23 @@ type VpsModelInput interface {
 }
 
 type VpsModelArgs struct {
-	AvailableOptions     pulumi.StringArrayInput `pulumi:"availableOptions"`
-	Datacenters          pulumi.StringArrayInput `pulumi:"datacenters"`
-	Disk                 pulumi.Float64PtrInput  `pulumi:"disk"`
-	MaximumAdditionnalIp pulumi.Float64PtrInput  `pulumi:"maximumAdditionnalIp"`
-	Memory               pulumi.Float64PtrInput  `pulumi:"memory"`
-	Name                 pulumi.StringPtrInput   `pulumi:"name"`
-	Offer                pulumi.StringPtrInput   `pulumi:"offer"`
-	Vcore                pulumi.Float64PtrInput  `pulumi:"vcore"`
-	// All versions that VPS can have
+	// All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+	AvailableOptions pulumi.StringArrayInput `pulumi:"availableOptions"`
+	// Datacenters where this model is available
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// Disk capacity of this VPS
+	Disk pulumi.Float64PtrInput `pulumi:"disk"`
+	// Maximum number of additional IPs
+	MaximumAdditionnalIp pulumi.Float64PtrInput `pulumi:"maximumAdditionnalIp"`
+	// RAM of the VPS
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
+	// Name of the VPS
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Description of this VPS offer
+	Offer pulumi.StringPtrInput `pulumi:"offer"`
+	// Number of vcores
+	Vcore pulumi.Float64PtrInput `pulumi:"vcore"`
+	// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -321,39 +337,47 @@ func (o VpsModelOutput) ToVpsModelPtrOutputWithContext(ctx context.Context) VpsM
 	}).(VpsModelPtrOutput)
 }
 
+// All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
 func (o VpsModelOutput) AvailableOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpsModel) []string { return v.AvailableOptions }).(pulumi.StringArrayOutput)
 }
 
+// Datacenters where this model is available
 func (o VpsModelOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpsModel) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
+// Disk capacity of this VPS
 func (o VpsModelOutput) Disk() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VpsModel) *float64 { return v.Disk }).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of additional IPs
 func (o VpsModelOutput) MaximumAdditionnalIp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VpsModel) *float64 { return v.MaximumAdditionnalIp }).(pulumi.Float64PtrOutput)
 }
 
+// RAM of the VPS
 func (o VpsModelOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VpsModel) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
+// Name of the VPS
 func (o VpsModelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsModel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Description of this VPS offer
 func (o VpsModelOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsModel) *string { return v.Offer }).(pulumi.StringPtrOutput)
 }
 
+// Number of vcores
 func (o VpsModelOutput) Vcore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VpsModel) *float64 { return v.Vcore }).(pulumi.Float64PtrOutput)
 }
 
-// All versions that VPS can have
+// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
 func (o VpsModelOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsModel) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -382,6 +406,7 @@ func (o VpsModelPtrOutput) Elem() VpsModelOutput {
 	}).(VpsModelOutput)
 }
 
+// All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
 func (o VpsModelPtrOutput) AvailableOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpsModel) []string {
 		if v == nil {
@@ -391,6 +416,7 @@ func (o VpsModelPtrOutput) AvailableOptions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Datacenters where this model is available
 func (o VpsModelPtrOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpsModel) []string {
 		if v == nil {
@@ -400,6 +426,7 @@ func (o VpsModelPtrOutput) Datacenters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Disk capacity of this VPS
 func (o VpsModelPtrOutput) Disk() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VpsModel) *float64 {
 		if v == nil {
@@ -409,6 +436,7 @@ func (o VpsModelPtrOutput) Disk() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of additional IPs
 func (o VpsModelPtrOutput) MaximumAdditionnalIp() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VpsModel) *float64 {
 		if v == nil {
@@ -418,6 +446,7 @@ func (o VpsModelPtrOutput) MaximumAdditionnalIp() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// RAM of the VPS
 func (o VpsModelPtrOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VpsModel) *float64 {
 		if v == nil {
@@ -427,6 +456,7 @@ func (o VpsModelPtrOutput) Memory() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Name of the VPS
 func (o VpsModelPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsModel) *string {
 		if v == nil {
@@ -436,6 +466,7 @@ func (o VpsModelPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Description of this VPS offer
 func (o VpsModelPtrOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsModel) *string {
 		if v == nil {
@@ -445,6 +476,7 @@ func (o VpsModelPtrOutput) Offer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of vcores
 func (o VpsModelPtrOutput) Vcore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VpsModel) *float64 {
 		if v == nil {
@@ -454,7 +486,7 @@ func (o VpsModelPtrOutput) Vcore() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// All versions that VPS can have
+// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
 func (o VpsModelPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsModel) *string {
 		if v == nil {
@@ -764,14 +796,15 @@ func (o VpsOrderDetailArrayOutput) Index(i pulumi.IntInput) VpsOrderDetailOutput
 }
 
 type VpsPlan struct {
+	// Representation of a configuration item for personalizing product
 	Configurations []VpsPlanConfiguration `pulumi:"configurations"`
-	// Duration selected for the purchase of the product
+	// duration
 	Duration string `pulumi:"duration"`
 	// Cart item to be linked
 	ItemId *float64 `pulumi:"itemId"`
-	// Identifier of the option offer
+	// Plan code
 	PlanCode string `pulumi:"planCode"`
-	// Pricing mode selected for the purchase of the product
+	// Pricing model identifier
 	PricingMode string `pulumi:"pricingMode"`
 	// Quantity of product desired
 	Quantity *float64 `pulumi:"quantity"`
@@ -789,14 +822,15 @@ type VpsPlanInput interface {
 }
 
 type VpsPlanArgs struct {
+	// Representation of a configuration item for personalizing product
 	Configurations VpsPlanConfigurationArrayInput `pulumi:"configurations"`
-	// Duration selected for the purchase of the product
+	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
 	// Cart item to be linked
 	ItemId pulumi.Float64PtrInput `pulumi:"itemId"`
-	// Identifier of the option offer
+	// Plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
-	// Pricing mode selected for the purchase of the product
+	// Pricing model identifier
 	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
 	// Quantity of product desired
 	Quantity pulumi.Float64PtrInput `pulumi:"quantity"`
@@ -853,11 +887,12 @@ func (o VpsPlanOutput) ToVpsPlanOutputWithContext(ctx context.Context) VpsPlanOu
 	return o
 }
 
+// Representation of a configuration item for personalizing product
 func (o VpsPlanOutput) Configurations() VpsPlanConfigurationArrayOutput {
 	return o.ApplyT(func(v VpsPlan) []VpsPlanConfiguration { return v.Configurations }).(VpsPlanConfigurationArrayOutput)
 }
 
-// Duration selected for the purchase of the product
+// duration
 func (o VpsPlanOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlan) string { return v.Duration }).(pulumi.StringOutput)
 }
@@ -867,12 +902,12 @@ func (o VpsPlanOutput) ItemId() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VpsPlan) *float64 { return v.ItemId }).(pulumi.Float64PtrOutput)
 }
 
-// Identifier of the option offer
+// Plan code
 func (o VpsPlanOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlan) string { return v.PlanCode }).(pulumi.StringOutput)
 }
 
-// Pricing mode selected for the purchase of the product
+// Pricing model identifier
 func (o VpsPlanOutput) PricingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlan) string { return v.PricingMode }).(pulumi.StringOutput)
 }
@@ -903,9 +938,9 @@ func (o VpsPlanArrayOutput) Index(i pulumi.IntInput) VpsPlanOutput {
 }
 
 type VpsPlanConfiguration struct {
-	// Label for your configuration item
+	// Identifier of the resource
 	Label string `pulumi:"label"`
-	// Value or resource URL on API.OVH.COM of your configuration item
+	// Path to the resource in api.ovh.com
 	Value string `pulumi:"value"`
 }
 
@@ -921,9 +956,9 @@ type VpsPlanConfigurationInput interface {
 }
 
 type VpsPlanConfigurationArgs struct {
-	// Label for your configuration item
+	// Identifier of the resource
 	Label pulumi.StringInput `pulumi:"label"`
-	// Value or resource URL on API.OVH.COM of your configuration item
+	// Path to the resource in api.ovh.com
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -978,12 +1013,12 @@ func (o VpsPlanConfigurationOutput) ToVpsPlanConfigurationOutputWithContext(ctx 
 	return o
 }
 
-// Label for your configuration item
+// Identifier of the resource
 func (o VpsPlanConfigurationOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Value or resource URL on API.OVH.COM of your configuration item
+// Path to the resource in api.ovh.com
 func (o VpsPlanConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1009,12 +1044,13 @@ func (o VpsPlanConfigurationArrayOutput) Index(i pulumi.IntInput) VpsPlanConfigu
 }
 
 type VpsPlanOption struct {
+	// Representation of a configuration item for personalizing product
 	Configurations []VpsPlanOptionConfiguration `pulumi:"configurations"`
-	// Duration selected for the purchase of the product
+	// duration
 	Duration string `pulumi:"duration"`
-	// Identifier of the option offer
+	// Plan code
 	PlanCode string `pulumi:"planCode"`
-	// Pricing mode selected for the purchase of the product
+	// Pricing model identifier
 	PricingMode string `pulumi:"pricingMode"`
 	// Quantity of product desired
 	Quantity float64 `pulumi:"quantity"`
@@ -1032,12 +1068,13 @@ type VpsPlanOptionInput interface {
 }
 
 type VpsPlanOptionArgs struct {
+	// Representation of a configuration item for personalizing product
 	Configurations VpsPlanOptionConfigurationArrayInput `pulumi:"configurations"`
-	// Duration selected for the purchase of the product
+	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// Identifier of the option offer
+	// Plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
-	// Pricing mode selected for the purchase of the product
+	// Pricing model identifier
 	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
 	// Quantity of product desired
 	Quantity pulumi.Float64Input `pulumi:"quantity"`
@@ -1094,21 +1131,22 @@ func (o VpsPlanOptionOutput) ToVpsPlanOptionOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Representation of a configuration item for personalizing product
 func (o VpsPlanOptionOutput) Configurations() VpsPlanOptionConfigurationArrayOutput {
 	return o.ApplyT(func(v VpsPlanOption) []VpsPlanOptionConfiguration { return v.Configurations }).(VpsPlanOptionConfigurationArrayOutput)
 }
 
-// Duration selected for the purchase of the product
+// duration
 func (o VpsPlanOptionOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOption) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Identifier of the option offer
+// Plan code
 func (o VpsPlanOptionOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOption) string { return v.PlanCode }).(pulumi.StringOutput)
 }
 
-// Pricing mode selected for the purchase of the product
+// Pricing model identifier
 func (o VpsPlanOptionOutput) PricingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOption) string { return v.PricingMode }).(pulumi.StringOutput)
 }
@@ -1139,9 +1177,9 @@ func (o VpsPlanOptionArrayOutput) Index(i pulumi.IntInput) VpsPlanOptionOutput {
 }
 
 type VpsPlanOptionConfiguration struct {
-	// Label for your configuration item
+	// Identifier of the resource
 	Label string `pulumi:"label"`
-	// Value or resource URL on API.OVH.COM of your configuration item
+	// Path to the resource in api.ovh.com
 	Value string `pulumi:"value"`
 }
 
@@ -1157,9 +1195,9 @@ type VpsPlanOptionConfigurationInput interface {
 }
 
 type VpsPlanOptionConfigurationArgs struct {
-	// Label for your configuration item
+	// Identifier of the resource
 	Label pulumi.StringInput `pulumi:"label"`
-	// Value or resource URL on API.OVH.COM of your configuration item
+	// Path to the resource in api.ovh.com
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1214,12 +1252,12 @@ func (o VpsPlanOptionConfigurationOutput) ToVpsPlanOptionConfigurationOutputWith
 	return o
 }
 
-// Label for your configuration item
+// Identifier of the resource
 func (o VpsPlanOptionConfigurationOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOptionConfiguration) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Value or resource URL on API.OVH.COM of your configuration item
+// Path to the resource in api.ovh.com
 func (o VpsPlanOptionConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v VpsPlanOptionConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }

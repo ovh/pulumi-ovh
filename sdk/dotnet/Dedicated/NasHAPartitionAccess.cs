@@ -9,24 +9,69 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dedicated
 {
+    /// <summary>
+    /// Provides a resource for managing access rights to partitions on HA-NAS services
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionAccess("myPartition", new()
+    ///     {
+    ///         AclDescription = "Description of the ACL",
+    ///         Ip = "123.123.123.123/32",
+    ///         PartitionName = "my-partition",
+    ///         ServiceName = "zpool-12345",
+    ///         Type = "readwrite",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess")]
     public partial class NasHAPartitionAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A brief description of the ACL
+        /// A brief description of the acl
         /// </summary>
         [Output("aclDescription")]
         public Output<string?> AclDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// IP block in x.x.x.x/x format
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the partition
+        /// </summary>
         [Output("partitionName")]
         public Output<string> PartitionName { get; private set; } = null!;
 
+        /// <summary>
+        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// One of "readwrite", "readonly"
+        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
@@ -78,20 +123,32 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class NasHAPartitionAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A brief description of the ACL
+        /// A brief description of the acl
         /// </summary>
         [Input("aclDescription")]
         public Input<string>? AclDescription { get; set; }
 
+        /// <summary>
+        /// IP block in x.x.x.x/x format
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the partition
+        /// </summary>
         [Input("partitionName", required: true)]
         public Input<string> PartitionName { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// One of "readwrite", "readonly"
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -104,20 +161,32 @@ namespace Pulumi.Ovh.Dedicated
     public sealed class NasHAPartitionAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A brief description of the ACL
+        /// A brief description of the acl
         /// </summary>
         [Input("aclDescription")]
         public Input<string>? AclDescription { get; set; }
 
+        /// <summary>
+        /// IP block in x.x.x.x/x format
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// Name of the partition
+        /// </summary>
         [Input("partitionName")]
         public Input<string>? PartitionName { get; set; }
 
+        /// <summary>
+        /// The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// One of "readwrite", "readonly"
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

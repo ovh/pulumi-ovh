@@ -23,8 +23,9 @@ class S3CredentialArgs:
                  user_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a S3Credential resource.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "user_id", user_id)
@@ -33,7 +34,8 @@ class S3CredentialArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name of the resource representing the ID of the cloud project.
+        The ID of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -45,7 +47,7 @@ class S3CredentialArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
-        The user ID
+        The ID of a public cloud project's user.
         """
         return pulumi.get(self, "user_id")
 
@@ -64,8 +66,11 @@ class _S3CredentialState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering S3Credential resources.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] access_key_id: the Access Key ID
+        :param pulumi.Input[str] secret_access_key: (Sensitive) the Secret Access Key
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -81,6 +86,9 @@ class _S3CredentialState:
     @property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        the Access Key ID
+        """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
@@ -99,6 +107,9 @@ class _S3CredentialState:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Sensitive) the Secret Access Key
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -109,7 +120,8 @@ class _S3CredentialState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name of the resource representing the ID of the cloud project.
+        The ID of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -121,7 +133,7 @@ class _S3CredentialState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The user ID
+        The ID of a public cloud project's user.
         """
         return pulumi.get(self, "user_id")
 
@@ -139,11 +151,23 @@ class S3Credential(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a S3Credential resource with the given unique name, props, and options.
+        Creates an S3 Credential for a user in a public cloud project.
+
+        ## Import
+
+        OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         ...
     @overload
@@ -152,7 +176,18 @@ class S3Credential(pulumi.CustomResource):
                  args: S3CredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a S3Credential resource with the given unique name, props, and options.
+        Creates an S3 Credential for a user in a public cloud project.
+
+        ## Import
+
+        OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/s3Credential:S3Credential s3_credential service_name/user_id/access_key_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param S3CredentialArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -212,8 +247,11 @@ class S3Credential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] service_name: Service name of the resource representing the ID of the cloud project.
-        :param pulumi.Input[str] user_id: The user ID
+        :param pulumi.Input[str] access_key_id: the Access Key ID
+        :param pulumi.Input[str] secret_access_key: (Sensitive) the Secret Access Key
+        :param pulumi.Input[str] service_name: The ID of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] user_id: The ID of a public cloud project's user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -229,6 +267,9 @@ class S3Credential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> pulumi.Output[str]:
+        """
+        the Access Key ID
+        """
         return pulumi.get(self, "access_key_id")
 
     @property
@@ -239,13 +280,17 @@ class S3Credential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> pulumi.Output[str]:
+        """
+        (Sensitive) the Secret Access Key
+        """
         return pulumi.get(self, "secret_access_key")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name of the resource representing the ID of the cloud project.
+        The ID of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -253,7 +298,7 @@ class S3Credential(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        The user ID
+        The ID of a public cloud project's user.
         """
         return pulumi.get(self, "user_id")
 

@@ -9,6 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
+    /// <summary>
+    /// Reference a DBaaS logs role.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ro = new Ovh.Dbaas.LogsRole("ro", new()
+    ///     {
+    ///         Description = "Devops - RO",
+    ///         ServiceName = "ldp-xx-xxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud DBaaS Log Role can be imported using the `service_name` and `role_id` of the role, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsRole:LogsRole")]
     public partial class LogsRole : global::Pulumi.CustomResource
     {
@@ -31,13 +63,13 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of members in the role
+        /// number of member for the role
         /// </summary>
         [Output("nbMember")]
         public Output<int> NbMember { get; private set; } = null!;
 
         /// <summary>
-        /// Number of permissions assigned to the role
+        /// number of configured permission for the role
         /// </summary>
         [Output("nbPermission")]
         public Output<int> NbPermission { get; private set; } = null!;
@@ -152,13 +184,13 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of members in the role
+        /// number of member for the role
         /// </summary>
         [Input("nbMember")]
         public Input<int>? NbMember { get; set; }
 
         /// <summary>
-        /// Number of permissions assigned to the role
+        /// number of configured permission for the role
         /// </summary>
         [Input("nbPermission")]
         public Input<int>? NbPermission { get; set; }

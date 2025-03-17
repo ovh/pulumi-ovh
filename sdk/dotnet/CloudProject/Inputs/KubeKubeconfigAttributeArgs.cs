@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     {
         [Input("clientCertificate")]
         private Input<string>? _clientCertificate;
+
+        /// <summary>
+        /// The kubernetes API server client certificate.
+        /// </summary>
         public Input<string>? ClientCertificate
         {
             get => _clientCertificate;
@@ -26,6 +30,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("clientKey")]
         private Input<string>? _clientKey;
+
+        /// <summary>
+        /// The kubernetes API server client key.
+        /// </summary>
         public Input<string>? ClientKey
         {
             get => _clientKey;
@@ -38,6 +46,10 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
         [Input("clusterCaCertificate")]
         private Input<string>? _clusterCaCertificate;
+
+        /// <summary>
+        /// The kubernetes API server CA certificate.
+        /// </summary>
         public Input<string>? ClusterCaCertificate
         {
             get => _clusterCaCertificate;
@@ -48,6 +60,9 @@ namespace Pulumi.Ovh.CloudProject.Inputs
             }
         }
 
+        /// <summary>
+        /// The kubernetes API server URL.
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 

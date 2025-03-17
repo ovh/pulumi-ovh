@@ -4,6 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Manage backups for the given volume in a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const backup = new ovh.cloudproject.VolumeBackup("backup", {
+ *     regionName: "GRA9",
+ *     serviceName: "<public cloud project ID>",
+ *     volumeId: "<volume ID>",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A volume backup in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   id = "<service_name>/<region_name>/<id>"
+ *
+ *   to = ovh_cloud_project_volume_backup.backup
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=backup.tf
+ *
+ * $ pulumi up
+ *
+ * The file `backup.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ */
 export class VolumeBackup extends pulumi.CustomResource {
     /**
      * Get an existing VolumeBackup resource's state with the given name, ID, and optional extra

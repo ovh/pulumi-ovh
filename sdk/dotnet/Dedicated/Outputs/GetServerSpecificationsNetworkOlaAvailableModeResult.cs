@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class GetServerSpecificationsNetworkOlaAvailableModeResult
     {
         /// <summary>
-        /// Is it the default configuration of the server
+        /// Whether it is the default configuration of the server
         /// </summary>
         public readonly bool Default;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult> Interfaces;
         /// <summary>
-        /// Mode name
+        /// Switch name
         /// </summary>
         public readonly string Name;
 

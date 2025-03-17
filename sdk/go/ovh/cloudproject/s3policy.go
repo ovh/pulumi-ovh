@@ -8,18 +8,103 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Set the S3 Policy of a public cloud project user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := cloudproject.NewUser(ctx, "user", &cloudproject.UserArgs{
+//				ServiceName: pulumi.String("XXX"),
+//				Description: pulumi.String("my user"),
+//				RoleNames: pulumi.StringArray{
+//					pulumi.String("objectstore_operator"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudproject.NewS3Credential(ctx, "myS3Credentials", &cloudproject.S3CredentialArgs{
+//				ServiceName: user.ServiceName,
+//				UserId:      user.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Statement": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Sid":    "RWContainer",
+//						"Effect": "Allow",
+//						"Action": []string{
+//							"s3:GetObject",
+//							"s3:PutObject",
+//							"s3:DeleteObject",
+//							"s3:ListBucket",
+//							"s3:ListMultipartUploadParts",
+//							"s3:ListBucketMultipartUploads",
+//							"s3:AbortMultipartUpload",
+//							"s3:GetBucketLocation",
+//						},
+//						"Resource": []string{
+//							"arn:aws:s3:::hp-bucket",
+//							"arn:aws:s3:::hp-bucket/*",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudproject.NewS3Policy(ctx, "policy", &cloudproject.S3PolicyArgs{
+//				ServiceName: user.ServiceName,
+//				UserId:      user.ID(),
+//				Policy:      pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud User S3 Policy can be imported using the `service_name`, `user_id` of the policy, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/s3Policy:S3Policy policy service_name/user_id
+// ```
 type S3Policy struct {
 	pulumi.CustomResourceState
 
-	// The policy document. This is a JSON formatted string.
+	// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
 	Policy pulumi.StringOutput `pulumi:"policy"`
-	// Service name of the resource representing the ID of the cloud project.
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The user ID
+	// The ID of a public cloud project's user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -62,20 +147,22 @@ func GetS3Policy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering S3Policy resources.
 type s3policyState struct {
-	// The policy document. This is a JSON formatted string.
+	// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
 	Policy *string `pulumi:"policy"`
-	// Service name of the resource representing the ID of the cloud project.
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
-	// The user ID
+	// The ID of a public cloud project's user.
 	UserId *string `pulumi:"userId"`
 }
 
 type S3PolicyState struct {
-	// The policy document. This is a JSON formatted string.
+	// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
 	Policy pulumi.StringPtrInput
-	// Service name of the resource representing the ID of the cloud project.
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
-	// The user ID
+	// The ID of a public cloud project's user.
 	UserId pulumi.StringPtrInput
 }
 
@@ -84,21 +171,23 @@ func (S3PolicyState) ElementType() reflect.Type {
 }
 
 type s3policyArgs struct {
-	// The policy document. This is a JSON formatted string.
+	// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
 	Policy string `pulumi:"policy"`
-	// Service name of the resource representing the ID of the cloud project.
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
-	// The user ID
+	// The ID of a public cloud project's user.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a S3Policy resource.
 type S3PolicyArgs struct {
-	// The policy document. This is a JSON formatted string.
+	// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
 	Policy pulumi.StringInput
-	// Service name of the resource representing the ID of the cloud project.
+	// The ID of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
-	// The user ID
+	// The ID of a public cloud project's user.
 	UserId pulumi.StringInput
 }
 
@@ -189,17 +278,18 @@ func (o S3PolicyOutput) ToS3PolicyOutputWithContext(ctx context.Context) S3Polic
 	return o
 }
 
-// The policy document. This is a JSON formatted string.
+// The policy document. This is a JSON formatted string. See examples of policies on [public documentation](https://docs.ovh.com/gb/en/storage/s3/identity-and-access-management/).
 func (o S3PolicyOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Policy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
-// Service name of the resource representing the ID of the cloud project.
+// The ID of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o S3PolicyOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Policy) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The user ID
+// The ID of a public cloud project's user.
 func (o S3PolicyOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *S3Policy) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

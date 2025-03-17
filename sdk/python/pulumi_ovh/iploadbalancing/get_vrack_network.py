@@ -52,6 +52,9 @@ class GetVrackNetworkResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Human readable name for your vrack network
+        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -65,6 +68,9 @@ class GetVrackNetworkResult:
     @property
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> str:
+        """
+        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        """
         return pulumi.get(self, "nat_ip")
 
     @property
@@ -75,11 +81,17 @@ class GetVrackNetworkResult:
     @property
     @pulumi.getter
     def subnet(self) -> str:
+        """
+        IP block of the private network in the vRack
+        """
         return pulumi.get(self, "subnet")
 
     @property
     @pulumi.getter
     def vlan(self) -> int:
+        """
+        VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
+        """
         return pulumi.get(self, "vlan")
 
     @property
@@ -107,7 +119,21 @@ def get_vrack_network(service_name: Optional[str] = None,
                       vrack_network_id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVrackNetworkResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb_network = ovh.IpLoadBalancing.get_vrack_network(service_name="XXXXXX",
+        vrack_network_id="yyy")
+    ```
+
+
+    :param str service_name: The internal name of your IP load balancing
+    :param int vrack_network_id: Internal Load Balancer identifier of the vRack private network
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -127,7 +153,21 @@ def get_vrack_network_output(service_name: Optional[pulumi.Input[str]] = None,
                              vrack_network_id: Optional[pulumi.Input[int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVrackNetworkResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    lb_network = ovh.IpLoadBalancing.get_vrack_network(service_name="XXXXXX",
+        vrack_network_id="yyy")
+    ```
+
+
+    :param str service_name: The internal name of your IP load balancing
+    :param int vrack_network_id: Internal Load Balancer identifier of the vRack private network
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

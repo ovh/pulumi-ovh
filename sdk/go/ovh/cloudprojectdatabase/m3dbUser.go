@@ -8,27 +8,38 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// OVHcloud Managed M3DB clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProjectDatabase/m3DbUser:M3DbUser my_user service_name/cluster_id/id
+// ```
 type M3DbUser struct {
 	pulumi.CustomResourceState
 
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Date of the creation of the user
+	// Date of the creation of the user.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Group of the user
+	// Group of the user.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	ServiceName   pulumi.StringOutput    `pulumi:"serviceName"`
-	// Current status of the user
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Current status of the user.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -72,38 +83,42 @@ func GetM3DbUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering M3DbUser resources.
 type m3dbUserState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Date of the creation of the user
+	// Date of the creation of the user.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Group of the user
+	// Group of the user.
 	Group *string `pulumi:"group"`
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	ServiceName   *string `pulumi:"serviceName"`
-	// Current status of the user
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
+	// Current status of the user.
 	Status *string `pulumi:"status"`
 }
 
 type M3DbUserState struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Date of the creation of the user
+	// Date of the creation of the user.
 	CreatedAt pulumi.StringPtrInput
-	// Group of the user
+	// Group of the user.
 	Group pulumi.StringPtrInput
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
-	// Password of the user
+	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	ServiceName   pulumi.StringPtrInput
-	// Current status of the user
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
+	// Current status of the user.
 	Status pulumi.StringPtrInput
 }
 
@@ -112,28 +127,32 @@ func (M3DbUserState) ElementType() reflect.Type {
 }
 
 type m3dbUserArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Group of the user
+	// Group of the user.
 	Group *string `pulumi:"group"`
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	ServiceName   string  `pulumi:"serviceName"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a M3DbUser resource.
 type M3DbUserArgs struct {
-	// Id of the database cluster
+	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Group of the user
+	// Group of the user.
 	Group pulumi.StringPtrInput
-	// Name of the user
+	// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	ServiceName   pulumi.StringInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringInput
 }
 
 func (M3DbUserArgs) ElementType() reflect.Type {
@@ -223,27 +242,27 @@ func (o M3DbUserOutput) ToM3DbUserOutputWithContext(ctx context.Context) M3DbUse
 	return o
 }
 
-// Id of the database cluster
+// Cluster ID.
 func (o M3DbUserOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Date of the creation of the user
+// Date of the creation of the user.
 func (o M3DbUserOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Group of the user
+// Group of the user.
 func (o M3DbUserOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Name of the user
+// Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
 func (o M3DbUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Password of the user
+// (Sensitive) Password of the user.
 func (o M3DbUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -253,11 +272,13 @@ func (o M3DbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o M3DbUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Current status of the user
+// Current status of the user.
 func (o M3DbUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

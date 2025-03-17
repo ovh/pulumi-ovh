@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     public sealed class ServerReinstallTaskStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disk group id (default is 0, meaning automatic)
+        /// Disk group id to install the OS to (default is 0, meaning automatic).
         /// </summary>
         [Input("diskGroupId")]
         public Input<int>? DiskGroupId { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         private InputList<Inputs.ServerReinstallTaskStorageHardwareRaidArgs>? _hardwareRaids;
 
         /// <summary>
-        /// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        /// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStorageHardwareRaidArgs> HardwareRaids
         {

@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a container registry associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryResult
@@ -23,25 +51,37 @@ func LookupContainerRegistry(ctx *pulumi.Context, args *LookupContainerRegistryA
 
 // A collection of arguments for invoking getContainerRegistry.
 type LookupContainerRegistryArgs struct {
-	RegistryId  string `pulumi:"registryId"`
+	// Registry ID
+	RegistryId string `pulumi:"registryId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getContainerRegistry.
 type LookupContainerRegistryResult struct {
+	// Registry creation date
 	CreatedAt string `pulumi:"createdAt"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	ProjectId   string `pulumi:"projectId"`
+	Id string `pulumi:"id"`
+	// Registry name
+	Name string `pulumi:"name"`
+	// Project ID of your registry
+	ProjectId string `pulumi:"projectId"`
+	// Region of the registry
 	Region      string `pulumi:"region"`
 	RegistryId  string `pulumi:"registryId"`
 	ServiceName string `pulumi:"serviceName"`
-	Size        int    `pulumi:"size"`
-	Status      string `pulumi:"status"`
-	UpdatedAt   string `pulumi:"updatedAt"`
-	Url         string `pulumi:"url"`
-	Version     string `pulumi:"version"`
+	// Current size of the registry (bytes)
+	Size int `pulumi:"size"`
+	// Registry status
+	Status string `pulumi:"status"`
+	// Registry last update date
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Access url of the registry
+	Url string `pulumi:"url"`
+	// Version of your registry
+	Version string `pulumi:"version"`
 }
 
 func LookupContainerRegistryOutput(ctx *pulumi.Context, args LookupContainerRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistryResultOutput {
@@ -55,7 +95,10 @@ func LookupContainerRegistryOutput(ctx *pulumi.Context, args LookupContainerRegi
 
 // A collection of arguments for invoking getContainerRegistry.
 type LookupContainerRegistryOutputArgs struct {
-	RegistryId  pulumi.StringInput `pulumi:"registryId"`
+	// Registry ID
+	RegistryId pulumi.StringInput `pulumi:"registryId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -78,6 +121,7 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 	return o
 }
 
+// Registry creation date
 func (o LookupContainerRegistryResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -87,14 +131,17 @@ func (o LookupContainerRegistryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Registry name
 func (o LookupContainerRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Project ID of your registry
 func (o LookupContainerRegistryResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// Region of the registry
 func (o LookupContainerRegistryResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -107,22 +154,27 @@ func (o LookupContainerRegistryResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Current size of the registry (bytes)
 func (o LookupContainerRegistryResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// Registry status
 func (o LookupContainerRegistryResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Registry last update date
 func (o LookupContainerRegistryResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// Access url of the registry
 func (o LookupContainerRegistryResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Version of your registry
 func (o LookupContainerRegistryResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.Version }).(pulumi.StringOutput)
 }

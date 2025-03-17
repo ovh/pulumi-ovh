@@ -315,7 +315,40 @@ class ServiceKey(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServiceKey resource with the given unique name, props, and options.
+        Creates a Service Key in an OVHcloud KMS.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        key_symetric = ovh.okms.ServiceKey("keySymetric",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            operations=[
+                "encrypt",
+                "decrypt",
+            ],
+            size=256,
+            type="oct")
+        key_rsa = ovh.okms.ServiceKey("keyRsa",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            operations=[
+                "sign",
+                "verify",
+            ],
+            size=2048,
+            type="RSA")
+        key_ecdsa = ovh.okms.ServiceKey("keyEcdsa",
+            curve="P-256",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            operations=[
+                "sign",
+                "verify",
+            ],
+            type="EC")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] context: Context of the key
@@ -333,7 +366,40 @@ class ServiceKey(pulumi.CustomResource):
                  args: ServiceKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceKey resource with the given unique name, props, and options.
+        Creates a Service Key in an OVHcloud KMS.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        key_symetric = ovh.okms.ServiceKey("keySymetric",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            operations=[
+                "encrypt",
+                "decrypt",
+            ],
+            size=256,
+            type="oct")
+        key_rsa = ovh.okms.ServiceKey("keyRsa",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            operations=[
+                "sign",
+                "verify",
+            ],
+            size=2048,
+            type="RSA")
+        key_ecdsa = ovh.okms.ServiceKey("keyEcdsa",
+            curve="P-256",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            operations=[
+                "sign",
+                "verify",
+            ],
+            type="EC")
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServiceKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

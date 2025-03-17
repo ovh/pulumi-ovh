@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ovh.GetVrackNetworks(ctx, &ovh.GetVrackNetworksArgs{
+//				ServiceName: "XXXXXX",
+//				Subnet:      pulumi.StringRef("10.0.0.0/24"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVrackNetworks(ctx *pulumi.Context, args *GetVrackNetworksArgs, opts ...pulumi.InvokeOption) (*GetVrackNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVrackNetworksResult
@@ -23,15 +51,19 @@ func GetVrackNetworks(ctx *pulumi.Context, args *GetVrackNetworksArgs, opts ...p
 
 // A collection of arguments for invoking getVrackNetworks.
 type GetVrackNetworksArgs struct {
-	ServiceName string  `pulumi:"serviceName"`
-	Subnet      *string `pulumi:"subnet"`
-	VlanId      *int    `pulumi:"vlanId"`
+	// The internal name of your IP load balancing
+	ServiceName string `pulumi:"serviceName"`
+	// Filters networks on the subnet.
+	Subnet *string `pulumi:"subnet"`
+	// Filters networks on the vlan id.
+	VlanId *int `pulumi:"vlanId"`
 }
 
 // A collection of values returned by getVrackNetworks.
 type GetVrackNetworksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of vrack network ids.
 	Results     []int   `pulumi:"results"`
 	ServiceName string  `pulumi:"serviceName"`
 	Subnet      *string `pulumi:"subnet"`
@@ -49,9 +81,12 @@ func GetVrackNetworksOutput(ctx *pulumi.Context, args GetVrackNetworksOutputArgs
 
 // A collection of arguments for invoking getVrackNetworks.
 type GetVrackNetworksOutputArgs struct {
-	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
-	Subnet      pulumi.StringPtrInput `pulumi:"subnet"`
-	VlanId      pulumi.IntPtrInput    `pulumi:"vlanId"`
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Filters networks on the subnet.
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+	// Filters networks on the vlan id.
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
 }
 
 func (GetVrackNetworksOutputArgs) ElementType() reflect.Type {
@@ -78,6 +113,7 @@ func (o GetVrackNetworksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVrackNetworksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of vrack network ids.
 func (o GetVrackNetworksResultOutput) Results() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetVrackNetworksResult) []int { return v.Results }).(pulumi.IntArrayOutput)
 }

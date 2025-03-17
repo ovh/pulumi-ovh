@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetRancherPlan(ctx, &cloudproject.GetRancherPlanArgs{
+//				ProjectId: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRancherPlan(ctx *pulumi.Context, args *GetRancherPlanArgs, opts ...pulumi.InvokeOption) (*GetRancherPlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRancherPlanResult
@@ -23,15 +50,17 @@ func GetRancherPlan(ctx *pulumi.Context, args *GetRancherPlanArgs, opts ...pulum
 
 // A collection of arguments for invoking getRancherPlan.
 type GetRancherPlanArgs struct {
+	// Project ID
 	ProjectId string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getRancherPlan.
 type GetRancherPlanResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string               `pulumi:"id"`
-	Plans     []GetRancherPlanPlan `pulumi:"plans"`
-	ProjectId string               `pulumi:"projectId"`
+	Id    string               `pulumi:"id"`
+	Plans []GetRancherPlanPlan `pulumi:"plans"`
+	// Project ID
+	ProjectId string `pulumi:"projectId"`
 }
 
 func GetRancherPlanOutput(ctx *pulumi.Context, args GetRancherPlanOutputArgs, opts ...pulumi.InvokeOption) GetRancherPlanResultOutput {
@@ -45,6 +74,7 @@ func GetRancherPlanOutput(ctx *pulumi.Context, args GetRancherPlanOutputArgs, op
 
 // A collection of arguments for invoking getRancherPlan.
 type GetRancherPlanOutputArgs struct {
+	// Project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -76,6 +106,7 @@ func (o GetRancherPlanResultOutput) Plans() GetRancherPlanPlanArrayOutput {
 	return o.ApplyT(func(v GetRancherPlanResult) []GetRancherPlanPlan { return v.Plans }).(GetRancherPlanPlanArrayOutput)
 }
 
+// Project ID
 func (o GetRancherPlanResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRancherPlanResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }

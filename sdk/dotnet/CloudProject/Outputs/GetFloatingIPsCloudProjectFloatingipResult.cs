@@ -14,15 +14,15 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetFloatingIPsCloudProjectFloatingipResult
     {
         /// <summary>
-        /// Associated entity with the floating ip
+        /// Associated entity with the floating IP
         /// </summary>
         public readonly Outputs.GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult AssociatedEntity;
         /// <summary>
-        /// ID of the floating ip
+        /// ID of the floating IP
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Value of the floating ip
+        /// Value of the floating IP
         /// </summary>
         public readonly string Ip;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Status of the floating ip
+        /// Status of the floating IP (active┃down┃error)
         /// </summary>
         public readonly string Status;
 

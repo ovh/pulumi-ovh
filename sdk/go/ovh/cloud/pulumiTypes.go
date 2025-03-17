@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,11 +16,11 @@ var _ = internal.GetEnvOrDefault
 type GetProjectIam struct {
 	// Resource display name
 	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn string `pulumi:"urn"`
 }
 
@@ -38,11 +38,11 @@ type GetProjectIamInput interface {
 type GetProjectIamArgs struct {
 	// Resource display name
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn pulumi.StringInput `pulumi:"urn"`
 }
 
@@ -77,17 +77,17 @@ func (o GetProjectIamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIam) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource in the IAM
 func (o GetProjectIamOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIam) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 func (o GetProjectIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProjectIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// URN of the private database, used when writing IAM policies
 func (o GetProjectIamOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIam) string { return v.Urn }).(pulumi.StringOutput)
 }
@@ -101,19 +101,19 @@ type GetProjectsProject struct {
 	Description string `pulumi:"description"`
 	// Expiration date of your project. After this date, your project will be deleted
 	Expiration string `pulumi:"expiration"`
-	// IAM resource metadata
+	// IAM resource information
 	Iam GetProjectsProjectIam `pulumi:"iam"`
 	// Manual quota prevent automatic quota upgrade
 	ManualQuota bool `pulumi:"manualQuota"`
-	// Project order id
+	// Project order ID
 	OrderId float64 `pulumi:"orderId"`
 	// Order plan code
 	PlanCode string `pulumi:"planCode"`
-	// Project id
+	// Project ID
 	ProjectId string `pulumi:"projectId"`
 	// Project name
 	ProjectName string `pulumi:"projectName"`
-	// Service name
+	// ID of the public cloud project
 	ServiceName string `pulumi:"serviceName"`
 	// Current status
 	Status string `pulumi:"status"`
@@ -141,19 +141,19 @@ type GetProjectsProjectArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Expiration date of your project. After this date, your project will be deleted
 	Expiration pulumi.StringInput `pulumi:"expiration"`
-	// IAM resource metadata
+	// IAM resource information
 	Iam GetProjectsProjectIamInput `pulumi:"iam"`
 	// Manual quota prevent automatic quota upgrade
 	ManualQuota pulumi.BoolInput `pulumi:"manualQuota"`
-	// Project order id
+	// Project order ID
 	OrderId pulumi.Float64Input `pulumi:"orderId"`
 	// Order plan code
 	PlanCode pulumi.StringInput `pulumi:"planCode"`
-	// Project id
+	// Project ID
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Project name
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	// Service name
+	// ID of the public cloud project
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// Current status
 	Status pulumi.StringInput `pulumi:"status"`
@@ -232,7 +232,7 @@ func (o GetProjectsProjectOutput) Expiration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Expiration }).(pulumi.StringOutput)
 }
 
-// IAM resource metadata
+// IAM resource information
 func (o GetProjectsProjectOutput) Iam() GetProjectsProjectIamOutput {
 	return o.ApplyT(func(v GetProjectsProject) GetProjectsProjectIam { return v.Iam }).(GetProjectsProjectIamOutput)
 }
@@ -242,7 +242,7 @@ func (o GetProjectsProjectOutput) ManualQuota() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.ManualQuota }).(pulumi.BoolOutput)
 }
 
-// Project order id
+// Project order ID
 func (o GetProjectsProjectOutput) OrderId() pulumi.Float64Output {
 	return o.ApplyT(func(v GetProjectsProject) float64 { return v.OrderId }).(pulumi.Float64Output)
 }
@@ -252,7 +252,7 @@ func (o GetProjectsProjectOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.PlanCode }).(pulumi.StringOutput)
 }
 
-// Project id
+// Project ID
 func (o GetProjectsProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -262,7 +262,7 @@ func (o GetProjectsProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// Service name
+// ID of the public cloud project
 func (o GetProjectsProjectOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -300,11 +300,11 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 type GetProjectsProjectIam struct {
 	// Resource display name
 	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn string `pulumi:"urn"`
 }
 
@@ -322,11 +322,11 @@ type GetProjectsProjectIamInput interface {
 type GetProjectsProjectIamArgs struct {
 	// Resource display name
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn pulumi.StringInput `pulumi:"urn"`
 }
 
@@ -361,17 +361,17 @@ func (o GetProjectsProjectIamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectIam) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource in the IAM
 func (o GetProjectsProjectIamOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectIam) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 func (o GetProjectsProjectIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProjectsProjectIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// URN of the private database, used when writing IAM policies
 func (o GetProjectsProjectIamOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectIam) string { return v.Urn }).(pulumi.StringOutput)
 }

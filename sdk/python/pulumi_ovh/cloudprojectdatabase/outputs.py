@@ -32,8 +32,9 @@ class OpensearchUserAcl(dict):
                  pattern: str,
                  permission: str):
         """
-        :param str pattern: Pattern of the ACL
+        :param str pattern: Pattern of the ACL.
         :param str permission: Permission of the ACL
+               Available permission:
         """
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "permission", permission)
@@ -42,7 +43,7 @@ class OpensearchUserAcl(dict):
     @pulumi.getter
     def pattern(self) -> str:
         """
-        Pattern of the ACL
+        Pattern of the ACL.
         """
         return pulumi.get(self, "pattern")
 
@@ -51,6 +52,7 @@ class OpensearchUserAcl(dict):
     def permission(self) -> str:
         """
         Permission of the ACL
+        Available permission:
         """
         return pulumi.get(self, "permission")
 
@@ -95,11 +97,11 @@ class GetCapabilitiesEngineResult(dict):
                  ssl_modes: Sequence[str],
                  versions: Sequence[str]):
         """
-        :param str default_version: Default version used for the engine
-        :param str description: Description of the engine
-        :param str name: Engine name
-        :param Sequence[str] ssl_modes: SSL modes for this engine
-        :param Sequence[str] versions: Versions available for this engine
+        :param str default_version: Default version used for the engine.
+        :param str description: Description of the plan.
+        :param str name: Name of the plan.
+        :param Sequence[str] ssl_modes: SSL modes for this engine.
+        :param Sequence[str] versions: Versions available for this engine.
         """
         pulumi.set(__self__, "default_version", default_version)
         pulumi.set(__self__, "description", description)
@@ -111,7 +113,7 @@ class GetCapabilitiesEngineResult(dict):
     @pulumi.getter(name="defaultVersion")
     def default_version(self) -> str:
         """
-        Default version used for the engine
+        Default version used for the engine.
         """
         return pulumi.get(self, "default_version")
 
@@ -119,7 +121,7 @@ class GetCapabilitiesEngineResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the engine
+        Description of the plan.
         """
         return pulumi.get(self, "description")
 
@@ -127,7 +129,7 @@ class GetCapabilitiesEngineResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Engine name
+        Name of the plan.
         """
         return pulumi.get(self, "name")
 
@@ -135,7 +137,7 @@ class GetCapabilitiesEngineResult(dict):
     @pulumi.getter(name="sslModes")
     def ssl_modes(self) -> Sequence[str]:
         """
-        SSL modes for this engine
+        SSL modes for this engine.
         """
         return pulumi.get(self, "ssl_modes")
 
@@ -143,7 +145,7 @@ class GetCapabilitiesEngineResult(dict):
     @pulumi.getter
     def versions(self) -> Sequence[str]:
         """
-        Versions available for this engine
+        Versions available for this engine.
         """
         return pulumi.get(self, "versions")
 
@@ -156,10 +158,10 @@ class GetCapabilitiesFlavorResult(dict):
                  name: str,
                  storage: int):
         """
-        :param int core: Flavor core number
-        :param int memory: Flavor ram size in GB
-        :param str name: Name of the flavor
-        :param int storage: Flavor disk size in GB
+        :param int core: Flavor core number.
+        :param int memory: Flavor ram size in GB.
+        :param str name: Name of the plan.
+        :param int storage: Flavor disk size in GB.
         """
         pulumi.set(__self__, "core", core)
         pulumi.set(__self__, "memory", memory)
@@ -170,7 +172,7 @@ class GetCapabilitiesFlavorResult(dict):
     @pulumi.getter
     def core(self) -> int:
         """
-        Flavor core number
+        Flavor core number.
         """
         return pulumi.get(self, "core")
 
@@ -178,7 +180,7 @@ class GetCapabilitiesFlavorResult(dict):
     @pulumi.getter
     def memory(self) -> int:
         """
-        Flavor ram size in GB
+        Flavor ram size in GB.
         """
         return pulumi.get(self, "memory")
 
@@ -186,7 +188,7 @@ class GetCapabilitiesFlavorResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the flavor
+        Name of the plan.
         """
         return pulumi.get(self, "name")
 
@@ -194,7 +196,7 @@ class GetCapabilitiesFlavorResult(dict):
     @pulumi.getter
     def storage(self) -> int:
         """
-        Flavor disk size in GB
+        Flavor disk size in GB.
         """
         return pulumi.get(self, "storage")
 
@@ -205,8 +207,8 @@ class GetCapabilitiesOptionResult(dict):
                  name: str,
                  type: str):
         """
-        :param str name: Name of the option
-        :param str type: Type of the option
+        :param str name: Name of the plan.
+        :param str type: Type of the option.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -215,7 +217,7 @@ class GetCapabilitiesOptionResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the option
+        Name of the plan.
         """
         return pulumi.get(self, "name")
 
@@ -223,7 +225,7 @@ class GetCapabilitiesOptionResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the option
+        Type of the option.
         """
         return pulumi.get(self, "type")
 
@@ -235,9 +237,9 @@ class GetCapabilitiesPlanResult(dict):
                  description: str,
                  name: str):
         """
-        :param str backup_retention: Automatic backup retention duration
-        :param str description: Description of the plan
-        :param str name: Name of the plan
+        :param str backup_retention: Automatic backup retention duration.
+        :param str description: Description of the plan.
+        :param str name: Name of the plan.
         """
         pulumi.set(__self__, "backup_retention", backup_retention)
         pulumi.set(__self__, "description", description)
@@ -247,7 +249,7 @@ class GetCapabilitiesPlanResult(dict):
     @pulumi.getter(name="backupRetention")
     def backup_retention(self) -> str:
         """
-        Automatic backup retention duration
+        Automatic backup retention duration.
         """
         return pulumi.get(self, "backup_retention")
 
@@ -255,7 +257,7 @@ class GetCapabilitiesPlanResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the plan
+        Description of the plan.
         """
         return pulumi.get(self, "description")
 
@@ -263,7 +265,7 @@ class GetCapabilitiesPlanResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the plan
+        Name of the plan.
         """
         return pulumi.get(self, "name")
 
@@ -280,14 +282,14 @@ class GetDatabaseEndpointResult(dict):
                  ssl_mode: str,
                  uri: str):
         """
-        :param str component: Type of component the URI relates to
-        :param str domain: Domain of the cluster
-        :param str path: Path of the endpoint
-        :param int port: Connection port for the endpoint
-        :param str scheme: Scheme used to generate the URI
-        :param bool ssl: Defines whether the endpoint uses SSL
-        :param str ssl_mode: SSL mode used to connect to the service if the SSL is enabled
-        :param str uri: URI of the endpoint
+        :param str component: Type of component the URI relates to.
+        :param str domain: Domain of the cluster.
+        :param str path: Path of the endpoint.
+        :param int port: Connection port for the endpoint.
+        :param str scheme: Scheme used to generate the URI.
+        :param bool ssl: Defines whether the endpoint uses SSL.
+        :param str ssl_mode: SSL mode used to connect to the service if the SSL is enabled.
+        :param str uri: URI of the endpoint.
         """
         pulumi.set(__self__, "component", component)
         pulumi.set(__self__, "domain", domain)
@@ -302,7 +304,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def component(self) -> str:
         """
-        Type of component the URI relates to
+        Type of component the URI relates to.
         """
         return pulumi.get(self, "component")
 
@@ -310,7 +312,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def domain(self) -> str:
         """
-        Domain of the cluster
+        Domain of the cluster.
         """
         return pulumi.get(self, "domain")
 
@@ -318,7 +320,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Path of the endpoint
+        Path of the endpoint.
         """
         return pulumi.get(self, "path")
 
@@ -326,7 +328,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Connection port for the endpoint
+        Connection port for the endpoint.
         """
         return pulumi.get(self, "port")
 
@@ -334,7 +336,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def scheme(self) -> str:
         """
-        Scheme used to generate the URI
+        Scheme used to generate the URI.
         """
         return pulumi.get(self, "scheme")
 
@@ -342,7 +344,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def ssl(self) -> bool:
         """
-        Defines whether the endpoint uses SSL
+        Defines whether the endpoint uses SSL.
         """
         return pulumi.get(self, "ssl")
 
@@ -350,7 +352,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
         """
-        SSL mode used to connect to the service if the SSL is enabled
+        SSL mode used to connect to the service if the SSL is enabled.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -358,7 +360,7 @@ class GetDatabaseEndpointResult(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        URI of the endpoint
+        URI of the endpoint.
         """
         return pulumi.get(self, "uri")
 
@@ -372,7 +374,7 @@ class GetDatabaseIpRestrictionResult(dict):
         """
         :param str description: Description of the IP restriction
         :param str ip: Authorized IP
-        :param str status: Current status of the IP restriction
+        :param str status: Current status of the cluster.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "ip", ip)
@@ -398,7 +400,7 @@ class GetDatabaseIpRestrictionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Current status of the IP restriction
+        Current status of the cluster.
         """
         return pulumi.get(self, "status")
 
@@ -410,9 +412,9 @@ class GetDatabaseNodeResult(dict):
                  region: str,
                  subnet_id: str):
         """
-        :param str network_id: Private network ID in which the node is
-        :param str region: Region of the node
-        :param str subnet_id: Private subnet ID in which the node is
+        :param str network_id: Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        :param str region: Public cloud region in which the node should be deployed.
+        :param str subnet_id: Private subnet ID in which the node is.
         """
         pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "region", region)
@@ -422,7 +424,7 @@ class GetDatabaseNodeResult(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
         """
-        Private network ID in which the node is
+        Private network id in which the node should be deployed. It's the regional openstackId of the private network
         """
         return pulumi.get(self, "network_id")
 
@@ -430,7 +432,7 @@ class GetDatabaseNodeResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Region of the node
+        Public cloud region in which the node should be deployed.
         """
         return pulumi.get(self, "region")
 
@@ -438,7 +440,7 @@ class GetDatabaseNodeResult(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
         """
-        Private subnet ID in which the node is
+        Private subnet ID in which the node is.
         """
         return pulumi.get(self, "subnet_id")
 

@@ -7,10 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the available flavors on the given public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetFlavors(ctx, &cloudproject.GetFlavorsArgs{
+//				ServiceName: "YYYY",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.InvokeOption) (*GetFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorsResult
@@ -23,16 +50,20 @@ func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsArgs struct {
-	Region      *string `pulumi:"region"`
-	ServiceName string  `pulumi:"serviceName"`
+	// Flavor region
+	Region *string `pulumi:"region"`
+	// Service name
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getFlavors.
 type GetFlavorsResult struct {
 	Flavors []GetFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Region      string `pulumi:"region"`
+	Id string `pulumi:"id"`
+	// Flavor region
+	Region string `pulumi:"region"`
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -47,8 +78,10 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsOutputArgs struct {
-	Region      pulumi.StringPtrInput `pulumi:"region"`
-	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
+	// Flavor region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Service name
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetFlavorsOutputArgs) ElementType() reflect.Type {
@@ -79,10 +112,12 @@ func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Flavor region
 func (o GetFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Service name
 func (o GetFlavorsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

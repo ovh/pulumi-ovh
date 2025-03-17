@@ -18,11 +18,11 @@ namespace Pulumi.Ovh.Dedicated.Outputs
         /// </summary>
         public readonly int? Disks;
         /// <summary>
-        /// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        /// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
         /// </summary>
         public readonly ImmutableArray<Outputs.ServerReinstallTaskStoragePartitioningLayout> Layouts;
         /// <summary>
-        /// Partitioning scheme name
+        /// Partitioning scheme (if applicable with selected operating system)
         /// </summary>
         public readonly string? SchemeName;
 

@@ -14,11 +14,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
     public sealed class OpensearchUserAcl
     {
         /// <summary>
-        /// Pattern of the ACL
+        /// Pattern of the ACL.
         /// </summary>
         public readonly string Pattern;
         /// <summary>
         /// Permission of the ACL
+        /// Available permission:
         /// </summary>
         public readonly string Permission;
 

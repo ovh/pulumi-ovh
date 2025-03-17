@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ */
 export class Name extends pulumi.CustomResource {
     /**
      * Get an existing Name resource's state with the given name, ID, and optional extra
@@ -35,8 +38,7 @@ export class Name extends pulumi.CustomResource {
     }
 
     /**
-     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-     * value
+     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
      */
     public readonly checksum!: pulumi.Output<string>;
     /**
@@ -66,8 +68,7 @@ export class Name extends pulumi.CustomResource {
     public readonly planOptions!: pulumi.Output<outputs.Domain.NamePlanOption[]>;
     public readonly plans!: pulumi.Output<outputs.Domain.NamePlan[]>;
     /**
-     * Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-     * `UPDATING` or `ERROR` status
+     * Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<string>;
     /**
@@ -126,8 +127,7 @@ export class Name extends pulumi.CustomResource {
  */
 export interface NameState {
     /**
-     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-     * value
+     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
      */
     checksum?: pulumi.Input<string>;
     /**
@@ -157,8 +157,7 @@ export interface NameState {
     planOptions?: pulumi.Input<pulumi.Input<inputs.Domain.NamePlanOption>[]>;
     plans?: pulumi.Input<pulumi.Input<inputs.Domain.NamePlan>[]>;
     /**
-     * Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-     * `UPDATING` or `ERROR` status
+     * Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
      */
     resourceStatus?: pulumi.Input<string>;
     /**
@@ -172,8 +171,7 @@ export interface NameState {
  */
 export interface NameArgs {
     /**
-     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-     * value
+     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
      */
     checksum?: pulumi.Input<string>;
     /**

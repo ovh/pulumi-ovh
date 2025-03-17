@@ -11,12 +11,90 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetMongoDbPrometheus
     {
+        /// <summary>
+        /// Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prometheus = Ovh.CloudProject.GetMongoDbPrometheus.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["name"] = prometheus.Apply(getMongoDbPrometheusResult =&gt; getMongoDbPrometheusResult.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMongoDbPrometheusResult> InvokeAsync(GetMongoDbPrometheusArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMongoDbPrometheusResult>("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", args ?? new GetMongoDbPrometheusArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prometheus = Ovh.CloudProject.GetMongoDbPrometheus.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["name"] = prometheus.Apply(getMongoDbPrometheusResult =&gt; getMongoDbPrometheusResult.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMongoDbPrometheusResult> Invoke(GetMongoDbPrometheusInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoDbPrometheusResult>("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", args ?? new GetMongoDbPrometheusInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prometheus = Ovh.CloudProject.GetMongoDbPrometheus.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["name"] = prometheus.Apply(getMongoDbPrometheusResult =&gt; getMongoDbPrometheusResult.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMongoDbPrometheusResult> Invoke(GetMongoDbPrometheusInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoDbPrometheusResult>("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", args ?? new GetMongoDbPrometheusInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +102,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetMongoDbPrometheusArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +123,16 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetMongoDbPrometheusInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -54,13 +146,25 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetMongoDbPrometheusResult
     {
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Name of the srv domain endpoint.
+        /// </summary>
         public readonly string SrvDomain;
+        /// <summary>
+        /// name of the prometheus user.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

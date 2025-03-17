@@ -8,28 +8,80 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a backend server entry linked to loadbalancing group (farm)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			farmName, err := iploadbalancing.NewUdpFarm(ctx, "farmName", &iploadbalancing.UdpFarmArgs{
+//				DisplayName: pulumi.String("ingress-8080-gra"),
+//				Port:        pulumi.Float64(80),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("gra"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewUdpFarmServer(ctx, "backend", &iploadbalancing.UdpFarmServerArgs{
+//				Address:     pulumi.String("4.5.6.7"),
+//				DisplayName: pulumi.String("mybackend"),
+//				FarmId:      farmName.FarmId,
+//				Port:        pulumi.Float64(80),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Status:      pulumi.String("active"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// UDP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 type UdpFarmServer struct {
 	pulumi.CustomResourceState
 
-	// IPv4 address (e.g., 192.0.2.0)
+	// Address of the backend server (IP from either internal or OVHcloud network)
 	Address pulumi.StringOutput `pulumi:"address"`
-	// Synonym for farm_id
+	// Synonym for `farmId`.
 	BackendId pulumi.Float64Output `pulumi:"backendId"`
-	// Human readable name for your server, this field is for you
+	// Label for the server
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Id of your farm
+	// ID of the farm this server is attached to
 	FarmId pulumi.Float64Output `pulumi:"farmId"`
-	// Port attached to your server ([1..49151]). Inherited from farm if null
+	// Port that backend will respond on
 	Port pulumi.Float64PtrOutput `pulumi:"port"`
-	// Id of your server
+	// Id of your server.
 	ServerId pulumi.Float64Output `pulumi:"serverId"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Possible values for server status
+	// backend status - `active` or `inactive`
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -75,40 +127,40 @@ func GetUdpFarmServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UdpFarmServer resources.
 type udpFarmServerState struct {
-	// IPv4 address (e.g., 192.0.2.0)
+	// Address of the backend server (IP from either internal or OVHcloud network)
 	Address *string `pulumi:"address"`
-	// Synonym for farm_id
+	// Synonym for `farmId`.
 	BackendId *float64 `pulumi:"backendId"`
-	// Human readable name for your server, this field is for you
+	// Label for the server
 	DisplayName *string `pulumi:"displayName"`
-	// Id of your farm
+	// ID of the farm this server is attached to
 	FarmId *float64 `pulumi:"farmId"`
-	// Port attached to your server ([1..49151]). Inherited from farm if null
+	// Port that backend will respond on
 	Port *float64 `pulumi:"port"`
-	// Id of your server
+	// Id of your server.
 	ServerId *float64 `pulumi:"serverId"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// Possible values for server status
+	// backend status - `active` or `inactive`
 	Status *string `pulumi:"status"`
 }
 
 type UdpFarmServerState struct {
-	// IPv4 address (e.g., 192.0.2.0)
+	// Address of the backend server (IP from either internal or OVHcloud network)
 	Address pulumi.StringPtrInput
-	// Synonym for farm_id
+	// Synonym for `farmId`.
 	BackendId pulumi.Float64PtrInput
-	// Human readable name for your server, this field is for you
+	// Label for the server
 	DisplayName pulumi.StringPtrInput
-	// Id of your farm
+	// ID of the farm this server is attached to
 	FarmId pulumi.Float64PtrInput
-	// Port attached to your server ([1..49151]). Inherited from farm if null
+	// Port that backend will respond on
 	Port pulumi.Float64PtrInput
-	// Id of your server
+	// Id of your server.
 	ServerId pulumi.Float64PtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	// Possible values for server status
+	// backend status - `active` or `inactive`
 	Status pulumi.StringPtrInput
 }
 
@@ -117,33 +169,33 @@ func (UdpFarmServerState) ElementType() reflect.Type {
 }
 
 type udpFarmServerArgs struct {
-	// IPv4 address (e.g., 192.0.2.0)
+	// Address of the backend server (IP from either internal or OVHcloud network)
 	Address string `pulumi:"address"`
-	// Human readable name for your server, this field is for you
+	// Label for the server
 	DisplayName *string `pulumi:"displayName"`
-	// Id of your farm
+	// ID of the farm this server is attached to
 	FarmId float64 `pulumi:"farmId"`
-	// Port attached to your server ([1..49151]). Inherited from farm if null
+	// Port that backend will respond on
 	Port *float64 `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName string `pulumi:"serviceName"`
-	// Possible values for server status
+	// backend status - `active` or `inactive`
 	Status string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a UdpFarmServer resource.
 type UdpFarmServerArgs struct {
-	// IPv4 address (e.g., 192.0.2.0)
+	// Address of the backend server (IP from either internal or OVHcloud network)
 	Address pulumi.StringInput
-	// Human readable name for your server, this field is for you
+	// Label for the server
 	DisplayName pulumi.StringPtrInput
-	// Id of your farm
+	// ID of the farm this server is attached to
 	FarmId pulumi.Float64Input
-	// Port attached to your server ([1..49151]). Inherited from farm if null
+	// Port that backend will respond on
 	Port pulumi.Float64PtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
-	// Possible values for server status
+	// backend status - `active` or `inactive`
 	Status pulumi.StringInput
 }
 
@@ -234,32 +286,32 @@ func (o UdpFarmServerOutput) ToUdpFarmServerOutputWithContext(ctx context.Contex
 	return o
 }
 
-// IPv4 address (e.g., 192.0.2.0)
+// Address of the backend server (IP from either internal or OVHcloud network)
 func (o UdpFarmServerOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// Synonym for farm_id
+// Synonym for `farmId`.
 func (o UdpFarmServerOutput) BackendId() pulumi.Float64Output {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.Float64Output { return v.BackendId }).(pulumi.Float64Output)
 }
 
-// Human readable name for your server, this field is for you
+// Label for the server
 func (o UdpFarmServerOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Id of your farm
+// ID of the farm this server is attached to
 func (o UdpFarmServerOutput) FarmId() pulumi.Float64Output {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.Float64Output { return v.FarmId }).(pulumi.Float64Output)
 }
 
-// Port attached to your server ([1..49151]). Inherited from farm if null
+// Port that backend will respond on
 func (o UdpFarmServerOutput) Port() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.Float64PtrOutput { return v.Port }).(pulumi.Float64PtrOutput)
 }
 
-// Id of your server
+// Id of your server.
 func (o UdpFarmServerOutput) ServerId() pulumi.Float64Output {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.Float64Output { return v.ServerId }).(pulumi.Float64Output)
 }
@@ -269,7 +321,7 @@ func (o UdpFarmServerOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Possible values for server status
+// backend status - `active` or `inactive`
 func (o UdpFarmServerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFarmServer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

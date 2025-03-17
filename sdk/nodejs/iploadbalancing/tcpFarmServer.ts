@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a backend server entry linked to loadbalancing group (farm)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farmName = new ovh.iploadbalancing.TcpFarm("farmName", {
+ *     port: 8080,
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "all",
+ * });
+ * const backend = new ovh.iploadbalancing.TcpFarmServer("backend", {
+ *     address: "4.5.6.7",
+ *     backup: true,
+ *     displayName: "mybackend",
+ *     farmId: farmName.id,
+ *     port: 80,
+ *     probe: true,
+ *     proxyProtocolVersion: "v2",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     ssl: false,
+ *     status: "active",
+ *     weight: 2,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TCP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+ */
 export class TcpFarmServer extends pulumi.CustomResource {
     /**
      * Get an existing TcpFarmServer resource's state with the given name, ID, and optional extra
@@ -32,18 +70,54 @@ export class TcpFarmServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === TcpFarmServer.__pulumiType;
     }
 
+    /**
+     * Address of the backend server (IP from either internal or OVHcloud network)
+     */
     public readonly address!: pulumi.Output<string>;
+    /**
+     * is it a backup server used in case of failure of all the non-backup backends
+     */
     public readonly backup!: pulumi.Output<boolean | undefined>;
     public readonly chain!: pulumi.Output<string | undefined>;
+    /**
+     * Label for the server
+     */
     public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * ID of the farm this server is attached to
+     */
     public readonly farmId!: pulumi.Output<number>;
+    /**
+     * enable action when backend marked down. (`shutdown-sessions`)
+     */
     public readonly onMarkedDown!: pulumi.Output<string | undefined>;
+    /**
+     * Port that backend will respond on
+     */
     public readonly port!: pulumi.Output<number | undefined>;
+    /**
+     * defines if backend will be probed to determine health and keep as active in farm if healthy
+     */
     public readonly probe!: pulumi.Output<boolean | undefined>;
+    /**
+     * version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+     */
     public readonly proxyProtocolVersion!: pulumi.Output<string | undefined>;
+    /**
+     * The internal name of your IP load balancing
+     */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * is the connection ciphered with SSL (TLS)
+     */
     public readonly ssl!: pulumi.Output<boolean | undefined>;
+    /**
+     * backend status - `active` or `inactive`
+     */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * used in loadbalancing algorithm
+     */
     public readonly weight!: pulumi.Output<number | undefined>;
 
     /**
@@ -109,18 +183,54 @@ export class TcpFarmServer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TcpFarmServer resources.
  */
 export interface TcpFarmServerState {
+    /**
+     * Address of the backend server (IP from either internal or OVHcloud network)
+     */
     address?: pulumi.Input<string>;
+    /**
+     * is it a backup server used in case of failure of all the non-backup backends
+     */
     backup?: pulumi.Input<boolean>;
     chain?: pulumi.Input<string>;
+    /**
+     * Label for the server
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * ID of the farm this server is attached to
+     */
     farmId?: pulumi.Input<number>;
+    /**
+     * enable action when backend marked down. (`shutdown-sessions`)
+     */
     onMarkedDown?: pulumi.Input<string>;
+    /**
+     * Port that backend will respond on
+     */
     port?: pulumi.Input<number>;
+    /**
+     * defines if backend will be probed to determine health and keep as active in farm if healthy
+     */
     probe?: pulumi.Input<boolean>;
+    /**
+     * version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+     */
     proxyProtocolVersion?: pulumi.Input<string>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * is the connection ciphered with SSL (TLS)
+     */
     ssl?: pulumi.Input<boolean>;
+    /**
+     * backend status - `active` or `inactive`
+     */
     status?: pulumi.Input<string>;
+    /**
+     * used in loadbalancing algorithm
+     */
     weight?: pulumi.Input<number>;
 }
 
@@ -128,17 +238,53 @@ export interface TcpFarmServerState {
  * The set of arguments for constructing a TcpFarmServer resource.
  */
 export interface TcpFarmServerArgs {
+    /**
+     * Address of the backend server (IP from either internal or OVHcloud network)
+     */
     address: pulumi.Input<string>;
+    /**
+     * is it a backup server used in case of failure of all the non-backup backends
+     */
     backup?: pulumi.Input<boolean>;
     chain?: pulumi.Input<string>;
+    /**
+     * Label for the server
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * ID of the farm this server is attached to
+     */
     farmId: pulumi.Input<number>;
+    /**
+     * enable action when backend marked down. (`shutdown-sessions`)
+     */
     onMarkedDown?: pulumi.Input<string>;
+    /**
+     * Port that backend will respond on
+     */
     port?: pulumi.Input<number>;
+    /**
+     * defines if backend will be probed to determine health and keep as active in farm if healthy
+     */
     probe?: pulumi.Input<boolean>;
+    /**
+     * version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
+     */
     proxyProtocolVersion?: pulumi.Input<string>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * is the connection ciphered with SSL (TLS)
+     */
     ssl?: pulumi.Input<boolean>;
+    /**
+     * backend status - `active` or `inactive`
+     */
     status: pulumi.Input<string>;
+    /**
+     * used in loadbalancing algorithm
+     */
     weight?: pulumi.Input<number>;
 }

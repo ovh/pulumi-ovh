@@ -9,20 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Vps
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [OvhResourceType("ovh:Vps/vps:Vps")]
     public partial class Vps : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// VPS cluster
+        /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// Set the name displayed in Manager for your VPS (max 50 chars)
+        /// Custom display name
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// IAM resource metadata
+        /// IAM resource information
         /// </summary>
         [Output("iam")]
         public Output<Outputs.VpsIam> Iam { get; private set; } = null!;
@@ -33,32 +39,38 @@ namespace Pulumi.Ovh.Vps
         [Output("keymap")]
         public Output<string> Keymap { get; private set; } = null!;
 
+        /// <summary>
+        /// RAM of this VPS
+        /// </summary>
         [Output("memoryLimit")]
         public Output<double> MemoryLimit { get; private set; } = null!;
 
         /// <summary>
-        /// A structure describing characteristics of a VPS model
+        /// Structure describing characteristics of a VPS model
         /// </summary>
         [Output("model")]
         public Output<Outputs.VpsModel> Model { get; private set; } = null!;
 
         /// <summary>
-        /// Ip blocks for OVH monitoring servers
+        /// IP blocks for OVH monitoring servers
         /// </summary>
         [Output("monitoringIpBlocks")]
         public Output<ImmutableArray<string>> MonitoringIpBlocks { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the VPS
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// All values a VPS netboot mode can be in
+        /// VPS netboot mode (local┃rescue)
         /// </summary>
         [Output("netbootMode")]
         public Output<string> NetbootMode { get; private set; } = null!;
 
         /// <summary>
-        /// All offers a VPS can have
+        /// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
         /// </summary>
         [Output("offerType")]
         public Output<string> OfferType { get; private set; } = null!;
@@ -70,14 +82,20 @@ namespace Pulumi.Ovh.Vps
         public Output<Outputs.VpsOrder> Order { get; private set; } = null!;
 
         /// <summary>
-        /// OVH subsidiaries
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
         /// </summary>
         [Output("ovhSubsidiary")]
         public Output<string?> OvhSubsidiary { get; private set; } = null!;
 
+        /// <summary>
+        /// Product Plan to order
+        /// </summary>
         [Output("planOptions")]
         public Output<ImmutableArray<Outputs.VpsPlanOption>> PlanOptions { get; private set; } = null!;
 
+        /// <summary>
+        /// Product Plan to order
+        /// </summary>
         [Output("plans")]
         public Output<ImmutableArray<Outputs.VpsPlan>> Plans { get; private set; } = null!;
 
@@ -91,14 +109,20 @@ namespace Pulumi.Ovh.Vps
         public Output<bool> SlaMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// All states a VPS can be in
+        /// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of vcores
+        /// </summary>
         [Output("vcore")]
         public Output<double> Vcore { get; private set; } = null!;
 
+        /// <summary>
+        /// OpenStask region where the VPS is located
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -150,7 +174,7 @@ namespace Pulumi.Ovh.Vps
     public sealed class VpsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the name displayed in Manager for your VPS (max 50 chars)
+        /// Custom display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -161,11 +185,14 @@ namespace Pulumi.Ovh.Vps
         [Input("keymap")]
         public Input<string>? Keymap { get; set; }
 
+        /// <summary>
+        /// RAM of this VPS
+        /// </summary>
         [Input("memoryLimit")]
         public Input<double>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// A structure describing characteristics of a VPS model
+        /// Structure describing characteristics of a VPS model
         /// </summary>
         [Input("model")]
         public Input<Inputs.VpsModelArgs>? Model { get; set; }
@@ -174,7 +201,7 @@ namespace Pulumi.Ovh.Vps
         private InputList<string>? _monitoringIpBlocks;
 
         /// <summary>
-        /// Ip blocks for OVH monitoring servers
+        /// IP blocks for OVH monitoring servers
         /// </summary>
         public InputList<string> MonitoringIpBlocks
         {
@@ -182,29 +209,36 @@ namespace Pulumi.Ovh.Vps
             set => _monitoringIpBlocks = value;
         }
 
+        /// <summary>
+        /// Name of the VPS
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// All values a VPS netboot mode can be in
+        /// VPS netboot mode (local┃rescue)
         /// </summary>
         [Input("netbootMode")]
         public Input<string>? NetbootMode { get; set; }
 
         /// <summary>
-        /// All offers a VPS can have
+        /// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
         /// </summary>
         [Input("offerType")]
         public Input<string>? OfferType { get; set; }
 
         /// <summary>
-        /// OVH subsidiaries
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.VpsPlanOptionArgs>? _planOptions;
+
+        /// <summary>
+        /// Product Plan to order
+        /// </summary>
         public InputList<Inputs.VpsPlanOptionArgs> PlanOptions
         {
             get => _planOptions ?? (_planOptions = new InputList<Inputs.VpsPlanOptionArgs>());
@@ -213,6 +247,10 @@ namespace Pulumi.Ovh.Vps
 
         [Input("plans")]
         private InputList<Inputs.VpsPlanArgs>? _plans;
+
+        /// <summary>
+        /// Product Plan to order
+        /// </summary>
         public InputList<Inputs.VpsPlanArgs> Plans
         {
             get => _plans ?? (_plans = new InputList<Inputs.VpsPlanArgs>());
@@ -223,14 +261,20 @@ namespace Pulumi.Ovh.Vps
         public Input<bool>? SlaMonitoring { get; set; }
 
         /// <summary>
-        /// All states a VPS can be in
+        /// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Number of vcores
+        /// </summary>
         [Input("vcore")]
         public Input<double>? Vcore { get; set; }
 
+        /// <summary>
+        /// OpenStask region where the VPS is located
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -242,17 +286,20 @@ namespace Pulumi.Ovh.Vps
 
     public sealed class VpsState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// VPS cluster
+        /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// Set the name displayed in Manager for your VPS (max 50 chars)
+        /// Custom display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// IAM resource metadata
+        /// IAM resource information
         /// </summary>
         [Input("iam")]
         public Input<Inputs.VpsIamGetArgs>? Iam { get; set; }
@@ -263,11 +310,14 @@ namespace Pulumi.Ovh.Vps
         [Input("keymap")]
         public Input<string>? Keymap { get; set; }
 
+        /// <summary>
+        /// RAM of this VPS
+        /// </summary>
         [Input("memoryLimit")]
         public Input<double>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// A structure describing characteristics of a VPS model
+        /// Structure describing characteristics of a VPS model
         /// </summary>
         [Input("model")]
         public Input<Inputs.VpsModelGetArgs>? Model { get; set; }
@@ -276,7 +326,7 @@ namespace Pulumi.Ovh.Vps
         private InputList<string>? _monitoringIpBlocks;
 
         /// <summary>
-        /// Ip blocks for OVH monitoring servers
+        /// IP blocks for OVH monitoring servers
         /// </summary>
         public InputList<string> MonitoringIpBlocks
         {
@@ -284,17 +334,20 @@ namespace Pulumi.Ovh.Vps
             set => _monitoringIpBlocks = value;
         }
 
+        /// <summary>
+        /// Name of the VPS
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// All values a VPS netboot mode can be in
+        /// VPS netboot mode (local┃rescue)
         /// </summary>
         [Input("netbootMode")]
         public Input<string>? NetbootMode { get; set; }
 
         /// <summary>
-        /// All offers a VPS can have
+        /// All offers a VPS can have (beta-classic┃classic┃cloud┃cloudram┃game-classic┃lowlat┃ssd)
         /// </summary>
         [Input("offerType")]
         public Input<string>? OfferType { get; set; }
@@ -306,13 +359,17 @@ namespace Pulumi.Ovh.Vps
         public Input<Inputs.VpsOrderGetArgs>? Order { get; set; }
 
         /// <summary>
-        /// OVH subsidiaries
+        /// OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&amp;branch=v1#get-/me)
         /// </summary>
         [Input("ovhSubsidiary")]
         public Input<string>? OvhSubsidiary { get; set; }
 
         [Input("planOptions")]
         private InputList<Inputs.VpsPlanOptionGetArgs>? _planOptions;
+
+        /// <summary>
+        /// Product Plan to order
+        /// </summary>
         public InputList<Inputs.VpsPlanOptionGetArgs> PlanOptions
         {
             get => _planOptions ?? (_planOptions = new InputList<Inputs.VpsPlanOptionGetArgs>());
@@ -321,6 +378,10 @@ namespace Pulumi.Ovh.Vps
 
         [Input("plans")]
         private InputList<Inputs.VpsPlanGetArgs>? _plans;
+
+        /// <summary>
+        /// Product Plan to order
+        /// </summary>
         public InputList<Inputs.VpsPlanGetArgs> Plans
         {
             get => _plans ?? (_plans = new InputList<Inputs.VpsPlanGetArgs>());
@@ -337,14 +398,20 @@ namespace Pulumi.Ovh.Vps
         public Input<bool>? SlaMonitoring { get; set; }
 
         /// <summary>
-        /// All states a VPS can be in
+        /// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Number of vcores
+        /// </summary>
         [Input("vcore")]
         public Input<double>? Vcore { get; set; }
 
+        /// <summary>
+        /// OpenStask region where the VPS is located
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

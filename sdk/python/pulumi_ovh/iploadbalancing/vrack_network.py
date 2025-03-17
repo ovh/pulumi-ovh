@@ -27,13 +27,11 @@ class VrackNetworkArgs:
                  vlan: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a VrackNetwork resource.
-        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-               be in the private network and reserved for the Load Balancer
-        :param pulumi.Input[str] service_name: The internal name of your IPloadbalancer
+        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] subnet: IP block of the private network in the vRack
         :param pulumi.Input[str] display_name: Human readable name for your vrack network
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-               farms `vrack_network_id` attribute
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
         :param pulumi.Input[int] vlan: VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
         """
         pulumi.set(__self__, "nat_ip", nat_ip)
@@ -50,8 +48,7 @@ class VrackNetworkArgs:
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> pulumi.Input[str]:
         """
-        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-        be in the private network and reserved for the Load Balancer
+        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
         """
         return pulumi.get(self, "nat_ip")
 
@@ -63,7 +60,7 @@ class VrackNetworkArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your IPloadbalancer
+        The internal name of your IP load balancing
         """
         return pulumi.get(self, "service_name")
 
@@ -99,8 +96,7 @@ class VrackNetworkArgs:
     @pulumi.getter(name="farmIds")
     def farm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-        farms `vrack_network_id` attribute
+        This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
         """
         return pulumi.get(self, "farm_ids")
 
@@ -134,14 +130,12 @@ class _VrackNetworkState:
         """
         Input properties used for looking up and filtering VrackNetwork resources.
         :param pulumi.Input[str] display_name: Human readable name for your vrack network
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-               farms `vrack_network_id` attribute
-        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-               be in the private network and reserved for the Load Balancer
-        :param pulumi.Input[str] service_name: The internal name of your IPloadbalancer
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
+        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] subnet: IP block of the private network in the vRack
         :param pulumi.Input[int] vlan: VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
-        :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network
+        :param pulumi.Input[int] vrack_network_id: (Required) Internal Load Balancer identifier of the vRack private network
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -174,8 +168,7 @@ class _VrackNetworkState:
     @pulumi.getter(name="farmIds")
     def farm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-        farms `vrack_network_id` attribute
+        This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
         """
         return pulumi.get(self, "farm_ids")
 
@@ -187,8 +180,7 @@ class _VrackNetworkState:
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-        be in the private network and reserved for the Load Balancer
+        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
         """
         return pulumi.get(self, "nat_ip")
 
@@ -200,7 +192,7 @@ class _VrackNetworkState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your IPloadbalancer
+        The internal name of your IP load balancing
         """
         return pulumi.get(self, "service_name")
 
@@ -236,7 +228,7 @@ class _VrackNetworkState:
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Internal Load Balancer identifier of the vRack private network
+        (Required) Internal Load Balancer identifier of the vRack private network
         """
         return pulumi.get(self, "vrack_network_id")
 
@@ -258,15 +250,14 @@ class VrackNetwork(pulumi.CustomResource):
                  vlan: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a VrackNetwork resource with the given unique name, props, and options.
+        Manage a vrack network for your IP Loadbalancing service.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human readable name for your vrack network
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-               farms `vrack_network_id` attribute
-        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-               be in the private network and reserved for the Load Balancer
-        :param pulumi.Input[str] service_name: The internal name of your IPloadbalancer
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
+        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] subnet: IP block of the private network in the vRack
         :param pulumi.Input[int] vlan: VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
         """
@@ -277,7 +268,8 @@ class VrackNetwork(pulumi.CustomResource):
                  args: VrackNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VrackNetwork resource with the given unique name, props, and options.
+        Manage a vrack network for your IP Loadbalancing service.
+
         :param str resource_name: The name of the resource.
         :param VrackNetworkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -346,14 +338,12 @@ class VrackNetwork(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human readable name for your vrack network
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-               farms `vrack_network_id` attribute
-        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-               be in the private network and reserved for the Load Balancer
-        :param pulumi.Input[str] service_name: The internal name of your IPloadbalancer
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] farm_ids: This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
+        :param pulumi.Input[str] nat_ip: An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] subnet: IP block of the private network in the vRack
         :param pulumi.Input[int] vlan: VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
-        :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network
+        :param pulumi.Input[int] vrack_network_id: (Required) Internal Load Balancer identifier of the vRack private network
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -380,8 +370,7 @@ class VrackNetwork(pulumi.CustomResource):
     @pulumi.getter(name="farmIds")
     def farm_ids(self) -> pulumi.Output[Optional[Sequence[int]]]:
         """
-        This attribute is there for documentation purpose only and isnt passed to the OVH API as it may conflicts with http/tcp
-        farms `vrack_network_id` attribute
+        This attribute is there for documentation purpose only and isnt passed to the OVHcloud API as it may conflicts with http/tcp farms `vrack_network_id` attribute
         """
         return pulumi.get(self, "farm_ids")
 
@@ -389,8 +378,7 @@ class VrackNetwork(pulumi.CustomResource):
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> pulumi.Output[str]:
         """
-        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must
-        be in the private network and reserved for the Load Balancer
+        An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The blck must be in the private network and reserved for the Load Balancer
         """
         return pulumi.get(self, "nat_ip")
 
@@ -398,7 +386,7 @@ class VrackNetwork(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your IPloadbalancer
+        The internal name of your IP load balancing
         """
         return pulumi.get(self, "service_name")
 
@@ -422,7 +410,7 @@ class VrackNetwork(pulumi.CustomResource):
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> pulumi.Output[int]:
         """
-        Internal Load Balancer identifier of the vRack private network
+        (Required) Internal Load Balancer identifier of the vRack private network
         """
         return pulumi.get(self, "vrack_network_id")
 

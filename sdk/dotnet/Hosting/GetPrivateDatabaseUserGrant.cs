@@ -11,12 +11,81 @@ namespace Pulumi.Ovh.Hosting
 {
     public static class GetPrivateDatabaseUserGrant
     {
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase user grant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var userGrant = Ovh.Hosting.GetPrivateDatabaseUserGrant.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///         UserName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPrivateDatabaseUserGrantResult> InvokeAsync(GetPrivateDatabaseUserGrantArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseUserGrantResult>("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args ?? new GetPrivateDatabaseUserGrantArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase user grant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var userGrant = Ovh.Hosting.GetPrivateDatabaseUserGrant.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///         UserName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPrivateDatabaseUserGrantResult> Invoke(GetPrivateDatabaseUserGrantInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserGrantResult>("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args ?? new GetPrivateDatabaseUserGrantInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase user grant.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var userGrant = Ovh.Hosting.GetPrivateDatabaseUserGrant.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///         UserName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPrivateDatabaseUserGrantResult> Invoke(GetPrivateDatabaseUserGrantInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseUserGrantResult>("ovh:Hosting/getPrivateDatabaseUserGrant:getPrivateDatabaseUserGrant", args ?? new GetPrivateDatabaseUserGrantInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +93,21 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseUserGrantArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The database name on which grant the user
+        /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your private database
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The user name
+        /// </summary>
         [Input("userName", required: true)]
         public string UserName { get; set; } = null!;
 
@@ -41,12 +119,21 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseUserGrantInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The database name on which grant the user
+        /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your private database
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The user name
+        /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
 
@@ -60,8 +147,14 @@ namespace Pulumi.Ovh.Hosting
     [OutputType]
     public sealed class GetPrivateDatabaseUserGrantResult
     {
+        /// <summary>
+        /// Creation date of the database
+        /// </summary>
         public readonly string CreationDate;
         public readonly string DatabaseName;
+        /// <summary>
+        /// Grant name
+        /// </summary>
         public readonly string Grant;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

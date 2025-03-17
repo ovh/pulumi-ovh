@@ -8,10 +8,49 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Reference a DBaaS logs role stream permission.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/dbaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dbaas.NewLogsRolePermissionStream(ctx, "permission", &dbaas.LogsRolePermissionStreamArgs{
+//				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//				RoleId:      pulumi.Any(ovh_dbaas_logs_role.Ro.Id),
+//				StreamId:    pulumi.Any(ovh_dbaas_logs_output_graylog_stream.Mystream.Stream_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+// ```
 type LogsRolePermissionStream struct {
 	pulumi.CustomResourceState
 
@@ -19,11 +58,11 @@ type LogsRolePermissionStream struct {
 	PermissionId pulumi.StringOutput `pulumi:"permissionId"`
 	// Permission type (e.g., READ_ONLY)
 	PermissionType pulumi.StringOutput `pulumi:"permissionType"`
-	// Role ID to which the permission will be appended
+	// The DBaaS Logs role id
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
-	// Service name
+	// The service name
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Graylog stream ID to be associated as a permission
+	// The DBaaS Logs Graylog output stream id
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
 }
 
@@ -70,11 +109,11 @@ type logsRolePermissionStreamState struct {
 	PermissionId *string `pulumi:"permissionId"`
 	// Permission type (e.g., READ_ONLY)
 	PermissionType *string `pulumi:"permissionType"`
-	// Role ID to which the permission will be appended
+	// The DBaaS Logs role id
 	RoleId *string `pulumi:"roleId"`
-	// Service name
+	// The service name
 	ServiceName *string `pulumi:"serviceName"`
-	// Graylog stream ID to be associated as a permission
+	// The DBaaS Logs Graylog output stream id
 	StreamId *string `pulumi:"streamId"`
 }
 
@@ -83,11 +122,11 @@ type LogsRolePermissionStreamState struct {
 	PermissionId pulumi.StringPtrInput
 	// Permission type (e.g., READ_ONLY)
 	PermissionType pulumi.StringPtrInput
-	// Role ID to which the permission will be appended
+	// The DBaaS Logs role id
 	RoleId pulumi.StringPtrInput
-	// Service name
+	// The service name
 	ServiceName pulumi.StringPtrInput
-	// Graylog stream ID to be associated as a permission
+	// The DBaaS Logs Graylog output stream id
 	StreamId pulumi.StringPtrInput
 }
 
@@ -96,21 +135,21 @@ func (LogsRolePermissionStreamState) ElementType() reflect.Type {
 }
 
 type logsRolePermissionStreamArgs struct {
-	// Role ID to which the permission will be appended
+	// The DBaaS Logs role id
 	RoleId string `pulumi:"roleId"`
-	// Service name
+	// The service name
 	ServiceName string `pulumi:"serviceName"`
-	// Graylog stream ID to be associated as a permission
+	// The DBaaS Logs Graylog output stream id
 	StreamId string `pulumi:"streamId"`
 }
 
 // The set of arguments for constructing a LogsRolePermissionStream resource.
 type LogsRolePermissionStreamArgs struct {
-	// Role ID to which the permission will be appended
+	// The DBaaS Logs role id
 	RoleId pulumi.StringInput
-	// Service name
+	// The service name
 	ServiceName pulumi.StringInput
-	// Graylog stream ID to be associated as a permission
+	// The DBaaS Logs Graylog output stream id
 	StreamId pulumi.StringInput
 }
 
@@ -211,17 +250,17 @@ func (o LogsRolePermissionStreamOutput) PermissionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsRolePermissionStream) pulumi.StringOutput { return v.PermissionType }).(pulumi.StringOutput)
 }
 
-// Role ID to which the permission will be appended
+// The DBaaS Logs role id
 func (o LogsRolePermissionStreamOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsRolePermissionStream) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }
 
-// Service name
+// The service name
 func (o LogsRolePermissionStreamOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsRolePermissionStream) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Graylog stream ID to be associated as a permission
+// The DBaaS Logs Graylog output stream id
 func (o LogsRolePermissionStreamOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsRolePermissionStream) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
 }

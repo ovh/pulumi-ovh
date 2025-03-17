@@ -8,10 +8,58 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a new custom SSL certificate on your IP Load Balancing
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewSsl(ctx, "sslname", &iploadbalancing.SslArgs{
+//				Certificate: pulumi.String("..."),
+//				Chain:       pulumi.String("..."),
+//				DisplayName: pulumi.String("test"),
+//				Key:         pulumi.String("..."),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/ssl:Ssl sslname service_name/ssl_id
+// ```
 type Ssl struct {
 	pulumi.CustomResourceState
 
@@ -19,24 +67,23 @@ type Ssl struct {
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Certificate chain
 	Chain pulumi.StringPtrOutput `pulumi:"chain"`
-	// Human readable name for your ssl certificate, this field is for you
+	// Readable label for loadbalancer ssl
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Expire date of your SSL certificate
+	// Expire date of your SSL certificate.
 	ExpireDate pulumi.StringOutput `pulumi:"expireDate"`
-	// Fingerprint of your SSL certificate
+	// Fingerprint of your SSL certificate.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Certificate key
 	Key pulumi.StringOutput `pulumi:"key"`
-	// Subject Alternative Name of your SSL certificate
+	// Subject Alternative Name of your SSL certificate.
 	Sans pulumi.StringArrayOutput `pulumi:"sans"`
-	// Serial of your SSL certificate (Deprecated, use fingerprint instead!)
+	// Serial of your SSL certificate (Deprecated, use fingerprint instead !)
 	Serial pulumi.StringOutput `pulumi:"serial"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Subject of your SSL certificate
+	// Subject of your SSL certificate.
 	Subject pulumi.StringOutput `pulumi:"subject"`
-	// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
-	// certificates.
+	// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -90,24 +137,23 @@ type sslState struct {
 	Certificate *string `pulumi:"certificate"`
 	// Certificate chain
 	Chain *string `pulumi:"chain"`
-	// Human readable name for your ssl certificate, this field is for you
+	// Readable label for loadbalancer ssl
 	DisplayName *string `pulumi:"displayName"`
-	// Expire date of your SSL certificate
+	// Expire date of your SSL certificate.
 	ExpireDate *string `pulumi:"expireDate"`
-	// Fingerprint of your SSL certificate
+	// Fingerprint of your SSL certificate.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Certificate key
 	Key *string `pulumi:"key"`
-	// Subject Alternative Name of your SSL certificate
+	// Subject Alternative Name of your SSL certificate.
 	Sans []string `pulumi:"sans"`
-	// Serial of your SSL certificate (Deprecated, use fingerprint instead!)
+	// Serial of your SSL certificate (Deprecated, use fingerprint instead !)
 	Serial *string `pulumi:"serial"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// Subject of your SSL certificate
+	// Subject of your SSL certificate.
 	Subject *string `pulumi:"subject"`
-	// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
-	// certificates.
+	// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
 	Type *string `pulumi:"type"`
 }
 
@@ -116,24 +162,23 @@ type SslState struct {
 	Certificate pulumi.StringPtrInput
 	// Certificate chain
 	Chain pulumi.StringPtrInput
-	// Human readable name for your ssl certificate, this field is for you
+	// Readable label for loadbalancer ssl
 	DisplayName pulumi.StringPtrInput
-	// Expire date of your SSL certificate
+	// Expire date of your SSL certificate.
 	ExpireDate pulumi.StringPtrInput
-	// Fingerprint of your SSL certificate
+	// Fingerprint of your SSL certificate.
 	Fingerprint pulumi.StringPtrInput
 	// Certificate key
 	Key pulumi.StringPtrInput
-	// Subject Alternative Name of your SSL certificate
+	// Subject Alternative Name of your SSL certificate.
 	Sans pulumi.StringArrayInput
-	// Serial of your SSL certificate (Deprecated, use fingerprint instead!)
+	// Serial of your SSL certificate (Deprecated, use fingerprint instead !)
 	Serial pulumi.StringPtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
-	// Subject of your SSL certificate
+	// Subject of your SSL certificate.
 	Subject pulumi.StringPtrInput
-	// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
-	// certificates.
+	// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
 	Type pulumi.StringPtrInput
 }
 
@@ -146,7 +191,7 @@ type sslArgs struct {
 	Certificate string `pulumi:"certificate"`
 	// Certificate chain
 	Chain *string `pulumi:"chain"`
-	// Human readable name for your ssl certificate, this field is for you
+	// Readable label for loadbalancer ssl
 	DisplayName *string `pulumi:"displayName"`
 	// Certificate key
 	Key string `pulumi:"key"`
@@ -160,7 +205,7 @@ type SslArgs struct {
 	Certificate pulumi.StringInput
 	// Certificate chain
 	Chain pulumi.StringPtrInput
-	// Human readable name for your ssl certificate, this field is for you
+	// Readable label for loadbalancer ssl
 	DisplayName pulumi.StringPtrInput
 	// Certificate key
 	Key pulumi.StringInput
@@ -265,17 +310,17 @@ func (o SslOutput) Chain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringPtrOutput { return v.Chain }).(pulumi.StringPtrOutput)
 }
 
-// Human readable name for your ssl certificate, this field is for you
+// Readable label for loadbalancer ssl
 func (o SslOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Expire date of your SSL certificate
+// Expire date of your SSL certificate.
 func (o SslOutput) ExpireDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.ExpireDate }).(pulumi.StringOutput)
 }
 
-// Fingerprint of your SSL certificate
+// Fingerprint of your SSL certificate.
 func (o SslOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -285,12 +330,12 @@ func (o SslOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// Subject Alternative Name of your SSL certificate
+// Subject Alternative Name of your SSL certificate.
 func (o SslOutput) Sans() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringArrayOutput { return v.Sans }).(pulumi.StringArrayOutput)
 }
 
-// Serial of your SSL certificate (Deprecated, use fingerprint instead!)
+// Serial of your SSL certificate (Deprecated, use fingerprint instead !)
 func (o SslOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.Serial }).(pulumi.StringOutput)
 }
@@ -300,13 +345,12 @@ func (o SslOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Subject of your SSL certificate
+// Subject of your SSL certificate.
 func (o SslOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
 }
 
-// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager
-// certificates.
+// Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates.
 func (o SslOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ssl) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

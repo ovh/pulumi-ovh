@@ -65,14 +65,14 @@ Or:
 Replace the Go package in your project first:
 
 ```sh
-$ go get github.com/ovh/pulumi-ovh/sdk/go/...
+$ go get github.com/ovh/pulumi-ovh/sdk/v2/go/...
 ```
 
 After switching the package, update the import statements in your Pulumi infrastructure code:
 
 ```diff
 - "github.com/lbrlabs/pulumi-ovh/sdk/go/ovh/CloudProject"
-+ "github.com/ovh/pulumi-ovh/sdk/go/ovh/CloudProject"
++ "github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/CloudProject"
 ```
 
 {{% /choosable %}}
@@ -100,7 +100,7 @@ After switching the package, update the import statements in your Pulumi infrast
 Your project has now been updated to use the new SDK. When running `pulumi preview` with this new setup,
 you should see no changes to your OVH resources reported.
 
-If you do encounter something unexpected, please file an issue in [the Github repository](https://github.com/ovh/pulumi-ovh/issues).
+If you do encounter something unexpected, please file an issue in [the Github repository](https://github.com/ovh/pulumi-ovh//issues).
 
 ## Provider configuration
 

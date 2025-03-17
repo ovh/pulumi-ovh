@@ -13,8 +13,17 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     [OutputType]
     public sealed class AlertingFormattedMonthlyThreshold
     {
+        /// <summary>
+        /// Currency of the monthly threshold
+        /// </summary>
         public readonly string? CurrencyCode;
+        /// <summary>
+        /// Text representation of the monthly threshold
+        /// </summary>
         public readonly string? Text;
+        /// <summary>
+        /// Value of the monthly threshold
+        /// </summary>
         public readonly double? Value;
 
         [OutputConstructor]

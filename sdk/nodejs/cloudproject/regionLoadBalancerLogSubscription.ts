@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Subscribe to a Managed Loadbalance Logs Service in a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * Create a subscription
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const subscription = new ovh.cloudproject.RegionLoadBalancerLogSubscription("subscription", {
+ *     kind: "haproxy",
+ *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+ *     regionName: "yyyy",
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     streamId: "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj",
+ * });
+ * ```
+ */
 export class RegionLoadBalancerLogSubscription extends pulumi.CustomResource {
     /**
      * Get an existing RegionLoadBalancerLogSubscription resource's state with the given name, ID, and optional extra
@@ -33,51 +53,51 @@ export class RegionLoadBalancerLogSubscription extends pulumi.CustomResource {
     }
 
     /**
-     * Creation date of the subscription
+     * The date of the subscription creation
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Log kind name of this subscription
+     * haproxy  **Changing this value recreates the resource.**
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the destination log service
+     * LDP service name
      */
     public /*out*/ readonly ldpServiceName!: pulumi.Output<string>;
     /**
-     * ID representing the loadbalancer of the resource
+     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
      */
     public readonly loadbalancerId!: pulumi.Output<string>;
     /**
-     * Identifier of the operation
+     * The operation ID
      */
     public /*out*/ readonly operationId!: pulumi.Output<string>;
     /**
-     * Region name of the resource representing the name of the region.
+     * A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * Name of subscribed resource, where the logs come from
+     * The resource name
      */
     public /*out*/ readonly resourceName!: pulumi.Output<string>;
     /**
-     * Type of subscribed resource, where the logs come from
+     * The resource type
      */
     public /*out*/ readonly resourceType!: pulumi.Output<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * ID representing the stream of the resource
+     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
      */
     public readonly streamId!: pulumi.Output<string>;
     /**
-     * Id of the subscription
+     * The subscription id
      */
     public /*out*/ readonly subscriptionId!: pulumi.Output<string>;
     /**
-     * Last update date of the subscription
+     * The last update of the subscription
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -146,51 +166,51 @@ export class RegionLoadBalancerLogSubscription extends pulumi.CustomResource {
  */
 export interface RegionLoadBalancerLogSubscriptionState {
     /**
-     * Creation date of the subscription
+     * The date of the subscription creation
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Log kind name of this subscription
+     * haproxy  **Changing this value recreates the resource.**
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the destination log service
+     * LDP service name
      */
     ldpServiceName?: pulumi.Input<string>;
     /**
-     * ID representing the loadbalancer of the resource
+     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
      */
     loadbalancerId?: pulumi.Input<string>;
     /**
-     * Identifier of the operation
+     * The operation ID
      */
     operationId?: pulumi.Input<string>;
     /**
-     * Region name of the resource representing the name of the region.
+     * A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
      */
     regionName?: pulumi.Input<string>;
     /**
-     * Name of subscribed resource, where the logs come from
+     * The resource name
      */
     resourceName?: pulumi.Input<string>;
     /**
-     * Type of subscribed resource, where the logs come from
+     * The resource type
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * ID representing the stream of the resource
+     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
      */
     streamId?: pulumi.Input<string>;
     /**
-     * Id of the subscription
+     * The subscription id
      */
     subscriptionId?: pulumi.Input<string>;
     /**
-     * Last update date of the subscription
+     * The last update of the subscription
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -200,23 +220,23 @@ export interface RegionLoadBalancerLogSubscriptionState {
  */
 export interface RegionLoadBalancerLogSubscriptionArgs {
     /**
-     * Log kind name of this subscription
+     * haproxy  **Changing this value recreates the resource.**
      */
     kind: pulumi.Input<string>;
     /**
-     * ID representing the loadbalancer of the resource
+     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
      */
     loadbalancerId: pulumi.Input<string>;
     /**
-     * Region name of the resource representing the name of the region.
+     * A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
      */
     regionName: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the id of the cloud project.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     serviceName: pulumi.Input<string>;
     /**
-     * ID representing the stream of the resource
+     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
      */
     streamId: pulumi.Input<string>;
 }

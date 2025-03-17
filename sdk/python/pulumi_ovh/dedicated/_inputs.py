@@ -75,7 +75,7 @@ if not MYPY:
         """
         efi_bootloader_path: NotRequired[pulumi.Input[str]]
         """
-        Path of the EFI bootloader from the OS installed on the server
+        Path of the EFI bootloader
         """
         hostname: NotRequired[pulumi.Input[str]]
         """
@@ -137,7 +137,7 @@ class ServerCustomizationsArgs:
                  ssh_key: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] config_drive_user_data: Config Drive UserData
-        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader from the OS installed on the server
+        :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[str] hostname: Custom hostname
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_headers: Image HTTP Headers
         :param pulumi.Input[str] image_check_sum: Image checksum
@@ -190,7 +190,7 @@ class ServerCustomizationsArgs:
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Path of the EFI bootloader from the OS installed on the server
+        Path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -327,15 +327,15 @@ if not MYPY:
         """
         id: NotRequired[pulumi.Input[str]]
         """
-        Unique identifier of the resource
+        Unique identifier of the resource in the IAM
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
         """
         urn: NotRequired[pulumi.Input[str]]
         """
-        Unique resource name used in policies
+        URN of the private database, used when writing IAM policies
         """
 elif False:
     ServerIamArgsDict: TypeAlias = Mapping[str, Any]
@@ -349,9 +349,9 @@ class ServerIamArgs:
                  urn: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] display_name: Resource display name
-        :param pulumi.Input[str] id: Unique identifier of the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param pulumi.Input[str] urn: Unique resource name used in policies
+        :param pulumi.Input[str] id: Unique identifier of the resource in the IAM
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        :param pulumi.Input[str] urn: URN of the private database, used when writing IAM policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -378,7 +378,7 @@ class ServerIamArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource in the IAM
         """
         return pulumi.get(self, "id")
 
@@ -390,7 +390,7 @@ class ServerIamArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
         """
         return pulumi.get(self, "tags")
 
@@ -402,7 +402,7 @@ class ServerIamArgs:
     @pulumi.getter
     def urn(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique resource name used in policies
+        URN of the private database, used when writing IAM policies
         """
         return pulumi.get(self, "urn")
 
@@ -1186,11 +1186,11 @@ if not MYPY:
     class ServerReinstallTaskStorageArgsDict(TypedDict):
         disk_group_id: NotRequired[pulumi.Input[int]]
         """
-        Disk group id (default is 0, meaning automatic)
+        Disk group id to install the OS to (default is 0, meaning automatic).
         """
         hardware_raids: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageHardwareRaidArgsDict']]]]
         """
-        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         """
         partitionings: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningArgsDict']]]]
         """
@@ -1206,8 +1206,8 @@ class ServerReinstallTaskStorageArgs:
                  hardware_raids: Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageHardwareRaidArgs']]]] = None,
                  partitionings: Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningArgs']]]] = None):
         """
-        :param pulumi.Input[int] disk_group_id: Disk group id (default is 0, meaning automatic)
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageHardwareRaidArgs']]] hardware_raids: Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        :param pulumi.Input[int] disk_group_id: Disk group id to install the OS to (default is 0, meaning automatic).
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageHardwareRaidArgs']]] hardware_raids: Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningArgs']]] partitionings: Partitioning configuration
         """
         if disk_group_id is not None:
@@ -1221,7 +1221,7 @@ class ServerReinstallTaskStorageArgs:
     @pulumi.getter(name="diskGroupId")
     def disk_group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Disk group id (default is 0, meaning automatic)
+        Disk group id to install the OS to (default is 0, meaning automatic).
         """
         return pulumi.get(self, "disk_group_id")
 
@@ -1233,7 +1233,7 @@ class ServerReinstallTaskStorageArgs:
     @pulumi.getter(name="hardwareRaids")
     def hardware_raids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageHardwareRaidArgs']]]]:
         """
-        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         """
         return pulumi.get(self, "hardware_raids")
 
@@ -1354,11 +1354,11 @@ if not MYPY:
         """
         layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutArgsDict']]]]
         """
-        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
         """
         scheme_name: NotRequired[pulumi.Input[str]]
         """
-        Partitioning scheme name
+        Partitioning scheme (if applicable with selected operating system)
         """
 elif False:
     ServerReinstallTaskStoragePartitioningArgsDict: TypeAlias = Mapping[str, Any]
@@ -1371,8 +1371,8 @@ class ServerReinstallTaskStoragePartitioningArgs:
                  scheme_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] disks: Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutArgs']]] layouts: Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
-        :param pulumi.Input[str] scheme_name: Partitioning scheme name
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutArgs']]] layouts: Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
+        :param pulumi.Input[str] scheme_name: Partitioning scheme (if applicable with selected operating system)
         """
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
@@ -1397,7 +1397,7 @@ class ServerReinstallTaskStoragePartitioningArgs:
     @pulumi.getter
     def layouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutArgs']]]]:
         """
-        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
         """
         return pulumi.get(self, "layouts")
 
@@ -1409,7 +1409,7 @@ class ServerReinstallTaskStoragePartitioningArgs:
     @pulumi.getter(name="schemeName")
     def scheme_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Partitioning scheme name
+        Partitioning scheme (if applicable with selected operating system)
         """
         return pulumi.get(self, "scheme_name")
 
@@ -1430,7 +1430,7 @@ if not MYPY:
         """
         extras: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraArgsDict']]]]
         """
-        Partition extras parameters
+        Partition extras parameters (when applicable)
         """
         raid_level: NotRequired[pulumi.Input[int]]
         """
@@ -1438,7 +1438,7 @@ if not MYPY:
         """
         size: NotRequired[pulumi.Input[int]]
         """
-        Partition size in MiB (default value is 0)
+        Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         """
 elif False:
     ServerReinstallTaskStoragePartitioningLayoutArgsDict: TypeAlias = Mapping[str, Any]
@@ -1454,9 +1454,9 @@ class ServerReinstallTaskStoragePartitioningLayoutArgs:
         """
         :param pulumi.Input[str] file_system: File system type
         :param pulumi.Input[str] mount_point: Mount point
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraArgs']]] extras: Partition extras parameters
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraArgs']]] extras: Partition extras parameters (when applicable)
         :param pulumi.Input[int] raid_level: Software raid type (default is 1)
-        :param pulumi.Input[int] size: Partition size in MiB (default value is 0)
+        :param pulumi.Input[int] size: Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         """
         pulumi.set(__self__, "file_system", file_system)
         pulumi.set(__self__, "mount_point", mount_point)
@@ -1495,7 +1495,7 @@ class ServerReinstallTaskStoragePartitioningLayoutArgs:
     @pulumi.getter
     def extras(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraArgs']]]]:
         """
-        Partition extras parameters
+        Partition extras parameters (when applicable)
         """
         return pulumi.get(self, "extras")
 
@@ -1519,7 +1519,7 @@ class ServerReinstallTaskStoragePartitioningLayoutArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        Partition size in MiB (default value is 0)
+        Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         """
         return pulumi.get(self, "size")
 
@@ -1532,11 +1532,11 @@ if not MYPY:
     class ServerReinstallTaskStoragePartitioningLayoutExtraArgsDict(TypedDict):
         lvs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgsDict']]]]
         """
-        LVM-specific parameters
+        LVM-specific parameters (when applicable)
         """
         zps: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgsDict']]]]
         """
-        ZFS-specific parameters
+        ZFS-specific parameters (when applicable)
         """
 elif False:
     ServerReinstallTaskStoragePartitioningLayoutExtraArgsDict: TypeAlias = Mapping[str, Any]
@@ -1547,8 +1547,8 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraArgs:
                  lvs: Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs']]]] = None,
                  zps: Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs']]] lvs: LVM-specific parameters
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs']]] zps: ZFS-specific parameters
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs']]] lvs: LVM-specific parameters (when applicable)
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs']]] zps: ZFS-specific parameters (when applicable)
         """
         if lvs is not None:
             pulumi.set(__self__, "lvs", lvs)
@@ -1559,7 +1559,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraArgs:
     @pulumi.getter
     def lvs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs']]]]:
         """
-        LVM-specific parameters
+        LVM-specific parameters (when applicable)
         """
         return pulumi.get(self, "lvs")
 
@@ -1571,7 +1571,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraArgs:
     @pulumi.getter
     def zps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs']]]]:
         """
-        ZFS-specific parameters
+        ZFS-specific parameters (when applicable)
         """
         return pulumi.get(self, "zps")
 
@@ -1616,7 +1616,7 @@ if not MYPY:
     class ServerReinstallTaskStoragePartitioningLayoutExtraZpArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[str]]
         """
-        zpool name (generated automatically if not specified)
+        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         """
 elif False:
     ServerReinstallTaskStoragePartitioningLayoutExtraZpArgsDict: TypeAlias = Mapping[str, Any]
@@ -1626,7 +1626,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: zpool name (generated automatically if not specified)
+        :param pulumi.Input[str] name: zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1635,7 +1635,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        zpool name (generated automatically if not specified)
+        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         """
         return pulumi.get(self, "name")
 
@@ -2046,7 +2046,7 @@ if not MYPY:
     class ServerStoragePartitioningLayoutExtrasLvArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[str]]
         """
-        Logical volume name
+        Dedicated server name
         """
 elif False:
     ServerStoragePartitioningLayoutExtrasLvArgsDict: TypeAlias = Mapping[str, Any]
@@ -2056,7 +2056,7 @@ class ServerStoragePartitioningLayoutExtrasLvArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Logical volume name
+        :param pulumi.Input[str] name: Dedicated server name
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2065,7 +2065,7 @@ class ServerStoragePartitioningLayoutExtrasLvArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Logical volume name
+        Dedicated server name
         """
         return pulumi.get(self, "name")
 
@@ -2078,7 +2078,7 @@ if not MYPY:
     class ServerStoragePartitioningLayoutExtrasZpArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[str]]
         """
-        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        Dedicated server name
         """
 elif False:
     ServerStoragePartitioningLayoutExtrasZpArgsDict: TypeAlias = Mapping[str, Any]
@@ -2088,7 +2088,7 @@ class ServerStoragePartitioningLayoutExtrasZpArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        :param pulumi.Input[str] name: Dedicated server name
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2097,7 +2097,7 @@ class ServerStoragePartitioningLayoutExtrasZpArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        Dedicated server name
         """
         return pulumi.get(self, "name")
 

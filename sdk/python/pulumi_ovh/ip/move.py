@@ -26,8 +26,10 @@ class MoveArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Move resource.
-        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Routage information
-        :param pulumi.Input[str] description: Custom description on your ip
+        :param pulumi.Input[str] ip: IP block that we want to attach to a different service
+        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+        :param pulumi.Input[str] description: Description attached to the IP
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "routed_to", routed_to)
@@ -37,6 +39,9 @@ class MoveArgs:
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
+        """
+        IP block that we want to attach to a different service
+        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -47,7 +52,8 @@ class MoveArgs:
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> pulumi.Input['MoveRoutedToArgs']:
         """
-        Routage information
+        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         return pulumi.get(self, "routed_to")
 
@@ -59,7 +65,7 @@ class MoveArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description on your ip
+        Description attached to the IP
         """
         return pulumi.get(self, "description")
 
@@ -83,8 +89,14 @@ class _MoveState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Move resources.
-        :param pulumi.Input[str] description: Custom description on your ip
-        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Routage information
+        :param pulumi.Input[bool] can_be_terminated: Whether IP service can be terminated
+        :param pulumi.Input[str] country: Country
+        :param pulumi.Input[str] description: Description attached to the IP
+        :param pulumi.Input[str] ip: IP block that we want to attach to a different service
+        :param pulumi.Input[str] organisation_id: IP block organisation Id
+        :param pulumi.Input['MoveRoutedToArgs'] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+        :param pulumi.Input[str] service_name: Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] task_status: Status field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] type: Possible values for ip type
@@ -113,6 +125,9 @@ class _MoveState:
     @property
     @pulumi.getter(name="canBeTerminated")
     def can_be_terminated(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether IP service can be terminated
+        """
         return pulumi.get(self, "can_be_terminated")
 
     @can_be_terminated.setter
@@ -122,6 +137,9 @@ class _MoveState:
     @property
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[str]]:
+        """
+        Country
+        """
         return pulumi.get(self, "country")
 
     @country.setter
@@ -132,7 +150,7 @@ class _MoveState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description on your ip
+        Description attached to the IP
         """
         return pulumi.get(self, "description")
 
@@ -143,6 +161,9 @@ class _MoveState:
     @property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP block that we want to attach to a different service
+        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -152,6 +173,9 @@ class _MoveState:
     @property
     @pulumi.getter(name="organisationId")
     def organisation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP block organisation Id
+        """
         return pulumi.get(self, "organisation_id")
 
     @organisation_id.setter
@@ -162,7 +186,8 @@ class _MoveState:
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> Optional[pulumi.Input['MoveRoutedToArgs']]:
         """
-        Routage information
+        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         return pulumi.get(self, "routed_to")
 
@@ -173,6 +198,9 @@ class _MoveState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -226,11 +254,50 @@ class Move(pulumi.CustomResource):
                  routed_to: Optional[pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Move resource with the given unique name, props, and options.
+        Moves a given IP to a different service, or inversely, parks it if empty service is given
+
+        ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        move_ip_to_load_balancer_xxxxx = ovh.ip.Move("moveIpToLoadBalancerXxxxx",
+            ip="1.2.3.4",
+            routed_to={
+                "service_name": "loadbalancer-XXXXX",
+            })
+        ```
+
+        ## Park IP/Detach IP `1.2.3.4` from any service
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        park_ip = ovh.ip.Move("parkIp",
+            ip="1.2.3.4",
+            routed_to={
+                "service_name": "",
+            })
+        ```
+
+        ## Import
+
+        The resource can be imported using the `ip` field, e.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Custom description on your ip
-        :param pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']] routed_to: Routage information
+        :param pulumi.Input[str] description: Description attached to the IP
+        :param pulumi.Input[str] ip: IP block that we want to attach to a different service
+        :param pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         ...
     @overload
@@ -239,7 +306,44 @@ class Move(pulumi.CustomResource):
                  args: MoveArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Move resource with the given unique name, props, and options.
+        Moves a given IP to a different service, or inversely, parks it if empty service is given
+
+        ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        move_ip_to_load_balancer_xxxxx = ovh.ip.Move("moveIpToLoadBalancerXxxxx",
+            ip="1.2.3.4",
+            routed_to={
+                "service_name": "loadbalancer-XXXXX",
+            })
+        ```
+
+        ## Park IP/Detach IP `1.2.3.4` from any service
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        park_ip = ovh.ip.Move("parkIp",
+            ip="1.2.3.4",
+            routed_to={
+                "service_name": "",
+            })
+        ```
+
+        ## Import
+
+        The resource can be imported using the `ip` field, e.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
+        ```
+
         :param str resource_name: The name of the resource.
         :param MoveArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -308,8 +412,14 @@ class Move(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Custom description on your ip
-        :param pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']] routed_to: Routage information
+        :param pulumi.Input[bool] can_be_terminated: Whether IP service can be terminated
+        :param pulumi.Input[str] country: Country
+        :param pulumi.Input[str] description: Description attached to the IP
+        :param pulumi.Input[str] ip: IP block that we want to attach to a different service
+        :param pulumi.Input[str] organisation_id: IP block organisation Id
+        :param pulumi.Input[Union['MoveRoutedToArgs', 'MoveRoutedToArgsDict']] routed_to: Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+               instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+        :param pulumi.Input[str] service_name: Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
         :param pulumi.Input[str] task_start_date: Starting date and time field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] task_status: Status field of the current IP task that is in charge of changing the service the IP is attached to
         :param pulumi.Input[str] type: Possible values for ip type
@@ -333,42 +443,58 @@ class Move(pulumi.CustomResource):
     @property
     @pulumi.getter(name="canBeTerminated")
     def can_be_terminated(self) -> pulumi.Output[bool]:
+        """
+        Whether IP service can be terminated
+        """
         return pulumi.get(self, "can_be_terminated")
 
     @property
     @pulumi.getter
     def country(self) -> pulumi.Output[str]:
+        """
+        Country
+        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Custom description on your ip
+        Description attached to the IP
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
+        """
+        IP block that we want to attach to a different service
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="organisationId")
     def organisation_id(self) -> pulumi.Output[str]:
+        """
+        IP block organisation Id
+        """
         return pulumi.get(self, "organisation_id")
 
     @property
     @pulumi.getter(name="routedTo")
     def routed_to(self) -> pulumi.Output['outputs.MoveRoutedTo']:
         """
-        Routage information
+        Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         """
         return pulumi.get(self, "routed_to")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
+        """
         return pulumi.get(self, "service_name")
 
     @property

@@ -8,26 +8,94 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a backend server entry linked to loadbalancing group (farm)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/iploadbalancing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
+//				State:       pulumi.StringRef("ok"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			farmName, err := iploadbalancing.NewTcpFarm(ctx, "farmName", &iploadbalancing.TcpFarmArgs{
+//				Port:        pulumi.Int(8080),
+//				ServiceName: pulumi.String(lb.ServiceName),
+//				Zone:        pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewTcpFarmServer(ctx, "backend", &iploadbalancing.TcpFarmServerArgs{
+//				Address:              pulumi.String("4.5.6.7"),
+//				Backup:               pulumi.Bool(true),
+//				DisplayName:          pulumi.String("mybackend"),
+//				FarmId:               farmName.ID(),
+//				Port:                 pulumi.Int(80),
+//				Probe:                pulumi.Bool(true),
+//				ProxyProtocolVersion: pulumi.String("v2"),
+//				ServiceName:          pulumi.String(lb.ServiceName),
+//				Ssl:                  pulumi.Bool(false),
+//				Status:               pulumi.String("active"),
+//				Weight:               pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// TCP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 type TcpFarmServer struct {
 	pulumi.CustomResourceState
 
-	Address              pulumi.StringOutput    `pulumi:"address"`
-	Backup               pulumi.BoolPtrOutput   `pulumi:"backup"`
-	Chain                pulumi.StringPtrOutput `pulumi:"chain"`
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
-	FarmId               pulumi.IntOutput       `pulumi:"farmId"`
-	OnMarkedDown         pulumi.StringPtrOutput `pulumi:"onMarkedDown"`
-	Port                 pulumi.IntPtrOutput    `pulumi:"port"`
-	Probe                pulumi.BoolPtrOutput   `pulumi:"probe"`
+	// Address of the backend server (IP from either internal or OVHcloud network)
+	Address pulumi.StringOutput `pulumi:"address"`
+	// is it a backup server used in case of failure of all the non-backup backends
+	Backup pulumi.BoolPtrOutput   `pulumi:"backup"`
+	Chain  pulumi.StringPtrOutput `pulumi:"chain"`
+	// Label for the server
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// ID of the farm this server is attached to
+	FarmId pulumi.IntOutput `pulumi:"farmId"`
+	// enable action when backend marked down. (`shutdown-sessions`)
+	OnMarkedDown pulumi.StringPtrOutput `pulumi:"onMarkedDown"`
+	// Port that backend will respond on
+	Port pulumi.IntPtrOutput `pulumi:"port"`
+	// defines if backend will be probed to determine health and keep as active in farm if healthy
+	Probe pulumi.BoolPtrOutput `pulumi:"probe"`
+	// version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
 	ProxyProtocolVersion pulumi.StringPtrOutput `pulumi:"proxyProtocolVersion"`
-	ServiceName          pulumi.StringOutput    `pulumi:"serviceName"`
-	Ssl                  pulumi.BoolPtrOutput   `pulumi:"ssl"`
-	Status               pulumi.StringOutput    `pulumi:"status"`
-	Weight               pulumi.IntPtrOutput    `pulumi:"weight"`
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// is the connection ciphered with SSL (TLS)
+	Ssl pulumi.BoolPtrOutput `pulumi:"ssl"`
+	// backend status - `active` or `inactive`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// used in loadbalancing algorithm
+	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
 
 // NewTcpFarmServer registers a new resource with the given unique name, arguments, and options.
@@ -72,35 +140,59 @@ func GetTcpFarmServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TcpFarmServer resources.
 type tcpFarmServerState struct {
-	Address              *string `pulumi:"address"`
-	Backup               *bool   `pulumi:"backup"`
-	Chain                *string `pulumi:"chain"`
-	DisplayName          *string `pulumi:"displayName"`
-	FarmId               *int    `pulumi:"farmId"`
-	OnMarkedDown         *string `pulumi:"onMarkedDown"`
-	Port                 *int    `pulumi:"port"`
-	Probe                *bool   `pulumi:"probe"`
+	// Address of the backend server (IP from either internal or OVHcloud network)
+	Address *string `pulumi:"address"`
+	// is it a backup server used in case of failure of all the non-backup backends
+	Backup *bool   `pulumi:"backup"`
+	Chain  *string `pulumi:"chain"`
+	// Label for the server
+	DisplayName *string `pulumi:"displayName"`
+	// ID of the farm this server is attached to
+	FarmId *int `pulumi:"farmId"`
+	// enable action when backend marked down. (`shutdown-sessions`)
+	OnMarkedDown *string `pulumi:"onMarkedDown"`
+	// Port that backend will respond on
+	Port *int `pulumi:"port"`
+	// defines if backend will be probed to determine health and keep as active in farm if healthy
+	Probe *bool `pulumi:"probe"`
+	// version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
 	ProxyProtocolVersion *string `pulumi:"proxyProtocolVersion"`
-	ServiceName          *string `pulumi:"serviceName"`
-	Ssl                  *bool   `pulumi:"ssl"`
-	Status               *string `pulumi:"status"`
-	Weight               *int    `pulumi:"weight"`
+	// The internal name of your IP load balancing
+	ServiceName *string `pulumi:"serviceName"`
+	// is the connection ciphered with SSL (TLS)
+	Ssl *bool `pulumi:"ssl"`
+	// backend status - `active` or `inactive`
+	Status *string `pulumi:"status"`
+	// used in loadbalancing algorithm
+	Weight *int `pulumi:"weight"`
 }
 
 type TcpFarmServerState struct {
-	Address              pulumi.StringPtrInput
-	Backup               pulumi.BoolPtrInput
-	Chain                pulumi.StringPtrInput
-	DisplayName          pulumi.StringPtrInput
-	FarmId               pulumi.IntPtrInput
-	OnMarkedDown         pulumi.StringPtrInput
-	Port                 pulumi.IntPtrInput
-	Probe                pulumi.BoolPtrInput
+	// Address of the backend server (IP from either internal or OVHcloud network)
+	Address pulumi.StringPtrInput
+	// is it a backup server used in case of failure of all the non-backup backends
+	Backup pulumi.BoolPtrInput
+	Chain  pulumi.StringPtrInput
+	// Label for the server
+	DisplayName pulumi.StringPtrInput
+	// ID of the farm this server is attached to
+	FarmId pulumi.IntPtrInput
+	// enable action when backend marked down. (`shutdown-sessions`)
+	OnMarkedDown pulumi.StringPtrInput
+	// Port that backend will respond on
+	Port pulumi.IntPtrInput
+	// defines if backend will be probed to determine health and keep as active in farm if healthy
+	Probe pulumi.BoolPtrInput
+	// version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
 	ProxyProtocolVersion pulumi.StringPtrInput
-	ServiceName          pulumi.StringPtrInput
-	Ssl                  pulumi.BoolPtrInput
-	Status               pulumi.StringPtrInput
-	Weight               pulumi.IntPtrInput
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringPtrInput
+	// is the connection ciphered with SSL (TLS)
+	Ssl pulumi.BoolPtrInput
+	// backend status - `active` or `inactive`
+	Status pulumi.StringPtrInput
+	// used in loadbalancing algorithm
+	Weight pulumi.IntPtrInput
 }
 
 func (TcpFarmServerState) ElementType() reflect.Type {
@@ -108,36 +200,60 @@ func (TcpFarmServerState) ElementType() reflect.Type {
 }
 
 type tcpFarmServerArgs struct {
-	Address              string  `pulumi:"address"`
-	Backup               *bool   `pulumi:"backup"`
-	Chain                *string `pulumi:"chain"`
-	DisplayName          *string `pulumi:"displayName"`
-	FarmId               int     `pulumi:"farmId"`
-	OnMarkedDown         *string `pulumi:"onMarkedDown"`
-	Port                 *int    `pulumi:"port"`
-	Probe                *bool   `pulumi:"probe"`
+	// Address of the backend server (IP from either internal or OVHcloud network)
+	Address string `pulumi:"address"`
+	// is it a backup server used in case of failure of all the non-backup backends
+	Backup *bool   `pulumi:"backup"`
+	Chain  *string `pulumi:"chain"`
+	// Label for the server
+	DisplayName *string `pulumi:"displayName"`
+	// ID of the farm this server is attached to
+	FarmId int `pulumi:"farmId"`
+	// enable action when backend marked down. (`shutdown-sessions`)
+	OnMarkedDown *string `pulumi:"onMarkedDown"`
+	// Port that backend will respond on
+	Port *int `pulumi:"port"`
+	// defines if backend will be probed to determine health and keep as active in farm if healthy
+	Probe *bool `pulumi:"probe"`
+	// version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
 	ProxyProtocolVersion *string `pulumi:"proxyProtocolVersion"`
-	ServiceName          string  `pulumi:"serviceName"`
-	Ssl                  *bool   `pulumi:"ssl"`
-	Status               string  `pulumi:"status"`
-	Weight               *int    `pulumi:"weight"`
+	// The internal name of your IP load balancing
+	ServiceName string `pulumi:"serviceName"`
+	// is the connection ciphered with SSL (TLS)
+	Ssl *bool `pulumi:"ssl"`
+	// backend status - `active` or `inactive`
+	Status string `pulumi:"status"`
+	// used in loadbalancing algorithm
+	Weight *int `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a TcpFarmServer resource.
 type TcpFarmServerArgs struct {
-	Address              pulumi.StringInput
-	Backup               pulumi.BoolPtrInput
-	Chain                pulumi.StringPtrInput
-	DisplayName          pulumi.StringPtrInput
-	FarmId               pulumi.IntInput
-	OnMarkedDown         pulumi.StringPtrInput
-	Port                 pulumi.IntPtrInput
-	Probe                pulumi.BoolPtrInput
+	// Address of the backend server (IP from either internal or OVHcloud network)
+	Address pulumi.StringInput
+	// is it a backup server used in case of failure of all the non-backup backends
+	Backup pulumi.BoolPtrInput
+	Chain  pulumi.StringPtrInput
+	// Label for the server
+	DisplayName pulumi.StringPtrInput
+	// ID of the farm this server is attached to
+	FarmId pulumi.IntInput
+	// enable action when backend marked down. (`shutdown-sessions`)
+	OnMarkedDown pulumi.StringPtrInput
+	// Port that backend will respond on
+	Port pulumi.IntPtrInput
+	// defines if backend will be probed to determine health and keep as active in farm if healthy
+	Probe pulumi.BoolPtrInput
+	// version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
 	ProxyProtocolVersion pulumi.StringPtrInput
-	ServiceName          pulumi.StringInput
-	Ssl                  pulumi.BoolPtrInput
-	Status               pulumi.StringInput
-	Weight               pulumi.IntPtrInput
+	// The internal name of your IP load balancing
+	ServiceName pulumi.StringInput
+	// is the connection ciphered with SSL (TLS)
+	Ssl pulumi.BoolPtrInput
+	// backend status - `active` or `inactive`
+	Status pulumi.StringInput
+	// used in loadbalancing algorithm
+	Weight pulumi.IntPtrInput
 }
 
 func (TcpFarmServerArgs) ElementType() reflect.Type {
@@ -227,10 +343,12 @@ func (o TcpFarmServerOutput) ToTcpFarmServerOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Address of the backend server (IP from either internal or OVHcloud network)
 func (o TcpFarmServerOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
+// is it a backup server used in case of failure of all the non-backup backends
 func (o TcpFarmServerOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.BoolPtrOutput { return v.Backup }).(pulumi.BoolPtrOutput)
 }
@@ -239,42 +357,52 @@ func (o TcpFarmServerOutput) Chain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringPtrOutput { return v.Chain }).(pulumi.StringPtrOutput)
 }
 
+// Label for the server
 func (o TcpFarmServerOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// ID of the farm this server is attached to
 func (o TcpFarmServerOutput) FarmId() pulumi.IntOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.IntOutput { return v.FarmId }).(pulumi.IntOutput)
 }
 
+// enable action when backend marked down. (`shutdown-sessions`)
 func (o TcpFarmServerOutput) OnMarkedDown() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringPtrOutput { return v.OnMarkedDown }).(pulumi.StringPtrOutput)
 }
 
+// Port that backend will respond on
 func (o TcpFarmServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// defines if backend will be probed to determine health and keep as active in farm if healthy
 func (o TcpFarmServerOutput) Probe() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.BoolPtrOutput { return v.Probe }).(pulumi.BoolPtrOutput)
 }
 
+// version of the PROXY protocol used to pass origin connection information from loadbalancer to receiving service (`v1`, `v2`, `v2-ssl`, `v2-ssl-cn`)
 func (o TcpFarmServerOutput) ProxyProtocolVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringPtrOutput { return v.ProxyProtocolVersion }).(pulumi.StringPtrOutput)
 }
 
+// The internal name of your IP load balancing
 func (o TcpFarmServerOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// is the connection ciphered with SSL (TLS)
 func (o TcpFarmServerOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.BoolPtrOutput { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
+// backend status - `active` or `inactive`
 func (o TcpFarmServerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// used in loadbalancing algorithm
 func (o TcpFarmServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpFarmServer) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
 }

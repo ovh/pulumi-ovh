@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Generates a temporary presigned S3 URLs to download or upload an object.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const presignedUrlRegionStoragePresign = new ovh.cloudproject.RegionStoragePresign("presignedUrlRegionStoragePresign", {
+ *     serviceName: "xxxxxxxxxxxxxxxxx",
+ *     regionName: "GRA",
+ *     expire: 3600,
+ *     method: "GET",
+ *     object: "an-object-in-the-bucket",
+ * });
+ * export const presignedUrl = presignedUrlRegionStoragePresign.url;
+ * ```
+ */
 export class RegionStoragePresign extends pulumi.CustomResource {
     /**
      * Get an existing RegionStoragePresign resource's state with the given name, ID, and optional extra
@@ -33,28 +52,35 @@ export class RegionStoragePresign extends pulumi.CustomResource {
     }
 
     /**
-     * How long (in seconds) the URL will be valid
+     * Define, in seconds, for how long your URL will be
+     * valid.
      */
     public readonly expire!: pulumi.Output<number>;
+    /**
+     * The method you want to use to interact with your
+     * object. Can be either 'GET' or 'PUT'.
+     */
     public readonly method!: pulumi.Output<string>;
     /**
-     * The S3 storage container's name
+     * The name of your S3 storage container/bucket.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Name of the object to download or upload
+     * The name of the object in your S3 bucket.
      */
     public readonly object!: pulumi.Output<string>;
     /**
-     * Region name
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: "GRA".
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * Service name of the resource representing the ID of the cloud project
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Presigned URL
+     * Computed URL result.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -113,28 +139,35 @@ export class RegionStoragePresign extends pulumi.CustomResource {
  */
 export interface RegionStoragePresignState {
     /**
-     * How long (in seconds) the URL will be valid
+     * Define, in seconds, for how long your URL will be
+     * valid.
      */
     expire?: pulumi.Input<number>;
+    /**
+     * The method you want to use to interact with your
+     * object. Can be either 'GET' or 'PUT'.
+     */
     method?: pulumi.Input<string>;
     /**
-     * The S3 storage container's name
+     * The name of your S3 storage container/bucket.
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of the object to download or upload
+     * The name of the object in your S3 bucket.
      */
     object?: pulumi.Input<string>;
     /**
-     * Region name
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: "GRA".
      */
     regionName?: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the ID of the cloud project
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Presigned URL
+     * Computed URL result.
      */
     url?: pulumi.Input<string>;
 }
@@ -144,24 +177,31 @@ export interface RegionStoragePresignState {
  */
 export interface RegionStoragePresignArgs {
     /**
-     * How long (in seconds) the URL will be valid
+     * Define, in seconds, for how long your URL will be
+     * valid.
      */
     expire: pulumi.Input<number>;
+    /**
+     * The method you want to use to interact with your
+     * object. Can be either 'GET' or 'PUT'.
+     */
     method: pulumi.Input<string>;
     /**
-     * The S3 storage container's name
+     * The name of your S3 storage container/bucket.
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of the object to download or upload
+     * The name of the object in your S3 bucket.
      */
     object: pulumi.Input<string>;
     /**
-     * Region name
+     * The region in which your storage is located. Must
+     * be in **uppercase**. Ex.: "GRA".
      */
     regionName: pulumi.Input<string>;
     /**
-     * Service name of the resource representing the ID of the cloud project
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

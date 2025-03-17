@@ -74,26 +74,41 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def access(self) -> str:
+        """
+        Project access
+        """
         return pulumi.get(self, "access")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        Project creation date
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of your project
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def expiration(self) -> str:
+        """
+        Expiration date of your project. After this date, your project will be deleted
+        """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter
     def iam(self) -> 'outputs.GetProjectIamResult':
+        """
+        IAM resource information
+        """
         return pulumi.get(self, "iam")
 
     @property
@@ -107,41 +122,65 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="manualQuota")
     def manual_quota(self) -> bool:
+        """
+        Manual quota prevent automatic quota upgrade
+        """
         return pulumi.get(self, "manual_quota")
 
     @property
     @pulumi.getter(name="orderId")
     def order_id(self) -> float:
+        """
+        Project order ID
+        """
         return pulumi.get(self, "order_id")
 
     @property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
+        """
+        Order plan code
+        """
         return pulumi.get(self, "plan_code")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project ID
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="projectName")
     def project_name(self) -> str:
+        """
+        Project name
+        """
         return pulumi.get(self, "project_name")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        ID of the public cloud project
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Current status
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def unleash(self) -> bool:
+        """
+        Project unleashed
+        """
         return pulumi.get(self, "unleash")
 
 
@@ -170,7 +209,20 @@ class AwaitableGetProjectResult(GetProjectResult):
 def get_project(service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    Get the details of a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project = ovh.Cloud.get_project(service_name="XXX")
+    ```
+
+
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -195,7 +247,20 @@ def get_project(service_name: Optional[str] = None,
 def get_project_output(service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get the details of a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project = ovh.Cloud.get_project(service_name="XXX")
+    ```
+
+
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

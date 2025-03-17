@@ -6,6 +6,31 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a backend server group (farm) to be used by loadbalancing frontend(s)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "ip-1.2.3.4",
+ *     state: "ok",
+ * });
+ * const farmName = new ovh.iploadbalancing.TcpFarm("farmName", {
+ *     displayName: "ingress-8080-gra",
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     zone: "GRA",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TCP Farm can be imported using the following format `serviceName` and the `id` of the farm, separated by "/" e.g.
+ */
 export class TcpFarm extends pulumi.CustomResource {
     /**
      * Get an existing TcpFarm resource's state with the given name, ID, and optional extra
@@ -34,13 +59,37 @@ export class TcpFarm extends pulumi.CustomResource {
         return obj['__pulumiType'] === TcpFarm.__pulumiType;
     }
 
+    /**
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     */
     public readonly balance!: pulumi.Output<string | undefined>;
+    /**
+     * Readable label for loadbalancer farm
+     */
     public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
+     */
     public readonly port!: pulumi.Output<number | undefined>;
+    /**
+     * define a backend healthcheck probe
+     */
     public readonly probe!: pulumi.Output<outputs.IpLoadBalancing.TcpFarmProbe | undefined>;
+    /**
+     * The internal name of your IP load balancing
+     */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Stickiness type. No stickiness if null (`sourceIp`)
+     */
     public readonly stickiness!: pulumi.Output<string | undefined>;
+    /**
+     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+     */
     public readonly vrackNetworkId!: pulumi.Output<number | undefined>;
+    /**
+     * Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -90,13 +139,37 @@ export class TcpFarm extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TcpFarm resources.
  */
 export interface TcpFarmState {
+    /**
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     */
     balance?: pulumi.Input<string>;
+    /**
+     * Readable label for loadbalancer farm
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
+     */
     port?: pulumi.Input<number>;
+    /**
+     * define a backend healthcheck probe
+     */
     probe?: pulumi.Input<inputs.IpLoadBalancing.TcpFarmProbe>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Stickiness type. No stickiness if null (`sourceIp`)
+     */
     stickiness?: pulumi.Input<string>;
+    /**
+     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+     */
     vrackNetworkId?: pulumi.Input<number>;
+    /**
+     * Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+     */
     zone?: pulumi.Input<string>;
 }
 
@@ -104,12 +177,36 @@ export interface TcpFarmState {
  * The set of arguments for constructing a TcpFarm resource.
  */
 export interface TcpFarmArgs {
+    /**
+     * Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
+     */
     balance?: pulumi.Input<string>;
+    /**
+     * Readable label for loadbalancer farm
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * Port attached to your farm ([1..49151]). Inherited from frontend if null
+     */
     port?: pulumi.Input<number>;
+    /**
+     * define a backend healthcheck probe
+     */
     probe?: pulumi.Input<inputs.IpLoadBalancing.TcpFarmProbe>;
+    /**
+     * The internal name of your IP load balancing
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * Stickiness type. No stickiness if null (`sourceIp`)
+     */
     stickiness?: pulumi.Input<string>;
+    /**
+     * Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+     */
     vrackNetworkId?: pulumi.Input<number>;
+    /**
+     * Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+     */
     zone: pulumi.Input<string>;
 }

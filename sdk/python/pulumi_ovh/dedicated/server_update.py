@@ -28,11 +28,11 @@ class ServerUpdateArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServerUpdate resource.
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
-        :param pulumi.Input[int] boot_id: The boot id of your dedicated server.
-        :param pulumi.Input[str] boot_script: The boot script of your dedicated server.
-        :param pulumi.Input[str] display_name: Display name of the dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: The path of the EFI bootloader.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
+        :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
@@ -54,7 +54,7 @@ class ServerUpdateArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your dedicated server.
+        The service_name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -66,7 +66,7 @@ class ServerUpdateArgs:
     @pulumi.getter(name="bootId")
     def boot_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The boot id of your dedicated server.
+        boot id of the server
         """
         return pulumi.get(self, "boot_id")
 
@@ -78,7 +78,7 @@ class ServerUpdateArgs:
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> Optional[pulumi.Input[str]]:
         """
-        The boot script of your dedicated server.
+        boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -90,7 +90,7 @@ class ServerUpdateArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Display name of the dedicated server
+        display name of the dedicated server
         """
         return pulumi.get(self, "display_name")
 
@@ -102,7 +102,7 @@ class ServerUpdateArgs:
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path of the EFI bootloader.
+        path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -147,12 +147,12 @@ class _ServerUpdateState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerUpdate resources.
-        :param pulumi.Input[int] boot_id: The boot id of your dedicated server.
-        :param pulumi.Input[str] boot_script: The boot script of your dedicated server.
-        :param pulumi.Input[str] display_name: Display name of the dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: The path of the EFI bootloader.
+        :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
+        :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
         if boot_id is not None:
@@ -174,7 +174,7 @@ class _ServerUpdateState:
     @pulumi.getter(name="bootId")
     def boot_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The boot id of your dedicated server.
+        boot id of the server
         """
         return pulumi.get(self, "boot_id")
 
@@ -186,7 +186,7 @@ class _ServerUpdateState:
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> Optional[pulumi.Input[str]]:
         """
-        The boot script of your dedicated server.
+        boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -198,7 +198,7 @@ class _ServerUpdateState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Display name of the dedicated server
+        display name of the dedicated server
         """
         return pulumi.get(self, "display_name")
 
@@ -210,7 +210,7 @@ class _ServerUpdateState:
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path of the EFI bootloader.
+        path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -234,7 +234,7 @@ class _ServerUpdateState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your dedicated server.
+        The service_name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -269,15 +269,31 @@ class ServerUpdate(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServerUpdate resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue",
+            kernel="rescue64-pro")
+        server = ovh.dedicated.ServerUpdate("server",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_id=rescue.results[0],
+            monitoring=True,
+            state="ok",
+            display_name="Some human-readable name")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] boot_id: The boot id of your dedicated server.
-        :param pulumi.Input[str] boot_script: The boot script of your dedicated server.
-        :param pulumi.Input[str] display_name: Display name of the dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: The path of the EFI bootloader.
+        :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
+        :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
         ...
@@ -287,7 +303,23 @@ class ServerUpdate(pulumi.CustomResource):
                  args: ServerUpdateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServerUpdate resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_type="rescue",
+            kernel="rescue64-pro")
+        server = ovh.dedicated.ServerUpdate("server",
+            service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
+            boot_id=rescue.results[0],
+            monitoring=True,
+            state="ok",
+            display_name="Some human-readable name")
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServerUpdateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -352,12 +384,12 @@ class ServerUpdate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] boot_id: The boot id of your dedicated server.
-        :param pulumi.Input[str] boot_script: The boot script of your dedicated server.
-        :param pulumi.Input[str] display_name: Display name of the dedicated server
-        :param pulumi.Input[str] efi_bootloader_path: The path of the EFI bootloader.
+        :param pulumi.Input[int] boot_id: boot id of the server
+        :param pulumi.Input[str] boot_script: boot script of the server
+        :param pulumi.Input[str] display_name: display name of the dedicated server
+        :param pulumi.Input[str] efi_bootloader_path: path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[str] state: error, hacked, hackedBlocked, ok
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -377,7 +409,7 @@ class ServerUpdate(pulumi.CustomResource):
     @pulumi.getter(name="bootId")
     def boot_id(self) -> pulumi.Output[int]:
         """
-        The boot id of your dedicated server.
+        boot id of the server
         """
         return pulumi.get(self, "boot_id")
 
@@ -385,7 +417,7 @@ class ServerUpdate(pulumi.CustomResource):
     @pulumi.getter(name="bootScript")
     def boot_script(self) -> pulumi.Output[Optional[str]]:
         """
-        The boot script of your dedicated server.
+        boot script of the server
         """
         return pulumi.get(self, "boot_script")
 
@@ -393,7 +425,7 @@ class ServerUpdate(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Display name of the dedicated server
+        display name of the dedicated server
         """
         return pulumi.get(self, "display_name")
 
@@ -401,7 +433,7 @@ class ServerUpdate(pulumi.CustomResource):
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> pulumi.Output[str]:
         """
-        The path of the EFI bootloader.
+        path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -417,7 +449,7 @@ class ServerUpdate(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your dedicated server.
+        The service_name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 

@@ -58,46 +58,73 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> int:
+        """
+        Minimum insync replica accepted for this topic.
+        """
         return pulumi.get(self, "min_insync_replicas")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the topic.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def partitions(self) -> int:
+        """
+        Number of partitions for this topic.
+        """
         return pulumi.get(self, "partitions")
 
     @property
     @pulumi.getter
     def replication(self) -> int:
+        """
+        Number of replication for this topic.
+        """
         return pulumi.get(self, "replication")
 
     @property
     @pulumi.getter(name="retentionBytes")
     def retention_bytes(self) -> int:
+        """
+        Number of bytes for the retention of the data for this topic. Inferior to 0 mean Unlimited
+        """
         return pulumi.get(self, "retention_bytes")
 
     @property
     @pulumi.getter(name="retentionHours")
     def retention_hours(self) -> int:
+        """
+        Number of hours for the retention of the data for this topic. Inferior to 0 mean Unlimited
+        """
         return pulumi.get(self, "retention_hours")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -123,7 +150,25 @@ def get_kafka_topic(cluster_id: Optional[str] = None,
                     service_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    topic = ovh.CloudProjectDatabase.get_kafka_topic(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("topicName", topic.name)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str id: Topic ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -147,7 +192,25 @@ def get_kafka_topic_output(cluster_id: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    topic = ovh.CloudProjectDatabase.get_kafka_topic(service_name="XXX",
+        cluster_id="YYY",
+        id="ZZZ")
+    pulumi.export("topicName", topic.name)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str id: Topic ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

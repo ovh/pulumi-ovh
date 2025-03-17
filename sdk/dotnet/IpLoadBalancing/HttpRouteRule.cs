@@ -9,30 +9,126 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
+    /// <summary>
+    /// Manage rules for HTTP route.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Route which redirect all URL to HTTPs for example.com (Vhost).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("httpsRedirect", new()
+    ///     {
+    ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
+    ///         {
+    ///             Status = 302,
+    ///             Target = "https://${host}${path}${arguments}",
+    ///             Type = "redirect",
+    ///         },
+    ///         DisplayName = "Redirect to HTTPS",
+    ///         FrontendId = 11111,
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         Weight = 1,
+    ///     });
+    /// 
+    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("exampleRule", new()
+    ///     {
+    ///         DisplayName = "Match example.com host",
+    ///         Field = "host",
+    ///         Match = "is",
+    ///         Negate = false,
+    ///         Pattern = "example.com",
+    ///         RouteId = httpsRedirect.Id,
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Rule which match a specific header (same effect as the host match above).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("exampleRule", new()
+    ///     {
+    ///         DisplayName = "Match example.com Host header",
+    ///         Field = "headers",
+    ///         Match = "is",
+    ///         Negate = false,
+    ///         Pattern = "example.com",
+    ///         RouteId = ovh_iploadbalancing_http_route.Https_redirect.Id,
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         SubField = "Host",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule")]
     public partial class HttpRouteRule : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Human readable name for your rule, this field is for you
+        /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+        /// </summary>
         [Output("field")]
         public Output<string> Field { get; private set; } = null!;
 
+        /// <summary>
+        /// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+        /// </summary>
         [Output("match")]
         public Output<string> Match { get; private set; } = null!;
 
+        /// <summary>
+        /// Invert the matching operator effect
+        /// </summary>
         [Output("negate")]
         public Output<bool> Negate { get; private set; } = null!;
 
+        /// <summary>
+        /// Value to match against this match. Interpretation if this field depends on the match and field
+        /// </summary>
         [Output("pattern")]
         public Output<string?> Pattern { get; private set; } = null!;
 
+        /// <summary>
+        /// The route to apply this rule
+        /// </summary>
         [Output("routeId")]
         public Output<string> RouteId { get; private set; } = null!;
 
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+        /// </summary>
         [Output("subField")]
         public Output<string?> SubField { get; private set; } = null!;
 
@@ -83,27 +179,51 @@ namespace Pulumi.Ovh.IpLoadBalancing
 
     public sealed class HttpRouteRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human readable name for your rule, this field is for you
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+        /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 
+        /// <summary>
+        /// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+        /// </summary>
         [Input("match", required: true)]
         public Input<string> Match { get; set; } = null!;
 
+        /// <summary>
+        /// Invert the matching operator effect
+        /// </summary>
         [Input("negate")]
         public Input<bool>? Negate { get; set; }
 
+        /// <summary>
+        /// Value to match against this match. Interpretation if this field depends on the match and field
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
+        /// <summary>
+        /// The route to apply this rule
+        /// </summary>
         [Input("routeId", required: true)]
         public Input<string> RouteId { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+        /// </summary>
         [Input("subField")]
         public Input<string>? SubField { get; set; }
 
@@ -115,27 +235,51 @@ namespace Pulumi.Ovh.IpLoadBalancing
 
     public sealed class HttpRouteRuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human readable name for your rule, this field is for you
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/availableRouteRules" for a list of available rules
+        /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }
 
+        /// <summary>
+        /// Matching operator. Not all operators are available for all fields. See "/ipLoadbalancing/{serviceName}/availableRouteRules"
+        /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
+        /// <summary>
+        /// Invert the matching operator effect
+        /// </summary>
         [Input("negate")]
         public Input<bool>? Negate { get; set; }
 
+        /// <summary>
+        /// Value to match against this match. Interpretation if this field depends on the match and field
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
+        /// <summary>
+        /// The route to apply this rule
+        /// </summary>
         [Input("routeId")]
         public Input<string>? RouteId { get; set; }
 
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// Name of sub-field, if applicable. This may be a Cookie or Header name for instance
+        /// </summary>
         [Input("subField")]
         public Input<string>? SubField { get; set; }
 

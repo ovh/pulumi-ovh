@@ -16,7 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'DsRecordsDsRecord',
+    'DSRecordsDsRecord',
     'NameCurrentState',
     'NameCurrentStateDnsConfiguration',
     'NameCurrentStateDnsConfigurationNameServer',
@@ -41,7 +41,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DsRecordsDsRecord(dict):
+class DSRecordsDsRecord(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -49,14 +49,14 @@ class DsRecordsDsRecord(dict):
             suggest = "public_key"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DsRecordsDsRecord. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DSRecordsDsRecord. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        DsRecordsDsRecord.__key_warning(key)
+        DSRecordsDsRecord.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        DsRecordsDsRecord.__key_warning(key)
+        DSRecordsDsRecord.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -65,10 +65,10 @@ class DsRecordsDsRecord(dict):
                  public_key: str,
                  tag: int):
         """
-        :param str algorithm: Algorithm name of the DNSSEC key
-        :param str flags: Flag name of the DNSSEC key
-        :param str public_key: Public key
-        :param int tag: Tag of the DNSSEC key
+        :param str algorithm: The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+        :param str flags: The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+        :param str public_key: The record base64 encoded public key
+        :param int tag: The record tag
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "flags", flags)
@@ -79,7 +79,7 @@ class DsRecordsDsRecord(dict):
     @pulumi.getter
     def algorithm(self) -> str:
         """
-        Algorithm name of the DNSSEC key
+        The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
         """
         return pulumi.get(self, "algorithm")
 
@@ -87,7 +87,7 @@ class DsRecordsDsRecord(dict):
     @pulumi.getter
     def flags(self) -> str:
         """
-        Flag name of the DNSSEC key
+        The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
         """
         return pulumi.get(self, "flags")
 
@@ -95,7 +95,7 @@ class DsRecordsDsRecord(dict):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
         """
-        Public key
+        The record base64 encoded public key
         """
         return pulumi.get(self, "public_key")
 
@@ -103,7 +103,7 @@ class DsRecordsDsRecord(dict):
     @pulumi.getter
     def tag(self) -> int:
         """
-        Tag of the DNSSEC key
+        The record tag
         """
         return pulumi.get(self, "tag")
 
@@ -688,7 +688,7 @@ class NamePlan(dict):
                  item_id: Optional[float] = None,
                  quantity: Optional[float] = None):
         """
-        :param str duration: Duration selected for the purchase of the product
+        :param str duration: Duration selected for the purchase of the product (defaults to "P1Y")
         :param str plan_code: Identifier of the option offer
         :param str pricing_mode: Pricing mode selected for the purchase of the product
         :param float item_id: Cart item to be linked
@@ -708,7 +708,7 @@ class NamePlan(dict):
     @pulumi.getter
     def duration(self) -> str:
         """
-        Duration selected for the purchase of the product
+        Duration selected for the purchase of the product (defaults to "P1Y")
         """
         return pulumi.get(self, "duration")
 
@@ -892,8 +892,8 @@ class NameServersServer(dict):
                  host: str,
                  ip: Optional[str] = None):
         """
-        :param str host: DNS name server hostname
-        :param str ip: DNS name server IP address
+        :param str host: The server hostname
+        :param str ip: The server IP
         """
         pulumi.set(__self__, "host", host)
         if ip is not None:
@@ -903,7 +903,7 @@ class NameServersServer(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        DNS name server hostname
+        The server hostname
         """
         return pulumi.get(self, "host")
 
@@ -911,7 +911,7 @@ class NameServersServer(dict):
     @pulumi.getter
     def ip(self) -> Optional[str]:
         """
-        DNS name server IP address
+        The server IP
         """
         return pulumi.get(self, "ip")
 
@@ -1228,7 +1228,7 @@ class ZonePlan(dict):
         :param str plan_code: Plan code
         :param str pricing_mode: Pricing model identifier
         :param str catalog_name: Catalog name
-        :param Sequence['ZonePlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
+        :param Sequence['ZonePlanConfigurationArgs'] configurations: Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -1274,7 +1274,7 @@ class ZonePlan(dict):
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.ZonePlanConfiguration']]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
         """
         return pulumi.get(self, "configurations")
 
@@ -1285,8 +1285,8 @@ class ZonePlanConfiguration(dict):
                  label: str,
                  value: str):
         """
-        :param str label: Identifier of the resource
-        :param str value: Path to the resource in API.OVH.COM
+        :param str label: Identifier of the resource : `zone` or `template`
+        :param str value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -1295,7 +1295,7 @@ class ZonePlanConfiguration(dict):
     @pulumi.getter
     def label(self) -> str:
         """
-        Identifier of the resource
+        Identifier of the resource : `zone` or `template`
         """
         return pulumi.get(self, "label")
 
@@ -1303,7 +1303,7 @@ class ZonePlanConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Path to the resource in API.OVH.COM
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         return pulumi.get(self, "value")
 

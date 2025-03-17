@@ -8,20 +8,62 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Add grant on a database in your private cloud database instance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/hosting"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hosting.NewPrivateDatabaseUserGrant(ctx, "userGrant", &hosting.PrivateDatabaseUserGrantArgs{
+//				DatabaseName: pulumi.String("ovhcloud"),
+//				Grant:        pulumi.String("admin"),
+//				ServiceName:  pulumi.String("XXXXXX"),
+//				UserName:     pulumi.String("terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud database user's grant can be imported using the `service_name`, the `user_name`, the `database_name` and the `grant`, separated by "/" E.g.,
+//
+// ```sh
+// $ pulumi import ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant user service_name/user_name/database_name/grant
+// ```
 type PrivateDatabaseUserGrant struct {
 	pulumi.CustomResourceState
 
-	// Database name where add grant
+	// Database name where add grant.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// Database name where add grant
+	// Database name where add grant. Values can be:
+	// - admin
+	// - none
+	// - ro
+	// - rw
 	Grant pulumi.StringOutput `pulumi:"grant"`
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// User name used to connect on your databases
+	// User name used to connect on your databases.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -67,24 +109,32 @@ func GetPrivateDatabaseUserGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateDatabaseUserGrant resources.
 type privateDatabaseUserGrantState struct {
-	// Database name where add grant
+	// Database name where add grant.
 	DatabaseName *string `pulumi:"databaseName"`
-	// Database name where add grant
+	// Database name where add grant. Values can be:
+	// - admin
+	// - none
+	// - ro
+	// - rw
 	Grant *string `pulumi:"grant"`
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName *string `pulumi:"serviceName"`
-	// User name used to connect on your databases
+	// User name used to connect on your databases.
 	UserName *string `pulumi:"userName"`
 }
 
 type PrivateDatabaseUserGrantState struct {
-	// Database name where add grant
+	// Database name where add grant.
 	DatabaseName pulumi.StringPtrInput
-	// Database name where add grant
+	// Database name where add grant. Values can be:
+	// - admin
+	// - none
+	// - ro
+	// - rw
 	Grant pulumi.StringPtrInput
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName pulumi.StringPtrInput
-	// User name used to connect on your databases
+	// User name used to connect on your databases.
 	UserName pulumi.StringPtrInput
 }
 
@@ -93,25 +143,33 @@ func (PrivateDatabaseUserGrantState) ElementType() reflect.Type {
 }
 
 type privateDatabaseUserGrantArgs struct {
-	// Database name where add grant
+	// Database name where add grant.
 	DatabaseName string `pulumi:"databaseName"`
-	// Database name where add grant
+	// Database name where add grant. Values can be:
+	// - admin
+	// - none
+	// - ro
+	// - rw
 	Grant string `pulumi:"grant"`
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName string `pulumi:"serviceName"`
-	// User name used to connect on your databases
+	// User name used to connect on your databases.
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a PrivateDatabaseUserGrant resource.
 type PrivateDatabaseUserGrantArgs struct {
-	// Database name where add grant
+	// Database name where add grant.
 	DatabaseName pulumi.StringInput
-	// Database name where add grant
+	// Database name where add grant. Values can be:
+	// - admin
+	// - none
+	// - ro
+	// - rw
 	Grant pulumi.StringInput
-	// The internal name of your private database
+	// The internal name of your private database.
 	ServiceName pulumi.StringInput
-	// User name used to connect on your databases
+	// User name used to connect on your databases.
 	UserName pulumi.StringInput
 }
 
@@ -202,22 +260,26 @@ func (o PrivateDatabaseUserGrantOutput) ToPrivateDatabaseUserGrantOutputWithCont
 	return o
 }
 
-// Database name where add grant
+// Database name where add grant.
 func (o PrivateDatabaseUserGrantOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseUserGrant) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// Database name where add grant
+// Database name where add grant. Values can be:
+// - admin
+// - none
+// - ro
+// - rw
 func (o PrivateDatabaseUserGrantOutput) Grant() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseUserGrant) pulumi.StringOutput { return v.Grant }).(pulumi.StringOutput)
 }
 
-// The internal name of your private database
+// The internal name of your private database.
 func (o PrivateDatabaseUserGrantOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseUserGrant) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User name used to connect on your databases
+// User name used to connect on your databases.
 func (o PrivateDatabaseUserGrantOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabaseUserGrant) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

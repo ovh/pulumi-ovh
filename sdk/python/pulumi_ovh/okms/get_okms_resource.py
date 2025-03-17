@@ -53,36 +53,57 @@ class GetOkmsResourceResult:
     @property
     @pulumi.getter
     def iam(self) -> 'outputs.GetOkmsResourceIamResult':
+        """
+        (Attributes) IAM resource metadata (see below for nested schema)
+        """
         return pulumi.get(self, "iam")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        (String) Unique identifier of the resource
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="kmipEndpoint")
     def kmip_endpoint(self) -> str:
+        """
+        (String) KMS kmip API endpoint
+        """
         return pulumi.get(self, "kmip_endpoint")
 
     @property
     @pulumi.getter(name="publicCa")
     def public_ca(self) -> str:
+        """
+        (String) KMS public CA (Certificate Authority)
+        """
         return pulumi.get(self, "public_ca")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        (String) Region
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="restEndpoint")
     def rest_endpoint(self) -> str:
+        """
+        (String) KMS rest API endpoint
+        """
         return pulumi.get(self, "rest_endpoint")
 
     @property
     @pulumi.getter(name="swaggerEndpoint")
     def swagger_endpoint(self) -> str:
+        """
+        (String) KMS rest API swagger UI
+        """
         return pulumi.get(self, "swagger_endpoint")
 
 
@@ -104,7 +125,19 @@ class AwaitableGetOkmsResourceResult(GetOkmsResourceResult):
 def get_okms_resource(id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOkmsResourceResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a KMS associated with this account
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    kms = ovh.Okms.get_okms_resource(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    ```
+
+
+    :param str id: Should be set to the ID of your KMS
     """
     __args__ = dict()
     __args__['id'] = id
@@ -122,7 +155,19 @@ def get_okms_resource(id: Optional[str] = None,
 def get_okms_resource_output(id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsResourceResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a KMS associated with this account
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    kms = ovh.Okms.get_okms_resource(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    ```
+
+
+    :param str id: Should be set to the ID of your KMS
     """
     __args__ = dict()
     __args__['id'] = id

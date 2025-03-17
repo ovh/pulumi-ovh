@@ -9,6 +9,61 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Create S3™* compatible storage container
+    /// (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var storage = new Ovh.CloudProject.Storage("storage", new()
+    ///     {
+    ///         RegionName = "GRA",
+    ///         ServiceName = "&lt;public cloud project ID&gt;",
+    ///         Versioning = new Ovh.CloudProject.Inputs.StorageVersioningArgs
+    ///         {
+    ///             Status = "enabled",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   id = "&lt;service_name&gt;/&lt;region_name&gt;/&lt;name&gt;"
+    /// 
+    ///   to = ovh_cloud_project_storage.storage
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=storage.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+    /// 
+    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/storage:Storage")]
     public partial class Storage : global::Pulumi.CustomResource
     {

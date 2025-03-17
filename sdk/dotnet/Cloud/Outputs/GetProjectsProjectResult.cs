@@ -30,7 +30,7 @@ namespace Pulumi.Ovh.Cloud.Outputs
         /// </summary>
         public readonly string Expiration;
         /// <summary>
-        /// IAM resource metadata
+        /// IAM resource information
         /// </summary>
         public readonly Outputs.GetProjectsProjectIamResult Iam;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Ovh.Cloud.Outputs
         /// </summary>
         public readonly bool ManualQuota;
         /// <summary>
-        /// Project order id
+        /// Project order ID
         /// </summary>
         public readonly double OrderId;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Ovh.Cloud.Outputs
         /// </summary>
         public readonly string PlanCode;
         /// <summary>
-        /// Project id
+        /// Project ID
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.Cloud.Outputs
         /// </summary>
         public readonly string ProjectName;
         /// <summary>
-        /// Service name
+        /// ID of the public cloud project
         /// </summary>
         public readonly string ServiceName;
         /// <summary>

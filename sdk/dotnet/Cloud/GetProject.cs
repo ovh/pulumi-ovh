@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Cloud
 {
     public static class GetProject
     {
+        /// <summary>
+        /// Get the details of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Ovh.Cloud.GetProject.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("ovh:Cloud/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Get the details of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Ovh.Cloud.GetProject.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("ovh:Cloud/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Get the details of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Ovh.Cloud.GetProject.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("ovh:Cloud/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,10 @@ namespace Pulumi.Ovh.Cloud
 
     public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -35,6 +102,10 @@ namespace Pulumi.Ovh.Cloud
 
     public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -48,22 +119,61 @@ namespace Pulumi.Ovh.Cloud
     [OutputType]
     public sealed class GetProjectResult
     {
+        /// <summary>
+        /// Project access
+        /// </summary>
         public readonly string Access;
+        /// <summary>
+        /// Project creation date
+        /// </summary>
         public readonly string CreationDate;
+        /// <summary>
+        /// Description of your project
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Expiration date of your project. After this date, your project will be deleted
+        /// </summary>
         public readonly string Expiration;
+        /// <summary>
+        /// IAM resource information
+        /// </summary>
         public readonly Outputs.GetProjectIamResult Iam;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Manual quota prevent automatic quota upgrade
+        /// </summary>
         public readonly bool ManualQuota;
+        /// <summary>
+        /// Project order ID
+        /// </summary>
         public readonly double OrderId;
+        /// <summary>
+        /// Order plan code
+        /// </summary>
         public readonly string PlanCode;
+        /// <summary>
+        /// Project ID
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// Project name
+        /// </summary>
         public readonly string ProjectName;
+        /// <summary>
+        /// ID of the public cloud project
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Current status
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Project unleashed
+        /// </summary>
         public readonly bool Unleash;
 
         [OutputConstructor]

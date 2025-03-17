@@ -10,14 +10,23 @@ export namespace Cloud {
 
 export namespace CloudProject {
     export interface AlertingFormattedMonthlyThreshold {
+        /**
+         * Currency of the monthly threshold
+         */
         currencyCode?: pulumi.Input<string>;
+        /**
+         * Text representation of the monthly threshold
+         */
         text?: pulumi.Input<string>;
+        /**
+         * Value of the monthly threshold
+         */
         value?: pulumi.Input<number>;
     }
 
     export interface ContainerRegistryPlan {
         /**
-         * Plan code from catalog
+         * Plan code from the catalog
          */
         code?: pulumi.Input<string>;
         /**
@@ -33,7 +42,7 @@ export namespace CloudProject {
          */
         id?: pulumi.Input<string>;
         /**
-         * Plan name
+         * Registry name
          */
         name?: pulumi.Input<string>;
         /**
@@ -41,7 +50,7 @@ export namespace CloudProject {
          */
         registryLimits?: pulumi.Input<pulumi.Input<inputs.CloudProject.ContainerRegistryPlanRegistryLimit>[]>;
         /**
-         * Plan last update date
+         * Registry last update date
          */
         updatedAt?: pulumi.Input<string>;
     }
@@ -66,35 +75,35 @@ export namespace CloudProject {
 
     export interface DatabaseEndpoint {
         /**
-         * Type of component the URI relates to
+         * Type of component the URI relates to.
          */
         component?: pulumi.Input<string>;
         /**
-         * Domain of the cluster
+         * Domain of the cluster.
          */
         domain?: pulumi.Input<string>;
         /**
-         * Path of the endpoint
+         * Path of the endpoint.
          */
         path?: pulumi.Input<string>;
         /**
-         * Connection port for the endpoint
+         * Connection port for the endpoint.
          */
         port?: pulumi.Input<number>;
         /**
-         * Scheme used to generate the URI
+         * Scheme used to generate the URI.
          */
         scheme?: pulumi.Input<string>;
         /**
-         * Defines whether the endpoint uses SSL
+         * Defines whether the endpoint uses SSL.
          */
         ssl?: pulumi.Input<boolean>;
         /**
-         * SSL mode used to connect to the service if the SSL is enabled
+         * SSL mode used to connect to the service if the SSL is enabled.
          */
         sslMode?: pulumi.Input<string>;
         /**
-         * URI of the endpoint
+         * URI of the endpoint.
          */
         uri?: pulumi.Input<string>;
     }
@@ -109,69 +118,72 @@ export namespace CloudProject {
          */
         ip?: pulumi.Input<string>;
         /**
-         * Current status of the IP restriction
+         * Current status of the cluster.
          */
         status?: pulumi.Input<string>;
     }
 
     export interface DatabaseNode {
         /**
-         * Private network ID in which the node is. It's the regional openstackId of the private network.
+         * Private network id in which the node should be deployed. It's the regional openstackId of the private network
          */
         networkId?: pulumi.Input<string>;
         /**
-         * Region of the node
+         * Public cloud region in which the node should be deployed.
+         * Ex: "GRA'.
          */
         region: pulumi.Input<string>;
         /**
-         * Private subnet ID in which the node is
+         * Private subnet ID in which the node is.
          */
         subnetId?: pulumi.Input<string>;
     }
 
     export interface GatewayExternalInformation {
         /**
-         * List of external ips of the gateway
+         * List of external ips of the gateway.
          */
         ips?: pulumi.Input<pulumi.Input<inputs.CloudProject.GatewayExternalInformationIp>[]>;
         /**
-         * External network ID of the gateway
+         * ID of the private network.
          */
         networkId?: pulumi.Input<string>;
     }
 
     export interface GatewayExternalInformationIp {
         /**
-         * External IP of the gateway
+         * IP of the interface.
          */
         ip?: pulumi.Input<string>;
         /**
-         * Subnet ID of the ip
+         * ID of the subnet.
          */
         subnetId?: pulumi.Input<string>;
     }
 
     export interface GatewayInterface {
         /**
-         * ID of the interface
+         * ID of the interface.
          */
         id?: pulumi.Input<string>;
         /**
-         * IP of the interface
+         * IP of the interface.
          */
         ip?: pulumi.Input<string>;
         /**
-         * Network ID of the interface
+         * ID of the private network.
          */
         networkId?: pulumi.Input<string>;
         /**
-         * Subnet ID of the interface
+         * ID of the subnet.
          */
         subnetId?: pulumi.Input<string>;
     }
 
     export interface GetKubeCustomization {
         /**
+         * Kubernetes API server customization
+         *
          * @deprecated Use customizationApiserver instead
          */
         apiservers?: inputs.CloudProject.GetKubeCustomizationApiserver[];
@@ -179,64 +191,144 @@ export namespace CloudProject {
 
     export interface GetKubeCustomizationArgs {
         /**
+         * Kubernetes API server customization
+         *
          * @deprecated Use customizationApiserver instead
          */
         apiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.GetKubeCustomizationApiserverArgs>[]>;
     }
 
     export interface GetKubeCustomizationApiserver {
+        /**
+         * Kubernetes API server admission plugins customization
+         */
         admissionplugins?: inputs.CloudProject.GetKubeCustomizationApiserverAdmissionplugin[];
     }
 
     export interface GetKubeCustomizationApiserverArgs {
+        /**
+         * Kubernetes API server admission plugins customization
+         */
         admissionplugins?: pulumi.Input<pulumi.Input<inputs.CloudProject.GetKubeCustomizationApiserverAdmissionpluginArgs>[]>;
     }
 
     export interface GetKubeCustomizationApiserverAdmissionplugin {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds?: string[];
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds?: string[];
     }
 
     export interface GetKubeCustomizationApiserverAdmissionpluginArgs {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetKubeCustomizationKubeProxy {
+        /**
+         * Kubernetes cluster kube-proxy customization of iptables specific config.
+         */
         iptables?: inputs.CloudProject.GetKubeCustomizationKubeProxyIptables;
+        /**
+         * Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         ipvs?: inputs.CloudProject.GetKubeCustomizationKubeProxyIpvs;
     }
 
     export interface GetKubeCustomizationKubeProxyArgs {
+        /**
+         * Kubernetes cluster kube-proxy customization of iptables specific config.
+         */
         iptables?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationKubeProxyIptablesArgs>;
+        /**
+         * Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         ipvs?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationKubeProxyIpvsArgs>;
     }
 
     export interface GetKubeCustomizationKubeProxyIptables {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         minSyncPeriod?: string;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+         */
         syncPeriod?: string;
     }
 
     export interface GetKubeCustomizationKubeProxyIptablesArgs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         minSyncPeriod?: pulumi.Input<string>;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+         */
         syncPeriod?: pulumi.Input<string>;
     }
 
     export interface GetKubeCustomizationKubeProxyIpvs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         minSyncPeriod?: string;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: string;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+         */
         syncPeriod?: string;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
+         */
         tcpFinTimeout?: string;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         tcpTimeout?: string;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         udpTimeout?: string;
     }
 
     export interface GetKubeCustomizationKubeProxyIpvsArgs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         minSyncPeriod?: pulumi.Input<string>;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: pulumi.Input<string>;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format.
+         */
         syncPeriod?: pulumi.Input<string>;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration.
+         */
         tcpFinTimeout?: pulumi.Input<string>;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         tcpTimeout?: pulumi.Input<string>;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
+         */
         udpTimeout?: pulumi.Input<string>;
     }
 
@@ -327,7 +419,7 @@ export namespace CloudProject {
 
     export interface InstanceAttachedVolume {
         /**
-         * Volume id
+         * Instance id
          */
         id?: pulumi.Input<string>;
     }
@@ -345,7 +437,7 @@ export namespace CloudProject {
 
     export interface InstanceBootFrom {
         /**
-         * Instance image id
+         * Instance image id. Images can be retrieved using `GET /cloud/project/{serviceName}/image`
          */
         imageId?: pulumi.Input<string>;
         /**
@@ -356,7 +448,7 @@ export namespace CloudProject {
 
     export interface InstanceFlavor {
         /**
-         * Flavor id
+         * Flavor ID. Flavors can be retrieved using `GET /cloud/project/{serviceName}/flavor`
          */
         flavorId: pulumi.Input<string>;
     }
@@ -370,14 +462,14 @@ export namespace CloudProject {
 
     export interface InstanceNetwork {
         /**
-         * Set the new instance as public
+         * Set the new instance as public boolean
          */
         public?: pulumi.Input<boolean>;
     }
 
     export interface InstanceSshKey {
         /**
-         * SSH Key pair name
+         * SSH Keypair name
          */
         name: pulumi.Input<string>;
     }
@@ -388,50 +480,103 @@ export namespace CloudProject {
          */
         name: pulumi.Input<string>;
         /**
-         * SSH Public Key
+         * SSH Public key
          */
         publicKey: pulumi.Input<string>;
     }
 
     export interface KubeCustomization {
         /**
+         * Kubernetes API server customization
+         *
          * @deprecated Use customizationApiserver instead
          */
         apiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserver>[]>;
     }
 
     export interface KubeCustomizationApiserver {
+        /**
+         * Kubernetes API server admission plugins customization
+         */
         admissionplugins?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserverAdmissionplugin>[]>;
     }
 
     export interface KubeCustomizationApiserverAdmissionplugin {
+        /**
+         * Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
+         */
         disableds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         */
         enableds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface KubeCustomizationKubeProxy {
+        /**
+         * Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
+         */
         iptables?: pulumi.Input<inputs.CloudProject.KubeCustomizationKubeProxyIptables>;
+        /**
+         * Kubernetes cluster kube-proxy customization of IPVS specific config (durations format is [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration, e.g. `PT60S`)
+         */
         ipvs?: pulumi.Input<inputs.CloudProject.KubeCustomizationKubeProxyIpvs>;
     }
 
     export interface KubeCustomizationKubeProxyIptables {
+        /**
+         * Period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`). Must be greater than 0.
+         */
         minSyncPeriod?: pulumi.Input<string>;
+        /**
+         * Minimum period that iptables rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: pulumi.Input<string>;
     }
 
     export interface KubeCustomizationKubeProxyIpvs {
+        /**
+         * Minimum period that IPVS rules are refreshed in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`).
+         */
         minSyncPeriod?: pulumi.Input<string>;
+        /**
+         * IPVS scheduler.
+         */
         scheduler?: pulumi.Input<string>;
+        /**
+         * Minimum period that IPVS rules are refreshed, in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration format (e.g. `PT60S`).
+         */
         syncPeriod?: pulumi.Input<string>;
+        /**
+         * Timeout value used for IPVS TCP sessions after receiving a FIN in RFC3339 duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpFinTimeout?: pulumi.Input<string>;
+        /**
+         * Timeout value used for idle IPVS TCP sessions in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         tcpTimeout?: pulumi.Input<string>;
+        /**
+         * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
+         */
         udpTimeout?: pulumi.Input<string>;
     }
 
     export interface KubeKubeconfigAttribute {
+        /**
+         * The kubernetes API server client certificate.
+         */
         clientCertificate?: pulumi.Input<string>;
+        /**
+         * The kubernetes API server client key.
+         */
         clientKey?: pulumi.Input<string>;
+        /**
+         * The kubernetes API server CA certificate.
+         */
         clusterCaCertificate?: pulumi.Input<string>;
+        /**
+         * The kubernetes API server URL.
+         */
         host?: pulumi.Input<string>;
     }
 
@@ -479,11 +624,16 @@ export namespace CloudProject {
         defaultVrackGateway: pulumi.Input<string>;
         /**
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
+         *
+         * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         privateNetworkRoutingAsDefault: pulumi.Input<boolean>;
     }
 
-    export interface LoadbalancerFloatingIp {
+    export interface LoadBalancerFloatingIp {
         /**
          * ID of the resource
          */
@@ -494,7 +644,7 @@ export namespace CloudProject {
         ip?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerListener {
+    export interface LoadBalancerListener {
         /**
          * The allowed CIDRs
          */
@@ -510,7 +660,7 @@ export namespace CloudProject {
         /**
          * Listener pool
          */
-        pool?: pulumi.Input<inputs.CloudProject.LoadbalancerListenerPool>;
+        pool?: pulumi.Input<inputs.CloudProject.LoadBalancerListenerPool>;
         /**
          * Listener port
          */
@@ -537,7 +687,7 @@ export namespace CloudProject {
         tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface LoadbalancerListenerPool {
+    export interface LoadBalancerListenerPool {
         /**
          * Pool algorithm to split traffic between members
          */
@@ -545,11 +695,11 @@ export namespace CloudProject {
         /**
          * Pool health monitor
          */
-        healthMonitor?: pulumi.Input<inputs.CloudProject.LoadbalancerListenerPoolHealthMonitor>;
+        healthMonitor?: pulumi.Input<inputs.CloudProject.LoadBalancerListenerPoolHealthMonitor>;
         /**
          * Pool members
          */
-        members?: pulumi.Input<pulumi.Input<inputs.CloudProject.LoadbalancerListenerPoolMember>[]>;
+        members?: pulumi.Input<pulumi.Input<inputs.CloudProject.LoadBalancerListenerPoolMember>[]>;
         /**
          * Name of the pool
          */
@@ -561,10 +711,10 @@ export namespace CloudProject {
         /**
          * Pool session persistence
          */
-        sessionPersistence?: pulumi.Input<inputs.CloudProject.LoadbalancerListenerPoolSessionPersistence>;
+        sessionPersistence?: pulumi.Input<inputs.CloudProject.LoadBalancerListenerPoolSessionPersistence>;
     }
 
-    export interface LoadbalancerListenerPoolHealthMonitor {
+    export interface LoadBalancerListenerPoolHealthMonitor {
         /**
          * Duration between sending probes to members, in seconds
          */
@@ -572,7 +722,7 @@ export namespace CloudProject {
         /**
          * Monitor HTTP configuration
          */
-        httpConfiguration?: pulumi.Input<inputs.CloudProject.LoadbalancerListenerPoolHealthMonitorHttpConfiguration>;
+        httpConfiguration?: pulumi.Input<inputs.CloudProject.LoadBalancerListenerPoolHealthMonitorHttpConfiguration>;
         /**
          * Number of successful checks before changing the operating status of the member to ONLINE
          */
@@ -603,7 +753,7 @@ export namespace CloudProject {
         timeout?: pulumi.Input<number>;
     }
 
-    export interface LoadbalancerListenerPoolHealthMonitorHttpConfiguration {
+    export interface LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
         /**
          * Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
          */
@@ -626,7 +776,7 @@ export namespace CloudProject {
         urlPath?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerListenerPoolMember {
+    export interface LoadBalancerListenerPoolMember {
         /**
          * IP address of the resource
          */
@@ -645,7 +795,7 @@ export namespace CloudProject {
         weight?: pulumi.Input<number>;
     }
 
-    export interface LoadbalancerListenerPoolSessionPersistence {
+    export interface LoadBalancerListenerPoolSessionPersistence {
         /**
          * Cookie name, only applicable to session persistence through cookie
          */
@@ -656,58 +806,58 @@ export namespace CloudProject {
         type?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerNetwork {
+    export interface LoadBalancerNetwork {
         /**
          * Information to private network
          */
-        private: pulumi.Input<inputs.CloudProject.LoadbalancerNetworkPrivate>;
+        private: pulumi.Input<inputs.CloudProject.LoadBalancerNetworkPrivate>;
     }
 
-    export interface LoadbalancerNetworkPrivate {
+    export interface LoadBalancerNetworkPrivate {
         /**
          * Floating IP to associate
          */
-        floatingIp?: pulumi.Input<inputs.CloudProject.LoadbalancerNetworkPrivateFloatingIp>;
+        floatingIp?: pulumi.Input<inputs.CloudProject.LoadBalancerNetworkPrivateFloatingIp>;
         /**
          * Floating IP to create
          */
-        floatingIpCreate?: pulumi.Input<inputs.CloudProject.LoadbalancerNetworkPrivateFloatingIpCreate>;
+        floatingIpCreate?: pulumi.Input<inputs.CloudProject.LoadBalancerNetworkPrivateFloatingIpCreate>;
         /**
          * Gateway to associate
          */
-        gateway?: pulumi.Input<inputs.CloudProject.LoadbalancerNetworkPrivateGateway>;
+        gateway?: pulumi.Input<inputs.CloudProject.LoadBalancerNetworkPrivateGateway>;
         /**
          * Gateway to create
          */
-        gatewayCreate?: pulumi.Input<inputs.CloudProject.LoadbalancerNetworkPrivateGatewayCreate>;
+        gatewayCreate?: pulumi.Input<inputs.CloudProject.LoadBalancerNetworkPrivateGatewayCreate>;
         /**
          * Network to associate
          */
-        network: pulumi.Input<inputs.CloudProject.LoadbalancerNetworkPrivateNetwork>;
+        network: pulumi.Input<inputs.CloudProject.LoadBalancerNetworkPrivateNetwork>;
     }
 
-    export interface LoadbalancerNetworkPrivateFloatingIp {
+    export interface LoadBalancerNetworkPrivateFloatingIp {
         /**
          * ID of the floatingIp
          */
         id?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerNetworkPrivateFloatingIpCreate {
+    export interface LoadBalancerNetworkPrivateFloatingIpCreate {
         /**
          * Description for the floatingIp
          */
         description?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerNetworkPrivateGateway {
+    export interface LoadBalancerNetworkPrivateGateway {
         /**
          * ID of the gateway
          */
         id?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerNetworkPrivateGatewayCreate {
+    export interface LoadBalancerNetworkPrivateGatewayCreate {
         /**
          * Model of the gateway
          */
@@ -718,7 +868,7 @@ export namespace CloudProject {
         name?: pulumi.Input<string>;
     }
 
-    export interface LoadbalancerNetworkPrivateNetwork {
+    export interface LoadBalancerNetworkPrivateNetwork {
         /**
          * Private network ID
          */
@@ -732,19 +882,45 @@ export namespace CloudProject {
     export interface NetworkPrivateRegionsAttribute {
         openstackid?: pulumi.Input<string>;
         region?: pulumi.Input<string>;
+        /**
+         * the status of the network. should be normally set to 'ACTIVE'.
+         */
         status: pulumi.Input<string>;
     }
 
     export interface NetworkPrivateRegionsStatus {
         region?: pulumi.Input<string>;
+        /**
+         * the status of the network. should be normally set to 'ACTIVE'.
+         */
         status: pulumi.Input<string>;
     }
 
     export interface NetworkPrivateSubnetIpPool {
+        /**
+         * Enable DHCP.
+         * Changing this forces a new resource to be created. Defaults to false.
+         */
         dhcp?: pulumi.Input<boolean>;
+        /**
+         * Last ip for this region.
+         * Changing this value recreates the subnet.
+         */
         end?: pulumi.Input<string>;
+        /**
+         * Global network in CIDR format.
+         * Changing this value recreates the subnet
+         */
         network?: pulumi.Input<string>;
+        /**
+         * The region in which the network subnet will be created.
+         * Ex.: "GRA1". Changing this value recreates the resource.
+         */
         region?: pulumi.Input<string>;
+        /**
+         * First ip for this region.
+         * Changing this value recreates the subnet.
+         */
         start?: pulumi.Input<string>;
     }
 
@@ -772,14 +948,14 @@ export namespace CloudProject {
          */
         expirationDate?: pulumi.Input<string>;
         /**
-         * order id
+         * order id, the same as the `id`
          */
         orderId?: pulumi.Input<number>;
     }
 
     export interface ProjectOrderDetail {
         /**
-         * description
+         * A description associated with the user.
          */
         description?: pulumi.Input<string>;
         /**
@@ -810,7 +986,7 @@ export namespace CloudProject {
          */
         duration: pulumi.Input<string>;
         /**
-         * Plan code
+         * Plan code. This value must be adapted depending on your `OVH_ENDPOINT` value. It's `project.2018` for `ovh-{eu,ca}` and `project` when using `ovh-us`.
          */
         planCode: pulumi.Input<string>;
         /**
@@ -983,7 +1159,7 @@ export namespace CloudProject {
 
     export interface RegionNetworkSubnet {
         /**
-         * List of ip pools allocated in subnet
+         * List of IP pools allocated in subnet
          */
         allocationPools?: pulumi.Input<pulumi.Input<inputs.CloudProject.RegionNetworkSubnetAllocationPool>[]>;
         /**
@@ -1167,9 +1343,21 @@ export namespace CloudProject {
     }
 
     export interface UserRole {
+        /**
+         * A description associated with the user.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * id of the role
+         */
         id?: pulumi.Input<string>;
+        /**
+         * name of the role
+         */
         name?: pulumi.Input<string>;
+        /**
+         * list of permissions associated with the role
+         */
         permissions?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -1188,11 +1376,12 @@ export namespace CloudProject {
 export namespace CloudProjectDatabase {
     export interface OpensearchUserAcl {
         /**
-         * Pattern of the ACL
+         * Pattern of the ACL.
          */
         pattern: pulumi.Input<string>;
         /**
          * Permission of the ACL
+         * Available permission:
          */
         permission: pulumi.Input<string>;
     }
@@ -1223,11 +1412,11 @@ export namespace Dbaas {
 
     export interface LogsInputConfigurationFlowgger {
         /**
-         * Type of format to decode
+         * Type of format to decode. One of "RFC5424", "LTSV", "GELF", "CAPNP"
          */
         logFormat: pulumi.Input<string>;
         /**
-         * Indicates how messages are delimited
+         * Indicates how messages are delimited. One of "LINE", "NUL", "SYSLEN", "CAPNP"
          */
         logFraming: pulumi.Input<string>;
     }
@@ -1255,7 +1444,7 @@ export namespace Dedicated {
          */
         configDriveUserData?: pulumi.Input<string>;
         /**
-         * Path of the EFI bootloader from the OS installed on the server
+         * Path of the EFI bootloader
          */
         efiBootloaderPath?: pulumi.Input<string>;
         /**
@@ -1306,15 +1495,15 @@ export namespace Dedicated {
          */
         displayName?: pulumi.Input<string>;
         /**
-         * Unique identifier of the resource
+         * Unique identifier of the resource in the IAM
          */
         id?: pulumi.Input<string>;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
          */
         tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Unique resource name used in policies
+         * URN of the private database, used when writing IAM policies
          */
         urn?: pulumi.Input<string>;
     }
@@ -1467,11 +1656,11 @@ export namespace Dedicated {
 
     export interface ServerReinstallTaskStorage {
         /**
-         * Disk group id (default is 0, meaning automatic)
+         * Disk group id to install the OS to (default is 0, meaning automatic).
          */
         diskGroupId?: pulumi.Input<number>;
         /**
-         * Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+         * Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
          */
         hardwareRaids?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerReinstallTaskStorageHardwareRaid>[]>;
         /**
@@ -1505,18 +1694,18 @@ export namespace Dedicated {
          */
         disks?: pulumi.Input<number>;
         /**
-         * Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+         * Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
          */
         layouts?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerReinstallTaskStoragePartitioningLayout>[]>;
         /**
-         * Partitioning scheme name
+         * Partitioning scheme (if applicable with selected operating system)
          */
         schemeName?: pulumi.Input<string>;
     }
 
     export interface ServerReinstallTaskStoragePartitioningLayout {
         /**
-         * Partition extras parameters
+         * Partition extras parameters (when applicable)
          */
         extras?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtra>[]>;
         /**
@@ -1532,18 +1721,18 @@ export namespace Dedicated {
          */
         raidLevel?: pulumi.Input<number>;
         /**
-         * Partition size in MiB (default value is 0)
+         * Partition size in MiB (default value is 0 which means to fill the disk with that partition)
          */
         size?: pulumi.Input<number>;
     }
 
     export interface ServerReinstallTaskStoragePartitioningLayoutExtra {
         /**
-         * LVM-specific parameters
+         * LVM-specific parameters (when applicable)
          */
         lvs?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtraLv>[]>;
         /**
-         * ZFS-specific parameters
+         * ZFS-specific parameters (when applicable)
          */
         zps?: pulumi.Input<pulumi.Input<inputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtraZp>[]>;
     }
@@ -1557,7 +1746,7 @@ export namespace Dedicated {
 
     export interface ServerReinstallTaskStoragePartitioningLayoutExtraZp {
         /**
-         * zpool name (generated automatically if not specified)
+         * zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
          */
         name?: pulumi.Input<string>;
     }
@@ -1647,35 +1836,35 @@ export namespace Dedicated {
 
     export interface ServerStoragePartitioningLayoutExtrasLv {
         /**
-         * Logical volume name
+         * Dedicated server name
          */
         name?: pulumi.Input<string>;
     }
 
     export interface ServerStoragePartitioningLayoutExtrasZp {
         /**
-         * zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+         * Dedicated server name
          */
         name?: pulumi.Input<string>;
     }
 }
 
 export namespace Domain {
-    export interface DsRecordsDsRecord {
+    export interface DSRecordsDsRecord {
         /**
-         * Algorithm name of the DNSSEC key
+         * The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
          */
         algorithm: pulumi.Input<string>;
         /**
-         * Flag name of the DNSSEC key
+         * The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
          */
         flags: pulumi.Input<string>;
         /**
-         * Public key
+         * The record base64 encoded public key
          */
         publicKey: pulumi.Input<string>;
         /**
-         * Tag of the DNSSEC key
+         * The record tag
          */
         tag: pulumi.Input<number>;
     }
@@ -1816,7 +2005,7 @@ export namespace Domain {
     export interface NamePlan {
         configurations?: pulumi.Input<pulumi.Input<inputs.Domain.NamePlanConfiguration>[]>;
         /**
-         * Duration selected for the purchase of the product
+         * Duration selected for the purchase of the product (defaults to "P1Y")
          */
         duration: pulumi.Input<string>;
         /**
@@ -1881,11 +2070,11 @@ export namespace Domain {
 
     export interface NameServersServer {
         /**
-         * DNS name server hostname
+         * The server hostname
          */
         host: pulumi.Input<string>;
         /**
-         * DNS name server IP address
+         * The server IP
          */
         ip?: pulumi.Input<string>;
     }
@@ -1963,7 +2152,7 @@ export namespace Domain {
          */
         catalogName?: pulumi.Input<string>;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. 2 configurations are required : one for `zone` and one for `template`
          */
         configurations?: pulumi.Input<pulumi.Input<inputs.Domain.ZonePlanConfiguration>[]>;
         /**
@@ -1982,11 +2171,11 @@ export namespace Domain {
 
     export interface ZonePlanConfiguration {
         /**
-         * Identifier of the resource
+         * Identifier of the resource : `zone` or `template`
          */
         label: pulumi.Input<string>;
         /**
-         * Path to the resource in API.OVH.COM
+         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          */
         value: pulumi.Input<string>;
     }
@@ -2048,7 +2237,7 @@ export namespace Hosting {
 
     export interface PrivateDatabaseOrderDetail {
         /**
-         * description
+         * Custom description on your privatedatabase order.
          */
         description?: pulumi.Input<string>;
         /**
@@ -2075,11 +2264,11 @@ export namespace Hosting {
          */
         configurations?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabasePlanConfiguration>[]>;
         /**
-         * duration
+         * duration.
          */
         duration: pulumi.Input<string>;
         /**
-         * Plan code
+         * Plan code.
          */
         planCode: pulumi.Input<string>;
         /**
@@ -2095,6 +2284,8 @@ export namespace Hosting {
         label: pulumi.Input<string>;
         /**
          * Path to the resource in API.OVH.COM
+         *
+         * Plan order valid values can be found on OVHcloud [APIv6](https://api.ovh.com/console/#/hosting/privateDatabase/availableOrderCapacities~GET)
          */
         value: pulumi.Input<string>;
     }
@@ -2109,7 +2300,7 @@ export namespace Hosting {
          */
         configurations?: pulumi.Input<pulumi.Input<inputs.Hosting.PrivateDatabasePlanOptionConfiguration>[]>;
         /**
-         * duration
+         * Service duration
          */
         duration: pulumi.Input<string>;
         /**
@@ -2159,7 +2350,7 @@ export namespace Ip {
 
     export interface IpServiceOrderDetail {
         /**
-         * description
+         * Custom description on your ip.
          */
         description?: pulumi.Input<string>;
         /**
@@ -2216,7 +2407,7 @@ export namespace Ip {
          */
         catalogName?: pulumi.Input<string>;
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. The list of available configurations can be retrieved using call [GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/cart/-cartId-/item/-itemId-/requiredConfiguration)
          */
         configurations?: pulumi.Input<pulumi.Input<inputs.Ip.IpServicePlanOptionConfiguration>[]>;
         /**
@@ -2246,14 +2437,14 @@ export namespace Ip {
 
     export interface IpServiceRoutedTo {
         /**
-         * Service where ip is routed to
+         * service name
          */
         serviceName?: pulumi.Input<string>;
     }
 
     export interface MoveRoutedTo {
         /**
-         * Service where ip is routed to
+         * Name of the service to route the IP to. IP will be parked if this value is an empty string
          */
         serviceName: pulumi.Input<string>;
     }
@@ -2261,14 +2452,41 @@ export namespace Ip {
 
 export namespace IpLoadBalancing {
     export interface HttpFarmProbe {
+        /**
+         * Force use of SSL (TLS)
+         */
         forceSsl?: pulumi.Input<boolean>;
+        /**
+         * probe interval, Value between 30 and 3600 seconds, default 30
+         */
         interval?: pulumi.Input<number>;
+        /**
+         * What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+         */
         match?: pulumi.Input<string>;
+        /**
+         * HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+         */
         method?: pulumi.Input<string>;
+        /**
+         * Negate probe result
+         */
         negate?: pulumi.Input<boolean>;
+        /**
+         * Pattern to match against `match`
+         */
         pattern?: pulumi.Input<string>;
+        /**
+         * Port for backends to receive traffic on.
+         */
         port?: pulumi.Input<number>;
+        /**
+         * Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+         */
         type: pulumi.Input<string>;
+        /**
+         * URL for HTTP probe type.
+         */
         url?: pulumi.Input<string>;
     }
 
@@ -2289,11 +2507,11 @@ export namespace IpLoadBalancing {
 
     export interface HttpRouteRule {
         /**
-         * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+         * Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
          */
         field?: pulumi.Input<string>;
         /**
-         * Matching operator. Not all operators are available for all fields. See "/availableRules"
+         * Matching operator. Not all operators are available for all fields. See "availableRules"
          */
         match?: pulumi.Input<string>;
         /**
@@ -2432,20 +2650,47 @@ export namespace IpLoadBalancing {
     }
 
     export interface TcpFarmProbe {
+        /**
+         * Force use of SSL (TLS)
+         */
         forceSsl?: pulumi.Input<boolean>;
+        /**
+         * probe interval, Value between 30 and 3600 seconds, default 30
+         */
         interval?: pulumi.Input<number>;
+        /**
+         * What to match `pattern` against (`contains`, `default`, `internal`, `matches`, `status`)
+         */
         match?: pulumi.Input<string>;
+        /**
+         * HTTP probe method (`GET`, `HEAD`, `OPTIONS`, `internal`)
+         */
         method?: pulumi.Input<string>;
+        /**
+         * Negate probe result
+         */
         negate?: pulumi.Input<boolean>;
+        /**
+         * Pattern to match against `match`
+         */
         pattern?: pulumi.Input<string>;
+        /**
+         * Port for backends to receive traffic on.
+         */
         port?: pulumi.Input<number>;
+        /**
+         * Valid values : `http`, `internal`, `mysql`, `oco`, `pgsql`, `smtp`, `tcp`
+         */
         type: pulumi.Input<string>;
+        /**
+         * URL for HTTP probe type.
+         */
         url?: pulumi.Input<string>;
     }
 
     export interface TcpRouteAction {
         /**
-         * Farm ID for "farm" action type, empty for others
+         * Farm ID for "farm" action type, empty for others.
          */
         target?: pulumi.Input<string>;
         /**
@@ -2456,11 +2701,11 @@ export namespace IpLoadBalancing {
 
     export interface TcpRouteRule {
         /**
-         * Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+         * Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
          */
         field?: pulumi.Input<string>;
         /**
-         * Matching operator. Not all operators are available for all fields. See "/availableRules"
+         * Matching operator. Not all operators are available for all fields. See "availableRules"
          */
         match?: pulumi.Input<string>;
         /**
@@ -2485,22 +2730,25 @@ export namespace IpLoadBalancing {
 export namespace Me {
 }
 
+export namespace OVHcloud {
+}
+
 export namespace Okms {
     export interface OkmsIam {
         /**
-         * Resource display name
+         * (String) Resource display name
          */
         displayName?: pulumi.Input<string>;
         /**
-         * Unique identifier of the resource
+         * (String) Unique identifier of the resource
          */
         id?: pulumi.Input<string>;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
          */
         tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Unique resource name used in policies
+         * (String) Unique resource name used in policies
          */
         urn?: pulumi.Input<string>;
     }
@@ -2602,34 +2850,58 @@ export namespace Order {
 export namespace Vps {
     export interface VpsIam {
         /**
-         * Resource display name
+         * Custom display name
          */
         displayName?: pulumi.Input<string>;
         /**
-         * Unique identifier of the resource
+         * Unique identifier of the resource in the IAM
          */
         id?: pulumi.Input<string>;
         /**
-         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
          */
         tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Unique resource name used in policies
+         * URN of the private database, used when writing IAM policies
          */
         urn?: pulumi.Input<string>;
     }
 
     export interface VpsModel {
+        /**
+         * All options the VPS can have (additionalDisk┃automatedBackup┃cpanel┃ftpbackup┃plesk┃snapshot┃veeam┃windows)
+         */
         availableOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Datacenters where this model is available
+         */
         datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Disk capacity of this VPS
+         */
         disk?: pulumi.Input<number>;
+        /**
+         * Maximum number of additional IPs
+         */
         maximumAdditionnalIp?: pulumi.Input<number>;
+        /**
+         * RAM of the VPS
+         */
         memory?: pulumi.Input<number>;
+        /**
+         * Name of the VPS
+         */
         name?: pulumi.Input<string>;
+        /**
+         * Description of this VPS offer
+         */
         offer?: pulumi.Input<string>;
+        /**
+         * Number of vcores
+         */
         vcore?: pulumi.Input<number>;
         /**
-         * All versions that VPS can have
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
          */
         version?: pulumi.Input<string>;
     }
@@ -2653,9 +2925,12 @@ export namespace Vps {
     }
 
     export interface VpsPlan {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
         configurations?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanConfiguration>[]>;
         /**
-         * Duration selected for the purchase of the product
+         * duration
          */
         duration: pulumi.Input<string>;
         /**
@@ -2663,11 +2938,11 @@ export namespace Vps {
          */
         itemId?: pulumi.Input<number>;
         /**
-         * Identifier of the option offer
+         * Plan code
          */
         planCode: pulumi.Input<string>;
         /**
-         * Pricing mode selected for the purchase of the product
+         * Pricing model identifier
          */
         pricingMode: pulumi.Input<string>;
         /**
@@ -2678,27 +2953,30 @@ export namespace Vps {
 
     export interface VpsPlanConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: pulumi.Input<string>;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: pulumi.Input<string>;
     }
 
     export interface VpsPlanOption {
+        /**
+         * Representation of a configuration item for personalizing product
+         */
         configurations?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanOptionConfiguration>[]>;
         /**
-         * Duration selected for the purchase of the product
+         * duration
          */
         duration: pulumi.Input<string>;
         /**
-         * Identifier of the option offer
+         * Plan code
          */
         planCode: pulumi.Input<string>;
         /**
-         * Pricing mode selected for the purchase of the product
+         * Pricing model identifier
          */
         pricingMode: pulumi.Input<string>;
         /**
@@ -2709,11 +2987,11 @@ export namespace Vps {
 
     export interface VpsPlanOptionConfiguration {
         /**
-         * Label for your configuration item
+         * Identifier of the resource
          */
         label: pulumi.Input<string>;
         /**
-         * Value or resource URL on API.OVH.COM of your configuration item
+         * Path to the resource in api.ovh.com
          */
         value: pulumi.Input<string>;
     }
@@ -2741,7 +3019,7 @@ export namespace Vrack {
 
     export interface VrackOrderDetail {
         /**
-         * description
+         * yourvrackdescription
          */
         description?: pulumi.Input<string>;
         /**

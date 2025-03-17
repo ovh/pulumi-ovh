@@ -28,11 +28,11 @@ class RegionNetworkArgs:
                  vlan_id: Optional[pulumi.Input[float]] = None):
         """
         The set of arguments for constructing a RegionNetwork resource.
-        :param pulumi.Input[str] region_name: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input['RegionNetworkSubnetArgs'] subnet: Parameters to create a subnet from another resource creation
-        :param pulumi.Input[str] name: Network name
-        :param pulumi.Input[float] vlan_id: VLAN id, between 1 and 4000
+        :param pulumi.Input[str] region_name: Network region
+        :param pulumi.Input[str] service_name: The id of the public cloud project
+        :param pulumi.Input['RegionNetworkSubnetArgs'] subnet: Parameters to create a subnet
+        :param pulumi.Input[str] name: Name of the network
+        :param pulumi.Input[float] vlan_id: VLAN ID, between 1 and 4000
         """
         pulumi.set(__self__, "region_name", region_name)
         pulumi.set(__self__, "service_name", service_name)
@@ -46,7 +46,7 @@ class RegionNetworkArgs:
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Input[str]:
         """
-        Region name
+        Network region
         """
         return pulumi.get(self, "region_name")
 
@@ -58,7 +58,7 @@ class RegionNetworkArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name
+        The id of the public cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -70,7 +70,7 @@ class RegionNetworkArgs:
     @pulumi.getter
     def subnet(self) -> pulumi.Input['RegionNetworkSubnetArgs']:
         """
-        Parameters to create a subnet from another resource creation
+        Parameters to create a subnet
         """
         return pulumi.get(self, "subnet")
 
@@ -82,7 +82,7 @@ class RegionNetworkArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Network name
+        Name of the network
         """
         return pulumi.get(self, "name")
 
@@ -94,7 +94,7 @@ class RegionNetworkArgs:
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[float]]:
         """
-        VLAN id, between 1 and 4000
+        VLAN ID, between 1 and 4000
         """
         return pulumi.get(self, "vlan_id")
 
@@ -115,13 +115,13 @@ class _RegionNetworkState:
                  vlan_id: Optional[pulumi.Input[float]] = None):
         """
         Input properties used for looking up and filtering RegionNetwork resources.
-        :param pulumi.Input[str] name: Network name
-        :param pulumi.Input[str] region: Network region
-        :param pulumi.Input[str] region_name: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input['RegionNetworkSubnetArgs'] subnet: Parameters to create a subnet from another resource creation
+        :param pulumi.Input[str] name: Name of the network
+        :param pulumi.Input[str] region: Network region returned by the API
+        :param pulumi.Input[str] region_name: Network region
+        :param pulumi.Input[str] service_name: The id of the public cloud project
+        :param pulumi.Input['RegionNetworkSubnetArgs'] subnet: Parameters to create a subnet
         :param pulumi.Input[str] visibility: Network visibility
-        :param pulumi.Input[float] vlan_id: VLAN id, between 1 and 4000
+        :param pulumi.Input[float] vlan_id: VLAN ID, between 1 and 4000
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -142,7 +142,7 @@ class _RegionNetworkState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Network name
+        Name of the network
         """
         return pulumi.get(self, "name")
 
@@ -154,7 +154,7 @@ class _RegionNetworkState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Network region
+        Network region returned by the API
         """
         return pulumi.get(self, "region")
 
@@ -166,7 +166,7 @@ class _RegionNetworkState:
     @pulumi.getter(name="regionName")
     def region_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Region name
+        Network region
         """
         return pulumi.get(self, "region_name")
 
@@ -178,7 +178,7 @@ class _RegionNetworkState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name
+        The id of the public cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -190,7 +190,7 @@ class _RegionNetworkState:
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input['RegionNetworkSubnetArgs']]:
         """
-        Parameters to create a subnet from another resource creation
+        Parameters to create a subnet
         """
         return pulumi.get(self, "subnet")
 
@@ -214,7 +214,7 @@ class _RegionNetworkState:
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[float]]:
         """
-        VLAN id, between 1 and 4000
+        VLAN ID, between 1 and 4000
         """
         return pulumi.get(self, "vlan_id")
 
@@ -235,14 +235,15 @@ class RegionNetwork(pulumi.CustomResource):
                  vlan_id: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-        Create a RegionNetwork resource with the given unique name, props, and options.
+        Creates a network in a public cloud project.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Network name
-        :param pulumi.Input[str] region_name: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[Union['RegionNetworkSubnetArgs', 'RegionNetworkSubnetArgsDict']] subnet: Parameters to create a subnet from another resource creation
-        :param pulumi.Input[float] vlan_id: VLAN id, between 1 and 4000
+        :param pulumi.Input[str] name: Name of the network
+        :param pulumi.Input[str] region_name: Network region
+        :param pulumi.Input[str] service_name: The id of the public cloud project
+        :param pulumi.Input[Union['RegionNetworkSubnetArgs', 'RegionNetworkSubnetArgsDict']] subnet: Parameters to create a subnet
+        :param pulumi.Input[float] vlan_id: VLAN ID, between 1 and 4000
         """
         ...
     @overload
@@ -251,7 +252,8 @@ class RegionNetwork(pulumi.CustomResource):
                  args: RegionNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RegionNetwork resource with the given unique name, props, and options.
+        Creates a network in a public cloud project.
+
         :param str resource_name: The name of the resource.
         :param RegionNetworkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,13 +320,13 @@ class RegionNetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Network name
-        :param pulumi.Input[str] region: Network region
-        :param pulumi.Input[str] region_name: Region name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[Union['RegionNetworkSubnetArgs', 'RegionNetworkSubnetArgsDict']] subnet: Parameters to create a subnet from another resource creation
+        :param pulumi.Input[str] name: Name of the network
+        :param pulumi.Input[str] region: Network region returned by the API
+        :param pulumi.Input[str] region_name: Network region
+        :param pulumi.Input[str] service_name: The id of the public cloud project
+        :param pulumi.Input[Union['RegionNetworkSubnetArgs', 'RegionNetworkSubnetArgsDict']] subnet: Parameters to create a subnet
         :param pulumi.Input[str] visibility: Network visibility
-        :param pulumi.Input[float] vlan_id: VLAN id, between 1 and 4000
+        :param pulumi.Input[float] vlan_id: VLAN ID, between 1 and 4000
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -343,7 +345,7 @@ class RegionNetwork(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Network name
+        Name of the network
         """
         return pulumi.get(self, "name")
 
@@ -351,7 +353,7 @@ class RegionNetwork(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Network region
+        Network region returned by the API
         """
         return pulumi.get(self, "region")
 
@@ -359,7 +361,7 @@ class RegionNetwork(pulumi.CustomResource):
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Output[str]:
         """
-        Region name
+        Network region
         """
         return pulumi.get(self, "region_name")
 
@@ -367,7 +369,7 @@ class RegionNetwork(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        The id of the public cloud project
         """
         return pulumi.get(self, "service_name")
 
@@ -375,7 +377,7 @@ class RegionNetwork(pulumi.CustomResource):
     @pulumi.getter
     def subnet(self) -> pulumi.Output['outputs.RegionNetworkSubnet']:
         """
-        Parameters to create a subnet from another resource creation
+        Parameters to create a subnet
         """
         return pulumi.get(self, "subnet")
 
@@ -391,7 +393,7 @@ class RegionNetwork(pulumi.CustomResource):
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[float]:
         """
-        VLAN id, between 1 and 4000
+        VLAN ID, between 1 and 4000
         """
         return pulumi.get(self, "vlan_id")
 

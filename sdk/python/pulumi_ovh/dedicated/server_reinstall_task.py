@@ -29,12 +29,14 @@ class ServerReinstallTaskArgs:
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]]] = None):
         """
         The set of arguments for constructing a ServerReinstallTask resource.
-        :param pulumi.Input[str] os: Operating System name
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
-        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase
-        :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: OS reinstallation customizations
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]] storages: Storage configuration
+        :param pulumi.Input[str] os: Operating system to install.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
+        :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
+               
+               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         pulumi.set(__self__, "os", os)
         pulumi.set(__self__, "service_name", service_name)
@@ -51,7 +53,7 @@ class ServerReinstallTaskArgs:
     @pulumi.getter
     def os(self) -> pulumi.Input[str]:
         """
-        Operating System name
+        Operating system to install.
         """
         return pulumi.get(self, "os")
 
@@ -63,7 +65,7 @@ class ServerReinstallTaskArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The internal name of your dedicated server.
+        The service_name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -75,7 +77,7 @@ class ServerReinstallTaskArgs:
     @pulumi.getter(name="bootidOnDestroy")
     def bootid_on_destroy(self) -> Optional[pulumi.Input[int]]:
         """
-        If set, reboot the server on the specified boot id during destroy phase
+        If set, reboot the server on the specified boot id during destroy phase.
         """
         return pulumi.get(self, "bootid_on_destroy")
 
@@ -87,7 +89,9 @@ class ServerReinstallTaskArgs:
     @pulumi.getter
     def customizations(self) -> Optional[pulumi.Input['ServerReinstallTaskCustomizationsArgs']]:
         """
-        OS reinstallation customizations
+        Available attributes and their types are OS-dependant. Example: `hostname`.
+
+        > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         """
         return pulumi.get(self, "customizations")
 
@@ -99,7 +103,7 @@ class ServerReinstallTaskArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Arbitrary properties to pass to cloud-init's config drive datasource
+        Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         """
         return pulumi.get(self, "properties")
 
@@ -111,7 +115,7 @@ class ServerReinstallTaskArgs:
     @pulumi.getter
     def storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]]]:
         """
-        Storage configuration
+        OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         return pulumi.get(self, "storages")
 
@@ -137,18 +141,20 @@ class _ServerReinstallTaskState:
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]]] = None):
         """
         Input properties used for looking up and filtering ServerReinstallTask resources.
-        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase
-        :param pulumi.Input[str] comment: Details of this task
-        :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] done_date: Completion date
-        :param pulumi.Input[str] function: Function name
+        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
+        :param pulumi.Input[str] comment: Details of this task. (should be `Install asked`)
+        :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
+               
+               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
+        :param pulumi.Input[str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[str] last_update: Last update
-        :param pulumi.Input[str] os: Operating System name
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
-        :param pulumi.Input[str] start_date: Task Creation date
-        :param pulumi.Input[str] status: Task status
-        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]] storages: Storage configuration
+        :param pulumi.Input[str] os: Operating system to install.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[str] start_date: Task creation date in RFC3339 format.
+        :param pulumi.Input[str] status: Task status (should be `done`)
+        :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         if bootid_on_destroy is not None:
             pulumi.set(__self__, "bootid_on_destroy", bootid_on_destroy)
@@ -179,7 +185,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter(name="bootidOnDestroy")
     def bootid_on_destroy(self) -> Optional[pulumi.Input[int]]:
         """
-        If set, reboot the server on the specified boot id during destroy phase
+        If set, reboot the server on the specified boot id during destroy phase.
         """
         return pulumi.get(self, "bootid_on_destroy")
 
@@ -191,7 +197,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Details of this task
+        Details of this task. (should be `Install asked`)
         """
         return pulumi.get(self, "comment")
 
@@ -203,7 +209,9 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def customizations(self) -> Optional[pulumi.Input['ServerReinstallTaskCustomizationsArgs']]:
         """
-        OS reinstallation customizations
+        Available attributes and their types are OS-dependant. Example: `hostname`.
+
+        > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         """
         return pulumi.get(self, "customizations")
 
@@ -215,7 +223,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter(name="doneDate")
     def done_date(self) -> Optional[pulumi.Input[str]]:
         """
-        Completion date
+        Completion date in RFC3339 format.
         """
         return pulumi.get(self, "done_date")
 
@@ -227,7 +235,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def function(self) -> Optional[pulumi.Input[str]]:
         """
-        Function name
+        Function name (should be `hardInstall`).
         """
         return pulumi.get(self, "function")
 
@@ -251,7 +259,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[str]]:
         """
-        Operating System name
+        Operating system to install.
         """
         return pulumi.get(self, "os")
 
@@ -263,7 +271,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Arbitrary properties to pass to cloud-init's config drive datasource
+        Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         """
         return pulumi.get(self, "properties")
 
@@ -275,7 +283,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal name of your dedicated server.
+        The service_name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -287,7 +295,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[str]]:
         """
-        Task Creation date
+        Task creation date in RFC3339 format.
         """
         return pulumi.get(self, "start_date")
 
@@ -299,7 +307,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Task status
+        Task status (should be `done`)
         """
         return pulumi.get(self, "status")
 
@@ -311,7 +319,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]]]:
         """
-        Storage configuration
+        OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         return pulumi.get(self, "storages")
 
@@ -333,15 +341,26 @@ class ServerReinstallTask(pulumi.CustomResource):
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a ServerReinstallTask resource with the given unique name, props, and options.
+        ## Import
+
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dedicated/serverReinstallTask:ServerReinstallTask ovh_dedicated_server_reinstall_task nsXXXX.ipXXXX/operating_system/12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase
-        :param pulumi.Input[Union['ServerReinstallTaskCustomizationsArgs', 'ServerReinstallTaskCustomizationsArgsDict']] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] os: Operating System name
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]] storages: Storage configuration
+        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
+        :param pulumi.Input[Union['ServerReinstallTaskCustomizationsArgs', 'ServerReinstallTaskCustomizationsArgsDict']] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
+               
+               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        :param pulumi.Input[str] os: Operating system to install.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         ...
     @overload
@@ -350,7 +369,16 @@ class ServerReinstallTask(pulumi.CustomResource):
                  args: ServerReinstallTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServerReinstallTask resource with the given unique name, props, and options.
+        ## Import
+
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dedicated/serverReinstallTask:ServerReinstallTask ovh_dedicated_server_reinstall_task nsXXXX.ipXXXX/operating_system/12345
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServerReinstallTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -426,18 +454,20 @@ class ServerReinstallTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase
-        :param pulumi.Input[str] comment: Details of this task
-        :param pulumi.Input[Union['ServerReinstallTaskCustomizationsArgs', 'ServerReinstallTaskCustomizationsArgsDict']] customizations: OS reinstallation customizations
-        :param pulumi.Input[str] done_date: Completion date
-        :param pulumi.Input[str] function: Function name
+        :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
+        :param pulumi.Input[str] comment: Details of this task. (should be `Install asked`)
+        :param pulumi.Input[Union['ServerReinstallTaskCustomizationsArgs', 'ServerReinstallTaskCustomizationsArgsDict']] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
+               
+               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
+        :param pulumi.Input[str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[str] last_update: Last update
-        :param pulumi.Input[str] os: Operating System name
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
-        :param pulumi.Input[str] service_name: The internal name of your dedicated server.
-        :param pulumi.Input[str] start_date: Task Creation date
-        :param pulumi.Input[str] status: Task status
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]] storages: Storage configuration
+        :param pulumi.Input[str] os: Operating system to install.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[str] service_name: The service_name of your dedicated server.
+        :param pulumi.Input[str] start_date: Task creation date in RFC3339 format.
+        :param pulumi.Input[str] status: Task status (should be `done`)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -461,7 +491,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter(name="bootidOnDestroy")
     def bootid_on_destroy(self) -> pulumi.Output[Optional[int]]:
         """
-        If set, reboot the server on the specified boot id during destroy phase
+        If set, reboot the server on the specified boot id during destroy phase.
         """
         return pulumi.get(self, "bootid_on_destroy")
 
@@ -469,7 +499,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[str]:
         """
-        Details of this task
+        Details of this task. (should be `Install asked`)
         """
         return pulumi.get(self, "comment")
 
@@ -477,7 +507,9 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def customizations(self) -> pulumi.Output[Optional['outputs.ServerReinstallTaskCustomizations']]:
         """
-        OS reinstallation customizations
+        Available attributes and their types are OS-dependant. Example: `hostname`.
+
+        > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         """
         return pulumi.get(self, "customizations")
 
@@ -485,7 +517,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter(name="doneDate")
     def done_date(self) -> pulumi.Output[str]:
         """
-        Completion date
+        Completion date in RFC3339 format.
         """
         return pulumi.get(self, "done_date")
 
@@ -493,7 +525,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def function(self) -> pulumi.Output[str]:
         """
-        Function name
+        Function name (should be `hardInstall`).
         """
         return pulumi.get(self, "function")
 
@@ -509,7 +541,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def os(self) -> pulumi.Output[str]:
         """
-        Operating System name
+        Operating system to install.
         """
         return pulumi.get(self, "os")
 
@@ -517,7 +549,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Arbitrary properties to pass to cloud-init's config drive datasource
+        Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         """
         return pulumi.get(self, "properties")
 
@@ -525,7 +557,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The internal name of your dedicated server.
+        The service_name of your dedicated server.
         """
         return pulumi.get(self, "service_name")
 
@@ -533,7 +565,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter(name="startDate")
     def start_date(self) -> pulumi.Output[str]:
         """
-        Task Creation date
+        Task creation date in RFC3339 format.
         """
         return pulumi.get(self, "start_date")
 
@@ -541,7 +573,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Task status
+        Task status (should be `done`)
         """
         return pulumi.get(self, "status")
 
@@ -549,7 +581,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def storages(self) -> pulumi.Output[Optional[Sequence['outputs.ServerReinstallTaskStorage']]]:
         """
-        Storage configuration
+        OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         return pulumi.get(self, "storages")
 

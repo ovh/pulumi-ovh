@@ -8,24 +8,35 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Create a new Gateway Interface for existing subnet in the specified public cloud project.
+//
+// ## Import
+//
+// A gateway interface can be imported using the `service_name`, `region`, `id` (identifier of the gateway) and `interface_id` properties, separated by a `/`.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+// ```
 type GatewayInterface struct {
 	pulumi.CustomResourceState
 
-	// Interface ID
+	// ID of the interface
 	InterfaceId pulumi.StringOutput `pulumi:"interfaceId"`
 	// IP of the interface
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// Network ID of the interface
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// Region name
+	// Region of the gateway
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Service name
+	// ID of the cloud project
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Subnet id to add
+	// ID of the subnet to add
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 }
 
@@ -68,32 +79,32 @@ func GetGatewayInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayInterface resources.
 type gatewayInterfaceState struct {
-	// Interface ID
+	// ID of the interface
 	InterfaceId *string `pulumi:"interfaceId"`
 	// IP of the interface
 	Ip *string `pulumi:"ip"`
 	// Network ID of the interface
 	NetworkId *string `pulumi:"networkId"`
-	// Region name
+	// Region of the gateway
 	Region *string `pulumi:"region"`
-	// Service name
+	// ID of the cloud project
 	ServiceName *string `pulumi:"serviceName"`
-	// Subnet id to add
+	// ID of the subnet to add
 	SubnetId *string `pulumi:"subnetId"`
 }
 
 type GatewayInterfaceState struct {
-	// Interface ID
+	// ID of the interface
 	InterfaceId pulumi.StringPtrInput
 	// IP of the interface
 	Ip pulumi.StringPtrInput
 	// Network ID of the interface
 	NetworkId pulumi.StringPtrInput
-	// Region name
+	// Region of the gateway
 	Region pulumi.StringPtrInput
-	// Service name
+	// ID of the cloud project
 	ServiceName pulumi.StringPtrInput
-	// Subnet id to add
+	// ID of the subnet to add
 	SubnetId pulumi.StringPtrInput
 }
 
@@ -102,25 +113,25 @@ func (GatewayInterfaceState) ElementType() reflect.Type {
 }
 
 type gatewayInterfaceArgs struct {
-	// Interface ID
+	// ID of the interface
 	InterfaceId *string `pulumi:"interfaceId"`
-	// Region name
+	// Region of the gateway
 	Region string `pulumi:"region"`
-	// Service name
+	// ID of the cloud project
 	ServiceName string `pulumi:"serviceName"`
-	// Subnet id to add
+	// ID of the subnet to add
 	SubnetId string `pulumi:"subnetId"`
 }
 
 // The set of arguments for constructing a GatewayInterface resource.
 type GatewayInterfaceArgs struct {
-	// Interface ID
+	// ID of the interface
 	InterfaceId pulumi.StringPtrInput
-	// Region name
+	// Region of the gateway
 	Region pulumi.StringInput
-	// Service name
+	// ID of the cloud project
 	ServiceName pulumi.StringInput
-	// Subnet id to add
+	// ID of the subnet to add
 	SubnetId pulumi.StringInput
 }
 
@@ -211,7 +222,7 @@ func (o GatewayInterfaceOutput) ToGatewayInterfaceOutputWithContext(ctx context.
 	return o
 }
 
-// Interface ID
+// ID of the interface
 func (o GatewayInterfaceOutput) InterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.InterfaceId }).(pulumi.StringOutput)
 }
@@ -226,17 +237,17 @@ func (o GatewayInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Region name
+// Region of the gateway
 func (o GatewayInterfaceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Service name
+// ID of the cloud project
 func (o GatewayInterfaceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Subnet id to add
+// ID of the subnet to add
 func (o GatewayInterfaceOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }

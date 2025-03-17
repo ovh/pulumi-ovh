@@ -14,19 +14,19 @@ namespace Pulumi.Ovh.Vps.Outputs
     public sealed class VpsIam
     {
         /// <summary>
-        /// Resource display name
+        /// Custom display name
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource in the IAM
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Resource tags. Tags that were internally computed are prefixed with ovh:
+        /// Resource tags. Tags that were internally computed are prefixed with `ovh:`
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// Unique resource name used in policies
+        /// URN of the private database, used when writing IAM policies
         /// </summary>
         public readonly string? Urn;
 

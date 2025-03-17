@@ -56,41 +56,65 @@ class GetRancherResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        Date of the managed Rancher service creation
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="currentState")
     def current_state(self) -> 'outputs.GetRancherCurrentStateResult':
+        """
+        Current configuration applied to the managed Rancher service
+        """
         return pulumi.get(self, "current_state")
 
     @property
     @pulumi.getter(name="currentTasks")
     def current_tasks(self) -> Sequence['outputs.GetRancherCurrentTaskResult']:
+        """
+        Asynchronous operations ongoing on the managed Rancher service
+        """
         return pulumi.get(self, "current_tasks")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        Unique identifier
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project ID
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> str:
+        """
+        Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
+        """
         return pulumi.get(self, "resource_status")
 
     @property
     @pulumi.getter(name="targetSpec")
     def target_spec(self) -> 'outputs.GetRancherTargetSpecResult':
+        """
+        Last target specification of the managed Rancher service
+        """
         return pulumi.get(self, "target_spec")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        Date of the last managed Rancher service update
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -114,7 +138,21 @@ def get_rancher(id: Optional[str] = None,
                 project_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRancherResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieve information about a Managed Rancher Service in the given public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    rancher = ovh.CloudProject.get_rancher(id="<Rancher service ID>",
+        project_id="<public cloud project ID>")
+    ```
+
+
+    :param str id: Unique identifier
+    :param str project_id: Project ID
     """
     __args__ = dict()
     __args__['id'] = id
@@ -135,7 +173,21 @@ def get_rancher_output(id: Optional[pulumi.Input[str]] = None,
                        project_id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRancherResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieve information about a Managed Rancher Service in the given public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    rancher = ovh.CloudProject.get_rancher(id="<Rancher service ID>",
+        project_id="<public cloud project ID>")
+    ```
+
+
+    :param str id: Unique identifier
+    :param str project_id: Project ID
     """
     __args__ = dict()
     __args__['id'] = id

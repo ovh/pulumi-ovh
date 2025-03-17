@@ -8,18 +8,63 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/domain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a record to a sub-domain
+//			_, err := domain.NewZoneRecord(ctx, "test", &domain.ZoneRecordArgs{
+//				Fieldtype: pulumi.String("A"),
+//				Subdomain: pulumi.String("test"),
+//				Target:    pulumi.String("0.0.0.0"),
+//				Ttl:       pulumi.Int(3600),
+//				Zone:      pulumi.String("testdemo.ovh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+// ```
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 
-	Fieldtype pulumi.StringOutput    `pulumi:"fieldtype"`
+	// The type of the record
+	Fieldtype pulumi.StringOutput `pulumi:"fieldtype"`
+	// The name of the record. It can be an empty string.
 	Subdomain pulumi.StringPtrOutput `pulumi:"subdomain"`
-	Target    pulumi.StringOutput    `pulumi:"target"`
-	Ttl       pulumi.IntPtrOutput    `pulumi:"ttl"`
-	Zone      pulumi.StringOutput    `pulumi:"zone"`
+	// The value of the record
+	Target pulumi.StringOutput `pulumi:"target"`
+	// The TTL of the record, it shall be >= to 60.
+	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
+	// The domain to add the record to
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewZoneRecord registers a new resource with the given unique name, arguments, and options.
@@ -61,19 +106,29 @@ func GetZoneRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneRecord resources.
 type zoneRecordState struct {
+	// The type of the record
 	Fieldtype *string `pulumi:"fieldtype"`
+	// The name of the record. It can be an empty string.
 	Subdomain *string `pulumi:"subdomain"`
-	Target    *string `pulumi:"target"`
-	Ttl       *int    `pulumi:"ttl"`
-	Zone      *string `pulumi:"zone"`
+	// The value of the record
+	Target *string `pulumi:"target"`
+	// The TTL of the record, it shall be >= to 60.
+	Ttl *int `pulumi:"ttl"`
+	// The domain to add the record to
+	Zone *string `pulumi:"zone"`
 }
 
 type ZoneRecordState struct {
+	// The type of the record
 	Fieldtype pulumi.StringPtrInput
+	// The name of the record. It can be an empty string.
 	Subdomain pulumi.StringPtrInput
-	Target    pulumi.StringPtrInput
-	Ttl       pulumi.IntPtrInput
-	Zone      pulumi.StringPtrInput
+	// The value of the record
+	Target pulumi.StringPtrInput
+	// The TTL of the record, it shall be >= to 60.
+	Ttl pulumi.IntPtrInput
+	// The domain to add the record to
+	Zone pulumi.StringPtrInput
 }
 
 func (ZoneRecordState) ElementType() reflect.Type {
@@ -81,20 +136,30 @@ func (ZoneRecordState) ElementType() reflect.Type {
 }
 
 type zoneRecordArgs struct {
-	Fieldtype string  `pulumi:"fieldtype"`
+	// The type of the record
+	Fieldtype string `pulumi:"fieldtype"`
+	// The name of the record. It can be an empty string.
 	Subdomain *string `pulumi:"subdomain"`
-	Target    string  `pulumi:"target"`
-	Ttl       *int    `pulumi:"ttl"`
-	Zone      string  `pulumi:"zone"`
+	// The value of the record
+	Target string `pulumi:"target"`
+	// The TTL of the record, it shall be >= to 60.
+	Ttl *int `pulumi:"ttl"`
+	// The domain to add the record to
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ZoneRecord resource.
 type ZoneRecordArgs struct {
+	// The type of the record
 	Fieldtype pulumi.StringInput
+	// The name of the record. It can be an empty string.
 	Subdomain pulumi.StringPtrInput
-	Target    pulumi.StringInput
-	Ttl       pulumi.IntPtrInput
-	Zone      pulumi.StringInput
+	// The value of the record
+	Target pulumi.StringInput
+	// The TTL of the record, it shall be >= to 60.
+	Ttl pulumi.IntPtrInput
+	// The domain to add the record to
+	Zone pulumi.StringInput
 }
 
 func (ZoneRecordArgs) ElementType() reflect.Type {
@@ -184,22 +249,27 @@ func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
+// The type of the record
 func (o ZoneRecordOutput) Fieldtype() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Fieldtype }).(pulumi.StringOutput)
 }
 
+// The name of the record. It can be an empty string.
 func (o ZoneRecordOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
+// The value of the record
 func (o ZoneRecordOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }
 
+// The TTL of the record, it shall be >= to 60.
 func (o ZoneRecordOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
+// The domain to add the record to
 func (o ZoneRecordOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

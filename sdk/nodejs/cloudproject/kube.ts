@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * OVHcloud Managed Kubernetes Service clusters can be imported using the `service_name` and the `id` of the cluster, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster service_name/kube_id
+ * ```
+ */
 export class Kube extends pulumi.CustomResource {
     /**
      * Get an existing Kube resource's state with the given name, ID, and optional extra
@@ -34,32 +45,93 @@ export class Kube extends pulumi.CustomResource {
         return obj['__pulumiType'] === Kube.__pulumiType;
     }
 
+    /**
+     * True if control-plane is up-to-date.
+     */
     public /*out*/ readonly controlPlaneIsUpToDate!: pulumi.Output<boolean>;
+    /**
+     * Kubernetes API server customization
+     */
     public readonly customizationApiservers!: pulumi.Output<outputs.CloudProject.KubeCustomizationApiserver[]>;
+    /**
+     * Kubernetes kube-proxy customization
+     */
     public readonly customizationKubeProxy!: pulumi.Output<outputs.CloudProject.KubeCustomizationKubeProxy | undefined>;
     /**
+     * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+     *
      * @deprecated Use customizationApiserver instead
      */
     public readonly customizations!: pulumi.Output<outputs.CloudProject.KubeCustomization[]>;
+    /**
+     * True if all nodes and control-plane are up-to-date.
+     */
     public /*out*/ readonly isUpToDate!: pulumi.Output<boolean>;
+    /**
+     * Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+     */
     public readonly kubeProxyMode!: pulumi.Output<string>;
+    /**
+     * The kubeconfig file. Use this file to connect to your kubernetes cluster.
+     */
     public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
     /**
-     * The kubeconfig configuration file of the Kubernetes cluster
+     * The kubeconfig file attributes.
      */
     public /*out*/ readonly kubeconfigAttributes!: pulumi.Output<outputs.CloudProject.KubeKubeconfigAttribute[]>;
+    /**
+     * Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+     */
     public readonly loadBalancersSubnetId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the kubernetes cluster.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Kubernetes versions available for upgrade.
+     */
     public /*out*/ readonly nextUpgradeVersions!: pulumi.Output<string[]>;
+    /**
+     * Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+     */
     public readonly nodesSubnetId!: pulumi.Output<string>;
+    /**
+     * Cluster nodes URL.
+     */
     public /*out*/ readonly nodesUrl!: pulumi.Output<string>;
+    /**
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
+     */
     public readonly privateNetworkConfiguration!: pulumi.Output<outputs.CloudProject.KubePrivateNetworkConfiguration | undefined>;
+    /**
+     * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+     *
+     * > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     */
     public readonly privateNetworkId!: pulumi.Output<string | undefined>;
+    /**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+     */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Cluster status. Should be normally set to 'READY'.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+     */
     public readonly updatePolicy!: pulumi.Output<string>;
+    /**
+     * Management URL of your cluster.
+     */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+     */
     public readonly version!: pulumi.Output<string>;
 
     /**
@@ -137,32 +209,93 @@ export class Kube extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Kube resources.
  */
 export interface KubeState {
+    /**
+     * True if control-plane is up-to-date.
+     */
     controlPlaneIsUpToDate?: pulumi.Input<boolean>;
+    /**
+     * Kubernetes API server customization
+     */
     customizationApiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserver>[]>;
+    /**
+     * Kubernetes kube-proxy customization
+     */
     customizationKubeProxy?: pulumi.Input<inputs.CloudProject.KubeCustomizationKubeProxy>;
     /**
+     * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+     *
      * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomization>[]>;
+    /**
+     * True if all nodes and control-plane are up-to-date.
+     */
     isUpToDate?: pulumi.Input<boolean>;
+    /**
+     * Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+     */
     kubeProxyMode?: pulumi.Input<string>;
+    /**
+     * The kubeconfig file. Use this file to connect to your kubernetes cluster.
+     */
     kubeconfig?: pulumi.Input<string>;
     /**
-     * The kubeconfig configuration file of the Kubernetes cluster
+     * The kubeconfig file attributes.
      */
     kubeconfigAttributes?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeKubeconfigAttribute>[]>;
+    /**
+     * Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+     */
     loadBalancersSubnetId?: pulumi.Input<string>;
+    /**
+     * The name of the kubernetes cluster.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Kubernetes versions available for upgrade.
+     */
     nextUpgradeVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+     */
     nodesSubnetId?: pulumi.Input<string>;
+    /**
+     * Cluster nodes URL.
+     */
     nodesUrl?: pulumi.Input<string>;
+    /**
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
+     */
     privateNetworkConfiguration?: pulumi.Input<inputs.CloudProject.KubePrivateNetworkConfiguration>;
+    /**
+     * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+     *
+     * > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     */
     privateNetworkId?: pulumi.Input<string>;
+    /**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     */
     region?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Cluster status. Should be normally set to 'READY'.
+     */
     status?: pulumi.Input<string>;
+    /**
+     * Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+     */
     updatePolicy?: pulumi.Input<string>;
+    /**
+     * Management URL of your cluster.
+     */
     url?: pulumi.Input<string>;
+    /**
+     * kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+     */
     version?: pulumi.Input<string>;
 }
 
@@ -170,20 +303,60 @@ export interface KubeState {
  * The set of arguments for constructing a Kube resource.
  */
 export interface KubeArgs {
+    /**
+     * Kubernetes API server customization
+     */
     customizationApiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserver>[]>;
+    /**
+     * Kubernetes kube-proxy customization
+     */
     customizationKubeProxy?: pulumi.Input<inputs.CloudProject.KubeCustomizationKubeProxy>;
     /**
+     * **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
+     *
      * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomization>[]>;
+    /**
+     * Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
+     */
     kubeProxyMode?: pulumi.Input<string>;
+    /**
+     * Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
+     */
     loadBalancersSubnetId?: pulumi.Input<string>;
+    /**
+     * The name of the kubernetes cluster.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
+     */
     nodesSubnetId?: pulumi.Input<string>;
+    /**
+     * The private network configuration. If this is set then the 2 parameters below shall be defined.
+     */
     privateNetworkConfiguration?: pulumi.Input<inputs.CloudProject.KubePrivateNetworkConfiguration>;
+    /**
+     * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
+     *
+     * > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     */
     privateNetworkId?: pulumi.Input<string>;
+    /**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     */
     region: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
+     */
     updatePolicy?: pulumi.Input<string>;
+    /**
+     * kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
+     */
     version?: pulumi.Input<string>;
 }

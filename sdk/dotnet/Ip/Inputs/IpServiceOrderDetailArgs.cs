@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Ip.Inputs
     public sealed class IpServiceOrderDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// description
+        /// Custom description on your ip.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

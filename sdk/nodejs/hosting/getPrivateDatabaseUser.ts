@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve information about an hosting privatedatabase user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const user = ovh.Hosting.getPrivateDatabaseUser({
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
+ */
 export function getPrivateDatabaseUser(args: GetPrivateDatabaseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDatabaseUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", {
@@ -18,7 +33,13 @@ export function getPrivateDatabaseUser(args: GetPrivateDatabaseUserArgs, opts?: 
  * A collection of arguments for invoking getPrivateDatabaseUser.
  */
 export interface GetPrivateDatabaseUserArgs {
+    /**
+     * The internal name of your private database
+     */
     serviceName: string;
+    /**
+     * User name
+     */
     userName: string;
 }
 
@@ -26,7 +47,13 @@ export interface GetPrivateDatabaseUserArgs {
  * A collection of values returned by getPrivateDatabaseUser.
  */
 export interface GetPrivateDatabaseUserResult {
+    /**
+     * Creation date of the database
+     */
     readonly creationDate: string;
+    /**
+     * Users granted to this database
+     */
     readonly databases: outputs.Hosting.GetPrivateDatabaseUserDatabase[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -35,6 +62,21 @@ export interface GetPrivateDatabaseUserResult {
     readonly serviceName: string;
     readonly userName: string;
 }
+/**
+ * Use this data source to retrieve information about an hosting privatedatabase user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const user = ovh.Hosting.getPrivateDatabaseUser({
+ *     serviceName: "XXXXXX",
+ *     userName: "XXXXXX",
+ * });
+ * ```
+ */
 export function getPrivateDatabaseUserOutput(args: GetPrivateDatabaseUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateDatabaseUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Hosting/getPrivateDatabaseUser:getPrivateDatabaseUser", {
@@ -47,6 +89,12 @@ export function getPrivateDatabaseUserOutput(args: GetPrivateDatabaseUserOutputA
  * A collection of arguments for invoking getPrivateDatabaseUser.
  */
 export interface GetPrivateDatabaseUserOutputArgs {
+    /**
+     * The internal name of your private database
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * User name
+     */
     userName: pulumi.Input<string>;
 }

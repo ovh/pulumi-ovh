@@ -11,12 +11,78 @@ namespace Pulumi.Ovh.Hosting
 {
     public static class GetPrivateDatabaseDb
     {
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPrivateDatabaseDbResult> InvokeAsync(GetPrivateDatabaseDbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateDatabaseDbResult>("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", args ?? new GetPrivateDatabaseDbArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPrivateDatabaseDbResult> Invoke(GetPrivateDatabaseDbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseDbResult>("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", args ?? new GetPrivateDatabaseDbInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about an hosting privatedatabase.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
+        ///     {
+        ///         DatabaseName = "XXXXXX",
+        ///         ServiceName = "XXXXXX",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPrivateDatabaseDbResult> Invoke(GetPrivateDatabaseDbInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateDatabaseDbResult>("ovh:Hosting/getPrivateDatabaseDb:getPrivateDatabaseDb", args ?? new GetPrivateDatabaseDbInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +90,15 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseDbArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Database name
+        /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your private database
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +110,15 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class GetPrivateDatabaseDbInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Database name
+        /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your private database
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -54,15 +132,27 @@ namespace Pulumi.Ovh.Hosting
     [OutputType]
     public sealed class GetPrivateDatabaseDbResult
     {
+        /// <summary>
+        /// Time of the next backup (every day)
+        /// </summary>
         public readonly string BackupTime;
+        /// <summary>
+        /// Creation date of the database
+        /// </summary>
         public readonly string CreationDate;
         public readonly string DatabaseName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Space used by the database (in MB)
+        /// </summary>
         public readonly int QuotaUsed;
         public readonly string ServiceName;
+        /// <summary>
+        /// Users granted to this database
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPrivateDatabaseDbUserResult> Users;
 
         [OutputConstructor]

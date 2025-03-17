@@ -6,6 +6,26 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * List public cloud project subnets of a private network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * export = async () => {
+ *     const privateNetworkPrivateSubnets = await ovh.CloudProject.getNetworkPrivateSubnets({
+ *         serviceName: "XXXXXX",
+ *         networkId: "XXXXXX",
+ *     });
+ *     return {
+ *         "private": privateNetworkPrivateSubnets,
+ *     };
+ * }
+ * ```
+ */
 export function getNetworkPrivateSubnets(args: GetNetworkPrivateSubnetsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPrivateSubnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", {
@@ -18,7 +38,13 @@ export function getNetworkPrivateSubnets(args: GetNetworkPrivateSubnetsArgs, opt
  * A collection of arguments for invoking getNetworkPrivateSubnets.
  */
 export interface GetNetworkPrivateSubnetsArgs {
+    /**
+     * ID of the network
+     */
     networkId: string;
+    /**
+     * The ID of the public cloud project.
+     */
     serviceName: string;
 }
 
@@ -30,10 +56,39 @@ export interface GetNetworkPrivateSubnetsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * ID of the network
+     */
     readonly networkId: string;
+    /**
+     * ID of the public cloud project
+     */
     readonly serviceName: string;
+    /**
+     * List of subnets
+     */
     readonly subnets: outputs.CloudProject.GetNetworkPrivateSubnetsSubnet[];
 }
+/**
+ * List public cloud project subnets of a private network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * export = async () => {
+ *     const privateNetworkPrivateSubnets = await ovh.CloudProject.getNetworkPrivateSubnets({
+ *         serviceName: "XXXXXX",
+ *         networkId: "XXXXXX",
+ *     });
+ *     return {
+ *         "private": privateNetworkPrivateSubnets,
+ *     };
+ * }
+ * ```
+ */
 export function getNetworkPrivateSubnetsOutput(args: GetNetworkPrivateSubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPrivateSubnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", {
@@ -46,6 +101,12 @@ export function getNetworkPrivateSubnetsOutput(args: GetNetworkPrivateSubnetsOut
  * A collection of arguments for invoking getNetworkPrivateSubnets.
  */
 export interface GetNetworkPrivateSubnetsOutputArgs {
+    /**
+     * ID of the network
+     */
     networkId: pulumi.Input<string>;
+    /**
+     * The ID of the public cloud project.
+     */
     serviceName: pulumi.Input<string>;
 }

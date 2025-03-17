@@ -3,18 +3,19 @@
 
 package com.ovhcloud.pulumi.ovh.Dedicated.inputs;
 
-import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerDetailsArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerCustomizationsArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerIamArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerOrderArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerPlanArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerPlanOptionArgs;
-import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerUserMetadataArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -85,6 +86,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * OS reinstallation customizations
+     * 
+     */
+    @Import(name="customizations")
+    private @Nullable Output<ServerCustomizationsArgs> customizations;
+
+    /**
+     * @return OS reinstallation customizations
+     * 
+     */
+    public Optional<Output<ServerCustomizationsArgs>> customizations() {
+        return Optional.ofNullable(this.customizations);
+    }
+
+    /**
      * Dedicated datacenter localisation (bhs1,bhs2,...)
      * 
      */
@@ -97,21 +113,6 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> datacenter() {
         return Optional.ofNullable(this.datacenter);
-    }
-
-    /**
-     * A structure describing informations about installation custom
-     * 
-     */
-    @Import(name="details")
-    private @Nullable Output<ServerDetailsArgs> details;
-
-    /**
-     * @return A structure describing informations about installation custom
-     * 
-     */
-    public Optional<Output<ServerDetailsArgs>> details() {
-        return Optional.ofNullable(this.details);
     }
 
     /**
@@ -286,21 +287,6 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ovhSubsidiary);
     }
 
-    /**
-     * Partition scheme name
-     * 
-     */
-    @Import(name="partitionSchemeName")
-    private @Nullable Output<String> partitionSchemeName;
-
-    /**
-     * @return Partition scheme name
-     * 
-     */
-    public Optional<Output<String>> partitionSchemeName() {
-        return Optional.ofNullable(this.partitionSchemeName);
-    }
-
     @Import(name="planOptions")
     private @Nullable Output<List<ServerPlanOptionArgs>> planOptions;
 
@@ -343,6 +329,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> professionalUse() {
         return Optional.ofNullable(this.professionalUse);
+    }
+
+    /**
+     * Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+     * 
+     */
+    @Import(name="properties")
+    private @Nullable Output<Map<String,String>> properties;
+
+    /**
+     * @return Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> properties() {
+        return Optional.ofNullable(this.properties);
     }
 
     /**
@@ -481,6 +482,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * OS reinstallation storage configurations
+     * 
+     */
+    @Import(name="storages")
+    private @Nullable Output<List<ServerStorageArgs>> storages;
+
+    /**
+     * @return OS reinstallation storage configurations
+     * 
+     */
+    public Optional<Output<List<ServerStorageArgs>>> storages() {
+        return Optional.ofNullable(this.storages);
+    }
+
+    /**
      * Dedicated server support level (critical, fastpath, gs, pro)
      * 
      */
@@ -495,36 +511,6 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.supportLevel);
     }
 
-    /**
-     * Template name
-     * 
-     */
-    @Import(name="templateName")
-    private @Nullable Output<String> templateName;
-
-    /**
-     * @return Template name
-     * 
-     */
-    public Optional<Output<String>> templateName() {
-        return Optional.ofNullable(this.templateName);
-    }
-
-    /**
-     * Metadata
-     * 
-     */
-    @Import(name="userMetadatas")
-    private @Nullable Output<List<ServerUserMetadataArgs>> userMetadatas;
-
-    /**
-     * @return Metadata
-     * 
-     */
-    public Optional<Output<List<ServerUserMetadataArgs>>> userMetadatas() {
-        return Optional.ofNullable(this.userMetadatas);
-    }
-
     private ServerState() {}
 
     private ServerState(ServerState $) {
@@ -532,8 +518,8 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.bootId = $.bootId;
         this.bootScript = $.bootScript;
         this.commercialRange = $.commercialRange;
+        this.customizations = $.customizations;
         this.datacenter = $.datacenter;
-        this.details = $.details;
         this.displayName = $.displayName;
         this.efiBootloaderPath = $.efiBootloaderPath;
         this.iam = $.iam;
@@ -546,11 +532,11 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.order = $.order;
         this.os = $.os;
         this.ovhSubsidiary = $.ovhSubsidiary;
-        this.partitionSchemeName = $.partitionSchemeName;
         this.planOptions = $.planOptions;
         this.plans = $.plans;
         this.powerState = $.powerState;
         this.professionalUse = $.professionalUse;
+        this.properties = $.properties;
         this.rack = $.rack;
         this.region = $.region;
         this.rescueMail = $.rescueMail;
@@ -560,9 +546,8 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.serverId = $.serverId;
         this.serviceName = $.serviceName;
         this.state = $.state;
+        this.storages = $.storages;
         this.supportLevel = $.supportLevel;
-        this.templateName = $.templateName;
-        this.userMetadatas = $.userMetadatas;
     }
 
     public static Builder builder() {
@@ -668,6 +653,27 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param customizations OS reinstallation customizations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizations(@Nullable Output<ServerCustomizationsArgs> customizations) {
+            $.customizations = customizations;
+            return this;
+        }
+
+        /**
+         * @param customizations OS reinstallation customizations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizations(ServerCustomizationsArgs customizations) {
+            return customizations(Output.of(customizations));
+        }
+
+        /**
          * @param datacenter Dedicated datacenter localisation (bhs1,bhs2,...)
          * 
          * @return builder
@@ -686,27 +692,6 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder datacenter(String datacenter) {
             return datacenter(Output.of(datacenter));
-        }
-
-        /**
-         * @param details A structure describing informations about installation custom
-         * 
-         * @return builder
-         * 
-         */
-        public Builder details(@Nullable Output<ServerDetailsArgs> details) {
-            $.details = details;
-            return this;
-        }
-
-        /**
-         * @param details A structure describing informations about installation custom
-         * 
-         * @return builder
-         * 
-         */
-        public Builder details(ServerDetailsArgs details) {
-            return details(Output.of(details));
         }
 
         /**
@@ -949,27 +934,6 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
             return ovhSubsidiary(Output.of(ovhSubsidiary));
         }
 
-        /**
-         * @param partitionSchemeName Partition scheme name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder partitionSchemeName(@Nullable Output<String> partitionSchemeName) {
-            $.partitionSchemeName = partitionSchemeName;
-            return this;
-        }
-
-        /**
-         * @param partitionSchemeName Partition scheme name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder partitionSchemeName(String partitionSchemeName) {
-            return partitionSchemeName(Output.of(partitionSchemeName));
-        }
-
         public Builder planOptions(@Nullable Output<List<ServerPlanOptionArgs>> planOptions) {
             $.planOptions = planOptions;
             return this;
@@ -1036,6 +1000,27 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder professionalUse(Boolean professionalUse) {
             return professionalUse(Output.of(professionalUse));
+        }
+
+        /**
+         * @param properties Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(@Nullable Output<Map<String,String>> properties) {
+            $.properties = properties;
+            return this;
+        }
+
+        /**
+         * @param properties Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(Map<String,String> properties) {
+            return properties(Output.of(properties));
         }
 
         /**
@@ -1228,6 +1213,37 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param storages OS reinstallation storage configurations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storages(@Nullable Output<List<ServerStorageArgs>> storages) {
+            $.storages = storages;
+            return this;
+        }
+
+        /**
+         * @param storages OS reinstallation storage configurations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storages(List<ServerStorageArgs> storages) {
+            return storages(Output.of(storages));
+        }
+
+        /**
+         * @param storages OS reinstallation storage configurations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storages(ServerStorageArgs... storages) {
+            return storages(List.of(storages));
+        }
+
+        /**
          * @param supportLevel Dedicated server support level (critical, fastpath, gs, pro)
          * 
          * @return builder
@@ -1246,58 +1262,6 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder supportLevel(String supportLevel) {
             return supportLevel(Output.of(supportLevel));
-        }
-
-        /**
-         * @param templateName Template name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder templateName(@Nullable Output<String> templateName) {
-            $.templateName = templateName;
-            return this;
-        }
-
-        /**
-         * @param templateName Template name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder templateName(String templateName) {
-            return templateName(Output.of(templateName));
-        }
-
-        /**
-         * @param userMetadatas Metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userMetadatas(@Nullable Output<List<ServerUserMetadataArgs>> userMetadatas) {
-            $.userMetadatas = userMetadatas;
-            return this;
-        }
-
-        /**
-         * @param userMetadatas Metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userMetadatas(List<ServerUserMetadataArgs> userMetadatas) {
-            return userMetadatas(Output.of(userMetadatas));
-        }
-
-        /**
-         * @param userMetadatas Metadata
-         * 
-         * @return builder
-         * 
-         */
-        public Builder userMetadatas(ServerUserMetadataArgs... userMetadatas) {
-            return userMetadatas(List.of(userMetadatas));
         }
 
         public ServerState build() {

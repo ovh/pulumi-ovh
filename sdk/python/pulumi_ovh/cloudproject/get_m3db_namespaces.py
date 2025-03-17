@@ -43,6 +43,9 @@ class GetM3dbNamespacesResult:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -56,11 +59,17 @@ class GetM3dbNamespacesResult:
     @property
     @pulumi.getter(name="namespaceIds")
     def namespace_ids(self) -> Sequence[str]:
+        """
+        The list of namespaces ids of the M3DB cluster associated with the project.
+        """
         return pulumi.get(self, "namespace_ids")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -80,7 +89,23 @@ def get_m3db_namespaces(cluster_id: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetM3dbNamespacesResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    namespaces = ovh.CloudProject.get_m3db_namespaces(service_name="XXX",
+        cluster_id="YYY")
+    pulumi.export("namespaceIds", namespaces.namespace_ids)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -97,7 +122,23 @@ def get_m3db_namespaces_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbNamespacesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    namespaces = ovh.CloudProject.get_m3db_namespaces(service_name="XXX",
+        cluster_id="YYY")
+    pulumi.export("namespaceIds", namespaces.namespace_ids)
+    ```
+
+
+    :param str cluster_id: Cluster ID
+    :param str service_name: The id of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

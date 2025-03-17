@@ -9,17 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
+    /// <summary>
+    /// Creates a DBaaS Logs Opensearch output alias.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @alias = new Ovh.Dbaas.LogsOutputOpenSearchAlias("alias", new()
+    ///     {
+    ///         Description = "my opensearch alias",
+    ///         ServiceName = "....",
+    ///         Suffix = "alias",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias")]
     public partial class LogsOutputOpenSearchAlias : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Alias used
+        /// Alias Id
         /// </summary>
         [Output("aliasId")]
         public Output<string> AliasId { get; private set; } = null!;
 
         /// <summary>
-        /// Operation creation
+        /// Alias creation
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -31,13 +54,13 @@ namespace Pulumi.Ovh.Dbaas
         public Output<int> CurrentSize { get; private set; } = null!;
 
         /// <summary>
-        /// Alias description
+        /// Index description
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Indexes attached to alias
+        /// List of attached indexes id
         /// </summary>
         [Output("indexes")]
         public Output<ImmutableArray<string>> Indexes { get; private set; } = null!;
@@ -55,13 +78,13 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of index
+        /// Number of indices linked
         /// </summary>
         [Output("nbIndex")]
         public Output<int> NbIndex { get; private set; } = null!;
 
         /// <summary>
-        /// Number of shard
+        /// Number of streams linked
         /// </summary>
         [Output("nbStream")]
         public Output<int> NbStream { get; private set; } = null!;
@@ -73,19 +96,19 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Streams attached to alias
+        /// List of attached streams id
         /// </summary>
         [Output("streams")]
         public Output<ImmutableArray<string>> Streams { get; private set; } = null!;
 
         /// <summary>
-        /// Alias suffix
+        /// Index suffix
         /// </summary>
         [Output("suffix")]
         public Output<string> Suffix { get; private set; } = null!;
 
         /// <summary>
-        /// Operation last update
+        /// Input last update
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -138,7 +161,7 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class LogsOutputOpenSearchAliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Alias description
+        /// Index description
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -147,7 +170,7 @@ namespace Pulumi.Ovh.Dbaas
         private InputList<string>? _indexes;
 
         /// <summary>
-        /// Indexes attached to alias
+        /// List of attached indexes id
         /// </summary>
         public InputList<string> Indexes
         {
@@ -156,13 +179,13 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
-        /// Number of index
+        /// Number of indices linked
         /// </summary>
         [Input("nbIndex")]
         public Input<int>? NbIndex { get; set; }
 
         /// <summary>
-        /// Number of shard
+        /// Number of streams linked
         /// </summary>
         [Input("nbStream")]
         public Input<int>? NbStream { get; set; }
@@ -177,7 +200,7 @@ namespace Pulumi.Ovh.Dbaas
         private InputList<string>? _streams;
 
         /// <summary>
-        /// Streams attached to alias
+        /// List of attached streams id
         /// </summary>
         public InputList<string> Streams
         {
@@ -186,7 +209,7 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
-        /// Alias suffix
+        /// Index suffix
         /// </summary>
         [Input("suffix", required: true)]
         public Input<string> Suffix { get; set; } = null!;
@@ -200,13 +223,13 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class LogsOutputOpenSearchAliasState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Alias used
+        /// Alias Id
         /// </summary>
         [Input("aliasId")]
         public Input<string>? AliasId { get; set; }
 
         /// <summary>
-        /// Operation creation
+        /// Alias creation
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -218,7 +241,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? CurrentSize { get; set; }
 
         /// <summary>
-        /// Alias description
+        /// Index description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -227,7 +250,7 @@ namespace Pulumi.Ovh.Dbaas
         private InputList<string>? _indexes;
 
         /// <summary>
-        /// Indexes attached to alias
+        /// List of attached indexes id
         /// </summary>
         public InputList<string> Indexes
         {
@@ -248,13 +271,13 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of index
+        /// Number of indices linked
         /// </summary>
         [Input("nbIndex")]
         public Input<int>? NbIndex { get; set; }
 
         /// <summary>
-        /// Number of shard
+        /// Number of streams linked
         /// </summary>
         [Input("nbStream")]
         public Input<int>? NbStream { get; set; }
@@ -269,7 +292,7 @@ namespace Pulumi.Ovh.Dbaas
         private InputList<string>? _streams;
 
         /// <summary>
-        /// Streams attached to alias
+        /// List of attached streams id
         /// </summary>
         public InputList<string> Streams
         {
@@ -278,13 +301,13 @@ namespace Pulumi.Ovh.Dbaas
         }
 
         /// <summary>
-        /// Alias suffix
+        /// Index suffix
         /// </summary>
         [Input("suffix")]
         public Input<string>? Suffix { get; set; }
 
         /// <summary>
-        /// Operation last update
+        /// Input last update
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

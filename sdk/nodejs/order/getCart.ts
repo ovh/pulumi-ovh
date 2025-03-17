@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to create a temporary order cart to retrieve information order cart products.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myAccount = ovh.Me.getMe({});
+ * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myAccount.ovhSubsidiary,
+ * }));
+ * ```
+ */
 export function getCart(args: GetCartArgs, opts?: pulumi.InvokeOptions): Promise<GetCartResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Order/getCart:getCart", {
@@ -18,9 +33,21 @@ export function getCart(args: GetCartArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getCart.
  */
 export interface GetCartArgs {
+    /**
+     * Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+     */
     assign?: boolean;
+    /**
+     * Description of your cart
+     */
     description?: string;
+    /**
+     * Expiration time (format: 2006-01-02T15:04:05+00:00)
+     */
     expire?: string;
+    /**
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     */
     ovhSubsidiary: string;
 }
 
@@ -29,6 +56,9 @@ export interface GetCartArgs {
  */
 export interface GetCartResult {
     readonly assign?: boolean;
+    /**
+     * Cart identifier
+     */
     readonly cartId: string;
     readonly description?: string;
     readonly expire: string;
@@ -36,10 +66,31 @@ export interface GetCartResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Items of your cart
+     */
     readonly items: number[];
     readonly ovhSubsidiary: string;
+    /**
+     * Indicates if the cart has already been validated
+     */
     readonly readOnly: boolean;
 }
+/**
+ * Use this data source to create a temporary order cart to retrieve information order cart products.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const myAccount = ovh.Me.getMe({});
+ * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
+ *     ovhSubsidiary: myAccount.ovhSubsidiary,
+ * }));
+ * ```
+ */
 export function getCartOutput(args: GetCartOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCartResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Order/getCart:getCart", {
@@ -54,8 +105,20 @@ export function getCartOutput(args: GetCartOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getCart.
  */
 export interface GetCartOutputArgs {
+    /**
+     * Assign a shopping cart to a logged in client. Values can be `true` or `false`.
+     */
     assign?: pulumi.Input<boolean>;
+    /**
+     * Description of your cart
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Expiration time (format: 2006-01-02T15:04:05+00:00)
+     */
     expire?: pulumi.Input<string>;
+    /**
+     * OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
+     */
     ovhSubsidiary: pulumi.Input<string>;
 }

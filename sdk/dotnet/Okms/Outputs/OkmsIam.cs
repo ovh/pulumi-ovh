@@ -14,19 +14,19 @@ namespace Pulumi.Ovh.Okms.Outputs
     public sealed class OkmsIam
     {
         /// <summary>
-        /// Resource display name
+        /// (String) Resource display name
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// Unique identifier of the resource
+        /// (String) Unique identifier of the resource
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Resource tags. Tags that were internally computed are prefixed with ovh:
+        /// (Map of String) Resource tags. Tags that were internally computed are prefixed with ovh:
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// Unique resource name used in policies
+        /// (String) Unique resource name used in policies
         /// </summary>
         public readonly string? Urn;
 

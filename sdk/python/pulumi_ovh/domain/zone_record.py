@@ -26,6 +26,11 @@ class ZoneRecordArgs:
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
+        :param pulumi.Input[str] fieldtype: The type of the record
+        :param pulumi.Input[str] target: The value of the record
+        :param pulumi.Input[str] zone: The domain to add the record to
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
+        :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
         """
         pulumi.set(__self__, "fieldtype", fieldtype)
         pulumi.set(__self__, "target", target)
@@ -38,6 +43,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def fieldtype(self) -> pulumi.Input[str]:
+        """
+        The type of the record
+        """
         return pulumi.get(self, "fieldtype")
 
     @fieldtype.setter
@@ -47,6 +55,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
+        """
+        The value of the record
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -56,6 +67,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
+        """
+        The domain to add the record to
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -65,6 +79,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the record. It can be an empty string.
+        """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
@@ -74,6 +91,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL of the record, it shall be >= to 60.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -91,6 +111,11 @@ class _ZoneRecordState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneRecord resources.
+        :param pulumi.Input[str] fieldtype: The type of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
+        :param pulumi.Input[str] target: The value of the record
+        :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
+        :param pulumi.Input[str] zone: The domain to add the record to
         """
         if fieldtype is not None:
             pulumi.set(__self__, "fieldtype", fieldtype)
@@ -106,6 +131,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def fieldtype(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the record
+        """
         return pulumi.get(self, "fieldtype")
 
     @fieldtype.setter
@@ -115,6 +143,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the record. It can be an empty string.
+        """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
@@ -124,6 +155,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the record
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -133,6 +167,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL of the record, it shall be >= to 60.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -142,6 +179,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add the record to
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -161,9 +201,38 @@ class ZoneRecord(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ZoneRecord resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        # Add a record to a sub-domain
+        test = ovh.domain.ZoneRecord("test",
+            fieldtype="A",
+            subdomain="test",
+            target="0.0.0.0",
+            ttl=3600,
+            zone="testdemo.ovh")
+        ```
+
+        ## Import
+
+        OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] fieldtype: The type of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
+        :param pulumi.Input[str] target: The value of the record
+        :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
+        :param pulumi.Input[str] zone: The domain to add the record to
         """
         ...
     @overload
@@ -172,7 +241,31 @@ class ZoneRecord(pulumi.CustomResource):
                  args: ZoneRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ZoneRecord resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        # Add a record to a sub-domain
+        test = ovh.domain.ZoneRecord("test",
+            fieldtype="A",
+            subdomain="test",
+            target="0.0.0.0",
+            ttl=3600,
+            zone="testdemo.ovh")
+        ```
+
+        ## Import
+
+        OVHcloud domain zone record can be imported using the `id`, which can be retrieved by using [OVH API portal](https://api.ovh.com/console/#/domain/zone/%7BzoneName%7D/record~GET), and the `zone`, separated by "." E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Domain/zoneRecord:ZoneRecord test id.zone
+        ```
+
         :param str resource_name: The name of the resource.
         :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -235,6 +328,11 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] fieldtype: The type of the record
+        :param pulumi.Input[str] subdomain: The name of the record. It can be an empty string.
+        :param pulumi.Input[str] target: The value of the record
+        :param pulumi.Input[int] ttl: The TTL of the record, it shall be >= to 60.
+        :param pulumi.Input[str] zone: The domain to add the record to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -250,25 +348,40 @@ class ZoneRecord(pulumi.CustomResource):
     @property
     @pulumi.getter
     def fieldtype(self) -> pulumi.Output[str]:
+        """
+        The type of the record
+        """
         return pulumi.get(self, "fieldtype")
 
     @property
     @pulumi.getter
     def subdomain(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the record. It can be an empty string.
+        """
         return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
     def target(self) -> pulumi.Output[str]:
+        """
+        The value of the record
+        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[int]]:
+        """
+        The TTL of the record, it shall be >= to 60.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
+        """
+        The domain to add the record to
+        """
         return pulumi.get(self, "zone")
 

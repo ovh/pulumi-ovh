@@ -39,22 +39,31 @@ class DatabaseArgs:
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] flavor: The node flavor used for this cluster
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes composing the service
-        :param pulumi.Input[str] plan: Plan of the cluster
-        :param pulumi.Input[str] version: Version of the engine deployed on the cluster
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-               engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day
-        :param pulumi.Input[str] description: Description of the cluster
-        :param pulumi.Input[int] disk_size: Disk size attributes of the cluster
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster
-        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a Kafka cluster
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object.
+               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[str] plan: Plan of the cluster.
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
+        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day
-        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an Opensearch cluster
+        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "flavor", flavor)
@@ -87,7 +96,8 @@ class DatabaseArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Name of the engine of the service
+        The database engine you want to deploy. To get a full list of available engine visit.
+        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -99,7 +109,9 @@ class DatabaseArgs:
     @pulumi.getter
     def flavor(self) -> pulumi.Input[str]:
         """
-        The node flavor used for this cluster
+        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+        Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+        You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
 
@@ -111,7 +123,8 @@ class DatabaseArgs:
     @pulumi.getter
     def nodes(self) -> pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]]:
         """
-        List of nodes composing the service
+        List of nodes object.
+        Multi region cluster are not yet available, all node should be identical.
         """
         return pulumi.get(self, "nodes")
 
@@ -123,7 +136,11 @@ class DatabaseArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[str]:
         """
-        Plan of the cluster
+        Plan of the cluster.
+        * MongoDB: Enum: "discovery", "production", "advanced".
+        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        * M3 Aggregator: "business", "enterprise".
+        * Redis: "essential", "business"
         """
         return pulumi.get(self, "plan")
 
@@ -134,6 +151,10 @@ class DatabaseArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -144,7 +165,7 @@ class DatabaseArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Version of the engine deployed on the cluster
+        The version of the engine in which the service should be deployed
         """
         return pulumi.get(self, "version")
 
@@ -156,7 +177,7 @@ class DatabaseArgs:
     @pulumi.getter(name="advancedConfiguration")
     def advanced_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Advanced configuration key / value
+        Advanced configuration key / value.
         """
         return pulumi.get(self, "advanced_configuration")
 
@@ -168,8 +189,7 @@ class DatabaseArgs:
     @pulumi.getter(name="backupRegions")
     def backup_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-        engines with one being the same as the nodes[].region field
+        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         """
         return pulumi.get(self, "backup_regions")
 
@@ -181,7 +201,7 @@ class DatabaseArgs:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time on which backups start every day
+        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         """
         return pulumi.get(self, "backup_time")
 
@@ -193,7 +213,7 @@ class DatabaseArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the cluster
+        Small description of the database service.
         """
         return pulumi.get(self, "description")
 
@@ -205,7 +225,7 @@ class DatabaseArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Disk size attributes of the cluster
+        The disk size (in GB) of the database service.
         """
         return pulumi.get(self, "disk_size")
 
@@ -217,7 +237,7 @@ class DatabaseArgs:
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]]:
         """
-        IP Blocks authorized to access to the cluster
+        IP Blocks authorized to access to the cluster.
         """
         return pulumi.get(self, "ip_restrictions")
 
@@ -229,7 +249,7 @@ class DatabaseArgs:
     @pulumi.getter(name="kafkaRestApi")
     def kafka_rest_api(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the REST API is enabled on a Kafka cluster
+        Defines whether the REST API is enabled on a kafka cluster
         """
         return pulumi.get(self, "kafka_rest_api")
 
@@ -253,7 +273,7 @@ class DatabaseArgs:
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time on which maintenances can start every day
+        Time on which maintenances can start every day.
         """
         return pulumi.get(self, "maintenance_time")
 
@@ -265,7 +285,7 @@ class DatabaseArgs:
     @pulumi.getter(name="opensearchAclsEnabled")
     def opensearch_acls_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the ACLs are enabled on an Opensearch cluster
+        Defines whether the ACLs are enabled on an OpenSearch cluster
         """
         return pulumi.get(self, "opensearch_acls_enabled")
 
@@ -300,27 +320,36 @@ class _DatabaseState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-               engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day
-        :param pulumi.Input[str] created_at: Date of the creation of the cluster
-        :param pulumi.Input[str] description: Description of the cluster
-        :param pulumi.Input[int] disk_size: Disk size attributes of the cluster
-        :param pulumi.Input[str] disk_type: Disk type attributes of the cluster
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]] endpoints: List of all endpoints of the service
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] flavor: The node flavor used for this cluster
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster
-        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a Kafka cluster
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[str] created_at: Date of the creation of the cluster.
+        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
+        :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]] endpoints: List of all endpoints objects of the service.
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
+        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day
-        :param pulumi.Input[str] network_type: Type of network of the cluster
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes composing the service
-        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an Opensearch cluster
-        :param pulumi.Input[str] plan: Plan of the cluster
-        :param pulumi.Input[str] status: Current status of the cluster
-        :param pulumi.Input[str] version: Version of the engine deployed on the cluster
+        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[str] network_type: Type of network of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object.
+               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
+        :param pulumi.Input[str] plan: Plan of the cluster.
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] status: Current status of the cluster.
+        :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         """
         if advanced_configuration is not None:
             pulumi.set(__self__, "advanced_configuration", advanced_configuration)
@@ -369,7 +398,7 @@ class _DatabaseState:
     @pulumi.getter(name="advancedConfiguration")
     def advanced_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Advanced configuration key / value
+        Advanced configuration key / value.
         """
         return pulumi.get(self, "advanced_configuration")
 
@@ -381,8 +410,7 @@ class _DatabaseState:
     @pulumi.getter(name="backupRegions")
     def backup_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-        engines with one being the same as the nodes[].region field
+        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         """
         return pulumi.get(self, "backup_regions")
 
@@ -394,7 +422,7 @@ class _DatabaseState:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time on which backups start every day
+        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         """
         return pulumi.get(self, "backup_time")
 
@@ -406,7 +434,7 @@ class _DatabaseState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Date of the creation of the cluster
+        Date of the creation of the cluster.
         """
         return pulumi.get(self, "created_at")
 
@@ -418,7 +446,7 @@ class _DatabaseState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the cluster
+        Small description of the database service.
         """
         return pulumi.get(self, "description")
 
@@ -430,7 +458,7 @@ class _DatabaseState:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Disk size attributes of the cluster
+        The disk size (in GB) of the database service.
         """
         return pulumi.get(self, "disk_size")
 
@@ -442,7 +470,7 @@ class _DatabaseState:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Disk type attributes of the cluster
+        Defines the disk type of the database service.
         """
         return pulumi.get(self, "disk_type")
 
@@ -454,7 +482,7 @@ class _DatabaseState:
     @pulumi.getter
     def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]]]:
         """
-        List of all endpoints of the service
+        List of all endpoints objects of the service.
         """
         return pulumi.get(self, "endpoints")
 
@@ -466,7 +494,8 @@ class _DatabaseState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the engine of the service
+        The database engine you want to deploy. To get a full list of available engine visit.
+        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -478,7 +507,9 @@ class _DatabaseState:
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
         """
-        The node flavor used for this cluster
+        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+        Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+        You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
 
@@ -490,7 +521,7 @@ class _DatabaseState:
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]]:
         """
-        IP Blocks authorized to access to the cluster
+        IP Blocks authorized to access to the cluster.
         """
         return pulumi.get(self, "ip_restrictions")
 
@@ -502,7 +533,7 @@ class _DatabaseState:
     @pulumi.getter(name="kafkaRestApi")
     def kafka_rest_api(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the REST API is enabled on a Kafka cluster
+        Defines whether the REST API is enabled on a kafka cluster
         """
         return pulumi.get(self, "kafka_rest_api")
 
@@ -526,7 +557,7 @@ class _DatabaseState:
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time on which maintenances can start every day
+        Time on which maintenances can start every day.
         """
         return pulumi.get(self, "maintenance_time")
 
@@ -538,7 +569,7 @@ class _DatabaseState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of network of the cluster
+        Type of network of the cluster.
         """
         return pulumi.get(self, "network_type")
 
@@ -550,7 +581,8 @@ class _DatabaseState:
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]]]:
         """
-        List of nodes composing the service
+        List of nodes object.
+        Multi region cluster are not yet available, all node should be identical.
         """
         return pulumi.get(self, "nodes")
 
@@ -562,7 +594,7 @@ class _DatabaseState:
     @pulumi.getter(name="opensearchAclsEnabled")
     def opensearch_acls_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the ACLs are enabled on an Opensearch cluster
+        Defines whether the ACLs are enabled on an OpenSearch cluster
         """
         return pulumi.get(self, "opensearch_acls_enabled")
 
@@ -574,7 +606,11 @@ class _DatabaseState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        Plan of the cluster
+        Plan of the cluster.
+        * MongoDB: Enum: "discovery", "production", "advanced".
+        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        * M3 Aggregator: "business", "enterprise".
+        * Redis: "essential", "business"
         """
         return pulumi.get(self, "plan")
 
@@ -585,6 +621,10 @@ class _DatabaseState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -595,7 +635,7 @@ class _DatabaseState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Current status of the cluster
+        Current status of the cluster.
         """
         return pulumi.get(self, "status")
 
@@ -607,7 +647,7 @@ class _DatabaseState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version of the engine deployed on the cluster
+        The version of the engine in which the service should be deployed
         """
         return pulumi.get(self, "version")
 
@@ -639,25 +679,231 @@ class Database(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Minimum settings for each engine (region choice is up to the user):
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        cassandradb = ovh.cloud_project.Database("cassandradb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-cassandra",
+            engine="cassandra",
+            version="4.0",
+            plan="essential",
+            nodes=[
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
+            ],
+            flavor="db1-4")
+        kafkadb = ovh.cloud_project.Database("kafkadb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-kafka",
+            engine="kafka",
+            version="3.8",
+            flavor="db1-4",
+            plan="business",
+            kafka_rest_api=True,
+            kafka_schema_registry=True,
+            nodes=[
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
+            ])
+        m3db = ovh.cloud_project.Database("m3db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-m3db",
+            engine="m3db",
+            version="1.2",
+            plan="essential",
+            nodes=[{
+                "region": "BHS",
+            }],
+            flavor="db1-7")
+        mongodb = ovh.cloud_project.Database("mongodb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mongodb",
+            engine="mongodb",
+            version="5.0",
+            plan="discovery",
+            nodes=[{
+                "region": "GRA",
+            }],
+            flavor="db1-2")
+        mysqldb = ovh.cloud_project.Database("mysqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mysql",
+            engine="mysql",
+            version="8",
+            plan="essential",
+            nodes=[{
+                "region": "SBG",
+            }],
+            flavor="db1-4",
+            advanced_configuration={
+                "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+                "mysql.sql_require_primary_key": "true",
+            })
+        opensearchdb = ovh.cloud_project.Database("opensearchdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-opensearch",
+            engine="opensearch",
+            version="1",
+            plan="essential",
+            opensearch_acls_enabled=True,
+            nodes=[{
+                "region": "UK",
+            }],
+            flavor="db1-4")
+        pgsqldb = ovh.cloud_project.Database("pgsqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-postgresql",
+            engine="postgresql",
+            version="14",
+            plan="essential",
+            nodes=[{
+                "region": "WAW",
+            }],
+            flavor="db1-4",
+            ip_restrictions=[
+                {
+                    "description": "ip 1",
+                    "ip": "178.97.6.0/24",
+                },
+                {
+                    "description": "ip 2",
+                    "ip": "178.97.7.0/24",
+                },
+            ])
+        redisdb = ovh.cloud_project.Database("redisdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-redis",
+            engine="redis",
+            version="6.2",
+            plan="essential",
+            nodes=[{
+                "region": "BHS",
+            }],
+            flavor="db1-4")
+        grafana = ovh.cloud_project.Database("grafana",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-grafana",
+            engine="grafana",
+            version="9.1",
+            plan="essential",
+            nodes=[{
+                "region": "GRA",
+            }],
+            flavor="db1-4")
+        ```
+
+        To deploy a business PostgreSQL service with two nodes on public network:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        postgresql = ovh.cloud_project.Database("postgresql",
+            description="my-first-postgresql",
+            engine="postgresql",
+            flavor="db1-15",
+            nodes=[
+                {
+                    "region": "GRA",
+                },
+                {
+                    "region": "GRA",
+                },
+            ],
+            plan="business",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="14")
+        ```
+
+        To deploy an enterprise MongoDB service with three nodes on private network:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mongodb = ovh.cloud_project.Database("mongodb",
+            description="my-first-mongodb",
+            engine="mongodb",
+            flavor="db1-30",
+            nodes=[
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+            ],
+            plan="production",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="5.0")
+        ```
+
+        ## Import
+
+        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-               engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day
-        :param pulumi.Input[str] description: Description of the cluster
-        :param pulumi.Input[int] disk_size: Disk size attributes of the cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] flavor: The node flavor used for this cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster
-        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a Kafka cluster
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
+        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes composing the service
-        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an Opensearch cluster
-        :param pulumi.Input[str] plan: Plan of the cluster
-        :param pulumi.Input[str] version: Version of the engine deployed on the cluster
+        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
+               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
+        :param pulumi.Input[str] plan: Plan of the cluster.
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         """
         ...
     @overload
@@ -666,7 +912,204 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Minimum settings for each engine (region choice is up to the user):
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        cassandradb = ovh.cloud_project.Database("cassandradb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-cassandra",
+            engine="cassandra",
+            version="4.0",
+            plan="essential",
+            nodes=[
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
+                {
+                    "region": "BHS",
+                },
+            ],
+            flavor="db1-4")
+        kafkadb = ovh.cloud_project.Database("kafkadb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-kafka",
+            engine="kafka",
+            version="3.8",
+            flavor="db1-4",
+            plan="business",
+            kafka_rest_api=True,
+            kafka_schema_registry=True,
+            nodes=[
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
+                {
+                    "region": "DE",
+                },
+            ])
+        m3db = ovh.cloud_project.Database("m3db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-m3db",
+            engine="m3db",
+            version="1.2",
+            plan="essential",
+            nodes=[{
+                "region": "BHS",
+            }],
+            flavor="db1-7")
+        mongodb = ovh.cloud_project.Database("mongodb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mongodb",
+            engine="mongodb",
+            version="5.0",
+            plan="discovery",
+            nodes=[{
+                "region": "GRA",
+            }],
+            flavor="db1-2")
+        mysqldb = ovh.cloud_project.Database("mysqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-mysql",
+            engine="mysql",
+            version="8",
+            plan="essential",
+            nodes=[{
+                "region": "SBG",
+            }],
+            flavor="db1-4",
+            advanced_configuration={
+                "mysql.sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES",
+                "mysql.sql_require_primary_key": "true",
+            })
+        opensearchdb = ovh.cloud_project.Database("opensearchdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-opensearch",
+            engine="opensearch",
+            version="1",
+            plan="essential",
+            opensearch_acls_enabled=True,
+            nodes=[{
+                "region": "UK",
+            }],
+            flavor="db1-4")
+        pgsqldb = ovh.cloud_project.Database("pgsqldb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-postgresql",
+            engine="postgresql",
+            version="14",
+            plan="essential",
+            nodes=[{
+                "region": "WAW",
+            }],
+            flavor="db1-4",
+            ip_restrictions=[
+                {
+                    "description": "ip 1",
+                    "ip": "178.97.6.0/24",
+                },
+                {
+                    "description": "ip 2",
+                    "ip": "178.97.7.0/24",
+                },
+            ])
+        redisdb = ovh.cloud_project.Database("redisdb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-redis",
+            engine="redis",
+            version="6.2",
+            plan="essential",
+            nodes=[{
+                "region": "BHS",
+            }],
+            flavor="db1-4")
+        grafana = ovh.cloud_project.Database("grafana",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-grafana",
+            engine="grafana",
+            version="9.1",
+            plan="essential",
+            nodes=[{
+                "region": "GRA",
+            }],
+            flavor="db1-4")
+        ```
+
+        To deploy a business PostgreSQL service with two nodes on public network:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        postgresql = ovh.cloud_project.Database("postgresql",
+            description="my-first-postgresql",
+            engine="postgresql",
+            flavor="db1-15",
+            nodes=[
+                {
+                    "region": "GRA",
+                },
+                {
+                    "region": "GRA",
+                },
+            ],
+            plan="business",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="14")
+        ```
+
+        To deploy an enterprise MongoDB service with three nodes on private network:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        mongodb = ovh.cloud_project.Database("mongodb",
+            description="my-first-mongodb",
+            engine="mongodb",
+            flavor="db1-30",
+            nodes=[
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+                {
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "region": "SBG",
+                    "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                },
+            ],
+            plan="production",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            version="5.0")
+        ```
+
+        ## Import
+
+        OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/database:Database my_database_cluster service_name/engine/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -778,27 +1221,36 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-               engines with one being the same as the nodes[].region field
-        :param pulumi.Input[str] backup_time: Time on which backups start every day
-        :param pulumi.Input[str] created_at: Date of the creation of the cluster
-        :param pulumi.Input[str] description: Description of the cluster
-        :param pulumi.Input[int] disk_size: Disk size attributes of the cluster
-        :param pulumi.Input[str] disk_type: Disk type attributes of the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseEndpointArgs', 'DatabaseEndpointArgsDict']]]] endpoints: List of all endpoints of the service
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] flavor: The node flavor used for this cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster
-        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a Kafka cluster
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
+        :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[str] created_at: Date of the creation of the cluster.
+        :param pulumi.Input[str] description: Small description of the database service.
+        :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
+        :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseEndpointArgs', 'DatabaseEndpointArgsDict']]]] endpoints: List of all endpoints objects of the service.
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
+               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
+        :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day
-        :param pulumi.Input[str] network_type: Type of network of the cluster
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes composing the service
-        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an Opensearch cluster
-        :param pulumi.Input[str] plan: Plan of the cluster
-        :param pulumi.Input[str] status: Current status of the cluster
-        :param pulumi.Input[str] version: Version of the engine deployed on the cluster
+        :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[str] network_type: Type of network of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
+               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
+        :param pulumi.Input[str] plan: Plan of the cluster.
+               * MongoDB: Enum: "discovery", "production", "advanced".
+               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+               * M3 Aggregator: "business", "enterprise".
+               * Redis: "essential", "business"
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] status: Current status of the cluster.
+        :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -831,7 +1283,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="advancedConfiguration")
     def advanced_configuration(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Advanced configuration key / value
+        Advanced configuration key / value.
         """
         return pulumi.get(self, "advanced_configuration")
 
@@ -839,8 +1291,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="backupRegions")
     def backup_regions(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other
-        engines with one being the same as the nodes[].region field
+        List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         """
         return pulumi.get(self, "backup_regions")
 
@@ -848,7 +1299,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> pulumi.Output[str]:
         """
-        Time on which backups start every day
+        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         """
         return pulumi.get(self, "backup_time")
 
@@ -856,7 +1307,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Date of the creation of the cluster
+        Date of the creation of the cluster.
         """
         return pulumi.get(self, "created_at")
 
@@ -864,7 +1315,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the cluster
+        Small description of the database service.
         """
         return pulumi.get(self, "description")
 
@@ -872,7 +1323,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Output[int]:
         """
-        Disk size attributes of the cluster
+        The disk size (in GB) of the database service.
         """
         return pulumi.get(self, "disk_size")
 
@@ -880,7 +1331,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> pulumi.Output[str]:
         """
-        Disk type attributes of the cluster
+        Defines the disk type of the database service.
         """
         return pulumi.get(self, "disk_type")
 
@@ -888,7 +1339,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def endpoints(self) -> pulumi.Output[Sequence['outputs.DatabaseEndpoint']]:
         """
-        List of all endpoints of the service
+        List of all endpoints objects of the service.
         """
         return pulumi.get(self, "endpoints")
 
@@ -896,7 +1347,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Name of the engine of the service
+        The database engine you want to deploy. To get a full list of available engine visit.
+        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -904,7 +1356,9 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def flavor(self) -> pulumi.Output[str]:
         """
-        The node flavor used for this cluster
+        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
+        Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
+        You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
 
@@ -912,7 +1366,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> pulumi.Output[Optional[Sequence['outputs.DatabaseIpRestriction']]]:
         """
-        IP Blocks authorized to access to the cluster
+        IP Blocks authorized to access to the cluster.
         """
         return pulumi.get(self, "ip_restrictions")
 
@@ -920,7 +1374,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="kafkaRestApi")
     def kafka_rest_api(self) -> pulumi.Output[Optional[bool]]:
         """
-        Defines whether the REST API is enabled on a Kafka cluster
+        Defines whether the REST API is enabled on a kafka cluster
         """
         return pulumi.get(self, "kafka_rest_api")
 
@@ -936,7 +1390,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> pulumi.Output[str]:
         """
-        Time on which maintenances can start every day
+        Time on which maintenances can start every day.
         """
         return pulumi.get(self, "maintenance_time")
 
@@ -944,7 +1398,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
-        Type of network of the cluster
+        Type of network of the cluster.
         """
         return pulumi.get(self, "network_type")
 
@@ -952,7 +1406,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.DatabaseNode']]:
         """
-        List of nodes composing the service
+        List of nodes object.
+        Multi region cluster are not yet available, all node should be identical.
         """
         return pulumi.get(self, "nodes")
 
@@ -960,7 +1415,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="opensearchAclsEnabled")
     def opensearch_acls_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Defines whether the ACLs are enabled on an Opensearch cluster
+        Defines whether the ACLs are enabled on an OpenSearch cluster
         """
         return pulumi.get(self, "opensearch_acls_enabled")
 
@@ -968,20 +1423,28 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        Plan of the cluster
+        Plan of the cluster.
+        * MongoDB: Enum: "discovery", "production", "advanced".
+        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
+        * M3 Aggregator: "business", "enterprise".
+        * Redis: "essential", "business"
         """
         return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Current status of the cluster
+        Current status of the cluster.
         """
         return pulumi.get(self, "status")
 
@@ -989,7 +1452,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Version of the engine deployed on the cluster
+        The version of the engine in which the service should be deployed
         """
         return pulumi.get(self, "version")
 

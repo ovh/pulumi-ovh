@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Ip.Inputs
     public sealed class IpServiceRoutedToArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Service where ip is routed to
+        /// service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

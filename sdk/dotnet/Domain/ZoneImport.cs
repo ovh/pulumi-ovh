@@ -9,6 +9,31 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Domain
 {
+    /// <summary>
+    /// Handle a whole DNS zone using a zone file.
+    /// 
+    /// &gt; __WARNING__ This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var import = new Ovh.Domain.ZoneImport("import", new()
+    ///     {
+    ///         ZoneName = "mysite.ovh",
+    ///         ZoneFile = File.ReadAllText("./example.zone"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Domain/zoneImport:ZoneImport")]
     public partial class ZoneImport : global::Pulumi.CustomResource
     {
@@ -19,13 +44,13 @@ namespace Pulumi.Ovh.Domain
         public Output<string> ExportedContent { get; private set; } = null!;
 
         /// <summary>
-        /// Zone file that will be imported
+        /// Content of the zone file to import
         /// </summary>
         [Output("zoneFile")]
         public Output<string> ZoneFile { get; private set; } = null!;
 
         /// <summary>
-        /// Zone name
+        /// The name of the domain zone
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -78,13 +103,13 @@ namespace Pulumi.Ovh.Domain
     public sealed class ZoneImportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Zone file that will be imported
+        /// Content of the zone file to import
         /// </summary>
         [Input("zoneFile", required: true)]
         public Input<string> ZoneFile { get; set; } = null!;
 
         /// <summary>
-        /// Zone name
+        /// The name of the domain zone
         /// </summary>
         [Input("zoneName", required: true)]
         public Input<string> ZoneName { get; set; } = null!;
@@ -104,13 +129,13 @@ namespace Pulumi.Ovh.Domain
         public Input<string>? ExportedContent { get; set; }
 
         /// <summary>
-        /// Zone file that will be imported
+        /// Content of the zone file to import
         /// </summary>
         [Input("zoneFile")]
         public Input<string>? ZoneFile { get; set; }
 
         /// <summary>
-        /// Zone name
+        /// The name of the domain zone
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

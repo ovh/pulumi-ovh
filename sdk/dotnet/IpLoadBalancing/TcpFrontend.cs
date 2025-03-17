@@ -9,39 +9,117 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.IpLoadBalancing
 {
+    /// <summary>
+    /// Creates a backend server group (frontend) to be used by loadbalancing frontend(s)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "ip-1.2.3.4",
+    ///         State = "ok",
+    ///     });
+    /// 
+    ///     var farm80 = new Ovh.IpLoadBalancing.TcpFarm("farm80", new()
+    ///     {
+    ///         DisplayName = "ingress-8080-gra",
+    ///         Port = 80,
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    ///     var testFrontend = new Ovh.IpLoadBalancing.TcpFrontend("testFrontend", new()
+    ///     {
+    ///         DefaultFarmId = farm80.Id,
+    ///         DisplayName = "ingress-8080-gra",
+    ///         Port = "80,443",
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Zone = "all",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+    /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")]
     public partial class TcpFrontend : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+        /// </summary>
         [Output("allowedSources")]
         public Output<ImmutableArray<string>> AllowedSources { get; private set; } = null!;
 
+        /// <summary>
+        /// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+        /// </summary>
         [Output("dedicatedIpfos")]
         public Output<ImmutableArray<string>> DedicatedIpfos { get; private set; } = null!;
 
+        /// <summary>
+        /// Default TCP Farm of your frontend
+        /// </summary>
         [Output("defaultFarmId")]
         public Output<int> DefaultFarmId { get; private set; } = null!;
 
+        /// <summary>
+        /// Default ssl served to your customer
+        /// </summary>
         [Output("defaultSslId")]
         public Output<int> DefaultSslId { get; private set; } = null!;
 
+        /// <summary>
+        /// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        /// </summary>
         [Output("deniedSources")]
         public Output<ImmutableArray<string>> DeniedSources { get; private set; } = null!;
 
+        /// <summary>
+        /// Disable your frontend. Default: 'false'
+        /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Human readable name for your frontend, this field is for you
+        /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// Port(s) attached to your frontend. Supports single port (numerical value), 
+        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
 
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// SSL deciphering. Default: 'false'
+        /// </summary>
         [Output("ssl")]
         public Output<bool?> Ssl { get; private set; } = null!;
 
+        /// <summary>
+        /// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -94,6 +172,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     {
         [Input("allowedSources")]
         private InputList<string>? _allowedSources;
+
+        /// <summary>
+        /// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+        /// </summary>
         public InputList<string> AllowedSources
         {
             get => _allowedSources ?? (_allowedSources = new InputList<string>());
@@ -102,41 +184,75 @@ namespace Pulumi.Ovh.IpLoadBalancing
 
         [Input("dedicatedIpfos")]
         private InputList<string>? _dedicatedIpfos;
+
+        /// <summary>
+        /// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+        /// </summary>
         public InputList<string> DedicatedIpfos
         {
             get => _dedicatedIpfos ?? (_dedicatedIpfos = new InputList<string>());
             set => _dedicatedIpfos = value;
         }
 
+        /// <summary>
+        /// Default TCP Farm of your frontend
+        /// </summary>
         [Input("defaultFarmId")]
         public Input<int>? DefaultFarmId { get; set; }
 
+        /// <summary>
+        /// Default ssl served to your customer
+        /// </summary>
         [Input("defaultSslId")]
         public Input<int>? DefaultSslId { get; set; }
 
         [Input("deniedSources")]
         private InputList<string>? _deniedSources;
+
+        /// <summary>
+        /// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        /// </summary>
         public InputList<string> DeniedSources
         {
             get => _deniedSources ?? (_deniedSources = new InputList<string>());
             set => _deniedSources = value;
         }
 
+        /// <summary>
+        /// Disable your frontend. Default: 'false'
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Human readable name for your frontend, this field is for you
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Port(s) attached to your frontend. Supports single port (numerical value), 
+        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// </summary>
         [Input("port", required: true)]
         public Input<string> Port { get; set; } = null!;
 
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// SSL deciphering. Default: 'false'
+        /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
+        /// <summary>
+        /// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 
@@ -150,6 +266,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     {
         [Input("allowedSources")]
         private InputList<string>? _allowedSources;
+
+        /// <summary>
+        /// Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
+        /// </summary>
         public InputList<string> AllowedSources
         {
             get => _allowedSources ?? (_allowedSources = new InputList<string>());
@@ -158,41 +278,75 @@ namespace Pulumi.Ovh.IpLoadBalancing
 
         [Input("dedicatedIpfos")]
         private InputList<string>? _dedicatedIpfos;
+
+        /// <summary>
+        /// Only attach frontend on these ip. No restriction if null. List of Ip blocks.
+        /// </summary>
         public InputList<string> DedicatedIpfos
         {
             get => _dedicatedIpfos ?? (_dedicatedIpfos = new InputList<string>());
             set => _dedicatedIpfos = value;
         }
 
+        /// <summary>
+        /// Default TCP Farm of your frontend
+        /// </summary>
         [Input("defaultFarmId")]
         public Input<int>? DefaultFarmId { get; set; }
 
+        /// <summary>
+        /// Default ssl served to your customer
+        /// </summary>
         [Input("defaultSslId")]
         public Input<int>? DefaultSslId { get; set; }
 
         [Input("deniedSources")]
         private InputList<string>? _deniedSources;
+
+        /// <summary>
+        /// Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
+        /// </summary>
         public InputList<string> DeniedSources
         {
             get => _deniedSources ?? (_deniedSources = new InputList<string>());
             set => _deniedSources = value;
         }
 
+        /// <summary>
+        /// Disable your frontend. Default: 'false'
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Human readable name for your frontend, this field is for you
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Port(s) attached to your frontend. Supports single port (numerical value), 
+        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
+        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// The internal name of your IP load balancing
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// SSL deciphering. Default: 'false'
+        /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
+        /// <summary>
+        /// Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			m3dbUser, err := cloudproject.GetM3dbUser(ctx, &cloudproject.GetM3dbUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("m3dbUserGroup", m3dbUser.Group)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetM3dbUser(ctx *pulumi.Context, args *GetM3dbUserArgs, opts ...pulumi.InvokeOption) (*GetM3dbUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetM3dbUserResult
@@ -23,21 +53,31 @@ func GetM3dbUser(ctx *pulumi.Context, args *GetM3dbUserArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getM3dbUser.
 type GetM3dbUserArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Name        string `pulumi:"name"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getM3dbUser.
 type GetM3dbUserResult struct {
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
+	// Date of the creation of the user.
 	CreatedAt string `pulumi:"createdAt"`
-	Group     string `pulumi:"group"`
+	// See Argument Reference above.
+	Group string `pulumi:"group"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// See Argument Reference above.
+	Name string `pulumi:"name"`
+	// Current status of the user.
 	ServiceName string `pulumi:"serviceName"`
-	Status      string `pulumi:"status"`
+	// Current status of the user.
+	Status string `pulumi:"status"`
 }
 
 func GetM3dbUserOutput(ctx *pulumi.Context, args GetM3dbUserOutputArgs, opts ...pulumi.InvokeOption) GetM3dbUserResultOutput {
@@ -51,8 +91,12 @@ func GetM3dbUserOutput(ctx *pulumi.Context, args GetM3dbUserOutputArgs, opts ...
 
 // A collection of arguments for invoking getM3dbUser.
 type GetM3dbUserOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -75,14 +119,17 @@ func (o GetM3dbUserResultOutput) ToGetM3dbUserResultOutputWithContext(ctx contex
 	return o
 }
 
+// See Argument Reference above.
 func (o GetM3dbUserResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// Date of the creation of the user.
 func (o GetM3dbUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetM3dbUserResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.Group }).(pulumi.StringOutput)
 }
@@ -92,14 +139,17 @@ func (o GetM3dbUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetM3dbUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Current status of the user.
 func (o GetM3dbUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Current status of the user.
 func (o GetM3dbUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetM3dbUserResult) string { return v.Status }).(pulumi.StringOutput)
 }

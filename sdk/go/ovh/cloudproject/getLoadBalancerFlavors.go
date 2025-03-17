@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// List loadbalancer flavors in the given public cloud region.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetLoadBalancerFlavors(ctx, &cloudproject.GetLoadBalancerFlavorsArgs{
+//				RegionName:  "GRA9",
+//				ServiceName: "<public cloud project ID>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLoadBalancerFlavors(ctx *pulumi.Context, args *GetLoadBalancerFlavorsArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancerFlavorsResult
@@ -23,7 +51,9 @@ func GetLoadBalancerFlavors(ctx *pulumi.Context, args *GetLoadBalancerFlavorsArg
 
 // A collection of arguments for invoking getLoadBalancerFlavors.
 type GetLoadBalancerFlavorsArgs struct {
-	RegionName  string `pulumi:"regionName"`
+	// Region name
+	RegionName string `pulumi:"regionName"`
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -31,8 +61,10 @@ type GetLoadBalancerFlavorsArgs struct {
 type GetLoadBalancerFlavorsResult struct {
 	Flavors []GetLoadBalancerFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	RegionName  string `pulumi:"regionName"`
+	Id string `pulumi:"id"`
+	// Region name
+	RegionName string `pulumi:"regionName"`
+	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -47,7 +79,9 @@ func GetLoadBalancerFlavorsOutput(ctx *pulumi.Context, args GetLoadBalancerFlavo
 
 // A collection of arguments for invoking getLoadBalancerFlavors.
 type GetLoadBalancerFlavorsOutputArgs struct {
-	RegionName  pulumi.StringInput `pulumi:"regionName"`
+	// Region name
+	RegionName pulumi.StringInput `pulumi:"regionName"`
+	// Service name
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -79,10 +113,12 @@ func (o GetLoadBalancerFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Region name
 func (o GetLoadBalancerFlavorsResultOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFlavorsResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
+// Service name
 func (o GetLoadBalancerFlavorsResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerFlavorsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

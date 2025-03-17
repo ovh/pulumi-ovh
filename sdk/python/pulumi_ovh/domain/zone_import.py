@@ -23,8 +23,8 @@ class ZoneImportArgs:
                  zone_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ZoneImport resource.
-        :param pulumi.Input[str] zone_file: Zone file that will be imported
-        :param pulumi.Input[str] zone_name: Zone name
+        :param pulumi.Input[str] zone_file: Content of the zone file to import
+        :param pulumi.Input[str] zone_name: The name of the domain zone
         """
         pulumi.set(__self__, "zone_file", zone_file)
         pulumi.set(__self__, "zone_name", zone_name)
@@ -33,7 +33,7 @@ class ZoneImportArgs:
     @pulumi.getter(name="zoneFile")
     def zone_file(self) -> pulumi.Input[str]:
         """
-        Zone file that will be imported
+        Content of the zone file to import
         """
         return pulumi.get(self, "zone_file")
 
@@ -45,7 +45,7 @@ class ZoneImportArgs:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Input[str]:
         """
-        Zone name
+        The name of the domain zone
         """
         return pulumi.get(self, "zone_name")
 
@@ -63,8 +63,8 @@ class _ZoneImportState:
         """
         Input properties used for looking up and filtering ZoneImport resources.
         :param pulumi.Input[str] exported_content: Zone file exported from the API
-        :param pulumi.Input[str] zone_file: Zone file that will be imported
-        :param pulumi.Input[str] zone_name: Zone name
+        :param pulumi.Input[str] zone_file: Content of the zone file to import
+        :param pulumi.Input[str] zone_name: The name of the domain zone
         """
         if exported_content is not None:
             pulumi.set(__self__, "exported_content", exported_content)
@@ -89,7 +89,7 @@ class _ZoneImportState:
     @pulumi.getter(name="zoneFile")
     def zone_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Zone file that will be imported
+        Content of the zone file to import
         """
         return pulumi.get(self, "zone_file")
 
@@ -101,7 +101,7 @@ class _ZoneImportState:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Zone name
+        The name of the domain zone
         """
         return pulumi.get(self, "zone_name")
 
@@ -119,11 +119,25 @@ class ZoneImport(pulumi.CustomResource):
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ZoneImport resource with the given unique name, props, and options.
+        Handle a whole DNS zone using a zone file.
+
+        > __WARNING__ This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        import_ = ovh.domain.ZoneImport("import",
+            zone_name="mysite.ovh",
+            zone_file=(lambda path: open(path).read())("./example.zone"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] zone_file: Zone file that will be imported
-        :param pulumi.Input[str] zone_name: Zone name
+        :param pulumi.Input[str] zone_file: Content of the zone file to import
+        :param pulumi.Input[str] zone_name: The name of the domain zone
         """
         ...
     @overload
@@ -132,7 +146,21 @@ class ZoneImport(pulumi.CustomResource):
                  args: ZoneImportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ZoneImport resource with the given unique name, props, and options.
+        Handle a whole DNS zone using a zone file.
+
+        > __WARNING__ This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        import_ = ovh.domain.ZoneImport("import",
+            zone_name="mysite.ovh",
+            zone_file=(lambda path: open(path).read())("./example.zone"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param ZoneImportArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,8 +215,8 @@ class ZoneImport(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] exported_content: Zone file exported from the API
-        :param pulumi.Input[str] zone_file: Zone file that will be imported
-        :param pulumi.Input[str] zone_name: Zone name
+        :param pulumi.Input[str] zone_file: Content of the zone file to import
+        :param pulumi.Input[str] zone_name: The name of the domain zone
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -211,7 +239,7 @@ class ZoneImport(pulumi.CustomResource):
     @pulumi.getter(name="zoneFile")
     def zone_file(self) -> pulumi.Output[str]:
         """
-        Zone file that will be imported
+        Content of the zone file to import
         """
         return pulumi.get(self, "zone_file")
 
@@ -219,7 +247,7 @@ class ZoneImport(pulumi.CustomResource):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[str]:
         """
-        Zone name
+        The name of the domain zone
         """
         return pulumi.get(self, "zone_name")
 

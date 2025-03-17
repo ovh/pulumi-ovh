@@ -26,11 +26,11 @@ class IdentityUserArgs:
                  group: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IdentityUser resource.
-        :param pulumi.Input[str] email: User's email
-        :param pulumi.Input[str] login: User's login suffix
-        :param pulumi.Input[str] password: User's password
-        :param pulumi.Input[str] description: User description
-        :param pulumi.Input[str] group: User's group
+        :param pulumi.Input[str] email: User's email.
+        :param pulumi.Input[str] login: User's login suffix.
+        :param pulumi.Input[str] password: User's password.
+        :param pulumi.Input[str] description: User description.
+        :param pulumi.Input[str] group: User's group.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "login", login)
@@ -44,7 +44,7 @@ class IdentityUserArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
         """
-        User's email
+        User's email.
         """
         return pulumi.get(self, "email")
 
@@ -56,7 +56,7 @@ class IdentityUserArgs:
     @pulumi.getter
     def login(self) -> pulumi.Input[str]:
         """
-        User's login suffix
+        User's login suffix.
         """
         return pulumi.get(self, "login")
 
@@ -68,7 +68,7 @@ class IdentityUserArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
         """
-        User's password
+        User's password.
         """
         return pulumi.get(self, "password")
 
@@ -80,7 +80,7 @@ class IdentityUserArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User description
+        User description.
         """
         return pulumi.get(self, "description")
 
@@ -92,7 +92,7 @@ class IdentityUserArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        User's group
+        User's group.
         """
         return pulumi.get(self, "group")
 
@@ -116,15 +116,16 @@ class _IdentityUserState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IdentityUser resources.
-        :param pulumi.Input[str] creation: Creation date of this user
-        :param pulumi.Input[str] description: User description
-        :param pulumi.Input[str] email: User's email
-        :param pulumi.Input[str] group: User's group
-        :param pulumi.Input[str] last_update: Last update of this user
-        :param pulumi.Input[str] login: User's login suffix
-        :param pulumi.Input[str] password: User's password
-        :param pulumi.Input[str] password_last_update: When the user changed his password for the last time
-        :param pulumi.Input[str] status: Current user's status
+        :param pulumi.Input[str] user_urn: URN of the user, used when writing IAM policies
+        :param pulumi.Input[str] creation: Creation date of this user.
+        :param pulumi.Input[str] description: User description.
+        :param pulumi.Input[str] email: User's email.
+        :param pulumi.Input[str] group: User's group.
+        :param pulumi.Input[str] last_update: Last update of this user.
+        :param pulumi.Input[str] login: User's login suffix.
+        :param pulumi.Input[str] password: User's password.
+        :param pulumi.Input[str] password_last_update: When the user changed his password for the last time.
+        :param pulumi.Input[str] status: Current user's status.
         """
         if user_urn is not None:
             pulumi.set(__self__, "user_urn", user_urn)
@@ -150,6 +151,9 @@ class _IdentityUserState:
     @property
     @pulumi.getter(name="UserURN")
     def user_urn(self) -> Optional[pulumi.Input[str]]:
+        """
+        URN of the user, used when writing IAM policies
+        """
         return pulumi.get(self, "user_urn")
 
     @user_urn.setter
@@ -160,7 +164,7 @@ class _IdentityUserState:
     @pulumi.getter
     def creation(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation date of this user
+        Creation date of this user.
         """
         return pulumi.get(self, "creation")
 
@@ -172,7 +176,7 @@ class _IdentityUserState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User description
+        User description.
         """
         return pulumi.get(self, "description")
 
@@ -184,7 +188,7 @@ class _IdentityUserState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        User's email
+        User's email.
         """
         return pulumi.get(self, "email")
 
@@ -196,7 +200,7 @@ class _IdentityUserState:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        User's group
+        User's group.
         """
         return pulumi.get(self, "group")
 
@@ -208,7 +212,7 @@ class _IdentityUserState:
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> Optional[pulumi.Input[str]]:
         """
-        Last update of this user
+        Last update of this user.
         """
         return pulumi.get(self, "last_update")
 
@@ -220,7 +224,7 @@ class _IdentityUserState:
     @pulumi.getter
     def login(self) -> Optional[pulumi.Input[str]]:
         """
-        User's login suffix
+        User's login suffix.
         """
         return pulumi.get(self, "login")
 
@@ -232,7 +236,7 @@ class _IdentityUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        User's password
+        User's password.
         """
         return pulumi.get(self, "password")
 
@@ -244,7 +248,7 @@ class _IdentityUserState:
     @pulumi.getter(name="passwordLastUpdate")
     def password_last_update(self) -> Optional[pulumi.Input[str]]:
         """
-        When the user changed his password for the last time
+        When the user changed his password for the last time.
         """
         return pulumi.get(self, "password_last_update")
 
@@ -256,7 +260,7 @@ class _IdentityUserState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Current user's status
+        Current user's status.
         """
         return pulumi.get(self, "status")
 
@@ -277,14 +281,29 @@ class IdentityUser(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IdentityUser resource with the given unique name, props, and options.
+        Creates an identity user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_user = ovh.me.IdentityUser("myUser",
+            description="Some custom description",
+            email="my_login@example.com",
+            group="DEFAULT",
+            login="my_login",
+            password="super-s3cr3t!password")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: User description
-        :param pulumi.Input[str] email: User's email
-        :param pulumi.Input[str] group: User's group
-        :param pulumi.Input[str] login: User's login suffix
-        :param pulumi.Input[str] password: User's password
+        :param pulumi.Input[str] description: User description.
+        :param pulumi.Input[str] email: User's email.
+        :param pulumi.Input[str] group: User's group.
+        :param pulumi.Input[str] login: User's login suffix.
+        :param pulumi.Input[str] password: User's password.
         """
         ...
     @overload
@@ -293,7 +312,22 @@ class IdentityUser(pulumi.CustomResource):
                  args: IdentityUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IdentityUser resource with the given unique name, props, and options.
+        Creates an identity user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        my_user = ovh.me.IdentityUser("myUser",
+            description="Some custom description",
+            email="my_login@example.com",
+            group="DEFAULT",
+            login="my_login",
+            password="super-s3cr3t!password")
+        ```
+
         :param str resource_name: The name of the resource.
         :param IdentityUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -368,15 +402,16 @@ class IdentityUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation: Creation date of this user
-        :param pulumi.Input[str] description: User description
-        :param pulumi.Input[str] email: User's email
-        :param pulumi.Input[str] group: User's group
-        :param pulumi.Input[str] last_update: Last update of this user
-        :param pulumi.Input[str] login: User's login suffix
-        :param pulumi.Input[str] password: User's password
-        :param pulumi.Input[str] password_last_update: When the user changed his password for the last time
-        :param pulumi.Input[str] status: Current user's status
+        :param pulumi.Input[str] user_urn: URN of the user, used when writing IAM policies
+        :param pulumi.Input[str] creation: Creation date of this user.
+        :param pulumi.Input[str] description: User description.
+        :param pulumi.Input[str] email: User's email.
+        :param pulumi.Input[str] group: User's group.
+        :param pulumi.Input[str] last_update: Last update of this user.
+        :param pulumi.Input[str] login: User's login suffix.
+        :param pulumi.Input[str] password: User's password.
+        :param pulumi.Input[str] password_last_update: When the user changed his password for the last time.
+        :param pulumi.Input[str] status: Current user's status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -397,13 +432,16 @@ class IdentityUser(pulumi.CustomResource):
     @property
     @pulumi.getter(name="UserURN")
     def user_urn(self) -> pulumi.Output[str]:
+        """
+        URN of the user, used when writing IAM policies
+        """
         return pulumi.get(self, "user_urn")
 
     @property
     @pulumi.getter
     def creation(self) -> pulumi.Output[str]:
         """
-        Creation date of this user
+        Creation date of this user.
         """
         return pulumi.get(self, "creation")
 
@@ -411,7 +449,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        User description
+        User description.
         """
         return pulumi.get(self, "description")
 
@@ -419,7 +457,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
         """
-        User's email
+        User's email.
         """
         return pulumi.get(self, "email")
 
@@ -427,7 +465,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[str]]:
         """
-        User's group
+        User's group.
         """
         return pulumi.get(self, "group")
 
@@ -435,7 +473,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> pulumi.Output[str]:
         """
-        Last update of this user
+        Last update of this user.
         """
         return pulumi.get(self, "last_update")
 
@@ -443,7 +481,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter
     def login(self) -> pulumi.Output[str]:
         """
-        User's login suffix
+        User's login suffix.
         """
         return pulumi.get(self, "login")
 
@@ -451,7 +489,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        User's password
+        User's password.
         """
         return pulumi.get(self, "password")
 
@@ -459,7 +497,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordLastUpdate")
     def password_last_update(self) -> pulumi.Output[str]:
         """
-        When the user changed his password for the last time
+        When the user changed his password for the last time.
         """
         return pulumi.get(self, "password_last_update")
 
@@ -467,7 +505,7 @@ class IdentityUser(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Current user's status
+        Current user's status.
         """
         return pulumi.get(self, "status")
 

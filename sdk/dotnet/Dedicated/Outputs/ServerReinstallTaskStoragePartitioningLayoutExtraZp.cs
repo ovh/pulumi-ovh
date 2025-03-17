@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerReinstallTaskStoragePartitioningLayoutExtraZp
     {
         /// <summary>
-        /// zpool name (generated automatically if not specified)
+        /// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         /// </summary>
         public readonly string? Name;
 

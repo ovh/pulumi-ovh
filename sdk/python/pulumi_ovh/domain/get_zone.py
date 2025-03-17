@@ -52,16 +52,25 @@ class GetZoneResult:
     @property
     @pulumi.getter(name="ZoneURN")
     def zone_urn(self) -> str:
+        """
+        URN of the DNS zone
+        """
         return pulumi.get(self, "zone_urn")
 
     @property
     @pulumi.getter(name="dnssecSupported")
     def dnssec_supported(self) -> bool:
+        """
+        Is DNSSEC supported by this zone
+        """
         return pulumi.get(self, "dnssec_supported")
 
     @property
     @pulumi.getter(name="hasDnsAnycast")
     def has_dns_anycast(self) -> bool:
+        """
+        hasDnsAnycast flag of the DNS zone
+        """
         return pulumi.get(self, "has_dns_anycast")
 
     @property
@@ -75,6 +84,9 @@ class GetZoneResult:
     @property
     @pulumi.getter(name="lastUpdate")
     def last_update(self) -> str:
+        """
+        Last update date of the DNS zone
+        """
         return pulumi.get(self, "last_update")
 
     @property
@@ -85,6 +97,9 @@ class GetZoneResult:
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Sequence[str]:
+        """
+        Name servers that host the DNS zone
+        """
         return pulumi.get(self, "name_servers")
 
 
@@ -106,7 +121,19 @@ class AwaitableGetZoneResult(GetZoneResult):
 def get_zone(name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a domain zone.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    root_zone = ovh.Domain.get_zone(name="mysite.ovh")
+    ```
+
+
+    :param str name: The name of the domain zone.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -124,7 +151,19 @@ def get_zone(name: Optional[str] = None,
 def get_zone_output(name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a domain zone.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    root_zone = ovh.Domain.get_zone(name="mysite.ovh")
+    ```
+
+
+    :param str name: The name of the domain zone.
     """
     __args__ = dict()
     __args__['name'] = name

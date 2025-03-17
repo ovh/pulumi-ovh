@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			access, err := cloudprojectdatabase.GetKafkaUserAccess(ctx, &cloudprojectdatabase.GetKafkaUserAccessArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				UserId:      "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("accessCert", access.Cert)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKafkaUserAccess(ctx *pulumi.Context, args *GetKafkaUserAccessArgs, opts ...pulumi.InvokeOption) (*GetKafkaUserAccessResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaUserAccessResult
@@ -23,20 +53,29 @@ func GetKafkaUserAccess(ctx *pulumi.Context, args *GetKafkaUserAccessArgs, opts 
 
 // A collection of arguments for invoking getKafkaUserAccess.
 type GetKafkaUserAccessArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
-	UserId      string `pulumi:"userId"`
+	// User ID
+	UserId string `pulumi:"userId"`
 }
 
 // A collection of values returned by getKafkaUserAccess.
 type GetKafkaUserAccessResult struct {
-	Cert      string `pulumi:"cert"`
+	// User cert.
+	Cert string `pulumi:"cert"`
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Key         string `pulumi:"key"`
+	Id string `pulumi:"id"`
+	// (Sensitive) User key for the cert.
+	Key string `pulumi:"key"`
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
-	UserId      string `pulumi:"userId"`
+	// See Argument Reference above.
+	UserId string `pulumi:"userId"`
 }
 
 func GetKafkaUserAccessOutput(ctx *pulumi.Context, args GetKafkaUserAccessOutputArgs, opts ...pulumi.InvokeOption) GetKafkaUserAccessResultOutput {
@@ -50,9 +89,13 @@ func GetKafkaUserAccessOutput(ctx *pulumi.Context, args GetKafkaUserAccessOutput
 
 // A collection of arguments for invoking getKafkaUserAccess.
 type GetKafkaUserAccessOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	UserId      pulumi.StringInput `pulumi:"userId"`
+	// User ID
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (GetKafkaUserAccessOutputArgs) ElementType() reflect.Type {
@@ -74,10 +117,12 @@ func (o GetKafkaUserAccessResultOutput) ToGetKafkaUserAccessResultOutputWithCont
 	return o
 }
 
+// User cert.
 func (o GetKafkaUserAccessResultOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaUserAccessResult) string { return v.Cert }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetKafkaUserAccessResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaUserAccessResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -87,14 +132,17 @@ func (o GetKafkaUserAccessResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaUserAccessResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Sensitive) User key for the cert.
 func (o GetKafkaUserAccessResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaUserAccessResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetKafkaUserAccessResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaUserAccessResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetKafkaUserAccessResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaUserAccessResult) string { return v.UserId }).(pulumi.StringOutput)
 }

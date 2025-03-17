@@ -31,6 +31,14 @@ class HttpFarmArgs:
                  vrack_network_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HttpFarm resource.
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+        :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
+        :param pulumi.Input['HttpFarmProbeArgs'] probe: define a backend healthcheck probe
+        :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
         """
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "zone", zone)
@@ -50,6 +58,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The internal name of your IP load balancing
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -59,6 +70,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
+        """
+        Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -68,6 +82,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter
     def balance(self) -> Optional[pulumi.Input[str]]:
+        """
+        Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        """
         return pulumi.get(self, "balance")
 
     @balance.setter
@@ -77,6 +94,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable label for loadbalancer farm
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -86,6 +106,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port attached to your farm ([1..49151]). Inherited from frontend if null
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -95,6 +118,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter
     def probe(self) -> Optional[pulumi.Input['HttpFarmProbeArgs']]:
+        """
+        define a backend healthcheck probe
+        """
         return pulumi.get(self, "probe")
 
     @probe.setter
@@ -104,6 +130,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter
     def stickiness(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        """
         return pulumi.get(self, "stickiness")
 
     @stickiness.setter
@@ -113,6 +142,9 @@ class HttpFarmArgs:
     @property
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        """
         return pulumi.get(self, "vrack_network_id")
 
     @vrack_network_id.setter
@@ -133,6 +165,14 @@ class _HttpFarmState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HttpFarm resources.
+        :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
+        :param pulumi.Input['HttpFarmProbeArgs'] probe: define a backend healthcheck probe
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
         """
         if balance is not None:
             pulumi.set(__self__, "balance", balance)
@@ -154,6 +194,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter
     def balance(self) -> Optional[pulumi.Input[str]]:
+        """
+        Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        """
         return pulumi.get(self, "balance")
 
     @balance.setter
@@ -163,6 +206,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Readable label for loadbalancer farm
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -172,6 +218,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port attached to your farm ([1..49151]). Inherited from frontend if null
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -181,6 +230,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter
     def probe(self) -> Optional[pulumi.Input['HttpFarmProbeArgs']]:
+        """
+        define a backend healthcheck probe
+        """
         return pulumi.get(self, "probe")
 
     @probe.setter
@@ -190,6 +242,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal name of your IP load balancing
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -199,6 +254,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter
     def stickiness(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        """
         return pulumi.get(self, "stickiness")
 
     @stickiness.setter
@@ -208,6 +266,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        """
         return pulumi.get(self, "vrack_network_id")
 
     @vrack_network_id.setter
@@ -217,6 +278,9 @@ class _HttpFarmState:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -239,9 +303,36 @@ class HttpFarm(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a HttpFarm resource with the given unique name, props, and options.
+        Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            display_name="ingress-8080-gra",
+            service_name=lb.service_name,
+            zone="GRA")
+        ```
+
+        ## Import
+
+        HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
+        :param pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']] probe: define a backend healthcheck probe
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
         """
         ...
     @overload
@@ -250,7 +341,26 @@ class HttpFarm(pulumi.CustomResource):
                  args: HttpFarmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a HttpFarm resource with the given unique name, props, and options.
+        Creates a HTTP backend server group (farm) to be used by loadbalancing frontend(s)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
+            state="ok")
+        farmname = ovh.ip_load_balancing.HttpFarm("farmname",
+            display_name="ingress-8080-gra",
+            service_name=lb.service_name,
+            zone="GRA")
+        ```
+
+        ## Import
+
+        HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+
         :param str resource_name: The name of the resource.
         :param HttpFarmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -320,6 +430,14 @@ class HttpFarm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        :param pulumi.Input[str] display_name: Readable label for loadbalancer farm
+        :param pulumi.Input[int] port: Port attached to your farm ([1..49151]). Inherited from frontend if null
+        :param pulumi.Input[Union['HttpFarmProbeArgs', 'HttpFarmProbeArgsDict']] probe: define a backend healthcheck probe
+        :param pulumi.Input[str] service_name: The internal name of your IP load balancing
+        :param pulumi.Input[str] stickiness: Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        :param pulumi.Input[int] vrack_network_id: Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        :param pulumi.Input[str] zone: Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,40 +456,64 @@ class HttpFarm(pulumi.CustomResource):
     @property
     @pulumi.getter
     def balance(self) -> pulumi.Output[Optional[str]]:
+        """
+        Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`, `uri`)
+        """
         return pulumi.get(self, "balance")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Readable label for loadbalancer farm
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[int]]:
+        """
+        Port attached to your farm ([1..49151]). Inherited from frontend if null
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def probe(self) -> pulumi.Output[Optional['outputs.HttpFarmProbe']]:
+        """
+        define a backend healthcheck probe
+        """
         return pulumi.get(self, "probe")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The internal name of your IP load balancing
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def stickiness(self) -> pulumi.Output[Optional[str]]:
+        """
+        Stickiness type. No stickiness if null (`sourceIp`, `cookie`)
+        """
         return pulumi.get(self, "stickiness")
 
     @property
     @pulumi.getter(name="vrackNetworkId")
     def vrack_network_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack
+        """
         return pulumi.get(self, "vrack_network_id")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
+        """
+        Zone where the farm will be defined (ie. `GRA`, `BHS` also supports `ALL`)
+        """
         return pulumi.get(self, "zone")
 

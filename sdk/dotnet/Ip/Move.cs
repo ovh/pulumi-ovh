@@ -9,33 +9,106 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Ip
 {
+    /// <summary>
+    /// Moves a given IP to a different service, or inversely, parks it if empty service is given
+    /// 
+    /// ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var moveIpToLoadBalancerXxxxx = new Ovh.Ip.Move("moveIpToLoadBalancerXxxxx", new()
+    ///     {
+    ///         Ip = "1.2.3.4",
+    ///         RoutedTo = new Ovh.Ip.Inputs.MoveRoutedToArgs
+    ///         {
+    ///             ServiceName = "loadbalancer-XXXXX",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Park IP/Detach IP `1.2.3.4` from any service
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var parkIp = new Ovh.Ip.Move("parkIp", new()
+    ///     {
+    ///         Ip = "1.2.3.4",
+    ///         RoutedTo = new Ovh.Ip.Inputs.MoveRoutedToArgs
+    ///         {
+    ///             ServiceName = "",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource can be imported using the `ip` field, e.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Ip/move:Move")]
     public partial class Move : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether IP service can be terminated
+        /// </summary>
         [Output("canBeTerminated")]
         public Output<bool> CanBeTerminated { get; private set; } = null!;
 
+        /// <summary>
+        /// Country
+        /// </summary>
         [Output("country")]
         public Output<string> Country { get; private set; } = null!;
 
         /// <summary>
-        /// Custom description on your ip
+        /// Description attached to the IP
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// IP block that we want to attach to a different service
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
+        /// <summary>
+        /// IP block organisation Id
+        /// </summary>
         [Output("organisationId")]
         public Output<string> OrganisationId { get; private set; } = null!;
 
         /// <summary>
-        /// Routage information
+        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        /// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         /// </summary>
         [Output("routedTo")]
         public Output<Outputs.MoveRoutedTo> RoutedTo { get; private set; } = null!;
 
+        /// <summary>
+        /// Service name in the form of `ip-&lt;part-1&gt;.&lt;part-2&gt;.&lt;part-3&gt;.&lt;part-4&gt;`
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
@@ -105,16 +178,20 @@ namespace Pulumi.Ovh.Ip
     public sealed class MoveArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom description on your ip
+        /// Description attached to the IP
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// IP block that we want to attach to a different service
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// Routage information
+        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        /// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         /// </summary>
         [Input("routedTo", required: true)]
         public Input<Inputs.MoveRoutedToArgs> RoutedTo { get; set; } = null!;
@@ -127,30 +204,46 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class MoveState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether IP service can be terminated
+        /// </summary>
         [Input("canBeTerminated")]
         public Input<bool>? CanBeTerminated { get; set; }
 
+        /// <summary>
+        /// Country
+        /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }
 
         /// <summary>
-        /// Custom description on your ip
+        /// Description attached to the IP
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// IP block that we want to attach to a different service
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// IP block organisation Id
+        /// </summary>
         [Input("organisationId")]
         public Input<string>? OrganisationId { get; set; }
 
         /// <summary>
-        /// Routage information
+        /// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
+        /// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
         /// </summary>
         [Input("routedTo")]
         public Input<Inputs.MoveRoutedToGetArgs>? RoutedTo { get; set; }
 
+        /// <summary>
+        /// Service name in the form of `ip-&lt;part-1&gt;.&lt;part-2&gt;.&lt;part-3&gt;.&lt;part-4&gt;`
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

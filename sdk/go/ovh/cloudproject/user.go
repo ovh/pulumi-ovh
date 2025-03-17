@@ -8,24 +8,77 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a user in a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewUser(ctx, "user1", &cloudproject.UserArgs{
+//				ServiceName: pulumi.String("XXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
-	CreationDate pulumi.StringOutput      `pulumi:"creationDate"`
-	Description  pulumi.StringPtrOutput   `pulumi:"description"`
-	OpenstackRc  pulumi.StringMapOutput   `pulumi:"openstackRc"`
-	Password     pulumi.StringOutput      `pulumi:"password"`
-	RoleName     pulumi.StringPtrOutput   `pulumi:"roleName"`
-	RoleNames    pulumi.StringArrayOutput `pulumi:"roleNames"`
-	Roles        UserRoleArrayOutput      `pulumi:"roles"`
-	// Service name of the resource representing the id of the cloud project.
+	// the date the user was created.
+	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
+	// A description associated with the user.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// a convenient map representing an openstackRc file.
+	// Note: no password nor sensitive token is set in this map.
+	OpenstackRc pulumi.StringMapOutput `pulumi:"openstackRc"`
+	// (Sensitive) the password generated for the user. The password can
+	// be used with the Openstack API. This attribute is sensitive and will only be
+	// retrieve once during creation.
+	Password pulumi.StringOutput `pulumi:"password"`
+	// The name of a role. See `roleNames`.
+	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
+	// A list of role names. Values can be:
+	// - administrator,
+	// - aiTrainingOperator
+	// - aiTrainingRead
+	// - authentication
+	// - backupOperator
+	// - computeOperator
+	// - imageOperator
+	// - infrastructureSupervisor
+	// - networkOperator
+	// - networkSecurityOperator
+	// - objectstoreOperator
+	// - volume_operator
+	RoleNames pulumi.StringArrayOutput `pulumi:"roleNames"`
+	// A list of roles associated with the user.
+	Roles UserRoleArrayOutput `pulumi:"roles"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	Status      pulumi.StringOutput `pulumi:"status"`
-	Username    pulumi.StringOutput `pulumi:"username"`
+	// the status of the user. should be normally set to 'ok'.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// the username generated for the user. This username can be used with
+	// the Openstack API.
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -65,31 +118,83 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	CreationDate *string           `pulumi:"creationDate"`
-	Description  *string           `pulumi:"description"`
-	OpenstackRc  map[string]string `pulumi:"openstackRc"`
-	Password     *string           `pulumi:"password"`
-	RoleName     *string           `pulumi:"roleName"`
-	RoleNames    []string          `pulumi:"roleNames"`
-	Roles        []UserRole        `pulumi:"roles"`
-	// Service name of the resource representing the id of the cloud project.
+	// the date the user was created.
+	CreationDate *string `pulumi:"creationDate"`
+	// A description associated with the user.
+	Description *string `pulumi:"description"`
+	// a convenient map representing an openstackRc file.
+	// Note: no password nor sensitive token is set in this map.
+	OpenstackRc map[string]string `pulumi:"openstackRc"`
+	// (Sensitive) the password generated for the user. The password can
+	// be used with the Openstack API. This attribute is sensitive and will only be
+	// retrieve once during creation.
+	Password *string `pulumi:"password"`
+	// The name of a role. See `roleNames`.
+	RoleName *string `pulumi:"roleName"`
+	// A list of role names. Values can be:
+	// - administrator,
+	// - aiTrainingOperator
+	// - aiTrainingRead
+	// - authentication
+	// - backupOperator
+	// - computeOperator
+	// - imageOperator
+	// - infrastructureSupervisor
+	// - networkOperator
+	// - networkSecurityOperator
+	// - objectstoreOperator
+	// - volume_operator
+	RoleNames []string `pulumi:"roleNames"`
+	// A list of roles associated with the user.
+	Roles []UserRole `pulumi:"roles"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
-	Status      *string `pulumi:"status"`
-	Username    *string `pulumi:"username"`
+	// the status of the user. should be normally set to 'ok'.
+	Status *string `pulumi:"status"`
+	// the username generated for the user. This username can be used with
+	// the Openstack API.
+	Username *string `pulumi:"username"`
 }
 
 type UserState struct {
+	// the date the user was created.
 	CreationDate pulumi.StringPtrInput
-	Description  pulumi.StringPtrInput
-	OpenstackRc  pulumi.StringMapInput
-	Password     pulumi.StringPtrInput
-	RoleName     pulumi.StringPtrInput
-	RoleNames    pulumi.StringArrayInput
-	Roles        UserRoleArrayInput
-	// Service name of the resource representing the id of the cloud project.
+	// A description associated with the user.
+	Description pulumi.StringPtrInput
+	// a convenient map representing an openstackRc file.
+	// Note: no password nor sensitive token is set in this map.
+	OpenstackRc pulumi.StringMapInput
+	// (Sensitive) the password generated for the user. The password can
+	// be used with the Openstack API. This attribute is sensitive and will only be
+	// retrieve once during creation.
+	Password pulumi.StringPtrInput
+	// The name of a role. See `roleNames`.
+	RoleName pulumi.StringPtrInput
+	// A list of role names. Values can be:
+	// - administrator,
+	// - aiTrainingOperator
+	// - aiTrainingRead
+	// - authentication
+	// - backupOperator
+	// - computeOperator
+	// - imageOperator
+	// - infrastructureSupervisor
+	// - networkOperator
+	// - networkSecurityOperator
+	// - objectstoreOperator
+	// - volume_operator
+	RoleNames pulumi.StringArrayInput
+	// A list of roles associated with the user.
+	Roles UserRoleArrayInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
-	Status      pulumi.StringPtrInput
-	Username    pulumi.StringPtrInput
+	// the status of the user. should be normally set to 'ok'.
+	Status pulumi.StringPtrInput
+	// the username generated for the user. This username can be used with
+	// the Openstack API.
+	Username pulumi.StringPtrInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -97,21 +202,57 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	Description *string           `pulumi:"description"`
+	// A description associated with the user.
+	Description *string `pulumi:"description"`
+	// a convenient map representing an openstackRc file.
+	// Note: no password nor sensitive token is set in this map.
 	OpenstackRc map[string]string `pulumi:"openstackRc"`
-	RoleName    *string           `pulumi:"roleName"`
-	RoleNames   []string          `pulumi:"roleNames"`
-	// Service name of the resource representing the id of the cloud project.
+	// The name of a role. See `roleNames`.
+	RoleName *string `pulumi:"roleName"`
+	// A list of role names. Values can be:
+	// - administrator,
+	// - aiTrainingOperator
+	// - aiTrainingRead
+	// - authentication
+	// - backupOperator
+	// - computeOperator
+	// - imageOperator
+	// - infrastructureSupervisor
+	// - networkOperator
+	// - networkSecurityOperator
+	// - objectstoreOperator
+	// - volume_operator
+	RoleNames []string `pulumi:"roleNames"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
+	// A description associated with the user.
 	Description pulumi.StringPtrInput
+	// a convenient map representing an openstackRc file.
+	// Note: no password nor sensitive token is set in this map.
 	OpenstackRc pulumi.StringMapInput
-	RoleName    pulumi.StringPtrInput
-	RoleNames   pulumi.StringArrayInput
-	// Service name of the resource representing the id of the cloud project.
+	// The name of a role. See `roleNames`.
+	RoleName pulumi.StringPtrInput
+	// A list of role names. Values can be:
+	// - administrator,
+	// - aiTrainingOperator
+	// - aiTrainingRead
+	// - authentication
+	// - backupOperator
+	// - computeOperator
+	// - imageOperator
+	// - infrastructureSupervisor
+	// - networkOperator
+	// - networkSecurityOperator
+	// - objectstoreOperator
+	// - volume_operator
+	RoleNames pulumi.StringArrayInput
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -202,43 +343,69 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// the date the user was created.
 func (o UserOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// A description associated with the user.
 func (o UserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// a convenient map representing an openstackRc file.
+// Note: no password nor sensitive token is set in this map.
 func (o UserOutput) OpenstackRc() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.OpenstackRc }).(pulumi.StringMapOutput)
 }
 
+// (Sensitive) the password generated for the user. The password can
+// be used with the Openstack API. This attribute is sensitive and will only be
+// retrieve once during creation.
 func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
+// The name of a role. See `roleNames`.
 func (o UserOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.RoleName }).(pulumi.StringPtrOutput)
 }
 
+// A list of role names. Values can be:
+// - administrator,
+// - aiTrainingOperator
+// - aiTrainingRead
+// - authentication
+// - backupOperator
+// - computeOperator
+// - imageOperator
+// - infrastructureSupervisor
+// - networkOperator
+// - networkSecurityOperator
+// - objectstoreOperator
+// - volume_operator
 func (o UserOutput) RoleNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.RoleNames }).(pulumi.StringArrayOutput)
 }
 
+// A list of roles associated with the user.
 func (o UserOutput) Roles() UserRoleArrayOutput {
 	return o.ApplyT(func(v *User) UserRoleArrayOutput { return v.Roles }).(UserRoleArrayOutput)
 }
 
-// Service name of the resource representing the id of the cloud project.
+// The id of the public cloud project. If omitted,
+// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o UserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// the status of the user. should be normally set to 'ok'.
 func (o UserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// the username generated for the user. This username can be used with
+// the Openstack API.
 func (o UserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

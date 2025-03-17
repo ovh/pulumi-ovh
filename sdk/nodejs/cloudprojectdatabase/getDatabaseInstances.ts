@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const databases = ovh.CloudProjectDatabase.getDatabaseInstances({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const databaseIds = databases.then(databases => databases.databaseIds);
+ * ```
+ */
 export function getDatabaseInstances(args: GetDatabaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", {
@@ -17,8 +34,20 @@ export function getDatabaseInstances(args: GetDatabaseInstancesArgs, opts?: pulu
  * A collection of arguments for invoking getDatabaseInstances.
  */
 export interface GetDatabaseInstancesArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: string;
+    /**
+     * The engine of the database cluster you want to list databases. To get a full list of available engine visit:
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
+     */
     engine: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -26,15 +55,44 @@ export interface GetDatabaseInstancesArgs {
  * A collection of values returned by getDatabaseInstances.
  */
 export interface GetDatabaseInstancesResult {
+    /**
+     * See Argument Reference above.
+     */
     readonly clusterId: string;
+    /**
+     * The list of databases ids of the database cluster associated with the project.
+     */
     readonly databaseIds: string[];
+    /**
+     * See Argument Reference above.
+     */
     readonly engine: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly serviceName: string;
 }
+/**
+ * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const databases = ovh.CloudProjectDatabase.getDatabaseInstances({
+ *     serviceName: "XXXX",
+ *     engine: "YYYY",
+ *     clusterId: "ZZZ",
+ * });
+ * export const databaseIds = databases.then(databases => databases.databaseIds);
+ * ```
+ */
 export function getDatabaseInstancesOutput(args: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", {
@@ -48,7 +106,19 @@ export function getDatabaseInstancesOutput(args: GetDatabaseInstancesOutputArgs,
  * A collection of arguments for invoking getDatabaseInstances.
  */
 export interface GetDatabaseInstancesOutputArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * The engine of the database cluster you want to list databases. To get a full list of available engine visit:
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * Available engines:
+     */
     engine: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

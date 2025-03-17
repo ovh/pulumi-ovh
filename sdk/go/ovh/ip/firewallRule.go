@@ -8,42 +8,85 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this resource to manage a rule on an IP firewall.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ip.NewFirewallRule(ctx, "myFirewallRule", &ip.FirewallRuleArgs{
+//				Action:       pulumi.String("deny"),
+//				Ip:           pulumi.String("XXXXXX"),
+//				IpOnFirewall: pulumi.String("XXXXXX"),
+//				Protocol:     pulumi.String("tcp"),
+//				Sequence:     pulumi.Float64(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// The resource can be imported using the properties `ip`, `ip_on_firewall` and `sequence`, separated by "|" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Ip/firewallRule:FirewallRule my_firewall_rule '127.0.0.1|127.0.0.2|0'
+// ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
-	// Possible values for action
-	Action       pulumi.StringOutput `pulumi:"action"`
+	// Possible values for action (deny|permit)
+	Action pulumi.StringOutput `pulumi:"action"`
+	// Creation date of the rule
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
-	// Destination ip for your rule
+	// Destination IP for your rule
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// Destination port for your rule. Only with TCP/UDP protocol
 	DestinationPort pulumi.Float64Output `pulumi:"destinationPort"`
-	// Destination port range for your rule. Only with TCP/UDP protocol
+	// String description of field `destinationPort`
 	DestinationPortDesc pulumi.StringOutput `pulumi:"destinationPortDesc"`
 	// Fragments option
 	Fragments pulumi.BoolOutput `pulumi:"fragments"`
-	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+	// The IP or the CIDR
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// IPv4 address (e.g., 192.0.2.0)
+	// IPv4 address
 	IpOnFirewall pulumi.StringOutput `pulumi:"ipOnFirewall"`
-	// Possible values for protocol
+	// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	Rule     pulumi.StringOutput `pulumi:"rule"`
-	// Possible values for action
+	// Description of the rule
+	Rule pulumi.StringOutput `pulumi:"rule"`
+	// Rule position in the rules array
 	Sequence pulumi.Float64Output `pulumi:"sequence"`
 	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
 	Source pulumi.StringOutput `pulumi:"source"`
 	// Source port for your rule. Only with TCP/UDP protocol
 	SourcePort pulumi.Float64Output `pulumi:"sourcePort"`
-	// Source port for your rule. Only with TCP/UDP protocol
+	// String description of field `sourcePort`
 	SourcePortDesc pulumi.StringOutput `pulumi:"sourcePortDesc"`
 	// Current state of your rule
 	State pulumi.StringOutput `pulumi:"state"`
-	// TCP option on your rule
+	// TCP option on your rule (syn|established)
 	TcpOption pulumi.StringOutput `pulumi:"tcpOption"`
 }
 
@@ -92,68 +135,72 @@ func GetFirewallRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallRule resources.
 type firewallRuleState struct {
-	// Possible values for action
-	Action       *string `pulumi:"action"`
+	// Possible values for action (deny|permit)
+	Action *string `pulumi:"action"`
+	// Creation date of the rule
 	CreationDate *string `pulumi:"creationDate"`
-	// Destination ip for your rule
+	// Destination IP for your rule
 	Destination *string `pulumi:"destination"`
 	// Destination port for your rule. Only with TCP/UDP protocol
 	DestinationPort *float64 `pulumi:"destinationPort"`
-	// Destination port range for your rule. Only with TCP/UDP protocol
+	// String description of field `destinationPort`
 	DestinationPortDesc *string `pulumi:"destinationPortDesc"`
 	// Fragments option
 	Fragments *bool `pulumi:"fragments"`
-	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+	// The IP or the CIDR
 	Ip *string `pulumi:"ip"`
-	// IPv4 address (e.g., 192.0.2.0)
+	// IPv4 address
 	IpOnFirewall *string `pulumi:"ipOnFirewall"`
-	// Possible values for protocol
+	// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
 	Protocol *string `pulumi:"protocol"`
-	Rule     *string `pulumi:"rule"`
-	// Possible values for action
+	// Description of the rule
+	Rule *string `pulumi:"rule"`
+	// Rule position in the rules array
 	Sequence *float64 `pulumi:"sequence"`
 	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
 	Source *string `pulumi:"source"`
 	// Source port for your rule. Only with TCP/UDP protocol
 	SourcePort *float64 `pulumi:"sourcePort"`
-	// Source port for your rule. Only with TCP/UDP protocol
+	// String description of field `sourcePort`
 	SourcePortDesc *string `pulumi:"sourcePortDesc"`
 	// Current state of your rule
 	State *string `pulumi:"state"`
-	// TCP option on your rule
+	// TCP option on your rule (syn|established)
 	TcpOption *string `pulumi:"tcpOption"`
 }
 
 type FirewallRuleState struct {
-	// Possible values for action
-	Action       pulumi.StringPtrInput
+	// Possible values for action (deny|permit)
+	Action pulumi.StringPtrInput
+	// Creation date of the rule
 	CreationDate pulumi.StringPtrInput
-	// Destination ip for your rule
+	// Destination IP for your rule
 	Destination pulumi.StringPtrInput
 	// Destination port for your rule. Only with TCP/UDP protocol
 	DestinationPort pulumi.Float64PtrInput
-	// Destination port range for your rule. Only with TCP/UDP protocol
+	// String description of field `destinationPort`
 	DestinationPortDesc pulumi.StringPtrInput
 	// Fragments option
 	Fragments pulumi.BoolPtrInput
-	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+	// The IP or the CIDR
 	Ip pulumi.StringPtrInput
-	// IPv4 address (e.g., 192.0.2.0)
+	// IPv4 address
 	IpOnFirewall pulumi.StringPtrInput
-	// Possible values for protocol
+	// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
 	Protocol pulumi.StringPtrInput
-	Rule     pulumi.StringPtrInput
-	// Possible values for action
+	// Description of the rule
+	Rule pulumi.StringPtrInput
+	// Rule position in the rules array
 	Sequence pulumi.Float64PtrInput
 	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
 	Source pulumi.StringPtrInput
 	// Source port for your rule. Only with TCP/UDP protocol
 	SourcePort pulumi.Float64PtrInput
-	// Source port for your rule. Only with TCP/UDP protocol
+	// String description of field `sourcePort`
 	SourcePortDesc pulumi.StringPtrInput
 	// Current state of your rule
 	State pulumi.StringPtrInput
-	// TCP option on your rule
+	// TCP option on your rule (syn|established)
 	TcpOption pulumi.StringPtrInput
 }
 
@@ -162,49 +209,49 @@ func (FirewallRuleState) ElementType() reflect.Type {
 }
 
 type firewallRuleArgs struct {
-	// Possible values for action
+	// Possible values for action (deny|permit)
 	Action string `pulumi:"action"`
 	// Destination port for your rule. Only with TCP/UDP protocol
 	DestinationPort *float64 `pulumi:"destinationPort"`
 	// Fragments option
 	Fragments *bool `pulumi:"fragments"`
-	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+	// The IP or the CIDR
 	Ip string `pulumi:"ip"`
-	// IPv4 address (e.g., 192.0.2.0)
+	// IPv4 address
 	IpOnFirewall string `pulumi:"ipOnFirewall"`
-	// Possible values for protocol
+	// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
 	Protocol string `pulumi:"protocol"`
-	// Possible values for action
+	// Rule position in the rules array
 	Sequence float64 `pulumi:"sequence"`
 	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
 	Source *string `pulumi:"source"`
 	// Source port for your rule. Only with TCP/UDP protocol
 	SourcePort *float64 `pulumi:"sourcePort"`
-	// TCP option on your rule
+	// TCP option on your rule (syn|established)
 	TcpOption *string `pulumi:"tcpOption"`
 }
 
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
-	// Possible values for action
+	// Possible values for action (deny|permit)
 	Action pulumi.StringInput
 	// Destination port for your rule. Only with TCP/UDP protocol
 	DestinationPort pulumi.Float64PtrInput
 	// Fragments option
 	Fragments pulumi.BoolPtrInput
-	// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+	// The IP or the CIDR
 	Ip pulumi.StringInput
-	// IPv4 address (e.g., 192.0.2.0)
+	// IPv4 address
 	IpOnFirewall pulumi.StringInput
-	// Possible values for protocol
+	// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
 	Protocol pulumi.StringInput
-	// Possible values for action
+	// Rule position in the rules array
 	Sequence pulumi.Float64Input
 	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
 	Source pulumi.StringPtrInput
 	// Source port for your rule. Only with TCP/UDP protocol
 	SourcePort pulumi.Float64PtrInput
-	// TCP option on your rule
+	// TCP option on your rule (syn|established)
 	TcpOption pulumi.StringPtrInput
 }
 
@@ -295,16 +342,17 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Possible values for action
+// Possible values for action (deny|permit)
 func (o FirewallRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// Creation date of the rule
 func (o FirewallRuleOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// Destination ip for your rule
+// Destination IP for your rule
 func (o FirewallRuleOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
@@ -314,7 +362,7 @@ func (o FirewallRuleOutput) DestinationPort() pulumi.Float64Output {
 	return o.ApplyT(func(v *FirewallRule) pulumi.Float64Output { return v.DestinationPort }).(pulumi.Float64Output)
 }
 
-// Destination port range for your rule. Only with TCP/UDP protocol
+// String description of field `destinationPort`
 func (o FirewallRuleOutput) DestinationPortDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.DestinationPortDesc }).(pulumi.StringOutput)
 }
@@ -324,26 +372,27 @@ func (o FirewallRuleOutput) Fragments() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.BoolOutput { return v.Fragments }).(pulumi.BoolOutput)
 }
 
-// IP (v4 or v6) CIDR notation (e.g., 192.0.2.0/24)
+// The IP or the CIDR
 func (o FirewallRuleOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IPv4 address (e.g., 192.0.2.0)
+// IPv4 address
 func (o FirewallRuleOutput) IpOnFirewall() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.IpOnFirewall }).(pulumi.StringOutput)
 }
 
-// Possible values for protocol
+// Possible values for protocol (ah|esp|gre|icmp|ipv4|tcp|udp)
 func (o FirewallRuleOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// Description of the rule
 func (o FirewallRuleOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Rule }).(pulumi.StringOutput)
 }
 
-// Possible values for action
+// Rule position in the rules array
 func (o FirewallRuleOutput) Sequence() pulumi.Float64Output {
 	return o.ApplyT(func(v *FirewallRule) pulumi.Float64Output { return v.Sequence }).(pulumi.Float64Output)
 }
@@ -358,7 +407,7 @@ func (o FirewallRuleOutput) SourcePort() pulumi.Float64Output {
 	return o.ApplyT(func(v *FirewallRule) pulumi.Float64Output { return v.SourcePort }).(pulumi.Float64Output)
 }
 
-// Source port for your rule. Only with TCP/UDP protocol
+// String description of field `sourcePort`
 func (o FirewallRuleOutput) SourcePortDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.SourcePortDesc }).(pulumi.StringOutput)
 }
@@ -368,7 +417,7 @@ func (o FirewallRuleOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// TCP option on your rule
+// TCP option on your rule (syn|established)
 func (o FirewallRuleOutput) TcpOption() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.TcpOption }).(pulumi.StringOutput)
 }

@@ -9,77 +9,104 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Subscribe to a Managed Loadbalance Logs Service in a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Create a subscription
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subscription = new Ovh.CloudProject.RegionLoadBalancerLogSubscription("subscription", new()
+    ///     {
+    ///         Kind = "haproxy",
+    ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    ///         RegionName = "yyyy",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         StreamId = "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription")]
     public partial class RegionLoadBalancerLogSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Creation date of the subscription
+        /// The date of the subscription creation
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Log kind name of this subscription
+        /// haproxy  **Changing this value recreates the resource.**
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the destination log service
+        /// LDP service name
         /// </summary>
         [Output("ldpServiceName")]
         public Output<string> LdpServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// ID representing the loadbalancer of the resource
+        /// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
         /// </summary>
         [Output("loadbalancerId")]
         public Output<string> LoadbalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the operation
+        /// The operation ID
         /// </summary>
         [Output("operationId")]
         public Output<string> OperationId { get; private set; } = null!;
 
         /// <summary>
-        /// Region name of the resource representing the name of the region.
+        /// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         /// </summary>
         [Output("regionName")]
         public Output<string> RegionName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of subscribed resource, where the logs come from
+        /// The resource name
         /// </summary>
         [Output("resourceName")]
         public Output<string> ResourceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of subscribed resource, where the logs come from
+        /// The resource type
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// ID representing the stream of the resource
+        /// Data stream id to use for the subscription  **Changing this value recreates the resource.**
         /// </summary>
         [Output("streamId")]
         public Output<string> StreamId { get; private set; } = null!;
 
         /// <summary>
-        /// Id of the subscription
+        /// The subscription id
         /// </summary>
         [Output("subscriptionId")]
         public Output<string> SubscriptionId { get; private set; } = null!;
 
         /// <summary>
-        /// Last update date of the subscription
+        /// The last update of the subscription
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -132,31 +159,31 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionLoadBalancerLogSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Log kind name of this subscription
+        /// haproxy  **Changing this value recreates the resource.**
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// ID representing the loadbalancer of the resource
+        /// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
         /// </summary>
         [Input("loadbalancerId", required: true)]
         public Input<string> LoadbalancerId { get; set; } = null!;
 
         /// <summary>
-        /// Region name of the resource representing the name of the region.
+        /// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         /// </summary>
         [Input("regionName", required: true)]
         public Input<string> RegionName { get; set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// ID representing the stream of the resource
+        /// Data stream id to use for the subscription  **Changing this value recreates the resource.**
         /// </summary>
         [Input("streamId", required: true)]
         public Input<string> StreamId { get; set; } = null!;
@@ -170,73 +197,73 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionLoadBalancerLogSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Creation date of the subscription
+        /// The date of the subscription creation
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Log kind name of this subscription
+        /// haproxy  **Changing this value recreates the resource.**
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the destination log service
+        /// LDP service name
         /// </summary>
         [Input("ldpServiceName")]
         public Input<string>? LdpServiceName { get; set; }
 
         /// <summary>
-        /// ID representing the loadbalancer of the resource
+        /// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
         /// </summary>
         [Input("loadbalancerId")]
         public Input<string>? LoadbalancerId { get; set; }
 
         /// <summary>
-        /// Identifier of the operation
+        /// The operation ID
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
 
         /// <summary>
-        /// Region name of the resource representing the name of the region.
+        /// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         /// </summary>
         [Input("regionName")]
         public Input<string>? RegionName { get; set; }
 
         /// <summary>
-        /// Name of subscribed resource, where the logs come from
+        /// The resource name
         /// </summary>
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
 
         /// <summary>
-        /// Type of subscribed resource, where the logs come from
+        /// The resource type
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// ID representing the stream of the resource
+        /// Data stream id to use for the subscription  **Changing this value recreates the resource.**
         /// </summary>
         [Input("streamId")]
         public Input<string>? StreamId { get; set; }
 
         /// <summary>
-        /// Id of the subscription
+        /// The subscription id
         /// </summary>
         [Input("subscriptionId")]
         public Input<string>? SubscriptionId { get; set; }
 
         /// <summary>
-        /// Last update date of the subscription
+        /// The last update of the subscription
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

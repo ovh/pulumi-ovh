@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Dbaas
 {
     public static class GetLogsClusters
     {
+        /// <summary>
+        /// Use this data source to retrieve UUIDs of DBaas logs clusters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsClusters.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetLogsClustersResult> InvokeAsync(GetLogsClustersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsClustersResult>("ovh:Dbaas/getLogsClusters:getLogsClusters", args ?? new GetLogsClustersArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve UUIDs of DBaas logs clusters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsClusters.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLogsClustersResult> Invoke(GetLogsClustersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersResult>("ovh:Dbaas/getLogsClusters:getLogsClusters", args ?? new GetLogsClustersInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve UUIDs of DBaas logs clusters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var logstash = Ovh.Dbaas.GetLogsClusters.Invoke(new()
+        ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetLogsClustersResult> Invoke(GetLogsClustersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsClustersResult>("ovh:Dbaas/getLogsClusters:getLogsClusters", args ?? new GetLogsClustersInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +87,9 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsClustersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The service name. It's the ID of your Logs Data Platform instance.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -35,6 +101,9 @@ namespace Pulumi.Ovh.Dbaas
 
     public sealed class GetLogsClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The service name. It's the ID of your Logs Data Platform instance.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -54,6 +123,9 @@ namespace Pulumi.Ovh.Dbaas
         public readonly string Id;
         public readonly string ServiceName;
         public readonly string Urn;
+        /// <summary>
+        /// is the cluster id
+        /// </summary>
         public readonly ImmutableArray<string> Uuids;
 
         [OutputConstructor]

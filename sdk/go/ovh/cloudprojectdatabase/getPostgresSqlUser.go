@@ -7,10 +7,40 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pgUser, err := cloudprojectdatabase.GetPostgresSqlUser(ctx, &cloudprojectdatabase.GetPostgresSqlUserArgs{
+//				ServiceName: "XXX",
+//				ClusterId:   "YYY",
+//				Name:        "ZZZ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("pgUserRoles", pgUser.Roles)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresSqlUser(ctx *pulumi.Context, args *LookupPostgresSqlUserArgs, opts ...pulumi.InvokeOption) (*LookupPostgresSqlUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresSqlUserResult
@@ -23,21 +53,31 @@ func LookupPostgresSqlUser(ctx *pulumi.Context, args *LookupPostgresSqlUserArgs,
 
 // A collection of arguments for invoking getPostgresSqlUser.
 type LookupPostgresSqlUserArgs struct {
-	ClusterId   string `pulumi:"clusterId"`
-	Name        string `pulumi:"name"`
+	// Cluster ID
+	ClusterId string `pulumi:"clusterId"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getPostgresSqlUser.
 type LookupPostgresSqlUserResult struct {
+	// See Argument Reference above.
 	ClusterId string `pulumi:"clusterId"`
+	// Date of the creation of the user.
 	CreatedAt string `pulumi:"createdAt"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string   `pulumi:"id"`
-	Name        string   `pulumi:"name"`
-	Roles       []string `pulumi:"roles"`
-	ServiceName string   `pulumi:"serviceName"`
-	Status      string   `pulumi:"status"`
+	Id string `pulumi:"id"`
+	// Name of the user.
+	Name string `pulumi:"name"`
+	// Roles the user belongs to.
+	Roles []string `pulumi:"roles"`
+	// Current status of the user.
+	ServiceName string `pulumi:"serviceName"`
+	// Current status of the user.
+	Status string `pulumi:"status"`
 }
 
 func LookupPostgresSqlUserOutput(ctx *pulumi.Context, args LookupPostgresSqlUserOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresSqlUserResultOutput {
@@ -51,8 +91,12 @@ func LookupPostgresSqlUserOutput(ctx *pulumi.Context, args LookupPostgresSqlUser
 
 // A collection of arguments for invoking getPostgresSqlUser.
 type LookupPostgresSqlUserOutputArgs struct {
-	ClusterId   pulumi.StringInput `pulumi:"clusterId"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	// Cluster ID
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -75,10 +119,12 @@ func (o LookupPostgresSqlUserResultOutput) ToLookupPostgresSqlUserResultOutputWi
 	return o
 }
 
+// See Argument Reference above.
 func (o LookupPostgresSqlUserResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// Date of the creation of the user.
 func (o LookupPostgresSqlUserResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -88,18 +134,22 @@ func (o LookupPostgresSqlUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the user.
 func (o LookupPostgresSqlUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Roles the user belongs to.
 func (o LookupPostgresSqlUserResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// Current status of the user.
 func (o LookupPostgresSqlUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Current status of the user.
 func (o LookupPostgresSqlUserResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.Status }).(pulumi.StringOutput)
 }

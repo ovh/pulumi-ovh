@@ -27,11 +27,12 @@ if not MYPY:
     class OpensearchUserAclArgsDict(TypedDict):
         pattern: pulumi.Input[str]
         """
-        Pattern of the ACL
+        Pattern of the ACL.
         """
         permission: pulumi.Input[str]
         """
         Permission of the ACL
+        Available permission:
         """
 elif False:
     OpensearchUserAclArgsDict: TypeAlias = Mapping[str, Any]
@@ -42,8 +43,9 @@ class OpensearchUserAclArgs:
                  pattern: pulumi.Input[str],
                  permission: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] pattern: Pattern of the ACL
+        :param pulumi.Input[str] pattern: Pattern of the ACL.
         :param pulumi.Input[str] permission: Permission of the ACL
+               Available permission:
         """
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "permission", permission)
@@ -52,7 +54,7 @@ class OpensearchUserAclArgs:
     @pulumi.getter
     def pattern(self) -> pulumi.Input[str]:
         """
-        Pattern of the ACL
+        Pattern of the ACL.
         """
         return pulumi.get(self, "pattern")
 
@@ -65,6 +67,7 @@ class OpensearchUserAclArgs:
     def permission(self) -> pulumi.Input[str]:
         """
         Permission of the ACL
+        Available permission:
         """
         return pulumi.get(self, "permission")
 

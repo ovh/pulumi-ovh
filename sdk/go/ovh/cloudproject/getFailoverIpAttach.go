@@ -7,10 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the details of a failover IP address of a service in a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.GetFailoverIpAttach(ctx, &cloudproject.GetFailoverIpAttachArgs{
+//				Ip:          pulumi.StringRef("XXXXXX"),
+//				ServiceName: "XXXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFailoverIpAttach(ctx *pulumi.Context, args *LookupFailoverIpAttachArgs, opts ...pulumi.InvokeOption) (*LookupFailoverIpAttachResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFailoverIpAttachResult
@@ -23,26 +51,39 @@ func LookupFailoverIpAttach(ctx *pulumi.Context, args *LookupFailoverIpAttachArg
 
 // A collection of arguments for invoking getFailoverIpAttach.
 type LookupFailoverIpAttachArgs struct {
+	// The IP block
+	// * `continentCode` - The Ip continent
 	Block         *string `pulumi:"block"`
 	ContinentCode *string `pulumi:"continentCode"`
 	GeoLoc        *string `pulumi:"geoLoc"`
-	Ip            *string `pulumi:"ip"`
-	RoutedTo      *string `pulumi:"routedTo"`
-	ServiceName   string  `pulumi:"serviceName"`
+	// The failover ip address to query
+	Ip       *string `pulumi:"ip"`
+	RoutedTo *string `pulumi:"routedTo"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getFailoverIpAttach.
 type LookupFailoverIpAttachResult struct {
+	// The IP block
+	// * `continentCode` - The Ip continent
 	Block         string `pulumi:"block"`
 	ContinentCode string `pulumi:"continentCode"`
 	GeoLoc        string `pulumi:"geoLoc"`
-	Id            string `pulumi:"id"`
-	Ip            string `pulumi:"ip"`
-	Progress      int    `pulumi:"progress"`
-	RoutedTo      string `pulumi:"routedTo"`
-	ServiceName   string `pulumi:"serviceName"`
-	Status        string `pulumi:"status"`
-	SubType       string `pulumi:"subType"`
+	// The Ip id
+	Id string `pulumi:"id"`
+	// The Ip Address
+	Ip string `pulumi:"ip"`
+	// Current operation progress in percent
+	// * `routedTo` - Instance where ip is routed to
+	Progress    int    `pulumi:"progress"`
+	RoutedTo    string `pulumi:"routedTo"`
+	ServiceName string `pulumi:"serviceName"`
+	// Ip status, can be `ok` or `operationPending`
+	// * `subType` - IP sub type, can be `cloud` or `ovh`
+	Status  string `pulumi:"status"`
+	SubType string `pulumi:"subType"`
 }
 
 func LookupFailoverIpAttachOutput(ctx *pulumi.Context, args LookupFailoverIpAttachOutputArgs, opts ...pulumi.InvokeOption) LookupFailoverIpAttachResultOutput {
@@ -56,12 +97,17 @@ func LookupFailoverIpAttachOutput(ctx *pulumi.Context, args LookupFailoverIpAtta
 
 // A collection of arguments for invoking getFailoverIpAttach.
 type LookupFailoverIpAttachOutputArgs struct {
+	// The IP block
+	// * `continentCode` - The Ip continent
 	Block         pulumi.StringPtrInput `pulumi:"block"`
 	ContinentCode pulumi.StringPtrInput `pulumi:"continentCode"`
 	GeoLoc        pulumi.StringPtrInput `pulumi:"geoLoc"`
-	Ip            pulumi.StringPtrInput `pulumi:"ip"`
-	RoutedTo      pulumi.StringPtrInput `pulumi:"routedTo"`
-	ServiceName   pulumi.StringInput    `pulumi:"serviceName"`
+	// The failover ip address to query
+	Ip       pulumi.StringPtrInput `pulumi:"ip"`
+	RoutedTo pulumi.StringPtrInput `pulumi:"routedTo"`
+	// The id of the public cloud project. If omitted,
+	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupFailoverIpAttachOutputArgs) ElementType() reflect.Type {
@@ -83,6 +129,8 @@ func (o LookupFailoverIpAttachResultOutput) ToLookupFailoverIpAttachResultOutput
 	return o
 }
 
+// The IP block
+// * `continentCode` - The Ip continent
 func (o LookupFailoverIpAttachResultOutput) Block() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) string { return v.Block }).(pulumi.StringOutput)
 }
@@ -95,14 +143,18 @@ func (o LookupFailoverIpAttachResultOutput) GeoLoc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) string { return v.GeoLoc }).(pulumi.StringOutput)
 }
 
+// The Ip id
 func (o LookupFailoverIpAttachResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Ip Address
 func (o LookupFailoverIpAttachResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// Current operation progress in percent
+// * `routedTo` - Instance where ip is routed to
 func (o LookupFailoverIpAttachResultOutput) Progress() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) int { return v.Progress }).(pulumi.IntOutput)
 }
@@ -115,6 +167,8 @@ func (o LookupFailoverIpAttachResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Ip status, can be `ok` or `operationPending`
+// * `subType` - IP sub type, can be `cloud` or `ovh`
 func (o LookupFailoverIpAttachResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFailoverIpAttachResult) string { return v.Status }).(pulumi.StringOutput)
 }

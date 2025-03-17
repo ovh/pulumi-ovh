@@ -6,6 +6,24 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get the list of all users of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * // Get the user ID of a previously created user with the description "S3-User"
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * export const userId = s3UserId;
+ * ```
+ */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getUsers:getUsers", {
@@ -17,6 +35,10 @@ export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * The ID of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
 }
 
@@ -29,8 +51,29 @@ export interface GetUsersResult {
      */
     readonly id: string;
     readonly serviceName: string;
+    /**
+     * The list of users of a public cloud project.
+     */
     readonly users: outputs.CloudProject.GetUsersUser[];
 }
+/**
+ * Get the list of all users of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const projectUsers = ovh.CloudProject.getUsers({
+ *     serviceName: "XXX",
+ * });
+ * // Get the user ID of a previously created user with the description "S3-User"
+ * const users = projectUsers.then(projectUsers => .filter(user => user.description == "S3-User").map(user => (user.userId)));
+ * const s3UserId = users[0];
+ * export const userId = s3UserId;
+ * ```
+ */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getUsers:getUsers", {
@@ -42,5 +85,9 @@ export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOut
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
+    /**
+     * The ID of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
 }

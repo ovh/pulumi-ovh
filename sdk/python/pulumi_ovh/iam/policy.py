@@ -29,6 +29,14 @@ class PolicyArgs:
                  permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Policy resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
+        :param pulumi.Input[str] description: Description of the policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[str] name: Name of the policy, must be unique
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
         """
         pulumi.set(__self__, "identities", identities)
         pulumi.set(__self__, "resources", resources)
@@ -48,6 +56,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def identities(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of identities affected by the policy
+        """
         return pulumi.get(self, "identities")
 
     @identities.setter
@@ -57,6 +68,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def resources(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of resources affected by the policy
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -66,6 +80,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def allows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of actions allowed on resources by identities
+        """
         return pulumi.get(self, "allows")
 
     @allows.setter
@@ -75,6 +92,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of actions that will always be denied even if also allowed by this policy or another one.
+        """
         return pulumi.get(self, "denies")
 
     @denies.setter
@@ -84,6 +104,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the policy
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -93,6 +116,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def excepts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        """
         return pulumi.get(self, "excepts")
 
     @excepts.setter
@@ -102,6 +128,9 @@ class PolicyArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the policy, must be unique
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -111,6 +140,9 @@ class PolicyArgs:
     @property
     @pulumi.getter(name="permissionsGroups")
     def permissions_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        """
         return pulumi.get(self, "permissions_groups")
 
     @permissions_groups.setter
@@ -135,6 +167,18 @@ class _PolicyState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[str] created_at: Creation date of this group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
+        :param pulumi.Input[str] description: Description of the policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
+        :param pulumi.Input[str] name: Name of the policy, must be unique
+        :param pulumi.Input[str] owner: Owner of the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        :param pulumi.Input[bool] read_only: Indicates that the policy is a default one.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
+        :param pulumi.Input[str] updated_at: Date of the last update of this group.
         """
         if allows is not None:
             pulumi.set(__self__, "allows", allows)
@@ -164,6 +208,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def allows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of actions allowed on resources by identities
+        """
         return pulumi.get(self, "allows")
 
     @allows.setter
@@ -173,6 +220,9 @@ class _PolicyState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation date of this group.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -182,6 +232,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of actions that will always be denied even if also allowed by this policy or another one.
+        """
         return pulumi.get(self, "denies")
 
     @denies.setter
@@ -191,6 +244,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the policy
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -200,6 +256,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def excepts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        """
         return pulumi.get(self, "excepts")
 
     @excepts.setter
@@ -209,6 +268,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of identities affected by the policy
+        """
         return pulumi.get(self, "identities")
 
     @identities.setter
@@ -218,6 +280,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the policy, must be unique
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -227,6 +292,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Owner of the policy.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -236,6 +304,9 @@ class _PolicyState:
     @property
     @pulumi.getter(name="permissionsGroups")
     def permissions_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        """
         return pulumi.get(self, "permissions_groups")
 
     @permissions_groups.setter
@@ -245,6 +316,9 @@ class _PolicyState:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that the policy is a default one.
+        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -254,6 +328,9 @@ class _PolicyState:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of resources affected by the policy
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -263,6 +340,9 @@ class _PolicyState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Date of the last update of this group.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -285,9 +365,40 @@ class Policy(pulumi.CustomResource):
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a Policy resource with the given unique name, props, and options.
+        Creates an IAM policy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        account = ovh.Me.get_me()
+        my_group = ovh.me.IdentityGroup("myGroup", description="my_group created in Terraform")
+        manager = ovh.iam.Policy("manager",
+            description="Users are allowed to use the OVH manager",
+            identities=[my_group.group_urn],
+            resources=[account.account_urn],
+            allows=[
+                "account:apiovh:me/get",
+                "account:apiovh:me/supportLevel/get",
+                "account:apiovh:me/certificates/get",
+                "account:apiovh:me/tag/get",
+                "account:apiovh:services/get",
+                "account:apiovh:*",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
+        :param pulumi.Input[str] description: Description of the policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
+        :param pulumi.Input[str] name: Name of the policy, must be unique
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
         """
         ...
     @overload
@@ -296,7 +407,30 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Policy resource with the given unique name, props, and options.
+        Creates an IAM policy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        account = ovh.Me.get_me()
+        my_group = ovh.me.IdentityGroup("myGroup", description="my_group created in Terraform")
+        manager = ovh.iam.Policy("manager",
+            description="Users are allowed to use the OVH manager",
+            identities=[my_group.group_urn],
+            resources=[account.account_urn],
+            allows=[
+                "account:apiovh:me/get",
+                "account:apiovh:me/supportLevel/get",
+                "account:apiovh:me/certificates/get",
+                "account:apiovh:me/tag/get",
+                "account:apiovh:services/get",
+                "account:apiovh:*",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -374,6 +508,18 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[str] created_at: Creation date of this group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
+        :param pulumi.Input[str] description: Description of the policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: List of identities affected by the policy
+        :param pulumi.Input[str] name: Name of the policy, must be unique
+        :param pulumi.Input[str] owner: Owner of the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        :param pulumi.Input[bool] read_only: Indicates that the policy is a default one.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: List of resources affected by the policy
+        :param pulumi.Input[str] updated_at: Date of the last update of this group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -396,60 +542,96 @@ class Policy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def allows(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of actions allowed on resources by identities
+        """
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        Creation date of this group.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def denies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of actions that will always be denied even if also allowed by this policy or another one.
+        """
         return pulumi.get(self, "denies")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description of the policy
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def excepts(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        """
         return pulumi.get(self, "excepts")
 
     @property
     @pulumi.getter
     def identities(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of identities affected by the policy
+        """
         return pulumi.get(self, "identities")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the policy, must be unique
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        Owner of the policy.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="permissionsGroups")
     def permissions_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
+        """
         return pulumi.get(self, "permissions_groups")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[bool]:
+        """
+        Indicates that the policy is a default one.
+        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter
     def resources(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of resources affected by the policy
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
+        """
+        Date of the last update of this group.
+        """
         return pulumi.get(self, "updated_at")
 

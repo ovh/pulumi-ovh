@@ -11,12 +11,93 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 {
     public static class GetPostgresSqlUser
     {
+        /// <summary>
+        /// Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pgUser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pgUserRoles"] = pgUser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPostgresSqlUserResult> InvokeAsync(GetPostgresSqlUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresSqlUserResult>("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args ?? new GetPostgresSqlUserArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pgUser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pgUserRoles"] = pgUser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPostgresSqlUserResult> Invoke(GetPostgresSqlUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSqlUserResult>("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args ?? new GetPostgresSqlUserInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pgUser = Ovh.CloudProjectDatabase.GetPostgresSqlUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         ClusterId = "YYY",
+        ///         Name = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pgUserRoles"] = pgUser.Apply(getPostgresSqlUserResult =&gt; getPostgresSqlUserResult.Roles),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPostgresSqlUserResult> Invoke(GetPostgresSqlUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSqlUserResult>("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", args ?? new GetPostgresSqlUserInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +105,22 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetPostgresSqlUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the user.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -41,12 +132,22 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
     public sealed class GetPostgresSqlUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the user.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -60,15 +161,33 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     [OutputType]
     public sealed class GetPostgresSqlUserResult
     {
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// Date of the creation of the user.
+        /// </summary>
         public readonly string CreatedAt;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Name of the user.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Roles the user belongs to.
+        /// </summary>
         public readonly ImmutableArray<string> Roles;
+        /// <summary>
+        /// Current status of the user.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Current status of the user.
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -9,35 +9,46 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// OVHcloud Managed OpenSearch clusters users can be imported using the `service_name`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProjectDatabase/opensearchUser:OpensearchUser my_user service_name/cluster_id/id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/opensearchUser:OpensearchUser")]
     public partial class OpensearchUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Acls of the user
+        /// Acls of the user.
         /// </summary>
         [Output("acls")]
         public Output<ImmutableArray<Outputs.OpensearchUserAcl>> Acls { get; private set; } = null!;
 
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Date of the creation of the user
+        /// Date of the creation of the user.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user
+        /// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Password of the user
+        /// (Sensitive) Password of the user.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -48,11 +59,15 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Output("passwordReset")]
         public Output<string?> PasswordReset { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Current status of the user
+        /// Current status of the user.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -112,7 +127,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<Inputs.OpensearchUserAclArgs>? _acls;
 
         /// <summary>
-        /// Acls of the user
+        /// Acls of the user.
         /// </summary>
         public InputList<Inputs.OpensearchUserAclArgs> Acls
         {
@@ -121,13 +136,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the user
+        /// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -138,6 +153,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -153,7 +172,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<Inputs.OpensearchUserAclGetArgs>? _acls;
 
         /// <summary>
-        /// Acls of the user
+        /// Acls of the user.
         /// </summary>
         public InputList<Inputs.OpensearchUserAclGetArgs> Acls
         {
@@ -162,19 +181,19 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// Id of the database cluster
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Date of the creation of the user
+        /// Date of the creation of the user.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Name of the user
+        /// Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -183,7 +202,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private Input<string>? _password;
 
         /// <summary>
-        /// Password of the user
+        /// (Sensitive) Password of the user.
         /// </summary>
         public Input<string>? Password
         {
@@ -201,11 +220,15 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         [Input("passwordReset")]
         public Input<string>? PasswordReset { get; set; }
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Current status of the user
+        /// Current status of the user.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -8,10 +8,69 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manage a Rancher service in a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewRancher(ctx, "rancher", &cloudproject.RancherArgs{
+//				ProjectId: pulumi.String("<public cloud project ID>"),
+//				TargetSpec: &cloudproject.RancherTargetSpecArgs{
+//					Name: pulumi.String("MyRancher"),
+//					Plan: pulumi.String("STANDARD"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	id = "<project_id>/<id>"
+//
+//	to = ovh_cloud_project_rancher.rancher
+//
+// }
+//
+// You can then run:
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=rancher.tf
+//
+// $ pulumi up
+//
+// The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Rancher struct {
 	pulumi.CustomResourceState
 
@@ -23,8 +82,7 @@ type Rancher struct {
 	CurrentTasks RancherCurrentTaskArrayOutput `pulumi:"currentTasks"`
 	// Project ID
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-	// `READY` status
+	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 	ResourceStatus pulumi.StringOutput `pulumi:"resourceStatus"`
 	// Target specification for the managed Rancher service
 	TargetSpec RancherTargetSpecOutput `pulumi:"targetSpec"`
@@ -76,8 +134,7 @@ type rancherState struct {
 	CurrentTasks []RancherCurrentTask `pulumi:"currentTasks"`
 	// Project ID
 	ProjectId *string `pulumi:"projectId"`
-	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-	// `READY` status
+	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 	ResourceStatus *string `pulumi:"resourceStatus"`
 	// Target specification for the managed Rancher service
 	TargetSpec *RancherTargetSpec `pulumi:"targetSpec"`
@@ -94,8 +151,7 @@ type RancherState struct {
 	CurrentTasks RancherCurrentTaskArrayInput
 	// Project ID
 	ProjectId pulumi.StringPtrInput
-	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-	// `READY` status
+	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 	ResourceStatus pulumi.StringPtrInput
 	// Target specification for the managed Rancher service
 	TargetSpec RancherTargetSpecPtrInput
@@ -229,8 +285,7 @@ func (o RancherOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rancher) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in
-// `READY` status
+// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 func (o RancherOutput) ResourceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rancher) pulumi.StringOutput { return v.ResourceStatus }).(pulumi.StringOutput)
 }

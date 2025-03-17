@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Apply IP restrictions container registry associated with a public cloud project on Harbor UI and API.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const registry = ovh.CloudProject.getContainerRegistry({
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * const myMgtIprestrictions = new ovh.cloudproject.ContainerRegistryIPRestrictionsManagement("myMgtIprestrictions", {
+ *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
+ *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ *     ipRestrictions: [{
+ *         ip_block: "xxx.xxx.xxx.xxx/xx",
+ *         description: "xxxxxxx",
+ *     }],
+ * });
+ * ```
+ */
 export class ContainerRegistryIPRestrictionsManagement extends pulumi.CustomResource {
     /**
      * Get an existing ContainerRegistryIPRestrictionsManagement resource's state with the given name, ID, and optional extra
@@ -33,15 +57,15 @@ export class ContainerRegistryIPRestrictionsManagement extends pulumi.CustomReso
     }
 
     /**
-     * List your IP restrictions applied on artifact manager component
+     * IP restrictions applied on Harbor UI and API.
      */
     public readonly ipRestrictions!: pulumi.Output<{[key: string]: string}[]>;
     /**
-     * RegistryID
+     * The id of the Managed Private Registry.
      */
     public readonly registryId!: pulumi.Output<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -86,15 +110,15 @@ export class ContainerRegistryIPRestrictionsManagement extends pulumi.CustomReso
  */
 export interface ContainerRegistryIPRestrictionsManagementState {
     /**
-     * List your IP restrictions applied on artifact manager component
+     * IP restrictions applied on Harbor UI and API.
      */
     ipRestrictions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * RegistryID
+     * The id of the Managed Private Registry.
      */
     registryId?: pulumi.Input<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -104,15 +128,15 @@ export interface ContainerRegistryIPRestrictionsManagementState {
  */
 export interface ContainerRegistryIPRestrictionsManagementArgs {
     /**
-     * List your IP restrictions applied on artifact manager component
+     * IP restrictions applied on Harbor UI and API.
      */
     ipRestrictions: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * RegistryID
+     * The id of the Managed Private Registry.
      */
     registryId: pulumi.Input<string>;
     /**
-     * Service name
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

@@ -27,8 +27,11 @@ class PrometheusArgs:
                  password_reset: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Prometheus resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+               Available engines:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -41,7 +44,7 @@ class PrometheusArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -53,7 +56,8 @@ class PrometheusArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Name of the engine of the service
+        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        Available engines:
         """
         return pulumi.get(self, "engine")
 
@@ -64,6 +68,10 @@ class PrometheusArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -95,12 +103,17 @@ class _PrometheusState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Prometheus resources.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] password: Password of the user
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+               Available engines:
+        :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input['PrometheusTargetArgs']]] targets: List of all endpoint targets
-        :param pulumi.Input[str] username: Name of the user
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Sequence[pulumi.Input['PrometheusTargetArgs']]] targets: List of all endpoint targets.
+               * `Host` - Host of the endpoint.
+               * `Port` - Connection port for the endpoint.
+        :param pulumi.Input[str] username: name of the prometheus user.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -121,7 +134,7 @@ class _PrometheusState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -133,7 +146,8 @@ class _PrometheusState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the engine of the service
+        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        Available engines:
         """
         return pulumi.get(self, "engine")
 
@@ -145,7 +159,7 @@ class _PrometheusState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password of the user
+        (Sensitive) Password of the user.
         """
         return pulumi.get(self, "password")
 
@@ -168,6 +182,10 @@ class _PrometheusState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -178,7 +196,9 @@ class _PrometheusState:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusTargetArgs']]]]:
         """
-        List of all endpoint targets
+        List of all endpoint targets.
+        * `Host` - Host of the endpoint.
+        * `Port` - Connection port for the endpoint.
         """
         return pulumi.get(self, "targets")
 
@@ -190,7 +210,7 @@ class _PrometheusState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user
+        name of the prometheus user.
         """
         return pulumi.get(self, "username")
 
@@ -210,12 +230,24 @@ class Prometheus(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Prometheus resource with the given unique name, props, and options.
+        ## Import
+
+        OVHcloud Managed database clusters prometheus can be imported using the `service_name`, `engine` and `cluster_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/prometheus:Prometheus my_prometheus service_name/engine/cluster_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+               Available engines:
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -224,7 +256,16 @@ class Prometheus(pulumi.CustomResource):
                  args: PrometheusArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Prometheus resource with the given unique name, props, and options.
+        ## Import
+
+        OVHcloud Managed database clusters prometheus can be imported using the `service_name`, `engine` and `cluster_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProjectDatabase/prometheus:Prometheus my_prometheus service_name/engine/cluster_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param PrometheusArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -292,12 +333,17 @@ class Prometheus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Id of the database cluster
-        :param pulumi.Input[str] engine: Name of the engine of the service
-        :param pulumi.Input[str] password: Password of the user
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+               Available engines:
+        :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusTargetArgs', 'PrometheusTargetArgsDict']]]] targets: List of all endpoint targets
-        :param pulumi.Input[str] username: Name of the user
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
+               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusTargetArgs', 'PrometheusTargetArgsDict']]]] targets: List of all endpoint targets.
+               * `Host` - Host of the endpoint.
+               * `Port` - Connection port for the endpoint.
+        :param pulumi.Input[str] username: name of the prometheus user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -316,7 +362,7 @@ class Prometheus(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Id of the database cluster
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -324,7 +370,8 @@ class Prometheus(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Name of the engine of the service
+        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        Available engines:
         """
         return pulumi.get(self, "engine")
 
@@ -332,7 +379,7 @@ class Prometheus(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        Password of the user
+        (Sensitive) Password of the user.
         """
         return pulumi.get(self, "password")
 
@@ -347,13 +394,19 @@ class Prometheus(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The id of the public cloud project. If omitted,
+        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def targets(self) -> pulumi.Output[Sequence['outputs.PrometheusTarget']]:
         """
-        List of all endpoint targets
+        List of all endpoint targets.
+        * `Host` - Host of the endpoint.
+        * `Port` - Connection port for the endpoint.
         """
         return pulumi.get(self, "targets")
 
@@ -361,7 +414,7 @@ class Prometheus(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        Name of the user
+        name of the prometheus user.
         """
         return pulumi.get(self, "username")
 

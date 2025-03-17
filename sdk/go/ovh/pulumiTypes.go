@@ -7,14 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type GetInstallationTemplateInput struct {
-	Default     string   `pulumi:"default"`
+	Default string `pulumi:"default"`
+	// Information about this template.
 	Description string   `pulumi:"description"`
 	Enums       []string `pulumi:"enums"`
 	Mandatory   bool     `pulumi:"mandatory"`
@@ -34,7 +35,8 @@ type GetInstallationTemplateInputInput interface {
 }
 
 type GetInstallationTemplateInputArgs struct {
-	Default     pulumi.StringInput      `pulumi:"default"`
+	Default pulumi.StringInput `pulumi:"default"`
+	// Information about this template.
 	Description pulumi.StringInput      `pulumi:"description"`
 	Enums       pulumi.StringArrayInput `pulumi:"enums"`
 	Mandatory   pulumi.BoolInput        `pulumi:"mandatory"`
@@ -97,6 +99,7 @@ func (o GetInstallationTemplateInputOutput) Default() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Default }).(pulumi.StringOutput)
 }
 
+// Information about this template.
 func (o GetInstallationTemplateInputOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -815,7 +818,7 @@ type GetServerVni struct {
 	Name string `pulumi:"name"`
 	// NetworkInterfaceControllers bound to this VirtualNetworkInterface
 	Nics []string `pulumi:"nics"`
-	// Server name
+	// Server bound to this VirtualNetworkInterface
 	ServerName string `pulumi:"serverName"`
 	// VirtualNetworkInterface unique id
 	Uuid string `pulumi:"uuid"`
@@ -843,7 +846,7 @@ type GetServerVniArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// NetworkInterfaceControllers bound to this VirtualNetworkInterface
 	Nics pulumi.StringArrayInput `pulumi:"nics"`
-	// Server name
+	// Server bound to this VirtualNetworkInterface
 	ServerName pulumi.StringInput `pulumi:"serverName"`
 	// VirtualNetworkInterface unique id
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -922,7 +925,7 @@ func (o GetServerVniOutput) Nics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerVni) []string { return v.Nics }).(pulumi.StringArrayOutput)
 }
 
-// Server name
+// Server bound to this VirtualNetworkInterface
 func (o GetServerVniOutput) ServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerVni) string { return v.ServerName }).(pulumi.StringOutput)
 }

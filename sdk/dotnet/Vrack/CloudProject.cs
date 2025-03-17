@@ -9,14 +9,51 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Vrack
 {
+    /// <summary>
+    /// Attach a Public Cloud Project to a VRack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vcp = new Ovh.Vrack.CloudProject("vcp", new()
+    ///     {
+    ///         ProjectId = "67890",
+    ///         ServiceName = "12345",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Attachment of a public cloud project and a VRack can be imported using the `service_name` (vRack identifier) and the `project_id` (Cloud Project identifier), separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Vrack/cloudProject:CloudProject myattach service_name/project_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Vrack/cloudProject:CloudProject")]
     public partial class CloudProject : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the vrack resource.
+        /// The service name of the vrack. If omitted,
+        /// the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -68,11 +105,16 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class CloudProjectArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Service name of the vrack resource.
+        /// The service name of the vrack. If omitted,
+        /// the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -85,11 +127,16 @@ namespace Pulumi.Ovh.Vrack
 
     public sealed class CloudProjectState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Service name of the vrack resource.
+        /// The service name of the vrack. If omitted,
+        /// the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

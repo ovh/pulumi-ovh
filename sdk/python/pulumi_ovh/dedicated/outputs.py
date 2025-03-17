@@ -121,7 +121,7 @@ class ServerCustomizations(dict):
                  ssh_key: Optional[str] = None):
         """
         :param str config_drive_user_data: Config Drive UserData
-        :param str efi_bootloader_path: Path of the EFI bootloader from the OS installed on the server
+        :param str efi_bootloader_path: Path of the EFI bootloader
         :param str hostname: Custom hostname
         :param Mapping[str, str] http_headers: Image HTTP Headers
         :param str image_check_sum: Image checksum
@@ -170,7 +170,7 @@ class ServerCustomizations(dict):
     @pulumi.getter(name="efiBootloaderPath")
     def efi_bootloader_path(self) -> Optional[str]:
         """
-        Path of the EFI bootloader from the OS installed on the server
+        Path of the EFI bootloader
         """
         return pulumi.get(self, "efi_bootloader_path")
 
@@ -281,9 +281,9 @@ class ServerIam(dict):
                  urn: Optional[str] = None):
         """
         :param str display_name: Resource display name
-        :param str id: Unique identifier of the resource
-        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
-        :param str urn: Unique resource name used in policies
+        :param str id: Unique identifier of the resource in the IAM
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with `ovh:`
+        :param str urn: URN of the private database, used when writing IAM policies
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -306,7 +306,7 @@ class ServerIam(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource in the IAM
         """
         return pulumi.get(self, "id")
 
@@ -314,7 +314,7 @@ class ServerIam(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
-        Resource tags. Tags that were internally computed are prefixed with ovh:
+        Resource tags. Tags that were internally computed are prefixed with `ovh:`
         """
         return pulumi.get(self, "tags")
 
@@ -322,7 +322,7 @@ class ServerIam(dict):
     @pulumi.getter
     def urn(self) -> Optional[str]:
         """
-        Unique resource name used in policies
+        URN of the private database, used when writing IAM policies
         """
         return pulumi.get(self, "urn")
 
@@ -923,8 +923,8 @@ class ServerReinstallTaskStorage(dict):
                  hardware_raids: Optional[Sequence['outputs.ServerReinstallTaskStorageHardwareRaid']] = None,
                  partitionings: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioning']] = None):
         """
-        :param int disk_group_id: Disk group id (default is 0, meaning automatic)
-        :param Sequence['ServerReinstallTaskStorageHardwareRaidArgs'] hardware_raids: Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        :param int disk_group_id: Disk group id to install the OS to (default is 0, meaning automatic).
+        :param Sequence['ServerReinstallTaskStorageHardwareRaidArgs'] hardware_raids: Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         :param Sequence['ServerReinstallTaskStoragePartitioningArgs'] partitionings: Partitioning configuration
         """
         if disk_group_id is not None:
@@ -938,7 +938,7 @@ class ServerReinstallTaskStorage(dict):
     @pulumi.getter(name="diskGroupId")
     def disk_group_id(self) -> Optional[int]:
         """
-        Disk group id (default is 0, meaning automatic)
+        Disk group id to install the OS to (default is 0, meaning automatic).
         """
         return pulumi.get(self, "disk_group_id")
 
@@ -946,7 +946,7 @@ class ServerReinstallTaskStorage(dict):
     @pulumi.getter(name="hardwareRaids")
     def hardware_raids(self) -> Optional[Sequence['outputs.ServerReinstallTaskStorageHardwareRaid']]:
         """
-        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+        Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
         """
         return pulumi.get(self, "hardware_raids")
 
@@ -1056,8 +1056,8 @@ class ServerReinstallTaskStoragePartitioning(dict):
                  scheme_name: Optional[str] = None):
         """
         :param int disks: Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
-        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutArgs'] layouts: Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
-        :param str scheme_name: Partitioning scheme name
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutArgs'] layouts: Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
+        :param str scheme_name: Partitioning scheme (if applicable with selected operating system)
         """
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
@@ -1078,7 +1078,7 @@ class ServerReinstallTaskStoragePartitioning(dict):
     @pulumi.getter
     def layouts(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayout']]:
         """
-        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+        Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
         """
         return pulumi.get(self, "layouts")
 
@@ -1086,7 +1086,7 @@ class ServerReinstallTaskStoragePartitioning(dict):
     @pulumi.getter(name="schemeName")
     def scheme_name(self) -> Optional[str]:
         """
-        Partitioning scheme name
+        Partitioning scheme (if applicable with selected operating system)
         """
         return pulumi.get(self, "scheme_name")
 
@@ -1123,9 +1123,9 @@ class ServerReinstallTaskStoragePartitioningLayout(dict):
         """
         :param str file_system: File system type
         :param str mount_point: Mount point
-        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraArgs'] extras: Partition extras parameters
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraArgs'] extras: Partition extras parameters (when applicable)
         :param int raid_level: Software raid type (default is 1)
-        :param int size: Partition size in MiB (default value is 0)
+        :param int size: Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         """
         pulumi.set(__self__, "file_system", file_system)
         pulumi.set(__self__, "mount_point", mount_point)
@@ -1156,7 +1156,7 @@ class ServerReinstallTaskStoragePartitioningLayout(dict):
     @pulumi.getter
     def extras(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtra']]:
         """
-        Partition extras parameters
+        Partition extras parameters (when applicable)
         """
         return pulumi.get(self, "extras")
 
@@ -1172,7 +1172,7 @@ class ServerReinstallTaskStoragePartitioningLayout(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        Partition size in MiB (default value is 0)
+        Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         """
         return pulumi.get(self, "size")
 
@@ -1183,8 +1183,8 @@ class ServerReinstallTaskStoragePartitioningLayoutExtra(dict):
                  lvs: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraLv']] = None,
                  zps: Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraZp']] = None):
         """
-        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs'] lvs: LVM-specific parameters
-        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs'] zps: ZFS-specific parameters
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraLvArgs'] lvs: LVM-specific parameters (when applicable)
+        :param Sequence['ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs'] zps: ZFS-specific parameters (when applicable)
         """
         if lvs is not None:
             pulumi.set(__self__, "lvs", lvs)
@@ -1195,7 +1195,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtra(dict):
     @pulumi.getter
     def lvs(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraLv']]:
         """
-        LVM-specific parameters
+        LVM-specific parameters (when applicable)
         """
         return pulumi.get(self, "lvs")
 
@@ -1203,7 +1203,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtra(dict):
     @pulumi.getter
     def zps(self) -> Optional[Sequence['outputs.ServerReinstallTaskStoragePartitioningLayoutExtraZp']]:
         """
-        ZFS-specific parameters
+        ZFS-specific parameters (when applicable)
         """
         return pulumi.get(self, "zps")
 
@@ -1232,7 +1232,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraZp(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: zpool name (generated automatically if not specified)
+        :param str name: zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1241,7 +1241,7 @@ class ServerReinstallTaskStoragePartitioningLayoutExtraZp(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        zpool name (generated automatically if not specified)
+        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
         """
         return pulumi.get(self, "name")
 
@@ -1562,7 +1562,7 @@ class ServerStoragePartitioningLayoutExtrasLv(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Logical volume name
+        :param str name: Dedicated server name
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1571,7 +1571,7 @@ class ServerStoragePartitioningLayoutExtrasLv(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Logical volume name
+        Dedicated server name
         """
         return pulumi.get(self, "name")
 
@@ -1581,7 +1581,7 @@ class ServerStoragePartitioningLayoutExtrasZp(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        :param str name: Dedicated server name
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1590,7 +1590,7 @@ class ServerStoragePartitioningLayoutExtrasZp(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+        Dedicated server name
         """
         return pulumi.get(self, "name")
 
@@ -1626,14 +1626,14 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
                  number_of_disks: float,
                  raid_controller: str):
         """
-        :param 'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs' default_hardware_raid_size: default hardware raid size for this disk group
-        :param str default_hardware_raid_type: default hardware raid type for this disk group
-        :param str description: human readable description of this disk group
-        :param float disk_group_id: identifier of this disk group
-        :param 'GetServerSpecificationsHardwareDiskGroupDiskSizeArgs' disk_size: disk capacity
-        :param str disk_type: type of the disk (SSD, SATA, SAS, ...)
-        :param float number_of_disks: number of disks in this group
-        :param str raid_controller: raid controller, if any, managing this group of disks
+        :param 'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeArgs' default_hardware_raid_size: Default hardware raid size for this disk group
+        :param str default_hardware_raid_type: Default hardware raid type for this disk group
+        :param str description: Expansion card description
+        :param float disk_group_id: Identifier of this disk group
+        :param 'GetServerSpecificationsHardwareDiskGroupDiskSizeArgs' disk_size: Disk capacity
+        :param str disk_type: Type of the disk (SSD, SATA, SAS, ...)
+        :param float number_of_disks: Number of disks in this group
+        :param str raid_controller: Raid controller, if any, managing this group of disks
         """
         pulumi.set(__self__, "default_hardware_raid_size", default_hardware_raid_size)
         pulumi.set(__self__, "default_hardware_raid_type", default_hardware_raid_type)
@@ -1648,7 +1648,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="defaultHardwareRaidSize")
     def default_hardware_raid_size(self) -> 'outputs.GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult':
         """
-        default hardware raid size for this disk group
+        Default hardware raid size for this disk group
         """
         return pulumi.get(self, "default_hardware_raid_size")
 
@@ -1656,7 +1656,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="defaultHardwareRaidType")
     def default_hardware_raid_type(self) -> str:
         """
-        default hardware raid type for this disk group
+        Default hardware raid type for this disk group
         """
         return pulumi.get(self, "default_hardware_raid_type")
 
@@ -1664,7 +1664,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        human readable description of this disk group
+        Expansion card description
         """
         return pulumi.get(self, "description")
 
@@ -1672,7 +1672,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="diskGroupId")
     def disk_group_id(self) -> float:
         """
-        identifier of this disk group
+        Identifier of this disk group
         """
         return pulumi.get(self, "disk_group_id")
 
@@ -1680,7 +1680,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> 'outputs.GetServerSpecificationsHardwareDiskGroupDiskSizeResult':
         """
-        disk capacity
+        Disk capacity
         """
         return pulumi.get(self, "disk_size")
 
@@ -1688,7 +1688,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        type of the disk (SSD, SATA, SAS, ...)
+        Type of the disk (SSD, SATA, SAS, ...)
         """
         return pulumi.get(self, "disk_type")
 
@@ -1696,7 +1696,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="numberOfDisks")
     def number_of_disks(self) -> float:
         """
-        number of disks in this group
+        Number of disks in this group
         """
         return pulumi.get(self, "number_of_disks")
 
@@ -1704,7 +1704,7 @@ class GetServerSpecificationsHardwareDiskGroupResult(dict):
     @pulumi.getter(name="raidController")
     def raid_controller(self) -> str:
         """
-        raid controller, if any, managing this group of disks
+        Raid controller, if any, managing this group of disks
         """
         return pulumi.get(self, "raid_controller")
 
@@ -1753,7 +1753,7 @@ class GetServerSpecificationsHardwareExpansionCardResult(dict):
                  description: str,
                  type: str):
         """
-        :param str description: expansion card description
+        :param str description: Expansion card description
         :param str type: Expansion card type enum
         """
         pulumi.set(__self__, "description", description)
@@ -1763,7 +1763,7 @@ class GetServerSpecificationsHardwareExpansionCardResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        expansion card description
+        Expansion card description
         """
         return pulumi.get(self, "description")
 
@@ -1822,10 +1822,10 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
                  ovh_to_ovh: 'outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult',
                  type: str):
         """
-        :param 'GetServerSpecificationsNetworkBandwidthInternetToOvhArgs' internet_to_ovh: bandwidth limitation Internet to OVH
-        :param 'GetServerSpecificationsNetworkBandwidthOvhToInternetArgs' ovh_to_internet: bandwidth limitation OVH to Internet
-        :param 'GetServerSpecificationsNetworkBandwidthOvhToOvhArgs' ovh_to_ovh: bandwidth limitation OVH to OVH
-        :param str type: bandwidth offer type
+        :param 'GetServerSpecificationsNetworkBandwidthInternetToOvhArgs' internet_to_ovh: Bandwidth limitation Internet to OVH
+        :param 'GetServerSpecificationsNetworkBandwidthOvhToInternetArgs' ovh_to_internet: Bandwidth limitation OVH to Internet
+        :param 'GetServerSpecificationsNetworkBandwidthOvhToOvhArgs' ovh_to_ovh: Bandwidth limitation OVH to OVH
+        :param str type: Bandwidth offer type (included┃standard)
         """
         pulumi.set(__self__, "internet_to_ovh", internet_to_ovh)
         pulumi.set(__self__, "ovh_to_internet", ovh_to_internet)
@@ -1836,7 +1836,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter(name="internetToOvh")
     def internet_to_ovh(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthInternetToOvhResult':
         """
-        bandwidth limitation Internet to OVH
+        Bandwidth limitation Internet to OVH
         """
         return pulumi.get(self, "internet_to_ovh")
 
@@ -1844,7 +1844,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter(name="ovhToInternet")
     def ovh_to_internet(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthOvhToInternetResult':
         """
-        bandwidth limitation OVH to Internet
+        Bandwidth limitation OVH to Internet
         """
         return pulumi.get(self, "ovh_to_internet")
 
@@ -1852,7 +1852,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter(name="ovhToOvh")
     def ovh_to_ovh(self) -> 'outputs.GetServerSpecificationsNetworkBandwidthOvhToOvhResult':
         """
-        bandwidth limitation OVH to OVH
+        Bandwidth limitation OVH to OVH
         """
         return pulumi.get(self, "ovh_to_ovh")
 
@@ -1860,7 +1860,7 @@ class GetServerSpecificationsNetworkBandwidthResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        bandwidth offer type
+        Bandwidth offer type (included┃standard)
         """
         return pulumi.get(self, "type")
 
@@ -1949,8 +1949,8 @@ class GetServerSpecificationsNetworkOlaResult(dict):
                  supported_modes: Sequence[str]):
         """
         :param bool available: Is the OLA feature available
-        :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeArgs'] available_modes: What modes are supported
-        :param Sequence[str] supported_modes: (DEPRECATED) What modes are supported
+        :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeArgs'] available_modes: Supported modes
+        :param Sequence[str] supported_modes: Supported modes (DEPRECATED)
         """
         pulumi.set(__self__, "available", available)
         pulumi.set(__self__, "available_modes", available_modes)
@@ -1968,7 +1968,7 @@ class GetServerSpecificationsNetworkOlaResult(dict):
     @pulumi.getter(name="availableModes")
     def available_modes(self) -> Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeResult']:
         """
-        What modes are supported
+        Supported modes
         """
         return pulumi.get(self, "available_modes")
 
@@ -1976,7 +1976,7 @@ class GetServerSpecificationsNetworkOlaResult(dict):
     @pulumi.getter(name="supportedModes")
     def supported_modes(self) -> Sequence[str]:
         """
-        (DEPRECATED) What modes are supported
+        Supported modes (DEPRECATED)
         """
         return pulumi.get(self, "supported_modes")
 
@@ -1988,9 +1988,9 @@ class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
                  interfaces: Sequence['outputs.GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult'],
                  name: str):
         """
-        :param bool default: Is it the default configuration of the server
+        :param bool default: Whether it is the default configuration of the server
         :param Sequence['GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs'] interfaces: Interface layout
-        :param str name: Mode name
+        :param str name: Switch name
         """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "interfaces", interfaces)
@@ -2000,7 +2000,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
     @pulumi.getter
     def default(self) -> bool:
         """
-        Is it the default configuration of the server
+        Whether it is the default configuration of the server
         """
         return pulumi.get(self, "default")
 
@@ -2016,7 +2016,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Mode name
+        Switch name
         """
         return pulumi.get(self, "name")
 
@@ -2030,7 +2030,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult(dict):
         """
         :param bool aggregation: Interface aggregation status
         :param float count: Interface count
-        :param str type: An enum describing OVH Link Aggregation interface types
+        :param str type: Bandwidth offer type (included┃standard)
         """
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "count", count)
@@ -2056,7 +2056,7 @@ class GetServerSpecificationsNetworkOlaAvailableModeInterfaceResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        An enum describing OVH Link Aggregation interface types
+        Bandwidth offer type (included┃standard)
         """
         return pulumi.get(self, "type")
 
@@ -2200,7 +2200,7 @@ class GetServerSpecificationsNetworkTrafficResult(dict):
         """
         :param 'GetServerSpecificationsNetworkTrafficInputQuotaSizeArgs' input_quota_size: Monthly input traffic quota allowed
         :param 'GetServerSpecificationsNetworkTrafficInputQuotaUsedArgs' input_quota_used: Monthly input traffic consumed this month
-        :param bool is_throttled: Is bandwidth throttleted for being over quota
+        :param bool is_throttled: Whether bandwidth is throttleted for being over quota
         :param 'GetServerSpecificationsNetworkTrafficOutputQuotaSizeArgs' output_quota_size: Monthly output traffic quota allowed
         :param 'GetServerSpecificationsNetworkTrafficOutputQuotaUsedArgs' output_quota_used: Monthly output traffic consumed this month
         :param str reset_quota_date: Next reset quota date for traffic counter
@@ -2232,7 +2232,7 @@ class GetServerSpecificationsNetworkTrafficResult(dict):
     @pulumi.getter(name="isThrottled")
     def is_throttled(self) -> bool:
         """
-        Is bandwidth throttleted for being over quota
+        Whether bandwidth is throttleted for being over quota
         """
         return pulumi.get(self, "is_throttled")
 
@@ -2342,7 +2342,7 @@ class GetServerSpecificationsNetworkVmacResult(dict):
     def __init__(__self__, *,
                  supported: bool):
         """
-        :param bool supported: Server is compatible vmac or not
+        :param bool supported: Whether server is compatible vmac
         """
         pulumi.set(__self__, "supported", supported)
 
@@ -2350,7 +2350,7 @@ class GetServerSpecificationsNetworkVmacResult(dict):
     @pulumi.getter
     def supported(self) -> bool:
         """
-        Server is compatible vmac or not
+        Whether server is compatible vmac
         """
         return pulumi.get(self, "supported")
 
@@ -2362,7 +2362,7 @@ class GetServerSpecificationsNetworkVrackResult(dict):
                  type: str):
         """
         :param 'GetServerSpecificationsNetworkVrackBandwidthArgs' bandwidth: vrack bandwidth limitation
-        :param str type: bandwidth offer type
+        :param str type: Bandwidth offer type (included┃standard)
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "type", type)
@@ -2379,7 +2379,7 @@ class GetServerSpecificationsNetworkVrackResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        bandwidth offer type
+        Bandwidth offer type (included┃standard)
         """
         return pulumi.get(self, "type")
 

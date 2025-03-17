@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve UUIDs of DBaas logs clusters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsClusters({
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ */
 export function getLogsClusters(args: GetLogsClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsClustersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Dbaas/getLogsClusters:getLogsClusters", {
@@ -15,6 +29,9 @@ export function getLogsClusters(args: GetLogsClustersArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getLogsClusters.
  */
 export interface GetLogsClustersArgs {
+    /**
+     * The service name. It's the ID of your Logs Data Platform instance.
+     */
     serviceName: string;
 }
 
@@ -28,8 +45,25 @@ export interface GetLogsClustersResult {
     readonly id: string;
     readonly serviceName: string;
     readonly urn: string;
+    /**
+     * is the cluster id
+     */
     readonly uuids: string[];
 }
+/**
+ * Use this data source to retrieve UUIDs of DBaas logs clusters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsClusters({
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ */
 export function getLogsClustersOutput(args: GetLogsClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsClustersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Dbaas/getLogsClusters:getLogsClusters", {
@@ -41,5 +75,8 @@ export function getLogsClustersOutput(args: GetLogsClustersOutputArgs, opts?: pu
  * A collection of arguments for invoking getLogsClusters.
  */
 export interface GetLogsClustersOutputArgs {
+    /**
+     * The service name. It's the ID of your Logs Data Platform instance.
+     */
     serviceName: pulumi.Input<string>;
 }

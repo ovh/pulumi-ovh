@@ -14,11 +14,11 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
     public sealed class GetCapabilitiesOptionResult
     {
         /// <summary>
-        /// Name of the option
+        /// Name of the plan.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Type of the option
+        /// Type of the option.
         /// </summary>
         public readonly string Type;
 

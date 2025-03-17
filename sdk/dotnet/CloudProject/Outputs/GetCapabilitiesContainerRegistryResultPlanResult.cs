@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetCapabilitiesContainerRegistryResultPlanResult
     {
         /// <summary>
-        /// Plan code from catalog
+        /// Plan code from the catalog
         /// </summary>
         public readonly string Code;
         /// <summary>

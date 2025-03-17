@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to list all the IAM resource types.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const types = ovh.Iam.getReferenceResourceType({});
+ * ```
+ */
 export function getReferenceResourceType(opts?: pulumi.InvokeOptions): Promise<GetReferenceResourceTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Iam/getReferenceResourceType:getReferenceResourceType", {
@@ -18,8 +30,23 @@ export interface GetReferenceResourceTypeResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of resource types
+     */
     readonly types: string[];
 }
+/**
+ * Use this data source to list all the IAM resource types.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const types = ovh.Iam.getReferenceResourceType({});
+ * ```
+ */
 export function getReferenceResourceTypeOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReferenceResourceTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Iam/getReferenceResourceType:getReferenceResourceType", {

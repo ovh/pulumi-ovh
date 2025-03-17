@@ -13,13 +13,13 @@ namespace Pulumi.Ovh.IpLoadBalancing.Inputs
     public sealed class HttpRouteRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the field to match like "protocol" or "host". See "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
+        /// Name of the field to match like "protocol" or "host" "/ipLoadbalancing/{serviceName}/route/availableRules" for a list of available rules
         /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }
 
         /// <summary>
-        /// Matching operator. Not all operators are available for all fields. See "/availableRules"
+        /// Matching operator. Not all operators are available for all fields. See "availableRules"
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }

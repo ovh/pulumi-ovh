@@ -14,23 +14,23 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
     public sealed class GetCapabilitiesEngineResult
     {
         /// <summary>
-        /// Default version used for the engine
+        /// Default version used for the engine.
         /// </summary>
         public readonly string DefaultVersion;
         /// <summary>
-        /// Description of the engine
+        /// Description of the plan.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Engine name
+        /// Name of the plan.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// SSL modes for this engine
+        /// SSL modes for this engine.
         /// </summary>
         public readonly ImmutableArray<string> SslModes;
         /// <summary>
-        /// Versions available for this engine
+        /// Versions available for this engine.
         /// </summary>
         public readonly ImmutableArray<string> Versions;
 

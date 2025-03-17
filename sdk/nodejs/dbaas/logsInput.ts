@@ -6,6 +6,48 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a dbaas logs input.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const logstash = ovh.Dbaas.getLogsInputEngine({
+ *     name: "logstash",
+ *     version: "7.x",
+ * });
+ * const stream = new ovh.dbaas.LogsOutputGraylogStream("stream", {
+ *     serviceName: "....",
+ *     title: "my stream",
+ *     description: "my graylog stream",
+ * });
+ * const input = new ovh.dbaas.LogsInput("input", {
+ *     serviceName: stream.serviceName,
+ *     description: stream.description,
+ *     title: stream.title,
+ *     engineId: logstash.then(logstash => logstash.id),
+ *     streamId: stream.id,
+ *     allowedNetworks: ["10.0.0.0/16"],
+ *     exposedPort: "6154",
+ *     nbInstance: 2,
+ *     configuration: {
+ *         logstash: {
+ *             inputSection: `  beats {
+ *     port => 6514
+ *     ssl => true
+ *     ssl_certificate => "/etc/ssl/private/server.crt"
+ *     ssl_key => "/etc/ssl/private/server.key"
+ *   }
+ * `,
+ *         },
+ *     },
+ * });
+ * ```
+ */
 export class LogsInput extends pulumi.CustomResource {
     /**
      * Get an existing LogsInput resource's state with the given name, ID, and optional extra
@@ -35,11 +77,11 @@ export class LogsInput extends pulumi.CustomResource {
     }
 
     /**
-     * IP blocks
+     * List of IP blocks
      */
     public readonly allowedNetworks!: pulumi.Output<string[]>;
     /**
-     * Whether the workload is auto-scaled
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
      */
     public readonly autoscale!: pulumi.Output<boolean | undefined>;
     /**
@@ -87,13 +129,16 @@ export class LogsInput extends pulumi.CustomResource {
      */
     public readonly minScaleInstance!: pulumi.Output<number | undefined>;
     /**
-     * Number of instance running
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      */
     public readonly nbInstance!: pulumi.Output<number | undefined>;
     /**
      * Input IP address
      */
     public /*out*/ readonly publicAddress!: pulumi.Output<string>;
+    /**
+     * service name
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
      * Input SSL certificate
@@ -204,11 +249,11 @@ export class LogsInput extends pulumi.CustomResource {
  */
 export interface LogsInputState {
     /**
-     * IP blocks
+     * List of IP blocks
      */
     allowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the workload is auto-scaled
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
      */
     autoscale?: pulumi.Input<boolean>;
     /**
@@ -256,13 +301,16 @@ export interface LogsInputState {
      */
     minScaleInstance?: pulumi.Input<number>;
     /**
-     * Number of instance running
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      */
     nbInstance?: pulumi.Input<number>;
     /**
      * Input IP address
      */
     publicAddress?: pulumi.Input<string>;
+    /**
+     * service name
+     */
     serviceName?: pulumi.Input<string>;
     /**
      * Input SSL certificate
@@ -291,11 +339,11 @@ export interface LogsInputState {
  */
 export interface LogsInputArgs {
     /**
-     * IP blocks
+     * List of IP blocks
      */
     allowedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the workload is auto-scaled
+     * Whether the workload is auto-scaled (mutually exclusive with parameter `nbInstance`)
      */
     autoscale?: pulumi.Input<boolean>;
     /**
@@ -323,9 +371,12 @@ export interface LogsInputArgs {
      */
     minScaleInstance?: pulumi.Input<number>;
     /**
-     * Number of instance running
+     * Number of instance running (input, mutually exclusive with parameter `autoscale`)
      */
     nbInstance?: pulumi.Input<number>;
+    /**
+     * service name
+     */
     serviceName: pulumi.Input<string>;
     /**
      * Associated Graylog stream

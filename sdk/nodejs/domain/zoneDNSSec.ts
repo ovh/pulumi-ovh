@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Enable / disable DNSSEC on a domain zone.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const dnssec = new ovh.domain.ZoneDNSSec("dnssec", {zoneName: "mysite.ovh"});
+ * ```
+ */
 export class ZoneDNSSec extends pulumi.CustomResource {
     /**
      * Get an existing ZoneDNSSec resource's state with the given name, ID, and optional extra
@@ -33,11 +45,11 @@ export class ZoneDNSSec extends pulumi.CustomResource {
     }
 
     /**
-     * DNSSEC Status
+     * DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The internal name of your zone
+     * The name of the domain zone
      */
     public readonly zoneName!: pulumi.Output<string>;
 
@@ -74,11 +86,11 @@ export class ZoneDNSSec extends pulumi.CustomResource {
  */
 export interface ZoneDNSSecState {
     /**
-     * DNSSEC Status
+     * DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
      */
     status?: pulumi.Input<string>;
     /**
-     * The internal name of your zone
+     * The name of the domain zone
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -88,7 +100,7 @@ export interface ZoneDNSSecState {
  */
 export interface ZoneDNSSecArgs {
     /**
-     * The internal name of your zone
+     * The name of the domain zone
      */
     zoneName: pulumi.Input<string>;
 }

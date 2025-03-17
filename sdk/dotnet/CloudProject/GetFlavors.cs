@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetFlavors
     {
+        /// <summary>
+        /// Retrieves the available flavors on the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavors = Ovh.CloudProject.GetFlavors.Invoke(new()
+        ///     {
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetFlavorsResult> InvokeAsync(GetFlavorsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlavorsResult>("ovh:CloudProject/getFlavors:getFlavors", args ?? new GetFlavorsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the available flavors on the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavors = Ovh.CloudProject.GetFlavors.Invoke(new()
+        ///     {
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetFlavorsResult> Invoke(GetFlavorsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlavorsResult>("ovh:CloudProject/getFlavors:getFlavors", args ?? new GetFlavorsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the available flavors on the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavors = Ovh.CloudProject.GetFlavors.Invoke(new()
+        ///     {
+        ///         ServiceName = "YYYY",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetFlavorsResult> Invoke(GetFlavorsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlavorsResult>("ovh:CloudProject/getFlavors:getFlavors", args ?? new GetFlavorsInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +87,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetFlavorsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Flavor region
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -38,9 +107,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetFlavorsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Flavor region
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -59,7 +134,13 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Flavor region
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// Service name
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

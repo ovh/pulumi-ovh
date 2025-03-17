@@ -4,6 +4,45 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a log subscription for a cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * Create a log subscription for a database.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const stream = ovh.Dbaas.getLogsOutputGraylogStream({
+ *     serviceName: "ldp-xx-xxxxx",
+ *     title: "my stream",
+ * });
+ * const db = ovh.CloudProjectDatabase.getDatabase({
+ *     serviceName: "XXX",
+ *     engine: "YYY",
+ *     id: "ZZZ",
+ * });
+ * const subscription = new ovh.cloudprojectdatabase.LogSubscription("subscription", {
+ *     serviceName: db.then(db => db.serviceName),
+ *     engine: db.then(db => db.engine),
+ *     clusterId: db.then(db => db.id),
+ *     streamId: stream.then(stream => stream.id),
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud Managed clusters logs subscription can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the subscription, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProjectDatabase/logSubscription:LogSubscription sub service_name/engine/cluster_id/id
+ * ```
+ */
 export class LogSubscription extends pulumi.CustomResource {
     /**
      * Get an existing LogSubscription resource's state with the given name, ID, and optional extra
@@ -33,44 +72,49 @@ export class LogSubscription extends pulumi.CustomResource {
     }
 
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Creation date of the subscription
+     * Creation date of the subscription.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Name of the engine of the service
+     * The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * Log kind name of this subscription
+     * Log kind name of this subscription.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the destination log service
+     * Name of the destination log service.
      */
     public /*out*/ readonly ldpServiceName!: pulumi.Output<string>;
     /**
-     * Identifier of the operation
+     * Identifier of the operation.
      */
     public /*out*/ readonly operationId!: pulumi.Output<string>;
     /**
-     * Name of subscribed resource, where the logs come from
+     * Name of subscribed resource, where the logs come from.
      */
     public /*out*/ readonly resourceName!: pulumi.Output<string>;
     /**
-     * Type of subscribed resource, where the logs come from
+     * Type of subscribed resource, where the logs come from.
      */
     public /*out*/ readonly resourceType!: pulumi.Output<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Id of the target Log data platform stream
+     * Id of the target Log data platform stream.
      */
     public readonly streamId!: pulumi.Output<string>;
     /**
-     * Last update date of the subscription
+     * Last update date of the subscription.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -136,44 +180,49 @@ export class LogSubscription extends pulumi.CustomResource {
  */
 export interface LogSubscriptionState {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Creation date of the subscription
+     * Creation date of the subscription.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Name of the engine of the service
+     * The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine?: pulumi.Input<string>;
     /**
-     * Log kind name of this subscription
+     * Log kind name of this subscription.
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the destination log service
+     * Name of the destination log service.
      */
     ldpServiceName?: pulumi.Input<string>;
     /**
-     * Identifier of the operation
+     * Identifier of the operation.
      */
     operationId?: pulumi.Input<string>;
     /**
-     * Name of subscribed resource, where the logs come from
+     * Name of subscribed resource, where the logs come from.
      */
     resourceName?: pulumi.Input<string>;
     /**
-     * Type of subscribed resource, where the logs come from
+     * Type of subscribed resource, where the logs come from.
      */
     resourceType?: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName?: pulumi.Input<string>;
     /**
-     * Id of the target Log data platform stream
+     * Id of the target Log data platform stream.
      */
     streamId?: pulumi.Input<string>;
     /**
-     * Last update date of the subscription
+     * Last update date of the subscription.
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -183,16 +232,21 @@ export interface LogSubscriptionState {
  */
 export interface LogSubscriptionArgs {
     /**
-     * Id of the database cluster
+     * Cluster ID.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Name of the engine of the service
+     * The database engine for which you want to manage a subscription. To get a full list of available engine visit.
+     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
     /**
-     * Id of the target Log data platform stream
+     * Id of the target Log data platform stream.
      */
     streamId: pulumi.Input<string>;
 }

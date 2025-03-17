@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Create a new IP whitelist on your private cloud database instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const ip = new ovh.hosting.PrivateDatabaseAllowlist("ip", {
+ *     ip: "1.2.3.4",
+ *     service: true,
+ *     serviceName: "XXXXXX",
+ *     sftp: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud database whitelist can be imported using the `service_name` and the `ip`, separated by "/" E.g.,
+ *
+ * ```sh
+ * $ pulumi import ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist ip service_name/ip
+ * ```
+ */
 export class PrivateDatabaseAllowlist extends pulumi.CustomResource {
     /**
      * Get an existing PrivateDatabaseAllowlist resource's state with the given name, ID, and optional extra
@@ -33,23 +58,23 @@ export class PrivateDatabaseAllowlist extends pulumi.CustomResource {
     }
 
     /**
-     * The whitelisted IP in your instance
+     * The whitelisted IP in your instance.
      */
     public readonly ip!: pulumi.Output<string>;
     /**
-     * Custom name for your Whitelisted IP
+     * Custom name for your Whitelisted IP.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Authorize this IP to access service port
+     * Authorize this IP to access service port. Values can be `true` or `false`
      */
     public readonly service!: pulumi.Output<boolean>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Authorize this IP to access SFTP port
+     * Authorize this IP to access SFTP port. Values can be `true` or `false`
      */
     public readonly sftp!: pulumi.Output<boolean>;
 
@@ -101,23 +126,23 @@ export class PrivateDatabaseAllowlist extends pulumi.CustomResource {
  */
 export interface PrivateDatabaseAllowlistState {
     /**
-     * The whitelisted IP in your instance
+     * The whitelisted IP in your instance.
      */
     ip?: pulumi.Input<string>;
     /**
-     * Custom name for your Whitelisted IP
+     * Custom name for your Whitelisted IP.
      */
     name?: pulumi.Input<string>;
     /**
-     * Authorize this IP to access service port
+     * Authorize this IP to access service port. Values can be `true` or `false`
      */
     service?: pulumi.Input<boolean>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Authorize this IP to access SFTP port
+     * Authorize this IP to access SFTP port. Values can be `true` or `false`
      */
     sftp?: pulumi.Input<boolean>;
 }
@@ -127,23 +152,23 @@ export interface PrivateDatabaseAllowlistState {
  */
 export interface PrivateDatabaseAllowlistArgs {
     /**
-     * The whitelisted IP in your instance
+     * The whitelisted IP in your instance.
      */
     ip: pulumi.Input<string>;
     /**
-     * Custom name for your Whitelisted IP
+     * Custom name for your Whitelisted IP.
      */
     name?: pulumi.Input<string>;
     /**
-     * Authorize this IP to access service port
+     * Authorize this IP to access service port. Values can be `true` or `false`
      */
     service: pulumi.Input<boolean>;
     /**
-     * The internal name of your private database
+     * The internal name of your private database.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Authorize this IP to access SFTP port
+     * Authorize this IP to access SFTP port. Values can be `true` or `false`
      */
     sftp: pulumi.Input<boolean>;
 }

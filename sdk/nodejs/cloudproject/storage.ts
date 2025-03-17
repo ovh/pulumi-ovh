@@ -6,6 +6,53 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Create S3™* compatible storage container
+ * (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const storage = new ovh.cloudproject.Storage("storage", {
+ *     regionName: "GRA",
+ *     serviceName: "<public cloud project ID>",
+ *     versioning: {
+ *         status: "enabled",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+ *
+ * Using the following configuration:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   id = "<service_name>/<region_name>/<name>"
+ *
+ *   to = ovh_cloud_project_storage.storage
+ *
+ * }
+ *
+ * You can then run:
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=storage.tf
+ *
+ * $ pulumi up
+ *
+ * The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+ *
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ */
 export class Storage extends pulumi.CustomResource {
     /**
      * Get an existing Storage resource's state with the given name, ID, and optional extra

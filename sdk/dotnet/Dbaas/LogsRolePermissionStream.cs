@@ -9,6 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
+    /// <summary>
+    /// Reference a DBaaS logs role stream permission.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var permission = new Ovh.Dbaas.LogsRolePermissionStream("permission", new()
+    ///     {
+    ///         ServiceName = "ldp-xx-xxxxx",
+    ///         RoleId = ovh_dbaas_logs_role.Ro.Id,
+    ///         StreamId = ovh_dbaas_logs_output_graylog_stream.Mystream.Stream_id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream")]
     public partial class LogsRolePermissionStream : global::Pulumi.CustomResource
     {
@@ -25,19 +58,19 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> PermissionType { get; private set; } = null!;
 
         /// <summary>
-        /// Role ID to which the permission will be appended
+        /// The DBaaS Logs role id
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// The service name
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Graylog stream ID to be associated as a permission
+        /// The DBaaS Logs Graylog output stream id
         /// </summary>
         [Output("streamId")]
         public Output<string> StreamId { get; private set; } = null!;
@@ -90,19 +123,19 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class LogsRolePermissionStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Role ID to which the permission will be appended
+        /// The DBaaS Logs role id
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// The service name
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Graylog stream ID to be associated as a permission
+        /// The DBaaS Logs Graylog output stream id
         /// </summary>
         [Input("streamId", required: true)]
         public Input<string> StreamId { get; set; } = null!;
@@ -128,19 +161,19 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? PermissionType { get; set; }
 
         /// <summary>
-        /// Role ID to which the permission will be appended
+        /// The DBaaS Logs role id
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// Service name
+        /// The service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Graylog stream ID to be associated as a permission
+        /// The DBaaS Logs Graylog output stream id
         /// </summary>
         [Input("streamId")]
         public Input<string>? StreamId { get; set; }

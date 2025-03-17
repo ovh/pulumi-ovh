@@ -11,12 +11,78 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetRancher
     {
+        /// <summary>
+        /// Retrieve information about a Managed Rancher Service in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rancher = Ovh.CloudProject.GetRancher.Invoke(new()
+        ///     {
+        ///         Id = "&lt;Rancher service ID&gt;",
+        ///         ProjectId = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRancherResult> InvokeAsync(GetRancherArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRancherResult>("ovh:CloudProject/getRancher:getRancher", args ?? new GetRancherArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieve information about a Managed Rancher Service in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rancher = Ovh.CloudProject.GetRancher.Invoke(new()
+        ///     {
+        ///         Id = "&lt;Rancher service ID&gt;",
+        ///         ProjectId = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRancherResult> Invoke(GetRancherInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRancherResult>("ovh:CloudProject/getRancher:getRancher", args ?? new GetRancherInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieve information about a Managed Rancher Service in the given public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rancher = Ovh.CloudProject.GetRancher.Invoke(new()
+        ///     {
+        ///         Id = "&lt;Rancher service ID&gt;",
+        ///         ProjectId = "&lt;public cloud project ID&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRancherResult> Invoke(GetRancherInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRancherResult>("ovh:CloudProject/getRancher:getRancher", args ?? new GetRancherInvokeArgs(), options.WithDefaults());
     }
@@ -24,9 +90,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRancherArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        /// <summary>
+        /// Project ID
+        /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
@@ -38,9 +110,15 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetRancherInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// Project ID
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -54,13 +132,37 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetRancherResult
     {
+        /// <summary>
+        /// Date of the managed Rancher service creation
+        /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Current configuration applied to the managed Rancher service
+        /// </summary>
         public readonly Outputs.GetRancherCurrentStateResult CurrentState;
+        /// <summary>
+        /// Asynchronous operations ongoing on the managed Rancher service
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRancherCurrentTaskResult> CurrentTasks;
+        /// <summary>
+        /// Unique identifier
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Project ID
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
+        /// </summary>
         public readonly string ResourceStatus;
+        /// <summary>
+        /// Last target specification of the managed Rancher service
+        /// </summary>
         public readonly Outputs.GetRancherTargetSpecResult TargetSpec;
+        /// <summary>
+        /// Date of the last managed Rancher service update
+        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]

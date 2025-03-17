@@ -83,41 +83,65 @@ class GetServerSpecificationsHardwareResult:
     @property
     @pulumi.getter(name="bootMode")
     def boot_mode(self) -> str:
+        """
+        Server boot mode
+        """
         return pulumi.get(self, "boot_mode")
 
     @property
     @pulumi.getter(name="coresPerProcessor")
     def cores_per_processor(self) -> float:
+        """
+        Number of cores per processor
+        """
         return pulumi.get(self, "cores_per_processor")
 
     @property
     @pulumi.getter(name="defaultHardwareRaidSize")
     def default_hardware_raid_size(self) -> 'outputs.GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult':
+        """
+        Default hardware raid size for this disk group
+        """
         return pulumi.get(self, "default_hardware_raid_size")
 
     @property
     @pulumi.getter(name="defaultHardwareRaidType")
     def default_hardware_raid_type(self) -> str:
+        """
+        Default hardware raid type for this disk group
+        """
         return pulumi.get(self, "default_hardware_raid_type")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Expansion card description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="diskGroups")
     def disk_groups(self) -> Sequence['outputs.GetServerSpecificationsHardwareDiskGroupResult']:
+        """
+        Details about the groups of disks in the server
+        """
         return pulumi.get(self, "disk_groups")
 
     @property
     @pulumi.getter(name="expansionCards")
     def expansion_cards(self) -> Sequence['outputs.GetServerSpecificationsHardwareExpansionCardResult']:
+        """
+        Details about the server's expansion cards
+        """
         return pulumi.get(self, "expansion_cards")
 
     @property
     @pulumi.getter(name="formFactor")
     def form_factor(self) -> str:
+        """
+        Server form factor
+        """
         return pulumi.get(self, "form_factor")
 
     @property
@@ -131,26 +155,41 @@ class GetServerSpecificationsHardwareResult:
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> 'outputs.GetServerSpecificationsHardwareMemorySizeResult':
+        """
+        RAM capacity
+        """
         return pulumi.get(self, "memory_size")
 
     @property
     @pulumi.getter
     def motherboard(self) -> str:
+        """
+        Server motherboard
+        """
         return pulumi.get(self, "motherboard")
 
     @property
     @pulumi.getter(name="numberOfProcessors")
     def number_of_processors(self) -> float:
+        """
+        Number of processors in this dedicated server
+        """
         return pulumi.get(self, "number_of_processors")
 
     @property
     @pulumi.getter(name="processorArchitecture")
     def processor_architecture(self) -> str:
+        """
+        Processor architecture bit
+        """
         return pulumi.get(self, "processor_architecture")
 
     @property
     @pulumi.getter(name="processorName")
     def processor_name(self) -> str:
+        """
+        Processor name
+        """
         return pulumi.get(self, "processor_name")
 
     @property
@@ -161,11 +200,17 @@ class GetServerSpecificationsHardwareResult:
     @property
     @pulumi.getter(name="threadsPerProcessor")
     def threads_per_processor(self) -> float:
+        """
+        Number of threads per processor
+        """
         return pulumi.get(self, "threads_per_processor")
 
     @property
     @pulumi.getter(name="usbKeys")
     def usb_keys(self) -> Sequence['outputs.GetServerSpecificationsHardwareUsbKeyResult']:
+        """
+        Capacity of the USB keys installed on your server, if any
+        """
         return pulumi.get(self, "usb_keys")
 
 
@@ -197,7 +242,19 @@ class AwaitableGetServerSpecificationsHardwareResult(GetServerSpecificationsHard
 def get_server_specifications_hardware(service_name: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerSpecificationsHardwareResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the hardward information about a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    spec = ovh.Dedicated.get_server_specifications_hardware(service_name="myserver")
+    ```
+
+
+    :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -225,7 +282,19 @@ def get_server_specifications_hardware(service_name: Optional[str] = None,
 def get_server_specifications_hardware_output(service_name: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerSpecificationsHardwareResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the hardward information about a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    spec = ovh.Dedicated.get_server_specifications_hardware(service_name="myserver")
+    ```
+
+
+    :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

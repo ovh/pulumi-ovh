@@ -68,6 +68,9 @@ class GetCartProductOptionsResult:
     @property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> str:
+        """
+        Product offer identifier
+        """
         return pulumi.get(self, "plan_code")
 
     @property
@@ -78,6 +81,9 @@ class GetCartProductOptionsResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetCartProductOptionsResultResult']:
+        """
+        products results
+        """
         return pulumi.get(self, "results")
 
 
@@ -101,7 +107,26 @@ def get_cart_product_options(cart_id: Optional[str] = None,
                              product: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCartProductOptionsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information of order cart product options.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    options = ovh.Order.get_cart_product_options(cart_id=my_cart.id,
+        product="cloud",
+        plan_code="project")
+    ```
+
+
+    :param str cart_id: Cart identifier
+    :param str catalog_name: Catalog name
+    :param str plan_code: Product offer identifier
+    :param str product: Product
     """
     __args__ = dict()
     __args__['cartId'] = cart_id
@@ -124,7 +149,26 @@ def get_cart_product_options_output(cart_id: Optional[pulumi.Input[str]] = None,
                                     product: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCartProductOptionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information of order cart product options.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
+    options = ovh.Order.get_cart_product_options(cart_id=my_cart.id,
+        product="cloud",
+        plan_code="project")
+    ```
+
+
+    :param str cart_id: Cart identifier
+    :param str catalog_name: Catalog name
+    :param str plan_code: Product offer identifier
+    :param str product: Product
     """
     __args__ = dict()
     __args__['cartId'] = cart_id

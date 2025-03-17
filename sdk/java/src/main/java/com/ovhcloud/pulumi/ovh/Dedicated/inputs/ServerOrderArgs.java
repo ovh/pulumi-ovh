@@ -25,17 +25,9 @@ public final class ServerOrderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.date);
     }
 
-    /**
-     * Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-     * 
-     */
     @Import(name="details")
     private @Nullable Output<List<ServerOrderDetailArgs>> details;
 
-    /**
-     * @return Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-     * 
-     */
     public Optional<Output<List<ServerOrderDetailArgs>>> details() {
         return Optional.ofNullable(this.details);
     }
@@ -90,33 +82,15 @@ public final class ServerOrderArgs extends com.pulumi.resources.ResourceArgs {
             return date(Output.of(date));
         }
 
-        /**
-         * @param details Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-         * 
-         * @return builder
-         * 
-         */
         public Builder details(@Nullable Output<List<ServerOrderDetailArgs>> details) {
             $.details = details;
             return this;
         }
 
-        /**
-         * @param details Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-         * 
-         * @return builder
-         * 
-         */
         public Builder details(List<ServerOrderDetailArgs> details) {
             return details(Output.of(details));
         }
 
-        /**
-         * @param details Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-         * 
-         * @return builder
-         * 
-         */
         public Builder details(ServerOrderDetailArgs... details) {
             return details(List.of(details));
         }

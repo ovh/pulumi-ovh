@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a OVHcloud IP reverse.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * // Set the reverse of an IP
+ * const test = new ovh.ip.Reverse("test", {
+ *     ip: "192.0.2.0/24",
+ *     ReverseIp: "192.0.2.1",
+ *     ReverseValue: "example.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The resource can be imported using the `ip`, `ip_reverse` of the address, separated by "|" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Ip/reverse:Reverse my_reverse '2001:0db8:c0ff:ee::/64|2001:0db8:c0ff:ee::42'
+ * ```
+ */
 export class Reverse extends pulumi.CustomResource {
     /**
      * Get an existing Reverse resource's state with the given name, ID, and optional extra
@@ -32,8 +59,17 @@ export class Reverse extends pulumi.CustomResource {
         return obj['__pulumiType'] === Reverse.__pulumiType;
     }
 
+    /**
+     * The IP to set the reverse of
+     */
     public readonly ReverseIp!: pulumi.Output<string>;
+    /**
+     * The value of the reverse
+     */
     public readonly ReverseValue!: pulumi.Output<string>;
+    /**
+     * The IP block to which the IP belongs
+     */
     public readonly ip!: pulumi.Output<string>;
 
     /**
@@ -76,8 +112,17 @@ export class Reverse extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Reverse resources.
  */
 export interface ReverseState {
+    /**
+     * The IP to set the reverse of
+     */
     ReverseIp?: pulumi.Input<string>;
+    /**
+     * The value of the reverse
+     */
     ReverseValue?: pulumi.Input<string>;
+    /**
+     * The IP block to which the IP belongs
+     */
     ip?: pulumi.Input<string>;
 }
 
@@ -85,7 +130,16 @@ export interface ReverseState {
  * The set of arguments for constructing a Reverse resource.
  */
 export interface ReverseArgs {
+    /**
+     * The IP to set the reverse of
+     */
     ReverseIp: pulumi.Input<string>;
+    /**
+     * The value of the reverse
+     */
     ReverseValue: pulumi.Input<string>;
+    /**
+     * The IP block to which the IP belongs
+     */
     ip: pulumi.Input<string>;
 }

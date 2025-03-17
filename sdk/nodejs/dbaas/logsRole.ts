@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Reference a DBaaS logs role.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const ro = new ovh.dbaas.LogsRole("ro", {
+ *     description: "Devops - RO",
+ *     serviceName: "ldp-xx-xxxxx",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * OVHcloud DBaaS Log Role can be imported using the `service_name` and `role_id` of the role, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+ * ```
+ */
 export class LogsRole extends pulumi.CustomResource {
     /**
      * Get an existing LogsRole resource's state with the given name, ID, and optional extra
@@ -45,11 +70,11 @@ export class LogsRole extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of members in the role
+     * number of member for the role
      */
     public /*out*/ readonly nbMember!: pulumi.Output<number>;
     /**
-     * Number of permissions assigned to the role
+     * number of configured permission for the role
      */
     public /*out*/ readonly nbPermission!: pulumi.Output<number>;
     /**
@@ -125,11 +150,11 @@ export interface LogsRoleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of members in the role
+     * number of member for the role
      */
     nbMember?: pulumi.Input<number>;
     /**
-     * Number of permissions assigned to the role
+     * number of configured permission for the role
      */
     nbPermission?: pulumi.Input<number>;
     /**

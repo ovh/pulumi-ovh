@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get the list of VPS associated with your OVH Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.Vps.getVpss({});
+ * ```
+ */
 export function getVpss(opts?: pulumi.InvokeOptions): Promise<GetVpssResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:Vps/getVpss:getVpss", {
@@ -18,8 +30,23 @@ export interface GetVpssResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The list of VPS IDs associated with your OVH Account.
+     */
     readonly results: string[];
 }
+/**
+ * Use this data source to get the list of VPS associated with your OVH Account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const servers = ovh.Vps.getVpss({});
+ * ```
+ */
 export function getVpssOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpssResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:Vps/getVpss:getVpss", {

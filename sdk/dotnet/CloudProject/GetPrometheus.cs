@@ -11,12 +11,93 @@ namespace Pulumi.Ovh.CloudProject
 {
     public static class GetPrometheus
     {
+        /// <summary>
+        /// Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prometheus = Ovh.CloudProject.GetPrometheus.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["name"] = prometheus.Apply(getPrometheusResult =&gt; getPrometheusResult.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPrometheusResult> InvokeAsync(GetPrometheusArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusResult>("ovh:CloudProject/getPrometheus:getPrometheus", args ?? new GetPrometheusArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prometheus = Ovh.CloudProject.GetPrometheus.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["name"] = prometheus.Apply(getPrometheusResult =&gt; getPrometheusResult.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPrometheusResult> Invoke(GetPrometheusInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusResult>("ovh:CloudProject/getPrometheus:getPrometheus", args ?? new GetPrometheusInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prometheus = Ovh.CloudProject.GetPrometheus.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///         Engine = "YYY",
+        ///         ClusterId = "ZZZ",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["name"] = prometheus.Apply(getPrometheusResult =&gt; getPrometheusResult.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPrometheusResult> Invoke(GetPrometheusInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusResult>("ovh:CloudProject/getPrometheus:getPrometheus", args ?? new GetPrometheusInvokeArgs(), options.WithDefaults());
     }
@@ -24,12 +105,24 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetPrometheusArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The engine of the database cluster you want user information. To get a full list of available engine visit :
+        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
+        /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -41,12 +134,24 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetPrometheusInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Cluster ID
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The engine of the database cluster you want user information. To get a full list of available engine visit :
+        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// Available engines:
+        /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -60,14 +165,31 @@ namespace Pulumi.Ovh.CloudProject
     [OutputType]
     public sealed class GetPrometheusResult
     {
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string Engine;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// List of all endpoint targets.
+        /// * `Host` - Host of the endpoint.
+        /// * `Port` - Connection port for the endpoint.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPrometheusTargetResult> Targets;
+        /// <summary>
+        /// name of the prometheus user.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

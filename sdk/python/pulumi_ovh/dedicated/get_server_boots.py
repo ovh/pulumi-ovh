@@ -64,6 +64,9 @@ class GetServerBootsResult:
     @property
     @pulumi.getter
     def results(self) -> Sequence[int]:
+        """
+        The list of dedicated server netboots.
+        """
         return pulumi.get(self, "results")
 
     @property
@@ -90,7 +93,22 @@ def get_server_boots(boot_type: Optional[str] = None,
                      service_name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerBootsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
+        service_name="myserver")
+    ```
+
+
+    :param str boot_type: Filter the value of bootType property (harddisk, rescue, internal, network)
+    :param str kernel: Filter the value of kernel property (iPXE script name)
+    :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
     __args__['bootType'] = boot_type
@@ -110,7 +128,22 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
                             service_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBootsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
+        service_name="myserver")
+    ```
+
+
+    :param str boot_type: Filter the value of bootType property (harddisk, rescue, internal, network)
+    :param str kernel: Filter the value of kernel property (iPXE script name)
+    :param str service_name: The internal name of your dedicated server.
     """
     __args__ = dict()
     __args__['bootType'] = boot_type

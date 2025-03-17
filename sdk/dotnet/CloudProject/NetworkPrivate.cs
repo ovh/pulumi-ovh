@@ -9,33 +9,98 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
+    /// <summary>
+    /// Creates a private network in a public cloud project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Ovh.CloudProject.NetworkPrivate("net", new()
+    ///     {
+    ///         Regions = new[]
+    ///         {
+    ///             "GRA1",
+    ///             "BHS1",
+    ///         },
+    ///         ServiceName = "XXXXXX",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Private network in a public cloud project can be imported using the `service_name` and the `network_id` as `pn-xxxx` format, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/networkPrivate:NetworkPrivate mynet service_name/network_id
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:CloudProject/networkPrivate:NetworkPrivate")]
     public partial class NetworkPrivate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the network.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// an array of valid OVHcloud public cloud region ID in which the network
+        /// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+        /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
+        /// <summary>
+        /// A map representing information about the region.
+        /// * `regions_attributes/region` - The id of the region.
+        /// * `regions_attributes/status` - The status of the network in the region.
+        /// * `regions_attributes/openstackid` - The private network id in the region.
+        /// </summary>
         [Output("regionsAttributes")]
         public Output<ImmutableArray<Outputs.NetworkPrivateRegionsAttribute>> RegionsAttributes { get; private set; } = null!;
 
+        /// <summary>
+        /// (Deprecated) A map representing the status of the network per region.
+        /// * `regions_status/region` - (Deprecated) The id of the region.
+        /// * `regions_status/status` - (Deprecated) The status of the network in the region.
+        /// </summary>
         [Output("regionsStatuses")]
         public Output<ImmutableArray<Outputs.NetworkPrivateRegionsStatus>> RegionsStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        /// <summary>
+        /// the status of the network. should be normally set to 'ACTIVE'.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// the type of the network. Either 'private' or 'public'.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// a vlan id to associate with the network.
+        /// Changing this value recreates the resource. Defaults to 0.
+        /// </summary>
         [Output("vlanId")]
         public Output<int?> VlanId { get; private set; } = null!;
 
@@ -86,11 +151,19 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class NetworkPrivateArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the network.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("regions")]
         private InputList<string>? _regions;
+
+        /// <summary>
+        /// an array of valid OVHcloud public cloud region ID in which the network
+        /// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+        /// </summary>
         public InputList<string> Regions
         {
             get => _regions ?? (_regions = new InputList<string>());
@@ -98,11 +171,16 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// a vlan id to associate with the network.
+        /// Changing this value recreates the resource. Defaults to 0.
+        /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
 
@@ -114,11 +192,19 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class NetworkPrivateState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the network.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("regions")]
         private InputList<string>? _regions;
+
+        /// <summary>
+        /// an array of valid OVHcloud public cloud region ID in which the network
+        /// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+        /// </summary>
         public InputList<string> Regions
         {
             get => _regions ?? (_regions = new InputList<string>());
@@ -127,6 +213,13 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("regionsAttributes")]
         private InputList<Inputs.NetworkPrivateRegionsAttributeGetArgs>? _regionsAttributes;
+
+        /// <summary>
+        /// A map representing information about the region.
+        /// * `regions_attributes/region` - The id of the region.
+        /// * `regions_attributes/status` - The status of the network in the region.
+        /// * `regions_attributes/openstackid` - The private network id in the region.
+        /// </summary>
         public InputList<Inputs.NetworkPrivateRegionsAttributeGetArgs> RegionsAttributes
         {
             get => _regionsAttributes ?? (_regionsAttributes = new InputList<Inputs.NetworkPrivateRegionsAttributeGetArgs>());
@@ -135,6 +228,12 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("regionsStatuses")]
         private InputList<Inputs.NetworkPrivateRegionsStatusGetArgs>? _regionsStatuses;
+
+        /// <summary>
+        /// (Deprecated) A map representing the status of the network per region.
+        /// * `regions_status/region` - (Deprecated) The id of the region.
+        /// * `regions_status/status` - (Deprecated) The status of the network in the region.
+        /// </summary>
         [Obsolete(@"use the regions_attributes field instead")]
         public InputList<Inputs.NetworkPrivateRegionsStatusGetArgs> RegionsStatuses
         {
@@ -143,17 +242,28 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Service name of the resource representing the id of the cloud project.
+        /// The id of the public cloud project. If omitted,
+        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// the status of the network. should be normally set to 'ACTIVE'.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// the type of the network. Either 'private' or 'public'.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// a vlan id to associate with the network.
+        /// Changing this value recreates the resource. Defaults to 0.
+        /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
 

@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class ContainerRegistryPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Plan code from catalog
+        /// Plan code from the catalog
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Plan name
+        /// Registry name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         }
 
         /// <summary>
-        /// Plan last update date
+        /// Registry last update date
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

@@ -54,6 +54,9 @@ class GetUsersResult:
     @property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
+        """
+        The list of users of a public cloud project.
+        """
         return pulumi.get(self, "users")
 
 
@@ -71,7 +74,24 @@ class AwaitableGetUsersResult(GetUsersResult):
 def get_users(service_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Use this data source to access information about an existing resource.
+    Get the list of all users of a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    pulumi.export("userId", s3_user_id)
+    ```
+
+
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -85,7 +105,24 @@ def get_users(service_name: Optional[str] = None,
 def get_users_output(service_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get the list of all users of a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    project_users = ovh.CloudProject.get_users(service_name="XXX")
+    # Get the user ID of a previously created user with the description "S3-User"
+    users = [user.user_id for user in project_users.users if user.description == "S3-User"]
+    s3_user_id = users[0]
+    pulumi.export("userId", s3_user_id)
+    ```
+
+
+    :param str service_name: The ID of the public cloud project. If omitted,
+           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

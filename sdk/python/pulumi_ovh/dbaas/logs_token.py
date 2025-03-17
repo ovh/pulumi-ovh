@@ -24,9 +24,9 @@ class LogsTokenArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogsToken resource.
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] cluster_id: Cluster ID
-        :param pulumi.Input[str] name: Token name
+        :param pulumi.Input[str] service_name: The LDP service name
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
+        :param pulumi.Input[str] name: Name of the token
         """
         pulumi.set(__self__, "service_name", service_name)
         if cluster_id is not None:
@@ -38,7 +38,7 @@ class LogsTokenArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service name
+        The LDP service name
         """
         return pulumi.get(self, "service_name")
 
@@ -50,7 +50,7 @@ class LogsTokenArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID
+        Cluster ID. If not provided, the default cluster_id is used
         """
         return pulumi.get(self, "cluster_id")
 
@@ -62,7 +62,7 @@ class LogsTokenArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Token name
+        Name of the token
         """
         return pulumi.get(self, "name")
 
@@ -83,12 +83,12 @@ class _LogsTokenState:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogsToken resources.
-        :param pulumi.Input[str] cluster_id: Cluster ID
-        :param pulumi.Input[str] created_at: Token creation
-        :param pulumi.Input[str] name: Token name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] token_id: Token used
-        :param pulumi.Input[str] updated_at: Token last update
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
+        :param pulumi.Input[str] created_at: Token creation date
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[str] service_name: The LDP service name
+        :param pulumi.Input[str] token_id: ID of the token
+        :param pulumi.Input[str] updated_at: Token last update date
         :param pulumi.Input[str] value: Token value
         """
         if cluster_id is not None:
@@ -110,7 +110,7 @@ class _LogsTokenState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster ID
+        Cluster ID. If not provided, the default cluster_id is used
         """
         return pulumi.get(self, "cluster_id")
 
@@ -122,7 +122,7 @@ class _LogsTokenState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Token creation
+        Token creation date
         """
         return pulumi.get(self, "created_at")
 
@@ -134,7 +134,7 @@ class _LogsTokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Token name
+        Name of the token
         """
         return pulumi.get(self, "name")
 
@@ -146,7 +146,7 @@ class _LogsTokenState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service name
+        The LDP service name
         """
         return pulumi.get(self, "service_name")
 
@@ -158,7 +158,7 @@ class _LogsTokenState:
     @pulumi.getter(name="tokenId")
     def token_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Token used
+        ID of the token
         """
         return pulumi.get(self, "token_id")
 
@@ -170,7 +170,7 @@ class _LogsTokenState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Token last update
+        Token last update date
         """
         return pulumi.get(self, "updated_at")
 
@@ -201,12 +201,22 @@ class LogsToken(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LogsToken resource with the given unique name, props, and options.
+        Allows to manipulate LDP tokens.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        token = ovh.dbaas.LogsToken("token", service_name="ldp-xx-xxxxx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID
-        :param pulumi.Input[str] name: Token name
-        :param pulumi.Input[str] service_name: Service name
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[str] service_name: The LDP service name
         """
         ...
     @overload
@@ -215,7 +225,17 @@ class LogsToken(pulumi.CustomResource):
                  args: LogsTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogsToken resource with the given unique name, props, and options.
+        Allows to manipulate LDP tokens.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        token = ovh.dbaas.LogsToken("token", service_name="ldp-xx-xxxxx")
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogsTokenArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -278,12 +298,12 @@ class LogsToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: Cluster ID
-        :param pulumi.Input[str] created_at: Token creation
-        :param pulumi.Input[str] name: Token name
-        :param pulumi.Input[str] service_name: Service name
-        :param pulumi.Input[str] token_id: Token used
-        :param pulumi.Input[str] updated_at: Token last update
+        :param pulumi.Input[str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
+        :param pulumi.Input[str] created_at: Token creation date
+        :param pulumi.Input[str] name: Name of the token
+        :param pulumi.Input[str] service_name: The LDP service name
+        :param pulumi.Input[str] token_id: ID of the token
+        :param pulumi.Input[str] updated_at: Token last update date
         :param pulumi.Input[str] value: Token value
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -303,7 +323,7 @@ class LogsToken(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        Cluster ID
+        Cluster ID. If not provided, the default cluster_id is used
         """
         return pulumi.get(self, "cluster_id")
 
@@ -311,7 +331,7 @@ class LogsToken(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Token creation
+        Token creation date
         """
         return pulumi.get(self, "created_at")
 
@@ -319,7 +339,7 @@ class LogsToken(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Token name
+        Name of the token
         """
         return pulumi.get(self, "name")
 
@@ -327,7 +347,7 @@ class LogsToken(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service name
+        The LDP service name
         """
         return pulumi.get(self, "service_name")
 
@@ -335,7 +355,7 @@ class LogsToken(pulumi.CustomResource):
     @pulumi.getter(name="tokenId")
     def token_id(self) -> pulumi.Output[str]:
         """
-        Token used
+        ID of the token
         """
         return pulumi.get(self, "token_id")
 
@@ -343,7 +363,7 @@ class LogsToken(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        Token last update
+        Token last update date
         """
         return pulumi.get(self, "updated_at")
 

@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
 type Name struct {
 	pulumi.CustomResourceState
 
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-	// value
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
 	Checksum pulumi.StringOutput `pulumi:"checksum"`
 	// Current state of the domain name
 	CurrentState NameCurrentStateOutput `pulumi:"currentState"`
@@ -32,8 +32,7 @@ type Name struct {
 	OvhSubsidiary pulumi.StringPtrOutput    `pulumi:"ovhSubsidiary"`
 	PlanOptions   NamePlanOptionArrayOutput `pulumi:"planOptions"`
 	Plans         NamePlanArrayOutput       `pulumi:"plans"`
-	// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-	// `UPDATING` or `ERROR` status
+	// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
 	ResourceStatus pulumi.StringOutput `pulumi:"resourceStatus"`
 	// Latest target specification of the domain name resource.
 	TargetSpec NameTargetSpecOutput `pulumi:"targetSpec"`
@@ -72,8 +71,7 @@ func GetName(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Name resources.
 type nameState struct {
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-	// value
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
 	Checksum *string `pulumi:"checksum"`
 	// Current state of the domain name
 	CurrentState *NameCurrentState `pulumi:"currentState"`
@@ -89,16 +87,14 @@ type nameState struct {
 	OvhSubsidiary *string          `pulumi:"ovhSubsidiary"`
 	PlanOptions   []NamePlanOption `pulumi:"planOptions"`
 	Plans         []NamePlan       `pulumi:"plans"`
-	// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-	// `UPDATING` or `ERROR` status
+	// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
 	ResourceStatus *string `pulumi:"resourceStatus"`
 	// Latest target specification of the domain name resource.
 	TargetSpec *NameTargetSpec `pulumi:"targetSpec"`
 }
 
 type NameState struct {
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-	// value
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
 	Checksum pulumi.StringPtrInput
 	// Current state of the domain name
 	CurrentState NameCurrentStatePtrInput
@@ -114,8 +110,7 @@ type NameState struct {
 	OvhSubsidiary pulumi.StringPtrInput
 	PlanOptions   NamePlanOptionArrayInput
 	Plans         NamePlanArrayInput
-	// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-	// `UPDATING` or `ERROR` status
+	// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
 	ResourceStatus pulumi.StringPtrInput
 	// Latest target specification of the domain name resource.
 	TargetSpec NameTargetSpecPtrInput
@@ -126,8 +121,7 @@ func (NameState) ElementType() reflect.Type {
 }
 
 type nameArgs struct {
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-	// value
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
 	Checksum *string `pulumi:"checksum"`
 	// Domain name
 	DomainName string `pulumi:"domainName"`
@@ -141,8 +135,7 @@ type nameArgs struct {
 
 // The set of arguments for constructing a Name resource.
 type NameArgs struct {
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-	// value
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
 	Checksum pulumi.StringPtrInput
 	// Domain name
 	DomainName pulumi.StringInput
@@ -241,8 +234,7 @@ func (o NameOutput) ToNameOutputWithContext(ctx context.Context) NameOutput {
 	return o
 }
 
-// Computed hash used to control concurrent modification requests. Here, it represents the current target specification
-// value
+// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
 func (o NameOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v *Name) pulumi.StringOutput { return v.Checksum }).(pulumi.StringOutput)
 }
@@ -285,8 +277,7 @@ func (o NameOutput) Plans() NamePlanArrayOutput {
 	return o.ApplyT(func(v *Name) NamePlanArrayOutput { return v.Plans }).(NamePlanArrayOutput)
 }
 
-// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`,
-// `UPDATING` or `ERROR` status
+// Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
 func (o NameOutput) ResourceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Name) pulumi.StringOutput { return v.ResourceStatus }).(pulumi.StringOutput)
 }

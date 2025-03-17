@@ -51,6 +51,7 @@ import * as iploadbalancing from "./iploadbalancing";
 import * as me from "./me";
 import * as okms from "./okms";
 import * as order from "./order";
+import * as ovhcloud from "./ovhcloud";
 import * as savingsplan from "./savingsplan";
 import * as types from "./types";
 import * as vps from "./vps";
@@ -71,6 +72,7 @@ export {
     me,
     okms,
     order,
+    ovhcloud,
     savingsplan,
     types,
     vps,

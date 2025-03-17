@@ -7,10 +7,35 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the list of Vrack IDs available for your OVHcloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vrack.GetVracks(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVracks(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVracksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVracksResult
@@ -24,7 +49,8 @@ func GetVracks(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVracksResu
 // A collection of values returned by getVracks.
 type GetVracksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id      string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The list of vrack service name available for your OVHcloud account.
 	Results []string `pulumi:"results"`
 }
 
@@ -55,6 +81,7 @@ func (o GetVracksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVracksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of vrack service name available for your OVHcloud account.
 func (o GetVracksResultOutput) Results() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVracksResult) []string { return v.Results }).(pulumi.StringArrayOutput)
 }

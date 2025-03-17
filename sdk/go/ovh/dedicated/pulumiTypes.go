@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,7 +16,7 @@ var _ = internal.GetEnvOrDefault
 type ServerCustomizations struct {
 	// Config Drive UserData
 	ConfigDriveUserData *string `pulumi:"configDriveUserData"`
-	// Path of the EFI bootloader from the OS installed on the server
+	// Path of the EFI bootloader
 	EfiBootloaderPath *string `pulumi:"efiBootloaderPath"`
 	// Custom hostname
 	Hostname *string `pulumi:"hostname"`
@@ -54,7 +54,7 @@ type ServerCustomizationsInput interface {
 type ServerCustomizationsArgs struct {
 	// Config Drive UserData
 	ConfigDriveUserData pulumi.StringPtrInput `pulumi:"configDriveUserData"`
-	// Path of the EFI bootloader from the OS installed on the server
+	// Path of the EFI bootloader
 	EfiBootloaderPath pulumi.StringPtrInput `pulumi:"efiBootloaderPath"`
 	// Custom hostname
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
@@ -160,7 +160,7 @@ func (o ServerCustomizationsOutput) ConfigDriveUserData() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ServerCustomizations) *string { return v.ConfigDriveUserData }).(pulumi.StringPtrOutput)
 }
 
-// Path of the EFI bootloader from the OS installed on the server
+// Path of the EFI bootloader
 func (o ServerCustomizationsOutput) EfiBootloaderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerCustomizations) *string { return v.EfiBootloaderPath }).(pulumi.StringPtrOutput)
 }
@@ -249,7 +249,7 @@ func (o ServerCustomizationsPtrOutput) ConfigDriveUserData() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Path of the EFI bootloader from the OS installed on the server
+// Path of the EFI bootloader
 func (o ServerCustomizationsPtrOutput) EfiBootloaderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerCustomizations) *string {
 		if v == nil {
@@ -362,11 +362,11 @@ func (o ServerCustomizationsPtrOutput) SshKey() pulumi.StringPtrOutput {
 type ServerIam struct {
 	// Resource display name
 	DisplayName *string `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id *string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn *string `pulumi:"urn"`
 }
 
@@ -384,11 +384,11 @@ type ServerIamInput interface {
 type ServerIamArgs struct {
 	// Resource display name
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource in the IAM
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
+	// URN of the private database, used when writing IAM policies
 	Urn pulumi.StringPtrInput `pulumi:"urn"`
 }
 
@@ -474,17 +474,17 @@ func (o ServerIamOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource in the IAM
 func (o ServerIamOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerIam) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 func (o ServerIamOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServerIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// URN of the private database, used when writing IAM policies
 func (o ServerIamOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
 }
@@ -523,7 +523,7 @@ func (o ServerIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource in the IAM
 func (o ServerIamPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerIam) *string {
 		if v == nil {
@@ -533,7 +533,7 @@ func (o ServerIamPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource tags. Tags that were internally computed are prefixed with ovh:
+// Resource tags. Tags that were internally computed are prefixed with `ovh:`
 func (o ServerIamPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServerIam) map[string]string {
 		if v == nil {
@@ -543,7 +543,7 @@ func (o ServerIamPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Unique resource name used in policies
+// URN of the private database, used when writing IAM policies
 func (o ServerIamPtrOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerIam) *string {
 		if v == nil {
@@ -1786,9 +1786,9 @@ func (o ServerReinstallTaskCustomizationsPtrOutput) SshKey() pulumi.StringPtrOut
 }
 
 type ServerReinstallTaskStorage struct {
-	// Disk group id (default is 0, meaning automatic)
+	// Disk group id to install the OS to (default is 0, meaning automatic).
 	DiskGroupId *int `pulumi:"diskGroupId"`
-	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
 	HardwareRaids []ServerReinstallTaskStorageHardwareRaid `pulumi:"hardwareRaids"`
 	// Partitioning configuration
 	Partitionings []ServerReinstallTaskStoragePartitioning `pulumi:"partitionings"`
@@ -1806,9 +1806,9 @@ type ServerReinstallTaskStorageInput interface {
 }
 
 type ServerReinstallTaskStorageArgs struct {
-	// Disk group id (default is 0, meaning automatic)
+	// Disk group id to install the OS to (default is 0, meaning automatic).
 	DiskGroupId pulumi.IntPtrInput `pulumi:"diskGroupId"`
-	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+	// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
 	HardwareRaids ServerReinstallTaskStorageHardwareRaidArrayInput `pulumi:"hardwareRaids"`
 	// Partitioning configuration
 	Partitionings ServerReinstallTaskStoragePartitioningArrayInput `pulumi:"partitionings"`
@@ -1865,12 +1865,12 @@ func (o ServerReinstallTaskStorageOutput) ToServerReinstallTaskStorageOutputWith
 	return o
 }
 
-// Disk group id (default is 0, meaning automatic)
+// Disk group id to install the OS to (default is 0, meaning automatic).
 func (o ServerReinstallTaskStorageOutput) DiskGroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStorage) *int { return v.DiskGroupId }).(pulumi.IntPtrOutput)
 }
 
-// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+// Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
 func (o ServerReinstallTaskStorageOutput) HardwareRaids() ServerReinstallTaskStorageHardwareRaidArrayOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStorage) []ServerReinstallTaskStorageHardwareRaid { return v.HardwareRaids }).(ServerReinstallTaskStorageHardwareRaidArrayOutput)
 }
@@ -2027,9 +2027,9 @@ func (o ServerReinstallTaskStorageHardwareRaidArrayOutput) Index(i pulumi.IntInp
 type ServerReinstallTaskStoragePartitioning struct {
 	// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
 	Disks *int `pulumi:"disks"`
-	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
 	Layouts []ServerReinstallTaskStoragePartitioningLayout `pulumi:"layouts"`
-	// Partitioning scheme name
+	// Partitioning scheme (if applicable with selected operating system)
 	SchemeName *string `pulumi:"schemeName"`
 }
 
@@ -2047,9 +2047,9 @@ type ServerReinstallTaskStoragePartitioningInput interface {
 type ServerReinstallTaskStoragePartitioningArgs struct {
 	// Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
 	Disks pulumi.IntPtrInput `pulumi:"disks"`
-	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+	// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
 	Layouts ServerReinstallTaskStoragePartitioningLayoutArrayInput `pulumi:"layouts"`
-	// Partitioning scheme name
+	// Partitioning scheme (if applicable with selected operating system)
 	SchemeName pulumi.StringPtrInput `pulumi:"schemeName"`
 }
 
@@ -2109,14 +2109,14 @@ func (o ServerReinstallTaskStoragePartitioningOutput) Disks() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioning) *int { return v.Disks }).(pulumi.IntPtrOutput)
 }
 
-// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+// Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
 func (o ServerReinstallTaskStoragePartitioningOutput) Layouts() ServerReinstallTaskStoragePartitioningLayoutArrayOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioning) []ServerReinstallTaskStoragePartitioningLayout {
 		return v.Layouts
 	}).(ServerReinstallTaskStoragePartitioningLayoutArrayOutput)
 }
 
-// Partitioning scheme name
+// Partitioning scheme (if applicable with selected operating system)
 func (o ServerReinstallTaskStoragePartitioningOutput) SchemeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioning) *string { return v.SchemeName }).(pulumi.StringPtrOutput)
 }
@@ -2142,7 +2142,7 @@ func (o ServerReinstallTaskStoragePartitioningArrayOutput) Index(i pulumi.IntInp
 }
 
 type ServerReinstallTaskStoragePartitioningLayout struct {
-	// Partition extras parameters
+	// Partition extras parameters (when applicable)
 	Extras []ServerReinstallTaskStoragePartitioningLayoutExtra `pulumi:"extras"`
 	// File system type
 	FileSystem string `pulumi:"fileSystem"`
@@ -2150,7 +2150,7 @@ type ServerReinstallTaskStoragePartitioningLayout struct {
 	MountPoint string `pulumi:"mountPoint"`
 	// Software raid type (default is 1)
 	RaidLevel *int `pulumi:"raidLevel"`
-	// Partition size in MiB (default value is 0)
+	// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
 	Size *int `pulumi:"size"`
 }
 
@@ -2166,7 +2166,7 @@ type ServerReinstallTaskStoragePartitioningLayoutInput interface {
 }
 
 type ServerReinstallTaskStoragePartitioningLayoutArgs struct {
-	// Partition extras parameters
+	// Partition extras parameters (when applicable)
 	Extras ServerReinstallTaskStoragePartitioningLayoutExtraArrayInput `pulumi:"extras"`
 	// File system type
 	FileSystem pulumi.StringInput `pulumi:"fileSystem"`
@@ -2174,7 +2174,7 @@ type ServerReinstallTaskStoragePartitioningLayoutArgs struct {
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
 	// Software raid type (default is 1)
 	RaidLevel pulumi.IntPtrInput `pulumi:"raidLevel"`
-	// Partition size in MiB (default value is 0)
+	// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -2229,7 +2229,7 @@ func (o ServerReinstallTaskStoragePartitioningLayoutOutput) ToServerReinstallTas
 	return o
 }
 
-// Partition extras parameters
+// Partition extras parameters (when applicable)
 func (o ServerReinstallTaskStoragePartitioningLayoutOutput) Extras() ServerReinstallTaskStoragePartitioningLayoutExtraArrayOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) []ServerReinstallTaskStoragePartitioningLayoutExtra {
 		return v.Extras
@@ -2251,7 +2251,7 @@ func (o ServerReinstallTaskStoragePartitioningLayoutOutput) RaidLevel() pulumi.I
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) *int { return v.RaidLevel }).(pulumi.IntPtrOutput)
 }
 
-// Partition size in MiB (default value is 0)
+// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
 func (o ServerReinstallTaskStoragePartitioningLayoutOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayout) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -2277,9 +2277,9 @@ func (o ServerReinstallTaskStoragePartitioningLayoutArrayOutput) Index(i pulumi.
 }
 
 type ServerReinstallTaskStoragePartitioningLayoutExtra struct {
-	// LVM-specific parameters
+	// LVM-specific parameters (when applicable)
 	Lvs []ServerReinstallTaskStoragePartitioningLayoutExtraLv `pulumi:"lvs"`
-	// ZFS-specific parameters
+	// ZFS-specific parameters (when applicable)
 	Zps []ServerReinstallTaskStoragePartitioningLayoutExtraZp `pulumi:"zps"`
 }
 
@@ -2295,9 +2295,9 @@ type ServerReinstallTaskStoragePartitioningLayoutExtraInput interface {
 }
 
 type ServerReinstallTaskStoragePartitioningLayoutExtraArgs struct {
-	// LVM-specific parameters
+	// LVM-specific parameters (when applicable)
 	Lvs ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayInput `pulumi:"lvs"`
-	// ZFS-specific parameters
+	// ZFS-specific parameters (when applicable)
 	Zps ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayInput `pulumi:"zps"`
 }
 
@@ -2352,14 +2352,14 @@ func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) ToServerReinsta
 	return o
 }
 
-// LVM-specific parameters
+// LVM-specific parameters (when applicable)
 func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) Lvs() ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtra) []ServerReinstallTaskStoragePartitioningLayoutExtraLv {
 		return v.Lvs
 	}).(ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput)
 }
 
-// ZFS-specific parameters
+// ZFS-specific parameters (when applicable)
 func (o ServerReinstallTaskStoragePartitioningLayoutExtraOutput) Zps() ServerReinstallTaskStoragePartitioningLayoutExtraZpArrayOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtra) []ServerReinstallTaskStoragePartitioningLayoutExtraZp {
 		return v.Zps
@@ -2484,7 +2484,7 @@ func (o ServerReinstallTaskStoragePartitioningLayoutExtraLvArrayOutput) Index(i 
 }
 
 type ServerReinstallTaskStoragePartitioningLayoutExtraZp struct {
-	// zpool name (generated automatically if not specified)
+	// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
 	Name *string `pulumi:"name"`
 }
 
@@ -2500,7 +2500,7 @@ type ServerReinstallTaskStoragePartitioningLayoutExtraZpInput interface {
 }
 
 type ServerReinstallTaskStoragePartitioningLayoutExtraZpArgs struct {
-	// zpool name (generated automatically if not specified)
+	// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2555,7 +2555,7 @@ func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput) ToServerReins
 	return o
 }
 
-// zpool name (generated automatically if not specified)
+// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
 func (o ServerReinstallTaskStoragePartitioningLayoutExtraZpOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerReinstallTaskStoragePartitioningLayoutExtraZp) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3284,7 +3284,7 @@ func (o ServerStoragePartitioningLayoutExtrasPtrOutput) Zp() ServerStoragePartit
 }
 
 type ServerStoragePartitioningLayoutExtrasLv struct {
-	// Logical volume name
+	// Dedicated server name
 	Name *string `pulumi:"name"`
 }
 
@@ -3300,7 +3300,7 @@ type ServerStoragePartitioningLayoutExtrasLvInput interface {
 }
 
 type ServerStoragePartitioningLayoutExtrasLvArgs struct {
-	// Logical volume name
+	// Dedicated server name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -3381,7 +3381,7 @@ func (o ServerStoragePartitioningLayoutExtrasLvOutput) ToServerStoragePartitioni
 	}).(ServerStoragePartitioningLayoutExtrasLvPtrOutput)
 }
 
-// Logical volume name
+// Dedicated server name
 func (o ServerStoragePartitioningLayoutExtrasLvOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerStoragePartitioningLayoutExtrasLv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3410,7 +3410,7 @@ func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) Elem() ServerStoragePa
 	}).(ServerStoragePartitioningLayoutExtrasLvOutput)
 }
 
-// Logical volume name
+// Dedicated server name
 func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtrasLv) *string {
 		if v == nil {
@@ -3421,7 +3421,7 @@ func (o ServerStoragePartitioningLayoutExtrasLvPtrOutput) Name() pulumi.StringPt
 }
 
 type ServerStoragePartitioningLayoutExtrasZp struct {
-	// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+	// Dedicated server name
 	Name *string `pulumi:"name"`
 }
 
@@ -3437,7 +3437,7 @@ type ServerStoragePartitioningLayoutExtrasZpInput interface {
 }
 
 type ServerStoragePartitioningLayoutExtrasZpArgs struct {
-	// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+	// Dedicated server name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -3518,7 +3518,7 @@ func (o ServerStoragePartitioningLayoutExtrasZpOutput) ToServerStoragePartitioni
 	}).(ServerStoragePartitioningLayoutExtrasZpPtrOutput)
 }
 
-// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+// Dedicated server name
 func (o ServerStoragePartitioningLayoutExtrasZpOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerStoragePartitioningLayoutExtrasZp) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3547,7 +3547,7 @@ func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) Elem() ServerStoragePa
 	}).(ServerStoragePartitioningLayoutExtrasZpOutput)
 }
 
-// zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+// Dedicated server name
 func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerStoragePartitioningLayoutExtrasZp) *string {
 		if v == nil {
@@ -3613,21 +3613,21 @@ func (o GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput) Value() pu
 }
 
 type GetServerSpecificationsHardwareDiskGroup struct {
-	// default hardware raid size for this disk group
+	// Default hardware raid size for this disk group
 	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize `pulumi:"defaultHardwareRaidSize"`
-	// default hardware raid type for this disk group
+	// Default hardware raid type for this disk group
 	DefaultHardwareRaidType string `pulumi:"defaultHardwareRaidType"`
-	// human readable description of this disk group
+	// Expansion card description
 	Description string `pulumi:"description"`
-	// identifier of this disk group
+	// Identifier of this disk group
 	DiskGroupId float64 `pulumi:"diskGroupId"`
-	// disk capacity
+	// Disk capacity
 	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSize `pulumi:"diskSize"`
-	// type of the disk (SSD, SATA, SAS, ...)
+	// Type of the disk (SSD, SATA, SAS, ...)
 	DiskType string `pulumi:"diskType"`
-	// number of disks in this group
+	// Number of disks in this group
 	NumberOfDisks float64 `pulumi:"numberOfDisks"`
-	// raid controller, if any, managing this group of disks
+	// Raid controller, if any, managing this group of disks
 	RaidController string `pulumi:"raidController"`
 }
 
@@ -3643,21 +3643,21 @@ type GetServerSpecificationsHardwareDiskGroupInput interface {
 }
 
 type GetServerSpecificationsHardwareDiskGroupArgs struct {
-	// default hardware raid size for this disk group
+	// Default hardware raid size for this disk group
 	DefaultHardwareRaidSize GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeInput `pulumi:"defaultHardwareRaidSize"`
-	// default hardware raid type for this disk group
+	// Default hardware raid type for this disk group
 	DefaultHardwareRaidType pulumi.StringInput `pulumi:"defaultHardwareRaidType"`
-	// human readable description of this disk group
+	// Expansion card description
 	Description pulumi.StringInput `pulumi:"description"`
-	// identifier of this disk group
+	// Identifier of this disk group
 	DiskGroupId pulumi.Float64Input `pulumi:"diskGroupId"`
-	// disk capacity
+	// Disk capacity
 	DiskSize GetServerSpecificationsHardwareDiskGroupDiskSizeInput `pulumi:"diskSize"`
-	// type of the disk (SSD, SATA, SAS, ...)
+	// Type of the disk (SSD, SATA, SAS, ...)
 	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// number of disks in this group
+	// Number of disks in this group
 	NumberOfDisks pulumi.Float64Input `pulumi:"numberOfDisks"`
-	// raid controller, if any, managing this group of disks
+	// Raid controller, if any, managing this group of disks
 	RaidController pulumi.StringInput `pulumi:"raidController"`
 }
 
@@ -3712,46 +3712,46 @@ func (o GetServerSpecificationsHardwareDiskGroupOutput) ToGetServerSpecification
 	return o
 }
 
-// default hardware raid size for this disk group
+// Default hardware raid size for this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidSize() GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSize {
 		return v.DefaultHardwareRaidSize
 	}).(GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeOutput)
 }
 
-// default hardware raid type for this disk group
+// Default hardware raid type for this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DefaultHardwareRaidType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DefaultHardwareRaidType }).(pulumi.StringOutput)
 }
 
-// human readable description of this disk group
+// Expansion card description
 func (o GetServerSpecificationsHardwareDiskGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// identifier of this disk group
+// Identifier of this disk group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskGroupId() pulumi.Float64Output {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.DiskGroupId }).(pulumi.Float64Output)
 }
 
-// disk capacity
+// Disk capacity
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskSize() GetServerSpecificationsHardwareDiskGroupDiskSizeOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) GetServerSpecificationsHardwareDiskGroupDiskSize {
 		return v.DiskSize
 	}).(GetServerSpecificationsHardwareDiskGroupDiskSizeOutput)
 }
 
-// type of the disk (SSD, SATA, SAS, ...)
+// Type of the disk (SSD, SATA, SAS, ...)
 func (o GetServerSpecificationsHardwareDiskGroupOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// number of disks in this group
+// Number of disks in this group
 func (o GetServerSpecificationsHardwareDiskGroupOutput) NumberOfDisks() pulumi.Float64Output {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) float64 { return v.NumberOfDisks }).(pulumi.Float64Output)
 }
 
-// raid controller, if any, managing this group of disks
+// Raid controller, if any, managing this group of disks
 func (o GetServerSpecificationsHardwareDiskGroupOutput) RaidController() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareDiskGroup) string { return v.RaidController }).(pulumi.StringOutput)
 }
@@ -3887,7 +3887,7 @@ func (o GetServerSpecificationsHardwareDiskGroupDiskSizeOutput) Value() pulumi.F
 }
 
 type GetServerSpecificationsHardwareExpansionCard struct {
-	// expansion card description
+	// Expansion card description
 	Description string `pulumi:"description"`
 	// Expansion card type enum
 	Type string `pulumi:"type"`
@@ -3905,7 +3905,7 @@ type GetServerSpecificationsHardwareExpansionCardInput interface {
 }
 
 type GetServerSpecificationsHardwareExpansionCardArgs struct {
-	// expansion card description
+	// Expansion card description
 	Description pulumi.StringInput `pulumi:"description"`
 	// Expansion card type enum
 	Type pulumi.StringInput `pulumi:"type"`
@@ -3962,7 +3962,7 @@ func (o GetServerSpecificationsHardwareExpansionCardOutput) ToGetServerSpecifica
 	return o
 }
 
-// expansion card description
+// Expansion card description
 func (o GetServerSpecificationsHardwareExpansionCardOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsHardwareExpansionCard) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -4148,13 +4148,13 @@ func (o GetServerSpecificationsHardwareUsbKeyArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetServerSpecificationsNetworkBandwidth struct {
-	// bandwidth limitation Internet to OVH
+	// Bandwidth limitation Internet to OVH
 	InternetToOvh GetServerSpecificationsNetworkBandwidthInternetToOvh `pulumi:"internetToOvh"`
-	// bandwidth limitation OVH to Internet
+	// Bandwidth limitation OVH to Internet
 	OvhToInternet GetServerSpecificationsNetworkBandwidthOvhToInternet `pulumi:"ovhToInternet"`
-	// bandwidth limitation OVH to OVH
+	// Bandwidth limitation OVH to OVH
 	OvhToOvh GetServerSpecificationsNetworkBandwidthOvhToOvh `pulumi:"ovhToOvh"`
-	// bandwidth offer type
+	// Bandwidth offer type (included┃standard)
 	Type string `pulumi:"type"`
 }
 
@@ -4170,13 +4170,13 @@ type GetServerSpecificationsNetworkBandwidthInput interface {
 }
 
 type GetServerSpecificationsNetworkBandwidthArgs struct {
-	// bandwidth limitation Internet to OVH
+	// Bandwidth limitation Internet to OVH
 	InternetToOvh GetServerSpecificationsNetworkBandwidthInternetToOvhInput `pulumi:"internetToOvh"`
-	// bandwidth limitation OVH to Internet
+	// Bandwidth limitation OVH to Internet
 	OvhToInternet GetServerSpecificationsNetworkBandwidthOvhToInternetInput `pulumi:"ovhToInternet"`
-	// bandwidth limitation OVH to OVH
+	// Bandwidth limitation OVH to OVH
 	OvhToOvh GetServerSpecificationsNetworkBandwidthOvhToOvhInput `pulumi:"ovhToOvh"`
-	// bandwidth offer type
+	// Bandwidth offer type (included┃standard)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4206,28 +4206,28 @@ func (o GetServerSpecificationsNetworkBandwidthOutput) ToGetServerSpecifications
 	return o
 }
 
-// bandwidth limitation Internet to OVH
+// Bandwidth limitation Internet to OVH
 func (o GetServerSpecificationsNetworkBandwidthOutput) InternetToOvh() GetServerSpecificationsNetworkBandwidthInternetToOvhOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthInternetToOvh {
 		return v.InternetToOvh
 	}).(GetServerSpecificationsNetworkBandwidthInternetToOvhOutput)
 }
 
-// bandwidth limitation OVH to Internet
+// Bandwidth limitation OVH to Internet
 func (o GetServerSpecificationsNetworkBandwidthOutput) OvhToInternet() GetServerSpecificationsNetworkBandwidthOvhToInternetOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthOvhToInternet {
 		return v.OvhToInternet
 	}).(GetServerSpecificationsNetworkBandwidthOvhToInternetOutput)
 }
 
-// bandwidth limitation OVH to OVH
+// Bandwidth limitation OVH to OVH
 func (o GetServerSpecificationsNetworkBandwidthOutput) OvhToOvh() GetServerSpecificationsNetworkBandwidthOvhToOvhOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) GetServerSpecificationsNetworkBandwidthOvhToOvh {
 		return v.OvhToOvh
 	}).(GetServerSpecificationsNetworkBandwidthOvhToOvhOutput)
 }
 
-// bandwidth offer type
+// Bandwidth offer type (included┃standard)
 func (o GetServerSpecificationsNetworkBandwidthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkBandwidth) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4455,9 +4455,9 @@ func (o GetServerSpecificationsNetworkConnectionValOutput) Value() pulumi.Float6
 type GetServerSpecificationsNetworkOla struct {
 	// Is the OLA feature available
 	Available bool `pulumi:"available"`
-	// What modes are supported
+	// Supported modes
 	AvailableModes []GetServerSpecificationsNetworkOlaAvailableMode `pulumi:"availableModes"`
-	// (DEPRECATED) What modes are supported
+	// Supported modes (DEPRECATED)
 	SupportedModes []string `pulumi:"supportedModes"`
 }
 
@@ -4475,9 +4475,9 @@ type GetServerSpecificationsNetworkOlaInput interface {
 type GetServerSpecificationsNetworkOlaArgs struct {
 	// Is the OLA feature available
 	Available pulumi.BoolInput `pulumi:"available"`
-	// What modes are supported
+	// Supported modes
 	AvailableModes GetServerSpecificationsNetworkOlaAvailableModeArrayInput `pulumi:"availableModes"`
-	// (DEPRECATED) What modes are supported
+	// Supported modes (DEPRECATED)
 	SupportedModes pulumi.StringArrayInput `pulumi:"supportedModes"`
 }
 
@@ -4512,24 +4512,24 @@ func (o GetServerSpecificationsNetworkOlaOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
-// What modes are supported
+// Supported modes
 func (o GetServerSpecificationsNetworkOlaOutput) AvailableModes() GetServerSpecificationsNetworkOlaAvailableModeArrayOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) []GetServerSpecificationsNetworkOlaAvailableMode {
 		return v.AvailableModes
 	}).(GetServerSpecificationsNetworkOlaAvailableModeArrayOutput)
 }
 
-// (DEPRECATED) What modes are supported
+// Supported modes (DEPRECATED)
 func (o GetServerSpecificationsNetworkOlaOutput) SupportedModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOla) []string { return v.SupportedModes }).(pulumi.StringArrayOutput)
 }
 
 type GetServerSpecificationsNetworkOlaAvailableMode struct {
-	// Is it the default configuration of the server
+	// Whether it is the default configuration of the server
 	Default bool `pulumi:"default"`
 	// Interface layout
 	Interfaces []GetServerSpecificationsNetworkOlaAvailableModeInterface `pulumi:"interfaces"`
-	// Mode name
+	// Switch name
 	Name string `pulumi:"name"`
 }
 
@@ -4545,11 +4545,11 @@ type GetServerSpecificationsNetworkOlaAvailableModeInput interface {
 }
 
 type GetServerSpecificationsNetworkOlaAvailableModeArgs struct {
-	// Is it the default configuration of the server
+	// Whether it is the default configuration of the server
 	Default pulumi.BoolInput `pulumi:"default"`
 	// Interface layout
 	Interfaces GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayInput `pulumi:"interfaces"`
-	// Mode name
+	// Switch name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -4604,7 +4604,7 @@ func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) ToGetServerSpecifi
 	return o
 }
 
-// Is it the default configuration of the server
+// Whether it is the default configuration of the server
 func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) bool { return v.Default }).(pulumi.BoolOutput)
 }
@@ -4616,7 +4616,7 @@ func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Interfaces() GetSe
 	}).(GetServerSpecificationsNetworkOlaAvailableModeInterfaceArrayOutput)
 }
 
-// Mode name
+// Switch name
 func (o GetServerSpecificationsNetworkOlaAvailableModeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableMode) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4646,7 +4646,7 @@ type GetServerSpecificationsNetworkOlaAvailableModeInterface struct {
 	Aggregation bool `pulumi:"aggregation"`
 	// Interface count
 	Count float64 `pulumi:"count"`
-	// An enum describing OVH Link Aggregation interface types
+	// Bandwidth offer type (included┃standard)
 	Type string `pulumi:"type"`
 }
 
@@ -4666,7 +4666,7 @@ type GetServerSpecificationsNetworkOlaAvailableModeInterfaceArgs struct {
 	Aggregation pulumi.BoolInput `pulumi:"aggregation"`
 	// Interface count
 	Count pulumi.Float64Input `pulumi:"count"`
-	// An enum describing OVH Link Aggregation interface types
+	// Bandwidth offer type (included┃standard)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4731,7 +4731,7 @@ func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Count() p
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) float64 { return v.Count }).(pulumi.Float64Output)
 }
 
-// An enum describing OVH Link Aggregation interface types
+// Bandwidth offer type (included┃standard)
 func (o GetServerSpecificationsNetworkOlaAvailableModeInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkOlaAvailableModeInterface) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5014,7 +5014,7 @@ type GetServerSpecificationsNetworkTraffic struct {
 	InputQuotaSize GetServerSpecificationsNetworkTrafficInputQuotaSize `pulumi:"inputQuotaSize"`
 	// Monthly input traffic consumed this month
 	InputQuotaUsed GetServerSpecificationsNetworkTrafficInputQuotaUsed `pulumi:"inputQuotaUsed"`
-	// Is bandwidth throttleted for being over quota
+	// Whether bandwidth is throttleted for being over quota
 	IsThrottled bool `pulumi:"isThrottled"`
 	// Monthly output traffic quota allowed
 	OutputQuotaSize GetServerSpecificationsNetworkTrafficOutputQuotaSize `pulumi:"outputQuotaSize"`
@@ -5040,7 +5040,7 @@ type GetServerSpecificationsNetworkTrafficArgs struct {
 	InputQuotaSize GetServerSpecificationsNetworkTrafficInputQuotaSizeInput `pulumi:"inputQuotaSize"`
 	// Monthly input traffic consumed this month
 	InputQuotaUsed GetServerSpecificationsNetworkTrafficInputQuotaUsedInput `pulumi:"inputQuotaUsed"`
-	// Is bandwidth throttleted for being over quota
+	// Whether bandwidth is throttleted for being over quota
 	IsThrottled pulumi.BoolInput `pulumi:"isThrottled"`
 	// Monthly output traffic quota allowed
 	OutputQuotaSize GetServerSpecificationsNetworkTrafficOutputQuotaSizeInput `pulumi:"outputQuotaSize"`
@@ -5090,7 +5090,7 @@ func (o GetServerSpecificationsNetworkTrafficOutput) InputQuotaUsed() GetServerS
 	}).(GetServerSpecificationsNetworkTrafficInputQuotaUsedOutput)
 }
 
-// Is bandwidth throttleted for being over quota
+// Whether bandwidth is throttleted for being over quota
 func (o GetServerSpecificationsNetworkTrafficOutput) IsThrottled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkTraffic) bool { return v.IsThrottled }).(pulumi.BoolOutput)
 }
@@ -5335,7 +5335,7 @@ func (o GetServerSpecificationsNetworkTrafficOutputQuotaUsedOutput) Value() pulu
 }
 
 type GetServerSpecificationsNetworkVmac struct {
-	// Server is compatible vmac or not
+	// Whether server is compatible vmac
 	Supported bool `pulumi:"supported"`
 }
 
@@ -5351,7 +5351,7 @@ type GetServerSpecificationsNetworkVmacInput interface {
 }
 
 type GetServerSpecificationsNetworkVmacArgs struct {
-	// Server is compatible vmac or not
+	// Whether server is compatible vmac
 	Supported pulumi.BoolInput `pulumi:"supported"`
 }
 
@@ -5381,7 +5381,7 @@ func (o GetServerSpecificationsNetworkVmacOutput) ToGetServerSpecificationsNetwo
 	return o
 }
 
-// Server is compatible vmac or not
+// Whether server is compatible vmac
 func (o GetServerSpecificationsNetworkVmacOutput) Supported() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkVmac) bool { return v.Supported }).(pulumi.BoolOutput)
 }
@@ -5389,7 +5389,7 @@ func (o GetServerSpecificationsNetworkVmacOutput) Supported() pulumi.BoolOutput 
 type GetServerSpecificationsNetworkVrack struct {
 	// vrack bandwidth limitation
 	Bandwidth GetServerSpecificationsNetworkVrackBandwidth `pulumi:"bandwidth"`
-	// bandwidth offer type
+	// Bandwidth offer type (included┃standard)
 	Type string `pulumi:"type"`
 }
 
@@ -5407,7 +5407,7 @@ type GetServerSpecificationsNetworkVrackInput interface {
 type GetServerSpecificationsNetworkVrackArgs struct {
 	// vrack bandwidth limitation
 	Bandwidth GetServerSpecificationsNetworkVrackBandwidthInput `pulumi:"bandwidth"`
-	// bandwidth offer type
+	// Bandwidth offer type (included┃standard)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5444,7 +5444,7 @@ func (o GetServerSpecificationsNetworkVrackOutput) Bandwidth() GetServerSpecific
 	}).(GetServerSpecificationsNetworkVrackBandwidthOutput)
 }
 
-// bandwidth offer type
+// Bandwidth offer type (included┃standard)
 func (o GetServerSpecificationsNetworkVrackOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerSpecificationsNetworkVrack) string { return v.Type }).(pulumi.StringOutput)
 }

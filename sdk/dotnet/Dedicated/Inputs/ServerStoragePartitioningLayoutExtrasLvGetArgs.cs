@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
     public sealed class ServerStoragePartitioningLayoutExtrasLvGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Logical volume name
+        /// Dedicated server name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

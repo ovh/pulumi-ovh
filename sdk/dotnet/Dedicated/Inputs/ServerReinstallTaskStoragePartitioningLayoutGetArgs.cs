@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         private InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutExtraGetArgs>? _extras;
 
         /// <summary>
-        /// Partition extras parameters
+        /// Partition extras parameters (when applicable)
         /// </summary>
         public InputList<Inputs.ServerReinstallTaskStoragePartitioningLayoutExtraGetArgs> Extras
         {
@@ -43,7 +43,7 @@ namespace Pulumi.Ovh.Dedicated.Inputs
         public Input<int>? RaidLevel { get; set; }
 
         /// <summary>
-        /// Partition size in MiB (default value is 0)
+        /// Partition size in MiB (default value is 0 which means to fill the disk with that partition)
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

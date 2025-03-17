@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const access = ovh.CloudProjectDatabase.getKafkaUserAccess({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     userId: "ZZZ",
+ * });
+ * export const accessCert = access.then(access => access.cert);
+ * ```
+ */
 export function getKafkaUserAccess(args: GetKafkaUserAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaUserAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", {
@@ -17,8 +34,18 @@ export function getKafkaUserAccess(args: GetKafkaUserAccessArgs, opts?: pulumi.I
  * A collection of arguments for invoking getKafkaUserAccess.
  */
 export interface GetKafkaUserAccessArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: string;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: string;
+    /**
+     * User ID
+     */
     userId: string;
 }
 
@@ -26,16 +53,48 @@ export interface GetKafkaUserAccessArgs {
  * A collection of values returned by getKafkaUserAccess.
  */
 export interface GetKafkaUserAccessResult {
+    /**
+     * User cert.
+     */
     readonly cert: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Sensitive) User key for the cert.
+     */
     readonly key: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly serviceName: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly userId: string;
 }
+/**
+ * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const access = ovh.CloudProjectDatabase.getKafkaUserAccess({
+ *     serviceName: "XXX",
+ *     clusterId: "YYY",
+ *     userId: "ZZZ",
+ * });
+ * export const accessCert = access.then(access => access.cert);
+ * ```
+ */
 export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaUserAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", {
@@ -49,7 +108,17 @@ export function getKafkaUserAccessOutput(args: GetKafkaUserAccessOutputArgs, opt
  * A collection of arguments for invoking getKafkaUserAccess.
  */
 export interface GetKafkaUserAccessOutputArgs {
+    /**
+     * Cluster ID
+     */
     clusterId: pulumi.Input<string>;
+    /**
+     * The id of the public cloud project. If omitted,
+     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * User ID
+     */
     userId: pulumi.Input<string>;
 }

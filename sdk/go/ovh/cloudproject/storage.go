@@ -8,10 +8,70 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Create S3™* compatible storage container
+// (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewStorage(ctx, "storage", &cloudproject.StorageArgs{
+//				RegionName:  pulumi.String("GRA"),
+//				ServiceName: pulumi.String("<public cloud project ID>"),
+//				Versioning: &cloudproject.StorageVersioningArgs{
+//					Status: pulumi.String("enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+//
+// Using the following configuration:
+//
+// hcl
+//
+// import {
+//
+//	id = "<service_name>/<region_name>/<name>"
+//
+//	to = ovh_cloud_project_storage.storage
+//
+// }
+//
+// You can then run:
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=storage.tf
+//
+// $ pulumi up
+//
+// The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
+//
+// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Storage struct {
 	pulumi.CustomResourceState
 

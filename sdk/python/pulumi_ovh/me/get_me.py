@@ -125,46 +125,73 @@ class GetMeResult:
     @property
     @pulumi.getter(name="AccountURN")
     def account_urn(self) -> str:
+        """
+        The resource URN of the account, to be used when writing IAM policies
+        """
         return pulumi.get(self, "account_urn")
 
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        Postal address of the account
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def area(self) -> str:
+        """
+        Area of the account
+        """
         return pulumi.get(self, "area")
 
     @property
     @pulumi.getter(name="birthCity")
     def birth_city(self) -> str:
+        """
+        City of birth
+        """
         return pulumi.get(self, "birth_city")
 
     @property
     @pulumi.getter(name="birthDay")
     def birth_day(self) -> str:
+        """
+        Birth date
+        """
         return pulumi.get(self, "birth_day")
 
     @property
     @pulumi.getter
     def city(self) -> str:
+        """
+        City of the account
+        """
         return pulumi.get(self, "city")
 
     @property
     @pulumi.getter(name="companyNationalIdentificationNumber")
     def company_national_identification_number(self) -> str:
+        """
+        This is the national identification number of the company that possess this account
+        """
         return pulumi.get(self, "company_national_identification_number")
 
     @property
     @pulumi.getter(name="corporationType")
     def corporation_type(self) -> str:
+        """
+        Type of corporation
+        """
         return pulumi.get(self, "corporation_type")
 
     @property
     @pulumi.getter
     def country(self) -> str:
+        """
+        Country of the account
+        """
         return pulumi.get(self, "country")
 
     @property
@@ -175,21 +202,33 @@ class GetMeResult:
     @property
     @pulumi.getter(name="customerCode")
     def customer_code(self) -> str:
+        """
+        The customer code of this account (a numerical value used for identification when contacting support via phone call)
+        """
         return pulumi.get(self, "customer_code")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        Email address
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def fax(self) -> str:
+        """
+        Fax number
+        """
         return pulumi.get(self, "fax")
 
     @property
     @pulumi.getter
     def firstname(self) -> str:
+        """
+        First name
+        """
         return pulumi.get(self, "firstname")
 
     @property
@@ -203,81 +242,129 @@ class GetMeResult:
     @property
     @pulumi.getter(name="italianSdi")
     def italian_sdi(self) -> str:
+        """
+        Italian SDI
+        """
         return pulumi.get(self, "italian_sdi")
 
     @property
     @pulumi.getter
     def language(self) -> str:
+        """
+        Preferred language for this account
+        """
         return pulumi.get(self, "language")
 
     @property
     @pulumi.getter
     def legalform(self) -> str:
+        """
+        Legal form of the account
+        """
         return pulumi.get(self, "legalform")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the account holder
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nationalIdentificationNumber")
     def national_identification_number(self) -> str:
+        """
+        National Identification Number of this account
+        """
         return pulumi.get(self, "national_identification_number")
 
     @property
     @pulumi.getter
     def nichandle(self) -> str:
+        """
+        Nic handle / customer identifier
+        """
         return pulumi.get(self, "nichandle")
 
     @property
     @pulumi.getter
     def organisation(self) -> str:
+        """
+        Name of the organisation for this account
+        """
         return pulumi.get(self, "organisation")
 
     @property
     @pulumi.getter(name="ovhCompany")
     def ovh_company(self) -> str:
+        """
+        OVHcloud subsidiary
+        """
         return pulumi.get(self, "ovh_company")
 
     @property
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> str:
+        """
+        OVHcloud subsidiary
+        """
         return pulumi.get(self, "ovh_subsidiary")
 
     @property
     @pulumi.getter
     def phone(self) -> str:
+        """
+        Phone number
+        """
         return pulumi.get(self, "phone")
 
     @property
     @pulumi.getter(name="phoneCountry")
     def phone_country(self) -> str:
+        """
+        Country code of the phone number
+        """
         return pulumi.get(self, "phone_country")
 
     @property
     @pulumi.getter
     def sex(self) -> str:
+        """
+        Gender of the account holder
+        """
         return pulumi.get(self, "sex")
 
     @property
     @pulumi.getter(name="spareEmail")
     def spare_email(self) -> str:
+        """
+        Backup email address
+        """
         return pulumi.get(self, "spare_email")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the postal address
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def vat(self) -> str:
+        """
+        VAT number
+        """
         return pulumi.get(self, "vat")
 
     @property
     @pulumi.getter
     def zip(self) -> str:
+        """
+        Zipcode of the address
+        """
         return pulumi.get(self, "zip")
 
 
@@ -322,7 +409,16 @@ class AwaitableGetMeResult(GetMeResult):
 
 def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about the current OVHcloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -362,7 +458,16 @@ def get_me(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeResult:
         zip=pulumi.get(__ret__, 'zip'))
 def get_me_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMeResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about the current OVHcloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    my_account = ovh.Me.get_me()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

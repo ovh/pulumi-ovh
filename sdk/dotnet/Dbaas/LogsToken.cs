@@ -9,41 +9,62 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.Dbaas
 {
+    /// <summary>
+    /// Allows to manipulate LDP tokens.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var token = new Ovh.Dbaas.LogsToken("token", new()
+    ///     {
+    ///         ServiceName = "ldp-xx-xxxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [OvhResourceType("ovh:Dbaas/logsToken:LogsToken")]
     public partial class LogsToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cluster ID
+        /// Cluster ID. If not provided, the default cluster_id is used
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Token creation
+        /// Token creation date
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Token name
+        /// Name of the token
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// The LDP service name
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Token used
+        /// ID of the token
         /// </summary>
         [Output("tokenId")]
         public Output<string> TokenId { get; private set; } = null!;
 
         /// <summary>
-        /// Token last update
+        /// Token last update date
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -106,19 +127,19 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class LogsTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID
+        /// Cluster ID. If not provided, the default cluster_id is used
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Token name
+        /// Name of the token
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Service name
+        /// The LDP service name
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -132,37 +153,37 @@ namespace Pulumi.Ovh.Dbaas
     public sealed class LogsTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID
+        /// Cluster ID. If not provided, the default cluster_id is used
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Token creation
+        /// Token creation date
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Token name
+        /// Name of the token
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Service name
+        /// The LDP service name
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Token used
+        /// ID of the token
         /// </summary>
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }
 
         /// <summary>
-        /// Token last update
+        /// Token last update date
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

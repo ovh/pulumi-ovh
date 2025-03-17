@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a resource for managing access rights to partitions on HA-NAS services
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const myPartition = new ovh.dedicated.NasHAPartitionAccess("myPartition", {
+ *     aclDescription: "Description of the ACL",
+ *     ip: "123.123.123.123/32",
+ *     partitionName: "my-partition",
+ *     serviceName: "zpool-12345",
+ *     type: "readwrite",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * HA-NAS partition access can be imported using the `{service_name}/{partition_name}/{ip}`, e.g.
+ *
+ * ```sh
+ * $ pulumi import ovh:Dedicated/nasHAPartitionAccess:NasHAPartitionAccess my-partition zpool-12345/my-partition/123.123.123.123%2F32`
+ * ```
+ */
 export class NasHAPartitionAccess extends pulumi.CustomResource {
     /**
      * Get an existing NasHAPartitionAccess resource's state with the given name, ID, and optional extra
@@ -33,12 +59,24 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
     }
 
     /**
-     * A brief description of the ACL
+     * A brief description of the acl
      */
     public readonly aclDescription!: pulumi.Output<string | undefined>;
+    /**
+     * IP block in x.x.x.x/x format
+     */
     public readonly ip!: pulumi.Output<string>;
+    /**
+     * Name of the partition
+     */
     public readonly partitionName!: pulumi.Output<string>;
+    /**
+     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+     */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * One of "readwrite", "readonly"
+     */
     public readonly type!: pulumi.Output<string | undefined>;
 
     /**
@@ -86,12 +124,24 @@ export class NasHAPartitionAccess extends pulumi.CustomResource {
  */
 export interface NasHAPartitionAccessState {
     /**
-     * A brief description of the ACL
+     * A brief description of the acl
      */
     aclDescription?: pulumi.Input<string>;
+    /**
+     * IP block in x.x.x.x/x format
+     */
     ip?: pulumi.Input<string>;
+    /**
+     * Name of the partition
+     */
     partitionName?: pulumi.Input<string>;
+    /**
+     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * One of "readwrite", "readonly"
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -100,11 +150,23 @@ export interface NasHAPartitionAccessState {
  */
 export interface NasHAPartitionAccessArgs {
     /**
-     * A brief description of the ACL
+     * A brief description of the acl
      */
     aclDescription?: pulumi.Input<string>;
+    /**
+     * IP block in x.x.x.x/x format
+     */
     ip: pulumi.Input<string>;
+    /**
+     * Name of the partition
+     */
     partitionName: pulumi.Input<string>;
+    /**
+     * The internal name of your HA-NAS (it has to be ordered via OVHcloud interface)
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * One of "readwrite", "readonly"
+     */
     type?: pulumi.Input<string>;
 }
