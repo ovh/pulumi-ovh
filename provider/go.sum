@@ -1870,9 +1870,8 @@ github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9T
 github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwUYLVdlYeamldAHSxjUFADow=
 github.com/hashicorp/terraform-plugin-mux v0.18.0 h1:7491JFSpWyAe0v9YqBT+kel7mzHAbO5EpxxT0cUL/Ms=
 github.com/hashicorp/terraform-plugin-mux v0.18.0/go.mod h1:Ho1g4Rr8qv0qTJlcRKfjjXTIO67LNbDtM6r+zHUNHJQ=
+github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
-github.com/hashicorp/terraform-plugin-sdk v1.8.0 h1:HE1p52nzcgz88hIJmapUnkmM9noEjV3QhTOLaua5XUA=
-github.com/hashicorp/terraform-plugin-sdk v1.8.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
 github.com/hashicorp/terraform-plugin-testing v1.10.0 h1:2+tmRNhvnfE4Bs8rB6v58S/VpqzGC6RCh9Y8ujdn+aw=
 github.com/hashicorp/terraform-plugin-testing v1.10.0/go.mod h1:iWRW3+loP33WMch2P/TEyCxxct/ZEcCGMquSLSCVsrc=
@@ -2172,8 +2171,8 @@ github.com/pulumi/pulumi-yaml v1.12.0 h1:ThJP+EBqeJyCnS6w6/PwcEFOT5o112qv0lObhef
 github.com/pulumi/pulumi-yaml v1.12.0/go.mod h1:EhZd1XDfuLa15O51qVVE16U6r8ldK9mLIBclqWCX27Y=
 github.com/pulumi/pulumi/pkg/v3 v3.153.1 h1:8P3ryrJP0TwGG5qA20jJxuXRRcepj+pxGjPjGZQlbPE=
 github.com/pulumi/pulumi/pkg/v3 v3.153.1/go.mod h1:aO7FkJVEBP3l9DgSNSPT4/P6b/XG5QD2OqvizvRahrg=
-github.com/pulumi/pulumi/sdk/v3 v3.153.1 h1:qlkttqvoPcuxbMZd1ZfwairuYAZ68izqRnCWmpA9p84=
-github.com/pulumi/pulumi/sdk/v3 v3.153.1/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
+github.com/pulumi/pulumi/sdk/v3 v3.156.0 h1:C4l4Z89EDft6aKe/ZmQYkZ8/7FUh/YvbKD4huIW4PoA=
+github.com/pulumi/pulumi/sdk/v3 v3.156.0/go.mod h1:+WC9aIDo8fMgd2g0jCHuZU2S/VYNLRAZ3QXt6YVgwaA=
 github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQKpfZo=
 github.com/pulumi/schema-tools v0.1.2/go.mod h1:62lgj52Tzq11eqWTIaKd+EVyYAu5dEcDJxMhTjvMO/k=
 github.com/pulumi/terraform-diff-reader v0.0.2 h1:kTE4nEXU3/SYXESvAIem+wyHMI3abqkI3OhJ0G04LLI=
