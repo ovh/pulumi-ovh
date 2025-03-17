@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/internal"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,9 +18,9 @@ import (
 //
 // import (
 //
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/ip"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/me"
-//	"github.com/ovh/pulumi-ovh/sdk/go/ovh/order"
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/ip"
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me"
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/order"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

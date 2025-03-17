@@ -971,12 +971,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_me_identity_users": {
 				Tok: ovhDataSource(meMod, "getIdentityUsers"),
 			},
-			"ovh_me_installation_template": {
-				Tok: ovhDataSource(meMod, "getInstallationTemplate"),
-			},
-			"ovh_me_installation_templates": {
-				Tok: ovhDataSource(meMod, "getInstallationTemplates"),
-			},
 			"ovh_me_paymentmean_bankaccount": {
 				Tok: ovhDataSource(meMod, "getPaymentmeanBankAccount"),
 			},
