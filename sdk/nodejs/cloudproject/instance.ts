@@ -78,6 +78,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoBackup!: pulumi.Output<outputs.CloudProject.InstanceAutoBackup | undefined>;
     /**
+     * The availability zone where the instance will be created
+     */
+    public readonly availabilityZone!: pulumi.Output<string>;
+    /**
      * Billing period - hourly or monthly
      */
     public readonly billingPeriod!: pulumi.Output<string>;
@@ -159,6 +163,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["addresses"] = state ? state.addresses : undefined;
             resourceInputs["attachedVolumes"] = state ? state.attachedVolumes : undefined;
             resourceInputs["autoBackup"] = state ? state.autoBackup : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["billingPeriod"] = state ? state.billingPeriod : undefined;
             resourceInputs["bootFrom"] = state ? state.bootFrom : undefined;
             resourceInputs["bulk"] = state ? state.bulk : undefined;
@@ -196,6 +201,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["autoBackup"] = args ? args.autoBackup : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["billingPeriod"] = args ? args.billingPeriod : undefined;
             resourceInputs["bootFrom"] = args ? args.bootFrom : undefined;
             resourceInputs["bulk"] = args ? args.bulk : undefined;
@@ -236,6 +242,10 @@ export interface InstanceState {
      * Create an autobackup workflow after instance start up.
      */
     autoBackup?: pulumi.Input<inputs.CloudProject.InstanceAutoBackup>;
+    /**
+     * The availability zone where the instance will be created
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Billing period - hourly or monthly
      */
@@ -311,6 +321,10 @@ export interface InstanceArgs {
      * Create an autobackup workflow after instance start up.
      */
     autoBackup?: pulumi.Input<inputs.CloudProject.InstanceAutoBackup>;
+    /**
+     * The availability zone where the instance will be created
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Billing period - hourly or monthly
      */

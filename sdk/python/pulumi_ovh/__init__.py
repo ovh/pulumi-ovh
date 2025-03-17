@@ -43,6 +43,8 @@ if typing.TYPE_CHECKING:
     okms = __okms
     import pulumi_ovh.order as __order
     order = __order
+    import pulumi_ovh.ovhcloud as __ovhcloud
+    ovhcloud = __ovhcloud
     import pulumi_ovh.savingsplan as __savingsplan
     savingsplan = __savingsplan
     import pulumi_ovh.vps as __vps
@@ -64,6 +66,7 @@ else:
     me = _utilities.lazy_import('pulumi_ovh.me')
     okms = _utilities.lazy_import('pulumi_ovh.okms')
     order = _utilities.lazy_import('pulumi_ovh.order')
+    ovhcloud = _utilities.lazy_import('pulumi_ovh.ovhcloud')
     savingsplan = _utilities.lazy_import('pulumi_ovh.savingsplan')
     vps = _utilities.lazy_import('pulumi_ovh.vps')
     vrack = _utilities.lazy_import('pulumi_ovh.vrack')
@@ -193,6 +196,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/loadBalancer",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/networkPrivate",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -221,6 +232,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/rancher",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/rancher:Rancher": "Rancher"
   }
  },
  {
@@ -265,6 +284,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "CloudProject/storage",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/storage:Storage": "Storage"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "CloudProject/user",
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
@@ -277,6 +304,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/volumeBackup",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/volumeBackup:VolumeBackup": "VolumeBackup"
   }
  },
  {
@@ -473,6 +508,22 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Dbaas/logsRole",
+  "fqn": "pulumi_ovh.dbaas",
+  "classes": {
+   "ovh:Dbaas/logsRole:LogsRole": "LogsRole"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Dbaas/logsRolePermissionStream",
+  "fqn": "pulumi_ovh.dbaas",
+  "classes": {
+   "ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream": "LogsRolePermissionStream"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Dbaas/logsToken",
   "fqn": "pulumi_ovh.dbaas",
   "classes": {
@@ -521,14 +572,6 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "Dedicated/serverInstallTask",
-  "fqn": "pulumi_ovh.dedicated",
-  "classes": {
-   "ovh:Dedicated/serverInstallTask:ServerInstallTask": "ServerInstallTask"
-  }
- },
- {
-  "pkg": "ovh",
   "mod": "Dedicated/serverNetworking",
   "fqn": "pulumi_ovh.dedicated",
   "classes": {
@@ -545,10 +588,42 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Dedicated/serverReinstallTask",
+  "fqn": "pulumi_ovh.dedicated",
+  "classes": {
+   "ovh:Dedicated/serverReinstallTask:ServerReinstallTask": "ServerReinstallTask"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Dedicated/serverUpdate",
   "fqn": "pulumi_ovh.dedicated",
   "classes": {
    "ovh:Dedicated/serverUpdate:ServerUpdate": "ServerUpdate"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Domain/dSRecords",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/dSRecords:DSRecords": "DSRecords"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Domain/name",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/name:Name": "Name"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Domain/nameServers",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/nameServers:NameServers": "NameServers"
   }
  },
  {
@@ -865,38 +940,6 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "Me/installationTemplate",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/installationTemplate:InstallationTemplate": "InstallationTemplate"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Me/installationTemplatePartitionScheme",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/installationTemplatePartitionScheme:InstallationTemplatePartitionScheme": "InstallationTemplatePartitionScheme"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Me/installationTemplatePartitionSchemeHardwareRaid",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/installationTemplatePartitionSchemeHardwareRaid:InstallationTemplatePartitionSchemeHardwareRaid": "InstallationTemplatePartitionSchemeHardwareRaid"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "Me/installationTemplatePartitionSchemePartition",
-  "fqn": "pulumi_ovh.me",
-  "classes": {
-   "ovh:Me/installationTemplatePartitionSchemePartition:InstallationTemplatePartitionSchemePartition": "InstallationTemplatePartitionSchemePartition"
-  }
- },
- {
-  "pkg": "ovh",
   "mod": "Okms/credential",
   "fqn": "pulumi_ovh.okms",
   "classes": {
@@ -985,10 +1028,34 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Vrack/ipV6",
+  "fqn": "pulumi_ovh.vrack",
+  "classes": {
+   "ovh:Vrack/ipV6:IpV6": "IpV6"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Vrack/oVHcloudConnect",
+  "fqn": "pulumi_ovh.vrack",
+  "classes": {
+   "ovh:Vrack/oVHcloudConnect:OVHcloudConnect": "OVHcloudConnect"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Vrack/vrack",
   "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/vrack:Vrack": "Vrack"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Vrack/vrackservices",
+  "fqn": "pulumi_ovh.vrack",
+  "classes": {
+   "ovh:Vrack/vrackservices:Vrackservices": "Vrackservices"
   }
  }
 ]

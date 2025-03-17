@@ -15,10 +15,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerOrder {
     private @Nullable String date;
-    /**
-     * @return Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-     * 
-     */
     private @Nullable List<ServerOrderDetail> details;
     private @Nullable String expirationDate;
     private @Nullable Double orderId;
@@ -27,10 +23,6 @@ public final class ServerOrder {
     public Optional<String> date() {
         return Optional.ofNullable(this.date);
     }
-    /**
-     * @return Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&amp;branch=v1#post-/dedicated/server/-serviceName-/install/start)
-     * 
-     */
     public List<ServerOrderDetail> details() {
         return this.details == null ? List.of() : this.details;
     }

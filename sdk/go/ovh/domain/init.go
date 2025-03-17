@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:Domain/dSRecords:DSRecords":
+		r = &DSRecords{}
+	case "ovh:Domain/name:Name":
+		r = &Name{}
+	case "ovh:Domain/nameServers:NameServers":
+		r = &NameServers{}
 	case "ovh:Domain/zone:Zone":
 		r = &Zone{}
 	case "ovh:Domain/zoneDNSSec:ZoneDNSSec":
@@ -44,6 +50,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Domain/dSRecords",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Domain/name",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Domain/nameServers",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Domain/zone",

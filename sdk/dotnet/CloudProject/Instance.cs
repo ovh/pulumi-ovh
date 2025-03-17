@@ -73,6 +73,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<Outputs.InstanceAutoBackup?> AutoBackup { get; private set; } = null!;
 
         /// <summary>
+        /// The availability zone where the instance will be created
+        /// </summary>
+        [Output("availabilityZone")]
+        public Output<string> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
         /// Billing period - hourly or monthly
         /// </summary>
         [Output("billingPeriod")]
@@ -223,6 +229,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<Inputs.InstanceAutoBackupArgs>? AutoBackup { get; set; }
 
         /// <summary>
+        /// The availability zone where the instance will be created
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// Billing period - hourly or monthly
         /// </summary>
         [Input("billingPeriod", required: true)]
@@ -332,6 +344,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("autoBackup")]
         public Input<Inputs.InstanceAutoBackupGetArgs>? AutoBackup { get; set; }
+
+        /// <summary>
+        /// The availability zone where the instance will be created
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
         /// Billing period - hourly or monthly

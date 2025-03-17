@@ -41,9 +41,9 @@ import (
 //	}
 //
 // ```
-func GetLoadBalancer(ctx *pulumi.Context, args *GetLoadBalancerArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerResult, error) {
+func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetLoadBalancerResult
+	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func GetLoadBalancer(ctx *pulumi.Context, args *GetLoadBalancerArgs, opts ...pul
 }
 
 // A collection of arguments for invoking getLoadBalancer.
-type GetLoadBalancerArgs struct {
+type LookupLoadBalancerArgs struct {
 	// ID of the loadbalancer
 	Id string `pulumi:"id"`
 	// Region of the loadbalancer.
@@ -63,7 +63,7 @@ type GetLoadBalancerArgs struct {
 }
 
 // A collection of values returned by getLoadBalancer.
-type GetLoadBalancerResult struct {
+type LookupLoadBalancerResult struct {
 	// Date of creation of the loadbalancer
 	CreatedAt string `pulumi:"createdAt"`
 	// ID of the flavor
@@ -92,17 +92,17 @@ type GetLoadBalancerResult struct {
 	VipSubnetId string `pulumi:"vipSubnetId"`
 }
 
-func GetLoadBalancerOutput(ctx *pulumi.Context, args GetLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerResultOutput {
+func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancerResultOutput, error) {
-			args := v.(GetLoadBalancerArgs)
+		ApplyT(func(v interface{}) (LookupLoadBalancerResultOutput, error) {
+			args := v.(LookupLoadBalancerArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args, GetLoadBalancerResultOutput{}, options).(GetLoadBalancerResultOutput), nil
-		}).(GetLoadBalancerResultOutput)
+			return ctx.InvokeOutput("ovh:CloudProject/getLoadBalancer:getLoadBalancer", args, LookupLoadBalancerResultOutput{}, options).(LookupLoadBalancerResultOutput), nil
+		}).(LookupLoadBalancerResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancer.
-type GetLoadBalancerOutputArgs struct {
+type LookupLoadBalancerOutputArgs struct {
 	// ID of the loadbalancer
 	Id pulumi.StringInput `pulumi:"id"`
 	// Region of the loadbalancer.
@@ -112,90 +112,90 @@ type GetLoadBalancerOutputArgs struct {
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
-func (GetLoadBalancerOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancerArgs)(nil)).Elem()
+func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoadBalancerArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getLoadBalancer.
-type GetLoadBalancerResultOutput struct{ *pulumi.OutputState }
+type LookupLoadBalancerResultOutput struct{ *pulumi.OutputState }
 
-func (GetLoadBalancerResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancerResult)(nil)).Elem()
+func (LookupLoadBalancerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoadBalancerResult)(nil)).Elem()
 }
 
-func (o GetLoadBalancerResultOutput) ToGetLoadBalancerResultOutput() GetLoadBalancerResultOutput {
+func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutput() LookupLoadBalancerResultOutput {
 	return o
 }
 
-func (o GetLoadBalancerResultOutput) ToGetLoadBalancerResultOutputWithContext(ctx context.Context) GetLoadBalancerResultOutput {
+func (o LookupLoadBalancerResultOutput) ToLookupLoadBalancerResultOutputWithContext(ctx context.Context) LookupLoadBalancerResultOutput {
 	return o
 }
 
 // Date of creation of the loadbalancer
-func (o GetLoadBalancerResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // ID of the flavor
-func (o GetLoadBalancerResultOutput) FlavorId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.FlavorId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
 // Information about the floating IP
-func (o GetLoadBalancerResultOutput) FloatingIp() GetLoadBalancerFloatingIpOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) GetLoadBalancerFloatingIp { return v.FloatingIp }).(GetLoadBalancerFloatingIpOutput)
+func (o LookupLoadBalancerResultOutput) FloatingIp() GetLoadBalancerFloatingIpOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) GetLoadBalancerFloatingIp { return v.FloatingIp }).(GetLoadBalancerFloatingIpOutput)
 }
 
 // ID of the floating IP
-func (o GetLoadBalancerResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the loadbalancer
-func (o GetLoadBalancerResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Operating status of the loadbalancer
-func (o GetLoadBalancerResultOutput) OperatingStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.OperatingStatus }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.OperatingStatus }).(pulumi.StringOutput)
 }
 
 // Provisioning status of the loadbalancer
-func (o GetLoadBalancerResultOutput) ProvisioningStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
 }
 
 // Region of the loadbalancer
-func (o GetLoadBalancerResultOutput) RegionName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.RegionName }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) RegionName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
 // ID of the public cloud project
-func (o GetLoadBalancerResultOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.ServiceName }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // Last update date of the loadbalancer
-func (o GetLoadBalancerResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // IP address of the Virtual IP
-func (o GetLoadBalancerResultOutput) VipAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.VipAddress }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) VipAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.VipAddress }).(pulumi.StringOutput)
 }
 
 // Openstack ID of the network for the Virtual IP
-func (o GetLoadBalancerResultOutput) VipNetworkId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.VipNetworkId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) VipNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.VipNetworkId }).(pulumi.StringOutput)
 }
 
 // ID of the subnet for the Virtual IP
-func (o GetLoadBalancerResultOutput) VipSubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerResult) string { return v.VipSubnetId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) VipSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.VipSubnetId }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetLoadBalancerResultOutput{})
+	pulumi.RegisterOutputType(LookupLoadBalancerResultOutput{})
 }

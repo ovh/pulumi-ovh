@@ -66,6 +66,10 @@ export interface GetInstanceResult {
      */
     readonly attachedVolumes: outputs.CloudProject.GetInstanceAttachedVolume[];
     /**
+     * Availability zone of the instance
+     */
+    readonly availabilityZone: string;
+    /**
      * Flavor id
      */
     readonly flavorId: string;

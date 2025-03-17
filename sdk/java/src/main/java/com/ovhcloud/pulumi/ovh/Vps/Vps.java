@@ -25,6 +25,89 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.Me.MeFunctions;
+ * import com.pulumi.ovh.Order.OrderFunctions;
+ * import com.pulumi.ovh.Order.inputs.GetCartArgs;
+ * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
+ * import com.pulumi.ovh.Vps.Vps;
+ * import com.pulumi.ovh.Vps.VpsArgs;
+ * import com.pulumi.ovh.Vps.inputs.VpsPlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var myAccount = MeFunctions.getMe();
+ * 
+ *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
+ *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *             .build());
+ * 
+ *         final var vps = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .priceCapacity("renew")
+ *             .product("vps")
+ *             .planCode("vps-le-2-2-40")
+ *             .build());
+ * 
+ *         var myVps = new Vps("myVps", VpsArgs.builder()
+ *             .displayName("dev_vps")
+ *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .plans(VpsPlanArgs.builder()
+ *                 .duration("P1M")
+ *                 .plan_code(vps.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricing_mode("default")
+ *                 .configuration(                
+ *                     %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                     %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export("vpsDisplayName", myVps.displayName());
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * OVHcloud VPS database can be imported using the `service_name`, E.g.,
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = ovh_vps.myvps
+ * 
+ *   id = &#34;&lt;your existing VPS service_name&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
+ * 
+ * pulumi preview -generate-config-out=./vps.tf
+ * 
+ * The file `vps.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
+ * 
+ * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * 
  */
 @ResourceType(type="ovh:Vps/vps:Vps")
 public class Vps extends com.pulumi.resources.CustomResource {

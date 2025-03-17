@@ -55,6 +55,16 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource can be imported using the `ip` field, e.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Ip/move:Move")]
     public partial class Move : global::Pulumi.CustomResource

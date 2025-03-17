@@ -28,6 +28,7 @@ class InstanceArgs:
                  region: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  auto_backup: Optional[pulumi.Input['InstanceAutoBackupArgs']] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  bulk: Optional[pulumi.Input[int]] = None,
                  group: Optional[pulumi.Input['InstanceGroupArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class InstanceArgs:
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
                the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up.
+        :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
         :param pulumi.Input[int] bulk: Create multiple instances
         :param pulumi.Input['InstanceGroupArgs'] group: Start instance in group
         :param pulumi.Input[str] name: Instance name
@@ -59,6 +61,8 @@ class InstanceArgs:
         pulumi.set(__self__, "service_name", service_name)
         if auto_backup is not None:
             pulumi.set(__self__, "auto_backup", auto_backup)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if bulk is not None:
             pulumi.set(__self__, "bulk", bulk)
         if group is not None:
@@ -158,6 +162,18 @@ class InstanceArgs:
         pulumi.set(self, "auto_backup", value)
 
     @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone where the instance will be created
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
     @pulumi.getter
     def bulk(self) -> Optional[pulumi.Input[int]]:
         """
@@ -236,6 +252,7 @@ class _InstanceState:
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAddressArgs']]]] = None,
                  attached_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedVolumeArgs']]]] = None,
                  auto_backup: Optional[pulumi.Input['InstanceAutoBackupArgs']] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  billing_period: Optional[pulumi.Input[str]] = None,
                  boot_from: Optional[pulumi.Input['InstanceBootFromArgs']] = None,
                  bulk: Optional[pulumi.Input[int]] = None,
@@ -257,6 +274,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAddressArgs']]] addresses: Instance IP addresses
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedVolumeArgs']]] attached_volumes: Volumes attached to the instance
         :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up.
+        :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
         :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input['InstanceBootFromArgs'] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input[int] bulk: Create multiple instances
@@ -281,6 +299,8 @@ class _InstanceState:
             pulumi.set(__self__, "attached_volumes", attached_volumes)
         if auto_backup is not None:
             pulumi.set(__self__, "auto_backup", auto_backup)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if billing_period is not None:
             pulumi.set(__self__, "billing_period", billing_period)
         if boot_from is not None:
@@ -349,6 +369,18 @@ class _InstanceState:
     @auto_backup.setter
     def auto_backup(self, value: Optional[pulumi.Input['InstanceAutoBackupArgs']]):
         pulumi.set(self, "auto_backup", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability zone where the instance will be created
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @property
     @pulumi.getter(name="billingPeriod")
@@ -550,6 +582,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_backup: Optional[pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  billing_period: Optional[pulumi.Input[str]] = None,
                  boot_from: Optional[pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']]] = None,
                  bulk: Optional[pulumi.Input[int]] = None,
@@ -596,6 +629,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']] auto_backup: Create an autobackup workflow after instance start up.
+        :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
         :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input[int] bulk: Create multiple instances
@@ -662,6 +696,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_backup: Optional[pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  billing_period: Optional[pulumi.Input[str]] = None,
                  boot_from: Optional[pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']]] = None,
                  bulk: Optional[pulumi.Input[int]] = None,
@@ -684,6 +719,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["auto_backup"] = auto_backup
+            __props__.__dict__["availability_zone"] = availability_zone
             if billing_period is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_period'")
             __props__.__dict__["billing_period"] = billing_period
@@ -727,6 +763,7 @@ class Instance(pulumi.CustomResource):
             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAddressArgs', 'InstanceAddressArgsDict']]]]] = None,
             attached_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedVolumeArgs', 'InstanceAttachedVolumeArgsDict']]]]] = None,
             auto_backup: Optional[pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']]] = None,
+            availability_zone: Optional[pulumi.Input[str]] = None,
             billing_period: Optional[pulumi.Input[str]] = None,
             boot_from: Optional[pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']]] = None,
             bulk: Optional[pulumi.Input[int]] = None,
@@ -753,6 +790,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAddressArgs', 'InstanceAddressArgsDict']]]] addresses: Instance IP addresses
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedVolumeArgs', 'InstanceAttachedVolumeArgsDict']]]] attached_volumes: Volumes attached to the instance
         :param pulumi.Input[Union['InstanceAutoBackupArgs', 'InstanceAutoBackupArgsDict']] auto_backup: Create an autobackup workflow after instance start up.
+        :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
         :param pulumi.Input[str] billing_period: Billing period - hourly or monthly
         :param pulumi.Input[Union['InstanceBootFromArgs', 'InstanceBootFromArgsDict']] boot_from: Boot the instance from an image or a volume
         :param pulumi.Input[int] bulk: Create multiple instances
@@ -778,6 +816,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["addresses"] = addresses
         __props__.__dict__["attached_volumes"] = attached_volumes
         __props__.__dict__["auto_backup"] = auto_backup
+        __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["billing_period"] = billing_period
         __props__.__dict__["boot_from"] = boot_from
         __props__.__dict__["bulk"] = bulk
@@ -819,6 +858,14 @@ class Instance(pulumi.CustomResource):
         Create an autobackup workflow after instance start up.
         """
         return pulumi.get(self, "auto_backup")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> pulumi.Output[str]:
+        """
+        The availability zone where the instance will be created
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="billingPeriod")

@@ -96,6 +96,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * The resource can be imported using the `ip` field, e.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Ip/move:Move mv &#39;1.2.3.4/32&#39;
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Ip/move:Move")
 public class Move extends com.pulumi.resources.CustomResource {

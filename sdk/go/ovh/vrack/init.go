@@ -31,8 +31,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpAddress{}
 	case "ovh:Vrack/ipLoadbalancing:IpLoadbalancing":
 		r = &IpLoadbalancing{}
+	case "ovh:Vrack/ipV6:IpV6":
+		r = &IpV6{}
+	case "ovh:Vrack/oVHcloudConnect:OVHcloudConnect":
+		r = &OVHcloudConnect{}
 	case "ovh:Vrack/vrack:Vrack":
 		r = &Vrack{}
+	case "ovh:Vrack/vrackservices:Vrackservices":
+		r = &Vrackservices{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -73,7 +79,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"Vrack/ipV6",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Vrack/oVHcloudConnect",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"Vrack/vrack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Vrack/vrackservices",
 		&module{version},
 	)
 }

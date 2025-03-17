@@ -41,7 +41,7 @@ pip install pulumi-ovh
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/ovh/pulumi-ovh/sdk/go/...
+go get github.com/ovh/pulumi-ovh/sdk/v2/go/...
 ```
 
 ### .NET
@@ -60,7 +60,7 @@ To use from Java, add the dependency below to your `pom.xml` file:
 <dependency>
     <groupId>com.ovhcloud.pulumi.ovh</groupId>
     <artifactId>pulumi-ovh</artifactId>
-    <version>[0.48.9,)</version>
+    <version>[2.0.0,)</version>
 </dependency>
 ```
 

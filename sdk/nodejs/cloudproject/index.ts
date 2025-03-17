@@ -100,6 +100,11 @@ export const getFailoverIpAttach: typeof import("./getFailoverIpAttach").getFail
 export const getFailoverIpAttachOutput: typeof import("./getFailoverIpAttach").getFailoverIpAttachOutput = null as any;
 utilities.lazyLoad(exports, ["getFailoverIpAttach","getFailoverIpAttachOutput"], () => require("./getFailoverIpAttach"));
 
+export { GetFlavorsArgs, GetFlavorsResult, GetFlavorsOutputArgs } from "./getFlavors";
+export const getFlavors: typeof import("./getFlavors").getFlavors = null as any;
+export const getFlavorsOutput: typeof import("./getFlavors").getFlavorsOutput = null as any;
+utilities.lazyLoad(exports, ["getFlavors","getFlavorsOutput"], () => require("./getFlavors"));
+
 export { GetFloatingIPsArgs, GetFloatingIPsResult, GetFloatingIPsOutputArgs } from "./getFloatingIPs";
 export const getFloatingIPs: typeof import("./getFloatingIPs").getFloatingIPs = null as any;
 export const getFloatingIPsOutput: typeof import("./getFloatingIPs").getFloatingIPsOutput = null as any;
@@ -154,6 +159,11 @@ export { GetLoadBalancerArgs, GetLoadBalancerResult, GetLoadBalancerOutputArgs }
 export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer = null as any;
 export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
+
+export { GetLoadBalancerFlavorsArgs, GetLoadBalancerFlavorsResult, GetLoadBalancerFlavorsOutputArgs } from "./getLoadBalancerFlavors";
+export const getLoadBalancerFlavors: typeof import("./getLoadBalancerFlavors").getLoadBalancerFlavors = null as any;
+export const getLoadBalancerFlavorsOutput: typeof import("./getLoadBalancerFlavors").getLoadBalancerFlavorsOutput = null as any;
+utilities.lazyLoad(exports, ["getLoadBalancerFlavors","getLoadBalancerFlavorsOutput"], () => require("./getLoadBalancerFlavors"));
 
 export { GetLoadBalancersArgs, GetLoadBalancersResult, GetLoadBalancersOutputArgs } from "./getLoadBalancers";
 export const getLoadBalancers: typeof import("./getLoadBalancers").getLoadBalancers = null as any;
@@ -220,6 +230,21 @@ export const getPrometheus: typeof import("./getPrometheus").getPrometheus = nul
 export const getPrometheusOutput: typeof import("./getPrometheus").getPrometheusOutput = null as any;
 utilities.lazyLoad(exports, ["getPrometheus","getPrometheusOutput"], () => require("./getPrometheus"));
 
+export { GetRancherArgs, GetRancherResult, GetRancherOutputArgs } from "./getRancher";
+export const getRancher: typeof import("./getRancher").getRancher = null as any;
+export const getRancherOutput: typeof import("./getRancher").getRancherOutput = null as any;
+utilities.lazyLoad(exports, ["getRancher","getRancherOutput"], () => require("./getRancher"));
+
+export { GetRancherPlanArgs, GetRancherPlanResult, GetRancherPlanOutputArgs } from "./getRancherPlan";
+export const getRancherPlan: typeof import("./getRancherPlan").getRancherPlan = null as any;
+export const getRancherPlanOutput: typeof import("./getRancherPlan").getRancherPlanOutput = null as any;
+utilities.lazyLoad(exports, ["getRancherPlan","getRancherPlanOutput"], () => require("./getRancherPlan"));
+
+export { GetRancherVersionArgs, GetRancherVersionResult, GetRancherVersionOutputArgs } from "./getRancherVersion";
+export const getRancherVersion: typeof import("./getRancherVersion").getRancherVersion = null as any;
+export const getRancherVersionOutput: typeof import("./getRancherVersion").getRancherVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getRancherVersion","getRancherVersionOutput"], () => require("./getRancherVersion"));
+
 export { GetRedisUserArgs, GetRedisUserResult, GetRedisUserOutputArgs } from "./getRedisUser";
 export const getRedisUser: typeof import("./getRedisUser").getRedisUser = null as any;
 export const getRedisUserOutput: typeof import("./getRedisUser").getRedisUserOutput = null as any;
@@ -244,6 +269,16 @@ export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getReg
 export const getRegions: typeof import("./getRegions").getRegions = null as any;
 export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
 utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+
+export { GetStorageArgs, GetStorageResult, GetStorageOutputArgs } from "./getStorage";
+export const getStorage: typeof import("./getStorage").getStorage = null as any;
+export const getStorageOutput: typeof import("./getStorage").getStorageOutput = null as any;
+utilities.lazyLoad(exports, ["getStorage","getStorageOutput"], () => require("./getStorage"));
+
+export { GetStoragesArgs, GetStoragesResult, GetStoragesOutputArgs } from "./getStorages";
+export const getStorages: typeof import("./getStorages").getStorages = null as any;
+export const getStoragesOutput: typeof import("./getStorages").getStoragesOutput = null as any;
+utilities.lazyLoad(exports, ["getStorages","getStoragesOutput"], () => require("./getStorages"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -310,6 +345,11 @@ export type KubeOidc = import("./kubeOidc").KubeOidc;
 export const KubeOidc: typeof import("./kubeOidc").KubeOidc = null as any;
 utilities.lazyLoad(exports, ["KubeOidc"], () => require("./kubeOidc"));
 
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
 export { NetworkPrivateArgs, NetworkPrivateState } from "./networkPrivate";
 export type NetworkPrivate = import("./networkPrivate").NetworkPrivate;
 export const NetworkPrivate: typeof import("./networkPrivate").NetworkPrivate = null as any;
@@ -329,6 +369,11 @@ export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { RancherArgs, RancherState } from "./rancher";
+export type Rancher = import("./rancher").Rancher;
+export const Rancher: typeof import("./rancher").Rancher = null as any;
+utilities.lazyLoad(exports, ["Rancher"], () => require("./rancher"));
 
 export { RegionLoadBalancerLogSubscriptionArgs, RegionLoadBalancerLogSubscriptionState } from "./regionLoadBalancerLogSubscription";
 export type RegionLoadBalancerLogSubscription = import("./regionLoadBalancerLogSubscription").RegionLoadBalancerLogSubscription;
@@ -355,6 +400,11 @@ export type S3Policy = import("./s3policy").S3Policy;
 export const S3Policy: typeof import("./s3policy").S3Policy = null as any;
 utilities.lazyLoad(exports, ["S3Policy"], () => require("./s3policy"));
 
+export { StorageArgs, StorageState } from "./storage";
+export type Storage = import("./storage").Storage;
+export const Storage: typeof import("./storage").Storage = null as any;
+utilities.lazyLoad(exports, ["Storage"], () => require("./storage"));
+
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -364,6 +414,11 @@ export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
+
+export { VolumeBackupArgs, VolumeBackupState } from "./volumeBackup";
+export type VolumeBackup = import("./volumeBackup").VolumeBackup;
+export const VolumeBackup: typeof import("./volumeBackup").VolumeBackup = null as any;
+utilities.lazyLoad(exports, ["VolumeBackup"], () => require("./volumeBackup"));
 
 export { WorkflowBackupArgs, WorkflowBackupState } from "./workflowBackup";
 export type WorkflowBackup = import("./workflowBackup").WorkflowBackup;
@@ -405,6 +460,8 @@ const _module = {
                 return new KubeNodePool(name, <any>undefined, { urn })
             case "ovh:CloudProject/kubeOidc:KubeOidc":
                 return new KubeOidc(name, <any>undefined, { urn })
+            case "ovh:CloudProject/loadBalancer:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
             case "ovh:CloudProject/networkPrivate:NetworkPrivate":
                 return new NetworkPrivate(name, <any>undefined, { urn })
             case "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet":
@@ -413,6 +470,8 @@ const _module = {
                 return new NetworkPrivateSubnetV2(name, <any>undefined, { urn })
             case "ovh:CloudProject/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "ovh:CloudProject/rancher:Rancher":
+                return new Rancher(name, <any>undefined, { urn })
             case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
                 return new RegionLoadBalancerLogSubscription(name, <any>undefined, { urn })
             case "ovh:CloudProject/regionNetwork:RegionNetwork":
@@ -423,10 +482,14 @@ const _module = {
                 return new S3Credential(name, <any>undefined, { urn })
             case "ovh:CloudProject/s3Policy:S3Policy":
                 return new S3Policy(name, <any>undefined, { urn })
+            case "ovh:CloudProject/storage:Storage":
+                return new Storage(name, <any>undefined, { urn })
             case "ovh:CloudProject/user:User":
                 return new User(name, <any>undefined, { urn })
             case "ovh:CloudProject/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "ovh:CloudProject/volumeBackup:VolumeBackup":
+                return new VolumeBackup(name, <any>undefined, { urn })
             case "ovh:CloudProject/workflowBackup:WorkflowBackup":
                 return new WorkflowBackup(name, <any>undefined, { urn })
             default:
@@ -449,15 +512,19 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/kube", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeIpRestrictions", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeOidc", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivate", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnet", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnetV2", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/project", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/rancher", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionLoadBalancerLogSubscription", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionStoragePresign", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/s3Credential", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/s3Policy", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/storage", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/user", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/volume", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/volumeBackup", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/workflowBackup", _module)

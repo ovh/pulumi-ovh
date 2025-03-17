@@ -27,13 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, addresses=None, attached_volumes=None, flavor_id=None, flavor_name=None, id=None, image_id=None, instance_id=None, name=None, region=None, service_name=None, ssh_key=None, task_state=None):
+    def __init__(__self__, addresses=None, attached_volumes=None, availability_zone=None, flavor_id=None, flavor_name=None, id=None, image_id=None, instance_id=None, name=None, region=None, service_name=None, ssh_key=None, task_state=None):
         if addresses and not isinstance(addresses, list):
             raise TypeError("Expected argument 'addresses' to be a list")
         pulumi.set(__self__, "addresses", addresses)
         if attached_volumes and not isinstance(attached_volumes, list):
             raise TypeError("Expected argument 'attached_volumes' to be a list")
         pulumi.set(__self__, "attached_volumes", attached_volumes)
+        if availability_zone and not isinstance(availability_zone, str):
+            raise TypeError("Expected argument 'availability_zone' to be a str")
+        pulumi.set(__self__, "availability_zone", availability_zone)
         if flavor_id and not isinstance(flavor_id, str):
             raise TypeError("Expected argument 'flavor_id' to be a str")
         pulumi.set(__self__, "flavor_id", flavor_id)
@@ -80,6 +83,14 @@ class GetInstanceResult:
         Volumes attached to the instance
         """
         return pulumi.get(self, "attached_volumes")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        Availability zone of the instance
+        """
+        return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="flavorId")
@@ -161,6 +172,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             addresses=self.addresses,
             attached_volumes=self.attached_volumes,
+            availability_zone=self.availability_zone,
             flavor_id=self.flavor_id,
             flavor_name=self.flavor_name,
             id=self.id,
@@ -210,6 +222,7 @@ def get_instance(instance_id: Optional[str] = None,
     return AwaitableGetInstanceResult(
         addresses=pulumi.get(__ret__, 'addresses'),
         attached_volumes=pulumi.get(__ret__, 'attached_volumes'),
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
         flavor_id=pulumi.get(__ret__, 'flavor_id'),
         flavor_name=pulumi.get(__ret__, 'flavor_name'),
         id=pulumi.get(__ret__, 'id'),
@@ -256,6 +269,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetInstanceResult(
         addresses=pulumi.get(__response__, 'addresses'),
         attached_volumes=pulumi.get(__response__, 'attached_volumes'),
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
         flavor_id=pulumi.get(__response__, 'flavor_id'),
         flavor_name=pulumi.get(__response__, 'flavor_name'),
         id=pulumi.get(__response__, 'id'),

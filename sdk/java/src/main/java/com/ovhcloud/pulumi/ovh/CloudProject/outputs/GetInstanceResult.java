@@ -24,6 +24,11 @@ public final class GetInstanceResult {
      */
     private List<GetInstanceAttachedVolume> attachedVolumes;
     /**
+     * @return Availability zone of the instance
+     * 
+     */
+    private String availabilityZone;
+    /**
      * @return Flavor id
      * 
      */
@@ -76,6 +81,13 @@ public final class GetInstanceResult {
      */
     public List<GetInstanceAttachedVolume> attachedVolumes() {
         return this.attachedVolumes;
+    }
+    /**
+     * @return Availability zone of the instance
+     * 
+     */
+    public String availabilityZone() {
+        return this.availabilityZone;
     }
     /**
      * @return Flavor id
@@ -147,6 +159,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private List<GetInstanceAddress> addresses;
         private List<GetInstanceAttachedVolume> attachedVolumes;
+        private String availabilityZone;
         private String flavorId;
         private String flavorName;
         private String id;
@@ -162,6 +175,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.addresses = defaults.addresses;
     	      this.attachedVolumes = defaults.attachedVolumes;
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.flavorId = defaults.flavorId;
     	      this.flavorName = defaults.flavorName;
     	      this.id = defaults.id;
@@ -195,6 +209,14 @@ public final class GetInstanceResult {
         }
         public Builder attachedVolumes(GetInstanceAttachedVolume... attachedVolumes) {
             return attachedVolumes(List.of(attachedVolumes));
+        }
+        @CustomType.Setter
+        public Builder availabilityZone(String availabilityZone) {
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
+            return this;
         }
         @CustomType.Setter
         public Builder flavorId(String flavorId) {
@@ -280,6 +302,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.addresses = addresses;
             _resultValue.attachedVolumes = attachedVolumes;
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.flavorId = flavorId;
             _resultValue.flavorName = flavorName;
             _resultValue.id = id;

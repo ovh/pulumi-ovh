@@ -130,6 +130,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoBackup);
     }
     /**
+     * The availability zone where the instance will be created
+     * 
+     */
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    private Output<String> availabilityZone;
+
+    /**
+     * @return The availability zone where the instance will be created
+     * 
+     */
+    public Output<String> availabilityZone() {
+        return this.availabilityZone;
+    }
+    /**
      * Billing period - hourly or monthly
      * 
      */

@@ -70,6 +70,8 @@ type LookupInstanceResult struct {
 	Addresses []GetInstanceAddress `pulumi:"addresses"`
 	// Volumes attached to the instance
 	AttachedVolumes []GetInstanceAttachedVolume `pulumi:"attachedVolumes"`
+	// Availability zone of the instance
+	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Flavor id
 	FlavorId string `pulumi:"flavorId"`
 	// Flavor name
@@ -136,6 +138,11 @@ func (o LookupInstanceResultOutput) Addresses() GetInstanceAddressArrayOutput {
 // Volumes attached to the instance
 func (o LookupInstanceResultOutput) AttachedVolumes() GetInstanceAttachedVolumeArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAttachedVolume { return v.AttachedVolumes }).(GetInstanceAttachedVolumeArrayOutput)
+}
+
+// Availability zone of the instance
+func (o LookupInstanceResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Flavor id

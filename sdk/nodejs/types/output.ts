@@ -521,6 +521,87 @@ export namespace CloudProject {
         user: string;
     }
 
+    export interface GetFlavorsFlavor {
+        /**
+         * Available in stock
+         */
+        available: boolean;
+        /**
+         * Capabilities of the flavor
+         */
+        capabilities: outputs.CloudProject.GetFlavorsFlavorCapability[];
+        /**
+         * Number of disks
+         */
+        disk: number;
+        /**
+         * Flavor id
+         */
+        id: string;
+        /**
+         * Max capacity of inbound traffic in Mbit/s
+         */
+        inboundBandwidth: number;
+        /**
+         * Flavor name
+         */
+        name: string;
+        /**
+         * OS to install on
+         */
+        osType: string;
+        /**
+         * Max capacity of outbound traffic in Mbit/s
+         */
+        outboundBandwidth: number;
+        /**
+         * Plan codes to order instances
+         */
+        planCodes: outputs.CloudProject.GetFlavorsFlavorPlanCodes;
+        /**
+         * Number instance you can spawn with your actual quota
+         */
+        quota: number;
+        /**
+         * Ram quantity (Gio)
+         */
+        ram: number;
+        /**
+         * Flavor region
+         */
+        region: string;
+        /**
+         * Flavor type
+         */
+        type: string;
+        /**
+         * Number of VCPUs
+         */
+        vcpus: number;
+    }
+
+    export interface GetFlavorsFlavorCapability {
+        /**
+         * Is the capability enabled
+         */
+        enabled: boolean;
+        /**
+         * Name of the capability
+         */
+        name: string;
+    }
+
+    export interface GetFlavorsFlavorPlanCodes {
+        /**
+         * Plan code to order hourly instance
+         */
+        hourly: string;
+        /**
+         * Plan code to order monthly instance
+         */
+        monthly: string;
+    }
+
     export interface GetFloatingIPsCloudProjectFloatingip {
         /**
          * Associated entity with the floating IP
@@ -594,6 +675,10 @@ export namespace CloudProject {
          * Volumes attached to the instance
          */
         attachedVolumes: outputs.CloudProject.GetInstancesInstanceAttachedVolume[];
+        /**
+         * Availability zone of the instance
+         */
+        availabilityZone: string;
         /**
          * Flavor id
          */
@@ -857,6 +942,21 @@ export namespace CloudProject {
         version: string;
     }
 
+    export interface GetLoadBalancerFlavorsFlavor {
+        /**
+         * Flavor id
+         */
+        id: string;
+        /**
+         * Flavor name
+         */
+        name: string;
+        /**
+         * Region name
+         */
+        region: string;
+    }
+
     export interface GetLoadBalancerFloatingIp {
         /**
          * ID of the loadbalancer
@@ -1055,6 +1155,165 @@ export namespace CloudProject {
         port: number;
     }
 
+    export interface GetRancherCurrentState {
+        /**
+         * Bootstrap password of the managed Rancher service, returned only on creation
+         */
+        bootstrapPassword: string;
+        /**
+         * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+         */
+        ipRestrictions: outputs.CloudProject.GetRancherCurrentStateIpRestriction[];
+        /**
+         * Name of the managed Rancher service
+         */
+        name: string;
+        /**
+         * Networking properties of a managed Rancher service
+         */
+        networking: outputs.CloudProject.GetRancherCurrentStateNetworking;
+        /**
+         * Plan of the managed Rancher service
+         */
+        plan: string;
+        /**
+         * Region of the managed Rancher service
+         */
+        region: string;
+        /**
+         * URL of the managed Rancher service
+         */
+        url: string;
+        /**
+         * Latest metrics regarding the usage of the managed Rancher service
+         */
+        usage: outputs.CloudProject.GetRancherCurrentStateUsage;
+        /**
+         * Version of the managed Rancher service
+         */
+        version: string;
+    }
+
+    export interface GetRancherCurrentStateIpRestriction {
+        /**
+         * Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+         */
+        cidrBlock: string;
+        /**
+         * Description of the allowed CIDR block
+         */
+        description: string;
+    }
+
+    export interface GetRancherCurrentStateNetworking {
+        /**
+         * Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+         */
+        egressCidrBlocks: string[];
+    }
+
+    export interface GetRancherCurrentStateUsage {
+        /**
+         * Date of the sample
+         */
+        datetime: string;
+        /**
+         * Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+         */
+        orchestratedVcpus: number;
+    }
+
+    export interface GetRancherCurrentTask {
+        /**
+         * Identifier of the current task
+         */
+        id: string;
+        /**
+         * Link to the task details
+         */
+        link: string;
+        /**
+         * Current global status of the current task
+         */
+        status: string;
+        /**
+         * Type of the current task
+         */
+        type: string;
+    }
+
+    export interface GetRancherPlanPlan {
+        /**
+         * Cause for an unavailability
+         */
+        cause: string;
+        /**
+         * Human-readable description of the unavailability cause
+         */
+        message: string;
+        /**
+         * Name of the plan
+         */
+        name: string;
+        /**
+         * Status of the plan
+         */
+        status: string;
+    }
+
+    export interface GetRancherTargetSpec {
+        /**
+         * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+         */
+        ipRestrictions: outputs.CloudProject.GetRancherTargetSpecIpRestriction[];
+        /**
+         * Name of the managed Rancher service
+         */
+        name: string;
+        /**
+         * Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+         */
+        plan: string;
+        /**
+         * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
+         */
+        version: string;
+    }
+
+    export interface GetRancherTargetSpecIpRestriction {
+        /**
+         * Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+         */
+        cidrBlock: string;
+        /**
+         * Description of the allowed CIDR block
+         */
+        description: string;
+    }
+
+    export interface GetRancherVersionVersion {
+        /**
+         * Cause for an unavailability
+         */
+        cause: string;
+        /**
+         * Changelog URL of the version
+         */
+        changelogUrl: string;
+        /**
+         * Human-readable description of the unavailability cause
+         */
+        message: string;
+        /**
+         * Name of the version
+         */
+        name: string;
+        /**
+         * Status of the version
+         */
+        status: string;
+    }
+
     export interface GetRegionService {
         /**
          * The name of the region associated with the public cloud
@@ -1063,6 +1322,275 @@ export namespace CloudProject {
         name: string;
         /**
          * the status of the service
+         */
+        status: string;
+    }
+
+    export interface GetStorageEncryption {
+        /**
+         * Encryption algorithm
+         */
+        sseAlgorithm: string;
+    }
+
+    export interface GetStorageObject {
+        /**
+         * ETag
+         */
+        etag: string;
+        /**
+         * Whether this object is a delete marker
+         */
+        isDeleteMarker: boolean;
+        /**
+         * Whether this is the latest version of the object
+         */
+        isLatest: boolean;
+        /**
+         * Key
+         */
+        key: string;
+        /**
+         * Last modification date
+         */
+        lastModified: string;
+        /**
+         * Size (bytes)
+         */
+        size: number;
+        /**
+         * Storage class
+         */
+        storageClass: string;
+        /**
+         * Version ID of the object
+         */
+        versionId: string;
+    }
+
+    export interface GetStorageReplication {
+        /**
+         * Replication rules
+         */
+        rules: outputs.CloudProject.GetStorageReplicationRule[];
+    }
+
+    export interface GetStorageReplicationRule {
+        /**
+         * Delete marker replication
+         */
+        deleteMarkerReplication: string;
+        /**
+         * Rule destination configuration
+         */
+        destination: outputs.CloudProject.GetStorageReplicationRuleDestination;
+        /**
+         * Rule filters
+         */
+        filter: outputs.CloudProject.GetStorageReplicationRuleFilter;
+        /**
+         * Rule ID
+         */
+        id: string;
+        /**
+         * Rule priority
+         */
+        priority: number;
+        /**
+         * Rule status
+         */
+        status: string;
+    }
+
+    export interface GetStorageReplicationRuleDestination {
+        /**
+         * Destination bucket name
+         */
+        name: string;
+        /**
+         * Destination region, can be null if destination bucket has been deleted
+         */
+        region: string;
+        /**
+         * Destination storage class
+         */
+        storageClass: string;
+    }
+
+    export interface GetStorageReplicationRuleFilter {
+        /**
+         * Prefix filter
+         */
+        prefix: string;
+        /**
+         * Tags filter
+         */
+        tags: {[key: string]: string};
+    }
+
+    export interface GetStorageVersioning {
+        /**
+         * Versioning status
+         */
+        status: string;
+    }
+
+    export interface GetStoragesContainer {
+        /**
+         * The date and timestamp when the resource was created
+         */
+        createdAt: string;
+        /**
+         * Encryption configuration
+         */
+        encryption: outputs.CloudProject.GetStoragesContainerEncryption;
+        /**
+         * Container name
+         */
+        name: string;
+        /**
+         * Container objects
+         */
+        objects: outputs.CloudProject.GetStoragesContainerObject[];
+        /**
+         * Container total objects count
+         */
+        objectsCount: number;
+        /**
+         * Container total objects size (bytes)
+         */
+        objectsSize: number;
+        /**
+         * Container owner user ID
+         */
+        ownerId: number;
+        /**
+         * Container region
+         */
+        region: string;
+        /**
+         * Replication configuration
+         */
+        replication: outputs.CloudProject.GetStoragesContainerReplication;
+        /**
+         * Container tags
+         */
+        tags: {[key: string]: string};
+        /**
+         * Versioning configuration
+         */
+        versioning: outputs.CloudProject.GetStoragesContainerVersioning;
+        /**
+         * Container virtual host
+         */
+        virtualHost: string;
+    }
+
+    export interface GetStoragesContainerEncryption {
+        /**
+         * Encryption algorithm
+         */
+        sseAlgorithm: string;
+    }
+
+    export interface GetStoragesContainerObject {
+        /**
+         * ETag
+         */
+        etag: string;
+        /**
+         * Whether this object is a delete marker
+         */
+        isDeleteMarker: boolean;
+        /**
+         * Whether this is the latest version of the object
+         */
+        isLatest: boolean;
+        /**
+         * Key
+         */
+        key: string;
+        /**
+         * Last modification date
+         */
+        lastModified: string;
+        /**
+         * Size (bytes)
+         */
+        size: number;
+        /**
+         * Storage class
+         */
+        storageClass: string;
+        /**
+         * Version ID of the object
+         */
+        versionId: string;
+    }
+
+    export interface GetStoragesContainerReplication {
+        /**
+         * Replication rules
+         */
+        rules: outputs.CloudProject.GetStoragesContainerReplicationRule[];
+    }
+
+    export interface GetStoragesContainerReplicationRule {
+        /**
+         * Delete marker replication
+         */
+        deleteMarkerReplication: string;
+        /**
+         * Rule destination configuration
+         */
+        destination: outputs.CloudProject.GetStoragesContainerReplicationRuleDestination;
+        /**
+         * Rule filters
+         */
+        filter: outputs.CloudProject.GetStoragesContainerReplicationRuleFilter;
+        /**
+         * Rule ID
+         */
+        id: string;
+        /**
+         * Rule priority
+         */
+        priority: number;
+        /**
+         * Rule status
+         */
+        status: string;
+    }
+
+    export interface GetStoragesContainerReplicationRuleDestination {
+        /**
+         * Destination bucket name
+         */
+        name: string;
+        /**
+         * Destination region, can be null if destination bucket has been deleted
+         */
+        region: string;
+        /**
+         * Destination storage class
+         */
+        storageClass: string;
+    }
+
+    export interface GetStoragesContainerReplicationRuleFilter {
+        /**
+         * Prefix filter
+         */
+        prefix: string;
+        /**
+         * Tags filter
+         */
+        tags: {[key: string]: string};
+    }
+
+    export interface GetStoragesContainerVersioning {
+        /**
+         * Versioning status
          */
         status: string;
     }
@@ -1375,6 +1903,252 @@ export namespace CloudProject {
         privateNetworkRoutingAsDefault: boolean;
     }
 
+    export interface LoadBalancerFloatingIp {
+        /**
+         * ID of the resource
+         */
+        id: string;
+        /**
+         * IP Address of the resource
+         */
+        ip: string;
+    }
+
+    export interface LoadBalancerListener {
+        /**
+         * The allowed CIDRs
+         */
+        allowedCidrs?: string[];
+        /**
+         * The description of the listener
+         */
+        description?: string;
+        /**
+         * Name of the listener
+         */
+        name?: string;
+        /**
+         * Listener pool
+         */
+        pool?: outputs.CloudProject.LoadBalancerListenerPool;
+        /**
+         * Listener port
+         */
+        port: number;
+        /**
+         * Protocol for the listener
+         */
+        protocol: string;
+        /**
+         * Secret ID to get certificate for SSL listener creation
+         */
+        secretId?: string;
+        /**
+         * Timeout client data of the listener
+         */
+        timeoutClientData?: number;
+        /**
+         * Timeout member data of the listener
+         */
+        timeoutMemberData?: number;
+        /**
+         * TLS versions of the listener
+         */
+        tlsVersions?: string[];
+    }
+
+    export interface LoadBalancerListenerPool {
+        /**
+         * Pool algorithm to split traffic between members
+         */
+        algorithm?: string;
+        /**
+         * Pool health monitor
+         */
+        healthMonitor?: outputs.CloudProject.LoadBalancerListenerPoolHealthMonitor;
+        /**
+         * Pool members
+         */
+        members: outputs.CloudProject.LoadBalancerListenerPoolMember[];
+        /**
+         * Name of the pool
+         */
+        name: string;
+        /**
+         * Protocol for the pool
+         */
+        protocol?: string;
+        /**
+         * Pool session persistence
+         */
+        sessionPersistence?: outputs.CloudProject.LoadBalancerListenerPoolSessionPersistence;
+    }
+
+    export interface LoadBalancerListenerPoolHealthMonitor {
+        /**
+         * Duration between sending probes to members, in seconds
+         */
+        delay?: number;
+        /**
+         * Monitor HTTP configuration
+         */
+        httpConfiguration: outputs.CloudProject.LoadBalancerListenerPoolHealthMonitorHttpConfiguration;
+        /**
+         * Number of successful checks before changing the operating status of the member to ONLINE
+         */
+        maxRetries?: number;
+        /**
+         * Number of allowed check failures before changing the operating status of the member to ERROR
+         */
+        maxRetriesDown: number;
+        /**
+         * Type of the monitor
+         */
+        monitorType?: string;
+        /**
+         * The name of the resource
+         */
+        name?: string;
+        /**
+         * The operating status of the resource
+         */
+        operatingStatus: string;
+        /**
+         * The provisioning status of the resource
+         */
+        provisioningStatus: string;
+        /**
+         * Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
+         */
+        timeout?: number;
+    }
+
+    export interface LoadBalancerListenerPoolHealthMonitorHttpConfiguration {
+        /**
+         * Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
+         */
+        domainName: string;
+        /**
+         * Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
+         */
+        expectedCodes: string;
+        /**
+         * HTTP method that the health monitor uses for requests
+         */
+        httpMethod?: string;
+        /**
+         * HTTP version that the health monitor uses for requests
+         */
+        httpVersion: string;
+        /**
+         * HTTP URL path of the request sent by the monitor to test the health of a backend member
+         */
+        urlPath: string;
+    }
+
+    export interface LoadBalancerListenerPoolMember {
+        /**
+         * IP address of the resource
+         */
+        address?: string;
+        /**
+         * Name of the member
+         */
+        name: string;
+        /**
+         * Protocol port number for the resource
+         */
+        protocolPort?: number;
+        /**
+         * Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
+         */
+        weight: number;
+    }
+
+    export interface LoadBalancerListenerPoolSessionPersistence {
+        /**
+         * Cookie name, only applicable to session persistence through cookie
+         */
+        cookieName: string;
+        /**
+         * Type of session persistence
+         */
+        type: string;
+    }
+
+    export interface LoadBalancerNetwork {
+        /**
+         * Information to private network
+         */
+        private: outputs.CloudProject.LoadBalancerNetworkPrivate;
+    }
+
+    export interface LoadBalancerNetworkPrivate {
+        /**
+         * Floating IP to associate
+         */
+        floatingIp?: outputs.CloudProject.LoadBalancerNetworkPrivateFloatingIp;
+        /**
+         * Floating IP to create
+         */
+        floatingIpCreate?: outputs.CloudProject.LoadBalancerNetworkPrivateFloatingIpCreate;
+        /**
+         * Gateway to associate
+         */
+        gateway?: outputs.CloudProject.LoadBalancerNetworkPrivateGateway;
+        /**
+         * Gateway to create
+         */
+        gatewayCreate?: outputs.CloudProject.LoadBalancerNetworkPrivateGatewayCreate;
+        /**
+         * Network to associate
+         */
+        network: outputs.CloudProject.LoadBalancerNetworkPrivateNetwork;
+    }
+
+    export interface LoadBalancerNetworkPrivateFloatingIp {
+        /**
+         * ID of the floatingIp
+         */
+        id?: string;
+    }
+
+    export interface LoadBalancerNetworkPrivateFloatingIpCreate {
+        /**
+         * Description for the floatingIp
+         */
+        description?: string;
+    }
+
+    export interface LoadBalancerNetworkPrivateGateway {
+        /**
+         * ID of the gateway
+         */
+        id?: string;
+    }
+
+    export interface LoadBalancerNetworkPrivateGatewayCreate {
+        /**
+         * Model of the gateway
+         */
+        model?: string;
+        /**
+         * Name of the gateway
+         */
+        name?: string;
+    }
+
+    export interface LoadBalancerNetworkPrivateNetwork {
+        /**
+         * Private network ID
+         */
+        id: string;
+        /**
+         * Subnet ID
+         */
+        subnetId: string;
+    }
+
     export interface NetworkPrivateRegionsAttribute {
         openstackid: string;
         region: string;
@@ -1536,6 +2310,123 @@ export namespace CloudProject {
         value: string;
     }
 
+    export interface RancherCurrentState {
+        /**
+         * Bootstrap password of the managed Rancher service, returned only on creation
+         */
+        bootstrapPassword: string;
+        /**
+         * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+         */
+        ipRestrictions: outputs.CloudProject.RancherCurrentStateIpRestriction[];
+        /**
+         * Name of the managed Rancher service
+         */
+        name: string;
+        /**
+         * Networking properties of a managed Rancher service
+         */
+        networking: outputs.CloudProject.RancherCurrentStateNetworking;
+        /**
+         * Plan of the managed Rancher service
+         */
+        plan: string;
+        /**
+         * Region of the managed Rancher service
+         */
+        region: string;
+        /**
+         * URL of the managed Rancher service
+         */
+        url: string;
+        /**
+         * Latest metrics regarding the usage of the managed Rancher service
+         */
+        usage: outputs.CloudProject.RancherCurrentStateUsage;
+        /**
+         * Version of the managed Rancher service
+         */
+        version: string;
+    }
+
+    export interface RancherCurrentStateIpRestriction {
+        /**
+         * Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+         */
+        cidrBlock: string;
+        /**
+         * Description of the allowed CIDR block
+         */
+        description: string;
+    }
+
+    export interface RancherCurrentStateNetworking {
+        /**
+         * Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access.
+         */
+        egressCidrBlocks: string[];
+    }
+
+    export interface RancherCurrentStateUsage {
+        /**
+         * Date of the sample
+         */
+        datetime: string;
+        /**
+         * Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters
+         */
+        orchestratedVcpus: number;
+    }
+
+    export interface RancherCurrentTask {
+        /**
+         * Identifier of the current task
+         */
+        id: string;
+        /**
+         * Link to the task details
+         */
+        link: string;
+        /**
+         * Current global status of the current task
+         */
+        status: string;
+        /**
+         * Type of the current task
+         */
+        type: string;
+    }
+
+    export interface RancherTargetSpec {
+        /**
+         * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
+         */
+        ipRestrictions: outputs.CloudProject.RancherTargetSpecIpRestriction[];
+        /**
+         * Name of the managed Rancher service
+         */
+        name: string;
+        /**
+         * Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+         */
+        plan: string;
+        /**
+         * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+         */
+        version: string;
+    }
+
+    export interface RancherTargetSpecIpRestriction {
+        /**
+         * Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used)
+         */
+        cidrBlock: string;
+        /**
+         * Description of the allowed CIDR block
+         */
+        description: string;
+    }
+
     export interface RegionNetworkSubnet {
         /**
          * List of IP pools allocated in subnet
@@ -1599,6 +2490,126 @@ export namespace CloudProject {
          * Host route next hop (eg: 192.168.1.254)
          */
         nextHop?: string;
+    }
+
+    export interface StorageEncryption {
+        /**
+         * Encryption algorithm
+         */
+        sseAlgorithm: string;
+    }
+
+    export interface StorageObject {
+        /**
+         * ETag
+         */
+        etag: string;
+        /**
+         * Whether this object is a delete marker
+         */
+        isDeleteMarker: boolean;
+        /**
+         * Whether this is the latest version of the object
+         */
+        isLatest: boolean;
+        /**
+         * Key
+         */
+        key: string;
+        /**
+         * Last modification date
+         */
+        lastModified: string;
+        /**
+         * Size (bytes)
+         */
+        size: number;
+        /**
+         * Storage class
+         */
+        storageClass: string;
+        /**
+         * Version ID of the object
+         */
+        versionId: string;
+    }
+
+    export interface StorageReplication {
+        /**
+         * Replication rules
+         */
+        rules: outputs.CloudProject.StorageReplicationRule[];
+    }
+
+    export interface StorageReplicationRule {
+        /**
+         * Delete marker replication
+         */
+        deleteMarkerReplication: string;
+        /**
+         * Rule destination configuration
+         */
+        destination: outputs.CloudProject.StorageReplicationRuleDestination;
+        /**
+         * Rule filters
+         */
+        filter: outputs.CloudProject.StorageReplicationRuleFilter;
+        /**
+         * Rule ID
+         */
+        id: string;
+        /**
+         * Rule priority
+         */
+        priority: number;
+        /**
+         * Rule status
+         */
+        status: string;
+    }
+
+    export interface StorageReplicationRuleDestination {
+        /**
+         * Destination bucket name
+         */
+        name: string;
+        /**
+         * Destination region
+         */
+        region: string;
+        /**
+         * Destination storage class
+         */
+        storageClass: string;
+    }
+
+    export interface StorageReplicationRuleFilter {
+        /**
+         * Prefix filter
+         */
+        prefix: string;
+        /**
+         * Tags filter
+         */
+        tags: outputs.CloudProject.StorageReplicationRuleFilterTag[];
+    }
+
+    export interface StorageReplicationRuleFilterTag {
+        /**
+         * Tag key
+         */
+        key: string;
+        /**
+         * Tag value
+         */
+        value: string;
+    }
+
+    export interface StorageVersioning {
+        /**
+         * Versioning status
+         */
+        status: string;
     }
 
     export interface UserRole {
@@ -2106,23 +3117,55 @@ export namespace Dedicated {
         value: number;
     }
 
-    export interface ServerDetails {
+    export interface ServerCustomizations {
         /**
-         * Personnal hostname to use in server reinstallation
+         * Config Drive UserData
          */
-        customHostname?: string;
+        configDriveUserData?: string;
         /**
-         * Disk group id to process install on (only available for some templates)
+         * Path of the EFI bootloader
          */
-        diskGroupId?: number;
+        efiBootloaderPath?: string;
         /**
-         * true if you want to install only on the first disk
+         * Custom hostname
          */
-        noRaid?: boolean;
+        hostname?: string;
         /**
-         * Number of devices to use for system's software RAID
+         * Image HTTP Headers
          */
-        softRaidDevices?: number;
+        httpHeaders?: {[key: string]: string};
+        /**
+         * Image checksum
+         */
+        imageCheckSum?: string;
+        /**
+         * Checksum type
+         */
+        imageCheckSumType?: string;
+        /**
+         * Image Type
+         */
+        imageType?: string;
+        /**
+         * Image URL
+         */
+        imageUrl?: string;
+        /**
+         * Display Language
+         */
+        language?: string;
+        /**
+         * Post-Installation Script
+         */
+        postInstallationScript?: string;
+        /**
+         * Post-Installation Script File Extension
+         */
+        postInstallationScriptExtension?: string;
+        /**
+         * SSH Public Key
+         */
+        sshKey?: string;
     }
 
     export interface ServerIam {
@@ -2144,36 +3187,6 @@ export namespace Dedicated {
         urn: string;
     }
 
-    export interface ServerInstallTaskDetails {
-        /**
-         * Set up the server using the provided hostname instead of the default hostname.
-         */
-        customHostname?: string;
-        /**
-         * Disk group id.
-         */
-        diskGroupId?: number;
-        /**
-         * Set to true to disable RAID.
-         */
-        noRaid?: boolean;
-        /**
-         * soft raid devices.
-         */
-        softRaidDevices?: number;
-    }
-
-    export interface ServerInstallTaskUserMetadata {
-        /**
-         * The key for the user_metadata
-         */
-        key: string;
-        /**
-         * The value for the user_metadata
-         */
-        value: string;
-    }
-
     export interface ServerNetworkingInterface {
         /**
          * Interface Mac address
@@ -2187,9 +3200,6 @@ export namespace Dedicated {
 
     export interface ServerOrder {
         date: string;
-        /**
-         * Details object when reinstalling server (see https://eu.api.ovh.com/console/?section=%2Fdedicated%2Fserver&branch=v1#post-/dedicated/server/-serviceName-/install/start)
-         */
         details: outputs.Dedicated.ServerOrderDetail[];
         expirationDate: string;
         orderId: number;
@@ -2272,14 +3282,512 @@ export namespace Dedicated {
         value: string;
     }
 
-    export interface ServerUserMetadata {
-        key?: string;
-        value?: string;
+    export interface ServerReinstallTaskCustomizations {
+        /**
+         * Config Drive UserData
+         */
+        configDriveUserData?: string;
+        /**
+         * EFI bootloader path
+         */
+        efiBootloaderPath?: string;
+        /**
+         * Custom hostname
+         */
+        hostname?: string;
+        /**
+         * Image HTTP Headers
+         */
+        httpHeaders?: {[key: string]: string};
+        /**
+         * Image checksum
+         */
+        imageCheckSum?: string;
+        /**
+         * Checksum type
+         */
+        imageCheckSumType?: string;
+        /**
+         * Image Type
+         */
+        imageType?: string;
+        /**
+         * Image URL
+         */
+        imageUrl?: string;
+        /**
+         * Display Language
+         */
+        language?: string;
+        /**
+         * Post-Installation Script
+         */
+        postInstallationScript?: string;
+        /**
+         * Post-Installation Script File Extension
+         */
+        postInstallationScriptExtension?: string;
+        /**
+         * SSH Public Key
+         */
+        sshKey?: string;
+    }
+
+    export interface ServerReinstallTaskStorage {
+        /**
+         * Disk group id to install the OS to (default is 0, meaning automatic).
+         */
+        diskGroupId?: number;
+        /**
+         * Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode).
+         */
+        hardwareRaids?: outputs.Dedicated.ServerReinstallTaskStorageHardwareRaid[];
+        /**
+         * Partitioning configuration
+         */
+        partitionings?: outputs.Dedicated.ServerReinstallTaskStoragePartitioning[];
+    }
+
+    export interface ServerReinstallTaskStorageHardwareRaid {
+        /**
+         * Number of arrays (default is 1)
+         */
+        arrays?: number;
+        /**
+         * Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+         */
+        disks?: number;
+        /**
+         * Hardware raid type (default is 1)
+         */
+        raidLevel?: number;
+        /**
+         * Number of disks in the disk group involved in the spare (default is 0)
+         */
+        spares?: number;
+    }
+
+    export interface ServerReinstallTaskStoragePartitioning {
+        /**
+         * Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+         */
+        disks?: number;
+        /**
+         * Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme). Accept multiple values (multiple partitions):
+         */
+        layouts?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayout[];
+        /**
+         * Partitioning scheme (if applicable with selected operating system)
+         */
+        schemeName?: string;
+    }
+
+    export interface ServerReinstallTaskStoragePartitioningLayout {
+        /**
+         * Partition extras parameters (when applicable)
+         */
+        extras?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtra[];
+        /**
+         * File system type
+         */
+        fileSystem: string;
+        /**
+         * Mount point
+         */
+        mountPoint: string;
+        /**
+         * Software raid type (default is 1)
+         */
+        raidLevel?: number;
+        /**
+         * Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+         */
+        size?: number;
+    }
+
+    export interface ServerReinstallTaskStoragePartitioningLayoutExtra {
+        /**
+         * LVM-specific parameters (when applicable)
+         */
+        lvs?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtraLv[];
+        /**
+         * ZFS-specific parameters (when applicable)
+         */
+        zps?: outputs.Dedicated.ServerReinstallTaskStoragePartitioningLayoutExtraZp[];
+    }
+
+    export interface ServerReinstallTaskStoragePartitioningLayoutExtraLv {
+        /**
+         * Logical volume name
+         */
+        name?: string;
+    }
+
+    export interface ServerReinstallTaskStoragePartitioningLayoutExtraZp {
+        /**
+         * zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible)
+         */
+        name?: string;
+    }
+
+    export interface ServerStorage {
+        /**
+         * Disk group id (default is 0, meaning automatic)
+         */
+        diskGroupId?: number;
+        /**
+         * Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode)
+         */
+        hardwareRaids?: outputs.Dedicated.ServerStorageHardwareRaid[];
+        /**
+         * Partitioning configuration
+         */
+        partitioning?: outputs.Dedicated.ServerStoragePartitioning;
+    }
+
+    export interface ServerStorageHardwareRaid {
+        /**
+         * Number of arrays (default is 1)
+         */
+        arrays?: number;
+        /**
+         * Total number of disks in the disk group involved in the hardware raid configuration (all disks of the disk group by default)
+         */
+        disks?: number;
+        /**
+         * Hardware raid type (default is 1)
+         */
+        raidLevel?: number;
+        /**
+         * Number of disks in the disk group involved in the spare (default is 0)
+         */
+        spares?: number;
+    }
+
+    export interface ServerStoragePartitioning {
+        /**
+         * Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default)
+         */
+        disks?: number;
+        /**
+         * Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme)
+         */
+        layouts?: outputs.Dedicated.ServerStoragePartitioningLayout[];
+        /**
+         * Partitioning scheme (if applicable with selected operating system)
+         */
+        schemeName?: string;
+    }
+
+    export interface ServerStoragePartitioningLayout {
+        /**
+         * Partition extras parameters
+         */
+        extras?: outputs.Dedicated.ServerStoragePartitioningLayoutExtras;
+        /**
+         * File system type
+         */
+        fileSystem: string;
+        /**
+         * Mount point
+         */
+        mountPoint: string;
+        /**
+         * Software raid type (default is 1)
+         */
+        raidLevel?: number;
+        /**
+         * Partition size in MiB (default value is 0 which means to fill the disk with that partition)
+         */
+        size?: number;
+    }
+
+    export interface ServerStoragePartitioningLayoutExtras {
+        /**
+         * LVM-specific parameters
+         */
+        lv?: outputs.Dedicated.ServerStoragePartitioningLayoutExtrasLv;
+        /**
+         * ZFS-specific parameters
+         */
+        zp?: outputs.Dedicated.ServerStoragePartitioningLayoutExtrasZp;
+    }
+
+    export interface ServerStoragePartitioningLayoutExtrasLv {
+        /**
+         * Dedicated server name
+         */
+        name?: string;
+    }
+
+    export interface ServerStoragePartitioningLayoutExtrasZp {
+        /**
+         * Dedicated server name
+         */
+        name?: string;
     }
 
 }
 
 export namespace Domain {
+    export interface DSRecordsDsRecord {
+        /**
+         * The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+         */
+        algorithm: string;
+        /**
+         * The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+         */
+        flags: string;
+        /**
+         * The record base64 encoded public key
+         */
+        publicKey: string;
+        /**
+         * The record tag
+         */
+        tag: number;
+    }
+
+    export interface NameCurrentState {
+        /**
+         * Domain additional states
+         */
+        additionalStates: string[];
+        /**
+         * The domain DNS configuration
+         */
+        dnsConfiguration: outputs.Domain.NameCurrentStateDnsConfiguration;
+        /**
+         * Extension of the domain name
+         */
+        extension: string;
+        /**
+         * Domain main state
+         */
+        mainState: string;
+        /**
+         * Domain name
+         */
+        name: string;
+        /**
+         * Domain protection state
+         */
+        protectionState: string;
+        /**
+         * Domain suspension state
+         */
+        suspensionState: string;
+    }
+
+    export interface NameCurrentStateDnsConfiguration {
+        /**
+         * The type of DNS configuration of the domain
+         */
+        configurationType: string;
+        /**
+         * Whether the registry supports IPv6 or not
+         */
+        glueRecordIpv6supported: boolean;
+        /**
+         * Whether the registry accepts hosts or not
+         */
+        hostSupported: boolean;
+        /**
+         * The maximum number of name servers allowed by the registry
+         */
+        maxDns: number;
+        /**
+         * The minimum number of name servers allowed by the registry
+         */
+        minDns: number;
+        /**
+         * The name servers used by the domain name
+         */
+        nameServers: outputs.Domain.NameCurrentStateDnsConfigurationNameServer[];
+    }
+
+    export interface NameCurrentStateDnsConfigurationNameServer {
+        /**
+         * The IPv4 associated to the name server
+         */
+        ipv4: string;
+        /**
+         * The IPv6 associated to the name server
+         */
+        ipv6: string;
+        /**
+         * The host name
+         */
+        nameServer: string;
+        /**
+         * The type of name server
+         */
+        nameServerType: string;
+    }
+
+    export interface NameCurrentTask {
+        /**
+         * Identifier of the current task
+         */
+        id: string;
+        /**
+         * Link to the task details
+         */
+        link: string;
+        /**
+         * Current global status of the current task
+         */
+        status: string;
+        /**
+         * Type of the current task
+         */
+        type: string;
+    }
+
+    export interface NameIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface NameOrder {
+        date: string;
+        details: outputs.Domain.NameOrderDetail[];
+        expirationDate: string;
+        orderId: number;
+    }
+
+    export interface NameOrderDetail {
+        description: string;
+        /**
+         * Product type of item in order
+         */
+        detailType: string;
+        domain: string;
+        orderDetailId: number;
+        quantity: string;
+    }
+
+    export interface NamePlan {
+        configurations: outputs.Domain.NamePlanConfiguration[];
+        /**
+         * Duration selected for the purchase of the product (defaults to "P1Y")
+         */
+        duration: string;
+        /**
+         * Cart item to be linked
+         */
+        itemId?: number;
+        /**
+         * Identifier of the option offer
+         */
+        planCode: string;
+        /**
+         * Pricing mode selected for the purchase of the product
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity?: number;
+    }
+
+    export interface NamePlanConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: string;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: string;
+    }
+
+    export interface NamePlanOption {
+        configurations?: outputs.Domain.NamePlanOptionConfiguration[];
+        /**
+         * Duration selected for the purchase of the product
+         */
+        duration: string;
+        /**
+         * Identifier of the option offer
+         */
+        planCode: string;
+        /**
+         * Pricing mode selected for the purchase of the product
+         */
+        pricingMode: string;
+        /**
+         * Quantity of product desired
+         */
+        quantity: number;
+    }
+
+    export interface NamePlanOptionConfiguration {
+        /**
+         * Label for your configuration item
+         */
+        label: string;
+        /**
+         * Value or resource URL on API.OVH.COM of your configuration item
+         */
+        value: string;
+    }
+
+    export interface NameServersServer {
+        /**
+         * The server hostname
+         */
+        host: string;
+        /**
+         * The server IP
+         */
+        ip?: string;
+    }
+
+    export interface NameTargetSpec {
+        /**
+         * The domain DNS configuration
+         */
+        dnsConfiguration: outputs.Domain.NameTargetSpecDnsConfiguration;
+    }
+
+    export interface NameTargetSpecDnsConfiguration {
+        /**
+         * The name servers to update
+         */
+        nameServers?: outputs.Domain.NameTargetSpecDnsConfigurationNameServer[];
+    }
+
+    export interface NameTargetSpecDnsConfigurationNameServer {
+        /**
+         * The IPv4 associated to the name server
+         */
+        ipv4: string;
+        /**
+         * The IPv6 associated to the name server
+         */
+        ipv6: string;
+        /**
+         * The host name
+         */
+        nameServer: string;
+    }
+
     export interface ZoneOrder {
         /**
          * date
@@ -2963,94 +4471,6 @@ export namespace IpLoadBalancing {
 }
 
 export namespace Me {
-    export interface GetInstallationTemplateCustomization {
-        /**
-         * Set up the server using the provided hostname instead of the default hostname.
-         */
-        customHostname: string;
-    }
-
-    export interface GetInstallationTemplateInput {
-        default: string;
-        /**
-         * Information about this template.
-         */
-        description: string;
-        enums: string[];
-        mandatory: boolean;
-        /**
-         * Hardware RAID name.
-         */
-        name: string;
-        /**
-         * Partition type.
-         */
-        type: string;
-    }
-
-    export interface GetInstallationTemplatePartitionScheme {
-        hardwareRaids: outputs.Me.GetInstallationTemplatePartitionSchemeHardwareRaid[];
-        /**
-         * Hardware RAID name.
-         */
-        name: string;
-        partitions: outputs.Me.GetInstallationTemplatePartitionSchemePartition[];
-        /**
-         * On a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications).
-         */
-        priority: number;
-    }
-
-    export interface GetInstallationTemplatePartitionSchemeHardwareRaid {
-        /**
-         * Disk List. Syntax is cX:dY for disks and [cX:dY,cX:dY] for groups. With X and Y resp. the controller id and the disk id.
-         */
-        disks: string[];
-        /**
-         * RAID mode (raid0, raid1, raid10, raid5, raid50, raid6, raid60).
-         */
-        mode: string;
-        /**
-         * Hardware RAID name.
-         */
-        name: string;
-        /**
-         * Specifies the creation order of the hardware RAID.
-         */
-        step: number;
-    }
-
-    export interface GetInstallationTemplatePartitionSchemePartition {
-        /**
-         * Partition filesystem.
-         */
-        filesystem: string;
-        /**
-         * Partition mount point.
-         */
-        mountpoint: string;
-        /**
-         * Step or order. Specifies the creation order of the partition on the disk.
-         */
-        order: number;
-        /**
-         * Raid partition type.
-         */
-        raid: string;
-        /**
-         * Size of partition in MB, 0 => rest of the space.
-         */
-        size: number;
-        /**
-         * Partition type.
-         */
-        type: string;
-        /**
-         * Volume name needed for proxmox distribution.
-         */
-        volumeName: string;
-    }
-
     export interface GetMeCurrency {
         /**
          * Currency code used by this account (e.g EUR, USD, ...)
@@ -3062,23 +4482,96 @@ export namespace Me {
         symbol: string;
     }
 
-    export interface InstallationTemplateCustomization {
+}
+
+export namespace OVHcloud {
+    export interface ConnectIam {
         /**
-         * Set up the server using the provided hostname instead of the default hostname.
+         * Resource display name
          */
-        customHostname?: string;
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
     }
 
-    export interface InstallationTemplateInput {
-        default: string;
+    export interface ConnectsOcc {
         /**
-         * information about this template.
+         * Service bandwidth
+         */
+        bandwidth: string;
+        /**
+         * Service description
          */
         description: string;
-        enums: string[];
-        mandatory: boolean;
-        name: string;
-        type: string;
+        /**
+         * IAM resource information
+         */
+        iam: outputs.OVHcloud.ConnectsOccIam;
+        /**
+         * List of interfaces linked to a service
+         */
+        interfaceLists: number[];
+        /**
+         * Pop reference where the service is delivered
+         */
+        pop: string;
+        /**
+         * Port quantity
+         */
+        portQuantity: string;
+        /**
+         * Product name of the service
+         */
+        product: string;
+        /**
+         * Service provider
+         */
+        providerName: string;
+        /**
+         * Service name
+         */
+        serviceName: string;
+        /**
+         * Service status
+         */
+        status: string;
+        /**
+         * uuid of the Ovhcloud Connect service
+         */
+        uuid: string;
+        /**
+         * vrack linked to the service
+         */
+        vrack: string;
+    }
+
+    export interface ConnectsOccIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource in the IAM
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with `ovh:`
+         */
+        tags: {[key: string]: string};
+        /**
+         * URN of the private database, used when writing IAM policies
+         */
+        urn: string;
     }
 
 }

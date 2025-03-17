@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KubeNodePool{}
 	case "ovh:CloudProject/kubeOidc:KubeOidc":
 		r = &KubeOidc{}
+	case "ovh:CloudProject/loadBalancer:LoadBalancer":
+		r = &LoadBalancer{}
 	case "ovh:CloudProject/networkPrivate:NetworkPrivate":
 		r = &NetworkPrivate{}
 	case "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkPrivateSubnetV2{}
 	case "ovh:CloudProject/project:Project":
 		r = &Project{}
+	case "ovh:CloudProject/rancher:Rancher":
+		r = &Rancher{}
 	case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
 		r = &RegionLoadBalancerLogSubscription{}
 	case "ovh:CloudProject/regionNetwork:RegionNetwork":
@@ -69,10 +73,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &S3Credential{}
 	case "ovh:CloudProject/s3Policy:S3Policy":
 		r = &S3Policy{}
+	case "ovh:CloudProject/storage:Storage":
+		r = &Storage{}
 	case "ovh:CloudProject/user:User":
 		r = &User{}
 	case "ovh:CloudProject/volume:Volume":
 		r = &Volume{}
+	case "ovh:CloudProject/volumeBackup:VolumeBackup":
+		r = &VolumeBackup{}
 	case "ovh:CloudProject/workflowBackup:WorkflowBackup":
 		r = &WorkflowBackup{}
 	default:
@@ -165,6 +173,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"CloudProject/loadBalancer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"CloudProject/networkPrivate",
 		&module{version},
 	)
@@ -181,6 +194,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/rancher",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -210,12 +228,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"CloudProject/storage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"CloudProject/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/volumeBackup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

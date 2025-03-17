@@ -282,6 +282,16 @@ class Move(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        The resource can be imported using the `ip` field, e.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description attached to the IP
@@ -322,6 +332,16 @@ class Move(pulumi.CustomResource):
             routed_to={
                 "service_name": "",
             })
+        ```
+
+        ## Import
+
+        The resource can be imported using the `ip` field, e.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
         ```
 
         :param str resource_name: The name of the resource.

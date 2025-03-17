@@ -60,11 +60,6 @@ export type Server = import("./server").Server;
 export const Server: typeof import("./server").Server = null as any;
 utilities.lazyLoad(exports, ["Server"], () => require("./server"));
 
-export { ServerInstallTaskArgs, ServerInstallTaskState } from "./serverInstallTask";
-export type ServerInstallTask = import("./serverInstallTask").ServerInstallTask;
-export const ServerInstallTask: typeof import("./serverInstallTask").ServerInstallTask = null as any;
-utilities.lazyLoad(exports, ["ServerInstallTask"], () => require("./serverInstallTask"));
-
 export { ServerNetworkingArgs, ServerNetworkingState } from "./serverNetworking";
 export type ServerNetworking = import("./serverNetworking").ServerNetworking;
 export const ServerNetworking: typeof import("./serverNetworking").ServerNetworking = null as any;
@@ -74,6 +69,11 @@ export { ServerRebootTaskArgs, ServerRebootTaskState } from "./serverRebootTask"
 export type ServerRebootTask = import("./serverRebootTask").ServerRebootTask;
 export const ServerRebootTask: typeof import("./serverRebootTask").ServerRebootTask = null as any;
 utilities.lazyLoad(exports, ["ServerRebootTask"], () => require("./serverRebootTask"));
+
+export { ServerReinstallTaskArgs, ServerReinstallTaskState } from "./serverReinstallTask";
+export type ServerReinstallTask = import("./serverReinstallTask").ServerReinstallTask;
+export const ServerReinstallTask: typeof import("./serverReinstallTask").ServerReinstallTask = null as any;
+utilities.lazyLoad(exports, ["ServerReinstallTask"], () => require("./serverReinstallTask"));
 
 export { ServerUpdateArgs, ServerUpdateState } from "./serverUpdate";
 export type ServerUpdate = import("./serverUpdate").ServerUpdate;
@@ -95,12 +95,12 @@ const _module = {
                 return new NasHAPartitionSnapshot(name, <any>undefined, { urn })
             case "ovh:Dedicated/server:Server":
                 return new Server(name, <any>undefined, { urn })
-            case "ovh:Dedicated/serverInstallTask:ServerInstallTask":
-                return new ServerInstallTask(name, <any>undefined, { urn })
             case "ovh:Dedicated/serverNetworking:ServerNetworking":
                 return new ServerNetworking(name, <any>undefined, { urn })
             case "ovh:Dedicated/serverRebootTask:ServerRebootTask":
                 return new ServerRebootTask(name, <any>undefined, { urn })
+            case "ovh:Dedicated/serverReinstallTask:ServerReinstallTask":
+                return new ServerReinstallTask(name, <any>undefined, { urn })
             case "ovh:Dedicated/serverUpdate:ServerUpdate":
                 return new ServerUpdate(name, <any>undefined, { urn })
             default:
@@ -113,7 +113,7 @@ pulumi.runtime.registerResourceModule("ovh", "Dedicated/nasHAPartition", _module
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/nasHAPartitionAccess", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/nasHAPartitionSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/server", _module)
-pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverInstallTask", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverNetworking", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverRebootTask", _module)
+pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverReinstallTask", _module)
 pulumi.runtime.registerResourceModule("ovh", "Dedicated/serverUpdate", _module)

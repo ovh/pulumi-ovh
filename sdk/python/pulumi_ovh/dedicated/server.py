@@ -23,45 +23,45 @@ class ServerArgs:
     def __init__(__self__, *,
                  boot_id: Optional[pulumi.Input[float]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
-                 details: Optional[pulumi.Input['ServerDetailsArgs']] = None,
+                 customizations: Optional[pulumi.Input['ServerCustomizationsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
+                 os: Optional[pulumi.Input[str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                 partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanArgs']]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rescue_mail: Optional[pulumi.Input[str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[str]] = None,
                  root_device: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 template_name: Optional[pulumi.Input[str]] = None,
-                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]] = None):
+                 storages: Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]] = None):
         """
         The set of arguments for constructing a Server resource.
         :param pulumi.Input[float] boot_id: Boot id of the server
         :param pulumi.Input[str] boot_script: Boot script of the server
-        :param pulumi.Input['ServerDetailsArgs'] details: A structure describing informations about installation custom
+        :param pulumi.Input['ServerCustomizationsArgs'] customizations: OS reinstallation customizations
         :param pulumi.Input[str] display_name: Resource display name
         :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
+        :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] partition_scheme_name: Partition scheme name
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[str] root_device: Root device of the server
         :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
-        :param pulumi.Input[str] template_name: Template name
-        :param pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]] user_metadatas: Metadata
+        :param pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]] storages: OS reinstallation storage configurations
         """
         if boot_id is not None:
             pulumi.set(__self__, "boot_id", boot_id)
         if boot_script is not None:
             pulumi.set(__self__, "boot_script", boot_script)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
+        if customizations is not None:
+            pulumi.set(__self__, "customizations", customizations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if efi_bootloader_path is not None:
@@ -70,14 +70,16 @@ class ServerArgs:
             pulumi.set(__self__, "monitoring", monitoring)
         if no_intervention is not None:
             pulumi.set(__self__, "no_intervention", no_intervention)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
         if ovh_subsidiary is not None:
             pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
-        if partition_scheme_name is not None:
-            pulumi.set(__self__, "partition_scheme_name", partition_scheme_name)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
         if plans is not None:
             pulumi.set(__self__, "plans", plans)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
         if rescue_mail is not None:
             pulumi.set(__self__, "rescue_mail", rescue_mail)
         if rescue_ssh_key is not None:
@@ -86,10 +88,8 @@ class ServerArgs:
             pulumi.set(__self__, "root_device", root_device)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if template_name is not None:
-            pulumi.set(__self__, "template_name", template_name)
-        if user_metadatas is not None:
-            pulumi.set(__self__, "user_metadatas", user_metadatas)
+        if storages is not None:
+            pulumi.set(__self__, "storages", storages)
 
     @property
     @pulumi.getter(name="bootId")
@@ -117,15 +117,15 @@ class ServerArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['ServerDetailsArgs']]:
+    def customizations(self) -> Optional[pulumi.Input['ServerCustomizationsArgs']]:
         """
-        A structure describing informations about installation custom
+        OS reinstallation customizations
         """
-        return pulumi.get(self, "details")
+        return pulumi.get(self, "customizations")
 
-    @details.setter
-    def details(self, value: Optional[pulumi.Input['ServerDetailsArgs']]):
-        pulumi.set(self, "details", value)
+    @customizations.setter
+    def customizations(self, value: Optional[pulumi.Input['ServerCustomizationsArgs']]):
+        pulumi.set(self, "customizations", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -176,6 +176,18 @@ class ServerArgs:
         pulumi.set(self, "no_intervention", value)
 
     @property
+    @pulumi.getter
+    def os(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operating system
+        """
+        return pulumi.get(self, "os")
+
+    @os.setter
+    def os(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os", value)
+
+    @property
     @pulumi.getter(name="ovhSubsidiary")
     def ovh_subsidiary(self) -> Optional[pulumi.Input[str]]:
         """
@@ -186,18 +198,6 @@ class ServerArgs:
     @ovh_subsidiary.setter
     def ovh_subsidiary(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ovh_subsidiary", value)
-
-    @property
-    @pulumi.getter(name="partitionSchemeName")
-    def partition_scheme_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Partition scheme name
-        """
-        return pulumi.get(self, "partition_scheme_name")
-
-    @partition_scheme_name.setter
-    def partition_scheme_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "partition_scheme_name", value)
 
     @property
     @pulumi.getter(name="planOptions")
@@ -216,6 +216,18 @@ class ServerArgs:
     @plans.setter
     def plans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanArgs']]]]):
         pulumi.set(self, "plans", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Arbitrary properties to pass to cloud-init's config drive datasource
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
 
     @property
     @pulumi.getter(name="rescueMail")
@@ -266,28 +278,16 @@ class ServerArgs:
         pulumi.set(self, "state", value)
 
     @property
-    @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]]:
         """
-        Template name
+        OS reinstallation storage configurations
         """
-        return pulumi.get(self, "template_name")
+        return pulumi.get(self, "storages")
 
-    @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "template_name", value)
-
-    @property
-    @pulumi.getter(name="userMetadatas")
-    def user_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]]:
-        """
-        Metadata
-        """
-        return pulumi.get(self, "user_metadatas")
-
-    @user_metadatas.setter
-    def user_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]]):
-        pulumi.set(self, "user_metadatas", value)
+    @storages.setter
+    def storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]]):
+        pulumi.set(self, "storages", value)
 
 
 @pulumi.input_type
@@ -297,8 +297,8 @@ class _ServerState:
                  boot_id: Optional[pulumi.Input[float]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
                  commercial_range: Optional[pulumi.Input[str]] = None,
+                 customizations: Optional[pulumi.Input['ServerCustomizationsArgs']] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 details: Optional[pulumi.Input['ServerDetailsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  iam: Optional[pulumi.Input['ServerIamArgs']] = None,
@@ -311,11 +311,11 @@ class _ServerState:
                  order: Optional[pulumi.Input['ServerOrderArgs']] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                 partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanArgs']]]] = None,
                  power_state: Optional[pulumi.Input[str]] = None,
                  professional_use: Optional[pulumi.Input[bool]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rack: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rescue_mail: Optional[pulumi.Input[str]] = None,
@@ -325,17 +325,16 @@ class _ServerState:
                  server_id: Optional[pulumi.Input[float]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 support_level: Optional[pulumi.Input[str]] = None,
-                 template_name: Optional[pulumi.Input[str]] = None,
-                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]] = None):
+                 storages: Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]] = None,
+                 support_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
         :param pulumi.Input[str] availability_zone: Dedicated AZ localisation
         :param pulumi.Input[float] boot_id: Boot id of the server
         :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input[str] commercial_range: Dedicated server commercial range
+        :param pulumi.Input['ServerCustomizationsArgs'] customizations: OS reinstallation customizations
         :param pulumi.Input[str] datacenter: Dedicated datacenter localisation (bhs1,bhs2,...)
-        :param pulumi.Input['ServerDetailsArgs'] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
         :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input['ServerIamArgs'] iam: IAM resource information
@@ -347,9 +346,9 @@ class _ServerState:
         :param pulumi.Input['ServerOrderArgs'] order: Details about an Order
         :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] partition_scheme_name: Partition scheme name
         :param pulumi.Input[str] power_state: Power state of the server (poweron, poweroff)
         :param pulumi.Input[bool] professional_use: Does this server have professional use option
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[str] rack: Rack id of the server
         :param pulumi.Input[str] region: Dedicated region localisation
         :param pulumi.Input[str] rescue_mail: Rescue mail of the server
@@ -359,9 +358,8 @@ class _ServerState:
         :param pulumi.Input[float] server_id: Server id
         :param pulumi.Input[str] service_name: The service_name of your dedicated server
         :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+        :param pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]] storages: OS reinstallation storage configurations
         :param pulumi.Input[str] support_level: Dedicated server support level (critical, fastpath, gs, pro)
-        :param pulumi.Input[str] template_name: Template name
-        :param pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]] user_metadatas: Metadata
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
@@ -371,10 +369,10 @@ class _ServerState:
             pulumi.set(__self__, "boot_script", boot_script)
         if commercial_range is not None:
             pulumi.set(__self__, "commercial_range", commercial_range)
+        if customizations is not None:
+            pulumi.set(__self__, "customizations", customizations)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if efi_bootloader_path is not None:
@@ -399,8 +397,6 @@ class _ServerState:
             pulumi.set(__self__, "os", os)
         if ovh_subsidiary is not None:
             pulumi.set(__self__, "ovh_subsidiary", ovh_subsidiary)
-        if partition_scheme_name is not None:
-            pulumi.set(__self__, "partition_scheme_name", partition_scheme_name)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
         if plans is not None:
@@ -409,6 +405,8 @@ class _ServerState:
             pulumi.set(__self__, "power_state", power_state)
         if professional_use is not None:
             pulumi.set(__self__, "professional_use", professional_use)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
         if rack is not None:
             pulumi.set(__self__, "rack", rack)
         if region is not None:
@@ -427,12 +425,10 @@ class _ServerState:
             pulumi.set(__self__, "service_name", service_name)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if storages is not None:
+            pulumi.set(__self__, "storages", storages)
         if support_level is not None:
             pulumi.set(__self__, "support_level", support_level)
-        if template_name is not None:
-            pulumi.set(__self__, "template_name", template_name)
-        if user_metadatas is not None:
-            pulumi.set(__self__, "user_metadatas", user_metadatas)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -484,6 +480,18 @@ class _ServerState:
 
     @property
     @pulumi.getter
+    def customizations(self) -> Optional[pulumi.Input['ServerCustomizationsArgs']]:
+        """
+        OS reinstallation customizations
+        """
+        return pulumi.get(self, "customizations")
+
+    @customizations.setter
+    def customizations(self, value: Optional[pulumi.Input['ServerCustomizationsArgs']]):
+        pulumi.set(self, "customizations", value)
+
+    @property
+    @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
         Dedicated datacenter localisation (bhs1,bhs2,...)
@@ -493,18 +501,6 @@ class _ServerState:
     @datacenter.setter
     def datacenter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datacenter", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['ServerDetailsArgs']]:
-        """
-        A structure describing informations about installation custom
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input['ServerDetailsArgs']]):
-        pulumi.set(self, "details", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -648,18 +644,6 @@ class _ServerState:
         pulumi.set(self, "ovh_subsidiary", value)
 
     @property
-    @pulumi.getter(name="partitionSchemeName")
-    def partition_scheme_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Partition scheme name
-        """
-        return pulumi.get(self, "partition_scheme_name")
-
-    @partition_scheme_name.setter
-    def partition_scheme_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "partition_scheme_name", value)
-
-    @property
     @pulumi.getter(name="planOptions")
     def plan_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionArgs']]]]:
         return pulumi.get(self, "plan_options")
@@ -700,6 +684,18 @@ class _ServerState:
     @professional_use.setter
     def professional_use(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "professional_use", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Arbitrary properties to pass to cloud-init's config drive datasource
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
 
     @property
     @pulumi.getter
@@ -810,6 +806,18 @@ class _ServerState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter
+    def storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]]:
+        """
+        OS reinstallation storage configurations
+        """
+        return pulumi.get(self, "storages")
+
+    @storages.setter
+    def storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]]):
+        pulumi.set(self, "storages", value)
+
+    @property
     @pulumi.getter(name="supportLevel")
     def support_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -821,30 +829,6 @@ class _ServerState:
     def support_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "support_level", value)
 
-    @property
-    @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Template name
-        """
-        return pulumi.get(self, "template_name")
-
-    @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "template_name", value)
-
-    @property
-    @pulumi.getter(name="userMetadatas")
-    def user_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]]:
-        """
-        Metadata
-        """
-        return pulumi.get(self, "user_metadatas")
-
-    @user_metadatas.setter
-    def user_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerUserMetadataArgs']]]]):
-        pulumi.set(self, "user_metadatas", value)
-
 
 class Server(pulumi.CustomResource):
     @overload
@@ -853,21 +837,21 @@ class Server(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boot_id: Optional[pulumi.Input[float]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
-                 details: Optional[pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']]] = None,
+                 customizations: Optional[pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
+                 os: Optional[pulumi.Input[str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                 partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanOptionArgs', 'ServerPlanOptionArgsDict']]]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanArgs', 'ServerPlanArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rescue_mail: Optional[pulumi.Input[str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[str]] = None,
                  root_device: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 template_name: Optional[pulumi.Input[str]] = None,
-                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerUserMetadataArgs', 'ServerUserMetadataArgsDict']]]]] = None,
+                 storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Import
@@ -890,31 +874,31 @@ class Server(pulumi.CustomResource):
 
         bash
 
-        $ pulumi preview -generate-config-out=dedicated.tf
+        pulumi preview -generate-config-out=dedicated.tf
 
-        $ pulumi up
+        pulumi up
 
         The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
 
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] boot_id: Boot id of the server
         :param pulumi.Input[str] boot_script: Boot script of the server
-        :param pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']] details: A structure describing informations about installation custom
+        :param pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']] customizations: OS reinstallation customizations
         :param pulumi.Input[str] display_name: Resource display name
         :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[bool] monitoring: Icmp monitoring state
         :param pulumi.Input[bool] no_intervention: Prevent datacenter intervention
+        :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] partition_scheme_name: Partition scheme name
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[str] root_device: Root device of the server
         :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
-        :param pulumi.Input[str] template_name: Template name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerUserMetadataArgs', 'ServerUserMetadataArgsDict']]]] user_metadatas: Metadata
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]] storages: OS reinstallation storage configurations
         """
         ...
     @overload
@@ -943,13 +927,13 @@ class Server(pulumi.CustomResource):
 
         bash
 
-        $ pulumi preview -generate-config-out=dedicated.tf
+        pulumi preview -generate-config-out=dedicated.tf
 
-        $ pulumi up
+        pulumi up
 
         The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
 
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.
@@ -968,21 +952,21 @@ class Server(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boot_id: Optional[pulumi.Input[float]] = None,
                  boot_script: Optional[pulumi.Input[str]] = None,
-                 details: Optional[pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']]] = None,
+                 customizations: Optional[pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[str]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  no_intervention: Optional[pulumi.Input[bool]] = None,
+                 os: Optional[pulumi.Input[str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-                 partition_scheme_name: Optional[pulumi.Input[str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanOptionArgs', 'ServerPlanOptionArgsDict']]]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanArgs', 'ServerPlanArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rescue_mail: Optional[pulumi.Input[str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[str]] = None,
                  root_device: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 template_name: Optional[pulumi.Input[str]] = None,
-                 user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerUserMetadataArgs', 'ServerUserMetadataArgsDict']]]]] = None,
+                 storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -994,21 +978,21 @@ class Server(pulumi.CustomResource):
 
             __props__.__dict__["boot_id"] = boot_id
             __props__.__dict__["boot_script"] = boot_script
-            __props__.__dict__["details"] = details
+            __props__.__dict__["customizations"] = customizations
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["no_intervention"] = no_intervention
+            __props__.__dict__["os"] = os
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
-            __props__.__dict__["partition_scheme_name"] = partition_scheme_name
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["plans"] = plans
+            __props__.__dict__["properties"] = properties
             __props__.__dict__["rescue_mail"] = rescue_mail
             __props__.__dict__["rescue_ssh_key"] = rescue_ssh_key
             __props__.__dict__["root_device"] = root_device
             __props__.__dict__["state"] = state
-            __props__.__dict__["template_name"] = template_name
-            __props__.__dict__["user_metadatas"] = user_metadatas
+            __props__.__dict__["storages"] = storages
             __props__.__dict__["availability_zone"] = None
             __props__.__dict__["commercial_range"] = None
             __props__.__dict__["datacenter"] = None
@@ -1018,7 +1002,6 @@ class Server(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["new_upgrade_system"] = None
             __props__.__dict__["order"] = None
-            __props__.__dict__["os"] = None
             __props__.__dict__["power_state"] = None
             __props__.__dict__["professional_use"] = None
             __props__.__dict__["rack"] = None
@@ -1041,8 +1024,8 @@ class Server(pulumi.CustomResource):
             boot_id: Optional[pulumi.Input[float]] = None,
             boot_script: Optional[pulumi.Input[str]] = None,
             commercial_range: Optional[pulumi.Input[str]] = None,
+            customizations: Optional[pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']]] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
-            details: Optional[pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             efi_bootloader_path: Optional[pulumi.Input[str]] = None,
             iam: Optional[pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']]] = None,
@@ -1055,11 +1038,11 @@ class Server(pulumi.CustomResource):
             order: Optional[pulumi.Input[Union['ServerOrderArgs', 'ServerOrderArgsDict']]] = None,
             os: Optional[pulumi.Input[str]] = None,
             ovh_subsidiary: Optional[pulumi.Input[str]] = None,
-            partition_scheme_name: Optional[pulumi.Input[str]] = None,
             plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanOptionArgs', 'ServerPlanOptionArgsDict']]]]] = None,
             plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanArgs', 'ServerPlanArgsDict']]]]] = None,
             power_state: Optional[pulumi.Input[str]] = None,
             professional_use: Optional[pulumi.Input[bool]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             rack: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             rescue_mail: Optional[pulumi.Input[str]] = None,
@@ -1069,9 +1052,8 @@ class Server(pulumi.CustomResource):
             server_id: Optional[pulumi.Input[float]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            support_level: Optional[pulumi.Input[str]] = None,
-            template_name: Optional[pulumi.Input[str]] = None,
-            user_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerUserMetadataArgs', 'ServerUserMetadataArgsDict']]]]] = None) -> 'Server':
+            storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]]] = None,
+            support_level: Optional[pulumi.Input[str]] = None) -> 'Server':
         """
         Get an existing Server resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1083,8 +1065,8 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[float] boot_id: Boot id of the server
         :param pulumi.Input[str] boot_script: Boot script of the server
         :param pulumi.Input[str] commercial_range: Dedicated server commercial range
+        :param pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']] customizations: OS reinstallation customizations
         :param pulumi.Input[str] datacenter: Dedicated datacenter localisation (bhs1,bhs2,...)
-        :param pulumi.Input[Union['ServerDetailsArgs', 'ServerDetailsArgsDict']] details: A structure describing informations about installation custom
         :param pulumi.Input[str] display_name: Resource display name
         :param pulumi.Input[str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']] iam: IAM resource information
@@ -1096,9 +1078,9 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[Union['ServerOrderArgs', 'ServerOrderArgsDict']] order: Details about an Order
         :param pulumi.Input[str] os: Operating system
         :param pulumi.Input[str] ovh_subsidiary: OVH subsidiaries
-        :param pulumi.Input[str] partition_scheme_name: Partition scheme name
         :param pulumi.Input[str] power_state: Power state of the server (poweron, poweroff)
         :param pulumi.Input[bool] professional_use: Does this server have professional use option
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[str] rack: Rack id of the server
         :param pulumi.Input[str] region: Dedicated region localisation
         :param pulumi.Input[str] rescue_mail: Rescue mail of the server
@@ -1108,9 +1090,8 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[float] server_id: Server id
         :param pulumi.Input[str] service_name: The service_name of your dedicated server
         :param pulumi.Input[str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]] storages: OS reinstallation storage configurations
         :param pulumi.Input[str] support_level: Dedicated server support level (critical, fastpath, gs, pro)
-        :param pulumi.Input[str] template_name: Template name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerUserMetadataArgs', 'ServerUserMetadataArgsDict']]]] user_metadatas: Metadata
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1120,8 +1101,8 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["boot_id"] = boot_id
         __props__.__dict__["boot_script"] = boot_script
         __props__.__dict__["commercial_range"] = commercial_range
+        __props__.__dict__["customizations"] = customizations
         __props__.__dict__["datacenter"] = datacenter
-        __props__.__dict__["details"] = details
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
         __props__.__dict__["iam"] = iam
@@ -1134,11 +1115,11 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["order"] = order
         __props__.__dict__["os"] = os
         __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
-        __props__.__dict__["partition_scheme_name"] = partition_scheme_name
         __props__.__dict__["plan_options"] = plan_options
         __props__.__dict__["plans"] = plans
         __props__.__dict__["power_state"] = power_state
         __props__.__dict__["professional_use"] = professional_use
+        __props__.__dict__["properties"] = properties
         __props__.__dict__["rack"] = rack
         __props__.__dict__["region"] = region
         __props__.__dict__["rescue_mail"] = rescue_mail
@@ -1148,9 +1129,8 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["server_id"] = server_id
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
+        __props__.__dict__["storages"] = storages
         __props__.__dict__["support_level"] = support_level
-        __props__.__dict__["template_name"] = template_name
-        __props__.__dict__["user_metadatas"] = user_metadatas
         return Server(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1187,19 +1167,19 @@ class Server(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def customizations(self) -> pulumi.Output[Optional['outputs.ServerCustomizations']]:
+        """
+        OS reinstallation customizations
+        """
+        return pulumi.get(self, "customizations")
+
+    @property
+    @pulumi.getter
     def datacenter(self) -> pulumi.Output[str]:
         """
         Dedicated datacenter localisation (bhs1,bhs2,...)
         """
         return pulumi.get(self, "datacenter")
-
-    @property
-    @pulumi.getter
-    def details(self) -> pulumi.Output[Optional['outputs.ServerDetails']]:
-        """
-        A structure describing informations about installation custom
-        """
-        return pulumi.get(self, "details")
 
     @property
     @pulumi.getter(name="displayName")
@@ -1295,14 +1275,6 @@ class Server(pulumi.CustomResource):
         return pulumi.get(self, "ovh_subsidiary")
 
     @property
-    @pulumi.getter(name="partitionSchemeName")
-    def partition_scheme_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Partition scheme name
-        """
-        return pulumi.get(self, "partition_scheme_name")
-
-    @property
     @pulumi.getter(name="planOptions")
     def plan_options(self) -> pulumi.Output[Sequence['outputs.ServerPlanOption']]:
         return pulumi.get(self, "plan_options")
@@ -1327,6 +1299,14 @@ class Server(pulumi.CustomResource):
         Does this server have professional use option
         """
         return pulumi.get(self, "professional_use")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Arbitrary properties to pass to cloud-init's config drive datasource
+        """
+        return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter
@@ -1401,26 +1381,18 @@ class Server(pulumi.CustomResource):
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter
+    def storages(self) -> pulumi.Output[Optional[Sequence['outputs.ServerStorage']]]:
+        """
+        OS reinstallation storage configurations
+        """
+        return pulumi.get(self, "storages")
+
+    @property
     @pulumi.getter(name="supportLevel")
     def support_level(self) -> pulumi.Output[str]:
         """
         Dedicated server support level (critical, fastpath, gs, pro)
         """
         return pulumi.get(self, "support_level")
-
-    @property
-    @pulumi.getter(name="templateName")
-    def template_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Template name
-        """
-        return pulumi.get(self, "template_name")
-
-    @property
-    @pulumi.getter(name="userMetadatas")
-    def user_metadatas(self) -> pulumi.Output[Optional[Sequence['outputs.ServerUserMetadata']]]:
-        """
-        Metadata
-        """
-        return pulumi.get(self, "user_metadatas")
 

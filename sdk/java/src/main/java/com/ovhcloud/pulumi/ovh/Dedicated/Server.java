@@ -5,12 +5,12 @@ package com.ovhcloud.pulumi.ovh.Dedicated;
 
 import com.ovhcloud.pulumi.ovh.Dedicated.ServerArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.ServerState;
-import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerDetails;
+import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerCustomizations;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerIam;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerOrder;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerPlan;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerPlanOption;
-import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerUserMetadata;
+import com.ovhcloud.pulumi.ovh.Dedicated.outputs.ServerStorage;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -20,6 +20,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -44,13 +45,13 @@ import javax.annotation.Nullable;
  * 
  * bash
  * 
- * $ pulumi preview -generate-config-out=dedicated.tf
+ * pulumi preview -generate-config-out=dedicated.tf
  * 
- * $ pulumi up
+ * pulumi up
  * 
  * The file `dedicated.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
  * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * See &lt;https://developer.hashicorp.com/terraform/language/import/generating-configuration&gt; for more details.
  * 
  */
 @ResourceType(type="ovh:Dedicated/server:Server")
@@ -112,6 +113,20 @@ public class Server extends com.pulumi.resources.CustomResource {
         return this.commercialRange;
     }
     /**
+     * OS reinstallation customizations
+     * 
+     */
+    @Export(name="customizations", refs={ServerCustomizations.class}, tree="[0]")
+    private Output</* @Nullable */ ServerCustomizations> customizations;
+
+    /**
+     * @return OS reinstallation customizations
+     * 
+     */
+    public Output<Optional<ServerCustomizations>> customizations() {
+        return Codegen.optional(this.customizations);
+    }
+    /**
      * Dedicated datacenter localisation (bhs1,bhs2,...)
      * 
      */
@@ -124,20 +139,6 @@ public class Server extends com.pulumi.resources.CustomResource {
      */
     public Output<String> datacenter() {
         return this.datacenter;
-    }
-    /**
-     * A structure describing informations about installation custom
-     * 
-     */
-    @Export(name="details", refs={ServerDetails.class}, tree="[0]")
-    private Output</* @Nullable */ ServerDetails> details;
-
-    /**
-     * @return A structure describing informations about installation custom
-     * 
-     */
-    public Output<Optional<ServerDetails>> details() {
-        return Codegen.optional(this.details);
     }
     /**
      * Resource display name
@@ -299,20 +300,6 @@ public class Server extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ovhSubsidiary() {
         return Codegen.optional(this.ovhSubsidiary);
     }
-    /**
-     * Partition scheme name
-     * 
-     */
-    @Export(name="partitionSchemeName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> partitionSchemeName;
-
-    /**
-     * @return Partition scheme name
-     * 
-     */
-    public Output<Optional<String>> partitionSchemeName() {
-        return Codegen.optional(this.partitionSchemeName);
-    }
     @Export(name="planOptions", refs={List.class,ServerPlanOption.class}, tree="[0,1]")
     private Output<List<ServerPlanOption>> planOptions;
 
@@ -352,6 +339,20 @@ public class Server extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> professionalUse() {
         return this.professionalUse;
+    }
+    /**
+     * Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+     * 
+     */
+    @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> properties;
+
+    /**
+     * @return Arbitrary properties to pass to cloud-init&#39;s config drive datasource
+     * 
+     */
+    public Output<Optional<Map<String,String>>> properties() {
+        return Codegen.optional(this.properties);
     }
     /**
      * Rack id of the server
@@ -480,6 +481,20 @@ public class Server extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
+     * OS reinstallation storage configurations
+     * 
+     */
+    @Export(name="storages", refs={List.class,ServerStorage.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ServerStorage>> storages;
+
+    /**
+     * @return OS reinstallation storage configurations
+     * 
+     */
+    public Output<Optional<List<ServerStorage>>> storages() {
+        return Codegen.optional(this.storages);
+    }
+    /**
      * Dedicated server support level (critical, fastpath, gs, pro)
      * 
      */
@@ -492,34 +507,6 @@ public class Server extends com.pulumi.resources.CustomResource {
      */
     public Output<String> supportLevel() {
         return this.supportLevel;
-    }
-    /**
-     * Template name
-     * 
-     */
-    @Export(name="templateName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> templateName;
-
-    /**
-     * @return Template name
-     * 
-     */
-    public Output<Optional<String>> templateName() {
-        return Codegen.optional(this.templateName);
-    }
-    /**
-     * Metadata
-     * 
-     */
-    @Export(name="userMetadatas", refs={List.class,ServerUserMetadata.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServerUserMetadata>> userMetadatas;
-
-    /**
-     * @return Metadata
-     * 
-     */
-    public Output<Optional<List<ServerUserMetadata>>> userMetadatas() {
-        return Codegen.optional(this.userMetadatas);
     }
 
     /**

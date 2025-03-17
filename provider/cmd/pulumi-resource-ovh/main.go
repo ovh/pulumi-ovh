@@ -20,7 +20,7 @@ import (
 	"context"
 	_ "embed"
 
-	ovh "github.com/ovh/pulumi-ovh/provider"
+	ovh "github.com/ovh/pulumi-ovh/provider/v2"
 	//"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )

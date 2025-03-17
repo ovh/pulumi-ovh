@@ -21,6 +21,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetContainerRegistryUsersArgs
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetContainerRegistryUsersPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFlavorsArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFlavorsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFloatingIPsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
@@ -42,6 +44,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeOidcArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeOidcPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubePlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetLoadBalancerPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetLoadBalancersArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetLoadBalancersPlainArgs;
@@ -69,6 +73,12 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetOpenSearchUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetPrometheusPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRancherArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRancherPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRancherPlanArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRancherPlanPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRancherVersionArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRancherVersionPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRedisUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRedisUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionArgs;
@@ -79,6 +89,10 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubsc
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionsPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStoragePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStoragesArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStoragesPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetUserArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
@@ -104,6 +118,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryOIDCResu
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetContainerRegistryUsersInvokeResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFailoverIpAttachResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFlavorsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFloatingIPsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetGatewayInterfaceResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstanceResult;
@@ -114,6 +129,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeNodePoolResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeNodesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeOidcResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetLoadBalancerFlavorsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetLoadBalancerResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetLoadBalancersResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetM3dbNamespaceResult;
@@ -128,11 +144,16 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchPatternResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchPatternsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetOpenSearchUserResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetPrometheusResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRancherPlanResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRancherResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRancherVersionResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRedisUserResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionsResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStorageResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStoragesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUserResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUserS3CredentialResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUserS3CredentialsResult;
@@ -1432,6 +1453,174 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetFailoverIpAttachResult> getFailoverIpAttachPlain(GetFailoverIpAttachPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", TypeShape.of(GetFailoverIpAttachResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the available flavors on the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getFlavors(GetFlavorsArgs.builder()
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlavorsResult> getFlavors(GetFlavorsArgs args) {
+        return getFlavors(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the available flavors on the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getFlavors(GetFlavorsArgs.builder()
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFlavorsResult> getFlavorsPlain(GetFlavorsPlainArgs args) {
+        return getFlavorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the available flavors on the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getFlavors(GetFlavorsArgs.builder()
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlavorsResult> getFlavors(GetFlavorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getFlavors:getFlavors", TypeShape.of(GetFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the available flavors on the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getFlavors(GetFlavorsArgs.builder()
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetFlavorsResult> getFlavorsPlain(GetFlavorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getFlavors:getFlavors", TypeShape.of(GetFlavorsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the floating IPs of a public cloud project.
@@ -3412,6 +3601,178 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List loadbalancer flavors in the given public cloud region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
+     *             .regionName("GRA9")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancerFlavorsResult> getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs args) {
+        return getLoadBalancerFlavors(args, InvokeOptions.Empty);
+    }
+    /**
+     * List loadbalancer flavors in the given public cloud region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
+     *             .regionName("GRA9")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerFlavorsResult> getLoadBalancerFlavorsPlain(GetLoadBalancerFlavorsPlainArgs args) {
+        return getLoadBalancerFlavorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List loadbalancer flavors in the given public cloud region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
+     *             .regionName("GRA9")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancerFlavorsResult> getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", TypeShape.of(GetLoadBalancerFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List loadbalancer flavors in the given public cloud region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
+     *             .regionName("GRA9")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerFlavorsResult> getLoadBalancerFlavorsPlain(GetLoadBalancerFlavorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", TypeShape.of(GetLoadBalancerFlavorsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * List your public cloud loadbalancers.
@@ -5722,6 +6083,514 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieve information about a Managed Rancher Service in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
+     *             .id("<Rancher service ID>")
+     *             .projectId("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherResult> getRancher(GetRancherArgs args) {
+        return getRancher(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve information about a Managed Rancher Service in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
+     *             .id("<Rancher service ID>")
+     *             .projectId("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRancherResult> getRancherPlain(GetRancherPlainArgs args) {
+        return getRancherPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve information about a Managed Rancher Service in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
+     *             .id("<Rancher service ID>")
+     *             .projectId("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherResult> getRancher(GetRancherArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRancher:getRancher", TypeShape.of(GetRancherResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about a Managed Rancher Service in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
+     *             .id("<Rancher service ID>")
+     *             .projectId("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRancherResult> getRancherPlain(GetRancherPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRancher:getRancher", TypeShape.of(GetRancherResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var plans = CloudProjectFunctions.getRancherPlan(GetRancherPlanArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherPlanResult> getRancherPlan(GetRancherPlanArgs args) {
+        return getRancherPlan(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var plans = CloudProjectFunctions.getRancherPlan(GetRancherPlanArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRancherPlanResult> getRancherPlanPlain(GetRancherPlanPlainArgs args) {
+        return getRancherPlanPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var plans = CloudProjectFunctions.getRancherPlan(GetRancherPlanArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherPlanResult> getRancherPlan(GetRancherPlanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRancherPlan:getRancherPlan", TypeShape.of(GetRancherPlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var plans = CloudProjectFunctions.getRancherPlan(GetRancherPlanArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRancherPlanResult> getRancherPlanPlain(GetRancherPlanPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRancherPlan:getRancherPlan", TypeShape.of(GetRancherPlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var versions = CloudProjectFunctions.getRancherVersion(GetRancherVersionArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherVersionResult> getRancherVersion(GetRancherVersionArgs args) {
+        return getRancherVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var versions = CloudProjectFunctions.getRancherVersion(GetRancherVersionArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRancherVersionResult> getRancherVersionPlain(GetRancherVersionPlainArgs args) {
+        return getRancherVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var versions = CloudProjectFunctions.getRancherVersion(GetRancherVersionArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherVersionResult> getRancherVersion(GetRancherVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRancherVersion:getRancherVersion", TypeShape.of(GetRancherVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var versions = CloudProjectFunctions.getRancherVersion(GetRancherVersionArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRancherVersionResult> getRancherVersionPlain(GetRancherVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRancherVersion:getRancherVersion", TypeShape.of(GetRancherVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
      * 
      * ## Example Usage
@@ -6600,6 +7469,362 @@ public final class CloudProjectFunctions {
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .name("my-storage-name")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageResult> getStorage(GetStorageArgs args) {
+        return getStorage(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .name("my-storage-name")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStorageResult> getStoragePlain(GetStoragePlainArgs args) {
+        return getStoragePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .name("my-storage-name")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageResult> getStorage(GetStorageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorage:getStorage", TypeShape.of(GetStorageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .name("my-storage-name")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStorageResult> getStoragePlain(GetStoragePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getStorage:getStorage", TypeShape.of(GetStorageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStoragesResult> getStorages(GetStoragesArgs args) {
+        return getStorages(args, InvokeOptions.Empty);
+    }
+    /**
+     * List your S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStoragesResult> getStoragesPlain(GetStoragesPlainArgs args) {
+        return getStoragesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List your S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStoragesResult> getStorages(GetStoragesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorages:getStorages", TypeShape.of(GetStoragesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your S3™* compatible storage container.
+     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStoragesResult> getStoragesPlain(GetStoragesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getStorages:getStorages", TypeShape.of(GetStoragesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get the user details of a previously created public cloud project user.

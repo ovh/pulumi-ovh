@@ -65,6 +65,8 @@ type Instance struct {
 	AttachedVolumes InstanceAttachedVolumeArrayOutput `pulumi:"attachedVolumes"`
 	// Create an autobackup workflow after instance start up.
 	AutoBackup InstanceAutoBackupPtrOutput `pulumi:"autoBackup"`
+	// The availability zone where the instance will be created
+	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// Billing period - hourly or monthly
 	BillingPeriod pulumi.StringOutput `pulumi:"billingPeriod"`
 	// Boot the instance from an image or a volume
@@ -154,6 +156,8 @@ type instanceState struct {
 	AttachedVolumes []InstanceAttachedVolume `pulumi:"attachedVolumes"`
 	// Create an autobackup workflow after instance start up.
 	AutoBackup *InstanceAutoBackup `pulumi:"autoBackup"`
+	// The availability zone where the instance will be created
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Billing period - hourly or monthly
 	BillingPeriod *string `pulumi:"billingPeriod"`
 	// Boot the instance from an image or a volume
@@ -196,6 +200,8 @@ type InstanceState struct {
 	AttachedVolumes InstanceAttachedVolumeArrayInput
 	// Create an autobackup workflow after instance start up.
 	AutoBackup InstanceAutoBackupPtrInput
+	// The availability zone where the instance will be created
+	AvailabilityZone pulumi.StringPtrInput
 	// Billing period - hourly or monthly
 	BillingPeriod pulumi.StringPtrInput
 	// Boot the instance from an image or a volume
@@ -238,6 +244,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Create an autobackup workflow after instance start up.
 	AutoBackup *InstanceAutoBackup `pulumi:"autoBackup"`
+	// The availability zone where the instance will be created
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Billing period - hourly or monthly
 	BillingPeriod string `pulumi:"billingPeriod"`
 	// Boot the instance from an image or a volume
@@ -269,6 +277,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Create an autobackup workflow after instance start up.
 	AutoBackup InstanceAutoBackupPtrInput
+	// The availability zone where the instance will be created
+	AvailabilityZone pulumi.StringPtrInput
 	// Billing period - hourly or monthly
 	BillingPeriod pulumi.StringInput
 	// Boot the instance from an image or a volume
@@ -396,6 +406,11 @@ func (o InstanceOutput) AttachedVolumes() InstanceAttachedVolumeArrayOutput {
 // Create an autobackup workflow after instance start up.
 func (o InstanceOutput) AutoBackup() InstanceAutoBackupPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceAutoBackupPtrOutput { return v.AutoBackup }).(InstanceAutoBackupPtrOutput)
+}
+
+// The availability zone where the instance will be created
+func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Billing period - hourly or monthly

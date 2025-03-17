@@ -36,6 +36,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The resource can be imported using the `ip` field, e.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Ip/move:Move mv '1.2.3.4/32'
+ * ```
  */
 export class Move extends pulumi.CustomResource {
     /**

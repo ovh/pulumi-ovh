@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const interface = ovh.CloudProject.getGatewayInterface({
+ * const _interface = ovh.CloudProject.getGatewayInterface({
  *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     interfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
  *     region: "GRA11",
@@ -95,7 +95,7 @@ export interface GetGatewayInterfaceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const interface = ovh.CloudProject.getGatewayInterface({
+ * const _interface = ovh.CloudProject.getGatewayInterface({
  *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     interfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
  *     region: "GRA11",

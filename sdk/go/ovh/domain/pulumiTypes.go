@@ -13,6 +13,2334 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DSRecordsDsRecord struct {
+	// The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+	Algorithm string `pulumi:"algorithm"`
+	// The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+	Flags string `pulumi:"flags"`
+	// The record base64 encoded public key
+	PublicKey string `pulumi:"publicKey"`
+	// The record tag
+	Tag int `pulumi:"tag"`
+}
+
+// DSRecordsDsRecordInput is an input type that accepts DSRecordsDsRecordArgs and DSRecordsDsRecordOutput values.
+// You can construct a concrete instance of `DSRecordsDsRecordInput` via:
+//
+//	DSRecordsDsRecordArgs{...}
+type DSRecordsDsRecordInput interface {
+	pulumi.Input
+
+	ToDSRecordsDsRecordOutput() DSRecordsDsRecordOutput
+	ToDSRecordsDsRecordOutputWithContext(context.Context) DSRecordsDsRecordOutput
+}
+
+type DSRecordsDsRecordArgs struct {
+	// The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+	Flags pulumi.StringInput `pulumi:"flags"`
+	// The record base64 encoded public key
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// The record tag
+	Tag pulumi.IntInput `pulumi:"tag"`
+}
+
+func (DSRecordsDsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DSRecordsDsRecord)(nil)).Elem()
+}
+
+func (i DSRecordsDsRecordArgs) ToDSRecordsDsRecordOutput() DSRecordsDsRecordOutput {
+	return i.ToDSRecordsDsRecordOutputWithContext(context.Background())
+}
+
+func (i DSRecordsDsRecordArgs) ToDSRecordsDsRecordOutputWithContext(ctx context.Context) DSRecordsDsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DSRecordsDsRecordOutput)
+}
+
+// DSRecordsDsRecordArrayInput is an input type that accepts DSRecordsDsRecordArray and DSRecordsDsRecordArrayOutput values.
+// You can construct a concrete instance of `DSRecordsDsRecordArrayInput` via:
+//
+//	DSRecordsDsRecordArray{ DSRecordsDsRecordArgs{...} }
+type DSRecordsDsRecordArrayInput interface {
+	pulumi.Input
+
+	ToDSRecordsDsRecordArrayOutput() DSRecordsDsRecordArrayOutput
+	ToDSRecordsDsRecordArrayOutputWithContext(context.Context) DSRecordsDsRecordArrayOutput
+}
+
+type DSRecordsDsRecordArray []DSRecordsDsRecordInput
+
+func (DSRecordsDsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DSRecordsDsRecord)(nil)).Elem()
+}
+
+func (i DSRecordsDsRecordArray) ToDSRecordsDsRecordArrayOutput() DSRecordsDsRecordArrayOutput {
+	return i.ToDSRecordsDsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i DSRecordsDsRecordArray) ToDSRecordsDsRecordArrayOutputWithContext(ctx context.Context) DSRecordsDsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DSRecordsDsRecordArrayOutput)
+}
+
+type DSRecordsDsRecordOutput struct{ *pulumi.OutputState }
+
+func (DSRecordsDsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DSRecordsDsRecord)(nil)).Elem()
+}
+
+func (o DSRecordsDsRecordOutput) ToDSRecordsDsRecordOutput() DSRecordsDsRecordOutput {
+	return o
+}
+
+func (o DSRecordsDsRecordOutput) ToDSRecordsDsRecordOutputWithContext(ctx context.Context) DSRecordsDsRecordOutput {
+	return o
+}
+
+// The record algorithm (`RSASHA1`, `RSASHA1_NSEC3_SHA1`, `RSASHA256`, `RSASHA512`, `ECDSAP256SHA256`, `ECDSAP384SHA384`, `ED25519`)
+func (o DSRecordsDsRecordOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The record flag (`ZONE_SIGNING_KEY`, `KEY_SIGNING_KEY`)
+func (o DSRecordsDsRecordOutput) Flags() pulumi.StringOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) string { return v.Flags }).(pulumi.StringOutput)
+}
+
+// The record base64 encoded public key
+func (o DSRecordsDsRecordOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// The record tag
+func (o DSRecordsDsRecordOutput) Tag() pulumi.IntOutput {
+	return o.ApplyT(func(v DSRecordsDsRecord) int { return v.Tag }).(pulumi.IntOutput)
+}
+
+type DSRecordsDsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (DSRecordsDsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DSRecordsDsRecord)(nil)).Elem()
+}
+
+func (o DSRecordsDsRecordArrayOutput) ToDSRecordsDsRecordArrayOutput() DSRecordsDsRecordArrayOutput {
+	return o
+}
+
+func (o DSRecordsDsRecordArrayOutput) ToDSRecordsDsRecordArrayOutputWithContext(ctx context.Context) DSRecordsDsRecordArrayOutput {
+	return o
+}
+
+func (o DSRecordsDsRecordArrayOutput) Index(i pulumi.IntInput) DSRecordsDsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DSRecordsDsRecord {
+		return vs[0].([]DSRecordsDsRecord)[vs[1].(int)]
+	}).(DSRecordsDsRecordOutput)
+}
+
+type NameCurrentState struct {
+	// Domain additional states
+	AdditionalStates []string `pulumi:"additionalStates"`
+	// The domain DNS configuration
+	DnsConfiguration *NameCurrentStateDnsConfiguration `pulumi:"dnsConfiguration"`
+	// Extension of the domain name
+	Extension *string `pulumi:"extension"`
+	// Domain main state
+	MainState *string `pulumi:"mainState"`
+	// Domain name
+	Name *string `pulumi:"name"`
+	// Domain protection state
+	ProtectionState *string `pulumi:"protectionState"`
+	// Domain suspension state
+	SuspensionState *string `pulumi:"suspensionState"`
+}
+
+// NameCurrentStateInput is an input type that accepts NameCurrentStateArgs and NameCurrentStateOutput values.
+// You can construct a concrete instance of `NameCurrentStateInput` via:
+//
+//	NameCurrentStateArgs{...}
+type NameCurrentStateInput interface {
+	pulumi.Input
+
+	ToNameCurrentStateOutput() NameCurrentStateOutput
+	ToNameCurrentStateOutputWithContext(context.Context) NameCurrentStateOutput
+}
+
+type NameCurrentStateArgs struct {
+	// Domain additional states
+	AdditionalStates pulumi.StringArrayInput `pulumi:"additionalStates"`
+	// The domain DNS configuration
+	DnsConfiguration NameCurrentStateDnsConfigurationPtrInput `pulumi:"dnsConfiguration"`
+	// Extension of the domain name
+	Extension pulumi.StringPtrInput `pulumi:"extension"`
+	// Domain main state
+	MainState pulumi.StringPtrInput `pulumi:"mainState"`
+	// Domain name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Domain protection state
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// Domain suspension state
+	SuspensionState pulumi.StringPtrInput `pulumi:"suspensionState"`
+}
+
+func (NameCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentState)(nil)).Elem()
+}
+
+func (i NameCurrentStateArgs) ToNameCurrentStateOutput() NameCurrentStateOutput {
+	return i.ToNameCurrentStateOutputWithContext(context.Background())
+}
+
+func (i NameCurrentStateArgs) ToNameCurrentStateOutputWithContext(ctx context.Context) NameCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateOutput)
+}
+
+func (i NameCurrentStateArgs) ToNameCurrentStatePtrOutput() NameCurrentStatePtrOutput {
+	return i.ToNameCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i NameCurrentStateArgs) ToNameCurrentStatePtrOutputWithContext(ctx context.Context) NameCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateOutput).ToNameCurrentStatePtrOutputWithContext(ctx)
+}
+
+// NameCurrentStatePtrInput is an input type that accepts NameCurrentStateArgs, NameCurrentStatePtr and NameCurrentStatePtrOutput values.
+// You can construct a concrete instance of `NameCurrentStatePtrInput` via:
+//
+//	        NameCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToNameCurrentStatePtrOutput() NameCurrentStatePtrOutput
+	ToNameCurrentStatePtrOutputWithContext(context.Context) NameCurrentStatePtrOutput
+}
+
+type nameCurrentStatePtrType NameCurrentStateArgs
+
+func NameCurrentStatePtr(v *NameCurrentStateArgs) NameCurrentStatePtrInput {
+	return (*nameCurrentStatePtrType)(v)
+}
+
+func (*nameCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameCurrentState)(nil)).Elem()
+}
+
+func (i *nameCurrentStatePtrType) ToNameCurrentStatePtrOutput() NameCurrentStatePtrOutput {
+	return i.ToNameCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *nameCurrentStatePtrType) ToNameCurrentStatePtrOutputWithContext(ctx context.Context) NameCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStatePtrOutput)
+}
+
+type NameCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentState)(nil)).Elem()
+}
+
+func (o NameCurrentStateOutput) ToNameCurrentStateOutput() NameCurrentStateOutput {
+	return o
+}
+
+func (o NameCurrentStateOutput) ToNameCurrentStateOutputWithContext(ctx context.Context) NameCurrentStateOutput {
+	return o
+}
+
+func (o NameCurrentStateOutput) ToNameCurrentStatePtrOutput() NameCurrentStatePtrOutput {
+	return o.ToNameCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o NameCurrentStateOutput) ToNameCurrentStatePtrOutputWithContext(ctx context.Context) NameCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameCurrentState) *NameCurrentState {
+		return &v
+	}).(NameCurrentStatePtrOutput)
+}
+
+// Domain additional states
+func (o NameCurrentStateOutput) AdditionalStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameCurrentState) []string { return v.AdditionalStates }).(pulumi.StringArrayOutput)
+}
+
+// The domain DNS configuration
+func (o NameCurrentStateOutput) DnsConfiguration() NameCurrentStateDnsConfigurationPtrOutput {
+	return o.ApplyT(func(v NameCurrentState) *NameCurrentStateDnsConfiguration { return v.DnsConfiguration }).(NameCurrentStateDnsConfigurationPtrOutput)
+}
+
+// Extension of the domain name
+func (o NameCurrentStateOutput) Extension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentState) *string { return v.Extension }).(pulumi.StringPtrOutput)
+}
+
+// Domain main state
+func (o NameCurrentStateOutput) MainState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentState) *string { return v.MainState }).(pulumi.StringPtrOutput)
+}
+
+// Domain name
+func (o NameCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Domain protection state
+func (o NameCurrentStateOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentState) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// Domain suspension state
+func (o NameCurrentStateOutput) SuspensionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentState) *string { return v.SuspensionState }).(pulumi.StringPtrOutput)
+}
+
+type NameCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameCurrentState)(nil)).Elem()
+}
+
+func (o NameCurrentStatePtrOutput) ToNameCurrentStatePtrOutput() NameCurrentStatePtrOutput {
+	return o
+}
+
+func (o NameCurrentStatePtrOutput) ToNameCurrentStatePtrOutputWithContext(ctx context.Context) NameCurrentStatePtrOutput {
+	return o
+}
+
+func (o NameCurrentStatePtrOutput) Elem() NameCurrentStateOutput {
+	return o.ApplyT(func(v *NameCurrentState) NameCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret NameCurrentState
+		return ret
+	}).(NameCurrentStateOutput)
+}
+
+// Domain additional states
+func (o NameCurrentStatePtrOutput) AdditionalStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameCurrentState) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// The domain DNS configuration
+func (o NameCurrentStatePtrOutput) DnsConfiguration() NameCurrentStateDnsConfigurationPtrOutput {
+	return o.ApplyT(func(v *NameCurrentState) *NameCurrentStateDnsConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DnsConfiguration
+	}).(NameCurrentStateDnsConfigurationPtrOutput)
+}
+
+// Extension of the domain name
+func (o NameCurrentStatePtrOutput) Extension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Extension
+	}).(pulumi.StringPtrOutput)
+}
+
+// Domain main state
+func (o NameCurrentStatePtrOutput) MainState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Domain name
+func (o NameCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Domain protection state
+func (o NameCurrentStatePtrOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Domain suspension state
+func (o NameCurrentStatePtrOutput) SuspensionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuspensionState
+	}).(pulumi.StringPtrOutput)
+}
+
+type NameCurrentStateDnsConfiguration struct {
+	// The type of DNS configuration of the domain
+	ConfigurationType *string `pulumi:"configurationType"`
+	// Whether the registry supports IPv6 or not
+	GlueRecordIpv6supported *bool `pulumi:"glueRecordIpv6supported"`
+	// Whether the registry accepts hosts or not
+	HostSupported *bool `pulumi:"hostSupported"`
+	// The maximum number of name servers allowed by the registry
+	MaxDns *float64 `pulumi:"maxDns"`
+	// The minimum number of name servers allowed by the registry
+	MinDns *float64 `pulumi:"minDns"`
+	// The name servers used by the domain name
+	NameServers []NameCurrentStateDnsConfigurationNameServer `pulumi:"nameServers"`
+}
+
+// NameCurrentStateDnsConfigurationInput is an input type that accepts NameCurrentStateDnsConfigurationArgs and NameCurrentStateDnsConfigurationOutput values.
+// You can construct a concrete instance of `NameCurrentStateDnsConfigurationInput` via:
+//
+//	NameCurrentStateDnsConfigurationArgs{...}
+type NameCurrentStateDnsConfigurationInput interface {
+	pulumi.Input
+
+	ToNameCurrentStateDnsConfigurationOutput() NameCurrentStateDnsConfigurationOutput
+	ToNameCurrentStateDnsConfigurationOutputWithContext(context.Context) NameCurrentStateDnsConfigurationOutput
+}
+
+type NameCurrentStateDnsConfigurationArgs struct {
+	// The type of DNS configuration of the domain
+	ConfigurationType pulumi.StringPtrInput `pulumi:"configurationType"`
+	// Whether the registry supports IPv6 or not
+	GlueRecordIpv6supported pulumi.BoolPtrInput `pulumi:"glueRecordIpv6supported"`
+	// Whether the registry accepts hosts or not
+	HostSupported pulumi.BoolPtrInput `pulumi:"hostSupported"`
+	// The maximum number of name servers allowed by the registry
+	MaxDns pulumi.Float64PtrInput `pulumi:"maxDns"`
+	// The minimum number of name servers allowed by the registry
+	MinDns pulumi.Float64PtrInput `pulumi:"minDns"`
+	// The name servers used by the domain name
+	NameServers NameCurrentStateDnsConfigurationNameServerArrayInput `pulumi:"nameServers"`
+}
+
+func (NameCurrentStateDnsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentStateDnsConfiguration)(nil)).Elem()
+}
+
+func (i NameCurrentStateDnsConfigurationArgs) ToNameCurrentStateDnsConfigurationOutput() NameCurrentStateDnsConfigurationOutput {
+	return i.ToNameCurrentStateDnsConfigurationOutputWithContext(context.Background())
+}
+
+func (i NameCurrentStateDnsConfigurationArgs) ToNameCurrentStateDnsConfigurationOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateDnsConfigurationOutput)
+}
+
+func (i NameCurrentStateDnsConfigurationArgs) ToNameCurrentStateDnsConfigurationPtrOutput() NameCurrentStateDnsConfigurationPtrOutput {
+	return i.ToNameCurrentStateDnsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NameCurrentStateDnsConfigurationArgs) ToNameCurrentStateDnsConfigurationPtrOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateDnsConfigurationOutput).ToNameCurrentStateDnsConfigurationPtrOutputWithContext(ctx)
+}
+
+// NameCurrentStateDnsConfigurationPtrInput is an input type that accepts NameCurrentStateDnsConfigurationArgs, NameCurrentStateDnsConfigurationPtr and NameCurrentStateDnsConfigurationPtrOutput values.
+// You can construct a concrete instance of `NameCurrentStateDnsConfigurationPtrInput` via:
+//
+//	        NameCurrentStateDnsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameCurrentStateDnsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNameCurrentStateDnsConfigurationPtrOutput() NameCurrentStateDnsConfigurationPtrOutput
+	ToNameCurrentStateDnsConfigurationPtrOutputWithContext(context.Context) NameCurrentStateDnsConfigurationPtrOutput
+}
+
+type nameCurrentStateDnsConfigurationPtrType NameCurrentStateDnsConfigurationArgs
+
+func NameCurrentStateDnsConfigurationPtr(v *NameCurrentStateDnsConfigurationArgs) NameCurrentStateDnsConfigurationPtrInput {
+	return (*nameCurrentStateDnsConfigurationPtrType)(v)
+}
+
+func (*nameCurrentStateDnsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameCurrentStateDnsConfiguration)(nil)).Elem()
+}
+
+func (i *nameCurrentStateDnsConfigurationPtrType) ToNameCurrentStateDnsConfigurationPtrOutput() NameCurrentStateDnsConfigurationPtrOutput {
+	return i.ToNameCurrentStateDnsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *nameCurrentStateDnsConfigurationPtrType) ToNameCurrentStateDnsConfigurationPtrOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateDnsConfigurationPtrOutput)
+}
+
+type NameCurrentStateDnsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentStateDnsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentStateDnsConfiguration)(nil)).Elem()
+}
+
+func (o NameCurrentStateDnsConfigurationOutput) ToNameCurrentStateDnsConfigurationOutput() NameCurrentStateDnsConfigurationOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationOutput) ToNameCurrentStateDnsConfigurationOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationOutput) ToNameCurrentStateDnsConfigurationPtrOutput() NameCurrentStateDnsConfigurationPtrOutput {
+	return o.ToNameCurrentStateDnsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o NameCurrentStateDnsConfigurationOutput) ToNameCurrentStateDnsConfigurationPtrOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameCurrentStateDnsConfiguration) *NameCurrentStateDnsConfiguration {
+		return &v
+	}).(NameCurrentStateDnsConfigurationPtrOutput)
+}
+
+// The type of DNS configuration of the domain
+func (o NameCurrentStateDnsConfigurationOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfiguration) *string { return v.ConfigurationType }).(pulumi.StringPtrOutput)
+}
+
+// Whether the registry supports IPv6 or not
+func (o NameCurrentStateDnsConfigurationOutput) GlueRecordIpv6supported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfiguration) *bool { return v.GlueRecordIpv6supported }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the registry accepts hosts or not
+func (o NameCurrentStateDnsConfigurationOutput) HostSupported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfiguration) *bool { return v.HostSupported }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of name servers allowed by the registry
+func (o NameCurrentStateDnsConfigurationOutput) MaxDns() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfiguration) *float64 { return v.MaxDns }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum number of name servers allowed by the registry
+func (o NameCurrentStateDnsConfigurationOutput) MinDns() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfiguration) *float64 { return v.MinDns }).(pulumi.Float64PtrOutput)
+}
+
+// The name servers used by the domain name
+func (o NameCurrentStateDnsConfigurationOutput) NameServers() NameCurrentStateDnsConfigurationNameServerArrayOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfiguration) []NameCurrentStateDnsConfigurationNameServer {
+		return v.NameServers
+	}).(NameCurrentStateDnsConfigurationNameServerArrayOutput)
+}
+
+type NameCurrentStateDnsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentStateDnsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameCurrentStateDnsConfiguration)(nil)).Elem()
+}
+
+func (o NameCurrentStateDnsConfigurationPtrOutput) ToNameCurrentStateDnsConfigurationPtrOutput() NameCurrentStateDnsConfigurationPtrOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationPtrOutput) ToNameCurrentStateDnsConfigurationPtrOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationPtrOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationPtrOutput) Elem() NameCurrentStateDnsConfigurationOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) NameCurrentStateDnsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret NameCurrentStateDnsConfiguration
+		return ret
+	}).(NameCurrentStateDnsConfigurationOutput)
+}
+
+// The type of DNS configuration of the domain
+func (o NameCurrentStateDnsConfigurationPtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the registry supports IPv6 or not
+func (o NameCurrentStateDnsConfigurationPtrOutput) GlueRecordIpv6supported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GlueRecordIpv6supported
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the registry accepts hosts or not
+func (o NameCurrentStateDnsConfigurationPtrOutput) HostSupported() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HostSupported
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of name servers allowed by the registry
+func (o NameCurrentStateDnsConfigurationPtrOutput) MaxDns() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDns
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum number of name servers allowed by the registry
+func (o NameCurrentStateDnsConfigurationPtrOutput) MinDns() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinDns
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name servers used by the domain name
+func (o NameCurrentStateDnsConfigurationPtrOutput) NameServers() NameCurrentStateDnsConfigurationNameServerArrayOutput {
+	return o.ApplyT(func(v *NameCurrentStateDnsConfiguration) []NameCurrentStateDnsConfigurationNameServer {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(NameCurrentStateDnsConfigurationNameServerArrayOutput)
+}
+
+type NameCurrentStateDnsConfigurationNameServer struct {
+	// The IPv4 associated to the name server
+	Ipv4 *string `pulumi:"ipv4"`
+	// The IPv6 associated to the name server
+	Ipv6 *string `pulumi:"ipv6"`
+	// The host name
+	NameServer *string `pulumi:"nameServer"`
+	// The type of name server
+	NameServerType *string `pulumi:"nameServerType"`
+}
+
+// NameCurrentStateDnsConfigurationNameServerInput is an input type that accepts NameCurrentStateDnsConfigurationNameServerArgs and NameCurrentStateDnsConfigurationNameServerOutput values.
+// You can construct a concrete instance of `NameCurrentStateDnsConfigurationNameServerInput` via:
+//
+//	NameCurrentStateDnsConfigurationNameServerArgs{...}
+type NameCurrentStateDnsConfigurationNameServerInput interface {
+	pulumi.Input
+
+	ToNameCurrentStateDnsConfigurationNameServerOutput() NameCurrentStateDnsConfigurationNameServerOutput
+	ToNameCurrentStateDnsConfigurationNameServerOutputWithContext(context.Context) NameCurrentStateDnsConfigurationNameServerOutput
+}
+
+type NameCurrentStateDnsConfigurationNameServerArgs struct {
+	// The IPv4 associated to the name server
+	Ipv4 pulumi.StringPtrInput `pulumi:"ipv4"`
+	// The IPv6 associated to the name server
+	Ipv6 pulumi.StringPtrInput `pulumi:"ipv6"`
+	// The host name
+	NameServer pulumi.StringPtrInput `pulumi:"nameServer"`
+	// The type of name server
+	NameServerType pulumi.StringPtrInput `pulumi:"nameServerType"`
+}
+
+func (NameCurrentStateDnsConfigurationNameServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentStateDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (i NameCurrentStateDnsConfigurationNameServerArgs) ToNameCurrentStateDnsConfigurationNameServerOutput() NameCurrentStateDnsConfigurationNameServerOutput {
+	return i.ToNameCurrentStateDnsConfigurationNameServerOutputWithContext(context.Background())
+}
+
+func (i NameCurrentStateDnsConfigurationNameServerArgs) ToNameCurrentStateDnsConfigurationNameServerOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationNameServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateDnsConfigurationNameServerOutput)
+}
+
+// NameCurrentStateDnsConfigurationNameServerArrayInput is an input type that accepts NameCurrentStateDnsConfigurationNameServerArray and NameCurrentStateDnsConfigurationNameServerArrayOutput values.
+// You can construct a concrete instance of `NameCurrentStateDnsConfigurationNameServerArrayInput` via:
+//
+//	NameCurrentStateDnsConfigurationNameServerArray{ NameCurrentStateDnsConfigurationNameServerArgs{...} }
+type NameCurrentStateDnsConfigurationNameServerArrayInput interface {
+	pulumi.Input
+
+	ToNameCurrentStateDnsConfigurationNameServerArrayOutput() NameCurrentStateDnsConfigurationNameServerArrayOutput
+	ToNameCurrentStateDnsConfigurationNameServerArrayOutputWithContext(context.Context) NameCurrentStateDnsConfigurationNameServerArrayOutput
+}
+
+type NameCurrentStateDnsConfigurationNameServerArray []NameCurrentStateDnsConfigurationNameServerInput
+
+func (NameCurrentStateDnsConfigurationNameServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameCurrentStateDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (i NameCurrentStateDnsConfigurationNameServerArray) ToNameCurrentStateDnsConfigurationNameServerArrayOutput() NameCurrentStateDnsConfigurationNameServerArrayOutput {
+	return i.ToNameCurrentStateDnsConfigurationNameServerArrayOutputWithContext(context.Background())
+}
+
+func (i NameCurrentStateDnsConfigurationNameServerArray) ToNameCurrentStateDnsConfigurationNameServerArrayOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationNameServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentStateDnsConfigurationNameServerArrayOutput)
+}
+
+type NameCurrentStateDnsConfigurationNameServerOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentStateDnsConfigurationNameServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentStateDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (o NameCurrentStateDnsConfigurationNameServerOutput) ToNameCurrentStateDnsConfigurationNameServerOutput() NameCurrentStateDnsConfigurationNameServerOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationNameServerOutput) ToNameCurrentStateDnsConfigurationNameServerOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationNameServerOutput {
+	return o
+}
+
+// The IPv4 associated to the name server
+func (o NameCurrentStateDnsConfigurationNameServerOutput) Ipv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfigurationNameServer) *string { return v.Ipv4 }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 associated to the name server
+func (o NameCurrentStateDnsConfigurationNameServerOutput) Ipv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfigurationNameServer) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
+}
+
+// The host name
+func (o NameCurrentStateDnsConfigurationNameServerOutput) NameServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfigurationNameServer) *string { return v.NameServer }).(pulumi.StringPtrOutput)
+}
+
+// The type of name server
+func (o NameCurrentStateDnsConfigurationNameServerOutput) NameServerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentStateDnsConfigurationNameServer) *string { return v.NameServerType }).(pulumi.StringPtrOutput)
+}
+
+type NameCurrentStateDnsConfigurationNameServerArrayOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentStateDnsConfigurationNameServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameCurrentStateDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (o NameCurrentStateDnsConfigurationNameServerArrayOutput) ToNameCurrentStateDnsConfigurationNameServerArrayOutput() NameCurrentStateDnsConfigurationNameServerArrayOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationNameServerArrayOutput) ToNameCurrentStateDnsConfigurationNameServerArrayOutputWithContext(ctx context.Context) NameCurrentStateDnsConfigurationNameServerArrayOutput {
+	return o
+}
+
+func (o NameCurrentStateDnsConfigurationNameServerArrayOutput) Index(i pulumi.IntInput) NameCurrentStateDnsConfigurationNameServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NameCurrentStateDnsConfigurationNameServer {
+		return vs[0].([]NameCurrentStateDnsConfigurationNameServer)[vs[1].(int)]
+	}).(NameCurrentStateDnsConfigurationNameServerOutput)
+}
+
+type NameCurrentTask struct {
+	// Identifier of the current task
+	Id *string `pulumi:"id"`
+	// Link to the task details
+	Link *string `pulumi:"link"`
+	// Current global status of the current task
+	Status *string `pulumi:"status"`
+	// Type of the current task
+	Type *string `pulumi:"type"`
+}
+
+// NameCurrentTaskInput is an input type that accepts NameCurrentTaskArgs and NameCurrentTaskOutput values.
+// You can construct a concrete instance of `NameCurrentTaskInput` via:
+//
+//	NameCurrentTaskArgs{...}
+type NameCurrentTaskInput interface {
+	pulumi.Input
+
+	ToNameCurrentTaskOutput() NameCurrentTaskOutput
+	ToNameCurrentTaskOutputWithContext(context.Context) NameCurrentTaskOutput
+}
+
+type NameCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringPtrInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NameCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentTask)(nil)).Elem()
+}
+
+func (i NameCurrentTaskArgs) ToNameCurrentTaskOutput() NameCurrentTaskOutput {
+	return i.ToNameCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i NameCurrentTaskArgs) ToNameCurrentTaskOutputWithContext(ctx context.Context) NameCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentTaskOutput)
+}
+
+// NameCurrentTaskArrayInput is an input type that accepts NameCurrentTaskArray and NameCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `NameCurrentTaskArrayInput` via:
+//
+//	NameCurrentTaskArray{ NameCurrentTaskArgs{...} }
+type NameCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToNameCurrentTaskArrayOutput() NameCurrentTaskArrayOutput
+	ToNameCurrentTaskArrayOutputWithContext(context.Context) NameCurrentTaskArrayOutput
+}
+
+type NameCurrentTaskArray []NameCurrentTaskInput
+
+func (NameCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameCurrentTask)(nil)).Elem()
+}
+
+func (i NameCurrentTaskArray) ToNameCurrentTaskArrayOutput() NameCurrentTaskArrayOutput {
+	return i.ToNameCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i NameCurrentTaskArray) ToNameCurrentTaskArrayOutputWithContext(ctx context.Context) NameCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameCurrentTaskArrayOutput)
+}
+
+type NameCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameCurrentTask)(nil)).Elem()
+}
+
+func (o NameCurrentTaskOutput) ToNameCurrentTaskOutput() NameCurrentTaskOutput {
+	return o
+}
+
+func (o NameCurrentTaskOutput) ToNameCurrentTaskOutputWithContext(ctx context.Context) NameCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o NameCurrentTaskOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentTask) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Link to the task details
+func (o NameCurrentTaskOutput) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentTask) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Current global status of the current task
+func (o NameCurrentTaskOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentTask) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of the current task
+func (o NameCurrentTaskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameCurrentTask) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NameCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (NameCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameCurrentTask)(nil)).Elem()
+}
+
+func (o NameCurrentTaskArrayOutput) ToNameCurrentTaskArrayOutput() NameCurrentTaskArrayOutput {
+	return o
+}
+
+func (o NameCurrentTaskArrayOutput) ToNameCurrentTaskArrayOutputWithContext(ctx context.Context) NameCurrentTaskArrayOutput {
+	return o
+}
+
+func (o NameCurrentTaskArrayOutput) Index(i pulumi.IntInput) NameCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NameCurrentTask {
+		return vs[0].([]NameCurrentTask)[vs[1].(int)]
+	}).(NameCurrentTaskOutput)
+}
+
+type NameIam struct {
+	// Resource display name
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id *string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn *string `pulumi:"urn"`
+}
+
+// NameIamInput is an input type that accepts NameIamArgs and NameIamOutput values.
+// You can construct a concrete instance of `NameIamInput` via:
+//
+//	NameIamArgs{...}
+type NameIamInput interface {
+	pulumi.Input
+
+	ToNameIamOutput() NameIamOutput
+	ToNameIamOutputWithContext(context.Context) NameIamOutput
+}
+
+type NameIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringPtrInput `pulumi:"urn"`
+}
+
+func (NameIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameIam)(nil)).Elem()
+}
+
+func (i NameIamArgs) ToNameIamOutput() NameIamOutput {
+	return i.ToNameIamOutputWithContext(context.Background())
+}
+
+func (i NameIamArgs) ToNameIamOutputWithContext(ctx context.Context) NameIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameIamOutput)
+}
+
+func (i NameIamArgs) ToNameIamPtrOutput() NameIamPtrOutput {
+	return i.ToNameIamPtrOutputWithContext(context.Background())
+}
+
+func (i NameIamArgs) ToNameIamPtrOutputWithContext(ctx context.Context) NameIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameIamOutput).ToNameIamPtrOutputWithContext(ctx)
+}
+
+// NameIamPtrInput is an input type that accepts NameIamArgs, NameIamPtr and NameIamPtrOutput values.
+// You can construct a concrete instance of `NameIamPtrInput` via:
+//
+//	        NameIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameIamPtrInput interface {
+	pulumi.Input
+
+	ToNameIamPtrOutput() NameIamPtrOutput
+	ToNameIamPtrOutputWithContext(context.Context) NameIamPtrOutput
+}
+
+type nameIamPtrType NameIamArgs
+
+func NameIamPtr(v *NameIamArgs) NameIamPtrInput {
+	return (*nameIamPtrType)(v)
+}
+
+func (*nameIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameIam)(nil)).Elem()
+}
+
+func (i *nameIamPtrType) ToNameIamPtrOutput() NameIamPtrOutput {
+	return i.ToNameIamPtrOutputWithContext(context.Background())
+}
+
+func (i *nameIamPtrType) ToNameIamPtrOutputWithContext(ctx context.Context) NameIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameIamPtrOutput)
+}
+
+type NameIamOutput struct{ *pulumi.OutputState }
+
+func (NameIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameIam)(nil)).Elem()
+}
+
+func (o NameIamOutput) ToNameIamOutput() NameIamOutput {
+	return o
+}
+
+func (o NameIamOutput) ToNameIamOutputWithContext(ctx context.Context) NameIamOutput {
+	return o
+}
+
+func (o NameIamOutput) ToNameIamPtrOutput() NameIamPtrOutput {
+	return o.ToNameIamPtrOutputWithContext(context.Background())
+}
+
+func (o NameIamOutput) ToNameIamPtrOutputWithContext(ctx context.Context) NameIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameIam) *NameIam {
+		return &v
+	}).(NameIamPtrOutput)
+}
+
+// Resource display name
+func (o NameIamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o NameIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o NameIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NameIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o NameIamOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
+}
+
+type NameIamPtrOutput struct{ *pulumi.OutputState }
+
+func (NameIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameIam)(nil)).Elem()
+}
+
+func (o NameIamPtrOutput) ToNameIamPtrOutput() NameIamPtrOutput {
+	return o
+}
+
+func (o NameIamPtrOutput) ToNameIamPtrOutputWithContext(ctx context.Context) NameIamPtrOutput {
+	return o
+}
+
+func (o NameIamPtrOutput) Elem() NameIamOutput {
+	return o.ApplyT(func(v *NameIam) NameIam {
+		if v != nil {
+			return *v
+		}
+		var ret NameIam
+		return ret
+	}).(NameIamOutput)
+}
+
+// Resource display name
+func (o NameIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o NameIamPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o NameIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NameIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o NameIamPtrOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Urn
+	}).(pulumi.StringPtrOutput)
+}
+
+type NameOrder struct {
+	Date           *string           `pulumi:"date"`
+	Details        []NameOrderDetail `pulumi:"details"`
+	ExpirationDate *string           `pulumi:"expirationDate"`
+	OrderId        *float64          `pulumi:"orderId"`
+}
+
+// NameOrderInput is an input type that accepts NameOrderArgs and NameOrderOutput values.
+// You can construct a concrete instance of `NameOrderInput` via:
+//
+//	NameOrderArgs{...}
+type NameOrderInput interface {
+	pulumi.Input
+
+	ToNameOrderOutput() NameOrderOutput
+	ToNameOrderOutputWithContext(context.Context) NameOrderOutput
+}
+
+type NameOrderArgs struct {
+	Date           pulumi.StringPtrInput     `pulumi:"date"`
+	Details        NameOrderDetailArrayInput `pulumi:"details"`
+	ExpirationDate pulumi.StringPtrInput     `pulumi:"expirationDate"`
+	OrderId        pulumi.Float64PtrInput    `pulumi:"orderId"`
+}
+
+func (NameOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameOrder)(nil)).Elem()
+}
+
+func (i NameOrderArgs) ToNameOrderOutput() NameOrderOutput {
+	return i.ToNameOrderOutputWithContext(context.Background())
+}
+
+func (i NameOrderArgs) ToNameOrderOutputWithContext(ctx context.Context) NameOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameOrderOutput)
+}
+
+func (i NameOrderArgs) ToNameOrderPtrOutput() NameOrderPtrOutput {
+	return i.ToNameOrderPtrOutputWithContext(context.Background())
+}
+
+func (i NameOrderArgs) ToNameOrderPtrOutputWithContext(ctx context.Context) NameOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameOrderOutput).ToNameOrderPtrOutputWithContext(ctx)
+}
+
+// NameOrderPtrInput is an input type that accepts NameOrderArgs, NameOrderPtr and NameOrderPtrOutput values.
+// You can construct a concrete instance of `NameOrderPtrInput` via:
+//
+//	        NameOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameOrderPtrInput interface {
+	pulumi.Input
+
+	ToNameOrderPtrOutput() NameOrderPtrOutput
+	ToNameOrderPtrOutputWithContext(context.Context) NameOrderPtrOutput
+}
+
+type nameOrderPtrType NameOrderArgs
+
+func NameOrderPtr(v *NameOrderArgs) NameOrderPtrInput {
+	return (*nameOrderPtrType)(v)
+}
+
+func (*nameOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameOrder)(nil)).Elem()
+}
+
+func (i *nameOrderPtrType) ToNameOrderPtrOutput() NameOrderPtrOutput {
+	return i.ToNameOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *nameOrderPtrType) ToNameOrderPtrOutputWithContext(ctx context.Context) NameOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameOrderPtrOutput)
+}
+
+type NameOrderOutput struct{ *pulumi.OutputState }
+
+func (NameOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameOrder)(nil)).Elem()
+}
+
+func (o NameOrderOutput) ToNameOrderOutput() NameOrderOutput {
+	return o
+}
+
+func (o NameOrderOutput) ToNameOrderOutputWithContext(ctx context.Context) NameOrderOutput {
+	return o
+}
+
+func (o NameOrderOutput) ToNameOrderPtrOutput() NameOrderPtrOutput {
+	return o.ToNameOrderPtrOutputWithContext(context.Background())
+}
+
+func (o NameOrderOutput) ToNameOrderPtrOutputWithContext(ctx context.Context) NameOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameOrder) *NameOrder {
+		return &v
+	}).(NameOrderPtrOutput)
+}
+
+func (o NameOrderOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameOrder) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+func (o NameOrderOutput) Details() NameOrderDetailArrayOutput {
+	return o.ApplyT(func(v NameOrder) []NameOrderDetail { return v.Details }).(NameOrderDetailArrayOutput)
+}
+
+func (o NameOrderOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameOrder) *string { return v.ExpirationDate }).(pulumi.StringPtrOutput)
+}
+
+func (o NameOrderOutput) OrderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NameOrder) *float64 { return v.OrderId }).(pulumi.Float64PtrOutput)
+}
+
+type NameOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (NameOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameOrder)(nil)).Elem()
+}
+
+func (o NameOrderPtrOutput) ToNameOrderPtrOutput() NameOrderPtrOutput {
+	return o
+}
+
+func (o NameOrderPtrOutput) ToNameOrderPtrOutputWithContext(ctx context.Context) NameOrderPtrOutput {
+	return o
+}
+
+func (o NameOrderPtrOutput) Elem() NameOrderOutput {
+	return o.ApplyT(func(v *NameOrder) NameOrder {
+		if v != nil {
+			return *v
+		}
+		var ret NameOrder
+		return ret
+	}).(NameOrderOutput)
+}
+
+func (o NameOrderPtrOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Date
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NameOrderPtrOutput) Details() NameOrderDetailArrayOutput {
+	return o.ApplyT(func(v *NameOrder) []NameOrderDetail {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(NameOrderDetailArrayOutput)
+}
+
+func (o NameOrderPtrOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NameOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationDate
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NameOrderPtrOutput) OrderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *NameOrder) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OrderId
+	}).(pulumi.Float64PtrOutput)
+}
+
+type NameOrderDetail struct {
+	Description *string `pulumi:"description"`
+	// Product type of item in order
+	DetailType    *string  `pulumi:"detailType"`
+	Domain        *string  `pulumi:"domain"`
+	OrderDetailId *float64 `pulumi:"orderDetailId"`
+	Quantity      *string  `pulumi:"quantity"`
+}
+
+// NameOrderDetailInput is an input type that accepts NameOrderDetailArgs and NameOrderDetailOutput values.
+// You can construct a concrete instance of `NameOrderDetailInput` via:
+//
+//	NameOrderDetailArgs{...}
+type NameOrderDetailInput interface {
+	pulumi.Input
+
+	ToNameOrderDetailOutput() NameOrderDetailOutput
+	ToNameOrderDetailOutputWithContext(context.Context) NameOrderDetailOutput
+}
+
+type NameOrderDetailArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Product type of item in order
+	DetailType    pulumi.StringPtrInput  `pulumi:"detailType"`
+	Domain        pulumi.StringPtrInput  `pulumi:"domain"`
+	OrderDetailId pulumi.Float64PtrInput `pulumi:"orderDetailId"`
+	Quantity      pulumi.StringPtrInput  `pulumi:"quantity"`
+}
+
+func (NameOrderDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameOrderDetail)(nil)).Elem()
+}
+
+func (i NameOrderDetailArgs) ToNameOrderDetailOutput() NameOrderDetailOutput {
+	return i.ToNameOrderDetailOutputWithContext(context.Background())
+}
+
+func (i NameOrderDetailArgs) ToNameOrderDetailOutputWithContext(ctx context.Context) NameOrderDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameOrderDetailOutput)
+}
+
+// NameOrderDetailArrayInput is an input type that accepts NameOrderDetailArray and NameOrderDetailArrayOutput values.
+// You can construct a concrete instance of `NameOrderDetailArrayInput` via:
+//
+//	NameOrderDetailArray{ NameOrderDetailArgs{...} }
+type NameOrderDetailArrayInput interface {
+	pulumi.Input
+
+	ToNameOrderDetailArrayOutput() NameOrderDetailArrayOutput
+	ToNameOrderDetailArrayOutputWithContext(context.Context) NameOrderDetailArrayOutput
+}
+
+type NameOrderDetailArray []NameOrderDetailInput
+
+func (NameOrderDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameOrderDetail)(nil)).Elem()
+}
+
+func (i NameOrderDetailArray) ToNameOrderDetailArrayOutput() NameOrderDetailArrayOutput {
+	return i.ToNameOrderDetailArrayOutputWithContext(context.Background())
+}
+
+func (i NameOrderDetailArray) ToNameOrderDetailArrayOutputWithContext(ctx context.Context) NameOrderDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameOrderDetailArrayOutput)
+}
+
+type NameOrderDetailOutput struct{ *pulumi.OutputState }
+
+func (NameOrderDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameOrderDetail)(nil)).Elem()
+}
+
+func (o NameOrderDetailOutput) ToNameOrderDetailOutput() NameOrderDetailOutput {
+	return o
+}
+
+func (o NameOrderDetailOutput) ToNameOrderDetailOutputWithContext(ctx context.Context) NameOrderDetailOutput {
+	return o
+}
+
+func (o NameOrderDetailOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Product type of item in order
+func (o NameOrderDetailOutput) DetailType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameOrderDetail) *string { return v.DetailType }).(pulumi.StringPtrOutput)
+}
+
+func (o NameOrderDetailOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameOrderDetail) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+func (o NameOrderDetailOutput) OrderDetailId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NameOrderDetail) *float64 { return v.OrderDetailId }).(pulumi.Float64PtrOutput)
+}
+
+func (o NameOrderDetailOutput) Quantity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameOrderDetail) *string { return v.Quantity }).(pulumi.StringPtrOutput)
+}
+
+type NameOrderDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (NameOrderDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameOrderDetail)(nil)).Elem()
+}
+
+func (o NameOrderDetailArrayOutput) ToNameOrderDetailArrayOutput() NameOrderDetailArrayOutput {
+	return o
+}
+
+func (o NameOrderDetailArrayOutput) ToNameOrderDetailArrayOutputWithContext(ctx context.Context) NameOrderDetailArrayOutput {
+	return o
+}
+
+func (o NameOrderDetailArrayOutput) Index(i pulumi.IntInput) NameOrderDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NameOrderDetail {
+		return vs[0].([]NameOrderDetail)[vs[1].(int)]
+	}).(NameOrderDetailOutput)
+}
+
+type NamePlan struct {
+	Configurations []NamePlanConfiguration `pulumi:"configurations"`
+	// Duration selected for the purchase of the product (defaults to "P1Y")
+	Duration string `pulumi:"duration"`
+	// Cart item to be linked
+	ItemId *float64 `pulumi:"itemId"`
+	// Identifier of the option offer
+	PlanCode string `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode string `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity *float64 `pulumi:"quantity"`
+}
+
+// NamePlanInput is an input type that accepts NamePlanArgs and NamePlanOutput values.
+// You can construct a concrete instance of `NamePlanInput` via:
+//
+//	NamePlanArgs{...}
+type NamePlanInput interface {
+	pulumi.Input
+
+	ToNamePlanOutput() NamePlanOutput
+	ToNamePlanOutputWithContext(context.Context) NamePlanOutput
+}
+
+type NamePlanArgs struct {
+	Configurations NamePlanConfigurationArrayInput `pulumi:"configurations"`
+	// Duration selected for the purchase of the product (defaults to "P1Y")
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Cart item to be linked
+	ItemId pulumi.Float64PtrInput `pulumi:"itemId"`
+	// Identifier of the option offer
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity pulumi.Float64PtrInput `pulumi:"quantity"`
+}
+
+func (NamePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlan)(nil)).Elem()
+}
+
+func (i NamePlanArgs) ToNamePlanOutput() NamePlanOutput {
+	return i.ToNamePlanOutputWithContext(context.Background())
+}
+
+func (i NamePlanArgs) ToNamePlanOutputWithContext(ctx context.Context) NamePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanOutput)
+}
+
+// NamePlanArrayInput is an input type that accepts NamePlanArray and NamePlanArrayOutput values.
+// You can construct a concrete instance of `NamePlanArrayInput` via:
+//
+//	NamePlanArray{ NamePlanArgs{...} }
+type NamePlanArrayInput interface {
+	pulumi.Input
+
+	ToNamePlanArrayOutput() NamePlanArrayOutput
+	ToNamePlanArrayOutputWithContext(context.Context) NamePlanArrayOutput
+}
+
+type NamePlanArray []NamePlanInput
+
+func (NamePlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlan)(nil)).Elem()
+}
+
+func (i NamePlanArray) ToNamePlanArrayOutput() NamePlanArrayOutput {
+	return i.ToNamePlanArrayOutputWithContext(context.Background())
+}
+
+func (i NamePlanArray) ToNamePlanArrayOutputWithContext(ctx context.Context) NamePlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanArrayOutput)
+}
+
+type NamePlanOutput struct{ *pulumi.OutputState }
+
+func (NamePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlan)(nil)).Elem()
+}
+
+func (o NamePlanOutput) ToNamePlanOutput() NamePlanOutput {
+	return o
+}
+
+func (o NamePlanOutput) ToNamePlanOutputWithContext(ctx context.Context) NamePlanOutput {
+	return o
+}
+
+func (o NamePlanOutput) Configurations() NamePlanConfigurationArrayOutput {
+	return o.ApplyT(func(v NamePlan) []NamePlanConfiguration { return v.Configurations }).(NamePlanConfigurationArrayOutput)
+}
+
+// Duration selected for the purchase of the product (defaults to "P1Y")
+func (o NamePlanOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlan) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Cart item to be linked
+func (o NamePlanOutput) ItemId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NamePlan) *float64 { return v.ItemId }).(pulumi.Float64PtrOutput)
+}
+
+// Identifier of the option offer
+func (o NamePlanOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlan) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Pricing mode selected for the purchase of the product
+func (o NamePlanOutput) PricingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlan) string { return v.PricingMode }).(pulumi.StringOutput)
+}
+
+// Quantity of product desired
+func (o NamePlanOutput) Quantity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NamePlan) *float64 { return v.Quantity }).(pulumi.Float64PtrOutput)
+}
+
+type NamePlanArrayOutput struct{ *pulumi.OutputState }
+
+func (NamePlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlan)(nil)).Elem()
+}
+
+func (o NamePlanArrayOutput) ToNamePlanArrayOutput() NamePlanArrayOutput {
+	return o
+}
+
+func (o NamePlanArrayOutput) ToNamePlanArrayOutputWithContext(ctx context.Context) NamePlanArrayOutput {
+	return o
+}
+
+func (o NamePlanArrayOutput) Index(i pulumi.IntInput) NamePlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamePlan {
+		return vs[0].([]NamePlan)[vs[1].(int)]
+	}).(NamePlanOutput)
+}
+
+type NamePlanConfiguration struct {
+	// Label for your configuration item
+	Label string `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value string `pulumi:"value"`
+}
+
+// NamePlanConfigurationInput is an input type that accepts NamePlanConfigurationArgs and NamePlanConfigurationOutput values.
+// You can construct a concrete instance of `NamePlanConfigurationInput` via:
+//
+//	NamePlanConfigurationArgs{...}
+type NamePlanConfigurationInput interface {
+	pulumi.Input
+
+	ToNamePlanConfigurationOutput() NamePlanConfigurationOutput
+	ToNamePlanConfigurationOutputWithContext(context.Context) NamePlanConfigurationOutput
+}
+
+type NamePlanConfigurationArgs struct {
+	// Label for your configuration item
+	Label pulumi.StringInput `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (NamePlanConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlanConfiguration)(nil)).Elem()
+}
+
+func (i NamePlanConfigurationArgs) ToNamePlanConfigurationOutput() NamePlanConfigurationOutput {
+	return i.ToNamePlanConfigurationOutputWithContext(context.Background())
+}
+
+func (i NamePlanConfigurationArgs) ToNamePlanConfigurationOutputWithContext(ctx context.Context) NamePlanConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanConfigurationOutput)
+}
+
+// NamePlanConfigurationArrayInput is an input type that accepts NamePlanConfigurationArray and NamePlanConfigurationArrayOutput values.
+// You can construct a concrete instance of `NamePlanConfigurationArrayInput` via:
+//
+//	NamePlanConfigurationArray{ NamePlanConfigurationArgs{...} }
+type NamePlanConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToNamePlanConfigurationArrayOutput() NamePlanConfigurationArrayOutput
+	ToNamePlanConfigurationArrayOutputWithContext(context.Context) NamePlanConfigurationArrayOutput
+}
+
+type NamePlanConfigurationArray []NamePlanConfigurationInput
+
+func (NamePlanConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlanConfiguration)(nil)).Elem()
+}
+
+func (i NamePlanConfigurationArray) ToNamePlanConfigurationArrayOutput() NamePlanConfigurationArrayOutput {
+	return i.ToNamePlanConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i NamePlanConfigurationArray) ToNamePlanConfigurationArrayOutputWithContext(ctx context.Context) NamePlanConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanConfigurationArrayOutput)
+}
+
+type NamePlanConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NamePlanConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlanConfiguration)(nil)).Elem()
+}
+
+func (o NamePlanConfigurationOutput) ToNamePlanConfigurationOutput() NamePlanConfigurationOutput {
+	return o
+}
+
+func (o NamePlanConfigurationOutput) ToNamePlanConfigurationOutputWithContext(ctx context.Context) NamePlanConfigurationOutput {
+	return o
+}
+
+// Label for your configuration item
+func (o NamePlanConfigurationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Value or resource URL on API.OVH.COM of your configuration item
+func (o NamePlanConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type NamePlanConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (NamePlanConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlanConfiguration)(nil)).Elem()
+}
+
+func (o NamePlanConfigurationArrayOutput) ToNamePlanConfigurationArrayOutput() NamePlanConfigurationArrayOutput {
+	return o
+}
+
+func (o NamePlanConfigurationArrayOutput) ToNamePlanConfigurationArrayOutputWithContext(ctx context.Context) NamePlanConfigurationArrayOutput {
+	return o
+}
+
+func (o NamePlanConfigurationArrayOutput) Index(i pulumi.IntInput) NamePlanConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamePlanConfiguration {
+		return vs[0].([]NamePlanConfiguration)[vs[1].(int)]
+	}).(NamePlanConfigurationOutput)
+}
+
+type NamePlanOption struct {
+	Configurations []NamePlanOptionConfiguration `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration string `pulumi:"duration"`
+	// Identifier of the option offer
+	PlanCode string `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode string `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity float64 `pulumi:"quantity"`
+}
+
+// NamePlanOptionInput is an input type that accepts NamePlanOptionArgs and NamePlanOptionOutput values.
+// You can construct a concrete instance of `NamePlanOptionInput` via:
+//
+//	NamePlanOptionArgs{...}
+type NamePlanOptionInput interface {
+	pulumi.Input
+
+	ToNamePlanOptionOutput() NamePlanOptionOutput
+	ToNamePlanOptionOutputWithContext(context.Context) NamePlanOptionOutput
+}
+
+type NamePlanOptionArgs struct {
+	Configurations NamePlanOptionConfigurationArrayInput `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Identifier of the option offer
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity pulumi.Float64Input `pulumi:"quantity"`
+}
+
+func (NamePlanOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlanOption)(nil)).Elem()
+}
+
+func (i NamePlanOptionArgs) ToNamePlanOptionOutput() NamePlanOptionOutput {
+	return i.ToNamePlanOptionOutputWithContext(context.Background())
+}
+
+func (i NamePlanOptionArgs) ToNamePlanOptionOutputWithContext(ctx context.Context) NamePlanOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanOptionOutput)
+}
+
+// NamePlanOptionArrayInput is an input type that accepts NamePlanOptionArray and NamePlanOptionArrayOutput values.
+// You can construct a concrete instance of `NamePlanOptionArrayInput` via:
+//
+//	NamePlanOptionArray{ NamePlanOptionArgs{...} }
+type NamePlanOptionArrayInput interface {
+	pulumi.Input
+
+	ToNamePlanOptionArrayOutput() NamePlanOptionArrayOutput
+	ToNamePlanOptionArrayOutputWithContext(context.Context) NamePlanOptionArrayOutput
+}
+
+type NamePlanOptionArray []NamePlanOptionInput
+
+func (NamePlanOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlanOption)(nil)).Elem()
+}
+
+func (i NamePlanOptionArray) ToNamePlanOptionArrayOutput() NamePlanOptionArrayOutput {
+	return i.ToNamePlanOptionArrayOutputWithContext(context.Background())
+}
+
+func (i NamePlanOptionArray) ToNamePlanOptionArrayOutputWithContext(ctx context.Context) NamePlanOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanOptionArrayOutput)
+}
+
+type NamePlanOptionOutput struct{ *pulumi.OutputState }
+
+func (NamePlanOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlanOption)(nil)).Elem()
+}
+
+func (o NamePlanOptionOutput) ToNamePlanOptionOutput() NamePlanOptionOutput {
+	return o
+}
+
+func (o NamePlanOptionOutput) ToNamePlanOptionOutputWithContext(ctx context.Context) NamePlanOptionOutput {
+	return o
+}
+
+func (o NamePlanOptionOutput) Configurations() NamePlanOptionConfigurationArrayOutput {
+	return o.ApplyT(func(v NamePlanOption) []NamePlanOptionConfiguration { return v.Configurations }).(NamePlanOptionConfigurationArrayOutput)
+}
+
+// Duration selected for the purchase of the product
+func (o NamePlanOptionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanOption) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Identifier of the option offer
+func (o NamePlanOptionOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanOption) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Pricing mode selected for the purchase of the product
+func (o NamePlanOptionOutput) PricingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanOption) string { return v.PricingMode }).(pulumi.StringOutput)
+}
+
+// Quantity of product desired
+func (o NamePlanOptionOutput) Quantity() pulumi.Float64Output {
+	return o.ApplyT(func(v NamePlanOption) float64 { return v.Quantity }).(pulumi.Float64Output)
+}
+
+type NamePlanOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (NamePlanOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlanOption)(nil)).Elem()
+}
+
+func (o NamePlanOptionArrayOutput) ToNamePlanOptionArrayOutput() NamePlanOptionArrayOutput {
+	return o
+}
+
+func (o NamePlanOptionArrayOutput) ToNamePlanOptionArrayOutputWithContext(ctx context.Context) NamePlanOptionArrayOutput {
+	return o
+}
+
+func (o NamePlanOptionArrayOutput) Index(i pulumi.IntInput) NamePlanOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamePlanOption {
+		return vs[0].([]NamePlanOption)[vs[1].(int)]
+	}).(NamePlanOptionOutput)
+}
+
+type NamePlanOptionConfiguration struct {
+	// Label for your configuration item
+	Label string `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value string `pulumi:"value"`
+}
+
+// NamePlanOptionConfigurationInput is an input type that accepts NamePlanOptionConfigurationArgs and NamePlanOptionConfigurationOutput values.
+// You can construct a concrete instance of `NamePlanOptionConfigurationInput` via:
+//
+//	NamePlanOptionConfigurationArgs{...}
+type NamePlanOptionConfigurationInput interface {
+	pulumi.Input
+
+	ToNamePlanOptionConfigurationOutput() NamePlanOptionConfigurationOutput
+	ToNamePlanOptionConfigurationOutputWithContext(context.Context) NamePlanOptionConfigurationOutput
+}
+
+type NamePlanOptionConfigurationArgs struct {
+	// Label for your configuration item
+	Label pulumi.StringInput `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (NamePlanOptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlanOptionConfiguration)(nil)).Elem()
+}
+
+func (i NamePlanOptionConfigurationArgs) ToNamePlanOptionConfigurationOutput() NamePlanOptionConfigurationOutput {
+	return i.ToNamePlanOptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i NamePlanOptionConfigurationArgs) ToNamePlanOptionConfigurationOutputWithContext(ctx context.Context) NamePlanOptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanOptionConfigurationOutput)
+}
+
+// NamePlanOptionConfigurationArrayInput is an input type that accepts NamePlanOptionConfigurationArray and NamePlanOptionConfigurationArrayOutput values.
+// You can construct a concrete instance of `NamePlanOptionConfigurationArrayInput` via:
+//
+//	NamePlanOptionConfigurationArray{ NamePlanOptionConfigurationArgs{...} }
+type NamePlanOptionConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToNamePlanOptionConfigurationArrayOutput() NamePlanOptionConfigurationArrayOutput
+	ToNamePlanOptionConfigurationArrayOutputWithContext(context.Context) NamePlanOptionConfigurationArrayOutput
+}
+
+type NamePlanOptionConfigurationArray []NamePlanOptionConfigurationInput
+
+func (NamePlanOptionConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlanOptionConfiguration)(nil)).Elem()
+}
+
+func (i NamePlanOptionConfigurationArray) ToNamePlanOptionConfigurationArrayOutput() NamePlanOptionConfigurationArrayOutput {
+	return i.ToNamePlanOptionConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i NamePlanOptionConfigurationArray) ToNamePlanOptionConfigurationArrayOutputWithContext(ctx context.Context) NamePlanOptionConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamePlanOptionConfigurationArrayOutput)
+}
+
+type NamePlanOptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NamePlanOptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamePlanOptionConfiguration)(nil)).Elem()
+}
+
+func (o NamePlanOptionConfigurationOutput) ToNamePlanOptionConfigurationOutput() NamePlanOptionConfigurationOutput {
+	return o
+}
+
+func (o NamePlanOptionConfigurationOutput) ToNamePlanOptionConfigurationOutputWithContext(ctx context.Context) NamePlanOptionConfigurationOutput {
+	return o
+}
+
+// Label for your configuration item
+func (o NamePlanOptionConfigurationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanOptionConfiguration) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Value or resource URL on API.OVH.COM of your configuration item
+func (o NamePlanOptionConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v NamePlanOptionConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type NamePlanOptionConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (NamePlanOptionConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamePlanOptionConfiguration)(nil)).Elem()
+}
+
+func (o NamePlanOptionConfigurationArrayOutput) ToNamePlanOptionConfigurationArrayOutput() NamePlanOptionConfigurationArrayOutput {
+	return o
+}
+
+func (o NamePlanOptionConfigurationArrayOutput) ToNamePlanOptionConfigurationArrayOutputWithContext(ctx context.Context) NamePlanOptionConfigurationArrayOutput {
+	return o
+}
+
+func (o NamePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) NamePlanOptionConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamePlanOptionConfiguration {
+		return vs[0].([]NamePlanOptionConfiguration)[vs[1].(int)]
+	}).(NamePlanOptionConfigurationOutput)
+}
+
+type NameServersServer struct {
+	// The server hostname
+	Host string `pulumi:"host"`
+	// The server IP
+	Ip *string `pulumi:"ip"`
+}
+
+// NameServersServerInput is an input type that accepts NameServersServerArgs and NameServersServerOutput values.
+// You can construct a concrete instance of `NameServersServerInput` via:
+//
+//	NameServersServerArgs{...}
+type NameServersServerInput interface {
+	pulumi.Input
+
+	ToNameServersServerOutput() NameServersServerOutput
+	ToNameServersServerOutputWithContext(context.Context) NameServersServerOutput
+}
+
+type NameServersServerArgs struct {
+	// The server hostname
+	Host pulumi.StringInput `pulumi:"host"`
+	// The server IP
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (NameServersServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameServersServer)(nil)).Elem()
+}
+
+func (i NameServersServerArgs) ToNameServersServerOutput() NameServersServerOutput {
+	return i.ToNameServersServerOutputWithContext(context.Background())
+}
+
+func (i NameServersServerArgs) ToNameServersServerOutputWithContext(ctx context.Context) NameServersServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameServersServerOutput)
+}
+
+// NameServersServerArrayInput is an input type that accepts NameServersServerArray and NameServersServerArrayOutput values.
+// You can construct a concrete instance of `NameServersServerArrayInput` via:
+//
+//	NameServersServerArray{ NameServersServerArgs{...} }
+type NameServersServerArrayInput interface {
+	pulumi.Input
+
+	ToNameServersServerArrayOutput() NameServersServerArrayOutput
+	ToNameServersServerArrayOutputWithContext(context.Context) NameServersServerArrayOutput
+}
+
+type NameServersServerArray []NameServersServerInput
+
+func (NameServersServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameServersServer)(nil)).Elem()
+}
+
+func (i NameServersServerArray) ToNameServersServerArrayOutput() NameServersServerArrayOutput {
+	return i.ToNameServersServerArrayOutputWithContext(context.Background())
+}
+
+func (i NameServersServerArray) ToNameServersServerArrayOutputWithContext(ctx context.Context) NameServersServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameServersServerArrayOutput)
+}
+
+type NameServersServerOutput struct{ *pulumi.OutputState }
+
+func (NameServersServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameServersServer)(nil)).Elem()
+}
+
+func (o NameServersServerOutput) ToNameServersServerOutput() NameServersServerOutput {
+	return o
+}
+
+func (o NameServersServerOutput) ToNameServersServerOutputWithContext(ctx context.Context) NameServersServerOutput {
+	return o
+}
+
+// The server hostname
+func (o NameServersServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v NameServersServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The server IP
+func (o NameServersServerOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameServersServer) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type NameServersServerArrayOutput struct{ *pulumi.OutputState }
+
+func (NameServersServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameServersServer)(nil)).Elem()
+}
+
+func (o NameServersServerArrayOutput) ToNameServersServerArrayOutput() NameServersServerArrayOutput {
+	return o
+}
+
+func (o NameServersServerArrayOutput) ToNameServersServerArrayOutputWithContext(ctx context.Context) NameServersServerArrayOutput {
+	return o
+}
+
+func (o NameServersServerArrayOutput) Index(i pulumi.IntInput) NameServersServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NameServersServer {
+		return vs[0].([]NameServersServer)[vs[1].(int)]
+	}).(NameServersServerOutput)
+}
+
+type NameTargetSpec struct {
+	// The domain DNS configuration
+	DnsConfiguration *NameTargetSpecDnsConfiguration `pulumi:"dnsConfiguration"`
+}
+
+// NameTargetSpecInput is an input type that accepts NameTargetSpecArgs and NameTargetSpecOutput values.
+// You can construct a concrete instance of `NameTargetSpecInput` via:
+//
+//	NameTargetSpecArgs{...}
+type NameTargetSpecInput interface {
+	pulumi.Input
+
+	ToNameTargetSpecOutput() NameTargetSpecOutput
+	ToNameTargetSpecOutputWithContext(context.Context) NameTargetSpecOutput
+}
+
+type NameTargetSpecArgs struct {
+	// The domain DNS configuration
+	DnsConfiguration NameTargetSpecDnsConfigurationPtrInput `pulumi:"dnsConfiguration"`
+}
+
+func (NameTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameTargetSpec)(nil)).Elem()
+}
+
+func (i NameTargetSpecArgs) ToNameTargetSpecOutput() NameTargetSpecOutput {
+	return i.ToNameTargetSpecOutputWithContext(context.Background())
+}
+
+func (i NameTargetSpecArgs) ToNameTargetSpecOutputWithContext(ctx context.Context) NameTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecOutput)
+}
+
+func (i NameTargetSpecArgs) ToNameTargetSpecPtrOutput() NameTargetSpecPtrOutput {
+	return i.ToNameTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i NameTargetSpecArgs) ToNameTargetSpecPtrOutputWithContext(ctx context.Context) NameTargetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecOutput).ToNameTargetSpecPtrOutputWithContext(ctx)
+}
+
+// NameTargetSpecPtrInput is an input type that accepts NameTargetSpecArgs, NameTargetSpecPtr and NameTargetSpecPtrOutput values.
+// You can construct a concrete instance of `NameTargetSpecPtrInput` via:
+//
+//	        NameTargetSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameTargetSpecPtrInput interface {
+	pulumi.Input
+
+	ToNameTargetSpecPtrOutput() NameTargetSpecPtrOutput
+	ToNameTargetSpecPtrOutputWithContext(context.Context) NameTargetSpecPtrOutput
+}
+
+type nameTargetSpecPtrType NameTargetSpecArgs
+
+func NameTargetSpecPtr(v *NameTargetSpecArgs) NameTargetSpecPtrInput {
+	return (*nameTargetSpecPtrType)(v)
+}
+
+func (*nameTargetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameTargetSpec)(nil)).Elem()
+}
+
+func (i *nameTargetSpecPtrType) ToNameTargetSpecPtrOutput() NameTargetSpecPtrOutput {
+	return i.ToNameTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *nameTargetSpecPtrType) ToNameTargetSpecPtrOutputWithContext(ctx context.Context) NameTargetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecPtrOutput)
+}
+
+type NameTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (NameTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameTargetSpec)(nil)).Elem()
+}
+
+func (o NameTargetSpecOutput) ToNameTargetSpecOutput() NameTargetSpecOutput {
+	return o
+}
+
+func (o NameTargetSpecOutput) ToNameTargetSpecOutputWithContext(ctx context.Context) NameTargetSpecOutput {
+	return o
+}
+
+func (o NameTargetSpecOutput) ToNameTargetSpecPtrOutput() NameTargetSpecPtrOutput {
+	return o.ToNameTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o NameTargetSpecOutput) ToNameTargetSpecPtrOutputWithContext(ctx context.Context) NameTargetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameTargetSpec) *NameTargetSpec {
+		return &v
+	}).(NameTargetSpecPtrOutput)
+}
+
+// The domain DNS configuration
+func (o NameTargetSpecOutput) DnsConfiguration() NameTargetSpecDnsConfigurationPtrOutput {
+	return o.ApplyT(func(v NameTargetSpec) *NameTargetSpecDnsConfiguration { return v.DnsConfiguration }).(NameTargetSpecDnsConfigurationPtrOutput)
+}
+
+type NameTargetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (NameTargetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameTargetSpec)(nil)).Elem()
+}
+
+func (o NameTargetSpecPtrOutput) ToNameTargetSpecPtrOutput() NameTargetSpecPtrOutput {
+	return o
+}
+
+func (o NameTargetSpecPtrOutput) ToNameTargetSpecPtrOutputWithContext(ctx context.Context) NameTargetSpecPtrOutput {
+	return o
+}
+
+func (o NameTargetSpecPtrOutput) Elem() NameTargetSpecOutput {
+	return o.ApplyT(func(v *NameTargetSpec) NameTargetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret NameTargetSpec
+		return ret
+	}).(NameTargetSpecOutput)
+}
+
+// The domain DNS configuration
+func (o NameTargetSpecPtrOutput) DnsConfiguration() NameTargetSpecDnsConfigurationPtrOutput {
+	return o.ApplyT(func(v *NameTargetSpec) *NameTargetSpecDnsConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DnsConfiguration
+	}).(NameTargetSpecDnsConfigurationPtrOutput)
+}
+
+type NameTargetSpecDnsConfiguration struct {
+	// The name servers to update
+	NameServers []NameTargetSpecDnsConfigurationNameServer `pulumi:"nameServers"`
+}
+
+// NameTargetSpecDnsConfigurationInput is an input type that accepts NameTargetSpecDnsConfigurationArgs and NameTargetSpecDnsConfigurationOutput values.
+// You can construct a concrete instance of `NameTargetSpecDnsConfigurationInput` via:
+//
+//	NameTargetSpecDnsConfigurationArgs{...}
+type NameTargetSpecDnsConfigurationInput interface {
+	pulumi.Input
+
+	ToNameTargetSpecDnsConfigurationOutput() NameTargetSpecDnsConfigurationOutput
+	ToNameTargetSpecDnsConfigurationOutputWithContext(context.Context) NameTargetSpecDnsConfigurationOutput
+}
+
+type NameTargetSpecDnsConfigurationArgs struct {
+	// The name servers to update
+	NameServers NameTargetSpecDnsConfigurationNameServerArrayInput `pulumi:"nameServers"`
+}
+
+func (NameTargetSpecDnsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameTargetSpecDnsConfiguration)(nil)).Elem()
+}
+
+func (i NameTargetSpecDnsConfigurationArgs) ToNameTargetSpecDnsConfigurationOutput() NameTargetSpecDnsConfigurationOutput {
+	return i.ToNameTargetSpecDnsConfigurationOutputWithContext(context.Background())
+}
+
+func (i NameTargetSpecDnsConfigurationArgs) ToNameTargetSpecDnsConfigurationOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecDnsConfigurationOutput)
+}
+
+func (i NameTargetSpecDnsConfigurationArgs) ToNameTargetSpecDnsConfigurationPtrOutput() NameTargetSpecDnsConfigurationPtrOutput {
+	return i.ToNameTargetSpecDnsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NameTargetSpecDnsConfigurationArgs) ToNameTargetSpecDnsConfigurationPtrOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecDnsConfigurationOutput).ToNameTargetSpecDnsConfigurationPtrOutputWithContext(ctx)
+}
+
+// NameTargetSpecDnsConfigurationPtrInput is an input type that accepts NameTargetSpecDnsConfigurationArgs, NameTargetSpecDnsConfigurationPtr and NameTargetSpecDnsConfigurationPtrOutput values.
+// You can construct a concrete instance of `NameTargetSpecDnsConfigurationPtrInput` via:
+//
+//	        NameTargetSpecDnsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameTargetSpecDnsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNameTargetSpecDnsConfigurationPtrOutput() NameTargetSpecDnsConfigurationPtrOutput
+	ToNameTargetSpecDnsConfigurationPtrOutputWithContext(context.Context) NameTargetSpecDnsConfigurationPtrOutput
+}
+
+type nameTargetSpecDnsConfigurationPtrType NameTargetSpecDnsConfigurationArgs
+
+func NameTargetSpecDnsConfigurationPtr(v *NameTargetSpecDnsConfigurationArgs) NameTargetSpecDnsConfigurationPtrInput {
+	return (*nameTargetSpecDnsConfigurationPtrType)(v)
+}
+
+func (*nameTargetSpecDnsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameTargetSpecDnsConfiguration)(nil)).Elem()
+}
+
+func (i *nameTargetSpecDnsConfigurationPtrType) ToNameTargetSpecDnsConfigurationPtrOutput() NameTargetSpecDnsConfigurationPtrOutput {
+	return i.ToNameTargetSpecDnsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *nameTargetSpecDnsConfigurationPtrType) ToNameTargetSpecDnsConfigurationPtrOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecDnsConfigurationPtrOutput)
+}
+
+type NameTargetSpecDnsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NameTargetSpecDnsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameTargetSpecDnsConfiguration)(nil)).Elem()
+}
+
+func (o NameTargetSpecDnsConfigurationOutput) ToNameTargetSpecDnsConfigurationOutput() NameTargetSpecDnsConfigurationOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationOutput) ToNameTargetSpecDnsConfigurationOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationOutput) ToNameTargetSpecDnsConfigurationPtrOutput() NameTargetSpecDnsConfigurationPtrOutput {
+	return o.ToNameTargetSpecDnsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o NameTargetSpecDnsConfigurationOutput) ToNameTargetSpecDnsConfigurationPtrOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameTargetSpecDnsConfiguration) *NameTargetSpecDnsConfiguration {
+		return &v
+	}).(NameTargetSpecDnsConfigurationPtrOutput)
+}
+
+// The name servers to update
+func (o NameTargetSpecDnsConfigurationOutput) NameServers() NameTargetSpecDnsConfigurationNameServerArrayOutput {
+	return o.ApplyT(func(v NameTargetSpecDnsConfiguration) []NameTargetSpecDnsConfigurationNameServer {
+		return v.NameServers
+	}).(NameTargetSpecDnsConfigurationNameServerArrayOutput)
+}
+
+type NameTargetSpecDnsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NameTargetSpecDnsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameTargetSpecDnsConfiguration)(nil)).Elem()
+}
+
+func (o NameTargetSpecDnsConfigurationPtrOutput) ToNameTargetSpecDnsConfigurationPtrOutput() NameTargetSpecDnsConfigurationPtrOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationPtrOutput) ToNameTargetSpecDnsConfigurationPtrOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationPtrOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationPtrOutput) Elem() NameTargetSpecDnsConfigurationOutput {
+	return o.ApplyT(func(v *NameTargetSpecDnsConfiguration) NameTargetSpecDnsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret NameTargetSpecDnsConfiguration
+		return ret
+	}).(NameTargetSpecDnsConfigurationOutput)
+}
+
+// The name servers to update
+func (o NameTargetSpecDnsConfigurationPtrOutput) NameServers() NameTargetSpecDnsConfigurationNameServerArrayOutput {
+	return o.ApplyT(func(v *NameTargetSpecDnsConfiguration) []NameTargetSpecDnsConfigurationNameServer {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(NameTargetSpecDnsConfigurationNameServerArrayOutput)
+}
+
+type NameTargetSpecDnsConfigurationNameServer struct {
+	// The IPv4 associated to the name server
+	Ipv4 *string `pulumi:"ipv4"`
+	// The IPv6 associated to the name server
+	Ipv6 *string `pulumi:"ipv6"`
+	// The host name
+	NameServer *string `pulumi:"nameServer"`
+}
+
+// NameTargetSpecDnsConfigurationNameServerInput is an input type that accepts NameTargetSpecDnsConfigurationNameServerArgs and NameTargetSpecDnsConfigurationNameServerOutput values.
+// You can construct a concrete instance of `NameTargetSpecDnsConfigurationNameServerInput` via:
+//
+//	NameTargetSpecDnsConfigurationNameServerArgs{...}
+type NameTargetSpecDnsConfigurationNameServerInput interface {
+	pulumi.Input
+
+	ToNameTargetSpecDnsConfigurationNameServerOutput() NameTargetSpecDnsConfigurationNameServerOutput
+	ToNameTargetSpecDnsConfigurationNameServerOutputWithContext(context.Context) NameTargetSpecDnsConfigurationNameServerOutput
+}
+
+type NameTargetSpecDnsConfigurationNameServerArgs struct {
+	// The IPv4 associated to the name server
+	Ipv4 pulumi.StringPtrInput `pulumi:"ipv4"`
+	// The IPv6 associated to the name server
+	Ipv6 pulumi.StringPtrInput `pulumi:"ipv6"`
+	// The host name
+	NameServer pulumi.StringPtrInput `pulumi:"nameServer"`
+}
+
+func (NameTargetSpecDnsConfigurationNameServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameTargetSpecDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (i NameTargetSpecDnsConfigurationNameServerArgs) ToNameTargetSpecDnsConfigurationNameServerOutput() NameTargetSpecDnsConfigurationNameServerOutput {
+	return i.ToNameTargetSpecDnsConfigurationNameServerOutputWithContext(context.Background())
+}
+
+func (i NameTargetSpecDnsConfigurationNameServerArgs) ToNameTargetSpecDnsConfigurationNameServerOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationNameServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecDnsConfigurationNameServerOutput)
+}
+
+// NameTargetSpecDnsConfigurationNameServerArrayInput is an input type that accepts NameTargetSpecDnsConfigurationNameServerArray and NameTargetSpecDnsConfigurationNameServerArrayOutput values.
+// You can construct a concrete instance of `NameTargetSpecDnsConfigurationNameServerArrayInput` via:
+//
+//	NameTargetSpecDnsConfigurationNameServerArray{ NameTargetSpecDnsConfigurationNameServerArgs{...} }
+type NameTargetSpecDnsConfigurationNameServerArrayInput interface {
+	pulumi.Input
+
+	ToNameTargetSpecDnsConfigurationNameServerArrayOutput() NameTargetSpecDnsConfigurationNameServerArrayOutput
+	ToNameTargetSpecDnsConfigurationNameServerArrayOutputWithContext(context.Context) NameTargetSpecDnsConfigurationNameServerArrayOutput
+}
+
+type NameTargetSpecDnsConfigurationNameServerArray []NameTargetSpecDnsConfigurationNameServerInput
+
+func (NameTargetSpecDnsConfigurationNameServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameTargetSpecDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (i NameTargetSpecDnsConfigurationNameServerArray) ToNameTargetSpecDnsConfigurationNameServerArrayOutput() NameTargetSpecDnsConfigurationNameServerArrayOutput {
+	return i.ToNameTargetSpecDnsConfigurationNameServerArrayOutputWithContext(context.Background())
+}
+
+func (i NameTargetSpecDnsConfigurationNameServerArray) ToNameTargetSpecDnsConfigurationNameServerArrayOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationNameServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameTargetSpecDnsConfigurationNameServerArrayOutput)
+}
+
+type NameTargetSpecDnsConfigurationNameServerOutput struct{ *pulumi.OutputState }
+
+func (NameTargetSpecDnsConfigurationNameServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameTargetSpecDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (o NameTargetSpecDnsConfigurationNameServerOutput) ToNameTargetSpecDnsConfigurationNameServerOutput() NameTargetSpecDnsConfigurationNameServerOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationNameServerOutput) ToNameTargetSpecDnsConfigurationNameServerOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationNameServerOutput {
+	return o
+}
+
+// The IPv4 associated to the name server
+func (o NameTargetSpecDnsConfigurationNameServerOutput) Ipv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameTargetSpecDnsConfigurationNameServer) *string { return v.Ipv4 }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 associated to the name server
+func (o NameTargetSpecDnsConfigurationNameServerOutput) Ipv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameTargetSpecDnsConfigurationNameServer) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
+}
+
+// The host name
+func (o NameTargetSpecDnsConfigurationNameServerOutput) NameServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NameTargetSpecDnsConfigurationNameServer) *string { return v.NameServer }).(pulumi.StringPtrOutput)
+}
+
+type NameTargetSpecDnsConfigurationNameServerArrayOutput struct{ *pulumi.OutputState }
+
+func (NameTargetSpecDnsConfigurationNameServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NameTargetSpecDnsConfigurationNameServer)(nil)).Elem()
+}
+
+func (o NameTargetSpecDnsConfigurationNameServerArrayOutput) ToNameTargetSpecDnsConfigurationNameServerArrayOutput() NameTargetSpecDnsConfigurationNameServerArrayOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationNameServerArrayOutput) ToNameTargetSpecDnsConfigurationNameServerArrayOutputWithContext(ctx context.Context) NameTargetSpecDnsConfigurationNameServerArrayOutput {
+	return o
+}
+
+func (o NameTargetSpecDnsConfigurationNameServerArrayOutput) Index(i pulumi.IntInput) NameTargetSpecDnsConfigurationNameServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NameTargetSpecDnsConfigurationNameServer {
+		return vs[0].([]NameTargetSpecDnsConfigurationNameServer)[vs[1].(int)]
+	}).(NameTargetSpecDnsConfigurationNameServerOutput)
+}
+
 type ZoneOrder struct {
 	// date
 	Date *string `pulumi:"date"`
@@ -820,6 +3148,38 @@ func (o ZonePlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) ZonePla
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DSRecordsDsRecordInput)(nil)).Elem(), DSRecordsDsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DSRecordsDsRecordArrayInput)(nil)).Elem(), DSRecordsDsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateInput)(nil)).Elem(), NameCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStatePtrInput)(nil)).Elem(), NameCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateDnsConfigurationInput)(nil)).Elem(), NameCurrentStateDnsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateDnsConfigurationPtrInput)(nil)).Elem(), NameCurrentStateDnsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateDnsConfigurationNameServerInput)(nil)).Elem(), NameCurrentStateDnsConfigurationNameServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentStateDnsConfigurationNameServerArrayInput)(nil)).Elem(), NameCurrentStateDnsConfigurationNameServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentTaskInput)(nil)).Elem(), NameCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameCurrentTaskArrayInput)(nil)).Elem(), NameCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameIamInput)(nil)).Elem(), NameIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameIamPtrInput)(nil)).Elem(), NameIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameOrderInput)(nil)).Elem(), NameOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameOrderPtrInput)(nil)).Elem(), NameOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameOrderDetailInput)(nil)).Elem(), NameOrderDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameOrderDetailArrayInput)(nil)).Elem(), NameOrderDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanInput)(nil)).Elem(), NamePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanArrayInput)(nil)).Elem(), NamePlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanConfigurationInput)(nil)).Elem(), NamePlanConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanConfigurationArrayInput)(nil)).Elem(), NamePlanConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanOptionInput)(nil)).Elem(), NamePlanOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanOptionArrayInput)(nil)).Elem(), NamePlanOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanOptionConfigurationInput)(nil)).Elem(), NamePlanOptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamePlanOptionConfigurationArrayInput)(nil)).Elem(), NamePlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameServersServerInput)(nil)).Elem(), NameServersServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameServersServerArrayInput)(nil)).Elem(), NameServersServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameTargetSpecInput)(nil)).Elem(), NameTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameTargetSpecPtrInput)(nil)).Elem(), NameTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameTargetSpecDnsConfigurationInput)(nil)).Elem(), NameTargetSpecDnsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameTargetSpecDnsConfigurationPtrInput)(nil)).Elem(), NameTargetSpecDnsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameTargetSpecDnsConfigurationNameServerInput)(nil)).Elem(), NameTargetSpecDnsConfigurationNameServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameTargetSpecDnsConfigurationNameServerArrayInput)(nil)).Elem(), NameTargetSpecDnsConfigurationNameServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneOrderInput)(nil)).Elem(), ZoneOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneOrderArrayInput)(nil)).Elem(), ZoneOrderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneOrderDetailInput)(nil)).Elem(), ZoneOrderDetailArgs{})
@@ -832,6 +3192,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanOptionArrayInput)(nil)).Elem(), ZonePlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanOptionConfigurationInput)(nil)).Elem(), ZonePlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanOptionConfigurationArrayInput)(nil)).Elem(), ZonePlanOptionConfigurationArray{})
+	pulumi.RegisterOutputType(DSRecordsDsRecordOutput{})
+	pulumi.RegisterOutputType(DSRecordsDsRecordArrayOutput{})
+	pulumi.RegisterOutputType(NameCurrentStateOutput{})
+	pulumi.RegisterOutputType(NameCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(NameCurrentStateDnsConfigurationOutput{})
+	pulumi.RegisterOutputType(NameCurrentStateDnsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NameCurrentStateDnsConfigurationNameServerOutput{})
+	pulumi.RegisterOutputType(NameCurrentStateDnsConfigurationNameServerArrayOutput{})
+	pulumi.RegisterOutputType(NameCurrentTaskOutput{})
+	pulumi.RegisterOutputType(NameCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(NameIamOutput{})
+	pulumi.RegisterOutputType(NameIamPtrOutput{})
+	pulumi.RegisterOutputType(NameOrderOutput{})
+	pulumi.RegisterOutputType(NameOrderPtrOutput{})
+	pulumi.RegisterOutputType(NameOrderDetailOutput{})
+	pulumi.RegisterOutputType(NameOrderDetailArrayOutput{})
+	pulumi.RegisterOutputType(NamePlanOutput{})
+	pulumi.RegisterOutputType(NamePlanArrayOutput{})
+	pulumi.RegisterOutputType(NamePlanConfigurationOutput{})
+	pulumi.RegisterOutputType(NamePlanConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(NamePlanOptionOutput{})
+	pulumi.RegisterOutputType(NamePlanOptionArrayOutput{})
+	pulumi.RegisterOutputType(NamePlanOptionConfigurationOutput{})
+	pulumi.RegisterOutputType(NamePlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(NameServersServerOutput{})
+	pulumi.RegisterOutputType(NameServersServerArrayOutput{})
+	pulumi.RegisterOutputType(NameTargetSpecOutput{})
+	pulumi.RegisterOutputType(NameTargetSpecPtrOutput{})
+	pulumi.RegisterOutputType(NameTargetSpecDnsConfigurationOutput{})
+	pulumi.RegisterOutputType(NameTargetSpecDnsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NameTargetSpecDnsConfigurationNameServerOutput{})
+	pulumi.RegisterOutputType(NameTargetSpecDnsConfigurationNameServerArrayOutput{})
 	pulumi.RegisterOutputType(ZoneOrderOutput{})
 	pulumi.RegisterOutputType(ZoneOrderArrayOutput{})
 	pulumi.RegisterOutputType(ZoneOrderDetailOutput{})

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DSRecordsArgs, DSRecordsState } from "./dsrecords";
+export type DSRecords = import("./dsrecords").DSRecords;
+export const DSRecords: typeof import("./dsrecords").DSRecords = null as any;
+utilities.lazyLoad(exports, ["DSRecords"], () => require("./dsrecords"));
+
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
@@ -14,6 +19,16 @@ export { GetZoneDNSSecArgs, GetZoneDNSSecResult, GetZoneDNSSecOutputArgs } from 
 export const getZoneDNSSec: typeof import("./getZoneDNSSec").getZoneDNSSec = null as any;
 export const getZoneDNSSecOutput: typeof import("./getZoneDNSSec").getZoneDNSSecOutput = null as any;
 utilities.lazyLoad(exports, ["getZoneDNSSec","getZoneDNSSecOutput"], () => require("./getZoneDNSSec"));
+
+export { NameArgs, NameState } from "./name";
+export type Name = import("./name").Name;
+export const Name: typeof import("./name").Name = null as any;
+utilities.lazyLoad(exports, ["Name"], () => require("./name"));
+
+export { NameServersArgs, NameServersState } from "./nameServers";
+export type NameServers = import("./nameServers").NameServers;
+export const NameServers: typeof import("./nameServers").NameServers = null as any;
+utilities.lazyLoad(exports, ["NameServers"], () => require("./nameServers"));
 
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
@@ -45,6 +60,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:Domain/dSRecords:DSRecords":
+                return new DSRecords(name, <any>undefined, { urn })
+            case "ovh:Domain/name:Name":
+                return new Name(name, <any>undefined, { urn })
+            case "ovh:Domain/nameServers:NameServers":
+                return new NameServers(name, <any>undefined, { urn })
             case "ovh:Domain/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             case "ovh:Domain/zoneDNSSec:ZoneDNSSec":
@@ -60,6 +81,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "Domain/dSRecords", _module)
+pulumi.runtime.registerResourceModule("ovh", "Domain/name", _module)
+pulumi.runtime.registerResourceModule("ovh", "Domain/nameServers", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zone", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneDNSSec", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zoneImport", _module)

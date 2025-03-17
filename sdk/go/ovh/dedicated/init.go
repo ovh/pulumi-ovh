@@ -31,12 +31,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NasHAPartitionSnapshot{}
 	case "ovh:Dedicated/server:Server":
 		r = &Server{}
-	case "ovh:Dedicated/serverInstallTask:ServerInstallTask":
-		r = &ServerInstallTask{}
 	case "ovh:Dedicated/serverNetworking:ServerNetworking":
 		r = &ServerNetworking{}
 	case "ovh:Dedicated/serverRebootTask:ServerRebootTask":
 		r = &ServerRebootTask{}
+	case "ovh:Dedicated/serverReinstallTask:ServerReinstallTask":
+		r = &ServerReinstallTask{}
 	case "ovh:Dedicated/serverUpdate:ServerUpdate":
 		r = &ServerUpdate{}
 	default:
@@ -79,17 +79,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
-		"Dedicated/serverInstallTask",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
 		"Dedicated/serverNetworking",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Dedicated/serverRebootTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Dedicated/serverReinstallTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

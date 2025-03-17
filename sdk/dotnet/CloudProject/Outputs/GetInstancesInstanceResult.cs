@@ -22,6 +22,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceAttachedVolumeResult> AttachedVolumes;
         /// <summary>
+        /// Availability zone of the instance
+        /// </summary>
+        public readonly string AvailabilityZone;
+        /// <summary>
         /// Flavor id
         /// </summary>
         public readonly string FlavorId;
@@ -56,6 +60,8 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
             ImmutableArray<Outputs.GetInstancesInstanceAttachedVolumeResult> attachedVolumes,
 
+            string availabilityZone,
+
             string flavorId,
 
             string flavorName,
@@ -72,6 +78,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         {
             Addresses = addresses;
             AttachedVolumes = attachedVolumes;
+            AvailabilityZone = availabilityZone;
             FlavorId = flavorId;
             FlavorName = flavorName;
             Id = id;
