@@ -31,6 +31,7 @@ env:
   PUBLISH_NPM: true
   PUBLISH_NUGET: true
   PUBLISH_NRM: true
+  TF_APPEND_USER_AGENT: pulumi
 jobs:
   publish_binary:
     name: publish
