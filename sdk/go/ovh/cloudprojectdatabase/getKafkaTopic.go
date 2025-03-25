@@ -57,8 +57,7 @@ type LookupKafkaTopicArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Topic ID
 	Id string `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -99,8 +98,7 @@ type LookupKafkaTopicOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Topic ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

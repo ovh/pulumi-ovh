@@ -129,7 +129,7 @@ class DSRecords(pulumi.CustomResource):
 
         Using the following configuration:
 
-        hcl
+        terraform
 
         import {
 
@@ -147,9 +147,7 @@ class DSRecords(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `ds_records.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `ds_records.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,7 +185,7 @@ class DSRecords(pulumi.CustomResource):
 
         Using the following configuration:
 
-        hcl
+        terraform
 
         import {
 
@@ -205,9 +203,7 @@ class DSRecords(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `ds_records.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `ds_records.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param DSRecordsArgs args: The arguments to use to populate this resource's properties.

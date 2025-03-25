@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProject
 {
     /// <summary>
-    /// **This resource uses a Beta API**
-    /// Creates an instance associated with a public cloud project.
+    /// **This resource uses a Beta API** Creates an instance associated with a public cloud project.
     /// 
     /// ## Example Usage
     /// 
@@ -145,8 +144,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -283,8 +281,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -418,8 +415,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

@@ -23,7 +23,13 @@ import * as utilities from "../utilities";
  *
  * Resource groups can be imported by using their id.
  *
- * > Read only resource groups cannot be imported
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Iam/resourceGroup:ResourceGroup my_resource_group resource_group_id
+ * ```
+ *
+ * -> Read only resource groups cannot be imported
  */
 export class ResourceGroup extends pulumi.CustomResource {
     /**

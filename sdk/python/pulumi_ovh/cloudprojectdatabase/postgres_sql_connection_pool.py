@@ -30,10 +30,8 @@ class PostgresSqlConnectionPoolArgs:
         The set of arguments for constructing a PostgresSqlConnectionPool resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] database_id: Database ID for a database that belongs to the Database cluster given above.
-        :param pulumi.Input[str] mode: Connection mode to the connection pool
-               Available modes:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] mode: Connection mode to the connection pool Available modes:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] size: Size of the connection pool.
         :param pulumi.Input[str] name: Name of the connection pool.
         :param pulumi.Input[str] user_id: Database user authorized to connect to the pool, if none all the users are allowed.
@@ -76,8 +74,7 @@ class PostgresSqlConnectionPoolArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[str]:
         """
-        Connection mode to the connection pool
-        Available modes:
+        Connection mode to the connection pool Available modes:
         """
         return pulumi.get(self, "mode")
 
@@ -89,8 +86,7 @@ class PostgresSqlConnectionPoolArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -152,12 +148,10 @@ class _PostgresSqlConnectionPoolState:
         Input properties used for looking up and filtering PostgresSqlConnectionPool resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] database_id: Database ID for a database that belongs to the Database cluster given above.
-        :param pulumi.Input[str] mode: Connection mode to the connection pool
-               Available modes:
+        :param pulumi.Input[str] mode: Connection mode to the connection pool Available modes:
         :param pulumi.Input[str] name: Name of the connection pool.
         :param pulumi.Input[int] port: Port of the connection pool.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] size: Size of the connection pool.
         :param pulumi.Input[str] ssl_mode: Ssl connection mode for the pool.
         :param pulumi.Input[str] uri: Connection URI to the pool.
@@ -212,8 +206,7 @@ class _PostgresSqlConnectionPoolState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Connection mode to the connection pool
-        Available modes:
+        Connection mode to the connection pool Available modes:
         """
         return pulumi.get(self, "mode")
 
@@ -249,8 +242,7 @@ class _PostgresSqlConnectionPoolState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -335,11 +327,9 @@ class PostgresSqlConnectionPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] database_id: Database ID for a database that belongs to the Database cluster given above.
-        :param pulumi.Input[str] mode: Connection mode to the connection pool
-               Available modes:
+        :param pulumi.Input[str] mode: Connection mode to the connection pool Available modes:
         :param pulumi.Input[str] name: Name of the connection pool.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] size: Size of the connection pool.
         :param pulumi.Input[str] user_id: Database user authorized to connect to the pool, if none all the users are allowed.
         """
@@ -440,12 +430,10 @@ class PostgresSqlConnectionPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] database_id: Database ID for a database that belongs to the Database cluster given above.
-        :param pulumi.Input[str] mode: Connection mode to the connection pool
-               Available modes:
+        :param pulumi.Input[str] mode: Connection mode to the connection pool Available modes:
         :param pulumi.Input[str] name: Name of the connection pool.
         :param pulumi.Input[int] port: Port of the connection pool.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] size: Size of the connection pool.
         :param pulumi.Input[str] ssl_mode: Ssl connection mode for the pool.
         :param pulumi.Input[str] uri: Connection URI to the pool.
@@ -487,8 +475,7 @@ class PostgresSqlConnectionPool(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        Connection mode to the connection pool
-        Available modes:
+        Connection mode to the connection pool Available modes:
         """
         return pulumi.get(self, "mode")
 
@@ -512,8 +499,7 @@ class PostgresSqlConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

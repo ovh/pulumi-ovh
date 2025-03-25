@@ -24,8 +24,7 @@ class DedicatedServerArgs:
         """
         The set of arguments for constructing a DedicatedServer resource.
         :param pulumi.Input[str] server_id: The id of the dedicated server.
-        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -46,8 +45,7 @@ class DedicatedServerArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The service name of the vrack. If omitted,
-        the `OVH_VRACK_SERVICE` environment variable is used.
+        The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -64,8 +62,7 @@ class _DedicatedServerState:
         """
         Input properties used for looking up and filtering DedicatedServer resources.
         :param pulumi.Input[str] server_id: The id of the dedicated server.
-        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         if server_id is not None:
             pulumi.set(__self__, "server_id", server_id)
@@ -88,8 +85,7 @@ class _DedicatedServerState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The service name of the vrack. If omitted,
-        the `OVH_VRACK_SERVICE` environment variable is used.
+        The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -109,8 +105,7 @@ class DedicatedServer(pulumi.CustomResource):
         """
         Attach a legacy dedicated server to a vRack.
 
-        > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
-        Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
+        > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br /> Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
 
         ## Example Usage
 
@@ -126,8 +121,7 @@ class DedicatedServer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] server_id: The id of the dedicated server.
-        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -138,8 +132,7 @@ class DedicatedServer(pulumi.CustomResource):
         """
         Attach a legacy dedicated server to a vRack.
 
-        > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
-        Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
+        > **NOTE:** The resource `Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br /> Dedicated servers that have configurable network interfaces MUST use the resource `Vrack.DedicatedServerInterface` instead.
 
         ## Example Usage
 
@@ -204,8 +197,7 @@ class DedicatedServer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] server_id: The id of the dedicated server.
-        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -227,8 +219,7 @@ class DedicatedServer(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The service name of the vrack. If omitted,
-        the `OVH_VRACK_SERVICE` environment variable is used.
+        The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

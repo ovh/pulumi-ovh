@@ -24,8 +24,7 @@ class DedicatedServerInterfaceArgs:
         """
         The set of arguments for constructing a DedicatedServerInterface resource.
         :param pulumi.Input[str] interface_id: The id of dedicated server network interface.
-        :param pulumi.Input[str] service_name: The id of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "interface_id", interface_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -46,8 +45,7 @@ class DedicatedServerInterfaceArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the vrack. If omitted,
-        the `OVH_VRACK_SERVICE` environment variable is used.
+        The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -64,8 +62,7 @@ class _DedicatedServerInterfaceState:
         """
         Input properties used for looking up and filtering DedicatedServerInterface resources.
         :param pulumi.Input[str] interface_id: The id of dedicated server network interface.
-        :param pulumi.Input[str] service_name: The id of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         if interface_id is not None:
             pulumi.set(__self__, "interface_id", interface_id)
@@ -88,8 +85,7 @@ class _DedicatedServerInterfaceState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the vrack. If omitted,
-        the `OVH_VRACK_SERVICE` environment variable is used.
+        The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -109,8 +105,7 @@ class DedicatedServerInterface(pulumi.CustomResource):
         """
         Attach a Dedicated Server Network Interface to a vRack.
 
-        > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br />
-        Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
+        > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br /> Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
 
         ## Example Usage
 
@@ -127,8 +122,7 @@ class DedicatedServerInterface(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interface_id: The id of dedicated server network interface.
-        :param pulumi.Input[str] service_name: The id of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -139,8 +133,7 @@ class DedicatedServerInterface(pulumi.CustomResource):
         """
         Attach a Dedicated Server Network Interface to a vRack.
 
-        > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br />
-        Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
+        > **NOTE:** The resource `Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.<br /> Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `Vrack.DedicatedServer` instead.
 
         ## Example Usage
 
@@ -206,8 +199,7 @@ class DedicatedServerInterface(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interface_id: The id of dedicated server network interface.
-        :param pulumi.Input[str] service_name: The id of the vrack. If omitted,
-               the `OVH_VRACK_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -229,8 +221,7 @@ class DedicatedServerInterface(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the vrack. If omitted,
-        the `OVH_VRACK_SERVICE` environment variable is used.
+        The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

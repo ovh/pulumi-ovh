@@ -57,8 +57,7 @@ type LookupKafkaSchemaRegistryAclArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Schema registry ACL ID
 	Id string `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -93,8 +92,7 @@ type LookupKafkaSchemaRegistryAclOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Schema registry ACL ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

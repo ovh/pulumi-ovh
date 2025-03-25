@@ -59,7 +59,13 @@ import (
 //
 // ## Import
 //
-// TCP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+// TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule examplerule service_name/route_id/rule_id
+// ```
 type TcpRouteRule struct {
 	pulumi.CustomResourceState
 

@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *
  * The resource can be imported using its `service_name`, E.g.,
  *
- * hcl
+ * terraform
  *
  * import {
  *
@@ -69,9 +69,7 @@ import * as utilities from "../utilities";
  *
  * $ pulumi up
  *
- * The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class IpService extends pulumi.CustomResource {
     /**

@@ -96,8 +96,7 @@ export class Move extends pulumi.CustomResource {
      */
     public /*out*/ readonly organisationId!: pulumi.Output<string>;
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      */
     public readonly routedTo!: pulumi.Output<outputs.Ip.MoveRoutedTo>;
     /**
@@ -189,8 +188,7 @@ export interface MoveState {
      */
     organisationId?: pulumi.Input<string>;
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      */
     routedTo?: pulumi.Input<inputs.Ip.MoveRoutedTo>;
     /**
@@ -224,8 +222,7 @@ export interface MoveArgs {
      */
     ip: pulumi.Input<string>;
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      */
     routedTo: pulumi.Input<inputs.Ip.MoveRoutedTo>;
 }

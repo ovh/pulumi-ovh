@@ -34,11 +34,9 @@ type PostgresSqlUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// Roles the user belongs to.
-	// Available roles:
+	// Roles the user belongs to. Available roles:
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current status of the user.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -94,11 +92,9 @@ type postgresSqlUserState struct {
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to.
-	// Available roles:
+	// Roles the user belongs to. Available roles:
 	Roles []string `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status *string `pulumi:"status"`
@@ -115,11 +111,9 @@ type PostgresSqlUserState struct {
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to.
-	// Available roles:
+	// Roles the user belongs to. Available roles:
 	Roles pulumi.StringArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current status of the user.
 	Status pulumi.StringPtrInput
@@ -136,11 +130,9 @@ type postgresSqlUserArgs struct {
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to.
-	// Available roles:
+	// Roles the user belongs to. Available roles:
 	Roles []string `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -152,11 +144,9 @@ type PostgresSqlUserArgs struct {
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to.
-	// Available roles:
+	// Roles the user belongs to. Available roles:
 	Roles pulumi.StringArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -272,14 +262,12 @@ func (o PostgresSqlUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresSqlUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// Roles the user belongs to.
-// Available roles:
+// Roles the user belongs to. Available roles:
 func (o PostgresSqlUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PostgresSqlUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o PostgresSqlUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSqlUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

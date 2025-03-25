@@ -81,8 +81,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> DestinationServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`.
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -94,8 +93,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -113,8 +111,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the integration.
-        /// Available types:
+        /// Type of the integration. Available types:
         /// * `grafanaDashboard`
         /// * `grafanaDatasource`
         /// * `kafkaConnect`
@@ -184,8 +181,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> DestinationServiceId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`.
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -203,8 +199,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -216,8 +211,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> SourceServiceId { get; set; } = null!;
 
         /// <summary>
-        /// Type of the integration.
-        /// Available types:
+        /// Type of the integration. Available types:
         /// * `grafanaDashboard`
         /// * `grafanaDatasource`
         /// * `kafkaConnect`
@@ -248,8 +242,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? DestinationServiceId { get; set; }
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`.
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -267,8 +260,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -286,8 +278,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the integration.
-        /// Available types:
+        /// Type of the integration. Available types:
         /// * `grafanaDashboard`
         /// * `grafanaDatasource`
         /// * `kafkaConnect`

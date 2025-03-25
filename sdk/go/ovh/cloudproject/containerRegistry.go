@@ -50,7 +50,7 @@ import (
 //
 // ```
 //
-// > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
+// > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
 
@@ -66,8 +66,7 @@ type ContainerRegistry struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Region of the registry
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current size of the registry (bytes)
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -129,8 +128,7 @@ type containerRegistryState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Region of the registry
 	Region *string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current size of the registry (bytes)
 	Size *int `pulumi:"size"`
@@ -157,8 +155,7 @@ type ContainerRegistryState struct {
 	ProjectId pulumi.StringPtrInput
 	// Region of the registry
 	Region pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current size of the registry (bytes)
 	Size pulumi.IntPtrInput
@@ -183,8 +180,7 @@ type containerRegistryArgs struct {
 	PlanId *string `pulumi:"planId"`
 	// Region of the registry
 	Region string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -196,8 +192,7 @@ type ContainerRegistryArgs struct {
 	PlanId pulumi.StringPtrInput
 	// Region of the registry
 	Region pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -318,8 +313,7 @@ func (o ContainerRegistryOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o ContainerRegistryOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

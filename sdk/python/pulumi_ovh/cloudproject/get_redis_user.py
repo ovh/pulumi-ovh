@@ -179,8 +179,7 @@ def get_redis_user(cluster_id: Optional[str] = None,
 
     :param str cluster_id: Cluster ID
     :param str name: Name of the user
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -222,8 +221,7 @@ def get_redis_user_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     :param str cluster_id: Cluster ID
     :param str name: Name of the user
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

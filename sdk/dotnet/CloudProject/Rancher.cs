@@ -32,16 +32,18 @@ namespace Pulumi.Ovh.CloudProject
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["rancherUrl"] = rancher.CurrentState.Apply(currentState =&gt; currentState.Url),
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+    /// A share in a public cloud project can be imported using the `project_id` and `id` attributes. Using the following configuration:
     /// 
-    /// Using the following configuration:
-    /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -59,9 +61,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// $ pulumi up
     /// 
-    /// The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:CloudProject/rancher:Rancher")]
     public partial class Rancher : global::Pulumi.CustomResource

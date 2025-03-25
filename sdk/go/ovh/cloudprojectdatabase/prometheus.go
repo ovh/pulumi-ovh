@@ -26,15 +26,13 @@ type Prometheus struct {
 
 	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// List of all endpoint targets.
 	// * `Host` - Host of the endpoint.
@@ -89,15 +87,13 @@ func GetPrometheus(ctx *pulumi.Context,
 type prometheusState struct {
 	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine *string `pulumi:"engine"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// List of all endpoint targets.
 	// * `Host` - Host of the endpoint.
@@ -110,15 +106,13 @@ type prometheusState struct {
 type PrometheusState struct {
 	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// List of all endpoint targets.
 	// * `Host` - Host of the endpoint.
@@ -135,13 +129,11 @@ func (PrometheusState) ElementType() reflect.Type {
 type prometheusArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine string `pulumi:"engine"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -149,13 +141,11 @@ type prometheusArgs struct {
 type PrometheusArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine pulumi.StringInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -251,8 +241,7 @@ func (o PrometheusOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-// Available engines:
+// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 func (o PrometheusOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -267,8 +256,7 @@ func (o PrometheusOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o PrometheusOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

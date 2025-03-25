@@ -53,8 +53,7 @@ class GetPaymentmeanBankAccountResult:
     @pulumi.getter
     def default(self) -> bool:
         """
-        a boolean which tells if the retrieved bank account
-        is marked as the default payment mean
+        a boolean which tells if the retrieved bank account is marked as the default payment mean
         """
         return pulumi.get(self, "default")
 
@@ -116,8 +115,7 @@ def get_paymentmean_bank_account(description_regexp: Optional[str] = None,
                                  use_oldest: Optional[bool] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPaymentmeanBankAccountResult:
     """
-    Use this data source to retrieve information about a bank account
-    payment mean associated with an OVHcloud account.
+    Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
 
     ## Example Usage
 
@@ -129,13 +127,10 @@ def get_paymentmean_bank_account(description_regexp: Optional[str] = None,
     ```
 
 
-    :param str description_regexp: a regexp used to filter bank accounts 
-           on their `description` attributes.
-    :param str state: Filter bank accounts on their `state` attribute.
-           Can be "blockedForIncidents", "valid", "pendingValidation"
+    :param str description_regexp: a regexp used to filter bank accounts on their `description` attributes.
+    :param str state: Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
     :param bool use_default: Retrieve bank account marked as default payment mean.
-    :param bool use_oldest: Retrieve oldest bank account.
-           project.
+    :param bool use_oldest: Retrieve oldest bank account. project.
     """
     __args__ = dict()
     __args__['descriptionRegexp'] = description_regexp
@@ -159,8 +154,7 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
                                         use_oldest: Optional[pulumi.Input[Optional[bool]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPaymentmeanBankAccountResult]:
     """
-    Use this data source to retrieve information about a bank account
-    payment mean associated with an OVHcloud account.
+    Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
 
     ## Example Usage
 
@@ -172,13 +166,10 @@ def get_paymentmean_bank_account_output(description_regexp: Optional[pulumi.Inpu
     ```
 
 
-    :param str description_regexp: a regexp used to filter bank accounts 
-           on their `description` attributes.
-    :param str state: Filter bank accounts on their `state` attribute.
-           Can be "blockedForIncidents", "valid", "pendingValidation"
+    :param str description_regexp: a regexp used to filter bank accounts on their `description` attributes.
+    :param str state: Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
     :param bool use_default: Retrieve bank account marked as default payment mean.
-    :param bool use_oldest: Retrieve oldest bank account.
-           project.
+    :param bool use_oldest: Retrieve oldest bank account. project.
     """
     __args__ = dict()
     __args__['descriptionRegexp'] = description_regexp

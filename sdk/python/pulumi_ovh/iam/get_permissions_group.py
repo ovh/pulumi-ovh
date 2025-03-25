@@ -86,6 +86,9 @@ class GetPermissionsGroupResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of this resource.
+        """
         return pulumi.get(self, "id")
 
     @property

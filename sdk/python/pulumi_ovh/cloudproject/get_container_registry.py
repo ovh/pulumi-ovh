@@ -193,8 +193,7 @@ def get_container_registry(registry_id: Optional[str] = None,
 
 
     :param str registry_id: Registry ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id
@@ -233,8 +232,7 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[str]] = Non
 
 
     :param str registry_id: Registry ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['registryId'] = registry_id

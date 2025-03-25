@@ -91,15 +91,13 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetRegionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the region associated with the public cloud
-        /// project.
+        /// The name of the region associated with the public cloud project.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -113,15 +111,13 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetRegionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the region associated with the public cloud
-        /// project.
+        /// The name of the region associated with the public cloud project.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -137,13 +133,11 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetRegionResult
     {
         /// <summary>
-        /// the code of the geographic continent the region is running.
-        /// E.g.: EU for Europe, US for America...
+        /// the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
         /// </summary>
         public readonly string ContinentCode;
         /// <summary>
-        /// The location code of the datacenter.
-        /// E.g.: "GRA", meaning Gravelines, for region "GRA1"
+        /// The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
         /// </summary>
         public readonly string DatacenterLocation;
         /// <summary>

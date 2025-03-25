@@ -124,7 +124,7 @@ class GetServiceResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hosted_ssl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
+        Possible values for ip type ( "cdn", "cloud", "dedicated", "failover", "hosted_ssl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
         """
         return pulumi.get(self, "type")
 

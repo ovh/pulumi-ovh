@@ -28,8 +28,7 @@ class ContainerRegistryArgs:
         """
         The set of arguments for constructing a ContainerRegistry resource.
         :param pulumi.Input[str] region: Region of the registry
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: Registry name
         :param pulumi.Input[str] plan_id: Plan ID of the registry
         """
@@ -56,8 +55,7 @@ class ContainerRegistryArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -113,8 +111,7 @@ class _ContainerRegistryState:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerRegistryPlanArgs']]] plans: Plan of the registry
         :param pulumi.Input[str] project_id: Project ID of your registry
         :param pulumi.Input[str] region: Region of the registry
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] size: Current size of the registry (bytes)
         :param pulumi.Input[str] status: Registry status
         :param pulumi.Input[str] updated_at: Registry last update date
@@ -222,8 +219,7 @@ class _ContainerRegistryState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -320,15 +316,14 @@ class ContainerRegistry(pulumi.CustomResource):
             region=regcap.region)
         ```
 
-        > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
+        > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Registry name
         :param pulumi.Input[str] plan_id: Plan ID of the registry
         :param pulumi.Input[str] region: Region of the registry
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -354,7 +349,7 @@ class ContainerRegistry(pulumi.CustomResource):
             region=regcap.region)
         ```
 
-        > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
+        > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryArgs args: The arguments to use to populate this resource's properties.
@@ -435,8 +430,7 @@ class ContainerRegistry(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerRegistryPlanArgs', 'ContainerRegistryPlanArgsDict']]]] plans: Plan of the registry
         :param pulumi.Input[str] project_id: Project ID of your registry
         :param pulumi.Input[str] region: Region of the registry
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] size: Current size of the registry (bytes)
         :param pulumi.Input[str] status: Registry status
         :param pulumi.Input[str] updated_at: Registry last update date
@@ -513,8 +507,7 @@ class ContainerRegistry(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

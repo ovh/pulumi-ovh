@@ -54,8 +54,7 @@ func GetKafkaAcls(ctx *pulumi.Context, args *GetKafkaAclsArgs, opts ...pulumi.In
 type GetKafkaAclsArgs struct {
 	// Cluster ID
 	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func GetKafkaAclsOutput(ctx *pulumi.Context, args GetKafkaAclsOutputArgs, opts .
 type GetKafkaAclsOutputArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -47,6 +47,8 @@ if typing.TYPE_CHECKING:
     ovhcloud = __ovhcloud
     import pulumi_ovh.savingsplan as __savingsplan
     savingsplan = __savingsplan
+    import pulumi_ovh.vmware as __vmware
+    vmware = __vmware
     import pulumi_ovh.vps as __vps
     vps = __vps
     import pulumi_ovh.vrack as __vrack
@@ -68,6 +70,7 @@ else:
     order = _utilities.lazy_import('pulumi_ovh.order')
     ovhcloud = _utilities.lazy_import('pulumi_ovh.ovhcloud')
     savingsplan = _utilities.lazy_import('pulumi_ovh.savingsplan')
+    vmware = _utilities.lazy_import('pulumi_ovh.vmware')
     vps = _utilities.lazy_import('pulumi_ovh.vps')
     vrack = _utilities.lazy_import('pulumi_ovh.vrack')
 
@@ -160,6 +163,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/instanceSnapshot",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/instanceSnapshot:InstanceSnapshot": "InstanceSnapshot"
   }
  },
  {
@@ -992,6 +1003,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/cloudProject:CloudProject": "CloudProject"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Vrack/dedicatedCloud",
+  "fqn": "pulumi_ovh.vrack",
+  "classes": {
+   "ovh:Vrack/dedicatedCloud:DedicatedCloud": "DedicatedCloud"
   }
  },
  {

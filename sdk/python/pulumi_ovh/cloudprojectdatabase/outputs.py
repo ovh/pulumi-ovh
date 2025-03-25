@@ -33,8 +33,7 @@ class OpensearchUserAcl(dict):
                  permission: str):
         """
         :param str pattern: Pattern of the ACL.
-        :param str permission: Permission of the ACL
-               Available permission:
+        :param str permission: Permission of the ACL Available permission:
         """
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "permission", permission)
@@ -51,8 +50,7 @@ class OpensearchUserAcl(dict):
     @pulumi.getter
     def permission(self) -> str:
         """
-        Permission of the ACL
-        Available permission:
+        Permission of the ACL Available permission:
         """
         return pulumi.get(self, "permission")
 

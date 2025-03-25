@@ -19,7 +19,7 @@ namespace Pulumi.Ovh.Domain.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        /// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

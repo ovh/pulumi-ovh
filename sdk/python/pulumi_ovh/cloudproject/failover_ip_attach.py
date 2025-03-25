@@ -27,8 +27,7 @@ class FailoverIpAttachArgs:
                  routed_to: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FailoverIpAttach resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] block: The IP block
                * `continentCode` - The Ip continent
         :param pulumi.Input[str] continent_code: Ip continent
@@ -52,8 +51,7 @@ class FailoverIpAttachArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -145,8 +143,7 @@ class _FailoverIpAttachState:
         :param pulumi.Input[int] progress: Current operation progress in percent
                * `routedTo` - Instance where ip is routed to
         :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Ip status, can be `ok` or `operationPending`
                * `subType` - IP sub type, can be `cloud` or `ovh`
         :param pulumi.Input[str] sub_type: IP sub type
@@ -248,8 +245,7 @@ class _FailoverIpAttachState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -318,8 +314,7 @@ class FailoverIpAttach(pulumi.CustomResource):
         :param pulumi.Input[str] geo_loc: Ip location
         :param pulumi.Input[str] ip: The failover ip address to attach
         :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -417,8 +412,7 @@ class FailoverIpAttach(pulumi.CustomResource):
         :param pulumi.Input[int] progress: Current operation progress in percent
                * `routedTo` - Instance where ip is routed to
         :param pulumi.Input[str] routed_to: The GUID of an instance to which the failover IP address is be attached
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Ip status, can be `ok` or `operationPending`
                * `subType` - IP sub type, can be `cloud` or `ovh`
         :param pulumi.Input[str] sub_type: IP sub type
@@ -492,8 +486,7 @@ class FailoverIpAttach(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

@@ -62,7 +62,7 @@ export class PrivateDatabaseUserGrant extends pulumi.CustomResource {
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * Database name where add grant. Values can be: 
+     * Database name where add grant. Values can be:
      * - admin
      * - none
      * - ro
@@ -128,7 +128,7 @@ export interface PrivateDatabaseUserGrantState {
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * Database name where add grant. Values can be: 
+     * Database name where add grant. Values can be:
      * - admin
      * - none
      * - ro
@@ -154,7 +154,7 @@ export interface PrivateDatabaseUserGrantArgs {
      */
     databaseName: pulumi.Input<string>;
     /**
-     * Database name where add grant. Values can be: 
+     * Database name where add grant. Values can be:
      * - admin
      * - none
      * - ro

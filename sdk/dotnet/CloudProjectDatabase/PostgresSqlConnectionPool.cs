@@ -36,8 +36,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> DatabaseId { get; private set; } = null!;
 
         /// <summary>
-        /// Connection mode to the connection pool
-        /// Available modes:
+        /// Connection mode to the connection pool Available modes:
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -55,8 +54,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -145,8 +143,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> DatabaseId { get; set; } = null!;
 
         /// <summary>
-        /// Connection mode to the connection pool
-        /// Available modes:
+        /// Connection mode to the connection pool Available modes:
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -158,8 +155,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -197,8 +193,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? DatabaseId { get; set; }
 
         /// <summary>
-        /// Connection mode to the connection pool
-        /// Available modes:
+        /// Connection mode to the connection pool Available modes:
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -216,8 +211,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

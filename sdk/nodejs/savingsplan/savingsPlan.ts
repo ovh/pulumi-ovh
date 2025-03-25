@@ -25,7 +25,13 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * A savings plan can be imported using the following format: `serviceName` and `id` of the savings plan, separated by "/" e.g.
+ * A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by "/" e.g.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:SavingsPlan/savingsPlan:SavingsPlan plan service_name/savings_plan_id
+ * ```
  */
 export class SavingsPlan extends pulumi.CustomResource {
     /**

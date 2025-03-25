@@ -69,11 +69,9 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Webhosting database can be imported using the `service_name`.
+    /// OVHcloud Webhosting database can be imported using the `service_name`. Using the following configuration:
     /// 
-    /// Using the following configuration:
-    /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -91,9 +89,7 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// $ pulumi up
     /// 
-    /// The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Hosting/privateDatabase:PrivateDatabase")]
     public partial class PrivateDatabase : global::Pulumi.CustomResource

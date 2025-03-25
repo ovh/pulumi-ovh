@@ -118,10 +118,8 @@ def get_database_log_subscriptions(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: Cluster ID.
-    :param str engine: The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str engine: The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -157,10 +155,8 @@ def get_database_log_subscriptions_output(cluster_id: Optional[pulumi.Input[str]
 
 
     :param str cluster_id: Cluster ID.
-    :param str engine: The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str engine: The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

@@ -183,7 +183,7 @@ class LogsRolePermissionStream(pulumi.CustomResource):
 
         ## Import
 
-        DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+        DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id` of the permission, separated by "/" E.g.,
 
         bash
 
@@ -220,7 +220,7 @@ class LogsRolePermissionStream(pulumi.CustomResource):
 
         ## Import
 
-        DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id`  of the permission, separated by "/" E.g.,
+        DBaaS logs role stream permission can be imported using the `service_name`, `role_id` and `id` of the permission, separated by "/" E.g.,
 
         bash
 

@@ -28,15 +28,13 @@ type PostgresSqlConnectionPool struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Database ID for a database that belongs to the Database cluster given above.
 	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
-	// Connection mode to the connection pool
-	// Available modes:
+	// Connection mode to the connection pool Available modes:
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Name of the connection pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Port of the connection pool.
 	Port pulumi.IntOutput `pulumi:"port"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Size of the connection pool.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -97,15 +95,13 @@ type postgresSqlConnectionPoolState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Database ID for a database that belongs to the Database cluster given above.
 	DatabaseId *string `pulumi:"databaseId"`
-	// Connection mode to the connection pool
-	// Available modes:
+	// Connection mode to the connection pool Available modes:
 	Mode *string `pulumi:"mode"`
 	// Name of the connection pool.
 	Name *string `pulumi:"name"`
 	// Port of the connection pool.
 	Port *int `pulumi:"port"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Size of the connection pool.
 	Size *int `pulumi:"size"`
@@ -122,15 +118,13 @@ type PostgresSqlConnectionPoolState struct {
 	ClusterId pulumi.StringPtrInput
 	// Database ID for a database that belongs to the Database cluster given above.
 	DatabaseId pulumi.StringPtrInput
-	// Connection mode to the connection pool
-	// Available modes:
+	// Connection mode to the connection pool Available modes:
 	Mode pulumi.StringPtrInput
 	// Name of the connection pool.
 	Name pulumi.StringPtrInput
 	// Port of the connection pool.
 	Port pulumi.IntPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Size of the connection pool.
 	Size pulumi.IntPtrInput
@@ -151,13 +145,11 @@ type postgresSqlConnectionPoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Database ID for a database that belongs to the Database cluster given above.
 	DatabaseId string `pulumi:"databaseId"`
-	// Connection mode to the connection pool
-	// Available modes:
+	// Connection mode to the connection pool Available modes:
 	Mode string `pulumi:"mode"`
 	// Name of the connection pool.
 	Name *string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// Size of the connection pool.
 	Size int `pulumi:"size"`
@@ -171,13 +163,11 @@ type PostgresSqlConnectionPoolArgs struct {
 	ClusterId pulumi.StringInput
 	// Database ID for a database that belongs to the Database cluster given above.
 	DatabaseId pulumi.StringInput
-	// Connection mode to the connection pool
-	// Available modes:
+	// Connection mode to the connection pool Available modes:
 	Mode pulumi.StringInput
 	// Name of the connection pool.
 	Name pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 	// Size of the connection pool.
 	Size pulumi.IntInput
@@ -282,8 +272,7 @@ func (o PostgresSqlConnectionPoolOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSqlConnectionPool) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
 }
 
-// Connection mode to the connection pool
-// Available modes:
+// Connection mode to the connection pool Available modes:
 func (o PostgresSqlConnectionPoolOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSqlConnectionPool) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
@@ -298,8 +287,7 @@ func (o PostgresSqlConnectionPoolOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *PostgresSqlConnectionPool) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o PostgresSqlConnectionPoolOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSqlConnectionPool) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

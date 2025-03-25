@@ -16,8 +16,7 @@ var _ = internal.GetEnvOrDefault
 type OpensearchUserAcl struct {
 	// Pattern of the ACL.
 	Pattern string `pulumi:"pattern"`
-	// Permission of the ACL
-	// Available permission:
+	// Permission of the ACL Available permission:
 	Permission string `pulumi:"permission"`
 }
 
@@ -35,8 +34,7 @@ type OpensearchUserAclInput interface {
 type OpensearchUserAclArgs struct {
 	// Pattern of the ACL.
 	Pattern pulumi.StringInput `pulumi:"pattern"`
-	// Permission of the ACL
-	// Available permission:
+	// Permission of the ACL Available permission:
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -96,8 +94,7 @@ func (o OpensearchUserAclOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v OpensearchUserAcl) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Permission of the ACL
-// Available permission:
+// Permission of the ACL Available permission:
 func (o OpensearchUserAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v OpensearchUserAcl) string { return v.Permission }).(pulumi.StringOutput)
 }

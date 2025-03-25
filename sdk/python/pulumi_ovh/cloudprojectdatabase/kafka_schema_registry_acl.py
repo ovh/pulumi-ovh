@@ -27,11 +27,9 @@ class KafkaSchemaRegistryAclArgs:
         """
         The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this resource.
-               Available permissions:
+        :param pulumi.Input[str] permission: Permission to give to this username on this resource. Available permissions:
         :param pulumi.Input[str] resource: Resource affected by this schema registry ACL.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] username: Username affected by this schema registry ACL.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -56,8 +54,7 @@ class KafkaSchemaRegistryAclArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        Permission to give to this username on this resource.
-        Available permissions:
+        Permission to give to this username on this resource. Available permissions:
         """
         return pulumi.get(self, "permission")
 
@@ -81,8 +78,7 @@ class KafkaSchemaRegistryAclArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -114,11 +110,9 @@ class _KafkaSchemaRegistryAclState:
         """
         Input properties used for looking up and filtering KafkaSchemaRegistryAcl resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this resource.
-               Available permissions:
+        :param pulumi.Input[str] permission: Permission to give to this username on this resource. Available permissions:
         :param pulumi.Input[str] resource: Resource affected by this schema registry ACL.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] username: Username affected by this schema registry ACL.
         """
         if cluster_id is not None:
@@ -148,8 +142,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        Permission to give to this username on this resource.
-        Available permissions:
+        Permission to give to this username on this resource. Available permissions:
         """
         return pulumi.get(self, "permission")
 
@@ -173,8 +166,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -239,11 +231,9 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this resource.
-               Available permissions:
+        :param pulumi.Input[str] permission: Permission to give to this username on this resource. Available permissions:
         :param pulumi.Input[str] resource: Resource affected by this schema registry ACL.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] username: Username affected by this schema registry ACL.
         """
         ...
@@ -349,11 +339,9 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this resource.
-               Available permissions:
+        :param pulumi.Input[str] permission: Permission to give to this username on this resource. Available permissions:
         :param pulumi.Input[str] resource: Resource affected by this schema registry ACL.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] username: Username affected by this schema registry ACL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -379,8 +367,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        Permission to give to this username on this resource.
-        Available permissions:
+        Permission to give to this username on this resource. Available permissions:
         """
         return pulumi.get(self, "permission")
 
@@ -396,8 +383,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

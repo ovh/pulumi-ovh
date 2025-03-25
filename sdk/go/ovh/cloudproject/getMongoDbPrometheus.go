@@ -54,8 +54,7 @@ func GetMongoDbPrometheus(ctx *pulumi.Context, args *GetMongoDbPrometheusArgs, o
 type GetMongoDbPrometheusArgs struct {
 	// Cluster ID
 	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -86,8 +85,7 @@ func GetMongoDbPrometheusOutput(ctx *pulumi.Context, args GetMongoDbPrometheusOu
 type GetMongoDbPrometheusOutputArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

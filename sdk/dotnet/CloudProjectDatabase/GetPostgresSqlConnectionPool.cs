@@ -154,8 +154,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -181,8 +180,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -210,8 +208,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Connection mode to the connection pool
-        /// Available modes:
+        /// Connection mode to the connection pool Available modes:
         /// </summary>
         public readonly string Mode;
         /// <summary>

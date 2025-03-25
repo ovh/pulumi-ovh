@@ -42,8 +42,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceFlavorArgs'] flavor: Flavor information
         :param pulumi.Input['InstanceNetworkArgs'] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input['InstanceAutoBackupArgs'] auto_backup: Create an autobackup workflow after instance start up.
         :param pulumi.Input[str] availability_zone: The availability zone where the instance will be created
         :param pulumi.Input[int] bulk: Create multiple instances
@@ -140,8 +139,7 @@ class InstanceArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         """
         return pulumi.get(self, "service_name")
 
@@ -286,8 +284,7 @@ class _InstanceState:
         :param pulumi.Input[str] name: Instance name
         :param pulumi.Input['InstanceNetworkArgs'] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input['InstanceSshKeyArgs'] ssh_key: Existing SSH Keypair
         :param pulumi.Input['InstanceSshKeyCreateArgs'] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] task_state: Instance task state
@@ -518,8 +515,7 @@ class _InstanceState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         """
         return pulumi.get(self, "service_name")
 
@@ -597,8 +593,7 @@ class Instance(pulumi.CustomResource):
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        **This resource uses a Beta API**
-        Creates an instance associated with a public cloud project.
+        **This resource uses a Beta API** Creates an instance associated with a public cloud project.
 
         ## Example Usage
 
@@ -638,8 +633,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Instance name
         :param pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Keypair
         :param pulumi.Input[Union['InstanceSshKeyCreateArgs', 'InstanceSshKeyCreateArgsDict']] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] user_data: Configuration information or scripts to use upon launch
@@ -651,8 +645,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **This resource uses a Beta API**
-        Creates an instance associated with a public cloud project.
+        **This resource uses a Beta API** Creates an instance associated with a public cloud project.
 
         ## Example Usage
 
@@ -802,8 +795,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Instance name
         :param pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']] network: Create network interfaces
         :param pulumi.Input[str] region: Instance region
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Keypair
         :param pulumi.Input[Union['InstanceSshKeyCreateArgs', 'InstanceSshKeyCreateArgsDict']] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
         :param pulumi.Input[str] task_state: Instance task state
@@ -959,8 +951,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         """
         return pulumi.get(self, "service_name")
 

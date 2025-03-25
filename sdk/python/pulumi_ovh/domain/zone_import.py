@@ -121,7 +121,7 @@ class ZoneImport(pulumi.CustomResource):
         """
         Handle a whole DNS zone using a zone file.
 
-        > __WARNING__ This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
+        > **WARNING** This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
 
         ## Example Usage
 
@@ -148,7 +148,7 @@ class ZoneImport(pulumi.CustomResource):
         """
         Handle a whole DNS zone using a zone file.
 
-        > __WARNING__ This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
+        > **WARNING** This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
 
         ## Example Usage
 

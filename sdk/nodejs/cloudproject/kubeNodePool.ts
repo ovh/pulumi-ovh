@@ -111,18 +111,15 @@ export class KubeNodePool extends pulumi.CustomResource {
      */
     public readonly autoscale!: pulumi.Output<boolean>;
     /**
-     * scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      */
     public readonly autoscalingScaleDownUnneededTimeSeconds!: pulumi.Output<number>;
     /**
-     * scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      */
     public readonly autoscalingScaleDownUnreadyTimeSeconds!: pulumi.Output<number>;
     /**
-     * scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     public readonly autoscalingScaleDownUtilizationThreshold!: pulumi.Output<number>;
@@ -147,8 +144,7 @@ export class KubeNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly flavor!: pulumi.Output<string>;
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      */
     public readonly flavorName!: pulumi.Output<string>;
     /**
@@ -289,18 +285,15 @@ export interface KubeNodePoolState {
      */
     autoscale?: pulumi.Input<boolean>;
     /**
-     * scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnneededTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnreadyTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
@@ -325,8 +318,7 @@ export interface KubeNodePoolState {
      */
     flavor?: pulumi.Input<string>;
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      */
     flavorName?: pulumi.Input<string>;
     /**
@@ -392,18 +384,15 @@ export interface KubeNodePoolArgs {
      */
     autoscale?: pulumi.Input<boolean>;
     /**
-     * scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnneededTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      */
     autoscalingScaleDownUnreadyTimeSeconds?: pulumi.Input<number>;
     /**
-     * scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
@@ -412,8 +401,7 @@ export interface KubeNodePoolArgs {
      */
     desiredNodes?: pulumi.Input<number>;
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      */
     flavorName: pulumi.Input<string>;
     /**

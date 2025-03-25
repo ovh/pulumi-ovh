@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewRancher(ctx, "rancher", &cloudproject.RancherArgs{
+//			rancher, err := cloudproject.NewRancher(ctx, "rancher", &cloudproject.RancherArgs{
 //				ProjectId: pulumi.String("<public cloud project ID>"),
 //				TargetSpec: &cloudproject.RancherTargetSpecArgs{
 //					Name: pulumi.String("MyRancher"),
@@ -38,6 +38,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("rancherUrl", rancher.CurrentState.ApplyT(func(currentState cloudproject.RancherCurrentState) (*string, error) {
+//				return &currentState.Url, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -46,11 +49,9 @@ import (
 //
 // ## Import
 //
-// A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+// A share in a public cloud project can be imported using the `project_id` and `id` attributes. Using the following configuration:
 //
-// Using the following configuration:
-//
-// hcl
+// terraform
 //
 // import {
 //
@@ -68,9 +69,7 @@ import (
 //
 // $ pulumi up
 //
-// The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+// The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Rancher struct {
 	pulumi.CustomResourceState
 

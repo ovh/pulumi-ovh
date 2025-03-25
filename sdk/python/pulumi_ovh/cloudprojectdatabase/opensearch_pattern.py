@@ -27,8 +27,7 @@ class OpensearchPatternArgs:
         The set of arguments for constructing a OpensearchPattern resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] pattern: Pattern format.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -65,8 +64,7 @@ class OpensearchPatternArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -99,8 +97,7 @@ class _OpensearchPatternState:
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
         :param pulumi.Input[str] pattern: Pattern format.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -151,8 +148,7 @@ class _OpensearchPatternState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -205,8 +201,7 @@ class OpensearchPattern(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
         :param pulumi.Input[str] pattern: Pattern format.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -305,8 +300,7 @@ class OpensearchPattern(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[int] max_index_count: Maximum number of index for this pattern.
         :param pulumi.Input[str] pattern: Pattern format.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -346,8 +340,7 @@ class OpensearchPattern(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

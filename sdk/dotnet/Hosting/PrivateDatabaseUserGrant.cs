@@ -51,7 +51,7 @@ namespace Pulumi.Ovh.Hosting
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// Database name where add grant. Values can be: 
+        /// Database name where add grant. Values can be:
         /// - admin
         /// - none
         /// - ro
@@ -126,7 +126,7 @@ namespace Pulumi.Ovh.Hosting
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Database name where add grant. Values can be: 
+        /// Database name where add grant. Values can be:
         /// - admin
         /// - none
         /// - ro
@@ -162,7 +162,7 @@ namespace Pulumi.Ovh.Hosting
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// Database name where add grant. Values can be: 
+        /// Database name where add grant. Values can be:
         /// - admin
         /// - none
         /// - ro

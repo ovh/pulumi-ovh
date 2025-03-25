@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProjectDatabase
 {
     /// <summary>
-    /// Deprecated: Use ip_restriction field in cloud_project_database resource instead.
-    /// Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+    /// Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
     /// 
     /// Apply IP restrictions to an OVHcloud Managed Database cluster.
     /// 
@@ -69,8 +68,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -82,8 +80,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -154,8 +151,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -167,8 +163,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -194,8 +189,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -207,8 +201,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

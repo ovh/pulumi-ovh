@@ -113,6 +113,9 @@ namespace Pulumi.Ovh.Iam
         public readonly ImmutableArray<string> Denies;
         public readonly string? Description;
         public readonly ImmutableArray<string> Excepts;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string Id;
         public readonly string Name;
         public readonly string Owner;

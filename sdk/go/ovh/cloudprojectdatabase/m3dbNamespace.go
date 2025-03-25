@@ -79,8 +79,7 @@ type M3DbNamespace struct {
 	RetentionBufferPastDuration pulumi.StringPtrOutput `pulumi:"retentionBufferPastDuration"`
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionPeriodDuration pulumi.StringOutput `pulumi:"retentionPeriodDuration"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Defines whether M3DB will create snapshot files for this namespace.
 	SnapshotEnabled pulumi.BoolOutput `pulumi:"snapshotEnabled"`
@@ -145,8 +144,7 @@ type m3dbNamespaceState struct {
 	RetentionBufferPastDuration *string `pulumi:"retentionBufferPastDuration"`
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Defines whether M3DB will create snapshot files for this namespace.
 	SnapshotEnabled *bool `pulumi:"snapshotEnabled"`
@@ -173,8 +171,7 @@ type M3DbNamespaceState struct {
 	RetentionBufferPastDuration pulumi.StringPtrInput
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionPeriodDuration pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Defines whether M3DB will create snapshot files for this namespace.
 	SnapshotEnabled pulumi.BoolPtrInput
@@ -205,8 +202,7 @@ type m3dbNamespaceArgs struct {
 	RetentionBufferPastDuration *string `pulumi:"retentionBufferPastDuration"`
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionPeriodDuration *string `pulumi:"retentionPeriodDuration"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// Defines whether M3DB will create snapshot files for this namespace.
 	SnapshotEnabled *bool `pulumi:"snapshotEnabled"`
@@ -232,8 +228,7 @@ type M3DbNamespaceArgs struct {
 	RetentionBufferPastDuration pulumi.StringPtrInput
 	// Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
 	RetentionPeriodDuration pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 	// Defines whether M3DB will create snapshot files for this namespace.
 	SnapshotEnabled pulumi.BoolPtrInput
@@ -368,8 +363,7 @@ func (o M3DbNamespaceOutput) RetentionPeriodDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.RetentionPeriodDuration }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o M3DbNamespaceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbNamespace) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

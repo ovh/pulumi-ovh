@@ -334,8 +334,7 @@ export namespace CloudProject {
          */
         networkId?: string;
         /**
-         * Public cloud region in which the node should be deployed.
-         * Ex: "GRA'.
+         * Public cloud region in which the node should be deployed. Ex: "GRA'.
          */
         region: string;
         /**
@@ -646,6 +645,65 @@ export namespace CloudProject {
          * Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
          */
         type: string;
+    }
+
+    export interface GetImagesImage {
+        /**
+         * Image creation date
+         */
+        creationDate: string;
+        /**
+         * Image usable only for this type of flavor if not null
+         */
+        flavorType: string;
+        /**
+         * Image ID
+         */
+        id: string;
+        /**
+         * Minimum disks required to use image
+         */
+        minDisk: number;
+        /**
+         * Minimum RAM required to use image
+         */
+        minRam: number;
+        /**
+         * Image name
+         */
+        name: string;
+        /**
+         * Order plan code
+         */
+        planCode: string;
+        /**
+         * Image region
+         */
+        region: string;
+        /**
+         * Image size (in GiB)
+         */
+        size: number;
+        /**
+         * Image status
+         */
+        status: string;
+        /**
+         * Tags about the image
+         */
+        tags: string[];
+        /**
+         * Image type
+         */
+        type: string;
+        /**
+         * User to connect with
+         */
+        user: string;
+        /**
+         * Image visibility
+         */
+        visibility: string;
     }
 
     export interface GetInstanceAddress {
@@ -1316,8 +1374,7 @@ export namespace CloudProject {
 
     export interface GetRegionService {
         /**
-         * The name of the region associated with the public cloud
-         * project.
+         * The name of the region associated with the public cloud project.
          */
         name: string;
         /**
@@ -1334,6 +1391,41 @@ export namespace CloudProject {
     }
 
     export interface GetStorageObject {
+        /**
+         * ETag
+         */
+        etag: string;
+        /**
+         * Whether this object is a delete marker
+         */
+        isDeleteMarker: boolean;
+        /**
+         * Whether this is the latest version of the object
+         */
+        isLatest: boolean;
+        /**
+         * Key
+         */
+        key: string;
+        /**
+         * Last modification date
+         */
+        lastModified: string;
+        /**
+         * Size (bytes)
+         */
+        size: number;
+        /**
+         * Storage class
+         */
+        storageClass: string;
+        /**
+         * Version ID of the object
+         */
+        versionId: string;
+    }
+
+    export interface GetStorageObjectsObject {
         /**
          * ETag
          */
@@ -1636,8 +1728,7 @@ export namespace CloudProject {
          */
         userId: string;
         /**
-         * the username generated for the user. This username can be used with
-         * the Openstack API.
+         * the username generated for the user. This username can be used with the Openstack API.
          */
         username: string;
     }
@@ -1896,6 +1987,7 @@ export namespace CloudProject {
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
          *
          * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
@@ -1969,11 +2061,11 @@ export namespace CloudProject {
         /**
          * Pool members
          */
-        members: outputs.CloudProject.LoadBalancerListenerPoolMember[];
+        members?: outputs.CloudProject.LoadBalancerListenerPoolMember[];
         /**
          * Name of the pool
          */
-        name: string;
+        name?: string;
         /**
          * Protocol for the pool
          */
@@ -1992,7 +2084,7 @@ export namespace CloudProject {
         /**
          * Monitor HTTP configuration
          */
-        httpConfiguration: outputs.CloudProject.LoadBalancerListenerPoolHealthMonitorHttpConfiguration;
+        httpConfiguration?: outputs.CloudProject.LoadBalancerListenerPoolHealthMonitorHttpConfiguration;
         /**
          * Number of successful checks before changing the operating status of the member to ONLINE
          */
@@ -2000,7 +2092,7 @@ export namespace CloudProject {
         /**
          * Number of allowed check failures before changing the operating status of the member to ERROR
          */
-        maxRetriesDown: number;
+        maxRetriesDown?: number;
         /**
          * Type of the monitor
          */
@@ -2012,11 +2104,11 @@ export namespace CloudProject {
         /**
          * The operating status of the resource
          */
-        operatingStatus: string;
+        operatingStatus?: string;
         /**
          * The provisioning status of the resource
          */
-        provisioningStatus: string;
+        provisioningStatus?: string;
         /**
          * Maximum time, in seconds, that a monitor waits to connect before it times out. This value must be less than the delay value
          */
@@ -2027,11 +2119,11 @@ export namespace CloudProject {
         /**
          * Domain name, which be injected into the HTTP Host Header to the backend server for HTTP health check
          */
-        domainName: string;
+        domainName?: string;
         /**
          * Status codes expected in response from the member to declare it healthy; The list of HTTP status codes expected in response from the member to declare it healthy. Specify one of the following values: * A single value, such as 200; * A list, such as 200, 202; * A range, such as 200-204
          */
-        expectedCodes: string;
+        expectedCodes?: string;
         /**
          * HTTP method that the health monitor uses for requests
          */
@@ -2039,11 +2131,11 @@ export namespace CloudProject {
         /**
          * HTTP version that the health monitor uses for requests
          */
-        httpVersion: string;
+        httpVersion?: string;
         /**
          * HTTP URL path of the request sent by the monitor to test the health of a backend member
          */
-        urlPath: string;
+        urlPath?: string;
     }
 
     export interface LoadBalancerListenerPoolMember {
@@ -2054,7 +2146,7 @@ export namespace CloudProject {
         /**
          * Name of the member
          */
-        name: string;
+        name?: string;
         /**
          * Protocol port number for the resource
          */
@@ -2062,18 +2154,18 @@ export namespace CloudProject {
         /**
          * Weight of a member determines the portion of requests or connections it services compared to the other members of the pool. Between 1 and 256.
          */
-        weight: number;
+        weight?: number;
     }
 
     export interface LoadBalancerListenerPoolSessionPersistence {
         /**
          * Cookie name, only applicable to session persistence through cookie
          */
-        cookieName: string;
+        cookieName?: string;
         /**
          * Type of session persistence
          */
-        type: string;
+        type?: string;
     }
 
     export interface LoadBalancerNetwork {
@@ -2168,28 +2260,23 @@ export namespace CloudProject {
 
     export interface NetworkPrivateSubnetIpPool {
         /**
-         * Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to false.
+         * Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
          */
         dhcp: boolean;
         /**
-         * Last ip for this region.
-         * Changing this value recreates the subnet.
+         * Last ip for this region. Changing this value recreates the subnet.
          */
         end: string;
         /**
-         * Global network in CIDR format.
-         * Changing this value recreates the subnet
+         * Global network in CIDR format. Changing this value recreates the subnet
          */
         network: string;
         /**
-         * The region in which the network subnet will be created.
-         * Ex.: "GRA1". Changing this value recreates the resource.
+         * The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
          */
         region: string;
         /**
-         * First ip for this region.
-         * Changing this value recreates the subnet.
+         * First ip for this region. Changing this value recreates the subnet.
          */
         start: string;
     }
@@ -2411,7 +2498,7 @@ export namespace CloudProject {
          */
         plan: string;
         /**
-         * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+         * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
          */
         version: string;
     }
@@ -2784,8 +2871,7 @@ export namespace CloudProjectDatabase {
          */
         pattern: string;
         /**
-         * Permission of the ACL
-         * Available permission:
+         * Permission of the ACL Available permission:
          */
         permission: string;
     }
@@ -2844,6 +2930,31 @@ export namespace Dbaas {
 }
 
 export namespace Dedicated {
+    export interface GetCloudIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface GetCloudVersion {
+        build: string;
+        major: string;
+        minor: string;
+    }
+
     export interface GetServerSpecificationsHardwareDefaultHardwareRaidSize {
         unit: string;
         value: number;
@@ -3855,7 +3966,7 @@ export namespace Domain {
          */
         label: string;
         /**
-         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          */
         value: string;
     }
@@ -5259,6 +5370,187 @@ export namespace Order {
          * The effective price
          */
         value: number;
+    }
+
+}
+
+export namespace VMware {
+    export interface GetCloudDirectorBackupCurrentState {
+        /**
+         * Availability zone of VMware Cloud Director organization backup
+         */
+        azName: string;
+        /**
+         * List of your VMware Cloud Director organization backup offers
+         */
+        offers: outputs.VMware.GetCloudDirectorBackupCurrentStateOffer[];
+    }
+
+    export interface GetCloudDirectorBackupCurrentStateOffer {
+        /**
+         * Backup service offer type (BRONZE|SILVER|GOLD)
+         */
+        name: string;
+        /**
+         * Backup repository primary region
+         */
+        protectionPrimaryRegion: string;
+        /**
+         * Backup repository replicated region
+         */
+        protectionReplicatedRegion: string;
+        /**
+         * Backup repository quota in TB
+         */
+        quotaInTb: number;
+        /**
+         * Backup offer status
+         */
+        status: string;
+        /**
+         * Backup repository used space in GB
+         */
+        usedSpaceInGb: number;
+    }
+
+    export interface GetCloudDirectorBackupCurrentTask {
+        /**
+         * Identifier of the current task
+         */
+        id: string;
+        /**
+         * Link to the task details
+         */
+        link: string;
+        /**
+         * Current global status of the current task
+         */
+        status: string;
+        /**
+         * Type of the current task
+         */
+        type: string;
+    }
+
+    export interface GetCloudDirectorBackupIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface GetCloudDirectorBackupTargetSpec {
+        /**
+         * List of your VMware Cloud Director backup offers
+         */
+        offers: outputs.VMware.GetCloudDirectorBackupTargetSpecOffer[];
+    }
+
+    export interface GetCloudDirectorBackupTargetSpecOffer {
+        /**
+         * Backup service offer type (BRONZE|SILVER|GOLD)
+         */
+        name: string;
+        /**
+         * Backup repository quota in TB
+         */
+        quotaInTb: number;
+    }
+
+    export interface GetCloudDirectorOrganizationCurrentState {
+        /**
+         * API URL to interact with your VMware Cloud Director organization at OVHcloud
+         */
+        apiUrl: string;
+        /**
+         * Billing type of your VMware Cloud Director project
+         */
+        billingType: string;
+        /**
+         * Description of your VMware Cloud Director organization on OVHcloud
+         */
+        description: string;
+        /**
+         * Human readable full name of your VMware Cloud Director organization
+         */
+        fullName: string;
+        /**
+         * Name of your VMware Cloud Director organization
+         */
+        name: string;
+        /**
+         * Datacenter where your VMware Cloud Director organization is physically located
+         */
+        region: string;
+        /**
+         * SPLA licensing state
+         */
+        spla: boolean;
+        /**
+         * URL to administrate your VMware Cloud Director organization at OVHcloud
+         */
+        webInterfaceUrl: string;
+    }
+
+    export interface GetCloudDirectorOrganizationCurrentTask {
+        /**
+         * Identifier of the current task
+         */
+        id: string;
+        /**
+         * Link to the task details
+         */
+        link: string;
+        /**
+         * Current global status of the current task
+         */
+        status: string;
+        /**
+         * Type of the current task
+         */
+        type: string;
+    }
+
+    export interface GetCloudDirectorOrganizationIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface GetCloudDirectorOrganizationTargetSpec {
+        /**
+         * Description of your VMware Cloud Director organization at OVHcloud
+         */
+        description: string;
+        /**
+         * Human readable full name of your VMware Cloud Director organization
+         */
+        fullName: string;
     }
 
 }

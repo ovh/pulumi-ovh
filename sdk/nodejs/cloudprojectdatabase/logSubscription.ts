@@ -80,8 +80,7 @@ export class LogSubscription extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -105,8 +104,7 @@ export class LogSubscription extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceType!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -188,8 +186,7 @@ export interface LogSubscriptionState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -213,8 +210,7 @@ export interface LogSubscriptionState {
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -236,13 +232,11 @@ export interface LogSubscriptionArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

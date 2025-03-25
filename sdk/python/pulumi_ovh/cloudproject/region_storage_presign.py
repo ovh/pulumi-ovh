@@ -24,19 +24,17 @@ class RegionStoragePresignArgs:
                  object: pulumi.Input[str],
                  region_name: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionStoragePresign resource.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
+        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be valid.
+        :param pulumi.Input[str] method: The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] region_name: The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
+        :param pulumi.Input[str] version_id: Version ID of the object to download or delete
         """
         pulumi.set(__self__, "expire", expire)
         pulumi.set(__self__, "method", method)
@@ -45,13 +43,14 @@ class RegionStoragePresignArgs:
         pulumi.set(__self__, "service_name", service_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter
     def expire(self) -> pulumi.Input[int]:
         """
-        Define, in seconds, for how long your URL will be
-        valid.
+        Define, in seconds, for how long your URL will be valid.
         """
         return pulumi.get(self, "expire")
 
@@ -63,8 +62,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter
     def method(self) -> pulumi.Input[str]:
         """
-        The method you want to use to interact with your
-        object. Can be either 'GET' or 'PUT'.
+        The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         """
         return pulumi.get(self, "method")
 
@@ -88,8 +86,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Input[str]:
         """
-        The region in which your storage is located. Must
-        be in **uppercase**. Ex.: "GRA".
+        The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
         """
         return pulumi.get(self, "region_name")
 
@@ -101,8 +98,7 @@ class RegionStoragePresignArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -122,6 +118,18 @@ class RegionStoragePresignArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version ID of the object to download or delete
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
 
 @pulumi.input_type
 class _RegionStoragePresignState:
@@ -132,20 +140,20 @@ class _RegionStoragePresignState:
                  object: Optional[pulumi.Input[str]] = None,
                  region_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 signed_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionStoragePresign resources.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
+        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be valid.
+        :param pulumi.Input[str] method: The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
         :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] region_name: The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] signed_headers: Map of signed headers.
         :param pulumi.Input[str] url: Computed URL result.
+        :param pulumi.Input[str] version_id: Version ID of the object to download or delete
         """
         if expire is not None:
             pulumi.set(__self__, "expire", expire)
@@ -159,15 +167,18 @@ class _RegionStoragePresignState:
             pulumi.set(__self__, "region_name", region_name)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if signed_headers is not None:
+            pulumi.set(__self__, "signed_headers", signed_headers)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter
     def expire(self) -> Optional[pulumi.Input[int]]:
         """
-        Define, in seconds, for how long your URL will be
-        valid.
+        Define, in seconds, for how long your URL will be valid.
         """
         return pulumi.get(self, "expire")
 
@@ -179,8 +190,7 @@ class _RegionStoragePresignState:
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
         """
-        The method you want to use to interact with your
-        object. Can be either 'GET' or 'PUT'.
+        The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         """
         return pulumi.get(self, "method")
 
@@ -216,8 +226,7 @@ class _RegionStoragePresignState:
     @pulumi.getter(name="regionName")
     def region_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The region in which your storage is located. Must
-        be in **uppercase**. Ex.: "GRA".
+        The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
         """
         return pulumi.get(self, "region_name")
 
@@ -229,14 +238,25 @@ class _RegionStoragePresignState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
     def service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="signedHeaders")
+    def signed_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of signed headers.
+        """
+        return pulumi.get(self, "signed_headers")
+
+    @signed_headers.setter
+    def signed_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "signed_headers", value)
 
     @property
     @pulumi.getter
@@ -250,6 +270,18 @@ class _RegionStoragePresignState:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version ID of the object to download or delete
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
 
 class RegionStoragePresign(pulumi.CustomResource):
     @overload
@@ -262,6 +294,7 @@ class RegionStoragePresign(pulumi.CustomResource):
                  object: Optional[pulumi.Input[str]] = None,
                  region_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Generates a temporary presigned S3 URLs to download or upload an object.
@@ -283,16 +316,13 @@ class RegionStoragePresign(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
+        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be valid.
+        :param pulumi.Input[str] method: The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
         :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] region_name: The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] version_id: Version ID of the object to download or delete
         """
         ...
     @overload
@@ -339,6 +369,7 @@ class RegionStoragePresign(pulumi.CustomResource):
                  object: Optional[pulumi.Input[str]] = None,
                  region_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -364,6 +395,8 @@ class RegionStoragePresign(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["version_id"] = version_id
+            __props__.__dict__["signed_headers"] = None
             __props__.__dict__["url"] = None
         super(RegionStoragePresign, __self__).__init__(
             'ovh:CloudProject/regionStoragePresign:RegionStoragePresign',
@@ -381,7 +414,9 @@ class RegionStoragePresign(pulumi.CustomResource):
             object: Optional[pulumi.Input[str]] = None,
             region_name: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'RegionStoragePresign':
+            signed_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            url: Optional[pulumi.Input[str]] = None,
+            version_id: Optional[pulumi.Input[str]] = None) -> 'RegionStoragePresign':
         """
         Get an existing RegionStoragePresign resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -389,17 +424,15 @@ class RegionStoragePresign(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be
-               valid.
-        :param pulumi.Input[str] method: The method you want to use to interact with your
-               object. Can be either 'GET' or 'PUT'.
+        :param pulumi.Input[int] expire: Define, in seconds, for how long your URL will be valid.
+        :param pulumi.Input[str] method: The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         :param pulumi.Input[str] name: The name of your S3 storage container/bucket.
         :param pulumi.Input[str] object: The name of the object in your S3 bucket.
-        :param pulumi.Input[str] region_name: The region in which your storage is located. Must
-               be in **uppercase**. Ex.: "GRA".
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] region_name: The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] signed_headers: Map of signed headers.
         :param pulumi.Input[str] url: Computed URL result.
+        :param pulumi.Input[str] version_id: Version ID of the object to download or delete
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,15 +444,16 @@ class RegionStoragePresign(pulumi.CustomResource):
         __props__.__dict__["object"] = object
         __props__.__dict__["region_name"] = region_name
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["signed_headers"] = signed_headers
         __props__.__dict__["url"] = url
+        __props__.__dict__["version_id"] = version_id
         return RegionStoragePresign(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def expire(self) -> pulumi.Output[int]:
         """
-        Define, in seconds, for how long your URL will be
-        valid.
+        Define, in seconds, for how long your URL will be valid.
         """
         return pulumi.get(self, "expire")
 
@@ -427,8 +461,7 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter
     def method(self) -> pulumi.Output[str]:
         """
-        The method you want to use to interact with your
-        object. Can be either 'GET' or 'PUT'.
+        The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
         """
         return pulumi.get(self, "method")
 
@@ -452,8 +485,7 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Output[str]:
         """
-        The region in which your storage is located. Must
-        be in **uppercase**. Ex.: "GRA".
+        The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
         """
         return pulumi.get(self, "region_name")
 
@@ -461,10 +493,17 @@ class RegionStoragePresign(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="signedHeaders")
+    def signed_headers(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Map of signed headers.
+        """
+        return pulumi.get(self, "signed_headers")
 
     @property
     @pulumi.getter
@@ -473,4 +512,12 @@ class RegionStoragePresign(pulumi.CustomResource):
         Computed URL result.
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Version ID of the object to download or delete
+        """
+        return pulumi.get(self, "version_id")
 

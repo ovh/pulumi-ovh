@@ -59,8 +59,7 @@ type LookupFailoverIpAttachArgs struct {
 	// The failover ip address to query
 	Ip       *string `pulumi:"ip"`
 	RoutedTo *string `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -105,8 +104,7 @@ type LookupFailoverIpAttachOutputArgs struct {
 	// The failover ip address to query
 	Ip       pulumi.StringPtrInput `pulumi:"ip"`
 	RoutedTo pulumi.StringPtrInput `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

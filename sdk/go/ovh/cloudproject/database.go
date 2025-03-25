@@ -322,12 +322,9 @@ type Database struct {
 	DiskType pulumi.StringOutput `pulumi:"diskType"`
 	// List of all endpoints objects of the service.
 	Endpoints DatabaseEndpointArrayOutput `pulumi:"endpoints"`
-	// The database engine you want to deploy. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+	// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
 	// IP Blocks authorized to access to the cluster.
 	IpRestrictions DatabaseIpRestrictionArrayOutput `pulumi:"ipRestrictions"`
@@ -339,8 +336,7 @@ type Database struct {
 	MaintenanceTime pulumi.StringOutput `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// List of nodes object.
-	// Multi region cluster are not yet available, all node should be identical.
+	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayOutput `pulumi:"nodes"`
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrOutput `pulumi:"opensearchAclsEnabled"`
@@ -350,8 +346,7 @@ type Database struct {
 	// * M3 Aggregator: "business", "enterprise".
 	// * Redis: "essential", "business"
 	Plan pulumi.StringOutput `pulumi:"plan"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current status of the cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -423,12 +418,9 @@ type databaseState struct {
 	DiskType *string `pulumi:"diskType"`
 	// List of all endpoints objects of the service.
 	Endpoints []DatabaseEndpoint `pulumi:"endpoints"`
-	// The database engine you want to deploy. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine *string `pulumi:"engine"`
-	// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+	// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor *string `pulumi:"flavor"`
 	// IP Blocks authorized to access to the cluster.
 	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
@@ -440,8 +432,7 @@ type databaseState struct {
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
 	NetworkType *string `pulumi:"networkType"`
-	// List of nodes object.
-	// Multi region cluster are not yet available, all node should be identical.
+	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes []DatabaseNode `pulumi:"nodes"`
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
@@ -451,8 +442,7 @@ type databaseState struct {
 	// * M3 Aggregator: "business", "enterprise".
 	// * Redis: "essential", "business"
 	Plan *string `pulumi:"plan"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current status of the cluster.
 	Status *string `pulumi:"status"`
@@ -477,12 +467,9 @@ type DatabaseState struct {
 	DiskType pulumi.StringPtrInput
 	// List of all endpoints objects of the service.
 	Endpoints DatabaseEndpointArrayInput
-	// The database engine you want to deploy. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringPtrInput
-	// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+	// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringPtrInput
 	// IP Blocks authorized to access to the cluster.
 	IpRestrictions DatabaseIpRestrictionArrayInput
@@ -494,8 +481,7 @@ type DatabaseState struct {
 	MaintenanceTime pulumi.StringPtrInput
 	// Type of network of the cluster.
 	NetworkType pulumi.StringPtrInput
-	// List of nodes object.
-	// Multi region cluster are not yet available, all node should be identical.
+	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayInput
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
@@ -505,8 +491,7 @@ type DatabaseState struct {
 	// * M3 Aggregator: "business", "enterprise".
 	// * Redis: "essential", "business"
 	Plan pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current status of the cluster.
 	Status pulumi.StringPtrInput
@@ -529,12 +514,9 @@ type databaseArgs struct {
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
 	DiskSize *int `pulumi:"diskSize"`
-	// The database engine you want to deploy. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
-	// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+	// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor string `pulumi:"flavor"`
 	// IP Blocks authorized to access to the cluster.
 	IpRestrictions []DatabaseIpRestriction `pulumi:"ipRestrictions"`
@@ -544,8 +526,7 @@ type databaseArgs struct {
 	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
 	// Time on which maintenances can start every day.
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
-	// List of nodes object.
-	// Multi region cluster are not yet available, all node should be identical.
+	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes []DatabaseNode `pulumi:"nodes"`
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
@@ -555,8 +536,7 @@ type databaseArgs struct {
 	// * M3 Aggregator: "business", "enterprise".
 	// * Redis: "essential", "business"
 	Plan string `pulumi:"plan"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// The version of the engine in which the service should be deployed
 	Version string `pulumi:"version"`
@@ -574,12 +554,9 @@ type DatabaseArgs struct {
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
 	DiskSize pulumi.IntPtrInput
-	// The database engine you want to deploy. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput
-	// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-	// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-	// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+	// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 	Flavor pulumi.StringInput
 	// IP Blocks authorized to access to the cluster.
 	IpRestrictions DatabaseIpRestrictionArrayInput
@@ -589,8 +566,7 @@ type DatabaseArgs struct {
 	KafkaSchemaRegistry pulumi.BoolPtrInput
 	// Time on which maintenances can start every day.
 	MaintenanceTime pulumi.StringPtrInput
-	// List of nodes object.
-	// Multi region cluster are not yet available, all node should be identical.
+	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayInput
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
@@ -600,8 +576,7 @@ type DatabaseArgs struct {
 	// * M3 Aggregator: "business", "enterprise".
 	// * Redis: "essential", "business"
 	Plan pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 	// The version of the engine in which the service should be deployed
 	Version pulumi.StringInput
@@ -734,15 +709,12 @@ func (o DatabaseOutput) Endpoints() DatabaseEndpointArrayOutput {
 	return o.ApplyT(func(v *Database) DatabaseEndpointArrayOutput { return v.Endpoints }).(DatabaseEndpointArrayOutput)
 }
 
-// The database engine you want to deploy. To get a full list of available engine visit.
-// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 func (o DatabaseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
 func (o DatabaseOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
@@ -772,8 +744,7 @@ func (o DatabaseOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// List of nodes object.
-// Multi region cluster are not yet available, all node should be identical.
+// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 func (o DatabaseOutput) Nodes() DatabaseNodeArrayOutput {
 	return o.ApplyT(func(v *Database) DatabaseNodeArrayOutput { return v.Nodes }).(DatabaseNodeArrayOutput)
 }
@@ -792,8 +763,7 @@ func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o DatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

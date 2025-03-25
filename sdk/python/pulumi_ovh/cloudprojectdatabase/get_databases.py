@@ -105,10 +105,8 @@ def get_databases(engine: Optional[str] = None,
     ```
 
 
-    :param str engine: The database engine you want to list. To get a full list of available engine visit:
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str engine: The database engine you want to list. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['engine'] = engine
@@ -141,10 +139,8 @@ def get_databases_output(engine: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str engine: The database engine you want to list. To get a full list of available engine visit:
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str engine: The database engine you want to list. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['engine'] = engine

@@ -36,8 +36,7 @@ export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetUsersArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -86,8 +85,7 @@ export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOut
  */
 export interface GetUsersOutputArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

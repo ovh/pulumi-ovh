@@ -110,7 +110,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
         /// 
-        /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        /// &gt; **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         /// </summary>
         [Output("privateNetworkId")]
         public Output<string?> PrivateNetworkId { get; private set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
         /// 
-        /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        /// &gt; **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         /// </summary>
         [Input("privateNetworkId")]
         public Input<string>? PrivateNetworkId { get; set; }
@@ -430,7 +430,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
         /// 
-        /// &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        /// &gt; **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         /// </summary>
         [Input("privateNetworkId")]
         public Input<string>? PrivateNetworkId { get; set; }

@@ -46,8 +46,7 @@ export interface GetKubeNodePoolArgs {
      */
     name: string;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
     template?: inputs.CloudProject.GetKubeNodePoolTemplate;
@@ -66,18 +65,15 @@ export interface GetKubeNodePoolResult {
      */
     readonly autoscale: boolean;
     /**
-     * (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * (Optional) scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      */
     readonly autoscalingScaleDownUnneededTimeSeconds: number;
     /**
-     * (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      */
     readonly autoscalingScaleDownUnreadyTimeSeconds: number;
     /**
-     * (Optional) scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      */
     readonly autoscalingScaleDownUtilizationThreshold: number;
     /**
@@ -101,9 +97,7 @@ export interface GetKubeNodePoolResult {
      */
     readonly flavor: string;
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-     * Ex: "b2-7". Changing this value recreates the resource.
-     * You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     readonly flavorName: string;
     /**
@@ -115,13 +109,11 @@ export interface GetKubeNodePoolResult {
      */
     readonly kubeId: string;
     /**
-     * maximum number of nodes allowed in the pool.
-     * Setting `desiredNodes` over this value will raise an error.
+     * maximum number of nodes allowed in the pool. Setting `desiredNodes` over this value will raise an error.
      */
     readonly maxNodes: number;
     /**
-     * minimum number of nodes allowed in the pool.
-     * Setting `desiredNodes` under this value will raise an error.
+     * minimum number of nodes allowed in the pool. Setting `desiredNodes` under this value will raise an error.
      */
     readonly minNodes: number;
     /**
@@ -129,9 +121,7 @@ export interface GetKubeNodePoolResult {
      */
     readonly monthlyBilled: boolean;
     /**
-     * (Optional) The name of the nodepool.
-     * Changing this value recreates the resource.
-     * Warning: "_" char is not allowed!
+     * (Optional) The name of the nodepool. Changing this value recreates the resource. Warning: "_" char is not allowed!
      */
     readonly name: string;
     /**
@@ -200,8 +190,7 @@ export interface GetKubeNodePoolOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     template?: pulumi.Input<inputs.CloudProject.GetKubeNodePoolTemplateArgs>;

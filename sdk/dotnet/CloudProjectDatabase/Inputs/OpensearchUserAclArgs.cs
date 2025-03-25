@@ -19,8 +19,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Inputs
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Permission of the ACL
-        /// Available permission:
+        /// Permission of the ACL Available permission:
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;

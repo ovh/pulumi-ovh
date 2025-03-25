@@ -102,8 +102,7 @@ def get_instances(region: Optional[str] = None,
 
 
     :param str region: Instance region.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -138,8 +137,7 @@ def get_instances_output(region: Optional[pulumi.Input[str]] = None,
 
 
     :param str region: Instance region.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['region'] = region

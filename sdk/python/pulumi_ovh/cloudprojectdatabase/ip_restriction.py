@@ -27,11 +27,9 @@ class IpRestrictionArgs:
         """
         The set of arguments for constructing a IpRestriction resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         :param pulumi.Input[str] ip: Authorized IP.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] description: Description of the IP restriction.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -57,8 +55,7 @@ class IpRestrictionArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -82,8 +79,7 @@ class IpRestrictionArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -117,11 +113,9 @@ class _IpRestrictionState:
         Input properties used for looking up and filtering IpRestriction resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] description: Description of the IP restriction.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         :param pulumi.Input[str] ip: Authorized IP.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the IP restriction.
         """
         if cluster_id is not None:
@@ -165,8 +159,7 @@ class _IpRestrictionState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -190,8 +183,7 @@ class _IpRestrictionState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -224,8 +216,7 @@ class IpRestriction(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Deprecated: Use ip_restriction field in cloud_project_database resource instead.
-        Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+        Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
 
         Apply IP restrictions to an OVHcloud Managed Database cluster.
 
@@ -259,11 +250,9 @@ class IpRestriction(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] description: Description of the IP restriction.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         :param pulumi.Input[str] ip: Authorized IP.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -272,8 +261,7 @@ class IpRestriction(pulumi.CustomResource):
                  args: IpRestrictionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Deprecated: Use ip_restriction field in cloud_project_database resource instead.
-        Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+        Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
 
         Apply IP restrictions to an OVHcloud Managed Database cluster.
 
@@ -371,11 +359,9 @@ class IpRestriction(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] description: Description of the IP restriction.
-        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] engine: The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         :param pulumi.Input[str] ip: Authorized IP.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the IP restriction.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -410,8 +396,7 @@ class IpRestriction(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -427,8 +412,7 @@ class IpRestriction(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

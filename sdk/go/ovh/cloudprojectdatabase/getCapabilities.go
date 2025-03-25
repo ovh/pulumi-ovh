@@ -24,8 +24,7 @@ func GetCapabilities(ctx *pulumi.Context, args *GetCapabilitiesArgs, opts ...pul
 
 // A collection of arguments for invoking getCapabilities.
 type GetCapabilitiesArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -56,8 +55,7 @@ func GetCapabilitiesOutput(ctx *pulumi.Context, args GetCapabilitiesOutputArgs, 
 
 // A collection of arguments for invoking getCapabilities.
 type GetCapabilitiesOutputArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

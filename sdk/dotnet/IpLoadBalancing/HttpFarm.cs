@@ -41,6 +41,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// ## Import
     /// 
     /// HTTP farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:IpLoadBalancing/httpFarm:HttpFarm farmname service_name/farm_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/httpFarm:HttpFarm")]
     public partial class HttpFarm : global::Pulumi.CustomResource

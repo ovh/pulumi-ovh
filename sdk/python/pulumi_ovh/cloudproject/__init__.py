@@ -27,6 +27,8 @@ from .get_failover_ip_attach import *
 from .get_flavors import *
 from .get_floating_ips import *
 from .get_gateway_interface import *
+from .get_image import *
+from .get_images import *
 from .get_instance import *
 from .get_instances import *
 from .get_kube import *
@@ -59,6 +61,8 @@ from .get_region_load_balancer_log_subscription import *
 from .get_region_load_balancer_log_subscriptions import *
 from .get_regions import *
 from .get_storage import *
+from .get_storage_object import *
+from .get_storage_objects import *
 from .get_storages import *
 from .get_user import *
 from .get_user_s3_credential import *
@@ -69,6 +73,7 @@ from .get_v_rack import *
 from .get_volume import *
 from .get_volumes import *
 from .instance import *
+from .instance_snapshot import *
 from .kube import *
 from .kube_ip_restrictions import *
 from .kube_node_pool import *

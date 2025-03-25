@@ -50,8 +50,7 @@ func LookupContainerRegistries(ctx *pulumi.Context, args *LookupContainerRegistr
 
 // A collection of arguments for invoking getContainerRegistries.
 type LookupContainerRegistriesArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -75,8 +74,7 @@ func LookupContainerRegistriesOutput(ctx *pulumi.Context, args LookupContainerRe
 
 // A collection of arguments for invoking getContainerRegistries.
 type LookupContainerRegistriesOutputArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

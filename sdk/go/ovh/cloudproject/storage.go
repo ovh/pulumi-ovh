@@ -12,9 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create S3™* compatible storage container
-// (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
-//
 // ## Example Usage
 //
 // ```go
@@ -47,11 +44,9 @@ import (
 //
 // ## Import
 //
-// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
 //
-// Using the following configuration:
-//
-// hcl
+// terraform
 //
 // import {
 //
@@ -69,9 +64,7 @@ import (
 //
 // $ pulumi up
 //
-// The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+// The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Storage struct {
 	pulumi.CustomResourceState
 

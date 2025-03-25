@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.Me
     public static class GetPaymentmeanBankAccount
     {
         /// <summary>
-        /// Use this data source to retrieve information about a bank account
-        /// payment mean associated with an OVHcloud account.
+        /// Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
         /// 
         /// ## Example Usage
         /// 
@@ -37,8 +36,7 @@ namespace Pulumi.Ovh.Me
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPaymentmeanBankAccountResult>("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", args ?? new GetPaymentmeanBankAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a bank account
-        /// payment mean associated with an OVHcloud account.
+        /// Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
         /// 
         /// ## Example Usage
         /// 
@@ -62,8 +60,7 @@ namespace Pulumi.Ovh.Me
             => global::Pulumi.Deployment.Instance.Invoke<GetPaymentmeanBankAccountResult>("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", args ?? new GetPaymentmeanBankAccountInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a bank account
-        /// payment mean associated with an OVHcloud account.
+        /// Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
         /// 
         /// ## Example Usage
         /// 
@@ -91,15 +88,13 @@ namespace Pulumi.Ovh.Me
     public sealed class GetPaymentmeanBankAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// a regexp used to filter bank accounts 
-        /// on their `description` attributes.
+        /// a regexp used to filter bank accounts on their `description` attributes.
         /// </summary>
         [Input("descriptionRegexp")]
         public string? DescriptionRegexp { get; set; }
 
         /// <summary>
-        /// Filter bank accounts on their `state` attribute.
-        /// Can be "blockedForIncidents", "valid", "pendingValidation"
+        /// Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
@@ -111,8 +106,7 @@ namespace Pulumi.Ovh.Me
         public bool? UseDefault { get; set; }
 
         /// <summary>
-        /// Retrieve oldest bank account.
-        /// project.
+        /// Retrieve oldest bank account. project.
         /// </summary>
         [Input("useOldest")]
         public bool? UseOldest { get; set; }
@@ -126,15 +120,13 @@ namespace Pulumi.Ovh.Me
     public sealed class GetPaymentmeanBankAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// a regexp used to filter bank accounts 
-        /// on their `description` attributes.
+        /// a regexp used to filter bank accounts on their `description` attributes.
         /// </summary>
         [Input("descriptionRegexp")]
         public Input<string>? DescriptionRegexp { get; set; }
 
         /// <summary>
-        /// Filter bank accounts on their `state` attribute.
-        /// Can be "blockedForIncidents", "valid", "pendingValidation"
+        /// Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -146,8 +138,7 @@ namespace Pulumi.Ovh.Me
         public Input<bool>? UseDefault { get; set; }
 
         /// <summary>
-        /// Retrieve oldest bank account.
-        /// project.
+        /// Retrieve oldest bank account. project.
         /// </summary>
         [Input("useOldest")]
         public Input<bool>? UseOldest { get; set; }
@@ -163,8 +154,7 @@ namespace Pulumi.Ovh.Me
     public sealed class GetPaymentmeanBankAccountResult
     {
         /// <summary>
-        /// a boolean which tells if the retrieved bank account
-        /// is marked as the default payment mean
+        /// a boolean which tells if the retrieved bank account is marked as the default payment mean
         /// </summary>
         public readonly bool Default;
         /// <summary>

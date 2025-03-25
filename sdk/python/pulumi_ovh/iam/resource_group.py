@@ -203,7 +203,13 @@ class ResourceGroup(pulumi.CustomResource):
 
         Resource groups can be imported by using their id.
 
-        > Read only resource groups cannot be imported
+        bash
+
+        ```sh
+        $ pulumi import ovh:Iam/resourceGroup:ResourceGroup my_resource_group resource_group_id
+        ```
+
+        -> Read only resource groups cannot be imported
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -235,7 +241,13 @@ class ResourceGroup(pulumi.CustomResource):
 
         Resource groups can be imported by using their id.
 
-        > Read only resource groups cannot be imported
+        bash
+
+        ```sh
+        $ pulumi import ovh:Iam/resourceGroup:ResourceGroup my_resource_group resource_group_id
+        ```
+
+        -> Read only resource groups cannot be imported
 
         :param str resource_name: The name of the resource.
         :param ResourceGroupArgs args: The arguments to use to populate this resource's properties.

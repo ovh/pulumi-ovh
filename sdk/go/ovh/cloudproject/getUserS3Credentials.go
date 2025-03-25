@@ -52,8 +52,7 @@ func GetUserS3Credentials(ctx *pulumi.Context, args *GetUserS3CredentialsArgs, o
 
 // A collection of arguments for invoking getUserS3Credentials.
 type GetUserS3CredentialsArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// The ID of a public cloud project's user.
 	UserId string `pulumi:"userId"`
@@ -80,8 +79,7 @@ func GetUserS3CredentialsOutput(ctx *pulumi.Context, args GetUserS3CredentialsOu
 
 // A collection of arguments for invoking getUserS3Credentials.
 type GetUserS3CredentialsOutputArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// The ID of a public cloud project's user.
 	UserId pulumi.StringInput `pulumi:"userId"`

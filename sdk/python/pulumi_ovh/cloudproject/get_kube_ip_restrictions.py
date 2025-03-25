@@ -104,8 +104,7 @@ def get_kube_ip_restrictions(kube_id: Optional[str] = None,
 
 
     :param str kube_id: The id of the managed kubernetes cluster.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id
@@ -137,8 +136,7 @@ def get_kube_ip_restrictions_output(kube_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str kube_id: The id of the managed kubernetes cluster.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id

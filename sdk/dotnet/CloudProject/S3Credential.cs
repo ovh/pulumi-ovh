@@ -41,8 +41,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> SecretAccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -105,8 +104,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class S3CredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -151,8 +149,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

@@ -80,8 +80,7 @@ type KafkaTopic struct {
 	RetentionBytes pulumi.IntOutput `pulumi:"retentionBytes"`
 	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours pulumi.IntOutput `pulumi:"retentionHours"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -135,8 +134,7 @@ type kafkaTopicState struct {
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours *int `pulumi:"retentionHours"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -155,8 +153,7 @@ type KafkaTopicState struct {
 	RetentionBytes pulumi.IntPtrInput
 	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours pulumi.IntPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -179,8 +176,7 @@ type kafkaTopicArgs struct {
 	RetentionBytes *int `pulumi:"retentionBytes"`
 	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours *int `pulumi:"retentionHours"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -200,8 +196,7 @@ type KafkaTopicArgs struct {
 	RetentionBytes pulumi.IntPtrInput
 	// Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
 	RetentionHours pulumi.IntPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -327,8 +322,7 @@ func (o KafkaTopicOutput) RetentionHours() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.RetentionHours }).(pulumi.IntOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o KafkaTopicOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

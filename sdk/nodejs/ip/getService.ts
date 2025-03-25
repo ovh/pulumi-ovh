@@ -74,7 +74,7 @@ export interface GetServiceResult {
      */
     readonly serviceName: string;
     /**
-     * Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
+     * Possible values for ip type ( "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
      */
     readonly type: string;
 }

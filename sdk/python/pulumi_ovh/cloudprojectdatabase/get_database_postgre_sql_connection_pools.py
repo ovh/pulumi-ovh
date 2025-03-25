@@ -89,7 +89,7 @@ def get_database_postgre_sql_connection_pools(cluster_id: Optional[str] = None,
                                               service_name: Optional[str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasePostgreSQLConnectionPoolsResult:
     """
-    Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+    Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
 
     ## Example Usage
 
@@ -104,8 +104,7 @@ def get_database_postgre_sql_connection_pools(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: Cluster ID.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -122,7 +121,7 @@ def get_database_postgre_sql_connection_pools_output(cluster_id: Optional[pulumi
                                                      service_name: Optional[pulumi.Input[str]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasePostgreSQLConnectionPoolsResult]:
     """
-    Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+    Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
 
     ## Example Usage
 
@@ -137,8 +136,7 @@ def get_database_postgre_sql_connection_pools_output(cluster_id: Optional[pulumi
 
 
     :param str cluster_id: Cluster ID.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

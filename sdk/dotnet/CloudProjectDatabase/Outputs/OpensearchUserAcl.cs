@@ -18,8 +18,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase.Outputs
         /// </summary>
         public readonly string Pattern;
         /// <summary>
-        /// Permission of the ACL
-        /// Available permission:
+        /// Permission of the ACL Available permission:
         /// </summary>
         public readonly string Permission;
 

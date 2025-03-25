@@ -18,8 +18,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string? NetworkId;
         /// <summary>
-        /// Public cloud region in which the node should be deployed.
-        /// Ex: "GRA'.
+        /// Public cloud region in which the node should be deployed. Ex: "GRA'.
         /// </summary>
         public readonly string Region;
         /// <summary>

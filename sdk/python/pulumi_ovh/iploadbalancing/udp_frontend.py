@@ -28,9 +28,7 @@ class UdpFrontendArgs:
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a UdpFrontend resource.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dedicated_ipfos: Only attach frontend on these ip. No restriction if null. List of Ip blocks.
@@ -54,9 +52,7 @@ class UdpFrontendArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[str]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 
@@ -155,9 +151,7 @@ class _UdpFrontendState:
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend
         :param pulumi.Input[float] frontend_id: Id of your frontend
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         """
@@ -242,9 +236,7 @@ class _UdpFrontendState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 
@@ -324,9 +316,7 @@ class UdpFrontend(pulumi.CustomResource):
         :param pulumi.Input[float] default_farm_id: Default UDP Farm of your frontend
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         """
@@ -439,9 +429,7 @@ class UdpFrontend(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend
         :param pulumi.Input[float] frontend_id: Id of your frontend
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         """
@@ -503,9 +491,7 @@ class UdpFrontend(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 

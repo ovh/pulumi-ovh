@@ -19,8 +19,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Public cloud region in which the node should be deployed.
-        /// Ex: "GRA'.
+        /// Public cloud region in which the node should be deployed. Ex: "GRA'.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

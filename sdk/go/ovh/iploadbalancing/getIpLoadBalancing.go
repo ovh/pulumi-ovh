@@ -63,19 +63,13 @@ type GetIpLoadBalancingArgs struct {
 	Offer *string `pulumi:"offer"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
-	// Modern oldest compatible clients : Firefox 27, Chrome 30,
-	// IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-	// Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-	// Safari 1, Windows XP IE8, Android 2.3, Java 7.
-	// Can take any of the following value: "intermediate", "modern"
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
 	SslConfiguration *string `pulumi:"sslConfiguration"`
-	// Current state of your IP. Can take any of the following value:
-	// "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+	// Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
 	State *string `pulumi:"state"`
 	// Vrack eligibility. Takes a boolean value.
 	VrackEligibility *bool `pulumi:"vrackEligibility"`
-	// Name of the vRack on which the current Load Balancer is
-	// attached to, as it is named on vRack product
+	// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
 	VrackName *string `pulumi:"vrackName"`
 	// Location where your service is. This takes an array of values.
 	Zones []string `pulumi:"zones"`
@@ -89,8 +83,7 @@ type GetIpLoadBalancingResult struct {
 	IpLoadbalancing string `pulumi:"ipLoadbalancing"`
 	Ipv4            string `pulumi:"ipv4"`
 	Ipv6            string `pulumi:"ipv6"`
-	// The metrics token associated with your IP load balancing
-	// This attribute is sensitive.
+	// The metrics token associated with your IP load balancing This attribute is sensitive.
 	MetricsToken string `pulumi:"metricsToken"`
 	Offer        string `pulumi:"offer"`
 	// Available additional zone for your Load Balancer
@@ -128,19 +121,13 @@ type GetIpLoadBalancingOutputArgs struct {
 	Offer pulumi.StringPtrInput `pulumi:"offer"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
-	// Modern oldest compatible clients : Firefox 27, Chrome 30,
-	// IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-	// Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-	// Safari 1, Windows XP IE8, Android 2.3, Java 7.
-	// Can take any of the following value: "intermediate", "modern"
+	// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
 	SslConfiguration pulumi.StringPtrInput `pulumi:"sslConfiguration"`
-	// Current state of your IP. Can take any of the following value:
-	// "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+	// Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// Vrack eligibility. Takes a boolean value.
 	VrackEligibility pulumi.BoolPtrInput `pulumi:"vrackEligibility"`
-	// Name of the vRack on which the current Load Balancer is
-	// attached to, as it is named on vRack product
+	// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
 	VrackName pulumi.StringPtrInput `pulumi:"vrackName"`
 	// Location where your service is. This takes an array of values.
 	Zones pulumi.StringArrayInput `pulumi:"zones"`
@@ -186,8 +173,7 @@ func (o GetIpLoadBalancingResultOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpLoadBalancingResult) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
-// The metrics token associated with your IP load balancing
-// This attribute is sensitive.
+// The metrics token associated with your IP load balancing This attribute is sensitive.
 func (o GetIpLoadBalancingResultOutput) MetricsToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpLoadBalancingResult) string { return v.MetricsToken }).(pulumi.StringOutput)
 }

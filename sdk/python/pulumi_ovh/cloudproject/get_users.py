@@ -90,8 +90,7 @@ def get_users(service_name: Optional[str] = None,
     ```
 
 
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -121,8 +120,7 @@ def get_users_output(service_name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

@@ -122,8 +122,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> int:
         """
-        (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        (Optional) scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -131,8 +130,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> int:
         """
-        (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -140,8 +138,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> float:
         """
-        (Optional) scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
@@ -189,9 +186,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> str:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-        Ex: "b2-7". Changing this value recreates the resource.
-        You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor_name")
 
@@ -215,8 +210,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> int:
         """
-        maximum number of nodes allowed in the pool.
-        Setting `desired_nodes` over this value will raise an error.
+        maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         """
         return pulumi.get(self, "max_nodes")
 
@@ -224,8 +218,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> int:
         """
-        minimum number of nodes allowed in the pool.
-        Setting `desired_nodes` under this value will raise an error.
+        minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
         """
         return pulumi.get(self, "min_nodes")
 
@@ -241,9 +234,7 @@ class GetKubeNodePoolResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        (Optional) The name of the nodepool.
-        Changing this value recreates the resource.
-        Warning: "_" char is not allowed!
+        (Optional) The name of the nodepool. Changing this value recreates the resource. Warning: "_" char is not allowed!
         """
         return pulumi.get(self, "name")
 
@@ -356,8 +347,7 @@ def get_kube_node_pool(kube_id: Optional[str] = None,
 
     :param str kube_id: The id of the managed kubernetes cluster.
     :param str name: The name of the node pool.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id
@@ -415,8 +405,7 @@ def get_kube_node_pool_output(kube_id: Optional[pulumi.Input[str]] = None,
 
     :param str kube_id: The id of the managed kubernetes cluster.
     :param str name: The name of the node pool.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id

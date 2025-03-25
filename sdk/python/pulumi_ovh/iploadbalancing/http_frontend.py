@@ -34,9 +34,7 @@ class HttpFrontendArgs:
                  ssl: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a HttpFrontend resource.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value),
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -78,9 +76,7 @@ class HttpFrontendArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[str]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value),
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 
@@ -259,9 +255,7 @@ class _HttpFrontendState:
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[bool] hsts: HTTP Strict Transport Security. Default: 'false'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_headers: HTTP headers to add to the frontend. List of string.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value),
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] redirect_location: Redirection HTTP'
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
@@ -394,9 +388,7 @@ class _HttpFrontendState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value),
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 
@@ -525,6 +517,12 @@ class HttpFrontend(pulumi.CustomResource):
 
         HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/httpFrontend:HttpFrontend testfrontend service_name/http_frontend_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -535,9 +533,7 @@ class HttpFrontend(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[bool] hsts: HTTP Strict Transport Security. Default: 'false'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_headers: HTTP headers to add to the frontend. List of string.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value),
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] redirect_location: Redirection HTTP'
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
@@ -601,6 +597,12 @@ class HttpFrontend(pulumi.CustomResource):
         ## Import
 
         HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/httpFrontend:HttpFrontend testfrontend service_name/http_frontend_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpFrontendArgs args: The arguments to use to populate this resource's properties.
@@ -696,9 +698,7 @@ class HttpFrontend(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
         :param pulumi.Input[bool] hsts: HTTP Strict Transport Security. Default: 'false'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_headers: HTTP headers to add to the frontend. List of string.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value),
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] redirect_location: Redirection HTTP'
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
@@ -791,9 +791,7 @@ class HttpFrontend(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value),
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 

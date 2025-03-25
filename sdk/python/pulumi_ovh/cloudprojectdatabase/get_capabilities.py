@@ -116,8 +116,7 @@ def get_capabilities(service_name: Optional[str] = None,
     Use this data source to get information about capabilities of a public cloud project.
 
 
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -137,8 +136,7 @@ def get_capabilities_output(service_name: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about capabilities of a public cloud project.
 
 
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

@@ -39,8 +39,7 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetDatabaseArgs {
     /**
-     * The database engine you want to get information. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to get information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: string;
     /**
@@ -48,8 +47,7 @@ export interface GetDatabaseArgs {
      */
     id: string;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -177,8 +175,7 @@ export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.Inv
  */
 export interface GetDatabaseOutputArgs {
     /**
-     * The database engine you want to get information. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to get information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: pulumi.Input<string>;
     /**
@@ -186,8 +183,7 @@ export interface GetDatabaseOutputArgs {
      */
     id: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

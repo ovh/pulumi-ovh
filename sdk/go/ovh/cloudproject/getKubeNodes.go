@@ -54,8 +54,7 @@ func GetKubeNodes(ctx *pulumi.Context, args *GetKubeNodesArgs, opts ...pulumi.In
 type GetKubeNodesArgs struct {
 	// The ID of the managed kubernetes cluster.
 	KubeId string `pulumi:"kubeId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func GetKubeNodesOutput(ctx *pulumi.Context, args GetKubeNodesOutputArgs, opts .
 type GetKubeNodesOutputArgs struct {
 	// The ID of the managed kubernetes cluster.
 	KubeId pulumi.StringInput `pulumi:"kubeId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

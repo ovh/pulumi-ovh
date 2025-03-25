@@ -46,7 +46,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// haproxy  **Changing this value recreates the resource.**
+        /// haproxy **Changing this value recreates the resource.**
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> LdpServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        /// Loadbalancer id to get the logs **Changing this value recreates the resource.**
         /// </summary>
         [Output("loadbalancerId")]
         public Output<string> LoadbalancerId { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        /// Data stream id to use for the subscription **Changing this value recreates the resource.**
         /// </summary>
         [Output("streamId")]
         public Output<string> StreamId { get; private set; } = null!;
@@ -159,13 +159,13 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class RegionLoadBalancerLogSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// haproxy  **Changing this value recreates the resource.**
+        /// haproxy **Changing this value recreates the resource.**
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        /// Loadbalancer id to get the logs **Changing this value recreates the resource.**
         /// </summary>
         [Input("loadbalancerId", required: true)]
         public Input<string> LoadbalancerId { get; set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        /// Data stream id to use for the subscription **Changing this value recreates the resource.**
         /// </summary>
         [Input("streamId", required: true)]
         public Input<string> StreamId { get; set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// haproxy  **Changing this value recreates the resource.**
+        /// haproxy **Changing this value recreates the resource.**
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? LdpServiceName { get; set; }
 
         /// <summary>
-        /// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        /// Loadbalancer id to get the logs **Changing this value recreates the resource.**
         /// </summary>
         [Input("loadbalancerId")]
         public Input<string>? LoadbalancerId { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        /// Data stream id to use for the subscription **Changing this value recreates the resource.**
         /// </summary>
         [Input("streamId")]
         public Input<string>? StreamId { get; set; }

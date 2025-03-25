@@ -74,7 +74,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// Using the following configuration:
     /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -92,9 +92,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// $ pulumi up
     /// 
-    /// The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `iplb.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource

@@ -39,20 +39,15 @@ class DatabaseArgs:
                  opensearch_acls_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object.
-               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[str] plan: Plan of the cluster.
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
                * Redis: "essential", "business"
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
@@ -96,8 +91,7 @@ class DatabaseArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The database engine you want to deploy. To get a full list of available engine visit.
-        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -109,9 +103,7 @@ class DatabaseArgs:
     @pulumi.getter
     def flavor(self) -> pulumi.Input[str]:
         """
-        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
 
@@ -123,8 +115,7 @@ class DatabaseArgs:
     @pulumi.getter
     def nodes(self) -> pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]]:
         """
-        List of nodes object.
-        Multi region cluster are not yet available, all node should be identical.
+        List of nodes object. Multi region cluster are not yet available, all node should be identical.
         """
         return pulumi.get(self, "nodes")
 
@@ -152,8 +143,7 @@ class DatabaseArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -328,26 +318,21 @@ class _DatabaseState:
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseEndpointArgs']]] endpoints: List of all endpoints objects of the service.
-        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object.
-               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
                * Redis: "essential", "business"
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the cluster.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         """
@@ -494,8 +479,7 @@ class _DatabaseState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine you want to deploy. To get a full list of available engine visit.
-        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -507,9 +491,7 @@ class _DatabaseState:
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
         """
-        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
 
@@ -581,8 +563,7 @@ class _DatabaseState:
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]]]:
         """
-        List of nodes object.
-        Multi region cluster are not yet available, all node should be identical.
+        List of nodes object. Multi region cluster are not yet available, all node should be identical.
         """
         return pulumi.get(self, "nodes")
 
@@ -622,8 +603,7 @@ class _DatabaseState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -884,25 +864,20 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[str] description: Small description of the database service.
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
-        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
-               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
                * Redis: "essential", "business"
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         """
         ...
@@ -1229,26 +1204,21 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[str] disk_type: Defines the disk type of the database service.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseEndpointArgs', 'DatabaseEndpointArgsDict']]]] endpoints: List of all endpoints objects of the service.
-        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit.
-               [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-               Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-               You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        :param pulumi.Input[str] engine: The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
         :param pulumi.Input[str] maintenance_time: Time on which maintenances can start every day.
         :param pulumi.Input[str] network_type: Type of network of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object.
-               Multi region cluster are not yet available, all node should be identical.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[str] plan: Plan of the cluster.
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
                * Redis: "essential", "business"
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the cluster.
         :param pulumi.Input[str] version: The version of the engine in which the service should be deployed
         """
@@ -1347,8 +1317,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The database engine you want to deploy. To get a full list of available engine visit.
-        [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         """
         return pulumi.get(self, "engine")
 
@@ -1356,9 +1325,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def flavor(self) -> pulumi.Output[str]:
         """
-        A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         """
         return pulumi.get(self, "flavor")
 
@@ -1406,8 +1373,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.DatabaseNode']]:
         """
-        List of nodes object.
-        Multi region cluster are not yet available, all node should be identical.
+        List of nodes object. Multi region cluster are not yet available, all node should be identical.
         """
         return pulumi.get(self, "nodes")
 
@@ -1435,8 +1401,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

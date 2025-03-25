@@ -262,8 +262,7 @@ def get_storage(limit: Optional[float] = None,
                 service_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageResult:
     """
-    Get S3™* compatible storage container.
-    \\* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+    Get S3™* compatible storage container. \\* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
 
     ## Example Usage
 
@@ -321,8 +320,7 @@ def get_storage_output(limit: Optional[pulumi.Input[Optional[float]]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageResult]:
     """
-    Get S3™* compatible storage container.
-    \\* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+    Get S3™* compatible storage container. \\* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
 
     ## Example Usage
 

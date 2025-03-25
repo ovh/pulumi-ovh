@@ -56,13 +56,11 @@ func GetDatabaseIntegration(ctx *pulumi.Context, args *GetDatabaseIntegrationArg
 type GetDatabaseIntegrationArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
 	Engine string `pulumi:"engine"`
 	// Integration ID
 	Id string `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -101,13 +99,11 @@ func GetDatabaseIntegrationOutput(ctx *pulumi.Context, args GetDatabaseIntegrati
 type GetDatabaseIntegrationOutputArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Integration ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

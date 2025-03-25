@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProject
 {
     /// <summary>
-    /// Manage a worflow that schedules backups of public cloud instance.
-    /// Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
+    /// Manage a worflow that schedules backups of public cloud instance. Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
     /// 
     /// ## Example Usage
     /// 

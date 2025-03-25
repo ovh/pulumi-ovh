@@ -465,9 +465,6 @@ class Storage(pulumi.CustomResource):
                  versioning: Optional[pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']]] = None,
                  __props__=None):
         """
-        Create S3™* compatible storage container
-        (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
-
         ## Example Usage
 
         ```python
@@ -484,11 +481,9 @@ class Storage(pulumi.CustomResource):
 
         ## Import
 
-        A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+        A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -506,9 +501,7 @@ class Storage(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -530,9 +523,6 @@ class Storage(pulumi.CustomResource):
                  args: StorageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create S3™* compatible storage container
-        (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
-
         ## Example Usage
 
         ```python
@@ -549,11 +539,9 @@ class Storage(pulumi.CustomResource):
 
         ## Import
 
-        A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+        A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -571,9 +559,7 @@ class Storage(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param StorageArgs args: The arguments to use to populate this resource's properties.

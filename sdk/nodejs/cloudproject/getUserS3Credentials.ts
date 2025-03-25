@@ -33,8 +33,7 @@ export function getUserS3Credentials(args: GetUserS3CredentialsArgs, opts?: pulu
  */
 export interface GetUserS3CredentialsArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
     /**
@@ -87,8 +86,7 @@ export function getUserS3CredentialsOutput(args: GetUserS3CredentialsOutputArgs,
  */
 export interface GetUserS3CredentialsOutputArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

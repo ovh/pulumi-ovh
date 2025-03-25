@@ -12,11 +12,9 @@ namespace Pulumi.Ovh.Dedicated
     /// <summary>
     /// ## Import
     /// 
-    /// Dedicated servers can be imported using the `service_name`.
+    /// Dedicated servers can be imported using the `service_name`. Using the following configuration:
     /// 
-    /// Using the following configuration:
-    /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -34,9 +32,7 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// pulumi up
     /// 
-    /// The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See &lt;https://developer.hashicorp.com/terraform/language/import/generating-configuration&gt; for more details.
+    /// The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Dedicated/server:Server")]
     public partial class Server : global::Pulumi.CustomResource

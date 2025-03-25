@@ -52,8 +52,7 @@ export class PostgresSqlConnectionPool extends pulumi.CustomResource {
      */
     public readonly databaseId!: pulumi.Output<string>;
     /**
-     * Connection mode to the connection pool
-     * Available modes:
+     * Connection mode to the connection pool Available modes:
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -65,8 +64,7 @@ export class PostgresSqlConnectionPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<number>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -155,8 +153,7 @@ export interface PostgresSqlConnectionPoolState {
      */
     databaseId?: pulumi.Input<string>;
     /**
-     * Connection mode to the connection pool
-     * Available modes:
+     * Connection mode to the connection pool Available modes:
      */
     mode?: pulumi.Input<string>;
     /**
@@ -168,8 +165,7 @@ export interface PostgresSqlConnectionPoolState {
      */
     port?: pulumi.Input<number>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -203,8 +199,7 @@ export interface PostgresSqlConnectionPoolArgs {
      */
     databaseId: pulumi.Input<string>;
     /**
-     * Connection mode to the connection pool
-     * Available modes:
+     * Connection mode to the connection pool Available modes:
      */
     mode: pulumi.Input<string>;
     /**
@@ -212,8 +207,7 @@ export interface PostgresSqlConnectionPoolArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

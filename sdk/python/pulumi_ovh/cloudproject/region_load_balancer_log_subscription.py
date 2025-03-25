@@ -26,11 +26,11 @@ class RegionLoadBalancerLogSubscriptionArgs:
                  stream_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a RegionLoadBalancerLogSubscription resource.
-        :param pulumi.Input[str] kind: haproxy  **Changing this value recreates the resource.**
-        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] kind: haproxy **Changing this value recreates the resource.**
+        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs **Changing this value recreates the resource.**
         :param pulumi.Input[str] region_name: A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription **Changing this value recreates the resource.**
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
@@ -42,7 +42,7 @@ class RegionLoadBalancerLogSubscriptionArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        haproxy  **Changing this value recreates the resource.**
+        haproxy **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "kind")
 
@@ -54,7 +54,7 @@ class RegionLoadBalancerLogSubscriptionArgs:
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Input[str]:
         """
-        Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        Loadbalancer id to get the logs **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "loadbalancer_id")
 
@@ -90,7 +90,7 @@ class RegionLoadBalancerLogSubscriptionArgs:
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Input[str]:
         """
-        Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        Data stream id to use for the subscription **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "stream_id")
 
@@ -117,15 +117,15 @@ class _RegionLoadBalancerLogSubscriptionState:
         """
         Input properties used for looking up and filtering RegionLoadBalancerLogSubscription resources.
         :param pulumi.Input[str] created_at: The date of the subscription creation
-        :param pulumi.Input[str] kind: haproxy  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] kind: haproxy **Changing this value recreates the resource.**
         :param pulumi.Input[str] ldp_service_name: LDP service name
-        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs **Changing this value recreates the resource.**
         :param pulumi.Input[str] operation_id: The operation ID
         :param pulumi.Input[str] region_name: A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[str] resource_name: The resource name
         :param pulumi.Input[str] resource_type: The resource type
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription **Changing this value recreates the resource.**
         :param pulumi.Input[str] subscription_id: The subscription id
         :param pulumi.Input[str] updated_at: The last update of the subscription
         """
@@ -170,7 +170,7 @@ class _RegionLoadBalancerLogSubscriptionState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        haproxy  **Changing this value recreates the resource.**
+        haproxy **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "kind")
 
@@ -194,7 +194,7 @@ class _RegionLoadBalancerLogSubscriptionState:
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        Loadbalancer id to get the logs **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "loadbalancer_id")
 
@@ -266,7 +266,7 @@ class _RegionLoadBalancerLogSubscriptionState:
     @pulumi.getter(name="streamId")
     def stream_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        Data stream id to use for the subscription **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "stream_id")
 
@@ -331,11 +331,11 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] kind: haproxy  **Changing this value recreates the resource.**
-        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] kind: haproxy **Changing this value recreates the resource.**
+        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs **Changing this value recreates the resource.**
         :param pulumi.Input[str] region_name: A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription **Changing this value recreates the resource.**
         """
         ...
     @overload
@@ -443,15 +443,15 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date of the subscription creation
-        :param pulumi.Input[str] kind: haproxy  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] kind: haproxy **Changing this value recreates the resource.**
         :param pulumi.Input[str] ldp_service_name: LDP service name
-        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] loadbalancer_id: Loadbalancer id to get the logs **Changing this value recreates the resource.**
         :param pulumi.Input[str] operation_id: The operation ID
         :param pulumi.Input[str] region_name: A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[str] resource_name_: The resource name
         :param pulumi.Input[str] resource_type: The resource type
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
-        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        :param pulumi.Input[str] stream_id: Data stream id to use for the subscription **Changing this value recreates the resource.**
         :param pulumi.Input[str] subscription_id: The subscription id
         :param pulumi.Input[str] updated_at: The last update of the subscription
         """
@@ -485,7 +485,7 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        haproxy  **Changing this value recreates the resource.**
+        haproxy **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "kind")
 
@@ -501,7 +501,7 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Output[str]:
         """
-        Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+        Loadbalancer id to get the logs **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "loadbalancer_id")
 
@@ -549,7 +549,7 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Output[str]:
         """
-        Data stream id to use for the subscription  **Changing this value recreates the resource.**
+        Data stream id to use for the subscription **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "stream_id")
 

@@ -64,8 +64,7 @@ export class MongoDbUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup@admin`
      * * `clusterAdmin@admin`
      * * `clusterManager@admin`
@@ -86,8 +85,7 @@ export class MongoDbUser extends pulumi.CustomResource {
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -165,8 +163,7 @@ export interface MongoDbUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup@admin`
      * * `clusterAdmin@admin`
      * * `clusterManager@admin`
@@ -187,8 +184,7 @@ export interface MongoDbUserState {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -214,8 +210,7 @@ export interface MongoDbUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup@admin`
      * * `clusterAdmin@admin`
      * * `clusterManager@admin`
@@ -236,8 +231,7 @@ export interface MongoDbUserArgs {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

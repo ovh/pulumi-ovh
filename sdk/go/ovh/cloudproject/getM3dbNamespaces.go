@@ -54,8 +54,7 @@ func GetM3dbNamespaces(ctx *pulumi.Context, args *GetM3dbNamespacesArgs, opts ..
 type GetM3dbNamespacesArgs struct {
 	// Cluster ID
 	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func GetM3dbNamespacesOutput(ctx *pulumi.Context, args GetM3dbNamespacesOutputAr
 type GetM3dbNamespacesOutputArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

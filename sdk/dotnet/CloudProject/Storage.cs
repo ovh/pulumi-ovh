@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProject
 {
     /// <summary>
-    /// Create S3™* compatible storage container
-    /// (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -38,11 +35,9 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// ## Import
     /// 
-    /// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+    /// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
     /// 
-    /// Using the following configuration:
-    /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -60,9 +55,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// $ pulumi up
     /// 
-    /// The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:CloudProject/storage:Storage")]
     public partial class Storage : global::Pulumi.CustomResource

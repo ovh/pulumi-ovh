@@ -50,11 +50,11 @@ type RegionLoadBalancerLogSubscription struct {
 
 	// The date of the subscription creation
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// haproxy  **Changing this value recreates the resource.**
+	// haproxy **Changing this value recreates the resource.**
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// LDP service name
 	LdpServiceName pulumi.StringOutput `pulumi:"ldpServiceName"`
-	// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+	// Loadbalancer id to get the logs **Changing this value recreates the resource.**
 	LoadbalancerId pulumi.StringOutput `pulumi:"loadbalancerId"`
 	// The operation ID
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
@@ -66,7 +66,7 @@ type RegionLoadBalancerLogSubscription struct {
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+	// Data stream id to use for the subscription **Changing this value recreates the resource.**
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
 	// The subscription id
 	SubscriptionId pulumi.StringOutput `pulumi:"subscriptionId"`
@@ -121,11 +121,11 @@ func GetRegionLoadBalancerLogSubscription(ctx *pulumi.Context,
 type regionLoadBalancerLogSubscriptionState struct {
 	// The date of the subscription creation
 	CreatedAt *string `pulumi:"createdAt"`
-	// haproxy  **Changing this value recreates the resource.**
+	// haproxy **Changing this value recreates the resource.**
 	Kind *string `pulumi:"kind"`
 	// LDP service name
 	LdpServiceName *string `pulumi:"ldpServiceName"`
-	// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+	// Loadbalancer id to get the logs **Changing this value recreates the resource.**
 	LoadbalancerId *string `pulumi:"loadbalancerId"`
 	// The operation ID
 	OperationId *string `pulumi:"operationId"`
@@ -137,7 +137,7 @@ type regionLoadBalancerLogSubscriptionState struct {
 	ResourceType *string `pulumi:"resourceType"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName *string `pulumi:"serviceName"`
-	// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+	// Data stream id to use for the subscription **Changing this value recreates the resource.**
 	StreamId *string `pulumi:"streamId"`
 	// The subscription id
 	SubscriptionId *string `pulumi:"subscriptionId"`
@@ -148,11 +148,11 @@ type regionLoadBalancerLogSubscriptionState struct {
 type RegionLoadBalancerLogSubscriptionState struct {
 	// The date of the subscription creation
 	CreatedAt pulumi.StringPtrInput
-	// haproxy  **Changing this value recreates the resource.**
+	// haproxy **Changing this value recreates the resource.**
 	Kind pulumi.StringPtrInput
 	// LDP service name
 	LdpServiceName pulumi.StringPtrInput
-	// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+	// Loadbalancer id to get the logs **Changing this value recreates the resource.**
 	LoadbalancerId pulumi.StringPtrInput
 	// The operation ID
 	OperationId pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type RegionLoadBalancerLogSubscriptionState struct {
 	ResourceType pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringPtrInput
-	// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+	// Data stream id to use for the subscription **Changing this value recreates the resource.**
 	StreamId pulumi.StringPtrInput
 	// The subscription id
 	SubscriptionId pulumi.StringPtrInput
@@ -177,29 +177,29 @@ func (RegionLoadBalancerLogSubscriptionState) ElementType() reflect.Type {
 }
 
 type regionLoadBalancerLogSubscriptionArgs struct {
-	// haproxy  **Changing this value recreates the resource.**
+	// haproxy **Changing this value recreates the resource.**
 	Kind string `pulumi:"kind"`
-	// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+	// Loadbalancer id to get the logs **Changing this value recreates the resource.**
 	LoadbalancerId string `pulumi:"loadbalancerId"`
 	// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
 	RegionName string `pulumi:"regionName"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName string `pulumi:"serviceName"`
-	// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+	// Data stream id to use for the subscription **Changing this value recreates the resource.**
 	StreamId string `pulumi:"streamId"`
 }
 
 // The set of arguments for constructing a RegionLoadBalancerLogSubscription resource.
 type RegionLoadBalancerLogSubscriptionArgs struct {
-	// haproxy  **Changing this value recreates the resource.**
+	// haproxy **Changing this value recreates the resource.**
 	Kind pulumi.StringInput
-	// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+	// Loadbalancer id to get the logs **Changing this value recreates the resource.**
 	LoadbalancerId pulumi.StringInput
 	// A valid OVHcloud public cloud region name in which the loadbalancer will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
 	RegionName pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringInput
-	// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+	// Data stream id to use for the subscription **Changing this value recreates the resource.**
 	StreamId pulumi.StringInput
 }
 
@@ -295,7 +295,7 @@ func (o RegionLoadBalancerLogSubscriptionOutput) CreatedAt() pulumi.StringOutput
 	return o.ApplyT(func(v *RegionLoadBalancerLogSubscription) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// haproxy  **Changing this value recreates the resource.**
+// haproxy **Changing this value recreates the resource.**
 func (o RegionLoadBalancerLogSubscriptionOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionLoadBalancerLogSubscription) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
@@ -305,7 +305,7 @@ func (o RegionLoadBalancerLogSubscriptionOutput) LdpServiceName() pulumi.StringO
 	return o.ApplyT(func(v *RegionLoadBalancerLogSubscription) pulumi.StringOutput { return v.LdpServiceName }).(pulumi.StringOutput)
 }
 
-// Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+// Loadbalancer id to get the logs **Changing this value recreates the resource.**
 func (o RegionLoadBalancerLogSubscriptionOutput) LoadbalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionLoadBalancerLogSubscription) pulumi.StringOutput { return v.LoadbalancerId }).(pulumi.StringOutput)
 }
@@ -335,7 +335,7 @@ func (o RegionLoadBalancerLogSubscriptionOutput) ServiceName() pulumi.StringOutp
 	return o.ApplyT(func(v *RegionLoadBalancerLogSubscription) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Data stream id to use for the subscription  **Changing this value recreates the resource.**
+// Data stream id to use for the subscription **Changing this value recreates the resource.**
 func (o RegionLoadBalancerLogSubscriptionOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionLoadBalancerLogSubscription) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
 }

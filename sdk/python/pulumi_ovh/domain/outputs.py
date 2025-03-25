@@ -1286,7 +1286,7 @@ class ZonePlanConfiguration(dict):
                  value: str):
         """
         :param str label: Identifier of the resource : `zone` or `template`
-        :param str value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        :param str value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -1303,7 +1303,7 @@ class ZonePlanConfiguration(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         return pulumi.get(self, "value")
 

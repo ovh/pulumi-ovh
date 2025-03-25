@@ -28,13 +28,11 @@ class UserArgs:
                  role_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file.
-               Note: no password nor sensitive token is set in this map.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         :param pulumi.Input[str] role_name: The name of a role. See `role_names`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be:
                - administrator,
                - ai_training_operator
                - ai_training_read
@@ -62,8 +60,7 @@ class UserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -87,8 +84,7 @@ class UserArgs:
     @pulumi.getter(name="openstackRc")
     def openstack_rc(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a convenient map representing an openstack_rc file.
-        Note: no password nor sensitive token is set in this map.
+        a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         """
         return pulumi.get(self, "openstack_rc")
 
@@ -112,7 +108,7 @@ class UserArgs:
     @pulumi.getter(name="roleNames")
     def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of role names. Values can be: 
+        A list of role names. Values can be:
         - administrator,
         - ai_training_operator
         - ai_training_read
@@ -150,13 +146,10 @@ class _UserState:
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[str] creation_date: the date the user was created.
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file.
-               Note: no password nor sensitive token is set in this map.
-        :param pulumi.Input[str] password: (Sensitive) the password generated for the user. The password can
-               be used with the Openstack API. This attribute is sensitive and will only be
-               retrieve once during creation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
+        :param pulumi.Input[str] password: (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
         :param pulumi.Input[str] role_name: The name of a role. See `role_names`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be:
                - administrator,
                - ai_training_operator
                - ai_training_read
@@ -170,11 +163,9 @@ class _UserState:
                - objectstore_operator
                - volume_operator
         :param pulumi.Input[Sequence[pulumi.Input['UserRoleArgs']]] roles: A list of roles associated with the user.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: the status of the user. should be normally set to 'ok'.
-        :param pulumi.Input[str] username: the username generated for the user. This username can be used with
-               the Openstack API.
+        :param pulumi.Input[str] username: the username generated for the user. This username can be used with the Openstack API.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -225,8 +216,7 @@ class _UserState:
     @pulumi.getter(name="openstackRc")
     def openstack_rc(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a convenient map representing an openstack_rc file.
-        Note: no password nor sensitive token is set in this map.
+        a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         """
         return pulumi.get(self, "openstack_rc")
 
@@ -238,9 +228,7 @@ class _UserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        (Sensitive) the password generated for the user. The password can
-        be used with the Openstack API. This attribute is sensitive and will only be
-        retrieve once during creation.
+        (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
         """
         return pulumi.get(self, "password")
 
@@ -264,7 +252,7 @@ class _UserState:
     @pulumi.getter(name="roleNames")
     def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of role names. Values can be: 
+        A list of role names. Values can be:
         - administrator,
         - ai_training_operator
         - ai_training_read
@@ -300,8 +288,7 @@ class _UserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -325,8 +312,7 @@ class _UserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        the username generated for the user. This username can be used with
-        the Openstack API.
+        the username generated for the user. This username can be used with the Openstack API.
         """
         return pulumi.get(self, "username")
 
@@ -361,10 +347,9 @@ class User(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file.
-               Note: no password nor sensitive token is set in this map.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         :param pulumi.Input[str] role_name: The name of a role. See `role_names`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be:
                - administrator,
                - ai_training_operator
                - ai_training_read
@@ -377,8 +362,7 @@ class User(pulumi.CustomResource):
                - network_security_operator
                - objectstore_operator
                - volume_operator
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -470,13 +454,10 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_date: the date the user was created.
         :param pulumi.Input[str] description: A description associated with the user.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file.
-               Note: no password nor sensitive token is set in this map.
-        :param pulumi.Input[str] password: (Sensitive) the password generated for the user. The password can
-               be used with the Openstack API. This attribute is sensitive and will only be
-               retrieve once during creation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
+        :param pulumi.Input[str] password: (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
         :param pulumi.Input[str] role_name: The name of a role. See `role_names`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be: 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: A list of role names. Values can be:
                - administrator,
                - ai_training_operator
                - ai_training_read
@@ -490,11 +471,9 @@ class User(pulumi.CustomResource):
                - objectstore_operator
                - volume_operator
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserRoleArgs', 'UserRoleArgsDict']]]] roles: A list of roles associated with the user.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: the status of the user. should be normally set to 'ok'.
-        :param pulumi.Input[str] username: the username generated for the user. This username can be used with
-               the Openstack API.
+        :param pulumi.Input[str] username: the username generated for the user. This username can be used with the Openstack API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -532,8 +511,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="openstackRc")
     def openstack_rc(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        a convenient map representing an openstack_rc file.
-        Note: no password nor sensitive token is set in this map.
+        a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         """
         return pulumi.get(self, "openstack_rc")
 
@@ -541,9 +519,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        (Sensitive) the password generated for the user. The password can
-        be used with the Openstack API. This attribute is sensitive and will only be
-        retrieve once during creation.
+        (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
         """
         return pulumi.get(self, "password")
 
@@ -559,7 +535,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="roleNames")
     def role_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of role names. Values can be: 
+        A list of role names. Values can be:
         - administrator,
         - ai_training_operator
         - ai_training_read
@@ -587,8 +563,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -604,8 +579,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        the username generated for the user. This username can be used with
-        the Openstack API.
+        the username generated for the user. This username can be used with the Openstack API.
         """
         return pulumi.get(self, "username")
 

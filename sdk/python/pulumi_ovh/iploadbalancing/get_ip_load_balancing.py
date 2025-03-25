@@ -106,8 +106,7 @@ class GetIpLoadBalancingResult:
     @pulumi.getter(name="metricsToken")
     def metrics_token(self) -> str:
         """
-        The metrics token associated with your IP load balancing
-        This attribute is sensitive.
+        The metrics token associated with your IP load balancing This attribute is sensitive.
         """
         return pulumi.get(self, "metrics_token")
 
@@ -218,16 +217,10 @@ def get_ip_load_balancing(display_name: Optional[str] = None,
     :param str ipv6: The IPV6 associated to your IP load balancing
     :param str offer: The offer of your IP load balancing
     :param str service_name: The internal name of your IP load balancing
-    :param str ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30,
-           IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-           Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-           Safari 1, Windows XP IE8, Android 2.3, Java 7.
-           Can take any of the following value: "intermediate", "modern"
-    :param str state: Current state of your IP. Can take any of the following value:
-           "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+    :param str ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
+    :param str state: Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
     :param bool vrack_eligibility: Vrack eligibility. Takes a boolean value.
-    :param str vrack_name: Name of the vRack on which the current Load Balancer is
-           attached to, as it is named on vRack product
+    :param str vrack_name: Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
     :param Sequence[str] zones: Location where your service is. This takes an array of values.
     """
     __args__ = dict()
@@ -293,16 +286,10 @@ def get_ip_load_balancing_output(display_name: Optional[pulumi.Input[Optional[st
     :param str ipv6: The IPV6 associated to your IP load balancing
     :param str offer: The offer of your IP load balancing
     :param str service_name: The internal name of your IP load balancing
-    :param str ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30,
-           IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-           Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-           Safari 1, Windows XP IE8, Android 2.3, Java 7.
-           Can take any of the following value: "intermediate", "modern"
-    :param str state: Current state of your IP. Can take any of the following value:
-           "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+    :param str ssl_configuration: Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
+    :param str state: Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
     :param bool vrack_eligibility: Vrack eligibility. Takes a boolean value.
-    :param str vrack_name: Name of the vRack on which the current Load Balancer is
-           attached to, as it is named on vRack product
+    :param str vrack_name: Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
     :param Sequence[str] zones: Location where your service is. This takes an array of values.
     """
     __args__ = dict()

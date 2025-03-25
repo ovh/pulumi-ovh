@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// Using the following configuration:
     /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -66,9 +66,7 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// $ pulumi up
     /// 
-    /// The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `name_servers.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Domain/nameServers:NameServers")]
     public partial class NameServers : global::Pulumi.CustomResource

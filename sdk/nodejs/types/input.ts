@@ -129,8 +129,7 @@ export namespace CloudProject {
          */
         networkId?: pulumi.Input<string>;
         /**
-         * Public cloud region in which the node should be deployed.
-         * Ex: "GRA'.
+         * Public cloud region in which the node should be deployed. Ex: "GRA'.
          */
         region: pulumi.Input<string>;
         /**
@@ -626,6 +625,7 @@ export namespace CloudProject {
          * Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
          *
          * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+         *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
@@ -898,28 +898,23 @@ export namespace CloudProject {
 
     export interface NetworkPrivateSubnetIpPool {
         /**
-         * Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to false.
+         * Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
          */
         dhcp?: pulumi.Input<boolean>;
         /**
-         * Last ip for this region.
-         * Changing this value recreates the subnet.
+         * Last ip for this region. Changing this value recreates the subnet.
          */
         end?: pulumi.Input<string>;
         /**
-         * Global network in CIDR format.
-         * Changing this value recreates the subnet
+         * Global network in CIDR format. Changing this value recreates the subnet
          */
         network?: pulumi.Input<string>;
         /**
-         * The region in which the network subnet will be created.
-         * Ex.: "GRA1". Changing this value recreates the resource.
+         * The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
          */
         region?: pulumi.Input<string>;
         /**
-         * First ip for this region.
-         * Changing this value recreates the subnet.
+         * First ip for this region. Changing this value recreates the subnet.
          */
         start?: pulumi.Input<string>;
     }
@@ -1141,7 +1136,7 @@ export namespace CloudProject {
          */
         plan: pulumi.Input<string>;
         /**
-         * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+         * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
          */
         version?: pulumi.Input<string>;
     }
@@ -1380,8 +1375,7 @@ export namespace CloudProjectDatabase {
          */
         pattern: pulumi.Input<string>;
         /**
-         * Permission of the ACL
-         * Available permission:
+         * Permission of the ACL Available permission:
          */
         permission: pulumi.Input<string>;
     }
@@ -2175,7 +2169,7 @@ export namespace Domain {
          */
         label: pulumi.Input<string>;
         /**
-         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+         * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          */
         value: pulumi.Input<string>;
     }
@@ -2845,6 +2839,9 @@ export namespace Okms {
 }
 
 export namespace Order {
+}
+
+export namespace VMware {
 }
 
 export namespace Vps {

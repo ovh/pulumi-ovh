@@ -112,8 +112,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class GetDatabaseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The database engine you want to get information. To get a full list of available engine visit:
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine you want to get information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
@@ -125,8 +124,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -140,8 +138,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public sealed class GetDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The database engine you want to get information. To get a full list of available engine visit:
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine you want to get information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -153,8 +150,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

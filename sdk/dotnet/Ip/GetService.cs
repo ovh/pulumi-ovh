@@ -150,7 +150,7 @@ namespace Pulumi.Ovh.Ip
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hosted_ssl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
+        /// Possible values for ip type ( "cdn", "cloud", "dedicated", "failover", "hosted_ssl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
         /// </summary>
         public readonly string Type;
 

@@ -57,8 +57,7 @@ type GetMongoDbUserArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
 	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -95,8 +94,7 @@ type GetMongoDbUserOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Name of the user with the authentication database in the format name@authDB, for example: johndoe@admin
 	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

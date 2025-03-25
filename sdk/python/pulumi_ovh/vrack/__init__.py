@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cloud_project import *
+from .dedicated_cloud import *
 from .dedicated_server import *
 from .dedicated_server_interface import *
 from .get_vracks import *

@@ -72,7 +72,7 @@ type GetServiceResult struct {
 	RoutedTos []GetServiceRoutedTo `pulumi:"routedTos"`
 	// Service where ip is routed to
 	ServiceName string `pulumi:"serviceName"`
-	// Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
+	// Possible values for ip type ( "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
 	Type string `pulumi:"type"`
 }
 
@@ -150,7 +150,7 @@ func (o GetServiceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Possible values for ip type (    "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
+// Possible values for ip type ( "cdn", "cloud", "dedicated", "failover", "hostedSsl", "housing", "loadBalancing", "mail", "overthebox", "pcc", "pci", "private", "vpn", "vps", "vrack", "xdsl")
 func (o GetServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

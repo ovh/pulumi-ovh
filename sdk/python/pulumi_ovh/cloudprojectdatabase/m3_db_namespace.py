@@ -34,8 +34,7 @@ class M3DbNamespaceArgs:
         The set of arguments for constructing a M3DbNamespace resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] resolution: Resolution for an aggregated namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: Name of the namespace. A namespace named "default" is mapped with already created default namespace instead of creating a new namespace.
         :param pulumi.Input[str] retention_block_data_expiration_duration: Controls how long we wait before expiring stale data. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_block_size_duration: Controls how long to keep a block in memory before flushing to a fileset on disk. Should follow Rfc3339 e.g P2D, PT48H.
@@ -93,8 +92,7 @@ class M3DbNamespaceArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -224,8 +222,7 @@ class _M3DbNamespaceState:
         :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
         :param pulumi.Input[str] type: Type of namespace.
         :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
@@ -355,8 +352,7 @@ class _M3DbNamespaceState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -457,8 +453,7 @@ class M3DbNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
         :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
         """
@@ -587,8 +582,7 @@ class M3DbNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] retention_buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Should follow Rfc3339 e.g P2D, PT48H.
         :param pulumi.Input[str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Should follow Rfc3339 e.g P2D, PT48H.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[bool] snapshot_enabled: Defines whether M3DB will create snapshot files for this namespace.
         :param pulumi.Input[str] type: Type of namespace.
         :param pulumi.Input[bool] writes_to_commit_log_enabled: Defines whether M3DB will include writes to this namespace in the commit log.
@@ -679,8 +673,7 @@ class M3DbNamespace(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+// Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
 //
 // ## Example Usage
 //
@@ -54,8 +54,7 @@ func GetDatabasePostgreSQLConnectionPools(ctx *pulumi.Context, args *GetDatabase
 type GetDatabasePostgreSQLConnectionPoolsArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func GetDatabasePostgreSQLConnectionPoolsOutput(ctx *pulumi.Context, args GetDat
 type GetDatabasePostgreSQLConnectionPoolsOutputArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -61,15 +61,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Permission to give to this username on this topic.
-        /// Available permissions:
+        /// Permission to give to this username on this topic. Available permissions:
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -140,15 +138,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Permission to give to this username on this topic.
-        /// Available permissions:
+        /// Permission to give to this username on this topic. Available permissions:
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -180,15 +176,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Permission to give to this username on this topic.
-        /// Available permissions:
+        /// Permission to give to this username on this topic. Available permissions:
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

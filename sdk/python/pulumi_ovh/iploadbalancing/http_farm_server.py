@@ -504,6 +504,12 @@ class HttpFarmServer(pulumi.CustomResource):
 
         HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer backend service_name/farm_id/server_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Address of the backend server (IP from either internal or OVHcloud network)
@@ -557,6 +563,12 @@ class HttpFarmServer(pulumi.CustomResource):
         ## Import
 
         HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer backend service_name/farm_id/server_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpFarmServerArgs args: The arguments to use to populate this resource's properties.

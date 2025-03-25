@@ -32,14 +32,11 @@ export function getRegions(args: GetRegionsArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetRegionsArgs {
     /**
-     * List of services which has to be UP in regions.
-     * Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-     * If left blank, returns all regions associated with the service_name.
+     * List of services which has to be UP in regions. Example: "image", "instance", "network", "storage", "volume", "workflow", ... If left blank, returns all regions associated with the service_name.
      */
     hasServicesUps?: string[];
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -87,14 +84,11 @@ export function getRegionsOutput(args: GetRegionsOutputArgs, opts?: pulumi.Invok
  */
 export interface GetRegionsOutputArgs {
     /**
-     * List of services which has to be UP in regions.
-     * Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-     * If left blank, returns all regions associated with the service_name.
+     * List of services which has to be UP in regions. Example: "image", "instance", "network", "storage", "volume", "workflow", ... If left blank, returns all regions associated with the service_name.
      */
     hasServicesUps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

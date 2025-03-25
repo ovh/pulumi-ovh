@@ -12,7 +12,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public static class GetDatabasePostgreSQLConnectionPools
     {
         /// <summary>
-        /// Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+        /// Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgreSQLConnectionPoolsResult>("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", args ?? new GetDatabasePostgreSQLConnectionPoolsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+        /// Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgreSQLConnectionPoolsResult>("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", args ?? new GetDatabasePostgreSQLConnectionPoolsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+        /// Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -109,8 +109,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public string ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -130,8 +129,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

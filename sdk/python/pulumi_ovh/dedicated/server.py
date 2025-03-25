@@ -856,11 +856,9 @@ class Server(pulumi.CustomResource):
         """
         ## Import
 
-        Dedicated servers can be imported using the `service_name`.
+        Dedicated servers can be imported using the `service_name`. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -878,9 +876,7 @@ class Server(pulumi.CustomResource):
 
         pulumi up
 
-        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
+        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -909,11 +905,9 @@ class Server(pulumi.CustomResource):
         """
         ## Import
 
-        Dedicated servers can be imported using the `service_name`.
+        Dedicated servers can be imported using the `service_name`. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -931,9 +925,7 @@ class Server(pulumi.CustomResource):
 
         pulumi up
 
-        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See <https://developer.hashicorp.com/terraform/language/import/generating-configuration> for more details.
+        The file `dedicated.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.

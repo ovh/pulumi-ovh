@@ -94,8 +94,7 @@ type Move struct {
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// IP block organisation Id
 	OrganisationId pulumi.StringOutput `pulumi:"organisationId"`
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo MoveRoutedToOutput `pulumi:"routedTo"`
 	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -153,8 +152,7 @@ type moveState struct {
 	Ip *string `pulumi:"ip"`
 	// IP block organisation Id
 	OrganisationId *string `pulumi:"organisationId"`
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo *MoveRoutedTo `pulumi:"routedTo"`
 	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 	ServiceName *string `pulumi:"serviceName"`
@@ -177,8 +175,7 @@ type MoveState struct {
 	Ip pulumi.StringPtrInput
 	// IP block organisation Id
 	OrganisationId pulumi.StringPtrInput
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo MoveRoutedToPtrInput
 	// Service name in the form of `ip-<part-1>.<part-2>.<part-3>.<part-4>`
 	ServiceName pulumi.StringPtrInput
@@ -199,8 +196,7 @@ type moveArgs struct {
 	Description *string `pulumi:"description"`
 	// IP block that we want to attach to a different service
 	Ip string `pulumi:"ip"`
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo MoveRoutedTo `pulumi:"routedTo"`
 }
 
@@ -210,8 +206,7 @@ type MoveArgs struct {
 	Description pulumi.StringPtrInput
 	// IP block that we want to attach to a different service
 	Ip pulumi.StringInput
-	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-	// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+	// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 	RoutedTo MoveRoutedToInput
 }
 
@@ -327,8 +322,7 @@ func (o MoveOutput) OrganisationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Move) pulumi.StringOutput { return v.OrganisationId }).(pulumi.StringOutput)
 }
 
-// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-// instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+// Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
 func (o MoveOutput) RoutedTo() MoveRoutedToOutput {
 	return o.ApplyT(func(v *Move) MoveRoutedToOutput { return v.RoutedTo }).(MoveRoutedToOutput)
 }

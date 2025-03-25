@@ -32,8 +32,7 @@ export function getCapabilitiesContainerRegistry(args: GetCapabilitiesContainerR
  */
 export interface GetCapabilitiesContainerRegistryArgs {
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -78,8 +77,7 @@ export function getCapabilitiesContainerRegistryOutput(args: GetCapabilitiesCont
  */
 export interface GetCapabilitiesContainerRegistryOutputArgs {
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

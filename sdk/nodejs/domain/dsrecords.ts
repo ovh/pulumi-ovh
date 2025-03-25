@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *
  * Using the following configuration:
  *
- * hcl
+ * terraform
  *
  * import {
  *
@@ -50,9 +50,7 @@ import * as utilities from "../utilities";
  *
  * $ pulumi up
  *
- * The file `ds_records.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
- *
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `ds_records.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class DSRecords extends pulumi.CustomResource {
     /**

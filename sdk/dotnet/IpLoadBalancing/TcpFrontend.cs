@@ -51,6 +51,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// ## Import
     /// 
     /// TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:IpLoadBalancing/tcpFrontend:TcpFrontend testfrontend service_name/tcp_frontend_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")]
     public partial class TcpFrontend : global::Pulumi.CustomResource
@@ -98,9 +104,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), 
-        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -231,9 +235,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), 
-        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Input("port", required: true)]
         public Input<string> Port { get; set; } = null!;
@@ -325,9 +327,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), 
-        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

@@ -37,18 +37,14 @@ class KubeNodePoolArgs:
                  template: Optional[pulumi.Input['KubeNodePoolTemplateArgs']] = None):
         """
         The set of arguments for constructing a KubeNodePool resource.
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] desired_nodes: number of nodes to start.
         :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
@@ -87,8 +83,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Input[str]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-        **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "flavor_name")
 
@@ -148,8 +143,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -161,8 +155,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -174,8 +167,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
         * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
@@ -287,20 +279,16 @@ class _KubeNodePoolState:
         Input properties used for looking up and filtering KubeNodePool resources.
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[str] created_at: Creation date
         :param pulumi.Input[int] current_nodes: Number of nodes present in the pool
         :param pulumi.Input[int] desired_nodes: number of nodes to start.
         :param pulumi.Input[str] flavor: Flavor name
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -389,8 +377,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -402,8 +389,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -415,8 +401,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
         * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
@@ -489,8 +474,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[str]]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-        **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "flavor_name")
 
@@ -733,16 +717,12 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] desired_nodes: number of nodes to start.
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -932,20 +912,16 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
         :param pulumi.Input[bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
-        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter
-               How long a node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter
-               How long an unready node should be unneeded before it is eligible for scale down
-        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter
-               Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
+        :param pulumi.Input[float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[str] created_at: Creation date
         :param pulumi.Input[int] current_nodes: Number of nodes present in the pool
         :param pulumi.Input[int] desired_nodes: number of nodes to start.
         :param pulumi.Input[str] flavor: Flavor name
-        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-               **Changing this value recreates the resource.**
+        :param pulumi.Input[str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -1008,8 +984,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingScaleDownUnneededTimeSeconds")
     def autoscaling_scale_down_unneeded_time_seconds(self) -> pulumi.Output[int]:
         """
-        scaleDownUnneededTimeSeconds autoscaling parameter
-        How long a node should be unneeded before it is eligible for scale down
+        scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unneeded_time_seconds")
 
@@ -1017,8 +992,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingScaleDownUnreadyTimeSeconds")
     def autoscaling_scale_down_unready_time_seconds(self) -> pulumi.Output[int]:
         """
-        scaleDownUnreadyTimeSeconds autoscaling parameter
-        How long an unready node should be unneeded before it is eligible for scale down
+        scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         """
         return pulumi.get(self, "autoscaling_scale_down_unready_time_seconds")
 
@@ -1026,8 +1000,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingScaleDownUtilizationThreshold")
     def autoscaling_scale_down_utilization_threshold(self) -> pulumi.Output[float]:
         """
-        scaleDownUtilizationThreshold autoscaling parameter
-        Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+        scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
         * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
@@ -1076,8 +1049,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Output[str]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-        **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "flavor_name")
 

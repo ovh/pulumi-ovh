@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .ceph_acl import *
 from .get_ceph import *
+from .get_cloud import *
 from .get_nas_ha import *
 from .get_nas_ha_partition import *
 from .get_server_boots import *

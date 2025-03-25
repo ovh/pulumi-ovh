@@ -104,6 +104,7 @@ __all__ = [
     'GetFlavorsFlavorPlanCodesResult',
     'GetFloatingIPsCloudProjectFloatingipResult',
     'GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult',
+    'GetImagesImageResult',
     'GetInstanceAddressResult',
     'GetInstanceAttachedVolumeResult',
     'GetInstancesInstanceResult',
@@ -143,6 +144,7 @@ __all__ = [
     'GetRegionServiceResult',
     'GetStorageEncryptionResult',
     'GetStorageObjectResult',
+    'GetStorageObjectsObjectResult',
     'GetStorageReplicationResult',
     'GetStorageReplicationRuleResult',
     'GetStorageReplicationRuleDestinationResult',
@@ -592,8 +594,7 @@ class DatabaseNode(dict):
                  network_id: Optional[str] = None,
                  subnet_id: Optional[str] = None):
         """
-        :param str region: Public cloud region in which the node should be deployed.
-               Ex: "GRA'.
+        :param str region: Public cloud region in which the node should be deployed. Ex: "GRA'.
         :param str network_id: Private network id in which the node should be deployed. It's the regional openstackId of the private network
         :param str subnet_id: Private subnet ID in which the node is.
         """
@@ -607,8 +608,7 @@ class DatabaseNode(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Public cloud region in which the node should be deployed.
-        Ex: "GRA'.
+        Public cloud region in which the node should be deployed. Ex: "GRA'.
         """
         return pulumi.get(self, "region")
 
@@ -1540,6 +1540,7 @@ class KubePrivateNetworkConfiguration(dict):
         :param bool private_network_routing_as_default: Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
                
                In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+               
                ```python
                import pulumi
                ```
@@ -1562,6 +1563,7 @@ class KubePrivateNetworkConfiguration(dict):
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 
         In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+
         ```python
         import pulumi
         ```
@@ -2510,16 +2512,11 @@ class NetworkPrivateSubnetIpPool(dict):
                  region: Optional[str] = None,
                  start: Optional[str] = None):
         """
-        :param bool dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to false.
-        :param str end: Last ip for this region.
-               Changing this value recreates the subnet.
-        :param str network: Global network in CIDR format.
-               Changing this value recreates the subnet
-        :param str region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param str start: First ip for this region.
-               Changing this value recreates the subnet.
+        :param bool dhcp: Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
+        :param str end: Last ip for this region. Changing this value recreates the subnet.
+        :param str network: Global network in CIDR format. Changing this value recreates the subnet
+        :param str region: The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
+        :param str start: First ip for this region. Changing this value recreates the subnet.
         """
         if dhcp is not None:
             pulumi.set(__self__, "dhcp", dhcp)
@@ -2536,8 +2533,7 @@ class NetworkPrivateSubnetIpPool(dict):
     @pulumi.getter
     def dhcp(self) -> Optional[bool]:
         """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to false.
+        Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
         """
         return pulumi.get(self, "dhcp")
 
@@ -2545,8 +2541,7 @@ class NetworkPrivateSubnetIpPool(dict):
     @pulumi.getter
     def end(self) -> Optional[str]:
         """
-        Last ip for this region.
-        Changing this value recreates the subnet.
+        Last ip for this region. Changing this value recreates the subnet.
         """
         return pulumi.get(self, "end")
 
@@ -2554,8 +2549,7 @@ class NetworkPrivateSubnetIpPool(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        Global network in CIDR format.
-        Changing this value recreates the subnet
+        Global network in CIDR format. Changing this value recreates the subnet
         """
         return pulumi.get(self, "network")
 
@@ -2563,8 +2557,7 @@ class NetworkPrivateSubnetIpPool(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
+        The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
         """
         return pulumi.get(self, "region")
 
@@ -2572,8 +2565,7 @@ class NetworkPrivateSubnetIpPool(dict):
     @pulumi.getter
     def start(self) -> Optional[str]:
         """
-        First ip for this region.
-        Changing this value recreates the subnet.
+        First ip for this region. Changing this value recreates the subnet.
         """
         return pulumi.get(self, "start")
 
@@ -3339,7 +3331,7 @@ class RancherTargetSpec(dict):
         :param str name: Name of the managed Rancher service
         :param str plan: Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
         :param Sequence['RancherTargetSpecIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
-        :param str version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        :param str version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "plan", plan)
@@ -3376,7 +3368,7 @@ class RancherTargetSpec(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         """
         return pulumi.get(self, "version")
 
@@ -4888,6 +4880,167 @@ class GetFloatingIPsCloudProjectFloatingipAssociatedEntityResult(dict):
         Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetImagesImageResult(dict):
+    def __init__(__self__, *,
+                 creation_date: str,
+                 flavor_type: str,
+                 id: str,
+                 min_disk: float,
+                 min_ram: float,
+                 name: str,
+                 plan_code: str,
+                 region: str,
+                 size: float,
+                 status: str,
+                 tags: Sequence[str],
+                 type: str,
+                 user: str,
+                 visibility: str):
+        """
+        :param str creation_date: Image creation date
+        :param str flavor_type: Image usable only for this type of flavor if not null
+        :param str id: Image ID
+        :param float min_disk: Minimum disks required to use image
+        :param float min_ram: Minimum RAM required to use image
+        :param str name: Image name
+        :param str plan_code: Order plan code
+        :param str region: Image region
+        :param float size: Image size (in GiB)
+        :param str status: Image status
+        :param Sequence[str] tags: Tags about the image
+        :param str type: Image type
+        :param str user: User to connect with
+        :param str visibility: Image visibility
+        """
+        pulumi.set(__self__, "creation_date", creation_date)
+        pulumi.set(__self__, "flavor_type", flavor_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "min_disk", min_disk)
+        pulumi.set(__self__, "min_ram", min_ram)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user", user)
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> str:
+        """
+        Image creation date
+        """
+        return pulumi.get(self, "creation_date")
+
+    @property
+    @pulumi.getter(name="flavorType")
+    def flavor_type(self) -> str:
+        """
+        Image usable only for this type of flavor if not null
+        """
+        return pulumi.get(self, "flavor_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Image ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> float:
+        """
+        Minimum disks required to use image
+        """
+        return pulumi.get(self, "min_disk")
+
+    @property
+    @pulumi.getter(name="minRam")
+    def min_ram(self) -> float:
+        """
+        Minimum RAM required to use image
+        """
+        return pulumi.get(self, "min_ram")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Image name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> str:
+        """
+        Order plan code
+        """
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Image region
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        Image size (in GiB)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Image status
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        Tags about the image
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Image type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        User to connect with
+        """
+        return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        """
+        Image visibility
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -6695,8 +6848,7 @@ class GetRegionServiceResult(dict):
                  name: str,
                  status: str):
         """
-        :param str name: The name of the region associated with the public cloud
-               project.
+        :param str name: The name of the region associated with the public cloud project.
         :param str status: the status of the service
         """
         pulumi.set(__self__, "name", name)
@@ -6706,8 +6858,7 @@ class GetRegionServiceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the region associated with the public cloud
-        project.
+        The name of the region associated with the public cloud project.
         """
         return pulumi.get(self, "name")
 
@@ -6740,6 +6891,101 @@ class GetStorageEncryptionResult(dict):
 
 @pulumi.output_type
 class GetStorageObjectResult(dict):
+    def __init__(__self__, *,
+                 etag: str,
+                 is_delete_marker: bool,
+                 is_latest: bool,
+                 key: str,
+                 last_modified: str,
+                 size: float,
+                 storage_class: str,
+                 version_id: str):
+        """
+        :param str etag: ETag
+        :param bool is_delete_marker: Whether this object is a delete marker
+        :param bool is_latest: Whether this is the latest version of the object
+        :param str key: Key
+        :param str last_modified: Last modification date
+        :param float size: Size (bytes)
+        :param str storage_class: Storage class
+        :param str version_id: Version ID of the object
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "is_delete_marker", is_delete_marker)
+        pulumi.set(__self__, "is_latest", is_latest)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        ETag
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="isDeleteMarker")
+    def is_delete_marker(self) -> bool:
+        """
+        Whether this object is a delete marker
+        """
+        return pulumi.get(self, "is_delete_marker")
+
+    @property
+    @pulumi.getter(name="isLatest")
+    def is_latest(self) -> bool:
+        """
+        Whether this is the latest version of the object
+        """
+        return pulumi.get(self, "is_latest")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
+        """
+        Last modification date
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        """
+        Size (bytes)
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Storage class
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        Version ID of the object
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class GetStorageObjectsObjectResult(dict):
     def __init__(__self__, *,
                  etag: str,
                  is_delete_marker: bool,
@@ -7507,8 +7753,7 @@ class GetUsersUserResult(dict):
         :param Sequence['GetUsersUserRoleArgs'] roles: A list of roles associated with the user.
         :param str status: the status of the user. should be normally set to 'ok'.
         :param str user_id: The ID of a public cloud project's user.
-        :param str username: the username generated for the user. This username can be used with
-               the Openstack API.
+        :param str username: the username generated for the user. This username can be used with the Openstack API.
         """
         pulumi.set(__self__, "creation_date", creation_date)
         pulumi.set(__self__, "description", description)
@@ -7561,8 +7806,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        the username generated for the user. This username can be used with
-        the Openstack API.
+        the username generated for the user. This username can be used with the Openstack API.
         """
         return pulumi.get(self, "username")
 

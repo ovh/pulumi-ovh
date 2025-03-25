@@ -50,8 +50,7 @@ func LookupCapabilitiesContainerRegistry(ctx *pulumi.Context, args *LookupCapabi
 
 // A collection of arguments for invoking getCapabilitiesContainerRegistry.
 type LookupCapabilitiesContainerRegistryArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -75,8 +74,7 @@ func LookupCapabilitiesContainerRegistryOutput(ctx *pulumi.Context, args LookupC
 
 // A collection of arguments for invoking getCapabilitiesContainerRegistry.
 type LookupCapabilitiesContainerRegistryOutputArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

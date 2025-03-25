@@ -67,7 +67,13 @@ import (
 //
 // ## Import
 //
-// TCP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+// TCP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/tcpFarmServer:TcpFarmServer backend service_name/farm_id/server_id
+// ```
 type TcpFarmServer struct {
 	pulumi.CustomResourceState
 

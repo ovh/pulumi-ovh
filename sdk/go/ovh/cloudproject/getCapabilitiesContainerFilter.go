@@ -56,8 +56,7 @@ type GetCapabilitiesContainerFilterArgs struct {
 	PlanName string `pulumi:"planName"`
 	// The region name
 	Region string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -97,8 +96,7 @@ type GetCapabilitiesContainerFilterOutputArgs struct {
 	PlanName pulumi.StringInput `pulumi:"planName"`
 	// The region name
 	Region pulumi.StringInput `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

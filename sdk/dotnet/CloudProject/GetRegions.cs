@@ -103,9 +103,7 @@ namespace Pulumi.Ovh.CloudProject
         private List<string>? _hasServicesUps;
 
         /// <summary>
-        /// List of services which has to be UP in regions.
-        /// Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-        /// If left blank, returns all regions associated with the service_name.
+        /// List of services which has to be UP in regions. Example: "image", "instance", "network", "storage", "volume", "workflow", ... If left blank, returns all regions associated with the service_name.
         /// </summary>
         public List<string> HasServicesUps
         {
@@ -114,8 +112,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -132,9 +129,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _hasServicesUps;
 
         /// <summary>
-        /// List of services which has to be UP in regions.
-        /// Example: "image", "instance", "network", "storage", "volume", "workflow", ...
-        /// If left blank, returns all regions associated with the service_name.
+        /// List of services which has to be UP in regions. Example: "image", "instance", "network", "storage", "volume", "workflow", ... If left blank, returns all regions associated with the service_name.
         /// </summary>
         public InputList<string> HasServicesUps
         {
@@ -143,8 +138,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

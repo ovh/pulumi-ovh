@@ -67,8 +67,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+     * an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: "GRA1". Defaults to all public cloud regions.
      */
     public readonly regions!: pulumi.Output<string[]>;
     /**
@@ -87,8 +86,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
      */
     public /*out*/ readonly regionsStatuses!: pulumi.Output<outputs.CloudProject.NetworkPrivateRegionsStatus[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -100,8 +98,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      */
     public readonly vlanId!: pulumi.Output<number | undefined>;
 
@@ -154,8 +151,7 @@ export interface NetworkPrivateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+     * an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: "GRA1". Defaults to all public cloud regions.
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -174,8 +170,7 @@ export interface NetworkPrivateState {
      */
     regionsStatuses?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateRegionsStatus>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -187,8 +182,7 @@ export interface NetworkPrivateState {
      */
     type?: pulumi.Input<string>;
     /**
-     * a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      */
     vlanId?: pulumi.Input<number>;
 }
@@ -202,18 +196,15 @@ export interface NetworkPrivateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+     * an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: "GRA1". Defaults to all public cloud regions.
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      */
     vlanId?: pulumi.Input<number>;
 }

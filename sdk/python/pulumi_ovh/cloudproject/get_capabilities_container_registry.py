@@ -86,8 +86,7 @@ def get_capabilities_container_registry(service_name: Optional[str] = None,
     ```
 
 
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -113,8 +112,7 @@ def get_capabilities_container_registry_output(service_name: Optional[pulumi.Inp
     ```
 
 
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

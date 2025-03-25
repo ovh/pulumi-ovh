@@ -12,8 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **This resource uses a Beta API**
-// Creates an instance associated with a public cloud project.
+// **This resource uses a Beta API** Creates an instance associated with a public cloud project.
 //
 // ## Example Usage
 //
@@ -89,8 +88,7 @@ type Instance struct {
 	Network InstanceNetworkOutput `pulumi:"network"`
 	// Instance region
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Existing SSH Keypair
 	SshKey InstanceSshKeyPtrOutput `pulumi:"sshKey"`
@@ -180,8 +178,7 @@ type instanceState struct {
 	Network *InstanceNetwork `pulumi:"network"`
 	// Instance region
 	Region *string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName *string `pulumi:"serviceName"`
 	// Existing SSH Keypair
 	SshKey *InstanceSshKey `pulumi:"sshKey"`
@@ -224,8 +221,7 @@ type InstanceState struct {
 	Network InstanceNetworkPtrInput
 	// Instance region
 	Region pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringPtrInput
 	// Existing SSH Keypair
 	SshKey InstanceSshKeyPtrInput
@@ -262,8 +258,7 @@ type instanceArgs struct {
 	Network InstanceNetwork `pulumi:"network"`
 	// Instance region
 	Region string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName string `pulumi:"serviceName"`
 	// Existing SSH Keypair
 	SshKey *InstanceSshKey `pulumi:"sshKey"`
@@ -295,8 +290,7 @@ type InstanceArgs struct {
 	Network InstanceNetworkInput
 	// Instance region
 	Region pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringInput
 	// Existing SSH Keypair
 	SshKey InstanceSshKeyPtrInput
@@ -468,8 +462,7 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 func (o InstanceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

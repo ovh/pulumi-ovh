@@ -54,8 +54,7 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 type GetLoadBalancersArgs struct {
 	// Region of the loadbalancers.
 	RegionName string `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs
 type GetLoadBalancersOutputArgs struct {
 	// Region of the loadbalancers.
 	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

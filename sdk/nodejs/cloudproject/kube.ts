@@ -106,7 +106,7 @@ export class Kube extends pulumi.CustomResource {
     /**
      * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      *
-     * > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     * > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
      */
     public readonly privateNetworkId!: pulumi.Output<string | undefined>;
     /**
@@ -270,7 +270,7 @@ export interface KubeState {
     /**
      * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      *
-     * > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     * > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
      */
     privateNetworkId?: pulumi.Input<string>;
     /**
@@ -340,7 +340,7 @@ export interface KubeArgs {
     /**
      * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      *
-     * > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     * > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
      */
     privateNetworkId?: pulumi.Input<string>;
     /**

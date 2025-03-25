@@ -40,7 +40,13 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HTTP farm server can be imported using the following format `serviceName`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+ * HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer backend service_name/farm_id/server_id
+ * ```
  */
 export class HttpFarmServer extends pulumi.CustomResource {
     /**

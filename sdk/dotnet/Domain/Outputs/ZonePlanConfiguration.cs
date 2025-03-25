@@ -18,7 +18,7 @@ namespace Pulumi.Ovh.Domain.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        /// For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         /// </summary>
         public readonly string Value;
 

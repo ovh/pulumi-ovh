@@ -199,15 +199,14 @@ class Rancher(pulumi.CustomResource):
                 "name": "MyRancher",
                 "plan": "STANDARD",
             })
+        pulumi.export("rancherUrl", rancher.current_state.url)
         ```
 
         ## Import
 
-        A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+        A share in a public cloud project can be imported using the `project_id` and `id` attributes. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -225,9 +224,7 @@ class Rancher(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,15 +252,14 @@ class Rancher(pulumi.CustomResource):
                 "name": "MyRancher",
                 "plan": "STANDARD",
             })
+        pulumi.export("rancherUrl", rancher.current_state.url)
         ```
 
         ## Import
 
-        A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+        A share in a public cloud project can be imported using the `project_id` and `id` attributes. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -281,9 +277,7 @@ class Rancher(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `rancher.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param RancherArgs args: The arguments to use to populate this resource's properties.

@@ -603,11 +603,9 @@ class PrivateDatabase(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Webhosting database can be imported using the `service_name`.
+        OVHcloud Webhosting database can be imported using the `service_name`. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -625,9 +623,7 @@ class PrivateDatabase(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -681,11 +677,9 @@ class PrivateDatabase(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Webhosting database can be imported using the `service_name`.
+        OVHcloud Webhosting database can be imported using the `service_name`. Using the following configuration:
 
-        Using the following configuration:
-
-        hcl
+        terraform
 
         import {
 
@@ -703,9 +697,7 @@ class PrivateDatabase(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `database.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param PrivateDatabaseArgs args: The arguments to use to populate this resource's properties.

@@ -66,11 +66,9 @@ type KafkaAcl struct {
 
 	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Permission to give to this username on this topic.
-	// Available permissions:
+	// Permission to give to this username on this topic. Available permissions:
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Topic affected by this ACL.
 	Topic pulumi.StringOutput `pulumi:"topic"`
@@ -125,11 +123,9 @@ func GetKafkaAcl(ctx *pulumi.Context,
 type kafkaAclState struct {
 	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Permission to give to this username on this topic.
-	// Available permissions:
+	// Permission to give to this username on this topic. Available permissions:
 	Permission *string `pulumi:"permission"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Topic affected by this ACL.
 	Topic *string `pulumi:"topic"`
@@ -140,11 +136,9 @@ type kafkaAclState struct {
 type KafkaAclState struct {
 	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Permission to give to this username on this topic.
-	// Available permissions:
+	// Permission to give to this username on this topic. Available permissions:
 	Permission pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Topic affected by this ACL.
 	Topic pulumi.StringPtrInput
@@ -159,11 +153,9 @@ func (KafkaAclState) ElementType() reflect.Type {
 type kafkaAclArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Permission to give to this username on this topic.
-	// Available permissions:
+	// Permission to give to this username on this topic. Available permissions:
 	Permission string `pulumi:"permission"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// Topic affected by this ACL.
 	Topic string `pulumi:"topic"`
@@ -175,11 +167,9 @@ type kafkaAclArgs struct {
 type KafkaAclArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Permission to give to this username on this topic.
-	// Available permissions:
+	// Permission to give to this username on this topic. Available permissions:
 	Permission pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 	// Topic affected by this ACL.
 	Topic pulumi.StringInput
@@ -279,14 +269,12 @@ func (o KafkaAclOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Permission to give to this username on this topic.
-// Available permissions:
+// Permission to give to this username on this topic. Available permissions:
 func (o KafkaAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o KafkaAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
