@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ovh/pulumi-ovh/sdk/go/ovh/cloudproject"
+	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
@@ -23,7 +23,7 @@ func main() {
 		}
 
 		// Deploy a new Managed private registry
-		myRegistry, err := cloudproject.NewContainerRegistry(ctx, "my-registry", &cloudproject.ContainerRegistryArgs{
+		myRegistry, err := cloudproject.NewContainerRegistry(ctx, "my-registry-pulumi", &cloudproject.ContainerRegistryArgs{
 			ServiceName: pulumi.String(regcap.ServiceName),
 			PlanId:      pulumi.String(regcap.Id),
 			Region:      pulumi.String(regcap.Region),
