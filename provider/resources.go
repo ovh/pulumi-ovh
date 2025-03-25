@@ -54,6 +54,7 @@ const (
 	okmsMod            = "Okms"
 	savingPlansMod     = "SavingsPlan"
 	ovhCloudMod        = "OVHcloud"
+	vmwareMod          = "VMware"
 )
 
 // ovhDataSource manufactures a standard resource token given a module and resource name.
@@ -258,6 +259,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_instance": {
 				Tok: ovhResource(cloudProjectMod, "Instance"),
+			},
+			"ovh_cloud_project_instance_snapshot": {
+				Tok: ovhResource(cloudProjectMod, "InstanceSnapshot"),
 			},
 			"ovh_cloud_project_loadbalancer": {
 				Tok: ovhResource(cloudProjectMod, "LoadBalancer"),
@@ -522,6 +526,10 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_vrack_cloudproject": {
 				Tok: ovhResource(vrackMod, "CloudProject"),
 			},
+			"ovh_vrack_dedicated_cloud": {
+				Tok:       ovhResource(vrackMod, "DedicatedCloud"),
+				ComputeID: delegateID("dedicated_cloud"),
+			},
 			"ovh_vrack_dedicated_server": {
 				Tok: ovhResource(vrackMod, "DedicatedServer"),
 			},
@@ -698,6 +706,12 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_gateway_interface": {
 				Tok: ovhDataSource(cloudProjectMod, "getGatewayInterface"),
 			},
+			"ovh_cloud_project_image": {
+				Tok: ovhDataSource(cloudProjectMod, "getImage"),
+			},
+			"ovh_cloud_project_images": {
+				Tok: ovhDataSource(cloudProjectMod, "getImages"),
+			},
 			"ovh_cloud_project_kube": {
 				Tok: ovhDataSource(cloudProjectMod, "getKube"),
 			},
@@ -797,6 +811,12 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_storages": {
 				Tok: ovhDataSource(cloudProjectMod, "getStorages"),
 			},
+			"ovh_cloud_project_storage_object": {
+				Tok: ovhDataSource(cloudProjectMod, "getStorageObject"),
+			},
+			"ovh_cloud_project_storage_objects": {
+				Tok: ovhDataSource(cloudProjectMod, "getStorageObjects"),
+			},
 			"ovh_cloud_project_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getUser"),
 			},
@@ -846,6 +866,9 @@ func Provider() tfbridge.ProviderInfo {
 						Name: "CephURN",
 					},
 				},
+			},
+			"ovh_dedicated_cloud": {
+				Tok: ovhDataSource(dedicatedMod, "getCloud"),
 			},
 			"ovh_dedicated_nasha": {
 				Tok: ovhDataSource(dedicatedMod, "getNasHA"),
@@ -1059,6 +1082,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iam_reference_resource_type": {
 				Tok: ovhDataSource(iamMod, "getReferenceResourceType"),
+			},
+			"ovh_vmware_cloud_director_backup": {
+				Tok: ovhDataSource(vmwareMod, "getCloudDirectorBackup"),
+			},
+			"ovh_vmware_cloud_director_organization": {
+				Tok: ovhDataSource(vmwareMod, "getCloudDirectorOrganization"),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
