@@ -90,32 +90,28 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
         return this.cidr;
     }
     /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     @Export(name="dhcp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dhcp;
 
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     public Output<Optional<Boolean>> dhcp() {
         return Codegen.optional(this.dhcp);
     }
     /**
-     * Last ip for this region.
-     * Changing this value recreates the subnet.
+     * Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     @Export(name="end", refs={String.class}, tree="[0]")
     private Output<String> end;
 
     /**
-     * @return Last ip for this region.
-     * Changing this value recreates the subnet.
+     * @return Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Output<String> end() {
@@ -160,96 +156,84 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
         return this.ipPools;
     }
     /**
-     * Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * @return Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     public Output<String> network() {
         return this.network;
     }
     /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
+     * The id of the network. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
-     * @return The id of the network.
-     * Changing this forces a new resource to be created.
+     * @return The id of the network. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> networkId() {
         return this.networkId;
     }
     /**
-     * Set to true if you don&#39;t want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
+     * Set to true if you don&#39;t want to set a default gateway IP. Changing this value recreates the resource. Defaults to false.
      * 
      */
     @Export(name="noGateway", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> noGateway;
 
     /**
-     * @return Set to true if you don&#39;t want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
+     * @return Set to true if you don&#39;t want to set a default gateway IP. Changing this value recreates the resource. Defaults to false.
      * 
      */
     public Output<Optional<Boolean>> noGateway() {
         return Codegen.optional(this.noGateway);
     }
     /**
-     * The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * First ip for this region.
-     * Changing this value recreates the subnet.
+     * First ip for this region. Changing this value recreates the subnet.
      * 
      */
     @Export(name="start", refs={String.class}, tree="[0]")
     private Output<String> start;
 
     /**
-     * @return First ip for this region.
-     * Changing this value recreates the subnet.
+     * @return First ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Output<String> start() {

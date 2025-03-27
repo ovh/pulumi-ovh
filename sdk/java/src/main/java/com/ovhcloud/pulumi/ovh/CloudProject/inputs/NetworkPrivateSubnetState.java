@@ -34,16 +34,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<Boolean> dhcp;
 
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -51,16 +49,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Last ip for this region.
-     * Changing this value recreates the subnet.
+     * Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     @Import(name="end")
     private @Nullable Output<String> end;
 
     /**
-     * @return Last ip for this region.
-     * Changing this value recreates the subnet.
+     * @return Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Optional<Output<String>> end() {
@@ -108,16 +104,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * @return Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     public Optional<Output<String>> network() {
@@ -125,16 +119,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
+     * The id of the network. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return The id of the network.
-     * Changing this forces a new resource to be created.
+     * @return The id of the network. Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -142,16 +134,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Set to true if you don&#39;t want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
+     * Set to true if you don&#39;t want to set a default gateway IP. Changing this value recreates the resource. Defaults to false.
      * 
      */
     @Import(name="noGateway")
     private @Nullable Output<Boolean> noGateway;
 
     /**
-     * @return Set to true if you don&#39;t want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to false.
+     * @return Set to true if you don&#39;t want to set a default gateway IP. Changing this value recreates the resource. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> noGateway() {
@@ -159,16 +149,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     public Optional<Output<String>> region() {
@@ -176,16 +164,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -193,16 +179,14 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
     }
 
     /**
-     * First ip for this region.
-     * Changing this value recreates the subnet.
+     * First ip for this region. Changing this value recreates the subnet.
      * 
      */
     @Import(name="start")
     private @Nullable Output<String> start;
 
     /**
-     * @return First ip for this region.
-     * Changing this value recreates the subnet.
+     * @return First ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Optional<Output<String>> start() {
@@ -265,8 +249,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dhcp Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to false.
+         * @param dhcp Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
          * 
          * @return builder
          * 
@@ -277,8 +260,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dhcp Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to false.
+         * @param dhcp Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
          * 
          * @return builder
          * 
@@ -288,8 +270,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param end Last ip for this region.
-         * Changing this value recreates the subnet.
+         * @param end Last ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -300,8 +281,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param end Last ip for this region.
-         * Changing this value recreates the subnet.
+         * @param end Last ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -378,8 +358,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param network Global network in CIDR format.
-         * Changing this value recreates the subnet
+         * @param network Global network in CIDR format. Changing this value recreates the subnet
          * 
          * @return builder
          * 
@@ -390,8 +369,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param network Global network in CIDR format.
-         * Changing this value recreates the subnet
+         * @param network Global network in CIDR format. Changing this value recreates the subnet
          * 
          * @return builder
          * 
@@ -401,8 +379,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkId The id of the network.
-         * Changing this forces a new resource to be created.
+         * @param networkId The id of the network. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -413,8 +390,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkId The id of the network.
-         * Changing this forces a new resource to be created.
+         * @param networkId The id of the network. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -424,8 +400,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param noGateway Set to true if you don&#39;t want to set a default gateway IP.
-         * Changing this value recreates the resource. Defaults to false.
+         * @param noGateway Set to true if you don&#39;t want to set a default gateway IP. Changing this value recreates the resource. Defaults to false.
          * 
          * @return builder
          * 
@@ -436,8 +411,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param noGateway Set to true if you don&#39;t want to set a default gateway IP.
-         * Changing this value recreates the resource. Defaults to false.
+         * @param noGateway Set to true if you don&#39;t want to set a default gateway IP. Changing this value recreates the resource. Defaults to false.
          * 
          * @return builder
          * 
@@ -447,8 +421,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param region The region in which the network subnet will be created.
-         * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+         * @param region The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -459,8 +432,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param region The region in which the network subnet will be created.
-         * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+         * @param region The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -470,8 +442,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -482,8 +453,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -493,8 +463,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param start First ip for this region.
-         * Changing this value recreates the subnet.
+         * @param start First ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -505,8 +474,7 @@ public final class NetworkPrivateSubnetState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param start First ip for this region.
-         * Changing this value recreates the subnet.
+         * @param start First ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 

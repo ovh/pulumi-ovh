@@ -14,16 +14,14 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRegionPlainArgs Empty = new GetRegionPlainArgs();
 
     /**
-     * The name of the region associated with the public cloud
-     * project.
+     * The name of the region associated with the public cloud project.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the region associated with the public cloud
-     * project.
+     * @return The name of the region associated with the public cloud project.
      * 
      */
     public String name() {
@@ -31,16 +29,14 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public String serviceName() {
@@ -73,8 +69,7 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the region associated with the public cloud
-         * project.
+         * @param name The name of the region associated with the public cloud project.
          * 
          * @return builder
          * 
@@ -85,8 +80,7 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

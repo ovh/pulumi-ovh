@@ -23,8 +23,7 @@ public final class GetIpLoadBalancingResult {
     private String ipv4;
     private String ipv6;
     /**
-     * @return The metrics token associated with your IP load balancing
-     * This attribute is sensitive.
+     * @return The metrics token associated with your IP load balancing This attribute is sensitive.
      * 
      */
     private String metricsToken;
@@ -67,8 +66,7 @@ public final class GetIpLoadBalancingResult {
         return this.ipv6;
     }
     /**
-     * @return The metrics token associated with your IP load balancing
-     * This attribute is sensitive.
+     * @return The metrics token associated with your IP load balancing This attribute is sensitive.
      * 
      */
     public String metricsToken() {

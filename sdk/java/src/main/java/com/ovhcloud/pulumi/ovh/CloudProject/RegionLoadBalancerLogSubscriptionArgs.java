@@ -15,14 +15,14 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
     public static final RegionLoadBalancerLogSubscriptionArgs Empty = new RegionLoadBalancerLogSubscriptionArgs();
 
     /**
-     * haproxy  **Changing this value recreates the resource.**
+     * haproxy **Changing this value recreates the resource.**
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return haproxy  **Changing this value recreates the resource.**
+     * @return haproxy **Changing this value recreates the resource.**
      * 
      */
     public Output<String> kind() {
@@ -30,14 +30,14 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
     }
 
     /**
-     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * Loadbalancer id to get the logs **Changing this value recreates the resource.**
      * 
      */
     @Import(name="loadbalancerId", required=true)
     private Output<String> loadbalancerId;
 
     /**
-     * @return Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * @return Loadbalancer id to get the logs **Changing this value recreates the resource.**
      * 
      */
     public Output<String> loadbalancerId() {
@@ -75,14 +75,14 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
     }
 
     /**
-     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * Data stream id to use for the subscription **Changing this value recreates the resource.**
      * 
      */
     @Import(name="streamId", required=true)
     private Output<String> streamId;
 
     /**
-     * @return Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * @return Data stream id to use for the subscription **Changing this value recreates the resource.**
      * 
      */
     public Output<String> streamId() {
@@ -118,7 +118,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kind haproxy  **Changing this value recreates the resource.**
+         * @param kind haproxy **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kind haproxy  **Changing this value recreates the resource.**
+         * @param kind haproxy **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param loadbalancerId Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+         * @param loadbalancerId Loadbalancer id to get the logs **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param loadbalancerId Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+         * @param loadbalancerId Loadbalancer id to get the logs **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param streamId Data stream id to use for the subscription  **Changing this value recreates the resource.**
+         * @param streamId Data stream id to use for the subscription **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param streamId Data stream id to use for the subscription  **Changing this value recreates the resource.**
+         * @param streamId Data stream id to use for the subscription **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

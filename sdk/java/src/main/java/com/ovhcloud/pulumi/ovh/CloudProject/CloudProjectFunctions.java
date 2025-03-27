@@ -27,6 +27,10 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetFloatingIPsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetGatewayInterfacePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetImageArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetImagePlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetImagesArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetImagesPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstancePlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
@@ -90,6 +94,10 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetRegionsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStorageObjectArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStorageObjectPlainArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStorageObjectsArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStorageObjectsPlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStoragePlainArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStoragesArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetStoragesPlainArgs;
@@ -121,6 +129,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFailoverIpAttachResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFlavorsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetFloatingIPsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetGatewayInterfaceResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetImageResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetImagesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstanceResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetInstancesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeIpRestrictionsResult;
@@ -152,6 +162,8 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubs
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionLoadBalancerLogSubscriptionsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRegionsResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStorageObjectResult;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStorageObjectsResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStorageResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStoragesResult;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetUserResult;
@@ -1983,8 +1995,355 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getGatewayInterface:getGatewayInterface", TypeShape.of(GetGatewayInterfaceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * **This datasource uses a Beta API**
-     * Use this data source to get the instance of a public cloud project.
+     * Get information about an image in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
+     *             .imageId("<image ID>")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImageResult> getImage(GetImageArgs args) {
+        return getImage(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an image in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
+     *             .imageId("<image ID>")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args) {
+        return getImagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an image in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
+     *             .imageId("<image ID>")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an image in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
+     *             .imageId("<image ID>")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get available images in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
+     *             .osType("linux")
+     *             .region("WAW1")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args) {
+        return getImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get available images in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
+     *             .osType("linux")
+     *             .region("WAW1")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
+        return getImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get available images in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
+     *             .osType("linux")
+     *             .region("WAW1")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get available images in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
+     *             .osType("linux")
+     *             .region("WAW1")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -2030,8 +2389,7 @@ public final class CloudProjectFunctions {
         return getInstance(args, InvokeOptions.Empty);
     }
     /**
-     * **This datasource uses a Beta API**
-     * Use this data source to get the instance of a public cloud project.
+     * **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -2077,8 +2435,7 @@ public final class CloudProjectFunctions {
         return getInstancePlain(args, InvokeOptions.Empty);
     }
     /**
-     * **This datasource uses a Beta API**
-     * Use this data source to get the instance of a public cloud project.
+     * **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -2124,8 +2481,7 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * **This datasource uses a Beta API**
-     * Use this data source to get the instance of a public cloud project.
+     * **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -7471,8 +7827,7 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7516,8 +7871,7 @@ public final class CloudProjectFunctions {
         return getStorage(args, InvokeOptions.Empty);
     }
     /**
-     * Get S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7561,8 +7915,7 @@ public final class CloudProjectFunctions {
         return getStoragePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7606,8 +7959,7 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getStorage:getStorage", TypeShape.of(GetStorageResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7651,8 +8003,363 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getStorage:getStorage", TypeShape.of(GetStorageResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * List your S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * Get information about an object in a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
+     *             .key("<object name>")
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageObjectResult> getStorageObject(GetStorageObjectArgs args) {
+        return getStorageObject(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an object in a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
+     *             .key("<object name>")
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStorageObjectResult> getStorageObjectPlain(GetStorageObjectPlainArgs args) {
+        return getStorageObjectPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an object in a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
+     *             .key("<object name>")
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageObjectResult> getStorageObject(GetStorageObjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorageObject:getStorageObject", TypeShape.of(GetStorageObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an object in a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
+     *             .key("<object name>")
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStorageObjectResult> getStorageObjectPlain(GetStorageObjectPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getStorageObject:getStorageObject", TypeShape.of(GetStorageObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get objects of S3™* compatible storage containers. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageObjectsResult> getStorageObjects(GetStorageObjectsArgs args) {
+        return getStorageObjects(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get objects of S3™* compatible storage containers. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStorageObjectsResult> getStorageObjectsPlain(GetStorageObjectsPlainArgs args) {
+        return getStorageObjectsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get objects of S3™* compatible storage containers. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageObjectsResult> getStorageObjects(GetStorageObjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorageObjects:getStorageObjects", TypeShape.of(GetStorageObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get objects of S3™* compatible storage containers. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
+     *             .name("<bucket name>")
+     *             .regionName("GRA")
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStorageObjectsResult> getStorageObjectsPlain(GetStorageObjectsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getStorageObjects:getStorageObjects", TypeShape.of(GetStorageObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7695,8 +8402,7 @@ public final class CloudProjectFunctions {
         return getStorages(args, InvokeOptions.Empty);
     }
     /**
-     * List your S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7739,8 +8445,7 @@ public final class CloudProjectFunctions {
         return getStoragesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * List your S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 
@@ -7783,8 +8488,7 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getStorages:getStorages", TypeShape.of(GetStoragesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * List your S3™* compatible storage container.
-     * \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
      * 
      * ## Example Usage
      * 

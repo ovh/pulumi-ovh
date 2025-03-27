@@ -30,7 +30,7 @@ public final class RancherTargetSpec {
      */
     private String plan;
     /**
-     * @return Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+     * @return Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
      * 
      */
     private @Nullable String version;
@@ -58,7 +58,7 @@ public final class RancherTargetSpec {
         return this.plan;
     }
     /**
-     * @return Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+     * @return Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
      * 
      */
     public Optional<String> version() {

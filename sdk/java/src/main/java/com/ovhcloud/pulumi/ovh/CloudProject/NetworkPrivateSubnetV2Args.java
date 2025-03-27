@@ -21,16 +21,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     public static final NetworkPrivateSubnetV2Args Empty = new NetworkPrivateSubnetV2Args();
 
     /**
-     * List of IP allocation pools
-     * Changing this value recreates the resource.
+     * List of IP allocation pools Changing this value recreates the resource.
      * 
      */
     @Import(name="allocationPools")
     private @Nullable Output<List<NetworkPrivateSubnetV2AllocationPoolArgs>> allocationPools;
 
     /**
-     * @return List of IP allocation pools
-     * Changing this value recreates the resource.
+     * @return List of IP allocation pools Changing this value recreates the resource.
      * 
      */
     public Optional<Output<List<NetworkPrivateSubnetV2AllocationPoolArgs>>> allocationPools() {
@@ -38,16 +36,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * IP range of the subnet
-     * Changing this value recreates the subnet.
+     * IP range of the subnet Changing this value recreates the subnet.
      * 
      */
     @Import(name="cidr", required=true)
     private Output<String> cidr;
 
     /**
-     * @return IP range of the subnet
-     * Changing this value recreates the subnet.
+     * @return IP range of the subnet Changing this value recreates the subnet.
      * 
      */
     public Output<String> cidr() {
@@ -55,16 +51,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to true.
+     * Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<Boolean> dhcp;
 
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to true.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -72,16 +66,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * DNS nameservers used by DHCP
-     * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+     * DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
      * 
      */
     @Import(name="dnsNameservers")
     private @Nullable Output<List<String>> dnsNameservers;
 
     /**
-     * @return DNS nameservers used by DHCP
-     * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+     * @return DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
      * 
      */
     public Optional<Output<List<String>>> dnsNameservers() {
@@ -89,16 +81,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Set to true if you want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to true.
+     * Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
      * 
      */
     @Import(name="enableGatewayIp")
     private @Nullable Output<Boolean> enableGatewayIp;
 
     /**
-     * @return Set to true if you want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to true.
+     * @return Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> enableGatewayIp() {
@@ -136,16 +126,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Name of the subnet
-     * Changing this value recreates the subnet.
+     * Name of the subnet Changing this value recreates the subnet.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the subnet
-     * Changing this value recreates the subnet.
+     * @return Name of the subnet Changing this value recreates the subnet.
      * 
      */
     public Optional<Output<String>> name() {
@@ -153,16 +141,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
+     * The id of the network. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="networkId", required=true)
     private Output<String> networkId;
 
     /**
-     * @return The id of the network.
-     * Changing this forces a new resource to be created.
+     * @return The id of the network. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> networkId() {
@@ -170,16 +156,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     public Output<String> region() {
@@ -187,16 +171,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -204,16 +186,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Set to false if you want to use your DNS resolver.
-     * Changing this value recreates the resource.
+     * Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
      * 
      */
     @Import(name="useDefaultPublicDnsResolver")
     private @Nullable Output<Boolean> useDefaultPublicDnsResolver;
 
     /**
-     * @return Set to false if you want to use your DNS resolver.
-     * Changing this value recreates the resource.
+     * @return Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
      * 
      */
     public Optional<Output<Boolean>> useDefaultPublicDnsResolver() {
@@ -256,8 +236,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allocationPools List of IP allocation pools
-         * Changing this value recreates the resource.
+         * @param allocationPools List of IP allocation pools Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -268,8 +247,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allocationPools List of IP allocation pools
-         * Changing this value recreates the resource.
+         * @param allocationPools List of IP allocation pools Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -279,8 +257,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allocationPools List of IP allocation pools
-         * Changing this value recreates the resource.
+         * @param allocationPools List of IP allocation pools Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -290,8 +267,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param cidr IP range of the subnet
-         * Changing this value recreates the subnet.
+         * @param cidr IP range of the subnet Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -302,8 +278,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param cidr IP range of the subnet
-         * Changing this value recreates the subnet.
+         * @param cidr IP range of the subnet Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -313,8 +288,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dhcp Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to true.
+         * @param dhcp Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
          * 
          * @return builder
          * 
@@ -325,8 +299,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dhcp Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to true.
+         * @param dhcp Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
          * 
          * @return builder
          * 
@@ -336,8 +309,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dnsNameservers DNS nameservers used by DHCP
-         * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+         * @param dnsNameservers DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
          * 
          * @return builder
          * 
@@ -348,8 +320,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dnsNameservers DNS nameservers used by DHCP
-         * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+         * @param dnsNameservers DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
          * 
          * @return builder
          * 
@@ -359,8 +330,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dnsNameservers DNS nameservers used by DHCP
-         * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+         * @param dnsNameservers DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
          * 
          * @return builder
          * 
@@ -370,8 +340,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enableGatewayIp Set to true if you want to set a default gateway IP.
-         * Changing this value recreates the resource. Defaults to true.
+         * @param enableGatewayIp Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
          * 
          * @return builder
          * 
@@ -382,8 +351,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enableGatewayIp Set to true if you want to set a default gateway IP.
-         * Changing this value recreates the resource. Defaults to true.
+         * @param enableGatewayIp Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
          * 
          * @return builder
          * 
@@ -445,8 +413,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Name of the subnet
-         * Changing this value recreates the subnet.
+         * @param name Name of the subnet Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -457,8 +424,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Name of the subnet
-         * Changing this value recreates the subnet.
+         * @param name Name of the subnet Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -468,8 +434,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param networkId The id of the network.
-         * Changing this forces a new resource to be created.
+         * @param networkId The id of the network. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -480,8 +445,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param networkId The id of the network.
-         * Changing this forces a new resource to be created.
+         * @param networkId The id of the network. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -491,8 +455,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param region The region in which the network subnet will be created.
-         * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+         * @param region The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -503,8 +466,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param region The region in which the network subnet will be created.
-         * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+         * @param region The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -514,8 +476,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -526,8 +487,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -537,8 +497,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useDefaultPublicDnsResolver Set to false if you want to use your DNS resolver.
-         * Changing this value recreates the resource.
+         * @param useDefaultPublicDnsResolver Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -549,8 +508,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useDefaultPublicDnsResolver Set to false if you want to use your DNS resolver.
-         * Changing this value recreates the resource.
+         * @param useDefaultPublicDnsResolver Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
          * 
          * @return builder
          * 

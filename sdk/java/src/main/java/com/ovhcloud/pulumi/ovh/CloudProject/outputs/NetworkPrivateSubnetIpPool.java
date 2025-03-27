@@ -13,72 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkPrivateSubnetIpPool {
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     private @Nullable Boolean dhcp;
     /**
-     * @return Last ip for this region.
-     * Changing this value recreates the subnet.
+     * @return Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     private @Nullable String end;
     /**
-     * @return Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * @return Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     private @Nullable String network;
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     private @Nullable String region;
     /**
-     * @return First ip for this region.
-     * Changing this value recreates the subnet.
+     * @return First ip for this region. Changing this value recreates the subnet.
      * 
      */
     private @Nullable String start;
 
     private NetworkPrivateSubnetIpPool() {}
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     public Optional<Boolean> dhcp() {
         return Optional.ofNullable(this.dhcp);
     }
     /**
-     * @return Last ip for this region.
-     * Changing this value recreates the subnet.
+     * @return Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Optional<String> end() {
         return Optional.ofNullable(this.end);
     }
     /**
-     * @return Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * @return Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return First ip for this region.
-     * Changing this value recreates the subnet.
+     * @return First ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Optional<String> start() {

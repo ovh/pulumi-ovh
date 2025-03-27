@@ -18,6 +18,10 @@ public final class GetPermissionsGroupResult {
     private @Nullable List<String> denies;
     private @Nullable String description;
     private @Nullable List<String> excepts;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private String id;
     private String name;
     private String owner;
@@ -40,6 +44,10 @@ public final class GetPermissionsGroupResult {
     public List<String> excepts() {
         return this.excepts == null ? List.of() : this.excepts;
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

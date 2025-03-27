@@ -26,8 +26,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * **This resource uses a Beta API**
- * Creates an instance associated with a public cloud project.
+ * **This resource uses a Beta API** Creates an instance associated with a public cloud project.
  * 
  * ## Example Usage
  * 
@@ -298,16 +297,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
      * 
      */
     public Output<String> serviceName() {

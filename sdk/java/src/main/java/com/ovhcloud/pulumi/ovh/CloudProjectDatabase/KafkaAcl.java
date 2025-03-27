@@ -91,32 +91,28 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * Permission to give to this username on this topic.
-     * Available permissions:
+     * Permission to give to this username on this topic. Available permissions:
      * 
      */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
-     * @return Permission to give to this username on this topic.
-     * Available permissions:
+     * @return Permission to give to this username on this topic. Available permissions:
      * 
      */
     public Output<String> permission() {
         return this.permission;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

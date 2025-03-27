@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         ctx.export("rancherUrl", rancher.currentState().applyValue(currentState -> currentState.url()));
  *     }
  * }
  * }
@@ -62,11 +63,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A share in a public cloud project can be imported using the `project_id` and `id` attributes.
+ * A share in a public cloud project can be imported using the `project_id` and `id` attributes. Using the following configuration:
  * 
- * Using the following configuration:
- * 
- * hcl
+ * terraform
  * 
  * import {
  * 
@@ -84,9 +83,7 @@ import javax.annotation.Nullable;
  * 
  * $ pulumi up
  * 
- * The file `rancher.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
- * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `rancher.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:CloudProject/rancher:Rancher")

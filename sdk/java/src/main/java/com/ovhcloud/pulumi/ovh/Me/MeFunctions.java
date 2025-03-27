@@ -1478,8 +1478,7 @@ public final class MeFunctions {
         return Deployment.getInstance().invokeAsync("ovh:Me/getMe:getMe", TypeShape.of(GetMeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve information about a bank account
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1521,8 +1520,7 @@ public final class MeFunctions {
         return getPaymentmeanBankAccount(GetPaymentmeanBankAccountArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a bank account
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1564,8 +1562,7 @@ public final class MeFunctions {
         return getPaymentmeanBankAccountPlain(GetPaymentmeanBankAccountPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a bank account
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1607,8 +1604,7 @@ public final class MeFunctions {
         return getPaymentmeanBankAccount(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a bank account
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1650,8 +1646,7 @@ public final class MeFunctions {
         return getPaymentmeanBankAccountPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a bank account
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1693,8 +1688,7 @@ public final class MeFunctions {
         return Deployment.getInstance().invoke("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", TypeShape.of(GetPaymentmeanBankAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve information about a bank account
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1736,8 +1730,7 @@ public final class MeFunctions {
         return Deployment.getInstance().invokeAsync("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", TypeShape.of(GetPaymentmeanBankAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve information about a credit card
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1779,8 +1772,7 @@ public final class MeFunctions {
         return getPaymentmeanCreditCard(GetPaymentmeanCreditCardArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a credit card
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1822,8 +1814,7 @@ public final class MeFunctions {
         return getPaymentmeanCreditCardPlain(GetPaymentmeanCreditCardPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a credit card
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1865,8 +1856,7 @@ public final class MeFunctions {
         return getPaymentmeanCreditCard(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a credit card
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1908,8 +1898,7 @@ public final class MeFunctions {
         return getPaymentmeanCreditCardPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve information about a credit card
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 
@@ -1951,8 +1940,7 @@ public final class MeFunctions {
         return Deployment.getInstance().invoke("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", TypeShape.of(GetPaymentmeanCreditCardResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve information about a credit card
-     * payment mean associated with an OVHcloud account.
+     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
      * 
      * ## Example Usage
      * 

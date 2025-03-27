@@ -75,6 +75,12 @@ import javax.annotation.Nullable;
  * 
  * TCP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by &#34;/&#34; e.g.
  * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule examplerule service_name/route_id/rule_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpRouteRule:TcpRouteRule")
 public class TcpRouteRule extends com.pulumi.resources.CustomResource {

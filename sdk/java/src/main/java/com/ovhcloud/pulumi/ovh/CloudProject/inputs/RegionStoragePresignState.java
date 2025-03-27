@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,16 +18,14 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
     public static final RegionStoragePresignState Empty = new RegionStoragePresignState();
 
     /**
-     * Define, in seconds, for how long your URL will be
-     * valid.
+     * Define, in seconds, for how long your URL will be valid.
      * 
      */
     @Import(name="expire")
     private @Nullable Output<Integer> expire;
 
     /**
-     * @return Define, in seconds, for how long your URL will be
-     * valid.
+     * @return Define, in seconds, for how long your URL will be valid.
      * 
      */
     public Optional<Output<Integer>> expire() {
@@ -34,16 +33,14 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The method you want to use to interact with your
-     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The method you want to use to interact with your
-     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * @return The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     public Optional<Output<String>> method() {
@@ -81,16 +78,14 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: &#34;GRA&#34;.
+     * The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     @Import(name="regionName")
     private @Nullable Output<String> regionName;
 
     /**
-     * @return The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: &#34;GRA&#34;.
+     * @return The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     public Optional<Output<String>> regionName() {
@@ -98,20 +93,33 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
+    }
+
+    /**
+     * Map of signed headers.
+     * 
+     */
+    @Import(name="signedHeaders")
+    private @Nullable Output<Map<String,String>> signedHeaders;
+
+    /**
+     * @return Map of signed headers.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> signedHeaders() {
+        return Optional.ofNullable(this.signedHeaders);
     }
 
     /**
@@ -129,6 +137,21 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * Version ID of the object to download or delete
+     * 
+     */
+    @Import(name="versionId")
+    private @Nullable Output<String> versionId;
+
+    /**
+     * @return Version ID of the object to download or delete
+     * 
+     */
+    public Optional<Output<String>> versionId() {
+        return Optional.ofNullable(this.versionId);
+    }
+
     private RegionStoragePresignState() {}
 
     private RegionStoragePresignState(RegionStoragePresignState $) {
@@ -138,7 +161,9 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         this.object = $.object;
         this.regionName = $.regionName;
         this.serviceName = $.serviceName;
+        this.signedHeaders = $.signedHeaders;
         this.url = $.url;
+        this.versionId = $.versionId;
     }
 
     public static Builder builder() {
@@ -160,8 +185,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param expire Define, in seconds, for how long your URL will be
-         * valid.
+         * @param expire Define, in seconds, for how long your URL will be valid.
          * 
          * @return builder
          * 
@@ -172,8 +196,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param expire Define, in seconds, for how long your URL will be
-         * valid.
+         * @param expire Define, in seconds, for how long your URL will be valid.
          * 
          * @return builder
          * 
@@ -183,8 +206,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param method The method you want to use to interact with your
-         * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+         * @param method The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
          * 
          * @return builder
          * 
@@ -195,8 +217,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param method The method you want to use to interact with your
-         * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+         * @param method The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
          * 
          * @return builder
          * 
@@ -248,8 +269,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param regionName The region in which your storage is located. Must
-         * be in **uppercase**. Ex.: &#34;GRA&#34;.
+         * @param regionName The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
          * 
          * @return builder
          * 
@@ -260,8 +280,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param regionName The region in which your storage is located. Must
-         * be in **uppercase**. Ex.: &#34;GRA&#34;.
+         * @param regionName The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
          * 
          * @return builder
          * 
@@ -271,8 +290,7 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -283,14 +301,34 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param signedHeaders Map of signed headers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedHeaders(@Nullable Output<Map<String,String>> signedHeaders) {
+            $.signedHeaders = signedHeaders;
+            return this;
+        }
+
+        /**
+         * @param signedHeaders Map of signed headers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedHeaders(Map<String,String> signedHeaders) {
+            return signedHeaders(Output.of(signedHeaders));
         }
 
         /**
@@ -312,6 +350,27 @@ public final class RegionStoragePresignState extends com.pulumi.resources.Resour
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param versionId Version ID of the object to download or delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(@Nullable Output<String> versionId) {
+            $.versionId = versionId;
+            return this;
+        }
+
+        /**
+         * @param versionId Version ID of the object to download or delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(String versionId) {
+            return versionId(Output.of(versionId));
         }
 
         public RegionStoragePresignState build() {

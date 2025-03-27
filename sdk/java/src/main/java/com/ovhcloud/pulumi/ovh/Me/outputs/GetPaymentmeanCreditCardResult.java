@@ -15,8 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPaymentmeanCreditCardResult {
     /**
-     * @return a boolean which tells if the retrieved credit card
-     * is marked as the default payment mean
+     * @return a boolean which tells if the retrieved credit card is marked as the default payment mean
      * 
      */
     private Boolean default_;
@@ -42,8 +41,7 @@ public final class GetPaymentmeanCreditCardResult {
 
     private GetPaymentmeanCreditCardResult() {}
     /**
-     * @return a boolean which tells if the retrieved credit card
-     * is marked as the default payment mean
+     * @return a boolean which tells if the retrieved credit card is marked as the default payment mean
      * 
      */
     public Boolean default_() {

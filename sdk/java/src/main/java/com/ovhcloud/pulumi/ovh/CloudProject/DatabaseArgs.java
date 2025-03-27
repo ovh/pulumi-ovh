@@ -98,16 +98,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * @return The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     public Output<String> engine() {
@@ -115,18 +113,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     @Import(name="flavor", required=true)
     private Output<String> flavor;
 
     /**
-     * @return A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * @return A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     public Output<String> flavor() {
@@ -194,16 +188,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * List of nodes object. Multi region cluster are not yet available, all node should be identical.
      * 
      */
     @Import(name="nodes", required=true)
     private Output<List<DatabaseNodeArgs>> nodes;
 
     /**
-     * @return List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * @return List of nodes object. Multi region cluster are not yet available, all node should be identical.
      * 
      */
     public Output<List<DatabaseNodeArgs>> nodes() {
@@ -249,16 +241,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -435,8 +425,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine The database engine you want to deploy. To get a full list of available engine visit.
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+         * @param engine The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
          * 
          * @return builder
          * 
@@ -447,8 +436,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine The database engine you want to deploy. To get a full list of available engine visit.
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+         * @param engine The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
          * 
          * @return builder
          * 
@@ -458,9 +446,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavor A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-         * Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor.
-         * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+         * @param flavor A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
          * 
          * @return builder
          * 
@@ -471,9 +457,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavor A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-         * Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor.
-         * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+         * @param flavor A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
          * 
          * @return builder
          * 
@@ -577,8 +561,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes List of nodes object.
-         * Multi region cluster are not yet available, all node should be identical.
+         * @param nodes List of nodes object. Multi region cluster are not yet available, all node should be identical.
          * 
          * @return builder
          * 
@@ -589,8 +572,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes List of nodes object.
-         * Multi region cluster are not yet available, all node should be identical.
+         * @param nodes List of nodes object. Multi region cluster are not yet available, all node should be identical.
          * 
          * @return builder
          * 
@@ -600,8 +582,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes List of nodes object.
-         * Multi region cluster are not yet available, all node should be identical.
+         * @param nodes List of nodes object. Multi region cluster are not yet available, all node should be identical.
          * 
          * @return builder
          * 
@@ -661,8 +642,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -673,8 +653,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

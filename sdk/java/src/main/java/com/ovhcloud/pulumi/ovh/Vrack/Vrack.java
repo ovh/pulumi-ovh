@@ -80,11 +80,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A vRack can be imported using the `service_name`.
+ * A vRack can be imported using the `service_name`. Using the following configuration:
  * 
- * Using the following configuration:
- * 
- * hcl
+ * terraform
  * 
  * import {
  * 
@@ -102,9 +100,7 @@ import javax.annotation.Nullable;
  * 
  * $ pulumi up
  * 
- * The file `vrack.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
- * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `vrack.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Vrack/vrack:Vrack")

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  * Using the following configuration:
  * 
- * hcl
+ * terraform
  * 
  * import {
  * 
@@ -84,9 +84,7 @@ import javax.annotation.Nullable;
  * 
  * $ pulumi up
  * 
- * The file `ds_records.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
- * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `ds_records.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Domain/dSRecords:DSRecords")

@@ -64,14 +64,14 @@ public final class RancherTargetSpecArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+     * Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+     * @return Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
      * 
      */
     public Optional<Output<String>> version() {
@@ -179,7 +179,7 @@ public final class RancherTargetSpecArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+         * @param version Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class RancherTargetSpecArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+         * @param version Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
          * 
          * @return builder
          * 

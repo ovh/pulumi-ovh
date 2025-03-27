@@ -17,16 +17,14 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     public static final NetworkPrivateSubnetIpPoolArgs Empty = new NetworkPrivateSubnetIpPoolArgs();
 
     /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<Boolean> dhcp;
 
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to false.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -34,16 +32,14 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Last ip for this region.
-     * Changing this value recreates the subnet.
+     * Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     @Import(name="end")
     private @Nullable Output<String> end;
 
     /**
-     * @return Last ip for this region.
-     * Changing this value recreates the subnet.
+     * @return Last ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Optional<Output<String>> end() {
@@ -51,16 +47,14 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Global network in CIDR format.
-     * Changing this value recreates the subnet
+     * @return Global network in CIDR format. Changing this value recreates the subnet
      * 
      */
     public Optional<Output<String>> network() {
@@ -68,16 +62,14 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     public Optional<Output<String>> region() {
@@ -85,16 +77,14 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * First ip for this region.
-     * Changing this value recreates the subnet.
+     * First ip for this region. Changing this value recreates the subnet.
      * 
      */
     @Import(name="start")
     private @Nullable Output<String> start;
 
     /**
-     * @return First ip for this region.
-     * Changing this value recreates the subnet.
+     * @return First ip for this region. Changing this value recreates the subnet.
      * 
      */
     public Optional<Output<String>> start() {
@@ -130,8 +120,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dhcp Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to false.
+         * @param dhcp Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
          * 
          * @return builder
          * 
@@ -142,8 +131,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dhcp Enable DHCP.
-         * Changing this forces a new resource to be created. Defaults to false.
+         * @param dhcp Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
          * 
          * @return builder
          * 
@@ -153,8 +141,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param end Last ip for this region.
-         * Changing this value recreates the subnet.
+         * @param end Last ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -165,8 +152,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param end Last ip for this region.
-         * Changing this value recreates the subnet.
+         * @param end Last ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -176,8 +162,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param network Global network in CIDR format.
-         * Changing this value recreates the subnet
+         * @param network Global network in CIDR format. Changing this value recreates the subnet
          * 
          * @return builder
          * 
@@ -188,8 +173,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param network Global network in CIDR format.
-         * Changing this value recreates the subnet
+         * @param network Global network in CIDR format. Changing this value recreates the subnet
          * 
          * @return builder
          * 
@@ -199,8 +183,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param region The region in which the network subnet will be created.
-         * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+         * @param region The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -211,8 +194,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param region The region in which the network subnet will be created.
-         * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+         * @param region The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -222,8 +204,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param start First ip for this region.
-         * Changing this value recreates the subnet.
+         * @param start First ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 
@@ -234,8 +215,7 @@ public final class NetworkPrivateSubnetIpPoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param start First ip for this region.
-         * Changing this value recreates the subnet.
+         * @param start First ip for this region. Changing this value recreates the subnet.
          * 
          * @return builder
          * 

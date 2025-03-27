@@ -53,7 +53,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
     /**
      * Available attributes and their types are OS-dependant. Example: `hostname`.
      * 
-     * &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      * 
      */
     @Import(name="customizations")
@@ -62,7 +62,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
     /**
      * @return Available attributes and their types are OS-dependant. Example: `hostname`.
      * 
-     * &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      * 
      */
     public Optional<Output<ServerReinstallTaskCustomizationsArgs>> customizations() {
@@ -284,7 +284,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
         /**
          * @param customizations Available attributes and their types are OS-dependant. Example: `hostname`.
          * 
-         * &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+         * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
         /**
          * @param customizations Available attributes and their types are OS-dependant. Example: `hostname`.
          * 
-         * &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+         * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
          * 
          * @return builder
          * 

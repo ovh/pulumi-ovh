@@ -100,8 +100,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordReset);
     }
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
      * * `clusterManager{@literal @}admin`
@@ -125,8 +124,7 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> roles;
 
     /**
-     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
      * * `clusterManager{@literal @}admin`
@@ -150,16 +148,14 @@ public class MongoDbUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.roles);
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

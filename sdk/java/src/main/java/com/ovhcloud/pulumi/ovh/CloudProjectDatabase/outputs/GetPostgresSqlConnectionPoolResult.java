@@ -27,8 +27,7 @@ public final class GetPostgresSqlConnectionPoolResult {
      */
     private String id;
     /**
-     * @return Connection mode to the connection pool
-     * Available modes:
+     * @return Connection mode to the connection pool Available modes:
      * 
      */
     private String mode;
@@ -91,8 +90,7 @@ public final class GetPostgresSqlConnectionPoolResult {
         return this.id;
     }
     /**
-     * @return Connection mode to the connection pool
-     * Available modes:
+     * @return Connection mode to the connection pool Available modes:
      * 
      */
     public String mode() {

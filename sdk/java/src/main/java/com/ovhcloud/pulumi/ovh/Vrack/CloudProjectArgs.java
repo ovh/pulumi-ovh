@@ -15,16 +15,14 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final CloudProjectArgs Empty = new CloudProjectArgs();
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> projectId() {
@@ -32,16 +30,14 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * @return The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -74,8 +70,7 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param projectId The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -86,8 +81,7 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param projectId The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -97,8 +91,7 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The service name of the vrack. If omitted,
-         * the `OVH_VRACK_SERVICE` environment variable is used.
+         * @param serviceName The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -109,8 +102,7 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The service name of the vrack. If omitted,
-         * the `OVH_VRACK_SERVICE` environment variable is used.
+         * @param serviceName The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

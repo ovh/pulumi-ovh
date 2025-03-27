@@ -87,16 +87,14 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+     * an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
      * 
      */
     @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
     /**
-     * @return an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+     * @return an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
      * 
      */
     public Output<List<String>> regions() {
@@ -145,16 +143,14 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
         return this.regionsStatuses;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -189,16 +185,14 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      * 
      */
     @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vlanId;
 
     /**
-     * @return a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * @return a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      * 
      */
     public Output<Optional<Integer>> vlanId() {

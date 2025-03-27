@@ -16,7 +16,7 @@ public final class ZonePlanConfiguration {
      */
     private String label;
     /**
-     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     private String value;
@@ -30,7 +30,7 @@ public final class ZonePlanConfiguration {
         return this.label;
     }
     /**
-     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     public String value() {

@@ -20,9 +20,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Create S3™* compatible storage container
- * (* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.)
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -65,11 +62,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes.
+ * A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
  * 
- * Using the following configuration:
- * 
- * hcl
+ * terraform
  * 
  * import {
  * 
@@ -87,9 +82,7 @@ import javax.annotation.Nullable;
  * 
  * $ pulumi up
  * 
- * The file `storage.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
- * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `storage.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:CloudProject/storage:Storage")

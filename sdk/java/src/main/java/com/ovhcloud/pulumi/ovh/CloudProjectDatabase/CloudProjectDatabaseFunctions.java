@@ -1569,7 +1569,7 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", TypeShape.of(GetDatabaseLogSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -1613,7 +1613,7 @@ public final class CloudProjectDatabaseFunctions {
         return getDatabasePostgreSQLConnectionPools(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -1657,7 +1657,7 @@ public final class CloudProjectDatabaseFunctions {
         return getDatabasePostgreSQLConnectionPoolsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 
@@ -1701,7 +1701,7 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", TypeShape.of(GetDatabasePostgreSQLConnectionPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of  connection pools of a postgresql cluster associated with a public cloud project.
+     * Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
      * 
      * ## Example Usage
      * 

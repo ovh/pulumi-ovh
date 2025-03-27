@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * OVHcloud VPS database can be imported using the `service_name`, E.g.,
  * 
- * hcl
+ * terraform
  * 
  * import {
  * 
@@ -104,9 +104,7 @@ import javax.annotation.Nullable;
  * 
  * pulumi preview -generate-config-out=./vps.tf
  * 
- * The file `vps.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
- * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `vps.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:Vps/vps:Vps")

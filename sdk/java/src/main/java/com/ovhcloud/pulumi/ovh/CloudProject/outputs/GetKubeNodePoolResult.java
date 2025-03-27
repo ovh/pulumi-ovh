@@ -27,20 +27,17 @@ public final class GetKubeNodePoolResult {
      */
     private Boolean autoscale;
     /**
-     * @return (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * @return (Optional) scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      * 
      */
     private Integer autoscalingScaleDownUnneededTimeSeconds;
     /**
-     * @return (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * @return (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      * 
      */
     private Integer autoscalingScaleDownUnreadyTimeSeconds;
     /**
-     * @return (Optional) scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * @return (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * 
      */
     private Double autoscalingScaleDownUtilizationThreshold;
@@ -70,9 +67,7 @@ public final class GetKubeNodePoolResult {
      */
     private String flavor;
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-     * Ex: &#34;b2-7&#34;. Changing this value recreates the resource.
-     * You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     private String flavorName;
@@ -87,14 +82,12 @@ public final class GetKubeNodePoolResult {
      */
     private String kubeId;
     /**
-     * @return maximum number of nodes allowed in the pool.
-     * Setting `desired_nodes` over this value will raise an error.
+     * @return maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
      * 
      */
     private Integer maxNodes;
     /**
-     * @return minimum number of nodes allowed in the pool.
-     * Setting `desired_nodes` under this value will raise an error.
+     * @return minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
      * 
      */
     private Integer minNodes;
@@ -104,9 +97,7 @@ public final class GetKubeNodePoolResult {
      */
     private Boolean monthlyBilled;
     /**
-     * @return (Optional) The name of the nodepool.
-     * Changing this value recreates the resource.
-     * Warning: &#34;_&#34; char is not allowed!
+     * @return (Optional) The name of the nodepool. Changing this value recreates the resource. Warning: &#34;_&#34; char is not allowed!
      * 
      */
     private String name;
@@ -158,24 +149,21 @@ public final class GetKubeNodePoolResult {
         return this.autoscale;
     }
     /**
-     * @return (Optional) scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * @return (Optional) scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      * 
      */
     public Integer autoscalingScaleDownUnneededTimeSeconds() {
         return this.autoscalingScaleDownUnneededTimeSeconds;
     }
     /**
-     * @return (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * @return (Optional) scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      * 
      */
     public Integer autoscalingScaleDownUnreadyTimeSeconds() {
         return this.autoscalingScaleDownUnreadyTimeSeconds;
     }
     /**
-     * @return (Optional) scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * @return (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * 
      */
     public Double autoscalingScaleDownUtilizationThreshold() {
@@ -217,9 +205,7 @@ public final class GetKubeNodePoolResult {
         return this.flavor;
     }
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started.
-     * Ex: &#34;b2-7&#34;. Changing this value recreates the resource.
-     * You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     public String flavorName() {
@@ -240,16 +226,14 @@ public final class GetKubeNodePoolResult {
         return this.kubeId;
     }
     /**
-     * @return maximum number of nodes allowed in the pool.
-     * Setting `desired_nodes` over this value will raise an error.
+     * @return maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
      * 
      */
     public Integer maxNodes() {
         return this.maxNodes;
     }
     /**
-     * @return minimum number of nodes allowed in the pool.
-     * Setting `desired_nodes` under this value will raise an error.
+     * @return minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
      * 
      */
     public Integer minNodes() {
@@ -263,9 +247,7 @@ public final class GetKubeNodePoolResult {
         return this.monthlyBilled;
     }
     /**
-     * @return (Optional) The name of the nodepool.
-     * Changing this value recreates the resource.
-     * Warning: &#34;_&#34; char is not allowed!
+     * @return (Optional) The name of the nodepool. Changing this value recreates the resource. Warning: &#34;_&#34; char is not allowed!
      * 
      */
     public String name() {

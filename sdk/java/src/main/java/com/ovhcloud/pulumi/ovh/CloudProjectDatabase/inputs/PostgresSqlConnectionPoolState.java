@@ -47,16 +47,14 @@ public final class PostgresSqlConnectionPoolState extends com.pulumi.resources.R
     }
 
     /**
-     * Connection mode to the connection pool
-     * Available modes:
+     * Connection mode to the connection pool Available modes:
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Connection mode to the connection pool
-     * Available modes:
+     * @return Connection mode to the connection pool Available modes:
      * 
      */
     public Optional<Output<String>> mode() {
@@ -94,16 +92,14 @@ public final class PostgresSqlConnectionPoolState extends com.pulumi.resources.R
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -246,8 +242,7 @@ public final class PostgresSqlConnectionPoolState extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode Connection mode to the connection pool
-         * Available modes:
+         * @param mode Connection mode to the connection pool Available modes:
          * 
          * @return builder
          * 
@@ -258,8 +253,7 @@ public final class PostgresSqlConnectionPoolState extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode Connection mode to the connection pool
-         * Available modes:
+         * @param mode Connection mode to the connection pool Available modes:
          * 
          * @return builder
          * 
@@ -311,8 +305,7 @@ public final class PostgresSqlConnectionPoolState extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -323,8 +316,7 @@ public final class PostgresSqlConnectionPoolState extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

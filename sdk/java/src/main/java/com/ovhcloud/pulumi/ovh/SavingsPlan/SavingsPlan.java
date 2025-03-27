@@ -62,6 +62,12 @@ import javax.annotation.Nullable;
  * 
  * A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by &#34;/&#34; e.g.
  * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:SavingsPlan/savingsPlan:SavingsPlan plan service_name/savings_plan_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:SavingsPlan/savingsPlan:SavingsPlan")
 public class SavingsPlan extends com.pulumi.resources.CustomResource {

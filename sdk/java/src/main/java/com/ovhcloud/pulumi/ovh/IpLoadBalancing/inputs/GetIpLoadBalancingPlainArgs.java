@@ -107,22 +107,14 @@ public final class GetIpLoadBalancingPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Modern oldest compatible clients : Firefox 27, Chrome 30,
-     * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-     * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-     * Safari 1, Windows XP IE8, Android 2.3, Java 7.
-     * Can take any of the following value: &#34;intermediate&#34;, &#34;modern&#34;
+     * Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: &#34;intermediate&#34;, &#34;modern&#34;
      * 
      */
     @Import(name="sslConfiguration")
     private @Nullable String sslConfiguration;
 
     /**
-     * @return Modern oldest compatible clients : Firefox 27, Chrome 30,
-     * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-     * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-     * Safari 1, Windows XP IE8, Android 2.3, Java 7.
-     * Can take any of the following value: &#34;intermediate&#34;, &#34;modern&#34;
+     * @return Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: &#34;intermediate&#34;, &#34;modern&#34;
      * 
      */
     public Optional<String> sslConfiguration() {
@@ -130,16 +122,14 @@ public final class GetIpLoadBalancingPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Current state of your IP. Can take any of the following value:
-     * &#34;blacklisted&#34;, &#34;deleted&#34;, &#34;free&#34;, &#34;ok&#34;, &#34;quarantined&#34;, &#34;suspended&#34;
+     * Current state of your IP. Can take any of the following value: &#34;blacklisted&#34;, &#34;deleted&#34;, &#34;free&#34;, &#34;ok&#34;, &#34;quarantined&#34;, &#34;suspended&#34;
      * 
      */
     @Import(name="state")
     private @Nullable String state;
 
     /**
-     * @return Current state of your IP. Can take any of the following value:
-     * &#34;blacklisted&#34;, &#34;deleted&#34;, &#34;free&#34;, &#34;ok&#34;, &#34;quarantined&#34;, &#34;suspended&#34;
+     * @return Current state of your IP. Can take any of the following value: &#34;blacklisted&#34;, &#34;deleted&#34;, &#34;free&#34;, &#34;ok&#34;, &#34;quarantined&#34;, &#34;suspended&#34;
      * 
      */
     public Optional<String> state() {
@@ -162,16 +152,14 @@ public final class GetIpLoadBalancingPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Name of the vRack on which the current Load Balancer is
-     * attached to, as it is named on vRack product
+     * Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
      * 
      */
     @Import(name="vrackName")
     private @Nullable String vrackName;
 
     /**
-     * @return Name of the vRack on which the current Load Balancer is
-     * attached to, as it is named on vRack product
+     * @return Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
      * 
      */
     public Optional<String> vrackName() {
@@ -294,11 +282,7 @@ public final class GetIpLoadBalancingPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param sslConfiguration Modern oldest compatible clients : Firefox 27, Chrome 30,
-         * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-         * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-         * Safari 1, Windows XP IE8, Android 2.3, Java 7.
-         * Can take any of the following value: &#34;intermediate&#34;, &#34;modern&#34;
+         * @param sslConfiguration Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: &#34;intermediate&#34;, &#34;modern&#34;
          * 
          * @return builder
          * 
@@ -309,8 +293,7 @@ public final class GetIpLoadBalancingPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param state Current state of your IP. Can take any of the following value:
-         * &#34;blacklisted&#34;, &#34;deleted&#34;, &#34;free&#34;, &#34;ok&#34;, &#34;quarantined&#34;, &#34;suspended&#34;
+         * @param state Current state of your IP. Can take any of the following value: &#34;blacklisted&#34;, &#34;deleted&#34;, &#34;free&#34;, &#34;ok&#34;, &#34;quarantined&#34;, &#34;suspended&#34;
          * 
          * @return builder
          * 
@@ -332,8 +315,7 @@ public final class GetIpLoadBalancingPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param vrackName Name of the vRack on which the current Load Balancer is
-         * attached to, as it is named on vRack product
+         * @param vrackName Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
          * 
          * @return builder
          * 

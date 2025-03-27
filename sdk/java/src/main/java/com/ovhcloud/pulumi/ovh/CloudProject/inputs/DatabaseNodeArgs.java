@@ -32,16 +32,14 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Public cloud region in which the node should be deployed.
-     * Ex: &#34;GRA&#39;.
+     * Public cloud region in which the node should be deployed. Ex: &#34;GRA&#39;.
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return Public cloud region in which the node should be deployed.
-     * Ex: &#34;GRA&#39;.
+     * @return Public cloud region in which the node should be deployed. Ex: &#34;GRA&#39;.
      * 
      */
     public Output<String> region() {
@@ -111,8 +109,7 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Public cloud region in which the node should be deployed.
-         * Ex: &#34;GRA&#39;.
+         * @param region Public cloud region in which the node should be deployed. Ex: &#34;GRA&#39;.
          * 
          * @return builder
          * 
@@ -123,8 +120,7 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Public cloud region in which the node should be deployed.
-         * Ex: &#34;GRA&#39;.
+         * @param region Public cloud region in which the node should be deployed. Ex: &#34;GRA&#39;.
          * 
          * @return builder
          * 

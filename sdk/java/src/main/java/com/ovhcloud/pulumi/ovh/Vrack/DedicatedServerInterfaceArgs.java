@@ -30,16 +30,14 @@ public final class DedicatedServerInterfaceArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The id of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * @return The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -93,8 +91,7 @@ public final class DedicatedServerInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceName The id of the vrack. If omitted,
-         * the `OVH_VRACK_SERVICE` environment variable is used.
+         * @param serviceName The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -105,8 +102,7 @@ public final class DedicatedServerInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceName The id of the vrack. If omitted,
-         * the `OVH_VRACK_SERVICE` environment variable is used.
+         * @param serviceName The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

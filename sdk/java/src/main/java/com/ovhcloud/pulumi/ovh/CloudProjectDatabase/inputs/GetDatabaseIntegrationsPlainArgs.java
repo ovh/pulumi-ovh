@@ -29,18 +29,14 @@ public final class GetDatabaseIntegrationsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The engine of the database cluster you want to list integrations. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`
+     * The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
      * 
      */
     @Import(name="engine", required=true)
     private String engine;
 
     /**
-     * @return The engine of the database cluster you want to list integrations. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`
+     * @return The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
      * 
      */
     public String engine() {
@@ -48,16 +44,14 @@ public final class GetDatabaseIntegrationsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public String serviceName() {
@@ -102,9 +96,7 @@ public final class GetDatabaseIntegrationsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param engine The engine of the database cluster you want to list integrations. To get a full list of available engine visit:
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-         * All engines available exept `mongodb`
+         * @param engine The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
          * 
          * @return builder
          * 
@@ -115,8 +107,7 @@ public final class GetDatabaseIntegrationsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

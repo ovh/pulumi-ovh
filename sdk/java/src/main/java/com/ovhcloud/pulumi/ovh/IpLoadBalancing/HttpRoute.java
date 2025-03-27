@@ -70,6 +70,12 @@ import javax.annotation.Nullable;
  * 
  * HTTP route can be imported using the following format `service_name` and the `id` of the route separated by &#34;/&#34; e.g.
  * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/httpRoute:HttpRoute httpsredirect service_name/route_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpRoute:HttpRoute")
 public class HttpRoute extends com.pulumi.resources.CustomResource {

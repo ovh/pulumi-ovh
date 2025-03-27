@@ -83,6 +83,12 @@ import javax.annotation.Nullable;
  * 
  * HTTP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by &#34;/&#34; e.g.
  * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer backend service_name/farm_id/server_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/httpFarmServer:HttpFarmServer")
 public class HttpFarmServer extends com.pulumi.resources.CustomResource {
