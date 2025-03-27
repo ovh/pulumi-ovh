@@ -22,6 +22,3 @@ RUN sudo apt install gh -y
 
 #RUN go install github.com/pulumi/upgrade-provider@main
 RUN go install github.com/pulumi/upgrade-provider@773f438d82f96ad12a3f1e132fa8b08ae93366f4
-
-
-go install github.com/pulumi/upgrade-provider@82b427e67da0fc0d82344669210c939af541599a
