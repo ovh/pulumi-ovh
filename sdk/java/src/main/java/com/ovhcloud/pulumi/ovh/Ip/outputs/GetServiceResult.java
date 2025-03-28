@@ -54,7 +54,7 @@ public final class GetServiceResult {
      */
     private String serviceName;
     /**
-     * @return Possible values for ip type (    &#34;cdn&#34;, &#34;cloud&#34;, &#34;dedicated&#34;, &#34;failover&#34;, &#34;hosted_ssl&#34;, &#34;housing&#34;, &#34;loadBalancing&#34;, &#34;mail&#34;, &#34;overthebox&#34;, &#34;pcc&#34;, &#34;pci&#34;, &#34;private&#34;, &#34;vpn&#34;, &#34;vps&#34;, &#34;vrack&#34;, &#34;xdsl&#34;)
+     * @return Possible values for ip type ( &#34;cdn&#34;, &#34;cloud&#34;, &#34;dedicated&#34;, &#34;failover&#34;, &#34;hosted_ssl&#34;, &#34;housing&#34;, &#34;loadBalancing&#34;, &#34;mail&#34;, &#34;overthebox&#34;, &#34;pcc&#34;, &#34;pci&#34;, &#34;private&#34;, &#34;vpn&#34;, &#34;vps&#34;, &#34;vrack&#34;, &#34;xdsl&#34;)
      * 
      */
     private String type;
@@ -117,7 +117,7 @@ public final class GetServiceResult {
         return this.serviceName;
     }
     /**
-     * @return Possible values for ip type (    &#34;cdn&#34;, &#34;cloud&#34;, &#34;dedicated&#34;, &#34;failover&#34;, &#34;hosted_ssl&#34;, &#34;housing&#34;, &#34;loadBalancing&#34;, &#34;mail&#34;, &#34;overthebox&#34;, &#34;pcc&#34;, &#34;pci&#34;, &#34;private&#34;, &#34;vpn&#34;, &#34;vps&#34;, &#34;vrack&#34;, &#34;xdsl&#34;)
+     * @return Possible values for ip type ( &#34;cdn&#34;, &#34;cloud&#34;, &#34;dedicated&#34;, &#34;failover&#34;, &#34;hosted_ssl&#34;, &#34;housing&#34;, &#34;loadBalancing&#34;, &#34;mail&#34;, &#34;overthebox&#34;, &#34;pcc&#34;, &#34;pci&#34;, &#34;private&#34;, &#34;vpn&#34;, &#34;vps&#34;, &#34;vrack&#34;, &#34;xdsl&#34;)
      * 
      */
     public String type() {

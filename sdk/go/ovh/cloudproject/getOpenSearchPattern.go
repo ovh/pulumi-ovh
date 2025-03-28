@@ -57,8 +57,7 @@ type GetOpenSearchPatternArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Pattern ID.
 	Id string `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -91,8 +90,7 @@ type GetOpenSearchPatternOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Pattern ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

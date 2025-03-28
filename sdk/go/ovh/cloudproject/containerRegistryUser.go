@@ -60,8 +60,7 @@ type ContainerRegistryUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Registry ID
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// User name
 	User pulumi.StringOutput `pulumi:"user"`
@@ -121,8 +120,7 @@ type containerRegistryUserState struct {
 	Password *string `pulumi:"password"`
 	// Registry ID
 	RegistryId *string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// User name
 	User *string `pulumi:"user"`
@@ -137,8 +135,7 @@ type ContainerRegistryUserState struct {
 	Password pulumi.StringPtrInput
 	// Registry ID
 	RegistryId pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// User name
 	User pulumi.StringPtrInput
@@ -155,8 +152,7 @@ type containerRegistryUserArgs struct {
 	Login string `pulumi:"login"`
 	// Registry ID
 	RegistryId string `pulumi:"registryId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -168,8 +164,7 @@ type ContainerRegistryUserArgs struct {
 	Login pulumi.StringInput
 	// Registry ID
 	RegistryId pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -280,8 +275,7 @@ func (o ContainerRegistryUserOutput) RegistryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.RegistryId }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o ContainerRegistryUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

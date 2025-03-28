@@ -46,16 +46,13 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// a convenient map representing an openstack_rc file.
-        /// Note: no password nor sensitive token is set in this map.
+        /// a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         /// </summary>
         [Output("openstackRc")]
         public Output<ImmutableDictionary<string, string>> OpenstackRc { get; private set; } = null!;
 
         /// <summary>
-        /// (Sensitive) the password generated for the user. The password can
-        /// be used with the Openstack API. This attribute is sensitive and will only be
-        /// retrieve once during creation.
+        /// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -67,7 +64,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string?> RoleName { get; private set; } = null!;
 
         /// <summary>
-        /// A list of role names. Values can be: 
+        /// A list of role names. Values can be:
         /// - administrator,
         /// - ai_training_operator
         /// - ai_training_read
@@ -91,8 +88,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.UserRole>> Roles { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -104,8 +100,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// the username generated for the user. This username can be used with
-        /// the Openstack API.
+        /// the username generated for the user. This username can be used with the Openstack API.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -171,8 +166,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputMap<string>? _openstackRc;
 
         /// <summary>
-        /// a convenient map representing an openstack_rc file.
-        /// Note: no password nor sensitive token is set in this map.
+        /// a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         /// </summary>
         public InputMap<string> OpenstackRc
         {
@@ -190,7 +184,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _roleNames;
 
         /// <summary>
-        /// A list of role names. Values can be: 
+        /// A list of role names. Values can be:
         /// - administrator,
         /// - ai_training_operator
         /// - ai_training_read
@@ -211,8 +205,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -241,8 +234,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputMap<string>? _openstackRc;
 
         /// <summary>
-        /// a convenient map representing an openstack_rc file.
-        /// Note: no password nor sensitive token is set in this map.
+        /// a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         /// </summary>
         public InputMap<string> OpenstackRc
         {
@@ -254,9 +246,7 @@ namespace Pulumi.Ovh.CloudProject
         private Input<string>? _password;
 
         /// <summary>
-        /// (Sensitive) the password generated for the user. The password can
-        /// be used with the Openstack API. This attribute is sensitive and will only be
-        /// retrieve once during creation.
+        /// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
         /// </summary>
         public Input<string>? Password
         {
@@ -278,7 +268,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _roleNames;
 
         /// <summary>
-        /// A list of role names. Values can be: 
+        /// A list of role names. Values can be:
         /// - administrator,
         /// - ai_training_operator
         /// - ai_training_read
@@ -311,8 +301,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -324,8 +313,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// the username generated for the user. This username can be used with
-        /// the Openstack API.
+        /// the username generated for the user. This username can be used with the Openstack API.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

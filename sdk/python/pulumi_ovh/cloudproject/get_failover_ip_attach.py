@@ -169,8 +169,7 @@ def get_failover_ip_attach(block: Optional[str] = None,
     :param str block: The IP block
            * `continentCode` - The Ip continent
     :param str ip: The failover ip address to query
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['block'] = block
@@ -217,8 +216,7 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[str]]] =
     :param str block: The IP block
            * `continentCode` - The Ip continent
     :param str ip: The failover ip address to query
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['block'] = block

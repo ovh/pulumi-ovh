@@ -83,20 +83,17 @@ type Integration struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// ID of the destination service.
 	DestinationServiceId pulumi.StringOutput `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Parameters for the integration.
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// ID of the source service.
 	SourceServiceId pulumi.StringOutput `pulumi:"sourceServiceId"`
 	// Current status of the integration.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Type of the integration.
-	// Available types:
+	// Type of the integration. Available types:
 	// * `grafanaDashboard`
 	// * `grafanaDatasource`
 	// * `kafkaConnect`
@@ -154,20 +151,17 @@ type integrationState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// ID of the destination service.
 	DestinationServiceId *string `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
 	Engine *string `pulumi:"engine"`
 	// Parameters for the integration.
 	Parameters map[string]string `pulumi:"parameters"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// ID of the source service.
 	SourceServiceId *string `pulumi:"sourceServiceId"`
 	// Current status of the integration.
 	Status *string `pulumi:"status"`
-	// Type of the integration.
-	// Available types:
+	// Type of the integration. Available types:
 	// * `grafanaDashboard`
 	// * `grafanaDatasource`
 	// * `kafkaConnect`
@@ -181,20 +175,17 @@ type IntegrationState struct {
 	ClusterId pulumi.StringPtrInput
 	// ID of the destination service.
 	DestinationServiceId pulumi.StringPtrInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
 	Engine pulumi.StringPtrInput
 	// Parameters for the integration.
 	Parameters pulumi.StringMapInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// ID of the source service.
 	SourceServiceId pulumi.StringPtrInput
 	// Current status of the integration.
 	Status pulumi.StringPtrInput
-	// Type of the integration.
-	// Available types:
+	// Type of the integration. Available types:
 	// * `grafanaDashboard`
 	// * `grafanaDatasource`
 	// * `kafkaConnect`
@@ -212,18 +203,15 @@ type integrationArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// ID of the destination service.
 	DestinationServiceId string `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
 	Engine string `pulumi:"engine"`
 	// Parameters for the integration.
 	Parameters map[string]string `pulumi:"parameters"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// ID of the source service.
 	SourceServiceId string `pulumi:"sourceServiceId"`
-	// Type of the integration.
-	// Available types:
+	// Type of the integration. Available types:
 	// * `grafanaDashboard`
 	// * `grafanaDatasource`
 	// * `kafkaConnect`
@@ -238,18 +226,15 @@ type IntegrationArgs struct {
 	ClusterId pulumi.StringInput
 	// ID of the destination service.
 	DestinationServiceId pulumi.StringInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
 	Engine pulumi.StringInput
 	// Parameters for the integration.
 	Parameters pulumi.StringMapInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 	// ID of the source service.
 	SourceServiceId pulumi.StringInput
-	// Type of the integration.
-	// Available types:
+	// Type of the integration. Available types:
 	// * `grafanaDashboard`
 	// * `grafanaDatasource`
 	// * `kafkaConnect`
@@ -355,8 +340,7 @@ func (o IntegrationOutput) DestinationServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.DestinationServiceId }).(pulumi.StringOutput)
 }
 
-// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-// All engines available exept `mongodb`.
+// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
 func (o IntegrationOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -366,8 +350,7 @@ func (o IntegrationOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o IntegrationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -382,8 +365,7 @@ func (o IntegrationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Type of the integration.
-// Available types:
+// Type of the integration. Available types:
 // * `grafanaDashboard`
 // * `grafanaDatasource`
 // * `kafkaConnect`

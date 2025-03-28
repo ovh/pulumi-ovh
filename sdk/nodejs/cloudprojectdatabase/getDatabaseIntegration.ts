@@ -41,8 +41,7 @@ export interface GetDatabaseIntegrationArgs {
      */
     clusterId: string;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
      */
     engine: string;
     /**
@@ -50,8 +49,7 @@ export interface GetDatabaseIntegrationArgs {
      */
     id: string;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -134,8 +132,7 @@ export interface GetDatabaseIntegrationOutputArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
      */
     engine: pulumi.Input<string>;
     /**
@@ -143,8 +140,7 @@ export interface GetDatabaseIntegrationOutputArgs {
      */
     id: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

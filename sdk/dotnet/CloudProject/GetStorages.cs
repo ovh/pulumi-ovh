@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.CloudProject
     public static class GetStorages
     {
         /// <summary>
-        /// List your S3™* compatible storage container.
-        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
         /// 
         /// ## Example Usage
         /// 
@@ -38,8 +37,7 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStoragesResult>("ovh:CloudProject/getStorages:getStorages", args ?? new GetStoragesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// List your S3™* compatible storage container.
-        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
         /// 
         /// ## Example Usage
         /// 
@@ -64,8 +62,7 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.Invoke<GetStoragesResult>("ovh:CloudProject/getStorages:getStorages", args ?? new GetStoragesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// List your S3™* compatible storage container.
-        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
         /// 
         /// ## Example Usage
         /// 

@@ -190,8 +190,7 @@ def get_instance(instance_id: Optional[str] = None,
                  service_name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
-    **This datasource uses a Beta API**
-    Use this data source to get the instance of a public cloud project.
+    **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
 
     ## Example Usage
 
@@ -209,8 +208,7 @@ def get_instance(instance_id: Optional[str] = None,
 
     :param str instance_id: Instance id
     :param str region: Instance region
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -238,8 +236,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
                         service_name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
-    **This datasource uses a Beta API**
-    Use this data source to get the instance of a public cloud project.
+    **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
 
     ## Example Usage
 
@@ -257,8 +254,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
 
     :param str instance_id: Instance id
     :param str region: Instance region
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

@@ -34,13 +34,11 @@ export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetRegionArgs {
     /**
-     * The name of the region associated with the public cloud
-     * project.
+     * The name of the region associated with the public cloud project.
      */
     name: string;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -50,13 +48,11 @@ export interface GetRegionArgs {
  */
 export interface GetRegionResult {
     /**
-     * the code of the geographic continent the region is running.
-     * E.g.: EU for Europe, US for America...
+     * the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
      */
     readonly continentCode: string;
     /**
-     * The location code of the datacenter.
-     * E.g.: "GRA", meaning Gravelines, for region "GRA1"
+     * The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
      */
     readonly datacenterLocation: string;
     /**
@@ -101,13 +97,11 @@ export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetRegionOutputArgs {
     /**
-     * The name of the region associated with the public cloud
-     * project.
+     * The name of the region associated with the public cloud project.
      */
     name: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

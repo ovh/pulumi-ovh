@@ -41,6 +41,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// ## Import
     /// 
     /// TCP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:IpLoadBalancing/tcpFarm:TcpFarm farmname service_name/farm_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/tcpFarm:TcpFarm")]
     public partial class TcpFarm : global::Pulumi.CustomResource

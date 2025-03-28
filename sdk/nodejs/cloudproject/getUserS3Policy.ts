@@ -38,8 +38,7 @@ export function getUserS3Policy(args: GetUserS3PolicyArgs, opts?: pulumi.InvokeO
  */
 export interface GetUserS3PolicyArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
     /**
@@ -97,8 +96,7 @@ export function getUserS3PolicyOutput(args: GetUserS3PolicyOutputArgs, opts?: pu
  */
 export interface GetUserS3PolicyOutputArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

@@ -115,8 +115,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public string ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
         /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
@@ -128,8 +127,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -149,8 +147,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// All engines available exept `mongodb`
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -162,8 +159,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

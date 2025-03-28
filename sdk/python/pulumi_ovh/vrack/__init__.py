@@ -14,6 +14,7 @@ from .ip_loadbalancing import *
 from .ip_v6 import *
 from .ov_hcloud_connect import *
 from .vrack import *
+from .vrack_dedicated_cloud import *
 from .vrackservices import *
 from ._inputs import *
 from . import outputs

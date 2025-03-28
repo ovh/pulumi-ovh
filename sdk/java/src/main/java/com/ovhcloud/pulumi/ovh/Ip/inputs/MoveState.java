@@ -93,16 +93,14 @@ public final class MoveState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      * 
      */
     @Import(name="routedTo")
     private @Nullable Output<MoveRoutedToArgs> routedTo;
 
     /**
-     * @return Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * @return Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      * 
      */
     public Optional<Output<MoveRoutedToArgs>> routedTo() {
@@ -308,8 +306,7 @@ public final class MoveState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routedTo Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-         * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+         * @param routedTo Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
          * 
          * @return builder
          * 
@@ -320,8 +317,7 @@ public final class MoveState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routedTo Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-         * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+         * @param routedTo Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
          * 
          * @return builder
          * 

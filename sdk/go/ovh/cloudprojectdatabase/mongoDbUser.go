@@ -34,8 +34,7 @@ type MongoDbUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-	// Available roles:
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
 	// * `clusterManager@admin`
@@ -54,8 +53,7 @@ type MongoDbUser struct {
 	// * `userAdmin@(defined db)`
 	// * `userAdminAnyDatabase@admin`
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current status of the user.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -111,8 +109,7 @@ type mongoDbUserState struct {
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-	// Available roles:
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
 	// * `clusterManager@admin`
@@ -131,8 +128,7 @@ type mongoDbUserState struct {
 	// * `userAdmin@(defined db)`
 	// * `userAdminAnyDatabase@admin`
 	Roles []string `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status *string `pulumi:"status"`
@@ -149,8 +145,7 @@ type MongoDbUserState struct {
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-	// Available roles:
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
 	// * `clusterManager@admin`
@@ -169,8 +164,7 @@ type MongoDbUserState struct {
 	// * `userAdmin@(defined db)`
 	// * `userAdminAnyDatabase@admin`
 	Roles pulumi.StringArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current status of the user.
 	Status pulumi.StringPtrInput
@@ -187,8 +181,7 @@ type mongoDbUserArgs struct {
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-	// Available roles:
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
 	// * `clusterManager@admin`
@@ -207,8 +200,7 @@ type mongoDbUserArgs struct {
 	// * `userAdmin@(defined db)`
 	// * `userAdminAnyDatabase@admin`
 	Roles []string `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -220,8 +212,7 @@ type MongoDbUserArgs struct {
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-	// Available roles:
+	// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
 	// * `backup@admin`
 	// * `clusterAdmin@admin`
 	// * `clusterManager@admin`
@@ -240,8 +231,7 @@ type MongoDbUserArgs struct {
 	// * `userAdmin@(defined db)`
 	// * `userAdminAnyDatabase@admin`
 	Roles pulumi.StringArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -357,8 +347,7 @@ func (o MongoDbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-// Available roles:
+// Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
 // * `backup@admin`
 // * `clusterAdmin@admin`
 // * `clusterManager@admin`
@@ -380,8 +369,7 @@ func (o MongoDbUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o MongoDbUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoDbUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

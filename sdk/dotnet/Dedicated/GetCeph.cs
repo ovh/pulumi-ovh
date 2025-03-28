@@ -12,7 +12,7 @@ namespace Pulumi.Ovh.Dedicated
     public static class GetCeph
     {
         /// <summary>
-        /// Use this data source to retrieve information about a dedicated CEPH. 
+        /// Use this data source to retrieve information about a dedicated CEPH.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Ovh.Dedicated
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a dedicated CEPH. 
+        /// Use this data source to retrieve information about a dedicated CEPH.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Ovh.Dedicated
             => global::Pulumi.Deployment.Instance.Invoke<GetCephResult>("ovh:Dedicated/getCeph:getCeph", args ?? new GetCephInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a dedicated CEPH. 
+        /// Use this data source to retrieve information about a dedicated CEPH.
         /// 
         /// ## Example Usage
         /// 

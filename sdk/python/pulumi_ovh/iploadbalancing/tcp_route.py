@@ -256,6 +256,12 @@ class TcpRoute(pulumi.CustomResource):
 
         TCP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/tcpRoute:TcpRoute tcpreject service_name/route_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TcpRouteActionArgs', 'TcpRouteActionArgsDict']] action: Action triggered when all rules match
@@ -290,6 +296,12 @@ class TcpRoute(pulumi.CustomResource):
         ## Import
 
         TCP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/tcpRoute:TcpRoute tcpreject service_name/route_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param TcpRouteArgs args: The arguments to use to populate this resource's properties.

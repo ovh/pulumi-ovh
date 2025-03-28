@@ -72,9 +72,7 @@ type UdpFrontend struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Id of your frontend
 	FrontendId pulumi.Float64Output `pulumi:"frontendId"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -131,9 +129,7 @@ type udpFrontendState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Id of your frontend
 	FrontendId *float64 `pulumi:"frontendId"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port *string `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
@@ -152,9 +148,7 @@ type UdpFrontendState struct {
 	DisplayName pulumi.StringPtrInput
 	// Id of your frontend
 	FrontendId pulumi.Float64PtrInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringPtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
@@ -175,9 +169,7 @@ type udpFrontendArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Human readable name for your frontend
 	DisplayName *string `pulumi:"displayName"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port string `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName string `pulumi:"serviceName"`
@@ -195,9 +187,7 @@ type UdpFrontendArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// Human readable name for your frontend
 	DisplayName pulumi.StringPtrInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
@@ -317,9 +307,7 @@ func (o UdpFrontendOutput) FrontendId() pulumi.Float64Output {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.Float64Output { return v.FrontendId }).(pulumi.Float64Output)
 }
 
-// Port(s) attached to your frontend. Supports single port (numerical value),
-// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-// and/or 'range'. Each port must be in the [1;49151] range
+// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 func (o UdpFrontendOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *UdpFrontend) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

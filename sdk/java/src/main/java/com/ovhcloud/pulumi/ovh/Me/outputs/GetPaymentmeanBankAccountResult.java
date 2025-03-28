@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPaymentmeanBankAccountResult {
     /**
-     * @return a boolean which tells if the retrieved bank account
-     * is marked as the default payment mean
+     * @return a boolean which tells if the retrieved bank account is marked as the default payment mean
      * 
      */
     private Boolean default_;
@@ -36,8 +35,7 @@ public final class GetPaymentmeanBankAccountResult {
 
     private GetPaymentmeanBankAccountResult() {}
     /**
-     * @return a boolean which tells if the retrieved bank account
-     * is marked as the default payment mean
+     * @return a boolean which tells if the retrieved bank account is marked as the default payment mean
      * 
      */
     public Boolean default_() {

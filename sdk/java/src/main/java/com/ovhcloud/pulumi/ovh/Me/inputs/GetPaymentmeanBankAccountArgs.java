@@ -17,16 +17,14 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
     public static final GetPaymentmeanBankAccountArgs Empty = new GetPaymentmeanBankAccountArgs();
 
     /**
-     * a regexp used to filter bank accounts
-     * on their `description` attributes.
+     * a regexp used to filter bank accounts on their `description` attributes.
      * 
      */
     @Import(name="descriptionRegexp")
     private @Nullable Output<String> descriptionRegexp;
 
     /**
-     * @return a regexp used to filter bank accounts
-     * on their `description` attributes.
+     * @return a regexp used to filter bank accounts on their `description` attributes.
      * 
      */
     public Optional<Output<String>> descriptionRegexp() {
@@ -34,16 +32,14 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Filter bank accounts on their `state` attribute.
-     * Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
+     * Filter bank accounts on their `state` attribute. Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Filter bank accounts on their `state` attribute.
-     * Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
+     * @return Filter bank accounts on their `state` attribute. Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
      * 
      */
     public Optional<Output<String>> state() {
@@ -66,16 +62,14 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Retrieve oldest bank account.
-     * project.
+     * Retrieve oldest bank account. project.
      * 
      */
     @Import(name="useOldest")
     private @Nullable Output<Boolean> useOldest;
 
     /**
-     * @return Retrieve oldest bank account.
-     * project.
+     * @return Retrieve oldest bank account. project.
      * 
      */
     public Optional<Output<Boolean>> useOldest() {
@@ -110,8 +104,7 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param descriptionRegexp a regexp used to filter bank accounts
-         * on their `description` attributes.
+         * @param descriptionRegexp a regexp used to filter bank accounts on their `description` attributes.
          * 
          * @return builder
          * 
@@ -122,8 +115,7 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param descriptionRegexp a regexp used to filter bank accounts
-         * on their `description` attributes.
+         * @param descriptionRegexp a regexp used to filter bank accounts on their `description` attributes.
          * 
          * @return builder
          * 
@@ -133,8 +125,7 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param state Filter bank accounts on their `state` attribute.
-         * Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
+         * @param state Filter bank accounts on their `state` attribute. Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
          * 
          * @return builder
          * 
@@ -145,8 +136,7 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param state Filter bank accounts on their `state` attribute.
-         * Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
+         * @param state Filter bank accounts on their `state` attribute. Can be &#34;blockedForIncidents&#34;, &#34;valid&#34;, &#34;pendingValidation&#34;
          * 
          * @return builder
          * 
@@ -177,8 +167,7 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param useOldest Retrieve oldest bank account.
-         * project.
+         * @param useOldest Retrieve oldest bank account. project.
          * 
          * @return builder
          * 
@@ -189,8 +178,7 @@ public final class GetPaymentmeanBankAccountArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param useOldest Retrieve oldest bank account.
-         * project.
+         * @param useOldest Retrieve oldest bank account. project.
          * 
          * @return builder
          * 

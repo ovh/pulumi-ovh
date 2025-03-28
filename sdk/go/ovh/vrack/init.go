@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OVHcloudConnect{}
 	case "ovh:Vrack/vrack:Vrack":
 		r = &Vrack{}
+	case "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud":
+		r = &VrackDedicatedCloud{}
 	case "ovh:Vrack/vrackservices:Vrackservices":
 		r = &Vrackservices{}
 	default:
@@ -90,6 +92,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Vrack/vrack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Vrack/vrackDedicatedCloud",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

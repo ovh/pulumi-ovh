@@ -38,11 +38,12 @@ type LookupPermissionsGroupResult struct {
 	Denies      []string `pulumi:"denies"`
 	Description *string  `pulumi:"description"`
 	Excepts     []string `pulumi:"excepts"`
-	Id          string   `pulumi:"id"`
-	Name        string   `pulumi:"name"`
-	Owner       string   `pulumi:"owner"`
-	UpdatedAt   string   `pulumi:"updatedAt"`
-	Urn         string   `pulumi:"urn"`
+	// The ID of this resource.
+	Id        string `pulumi:"id"`
+	Name      string `pulumi:"name"`
+	Owner     string `pulumi:"owner"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	Urn       string `pulumi:"urn"`
 }
 
 func LookupPermissionsGroupOutput(ctx *pulumi.Context, args LookupPermissionsGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPermissionsGroupResultOutput {
@@ -103,6 +104,7 @@ func (o LookupPermissionsGroupResultOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPermissionsGroupResult) []string { return v.Excepts }).(pulumi.StringArrayOutput)
 }
 
+// The ID of this resource.
 func (o LookupPermissionsGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPermissionsGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -55,11 +55,9 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 type GetUsersArgs struct {
 	// Cluster ID
 	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want to list users. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to list users. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -90,11 +88,9 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 type GetUsersOutputArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The engine of the database cluster you want to list users. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to list users. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

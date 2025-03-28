@@ -27,10 +27,8 @@ class KafkaAclArgs:
         """
         The set of arguments for constructing a KafkaAcl resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic. Available permissions:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] topic: Topic affected by this ACL.
         :param pulumi.Input[str] username: Username affected by this ACL.
         """
@@ -56,8 +54,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        Permission to give to this username on this topic.
-        Available permissions:
+        Permission to give to this username on this topic. Available permissions:
         """
         return pulumi.get(self, "permission")
 
@@ -69,8 +66,7 @@ class KafkaAclArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -114,10 +110,8 @@ class _KafkaAclState:
         """
         Input properties used for looking up and filtering KafkaAcl resources.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic. Available permissions:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] topic: Topic affected by this ACL.
         :param pulumi.Input[str] username: Username affected by this ACL.
         """
@@ -148,8 +142,7 @@ class _KafkaAclState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        Permission to give to this username on this topic.
-        Available permissions:
+        Permission to give to this username on this topic. Available permissions:
         """
         return pulumi.get(self, "permission")
 
@@ -161,8 +154,7 @@ class _KafkaAclState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -239,10 +231,8 @@ class KafkaAcl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic. Available permissions:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] topic: Topic affected by this ACL.
         :param pulumi.Input[str] username: Username affected by this ACL.
         """
@@ -349,10 +339,8 @@ class KafkaAcl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] permission: Permission to give to this username on this topic.
-               Available permissions:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] permission: Permission to give to this username on this topic. Available permissions:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] topic: Topic affected by this ACL.
         :param pulumi.Input[str] username: Username affected by this ACL.
         """
@@ -379,8 +367,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        Permission to give to this username on this topic.
-        Available permissions:
+        Permission to give to this username on this topic. Available permissions:
         """
         return pulumi.get(self, "permission")
 
@@ -388,8 +375,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

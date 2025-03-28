@@ -46,12 +46,9 @@ type User struct {
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// A description associated with the user.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// a convenient map representing an openstackRc file.
-	// Note: no password nor sensitive token is set in this map.
+	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc pulumi.StringMapOutput `pulumi:"openstackRc"`
-	// (Sensitive) the password generated for the user. The password can
-	// be used with the Openstack API. This attribute is sensitive and will only be
-	// retrieve once during creation.
+	// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
@@ -71,13 +68,11 @@ type User struct {
 	RoleNames pulumi.StringArrayOutput `pulumi:"roleNames"`
 	// A list of roles associated with the user.
 	Roles UserRoleArrayOutput `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// the status of the user. should be normally set to 'ok'.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
+	// the username generated for the user. This username can be used with the Openstack API.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -122,12 +117,9 @@ type userState struct {
 	CreationDate *string `pulumi:"creationDate"`
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
-	// a convenient map representing an openstackRc file.
-	// Note: no password nor sensitive token is set in this map.
+	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc map[string]string `pulumi:"openstackRc"`
-	// (Sensitive) the password generated for the user. The password can
-	// be used with the Openstack API. This attribute is sensitive and will only be
-	// retrieve once during creation.
+	// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 	Password *string `pulumi:"password"`
 	// The name of a role. See `roleNames`.
 	RoleName *string `pulumi:"roleName"`
@@ -147,13 +139,11 @@ type userState struct {
 	RoleNames []string `pulumi:"roleNames"`
 	// A list of roles associated with the user.
 	Roles []UserRole `pulumi:"roles"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// the status of the user. should be normally set to 'ok'.
 	Status *string `pulumi:"status"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
+	// the username generated for the user. This username can be used with the Openstack API.
 	Username *string `pulumi:"username"`
 }
 
@@ -162,12 +152,9 @@ type UserState struct {
 	CreationDate pulumi.StringPtrInput
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
-	// a convenient map representing an openstackRc file.
-	// Note: no password nor sensitive token is set in this map.
+	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc pulumi.StringMapInput
-	// (Sensitive) the password generated for the user. The password can
-	// be used with the Openstack API. This attribute is sensitive and will only be
-	// retrieve once during creation.
+	// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 	Password pulumi.StringPtrInput
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrInput
@@ -187,13 +174,11 @@ type UserState struct {
 	RoleNames pulumi.StringArrayInput
 	// A list of roles associated with the user.
 	Roles UserRoleArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// the status of the user. should be normally set to 'ok'.
 	Status pulumi.StringPtrInput
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
+	// the username generated for the user. This username can be used with the Openstack API.
 	Username pulumi.StringPtrInput
 }
 
@@ -204,8 +189,7 @@ func (UserState) ElementType() reflect.Type {
 type userArgs struct {
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
-	// a convenient map representing an openstackRc file.
-	// Note: no password nor sensitive token is set in this map.
+	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc map[string]string `pulumi:"openstackRc"`
 	// The name of a role. See `roleNames`.
 	RoleName *string `pulumi:"roleName"`
@@ -223,8 +207,7 @@ type userArgs struct {
 	// - objectstoreOperator
 	// - volume_operator
 	RoleNames []string `pulumi:"roleNames"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -232,8 +215,7 @@ type userArgs struct {
 type UserArgs struct {
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
-	// a convenient map representing an openstackRc file.
-	// Note: no password nor sensitive token is set in this map.
+	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc pulumi.StringMapInput
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrInput
@@ -251,8 +233,7 @@ type UserArgs struct {
 	// - objectstoreOperator
 	// - volume_operator
 	RoleNames pulumi.StringArrayInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -353,15 +334,12 @@ func (o UserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// a convenient map representing an openstackRc file.
-// Note: no password nor sensitive token is set in this map.
+// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 func (o UserOutput) OpenstackRc() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.OpenstackRc }).(pulumi.StringMapOutput)
 }
 
-// (Sensitive) the password generated for the user. The password can
-// be used with the Openstack API. This attribute is sensitive and will only be
-// retrieve once during creation.
+// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -393,8 +371,7 @@ func (o UserOutput) Roles() UserRoleArrayOutput {
 	return o.ApplyT(func(v *User) UserRoleArrayOutput { return v.Roles }).(UserRoleArrayOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o UserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -404,8 +381,7 @@ func (o UserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// the username generated for the user. This username can be used with
-// the Openstack API.
+// the username generated for the user. This username can be used with the Openstack API.
 func (o UserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

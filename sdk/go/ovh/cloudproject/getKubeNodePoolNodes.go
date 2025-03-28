@@ -57,8 +57,7 @@ type GetKubeNodePoolNodesArgs struct {
 	KubeId string `pulumi:"kubeId"`
 	// Name of the node pool from which we want the nodes.
 	Name string `pulumi:"name"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -91,8 +90,7 @@ type GetKubeNodePoolNodesOutputArgs struct {
 	KubeId pulumi.StringInput `pulumi:"kubeId"`
 	// Name of the node pool from which we want the nodes.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -60,8 +60,7 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// The ID of a public cloud project's user.
 	UserId string `pulumi:"userId"`
@@ -81,8 +80,7 @@ type LookupUserResult struct {
 	// the status of the user. should be normally set to 'ok'.
 	Status string `pulumi:"status"`
 	UserId string `pulumi:"userId"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
+	// the username generated for the user. This username can be used with the Openstack API.
 	Username string `pulumi:"username"`
 }
 
@@ -97,8 +95,7 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// The ID of a public cloud project's user.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -156,8 +153,7 @@ func (o LookupUserResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// the username generated for the user. This username can be used with
-// the Openstack API.
+// the username generated for the user. This username can be used with the Openstack API.
 func (o LookupUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

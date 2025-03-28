@@ -57,7 +57,7 @@ export class RegionLoadBalancerLogSubscription extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * haproxy  **Changing this value recreates the resource.**
+     * haproxy **Changing this value recreates the resource.**
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -65,7 +65,7 @@ export class RegionLoadBalancerLogSubscription extends pulumi.CustomResource {
      */
     public /*out*/ readonly ldpServiceName!: pulumi.Output<string>;
     /**
-     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * Loadbalancer id to get the logs **Changing this value recreates the resource.**
      */
     public readonly loadbalancerId!: pulumi.Output<string>;
     /**
@@ -89,7 +89,7 @@ export class RegionLoadBalancerLogSubscription extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * Data stream id to use for the subscription **Changing this value recreates the resource.**
      */
     public readonly streamId!: pulumi.Output<string>;
     /**
@@ -170,7 +170,7 @@ export interface RegionLoadBalancerLogSubscriptionState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * haproxy  **Changing this value recreates the resource.**
+     * haproxy **Changing this value recreates the resource.**
      */
     kind?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface RegionLoadBalancerLogSubscriptionState {
      */
     ldpServiceName?: pulumi.Input<string>;
     /**
-     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * Loadbalancer id to get the logs **Changing this value recreates the resource.**
      */
     loadbalancerId?: pulumi.Input<string>;
     /**
@@ -202,7 +202,7 @@ export interface RegionLoadBalancerLogSubscriptionState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * Data stream id to use for the subscription **Changing this value recreates the resource.**
      */
     streamId?: pulumi.Input<string>;
     /**
@@ -220,11 +220,11 @@ export interface RegionLoadBalancerLogSubscriptionState {
  */
 export interface RegionLoadBalancerLogSubscriptionArgs {
     /**
-     * haproxy  **Changing this value recreates the resource.**
+     * haproxy **Changing this value recreates the resource.**
      */
     kind: pulumi.Input<string>;
     /**
-     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * Loadbalancer id to get the logs **Changing this value recreates the resource.**
      */
     loadbalancerId: pulumi.Input<string>;
     /**
@@ -236,7 +236,7 @@ export interface RegionLoadBalancerLogSubscriptionArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * Data stream id to use for the subscription **Changing this value recreates the resource.**
      */
     streamId: pulumi.Input<string>;
 }

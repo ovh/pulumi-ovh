@@ -51,8 +51,7 @@ func GetVRack(ctx *pulumi.Context, args *GetVRackArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getVRack.
 type GetVRackArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -78,8 +77,7 @@ func GetVRackOutput(ctx *pulumi.Context, args GetVRackOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getVRack.
 type GetVRackOutputArgs struct {
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

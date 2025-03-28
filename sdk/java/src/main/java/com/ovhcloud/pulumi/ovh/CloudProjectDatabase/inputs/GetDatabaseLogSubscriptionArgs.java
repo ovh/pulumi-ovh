@@ -30,16 +30,14 @@ public final class GetDatabaseLogSubscriptionArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * @return The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     public Output<String> engine() {
@@ -62,16 +60,14 @@ public final class GetDatabaseLogSubscriptionArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -127,8 +123,7 @@ public final class GetDatabaseLogSubscriptionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param engine The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+         * @param engine The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
          * 
          * @return builder
          * 
@@ -139,8 +134,7 @@ public final class GetDatabaseLogSubscriptionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param engine The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+         * @param engine The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
          * 
          * @return builder
          * 
@@ -171,8 +165,7 @@ public final class GetDatabaseLogSubscriptionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -183,8 +176,7 @@ public final class GetDatabaseLogSubscriptionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

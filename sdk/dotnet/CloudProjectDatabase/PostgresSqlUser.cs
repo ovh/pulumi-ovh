@@ -54,15 +54,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string?> PasswordReset { get; private set; } = null!;
 
         /// <summary>
-        /// Roles the user belongs to.
-        /// Available roles:
+        /// Roles the user belongs to. Available roles:
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -146,8 +144,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles the user belongs to.
-        /// Available roles:
+        /// Roles the user belongs to. Available roles:
         /// </summary>
         public InputList<string> Roles
         {
@@ -156,8 +153,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -214,8 +210,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles the user belongs to.
-        /// Available roles:
+        /// Roles the user belongs to. Available roles:
         /// </summary>
         public InputList<string> Roles
         {
@@ -224,8 +219,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

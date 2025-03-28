@@ -15,16 +15,14 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDatabasesArgs Empty = new GetDatabasesArgs();
 
     /**
-     * The database engine you want to list. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to list. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return The database engine you want to list. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * @return The database engine you want to list. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     public Output<String> engine() {
@@ -32,16 +30,14 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -74,8 +70,7 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param engine The database engine you want to list. To get a full list of available engine visit:
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+         * @param engine The database engine you want to list. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
          * 
          * @return builder
          * 
@@ -86,8 +81,7 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param engine The database engine you want to list. To get a full list of available engine visit:
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+         * @param engine The database engine you want to list. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
          * 
          * @return builder
          * 
@@ -97,8 +91,7 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -109,8 +102,7 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

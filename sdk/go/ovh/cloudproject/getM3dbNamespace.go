@@ -57,8 +57,7 @@ type GetM3dbNamespaceArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Name of the namespace.
 	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -107,8 +106,7 @@ type GetM3dbNamespaceOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Name of the namespace.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

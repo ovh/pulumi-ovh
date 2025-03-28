@@ -39,14 +39,11 @@ export interface GetDatabaseInstancesArgs {
      */
     clusterId: string;
     /**
-     * The engine of the database cluster you want to list databases. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want to list databases. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      */
     engine: string;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -111,14 +108,11 @@ export interface GetDatabaseInstancesOutputArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to list databases. To get a full list of available engine visit:
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want to list databases. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      */
     engine: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

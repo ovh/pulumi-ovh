@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by &#34;/&#34; E.g.,
+ * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by &#34;/&#34; E.g.,
  * 
  * bash
  * 
@@ -64,7 +64,7 @@ public class ServerReinstallTask extends com.pulumi.resources.CustomResource {
     /**
      * Available attributes and their types are OS-dependant. Example: `hostname`.
      * 
-     * &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      * 
      */
     @Export(name="customizations", refs={ServerReinstallTaskCustomizations.class}, tree="[0]")
@@ -73,7 +73,7 @@ public class ServerReinstallTask extends com.pulumi.resources.CustomResource {
     /**
      * @return Available attributes and their types are OS-dependant. Example: `hostname`.
      * 
-     * &gt; __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      * 
      */
     public Output<Optional<ServerReinstallTaskCustomizations>> customizations() {

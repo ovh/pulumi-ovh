@@ -355,16 +355,13 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.DatabaseEndpoint>> Endpoints { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine you want to deploy. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        /// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        /// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         /// </summary>
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
@@ -400,8 +397,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// List of nodes object.
-        /// Multi region cluster are not yet available, all node should be identical.
+        /// List of nodes object. Multi region cluster are not yet available, all node should be identical.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.DatabaseNode>> Nodes { get; private set; } = null!;
@@ -423,8 +419,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -531,16 +526,13 @@ namespace Pulumi.Ovh.CloudProject
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The database engine you want to deploy. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        /// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        /// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         /// </summary>
         [Input("flavor", required: true)]
         public Input<string> Flavor { get; set; } = null!;
@@ -579,8 +571,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseNodeArgs>? _nodes;
 
         /// <summary>
-        /// List of nodes object.
-        /// Multi region cluster are not yet available, all node should be identical.
+        /// List of nodes object. Multi region cluster are not yet available, all node should be identical.
         /// </summary>
         public InputList<Inputs.DatabaseNodeArgs> Nodes
         {
@@ -605,8 +596,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -692,16 +682,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The database engine you want to deploy. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-        /// Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-        /// You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
@@ -746,8 +733,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.DatabaseNodeGetArgs>? _nodes;
 
         /// <summary>
-        /// List of nodes object.
-        /// Multi region cluster are not yet available, all node should be identical.
+        /// List of nodes object. Multi region cluster are not yet available, all node should be identical.
         /// </summary>
         public InputList<Inputs.DatabaseNodeGetArgs> Nodes
         {
@@ -772,8 +758,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

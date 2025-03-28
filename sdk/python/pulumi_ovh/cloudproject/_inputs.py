@@ -743,8 +743,7 @@ if not MYPY:
     class DatabaseNodeArgsDict(TypedDict):
         region: pulumi.Input[str]
         """
-        Public cloud region in which the node should be deployed.
-        Ex: "GRA'.
+        Public cloud region in which the node should be deployed. Ex: "GRA'.
         """
         network_id: NotRequired[pulumi.Input[str]]
         """
@@ -764,8 +763,7 @@ class DatabaseNodeArgs:
                  network_id: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] region: Public cloud region in which the node should be deployed.
-               Ex: "GRA'.
+        :param pulumi.Input[str] region: Public cloud region in which the node should be deployed. Ex: "GRA'.
         :param pulumi.Input[str] network_id: Private network id in which the node should be deployed. It's the regional openstackId of the private network
         :param pulumi.Input[str] subnet_id: Private subnet ID in which the node is.
         """
@@ -779,8 +777,7 @@ class DatabaseNodeArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        Public cloud region in which the node should be deployed.
-        Ex: "GRA'.
+        Public cloud region in which the node should be deployed. Ex: "GRA'.
         """
         return pulumi.get(self, "region")
 
@@ -1999,6 +1996,7 @@ if not MYPY:
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 
         In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+
         ```python
         import pulumi
         ```
@@ -2016,6 +2014,7 @@ class KubePrivateNetworkConfigurationArgs:
         :param pulumi.Input[bool] private_network_routing_as_default: Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
                
                In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+               
                ```python
                import pulumi
                ```
@@ -2042,6 +2041,7 @@ class KubePrivateNetworkConfigurationArgs:
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 
         In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+
         ```python
         import pulumi
         ```
@@ -3340,28 +3340,23 @@ if not MYPY:
     class NetworkPrivateSubnetIpPoolArgsDict(TypedDict):
         dhcp: NotRequired[pulumi.Input[bool]]
         """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to false.
+        Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
         """
         end: NotRequired[pulumi.Input[str]]
         """
-        Last ip for this region.
-        Changing this value recreates the subnet.
+        Last ip for this region. Changing this value recreates the subnet.
         """
         network: NotRequired[pulumi.Input[str]]
         """
-        Global network in CIDR format.
-        Changing this value recreates the subnet
+        Global network in CIDR format. Changing this value recreates the subnet
         """
         region: NotRequired[pulumi.Input[str]]
         """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
+        The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
         """
         start: NotRequired[pulumi.Input[str]]
         """
-        First ip for this region.
-        Changing this value recreates the subnet.
+        First ip for this region. Changing this value recreates the subnet.
         """
 elif False:
     NetworkPrivateSubnetIpPoolArgsDict: TypeAlias = Mapping[str, Any]
@@ -3375,16 +3370,11 @@ class NetworkPrivateSubnetIpPoolArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  start: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] dhcp: Enable DHCP.
-               Changing this forces a new resource to be created. Defaults to false.
-        :param pulumi.Input[str] end: Last ip for this region.
-               Changing this value recreates the subnet.
-        :param pulumi.Input[str] network: Global network in CIDR format.
-               Changing this value recreates the subnet
-        :param pulumi.Input[str] region: The region in which the network subnet will be created.
-               Ex.: "GRA1". Changing this value recreates the resource.
-        :param pulumi.Input[str] start: First ip for this region.
-               Changing this value recreates the subnet.
+        :param pulumi.Input[bool] dhcp: Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
+        :param pulumi.Input[str] end: Last ip for this region. Changing this value recreates the subnet.
+        :param pulumi.Input[str] network: Global network in CIDR format. Changing this value recreates the subnet
+        :param pulumi.Input[str] region: The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
+        :param pulumi.Input[str] start: First ip for this region. Changing this value recreates the subnet.
         """
         if dhcp is not None:
             pulumi.set(__self__, "dhcp", dhcp)
@@ -3401,8 +3391,7 @@ class NetworkPrivateSubnetIpPoolArgs:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable DHCP.
-        Changing this forces a new resource to be created. Defaults to false.
+        Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
         """
         return pulumi.get(self, "dhcp")
 
@@ -3414,8 +3403,7 @@ class NetworkPrivateSubnetIpPoolArgs:
     @pulumi.getter
     def end(self) -> Optional[pulumi.Input[str]]:
         """
-        Last ip for this region.
-        Changing this value recreates the subnet.
+        Last ip for this region. Changing this value recreates the subnet.
         """
         return pulumi.get(self, "end")
 
@@ -3427,8 +3415,7 @@ class NetworkPrivateSubnetIpPoolArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Global network in CIDR format.
-        Changing this value recreates the subnet
+        Global network in CIDR format. Changing this value recreates the subnet
         """
         return pulumi.get(self, "network")
 
@@ -3440,8 +3427,7 @@ class NetworkPrivateSubnetIpPoolArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region in which the network subnet will be created.
-        Ex.: "GRA1". Changing this value recreates the resource.
+        The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
         """
         return pulumi.get(self, "region")
 
@@ -3453,8 +3439,7 @@ class NetworkPrivateSubnetIpPoolArgs:
     @pulumi.getter
     def start(self) -> Optional[pulumi.Input[str]]:
         """
-        First ip for this region.
-        Changing this value recreates the subnet.
+        First ip for this region. Changing this value recreates the subnet.
         """
         return pulumi.get(self, "start")
 
@@ -4469,7 +4454,7 @@ if not MYPY:
         """
         version: NotRequired[pulumi.Input[str]]
         """
-        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         """
 elif False:
     RancherTargetSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -4485,7 +4470,7 @@ class RancherTargetSpecArgs:
         :param pulumi.Input[str] name: Name of the managed Rancher service
         :param pulumi.Input[str] plan: Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
         :param pulumi.Input[Sequence[pulumi.Input['RancherTargetSpecIpRestrictionArgs']]] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
-        :param pulumi.Input[str] version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        :param pulumi.Input[str] version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "plan", plan)
@@ -4534,7 +4519,7 @@ class RancherTargetSpecArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         """
         return pulumi.get(self, "version")
 

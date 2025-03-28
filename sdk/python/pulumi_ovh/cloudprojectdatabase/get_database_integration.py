@@ -168,11 +168,9 @@ def get_database_integration(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: Cluster ID.
-    :param str engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-           All engines available exept `mongodb`
+    :param str engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
     :param str id: Integration ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -215,11 +213,9 @@ def get_database_integration_output(cluster_id: Optional[pulumi.Input[str]] = No
 
 
     :param str cluster_id: Cluster ID.
-    :param str engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-           All engines available exept `mongodb`
+    :param str engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
     :param str id: Integration ID
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

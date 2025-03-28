@@ -36,8 +36,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// Available engines:
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -61,8 +60,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string?> PasswordReset { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -131,8 +129,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// Available engines:
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -150,8 +147,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? PasswordReset { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -177,8 +173,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-        /// Available engines:
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -212,8 +207,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? PasswordReset { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

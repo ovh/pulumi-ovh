@@ -112,7 +112,13 @@ import (
 //
 // ## Import
 //
-// HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
+// HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/httpFrontend:HttpFrontend testfrontend service_name/http_frontend_id
+// ```
 type HttpFrontend struct {
 	pulumi.CustomResourceState
 
@@ -132,9 +138,7 @@ type HttpFrontend struct {
 	Hsts pulumi.BoolPtrOutput `pulumi:"hsts"`
 	// HTTP headers to add to the frontend. List of string.
 	HttpHeaders pulumi.StringArrayOutput `pulumi:"httpHeaders"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Redirection HTTP'
 	RedirectLocation pulumi.StringPtrOutput `pulumi:"redirectLocation"`
@@ -201,9 +205,7 @@ type httpFrontendState struct {
 	Hsts *bool `pulumi:"hsts"`
 	// HTTP headers to add to the frontend. List of string.
 	HttpHeaders []string `pulumi:"httpHeaders"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port *string `pulumi:"port"`
 	// Redirection HTTP'
 	RedirectLocation *string `pulumi:"redirectLocation"`
@@ -232,9 +234,7 @@ type HttpFrontendState struct {
 	Hsts pulumi.BoolPtrInput
 	// HTTP headers to add to the frontend. List of string.
 	HttpHeaders pulumi.StringArrayInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringPtrInput
 	// Redirection HTTP'
 	RedirectLocation pulumi.StringPtrInput
@@ -267,9 +267,7 @@ type httpFrontendArgs struct {
 	Hsts *bool `pulumi:"hsts"`
 	// HTTP headers to add to the frontend. List of string.
 	HttpHeaders []string `pulumi:"httpHeaders"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port string `pulumi:"port"`
 	// Redirection HTTP'
 	RedirectLocation *string `pulumi:"redirectLocation"`
@@ -299,9 +297,7 @@ type HttpFrontendArgs struct {
 	Hsts pulumi.BoolPtrInput
 	// HTTP headers to add to the frontend. List of string.
 	HttpHeaders pulumi.StringArrayInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringInput
 	// Redirection HTTP'
 	RedirectLocation pulumi.StringPtrInput
@@ -440,9 +436,7 @@ func (o HttpFrontendOutput) HttpHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringArrayOutput { return v.HttpHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Port(s) attached to your frontend. Supports single port (numerical value),
-// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-// and/or 'range'. Each port must be in the [1;49151] range
+// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 func (o HttpFrontendOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpFrontend) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

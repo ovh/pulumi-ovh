@@ -30,16 +30,14 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Permission to give to this username on this topic.
-     * Available permissions:
+     * Permission to give to this username on this topic. Available permissions:
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Permission to give to this username on this topic.
-     * Available permissions:
+     * @return Permission to give to this username on this topic. Available permissions:
      * 
      */
     public Output<String> permission() {
@@ -47,16 +45,14 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -143,8 +139,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permission Permission to give to this username on this topic.
-         * Available permissions:
+         * @param permission Permission to give to this username on this topic. Available permissions:
          * 
          * @return builder
          * 
@@ -155,8 +150,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permission Permission to give to this username on this topic.
-         * Available permissions:
+         * @param permission Permission to give to this username on this topic. Available permissions:
          * 
          * @return builder
          * 
@@ -166,8 +160,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -178,8 +171,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

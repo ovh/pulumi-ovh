@@ -38,8 +38,7 @@ public final class GetUsersUser {
      */
     private String userId;
     /**
-     * @return the username generated for the user. This username can be used with
-     * the Openstack API.
+     * @return the username generated for the user. This username can be used with the Openstack API.
      * 
      */
     private String username;
@@ -81,8 +80,7 @@ public final class GetUsersUser {
         return this.userId;
     }
     /**
-     * @return the username generated for the user. This username can be used with
-     * the Openstack API.
+     * @return the username generated for the user. This username can be used with the Openstack API.
      * 
      */
     public String username() {

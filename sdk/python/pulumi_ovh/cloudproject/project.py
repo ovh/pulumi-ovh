@@ -329,7 +329,7 @@ class Project(pulumi.CustomResource):
 
         Using the following configuration:
 
-        hcl
+        terraform
 
         import {
 
@@ -347,9 +347,7 @@ class Project(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -373,7 +371,7 @@ class Project(pulumi.CustomResource):
 
         Using the following configuration:
 
-        hcl
+        terraform
 
         import {
 
@@ -391,9 +389,7 @@ class Project(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

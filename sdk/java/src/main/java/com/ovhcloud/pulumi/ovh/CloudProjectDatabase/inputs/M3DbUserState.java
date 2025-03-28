@@ -106,16 +106,14 @@ public final class M3DbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -295,8 +293,7 @@ public final class M3DbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -307,8 +304,7 @@ public final class M3DbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

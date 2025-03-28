@@ -52,6 +52,12 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// ## Import
     /// 
     /// UDP farm server can be imported using the following format `service_name`, the `id` of the farm and the `id` of the server separated by "/" e.g.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer backend service_name/farm_id/server_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/udpFarmServer:UdpFarmServer")]
     public partial class UdpFarmServer : global::Pulumi.CustomResource

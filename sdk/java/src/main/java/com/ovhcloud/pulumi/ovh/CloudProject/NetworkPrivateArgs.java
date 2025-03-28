@@ -34,16 +34,14 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+     * an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
      * 
      */
     @Import(name="regions")
     private @Nullable Output<List<String>> regions;
 
     /**
-     * @return an array of valid OVHcloud public cloud region ID in which the network
-     * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+     * @return an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
      * 
      */
     public Optional<Output<List<String>>> regions() {
@@ -51,16 +49,14 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -68,16 +64,14 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return a vlan id to associate with the network.
-     * Changing this value recreates the resource. Defaults to 0.
+     * @return a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -133,8 +127,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regions an array of valid OVHcloud public cloud region ID in which the network
-         * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+         * @param regions an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
          * 
          * @return builder
          * 
@@ -145,8 +138,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regions an array of valid OVHcloud public cloud region ID in which the network
-         * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+         * @param regions an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
          * 
          * @return builder
          * 
@@ -156,8 +148,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param regions an array of valid OVHcloud public cloud region ID in which the network
-         * will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
+         * @param regions an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions.
          * 
          * @return builder
          * 
@@ -167,8 +158,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -179,8 +169,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -190,8 +179,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vlanId a vlan id to associate with the network.
-         * Changing this value recreates the resource. Defaults to 0.
+         * @param vlanId a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
          * 
          * @return builder
          * 
@@ -202,8 +190,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vlanId a vlan id to associate with the network.
-         * Changing this value recreates the resource. Defaults to 0.
+         * @param vlanId a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
          * 
          * @return builder
          * 

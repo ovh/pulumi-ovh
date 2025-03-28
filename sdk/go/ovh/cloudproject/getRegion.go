@@ -51,21 +51,17 @@ func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getRegion.
 type GetRegionArgs struct {
-	// The name of the region associated with the public cloud
-	// project.
+	// The name of the region associated with the public cloud project.
 	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
-	// the code of the geographic continent the region is running.
-	// E.g.: EU for Europe, US for America...
+	// the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
 	ContinentCode string `pulumi:"continentCode"`
-	// The location code of the datacenter.
-	// E.g.: "GRA", meaning Gravelines, for region "GRA1"
+	// The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
 	DatacenterLocation string `pulumi:"datacenterLocation"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -87,11 +83,9 @@ func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getRegion.
 type GetRegionOutputArgs struct {
-	// The name of the region associated with the public cloud
-	// project.
+	// The name of the region associated with the public cloud project.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -114,14 +108,12 @@ func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// the code of the geographic continent the region is running.
-// E.g.: EU for Europe, US for America...
+// the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
 func (o GetRegionResultOutput) ContinentCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.ContinentCode }).(pulumi.StringOutput)
 }
 
-// The location code of the datacenter.
-// E.g.: "GRA", meaning Gravelines, for region "GRA1"
+// The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
 func (o GetRegionResultOutput) DatacenterLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.DatacenterLocation }).(pulumi.StringOutput)
 }

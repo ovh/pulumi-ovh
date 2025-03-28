@@ -54,8 +54,7 @@ func LookupKubeIpRestrictions(ctx *pulumi.Context, args *LookupKubeIpRestriction
 type LookupKubeIpRestrictionsArgs struct {
 	// The id of the managed kubernetes cluster.
 	KubeId string `pulumi:"kubeId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func LookupKubeIpRestrictionsOutput(ctx *pulumi.Context, args LookupKubeIpRestri
 type LookupKubeIpRestrictionsOutputArgs struct {
 	// The id of the managed kubernetes cluster.
 	KubeId pulumi.StringInput `pulumi:"kubeId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -12,8 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manage a worflow that schedules backups of public cloud instance.
-// Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
+// Manage a worflow that schedules backups of public cloud instance. Note that upon deletion, the workflow is deleted but any backups that have been created by this workflow are not.
 //
 // ## Example Usage
 //

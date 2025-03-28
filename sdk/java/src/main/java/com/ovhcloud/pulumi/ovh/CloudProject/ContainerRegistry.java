@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * &gt; __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
+ * &gt; **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
  * 
  */
 @ResourceType(type="ovh:CloudProject/containerRegistry:ContainerRegistry")
@@ -154,16 +154,14 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

@@ -170,8 +170,7 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
 
     :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.
     :param str region: The region name
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['planName'] = plan_name
@@ -212,8 +211,7 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
 
     :param str plan_name: The plan name. It can be 'SMALL', 'MEDIUM' or 'LARGE'.
     :param str region: The region name
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['planName'] = plan_name

@@ -40,6 +40,8 @@ __all__ = [
     'ServerStoragePartitioningLayoutExtras',
     'ServerStoragePartitioningLayoutExtrasLv',
     'ServerStoragePartitioningLayoutExtrasZp',
+    'GetCloudIamResult',
+    'GetCloudVersionResult',
     'GetServerSpecificationsHardwareDefaultHardwareRaidSizeResult',
     'GetServerSpecificationsHardwareDiskGroupResult',
     'GetServerSpecificationsHardwareDiskGroupDefaultHardwareRaidSizeResult',
@@ -1593,6 +1595,83 @@ class ServerStoragePartitioningLayoutExtrasZp(dict):
         Dedicated server name
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetCloudIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 id: str,
+                 tags: Mapping[str, str],
+                 urn: str):
+        """
+        :param str display_name: Resource display name
+        :param str id: Unique identifier of the resource
+        :param Mapping[str, str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetCloudVersionResult(dict):
+    def __init__(__self__, *,
+                 build: str,
+                 major: str,
+                 minor: str):
+        pulumi.set(__self__, "build", build)
+        pulumi.set(__self__, "major", major)
+        pulumi.set(__self__, "minor", minor)
+
+    @property
+    @pulumi.getter
+    def build(self) -> str:
+        return pulumi.get(self, "build")
+
+    @property
+    @pulumi.getter
+    def major(self) -> str:
+        return pulumi.get(self, "major")
+
+    @property
+    @pulumi.getter
+    def minor(self) -> str:
+        return pulumi.get(self, "minor")
 
 
 @pulumi.output_type

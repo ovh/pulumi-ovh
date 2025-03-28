@@ -16,8 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Attach a legacy dedicated server to a vRack.
  * 
- * &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.&lt;br /&gt;
- * Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
+ * &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.&lt;br /&gt; Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
  * 
  * ## Example Usage
  * 
@@ -73,16 +72,14 @@ public class DedicatedServer extends com.pulumi.resources.CustomResource {
         return this.serverId;
     }
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * @return The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

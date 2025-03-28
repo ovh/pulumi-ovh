@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.CloudProject
     public static class GetInstance
     {
         /// <summary>
-        /// **This datasource uses a Beta API**
-        /// Use this data source to get the instance of a public cloud project.
+        /// **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -41,8 +40,7 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("ovh:CloudProject/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// **This datasource uses a Beta API**
-        /// Use this data source to get the instance of a public cloud project.
+        /// **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -70,8 +68,7 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("ovh:CloudProject/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// **This datasource uses a Beta API**
-        /// Use this data source to get the instance of a public cloud project.
+        /// **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
         /// 
         /// ## Example Usage
         /// 
@@ -115,8 +112,7 @@ namespace Pulumi.Ovh.CloudProject
         public string Region { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -142,8 +138,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve information about a credit card
- * payment mean associated with an OVHcloud account.
+ * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
  *
  * ## Example Usage
  *
@@ -35,13 +34,11 @@ export function getPaymentmeanCreditCard(args?: GetPaymentmeanCreditCardArgs, op
  */
 export interface GetPaymentmeanCreditCardArgs {
     /**
-     * a regexp used to filter credit cards 
-     * on their `description` attributes.
+     * a regexp used to filter credit cards on their `description` attributes.
      */
     descriptionRegexp?: string;
     /**
-     * Filter credit cards on their `state` attribute.
-     * Can be "expired", "valid", "tooManyFailures"
+     * Filter credit cards on their `state` attribute. Can be "expired", "valid", "tooManyFailures"
      */
     states?: string[];
     /**
@@ -49,8 +46,7 @@ export interface GetPaymentmeanCreditCardArgs {
      */
     useDefault?: boolean;
     /**
-     * Retrieve the credit card that will be the last
-     * to expire according to its expiration date.
+     * Retrieve the credit card that will be the last to expire according to its expiration date.
      */
     useLastToExpire?: boolean;
 }
@@ -60,8 +56,7 @@ export interface GetPaymentmeanCreditCardArgs {
  */
 export interface GetPaymentmeanCreditCardResult {
     /**
-     * a boolean which tells if the retrieved credit card
-     * is marked as the default payment mean
+     * a boolean which tells if the retrieved credit card is marked as the default payment mean
      */
     readonly default: boolean;
     /**
@@ -82,8 +77,7 @@ export interface GetPaymentmeanCreditCardResult {
     readonly useLastToExpire?: boolean;
 }
 /**
- * Use this data source to retrieve information about a credit card
- * payment mean associated with an OVHcloud account.
+ * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
  *
  * ## Example Usage
  *
@@ -112,13 +106,11 @@ export function getPaymentmeanCreditCardOutput(args?: GetPaymentmeanCreditCardOu
  */
 export interface GetPaymentmeanCreditCardOutputArgs {
     /**
-     * a regexp used to filter credit cards 
-     * on their `description` attributes.
+     * a regexp used to filter credit cards on their `description` attributes.
      */
     descriptionRegexp?: pulumi.Input<string>;
     /**
-     * Filter credit cards on their `state` attribute.
-     * Can be "expired", "valid", "tooManyFailures"
+     * Filter credit cards on their `state` attribute. Can be "expired", "valid", "tooManyFailures"
      */
     states?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -126,8 +118,7 @@ export interface GetPaymentmeanCreditCardOutputArgs {
      */
     useDefault?: pulumi.Input<boolean>;
     /**
-     * Retrieve the credit card that will be the last
-     * to expire according to its expiration date.
+     * Retrieve the credit card that will be the last to expire according to its expiration date.
      */
     useLastToExpire?: pulumi.Input<boolean>;
 }

@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a credit card
-// payment mean associated with an OVHcloud account.
+// Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
 //
 // ## Example Usage
 //
@@ -51,23 +50,19 @@ func GetPaymentmeanCreditCard(ctx *pulumi.Context, args *GetPaymentmeanCreditCar
 
 // A collection of arguments for invoking getPaymentmeanCreditCard.
 type GetPaymentmeanCreditCardArgs struct {
-	// a regexp used to filter credit cards
-	// on their `description` attributes.
+	// a regexp used to filter credit cards on their `description` attributes.
 	DescriptionRegexp *string `pulumi:"descriptionRegexp"`
-	// Filter credit cards on their `state` attribute.
-	// Can be "expired", "valid", "tooManyFailures"
+	// Filter credit cards on their `state` attribute. Can be "expired", "valid", "tooManyFailures"
 	States []string `pulumi:"states"`
 	// Retrieve credit card marked as default payment mean.
 	UseDefault *bool `pulumi:"useDefault"`
-	// Retrieve the credit card that will be the last
-	// to expire according to its expiration date.
+	// Retrieve the credit card that will be the last to expire according to its expiration date.
 	UseLastToExpire *bool `pulumi:"useLastToExpire"`
 }
 
 // A collection of values returned by getPaymentmeanCreditCard.
 type GetPaymentmeanCreditCardResult struct {
-	// a boolean which tells if the retrieved credit card
-	// is marked as the default payment mean
+	// a boolean which tells if the retrieved credit card is marked as the default payment mean
 	Default bool `pulumi:"default"`
 	// the description attribute of the credit card
 	Description       string  `pulumi:"description"`
@@ -92,16 +87,13 @@ func GetPaymentmeanCreditCardOutput(ctx *pulumi.Context, args GetPaymentmeanCred
 
 // A collection of arguments for invoking getPaymentmeanCreditCard.
 type GetPaymentmeanCreditCardOutputArgs struct {
-	// a regexp used to filter credit cards
-	// on their `description` attributes.
+	// a regexp used to filter credit cards on their `description` attributes.
 	DescriptionRegexp pulumi.StringPtrInput `pulumi:"descriptionRegexp"`
-	// Filter credit cards on their `state` attribute.
-	// Can be "expired", "valid", "tooManyFailures"
+	// Filter credit cards on their `state` attribute. Can be "expired", "valid", "tooManyFailures"
 	States pulumi.StringArrayInput `pulumi:"states"`
 	// Retrieve credit card marked as default payment mean.
 	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
-	// Retrieve the credit card that will be the last
-	// to expire according to its expiration date.
+	// Retrieve the credit card that will be the last to expire according to its expiration date.
 	UseLastToExpire pulumi.BoolPtrInput `pulumi:"useLastToExpire"`
 }
 
@@ -124,8 +116,7 @@ func (o GetPaymentmeanCreditCardResultOutput) ToGetPaymentmeanCreditCardResultOu
 	return o
 }
 
-// a boolean which tells if the retrieved credit card
-// is marked as the default payment mean
+// a boolean which tells if the retrieved credit card is marked as the default payment mean
 func (o GetPaymentmeanCreditCardResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPaymentmeanCreditCardResult) bool { return v.Default }).(pulumi.BoolOutput)
 }

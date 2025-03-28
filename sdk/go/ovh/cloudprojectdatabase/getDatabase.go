@@ -55,13 +55,11 @@ func GetDatabase(ctx *pulumi.Context, args *GetDatabaseArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getDatabase.
 type GetDatabaseArgs struct {
-	// The database engine you want to get information. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to get information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
 	// Cluster ID
 	Id string `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -123,13 +121,11 @@ func GetDatabaseOutput(ctx *pulumi.Context, args GetDatabaseOutputArgs, opts ...
 
 // A collection of arguments for invoking getDatabase.
 type GetDatabaseOutputArgs struct {
-	// The database engine you want to get information. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine you want to get information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Cluster ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

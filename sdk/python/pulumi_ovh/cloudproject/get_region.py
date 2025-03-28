@@ -51,8 +51,7 @@ class GetRegionResult:
     @pulumi.getter(name="continentCode")
     def continent_code(self) -> str:
         """
-        the code of the geographic continent the region is running.
-        E.g.: EU for Europe, US for America...
+        the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
         """
         return pulumi.get(self, "continent_code")
 
@@ -60,8 +59,7 @@ class GetRegionResult:
     @pulumi.getter(name="datacenterLocation")
     def datacenter_location(self) -> str:
         """
-        The location code of the datacenter.
-        E.g.: "GRA", meaning Gravelines, for region "GRA1"
+        The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
         """
         return pulumi.get(self, "datacenter_location")
 
@@ -126,10 +124,8 @@ def get_region(name: Optional[str] = None,
     ```
 
 
-    :param str name: The name of the region associated with the public cloud
-           project.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str name: The name of the region associated with the public cloud project.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -161,10 +157,8 @@ def get_region_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str name: The name of the region associated with the public cloud
-           project.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str name: The name of the region associated with the public cloud project.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['name'] = name

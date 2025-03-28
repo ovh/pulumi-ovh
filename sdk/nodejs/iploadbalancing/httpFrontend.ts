@@ -65,7 +65,13 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HTTP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
+ * HTTP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/httpFrontend:HttpFrontend testfrontend service_name/http_frontend_id
+ * ```
  */
 export class HttpFrontend extends pulumi.CustomResource {
     /**
@@ -128,9 +134,7 @@ export class HttpFrontend extends pulumi.CustomResource {
      */
     public readonly httpHeaders!: pulumi.Output<string[] | undefined>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
      */
     public readonly port!: pulumi.Output<string>;
     /**
@@ -243,9 +247,7 @@ export interface HttpFrontendState {
      */
     httpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
      */
     port?: pulumi.Input<string>;
     /**
@@ -303,9 +305,7 @@ export interface HttpFrontendArgs {
      */
     httpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
      */
     port: pulumi.Input<string>;
     /**

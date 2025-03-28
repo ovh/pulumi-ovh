@@ -34,8 +34,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string UserId;
         /// <summary>
-        /// the username generated for the user. This username can be used with
-        /// the Openstack API.
+        /// the username generated for the user. This username can be used with the Openstack API.
         /// </summary>
         public readonly string Username;
 

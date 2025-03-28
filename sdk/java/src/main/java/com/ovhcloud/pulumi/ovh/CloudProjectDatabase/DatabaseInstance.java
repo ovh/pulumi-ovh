@@ -19,8 +19,8 @@ import javax.annotation.Nullable;
  * 
  * With this resource you can create a database for the following database engine:
  * 
- *   * `mysql`
- *   * `postgresql`
+ * * `mysql`
+ * * `postgresql`
  * 
  * ## Example Usage
  * 
@@ -109,16 +109,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.default_;
     }
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      * 
      */
     @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
-     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      * 
      */
     public Output<String> engine() {
@@ -139,16 +137,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

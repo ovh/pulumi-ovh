@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewayInterface{}
 	case "ovh:CloudProject/instance:Instance":
 		r = &Instance{}
+	case "ovh:CloudProject/instanceSnapshot:InstanceSnapshot":
+		r = &InstanceSnapshot{}
 	case "ovh:CloudProject/kube:Kube":
 		r = &Kube{}
 	case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -149,6 +151,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/instanceSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

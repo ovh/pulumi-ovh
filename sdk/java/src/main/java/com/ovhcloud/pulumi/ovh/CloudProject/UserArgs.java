@@ -34,16 +34,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a convenient map representing an openstack_rc file.
-     * Note: no password nor sensitive token is set in this map.
+     * a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
      * 
      */
     @Import(name="openstackRc")
     private @Nullable Output<Map<String,String>> openstackRc;
 
     /**
-     * @return a convenient map representing an openstack_rc file.
-     * Note: no password nor sensitive token is set in this map.
+     * @return a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
      * 
      */
     public Optional<Output<Map<String,String>>> openstackRc() {
@@ -105,16 +103,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -171,8 +167,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openstackRc a convenient map representing an openstack_rc file.
-         * Note: no password nor sensitive token is set in this map.
+         * @param openstackRc a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
          * 
          * @return builder
          * 
@@ -183,8 +178,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openstackRc a convenient map representing an openstack_rc file.
-         * Note: no password nor sensitive token is set in this map.
+         * @param openstackRc a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
          * 
          * @return builder
          * 
@@ -282,8 +276,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -294,8 +287,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

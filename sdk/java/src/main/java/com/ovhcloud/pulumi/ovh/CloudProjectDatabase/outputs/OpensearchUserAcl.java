@@ -16,8 +16,7 @@ public final class OpensearchUserAcl {
      */
     private String pattern;
     /**
-     * @return Permission of the ACL
-     * Available permission:
+     * @return Permission of the ACL Available permission:
      * 
      */
     private String permission;
@@ -31,8 +30,7 @@ public final class OpensearchUserAcl {
         return this.pattern;
     }
     /**
-     * @return Permission of the ACL
-     * Available permission:
+     * @return Permission of the ACL Available permission:
      * 
      */
     public String permission() {

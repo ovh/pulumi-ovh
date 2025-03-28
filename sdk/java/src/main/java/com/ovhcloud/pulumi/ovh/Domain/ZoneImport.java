@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Handle a whole DNS zone using a zone file.
  * 
- * &gt; __WARNING__ This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
+ * &gt; **WARNING** This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
  * 
  * ## Example Usage
  * 

@@ -60,7 +60,13 @@ import javax.annotation.Nullable;
  * 
  * Resource groups can be imported by using their id.
  * 
- * &gt; Read only resource groups cannot be imported
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Iam/resourceGroup:ResourceGroup my_resource_group resource_group_id
+ * ```
+ * 
+ * -&gt; Read only resource groups cannot be imported
  * 
  */
 @ResourceType(type="ovh:Iam/resourceGroup:ResourceGroup")

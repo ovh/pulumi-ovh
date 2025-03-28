@@ -32,8 +32,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetProjectArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -125,8 +124,7 @@ export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.Invok
  */
 export interface GetProjectOutputArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

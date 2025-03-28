@@ -58,8 +58,7 @@ type FailoverIpAttach struct {
 	Progress pulumi.IntOutput `pulumi:"progress"`
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo pulumi.StringOutput `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Ip status, can be `ok` or `operationPending`
 	// * `subType` - IP sub type, can be `cloud` or `ovh`
@@ -115,8 +114,7 @@ type failoverIpAttachState struct {
 	Progress *int `pulumi:"progress"`
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo *string `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Ip status, can be `ok` or `operationPending`
 	// * `subType` - IP sub type, can be `cloud` or `ovh`
@@ -140,8 +138,7 @@ type FailoverIpAttachState struct {
 	Progress pulumi.IntPtrInput
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Ip status, can be `ok` or `operationPending`
 	// * `subType` - IP sub type, can be `cloud` or `ovh`
@@ -166,8 +163,7 @@ type failoverIpAttachArgs struct {
 	Ip *string `pulumi:"ip"`
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo *string `pulumi:"routedTo"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -184,8 +180,7 @@ type FailoverIpAttachArgs struct {
 	Ip pulumi.StringPtrInput
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -308,8 +303,7 @@ func (o FailoverIpAttachOutput) RoutedTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.RoutedTo }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o FailoverIpAttachOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FailoverIpAttach) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

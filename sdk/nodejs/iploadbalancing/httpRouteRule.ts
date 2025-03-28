@@ -57,7 +57,13 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HTTP route rule can be imported using the following format `serviceName`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+ * HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule examplerule service_name/route_id/rule_id
+ * ```
  */
 export class HttpRouteRule extends pulumi.CustomResource {
     /**

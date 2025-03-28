@@ -115,6 +115,16 @@ export const getGatewayInterface: typeof import("./getGatewayInterface").getGate
 export const getGatewayInterfaceOutput: typeof import("./getGatewayInterface").getGatewayInterfaceOutput = null as any;
 utilities.lazyLoad(exports, ["getGatewayInterface","getGatewayInterfaceOutput"], () => require("./getGatewayInterface"));
 
+export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
+export const getImage: typeof import("./getImage").getImage = null as any;
+export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
+utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
+
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
@@ -275,6 +285,16 @@ export const getStorage: typeof import("./getStorage").getStorage = null as any;
 export const getStorageOutput: typeof import("./getStorage").getStorageOutput = null as any;
 utilities.lazyLoad(exports, ["getStorage","getStorageOutput"], () => require("./getStorage"));
 
+export { GetStorageObjectArgs, GetStorageObjectResult, GetStorageObjectOutputArgs } from "./getStorageObject";
+export const getStorageObject: typeof import("./getStorageObject").getStorageObject = null as any;
+export const getStorageObjectOutput: typeof import("./getStorageObject").getStorageObjectOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageObject","getStorageObjectOutput"], () => require("./getStorageObject"));
+
+export { GetStorageObjectsArgs, GetStorageObjectsResult, GetStorageObjectsOutputArgs } from "./getStorageObjects";
+export const getStorageObjects: typeof import("./getStorageObjects").getStorageObjects = null as any;
+export const getStorageObjectsOutput: typeof import("./getStorageObjects").getStorageObjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageObjects","getStorageObjectsOutput"], () => require("./getStorageObjects"));
+
 export { GetStoragesArgs, GetStoragesResult, GetStoragesOutputArgs } from "./getStorages";
 export const getStorages: typeof import("./getStorages").getStorages = null as any;
 export const getStoragesOutput: typeof import("./getStorages").getStoragesOutput = null as any;
@@ -324,6 +344,11 @@ export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { InstanceSnapshotArgs, InstanceSnapshotState } from "./instanceSnapshot";
+export type InstanceSnapshot = import("./instanceSnapshot").InstanceSnapshot;
+export const InstanceSnapshot: typeof import("./instanceSnapshot").InstanceSnapshot = null as any;
+utilities.lazyLoad(exports, ["InstanceSnapshot"], () => require("./instanceSnapshot"));
 
 export { KubeArgs, KubeState } from "./kube";
 export type Kube = import("./kube").Kube;
@@ -452,6 +477,8 @@ const _module = {
                 return new GatewayInterface(name, <any>undefined, { urn })
             case "ovh:CloudProject/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "ovh:CloudProject/instanceSnapshot:InstanceSnapshot":
+                return new InstanceSnapshot(name, <any>undefined, { urn })
             case "ovh:CloudProject/kube:Kube":
                 return new Kube(name, <any>undefined, { urn })
             case "ovh:CloudProject/kubeIpRestrictions:KubeIpRestrictions":
@@ -508,6 +535,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/failoverIpAttach", _m
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/gateway", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/gatewayInterface", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/instance", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/instanceSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kube", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeIpRestrictions", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/kubeNodePool", _module)

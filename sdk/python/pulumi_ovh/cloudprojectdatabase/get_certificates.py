@@ -118,11 +118,8 @@ def get_certificates(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: Cluster ID
-    :param str engine: The engine of the database cluster you want database information. To get a full list of available engine visit:
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-           Available engines:
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str engine: The engine of the database cluster you want database information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -158,11 +155,8 @@ def get_certificates_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str cluster_id: Cluster ID
-    :param str engine: The engine of the database cluster you want database information. To get a full list of available engine visit:
-           [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-           Available engines:
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str engine: The engine of the database cluster you want database information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

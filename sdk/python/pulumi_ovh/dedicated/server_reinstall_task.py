@@ -34,7 +34,7 @@ class ServerReinstallTaskArgs:
         :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
         :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
                
-               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+               > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
@@ -91,7 +91,7 @@ class ServerReinstallTaskArgs:
         """
         Available attributes and their types are OS-dependant. Example: `hostname`.
 
-        > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         """
         return pulumi.get(self, "customizations")
 
@@ -145,7 +145,7 @@ class _ServerReinstallTaskState:
         :param pulumi.Input[str] comment: Details of this task. (should be `Install asked`)
         :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
                
-               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+               > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
         :param pulumi.Input[str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[str] last_update: Last update
@@ -211,7 +211,7 @@ class _ServerReinstallTaskState:
         """
         Available attributes and their types are OS-dependant. Example: `hostname`.
 
-        > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         """
         return pulumi.get(self, "customizations")
 
@@ -343,7 +343,7 @@ class ServerReinstallTask(pulumi.CustomResource):
         """
         ## Import
 
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by "/" E.g.,
 
         bash
 
@@ -356,7 +356,7 @@ class ServerReinstallTask(pulumi.CustomResource):
         :param pulumi.Input[int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
         :param pulumi.Input[Union['ServerReinstallTaskCustomizationsArgs', 'ServerReinstallTaskCustomizationsArgsDict']] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
                
-               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+               > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         :param pulumi.Input[str] os: Operating system to install.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
         :param pulumi.Input[str] service_name: The service_name of your dedicated server.
@@ -371,7 +371,7 @@ class ServerReinstallTask(pulumi.CustomResource):
         """
         ## Import
 
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by "/" E.g.,
 
         bash
 
@@ -458,7 +458,7 @@ class ServerReinstallTask(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Details of this task. (should be `Install asked`)
         :param pulumi.Input[Union['ServerReinstallTaskCustomizationsArgs', 'ServerReinstallTaskCustomizationsArgsDict']] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
                
-               > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+               > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         :param pulumi.Input[str] done_date: Completion date in RFC3339 format.
         :param pulumi.Input[str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[str] last_update: Last update
@@ -509,7 +509,7 @@ class ServerReinstallTask(pulumi.CustomResource):
         """
         Available attributes and their types are OS-dependant. Example: `hostname`.
 
-        > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+        > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         """
         return pulumi.get(self, "customizations")
 

@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **This datasource uses a Beta API**
-// Use this data source to get the instance of a public cloud project.
+// **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
 //
 // ## Example Usage
 //
@@ -59,8 +58,7 @@ type LookupInstanceArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Instance region
 	Region string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -106,8 +104,7 @@ type LookupInstanceOutputArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Instance region
 	Region pulumi.StringInput `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

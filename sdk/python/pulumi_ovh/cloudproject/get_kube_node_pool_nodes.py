@@ -120,8 +120,7 @@ def get_kube_node_pool_nodes(kube_id: Optional[str] = None,
 
     :param str kube_id: The ID of the managed kubernetes cluster.
     :param str name: Name of the node pool from which we want the nodes.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id
@@ -158,8 +157,7 @@ def get_kube_node_pool_nodes_output(kube_id: Optional[pulumi.Input[str]] = None,
 
     :param str kube_id: The ID of the managed kubernetes cluster.
     :param str name: Name of the node pool from which we want the nodes.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['kubeId'] = kube_id

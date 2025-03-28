@@ -426,34 +426,28 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.endpoints;
     }
     /**
-     * The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
-     * @return The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * @return The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      * 
      */
     public Output<String> engine() {
         return this.engine;
     }
     /**
-     * A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     @Export(name="flavor", refs={String.class}, tree="[0]")
     private Output<String> flavor;
 
     /**
-     * @return A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * @return A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: &#34;db1-7&#34;. Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     public Output<String> flavor() {
@@ -530,16 +524,14 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.networkType;
     }
     /**
-     * List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * List of nodes object. Multi region cluster are not yet available, all node should be identical.
      * 
      */
     @Export(name="nodes", refs={List.class,DatabaseNode.class}, tree="[0,1]")
     private Output<List<DatabaseNode>> nodes;
 
     /**
-     * @return List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * @return List of nodes object. Multi region cluster are not yet available, all node should be identical.
      * 
      */
     public Output<List<DatabaseNode>> nodes() {
@@ -582,16 +574,14 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.plan;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

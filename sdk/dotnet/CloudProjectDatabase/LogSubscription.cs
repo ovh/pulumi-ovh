@@ -74,8 +74,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -111,8 +110,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -187,15 +185,13 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -227,8 +223,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit.
-        /// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        /// The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -274,8 +269,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

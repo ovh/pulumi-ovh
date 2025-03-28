@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+ * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by "/" E.g.,
  *
  * bash
  *
@@ -56,7 +56,7 @@ export class ServerReinstallTask extends pulumi.CustomResource {
     /**
      * Available attributes and their types are OS-dependant. Example: `hostname`.
      *
-     * > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      */
     public readonly customizations!: pulumi.Output<outputs.Dedicated.ServerReinstallTaskCustomizations | undefined>;
     /**
@@ -162,7 +162,7 @@ export interface ServerReinstallTaskState {
     /**
      * Available attributes and their types are OS-dependant. Example: `hostname`.
      *
-     * > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      */
     customizations?: pulumi.Input<inputs.Dedicated.ServerReinstallTaskCustomizations>;
     /**
@@ -214,7 +214,7 @@ export interface ServerReinstallTaskArgs {
     /**
      * Available attributes and their types are OS-dependant. Example: `hostname`.
      *
-     * > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+     * > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      */
     customizations?: pulumi.Input<inputs.Dedicated.ServerReinstallTaskCustomizations>;
     /**

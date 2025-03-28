@@ -55,8 +55,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// an array of valid OVHcloud public cloud region ID in which the network
-        /// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+        /// an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: "GRA1". Defaults to all public cloud regions.
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
@@ -79,8 +78,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.NetworkPrivateRegionsStatus>> RegionsStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -98,8 +96,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// a vlan id to associate with the network.
-        /// Changing this value recreates the resource. Defaults to 0.
+        /// a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
         /// </summary>
         [Output("vlanId")]
         public Output<int?> VlanId { get; private set; } = null!;
@@ -161,8 +158,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _regions;
 
         /// <summary>
-        /// an array of valid OVHcloud public cloud region ID in which the network
-        /// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+        /// an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: "GRA1". Defaults to all public cloud regions.
         /// </summary>
         public InputList<string> Regions
         {
@@ -171,15 +167,13 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// a vlan id to associate with the network.
-        /// Changing this value recreates the resource. Defaults to 0.
+        /// a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
@@ -202,8 +196,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<string>? _regions;
 
         /// <summary>
-        /// an array of valid OVHcloud public cloud region ID in which the network
-        /// will be available. Ex.: "GRA1". Defaults to all public cloud regions.
+        /// an array of valid OVHcloud public cloud region ID in which the network will be available. Ex.: "GRA1". Defaults to all public cloud regions.
         /// </summary>
         public InputList<string> Regions
         {
@@ -242,8 +235,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// The id of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -261,8 +253,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// a vlan id to associate with the network.
-        /// Changing this value recreates the resource. Defaults to 0.
+        /// a vlan id to associate with the network. Changing this value recreates the resource. Defaults to 0.
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

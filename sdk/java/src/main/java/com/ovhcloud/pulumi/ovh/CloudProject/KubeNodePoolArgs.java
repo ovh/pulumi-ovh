@@ -51,16 +51,14 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      * 
      */
     @Import(name="autoscalingScaleDownUnneededTimeSeconds")
     private @Nullable Output<Integer> autoscalingScaleDownUnneededTimeSeconds;
 
     /**
-     * @return scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * @return scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      * 
      */
     public Optional<Output<Integer>> autoscalingScaleDownUnneededTimeSeconds() {
@@ -68,16 +66,14 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      * 
      */
     @Import(name="autoscalingScaleDownUnreadyTimeSeconds")
     private @Nullable Output<Integer> autoscalingScaleDownUnreadyTimeSeconds;
 
     /**
-     * @return scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * @return scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      * 
      */
     public Optional<Output<Integer>> autoscalingScaleDownUnreadyTimeSeconds() {
@@ -85,8 +81,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
@@ -94,8 +89,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Double> autoscalingScaleDownUtilizationThreshold;
 
     /**
-     * @return scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * @return scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
@@ -119,16 +113,14 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="flavorName", required=true)
     private Output<String> flavorName;
 
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> flavorName() {
@@ -320,8 +312,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoscalingScaleDownUnneededTimeSeconds scaleDownUnneededTimeSeconds autoscaling parameter
-         * How long a node should be unneeded before it is eligible for scale down
+         * @param autoscalingScaleDownUnneededTimeSeconds scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
          * 
          * @return builder
          * 
@@ -332,8 +323,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoscalingScaleDownUnneededTimeSeconds scaleDownUnneededTimeSeconds autoscaling parameter
-         * How long a node should be unneeded before it is eligible for scale down
+         * @param autoscalingScaleDownUnneededTimeSeconds scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
          * 
          * @return builder
          * 
@@ -343,8 +333,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoscalingScaleDownUnreadyTimeSeconds scaleDownUnreadyTimeSeconds autoscaling parameter
-         * How long an unready node should be unneeded before it is eligible for scale down
+         * @param autoscalingScaleDownUnreadyTimeSeconds scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
          * 
          * @return builder
          * 
@@ -355,8 +344,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoscalingScaleDownUnreadyTimeSeconds scaleDownUnreadyTimeSeconds autoscaling parameter
-         * How long an unready node should be unneeded before it is eligible for scale down
+         * @param autoscalingScaleDownUnreadyTimeSeconds scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
          * 
          * @return builder
          * 
@@ -366,8 +354,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter
-         * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+         * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
          * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
          * 
          * @return builder
@@ -379,8 +366,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter
-         * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+         * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
          * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
          * 
          * @return builder
@@ -412,8 +398,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-         * **Changing this value recreates the resource.**
+         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -424,8 +409,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-         * **Changing this value recreates the resource.**
+         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

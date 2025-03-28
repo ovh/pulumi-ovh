@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.Vrack
     /// <summary>
     /// Attach a Dedicated Server Network Interface to a vRack.
     /// 
-    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.&lt;br /&gt;
-    /// Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServer` instead.
+    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServerInterface` is intended to be used for dedicated servers that have configurable network interfaces.&lt;br /&gt; Legacy Dedicated servers that do not have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServer` instead.
     /// 
     /// ## Example Usage
     /// 
@@ -49,8 +48,7 @@ namespace Pulumi.Ovh.Vrack
         public Output<string> InterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -109,8 +107,7 @@ namespace Pulumi.Ovh.Vrack
         public Input<string> InterfaceId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -130,8 +127,7 @@ namespace Pulumi.Ovh.Vrack
         public Input<string>? InterfaceId { get; set; }
 
         /// <summary>
-        /// The id of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// The id of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

@@ -66,13 +66,11 @@ type KafkaSchemaRegistryAcl struct {
 
 	// Cluster ID.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Permission to give to this username on this resource.
-	// Available permissions:
+	// Permission to give to this username on this resource. Available permissions:
 	Permission pulumi.StringOutput `pulumi:"permission"`
 	// Resource affected by this schema registry ACL.
 	Resource pulumi.StringOutput `pulumi:"resource"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Username affected by this schema registry ACL.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -125,13 +123,11 @@ func GetKafkaSchemaRegistryAcl(ctx *pulumi.Context,
 type kafkaSchemaRegistryAclState struct {
 	// Cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
-	// Permission to give to this username on this resource.
-	// Available permissions:
+	// Permission to give to this username on this resource. Available permissions:
 	Permission *string `pulumi:"permission"`
 	// Resource affected by this schema registry ACL.
 	Resource *string `pulumi:"resource"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Username affected by this schema registry ACL.
 	Username *string `pulumi:"username"`
@@ -140,13 +136,11 @@ type kafkaSchemaRegistryAclState struct {
 type KafkaSchemaRegistryAclState struct {
 	// Cluster ID.
 	ClusterId pulumi.StringPtrInput
-	// Permission to give to this username on this resource.
-	// Available permissions:
+	// Permission to give to this username on this resource. Available permissions:
 	Permission pulumi.StringPtrInput
 	// Resource affected by this schema registry ACL.
 	Resource pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Username affected by this schema registry ACL.
 	Username pulumi.StringPtrInput
@@ -159,13 +153,11 @@ func (KafkaSchemaRegistryAclState) ElementType() reflect.Type {
 type kafkaSchemaRegistryAclArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// Permission to give to this username on this resource.
-	// Available permissions:
+	// Permission to give to this username on this resource. Available permissions:
 	Permission string `pulumi:"permission"`
 	// Resource affected by this schema registry ACL.
 	Resource string `pulumi:"resource"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// Username affected by this schema registry ACL.
 	Username string `pulumi:"username"`
@@ -175,13 +167,11 @@ type kafkaSchemaRegistryAclArgs struct {
 type KafkaSchemaRegistryAclArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput
-	// Permission to give to this username on this resource.
-	// Available permissions:
+	// Permission to give to this username on this resource. Available permissions:
 	Permission pulumi.StringInput
 	// Resource affected by this schema registry ACL.
 	Resource pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 	// Username affected by this schema registry ACL.
 	Username pulumi.StringInput
@@ -279,8 +269,7 @@ func (o KafkaSchemaRegistryAclOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Permission to give to this username on this resource.
-// Available permissions:
+// Permission to give to this username on this resource. Available permissions:
 func (o KafkaSchemaRegistryAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
@@ -290,8 +279,7 @@ func (o KafkaSchemaRegistryAclOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.Resource }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o KafkaSchemaRegistryAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

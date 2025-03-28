@@ -56,14 +56,11 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 type LookupDatabaseInstanceArgs struct {
 	// Cluster ID
 	ClusterId string `pulumi:"clusterId"`
-	// The engine of the database cluster you want database information. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want database information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine string `pulumi:"engine"`
 	// Name of the database.
 	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -96,14 +93,11 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 type LookupDatabaseInstanceOutputArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The engine of the database cluster you want database information. To get a full list of available engine visit:
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-	// Available engines:
+	// The engine of the database cluster you want database information. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Name of the database.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -85,9 +85,7 @@ export class UdpFrontend extends pulumi.CustomResource {
      */
     public /*out*/ readonly frontendId!: pulumi.Output<number>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value), 
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
      */
     public readonly port!: pulumi.Output<string>;
     /**
@@ -170,9 +168,7 @@ export interface UdpFrontendState {
      */
     frontendId?: pulumi.Input<number>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value), 
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
      */
     port?: pulumi.Input<string>;
     /**
@@ -206,9 +202,7 @@ export interface UdpFrontendArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value), 
-     * range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-     * and/or 'range'. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
      */
     port: pulumi.Input<string>;
     /**

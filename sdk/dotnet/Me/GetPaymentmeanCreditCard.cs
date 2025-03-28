@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.Me
     public static class GetPaymentmeanCreditCard
     {
         /// <summary>
-        /// Use this data source to retrieve information about a credit card
-        /// payment mean associated with an OVHcloud account.
+        /// Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
         /// 
         /// ## Example Usage
         /// 
@@ -37,8 +36,7 @@ namespace Pulumi.Ovh.Me
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPaymentmeanCreditCardResult>("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args ?? new GetPaymentmeanCreditCardArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a credit card
-        /// payment mean associated with an OVHcloud account.
+        /// Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
         /// 
         /// ## Example Usage
         /// 
@@ -62,8 +60,7 @@ namespace Pulumi.Ovh.Me
             => global::Pulumi.Deployment.Instance.Invoke<GetPaymentmeanCreditCardResult>("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", args ?? new GetPaymentmeanCreditCardInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a credit card
-        /// payment mean associated with an OVHcloud account.
+        /// Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
         /// 
         /// ## Example Usage
         /// 
@@ -91,8 +88,7 @@ namespace Pulumi.Ovh.Me
     public sealed class GetPaymentmeanCreditCardArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// a regexp used to filter credit cards 
-        /// on their `description` attributes.
+        /// a regexp used to filter credit cards on their `description` attributes.
         /// </summary>
         [Input("descriptionRegexp")]
         public string? DescriptionRegexp { get; set; }
@@ -101,8 +97,7 @@ namespace Pulumi.Ovh.Me
         private List<string>? _states;
 
         /// <summary>
-        /// Filter credit cards on their `state` attribute.
-        /// Can be "expired", "valid", "tooManyFailures"
+        /// Filter credit cards on their `state` attribute. Can be "expired", "valid", "tooManyFailures"
         /// </summary>
         public List<string> States
         {
@@ -117,8 +112,7 @@ namespace Pulumi.Ovh.Me
         public bool? UseDefault { get; set; }
 
         /// <summary>
-        /// Retrieve the credit card that will be the last
-        /// to expire according to its expiration date.
+        /// Retrieve the credit card that will be the last to expire according to its expiration date.
         /// </summary>
         [Input("useLastToExpire")]
         public bool? UseLastToExpire { get; set; }
@@ -132,8 +126,7 @@ namespace Pulumi.Ovh.Me
     public sealed class GetPaymentmeanCreditCardInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// a regexp used to filter credit cards 
-        /// on their `description` attributes.
+        /// a regexp used to filter credit cards on their `description` attributes.
         /// </summary>
         [Input("descriptionRegexp")]
         public Input<string>? DescriptionRegexp { get; set; }
@@ -142,8 +135,7 @@ namespace Pulumi.Ovh.Me
         private InputList<string>? _states;
 
         /// <summary>
-        /// Filter credit cards on their `state` attribute.
-        /// Can be "expired", "valid", "tooManyFailures"
+        /// Filter credit cards on their `state` attribute. Can be "expired", "valid", "tooManyFailures"
         /// </summary>
         public InputList<string> States
         {
@@ -158,8 +150,7 @@ namespace Pulumi.Ovh.Me
         public Input<bool>? UseDefault { get; set; }
 
         /// <summary>
-        /// Retrieve the credit card that will be the last
-        /// to expire according to its expiration date.
+        /// Retrieve the credit card that will be the last to expire according to its expiration date.
         /// </summary>
         [Input("useLastToExpire")]
         public Input<bool>? UseLastToExpire { get; set; }
@@ -175,8 +166,7 @@ namespace Pulumi.Ovh.Me
     public sealed class GetPaymentmeanCreditCardResult
     {
         /// <summary>
-        /// a boolean which tells if the retrieved credit card
-        /// is marked as the default payment mean
+        /// a boolean which tells if the retrieved credit card is marked as the default payment mean
         /// </summary>
         public readonly bool Default;
         /// <summary>

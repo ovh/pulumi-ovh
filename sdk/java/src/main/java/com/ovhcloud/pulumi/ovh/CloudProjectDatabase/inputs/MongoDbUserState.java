@@ -92,8 +92,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
      * * `clusterManager{@literal @}admin`
@@ -117,8 +116,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> roles;
 
     /**
-     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-     * Available roles:
+     * @return Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
      * * `backup{@literal @}admin`
      * * `clusterAdmin{@literal @}admin`
      * * `clusterManager{@literal @}admin`
@@ -143,16 +141,14 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -311,8 +307,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-         * Available roles:
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
          * * `backup{@literal @}admin`
          * * `clusterAdmin{@literal @}admin`
          * * `clusterManager{@literal @}admin`
@@ -340,8 +335,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-         * Available roles:
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
          * * `backup{@literal @}admin`
          * * `clusterAdmin{@literal @}admin`
          * * `clusterManager{@literal @}admin`
@@ -368,8 +362,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles.
-         * Available roles:
+         * @param roles Roles the user belongs to. Since version 0.37.0, the authentication database must be indicated for all roles. Available roles:
          * * `backup{@literal @}admin`
          * * `clusterAdmin{@literal @}admin`
          * * `clusterManager{@literal @}admin`
@@ -396,8 +389,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -408,8 +400,7 @@ public final class MongoDbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

@@ -30,16 +30,14 @@ public final class OpensearchUserAclArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Permission of the ACL
-     * Available permission:
+     * Permission of the ACL Available permission:
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Permission of the ACL
-     * Available permission:
+     * @return Permission of the ACL Available permission:
      * 
      */
     public Output<String> permission() {
@@ -93,8 +91,7 @@ public final class OpensearchUserAclArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param permission Permission of the ACL
-         * Available permission:
+         * @param permission Permission of the ACL Available permission:
          * 
          * @return builder
          * 
@@ -105,8 +102,7 @@ public final class OpensearchUserAclArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param permission Permission of the ACL
-         * Available permission:
+         * @param permission Permission of the ACL Available permission:
          * 
          * @return builder
          * 

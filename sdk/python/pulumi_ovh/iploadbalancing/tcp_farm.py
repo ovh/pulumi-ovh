@@ -323,6 +323,12 @@ class TcpFarm(pulumi.CustomResource):
 
         TCP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/tcpFarm:TcpFarm farmname service_name/farm_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balance: Load balancing algorithm. `roundrobin` if null (`first`, `leastconn`, `roundrobin`, `source`)
@@ -360,6 +366,12 @@ class TcpFarm(pulumi.CustomResource):
         ## Import
 
         TCP Farm can be imported using the following format `service_name` and the `id` of the farm, separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/tcpFarm:TcpFarm farmname service_name/farm_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param TcpFarmArgs args: The arguments to use to populate this resource's properties.

@@ -27,8 +27,7 @@ class M3DbUserArgs:
         """
         The set of arguments for constructing a M3DbUser resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] group: Group of the user.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
@@ -58,8 +57,7 @@ class M3DbUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -123,8 +121,7 @@ class _M3DbUserState:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
         """
         if cluster_id is not None:
@@ -220,8 +217,7 @@ class _M3DbUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -270,8 +266,7 @@ class M3DbUser(pulumi.CustomResource):
         :param pulumi.Input[str] group: Group of the user.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -364,8 +359,7 @@ class M3DbUser(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -434,8 +428,7 @@ class M3DbUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

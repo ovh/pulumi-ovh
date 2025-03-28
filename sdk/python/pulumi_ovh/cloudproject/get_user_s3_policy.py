@@ -100,8 +100,7 @@ def get_user_s3_policy(service_name: Optional[str] = None,
     ```
 
 
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()
@@ -136,8 +135,7 @@ def get_user_s3_policy_output(service_name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()

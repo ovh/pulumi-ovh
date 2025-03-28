@@ -820,8 +820,7 @@ func (o DatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) DatabaseIpRes
 type DatabaseNode struct {
 	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 	NetworkId *string `pulumi:"networkId"`
-	// Public cloud region in which the node should be deployed.
-	// Ex: "GRA'.
+	// Public cloud region in which the node should be deployed. Ex: "GRA'.
 	Region string `pulumi:"region"`
 	// Private subnet ID in which the node is.
 	SubnetId *string `pulumi:"subnetId"`
@@ -841,8 +840,7 @@ type DatabaseNodeInput interface {
 type DatabaseNodeArgs struct {
 	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
-	// Public cloud region in which the node should be deployed.
-	// Ex: "GRA'.
+	// Public cloud region in which the node should be deployed. Ex: "GRA'.
 	Region pulumi.StringInput `pulumi:"region"`
 	// Private subnet ID in which the node is.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
@@ -904,8 +902,7 @@ func (o DatabaseNodeOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
-// Public cloud region in which the node should be deployed.
-// Ex: "GRA'.
+// Public cloud region in which the node should be deployed. Ex: "GRA'.
 func (o DatabaseNodeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseNode) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -3959,6 +3956,7 @@ type KubePrivateNetworkConfiguration struct {
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 	//
 	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	//
 	// ```go
 	// package main
 	//
@@ -3992,6 +3990,7 @@ type KubePrivateNetworkConfigurationArgs struct {
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 	//
 	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+	//
 	// ```go
 	// package main
 	//
@@ -4093,6 +4092,7 @@ func (o KubePrivateNetworkConfigurationOutput) DefaultVrackGateway() pulumi.Stri
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 //
 // In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+//
 // ```go
 // package main
 //
@@ -4150,6 +4150,7 @@ func (o KubePrivateNetworkConfigurationPtrOutput) DefaultVrackGateway() pulumi.S
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 //
 // In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+//
 // ```go
 // package main
 //
@@ -6815,20 +6816,15 @@ func (o NetworkPrivateRegionsStatusArrayOutput) Index(i pulumi.IntInput) Network
 }
 
 type NetworkPrivateSubnetIpPool struct {
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to false.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
 	Dhcp *bool `pulumi:"dhcp"`
-	// Last ip for this region.
-	// Changing this value recreates the subnet.
+	// Last ip for this region. Changing this value recreates the subnet.
 	End *string `pulumi:"end"`
-	// Global network in CIDR format.
-	// Changing this value recreates the subnet
+	// Global network in CIDR format. Changing this value recreates the subnet
 	Network *string `pulumi:"network"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region *string `pulumi:"region"`
-	// First ip for this region.
-	// Changing this value recreates the subnet.
+	// First ip for this region. Changing this value recreates the subnet.
 	Start *string `pulumi:"start"`
 }
 
@@ -6844,20 +6840,15 @@ type NetworkPrivateSubnetIpPoolInput interface {
 }
 
 type NetworkPrivateSubnetIpPoolArgs struct {
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to false.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
-	// Last ip for this region.
-	// Changing this value recreates the subnet.
+	// Last ip for this region. Changing this value recreates the subnet.
 	End pulumi.StringPtrInput `pulumi:"end"`
-	// Global network in CIDR format.
-	// Changing this value recreates the subnet
+	// Global network in CIDR format. Changing this value recreates the subnet
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// First ip for this region.
-	// Changing this value recreates the subnet.
+	// First ip for this region. Changing this value recreates the subnet.
 	Start pulumi.StringPtrInput `pulumi:"start"`
 }
 
@@ -6912,32 +6903,27 @@ func (o NetworkPrivateSubnetIpPoolOutput) ToNetworkPrivateSubnetIpPoolOutputWith
 	return o
 }
 
-// Enable DHCP.
-// Changing this forces a new resource to be created. Defaults to false.
+// Enable DHCP. Changing this forces a new resource to be created. Defaults to false.
 func (o NetworkPrivateSubnetIpPoolOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// Last ip for this region.
-// Changing this value recreates the subnet.
+// Last ip for this region. Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetIpPoolOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
-// Global network in CIDR format.
-// Changing this value recreates the subnet
+// Global network in CIDR format. Changing this value recreates the subnet
 func (o NetworkPrivateSubnetIpPoolOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The region in which the network subnet will be created.
-// Ex.: "GRA1". Changing this value recreates the resource.
+// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 func (o NetworkPrivateSubnetIpPoolOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// First ip for this region.
-// Changing this value recreates the subnet.
+// First ip for this region. Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetIpPoolOutput) Start() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkPrivateSubnetIpPool) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
@@ -8787,7 +8773,7 @@ type RancherTargetSpec struct {
 	Name string `pulumi:"name"`
 	// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
 	Plan string `pulumi:"plan"`
-	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
 	Version *string `pulumi:"version"`
 }
 
@@ -8809,7 +8795,7 @@ type RancherTargetSpecArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
 	Plan pulumi.StringInput `pulumi:"plan"`
-	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+	// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -8905,7 +8891,7 @@ func (o RancherTargetSpecOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v RancherTargetSpec) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
 func (o RancherTargetSpecOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RancherTargetSpec) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -8964,7 +8950,7 @@ func (o RancherTargetSpecPtrOutput) Plan() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
 func (o RancherTargetSpecPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RancherTargetSpec) *string {
 		if v == nil {
@@ -12544,6 +12530,220 @@ func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Ip() pulumi.
 // Type of the port (dhcp┃instance┃loadbalancer┃routerInterface┃unknown)
 func (o GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFloatingIPsCloudProjectFloatingipAssociatedEntity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetImagesImage struct {
+	// Image creation date
+	CreationDate string `pulumi:"creationDate"`
+	// Image usable only for this type of flavor if not null
+	FlavorType string `pulumi:"flavorType"`
+	// Image ID
+	Id string `pulumi:"id"`
+	// Minimum disks required to use image
+	MinDisk float64 `pulumi:"minDisk"`
+	// Minimum RAM required to use image
+	MinRam float64 `pulumi:"minRam"`
+	// Image name
+	Name string `pulumi:"name"`
+	// Order plan code
+	PlanCode string `pulumi:"planCode"`
+	// Image region
+	Region string `pulumi:"region"`
+	// Image size (in GiB)
+	Size float64 `pulumi:"size"`
+	// Image status
+	Status string `pulumi:"status"`
+	// Tags about the image
+	Tags []string `pulumi:"tags"`
+	// Image type
+	Type string `pulumi:"type"`
+	// User to connect with
+	User string `pulumi:"user"`
+	// Image visibility
+	Visibility string `pulumi:"visibility"`
+}
+
+// GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
+// You can construct a concrete instance of `GetImagesImageInput` via:
+//
+//	GetImagesImageArgs{...}
+type GetImagesImageInput interface {
+	pulumi.Input
+
+	ToGetImagesImageOutput() GetImagesImageOutput
+	ToGetImagesImageOutputWithContext(context.Context) GetImagesImageOutput
+}
+
+type GetImagesImageArgs struct {
+	// Image creation date
+	CreationDate pulumi.StringInput `pulumi:"creationDate"`
+	// Image usable only for this type of flavor if not null
+	FlavorType pulumi.StringInput `pulumi:"flavorType"`
+	// Image ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Minimum disks required to use image
+	MinDisk pulumi.Float64Input `pulumi:"minDisk"`
+	// Minimum RAM required to use image
+	MinRam pulumi.Float64Input `pulumi:"minRam"`
+	// Image name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Order plan code
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Image region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Image size (in GiB)
+	Size pulumi.Float64Input `pulumi:"size"`
+	// Image status
+	Status pulumi.StringInput `pulumi:"status"`
+	// Tags about the image
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Image type
+	Type pulumi.StringInput `pulumi:"type"`
+	// User to connect with
+	User pulumi.StringInput `pulumi:"user"`
+	// Image visibility
+	Visibility pulumi.StringInput `pulumi:"visibility"`
+}
+
+func (GetImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutput() GetImagesImageOutput {
+	return i.ToGetImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageOutput)
+}
+
+// GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
+// You can construct a concrete instance of `GetImagesImageArrayInput` via:
+//
+//	GetImagesImageArray{ GetImagesImageArgs{...} }
+type GetImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesImageArrayOutput() GetImagesImageArrayOutput
+	ToGetImagesImageArrayOutputWithContext(context.Context) GetImagesImageArrayOutput
+}
+
+type GetImagesImageArray []GetImagesImageInput
+
+func (GetImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return i.ToGetImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
+}
+
+type GetImagesImageOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutput() GetImagesImageOutput {
+	return o
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return o
+}
+
+// Image creation date
+func (o GetImagesImageOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// Image usable only for this type of flavor if not null
+func (o GetImagesImageOutput) FlavorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.FlavorType }).(pulumi.StringOutput)
+}
+
+// Image ID
+func (o GetImagesImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Minimum disks required to use image
+func (o GetImagesImageOutput) MinDisk() pulumi.Float64Output {
+	return o.ApplyT(func(v GetImagesImage) float64 { return v.MinDisk }).(pulumi.Float64Output)
+}
+
+// Minimum RAM required to use image
+func (o GetImagesImageOutput) MinRam() pulumi.Float64Output {
+	return o.ApplyT(func(v GetImagesImage) float64 { return v.MinRam }).(pulumi.Float64Output)
+}
+
+// Image name
+func (o GetImagesImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Order plan code
+func (o GetImagesImageOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Image region
+func (o GetImagesImageOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Image size (in GiB)
+func (o GetImagesImageOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetImagesImage) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// Image status
+func (o GetImagesImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tags about the image
+func (o GetImagesImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImagesImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Image type
+func (o GetImagesImageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// User to connect with
+func (o GetImagesImageOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.User }).(pulumi.StringOutput)
+}
+
+// Image visibility
+func (o GetImagesImageOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
+		return vs[0].([]GetImagesImage)[vs[1].(int)]
+	}).(GetImagesImageOutput)
 }
 
 type GetInstanceAddress struct {
@@ -17054,8 +17254,7 @@ func (o GetRancherVersionVersionArrayOutput) Index(i pulumi.IntInput) GetRancher
 }
 
 type GetRegionService struct {
-	// The name of the region associated with the public cloud
-	// project.
+	// The name of the region associated with the public cloud project.
 	Name string `pulumi:"name"`
 	// the status of the service
 	Status string `pulumi:"status"`
@@ -17073,8 +17272,7 @@ type GetRegionServiceInput interface {
 }
 
 type GetRegionServiceArgs struct {
-	// The name of the region associated with the public cloud
-	// project.
+	// The name of the region associated with the public cloud project.
 	Name pulumi.StringInput `pulumi:"name"`
 	// the status of the service
 	Status pulumi.StringInput `pulumi:"status"`
@@ -17131,8 +17329,7 @@ func (o GetRegionServiceOutput) ToGetRegionServiceOutputWithContext(ctx context.
 	return o
 }
 
-// The name of the region associated with the public cloud
-// project.
+// The name of the region associated with the public cloud project.
 func (o GetRegionServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionService) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -17372,6 +17569,166 @@ func (o GetStorageObjectArrayOutput) Index(i pulumi.IntInput) GetStorageObjectOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageObject {
 		return vs[0].([]GetStorageObject)[vs[1].(int)]
 	}).(GetStorageObjectOutput)
+}
+
+type GetStorageObjectsObject struct {
+	// ETag
+	Etag string `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker bool `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest bool `pulumi:"isLatest"`
+	// Key
+	Key string `pulumi:"key"`
+	// Last modification date
+	LastModified string `pulumi:"lastModified"`
+	// Size (bytes)
+	Size float64 `pulumi:"size"`
+	// Storage class
+	StorageClass string `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId string `pulumi:"versionId"`
+}
+
+// GetStorageObjectsObjectInput is an input type that accepts GetStorageObjectsObjectArgs and GetStorageObjectsObjectOutput values.
+// You can construct a concrete instance of `GetStorageObjectsObjectInput` via:
+//
+//	GetStorageObjectsObjectArgs{...}
+type GetStorageObjectsObjectInput interface {
+	pulumi.Input
+
+	ToGetStorageObjectsObjectOutput() GetStorageObjectsObjectOutput
+	ToGetStorageObjectsObjectOutputWithContext(context.Context) GetStorageObjectsObjectOutput
+}
+
+type GetStorageObjectsObjectArgs struct {
+	// ETag
+	Etag pulumi.StringInput `pulumi:"etag"`
+	// Whether this object is a delete marker
+	IsDeleteMarker pulumi.BoolInput `pulumi:"isDeleteMarker"`
+	// Whether this is the latest version of the object
+	IsLatest pulumi.BoolInput `pulumi:"isLatest"`
+	// Key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Last modification date
+	LastModified pulumi.StringInput `pulumi:"lastModified"`
+	// Size (bytes)
+	Size pulumi.Float64Input `pulumi:"size"`
+	// Storage class
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// Version ID of the object
+	VersionId pulumi.StringInput `pulumi:"versionId"`
+}
+
+func (GetStorageObjectsObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageObjectsObject)(nil)).Elem()
+}
+
+func (i GetStorageObjectsObjectArgs) ToGetStorageObjectsObjectOutput() GetStorageObjectsObjectOutput {
+	return i.ToGetStorageObjectsObjectOutputWithContext(context.Background())
+}
+
+func (i GetStorageObjectsObjectArgs) ToGetStorageObjectsObjectOutputWithContext(ctx context.Context) GetStorageObjectsObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageObjectsObjectOutput)
+}
+
+// GetStorageObjectsObjectArrayInput is an input type that accepts GetStorageObjectsObjectArray and GetStorageObjectsObjectArrayOutput values.
+// You can construct a concrete instance of `GetStorageObjectsObjectArrayInput` via:
+//
+//	GetStorageObjectsObjectArray{ GetStorageObjectsObjectArgs{...} }
+type GetStorageObjectsObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetStorageObjectsObjectArrayOutput() GetStorageObjectsObjectArrayOutput
+	ToGetStorageObjectsObjectArrayOutputWithContext(context.Context) GetStorageObjectsObjectArrayOutput
+}
+
+type GetStorageObjectsObjectArray []GetStorageObjectsObjectInput
+
+func (GetStorageObjectsObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageObjectsObject)(nil)).Elem()
+}
+
+func (i GetStorageObjectsObjectArray) ToGetStorageObjectsObjectArrayOutput() GetStorageObjectsObjectArrayOutput {
+	return i.ToGetStorageObjectsObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetStorageObjectsObjectArray) ToGetStorageObjectsObjectArrayOutputWithContext(ctx context.Context) GetStorageObjectsObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageObjectsObjectArrayOutput)
+}
+
+type GetStorageObjectsObjectOutput struct{ *pulumi.OutputState }
+
+func (GetStorageObjectsObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageObjectsObject)(nil)).Elem()
+}
+
+func (o GetStorageObjectsObjectOutput) ToGetStorageObjectsObjectOutput() GetStorageObjectsObjectOutput {
+	return o
+}
+
+func (o GetStorageObjectsObjectOutput) ToGetStorageObjectsObjectOutputWithContext(ctx context.Context) GetStorageObjectsObjectOutput {
+	return o
+}
+
+// ETag
+func (o GetStorageObjectsObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Whether this object is a delete marker
+func (o GetStorageObjectsObjectOutput) IsDeleteMarker() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) bool { return v.IsDeleteMarker }).(pulumi.BoolOutput)
+}
+
+// Whether this is the latest version of the object
+func (o GetStorageObjectsObjectOutput) IsLatest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) bool { return v.IsLatest }).(pulumi.BoolOutput)
+}
+
+// Key
+func (o GetStorageObjectsObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Last modification date
+func (o GetStorageObjectsObjectOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// Size (bytes)
+func (o GetStorageObjectsObjectOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetStorageObjectsObject) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+// Storage class
+func (o GetStorageObjectsObjectOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// Version ID of the object
+func (o GetStorageObjectsObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageObjectsObject) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+type GetStorageObjectsObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStorageObjectsObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageObjectsObject)(nil)).Elem()
+}
+
+func (o GetStorageObjectsObjectArrayOutput) ToGetStorageObjectsObjectArrayOutput() GetStorageObjectsObjectArrayOutput {
+	return o
+}
+
+func (o GetStorageObjectsObjectArrayOutput) ToGetStorageObjectsObjectArrayOutputWithContext(ctx context.Context) GetStorageObjectsObjectArrayOutput {
+	return o
+}
+
+func (o GetStorageObjectsObjectArrayOutput) Index(i pulumi.IntInput) GetStorageObjectsObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageObjectsObject {
+		return vs[0].([]GetStorageObjectsObject)[vs[1].(int)]
+	}).(GetStorageObjectsObjectOutput)
 }
 
 type GetStorageReplication struct {
@@ -18673,8 +19030,7 @@ type GetUsersUser struct {
 	Status string `pulumi:"status"`
 	// The ID of a public cloud project's user.
 	UserId string `pulumi:"userId"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
+	// the username generated for the user. This username can be used with the Openstack API.
 	Username string `pulumi:"username"`
 }
 
@@ -18700,8 +19056,7 @@ type GetUsersUserArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of a public cloud project's user.
 	UserId pulumi.StringInput `pulumi:"userId"`
-	// the username generated for the user. This username can be used with
-	// the Openstack API.
+	// the username generated for the user. This username can be used with the Openstack API.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -18781,8 +19136,7 @@ func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// the username generated for the user. This username can be used with
-// the Openstack API.
+// the username generated for the user. This username can be used with the Openstack API.
 func (o GetUsersUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -19221,6 +19575,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipArrayInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFloatingIPsCloudProjectFloatingipAssociatedEntityInput)(nil)).Elem(), GetFloatingIPsCloudProjectFloatingipAssociatedEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAddressInput)(nil)).Elem(), GetInstanceAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAddressArrayInput)(nil)).Elem(), GetInstanceAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedVolumeInput)(nil)).Elem(), GetInstanceAttachedVolumeArgs{})
@@ -19292,6 +19648,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEncryptionInput)(nil)).Elem(), GetStorageEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageObjectInput)(nil)).Elem(), GetStorageObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageObjectArrayInput)(nil)).Elem(), GetStorageObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageObjectsObjectInput)(nil)).Elem(), GetStorageObjectsObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageObjectsObjectArrayInput)(nil)).Elem(), GetStorageObjectsObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationInput)(nil)).Elem(), GetStorageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationRuleInput)(nil)).Elem(), GetStorageReplicationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageReplicationRuleArrayInput)(nil)).Elem(), GetStorageReplicationRuleArray{})
@@ -19491,6 +19849,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipOutput{})
 	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipArrayOutput{})
 	pulumi.RegisterOutputType(GetFloatingIPsCloudProjectFloatingipAssociatedEntityOutput{})
+	pulumi.RegisterOutputType(GetImagesImageOutput{})
+	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAddressOutput{})
 	pulumi.RegisterOutputType(GetInstanceAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedVolumeOutput{})
@@ -19562,6 +19922,8 @@ func init() {
 	pulumi.RegisterOutputType(GetStorageEncryptionOutput{})
 	pulumi.RegisterOutputType(GetStorageObjectOutput{})
 	pulumi.RegisterOutputType(GetStorageObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetStorageObjectsObjectOutput{})
+	pulumi.RegisterOutputType(GetStorageObjectsObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetStorageReplicationOutput{})
 	pulumi.RegisterOutputType(GetStorageReplicationRuleOutput{})
 	pulumi.RegisterOutputType(GetStorageReplicationRuleArrayOutput{})

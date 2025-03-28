@@ -18,16 +18,14 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     public static final RegionStoragePresignArgs Empty = new RegionStoragePresignArgs();
 
     /**
-     * Define, in seconds, for how long your URL will be
-     * valid.
+     * Define, in seconds, for how long your URL will be valid.
      * 
      */
     @Import(name="expire", required=true)
     private Output<Integer> expire;
 
     /**
-     * @return Define, in seconds, for how long your URL will be
-     * valid.
+     * @return Define, in seconds, for how long your URL will be valid.
      * 
      */
     public Output<Integer> expire() {
@@ -35,16 +33,14 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The method you want to use to interact with your
-     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The method you want to use to interact with your
-     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * @return The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     public Output<String> method() {
@@ -82,16 +78,14 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: &#34;GRA&#34;.
+     * The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     @Import(name="regionName", required=true)
     private Output<String> regionName;
 
     /**
-     * @return The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: &#34;GRA&#34;.
+     * @return The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     public Output<String> regionName() {
@@ -99,20 +93,33 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    /**
+     * Version ID of the object to download or delete
+     * 
+     */
+    @Import(name="versionId")
+    private @Nullable Output<String> versionId;
+
+    /**
+     * @return Version ID of the object to download or delete
+     * 
+     */
+    public Optional<Output<String>> versionId() {
+        return Optional.ofNullable(this.versionId);
     }
 
     private RegionStoragePresignArgs() {}
@@ -124,6 +131,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         this.object = $.object;
         this.regionName = $.regionName;
         this.serviceName = $.serviceName;
+        this.versionId = $.versionId;
     }
 
     public static Builder builder() {
@@ -145,8 +153,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expire Define, in seconds, for how long your URL will be
-         * valid.
+         * @param expire Define, in seconds, for how long your URL will be valid.
          * 
          * @return builder
          * 
@@ -157,8 +164,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expire Define, in seconds, for how long your URL will be
-         * valid.
+         * @param expire Define, in seconds, for how long your URL will be valid.
          * 
          * @return builder
          * 
@@ -168,8 +174,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The method you want to use to interact with your
-         * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+         * @param method The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
          * 
          * @return builder
          * 
@@ -180,8 +185,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The method you want to use to interact with your
-         * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+         * @param method The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
          * 
          * @return builder
          * 
@@ -233,8 +237,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param regionName The region in which your storage is located. Must
-         * be in **uppercase**. Ex.: &#34;GRA&#34;.
+         * @param regionName The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
          * 
          * @return builder
          * 
@@ -245,8 +248,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param regionName The region in which your storage is located. Must
-         * be in **uppercase**. Ex.: &#34;GRA&#34;.
+         * @param regionName The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
          * 
          * @return builder
          * 
@@ -256,8 +258,7 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -268,14 +269,34 @@ public final class RegionStoragePresignArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param versionId Version ID of the object to download or delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(@Nullable Output<String> versionId) {
+            $.versionId = versionId;
+            return this;
+        }
+
+        /**
+         * @param versionId Version ID of the object to download or delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(String versionId) {
+            return versionId(Output.of(versionId));
         }
 
         public RegionStoragePresignArgs build() {

@@ -365,6 +365,12 @@ class SavingsPlan(pulumi.CustomResource):
 
         A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:SavingsPlan/savingsPlan:SavingsPlan plan service_name/savings_plan_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
@@ -401,6 +407,12 @@ class SavingsPlan(pulumi.CustomResource):
         ## Import
 
         A savings plan can be imported using the following format: `service_name` and `id` of the savings plan, separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:SavingsPlan/savingsPlan:SavingsPlan plan service_name/savings_plan_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param SavingsPlanArgs args: The arguments to use to populate this resource's properties.

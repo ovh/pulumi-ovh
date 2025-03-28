@@ -57,8 +57,7 @@ type LookupLoadBalancerArgs struct {
 	Id string `pulumi:"id"`
 	// Region of the loadbalancer.
 	RegionName string `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -107,8 +106,7 @@ type LookupLoadBalancerOutputArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Region of the loadbalancer.
 	RegionName pulumi.StringInput `pulumi:"regionName"`
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

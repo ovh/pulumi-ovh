@@ -62,7 +62,13 @@ import (
 //
 // ## Import
 //
-// TCP frontend can be imported using the following format `serviceName` and the `id` of the frontend separated by "/" e.g.
+// TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/tcpFrontend:TcpFrontend testfrontend service_name/tcp_frontend_id
+// ```
 type TcpFrontend struct {
 	pulumi.CustomResourceState
 
@@ -80,9 +86,7 @@ type TcpFrontend struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Human readable name for your frontend, this field is for you
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -145,9 +149,7 @@ type tcpFrontendState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Human readable name for your frontend, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port *string `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName *string `pulumi:"serviceName"`
@@ -172,9 +174,7 @@ type TcpFrontendState struct {
 	Disabled pulumi.BoolPtrInput
 	// Human readable name for your frontend, this field is for you
 	DisplayName pulumi.StringPtrInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringPtrInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringPtrInput
@@ -203,9 +203,7 @@ type tcpFrontendArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Human readable name for your frontend, this field is for you
 	DisplayName *string `pulumi:"displayName"`
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port string `pulumi:"port"`
 	// The internal name of your IP load balancing
 	ServiceName string `pulumi:"serviceName"`
@@ -231,9 +229,7 @@ type TcpFrontendArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// Human readable name for your frontend, this field is for you
 	DisplayName pulumi.StringPtrInput
-	// Port(s) attached to your frontend. Supports single port (numerical value),
-	// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-	// and/or 'range'. Each port must be in the [1;49151] range
+	// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 	Port pulumi.StringInput
 	// The internal name of your IP load balancing
 	ServiceName pulumi.StringInput
@@ -365,9 +361,7 @@ func (o TcpFrontendOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TcpFrontend) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Port(s) attached to your frontend. Supports single port (numerical value),
-// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-// and/or 'range'. Each port must be in the [1;49151] range
+// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
 func (o TcpFrontendOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpFrontend) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

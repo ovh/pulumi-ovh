@@ -127,18 +127,13 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public string? ServiceName { get; set; }
 
         /// <summary>
-        /// Modern oldest compatible clients : Firefox 27, Chrome 30,
-        /// IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-        /// Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-        /// Safari 1, Windows XP IE8, Android 2.3, Java 7.
-        /// Can take any of the following value: "intermediate", "modern"
+        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
         /// </summary>
         [Input("sslConfiguration")]
         public string? SslConfiguration { get; set; }
 
         /// <summary>
-        /// Current state of your IP. Can take any of the following value:
-        /// "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+        /// Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
@@ -150,8 +145,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public bool? VrackEligibility { get; set; }
 
         /// <summary>
-        /// Name of the vRack on which the current Load Balancer is
-        /// attached to, as it is named on vRack product
+        /// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
         /// </summary>
         [Input("vrackName")]
         public string? VrackName { get; set; }
@@ -213,18 +207,13 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Modern oldest compatible clients : Firefox 27, Chrome 30,
-        /// IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-        /// Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-        /// Safari 1, Windows XP IE8, Android 2.3, Java 7.
-        /// Can take any of the following value: "intermediate", "modern"
+        /// Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
         /// </summary>
         [Input("sslConfiguration")]
         public Input<string>? SslConfiguration { get; set; }
 
         /// <summary>
-        /// Current state of your IP. Can take any of the following value:
-        /// "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+        /// Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -236,8 +225,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<bool>? VrackEligibility { get; set; }
 
         /// <summary>
-        /// Name of the vRack on which the current Load Balancer is
-        /// attached to, as it is named on vRack product
+        /// Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
         /// </summary>
         [Input("vrackName")]
         public Input<string>? VrackName { get; set; }
@@ -273,8 +261,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public readonly string Ipv4;
         public readonly string Ipv6;
         /// <summary>
-        /// The metrics token associated with your IP load balancing
-        /// This attribute is sensitive.
+        /// The metrics token associated with your IP load balancing This attribute is sensitive.
         /// </summary>
         public readonly string MetricsToken;
         public readonly string Offer;

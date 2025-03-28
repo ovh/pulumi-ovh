@@ -75,14 +75,14 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
         return this.createdAt;
     }
     /**
-     * haproxy  **Changing this value recreates the resource.**
+     * haproxy **Changing this value recreates the resource.**
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return haproxy  **Changing this value recreates the resource.**
+     * @return haproxy **Changing this value recreates the resource.**
      * 
      */
     public Output<String> kind() {
@@ -103,14 +103,14 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
         return this.ldpServiceName;
     }
     /**
-     * Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * Loadbalancer id to get the logs **Changing this value recreates the resource.**
      * 
      */
     @Export(name="loadbalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadbalancerId;
 
     /**
-     * @return Loadbalancer id to get the logs  **Changing this value recreates the resource.**
+     * @return Loadbalancer id to get the logs **Changing this value recreates the resource.**
      * 
      */
     public Output<String> loadbalancerId() {
@@ -187,14 +187,14 @@ public class RegionLoadBalancerLogSubscription extends com.pulumi.resources.Cust
         return this.serviceName;
     }
     /**
-     * Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * Data stream id to use for the subscription **Changing this value recreates the resource.**
      * 
      */
     @Export(name="streamId", refs={String.class}, tree="[0]")
     private Output<String> streamId;
 
     /**
-     * @return Data stream id to use for the subscription  **Changing this value recreates the resource.**
+     * @return Data stream id to use for the subscription **Changing this value recreates the resource.**
      * 
      */
     public Output<String> streamId() {

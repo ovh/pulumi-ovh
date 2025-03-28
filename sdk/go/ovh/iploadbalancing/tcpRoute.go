@@ -46,7 +46,13 @@ import (
 //
 // ## Import
 //
-// TCP route can be imported using the following format `serviceName` and the `id` of the route separated by "/" e.g.
+// TCP route can be imported using the following format `service_name` and the `id` of the route separated by "/" e.g.
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/tcpRoute:TcpRoute tcpreject service_name/route_id
+// ```
 type TcpRoute struct {
 	pulumi.CustomResourceState
 

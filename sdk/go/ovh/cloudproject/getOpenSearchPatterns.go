@@ -54,8 +54,7 @@ func GetOpenSearchPatterns(ctx *pulumi.Context, args *GetOpenSearchPatternsArgs,
 type GetOpenSearchPatternsArgs struct {
 	// Cluster ID
 	ClusterId string `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -84,8 +83,7 @@ func GetOpenSearchPatternsOutput(ctx *pulumi.Context, args GetOpenSearchPatterns
 type GetOpenSearchPatternsOutputArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

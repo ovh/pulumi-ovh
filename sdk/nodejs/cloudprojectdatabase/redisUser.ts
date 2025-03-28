@@ -80,8 +80,7 @@ export class RedisUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -181,8 +180,7 @@ export interface RedisUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -224,8 +222,7 @@ export interface RedisUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

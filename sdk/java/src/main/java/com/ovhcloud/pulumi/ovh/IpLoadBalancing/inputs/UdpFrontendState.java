@@ -94,18 +94,14 @@ public final class UdpFrontendState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39;
-     * and/or &#39;range&#39;. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39; and/or &#39;range&#39;. Each port must be in the [1;49151] range
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39;
-     * and/or &#39;range&#39;. Each port must be in the [1;49151] range
+     * @return Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39; and/or &#39;range&#39;. Each port must be in the [1;49151] range
      * 
      */
     public Optional<Output<String>> port() {
@@ -289,9 +285,7 @@ public final class UdpFrontendState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port Port(s) attached to your frontend. Supports single port (numerical value),
-         * range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39;
-         * and/or &#39;range&#39;. Each port must be in the [1;49151] range
+         * @param port Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39; and/or &#39;range&#39;. Each port must be in the [1;49151] range
          * 
          * @return builder
          * 
@@ -302,9 +296,7 @@ public final class UdpFrontendState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port Port(s) attached to your frontend. Supports single port (numerical value),
-         * range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39;
-         * and/or &#39;range&#39;. Each port must be in the [1;49151] range
+         * @param port Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39; and/or &#39;range&#39;. Each port must be in the [1;49151] range
          * 
          * @return builder
          * 

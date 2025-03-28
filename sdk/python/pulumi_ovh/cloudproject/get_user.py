@@ -107,8 +107,7 @@ class GetUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        the username generated for the user. This username can be used with
-        the Openstack API.
+        the username generated for the user. This username can be used with the Openstack API.
         """
         return pulumi.get(self, "username")
 
@@ -150,8 +149,7 @@ def get_user(service_name: Optional[str] = None,
     ```
 
 
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()
@@ -190,8 +188,7 @@ def get_user_output(service_name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()

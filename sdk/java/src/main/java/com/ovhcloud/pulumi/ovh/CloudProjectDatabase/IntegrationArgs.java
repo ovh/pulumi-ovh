@@ -48,16 +48,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
      * 
      */
     public Output<String> engine() {
@@ -80,16 +78,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -112,8 +108,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the integration.
-     * Available types:
+     * Type of the integration. Available types:
      * * `grafanaDashboard`
      * * `grafanaDatasource`
      * * `kafkaConnect`
@@ -125,8 +120,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the integration.
-     * Available types:
+     * @return Type of the integration. Available types:
      * * `grafanaDashboard`
      * * `grafanaDatasource`
      * * `kafkaConnect`
@@ -211,8 +205,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-         * All engines available exept `mongodb`.
+         * @param engine The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
          * 
          * @return builder
          * 
@@ -223,8 +216,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-         * All engines available exept `mongodb`.
+         * @param engine The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
          * 
          * @return builder
          * 
@@ -255,8 +247,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -267,8 +258,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -299,8 +289,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the integration.
-         * Available types:
+         * @param type Type of the integration. Available types:
          * * `grafanaDashboard`
          * * `grafanaDatasource`
          * * `kafkaConnect`
@@ -316,8 +305,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the integration.
-         * Available types:
+         * @param type Type of the integration. Available types:
          * * `grafanaDashboard`
          * * `grafanaDatasource`
          * * `kafkaConnect`

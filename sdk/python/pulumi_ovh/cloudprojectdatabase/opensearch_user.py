@@ -29,8 +29,7 @@ class OpensearchUserArgs:
         """
         The set of arguments for constructing a OpensearchUser resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[Sequence[pulumi.Input['OpensearchUserAclArgs']]] acls: Acls of the user.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
@@ -60,8 +59,7 @@ class OpensearchUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -125,8 +123,7 @@ class _OpensearchUserState:
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
         """
         if acls is not None:
@@ -222,8 +219,7 @@ class _OpensearchUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -272,8 +268,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -366,8 +361,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.Input[str] name: Username affected by this acl. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -436,8 +430,7 @@ class OpensearchUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

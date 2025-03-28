@@ -18,18 +18,14 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRegionsArgs Empty = new GetRegionsArgs();
 
     /**
-     * List of services which has to be UP in regions.
-     * Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ...
-     * If left blank, returns all regions associated with the service_name.
+     * List of services which has to be UP in regions. Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ... If left blank, returns all regions associated with the service_name.
      * 
      */
     @Import(name="hasServicesUps")
     private @Nullable Output<List<String>> hasServicesUps;
 
     /**
-     * @return List of services which has to be UP in regions.
-     * Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ...
-     * If left blank, returns all regions associated with the service_name.
+     * @return List of services which has to be UP in regions. Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ... If left blank, returns all regions associated with the service_name.
      * 
      */
     public Optional<Output<List<String>>> hasServicesUps() {
@@ -37,16 +33,14 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -79,9 +73,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hasServicesUps List of services which has to be UP in regions.
-         * Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ...
-         * If left blank, returns all regions associated with the service_name.
+         * @param hasServicesUps List of services which has to be UP in regions. Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ... If left blank, returns all regions associated with the service_name.
          * 
          * @return builder
          * 
@@ -92,9 +84,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hasServicesUps List of services which has to be UP in regions.
-         * Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ...
-         * If left blank, returns all regions associated with the service_name.
+         * @param hasServicesUps List of services which has to be UP in regions. Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ... If left blank, returns all regions associated with the service_name.
          * 
          * @return builder
          * 
@@ -104,9 +94,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hasServicesUps List of services which has to be UP in regions.
-         * Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ...
-         * If left blank, returns all regions associated with the service_name.
+         * @param hasServicesUps List of services which has to be UP in regions. Example: &#34;image&#34;, &#34;instance&#34;, &#34;network&#34;, &#34;storage&#34;, &#34;volume&#34;, &#34;workflow&#34;, ... If left blank, returns all regions associated with the service_name.
          * 
          * @return builder
          * 
@@ -116,8 +104,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -128,8 +115,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

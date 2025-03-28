@@ -68,16 +68,11 @@ export interface GetIpLoadBalancingArgs {
      */
     serviceName?: string;
     /**
-     * Modern oldest compatible clients : Firefox 27, Chrome 30,
-     * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-     * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-     * Safari 1, Windows XP IE8, Android 2.3, Java 7.
-     * Can take any of the following value: "intermediate", "modern"
+     * Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
      */
     sslConfiguration?: string;
     /**
-     * Current state of your IP. Can take any of the following value:
-     * "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+     * Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
      */
     state?: string;
     /**
@@ -85,8 +80,7 @@ export interface GetIpLoadBalancingArgs {
      */
     vrackEligibility?: boolean;
     /**
-     * Name of the vRack on which the current Load Balancer is
-     * attached to, as it is named on vRack product
+     * Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
      */
     vrackName?: string;
     /**
@@ -108,8 +102,7 @@ export interface GetIpLoadBalancingResult {
     readonly ipv4: string;
     readonly ipv6: string;
     /**
-     * The metrics token associated with your IP load balancing
-     * This attribute is sensitive.
+     * The metrics token associated with your IP load balancing This attribute is sensitive.
      */
     readonly metricsToken: string;
     readonly offer: string;
@@ -190,16 +183,11 @@ export interface GetIpLoadBalancingOutputArgs {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Modern oldest compatible clients : Firefox 27, Chrome 30,
-     * IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8.
-     * Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5,
-     * Safari 1, Windows XP IE8, Android 2.3, Java 7.
-     * Can take any of the following value: "intermediate", "modern"
+     * Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Can take any of the following value: "intermediate", "modern"
      */
     sslConfiguration?: pulumi.Input<string>;
     /**
-     * Current state of your IP. Can take any of the following value:
-     * "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
+     * Current state of your IP. Can take any of the following value: "blacklisted", "deleted", "free", "ok", "quarantined", "suspended"
      */
     state?: pulumi.Input<string>;
     /**
@@ -207,8 +195,7 @@ export interface GetIpLoadBalancingOutputArgs {
      */
     vrackEligibility?: pulumi.Input<boolean>;
     /**
-     * Name of the vRack on which the current Load Balancer is
-     * attached to, as it is named on vRack product
+     * Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
      */
     vrackName?: pulumi.Input<string>;
     /**

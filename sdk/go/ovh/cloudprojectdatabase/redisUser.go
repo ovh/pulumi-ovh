@@ -42,8 +42,7 @@ type RedisUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current status of the user.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -107,8 +106,7 @@ type redisUserState struct {
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status *string `pulumi:"status"`
@@ -133,8 +131,7 @@ type RedisUserState struct {
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current status of the user.
 	Status pulumi.StringPtrInput
@@ -159,8 +156,7 @@ type redisUserArgs struct {
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -180,8 +176,7 @@ type RedisUserArgs struct {
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -317,8 +312,7 @@ func (o RedisUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o RedisUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

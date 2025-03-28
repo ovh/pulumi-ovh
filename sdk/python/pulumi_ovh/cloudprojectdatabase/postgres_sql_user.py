@@ -27,12 +27,10 @@ class PostgresSqlUserArgs:
         """
         The set of arguments for constructing a PostgresSqlUser resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
-               Available roles:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Available roles:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -59,8 +57,7 @@ class PostgresSqlUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -96,8 +93,7 @@ class PostgresSqlUserArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles the user belongs to.
-        Available roles:
+        Roles the user belongs to. Available roles:
         """
         return pulumi.get(self, "roles")
 
@@ -124,10 +120,8 @@ class _PostgresSqlUserState:
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
-               Available roles:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Available roles:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
         """
         if cluster_id is not None:
@@ -211,8 +205,7 @@ class _PostgresSqlUserState:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles the user belongs to.
-        Available roles:
+        Roles the user belongs to. Available roles:
         """
         return pulumi.get(self, "roles")
 
@@ -224,8 +217,7 @@ class _PostgresSqlUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -273,10 +265,8 @@ class PostgresSqlUser(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
-               Available roles:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Available roles:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -368,10 +358,8 @@ class PostgresSqlUser(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the user. A user named "avnadmin" is mapped with already created admin user and reset his password instead of creating a new user.
         :param pulumi.Input[str] password: (Sensitive) Password of the user.
         :param pulumi.Input[str] password_reset: Arbitrary string to change to trigger a password update
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to.
-               Available roles:
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles the user belongs to. Available roles:
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[str] status: Current status of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -432,8 +420,7 @@ class PostgresSqlUser(pulumi.CustomResource):
     @pulumi.getter
     def roles(self) -> pulumi.Output[Sequence[str]]:
         """
-        Roles the user belongs to.
-        Available roles:
+        Roles the user belongs to. Available roles:
         """
         return pulumi.get(self, "roles")
 
@@ -441,8 +428,7 @@ class PostgresSqlUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

@@ -17,16 +17,14 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
     public static final GetPaymentmeanCreditCardPlainArgs Empty = new GetPaymentmeanCreditCardPlainArgs();
 
     /**
-     * a regexp used to filter credit cards
-     * on their `description` attributes.
+     * a regexp used to filter credit cards on their `description` attributes.
      * 
      */
     @Import(name="descriptionRegexp")
     private @Nullable String descriptionRegexp;
 
     /**
-     * @return a regexp used to filter credit cards
-     * on their `description` attributes.
+     * @return a regexp used to filter credit cards on their `description` attributes.
      * 
      */
     public Optional<String> descriptionRegexp() {
@@ -34,16 +32,14 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * Filter credit cards on their `state` attribute.
-     * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+     * Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
      * 
      */
     @Import(name="states")
     private @Nullable List<String> states;
 
     /**
-     * @return Filter credit cards on their `state` attribute.
-     * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+     * @return Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
      * 
      */
     public Optional<List<String>> states() {
@@ -66,16 +62,14 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * Retrieve the credit card that will be the last
-     * to expire according to its expiration date.
+     * Retrieve the credit card that will be the last to expire according to its expiration date.
      * 
      */
     @Import(name="useLastToExpire")
     private @Nullable Boolean useLastToExpire;
 
     /**
-     * @return Retrieve the credit card that will be the last
-     * to expire according to its expiration date.
+     * @return Retrieve the credit card that will be the last to expire according to its expiration date.
      * 
      */
     public Optional<Boolean> useLastToExpire() {
@@ -110,8 +104,7 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param descriptionRegexp a regexp used to filter credit cards
-         * on their `description` attributes.
+         * @param descriptionRegexp a regexp used to filter credit cards on their `description` attributes.
          * 
          * @return builder
          * 
@@ -122,8 +115,7 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param states Filter credit cards on their `state` attribute.
-         * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+         * @param states Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
          * 
          * @return builder
          * 
@@ -134,8 +126,7 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param states Filter credit cards on their `state` attribute.
-         * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+         * @param states Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
          * 
          * @return builder
          * 
@@ -156,8 +147,7 @@ public final class GetPaymentmeanCreditCardPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param useLastToExpire Retrieve the credit card that will be the last
-         * to expire according to its expiration date.
+         * @param useLastToExpire Retrieve the credit card that will be the last to expire according to its expiration date.
          * 
          * @return builder
          * 

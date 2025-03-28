@@ -3557,6 +3557,146 @@ func (o ServerStoragePartitioningLayoutExtrasZpPtrOutput) Name() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetCloudIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetCloudIamInput is an input type that accepts GetCloudIamArgs and GetCloudIamOutput values.
+// You can construct a concrete instance of `GetCloudIamInput` via:
+//
+//	GetCloudIamArgs{...}
+type GetCloudIamInput interface {
+	pulumi.Input
+
+	ToGetCloudIamOutput() GetCloudIamOutput
+	ToGetCloudIamOutputWithContext(context.Context) GetCloudIamOutput
+}
+
+type GetCloudIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetCloudIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudIam)(nil)).Elem()
+}
+
+func (i GetCloudIamArgs) ToGetCloudIamOutput() GetCloudIamOutput {
+	return i.ToGetCloudIamOutputWithContext(context.Background())
+}
+
+func (i GetCloudIamArgs) ToGetCloudIamOutputWithContext(ctx context.Context) GetCloudIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudIamOutput)
+}
+
+type GetCloudIamOutput struct{ *pulumi.OutputState }
+
+func (GetCloudIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudIam)(nil)).Elem()
+}
+
+func (o GetCloudIamOutput) ToGetCloudIamOutput() GetCloudIamOutput {
+	return o
+}
+
+func (o GetCloudIamOutput) ToGetCloudIamOutputWithContext(ctx context.Context) GetCloudIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetCloudIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetCloudIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetCloudIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCloudIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetCloudIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetCloudVersion struct {
+	Build string `pulumi:"build"`
+	Major string `pulumi:"major"`
+	Minor string `pulumi:"minor"`
+}
+
+// GetCloudVersionInput is an input type that accepts GetCloudVersionArgs and GetCloudVersionOutput values.
+// You can construct a concrete instance of `GetCloudVersionInput` via:
+//
+//	GetCloudVersionArgs{...}
+type GetCloudVersionInput interface {
+	pulumi.Input
+
+	ToGetCloudVersionOutput() GetCloudVersionOutput
+	ToGetCloudVersionOutputWithContext(context.Context) GetCloudVersionOutput
+}
+
+type GetCloudVersionArgs struct {
+	Build pulumi.StringInput `pulumi:"build"`
+	Major pulumi.StringInput `pulumi:"major"`
+	Minor pulumi.StringInput `pulumi:"minor"`
+}
+
+func (GetCloudVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudVersion)(nil)).Elem()
+}
+
+func (i GetCloudVersionArgs) ToGetCloudVersionOutput() GetCloudVersionOutput {
+	return i.ToGetCloudVersionOutputWithContext(context.Background())
+}
+
+func (i GetCloudVersionArgs) ToGetCloudVersionOutputWithContext(ctx context.Context) GetCloudVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudVersionOutput)
+}
+
+type GetCloudVersionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudVersion)(nil)).Elem()
+}
+
+func (o GetCloudVersionOutput) ToGetCloudVersionOutput() GetCloudVersionOutput {
+	return o
+}
+
+func (o GetCloudVersionOutput) ToGetCloudVersionOutputWithContext(ctx context.Context) GetCloudVersionOutput {
+	return o
+}
+
+func (o GetCloudVersionOutput) Build() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVersion) string { return v.Build }).(pulumi.StringOutput)
+}
+
+func (o GetCloudVersionOutput) Major() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVersion) string { return v.Major }).(pulumi.StringOutput)
+}
+
+func (o GetCloudVersionOutput) Minor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVersion) string { return v.Minor }).(pulumi.StringOutput)
+}
+
 type GetServerSpecificationsHardwareDefaultHardwareRaidSize struct {
 	Unit  string  `pulumi:"unit"`
 	Value float64 `pulumi:"value"`
@@ -5553,6 +5693,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasLvPtrInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasLvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasZpInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasZpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerStoragePartitioningLayoutExtrasZpPtrInput)(nil)).Elem(), ServerStoragePartitioningLayoutExtrasZpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudIamInput)(nil)).Elem(), GetCloudIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVersionInput)(nil)).Elem(), GetCloudVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDefaultHardwareRaidSizeInput)(nil)).Elem(), GetServerSpecificationsHardwareDefaultHardwareRaidSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSpecificationsHardwareDiskGroupArrayInput)(nil)).Elem(), GetServerSpecificationsHardwareDiskGroupArray{})
@@ -5633,6 +5775,8 @@ func init() {
 	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasLvPtrOutput{})
 	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasZpOutput{})
 	pulumi.RegisterOutputType(ServerStoragePartitioningLayoutExtrasZpPtrOutput{})
+	pulumi.RegisterOutputType(GetCloudIamOutput{})
+	pulumi.RegisterOutputType(GetCloudVersionOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDefaultHardwareRaidSizeOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupOutput{})
 	pulumi.RegisterOutputType(GetServerSpecificationsHardwareDiskGroupArrayOutput{})

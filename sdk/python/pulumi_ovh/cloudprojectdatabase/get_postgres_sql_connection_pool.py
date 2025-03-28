@@ -89,8 +89,7 @@ class GetPostgresSqlConnectionPoolResult:
     @pulumi.getter
     def mode(self) -> str:
         """
-        Connection mode to the connection pool
-        Available modes:
+        Connection mode to the connection pool Available modes:
         """
         return pulumi.get(self, "mode")
 
@@ -203,8 +202,7 @@ def get_postgres_sql_connection_pool(cluster_id: Optional[str] = None,
 
     :param str cluster_id: Cluster ID.
     :param str name: Name of the Connection pool.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -258,8 +256,7 @@ def get_postgres_sql_connection_pool_output(cluster_id: Optional[pulumi.Input[st
 
     :param str cluster_id: Cluster ID.
     :param str name: Name of the Connection pool.
-    :param str service_name: The id of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

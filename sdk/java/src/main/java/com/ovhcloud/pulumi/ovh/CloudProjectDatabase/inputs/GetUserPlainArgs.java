@@ -29,18 +29,14 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The engine of the database cluster you want user information. To get a full list of available engine visit :
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want user information. To get a full list of available engine visit : [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      * 
      */
     @Import(name="engine", required=true)
     private String engine;
 
     /**
-     * @return The engine of the database cluster you want user information. To get a full list of available engine visit :
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * @return The engine of the database cluster you want user information. To get a full list of available engine visit : [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      * 
      */
     public String engine() {
@@ -63,16 +59,14 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public String serviceName() {
@@ -118,9 +112,7 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param engine The engine of the database cluster you want user information. To get a full list of available engine visit :
-         * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-         * Available engines:
+         * @param engine The engine of the database cluster you want user information. To get a full list of available engine visit : [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
          * 
          * @return builder
          * 
@@ -142,8 +134,7 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

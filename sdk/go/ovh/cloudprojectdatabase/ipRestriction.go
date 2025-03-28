@@ -12,8 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead.
-// Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
+// Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead. Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
 //
 // Apply IP restrictions to an OVHcloud Managed Database cluster.
 //
@@ -70,13 +69,11 @@ type IpRestriction struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Description of the IP restriction.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Authorized IP.
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current status of the IP restriction.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -128,13 +125,11 @@ type ipRestrictionState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Description of the IP restriction.
 	Description *string `pulumi:"description"`
-	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine *string `pulumi:"engine"`
 	// Authorized IP.
 	Ip *string `pulumi:"ip"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current status of the IP restriction.
 	Status *string `pulumi:"status"`
@@ -145,13 +140,11 @@ type IpRestrictionState struct {
 	ClusterId pulumi.StringPtrInput
 	// Description of the IP restriction.
 	Description pulumi.StringPtrInput
-	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringPtrInput
 	// Authorized IP.
 	Ip pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current status of the IP restriction.
 	Status pulumi.StringPtrInput
@@ -166,13 +159,11 @@ type ipRestrictionArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Description of the IP restriction.
 	Description *string `pulumi:"description"`
-	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
 	// Authorized IP.
 	Ip string `pulumi:"ip"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -182,13 +173,11 @@ type IpRestrictionArgs struct {
 	ClusterId pulumi.StringInput
 	// Description of the IP restriction.
 	Description pulumi.StringPtrInput
-	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput
 	// Authorized IP.
 	Ip pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -289,8 +278,7 @@ func (o IpRestrictionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpRestriction) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+// The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 func (o IpRestrictionOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpRestriction) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -300,8 +288,7 @@ func (o IpRestrictionOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpRestriction) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o IpRestrictionOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpRestriction) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

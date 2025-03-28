@@ -37,6 +37,9 @@ export interface GetPermissionsGroupResult {
     readonly denies?: string[];
     readonly description?: string;
     readonly excepts?: string[];
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly owner: string;

@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > __WARNING__ You can update and migrate to a higher plan at any time but not the contrary.
+ * > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
  */
 export class ContainerRegistry extends pulumi.CustomResource {
     /**
@@ -83,8 +83,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -188,8 +187,7 @@ export interface ContainerRegistryState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -231,8 +229,7 @@ export interface ContainerRegistryArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

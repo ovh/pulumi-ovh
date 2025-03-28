@@ -32,9 +32,7 @@ class TcpFrontendArgs:
                  ssl: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TcpFrontend resource.
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -70,9 +68,7 @@ class TcpFrontendArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[str]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 
@@ -224,9 +220,7 @@ class _TcpFrontendState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
@@ -342,9 +336,7 @@ class _TcpFrontendState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 
@@ -434,6 +426,12 @@ class TcpFrontend(pulumi.CustomResource):
 
         TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/tcpFrontend:TcpFrontend testfrontend service_name/tcp_frontend_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_sources: Restrict IP Load Balancing access to these ip block. No restriction if null. List of IP blocks.
@@ -443,9 +441,7 @@ class TcpFrontend(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
@@ -483,6 +479,12 @@ class TcpFrontend(pulumi.CustomResource):
         ## Import
 
         TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/tcpFrontend:TcpFrontend testfrontend service_name/tcp_frontend_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param TcpFrontendArgs args: The arguments to use to populate this resource's properties.
@@ -571,9 +573,7 @@ class TcpFrontend(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_sources: Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify both `allowed_source` and `denied_source` at the same time. List of IP blocks.
         :param pulumi.Input[bool] disabled: Disable your frontend. Default: 'false'
         :param pulumi.Input[str] display_name: Human readable name for your frontend, this field is for you
-        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), 
-               range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-               and/or 'range'. Each port must be in the [1;49151] range
+        :param pulumi.Input[str] port: Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         :param pulumi.Input[str] service_name: The internal name of your IP load balancing
         :param pulumi.Input[bool] ssl: SSL deciphering. Default: 'false'
         :param pulumi.Input[str] zone: Zone where the frontend will be defined (ie. `gra`, `bhs` also supports `all`)
@@ -655,9 +655,7 @@ class TcpFrontend(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        Port(s) attached to your frontend. Supports single port (numerical value), 
-        range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        and/or 'range'. Each port must be in the [1;49151] range
+        Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         """
         return pulumi.get(self, "port")
 

@@ -71,8 +71,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Permission to give to this username on this resource.
-     * Available permissions:
+     * Permission to give to this username on this resource. Available permissions:
      */
     public readonly permission!: pulumi.Output<string>;
     /**
@@ -80,8 +79,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
      */
     public readonly resource!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -144,8 +142,7 @@ export interface KafkaSchemaRegistryAclState {
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Permission to give to this username on this resource.
-     * Available permissions:
+     * Permission to give to this username on this resource. Available permissions:
      */
     permission?: pulumi.Input<string>;
     /**
@@ -153,8 +150,7 @@ export interface KafkaSchemaRegistryAclState {
      */
     resource?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -172,8 +168,7 @@ export interface KafkaSchemaRegistryAclArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Permission to give to this username on this resource.
-     * Available permissions:
+     * Permission to give to this username on this resource. Available permissions:
      */
     permission: pulumi.Input<string>;
     /**
@@ -181,8 +176,7 @@ export interface KafkaSchemaRegistryAclArgs {
      */
     resource: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

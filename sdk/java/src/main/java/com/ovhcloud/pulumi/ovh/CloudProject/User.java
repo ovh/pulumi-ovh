@@ -87,34 +87,28 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * a convenient map representing an openstack_rc file.
-     * Note: no password nor sensitive token is set in this map.
+     * a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
      * 
      */
     @Export(name="openstackRc", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> openstackRc;
 
     /**
-     * @return a convenient map representing an openstack_rc file.
-     * Note: no password nor sensitive token is set in this map.
+     * @return a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
      * 
      */
     public Output<Map<String,String>> openstackRc() {
         return this.openstackRc;
     }
     /**
-     * (Sensitive) the password generated for the user. The password can
-     * be used with the Openstack API. This attribute is sensitive and will only be
-     * retrieve once during creation.
+     * (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return (Sensitive) the password generated for the user. The password can
-     * be used with the Openstack API. This attribute is sensitive and will only be
-     * retrieve once during creation.
+     * @return (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
      * 
      */
     public Output<String> password() {
@@ -187,16 +181,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.roles;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -217,16 +209,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * the username generated for the user. This username can be used with
-     * the Openstack API.
+     * the username generated for the user. This username can be used with the Openstack API.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return the username generated for the user. This username can be used with
-     * the Openstack API.
+     * @return the username generated for the user. This username can be used with the Openstack API.
      * 
      */
     public Output<String> username() {

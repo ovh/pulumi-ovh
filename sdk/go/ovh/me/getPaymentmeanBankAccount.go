@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about a bank account
-// payment mean associated with an OVHcloud account.
+// Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
 //
 // ## Example Usage
 //
@@ -51,23 +50,19 @@ func GetPaymentmeanBankAccount(ctx *pulumi.Context, args *GetPaymentmeanBankAcco
 
 // A collection of arguments for invoking getPaymentmeanBankAccount.
 type GetPaymentmeanBankAccountArgs struct {
-	// a regexp used to filter bank accounts
-	// on their `description` attributes.
+	// a regexp used to filter bank accounts on their `description` attributes.
 	DescriptionRegexp *string `pulumi:"descriptionRegexp"`
-	// Filter bank accounts on their `state` attribute.
-	// Can be "blockedForIncidents", "valid", "pendingValidation"
+	// Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
 	State *string `pulumi:"state"`
 	// Retrieve bank account marked as default payment mean.
 	UseDefault *bool `pulumi:"useDefault"`
-	// Retrieve oldest bank account.
-	// project.
+	// Retrieve oldest bank account. project.
 	UseOldest *bool `pulumi:"useOldest"`
 }
 
 // A collection of values returned by getPaymentmeanBankAccount.
 type GetPaymentmeanBankAccountResult struct {
-	// a boolean which tells if the retrieved bank account
-	// is marked as the default payment mean
+	// a boolean which tells if the retrieved bank account is marked as the default payment mean
 	Default bool `pulumi:"default"`
 	// the description attribute of the bank account
 	Description       string  `pulumi:"description"`
@@ -90,16 +85,13 @@ func GetPaymentmeanBankAccountOutput(ctx *pulumi.Context, args GetPaymentmeanBan
 
 // A collection of arguments for invoking getPaymentmeanBankAccount.
 type GetPaymentmeanBankAccountOutputArgs struct {
-	// a regexp used to filter bank accounts
-	// on their `description` attributes.
+	// a regexp used to filter bank accounts on their `description` attributes.
 	DescriptionRegexp pulumi.StringPtrInput `pulumi:"descriptionRegexp"`
-	// Filter bank accounts on their `state` attribute.
-	// Can be "blockedForIncidents", "valid", "pendingValidation"
+	// Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// Retrieve bank account marked as default payment mean.
 	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
-	// Retrieve oldest bank account.
-	// project.
+	// Retrieve oldest bank account. project.
 	UseOldest pulumi.BoolPtrInput `pulumi:"useOldest"`
 }
 
@@ -122,8 +114,7 @@ func (o GetPaymentmeanBankAccountResultOutput) ToGetPaymentmeanBankAccountResult
 	return o
 }
 
-// a boolean which tells if the retrieved bank account
-// is marked as the default payment mean
+// a boolean which tells if the retrieved bank account is marked as the default payment mean
 func (o GetPaymentmeanBankAccountResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPaymentmeanBankAccountResult) bool { return v.Default }).(pulumi.BoolOutput)
 }

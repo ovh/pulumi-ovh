@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead.
- * Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
+ * Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead. Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
  *
  * Apply IP restrictions to an OVHcloud Managed Database cluster.
  *
@@ -77,8 +76,7 @@ export class IpRestriction extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -86,8 +84,7 @@ export class IpRestriction extends pulumi.CustomResource {
      */
     public readonly ip!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -153,8 +150,7 @@ export interface IpRestrictionState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine?: pulumi.Input<string>;
     /**
@@ -162,8 +158,7 @@ export interface IpRestrictionState {
      */
     ip?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -185,8 +180,7 @@ export interface IpRestrictionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The engine of the database cluster you want to add an IP restriction. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: pulumi.Input<string>;
     /**
@@ -194,8 +188,7 @@ export interface IpRestrictionArgs {
      */
     ip: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

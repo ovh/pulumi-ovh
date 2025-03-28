@@ -277,14 +277,11 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoints!: pulumi.Output<outputs.CloudProject.DatabaseEndpoint[]>;
     /**
-     * The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     public readonly flavor!: pulumi.Output<string>;
     /**
@@ -308,8 +305,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly networkType!: pulumi.Output<string>;
     /**
-     * List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * List of nodes object. Multi region cluster are not yet available, all node should be identical.
      */
     public readonly nodes!: pulumi.Output<outputs.CloudProject.DatabaseNode[]>;
     /**
@@ -325,8 +321,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -456,14 +451,11 @@ export interface DatabaseState {
      */
     endpoints?: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseEndpoint>[]>;
     /**
-     * The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine?: pulumi.Input<string>;
     /**
-     * A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     flavor?: pulumi.Input<string>;
     /**
@@ -487,8 +479,7 @@ export interface DatabaseState {
      */
     networkType?: pulumi.Input<string>;
     /**
-     * List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * List of nodes object. Multi region cluster are not yet available, all node should be identical.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseNode>[]>;
     /**
@@ -504,8 +495,7 @@ export interface DatabaseState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -543,14 +533,11 @@ export interface DatabaseArgs {
      */
     diskSize?: pulumi.Input<number>;
     /**
-     * The database engine you want to deploy. To get a full list of available engine visit.
-     * [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+     * The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: pulumi.Input<string>;
     /**
-     * A valid OVHcloud public cloud database flavor name in which the nodes will be started.
-     * Ex: "db1-7". Changing this value upgrade the nodes with the new flavor.
-     * You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
      */
     flavor: pulumi.Input<string>;
     /**
@@ -570,8 +557,7 @@ export interface DatabaseArgs {
      */
     maintenanceTime?: pulumi.Input<string>;
     /**
-     * List of nodes object.
-     * Multi region cluster are not yet available, all node should be identical.
+     * List of nodes object. Multi region cluster are not yet available, all node should be identical.
      */
     nodes: pulumi.Input<pulumi.Input<inputs.CloudProject.DatabaseNode>[]>;
     /**
@@ -587,8 +573,7 @@ export interface DatabaseArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

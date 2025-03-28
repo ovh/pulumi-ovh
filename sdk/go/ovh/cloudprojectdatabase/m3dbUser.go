@@ -36,8 +36,7 @@ type M3DbUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Current status of the user.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -95,8 +94,7 @@ type m3dbUserState struct {
 	Password *string `pulumi:"password"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status *string `pulumi:"status"`
@@ -115,8 +113,7 @@ type M3DbUserState struct {
 	Password pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Current status of the user.
 	Status pulumi.StringPtrInput
@@ -135,8 +132,7 @@ type m3dbUserArgs struct {
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -150,8 +146,7 @@ type M3DbUserArgs struct {
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -272,8 +267,7 @@ func (o M3DbUserOutput) PasswordReset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o M3DbUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3DbUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

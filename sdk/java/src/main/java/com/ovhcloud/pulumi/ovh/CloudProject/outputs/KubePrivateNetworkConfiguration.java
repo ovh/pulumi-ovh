@@ -20,6 +20,7 @@ public final class KubePrivateNetworkConfiguration {
      * @return Defines whether routing should default to using the nodes&#39; private interface, instead of their public interface. Default is false.
      * 
      * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -62,6 +63,7 @@ public final class KubePrivateNetworkConfiguration {
      * @return Defines whether routing should default to using the nodes&#39; private interface, instead of their public interface. Default is false.
      * 
      * In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
+     * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code

@@ -57,8 +57,7 @@ type GetM3dbUserArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Name of the user.
 	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -95,8 +94,7 @@ type GetM3dbUserOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -69,8 +69,7 @@ type OpensearchPattern struct {
 	MaxIndexCount pulumi.IntPtrOutput `pulumi:"maxIndexCount"`
 	// Pattern format.
 	Pattern pulumi.StringOutput `pulumi:"pattern"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -119,8 +118,7 @@ type opensearchPatternState struct {
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
 	// Pattern format.
 	Pattern *string `pulumi:"pattern"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -131,8 +129,7 @@ type OpensearchPatternState struct {
 	MaxIndexCount pulumi.IntPtrInput
 	// Pattern format.
 	Pattern pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -147,8 +144,7 @@ type opensearchPatternArgs struct {
 	MaxIndexCount *int `pulumi:"maxIndexCount"`
 	// Pattern format.
 	Pattern string `pulumi:"pattern"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -160,8 +156,7 @@ type OpensearchPatternArgs struct {
 	MaxIndexCount pulumi.IntPtrInput
 	// Pattern format.
 	Pattern pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -267,8 +262,7 @@ func (o OpensearchPatternOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchPattern) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o OpensearchPatternOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchPattern) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

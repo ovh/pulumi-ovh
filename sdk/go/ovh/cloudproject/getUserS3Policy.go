@@ -60,8 +60,7 @@ func GetUserS3Policy(ctx *pulumi.Context, args *GetUserS3PolicyArgs, opts ...pul
 
 // A collection of arguments for invoking getUserS3Policy.
 type GetUserS3PolicyArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 	// The ID of a public cloud project's user.
 	UserId string `pulumi:"userId"`
@@ -88,8 +87,7 @@ func GetUserS3PolicyOutput(ctx *pulumi.Context, args GetUserS3PolicyOutputArgs, 
 
 // A collection of arguments for invoking getUserS3Policy.
 type GetUserS3PolicyOutputArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// The ID of a public cloud project's user.
 	UserId pulumi.StringInput `pulumi:"userId"`

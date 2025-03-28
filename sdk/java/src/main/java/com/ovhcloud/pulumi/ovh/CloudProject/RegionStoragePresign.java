@@ -12,6 +12,8 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -61,32 +63,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:CloudProject/regionStoragePresign:RegionStoragePresign")
 public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
     /**
-     * Define, in seconds, for how long your URL will be
-     * valid.
+     * Define, in seconds, for how long your URL will be valid.
      * 
      */
     @Export(name="expire", refs={Integer.class}, tree="[0]")
     private Output<Integer> expire;
 
     /**
-     * @return Define, in seconds, for how long your URL will be
-     * valid.
+     * @return Define, in seconds, for how long your URL will be valid.
      * 
      */
     public Output<Integer> expire() {
         return this.expire;
     }
     /**
-     * The method you want to use to interact with your
-     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     @Export(name="method", refs={String.class}, tree="[0]")
     private Output<String> method;
 
     /**
-     * @return The method you want to use to interact with your
-     * object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
+     * @return The method you want to use to interact with your object. Can be either &#39;GET&#39; or &#39;PUT&#39;.
      * 
      */
     public Output<String> method() {
@@ -121,36 +119,46 @@ public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
         return this.object;
     }
     /**
-     * The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: &#34;GRA&#34;.
+     * The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     @Export(name="regionName", refs={String.class}, tree="[0]")
     private Output<String> regionName;
 
     /**
-     * @return The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: &#34;GRA&#34;.
+     * @return The region in which your storage is located. Must be in **uppercase**. Ex.: &#34;GRA&#34;.
      * 
      */
     public Output<String> regionName() {
         return this.regionName;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+    /**
+     * Map of signed headers.
+     * 
+     */
+    @Export(name="signedHeaders", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> signedHeaders;
+
+    /**
+     * @return Map of signed headers.
+     * 
+     */
+    public Output<Map<String,String>> signedHeaders() {
+        return this.signedHeaders;
     }
     /**
      * Computed URL result.
@@ -165,6 +173,20 @@ public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    /**
+     * Version ID of the object to download or delete
+     * 
+     */
+    @Export(name="versionId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> versionId;
+
+    /**
+     * @return Version ID of the object to download or delete
+     * 
+     */
+    public Output<Optional<String>> versionId() {
+        return Codegen.optional(this.versionId);
     }
 
     /**

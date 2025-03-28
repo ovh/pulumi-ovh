@@ -30,8 +30,7 @@ class AlertingArgs:
         :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "delay", delay)
         pulumi.set(__self__, "email", email)
@@ -78,8 +77,7 @@ class AlertingArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -104,8 +102,7 @@ class _AlertingState:
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input['AlertingFormattedMonthlyThresholdArgs'] formatted_monthly_threshold: Formatted monthly threshold for this alerting
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -184,8 +181,7 @@ class _AlertingState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -225,8 +221,7 @@ class Alerting(pulumi.CustomResource):
         :param pulumi.Input[float] delay: Delay between two alerts in seconds
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -320,8 +315,7 @@ class Alerting(pulumi.CustomResource):
         :param pulumi.Input[str] email: Email to contact
         :param pulumi.Input[Union['AlertingFormattedMonthlyThresholdArgs', 'AlertingFormattedMonthlyThresholdArgsDict']] formatted_monthly_threshold: Formatted monthly threshold for this alerting
         :param pulumi.Input[float] monthly_threshold: Monthly threshold for this alerting in currency
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -379,8 +373,7 @@ class Alerting(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

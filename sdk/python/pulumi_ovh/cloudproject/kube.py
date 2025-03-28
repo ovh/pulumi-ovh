@@ -48,7 +48,7 @@ class KubeArgs:
         :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
-               > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+               > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
         :param pulumi.Input[str] version: kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
         """
@@ -207,7 +207,7 @@ class KubeArgs:
         """
         Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 
-        > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         """
         return pulumi.get(self, "private_network_id")
 
@@ -282,7 +282,7 @@ class _KubeState:
         :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
-               > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+               > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[str] status: Cluster status. Should be normally set to 'READY'.
@@ -511,7 +511,7 @@ class _KubeState:
         """
         Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 
-        > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         """
         return pulumi.get(self, "private_network_id")
 
@@ -634,7 +634,7 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
-               > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+               > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[str] update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
@@ -775,7 +775,7 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
-               > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+               > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         :param pulumi.Input[str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[str] status: Cluster status. Should be normally set to 'READY'.
@@ -929,7 +929,7 @@ class Kube(pulumi.CustomResource):
         """
         Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 
-        > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+        > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
         """
         return pulumi.get(self, "private_network_id")
 

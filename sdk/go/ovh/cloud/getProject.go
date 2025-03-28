@@ -50,8 +50,7 @@ func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getProject.
 type GetProjectArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -98,8 +97,7 @@ func GetProjectOutput(ctx *pulumi.Context, args GetProjectOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getProject.
 type GetProjectOutputArgs struct {
-	// The ID of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

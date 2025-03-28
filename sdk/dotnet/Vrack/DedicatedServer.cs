@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.Vrack
     /// <summary>
     /// Attach a legacy dedicated server to a vRack.
     /// 
-    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.&lt;br /&gt;
-    /// Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
+    /// &gt; **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.&lt;br /&gt; Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
     /// 
     /// ## Example Usage
     /// 
@@ -44,8 +43,7 @@ namespace Pulumi.Ovh.Vrack
         public Output<string> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The service name of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -104,8 +102,7 @@ namespace Pulumi.Ovh.Vrack
         public Input<string> ServerId { get; set; } = null!;
 
         /// <summary>
-        /// The service name of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -125,8 +122,7 @@ namespace Pulumi.Ovh.Vrack
         public Input<string>? ServerId { get; set; }
 
         /// <summary>
-        /// The service name of the vrack. If omitted,
-        /// the `OVH_VRACK_SERVICE` environment variable is used.
+        /// The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

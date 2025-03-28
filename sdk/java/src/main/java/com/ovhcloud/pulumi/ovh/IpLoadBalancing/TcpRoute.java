@@ -65,6 +65,12 @@ import javax.annotation.Nullable;
  * 
  * TCP route can be imported using the following format `service_name` and the `id` of the route separated by &#34;/&#34; e.g.
  * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/tcpRoute:TcpRoute tcpreject service_name/route_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpRoute:TcpRoute")
 public class TcpRoute extends com.pulumi.resources.CustomResource {

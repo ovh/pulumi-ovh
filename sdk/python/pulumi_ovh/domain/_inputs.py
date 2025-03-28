@@ -1668,7 +1668,7 @@ if not MYPY:
         """
         value: pulumi.Input[str]
         """
-        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
 elif False:
     ZonePlanConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -1680,7 +1680,7 @@ class ZonePlanConfigurationArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] label: Identifier of the resource : `zone` or `template`
-        :param pulumi.Input[str] value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        :param pulumi.Input[str] value: For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "value", value)
@@ -1701,7 +1701,7 @@ class ZonePlanConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+        For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
         """
         return pulumi.get(self, "value")
 

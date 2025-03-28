@@ -26,7 +26,7 @@ class PrivateDatabaseUserGrantArgs:
         """
         The set of arguments for constructing a PrivateDatabaseUserGrant resource.
         :param pulumi.Input[str] database_name: Database name where add grant.
-        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be:
                - admin
                - none
                - ro
@@ -55,7 +55,7 @@ class PrivateDatabaseUserGrantArgs:
     @pulumi.getter
     def grant(self) -> pulumi.Input[str]:
         """
-        Database name where add grant. Values can be: 
+        Database name where add grant. Values can be:
         - admin
         - none
         - ro
@@ -102,7 +102,7 @@ class _PrivateDatabaseUserGrantState:
         """
         Input properties used for looking up and filtering PrivateDatabaseUserGrant resources.
         :param pulumi.Input[str] database_name: Database name where add grant.
-        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be:
                - admin
                - none
                - ro
@@ -135,7 +135,7 @@ class _PrivateDatabaseUserGrantState:
     @pulumi.getter
     def grant(self) -> Optional[pulumi.Input[str]]:
         """
-        Database name where add grant. Values can be: 
+        Database name where add grant. Values can be:
         - admin
         - none
         - ro
@@ -209,7 +209,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: Database name where add grant.
-        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be:
                - admin
                - none
                - ro
@@ -309,7 +309,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: Database name where add grant.
-        :param pulumi.Input[str] grant: Database name where add grant. Values can be: 
+        :param pulumi.Input[str] grant: Database name where add grant. Values can be:
                - admin
                - none
                - ro
@@ -339,7 +339,7 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
     @pulumi.getter
     def grant(self) -> pulumi.Output[str]:
         """
-        Database name where add grant. Values can be: 
+        Database name where add grant. Values can be:
         - admin
         - none
         - ro

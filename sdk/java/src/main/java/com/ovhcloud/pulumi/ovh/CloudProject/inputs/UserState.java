@@ -49,16 +49,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a convenient map representing an openstack_rc file.
-     * Note: no password nor sensitive token is set in this map.
+     * a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
      * 
      */
     @Import(name="openstackRc")
     private @Nullable Output<Map<String,String>> openstackRc;
 
     /**
-     * @return a convenient map representing an openstack_rc file.
-     * Note: no password nor sensitive token is set in this map.
+     * @return a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
      * 
      */
     public Optional<Output<Map<String,String>>> openstackRc() {
@@ -66,18 +64,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Sensitive) the password generated for the user. The password can
-     * be used with the Openstack API. This attribute is sensitive and will only be
-     * retrieve once during creation.
+     * (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return (Sensitive) the password generated for the user. The password can
-     * be used with the Openstack API. This attribute is sensitive and will only be
-     * retrieve once during creation.
+     * @return (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
      * 
      */
     public Optional<Output<String>> password() {
@@ -154,16 +148,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -186,16 +178,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the username generated for the user. This username can be used with
-     * the Openstack API.
+     * the username generated for the user. This username can be used with the Openstack API.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return the username generated for the user. This username can be used with
-     * the Openstack API.
+     * @return the username generated for the user. This username can be used with the Openstack API.
      * 
      */
     public Optional<Output<String>> username() {
@@ -278,8 +268,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openstackRc a convenient map representing an openstack_rc file.
-         * Note: no password nor sensitive token is set in this map.
+         * @param openstackRc a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
          * 
          * @return builder
          * 
@@ -290,8 +279,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param openstackRc a convenient map representing an openstack_rc file.
-         * Note: no password nor sensitive token is set in this map.
+         * @param openstackRc a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
          * 
          * @return builder
          * 
@@ -301,9 +289,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password (Sensitive) the password generated for the user. The password can
-         * be used with the Openstack API. This attribute is sensitive and will only be
-         * retrieve once during creation.
+         * @param password (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
          * 
          * @return builder
          * 
@@ -314,9 +300,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password (Sensitive) the password generated for the user. The password can
-         * be used with the Openstack API. This attribute is sensitive and will only be
-         * retrieve once during creation.
+         * @param password (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
          * 
          * @return builder
          * 
@@ -445,8 +429,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -457,8 +440,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -489,8 +471,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username the username generated for the user. This username can be used with
-         * the Openstack API.
+         * @param username the username generated for the user. This username can be used with the Openstack API.
          * 
          * @return builder
          * 
@@ -501,8 +482,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username the username generated for the user. This username can be used with
-         * the Openstack API.
+         * @param username the username generated for the user. This username can be used with the Openstack API.
          * 
          * @return builder
          * 

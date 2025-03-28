@@ -68,8 +68,7 @@ type LookupPostgresSqlConnectionPoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// Name of the Connection pool.
 	Name string `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -81,8 +80,7 @@ type LookupPostgresSqlConnectionPoolResult struct {
 	DatabaseId string `pulumi:"databaseId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Connection mode to the connection pool
-	// Available modes:
+	// Connection mode to the connection pool Available modes:
 	Mode string `pulumi:"mode"`
 	// See Argument Reference above
 	Name string `pulumi:"name"`
@@ -115,8 +113,7 @@ type LookupPostgresSqlConnectionPoolOutputArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Name of the Connection pool.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -154,8 +151,7 @@ func (o LookupPostgresSqlConnectionPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Connection mode to the connection pool
-// Available modes:
+// Connection mode to the connection pool Available modes:
 func (o LookupPostgresSqlConnectionPoolResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlConnectionPoolResult) string { return v.Mode }).(pulumi.StringOutput)
 }

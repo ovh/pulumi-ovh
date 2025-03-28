@@ -169,40 +169,35 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
         return this.autoscale;
     }
     /**
-     * scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      * 
      */
     @Export(name="autoscalingScaleDownUnneededTimeSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoscalingScaleDownUnneededTimeSeconds;
 
     /**
-     * @return scaleDownUnneededTimeSeconds autoscaling parameter
-     * How long a node should be unneeded before it is eligible for scale down
+     * @return scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
      * 
      */
     public Output<Integer> autoscalingScaleDownUnneededTimeSeconds() {
         return this.autoscalingScaleDownUnneededTimeSeconds;
     }
     /**
-     * scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      * 
      */
     @Export(name="autoscalingScaleDownUnreadyTimeSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoscalingScaleDownUnreadyTimeSeconds;
 
     /**
-     * @return scaleDownUnreadyTimeSeconds autoscaling parameter
-     * How long an unready node should be unneeded before it is eligible for scale down
+     * @return scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
      * 
      */
     public Output<Integer> autoscalingScaleDownUnreadyTimeSeconds() {
         return this.autoscalingScaleDownUnreadyTimeSeconds;
     }
     /**
-     * scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
@@ -210,8 +205,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
     private Output<Double> autoscalingScaleDownUtilizationThreshold;
 
     /**
-     * @return scaleDownUtilizationThreshold autoscaling parameter
-     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
+     * @return scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
@@ -289,16 +283,14 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
         return this.flavor;
     }
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="flavorName", refs={String.class}, tree="[0]")
     private Output<String> flavorName;
 
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/.
-     * **Changing this value recreates the resource.**
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> flavorName() {

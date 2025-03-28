@@ -39,8 +39,7 @@ export interface GetLoadBalancersArgs {
      */
     regionName: string;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
 }
@@ -99,8 +98,7 @@ export interface GetLoadBalancersOutputArgs {
      */
     regionName: pulumi.Input<string>;
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

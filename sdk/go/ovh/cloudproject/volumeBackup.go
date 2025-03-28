@@ -44,11 +44,9 @@ import (
 //
 // ## Import
 //
-// A volume backup in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes.
+// A volume backup in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes. Using the following configuration:
 //
-// Using the following configuration:
-//
-// hcl
+// terraform
 //
 // import {
 //
@@ -66,9 +64,7 @@ import (
 //
 // $ pulumi up
 //
-// The file `backup.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-//
-// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+// The file `backup.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type VolumeBackup struct {
 	pulumi.CustomResourceState
 

@@ -15,6 +15,11 @@ export const getCeph: typeof import("./getCeph").getCeph = null as any;
 export const getCephOutput: typeof import("./getCeph").getCephOutput = null as any;
 utilities.lazyLoad(exports, ["getCeph","getCephOutput"], () => require("./getCeph"));
 
+export { GetCloudArgs, GetCloudResult, GetCloudOutputArgs } from "./getCloud";
+export const getCloud: typeof import("./getCloud").getCloud = null as any;
+export const getCloudOutput: typeof import("./getCloud").getCloudOutput = null as any;
+utilities.lazyLoad(exports, ["getCloud","getCloudOutput"], () => require("./getCloud"));
+
 export { GetNasHAArgs, GetNasHAResult, GetNasHAOutputArgs } from "./getNasHA";
 export const getNasHA: typeof import("./getNasHA").getNasHA = null as any;
 export const getNasHAOutput: typeof import("./getNasHA").getNasHAOutput = null as any;

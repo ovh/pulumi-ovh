@@ -18,16 +18,14 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
     public static final GetPaymentmeanCreditCardArgs Empty = new GetPaymentmeanCreditCardArgs();
 
     /**
-     * a regexp used to filter credit cards
-     * on their `description` attributes.
+     * a regexp used to filter credit cards on their `description` attributes.
      * 
      */
     @Import(name="descriptionRegexp")
     private @Nullable Output<String> descriptionRegexp;
 
     /**
-     * @return a regexp used to filter credit cards
-     * on their `description` attributes.
+     * @return a regexp used to filter credit cards on their `description` attributes.
      * 
      */
     public Optional<Output<String>> descriptionRegexp() {
@@ -35,16 +33,14 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Filter credit cards on their `state` attribute.
-     * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+     * Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
      * 
      */
     @Import(name="states")
     private @Nullable Output<List<String>> states;
 
     /**
-     * @return Filter credit cards on their `state` attribute.
-     * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+     * @return Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
      * 
      */
     public Optional<Output<List<String>>> states() {
@@ -67,16 +63,14 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Retrieve the credit card that will be the last
-     * to expire according to its expiration date.
+     * Retrieve the credit card that will be the last to expire according to its expiration date.
      * 
      */
     @Import(name="useLastToExpire")
     private @Nullable Output<Boolean> useLastToExpire;
 
     /**
-     * @return Retrieve the credit card that will be the last
-     * to expire according to its expiration date.
+     * @return Retrieve the credit card that will be the last to expire according to its expiration date.
      * 
      */
     public Optional<Output<Boolean>> useLastToExpire() {
@@ -111,8 +105,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param descriptionRegexp a regexp used to filter credit cards
-         * on their `description` attributes.
+         * @param descriptionRegexp a regexp used to filter credit cards on their `description` attributes.
          * 
          * @return builder
          * 
@@ -123,8 +116,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param descriptionRegexp a regexp used to filter credit cards
-         * on their `description` attributes.
+         * @param descriptionRegexp a regexp used to filter credit cards on their `description` attributes.
          * 
          * @return builder
          * 
@@ -134,8 +126,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param states Filter credit cards on their `state` attribute.
-         * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+         * @param states Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
          * 
          * @return builder
          * 
@@ -146,8 +137,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param states Filter credit cards on their `state` attribute.
-         * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+         * @param states Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
          * 
          * @return builder
          * 
@@ -157,8 +147,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param states Filter credit cards on their `state` attribute.
-         * Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
+         * @param states Filter credit cards on their `state` attribute. Can be &#34;expired&#34;, &#34;valid&#34;, &#34;tooManyFailures&#34;
          * 
          * @return builder
          * 
@@ -189,8 +178,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param useLastToExpire Retrieve the credit card that will be the last
-         * to expire according to its expiration date.
+         * @param useLastToExpire Retrieve the credit card that will be the last to expire according to its expiration date.
          * 
          * @return builder
          * 
@@ -201,8 +189,7 @@ public final class GetPaymentmeanCreditCardArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param useLastToExpire Retrieve the credit card that will be the last
-         * to expire according to its expiration date.
+         * @param useLastToExpire Retrieve the credit card that will be the last to expire according to its expiration date.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ import (
 
 // ## Import
 //
-// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used  and ths `task_id`, separated by "/" E.g.,
+// Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by "/" E.g.,
 //
 // bash
 //
@@ -30,7 +30,7 @@ type ServerReinstallTask struct {
 	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Available attributes and their types are OS-dependant. Example: `hostname`.
 	//
-	// > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations ServerReinstallTaskCustomizationsPtrOutput `pulumi:"customizations"`
 	// Completion date in RFC3339 format.
 	DoneDate pulumi.StringOutput `pulumi:"doneDate"`
@@ -94,7 +94,7 @@ type serverReinstallTaskState struct {
 	Comment *string `pulumi:"comment"`
 	// Available attributes and their types are OS-dependant. Example: `hostname`.
 	//
-	// > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations *ServerReinstallTaskCustomizations `pulumi:"customizations"`
 	// Completion date in RFC3339 format.
 	DoneDate *string `pulumi:"doneDate"`
@@ -123,7 +123,7 @@ type ServerReinstallTaskState struct {
 	Comment pulumi.StringPtrInput
 	// Available attributes and their types are OS-dependant. Example: `hostname`.
 	//
-	// > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations ServerReinstallTaskCustomizationsPtrInput
 	// Completion date in RFC3339 format.
 	DoneDate pulumi.StringPtrInput
@@ -154,7 +154,7 @@ type serverReinstallTaskArgs struct {
 	BootidOnDestroy *int `pulumi:"bootidOnDestroy"`
 	// Available attributes and their types are OS-dependant. Example: `hostname`.
 	//
-	// > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations *ServerReinstallTaskCustomizations `pulumi:"customizations"`
 	// Operating system to install.
 	Os string `pulumi:"os"`
@@ -172,7 +172,7 @@ type ServerReinstallTaskArgs struct {
 	BootidOnDestroy pulumi.IntPtrInput
 	// Available attributes and their types are OS-dependant. Example: `hostname`.
 	//
-	// > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations ServerReinstallTaskCustomizationsPtrInput
 	// Operating system to install.
 	Os pulumi.StringInput
@@ -283,7 +283,7 @@ func (o ServerReinstallTaskOutput) Comment() pulumi.StringOutput {
 
 // Available attributes and their types are OS-dependant. Example: `hostname`.
 //
-// > __WARNING__ Some customizations may be required on some Operating Systems.  [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
+// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 func (o ServerReinstallTaskOutput) Customizations() ServerReinstallTaskCustomizationsPtrOutput {
 	return o.ApplyT(func(v *ServerReinstallTask) ServerReinstallTaskCustomizationsPtrOutput { return v.Customizations }).(ServerReinstallTaskCustomizationsPtrOutput)
 }

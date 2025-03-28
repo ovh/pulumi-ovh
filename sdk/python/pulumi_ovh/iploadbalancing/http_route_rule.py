@@ -350,6 +350,12 @@ class HttpRouteRule(pulumi.CustomResource):
 
         HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
 
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule examplerule service_name/route_id/rule_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human readable name for your rule, this field is for you
@@ -418,6 +424,12 @@ class HttpRouteRule(pulumi.CustomResource):
         ## Import
 
         HTTP route rule can be imported using the following format `service_name`, the `id` of the route and the `id` of the rule separated by "/" e.g.
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/httpRouteRule:HttpRouteRule examplerule service_name/route_id/rule_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param HttpRouteRuleInitArgs args: The arguments to use to populate this resource's properties.

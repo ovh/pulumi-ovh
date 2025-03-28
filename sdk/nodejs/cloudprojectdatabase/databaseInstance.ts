@@ -9,8 +9,8 @@ import * as utilities from "../utilities";
  *
  * With this resource you can create a database for the following database engine:
  *
- *   * `mysql`
- *   * `postgresql`
+ * * `mysql`
+ * * `postgresql`
  *
  * ## Example Usage
  *
@@ -78,8 +78,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly default!: pulumi.Output<boolean>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -87,8 +86,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -145,8 +143,7 @@ export interface DatabaseInstanceState {
      */
     default?: pulumi.Input<boolean>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      */
     engine?: pulumi.Input<string>;
     /**
@@ -154,8 +151,7 @@ export interface DatabaseInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -169,8 +165,7 @@ export interface DatabaseInstanceArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * Available engines:
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). Available engines:
      */
     engine: pulumi.Input<string>;
     /**
@@ -178,8 +173,7 @@ export interface DatabaseInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

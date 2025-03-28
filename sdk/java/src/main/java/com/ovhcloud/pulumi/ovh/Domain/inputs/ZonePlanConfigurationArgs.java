@@ -30,14 +30,14 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+     * For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+     * @return For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
      * 
      */
     public Output<String> value() {
@@ -91,7 +91,7 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param value For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+         * @param value For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ZonePlanConfigurationArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param value For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or  `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
+         * @param value For `zone`, the value is the zone name `myzone.example.com`. For `template`, the value can be `basic`, `minimized` or `redirect` which is the same as `minimized` with additional entries for a redirect configuration.
          * 
          * @return builder
          * 

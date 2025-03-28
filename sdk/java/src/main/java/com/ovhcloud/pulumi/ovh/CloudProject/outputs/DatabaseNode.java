@@ -18,8 +18,7 @@ public final class DatabaseNode {
      */
     private @Nullable String networkId;
     /**
-     * @return Public cloud region in which the node should be deployed.
-     * Ex: &#34;GRA&#39;.
+     * @return Public cloud region in which the node should be deployed. Ex: &#34;GRA&#39;.
      * 
      */
     private String region;
@@ -38,8 +37,7 @@ public final class DatabaseNode {
         return Optional.ofNullable(this.networkId);
     }
     /**
-     * @return Public cloud region in which the node should be deployed.
-     * Ex: &#34;GRA&#39;.
+     * @return Public cloud region in which the node should be deployed. Ex: &#34;GRA&#39;.
      * 
      */
     public String region() {

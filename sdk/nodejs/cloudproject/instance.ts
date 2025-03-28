@@ -7,8 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * **This resource uses a Beta API**
- * Creates an instance associated with a public cloud project.
+ * **This resource uses a Beta API** Creates an instance associated with a public cloud project.
  *
  * ## Example Usage
  *
@@ -126,8 +125,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -291,8 +289,7 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -358,8 +355,7 @@ export interface InstanceArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
      */
     serviceName: pulumi.Input<string>;
     /**

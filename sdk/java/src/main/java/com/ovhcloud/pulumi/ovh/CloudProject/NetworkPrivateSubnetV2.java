@@ -77,80 +77,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2")
 public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource {
     /**
-     * List of IP allocation pools
-     * Changing this value recreates the resource.
+     * List of IP allocation pools Changing this value recreates the resource.
      * 
      */
     @Export(name="allocationPools", refs={List.class,NetworkPrivateSubnetV2AllocationPool.class}, tree="[0,1]")
     private Output<List<NetworkPrivateSubnetV2AllocationPool>> allocationPools;
 
     /**
-     * @return List of IP allocation pools
-     * Changing this value recreates the resource.
+     * @return List of IP allocation pools Changing this value recreates the resource.
      * 
      */
     public Output<List<NetworkPrivateSubnetV2AllocationPool>> allocationPools() {
         return this.allocationPools;
     }
     /**
-     * IP range of the subnet
-     * Changing this value recreates the subnet.
+     * IP range of the subnet Changing this value recreates the subnet.
      * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
-     * @return IP range of the subnet
-     * Changing this value recreates the subnet.
+     * @return IP range of the subnet Changing this value recreates the subnet.
      * 
      */
     public Output<String> cidr() {
         return this.cidr;
     }
     /**
-     * Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to true.
+     * Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
      * 
      */
     @Export(name="dhcp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dhcp;
 
     /**
-     * @return Enable DHCP.
-     * Changing this forces a new resource to be created. Defaults to true.
+     * @return Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
      * 
      */
     public Output<Optional<Boolean>> dhcp() {
         return Codegen.optional(this.dhcp);
     }
     /**
-     * DNS nameservers used by DHCP
-     * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+     * DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
      * 
      */
     @Export(name="dnsNameservers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsNameservers;
 
     /**
-     * @return DNS nameservers used by DHCP
-     * Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+     * @return DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
      * 
      */
     public Output<List<String>> dnsNameservers() {
         return this.dnsNameservers;
     }
     /**
-     * Set to true if you want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to true.
+     * Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
      * 
      */
     @Export(name="enableGatewayIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableGatewayIp;
 
     /**
-     * @return Set to true if you want to set a default gateway IP.
-     * Changing this value recreates the resource. Defaults to true.
+     * @return Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
      * 
      */
     public Output<Optional<Boolean>> enableGatewayIp() {
@@ -185,80 +175,70 @@ public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.hostRoutes);
     }
     /**
-     * Name of the subnet
-     * Changing this value recreates the subnet.
+     * Name of the subnet Changing this value recreates the subnet.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the subnet
-     * Changing this value recreates the subnet.
+     * @return Name of the subnet Changing this value recreates the subnet.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The id of the network.
-     * Changing this forces a new resource to be created.
+     * The id of the network. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
-     * @return The id of the network.
-     * Changing this forces a new resource to be created.
+     * @return The id of the network. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> networkId() {
         return this.networkId;
     }
     /**
-     * The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region in which the network subnet will be created.
-     * Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
+     * @return The region in which the network subnet will be created. Ex.: &#34;GRA1&#34;. Changing this value recreates the resource.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Set to false if you want to use your DNS resolver.
-     * Changing this value recreates the resource.
+     * Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
      * 
      */
     @Export(name="useDefaultPublicDnsResolver", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useDefaultPublicDnsResolver;
 
     /**
-     * @return Set to false if you want to use your DNS resolver.
-     * Changing this value recreates the resource.
+     * @return Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
      * 
      */
     public Output<Optional<Boolean>> useDefaultPublicDnsResolver() {

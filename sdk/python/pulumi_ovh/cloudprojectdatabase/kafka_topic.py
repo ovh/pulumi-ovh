@@ -30,8 +30,7 @@ class KafkaTopicArgs:
         """
         The set of arguments for constructing a KafkaTopic resource.
         :param pulumi.Input[str] cluster_id: Cluster ID.
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
         :param pulumi.Input[str] name: Name of the topic. No spaces allowed.
         :param pulumi.Input[int] partitions: Number of partitions for this topic. Should be superior to 0
@@ -70,8 +69,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -172,8 +170,7 @@ class _KafkaTopicState:
         :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -280,8 +277,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -345,8 +341,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -462,8 +457,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
-        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted,
-               the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -539,8 +533,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The id of the public cloud project. If omitted,
-        the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

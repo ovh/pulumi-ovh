@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// Using the following configuration:
     /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -34,9 +34,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// $ pulumi up
     /// 
-    /// The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `cloudproject.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:CloudProject/project:Project")]
     public partial class Project : global::Pulumi.CustomResource

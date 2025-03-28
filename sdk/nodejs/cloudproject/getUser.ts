@@ -40,8 +40,7 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetUserArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: string;
     /**
@@ -77,8 +76,7 @@ export interface GetUserResult {
     readonly status: string;
     readonly userId: string;
     /**
-     * the username generated for the user. This username can be used with
-     * the Openstack API.
+     * the username generated for the user. This username can be used with the Openstack API.
      */
     readonly username: string;
 }
@@ -116,8 +114,7 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetUserOutputArgs {
     /**
-     * The ID of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
     /**

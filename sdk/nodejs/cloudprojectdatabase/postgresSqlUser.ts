@@ -64,13 +64,11 @@ export class PostgresSqlUser extends pulumi.CustomResource {
      */
     public readonly passwordReset!: pulumi.Output<string | undefined>;
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to. Available roles:
      */
     public readonly roles!: pulumi.Output<string[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -148,13 +146,11 @@ export interface PostgresSqlUserState {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to. Available roles:
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -180,13 +176,11 @@ export interface PostgresSqlUserArgs {
      */
     passwordReset?: pulumi.Input<string>;
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to. Available roles:
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

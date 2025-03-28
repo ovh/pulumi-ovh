@@ -180,16 +180,14 @@ public class Move extends com.pulumi.resources.CustomResource {
         return this.organisationId;
     }
     /**
-     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      * 
      */
     @Export(name="routedTo", refs={MoveRoutedTo.class}, tree="[0]")
     private Output<MoveRoutedTo> routedTo;
 
     /**
-     * @return Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST)
-     * instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
+     * @return Service to route the IP to. If null, the IP will be [parked](https://api.ovh.com/console/#/ip/%7Bip%7D/park~POST) instead of [moved](https://api.ovh.com/console/#/ip/%7Bip%7D/move~POST)
      * 
      */
     public Output<MoveRoutedTo> routedTo() {

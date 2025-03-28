@@ -130,8 +130,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -151,8 +150,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the public cloud project. If omitted,
-        /// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        /// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -196,8 +194,7 @@ namespace Pulumi.Ovh.CloudProject
         public readonly string Status;
         public readonly string UserId;
         /// <summary>
-        /// the username generated for the user. This username can be used with
-        /// the Openstack API.
+        /// the username generated for the user. This username can be used with the Openstack API.
         /// </summary>
         public readonly string Username;
 

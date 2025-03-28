@@ -105,8 +105,7 @@ def get_load_balancers(region_name: Optional[str] = None,
 
 
     :param str region_name: Region of the loadbalancers.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['regionName'] = region_name
@@ -138,8 +137,7 @@ def get_load_balancers_output(region_name: Optional[pulumi.Input[str]] = None,
 
 
     :param str region_name: Region of the loadbalancers.
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
     __args__['regionName'] = region_name

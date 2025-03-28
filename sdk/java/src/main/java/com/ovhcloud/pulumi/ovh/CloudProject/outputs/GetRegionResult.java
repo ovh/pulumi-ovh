@@ -13,14 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionResult {
     /**
-     * @return the code of the geographic continent the region is running.
-     * E.g.: EU for Europe, US for America...
+     * @return the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
      * 
      */
     private String continentCode;
     /**
-     * @return The location code of the datacenter.
-     * E.g.: &#34;GRA&#34;, meaning Gravelines, for region &#34;GRA1&#34;
+     * @return The location code of the datacenter. E.g.: &#34;GRA&#34;, meaning Gravelines, for region &#34;GRA1&#34;
      * 
      */
     private String datacenterLocation;
@@ -43,16 +41,14 @@ public final class GetRegionResult {
 
     private GetRegionResult() {}
     /**
-     * @return the code of the geographic continent the region is running.
-     * E.g.: EU for Europe, US for America...
+     * @return the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
      * 
      */
     public String continentCode() {
         return this.continentCode;
     }
     /**
-     * @return The location code of the datacenter.
-     * E.g.: &#34;GRA&#34;, meaning Gravelines, for region &#34;GRA1&#34;
+     * @return The location code of the datacenter. E.g.: &#34;GRA&#34;, meaning Gravelines, for region &#34;GRA1&#34;
      * 
      */
     public String datacenterLocation() {

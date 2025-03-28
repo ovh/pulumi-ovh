@@ -12,8 +12,7 @@ namespace Pulumi.Ovh.CloudProject
     public static class GetStorage
     {
         /// <summary>
-        /// Get S3™* compatible storage container.
-        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
         /// 
         /// ## Example Usage
         /// 
@@ -39,8 +38,7 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageResult>("ovh:CloudProject/getStorage:getStorage", args ?? new GetStorageArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get S3™* compatible storage container.
-        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
         /// 
         /// ## Example Usage
         /// 
@@ -66,8 +64,7 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageResult>("ovh:CloudProject/getStorage:getStorage", args ?? new GetStorageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get S3™* compatible storage container.
-        /// \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+        /// Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
         /// 
         /// ## Example Usage
         /// 

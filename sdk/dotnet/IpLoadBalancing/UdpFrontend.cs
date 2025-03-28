@@ -83,9 +83,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Output<double> FrontendId { get; private set; } = null!;
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), 
-        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -180,9 +178,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), 
-        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Input("port", required: true)]
         public Input<string> Port { get; set; } = null!;
@@ -244,9 +240,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
         public Input<double>? FrontendId { get; set; }
 
         /// <summary>
-        /// Port(s) attached to your frontend. Supports single port (numerical value), 
-        /// range (2 dash-delimited increasing ports) and comma-separated list of 'single port'
-        /// and/or 'range'. Each port must be in the [1;49151] range
+        /// Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

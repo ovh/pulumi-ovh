@@ -56,7 +56,7 @@ type Kube struct {
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrOutput `pulumi:"privateNetworkConfiguration"`
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
-	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId pulumi.StringPtrOutput `pulumi:"privateNetworkId"`
 	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -145,7 +145,7 @@ type kubeState struct {
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
-	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId *string `pulumi:"privateNetworkId"`
 	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region *string `pulumi:"region"`
@@ -194,7 +194,7 @@ type KubeState struct {
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
-	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId pulumi.StringPtrInput
 	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region pulumi.StringPtrInput
@@ -235,7 +235,7 @@ type kubeArgs struct {
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
-	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId *string `pulumi:"privateNetworkId"`
 	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region string `pulumi:"region"`
@@ -269,7 +269,7 @@ type KubeArgs struct {
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 	//
-	// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId pulumi.StringPtrInput
 	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region pulumi.StringInput
@@ -442,7 +442,7 @@ func (o KubeOutput) PrivateNetworkConfiguration() KubePrivateNetworkConfiguratio
 
 // Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
 //
-// > __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 func (o KubeOutput) PrivateNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringPtrOutput { return v.PrivateNetworkId }).(pulumi.StringPtrOutput)
 }

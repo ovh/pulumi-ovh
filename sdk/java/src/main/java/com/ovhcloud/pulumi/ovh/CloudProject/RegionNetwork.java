@@ -63,11 +63,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A network in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes.
+ * A network in a public cloud project can be imported using the `service_name`, `region_name` and `id` attributes. Using the following configuration:
  * 
- * Using the following configuration:
- * 
- * hcl
+ * terraform
  * 
  * import {
  * 
@@ -85,9 +83,7 @@ import javax.annotation.Nullable;
  * 
  * $ pulumi up
  * 
- * The file `network.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above.
- * 
- * See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * The file `network.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:CloudProject/regionNetwork:RegionNetwork")

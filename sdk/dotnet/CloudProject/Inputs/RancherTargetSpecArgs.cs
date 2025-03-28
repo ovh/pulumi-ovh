@@ -37,7 +37,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version.
+        /// Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

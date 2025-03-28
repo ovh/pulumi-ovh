@@ -57,16 +57,14 @@ public class PostgresSqlConnectionPool extends com.pulumi.resources.CustomResour
         return this.databaseId;
     }
     /**
-     * Connection mode to the connection pool
-     * Available modes:
+     * Connection mode to the connection pool Available modes:
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return Connection mode to the connection pool
-     * Available modes:
+     * @return Connection mode to the connection pool Available modes:
      * 
      */
     public Output<String> mode() {
@@ -101,16 +99,14 @@ public class PostgresSqlConnectionPool extends com.pulumi.resources.CustomResour
         return this.port;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

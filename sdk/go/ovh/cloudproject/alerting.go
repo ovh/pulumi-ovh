@@ -55,8 +55,7 @@ type Alerting struct {
 	FormattedMonthlyThreshold AlertingFormattedMonthlyThresholdOutput `pulumi:"formattedMonthlyThreshold"`
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64Output `pulumi:"monthlyThreshold"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -112,8 +111,7 @@ type alertingState struct {
 	FormattedMonthlyThreshold *AlertingFormattedMonthlyThreshold `pulumi:"formattedMonthlyThreshold"`
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold *float64 `pulumi:"monthlyThreshold"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -128,8 +126,7 @@ type AlertingState struct {
 	FormattedMonthlyThreshold AlertingFormattedMonthlyThresholdPtrInput
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64PtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -144,8 +141,7 @@ type alertingArgs struct {
 	Email string `pulumi:"email"`
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold float64 `pulumi:"monthlyThreshold"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -157,8 +153,7 @@ type AlertingArgs struct {
 	Email pulumi.StringInput
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64Input
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
 }
 
@@ -274,8 +269,7 @@ func (o AlertingOutput) MonthlyThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v *Alerting) pulumi.Float64Output { return v.MonthlyThreshold }).(pulumi.Float64Output)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o AlertingOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alerting) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -79,6 +79,12 @@ import javax.annotation.Nullable;
  * 
  * TCP frontend can be imported using the following format `service_name` and the `id` of the frontend separated by &#34;/&#34; e.g.
  * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/tcpFrontend:TcpFrontend testfrontend service_name/tcp_frontend_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/tcpFrontend:TcpFrontend")
 public class TcpFrontend extends com.pulumi.resources.CustomResource {
@@ -181,18 +187,14 @@ public class TcpFrontend extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39;
-     * and/or &#39;range&#39;. Each port must be in the [1;49151] range
+     * Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39; and/or &#39;range&#39;. Each port must be in the [1;49151] range
      * 
      */
     @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
-     * @return Port(s) attached to your frontend. Supports single port (numerical value),
-     * range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39;
-     * and/or &#39;range&#39;. Each port must be in the [1;49151] range
+     * @return Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of &#39;single port&#39; and/or &#39;range&#39;. Each port must be in the [1;49151] range
      * 
      */
     public Output<String> port() {

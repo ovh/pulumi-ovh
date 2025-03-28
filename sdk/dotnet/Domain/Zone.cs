@@ -68,7 +68,7 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// Using the following configuration:
     /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -86,9 +86,7 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// $ pulumi up
     /// 
-    /// The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `zone.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource

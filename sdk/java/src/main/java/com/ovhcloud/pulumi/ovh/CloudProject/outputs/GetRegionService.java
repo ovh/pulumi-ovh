@@ -11,8 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionService {
     /**
-     * @return The name of the region associated with the public cloud
-     * project.
+     * @return The name of the region associated with the public cloud project.
      * 
      */
     private String name;
@@ -24,8 +23,7 @@ public final class GetRegionService {
 
     private GetRegionService() {}
     /**
-     * @return The name of the region associated with the public cloud
-     * project.
+     * @return The name of the region associated with the public cloud project.
      * 
      */
     public String name() {

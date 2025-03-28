@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve information about a bank account
- * payment mean associated with an OVHcloud account.
+ * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
  *
  * ## Example Usage
  *
@@ -35,13 +34,11 @@ export function getPaymentmeanBankAccount(args?: GetPaymentmeanBankAccountArgs, 
  */
 export interface GetPaymentmeanBankAccountArgs {
     /**
-     * a regexp used to filter bank accounts 
-     * on their `description` attributes.
+     * a regexp used to filter bank accounts on their `description` attributes.
      */
     descriptionRegexp?: string;
     /**
-     * Filter bank accounts on their `state` attribute.
-     * Can be "blockedForIncidents", "valid", "pendingValidation"
+     * Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
      */
     state?: string;
     /**
@@ -49,8 +46,7 @@ export interface GetPaymentmeanBankAccountArgs {
      */
     useDefault?: boolean;
     /**
-     * Retrieve oldest bank account.
-     * project.
+     * Retrieve oldest bank account. project.
      */
     useOldest?: boolean;
 }
@@ -60,8 +56,7 @@ export interface GetPaymentmeanBankAccountArgs {
  */
 export interface GetPaymentmeanBankAccountResult {
     /**
-     * a boolean which tells if the retrieved bank account
-     * is marked as the default payment mean
+     * a boolean which tells if the retrieved bank account is marked as the default payment mean
      */
     readonly default: boolean;
     /**
@@ -78,8 +73,7 @@ export interface GetPaymentmeanBankAccountResult {
     readonly useOldest?: boolean;
 }
 /**
- * Use this data source to retrieve information about a bank account
- * payment mean associated with an OVHcloud account.
+ * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
  *
  * ## Example Usage
  *
@@ -108,13 +102,11 @@ export function getPaymentmeanBankAccountOutput(args?: GetPaymentmeanBankAccount
  */
 export interface GetPaymentmeanBankAccountOutputArgs {
     /**
-     * a regexp used to filter bank accounts 
-     * on their `description` attributes.
+     * a regexp used to filter bank accounts on their `description` attributes.
      */
     descriptionRegexp?: pulumi.Input<string>;
     /**
-     * Filter bank accounts on their `state` attribute.
-     * Can be "blockedForIncidents", "valid", "pendingValidation"
+     * Filter bank accounts on their `state` attribute. Can be "blockedForIncidents", "valid", "pendingValidation"
      */
     state?: pulumi.Input<string>;
     /**
@@ -122,8 +114,7 @@ export interface GetPaymentmeanBankAccountOutputArgs {
      */
     useDefault?: pulumi.Input<boolean>;
     /**
-     * Retrieve oldest bank account.
-     * project.
+     * Retrieve oldest bank account. project.
      */
     useOldest?: pulumi.Input<boolean>;
 }

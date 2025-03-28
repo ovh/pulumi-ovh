@@ -61,39 +61,29 @@ import (
 type NetworkPrivateSubnetV2 struct {
 	pulumi.CustomResourceState
 
-	// List of IP allocation pools
-	// Changing this value recreates the resource.
+	// List of IP allocation pools Changing this value recreates the resource.
 	AllocationPools NetworkPrivateSubnetV2AllocationPoolArrayOutput `pulumi:"allocationPools"`
-	// IP range of the subnet
-	// Changing this value recreates the subnet.
+	// IP range of the subnet Changing this value recreates the subnet.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to true.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
 	Dhcp pulumi.BoolPtrOutput `pulumi:"dhcp"`
-	// DNS nameservers used by DHCP
-	// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+	// DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
 	DnsNameservers pulumi.StringArrayOutput `pulumi:"dnsNameservers"`
-	// Set to true if you want to set a default gateway IP.
-	// Changing this value recreates the resource. Defaults to true.
+	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp pulumi.BoolPtrOutput `pulumi:"enableGatewayIp"`
 	// See Argument Reference above.
 	GatewayIp pulumi.StringOutput `pulumi:"gatewayIp"`
 	// Static host routes of subnet
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayOutput `pulumi:"hostRoutes"`
-	// Name of the subnet
-	// Changing this value recreates the subnet.
+	// Name of the subnet Changing this value recreates the subnet.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The id of the network.
-	// Changing this forces a new resource to be created.
+	// The id of the network. Changing this forces a new resource to be created.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Set to false if you want to use your DNS resolver.
-	// Changing this value recreates the resource.
+	// Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
 	UseDefaultPublicDnsResolver pulumi.BoolPtrOutput `pulumi:"useDefaultPublicDnsResolver"`
 }
 
@@ -139,76 +129,56 @@ func GetNetworkPrivateSubnetV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkPrivateSubnetV2 resources.
 type networkPrivateSubnetV2State struct {
-	// List of IP allocation pools
-	// Changing this value recreates the resource.
+	// List of IP allocation pools Changing this value recreates the resource.
 	AllocationPools []NetworkPrivateSubnetV2AllocationPool `pulumi:"allocationPools"`
-	// IP range of the subnet
-	// Changing this value recreates the subnet.
+	// IP range of the subnet Changing this value recreates the subnet.
 	Cidr *string `pulumi:"cidr"`
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to true.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
 	Dhcp *bool `pulumi:"dhcp"`
-	// DNS nameservers used by DHCP
-	// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+	// DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
-	// Set to true if you want to set a default gateway IP.
-	// Changing this value recreates the resource. Defaults to true.
+	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp *bool `pulumi:"enableGatewayIp"`
 	// See Argument Reference above.
 	GatewayIp *string `pulumi:"gatewayIp"`
 	// Static host routes of subnet
 	HostRoutes []NetworkPrivateSubnetV2HostRoute `pulumi:"hostRoutes"`
-	// Name of the subnet
-	// Changing this value recreates the subnet.
+	// Name of the subnet Changing this value recreates the subnet.
 	Name *string `pulumi:"name"`
-	// The id of the network.
-	// Changing this forces a new resource to be created.
+	// The id of the network. Changing this forces a new resource to be created.
 	NetworkId *string `pulumi:"networkId"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region *string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
-	// Set to false if you want to use your DNS resolver.
-	// Changing this value recreates the resource.
+	// Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
 	UseDefaultPublicDnsResolver *bool `pulumi:"useDefaultPublicDnsResolver"`
 }
 
 type NetworkPrivateSubnetV2State struct {
-	// List of IP allocation pools
-	// Changing this value recreates the resource.
+	// List of IP allocation pools Changing this value recreates the resource.
 	AllocationPools NetworkPrivateSubnetV2AllocationPoolArrayInput
-	// IP range of the subnet
-	// Changing this value recreates the subnet.
+	// IP range of the subnet Changing this value recreates the subnet.
 	Cidr pulumi.StringPtrInput
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to true.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
 	Dhcp pulumi.BoolPtrInput
-	// DNS nameservers used by DHCP
-	// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+	// DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
 	DnsNameservers pulumi.StringArrayInput
-	// Set to true if you want to set a default gateway IP.
-	// Changing this value recreates the resource. Defaults to true.
+	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp pulumi.BoolPtrInput
 	// See Argument Reference above.
 	GatewayIp pulumi.StringPtrInput
 	// Static host routes of subnet
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayInput
-	// Name of the subnet
-	// Changing this value recreates the subnet.
+	// Name of the subnet Changing this value recreates the subnet.
 	Name pulumi.StringPtrInput
-	// The id of the network.
-	// Changing this forces a new resource to be created.
+	// The id of the network. Changing this forces a new resource to be created.
 	NetworkId pulumi.StringPtrInput
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region pulumi.StringPtrInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
-	// Set to false if you want to use your DNS resolver.
-	// Changing this value recreates the resource.
+	// Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
 	UseDefaultPublicDnsResolver pulumi.BoolPtrInput
 }
 
@@ -217,77 +187,57 @@ func (NetworkPrivateSubnetV2State) ElementType() reflect.Type {
 }
 
 type networkPrivateSubnetV2Args struct {
-	// List of IP allocation pools
-	// Changing this value recreates the resource.
+	// List of IP allocation pools Changing this value recreates the resource.
 	AllocationPools []NetworkPrivateSubnetV2AllocationPool `pulumi:"allocationPools"`
-	// IP range of the subnet
-	// Changing this value recreates the subnet.
+	// IP range of the subnet Changing this value recreates the subnet.
 	Cidr string `pulumi:"cidr"`
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to true.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
 	Dhcp *bool `pulumi:"dhcp"`
-	// DNS nameservers used by DHCP
-	// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+	// DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
-	// Set to true if you want to set a default gateway IP.
-	// Changing this value recreates the resource. Defaults to true.
+	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp *bool `pulumi:"enableGatewayIp"`
 	// See Argument Reference above.
 	GatewayIp *string `pulumi:"gatewayIp"`
 	// Static host routes of subnet
 	HostRoutes []NetworkPrivateSubnetV2HostRoute `pulumi:"hostRoutes"`
-	// Name of the subnet
-	// Changing this value recreates the subnet.
+	// Name of the subnet Changing this value recreates the subnet.
 	Name *string `pulumi:"name"`
-	// The id of the network.
-	// Changing this forces a new resource to be created.
+	// The id of the network. Changing this forces a new resource to be created.
 	NetworkId string `pulumi:"networkId"`
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region string `pulumi:"region"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
-	// Set to false if you want to use your DNS resolver.
-	// Changing this value recreates the resource.
+	// Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
 	UseDefaultPublicDnsResolver *bool `pulumi:"useDefaultPublicDnsResolver"`
 }
 
 // The set of arguments for constructing a NetworkPrivateSubnetV2 resource.
 type NetworkPrivateSubnetV2Args struct {
-	// List of IP allocation pools
-	// Changing this value recreates the resource.
+	// List of IP allocation pools Changing this value recreates the resource.
 	AllocationPools NetworkPrivateSubnetV2AllocationPoolArrayInput
-	// IP range of the subnet
-	// Changing this value recreates the subnet.
+	// IP range of the subnet Changing this value recreates the subnet.
 	Cidr pulumi.StringInput
-	// Enable DHCP.
-	// Changing this forces a new resource to be created. Defaults to true.
+	// Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
 	Dhcp pulumi.BoolPtrInput
-	// DNS nameservers used by DHCP
-	// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+	// DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
 	DnsNameservers pulumi.StringArrayInput
-	// Set to true if you want to set a default gateway IP.
-	// Changing this value recreates the resource. Defaults to true.
+	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp pulumi.BoolPtrInput
 	// See Argument Reference above.
 	GatewayIp pulumi.StringPtrInput
 	// Static host routes of subnet
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayInput
-	// Name of the subnet
-	// Changing this value recreates the subnet.
+	// Name of the subnet Changing this value recreates the subnet.
 	Name pulumi.StringPtrInput
-	// The id of the network.
-	// Changing this forces a new resource to be created.
+	// The id of the network. Changing this forces a new resource to be created.
 	NetworkId pulumi.StringInput
-	// The region in which the network subnet will be created.
-	// Ex.: "GRA1". Changing this value recreates the resource.
+	// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 	Region pulumi.StringInput
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
-	// Set to false if you want to use your DNS resolver.
-	// Changing this value recreates the resource.
+	// Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
 	UseDefaultPublicDnsResolver pulumi.BoolPtrInput
 }
 
@@ -378,34 +328,29 @@ func (o NetworkPrivateSubnetV2Output) ToNetworkPrivateSubnetV2OutputWithContext(
 	return o
 }
 
-// List of IP allocation pools
-// Changing this value recreates the resource.
+// List of IP allocation pools Changing this value recreates the resource.
 func (o NetworkPrivateSubnetV2Output) AllocationPools() NetworkPrivateSubnetV2AllocationPoolArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) NetworkPrivateSubnetV2AllocationPoolArrayOutput {
 		return v.AllocationPools
 	}).(NetworkPrivateSubnetV2AllocationPoolArrayOutput)
 }
 
-// IP range of the subnet
-// Changing this value recreates the subnet.
+// IP range of the subnet Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetV2Output) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Enable DHCP.
-// Changing this forces a new resource to be created. Defaults to true.
+// Enable DHCP. Changing this forces a new resource to be created. Defaults to true.
 func (o NetworkPrivateSubnetV2Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.BoolPtrOutput { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// DNS nameservers used by DHCP
-// Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
+// DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
 func (o NetworkPrivateSubnetV2Output) DnsNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringArrayOutput { return v.DnsNameservers }).(pulumi.StringArrayOutput)
 }
 
-// Set to true if you want to set a default gateway IP.
-// Changing this value recreates the resource. Defaults to true.
+// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 func (o NetworkPrivateSubnetV2Output) EnableGatewayIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.BoolPtrOutput { return v.EnableGatewayIp }).(pulumi.BoolPtrOutput)
 }
@@ -420,32 +365,27 @@ func (o NetworkPrivateSubnetV2Output) HostRoutes() NetworkPrivateSubnetV2HostRou
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) NetworkPrivateSubnetV2HostRouteArrayOutput { return v.HostRoutes }).(NetworkPrivateSubnetV2HostRouteArrayOutput)
 }
 
-// Name of the subnet
-// Changing this value recreates the subnet.
+// Name of the subnet Changing this value recreates the subnet.
 func (o NetworkPrivateSubnetV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The id of the network.
-// Changing this forces a new resource to be created.
+// The id of the network. Changing this forces a new resource to be created.
 func (o NetworkPrivateSubnetV2Output) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// The region in which the network subnet will be created.
-// Ex.: "GRA1". Changing this value recreates the resource.
+// The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
 func (o NetworkPrivateSubnetV2Output) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project. If omitted,
-// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o NetworkPrivateSubnetV2Output) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Set to false if you want to use your DNS resolver.
-// Changing this value recreates the resource.
+// Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
 func (o NetworkPrivateSubnetV2Output) UseDefaultPublicDnsResolver() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.BoolPtrOutput { return v.UseDefaultPublicDnsResolver }).(pulumi.BoolPtrOutput)
 }

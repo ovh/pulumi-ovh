@@ -72,7 +72,7 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// The resource can be imported using its `service_name`, E.g.,
     /// 
-    /// hcl
+    /// terraform
     /// 
     /// import {
     /// 
@@ -88,9 +88,7 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// $ pulumi up
     /// 
-    /// The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-    /// 
-    /// See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+    /// The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Ip/ipService:IpService")]
     public partial class IpService : global::Pulumi.CustomResource

@@ -55,11 +55,9 @@ func GetDatabaseLogSubscriptions(ctx *pulumi.Context, args *GetDatabaseLogSubscr
 type GetDatabaseLogSubscriptionsArgs struct {
 	// Cluster ID.
 	ClusterId string `pulumi:"clusterId"`
-	// The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -90,11 +88,9 @@ func GetDatabaseLogSubscriptionsOutput(ctx *pulumi.Context, args GetDatabaseLogS
 type GetDatabaseLogSubscriptionsOutputArgs struct {
 	// Cluster ID.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The database engine for which you want to retrieve a subscription. To get a full list of available engine visit.
-	// [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+	// The database engine for which you want to retrieve a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

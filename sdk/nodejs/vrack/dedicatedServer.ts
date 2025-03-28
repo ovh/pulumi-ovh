@@ -7,8 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Attach a legacy dedicated server to a vRack.
  *
- * > **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br />
- * Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
+ * > **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.<br /> Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.
  *
  * ## Example Usage
  *
@@ -55,8 +54,7 @@ export class DedicatedServer extends pulumi.CustomResource {
      */
     public readonly serverId!: pulumi.Output<string>;
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -100,8 +98,7 @@ export interface DedicatedServerState {
      */
     serverId?: pulumi.Input<string>;
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -115,8 +112,7 @@ export interface DedicatedServerArgs {
      */
     serverId: pulumi.Input<string>;
     /**
-     * The service name of the vrack. If omitted,
-     * the `OVH_VRACK_SERVICE` environment variable is used.
+     * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
 }

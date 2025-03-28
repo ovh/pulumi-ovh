@@ -54,6 +54,7 @@ import * as order from "./order";
 import * as ovhcloud from "./ovhcloud";
 import * as savingsplan from "./savingsplan";
 import * as types from "./types";
+import * as vmware from "./vmware";
 import * as vps from "./vps";
 import * as vrack from "./vrack";
 
@@ -75,6 +76,7 @@ export {
     ovhcloud,
     savingsplan,
     types,
+    vmware,
     vps,
     vrack,
 };

@@ -72,8 +72,7 @@ type LookupKubeOidcArgs struct {
 	OidcUsernameClaim *string `pulumi:"oidcUsernameClaim"`
 	// Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidcUsernameClaim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
 	OidcUsernamePrefix *string `pulumi:"oidcUsernamePrefix"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -136,8 +135,7 @@ type LookupKubeOidcOutputArgs struct {
 	OidcUsernameClaim pulumi.StringPtrInput `pulumi:"oidcUsernameClaim"`
 	// Prefix prepended to username claims to prevent clashes with existing names (such as system: users). For example, the value oidc: will create usernames like oidc:jane.doe. If this field isn't set and `oidcUsernameClaim` is a value other than email the prefix defaults to ( Issuer URL )# where ( Issuer URL ) is the value of oidcIssuerUrl. The value - can be used to disable all prefixing.
 	OidcUsernamePrefix pulumi.StringPtrInput `pulumi:"oidcUsernamePrefix"`
-	// The id of the public cloud project. If omitted,
-	// the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 

@@ -120,16 +120,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.destinationServiceId;
     }
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
      * 
      */
     @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
-     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
-     * All engines available exept `mongodb`.
+     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
      * 
      */
     public Output<String> engine() {
@@ -150,16 +148,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parameters);
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {
@@ -194,8 +190,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Type of the integration.
-     * Available types:
+     * Type of the integration. Available types:
      * * `grafanaDashboard`
      * * `grafanaDatasource`
      * * `kafkaConnect`
@@ -207,8 +202,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return Type of the integration.
-     * Available types:
+     * @return Type of the integration. Available types:
      * * `grafanaDashboard`
      * * `grafanaDatasource`
      * * `kafkaConnect`

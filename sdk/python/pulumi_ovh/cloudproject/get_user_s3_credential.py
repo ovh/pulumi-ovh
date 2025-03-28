@@ -116,8 +116,7 @@ def get_user_s3_credential(access_key_id: Optional[str] = None,
 
 
     :param str access_key_id: the Access Key ID
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()
@@ -161,8 +160,7 @@ def get_user_s3_credential_output(access_key_id: Optional[pulumi.Input[str]] = N
 
 
     :param str access_key_id: the Access Key ID
-    :param str service_name: The ID of the public cloud project. If omitted,
-           the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+    :param str service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param str user_id: The ID of a public cloud project's user.
     """
     __args__ = dict()

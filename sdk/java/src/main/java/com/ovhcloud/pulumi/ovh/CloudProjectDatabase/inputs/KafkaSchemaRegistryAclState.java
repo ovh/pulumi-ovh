@@ -31,16 +31,14 @@ public final class KafkaSchemaRegistryAclState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Permission to give to this username on this resource.
-     * Available permissions:
+     * Permission to give to this username on this resource. Available permissions:
      * 
      */
     @Import(name="permission")
     private @Nullable Output<String> permission;
 
     /**
-     * @return Permission to give to this username on this resource.
-     * Available permissions:
+     * @return Permission to give to this username on this resource. Available permissions:
      * 
      */
     public Optional<Output<String>> permission() {
@@ -63,16 +61,14 @@ public final class KafkaSchemaRegistryAclState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -144,8 +140,7 @@ public final class KafkaSchemaRegistryAclState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permission Permission to give to this username on this resource.
-         * Available permissions:
+         * @param permission Permission to give to this username on this resource. Available permissions:
          * 
          * @return builder
          * 
@@ -156,8 +151,7 @@ public final class KafkaSchemaRegistryAclState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permission Permission to give to this username on this resource.
-         * Available permissions:
+         * @param permission Permission to give to this username on this resource. Available permissions:
          * 
          * @return builder
          * 
@@ -188,8 +182,7 @@ public final class KafkaSchemaRegistryAclState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -200,8 +193,7 @@ public final class KafkaSchemaRegistryAclState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceName The id of the public cloud project. If omitted,
-         * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+         * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

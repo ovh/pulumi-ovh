@@ -238,7 +238,7 @@ public class Kube extends com.pulumi.resources.CustomResource {
     /**
      * Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      * 
-     * &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     * &gt; **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
      * 
      */
     @Export(name="privateNetworkId", refs={String.class}, tree="[0]")
@@ -247,7 +247,7 @@ public class Kube extends com.pulumi.resources.CustomResource {
     /**
      * @return Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
      * 
-     * &gt; __WARNING__ Updating the private network ID resets the cluster so that all user data is deleted.
+     * &gt; **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
      * 
      */
     public Output<Optional<String>> privateNetworkId() {

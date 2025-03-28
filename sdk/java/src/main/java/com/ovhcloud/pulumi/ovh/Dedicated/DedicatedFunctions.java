@@ -5,6 +5,8 @@ package com.ovhcloud.pulumi.ovh.Dedicated;
 
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetCephArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetCephPlainArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetCloudArgs;
+import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetCloudPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionPlainArgs;
@@ -16,6 +18,7 @@ import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsHardwareP
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsNetworkArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsNetworkPlainArgs;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetCephResult;
+import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetCloudResult;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetNasHAPartitionResult;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetNasHAResult;
 import com.ovhcloud.pulumi.ovh.Dedicated.outputs.GetServerBootsResult;
@@ -196,6 +199,174 @@ public final class DedicatedFunctions {
      */
     public static CompletableFuture<GetCephResult> getCephPlain(GetCephPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dedicated/getCeph:getCeph", TypeShape.of(GetCephResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Managed VMware service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetCloudArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pcc = DedicatedFunctions.getCloud(GetCloudArgs.builder()
+     *             .serviceName("<Dedicated Cloud service name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudResult> getCloud(GetCloudArgs args) {
+        return getCloud(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Managed VMware service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetCloudArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pcc = DedicatedFunctions.getCloud(GetCloudArgs.builder()
+     *             .serviceName("<Dedicated Cloud service name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudResult> getCloudPlain(GetCloudPlainArgs args) {
+        return getCloudPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Managed VMware service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetCloudArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pcc = DedicatedFunctions.getCloud(GetCloudArgs.builder()
+     *             .serviceName("<Dedicated Cloud service name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudResult> getCloud(GetCloudArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getCloud:getCloud", TypeShape.of(GetCloudResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Managed VMware service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetCloudArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pcc = DedicatedFunctions.getCloud(GetCloudArgs.builder()
+     *             .serviceName("<Dedicated Cloud service name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudResult> getCloudPlain(GetCloudPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Dedicated/getCloud:getCloud", TypeShape.of(GetCloudResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a dedicated HA-NAS.

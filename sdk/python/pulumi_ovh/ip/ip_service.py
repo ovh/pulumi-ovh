@@ -399,7 +399,7 @@ class IpService(pulumi.CustomResource):
 
         The resource can be imported using its `service_name`, E.g.,
 
-        hcl
+        terraform
 
         import {
 
@@ -415,9 +415,7 @@ class IpService(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -475,7 +473,7 @@ class IpService(pulumi.CustomResource):
 
         The resource can be imported using its `service_name`, E.g.,
 
-        hcl
+        terraform
 
         import {
 
@@ -491,9 +489,7 @@ class IpService(pulumi.CustomResource):
 
         $ pulumi up
 
-        The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above.
-
-        See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+        The file `ipblock.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param IpServiceArgs args: The arguments to use to populate this resource's properties.

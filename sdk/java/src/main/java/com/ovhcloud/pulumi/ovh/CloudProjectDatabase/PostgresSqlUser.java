@@ -100,32 +100,28 @@ public class PostgresSqlUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordReset);
     }
     /**
-     * Roles the user belongs to.
-     * Available roles:
+     * Roles the user belongs to. Available roles:
      * 
      */
     @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roles;
 
     /**
-     * @return Roles the user belongs to.
-     * Available roles:
+     * @return Roles the user belongs to. Available roles:
      * 
      */
     public Output<List<String>> roles() {
         return this.roles;
     }
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Output<String> serviceName() {

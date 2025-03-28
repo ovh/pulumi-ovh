@@ -52,13 +52,11 @@ export class RegionStoragePresign extends pulumi.CustomResource {
     }
 
     /**
-     * Define, in seconds, for how long your URL will be
-     * valid.
+     * Define, in seconds, for how long your URL will be valid.
      */
     public readonly expire!: pulumi.Output<number>;
     /**
-     * The method you want to use to interact with your
-     * object. Can be either 'GET' or 'PUT'.
+     * The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
      */
     public readonly method!: pulumi.Output<string>;
     /**
@@ -70,19 +68,25 @@ export class RegionStoragePresign extends pulumi.CustomResource {
      */
     public readonly object!: pulumi.Output<string>;
     /**
-     * The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: "GRA".
+     * The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Map of signed headers.
+     */
+    public /*out*/ readonly signedHeaders!: pulumi.Output<{[key: string]: string}>;
     /**
      * Computed URL result.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * Version ID of the object to download or delete
+     */
+    public readonly versionId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RegionStoragePresign resource with the given unique name, arguments, and options.
@@ -103,7 +107,9 @@ export class RegionStoragePresign extends pulumi.CustomResource {
             resourceInputs["object"] = state ? state.object : undefined;
             resourceInputs["regionName"] = state ? state.regionName : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["signedHeaders"] = state ? state.signedHeaders : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as RegionStoragePresignArgs | undefined;
             if ((!args || args.expire === undefined) && !opts.urn) {
@@ -127,6 +133,8 @@ export class RegionStoragePresign extends pulumi.CustomResource {
             resourceInputs["object"] = args ? args.object : undefined;
             resourceInputs["regionName"] = args ? args.regionName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["signedHeaders"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -139,13 +147,11 @@ export class RegionStoragePresign extends pulumi.CustomResource {
  */
 export interface RegionStoragePresignState {
     /**
-     * Define, in seconds, for how long your URL will be
-     * valid.
+     * Define, in seconds, for how long your URL will be valid.
      */
     expire?: pulumi.Input<number>;
     /**
-     * The method you want to use to interact with your
-     * object. Can be either 'GET' or 'PUT'.
+     * The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
      */
     method?: pulumi.Input<string>;
     /**
@@ -157,19 +163,25 @@ export interface RegionStoragePresignState {
      */
     object?: pulumi.Input<string>;
     /**
-     * The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: "GRA".
+     * The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
      */
     regionName?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Map of signed headers.
+     */
+    signedHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Computed URL result.
      */
     url?: pulumi.Input<string>;
+    /**
+     * Version ID of the object to download or delete
+     */
+    versionId?: pulumi.Input<string>;
 }
 
 /**
@@ -177,13 +189,11 @@ export interface RegionStoragePresignState {
  */
 export interface RegionStoragePresignArgs {
     /**
-     * Define, in seconds, for how long your URL will be
-     * valid.
+     * Define, in seconds, for how long your URL will be valid.
      */
     expire: pulumi.Input<number>;
     /**
-     * The method you want to use to interact with your
-     * object. Can be either 'GET' or 'PUT'.
+     * The method you want to use to interact with your object. Can be either 'GET' or 'PUT'.
      */
     method: pulumi.Input<string>;
     /**
@@ -195,13 +205,15 @@ export interface RegionStoragePresignArgs {
      */
     object: pulumi.Input<string>;
     /**
-     * The region in which your storage is located. Must
-     * be in **uppercase**. Ex.: "GRA".
+     * The region in which your storage is located. Must be in **uppercase**. Ex.: "GRA".
      */
     regionName: pulumi.Input<string>;
     /**
-     * The id of the public cloud project. If omitted,
-     * the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * Version ID of the object to download or delete
+     */
+    versionId?: pulumi.Input<string>;
 }
