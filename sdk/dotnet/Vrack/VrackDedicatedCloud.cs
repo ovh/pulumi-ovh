@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrack_dedicatedCloud = new Ovh.Vrack.DedicatedCloud("vrack-dedicatedCloud", new()
+    ///     var vrack_dedicatedCloud = new Ovh.Vrack.VrackDedicatedCloud("vrack-dedicatedCloud", new()
     ///     {
     ///         DedicatedCloud = "&lt;Dedicated Cloud service name&gt;",
     ///         ServiceName = "&lt;vRack service name&gt;",
@@ -38,11 +38,11 @@ namespace Pulumi.Ovh.Vrack
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import ovh:Vrack/dedicatedCloud:DedicatedCloud myattach "&lt;vRack service name&gt;/&lt;Dedicated Cloud service name&gt;"
+    /// $ pulumi import ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud myattach "&lt;vRack service name&gt;/&lt;Dedicated Cloud service name&gt;"
     /// ```
     /// </summary>
-    [OvhResourceType("ovh:Vrack/dedicatedCloud:DedicatedCloud")]
-    public partial class DedicatedCloud : global::Pulumi.CustomResource
+    [OvhResourceType("ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud")]
+    public partial class VrackDedicatedCloud : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Your Dedicated Cloud service name
@@ -58,19 +58,19 @@ namespace Pulumi.Ovh.Vrack
 
 
         /// <summary>
-        /// Create a DedicatedCloud resource with the given unique name, arguments, and options.
+        /// Create a VrackDedicatedCloud resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DedicatedCloud(string name, DedicatedCloudArgs args, CustomResourceOptions? options = null)
-            : base("ovh:Vrack/dedicatedCloud:DedicatedCloud", name, args ?? new DedicatedCloudArgs(), MakeResourceOptions(options, ""))
+        public VrackDedicatedCloud(string name, VrackDedicatedCloudArgs args, CustomResourceOptions? options = null)
+            : base("ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud", name, args ?? new VrackDedicatedCloudArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private DedicatedCloud(string name, Input<string> id, DedicatedCloudState? state = null, CustomResourceOptions? options = null)
-            : base("ovh:Vrack/dedicatedCloud:DedicatedCloud", name, state, MakeResourceOptions(options, id))
+        private VrackDedicatedCloud(string name, Input<string> id, VrackDedicatedCloudState? state = null, CustomResourceOptions? options = null)
+            : base("ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -87,7 +87,7 @@ namespace Pulumi.Ovh.Vrack
             return merged;
         }
         /// <summary>
-        /// Get an existing DedicatedCloud resource's state with the given name, ID, and optional extra
+        /// Get an existing VrackDedicatedCloud resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -95,13 +95,13 @@ namespace Pulumi.Ovh.Vrack
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static DedicatedCloud Get(string name, Input<string> id, DedicatedCloudState? state = null, CustomResourceOptions? options = null)
+        public static VrackDedicatedCloud Get(string name, Input<string> id, VrackDedicatedCloudState? state = null, CustomResourceOptions? options = null)
         {
-            return new DedicatedCloud(name, id, state, options);
+            return new VrackDedicatedCloud(name, id, state, options);
         }
     }
 
-    public sealed class DedicatedCloudArgs : global::Pulumi.ResourceArgs
+    public sealed class VrackDedicatedCloudArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Your Dedicated Cloud service name
@@ -115,13 +115,13 @@ namespace Pulumi.Ovh.Vrack
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        public DedicatedCloudArgs()
+        public VrackDedicatedCloudArgs()
         {
         }
-        public static new DedicatedCloudArgs Empty => new DedicatedCloudArgs();
+        public static new VrackDedicatedCloudArgs Empty => new VrackDedicatedCloudArgs();
     }
 
-    public sealed class DedicatedCloudState : global::Pulumi.ResourceArgs
+    public sealed class VrackDedicatedCloudState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Your Dedicated Cloud service name
@@ -135,9 +135,9 @@ namespace Pulumi.Ovh.Vrack
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        public DedicatedCloudState()
+        public VrackDedicatedCloudState()
         {
         }
-        public static new DedicatedCloudState Empty => new DedicatedCloudState();
+        public static new VrackDedicatedCloudState Empty => new VrackDedicatedCloudState();
     }
 }

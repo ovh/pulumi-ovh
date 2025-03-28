@@ -300,7 +300,6 @@
         "vps/index.ts",
         "vps/vps.ts",
         "vrack/cloudProject.ts",
-        "vrack/dedicatedCloud.ts",
         "vrack/dedicatedServer.ts",
         "vrack/dedicatedServerInterface.ts",
         "vrack/getVracks.ts",
@@ -310,6 +309,7 @@
         "vrack/ipV6.ts",
         "vrack/ovhcloudConnect.ts",
         "vrack/vrack.ts",
+        "vrack/vrackDedicatedCloud.ts",
         "vrack/vrackservices.ts"
     ]
 }

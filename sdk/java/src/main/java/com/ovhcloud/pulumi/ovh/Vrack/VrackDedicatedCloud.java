@@ -4,8 +4,8 @@
 package com.ovhcloud.pulumi.ovh.Vrack;
 
 import com.ovhcloud.pulumi.ovh.Utilities;
-import com.ovhcloud.pulumi.ovh.Vrack.DedicatedCloudArgs;
-import com.ovhcloud.pulumi.ovh.Vrack.inputs.DedicatedCloudState;
+import com.ovhcloud.pulumi.ovh.Vrack.VrackDedicatedCloudArgs;
+import com.ovhcloud.pulumi.ovh.Vrack.inputs.VrackDedicatedCloudState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Vrack.DedicatedCloud;
- * import com.pulumi.ovh.Vrack.DedicatedCloudArgs;
+ * import com.pulumi.ovh.Vrack.VrackDedicatedCloud;
+ * import com.pulumi.ovh.Vrack.VrackDedicatedCloudArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vrack_dedicatedCloud = new DedicatedCloud("vrack-dedicatedCloud", DedicatedCloudArgs.builder()
+ *         var vrack_dedicatedCloud = new VrackDedicatedCloud("vrack-dedicatedCloud", VrackDedicatedCloudArgs.builder()
  *             .dedicatedCloud("<Dedicated Cloud service name>")
  *             .serviceName("<vRack service name>")
  *             .build());
@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import ovh:Vrack/dedicatedCloud:DedicatedCloud myattach &#34;&lt;vRack service name&gt;/&lt;Dedicated Cloud service name&gt;&#34;
+ * $ pulumi import ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud myattach &#34;&lt;vRack service name&gt;/&lt;Dedicated Cloud service name&gt;&#34;
  * ```
  * 
  */
-@ResourceType(type="ovh:Vrack/dedicatedCloud:DedicatedCloud")
-public class DedicatedCloud extends com.pulumi.resources.CustomResource {
+@ResourceType(type="ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud")
+public class VrackDedicatedCloud extends com.pulumi.resources.CustomResource {
     /**
      * Your Dedicated Cloud service name
      * 
@@ -98,15 +98,15 @@ public class DedicatedCloud extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DedicatedCloud(java.lang.String name) {
-        this(name, DedicatedCloudArgs.Empty);
+    public VrackDedicatedCloud(java.lang.String name) {
+        this(name, VrackDedicatedCloudArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DedicatedCloud(java.lang.String name, DedicatedCloudArgs args) {
+    public VrackDedicatedCloud(java.lang.String name, VrackDedicatedCloudArgs args) {
         this(name, args, null);
     }
     /**
@@ -115,19 +115,19 @@ public class DedicatedCloud extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DedicatedCloud(java.lang.String name, DedicatedCloudArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedCloud:DedicatedCloud", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public VrackDedicatedCloud(java.lang.String name, VrackDedicatedCloudArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DedicatedCloud(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedCloudState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:Vrack/dedicatedCloud:DedicatedCloud", name, state, makeResourceOptions(options, id), false);
+    private VrackDedicatedCloud(java.lang.String name, Output<java.lang.String> id, @Nullable VrackDedicatedCloudState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static DedicatedCloudArgs makeArgs(DedicatedCloudArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static VrackDedicatedCloudArgs makeArgs(VrackDedicatedCloudArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? DedicatedCloudArgs.Empty : args;
+        return args == null ? VrackDedicatedCloudArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
@@ -146,7 +146,7 @@ public class DedicatedCloud extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DedicatedCloud get(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedCloudState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new DedicatedCloud(name, id, state, options);
+    public static VrackDedicatedCloud get(java.lang.String name, Output<java.lang.String> id, @Nullable VrackDedicatedCloudState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new VrackDedicatedCloud(name, id, state, options);
     }
 }

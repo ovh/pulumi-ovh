@@ -117,7 +117,6 @@
             "ovh:SavingsPlan/savingsPlan:SavingsPlan": 0,
             "ovh:Vps/vps:Vps": 1,
             "ovh:Vrack/cloudProject:CloudProject": 0,
-            "ovh:Vrack/dedicatedCloud:DedicatedCloud": 1,
             "ovh:Vrack/dedicatedServer:DedicatedServer": 0,
             "ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface": 0,
             "ovh:Vrack/ipAddress:IpAddress": 0,
@@ -125,6 +124,7 @@
             "ovh:Vrack/ipV6:IpV6": 0,
             "ovh:Vrack/oVHcloudConnect:OVHcloudConnect": 1,
             "ovh:Vrack/vrack:Vrack": 0,
+            "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": 1,
             "ovh:Vrack/vrackservices:Vrackservices": 0
         },
         "functions": {

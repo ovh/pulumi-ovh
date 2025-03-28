@@ -1007,14 +1007,6 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "Vrack/dedicatedCloud",
-  "fqn": "pulumi_ovh.vrack",
-  "classes": {
-   "ovh:Vrack/dedicatedCloud:DedicatedCloud": "DedicatedCloud"
-  }
- },
- {
-  "pkg": "ovh",
   "mod": "Vrack/dedicatedServer",
   "fqn": "pulumi_ovh.vrack",
   "classes": {
@@ -1067,6 +1059,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/vrack:Vrack": "Vrack"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "Vrack/vrackDedicatedCloud",
+  "fqn": "pulumi_ovh.vrack",
+  "classes": {
+   "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": "VrackDedicatedCloud"
   }
  },
  {

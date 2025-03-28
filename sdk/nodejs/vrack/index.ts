@@ -10,11 +10,6 @@ export type CloudProject = import("./cloudProject").CloudProject;
 export const CloudProject: typeof import("./cloudProject").CloudProject = null as any;
 utilities.lazyLoad(exports, ["CloudProject"], () => require("./cloudProject"));
 
-export { DedicatedCloudArgs, DedicatedCloudState } from "./dedicatedCloud";
-export type DedicatedCloud = import("./dedicatedCloud").DedicatedCloud;
-export const DedicatedCloud: typeof import("./dedicatedCloud").DedicatedCloud = null as any;
-utilities.lazyLoad(exports, ["DedicatedCloud"], () => require("./dedicatedCloud"));
-
 export { DedicatedServerArgs, DedicatedServerState } from "./dedicatedServer";
 export type DedicatedServer = import("./dedicatedServer").DedicatedServer;
 export const DedicatedServer: typeof import("./dedicatedServer").DedicatedServer = null as any;
@@ -55,6 +50,11 @@ export type Vrack = import("./vrack").Vrack;
 export const Vrack: typeof import("./vrack").Vrack = null as any;
 utilities.lazyLoad(exports, ["Vrack"], () => require("./vrack"));
 
+export { VrackDedicatedCloudArgs, VrackDedicatedCloudState } from "./vrackDedicatedCloud";
+export type VrackDedicatedCloud = import("./vrackDedicatedCloud").VrackDedicatedCloud;
+export const VrackDedicatedCloud: typeof import("./vrackDedicatedCloud").VrackDedicatedCloud = null as any;
+utilities.lazyLoad(exports, ["VrackDedicatedCloud"], () => require("./vrackDedicatedCloud"));
+
 export { VrackservicesArgs, VrackservicesState } from "./vrackservices";
 export type Vrackservices = import("./vrackservices").Vrackservices;
 export const Vrackservices: typeof import("./vrackservices").Vrackservices = null as any;
@@ -67,8 +67,6 @@ const _module = {
         switch (type) {
             case "ovh:Vrack/cloudProject:CloudProject":
                 return new CloudProject(name, <any>undefined, { urn })
-            case "ovh:Vrack/dedicatedCloud:DedicatedCloud":
-                return new DedicatedCloud(name, <any>undefined, { urn })
             case "ovh:Vrack/dedicatedServer:DedicatedServer":
                 return new DedicatedServer(name, <any>undefined, { urn })
             case "ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface":
@@ -83,6 +81,8 @@ const _module = {
                 return new OVHcloudConnect(name, <any>undefined, { urn })
             case "ovh:Vrack/vrack:Vrack":
                 return new Vrack(name, <any>undefined, { urn })
+            case "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud":
+                return new VrackDedicatedCloud(name, <any>undefined, { urn })
             case "ovh:Vrack/vrackservices:Vrackservices":
                 return new Vrackservices(name, <any>undefined, { urn })
             default:
@@ -91,7 +91,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "Vrack/cloudProject", _module)
-pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedCloud", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServer", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServerInterface", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipAddress", _module)
@@ -99,4 +98,5 @@ pulumi.runtime.registerResourceModule("ovh", "Vrack/ipLoadbalancing", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipV6", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/oVHcloudConnect", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/vrack", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/vrackDedicatedCloud", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/vrackservices", _module)

@@ -14,15 +14,15 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
-__all__ = ['DedicatedCloudArgs', 'DedicatedCloud']
+__all__ = ['VrackDedicatedCloudArgs', 'VrackDedicatedCloud']
 
 @pulumi.input_type
-class DedicatedCloudArgs:
+class VrackDedicatedCloudArgs:
     def __init__(__self__, *,
                  dedicated_cloud: pulumi.Input[str],
                  service_name: pulumi.Input[str]):
         """
-        The set of arguments for constructing a DedicatedCloud resource.
+        The set of arguments for constructing a VrackDedicatedCloud resource.
         :param pulumi.Input[str] dedicated_cloud: Your Dedicated Cloud service name
         :param pulumi.Input[str] service_name: The internal name of your vrack
         """
@@ -55,12 +55,12 @@ class DedicatedCloudArgs:
 
 
 @pulumi.input_type
-class _DedicatedCloudState:
+class _VrackDedicatedCloudState:
     def __init__(__self__, *,
                  dedicated_cloud: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering DedicatedCloud resources.
+        Input properties used for looking up and filtering VrackDedicatedCloud resources.
         :param pulumi.Input[str] dedicated_cloud: Your Dedicated Cloud service name
         :param pulumi.Input[str] service_name: The internal name of your vrack
         """
@@ -94,7 +94,7 @@ class _DedicatedCloudState:
         pulumi.set(self, "service_name", value)
 
 
-class DedicatedCloud(pulumi.CustomResource):
+class VrackDedicatedCloud(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -111,7 +111,7 @@ class DedicatedCloud(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_dedicated_cloud = ovh.vrack.DedicatedCloud("vrack-dedicatedCloud",
+        vrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud",
             dedicated_cloud="<Dedicated Cloud service name>",
             service_name="<vRack service name>")
         ```
@@ -123,7 +123,7 @@ class DedicatedCloud(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import ovh:Vrack/dedicatedCloud:DedicatedCloud myattach "<vRack service name>/<Dedicated Cloud service name>"
+        $ pulumi import ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud myattach "<vRack service name>/<Dedicated Cloud service name>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -135,7 +135,7 @@ class DedicatedCloud(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DedicatedCloudArgs,
+                 args: VrackDedicatedCloudArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Attach a Dedicated Cloud to the vrack.
@@ -146,7 +146,7 @@ class DedicatedCloud(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_dedicated_cloud = ovh.vrack.DedicatedCloud("vrack-dedicatedCloud",
+        vrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud",
             dedicated_cloud="<Dedicated Cloud service name>",
             service_name="<vRack service name>")
         ```
@@ -158,16 +158,16 @@ class DedicatedCloud(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import ovh:Vrack/dedicatedCloud:DedicatedCloud myattach "<vRack service name>/<Dedicated Cloud service name>"
+        $ pulumi import ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud myattach "<vRack service name>/<Dedicated Cloud service name>"
         ```
 
         :param str resource_name: The name of the resource.
-        :param DedicatedCloudArgs args: The arguments to use to populate this resource's properties.
+        :param VrackDedicatedCloudArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DedicatedCloudArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VrackDedicatedCloudArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -185,7 +185,7 @@ class DedicatedCloud(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DedicatedCloudArgs.__new__(DedicatedCloudArgs)
+            __props__ = VrackDedicatedCloudArgs.__new__(VrackDedicatedCloudArgs)
 
             if dedicated_cloud is None and not opts.urn:
                 raise TypeError("Missing required property 'dedicated_cloud'")
@@ -193,8 +193,8 @@ class DedicatedCloud(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
-        super(DedicatedCloud, __self__).__init__(
-            'ovh:Vrack/dedicatedCloud:DedicatedCloud',
+        super(VrackDedicatedCloud, __self__).__init__(
+            'ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud',
             resource_name,
             __props__,
             opts)
@@ -204,9 +204,9 @@ class DedicatedCloud(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             dedicated_cloud: Optional[pulumi.Input[str]] = None,
-            service_name: Optional[pulumi.Input[str]] = None) -> 'DedicatedCloud':
+            service_name: Optional[pulumi.Input[str]] = None) -> 'VrackDedicatedCloud':
         """
-        Get an existing DedicatedCloud resource's state with the given name, id, and optional extra
+        Get an existing VrackDedicatedCloud resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -217,11 +217,11 @@ class DedicatedCloud(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _DedicatedCloudState.__new__(_DedicatedCloudState)
+        __props__ = _VrackDedicatedCloudState.__new__(_VrackDedicatedCloudState)
 
         __props__.__dict__["dedicated_cloud"] = dedicated_cloud
         __props__.__dict__["service_name"] = service_name
-        return DedicatedCloud(resource_name, opts=opts, __props__=__props__)
+        return VrackDedicatedCloud(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="dedicatedCloud")

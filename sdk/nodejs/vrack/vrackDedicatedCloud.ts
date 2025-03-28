@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrack_dedicatedCloud = new ovh.vrack.DedicatedCloud("vrack-dedicatedCloud", {
+ * const vrack_dedicatedCloud = new ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud", {
  *     dedicatedCloud: "<Dedicated Cloud service name>",
  *     serviceName: "<vRack service name>",
  * });
@@ -26,12 +26,12 @@ import * as utilities from "../utilities";
  * bash
  *
  * ```sh
- * $ pulumi import ovh:Vrack/dedicatedCloud:DedicatedCloud myattach "<vRack service name>/<Dedicated Cloud service name>"
+ * $ pulumi import ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud myattach "<vRack service name>/<Dedicated Cloud service name>"
  * ```
  */
-export class DedicatedCloud extends pulumi.CustomResource {
+export class VrackDedicatedCloud extends pulumi.CustomResource {
     /**
-     * Get an existing DedicatedCloud resource's state with the given name, ID, and optional extra
+     * Get an existing VrackDedicatedCloud resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -39,22 +39,22 @@ export class DedicatedCloud extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DedicatedCloudState, opts?: pulumi.CustomResourceOptions): DedicatedCloud {
-        return new DedicatedCloud(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VrackDedicatedCloudState, opts?: pulumi.CustomResourceOptions): VrackDedicatedCloud {
+        return new VrackDedicatedCloud(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'ovh:Vrack/dedicatedCloud:DedicatedCloud';
+    public static readonly __pulumiType = 'ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud';
 
     /**
-     * Returns true if the given object is an instance of DedicatedCloud.  This is designed to work even
+     * Returns true if the given object is an instance of VrackDedicatedCloud.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DedicatedCloud {
+    public static isInstance(obj: any): obj is VrackDedicatedCloud {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DedicatedCloud.__pulumiType;
+        return obj['__pulumiType'] === VrackDedicatedCloud.__pulumiType;
     }
 
     /**
@@ -67,22 +67,22 @@ export class DedicatedCloud extends pulumi.CustomResource {
     public readonly serviceName!: pulumi.Output<string>;
 
     /**
-     * Create a DedicatedCloud resource with the given unique name, arguments, and options.
+     * Create a VrackDedicatedCloud resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DedicatedCloudArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DedicatedCloudArgs | DedicatedCloudState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: VrackDedicatedCloudArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: VrackDedicatedCloudArgs | VrackDedicatedCloudState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DedicatedCloudState | undefined;
+            const state = argsOrState as VrackDedicatedCloudState | undefined;
             resourceInputs["dedicatedCloud"] = state ? state.dedicatedCloud : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
-            const args = argsOrState as DedicatedCloudArgs | undefined;
+            const args = argsOrState as VrackDedicatedCloudArgs | undefined;
             if ((!args || args.dedicatedCloud === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedCloud'");
             }
@@ -93,14 +93,14 @@ export class DedicatedCloud extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DedicatedCloud.__pulumiType, name, resourceInputs, opts);
+        super(VrackDedicatedCloud.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DedicatedCloud resources.
+ * Input properties used for looking up and filtering VrackDedicatedCloud resources.
  */
-export interface DedicatedCloudState {
+export interface VrackDedicatedCloudState {
     /**
      * Your Dedicated Cloud service name
      */
@@ -112,9 +112,9 @@ export interface DedicatedCloudState {
 }
 
 /**
- * The set of arguments for constructing a DedicatedCloud resource.
+ * The set of arguments for constructing a VrackDedicatedCloud resource.
  */
-export interface DedicatedCloudArgs {
+export interface VrackDedicatedCloudArgs {
     /**
      * Your Dedicated Cloud service name
      */

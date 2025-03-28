@@ -527,7 +527,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(vrackMod, "CloudProject"),
 			},
 			"ovh_vrack_dedicated_cloud": {
-				Tok:       ovhResource(vrackMod, "DedicatedCloud"),
+				Tok:       ovhResource(vrackMod, "VrackDedicatedCloud"), // VrackDedicatedCloud instead of DedicatedCloud fix until we don't have to create a ComputeID based on a dedicated_cloud field (error in dotnet sdk generation)
 				ComputeID: delegateID("dedicated_cloud"),
 			},
 			"ovh_vrack_dedicated_server": {

@@ -26162,51 +26162,6 @@
                 "type": "object"
             }
         },
-        "ovh:Vrack/dedicatedCloud:DedicatedCloud": {
-            "description": "Attach a Dedicated Cloud to the vrack.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst vrack_dedicatedCloud = new ovh.vrack.DedicatedCloud(\"vrack-dedicatedCloud\", {\n    dedicatedCloud: \"\u003cDedicated Cloud service name\u003e\",\n    serviceName: \"\u003cvRack service name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvrack_dedicated_cloud = ovh.vrack.DedicatedCloud(\"vrack-dedicatedCloud\",\n    dedicated_cloud=\"\u003cDedicated Cloud service name\u003e\",\n    service_name=\"\u003cvRack service name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vrack_dedicatedCloud = new Ovh.Vrack.DedicatedCloud(\"vrack-dedicatedCloud\", new()\n    {\n        DedicatedCloud = \"\u003cDedicated Cloud service name\u003e\",\n        ServiceName = \"\u003cvRack service name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vrack.NewDedicatedCloud(ctx, \"vrack-dedicatedCloud\", \u0026vrack.DedicatedCloudArgs{\n\t\t\tDedicatedCloud: pulumi.String(\"\u003cDedicated Cloud service name\u003e\"),\n\t\t\tServiceName:    pulumi.String(\"\u003cvRack service name\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Vrack.DedicatedCloud;\nimport com.pulumi.ovh.Vrack.DedicatedCloudArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vrack_dedicatedCloud = new DedicatedCloud(\"vrack-dedicatedCloud\", DedicatedCloudArgs.builder()\n            .dedicatedCloud(\"\u003cDedicated Cloud service name\u003e\")\n            .serviceName(\"\u003cvRack service name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vrack-dedicatedCloud:\n    type: ovh:Vrack:DedicatedCloud\n    properties:\n      dedicatedCloud: \u003cDedicated Cloud service name\u003e\n      serviceName: \u003cvRack service name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAttachment of a Dedicated Cloud and a vRack can be imported using the `service_name` (vRack identifier) and the `dedicated_cloud` (Dedicated Cloud service name), separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Vrack/dedicatedCloud:DedicatedCloud myattach \"\u003cvRack service name\u003e/\u003cDedicated Cloud service name\u003e\"\n```\n\n",
-            "properties": {
-                "dedicatedCloud": {
-                    "type": "string",
-                    "description": "Your Dedicated Cloud service name\n"
-                },
-                "serviceName": {
-                    "type": "string",
-                    "description": "The internal name of your vrack\n"
-                }
-            },
-            "required": [
-                "dedicatedCloud",
-                "serviceName"
-            ],
-            "inputProperties": {
-                "dedicatedCloud": {
-                    "type": "string",
-                    "description": "Your Dedicated Cloud service name\n"
-                },
-                "serviceName": {
-                    "type": "string",
-                    "description": "The internal name of your vrack\n"
-                }
-            },
-            "requiredInputs": [
-                "dedicatedCloud",
-                "serviceName"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering DedicatedCloud resources.\n",
-                "properties": {
-                    "dedicatedCloud": {
-                        "type": "string",
-                        "description": "Your Dedicated Cloud service name\n"
-                    },
-                    "serviceName": {
-                        "type": "string",
-                        "description": "The internal name of your vrack\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "ovh:Vrack/dedicatedServer:DedicatedServer": {
             "description": "Attach a legacy dedicated server to a vRack.\n\n\u003e **NOTE:** The resource `ovh.Vrack.DedicatedServer` is intended to be used for legacy dedicated servers.\u003cbr /\u003e Dedicated servers that have configurable network interfaces MUST use the resource `ovh.Vrack.DedicatedServerInterface` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst vds = new ovh.vrack.DedicatedServer(\"vds\", {\n    serverId: \"67890\",\n    serviceName: \"XXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvds = ovh.vrack.DedicatedServer(\"vds\",\n    server_id=\"67890\",\n    service_name=\"XXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vds = new Ovh.Vrack.DedicatedServer(\"vds\", new()\n    {\n        ServerId = \"67890\",\n        ServiceName = \"XXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vrack.NewDedicatedServer(ctx, \"vds\", \u0026vrack.DedicatedServerArgs{\n\t\t\tServerId:    pulumi.String(\"67890\"),\n\t\t\tServiceName: pulumi.String(\"XXXX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Vrack.DedicatedServer;\nimport com.pulumi.ovh.Vrack.DedicatedServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vds = new DedicatedServer(\"vds\", DedicatedServerArgs.builder()\n            .serverId(\"67890\")\n            .serviceName(\"XXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vds:\n    type: ovh:Vrack:DedicatedServer\n    properties:\n      serverId: '67890'\n      serviceName: XXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -26666,6 +26621,51 @@
                         },
                         "description": "Product Plan to order\n",
                         "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The internal name of your vrack\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": {
+            "description": "Attach a Dedicated Cloud to the vrack.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst vrack_dedicatedCloud = new ovh.vrack.VrackDedicatedCloud(\"vrack-dedicatedCloud\", {\n    dedicatedCloud: \"\u003cDedicated Cloud service name\u003e\",\n    serviceName: \"\u003cvRack service name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud(\"vrack-dedicatedCloud\",\n    dedicated_cloud=\"\u003cDedicated Cloud service name\u003e\",\n    service_name=\"\u003cvRack service name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vrack_dedicatedCloud = new Ovh.Vrack.VrackDedicatedCloud(\"vrack-dedicatedCloud\", new()\n    {\n        DedicatedCloud = \"\u003cDedicated Cloud service name\u003e\",\n        ServiceName = \"\u003cvRack service name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/vrack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vrack.NewVrackDedicatedCloud(ctx, \"vrack-dedicatedCloud\", \u0026vrack.VrackDedicatedCloudArgs{\n\t\t\tDedicatedCloud: pulumi.String(\"\u003cDedicated Cloud service name\u003e\"),\n\t\t\tServiceName:    pulumi.String(\"\u003cvRack service name\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Vrack.VrackDedicatedCloud;\nimport com.pulumi.ovh.Vrack.VrackDedicatedCloudArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vrack_dedicatedCloud = new VrackDedicatedCloud(\"vrack-dedicatedCloud\", VrackDedicatedCloudArgs.builder()\n            .dedicatedCloud(\"\u003cDedicated Cloud service name\u003e\")\n            .serviceName(\"\u003cvRack service name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vrack-dedicatedCloud:\n    type: ovh:Vrack:VrackDedicatedCloud\n    properties:\n      dedicatedCloud: \u003cDedicated Cloud service name\u003e\n      serviceName: \u003cvRack service name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAttachment of a Dedicated Cloud and a vRack can be imported using the `service_name` (vRack identifier) and the `dedicated_cloud` (Dedicated Cloud service name), separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud myattach \"\u003cvRack service name\u003e/\u003cDedicated Cloud service name\u003e\"\n```\n\n",
+            "properties": {
+                "dedicatedCloud": {
+                    "type": "string",
+                    "description": "Your Dedicated Cloud service name\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your vrack\n"
+                }
+            },
+            "required": [
+                "dedicatedCloud",
+                "serviceName"
+            ],
+            "inputProperties": {
+                "dedicatedCloud": {
+                    "type": "string",
+                    "description": "Your Dedicated Cloud service name\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your vrack\n"
+                }
+            },
+            "requiredInputs": [
+                "dedicatedCloud",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VrackDedicatedCloud resources.\n",
+                "properties": {
+                    "dedicatedCloud": {
+                        "type": "string",
+                        "description": "Your Dedicated Cloud service name\n"
                     },
                     "serviceName": {
                         "type": "string",
