@@ -69,22 +69,11 @@
             },
             "applicationKey": {
                 "type": "string",
-                "description": "The OVH API Application Key\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_APPLICATION_KEY"
-                    ]
-                }
+                "description": "The OVH API Application Key\n"
             },
             "applicationSecret": {
                 "type": "string",
-                "description": "The OVH API Application Secret\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_APPLICATION_SECRET"
-                    ]
-                },
-                "secret": true
+                "description": "The OVH API Application Secret\n"
             },
             "clientId": {
                 "type": "string",
@@ -96,21 +85,11 @@
             },
             "consumerKey": {
                 "type": "string",
-                "description": "The OVH API Consumer Key\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_CONSUMER_KEY"
-                    ]
-                }
+                "description": "The OVH API Consumer Key\n"
             },
             "endpoint": {
                 "type": "string",
-                "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_ENDPOINT"
-                    ]
-                }
+                "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
             }
         }
     },
@@ -9892,8 +9871,7 @@
             },
             "applicationSecret": {
                 "type": "string",
-                "description": "The OVH API Application Secret\n",
-                "secret": true
+                "description": "The OVH API Application Secret\n"
             },
             "clientId": {
                 "type": "string",
@@ -9919,22 +9897,11 @@
             },
             "applicationKey": {
                 "type": "string",
-                "description": "The OVH API Application Key\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_APPLICATION_KEY"
-                    ]
-                }
+                "description": "The OVH API Application Key\n"
             },
             "applicationSecret": {
                 "type": "string",
-                "description": "The OVH API Application Secret\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_APPLICATION_SECRET"
-                    ]
-                },
-                "secret": true
+                "description": "The OVH API Application Secret\n"
             },
             "clientId": {
                 "type": "string",
@@ -9946,21 +9913,11 @@
             },
             "consumerKey": {
                 "type": "string",
-                "description": "The OVH API Consumer Key\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_CONSUMER_KEY"
-                    ]
-                }
+                "description": "The OVH API Consumer Key\n"
             },
             "endpoint": {
                 "type": "string",
-                "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n",
-                "defaultInfo": {
-                    "environment": [
-                        "OVH_ENDPOINT"
-                    ]
-                }
+                "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
             }
         }
     },

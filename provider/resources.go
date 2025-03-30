@@ -128,29 +128,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:               "ovh",
 		TFProviderModuleVersion: "v2",
 		Version:                 version.Version,
-		Config: map[string]*tfbridge.SchemaInfo{
-			"endpoint": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OVH_ENDPOINT"},
-				},
-			},
-			"application_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OVH_APPLICATION_KEY"},
-				},
-			},
-			"application_secret": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OVH_APPLICATION_SECRET"},
-				},
-				Secret: tfbridge.True(),
-			},
-			"consumer_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OVH_CONSUMER_KEY"},
-				},
-			},
-		},
+		Config:                  map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"ovh_cloud_project": {
 				Tok: ovhResource(cloudProjectMod, "Project"),
