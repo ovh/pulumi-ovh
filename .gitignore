@@ -34,6 +34,8 @@ sdk/java/gradlew.bat
 *.iml
 
 yarn.lock
+**/.pnp.*
+**/.yarn/
 **/pulumiManifest.go
 
 ci-scripts
