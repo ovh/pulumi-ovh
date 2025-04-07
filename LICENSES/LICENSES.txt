@@ -122,8 +122,8 @@ github.com/opentofu/registry-address; MPL-2.0
 github.com/opentracing/basictracer-go; Apache-2.0
 github.com/opentracing/opentracing-go; Apache-2.0
 github.com/ovh/go-ovh; BSD-3-Clause
-github.com/ovh/pulumi-ovh/provider/v2; Apache-2.0
-github.com/ovh/terraform-provider-ovh; MPL-2.0
+github.com/ovh/pulumi-ovh/provider/v2; Unknown. See go/github.com/ovh/pulumi-ovh/provider/v2/LICENSE file
+github.com/ovh/terraform-provider-ovh/v2; MPL-2.0
 github.com/pgavlin/fx; MIT
 github.com/pgavlin/goldmark; MIT
 github.com/pjbgf/sha1cd; Apache-2.0
