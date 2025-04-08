@@ -92,4 +92,5 @@ The following configuration points are available for the `Ovh` provider:
 
 ## Reference
 
-For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/ovh/api-docs/).
+For further information, visit [OVH in the Pulumi Registry](https://www.pulumi.com/registry/packages/ovh/)
+or for detailed API reference documentation, visit [OVH API Docs in the Pulumi Registry](https://www.pulumi.com/registry/packages/ovh/api-docs/).
