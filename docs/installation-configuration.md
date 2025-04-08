@@ -16,6 +16,7 @@ The Pulumi `OVH` provider is available as a package in all Pulumi languages:
 * Python: [`pulumi_ovh`](https://pypi.org/project/pulumi-ovh/)
 * Go: [`github.com/ovh/pulumi-ovh/sdk/v2/go/ovh`](https://pkg.go.dev/github.com/ovh/pulumi-ovh/sdk/v2)
 * .NET: [`Pulumi.Ovh`](https://www.nuget.org/packages/Pulumi.Ovh)
+* Java: [`com.ovhcloud.pulumi.ovh`](https://s01.oss.sonatype.org/#nexus-search;quick~com.ovhcloud.pulumi.ovh)
 
 ### Provider Binary
 
