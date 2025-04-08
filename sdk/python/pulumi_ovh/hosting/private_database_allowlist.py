@@ -209,9 +209,10 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         ip = ovh.hosting.PrivateDatabaseAllowlist("ip",
-            ip="1.2.3.4",
-            service=True,
             service_name="XXXXXX",
+            ip="1.2.3.4",
+            name="A name for your IP address",
+            service=True,
             sftp=True)
         ```
 
@@ -247,9 +248,10 @@ class PrivateDatabaseAllowlist(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         ip = ovh.hosting.PrivateDatabaseAllowlist("ip",
-            ip="1.2.3.4",
-            service=True,
             service_name="XXXXXX",
+            ip="1.2.3.4",
+            name="A name for your IP address",
+            service=True,
             sftp=True)
         ```
 

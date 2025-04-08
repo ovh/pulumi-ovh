@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var image = Ovh.CloudProject.GetImage.Invoke(new()
         ///     {
-        ///         ImageId = "&lt;image ID&gt;",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         ImageId = "&lt;image ID&gt;",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var image = Ovh.CloudProject.GetImage.Invoke(new()
         ///     {
-        ///         ImageId = "&lt;image ID&gt;",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         ImageId = "&lt;image ID&gt;",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var image = Ovh.CloudProject.GetImage.Invoke(new()
         ///     {
-        ///         ImageId = "&lt;image ID&gt;",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         ImageId = "&lt;image ID&gt;",
         ///     });
         /// 
         /// });

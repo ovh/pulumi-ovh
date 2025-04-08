@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetStorageObject(ctx, &cloudproject.GetStorageObjectArgs{
-//				Key:         "<object name>",
-//				Name:        "<bucket name>",
-//				RegionName:  "GRA",
 //				ServiceName: "<public cloud project ID>",
+//				RegionName:  "GRA",
+//				Name:        "<bucket name>",
+//				Key:         "<object name>",
 //			}, nil)
 //			if err != nil {
 //				return err

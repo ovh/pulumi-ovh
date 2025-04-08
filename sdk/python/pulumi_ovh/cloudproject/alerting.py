@@ -209,11 +209,11 @@ class Alerting(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_alert = ovh.cloud_project.Alerting("myAlert",
+        my_alert = ovh.cloud_project.Alerting("my_alert",
+            service_name="XXX",
             delay=3600,
             email="aaa.bbb@domain.com",
-            monthly_threshold=1000,
-            service_name="XXX")
+            monthly_threshold=1000)
         ```
 
         :param str resource_name: The name of the resource.
@@ -238,11 +238,11 @@ class Alerting(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_alert = ovh.cloud_project.Alerting("myAlert",
+        my_alert = ovh.cloud_project.Alerting("my_alert",
+            service_name="XXX",
             delay=3600,
             email="aaa.bbb@domain.com",
-            monthly_threshold=1000,
-            service_name="XXX")
+            monthly_threshold=1000)
         ```
 
         :param str resource_name: The name of the resource.

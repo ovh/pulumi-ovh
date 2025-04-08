@@ -258,7 +258,7 @@ class Move(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        move_ip_to_load_balancer_xxxxx = ovh.ip.Move("moveIpToLoadBalancerXxxxx",
+        move_ip_to_load_balancer_xxxxx = ovh.ip.Move("move_ip_to_load_balancer_xxxxx",
             ip="1.2.3.4",
             routed_to={
                 "service_name": "loadbalancer-XXXXX",
@@ -271,7 +271,7 @@ class Move(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        park_ip = ovh.ip.Move("parkIp",
+        park_ip = ovh.ip.Move("park_ip",
             ip="1.2.3.4",
             routed_to={
                 "service_name": "",
@@ -309,7 +309,7 @@ class Move(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        move_ip_to_load_balancer_xxxxx = ovh.ip.Move("moveIpToLoadBalancerXxxxx",
+        move_ip_to_load_balancer_xxxxx = ovh.ip.Move("move_ip_to_load_balancer_xxxxx",
             ip="1.2.3.4",
             routed_to={
                 "service_name": "loadbalancer-XXXXX",
@@ -322,7 +322,7 @@ class Move(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        park_ip = ovh.ip.Move("parkIp",
+        park_ip = ovh.ip.Move("park_ip",
             ip="1.2.3.4",
             routed_to={
                 "service_name": "",

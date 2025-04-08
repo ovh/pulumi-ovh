@@ -18,19 +18,20 @@ import * as utilities from "../utilities";
  * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
  *     ovhSubsidiary: myAccount.ovhSubsidiary,
  * }));
- * const vrackCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
+ * const vrack = myCart.then(myCart => ovh.Order.getCartProductPlan({
  *     cartId: myCart.id,
  *     priceCapacity: "renew",
  *     product: "vrack",
  *     planCode: "vrack",
  * }));
- * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
+ * const vrackVrack = new ovh.vrack.Vrack("vrack", {
  *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
+ *     name: "my-vrack",
  *     description: "my vrack",
  *     plan: {
- *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.planCode),
- *         pricingMode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         duration: vrack.then(vrack => vrack.selectedPrices?.[0]?.duration),
+ *         planCode: vrack.then(vrack => vrack.planCode),
+ *         pricingMode: vrack.then(vrack => vrack.selectedPrices?.[0]?.pricingMode),
  *     },
  * });
  * ```

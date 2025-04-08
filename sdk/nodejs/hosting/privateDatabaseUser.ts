@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const user = new ovh.hosting.PrivateDatabaseUser("user", {
- *     password: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     password: "XXXXXX",
  *     userName: "XXXXXX",
  * });
  * ```

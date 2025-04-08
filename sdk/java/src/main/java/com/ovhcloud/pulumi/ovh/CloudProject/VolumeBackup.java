@@ -43,9 +43,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var backup = new VolumeBackup("backup", VolumeBackupArgs.builder()
- *             .regionName("GRA9")
  *             .serviceName("<public cloud project ID>")
+ *             .regionName("GRA9")
  *             .volumeId("<volume ID>")
+ *             .name("ExampleBackup")
  *             .build());
  * 
  *     }
@@ -233,6 +234,7 @@ public class VolumeBackup extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

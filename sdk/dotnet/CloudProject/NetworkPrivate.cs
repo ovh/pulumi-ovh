@@ -24,12 +24,13 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var net = new Ovh.CloudProject.NetworkPrivate("net", new()
     ///     {
+    ///         ServiceName = "XXXXXX",
+    ///         Name = "admin_network",
     ///         Regions = new[]
     ///         {
     ///             "GRA1",
     ///             "BHS1",
     ///         },
-    ///         ServiceName = "XXXXXX",
     ///     });
     /// 
     /// });

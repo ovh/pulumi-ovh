@@ -259,11 +259,12 @@ class NetworkPrivate(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         net = ovh.cloud_project.NetworkPrivate("net",
+            service_name="XXXXXX",
+            name="admin_network",
             regions=[
                 "GRA1",
                 "BHS1",
-            ],
-            service_name="XXXXXX")
+            ])
         ```
 
         ## Import
@@ -299,11 +300,12 @@ class NetworkPrivate(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         net = ovh.cloud_project.NetworkPrivate("net",
+            service_name="XXXXXX",
+            name="admin_network",
             regions=[
                 "GRA1",
                 "BHS1",
-            ],
-            service_name="XXXXXX")
+            ])
         ```
 
         ## Import

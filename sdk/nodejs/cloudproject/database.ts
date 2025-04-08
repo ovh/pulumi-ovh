@@ -156,9 +156,11 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const postgresql = new ovh.cloudproject.Database("postgresql", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     description: "my-first-postgresql",
  *     engine: "postgresql",
- *     flavor: "db1-15",
+ *     version: "14",
+ *     plan: "business",
  *     nodes: [
  *         {
  *             region: "GRA",
@@ -167,9 +169,7 @@ import * as utilities from "../utilities";
  *             region: "GRA",
  *         },
  *     ],
- *     plan: "business",
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     version: "14",
+ *     flavor: "db1-15",
  * });
  * ```
  *
@@ -180,29 +180,29 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const mongodb = new ovh.cloudproject.Database("mongodb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     description: "my-first-mongodb",
  *     engine: "mongodb",
- *     flavor: "db1-30",
+ *     version: "5.0",
+ *     plan: "production",
  *     nodes: [
  *         {
- *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *             region: "SBG",
  *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *         },
  *         {
- *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *             region: "SBG",
  *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *         },
  *         {
- *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *             region: "SBG",
  *             subnetId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
  *         },
  *     ],
- *     plan: "production",
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     version: "5.0",
+ *     flavor: "db1-30",
  * });
  * ```
  *

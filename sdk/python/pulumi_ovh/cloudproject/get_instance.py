@@ -200,9 +200,9 @@ def get_instance(instance_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    instance = ovh.CloudProject.get_instance(instance_id="ZZZZZ",
+    instance = ovh.CloudProject.get_instance(service_name="YYYY",
         region="XXXX",
-        service_name="YYYY")
+        instance_id="ZZZZZ")
     ```
 
 
@@ -246,9 +246,9 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    instance = ovh.CloudProject.get_instance(instance_id="ZZZZZ",
+    instance = ovh.CloudProject.get_instance(service_name="YYYY",
         region="XXXX",
-        service_name="YYYY")
+        instance_id="ZZZZZ")
     ```
 
 

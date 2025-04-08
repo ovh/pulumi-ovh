@@ -26,9 +26,9 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -46,9 +46,9 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         Duration = "P14D",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -66,10 +66,10 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         Duration = "P14D",
         ///         RetentionType = "LOGS_INDEXING",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -93,9 +93,9 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -113,9 +113,9 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         Duration = "P14D",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -133,10 +133,10 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         Duration = "P14D",
         ///         RetentionType = "LOGS_INDEXING",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -160,9 +160,9 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         RetentionId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -180,9 +180,9 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         Duration = "P14D",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });
@@ -200,10 +200,10 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var retention = Ovh.Dbaas.GetLogsClustersRetention.Invoke(new()
         ///     {
+        ///         ServiceName = "ldp-xx-xxxxx",
         ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         Duration = "P14D",
         ///         RetentionType = "LOGS_INDEXING",
-        ///         ServiceName = "ldp-xx-xxxxx",
         ///     });
         /// 
         /// });

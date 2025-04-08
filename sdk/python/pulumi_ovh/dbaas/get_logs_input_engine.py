@@ -99,10 +99,10 @@ def get_logs_input_engine(is_deprecated: Optional[bool] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    logstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,
+    logstash = ovh.Dbaas.get_logs_input_engine(service_name="ldp-xx-xxxxx",
         name="logstash",
-        service_name="ldp-xx-xxxxx",
-        version="6.8")
+        version="6.8",
+        is_deprecated=True)
     ```
 
 
@@ -139,10 +139,10 @@ def get_logs_input_engine_output(is_deprecated: Optional[pulumi.Input[Optional[b
     import pulumi
     import pulumi_ovh as ovh
 
-    logstash = ovh.Dbaas.get_logs_input_engine(is_deprecated=True,
+    logstash = ovh.Dbaas.get_logs_input_engine(service_name="ldp-xx-xxxxx",
         name="logstash",
-        service_name="ldp-xx-xxxxx",
-        version="6.8")
+        version="6.8",
+        is_deprecated=True)
     ```
 
 

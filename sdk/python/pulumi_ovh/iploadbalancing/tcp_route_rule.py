@@ -314,7 +314,7 @@ class TcpRouteRule(pulumi.CustomResource):
             action={
                 "type": "reject",
             })
-        example_rule = ovh.ip_load_balancing.TcpRouteRule("exampleRule",
+        example_rule = ovh.ip_load_balancing.TcpRouteRule("example_rule",
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             route_id=reject.id,
             display_name="Match example.com host",
@@ -367,7 +367,7 @@ class TcpRouteRule(pulumi.CustomResource):
             action={
                 "type": "reject",
             })
-        example_rule = ovh.ip_load_balancing.TcpRouteRule("exampleRule",
+        example_rule = ovh.ip_load_balancing.TcpRouteRule("example_rule",
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             route_id=reject.id,
             display_name="Match example.com host",

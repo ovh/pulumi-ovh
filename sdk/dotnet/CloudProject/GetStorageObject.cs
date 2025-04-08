@@ -26,10 +26,10 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var @object = Ovh.CloudProject.GetStorageObject.Invoke(new()
         ///     {
-        ///         Key = "&lt;object name&gt;",
-        ///         Name = "&lt;bucket name&gt;",
-        ///         RegionName = "GRA",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA",
+        ///         Name = "&lt;bucket name&gt;",
+        ///         Key = "&lt;object name&gt;",
         ///     });
         /// 
         /// });
@@ -53,10 +53,10 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var @object = Ovh.CloudProject.GetStorageObject.Invoke(new()
         ///     {
-        ///         Key = "&lt;object name&gt;",
-        ///         Name = "&lt;bucket name&gt;",
-        ///         RegionName = "GRA",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA",
+        ///         Name = "&lt;bucket name&gt;",
+        ///         Key = "&lt;object name&gt;",
         ///     });
         /// 
         /// });
@@ -80,10 +80,10 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var @object = Ovh.CloudProject.GetStorageObject.Invoke(new()
         ///     {
-        ///         Key = "&lt;object name&gt;",
-        ///         Name = "&lt;bucket name&gt;",
-        ///         RegionName = "GRA",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA",
+        ///         Name = "&lt;bucket name&gt;",
+        ///         Key = "&lt;object name&gt;",
         ///     });
         /// 
         /// });

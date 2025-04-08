@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var lbsLoadBalancers = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
+        ///     var lbs = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegionName = "XXX",
@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["lbs"] = lbsLoadBalancers,
+        ///         ["lbs"] = lbs,
         ///     };
         /// });
         /// ```
@@ -53,7 +53,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var lbsLoadBalancers = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
+        ///     var lbs = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegionName = "XXX",
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["lbs"] = lbsLoadBalancers,
+        ///         ["lbs"] = lbs,
         ///     };
         /// });
         /// ```
@@ -82,7 +82,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var lbsLoadBalancers = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
+        ///     var lbs = Ovh.CloudProject.GetLoadBalancers.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegionName = "XXX",
@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["lbs"] = lbsLoadBalancers,
+        ///         ["lbs"] = lbs,
         ///     };
         /// });
         /// ```

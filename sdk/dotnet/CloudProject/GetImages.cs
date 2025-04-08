@@ -26,9 +26,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var images = Ovh.CloudProject.GetImages.Invoke(new()
         ///     {
-        ///         OsType = "linux",
-        ///         Region = "WAW1",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         Region = "WAW1",
+        ///         OsType = "linux",
         ///     });
         /// 
         /// });
@@ -52,9 +52,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var images = Ovh.CloudProject.GetImages.Invoke(new()
         ///     {
-        ///         OsType = "linux",
-        ///         Region = "WAW1",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         Region = "WAW1",
+        ///         OsType = "linux",
         ///     });
         /// 
         /// });
@@ -78,9 +78,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var images = Ovh.CloudProject.GetImages.Invoke(new()
         ///     {
-        ///         OsType = "linux",
-        ///         Region = "WAW1",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         Region = "WAW1",
+        ///         OsType = "linux",
         ///     });
         /// 
         /// });

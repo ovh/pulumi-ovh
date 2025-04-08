@@ -7,26 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Creates a new custom SSL certificate on your IP Load Balancing
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const lb = ovh.IpLoadBalancing.getIpLoadBalancing({
- *     serviceName: "ip-1.2.3.4",
- *     state: "ok",
- * });
- * const sslname = new ovh.iploadbalancing.Ssl("sslname", {
- *     certificate: "...",
- *     chain: "...",
- *     displayName: "test",
- *     key: "...",
- *     serviceName: lb.then(lb => lb.serviceName),
- * });
- * ```
- *
  * ## Import
  *
  * SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.

@@ -30,9 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetInstance(ctx, &cloudproject.GetInstanceArgs{
-//				InstanceId:  "ZZZZZ",
-//				Region:      "XXXX",
 //				ServiceName: "YYYY",
+//				Region:      "XXXX",
+//				InstanceId:  "ZZZZZ",
 //			}, nil)
 //			if err != nil {
 //				return err

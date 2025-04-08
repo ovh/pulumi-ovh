@@ -24,10 +24,10 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
+        ///     var GRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
         ///     {
-        ///         Name = "GRA1",
         ///         ServiceName = "XXXXXX",
+        ///         Name = "GRA1",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
+        ///     var GRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
         ///     {
-        ///         Name = "GRA1",
         ///         ServiceName = "XXXXXX",
+        ///         Name = "GRA1",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
+        ///     var GRA1 = Ovh.CloudProject.GetRegion.Invoke(new()
         ///     {
-        ///         Name = "GRA1",
         ///         ServiceName = "XXXXXX",
+        ///         Name = "GRA1",
         ///     });
         /// 
         /// });

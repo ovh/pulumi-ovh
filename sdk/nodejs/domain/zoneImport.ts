@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
  * Handle a whole DNS zone using a zone file.
  *
  * > **WARNING** This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const _import = new ovh.domain.ZoneImport("import", {
- *     zoneName: "mysite.ovh",
- *     zoneFile: fs.readFileSync("./example.zone", "utf8"),
- * });
- * ```
  */
 export class ZoneImport extends pulumi.CustomResource {
     /**

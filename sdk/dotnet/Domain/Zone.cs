@@ -27,7 +27,7 @@ namespace Pulumi.Ovh.Domain
     ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
     ///     });
     /// 
-    ///     var zoneCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     var zone = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
     ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
@@ -35,14 +35,14 @@ namespace Pulumi.Ovh.Domain
     ///         PlanCode = "zone",
     ///     });
     /// 
-    ///     var zoneZone = new Ovh.Domain.Zone("zoneZone", new()
+    ///     var zoneZone = new Ovh.Domain.Zone("zone", new()
     ///     {
     ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         Plan = new Ovh.Domain.Inputs.ZonePlanArgs
     ///         {
-    ///             Duration = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
-    ///             PlanCode = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = zoneCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Duration = zone.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = zone.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = zone.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
     ///             Configurations = new[]
     ///             {
     ///                 new Ovh.Domain.Inputs.ZonePlanConfigurationArgs

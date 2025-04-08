@@ -130,9 +130,9 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        retention_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        service_name="ldp-xx-xxxxx")
+    retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        retention_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
     ```
 
     It is also possible to retrieve a retention using its duration:
@@ -141,9 +141,9 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        duration="P14D",
-        service_name="ldp-xx-xxxxx")
+    retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        duration="P14D")
     ```
 
     Additionnaly, you can filter retentions on their type:
@@ -152,10 +152,10 @@ def get_logs_clusters_retention(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         duration="P14D",
-        retention_type="LOGS_INDEXING",
-        service_name="ldp-xx-xxxxx")
+        retention_type="LOGS_INDEXING")
     ```
 
 
@@ -197,9 +197,9 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_ovh as ovh
 
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        retention_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
-        service_name="ldp-xx-xxxxx")
+    retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        retention_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
     ```
 
     It is also possible to retrieve a retention using its duration:
@@ -208,9 +208,9 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_ovh as ovh
 
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        duration="P14D",
-        service_name="ldp-xx-xxxxx")
+    retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        duration="P14D")
     ```
 
     Additionnaly, you can filter retentions on their type:
@@ -219,10 +219,10 @@ def get_logs_clusters_retention_output(cluster_id: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_ovh as ovh
 
-    retention = ovh.Dbaas.get_logs_clusters_retention(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    retention = ovh.Dbaas.get_logs_clusters_retention(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         duration="P14D",
-        retention_type="LOGS_INDEXING",
-        service_name="ldp-xx-xxxxx")
+        retention_type="LOGS_INDEXING")
     ```
 
 

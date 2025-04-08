@@ -1996,10 +1996,6 @@ if not MYPY:
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 
         In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-
-        ```python
-        import pulumi
-        ```
         """
 elif False:
     KubePrivateNetworkConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -2014,10 +2010,6 @@ class KubePrivateNetworkConfigurationArgs:
         :param pulumi.Input[bool] private_network_routing_as_default: Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
                
                In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-               
-               ```python
-               import pulumi
-               ```
         """
         pulumi.set(__self__, "default_vrack_gateway", default_vrack_gateway)
         pulumi.set(__self__, "private_network_routing_as_default", private_network_routing_as_default)
@@ -2041,10 +2033,6 @@ class KubePrivateNetworkConfigurationArgs:
         Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 
         In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "private_network_routing_as_default")
 

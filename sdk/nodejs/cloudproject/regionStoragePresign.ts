@@ -13,14 +13,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const presignedUrlRegionStoragePresign = new ovh.cloudproject.RegionStoragePresign("presignedUrlRegionStoragePresign", {
- *     serviceName: "xxxxxxxxxxxxxxxxx",
- *     regionName: "GRA",
- *     expire: 3600,
- *     method: "GET",
- *     object: "an-object-in-the-bucket",
- * });
- * export const presignedUrl = presignedUrlRegionStoragePresign.url;
+ * export = async () => {
+ *     const presignedUrl = new ovh.cloudproject.RegionStoragePresign("presigned_url", {
+ *         serviceName: "xxxxxxxxxxxxxxxxx",
+ *         regionName: "GRA",
+ *         name: "s3-bucket-name",
+ *         expire: 3600,
+ *         method: "GET",
+ *         object: "an-object-in-the-bucket",
+ *     });
+ *     return {
+ *         presignedUrl: presignedUrl.url,
+ *     };
+ * }
  * ```
  */
 export class RegionStoragePresign extends pulumi.CustomResource {

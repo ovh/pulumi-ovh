@@ -115,6 +115,16 @@ def get_capabilities(service_name: Optional[str] = None,
     """
     Use this data source to get information about capabilities of a public cloud project.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capabilities = ovh.CloudProjectDatabase.get_capabilities(service_name="XXX")
+    pulumi.export("capabilitiesEngineName", [__item.engines[0] for __item in [capabilities]])
+    ```
+
 
     :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
@@ -134,6 +144,16 @@ def get_capabilities_output(service_name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapabilitiesResult]:
     """
     Use this data source to get information about capabilities of a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    capabilities = ovh.CloudProjectDatabase.get_capabilities(service_name="XXX")
+    pulumi.export("capabilitiesEngineName", [__item.engines[0] for __item in [capabilities]])
+    ```
 
 
     :param str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.

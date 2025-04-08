@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vrack.NewCloudProject(ctx, "vcp", &vrack.CloudProjectArgs{
-//				ProjectId:   pulumi.String("67890"),
 //				ServiceName: pulumi.String("12345"),
+//				ProjectId:   pulumi.String("67890"),
 //			})
 //			if err != nil {
 //				return err

@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const regions = ovh.CloudProject.getRegions({
- *     hasServicesUps: ["network"],
  *     serviceName: "XXXXXX",
+ *     hasServicesUps: ["network"],
  * });
  * ```
  */
@@ -66,8 +66,8 @@ export interface GetRegionsResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const regions = ovh.CloudProject.getRegions({
- *     hasServicesUps: ["network"],
  *     serviceName: "XXXXXX",
+ *     hasServicesUps: ["network"],
  * });
  * ```
  */

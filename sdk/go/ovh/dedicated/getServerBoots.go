@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dedicated.GetServerBoots(ctx, &dedicated.GetServerBootsArgs{
-//				BootType:    pulumi.StringRef("harddisk"),
 //				ServiceName: "myserver",
+//				BootType:    pulumi.StringRef("harddisk"),
 //			}, nil)
 //			if err != nil {
 //				return err

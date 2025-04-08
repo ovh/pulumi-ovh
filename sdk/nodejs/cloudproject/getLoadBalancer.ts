@@ -15,12 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const lbLoadBalancer = ovh.CloudProject.getLoadBalancer({
- *     serviceName: "XXXXXX",
- *     regionName: "XXX",
- *     id: "XXX",
- * });
- * export const lb = lbLoadBalancer;
+ * export = async () => {
+ *     const lb = await ovh.CloudProject.getLoadBalancer({
+ *         serviceName: "XXXXXX",
+ *         regionName: "XXX",
+ *         id: "XXX",
+ *     });
+ *     return {
+ *         lb: lb,
+ *     };
+ * }
  * ```
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
@@ -116,12 +120,16 @@ export interface GetLoadBalancerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const lbLoadBalancer = ovh.CloudProject.getLoadBalancer({
- *     serviceName: "XXXXXX",
- *     regionName: "XXX",
- *     id: "XXX",
- * });
- * export const lb = lbLoadBalancer;
+ * export = async () => {
+ *     const lb = await ovh.CloudProject.getLoadBalancer({
+ *         serviceName: "XXXXXX",
+ *         regionName: "XXX",
+ *         id: "XXX",
+ *     });
+ *     return {
+ *         lb: lb,
+ *     };
+ * }
  * ```
  */
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerResult> {

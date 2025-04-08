@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrackBlock = new ovh.vrack.IpV6("vrackBlock", {
- *     block: "<ipv6 block>",
+ * const vrackBlock = new ovh.vrack.IpV6("vrack_block", {
  *     serviceName: "<vRack service name>",
+ *     block: "<ipv6 block>",
  * });
  * ```
  *

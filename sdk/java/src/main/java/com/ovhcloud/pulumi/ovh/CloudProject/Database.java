@@ -222,9 +222,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgresql = new Database("postgresql", DatabaseArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-postgresql")
  *             .engine("postgresql")
- *             .flavor("db1-15")
+ *             .version("14")
+ *             .plan("business")
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
  *                     .region("GRA")
@@ -232,9 +234,7 @@ import javax.annotation.Nullable;
  *                 DatabaseNodeArgs.builder()
  *                     .region("GRA")
  *                     .build())
- *             .plan("business")
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
- *             .version("14")
+ *             .flavor("db1-15")
  *             .build());
  * 
  *     }
@@ -270,28 +270,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mongodb = new Database("mongodb", DatabaseArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-mongodb")
  *             .engine("mongodb")
- *             .flavor("db1-30")
+ *             .version("5.0")
+ *             .plan("production")
  *             .nodes(            
  *                 DatabaseNodeArgs.builder()
- *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .region("SBG")
  *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .region("SBG")
  *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build(),
  *                 DatabaseNodeArgs.builder()
- *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .region("SBG")
  *                     .subnetId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
  *                     .build())
- *             .plan("production")
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
- *             .version("5.0")
+ *             .flavor("db1-30")
  *             .build());
  * 
  *     }
@@ -655,6 +655,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -24,13 +24,15 @@ namespace Pulumi.Ovh.Iam
     /// {
     ///     var account = Ovh.Me.GetMe.Invoke();
     /// 
-    ///     var myGroup = new Ovh.Me.IdentityGroup("myGroup", new()
+    ///     var myGroup = new Ovh.Me.IdentityGroup("my_group", new()
     ///     {
+    ///         Name = "my_group",
     ///         Description = "my_group created in Terraform",
     ///     });
     /// 
     ///     var manager = new Ovh.Iam.Policy("manager", new()
     ///     {
+    ///         Name = "allow_ovh_manager",
     ///         Description = "Users are allowed to use the OVH manager",
     ///         Identities = new[]
     ///         {

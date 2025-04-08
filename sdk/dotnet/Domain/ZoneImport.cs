@@ -13,26 +13,6 @@ namespace Pulumi.Ovh.Domain
     /// Handle a whole DNS zone using a zone file.
     /// 
     /// &gt; **WARNING** This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var import = new Ovh.Domain.ZoneImport("import", new()
-    ///     {
-    ///         ZoneName = "mysite.ovh",
-    ///         ZoneFile = File.ReadAllText("./example.zone"),
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [OvhResourceType("ovh:Domain/zoneImport:ZoneImport")]
     public partial class ZoneImport : global::Pulumi.CustomResource

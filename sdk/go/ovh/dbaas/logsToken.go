@@ -30,6 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.NewLogsToken(ctx, "token", &dbaas.LogsTokenArgs{
 //				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//				Name:        pulumi.String("ExampleToken"),
 //			})
 //			if err != nil {
 //				return err

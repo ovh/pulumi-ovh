@@ -36,25 +36,25 @@ import (
 //				return err
 //			}
 //			farmname, err := iploadbalancing.NewHttpFarm(ctx, "farmname", &iploadbalancing.HttpFarmArgs{
-//				Port:        pulumi.Int(8080),
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				Port:        pulumi.Int(8080),
 //				Zone:        pulumi.String("all"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = iploadbalancing.NewHttpFarmServer(ctx, "backend", &iploadbalancing.HttpFarmServerArgs{
-//				Address:              pulumi.String("4.5.6.7"),
-//				Backup:               pulumi.Bool(true),
-//				DisplayName:          pulumi.String("mybackend"),
-//				FarmId:               farmname.ID(),
-//				Port:                 pulumi.Int(80),
-//				Probe:                pulumi.Bool(true),
-//				ProxyProtocolVersion: pulumi.String("v2"),
 //				ServiceName:          pulumi.String(lb.ServiceName),
-//				Ssl:                  pulumi.Bool(false),
+//				FarmId:               farmname.ID(),
+//				DisplayName:          pulumi.String("mybackend"),
+//				Address:              pulumi.String("4.5.6.7"),
 //				Status:               pulumi.String("active"),
+//				Port:                 pulumi.Int(80),
+//				ProxyProtocolVersion: pulumi.String("v2"),
 //				Weight:               pulumi.Int(2),
+//				Probe:                pulumi.Bool(true),
+//				Ssl:                  pulumi.Bool(false),
+//				Backup:               pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

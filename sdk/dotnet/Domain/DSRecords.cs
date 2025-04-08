@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dsRecords = new Ovh.Domain.DSRecords("dsRecords", new()
+    ///     var dsRecords = new Ovh.Domain.DSRecords("ds_records", new()
     ///     {
     ///         Domain = "mydomain.ovh",
     ///         DsRecords = new[]

@@ -195,9 +195,9 @@ def get_region_load_balancer_log_subscription(loadbalancer_id: Optional[str] = N
     import pulumi
     import pulumi_ovh as ovh
 
-    sub = ovh.CloudProject.get_region_load_balancer_log_subscription(loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    sub = ovh.CloudProject.get_region_load_balancer_log_subscription(service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         region_name="gggg",
-        service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         subscription_id="zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
     ```
 
@@ -242,9 +242,9 @@ def get_region_load_balancer_log_subscription_output(loadbalancer_id: Optional[p
     import pulumi
     import pulumi_ovh as ovh
 
-    sub = ovh.CloudProject.get_region_load_balancer_log_subscription(loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    sub = ovh.CloudProject.get_region_load_balancer_log_subscription(service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         region_name="gggg",
-        service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         subscription_id="zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
     ```
 

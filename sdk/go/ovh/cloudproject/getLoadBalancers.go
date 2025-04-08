@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lbsLoadBalancers, err := cloudproject.GetLoadBalancers(ctx, &cloudproject.GetLoadBalancersArgs{
+//			lbs, err := cloudproject.GetLoadBalancers(ctx, &cloudproject.GetLoadBalancersArgs{
 //				ServiceName: "XXXXXX",
 //				RegionName:  "XXX",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("lbs", lbsLoadBalancers)
+//			ctx.Export("lbs", lbs)
 //			return nil
 //		})
 //	}

@@ -35,9 +35,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudproject.NewContainerRegistryIPRestrictionsManagement(ctx, "myMgtIprestrictions", &cloudproject.ContainerRegistryIPRestrictionsManagementArgs{
-//				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
-//				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
+//			_, err = cloudproject.NewContainerRegistryIPRestrictionsManagement(ctx, "my_mgt_iprestrictions", &cloudproject.ContainerRegistryIPRestrictionsManagementArgs{
+//				ServiceName: pulumi.Any(registryOvhCloudProjectContainerregistry.ServiceName),
+//				RegistryId:  pulumi.Any(registryOvhCloudProjectContainerregistry.Id),
 //				IpRestrictions: pulumi.StringMapArray{
 //					pulumi.StringMap{
 //						"ip_block":    pulumi.String("xxx.xxx.xxx.xxx/xx"),

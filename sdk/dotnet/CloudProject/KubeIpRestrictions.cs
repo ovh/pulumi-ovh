@@ -22,14 +22,14 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrackOnly = new Ovh.CloudProject.KubeIpRestrictions("vrackOnly", new()
+    ///     var vrackOnly = new Ovh.CloudProject.KubeIpRestrictions("vrack_only", new()
     ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
     ///         Ips = new[]
     ///         {
     ///             "10.42.0.0/16",
     ///         },
-    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///     });
     /// 
     /// });

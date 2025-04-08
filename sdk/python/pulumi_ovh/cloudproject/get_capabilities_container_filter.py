@@ -162,9 +162,9 @@ def get_capabilities_container_filter(plan_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    capability = ovh.CloudProject.get_capabilities_container_filter(plan_name="SMALL",
+    capability = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
         region="GRA",
-        service_name="XXXXXX")
+        plan_name="SMALL")
     ```
 
 
@@ -203,9 +203,9 @@ def get_capabilities_container_filter_output(plan_name: Optional[pulumi.Input[st
     import pulumi
     import pulumi_ovh as ovh
 
-    capability = ovh.CloudProject.get_capabilities_container_filter(plan_name="SMALL",
+    capability = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
         region="GRA",
-        service_name="XXXXXX")
+        plan_name="SMALL")
     ```
 
 

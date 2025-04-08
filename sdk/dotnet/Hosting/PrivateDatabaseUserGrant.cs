@@ -22,12 +22,12 @@ namespace Pulumi.Ovh.Hosting
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var userGrant = new Ovh.Hosting.PrivateDatabaseUserGrant("userGrant", new()
+    ///     var userGrant = new Ovh.Hosting.PrivateDatabaseUserGrant("user_grant", new()
     ///     {
-    ///         DatabaseName = "ovhcloud",
-    ///         Grant = "admin",
     ///         ServiceName = "XXXXXX",
     ///         UserName = "terraform",
+    ///         DatabaseName = "ovhcloud",
+    ///         Grant = "admin",
     ///     });
     /// 
     /// });

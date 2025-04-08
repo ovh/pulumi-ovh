@@ -113,7 +113,7 @@ class DSRecords(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        ds_records = ovh.domain.DSRecords("dsRecords",
+        ds_records = ovh.domain.DSRecords("ds_records",
             domain="mydomain.ovh",
             ds_records=[{
                 "algorithm": "RSASHA1_NSEC3_SHA1",
@@ -169,7 +169,7 @@ class DSRecords(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        ds_records = ovh.domain.DSRecords("dsRecords",
+        ds_records = ovh.domain.DSRecords("ds_records",
             domain="mydomain.ovh",
             ds_records=[{
                 "algorithm": "RSASHA1_NSEC3_SHA1",

@@ -29,12 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := savingsplan.NewSavingsPlan(ctx, "plan", &savingsplan.SavingsPlanArgs{
-//				AutoRenewal: pulumi.Bool(true),
-//				DisplayName: pulumi.String("one_month_rancher_savings_plan"),
+//				ServiceName: pulumi.String("<public cloud project ID>"),
 //				Flavor:      pulumi.String("Rancher"),
 //				Period:      pulumi.String("P1M"),
-//				ServiceName: pulumi.String("<public cloud project ID>"),
 //				Size:        pulumi.Int(2),
+//				DisplayName: pulumi.String("one_month_rancher_savings_plan"),
+//				AutoRenewal: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

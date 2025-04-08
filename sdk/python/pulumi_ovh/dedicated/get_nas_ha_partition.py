@@ -139,8 +139,8 @@ def get_nas_ha_partition(name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    my_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(name="my-zpool-partition",
-        service_name="zpool-12345")
+    my_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(service_name="zpool-12345",
+        name="my-zpool-partition")
     ```
 
 
@@ -174,8 +174,8 @@ def get_nas_ha_partition_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    my_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(name="my-zpool-partition",
-        service_name="zpool-12345")
+    my_nas_ha_partition = ovh.Dedicated.get_nas_ha_partition(service_name="zpool-12345",
+        name="my-zpool-partition")
     ```
 
 

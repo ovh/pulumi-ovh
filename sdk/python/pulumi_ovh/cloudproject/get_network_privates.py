@@ -85,8 +85,8 @@ def get_network_privates(service_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    private_network_privates = ovh.CloudProject.get_network_privates(service_name="XXXXXX")
-    pulumi.export("private", private_network_privates)
+    private = ovh.CloudProject.get_network_privates(service_name="XXXXXX")
+    pulumi.export("private", private)
     ```
 
 
@@ -112,8 +112,8 @@ def get_network_privates_output(service_name: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_ovh as ovh
 
-    private_network_privates = ovh.CloudProject.get_network_privates(service_name="XXXXXX")
-    pulumi.export("private", private_network_privates)
+    private = ovh.CloudProject.get_network_privates(service_name="XXXXXX")
+    pulumi.export("private", private)
     ```
 
 

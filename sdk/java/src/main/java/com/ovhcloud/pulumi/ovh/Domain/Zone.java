@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
- *         final var zoneCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var zone = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
  *             .priceCapacity("renew")
  *             .product("dns")
@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *         var zoneZone = new Zone("zoneZone", ZoneArgs.builder()
  *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(ZonePlanArgs.builder()
- *                 .duration(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(zone.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(zone.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(zone.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .configurations(                
  *                     ZonePlanConfigurationArgs.builder()
  *                         .label("zone")
@@ -306,6 +306,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

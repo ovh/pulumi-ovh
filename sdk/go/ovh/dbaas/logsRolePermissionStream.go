@@ -30,8 +30,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.NewLogsRolePermissionStream(ctx, "permission", &dbaas.LogsRolePermissionStreamArgs{
 //				ServiceName: pulumi.String("ldp-xx-xxxxx"),
-//				RoleId:      pulumi.Any(ovh_dbaas_logs_role.Ro.Id),
-//				StreamId:    pulumi.Any(ovh_dbaas_logs_output_graylog_stream.Mystream.Stream_id),
+//				RoleId:      pulumi.Any(ro.Id),
+//				StreamId:    pulumi.Any(mystream.StreamId),
 //			})
 //			if err != nil {
 //				return err

@@ -229,7 +229,7 @@ class IpRestriction(pulumi.CustomResource):
         db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
             engine="YYYY",
             id="ZZZZ")
-        ip_restriction = ovh.cloud_project_database.IpRestriction("ipRestriction",
+        ip_restriction = ovh.cloud_project_database.IpRestriction("ip_restriction",
             service_name=db.service_name,
             engine=db.engine,
             cluster_id=db.id,
@@ -274,7 +274,7 @@ class IpRestriction(pulumi.CustomResource):
         db = ovh.CloudProjectDatabase.get_database(service_name="XXXX",
             engine="YYYY",
             id="ZZZZ")
-        ip_restriction = ovh.cloud_project_database.IpRestriction("ipRestriction",
+        ip_restriction = ovh.cloud_project_database.IpRestriction("ip_restriction",
             service_name=db.service_name,
             engine=db.engine,
             cluster_id=db.id,

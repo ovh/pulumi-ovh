@@ -22,14 +22,14 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tcpReject = new Ovh.IpLoadBalancing.TcpRoute("tcpReject", new()
+    ///     var tcpReject = new Ovh.IpLoadBalancing.TcpRoute("tcp_reject", new()
     ///     {
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         Weight = 1,
     ///         Action = new Ovh.IpLoadBalancing.Inputs.TcpRouteActionArgs
     ///         {
     ///             Type = "reject",
     ///         },
-    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
-    ///         Weight = 1,
     ///     });
     /// 
     /// });

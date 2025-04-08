@@ -135,10 +135,10 @@ def get_gateway_interface(id: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    interface = ovh.CloudProject.get_gateway_interface(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        interface_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
+    interface = ovh.CloudProject.get_gateway_interface(service_name="XXXXXX",
         region="GRA11",
-        service_name="XXXXXX")
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        interface_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
     ```
 
 
@@ -177,10 +177,10 @@ def get_gateway_interface_output(id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    interface = ovh.CloudProject.get_gateway_interface(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        interface_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
+    interface = ovh.CloudProject.get_gateway_interface(service_name="XXXXXX",
         region="GRA11",
-        service_name="XXXXXX")
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        interface_id="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
     ```
 
 

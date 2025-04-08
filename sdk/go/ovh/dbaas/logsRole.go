@@ -29,8 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.NewLogsRole(ctx, "ro", &dbaas.LogsRoleArgs{
-//				Description: pulumi.String("Devops - RO"),
 //				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//				Name:        pulumi.String("Devops - RO"),
+//				Description: pulumi.String("Devops - RO"),
 //			})
 //			if err != nil {
 //				return err

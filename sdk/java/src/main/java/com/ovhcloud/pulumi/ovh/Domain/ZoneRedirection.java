@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Add a redirection to a sub-domain
  *         var test = new ZoneRedirection("test", ZoneRedirectionArgs.builder()
- *             .subdomain("test")
- *             .target("http://www.ovh")
- *             .type("visiblePermanent")
  *             .zone("testdemo.ovh")
+ *             .subdomain("test")
+ *             .type("visiblePermanent")
+ *             .target("http://www.ovh")
  *             .build());
  * 
  *     }
@@ -197,6 +197,7 @@ public class ZoneRedirection extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -28,9 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vrack.NewIpV6(ctx, "vrackBlock", &vrack.IpV6Args{
-//				Block:       pulumi.String("<ipv6 block>"),
+//			_, err := vrack.NewIpV6(ctx, "vrack_block", &vrack.IpV6Args{
 //				ServiceName: pulumi.String("<vRack service name>"),
+//				Block:       pulumi.String("<ipv6 block>"),
 //			})
 //			if err != nil {
 //				return err

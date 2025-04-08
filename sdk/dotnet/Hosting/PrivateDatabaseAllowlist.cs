@@ -24,9 +24,10 @@ namespace Pulumi.Ovh.Hosting
     /// {
     ///     var ip = new Ovh.Hosting.PrivateDatabaseAllowlist("ip", new()
     ///     {
-    ///         Ip = "1.2.3.4",
-    ///         Service = true,
     ///         ServiceName = "XXXXXX",
+    ///         Ip = "1.2.3.4",
+    ///         Name = "A name for your IP address",
+    ///         Service = true,
     ///         Sftp = true,
     ///     });
     /// 

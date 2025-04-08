@@ -14,12 +14,12 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const plan = new ovh.savingsplan.SavingsPlan("plan", {
- *     autoRenewal: true,
- *     displayName: "one_month_rancher_savings_plan",
+ *     serviceName: "<public cloud project ID>",
  *     flavor: "Rancher",
  *     period: "P1M",
- *     serviceName: "<public cloud project ID>",
  *     size: 2,
+ *     displayName: "one_month_rancher_savings_plan",
+ *     autoRenewal: true,
  * });
  * ```
  *
