@@ -79,10 +79,6 @@ namespace Pulumi.Ovh
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/ovh/pulumi-ovh",
-                AdditionalSecretOutputs =
-                {
-                    "applicationSecret",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -105,21 +101,11 @@ namespace Pulumi.Ovh
         [Input("applicationKey")]
         public Input<string>? ApplicationKey { get; set; }
 
-        [Input("applicationSecret")]
-        private Input<string>? _applicationSecret;
-
         /// <summary>
         /// The OVH API Application Secret
         /// </summary>
-        public Input<string>? ApplicationSecret
-        {
-            get => _applicationSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _applicationSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("applicationSecret")]
+        public Input<string>? ApplicationSecret { get; set; }
 
         /// <summary>
         /// OAuth 2.0 application's ID
@@ -147,10 +133,6 @@ namespace Pulumi.Ovh
 
         public ProviderArgs()
         {
-            ApplicationKey = Utilities.GetEnv("OVH_APPLICATION_KEY");
-            ApplicationSecret = Utilities.GetEnv("OVH_APPLICATION_SECRET");
-            ConsumerKey = Utilities.GetEnv("OVH_CONSUMER_KEY");
-            Endpoint = Utilities.GetEnv("OVH_ENDPOINT");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

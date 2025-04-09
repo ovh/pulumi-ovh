@@ -38,24 +38,16 @@ class ProviderArgs:
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
-        if application_key is None:
-            application_key = _utilities.get_env('OVH_APPLICATION_KEY')
         if application_key is not None:
             pulumi.set(__self__, "application_key", application_key)
-        if application_secret is None:
-            application_secret = _utilities.get_env('OVH_APPLICATION_SECRET')
         if application_secret is not None:
             pulumi.set(__self__, "application_secret", application_secret)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
-        if consumer_key is None:
-            consumer_key = _utilities.get_env('OVH_CONSUMER_KEY')
         if consumer_key is not None:
             pulumi.set(__self__, "consumer_key", consumer_key)
-        if endpoint is None:
-            endpoint = _utilities.get_env('OVH_ENDPOINT')
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
 
@@ -217,22 +209,12 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["access_token"] = access_token
-            if application_key is None:
-                application_key = _utilities.get_env('OVH_APPLICATION_KEY')
             __props__.__dict__["application_key"] = application_key
-            if application_secret is None:
-                application_secret = _utilities.get_env('OVH_APPLICATION_SECRET')
-            __props__.__dict__["application_secret"] = None if application_secret is None else pulumi.Output.secret(application_secret)
+            __props__.__dict__["application_secret"] = application_secret
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = client_secret
-            if consumer_key is None:
-                consumer_key = _utilities.get_env('OVH_CONSUMER_KEY')
             __props__.__dict__["consumer_key"] = consumer_key
-            if endpoint is None:
-                endpoint = _utilities.get_env('OVH_ENDPOINT')
             __props__.__dict__["endpoint"] = endpoint
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["applicationSecret"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'ovh',
             resource_name,

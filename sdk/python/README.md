@@ -72,20 +72,9 @@ To use from Java, add the dependency below to your `pom.xml` file:
 The following configuration points are available for the `Ovh` provider:
 
 - `ovh:endpoint` (environment: `OVH_ENDPOINT`) - the Ovh endpoint, such `ovh-eu`
-- `ovh:applicationKey` (environment: `OVH_APPLICATION_KEY`) - the Ovh application key
-- `ovh:applicationSecret` (environment: `OVH_APPLICATION_SECRET`) - the Ovh application secret
-- `ovh:consumerKey` (environment: `OVH_CONSUMER_KEY`) - the Ovh consumer key
-
-## Reference
-
-For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/ovh/api-docs/).
-
-
-## Configuration
-
-The following configuration points are available for the `Ovh` provider:
-
-- `ovh:endpoint` (environment: `OVH_ENDPOINT`) - the Ovh endpoint, such `ovh-eu`
+- `ovh:clientId` (environment: `OVH_CLIENT_ID`) - the Ovh OAuth2 client ID
+- `ovh:clientSecret` (secret) (environment: `OVH_CLIENT_SECRET`) - the Ovh OAuth2 client secret
+- `ovh:accessToken` (environment: `OVH_ACCESS_TOKEN`) - the Ovh access token
 - `ovh:applicationKey` (environment: `OVH_APPLICATION_KEY`) - the Ovh application key
 - `ovh:applicationSecret` (environment: `OVH_APPLICATION_SECRET`) - the Ovh application secret
 - `ovh:consumerKey` (environment: `OVH_CONSUMER_KEY`) - the Ovh consumer key

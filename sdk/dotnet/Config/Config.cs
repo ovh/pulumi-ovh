@@ -42,7 +42,7 @@ namespace Pulumi.Ovh
             set => _accessToken.Set(value);
         }
 
-        private static readonly __Value<string?> _applicationKey = new __Value<string?>(() => __config.Get("applicationKey") ?? Utilities.GetEnv("OVH_APPLICATION_KEY"));
+        private static readonly __Value<string?> _applicationKey = new __Value<string?>(() => __config.Get("applicationKey"));
         /// <summary>
         /// The OVH API Application Key
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Ovh
             set => _applicationKey.Set(value);
         }
 
-        private static readonly __Value<string?> _applicationSecret = new __Value<string?>(() => __config.Get("applicationSecret") ?? Utilities.GetEnv("OVH_APPLICATION_SECRET"));
+        private static readonly __Value<string?> _applicationSecret = new __Value<string?>(() => __config.Get("applicationSecret"));
         /// <summary>
         /// The OVH API Application Secret
         /// </summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Ovh
             set => _clientSecret.Set(value);
         }
 
-        private static readonly __Value<string?> _consumerKey = new __Value<string?>(() => __config.Get("consumerKey") ?? Utilities.GetEnv("OVH_CONSUMER_KEY"));
+        private static readonly __Value<string?> _consumerKey = new __Value<string?>(() => __config.Get("consumerKey"));
         /// <summary>
         /// The OVH API Consumer Key
         /// </summary>
@@ -92,7 +92,7 @@ namespace Pulumi.Ovh
             set => _consumerKey.Set(value);
         }
 
-        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint") ?? Utilities.GetEnv("OVH_ENDPOINT"));
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
         /// <summary>
         /// The OVH API endpoint to target (ex: "ovh-eu")
         /// </summary>

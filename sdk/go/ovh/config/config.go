@@ -18,28 +18,12 @@ func GetAccessToken(ctx *pulumi.Context) string {
 
 // The OVH API Application Key
 func GetApplicationKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "ovh:applicationKey")
-	if err == nil {
-		return v
-	}
-	var value string
-	if d := internal.GetEnvOrDefault(nil, nil, "OVH_APPLICATION_KEY"); d != nil {
-		value = d.(string)
-	}
-	return value
+	return config.Get(ctx, "ovh:applicationKey")
 }
 
 // The OVH API Application Secret
 func GetApplicationSecret(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "ovh:applicationSecret")
-	if err == nil {
-		return v
-	}
-	var value string
-	if d := internal.GetEnvOrDefault(nil, nil, "OVH_APPLICATION_SECRET"); d != nil {
-		value = d.(string)
-	}
-	return value
+	return config.Get(ctx, "ovh:applicationSecret")
 }
 
 // OAuth 2.0 application's ID
@@ -54,26 +38,10 @@ func GetClientSecret(ctx *pulumi.Context) string {
 
 // The OVH API Consumer Key
 func GetConsumerKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "ovh:consumerKey")
-	if err == nil {
-		return v
-	}
-	var value string
-	if d := internal.GetEnvOrDefault(nil, nil, "OVH_CONSUMER_KEY"); d != nil {
-		value = d.(string)
-	}
-	return value
+	return config.Get(ctx, "ovh:consumerKey")
 }
 
 // The OVH API endpoint to target (ex: "ovh-eu")
 func GetEndpoint(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "ovh:endpoint")
-	if err == nil {
-		return v
-	}
-	var value string
-	if d := internal.GetEnvOrDefault(nil, nil, "OVH_ENDPOINT"); d != nil {
-		value = d.(string)
-	}
-	return value
+	return config.Get(ctx, "ovh:endpoint")
 }
