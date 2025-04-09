@@ -13,12 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myPartition = new ovh.dedicated.NasHAPartitionAccess("myPartition", {
- *     aclDescription: "Description of the ACL",
- *     ip: "123.123.123.123/32",
- *     partitionName: "my-partition",
+ * const myPartition = new ovh.dedicated.NasHAPartitionAccess("my_partition", {
  *     serviceName: "zpool-12345",
+ *     partitionName: "my-partition",
+ *     ip: "123.123.123.123/32",
  *     type: "readwrite",
+ *     aclDescription: "Description of the ACL",
  * });
  * ```
  *

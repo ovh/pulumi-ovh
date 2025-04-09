@@ -15,12 +15,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const tcpReject = new ovh.iploadbalancing.TcpRoute("tcpReject", {
+ * const tcpReject = new ovh.iploadbalancing.TcpRoute("tcp_reject", {
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     weight: 1,
  *     action: {
  *         type: "reject",
  *     },
- *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
- *     weight: 1,
  * });
  * ```
  *

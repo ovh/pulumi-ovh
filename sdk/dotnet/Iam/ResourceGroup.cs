@@ -22,8 +22,9 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myResourceGroup = new Ovh.Iam.ResourceGroup("myResourceGroup", new()
+    ///     var myResourceGroup = new Ovh.Iam.ResourceGroup("my_resource_group", new()
     ///     {
+    ///         Name = "my_resource_group",
     ///         Resources = new[]
     ///         {
     ///             "urn:v1:eu:resource:service1:service1-id",

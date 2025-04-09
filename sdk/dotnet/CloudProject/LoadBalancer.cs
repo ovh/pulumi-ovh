@@ -35,7 +35,7 @@ namespace Pulumi.Ovh.CloudProject
     ///                     {
     ///                         return region;
     ///                     }).ToList()[0].Openstackid,
-    ///                     SubnetId = ovh_cloud_project_network_private_subnet.Myprivsub.Id,
+    ///                     SubnetId = myprivsub.Id,
     ///                 },
     ///             },
     ///         },
@@ -72,6 +72,7 @@ namespace Pulumi.Ovh.CloudProject
     ///     {
     ///         ServiceName = "&lt;public cloud project ID&gt;",
     ///         VlanId = 10,
+    ///         Name = "my_priv",
     ///         Regions = new[]
     ///         {
     ///             "GRA9",

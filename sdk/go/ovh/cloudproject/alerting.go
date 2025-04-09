@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewAlerting(ctx, "myAlert", &cloudproject.AlertingArgs{
+//			_, err := cloudproject.NewAlerting(ctx, "my_alert", &cloudproject.AlertingArgs{
+//				ServiceName:      pulumi.String("XXX"),
 //				Delay:            pulumi.Float64(3600),
 //				Email:            pulumi.String("aaa.bbb@domain.com"),
 //				MonthlyThreshold: pulumi.Float64(1000),
-//				ServiceName:      pulumi.String("XXX"),
 //			})
 //			if err != nil {
 //				return err

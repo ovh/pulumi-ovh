@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         },
     ///     });
     /// 
-    ///     var myS3Credentials = new Ovh.CloudProject.S3Credential("myS3Credentials", new()
+    ///     var myS3Credentials = new Ovh.CloudProject.S3Credential("my_s3_credentials", new()
     ///     {
     ///         ServiceName = user.ServiceName,
     ///         UserId = user.Id,

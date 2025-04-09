@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     var nodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nodes"] = nodesKubeNodes,
+        ///         ["nodes"] = nodes,
         ///     };
         /// });
         /// ```
@@ -53,7 +53,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     var nodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nodes"] = nodesKubeNodes,
+        ///         ["nodes"] = nodes,
         ///     };
         /// });
         /// ```
@@ -82,7 +82,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nodesKubeNodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
+        ///     var nodes = Ovh.CloudProject.GetKubeNodes.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nodes"] = nodesKubeNodes,
+        ///         ["nodes"] = nodes,
         ///     };
         /// });
         /// ```

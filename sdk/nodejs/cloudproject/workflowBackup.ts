@@ -13,13 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myBackup = new ovh.cloudproject.WorkflowBackup("myBackup", {
+ * const myBackup = new ovh.cloudproject.WorkflowBackup("my_backup", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     regionName: "GRA11",
  *     cron: "50 4 * * *",
  *     instanceId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
  *     maxExecutionCount: 0,
- *     regionName: "GRA11",
+ *     name: "Backup workflow for instance",
  *     rotation: 7,
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  * });
  * ```
  */

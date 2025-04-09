@@ -49,12 +49,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var nodePool = new KubeNodePool("nodePool", KubeNodePoolArgs.builder()
- *             .desiredNodes(3)
- *             .flavorName("b2-7")
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .name("my-pool-1")
+ *             .flavorName("b2-7")
+ *             .desiredNodes(3)
  *             .maxNodes(3)
  *             .minNodes(3)
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
@@ -92,12 +93,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool = new KubeNodePool("pool", KubeNodePoolArgs.builder()
- *             .desiredNodes(3)
- *             .flavorName("b2-7")
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .name("my-pool")
+ *             .flavorName("b2-7")
+ *             .desiredNodes(3)
  *             .maxNodes(3)
  *             .minNodes(3)
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .template(KubeNodePoolTemplateArgs.builder()
  *                 .metadata(KubeNodePoolTemplateMetadataArgs.builder()
  *                     .annotations(Map.ofEntries(
@@ -111,12 +113,12 @@ import javax.annotation.Nullable;
  *                     ))
  *                     .build())
  *                 .spec(KubeNodePoolTemplateSpecArgs.builder()
+ *                     .unschedulable(false)
  *                     .taints(Map.ofEntries(
  *                         Map.entry("effect", "PreferNoSchedule"),
  *                         Map.entry("key", "k"),
  *                         Map.entry("value", "v")
  *                     ))
- *                     .unschedulable(false)
  *                     .build())
  *                 .build())
  *             .build());
@@ -504,6 +506,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

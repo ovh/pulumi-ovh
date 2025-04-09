@@ -227,10 +227,11 @@ class APIOAuth2Client(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("myOauth2ClientAuthCode",
-            callback_urls=["https://my-app.com/callback"],
+        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("my_oauth2_client_auth_code",
+            name="OAuth2 authorization code service account",
+            flow="AUTHORIZATION_CODE",
             description="An OAuth2 client using the authorization code flow for my-app.com",
-            flow="AUTHORIZATION_CODE")
+            callback_urls=["https://my-app.com/callback"])
         ```
 
         An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
@@ -239,7 +240,8 @@ class APIOAuth2Client(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("myOauth2ClientClientCreds",
+        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("my_oauth2_client_client_creds",
+            name="client credentials service account",
             description="An OAuth2 client using the client credentials flow for my app",
             flow="CLIENT_CREDENTIALS")
         ```
@@ -286,10 +288,11 @@ class APIOAuth2Client(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("myOauth2ClientAuthCode",
-            callback_urls=["https://my-app.com/callback"],
+        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("my_oauth2_client_auth_code",
+            name="OAuth2 authorization code service account",
+            flow="AUTHORIZATION_CODE",
             description="An OAuth2 client using the authorization code flow for my-app.com",
-            flow="AUTHORIZATION_CODE")
+            callback_urls=["https://my-app.com/callback"])
         ```
 
         An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
@@ -298,7 +301,8 @@ class APIOAuth2Client(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("myOauth2ClientClientCreds",
+        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("my_oauth2_client_client_creds",
+            name="client credentials service account",
             description="An OAuth2 client using the client credentials flow for my app",
             flow="CLIENT_CREDENTIALS")
         ```

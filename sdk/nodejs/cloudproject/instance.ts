@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const instance = new ovh.cloudproject.Instance("instance", {
+ *     serviceName: "XXX",
+ *     region: "RRRR",
  *     billingPeriod: "hourly",
  *     bootFrom: {
  *         imageId: "UUID",
@@ -25,13 +27,12 @@ import * as utilities from "../utilities";
  *     flavor: {
  *         flavorId: "UUID",
  *     },
- *     network: {
- *         "public": true,
- *     },
- *     region: "RRRR",
- *     serviceName: "XXX",
+ *     name: "instance name",
  *     sshKey: {
  *         name: "sshname",
+ *     },
+ *     network: {
+ *         "public": true,
  *     },
  * });
  * ```

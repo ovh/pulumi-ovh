@@ -26,9 +26,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var capability = Ovh.CloudProject.GetCapabilitiesContainerFilter.Invoke(new()
         ///     {
-        ///         PlanName = "SMALL",
-        ///         Region = "GRA",
         ///         ServiceName = "XXXXXX",
+        ///         Region = "GRA",
+        ///         PlanName = "SMALL",
         ///     });
         /// 
         /// });
@@ -52,9 +52,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var capability = Ovh.CloudProject.GetCapabilitiesContainerFilter.Invoke(new()
         ///     {
-        ///         PlanName = "SMALL",
-        ///         Region = "GRA",
         ///         ServiceName = "XXXXXX",
+        ///         Region = "GRA",
+        ///         PlanName = "SMALL",
         ///     });
         /// 
         /// });
@@ -78,9 +78,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var capability = Ovh.CloudProject.GetCapabilitiesContainerFilter.Invoke(new()
         ///     {
-        ///         PlanName = "SMALL",
-        ///         Region = "GRA",
         ///         ServiceName = "XXXXXX",
+        ///         Region = "GRA",
+        ///         PlanName = "SMALL",
         ///     });
         /// 
         /// });

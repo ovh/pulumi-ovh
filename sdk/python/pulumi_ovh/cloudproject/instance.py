@@ -604,6 +604,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         instance = ovh.cloud_project.Instance("instance",
+            service_name="XXX",
+            region="RRRR",
             billing_period="hourly",
             boot_from={
                 "image_id": "UUID",
@@ -611,13 +613,12 @@ class Instance(pulumi.CustomResource):
             flavor={
                 "flavor_id": "UUID",
             },
-            network={
-                "public": True,
-            },
-            region="RRRR",
-            service_name="XXX",
+            name="instance name",
             ssh_key={
                 "name": "sshname",
+            },
+            network={
+                "public": True,
             })
         ```
 
@@ -656,6 +657,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         instance = ovh.cloud_project.Instance("instance",
+            service_name="XXX",
+            region="RRRR",
             billing_period="hourly",
             boot_from={
                 "image_id": "UUID",
@@ -663,13 +666,12 @@ class Instance(pulumi.CustomResource):
             flavor={
                 "flavor_id": "UUID",
             },
-            network={
-                "public": True,
-            },
-            region="RRRR",
-            service_name="XXX",
+            name="instance name",
             ssh_key={
                 "name": "sshname",
+            },
+            network={
+                "public": True,
             })
         ```
 

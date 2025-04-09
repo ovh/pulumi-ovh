@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vrackCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			vrack, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        myCart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "vrack",
@@ -50,19 +50,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vrackVrack, err := vrack.NewVrack(ctx, "vrackVrack", &vrack.VrackArgs{
+//			vrackVrack, err := vrack.NewVrack(ctx, "vrack", &vrack.VrackArgs{
 //				Description:   pulumi.String(myCart.Description),
+//				Name:          pulumi.String(myCart.Description),
 //				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
 //				Plan: &vrack.VrackPlanArgs{
-//					Duration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(vrack.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(vrack.PlanCode),
+//					PricingMode: pulumi.String(vrack.SelectedPrices[0].PricingMode),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ipblockCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			ipblock, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        myCart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "ip",
@@ -71,13 +72,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ipblockIpService, err := ip.NewIpService(ctx, "ipblockIpService", &ip.IpServiceArgs{
+//			ipblockIpService, err := ip.NewIpService(ctx, "ipblock", &ip.IpServiceArgs{
 //				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
 //				Description:   pulumi.String(myCart.Description),
 //				Plan: &ip.IpServicePlanArgs{
-//					Duration:    pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(ipblockCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(ipblock.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(ipblock.PlanCode),
+//					PricingMode: pulumi.String(ipblock.SelectedPrices[0].PricingMode),
 //					Configurations: ip.IpServicePlanConfigurationArray{
 //						&ip.IpServicePlanConfigurationArgs{
 //							Label: pulumi.String("country"),
@@ -89,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vrack.NewIpAddress(ctx, "vrackBlock", &vrack.IpAddressArgs{
+//			_, err = vrack.NewIpAddress(ctx, "vrack_block", &vrack.IpAddressArgs{
 //				ServiceName: vrackVrack.ServiceName,
 //				Block:       ipblockIpService.Ip,
 //			})

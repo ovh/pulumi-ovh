@@ -29,11 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewNetworkPrivate(ctx, "net", &cloudproject.NetworkPrivateArgs{
+//				ServiceName: pulumi.String("XXXXXX"),
+//				Name:        pulumi.String("admin_network"),
 //				Regions: pulumi.StringArray{
 //					pulumi.String("GRA1"),
 //					pulumi.String("BHS1"),
 //				},
-//				ServiceName: pulumi.String("XXXXXX"),
 //			})
 //			if err != nil {
 //				return err

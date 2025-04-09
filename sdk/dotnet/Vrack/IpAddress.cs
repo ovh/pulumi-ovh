@@ -29,7 +29,7 @@ namespace Pulumi.Ovh.Vrack
     ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
     ///     });
     /// 
-    ///     var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     var vrack = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
     ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
@@ -37,19 +37,20 @@ namespace Pulumi.Ovh.Vrack
     ///         PlanCode = "vrack",
     ///     });
     /// 
-    ///     var vrackVrack = new Ovh.Vrack.Vrack("vrackVrack", new()
+    ///     var vrackVrack = new Ovh.Vrack.Vrack("vrack", new()
     ///     {
     ///         Description = myCart.Apply(getCartResult =&gt; getCartResult.Description),
+    ///         Name = myCart.Apply(getCartResult =&gt; getCartResult.Description),
     ///         OvhSubsidiary = myCart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         Plan = new Ovh.Vrack.Inputs.VrackPlanArgs
     ///         {
-    ///             Duration = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
-    ///             PlanCode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Duration = vrack.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = vrack.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = vrack.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
     ///         },
     ///     });
     /// 
-    ///     var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     var ipblock = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
     ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
@@ -57,15 +58,15 @@ namespace Pulumi.Ovh.Vrack
     ///         PlanCode = "ip-v4-s30-ripe",
     ///     });
     /// 
-    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblockIpService", new()
+    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblock", new()
     ///     {
     ///         OvhSubsidiary = myCart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         Description = myCart.Apply(getCartResult =&gt; getCartResult.Description),
     ///         Plan = new Ovh.Ip.Inputs.IpServicePlanArgs
     ///         {
-    ///             Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
-    ///             PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Duration = ipblock.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = ipblock.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = ipblock.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
     ///             Configurations = new[]
     ///             {
     ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs
@@ -77,7 +78,7 @@ namespace Pulumi.Ovh.Vrack
     ///         },
     ///     });
     /// 
-    ///     var vrackBlock = new Ovh.Vrack.IpAddress("vrackBlock", new()
+    ///     var vrackBlock = new Ovh.Vrack.IpAddress("vrack_block", new()
     ///     {
     ///         ServiceName = vrackVrack.ServiceName,
     ///         Block = ipblockIpService.Ip,

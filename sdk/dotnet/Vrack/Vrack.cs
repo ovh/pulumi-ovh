@@ -27,7 +27,7 @@ namespace Pulumi.Ovh.Vrack
     ///         OvhSubsidiary = myAccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
     ///     });
     /// 
-    ///     var vrackCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     var vrack = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
     ///         CartId = myCart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
@@ -35,15 +35,16 @@ namespace Pulumi.Ovh.Vrack
     ///         PlanCode = "vrack",
     ///     });
     /// 
-    ///     var vrackVrack = new Ovh.Vrack.Vrack("vrackVrack", new()
+    ///     var vrackVrack = new Ovh.Vrack.Vrack("vrack", new()
     ///     {
     ///         OvhSubsidiary = myCart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
+    ///         Name = "my-vrack",
     ///         Description = "my vrack",
     ///         Plan = new Ovh.Vrack.Inputs.VrackPlanArgs
     ///         {
-    ///             Duration = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
-    ///             PlanCode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = vrackCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Duration = vrack.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = vrack.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = vrack.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
     ///         },
     ///     });
     /// 

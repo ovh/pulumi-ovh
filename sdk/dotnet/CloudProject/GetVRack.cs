@@ -24,14 +24,14 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     var vrack = Ovh.CloudProject.GetVRack.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vrack"] = vrackVRack,
+        ///         ["vrack"] = vrack,
         ///     };
         /// });
         /// ```
@@ -52,14 +52,14 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     var vrack = Ovh.CloudProject.GetVRack.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vrack"] = vrackVRack,
+        ///         ["vrack"] = vrack,
         ///     };
         /// });
         /// ```
@@ -80,14 +80,14 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vrackVRack = Ovh.CloudProject.GetVRack.Invoke(new()
+        ///     var vrack = Ovh.CloudProject.GetVRack.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vrack"] = vrackVRack,
+        ///         ["vrack"] = vrack,
         ///     };
         /// });
         /// ```

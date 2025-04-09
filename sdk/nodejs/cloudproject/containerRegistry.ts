@@ -21,10 +21,11 @@ import * as utilities from "../utilities";
  *     planName: "SMALL",
  *     region: "GRA",
  * });
- * const myRegistry = new ovh.cloudproject.ContainerRegistry("myRegistry", {
+ * const myRegistry = new ovh.cloudproject.ContainerRegistry("my_registry", {
  *     serviceName: regcap.then(regcap => regcap.serviceName),
  *     planId: regcap.then(regcap => regcap.id),
  *     region: regcap.then(regcap => regcap.region),
+ *     name: "mydockerregistry",
  * });
  * ```
  *

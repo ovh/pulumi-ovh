@@ -36,10 +36,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudproject.NewContainerRegistry(ctx, "myRegistry", &cloudproject.ContainerRegistryArgs{
+//			_, err = cloudproject.NewContainerRegistry(ctx, "my_registry", &cloudproject.ContainerRegistryArgs{
 //				ServiceName: pulumi.String(regcap.ServiceName),
 //				PlanId:      pulumi.String(regcap.Id),
 //				Region:      pulumi.String(regcap.Region),
+//				Name:        pulumi.String("mydockerregistry"),
 //			})
 //			if err != nil {
 //				return err

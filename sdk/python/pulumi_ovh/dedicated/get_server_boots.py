@@ -101,8 +101,8 @@ def get_server_boots(boot_type: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
-        service_name="myserver")
+    netboots = ovh.Dedicated.get_server_boots(service_name="myserver",
+        boot_type="harddisk")
     ```
 
 
@@ -136,8 +136,8 @@ def get_server_boots_output(boot_type: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_ovh as ovh
 
-    netboots = ovh.Dedicated.get_server_boots(boot_type="harddisk",
-        service_name="myserver")
+    netboots = ovh.Dedicated.get_server_boots(service_name="myserver",
+        boot_type="harddisk")
     ```
 
 

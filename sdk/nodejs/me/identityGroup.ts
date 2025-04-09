@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myGroup = new ovh.me.IdentityGroup("myGroup", {
+ * const myGroup = new ovh.me.IdentityGroup("my_group", {
  *     description: "Some custom description",
+ *     name: "my_group_name",
  *     role: "NONE",
  * });
  * ```

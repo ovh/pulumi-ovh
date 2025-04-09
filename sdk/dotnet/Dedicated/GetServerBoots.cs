@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Dedicated
         /// {
         ///     var netboots = Ovh.Dedicated.GetServerBoots.Invoke(new()
         ///     {
-        ///         BootType = "harddisk",
         ///         ServiceName = "myserver",
+        ///         BootType = "harddisk",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.Dedicated
         /// {
         ///     var netboots = Ovh.Dedicated.GetServerBoots.Invoke(new()
         ///     {
-        ///         BootType = "harddisk",
         ///         ServiceName = "myserver",
+        ///         BootType = "harddisk",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.Dedicated
         /// {
         ///     var netboots = Ovh.Dedicated.GetServerBoots.Invoke(new()
         ///     {
-        ///         BootType = "harddisk",
         ///         ServiceName = "myserver",
+        ///         BootType = "harddisk",
         ///     });
         /// 
         /// });

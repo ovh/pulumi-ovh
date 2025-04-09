@@ -26,10 +26,10 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
         ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Region = "GRA11",
         ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        ///         Region = "GRA11",
-        ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -53,10 +53,10 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
         ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Region = "GRA11",
         ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        ///         Region = "GRA11",
-        ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -80,10 +80,10 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var @interface = Ovh.CloudProject.GetGatewayInterface.Invoke(new()
         ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         Region = "GRA11",
         ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         InterfaceId = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-        ///         Region = "GRA11",
-        ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         /// });

@@ -11,43 +11,6 @@ namespace Pulumi.Ovh.Okms
 {
     /// <summary>
     /// Creates a credential for an OVHcloud KMS.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myaccount = Ovh.Me.GetMe.Invoke();
-    /// 
-    ///     var credNoCsr = new Ovh.Okms.Credential("credNoCsr", new()
-    ///     {
-    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    ///         IdentityUrns = new[]
-    ///         {
-    ///             $"urn:v1:eu:identity:account:{data.Ovh_me.Current_account.Nichandle}",
-    ///         },
-    ///         Description = "Credential without CSR",
-    ///     });
-    /// 
-    ///     var credFromCsr = new Ovh.Okms.Credential("credFromCsr", new()
-    ///     {
-    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    ///         IdentityUrns = new[]
-    ///         {
-    ///             $"urn:v1:eu:identity:account:{data.Ovh_me.Current_account.Nichandle}",
-    ///         },
-    ///         Csr = File.ReadAllText("cred.csr"),
-    ///         Description = "Credential from CSR",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [OvhResourceType("ovh:Okms/credential:Credential")]
     public partial class Credential : global::Pulumi.CustomResource

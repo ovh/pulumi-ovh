@@ -31,6 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewInstance(ctx, "instance", &cloudproject.InstanceArgs{
+//				ServiceName:   pulumi.String("XXX"),
+//				Region:        pulumi.String("RRRR"),
 //				BillingPeriod: pulumi.String("hourly"),
 //				BootFrom: &cloudproject.InstanceBootFromArgs{
 //					ImageId: pulumi.String("UUID"),
@@ -38,13 +40,12 @@ import (
 //				Flavor: &cloudproject.InstanceFlavorArgs{
 //					FlavorId: pulumi.String("UUID"),
 //				},
-//				Network: &cloudproject.InstanceNetworkArgs{
-//					Public: pulumi.Bool(true),
-//				},
-//				Region:      pulumi.String("RRRR"),
-//				ServiceName: pulumi.String("XXX"),
+//				Name: pulumi.String("instance name"),
 //				SshKey: &cloudproject.InstanceSshKeyArgs{
 //					Name: pulumi.String("sshname"),
+//				},
+//				Network: &cloudproject.InstanceNetworkArgs{
+//					Public: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {

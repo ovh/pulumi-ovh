@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const flavors = ovh.CloudProject.getLoadBalancerFlavors({
- *     regionName: "GRA9",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA9",
  * });
  * ```
  */
@@ -71,8 +71,8 @@ export interface GetLoadBalancerFlavorsResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const flavors = ovh.CloudProject.getLoadBalancerFlavors({
- *     regionName: "GRA9",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA9",
  * });
  * ```
  */

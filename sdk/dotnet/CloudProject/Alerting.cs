@@ -22,12 +22,12 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myAlert = new Ovh.CloudProject.Alerting("myAlert", new()
+    ///     var myAlert = new Ovh.CloudProject.Alerting("my_alert", new()
     ///     {
+    ///         ServiceName = "XXX",
     ///         Delay = 3600,
     ///         Email = "aaa.bbb@domain.com",
     ///         MonthlyThreshold = 1000,
-    ///         ServiceName = "XXX",
     ///     });
     /// 
     /// });

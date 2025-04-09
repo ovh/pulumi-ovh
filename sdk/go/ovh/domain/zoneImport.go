@@ -15,43 +15,6 @@ import (
 // Handle a whole DNS zone using a zone file.
 //
 // > **WARNING** This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/domain"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := domain.NewZoneImport(ctx, "import", &domain.ZoneImportArgs{
-//				ZoneName: pulumi.String("mysite.ovh"),
-//				ZoneFile: pulumi.String(readFileOrPanic("./example.zone")),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ZoneImport struct {
 	pulumi.CustomResourceState
 

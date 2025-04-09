@@ -304,8 +304,8 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         index = ovh.dbaas.LogsOutputOpenSearchIndex("index",
-            description="my opensearch index",
             service_name="....",
+            description="my opensearch index",
             suffix="index")
         ```
 
@@ -332,8 +332,8 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         index = ovh.dbaas.LogsOutputOpenSearchIndex("index",
-            description="my opensearch index",
             service_name="....",
+            description="my opensearch index",
             suffix="index")
         ```
 

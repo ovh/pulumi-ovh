@@ -209,12 +209,12 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartitionAccess("myPartition",
-            acl_description="Description of the ACL",
-            ip="123.123.123.123/32",
-            partition_name="my-partition",
+        my_partition = ovh.dedicated.NasHAPartitionAccess("my_partition",
             service_name="zpool-12345",
-            type="readwrite")
+            partition_name="my-partition",
+            ip="123.123.123.123/32",
+            type="readwrite",
+            acl_description="Description of the ACL")
         ```
 
         ## Import
@@ -248,12 +248,12 @@ class NasHAPartitionAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartitionAccess("myPartition",
-            acl_description="Description of the ACL",
-            ip="123.123.123.123/32",
-            partition_name="my-partition",
+        my_partition = ovh.dedicated.NasHAPartitionAccess("my_partition",
             service_name="zpool-12345",
-            type="readwrite")
+            partition_name="my-partition",
+            ip="123.123.123.123/32",
+            type="readwrite",
+            acl_description="Description of the ACL")
         ```
 
         ## Import

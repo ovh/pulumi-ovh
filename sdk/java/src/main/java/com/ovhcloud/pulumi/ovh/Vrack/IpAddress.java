@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
  *             .build());
  * 
- *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var vrack = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
  *             .priceCapacity("renew")
  *             .product("vrack")
@@ -66,15 +66,16 @@ import javax.annotation.Nullable;
  * 
  *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
  *             .description(myCart.applyValue(getCartResult -> getCartResult.description()))
+ *             .name(myCart.applyValue(getCartResult -> getCartResult.description()))
  *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .plan(VrackPlanArgs.builder()
- *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(vrack.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(vrack.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(vrack.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .build())
  *             .build());
  * 
- *         final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var ipblock = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
  *             .priceCapacity("renew")
  *             .product("ip")
@@ -85,9 +86,9 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
  *             .description(myCart.applyValue(getCartResult -> getCartResult.description()))
  *             .plan(IpServicePlanArgs.builder()
- *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(ipblock.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
+ *                 .planCode(ipblock.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *                 .pricingMode(ipblock.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
  *                 .configurations(IpServicePlanConfigurationArgs.builder()
  *                     .label("country")
  *                     .value("FR")
@@ -219,6 +220,7 @@ public class IpAddress extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

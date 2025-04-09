@@ -179,6 +179,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudProjectFunctions {
@@ -211,9 +212,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var capability = CloudProjectFunctions.getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs.builder()
-     *             .planName("SMALL")
-     *             .region("GRA")
      *             .serviceName("XXXXXX")
+     *             .region("GRA")
+     *             .planName("SMALL")
      *             .build());
      * 
      *     }
@@ -255,9 +256,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var capability = CloudProjectFunctions.getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs.builder()
-     *             .planName("SMALL")
-     *             .region("GRA")
      *             .serviceName("XXXXXX")
+     *             .region("GRA")
+     *             .planName("SMALL")
      *             .build());
      * 
      *     }
@@ -299,9 +300,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var capability = CloudProjectFunctions.getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs.builder()
-     *             .planName("SMALL")
-     *             .region("GRA")
      *             .serviceName("XXXXXX")
+     *             .region("GRA")
+     *             .planName("SMALL")
      *             .build());
      * 
      *     }
@@ -343,9 +344,53 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var capability = CloudProjectFunctions.getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs.builder()
-     *             .planName("SMALL")
-     *             .region("GRA")
      *             .serviceName("XXXXXX")
+     *             .region("GRA")
+     *             .planName("SMALL")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCapabilitiesContainerFilterResult> getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getCapabilitiesContainerFilter:getCapabilitiesContainerFilter", TypeShape.of(GetCapabilitiesContainerFilterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to filter the list of container registry capabilities associated with a public cloud project to match one and only one capability.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetCapabilitiesContainerFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var capability = CloudProjectFunctions.getCapabilitiesContainerFilter(GetCapabilitiesContainerFilterArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .region("GRA")
+     *             .planName("SMALL")
      *             .build());
      * 
      *     }
@@ -482,6 +527,48 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetCapabilitiesContainerRegistryInvokeResult> getCapabilitiesContainerRegistry(GetCapabilitiesContainerRegistryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", TypeShape.of(GetCapabilitiesContainerRegistryInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the container registry capabilities of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetCapabilitiesContainerRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var capabilities = CloudProjectFunctions.getCapabilitiesContainerRegistry(GetCapabilitiesContainerRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCapabilitiesContainerRegistryInvokeResult> getCapabilitiesContainerRegistry(GetCapabilitiesContainerRegistryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getCapabilitiesContainerRegistry:getCapabilitiesContainerRegistry", TypeShape.of(GetCapabilitiesContainerRegistryInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -691,6 +778,48 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetContainerRegistriesInvokeResult> getContainerRegistries(GetContainerRegistriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistries:getContainerRegistries", TypeShape.of(GetContainerRegistriesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the container registries of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var registries = CloudProjectFunctions.getContainerRegistries(GetContainerRegistriesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetContainerRegistriesInvokeResult> getContainerRegistriesPlain(GetContainerRegistriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistries:getContainerRegistries", TypeShape.of(GetContainerRegistriesInvokeResult.class), args, Utilities.withVersion(options));
     }
@@ -723,8 +852,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *     }
@@ -766,8 +895,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *     }
@@ -809,8 +938,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *     }
@@ -852,8 +981,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
-     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainerRegistryResult> getContainerRegistry(GetContainerRegistryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistry:getContainerRegistry", TypeShape.of(GetContainerRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
      *     }
@@ -891,6 +1063,13 @@ public final class CloudProjectFunctions {
      * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
      * 
      */
+    public static Output<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", TypeShape.of(GetContainerRegistryIPRestrictionsManagementResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
     public static CompletableFuture<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagementPlain(GetContainerRegistryIPRestrictionsManagementPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", TypeShape.of(GetContainerRegistryIPRestrictionsManagementResult.class), args, Utilities.withVersion(options));
     }
@@ -913,6 +1092,13 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", TypeShape.of(GetContainerRegistryIPRestrictionsRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     */
+    public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", TypeShape.of(GetContainerRegistryIPRestrictionsRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1095,6 +1281,50 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetContainerRegistryOIDCResult> getContainerRegistryOIDC(GetContainerRegistryOIDCArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", TypeShape.of(GetContainerRegistryOIDCResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a OVHcloud Managed Private Registry OIDC.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryOIDCArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOidc = CloudProjectFunctions.getContainerRegistryOIDC(GetContainerRegistryOIDCArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetContainerRegistryOIDCResult> getContainerRegistryOIDCPlain(GetContainerRegistryOIDCPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistryOIDC:getContainerRegistryOIDC", TypeShape.of(GetContainerRegistryOIDCResult.class), args, Utilities.withVersion(options));
     }
@@ -1133,8 +1363,8 @@ public final class CloudProjectFunctions {
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
+     *             .serviceName(myRegistryOvhCloudProjectContainerregistry.serviceName())
+     *             .registryId(myRegistryOvhCloudProjectContainerregistry.id())
      *             .build());
      * 
      *     }
@@ -1182,8 +1412,8 @@ public final class CloudProjectFunctions {
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
+     *             .serviceName(myRegistryOvhCloudProjectContainerregistry.serviceName())
+     *             .registryId(myRegistryOvhCloudProjectContainerregistry.id())
      *             .build());
      * 
      *     }
@@ -1231,8 +1461,8 @@ public final class CloudProjectFunctions {
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
+     *             .serviceName(myRegistryOvhCloudProjectContainerregistry.serviceName())
+     *             .registryId(myRegistryOvhCloudProjectContainerregistry.id())
      *             .build());
      * 
      *     }
@@ -1280,8 +1510,57 @@ public final class CloudProjectFunctions {
      *             .build());
      * 
      *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
-     *             .serviceName(ovh_cloud_project_containerregistry.my_registry().service_name())
-     *             .registryId(ovh_cloud_project_containerregistry.my_registry().id())
+     *             .serviceName(myRegistryOvhCloudProjectContainerregistry.serviceName())
+     *             .registryId(myRegistryOvhCloudProjectContainerregistry.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainerRegistryUsersInvokeResult> getContainerRegistryUsers(GetContainerRegistryUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryUsers:getContainerRegistryUsers", TypeShape.of(GetContainerRegistryUsersInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of users of a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myRegistry = CloudProjectFunctions.getContainerRegistry(GetContainerRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         final var users = CloudProjectFunctions.getContainerRegistryUsers(GetContainerRegistryUsersArgs.builder()
+     *             .serviceName(myRegistryOvhCloudProjectContainerregistry.serviceName())
+     *             .registryId(myRegistryOvhCloudProjectContainerregistry.id())
      *             .build());
      * 
      *     }
@@ -1323,8 +1602,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
-     *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
+     *             .ip("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1366,8 +1645,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
-     *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
+     *             .ip("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1409,8 +1688,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
-     *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
+     *             .ip("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1452,8 +1731,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
-     *             .ip("XXXXXX")
      *             .serviceName("XXXXXX")
+     *             .ip("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFailoverIpAttachResult> getFailoverIpAttach(GetFailoverIpAttachArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach", TypeShape.of(GetFailoverIpAttachResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the details of a failover IP address of a service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFailoverIpAttachArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myFailoverIp = CloudProjectFunctions.getFailoverIpAttach(GetFailoverIpAttachArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .ip("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1631,6 +1953,48 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFlavorsResult> getFlavors(GetFlavorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getFlavors:getFlavors", TypeShape.of(GetFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the available flavors on the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getFlavors(GetFlavorsArgs.builder()
+     *             .serviceName("YYYY")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlavorsResult> getFlavorsPlain(GetFlavorsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getFlavors:getFlavors", TypeShape.of(GetFlavorsResult.class), args, Utilities.withVersion(options));
     }
@@ -1665,8 +2029,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -1710,8 +2074,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -1755,8 +2119,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -1800,8 +2164,53 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFloatingIPsResult> getFloatingIPs(GetFloatingIPsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getFloatingIPs:getFloatingIPs", TypeShape.of(GetFloatingIPsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of floating IPs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
+     *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -1843,10 +2252,10 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .region("GRA11")
      *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
-     *             .region("GRA11")
-     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1888,10 +2297,10 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .region("GRA11")
      *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
-     *             .region("GRA11")
-     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1933,10 +2342,10 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .region("GRA11")
      *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
-     *             .region("GRA11")
-     *             .serviceName("XXXXXX")
      *             .build());
      * 
      *     }
@@ -1978,10 +2387,55 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .region("GRA11")
      *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
-     *             .region("GRA11")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewayInterfaceResult> getGatewayInterface(GetGatewayInterfaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getGatewayInterface:getGatewayInterface", TypeShape.of(GetGatewayInterfaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to get a public cloud project Gateway Interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetGatewayInterfaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var interface = CloudProjectFunctions.getGatewayInterface(GetGatewayInterfaceArgs.builder()
      *             .serviceName("XXXXXX")
+     *             .region("GRA11")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .interfaceId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy")
      *             .build());
      * 
      *     }
@@ -2023,8 +2477,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
-     *             .imageId("<image ID>")
      *             .serviceName("<public cloud project ID>")
+     *             .imageId("<image ID>")
      *             .build());
      * 
      *     }
@@ -2066,8 +2520,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
-     *             .imageId("<image ID>")
      *             .serviceName("<public cloud project ID>")
+     *             .imageId("<image ID>")
      *             .build());
      * 
      *     }
@@ -2109,8 +2563,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
-     *             .imageId("<image ID>")
      *             .serviceName("<public cloud project ID>")
+     *             .imageId("<image ID>")
      *             .build());
      * 
      *     }
@@ -2152,8 +2606,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
-     *             .imageId("<image ID>")
      *             .serviceName("<public cloud project ID>")
+     *             .imageId("<image ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an image in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var image = CloudProjectFunctions.getImage(GetImageArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .imageId("<image ID>")
      *             .build());
      * 
      *     }
@@ -2195,9 +2692,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
-     *             .osType("linux")
-     *             .region("WAW1")
      *             .serviceName("<public cloud project ID>")
+     *             .region("WAW1")
+     *             .osType("linux")
      *             .build());
      * 
      *     }
@@ -2239,9 +2736,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
-     *             .osType("linux")
-     *             .region("WAW1")
      *             .serviceName("<public cloud project ID>")
+     *             .region("WAW1")
+     *             .osType("linux")
      *             .build());
      * 
      *     }
@@ -2283,9 +2780,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
-     *             .osType("linux")
-     *             .region("WAW1")
      *             .serviceName("<public cloud project ID>")
+     *             .region("WAW1")
+     *             .osType("linux")
      *             .build());
      * 
      *     }
@@ -2327,9 +2824,53 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
-     *             .osType("linux")
-     *             .region("WAW1")
      *             .serviceName("<public cloud project ID>")
+     *             .region("WAW1")
+     *             .osType("linux")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get available images in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var images = CloudProjectFunctions.getImages(GetImagesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("WAW1")
+     *             .osType("linux")
      *             .build());
      * 
      *     }
@@ -2373,9 +2914,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
-     *             .instanceId("ZZZZZ")
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .instanceId("ZZZZZ")
      *             .build());
      * 
      *     }
@@ -2419,9 +2960,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
-     *             .instanceId("ZZZZZ")
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .instanceId("ZZZZZ")
      *             .build());
      * 
      *     }
@@ -2465,9 +3006,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
-     *             .instanceId("ZZZZZ")
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .instanceId("ZZZZZ")
      *             .build());
      * 
      *     }
@@ -2511,9 +3052,55 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
-     *             .instanceId("ZZZZZ")
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .instanceId("ZZZZZ")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API** Use this data source to get the instance of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To get information of an instance:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstance(GetInstanceArgs.builder()
+     *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .instanceId("ZZZZZ")
      *             .build());
      * 
      *     }
@@ -2559,8 +3146,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -2606,8 +3193,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -2653,8 +3240,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -2700,8 +3287,55 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
-     *             .region("XXXX")
      *             .serviceName("YYYY")
+     *             .region("XXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This datasource uses a Beta API**
+     * 
+     * Use this data source to get the list of instances in a region of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * To list your instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = CloudProjectFunctions.getInstances(GetInstancesArgs.builder()
+     *             .serviceName("YYYY")
+     *             .region("XXXX")
      *             .build());
      * 
      *     }
@@ -2887,6 +3521,50 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKubeResult> getKube(GetKubeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getKube:getKube", TypeShape.of(GetKubeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a OVHcloud Managed Kubernetes Service cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetKubeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKubeCluster = CloudProjectFunctions.getKube(GetKubeArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("version", myKubeCluster.applyValue(getKubeResult -> getKubeResult.version()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKubeResult> getKubePlain(GetKubePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getKube:getKube", TypeShape.of(GetKubeResult.class), args, Utilities.withVersion(options));
     }
@@ -3020,6 +3698,50 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetKubeIpRestrictionsResult> getKubeIpRestrictions(GetKubeIpRestrictionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", TypeShape.of(GetKubeIpRestrictionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a OVHcloud Managed Kubernetes Service cluster IP restrictions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetKubeIpRestrictionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ipRestrictions = CloudProjectFunctions.getKubeIpRestrictions(GetKubeIpRestrictionsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKubeIpRestrictionsResult> getKubeIpRestrictions(GetKubeIpRestrictionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getKubeIpRestrictions:getKubeIpRestrictions", TypeShape.of(GetKubeIpRestrictionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3243,6 +3965,51 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKubeNodePoolResult> getKubeNodePool(GetKubeNodePoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getKubeNodePool:getKubeNodePool", TypeShape.of(GetKubeNodePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a OVHcloud Managed Kubernetes node pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nodepool = CloudProjectFunctions.getKubeNodePool(GetKubeNodePoolArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
+     *             .name("xxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("maxNodes", nodepool.applyValue(getKubeNodePoolResult -> getKubeNodePoolResult.maxNodes()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKubeNodePoolResult> getKubeNodePoolPlain(GetKubeNodePoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getKubeNodePool:getKubeNodePool", TypeShape.of(GetKubeNodePoolResult.class), args, Utilities.withVersion(options));
     }
@@ -3274,13 +4041,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodePoolNodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
      *     }
      * }
      * }
@@ -3319,13 +4086,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodePoolNodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
      *     }
      * }
      * }
@@ -3364,13 +4131,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodePoolNodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
      *     }
      * }
      * }
@@ -3409,13 +4176,58 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodePoolNodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKubeNodePoolNodesResult> getKubeNodePoolNodes(GetKubeNodePoolNodesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getKubeNodePoolNodes:getKubeNodePoolNodes", TypeShape.of(GetKubeNodePoolNodesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of OVHcloud Managed Kubernetes nodes in a specific node pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nodes = CloudProjectFunctions.getKubeNodePoolNodes(GetKubeNodePoolNodesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
+     *             .name("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
      *     }
      * }
      * }
@@ -3454,12 +4266,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
      *     }
      * }
      * }
@@ -3498,12 +4310,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
      *     }
      * }
      * }
@@ -3542,12 +4354,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
      *     }
      * }
      * }
@@ -3586,12 +4398,56 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var nodesKubeNodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
+     *         final var nodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKubeNodesResult> getKubeNodes(GetKubeNodesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getKubeNodes:getKubeNodes", TypeShape.of(GetKubeNodesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of OVHcloud Managed Kubernetes nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetKubeNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nodes = CloudProjectFunctions.getKubeNodes(GetKubeNodesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("nodes", nodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
      *     }
      * }
      * }
@@ -3775,6 +4631,50 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKubeOidcResult> getKubeOidc(GetKubeOidcArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getKubeOidc:getKubeOidc", TypeShape.of(GetKubeOidcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a OVHcloud Managed Kubernetes Service cluster OIDC.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetKubeOidcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = CloudProjectFunctions.getKubeOidc(GetKubeOidcArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("oidc-val", oidc.applyValue(getKubeOidcResult -> getKubeOidcResult.clientId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKubeOidcResult> getKubeOidcPlain(GetKubeOidcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getKubeOidc:getKubeOidc", TypeShape.of(GetKubeOidcResult.class), args, Utilities.withVersion(options));
     }
@@ -3806,13 +4706,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *         final var lb = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lb.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
      *     }
      * }
      * }
@@ -3851,13 +4751,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *         final var lb = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lb.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
      *     }
      * }
      * }
@@ -3896,13 +4796,13 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *         final var lb = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lb.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
      *     }
      * }
      * }
@@ -3941,13 +4841,58 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbLoadBalancer = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *         final var lb = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lb.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a public cloud project loadbalancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lb = CloudProjectFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .id("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lb", lb.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
      *     }
      * }
      * }
@@ -3987,8 +4932,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
-     *             .regionName("GRA9")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA9")
      *             .build());
      * 
      *     }
@@ -4030,8 +4975,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
-     *             .regionName("GRA9")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA9")
      *             .build());
      * 
      *     }
@@ -4073,8 +5018,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
-     *             .regionName("GRA9")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA9")
      *             .build());
      * 
      *     }
@@ -4116,8 +5061,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
-     *             .regionName("GRA9")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancerFlavorsResult> getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors", TypeShape.of(GetLoadBalancerFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List loadbalancer flavors in the given public cloud region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancerFlavorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavors = CloudProjectFunctions.getLoadBalancerFlavors(GetLoadBalancerFlavorsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA9")
      *             .build());
      * 
      *     }
@@ -4158,12 +5146,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var lbs = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbs.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
      *     }
      * }
      * }
@@ -4202,12 +5190,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var lbs = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbs.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
      *     }
      * }
      * }
@@ -4246,12 +5234,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var lbs = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbs.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
      *     }
      * }
      * }
@@ -4290,12 +5278,56 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var lbsLoadBalancers = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *         final var lbs = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .serviceName("XXXXXX")
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbs.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your public cloud loadbalancers.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbs = CloudProjectFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .regionName("XXX")
+     *             .build());
+     * 
+     *         ctx.export("lbs", lbs.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
      *     }
      * }
      * }
@@ -4483,6 +5515,51 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetM3dbNamespaceResult> getM3dbNamespace(GetM3dbNamespaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", TypeShape.of(GetM3dbNamespaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a namespace of a M3DB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetM3dbNamespaceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var m3dbNamespace = CloudProjectFunctions.getM3dbNamespace(GetM3dbNamespaceArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetM3dbNamespaceResult> getM3dbNamespacePlain(GetM3dbNamespacePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getM3dbNamespace:getM3dbNamespace", TypeShape.of(GetM3dbNamespaceResult.class), args, Utilities.withVersion(options));
     }
@@ -4616,6 +5693,50 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetM3dbNamespacesResult> getM3dbNamespaces(GetM3dbNamespacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", TypeShape.of(GetM3dbNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of namespaces of a M3DB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetM3dbNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var namespaces = CloudProjectFunctions.getM3dbNamespaces(GetM3dbNamespacesArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .build());
+     * 
+     *         ctx.export("namespaceIds", namespaces.applyValue(getM3dbNamespacesResult -> getM3dbNamespacesResult.namespaceIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetM3dbNamespacesResult> getM3dbNamespaces(GetM3dbNamespacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces", TypeShape.of(GetM3dbNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4839,6 +5960,51 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a user of a M3DB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetM3dbUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var m3dbUser = CloudProjectFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
@@ -4972,6 +6138,50 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetMongoDbPrometheusResult> getMongoDbPrometheus(GetMongoDbPrometheusArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", TypeShape.of(GetMongoDbPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a prometheus of a MongoDB cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetMongoDbPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getMongoDbPrometheus(GetMongoDbPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMongoDbPrometheusResult> getMongoDbPrometheus(GetMongoDbPrometheusArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus", TypeShape.of(GetMongoDbPrometheusResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5195,6 +6405,51 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMongoDbUserResult> getMongoDbUser(GetMongoDbUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getMongoDbUser:getMongoDbUser", TypeShape.of(GetMongoDbUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a user of a mongodb cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetMongoDbUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var mongoUser = CloudProjectFunctions.getMongoDbUser(GetMongoDbUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ}{@literal @}{@code admin")
+     *             .build());
+     * 
+     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMongoDbUserResult> getMongoDbUserPlain(GetMongoDbUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getMongoDbUser:getMongoDbUser", TypeShape.of(GetMongoDbUserResult.class), args, Utilities.withVersion(options));
     }
@@ -5226,12 +6481,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5270,12 +6525,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5314,12 +6569,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5358,12 +6613,56 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivate = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", private_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivateResult> getNetworkPrivate(GetNetworkPrivateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getNetworkPrivate:getNetworkPrivate", TypeShape.of(GetNetworkPrivateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a public cloud project private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var private = CloudProjectFunctions.getNetworkPrivate(GetNetworkPrivateArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXX")
+     *             .build());
+     * 
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5402,12 +6701,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5446,12 +6745,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5490,12 +6789,12 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5534,12 +6833,56 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivateSubnets = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
      *             .serviceName("XXXXXX")
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", private_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivateSubnetsResult> getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getNetworkPrivateSubnets:getNetworkPrivateSubnets", TypeShape.of(GetNetworkPrivateSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List public cloud project subnets of a private network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivateSubnetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var private = CloudProjectFunctions.getNetworkPrivateSubnets(GetNetworkPrivateSubnetsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .networkId("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5578,11 +6921,11 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5621,11 +6964,11 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5664,11 +7007,11 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5707,11 +7050,54 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var privateNetworkPrivates = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *         final var private = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", private_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPrivatesResult> getNetworkPrivates(GetNetworkPrivatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getNetworkPrivates:getNetworkPrivates", TypeShape.of(GetNetworkPrivatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List public cloud project private networks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetNetworkPrivatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var private = CloudProjectFunctions.getNetworkPrivates(GetNetworkPrivatesArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("private", private_);
      *     }
      * }
      * }
@@ -5855,6 +7241,51 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetOpenSearchPatternResult> getOpenSearchPattern(GetOpenSearchPatternArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", TypeShape.of(GetOpenSearchPatternResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a pattern of a opensearch cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pattern = CloudProjectFunctions.getOpenSearchPattern(GetOpenSearchPatternArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .id("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("patternPattern", pattern.applyValue(getOpenSearchPatternResult -> getOpenSearchPatternResult.pattern()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOpenSearchPatternResult> getOpenSearchPattern(GetOpenSearchPatternArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getOpenSearchPattern:getOpenSearchPattern", TypeShape.of(GetOpenSearchPatternResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6075,6 +7506,50 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOpenSearchPatternsResult> getOpenSearchPatterns(GetOpenSearchPatternsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getOpenSearchPatterns:getOpenSearchPatterns", TypeShape.of(GetOpenSearchPatternsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of pattern of a opensearch cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetOpenSearchPatternsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var patterns = CloudProjectFunctions.getOpenSearchPatterns(GetOpenSearchPatternsArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .build());
+     * 
+     *         ctx.export("patternIds", patterns.applyValue(getOpenSearchPatternsResult -> getOpenSearchPatternsResult.patternIds()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOpenSearchPatternsResult> getOpenSearchPatternsPlain(GetOpenSearchPatternsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getOpenSearchPatterns:getOpenSearchPatterns", TypeShape.of(GetOpenSearchPatternsResult.class), args, Utilities.withVersion(options));
     }
@@ -6211,6 +7686,51 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetOpenSearchUserResult> getOpenSearchUser(GetOpenSearchUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", TypeShape.of(GetOpenSearchUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a user of a opensearch cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetOpenSearchUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var osUser = CloudProjectFunctions.getOpenSearchUser(GetOpenSearchUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOpenSearchUserResult> getOpenSearchUser(GetOpenSearchUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getOpenSearchUser:getOpenSearchUser", TypeShape.of(GetOpenSearchUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6435,6 +7955,51 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a prometheus of a database cluster associated with a public cloud project. For mongodb, please use ovh.CloudProjectDatabase.MongoDbPrometheus datasource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prometheus = CloudProjectFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .serviceName("XXX")
+     *             .engine("YYY")
+     *             .clusterId("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
     }
@@ -6467,8 +8032,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
-     *             .id("<Rancher service ID>")
      *             .projectId("<public cloud project ID>")
+     *             .id("<Rancher service ID>")
      *             .build());
      * 
      *     }
@@ -6510,8 +8075,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
-     *             .id("<Rancher service ID>")
      *             .projectId("<public cloud project ID>")
+     *             .id("<Rancher service ID>")
      *             .build());
      * 
      *     }
@@ -6553,8 +8118,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
-     *             .id("<Rancher service ID>")
      *             .projectId("<public cloud project ID>")
+     *             .id("<Rancher service ID>")
      *             .build());
      * 
      *     }
@@ -6596,8 +8161,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
-     *             .id("<Rancher service ID>")
      *             .projectId("<public cloud project ID>")
+     *             .id("<Rancher service ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherResult> getRancher(GetRancherArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRancher:getRancher", TypeShape.of(GetRancherResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about a Managed Rancher Service in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rancher = CloudProjectFunctions.getRancher(GetRancherArgs.builder()
+     *             .projectId("<public cloud project ID>")
+     *             .id("<Rancher service ID>")
      *             .build());
      * 
      *     }
@@ -6775,6 +8383,48 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRancherPlanResult> getRancherPlan(GetRancherPlanArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRancherPlan:getRancherPlan", TypeShape.of(GetRancherPlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher plans available in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var plans = CloudProjectFunctions.getRancherPlan(GetRancherPlanArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRancherPlanResult> getRancherPlanPlain(GetRancherPlanPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRancherPlan:getRancherPlan", TypeShape.of(GetRancherPlanResult.class), args, Utilities.withVersion(options));
     }
@@ -6902,6 +8552,48 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetRancherVersionResult> getRancherVersion(GetRancherVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRancherVersion:getRancherVersion", TypeShape.of(GetRancherVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to retrieve information about the Managed Rancher available versions in the given public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRancherVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var versions = CloudProjectFunctions.getRancherVersion(GetRancherVersionArgs.builder()
+     *             .projectId("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRancherVersionResult> getRancherVersion(GetRancherVersionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getRancherVersion:getRancherVersion", TypeShape.of(GetRancherVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7123,6 +8815,51 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a user of a redis cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRedisUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var redisUser = CloudProjectFunctions.getRedisUser(GetRedisUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
     }
@@ -7154,9 +8891,9 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
-     *             .name("GRA1")
+     *         final var GRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
      *             .serviceName("XXXXXX")
+     *             .name("GRA1")
      *             .build());
      * 
      *     }
@@ -7197,9 +8934,9 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
-     *             .name("GRA1")
+     *         final var GRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
      *             .serviceName("XXXXXX")
+     *             .name("GRA1")
      *             .build());
      * 
      *     }
@@ -7240,9 +8977,9 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
-     *             .name("GRA1")
+     *         final var GRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
      *             .serviceName("XXXXXX")
+     *             .name("GRA1")
      *             .build());
      * 
      *     }
@@ -7283,9 +9020,52 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
-     *             .name("GRA1")
+     *         final var GRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
      *             .serviceName("XXXXXX")
+     *             .name("GRA1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionResult> getRegion(GetRegionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRegion:getRegion", TypeShape.of(GetRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var GRA1 = CloudProjectFunctions.getRegion(GetRegionArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .name("GRA1")
      *             .build());
      * 
      *     }
@@ -7327,9 +9107,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
      *             .build());
      * 
@@ -7372,9 +9152,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
      *             .build());
      * 
@@ -7417,9 +9197,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
      *             .build());
      * 
@@ -7462,9 +9242,54 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionLoadBalancerLogSubscriptionResult> getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription", TypeShape.of(GetRegionLoadBalancerLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a subscription to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = CloudProjectFunctions.getRegionLoadBalancerLogSubscription(GetRegionLoadBalancerLogSubscriptionArgs.builder()
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .subscriptionId("zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv")
      *             .build());
      * 
@@ -7507,9 +9332,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .build());
      * 
      *     }
@@ -7551,9 +9376,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .build());
      * 
      *     }
@@ -7595,9 +9420,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .build());
      * 
      *     }
@@ -7639,9 +9464,53 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
-     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
-     *             .regionName("gggg")
      *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionLoadBalancerLogSubscriptionsResult> getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions", TypeShape.of(GetRegionLoadBalancerLogSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about subscriptions to a Managed Loadbalancer Logs Service in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionLoadBalancerLogSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subs = CloudProjectFunctions.getRegionLoadBalancerLogSubscriptions(GetRegionLoadBalancerLogSubscriptionsArgs.builder()
+     *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     *             .regionName("gggg")
+     *             .loadbalancerId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
      *             .build());
      * 
      *     }
@@ -7683,8 +9552,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var regions = CloudProjectFunctions.getRegions(GetRegionsArgs.builder()
-     *             .hasServicesUps("network")
      *             .serviceName("XXXXXX")
+     *             .hasServicesUps("network")
      *             .build());
      * 
      *     }
@@ -7726,8 +9595,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var regions = CloudProjectFunctions.getRegions(GetRegionsArgs.builder()
-     *             .hasServicesUps("network")
      *             .serviceName("XXXXXX")
+     *             .hasServicesUps("network")
      *             .build());
      * 
      *     }
@@ -7769,8 +9638,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var regions = CloudProjectFunctions.getRegions(GetRegionsArgs.builder()
-     *             .hasServicesUps("network")
      *             .serviceName("XXXXXX")
+     *             .hasServicesUps("network")
      *             .build());
      * 
      *     }
@@ -7812,8 +9681,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var regions = CloudProjectFunctions.getRegions(GetRegionsArgs.builder()
-     *             .hasServicesUps("network")
      *             .serviceName("XXXXXX")
+     *             .hasServicesUps("network")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the regions of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regions = CloudProjectFunctions.getRegions(GetRegionsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .hasServicesUps("network")
      *             .build());
      * 
      *     }
@@ -7855,9 +9767,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .name("my-storage-name")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("my-storage-name")
      *             .build());
      * 
      *     }
@@ -7899,9 +9811,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .name("my-storage-name")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("my-storage-name")
      *             .build());
      * 
      *     }
@@ -7943,9 +9855,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .name("my-storage-name")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("my-storage-name")
      *             .build());
      * 
      *     }
@@ -7987,9 +9899,53 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .name("my-storage-name")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("my-storage-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageResult> getStorage(GetStorageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorage:getStorage", TypeShape.of(GetStorageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("my-storage-name")
      *             .build());
      * 
      *     }
@@ -8031,10 +9987,10 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
-     *             .key("<object name>")
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
+     *             .key("<object name>")
      *             .build());
      * 
      *     }
@@ -8076,10 +10032,10 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
-     *             .key("<object name>")
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
+     *             .key("<object name>")
      *             .build());
      * 
      *     }
@@ -8121,10 +10077,10 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
-     *             .key("<object name>")
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
+     *             .key("<object name>")
      *             .build());
      * 
      *     }
@@ -8166,10 +10122,55 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
-     *             .key("<object name>")
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
+     *             .key("<object name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageObjectResult> getStorageObject(GetStorageObjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorageObject:getStorageObject", TypeShape.of(GetStorageObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an object in a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var object = CloudProjectFunctions.getStorageObject(GetStorageObjectArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
+     *             .key("<object name>")
      *             .build());
      * 
      *     }
@@ -8211,9 +10212,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
      *             .build());
      * 
      *     }
@@ -8255,9 +10256,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
      *             .build());
      * 
      *     }
@@ -8299,9 +10300,9 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
      *             .build());
      * 
      *     }
@@ -8343,9 +10344,53 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
-     *             .name("<bucket name>")
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStorageObjectsResult> getStorageObjects(GetStorageObjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorageObjects:getStorageObjects", TypeShape.of(GetStorageObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get objects of S3™* compatible storage containers. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objects = CloudProjectFunctions.getStorageObjects(GetStorageObjectsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .name("<bucket name>")
      *             .build());
      * 
      *     }
@@ -8387,8 +10432,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
      *             .build());
      * 
      *     }
@@ -8430,8 +10475,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
      *             .build());
      * 
      *     }
@@ -8473,8 +10518,8 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
      *             .build());
      * 
      *     }
@@ -8516,8 +10561,51 @@ public final class CloudProjectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
-     *             .regionName("GRA")
      *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStoragesResult> getStorages(GetStoragesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getStorages:getStorages", TypeShape.of(GetStoragesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List your S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetStorageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storage = CloudProjectFunctions.getStorage(GetStorageArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
      *             .build());
      * 
      *     }
@@ -8536,47 +10624,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8589,47 +10636,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8642,47 +10648,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8695,47 +10660,18 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
+     */
+    public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the user details of a previously created public cloud project user.
      * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
+     * ## Example Usage
      * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8748,56 +10684,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
-     *             .build());
-     * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8810,56 +10696,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
-     *             .build());
-     * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8872,56 +10708,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
-     *             .build());
-     * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8934,56 +10720,18 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
+     */
+    public static Output<GetUserS3CredentialResult> getUserS3Credential(GetUserS3CredentialArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getUserS3Credential:getUserS3Credential", TypeShape.of(GetUserS3CredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve the Secret Access Key of an Access Key ID associated with a public cloud project&#39;s user.
      * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
+     * ## Example Usage
      * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
-     *             .build());
-     * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
-     *     }
-     * }
-     * }
-     * </pre>
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9163,11 +10911,11 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetUserS3CredentialsResult> getUserS3CredentialsPlain(GetUserS3CredentialsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", TypeShape.of(GetUserS3CredentialsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetUserS3CredentialsResult> getUserS3Credentials(GetUserS3CredentialsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", TypeShape.of(GetUserS3CredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get the S3 Policy of a public cloud project user. The policy can be set by using the `ovh.CloudProject.S3Policy` resource.
+     * Use this data source to retrieve the list of all the S3 access_key_id associated with a public cloud project&#39;s user.
      * 
      * ## Example Usage
      * 
@@ -9180,8 +10928,7 @@ public final class CloudProjectFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
+     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3CredentialsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -9195,24 +10942,28 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
+     *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .userId("1234")
      *             .build());
      * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
+     *         ctx.export("accessKeyIds", myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()));
      *     }
      * }
      * }
      * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserS3CredentialsResult> getUserS3CredentialsPlain(GetUserS3CredentialsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:CloudProject/getUserS3Credentials:getUserS3Credentials", TypeShape.of(GetUserS3CredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the S3 Policy of a public cloud project user. The policy can be set by using the `ovh.CloudProject.S3Policy` resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9225,47 +10976,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9278,47 +10988,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9331,47 +11000,18 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUserS3PolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
+     */
+    public static Output<GetUserS3PolicyResult> getUserS3Policy(GetUserS3PolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getUserS3Policy:getUserS3Policy", TypeShape.of(GetUserS3PolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the S3 Policy of a public cloud project user. The policy can be set by using the `ovh.CloudProject.S3Policy` resource.
      * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
+     * ## Example Usage
      * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
-     *             .userId(s3UserId)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9384,42 +11024,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         ctx.export("userId", s3UserId);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9432,42 +11036,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         ctx.export("userId", s3UserId);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9480,42 +11048,6 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         ctx.export("userId", s3UserId);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9528,42 +11060,18 @@ public final class CloudProjectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the list of all users of a public cloud project.
      * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
+     * ## Example Usage
      * 
-     *     public static void stack(Context ctx) {
-     *         final var projectUsers = CloudProjectFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         // Get the user ID of a previously created user with the description "S3-User"
-     *         final var users = "TODO: ForExpression";
-     * 
-     *         final var s3UserId = users[0];
-     * 
-     *         ctx.export("userId", s3UserId);
-     *     }
-     * }
-     * }
-     * </pre>
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9598,11 +11106,11 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vrackVRack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
+     *         final var vrack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrack.applyValue(getVRackResult -> getVRackResult));
      *     }
      * }
      * }
@@ -9641,11 +11149,11 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vrackVRack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
+     *         final var vrack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrack.applyValue(getVRackResult -> getVRackResult));
      *     }
      * }
      * }
@@ -9684,11 +11192,11 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vrackVRack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
+     *         final var vrack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrack.applyValue(getVRackResult -> getVRackResult));
      *     }
      * }
      * }
@@ -9727,11 +11235,54 @@ public final class CloudProjectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vrackVRack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
+     *         final var vrack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrack.applyValue(getVRackResult -> getVRackResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVRackResult> getVRack(GetVRackArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getVRack:getVRack", TypeShape.of(GetVRackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the linked vrack on your public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVRackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vrack = CloudProjectFunctions.getVRack(GetVRackArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("vrack", vrack.applyValue(getVRackResult -> getVRackResult));
      *     }
      * }
      * }
@@ -9915,6 +11466,50 @@ public final class CloudProjectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a volume in a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .volumeId("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
@@ -10045,6 +11640,49 @@ public final class CloudProjectFunctions {
      * 
      */
     public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:CloudProject/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all the volume from a region of a public cloud project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = CloudProjectFunctions.getVolume(GetVolumeArgs.builder()
+     *             .regionName("xxx")
+     *             .serviceName("yyy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetContainerRegistry(ctx, &cloudproject.GetContainerRegistryArgs{
-//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //				ServiceName: "XXXXXX",
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err

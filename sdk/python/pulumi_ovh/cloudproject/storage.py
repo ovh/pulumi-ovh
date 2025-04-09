@@ -472,8 +472,9 @@ class Storage(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         storage = ovh.cloud_project.Storage("storage",
-            region_name="GRA",
             service_name="<public cloud project ID>",
+            region_name="GRA",
+            name="my-storage",
             versioning={
                 "status": "enabled",
             })
@@ -530,8 +531,9 @@ class Storage(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         storage = ovh.cloud_project.Storage("storage",
-            region_name="GRA",
             service_name="<public cloud project ID>",
+            region_name="GRA",
+            name="my-storage",
             versioning={
                 "status": "enabled",
             })

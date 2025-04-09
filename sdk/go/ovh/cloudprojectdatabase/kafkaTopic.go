@@ -39,6 +39,7 @@ import (
 //			_, err = cloudprojectdatabase.NewKafkaTopic(ctx, "topic", &cloudprojectdatabase.KafkaTopicArgs{
 //				ServiceName:       pulumi.String(kafka.ServiceName),
 //				ClusterId:         pulumi.String(kafka.Id),
+//				Name:              pulumi.String("mytopic"),
 //				MinInsyncReplicas: pulumi.Int(1),
 //				Partitions:        pulumi.Int(3),
 //				Replication:       pulumi.Int(2),

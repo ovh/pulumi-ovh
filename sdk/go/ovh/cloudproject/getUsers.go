@@ -12,36 +12,6 @@ import (
 )
 
 // Get the list of all users of a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			projectUsers, err := cloudproject.GetUsers(ctx, &cloudproject.GetUsersArgs{
-//				ServiceName: "XXX",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Get the user ID of a previously created user with the description "S3-User"
-//			users := "TODO: For expression"
-//			s3UserId := users[0]
-//			ctx.Export("userId", s3UserId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult

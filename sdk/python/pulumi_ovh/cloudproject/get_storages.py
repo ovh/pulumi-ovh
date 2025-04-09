@@ -95,8 +95,8 @@ def get_storages(region_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    storage = ovh.CloudProject.get_storage(region_name="GRA",
-        service_name="<public cloud project ID>")
+    storage = ovh.CloudProject.get_storage(service_name="<public cloud project ID>",
+        region_name="GRA")
     ```
 
 
@@ -126,8 +126,8 @@ def get_storages_output(region_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    storage = ovh.CloudProject.get_storage(region_name="GRA",
-        service_name="<public cloud project ID>")
+    storage = ovh.CloudProject.get_storage(service_name="<public cloud project ID>",
+        region_name="GRA")
     ```
 
 

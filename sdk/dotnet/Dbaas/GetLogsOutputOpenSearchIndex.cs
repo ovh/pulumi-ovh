@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var index = Ovh.Dbaas.GetLogsOutputOpenSearchIndex.Invoke(new()
         ///     {
-        ///         Name = "index-name",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Name = "index-name",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var index = Ovh.Dbaas.GetLogsOutputOpenSearchIndex.Invoke(new()
         ///     {
-        ///         Name = "index-name",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Name = "index-name",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var index = Ovh.Dbaas.GetLogsOutputOpenSearchIndex.Invoke(new()
         ///     {
-        ///         Name = "index-name",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Name = "index-name",
         ///     });
         /// 
         /// });

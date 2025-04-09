@@ -29,7 +29,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///         Id = "ZZZ",
     ///     });
     /// 
-    ///     var schemaRegistryAcl = new Ovh.CloudProjectDatabase.KafkaSchemaRegistryAcl("schemaRegistryAcl", new()
+    ///     var schemaRegistryAcl = new Ovh.CloudProjectDatabase.KafkaSchemaRegistryAcl("schema_registry_acl", new()
     ///     {
     ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
     ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),

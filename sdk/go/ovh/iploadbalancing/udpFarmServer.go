@@ -35,22 +35,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			farmName, err := iploadbalancing.NewUdpFarm(ctx, "farmName", &iploadbalancing.UdpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				Port:        pulumi.Float64(80),
+//			farmName, err := iploadbalancing.NewUdpFarm(ctx, "farm_name", &iploadbalancing.UdpFarmArgs{
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("gra"),
+//				Port:        pulumi.Float64(80),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = iploadbalancing.NewUdpFarmServer(ctx, "backend", &iploadbalancing.UdpFarmServerArgs{
-//				Address:     pulumi.String("4.5.6.7"),
-//				DisplayName: pulumi.String("mybackend"),
-//				FarmId:      farmName.FarmId,
-//				Port:        pulumi.Float64(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				FarmId:      farmName.FarmId,
+//				DisplayName: pulumi.String("mybackend"),
+//				Address:     pulumi.String("4.5.6.7"),
 //				Status:      pulumi.String("active"),
+//				Port:        pulumi.Float64(80),
 //			})
 //			if err != nil {
 //				return err

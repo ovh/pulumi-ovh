@@ -28,12 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewKubeIpRestrictions(ctx, "vrackOnly", &cloudproject.KubeIpRestrictionsArgs{
+//			_, err := cloudproject.NewKubeIpRestrictions(ctx, "vrack_only", &cloudproject.KubeIpRestrictionsArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				KubeId:      pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
 //				Ips: pulumi.StringArray{
 //					pulumi.String("10.42.0.0/16"),
 //				},
-//				KubeId:      pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //			})
 //			if err != nil {
 //				return err

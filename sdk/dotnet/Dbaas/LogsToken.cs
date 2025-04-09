@@ -25,6 +25,7 @@ namespace Pulumi.Ovh.Dbaas
     ///     var token = new Ovh.Dbaas.LogsToken("token", new()
     ///     {
     ///         ServiceName = "ldp-xx-xxxxx",
+    ///         Name = "ExampleToken",
     ///     });
     /// 
     /// });

@@ -45,8 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var net = new RegionNetwork("net", RegionNetworkArgs.builder()
- *             .regionName("EU-SOUTH-LZ-MAD-A")
  *             .serviceName("XXXXXX")
+ *             .regionName("EU-SOUTH-LZ-MAD-A")
+ *             .name("Madrid Network")
  *             .subnet(RegionNetworkSubnetArgs.builder()
  *                 .cidr("10.0.0.0/24")
  *                 .enable_dhcp(true)
@@ -226,6 +227,7 @@ public class RegionNetwork extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

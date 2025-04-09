@@ -35,11 +35,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewUdpFarm(ctx, "farmName", &iploadbalancing.UdpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				Port:        pulumi.Float64(80),
+//			_, err = iploadbalancing.NewUdpFarm(ctx, "farm_name", &iploadbalancing.UdpFarmArgs{
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("gra"),
+//				Port:        pulumi.Float64(80),
 //			})
 //			if err != nil {
 //				return err

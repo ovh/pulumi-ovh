@@ -24,9 +24,10 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var backup = new Ovh.CloudProject.VolumeBackup("backup", new()
     ///     {
-    ///         RegionName = "GRA9",
     ///         ServiceName = "&lt;public cloud project ID&gt;",
+    ///         RegionName = "GRA9",
     ///         VolumeId = "&lt;volume ID&gt;",
+    ///         Name = "ExampleBackup",
     ///     });
     /// 
     /// });

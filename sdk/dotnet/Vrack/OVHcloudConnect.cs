@@ -22,10 +22,10 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrackOvhcloudconnect = new Ovh.Vrack.OVHcloudConnect("vrackOvhcloudconnect", new()
+    ///     var vrackOvhcloudconnect = new Ovh.Vrack.OVHcloudConnect("vrack_ovhcloudconnect", new()
     ///     {
-    ///         OvhCloudConnect = "&lt;OVH Cloud Connect service name&gt;",
     ///         ServiceName = "&lt;vRack service name&gt;",
+    ///         OvhCloudConnect = "&lt;OVH Cloud Connect service name&gt;",
     ///     });
     /// 
     /// });

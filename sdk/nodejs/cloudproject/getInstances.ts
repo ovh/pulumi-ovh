@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const instance = ovh.CloudProject.getInstances({
- *     region: "XXXX",
  *     serviceName: "YYYY",
+ *     region: "XXXX",
  * });
  * ```
  */
@@ -76,8 +76,8 @@ export interface GetInstancesResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const instance = ovh.CloudProject.getInstances({
- *     region: "XXXX",
  *     serviceName: "YYYY",
+ *     region: "XXXX",
  * });
  * ```
  */

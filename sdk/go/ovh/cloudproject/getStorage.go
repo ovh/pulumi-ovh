@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetStorage(ctx, &cloudproject.GetStorageArgs{
-//				Name:        "my-storage-name",
-//				RegionName:  "GRA",
 //				ServiceName: "<public cloud project ID>",
+//				RegionName:  "GRA",
+//				Name:        "my-storage-name",
 //			}, nil)
 //			if err != nil {
 //				return err

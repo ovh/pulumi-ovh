@@ -31,7 +31,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///         Id = "ZZZZ",
     ///     });
     /// 
-    ///     var ipRestriction = new Ovh.CloudProjectDatabase.IpRestriction("ipRestriction", new()
+    ///     var ipRestriction = new Ovh.CloudProjectDatabase.IpRestriction("ip_restriction", new()
     ///     {
     ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
     ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),

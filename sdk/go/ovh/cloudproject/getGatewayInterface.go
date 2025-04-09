@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetGatewayInterface(ctx, &cloudproject.GetGatewayInterfaceArgs{
+//				ServiceName: "XXXXXX",
+//				Region:      "GRA11",
 //				Id:          "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
 //				InterfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
-//				Region:      "GRA11",
-//				ServiceName: "XXXXXX",
 //			}, nil)
 //			if err != nil {
 //				return err

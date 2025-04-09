@@ -26,9 +26,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var sub = Ovh.CloudProject.GetRegionLoadBalancerLogSubscription.Invoke(new()
         ///     {
-        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        ///         RegionName = "gggg",
         ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        ///         RegionName = "gggg",
+        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         ///         SubscriptionId = "zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv",
         ///     });
         /// 
@@ -53,9 +53,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var sub = Ovh.CloudProject.GetRegionLoadBalancerLogSubscription.Invoke(new()
         ///     {
-        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        ///         RegionName = "gggg",
         ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        ///         RegionName = "gggg",
+        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         ///         SubscriptionId = "zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv",
         ///     });
         /// 
@@ -80,9 +80,9 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var sub = Ovh.CloudProject.GetRegionLoadBalancerLogSubscription.Invoke(new()
         ///     {
-        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        ///         RegionName = "gggg",
         ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        ///         RegionName = "gggg",
+        ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         ///         SubscriptionId = "zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv",
         ///     });
         /// 

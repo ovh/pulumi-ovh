@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const sub = ovh.CloudProject.getRegionLoadBalancerLogSubscription({
- *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
- *     regionName: "gggg",
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     regionName: "gggg",
+ *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
  *     subscriptionId: "zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv",
  * });
  * ```
@@ -116,9 +116,9 @@ export interface GetRegionLoadBalancerLogSubscriptionResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const sub = ovh.CloudProject.getRegionLoadBalancerLogSubscription({
- *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
- *     regionName: "gggg",
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     regionName: "gggg",
+ *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
  *     subscriptionId: "zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv",
  * });
  * ```

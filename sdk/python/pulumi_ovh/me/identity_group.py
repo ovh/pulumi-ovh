@@ -210,8 +210,9 @@ class IdentityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_group = ovh.me.IdentityGroup("myGroup",
+        my_group = ovh.me.IdentityGroup("my_group",
             description="Some custom description",
+            name="my_group_name",
             role="NONE")
         ```
 
@@ -236,8 +237,9 @@ class IdentityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_group = ovh.me.IdentityGroup("myGroup",
+        my_group = ovh.me.IdentityGroup("my_group",
             description="Some custom description",
+            name="my_group_name",
             role="NONE")
         ```
 

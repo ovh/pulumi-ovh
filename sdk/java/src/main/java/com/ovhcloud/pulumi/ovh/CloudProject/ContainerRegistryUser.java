@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var user = new ContainerRegistryUser("user", ContainerRegistryUserArgs.builder()
- *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
- *             .registryId(ovh_cloud_project_containerregistry.registry().id())
+ *             .serviceName(registryOvhCloudProjectContainerregistry.serviceName())
+ *             .registryId(registryOvhCloudProjectContainerregistry.id())
  *             .email("foo}{@literal @}{@code bar.com")
  *             .login("foobar")
  *             .build());
@@ -189,6 +189,7 @@ public class ContainerRegistryUser extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "password"
             ))

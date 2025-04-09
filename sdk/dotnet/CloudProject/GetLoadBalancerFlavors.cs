@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var flavors = Ovh.CloudProject.GetLoadBalancerFlavors.Invoke(new()
         ///     {
-        ///         RegionName = "GRA9",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA9",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var flavors = Ovh.CloudProject.GetLoadBalancerFlavors.Invoke(new()
         ///     {
-        ///         RegionName = "GRA9",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA9",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var flavors = Ovh.CloudProject.GetLoadBalancerFlavors.Invoke(new()
         ///     {
-        ///         RegionName = "GRA9",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA9",
         ///     });
         /// 
         /// });

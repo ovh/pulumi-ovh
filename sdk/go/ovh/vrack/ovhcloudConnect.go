@@ -28,9 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vrack.NewOVHcloudConnect(ctx, "vrackOvhcloudconnect", &vrack.OVHcloudConnectArgs{
-//				OvhCloudConnect: pulumi.String("<OVH Cloud Connect service name>"),
+//			_, err := vrack.NewOVHcloudConnect(ctx, "vrack_ovhcloudconnect", &vrack.OVHcloudConnectArgs{
 //				ServiceName:     pulumi.String("<vRack service name>"),
+//				OvhCloudConnect: pulumi.String("<OVH Cloud Connect service name>"),
 //			})
 //			if err != nil {
 //				return err

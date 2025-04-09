@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const dsRecords = new ovh.domain.DSRecords("dsRecords", {
+ * const dsRecords = new ovh.domain.DSRecords("ds_records", {
  *     domain: "mydomain.ovh",
  *     dsRecords: [{
  *         algorithm: "RSASHA1_NSEC3_SHA1",

@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const _interface = ovh.CloudProject.getGatewayInterface({
+ *     serviceName: "XXXXXX",
+ *     region: "GRA11",
  *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     interfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
- *     region: "GRA11",
- *     serviceName: "XXXXXX",
  * });
  * ```
  */
@@ -96,10 +96,10 @@ export interface GetGatewayInterfaceResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const _interface = ovh.CloudProject.getGatewayInterface({
+ *     serviceName: "XXXXXX",
+ *     region: "GRA11",
  *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     interfaceId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy",
- *     region: "GRA11",
- *     serviceName: "XXXXXX",
  * });
  * ```
  */

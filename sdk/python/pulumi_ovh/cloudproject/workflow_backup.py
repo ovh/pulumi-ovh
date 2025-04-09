@@ -318,13 +318,14 @@ class WorkflowBackup(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_backup = ovh.cloud_project.WorkflowBackup("myBackup",
+        my_backup = ovh.cloud_project.WorkflowBackup("my_backup",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            region_name="GRA11",
             cron="50 4 * * *",
             instance_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
             max_execution_count=0,
-            region_name="GRA11",
-            rotation=7,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            name="Backup workflow for instance",
+            rotation=7)
         ```
 
         :param str resource_name: The name of the resource.
@@ -354,13 +355,14 @@ class WorkflowBackup(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_backup = ovh.cloud_project.WorkflowBackup("myBackup",
+        my_backup = ovh.cloud_project.WorkflowBackup("my_backup",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            region_name="GRA11",
             cron="50 4 * * *",
             instance_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
             max_execution_count=0,
-            region_name="GRA11",
-            rotation=7,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            name="Backup workflow for instance",
+            rotation=7)
         ```
 
         :param str resource_name: The name of the resource.

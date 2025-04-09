@@ -93,8 +93,8 @@ def get_v_rack(service_name: Optional[str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    vrack_v_rack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
-    pulumi.export("vrack", vrack_v_rack)
+    vrack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
+    pulumi.export("vrack", vrack)
     ```
 
 
@@ -121,8 +121,8 @@ def get_v_rack_output(service_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    vrack_v_rack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
-    pulumi.export("vrack", vrack_v_rack)
+    vrack = ovh.CloudProject.get_v_rack(service_name="XXXXXX")
+    pulumi.export("vrack", vrack)
     ```
 
 
