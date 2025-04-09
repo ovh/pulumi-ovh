@@ -34,3 +34,27 @@ configured access to your cloud provider with Pulumi.
 
 _TODO: Add any steps you need to take to run integration tests here_
 
+## Test your local Pulumi provider
+
+1. Run `make build_sdks` from the root of this repository
+2. Go in the wanted example in `examples` folder, and change the dependency version according to your local version. Example for dotnet:
+```
+cd examples/kubernetes/ovh-csharp
+vi ovh-csharp.csproj
+```
+```
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pulumi" Version="3.*" />
+    <PackageReference Include="Pulumi.Ovh" Version="1.7.0-alpha.1742216579" />
+  </ItemGroup>
+
+</Project>
+```
