@@ -30,10 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Me.MeFunctions;
- * import com.pulumi.ovh.Me.IdentityGroup;
- * import com.pulumi.ovh.Me.IdentityGroupArgs;
- * import com.pulumi.ovh.Iam.Policy;
- * import com.pulumi.ovh.Iam.PolicyArgs;
+ * import com.ovhcloud.pulumi.ovh.Me.IdentityGroup;
+ * import com.ovhcloud.pulumi.ovh.Me.IdentityGroupArgs;
+ * import com.ovhcloud.pulumi.ovh.Iam.Policy;
+ * import com.ovhcloud.pulumi.ovh.Iam.PolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var account = MeFunctions.getMe();
+ *         final var account = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()
  *             .description("my_group created in Terraform")
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         var manager = new Policy("manager", PolicyArgs.builder()
  *             .description("Users are allowed to use the OVH manager")
  *             .identities(myGroup.GroupURN())
- *             .resources(account.applyValue(getMeResult -> getMeResult.AccountURN()))
+ *             .resources(account.AccountURN())
  *             .allows(            
  *                 "account:apiovh:me/get",
  *                 "account:apiovh:me/supportLevel/get",

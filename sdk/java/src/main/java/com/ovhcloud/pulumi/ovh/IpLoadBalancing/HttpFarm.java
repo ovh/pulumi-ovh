@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarm;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarm;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .zone("GRA")
  *             .build());
  * 

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * bash
  *
  * ```sh
- * $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+ * $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream  ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
  * ```
  */
 export class LogsRolePermissionStream extends pulumi.CustomResource {

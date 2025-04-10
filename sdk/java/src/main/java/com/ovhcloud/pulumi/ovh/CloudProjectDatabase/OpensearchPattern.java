@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.OpensearchPattern;
- * import com.pulumi.ovh.CloudProjectDatabase.OpensearchPatternArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.OpensearchPattern;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.OpensearchPatternArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pattern = new OpensearchPattern("pattern", OpensearchPatternArgs.builder()
- *             .serviceName(opensearch.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .clusterId(opensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(opensearch.serviceName())
+ *             .clusterId(opensearch.id())
  *             .maxIndexCount(2)
  *             .pattern("logs_*")
  *             .build());

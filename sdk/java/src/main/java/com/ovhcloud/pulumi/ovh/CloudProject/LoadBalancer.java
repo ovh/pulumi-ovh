@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.CloudProject.LoadBalancer;
- * import com.pulumi.ovh.CloudProject.LoadBalancerArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancer;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancerArgs;
  * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkArgs;
  * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateArgs;
  * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateNetworkArgs;
@@ -63,11 +63,11 @@ import javax.annotation.Nullable;
  *             .description("My new LB")
  *             .listeners(            
  *                 LoadBalancerListenerArgs.builder()
- *                     .port("34568")
+ *                     .port(34568.0)
  *                     .protocol("tcp")
  *                     .build(),
  *                 LoadBalancerListenerArgs.builder()
- *                     .port("34569")
+ *                     .port(34569.0)
  *                     .protocol("udp")
  *                     .build())
  *             .build());
@@ -88,12 +88,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.CloudProject.NetworkPrivate;
- * import com.pulumi.ovh.CloudProject.NetworkPrivateArgs;
- * import com.pulumi.ovh.CloudProject.NetworkPrivateSubnet;
- * import com.pulumi.ovh.CloudProject.NetworkPrivateSubnetArgs;
- * import com.pulumi.ovh.CloudProject.LoadBalancer;
- * import com.pulumi.ovh.CloudProject.LoadBalancerArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivate;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivateArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivateSubnet;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivateSubnetArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancer;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancerArgs;
  * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkArgs;
  * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateArgs;
  * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateNetworkArgs;
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var priv = new NetworkPrivate("priv", NetworkPrivateArgs.builder()
  *             .serviceName("<public cloud project ID>")
- *             .vlanId("10")
+ *             .vlanId(10)
  *             .regions("GRA9")
  *             .build());
  * 
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *             .network(LoadBalancerNetworkArgs.builder()
  *                 .private_(LoadBalancerNetworkPrivateArgs.builder()
  *                     .network(LoadBalancerNetworkPrivateNetworkArgs.builder()
- *                         .id(priv.regionsAttributes().applyValue(regionsAttributes -> "TODO: ForExpression")[0].applyValue(regions -> regions.openstackid()))
+ *                         .id(priv.regionsAttributes().applyValue(_regionsAttributes -> "TODO: ForExpression")[0].applyValue(_regions -> _regions.openstackid()))
  *                         .subnetId(privsub.id())
  *                         .build())
  *                     .build())
@@ -142,11 +142,11 @@ import javax.annotation.Nullable;
  *             .description("My new LB")
  *             .listeners(            
  *                 LoadBalancerListenerArgs.builder()
- *                     .port("34568")
+ *                     .port(34568.0)
  *                     .protocol("tcp")
  *                     .build(),
  *                 LoadBalancerListenerArgs.builder()
- *                     .port("34569")
+ *                     .port(34569.0)
  *                     .protocol("udp")
  *                     .build())
  *             .build());

@@ -211,7 +211,7 @@ public final class VpsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = VpsFunctions.getVpss();
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -250,7 +250,7 @@ public final class VpsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = VpsFunctions.getVpss();
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -289,7 +289,7 @@ public final class VpsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = VpsFunctions.getVpss();
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -328,7 +328,7 @@ public final class VpsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = VpsFunctions.getVpss();
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -367,7 +367,7 @@ public final class VpsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = VpsFunctions.getVpss();
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -406,7 +406,7 @@ public final class VpsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = VpsFunctions.getVpss();
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

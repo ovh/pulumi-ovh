@@ -27,10 +27,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
  * import com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
- * import com.pulumi.ovh.Dedicated.ServerUpdate;
- * import com.pulumi.ovh.Dedicated.ServerUpdateArgs;
- * import com.pulumi.ovh.Dedicated.ServerRebootTask;
- * import com.pulumi.ovh.Dedicated.ServerRebootTaskArgs;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.ServerUpdate;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.ServerUpdateArgs;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.ServerRebootTask;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.ServerRebootTaskArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  * 
  *         var serverOnRescue = new ServerUpdate("serverOnRescue", ServerUpdateArgs.builder()
  *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
- *             .bootId(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
+ *             .bootId(rescue.results()[0])
  *             .monitoring(true)
  *             .state("ok")
  *             .build());
  * 
  *         var serverReboot = new ServerRebootTask("serverReboot", ServerRebootTaskArgs.builder()
- *             .serviceName(rescue.applyValue(getServerBootsResult -> getServerBootsResult.serviceName()))
+ *             .serviceName(rescue.serviceName())
  *             .keepers(serverOnRescue.bootId())
  *             .build());
  * 

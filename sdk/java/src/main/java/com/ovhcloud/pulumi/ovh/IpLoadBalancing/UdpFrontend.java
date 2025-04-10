@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.UdpFrontend;
- * import com.pulumi.ovh.IpLoadBalancing.UdpFrontendArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.UdpFrontend;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.UdpFrontendArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testFrontend = new UdpFrontend("testFrontend", UdpFrontendArgs.builder()
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .displayName("ingress-8080-gra")
  *             .zone("all")
  *             .port("10,11")

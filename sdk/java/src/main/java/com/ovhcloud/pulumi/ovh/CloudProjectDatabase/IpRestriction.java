@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.IpRestriction;
- * import com.pulumi.ovh.CloudProjectDatabase.IpRestrictionArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IpRestriction;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IpRestrictionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ipRestriction = new IpRestriction("ipRestriction", IpRestrictionArgs.builder()
- *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
- *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(db.serviceName())
+ *             .engine(db.engine())
+ *             .clusterId(db.id())
  *             .ip("178.97.6.0/24")
  *             .build());
  * 

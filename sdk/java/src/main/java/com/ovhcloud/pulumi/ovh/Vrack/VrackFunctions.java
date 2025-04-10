@@ -40,7 +40,7 @@ public final class VrackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vracks = VrackFunctions.getVracks();
+     *         final var vracks = VrackFunctions.getVracks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -79,7 +79,7 @@ public final class VrackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vracks = VrackFunctions.getVracks();
+     *         final var vracks = VrackFunctions.getVracks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -118,7 +118,7 @@ public final class VrackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vracks = VrackFunctions.getVracks();
+     *         final var vracks = VrackFunctions.getVracks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -157,7 +157,7 @@ public final class VrackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vracks = VrackFunctions.getVracks();
+     *         final var vracks = VrackFunctions.getVracks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -196,7 +196,7 @@ public final class VrackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vracks = VrackFunctions.getVracks();
+     *         final var vracks = VrackFunctions.getVracks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -235,7 +235,7 @@ public final class VrackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vracks = VrackFunctions.getVracks();
+     *         final var vracks = VrackFunctions.getVracks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

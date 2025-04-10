@@ -142,7 +142,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.ca());
      *     }
      * }
      * }
@@ -187,7 +187,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.ca());
      *     }
      * }
      * }
@@ -232,7 +232,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.ca());
      *     }
      * }
      * }
@@ -277,7 +277,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("certificatesCa", certificates.applyValue(getCertificatesResult -> getCertificatesResult.ca()));
+     *         ctx.export("certificatesCa", certificates.ca());
      *     }
      * }
      * }
@@ -324,7 +324,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.id());
      *     }
      * }
      * }
@@ -371,7 +371,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.id());
      *     }
      * }
      * }
@@ -418,7 +418,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.id());
      *     }
      * }
      * }
@@ -465,7 +465,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("clusterId", db.applyValue(getDatabaseResult -> getDatabaseResult.id()));
+     *         ctx.export("clusterId", db.id());
      *     }
      * }
      * }
@@ -511,7 +511,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.name());
      *     }
      * }
      * }
@@ -557,7 +557,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.name());
      *     }
      * }
      * }
@@ -603,7 +603,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.name());
      *     }
      * }
      * }
@@ -649,7 +649,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("databaseName", database.applyValue(getDatabaseInstanceResult -> getDatabaseInstanceResult.name()));
+     *         ctx.export("databaseName", database.name());
      *     }
      * }
      * }
@@ -694,7 +694,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.databaseIds());
      *     }
      * }
      * }
@@ -739,7 +739,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.databaseIds());
      *     }
      * }
      * }
@@ -784,7 +784,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.databaseIds());
      *     }
      * }
      * }
@@ -829,7 +829,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("databaseIds", databases.applyValue(getDatabaseInstancesResult -> getDatabaseInstancesResult.databaseIds()));
+     *         ctx.export("databaseIds", databases.databaseIds());
      *     }
      * }
      * }
@@ -875,7 +875,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.type());
      *     }
      * }
      * }
@@ -921,7 +921,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.type());
      *     }
      * }
      * }
@@ -967,7 +967,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.type());
      *     }
      * }
      * }
@@ -1013,7 +1013,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("UUU")
      *             .build());
      * 
-     *         ctx.export("integrationType", integration.applyValue(getDatabaseIntegrationResult -> getDatabaseIntegrationResult.type()));
+     *         ctx.export("integrationType", integration.type());
      *     }
      * }
      * }
@@ -1058,7 +1058,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.integrationIds());
      *     }
      * }
      * }
@@ -1103,7 +1103,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.integrationIds());
      *     }
      * }
      * }
@@ -1148,7 +1148,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.integrationIds());
      *     }
      * }
      * }
@@ -1193,7 +1193,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("integrationIds", integrations.applyValue(getDatabaseIntegrationsResult -> getDatabaseIntegrationsResult.integrationIds()));
+     *         ctx.export("integrationIds", integrations.integrationIds());
      *     }
      * }
      * }
@@ -1239,7 +1239,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *         ctx.export("subscriptionLdpName", subscription.ldpServiceName());
      *     }
      * }
      * }
@@ -1285,7 +1285,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *         ctx.export("subscriptionLdpName", subscription.ldpServiceName());
      *     }
      * }
      * }
@@ -1331,7 +1331,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *         ctx.export("subscriptionLdpName", subscription.ldpServiceName());
      *     }
      * }
      * }
@@ -1377,7 +1377,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionLdpName", subscription.applyValue(getDatabaseLogSubscriptionResult -> getDatabaseLogSubscriptionResult.ldpServiceName()));
+     *         ctx.export("subscriptionLdpName", subscription.ldpServiceName());
      *     }
      * }
      * }
@@ -1422,7 +1422,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *         ctx.export("subscriptionIds", subscriptions.subscriptionIds());
      *     }
      * }
      * }
@@ -1467,7 +1467,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *         ctx.export("subscriptionIds", subscriptions.subscriptionIds());
      *     }
      * }
      * }
@@ -1512,7 +1512,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *         ctx.export("subscriptionIds", subscriptions.subscriptionIds());
      *     }
      * }
      * }
@@ -1557,7 +1557,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("subscriptionIds", subscriptions.applyValue(getDatabaseLogSubscriptionsResult -> getDatabaseLogSubscriptionsResult.subscriptionIds()));
+     *         ctx.export("subscriptionIds", subscriptions.subscriptionIds());
      *     }
      * }
      * }
@@ -1601,7 +1601,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *         ctx.export("connectionPoolIds", testPools.connectionPoolIds());
      *     }
      * }
      * }
@@ -1645,7 +1645,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *         ctx.export("connectionPoolIds", testPools.connectionPoolIds());
      *     }
      * }
      * }
@@ -1689,7 +1689,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *         ctx.export("connectionPoolIds", testPools.connectionPoolIds());
      *     }
      * }
      * }
@@ -1733,7 +1733,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("connectionPoolIds", testPools.applyValue(getDatabasePostgreSQLConnectionPoolsResult -> getDatabasePostgreSQLConnectionPoolsResult.connectionPoolIds()));
+     *         ctx.export("connectionPoolIds", testPools.connectionPoolIds());
      *     }
      * }
      * }
@@ -1779,7 +1779,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.clusterIds());
      *     }
      * }
      * }
@@ -1825,7 +1825,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.clusterIds());
      *     }
      * }
      * }
@@ -1871,7 +1871,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.clusterIds());
      *     }
      * }
      * }
@@ -1917,7 +1917,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .engine("YYYY")
      *             .build());
      * 
-     *         ctx.export("clusterIds", dbs.applyValue(getDatabasesResult -> getDatabasesResult.clusterIds()));
+     *         ctx.export("clusterIds", dbs.clusterIds());
      *     }
      * }
      * }
@@ -1966,7 +1966,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -2015,7 +2015,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -2064,7 +2064,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -2113,7 +2113,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZZ")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getIpRestrictionsResult -> getIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -2158,7 +2158,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.permission());
      *     }
      * }
      * }
@@ -2203,7 +2203,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.permission());
      *     }
      * }
      * }
@@ -2248,7 +2248,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.permission());
      *     }
      * }
      * }
@@ -2293,7 +2293,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", acl.applyValue(getKafkaAclResult -> getKafkaAclResult.permission()));
+     *         ctx.export("aclPermission", acl.permission());
      *     }
      * }
      * }
@@ -2337,7 +2337,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.aclIds());
      *     }
      * }
      * }
@@ -2381,7 +2381,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.aclIds());
      *     }
      * }
      * }
@@ -2425,7 +2425,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.aclIds());
      *     }
      * }
      * }
@@ -2469,7 +2469,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", acls.applyValue(getKafkaAclsResult -> getKafkaAclsResult.aclIds()));
+     *         ctx.export("aclIds", acls.aclIds());
      *     }
      * }
      * }
@@ -2514,7 +2514,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.permission());
      *     }
      * }
      * }
@@ -2559,7 +2559,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.permission());
      *     }
      * }
      * }
@@ -2604,7 +2604,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.permission());
      *     }
      * }
      * }
@@ -2649,7 +2649,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("aclPermission", schemaRegistryAcl.applyValue(getKafkaSchemaRegistryAclResult -> getKafkaSchemaRegistryAclResult.permission()));
+     *         ctx.export("aclPermission", schemaRegistryAcl.permission());
      *     }
      * }
      * }
@@ -2693,7 +2693,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.aclIds());
      *     }
      * }
      * }
@@ -2737,7 +2737,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.aclIds());
      *     }
      * }
      * }
@@ -2781,7 +2781,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.aclIds());
      *     }
      * }
      * }
@@ -2825,7 +2825,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("aclIds", schemaRegistryAcls.applyValue(getKafkaSchemaRegistryAclsResult -> getKafkaSchemaRegistryAclsResult.aclIds()));
+     *         ctx.export("aclIds", schemaRegistryAcls.aclIds());
      *     }
      * }
      * }
@@ -2870,7 +2870,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.name());
      *     }
      * }
      * }
@@ -2915,7 +2915,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.name());
      *     }
      * }
      * }
@@ -2960,7 +2960,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.name());
      *     }
      * }
      * }
@@ -3005,7 +3005,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("topicName", topic.applyValue(getKafkaTopicResult -> getKafkaTopicResult.name()));
+     *         ctx.export("topicName", topic.name());
      *     }
      * }
      * }
@@ -3049,7 +3049,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.topicIds());
      *     }
      * }
      * }
@@ -3093,7 +3093,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.topicIds());
      *     }
      * }
      * }
@@ -3137,7 +3137,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.topicIds());
      *     }
      * }
      * }
@@ -3181,7 +3181,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("topicIds", topics.applyValue(getKafkaTopicsResult -> getKafkaTopicsResult.topicIds()));
+     *         ctx.export("topicIds", topics.topicIds());
      *     }
      * }
      * }
@@ -3226,7 +3226,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.cert());
      *     }
      * }
      * }
@@ -3271,7 +3271,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.cert());
      *     }
      * }
      * }
@@ -3316,7 +3316,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.cert());
      *     }
      * }
      * }
@@ -3361,7 +3361,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .userId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("accessCert", access.applyValue(getKafkaUserAccessResult -> getKafkaUserAccessResult.cert()));
+     *         ctx.export("accessCert", access.cert());
      *     }
      * }
      * }
@@ -3406,7 +3406,18 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("testPool", Map.ofEntries(
+     *             Map.entry("service_name", testPoolPostgresSqlConnectionPool.serviceName()),
+     *             Map.entry("cluster_id", testPoolPostgresSqlConnectionPool.clusterId()),
+     *             Map.entry("name", testPoolPostgresSqlConnectionPool.name()),
+     *             Map.entry("database_id", testPoolPostgresSqlConnectionPool.databaseId()),
+     *             Map.entry("mode", testPoolPostgresSqlConnectionPool.mode()),
+     *             Map.entry("size", testPoolPostgresSqlConnectionPool.size()),
+     *             Map.entry("port", testPoolPostgresSqlConnectionPool.port()),
+     *             Map.entry("ssl_mode", testPoolPostgresSqlConnectionPool.sslMode()),
+     *             Map.entry("uri", testPoolPostgresSqlConnectionPool.uri()),
+     *             Map.entry("user_id", testPoolPostgresSqlConnectionPool.userId())
+     *         ));
      *     }
      * }
      * }
@@ -3451,7 +3462,18 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("testPool", Map.ofEntries(
+     *             Map.entry("service_name", testPoolPostgresSqlConnectionPool.serviceName()),
+     *             Map.entry("cluster_id", testPoolPostgresSqlConnectionPool.clusterId()),
+     *             Map.entry("name", testPoolPostgresSqlConnectionPool.name()),
+     *             Map.entry("database_id", testPoolPostgresSqlConnectionPool.databaseId()),
+     *             Map.entry("mode", testPoolPostgresSqlConnectionPool.mode()),
+     *             Map.entry("size", testPoolPostgresSqlConnectionPool.size()),
+     *             Map.entry("port", testPoolPostgresSqlConnectionPool.port()),
+     *             Map.entry("ssl_mode", testPoolPostgresSqlConnectionPool.sslMode()),
+     *             Map.entry("uri", testPoolPostgresSqlConnectionPool.uri()),
+     *             Map.entry("user_id", testPoolPostgresSqlConnectionPool.userId())
+     *         ));
      *     }
      * }
      * }
@@ -3496,7 +3518,18 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("testPool", Map.ofEntries(
+     *             Map.entry("service_name", testPoolPostgresSqlConnectionPool.serviceName()),
+     *             Map.entry("cluster_id", testPoolPostgresSqlConnectionPool.clusterId()),
+     *             Map.entry("name", testPoolPostgresSqlConnectionPool.name()),
+     *             Map.entry("database_id", testPoolPostgresSqlConnectionPool.databaseId()),
+     *             Map.entry("mode", testPoolPostgresSqlConnectionPool.mode()),
+     *             Map.entry("size", testPoolPostgresSqlConnectionPool.size()),
+     *             Map.entry("port", testPoolPostgresSqlConnectionPool.port()),
+     *             Map.entry("ssl_mode", testPoolPostgresSqlConnectionPool.sslMode()),
+     *             Map.entry("uri", testPoolPostgresSqlConnectionPool.uri()),
+     *             Map.entry("user_id", testPoolPostgresSqlConnectionPool.userId())
+     *         ));
      *     }
      * }
      * }
@@ -3541,7 +3574,18 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("testPool", %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export("testPool", Map.ofEntries(
+     *             Map.entry("service_name", testPoolPostgresSqlConnectionPool.serviceName()),
+     *             Map.entry("cluster_id", testPoolPostgresSqlConnectionPool.clusterId()),
+     *             Map.entry("name", testPoolPostgresSqlConnectionPool.name()),
+     *             Map.entry("database_id", testPoolPostgresSqlConnectionPool.databaseId()),
+     *             Map.entry("mode", testPoolPostgresSqlConnectionPool.mode()),
+     *             Map.entry("size", testPoolPostgresSqlConnectionPool.size()),
+     *             Map.entry("port", testPoolPostgresSqlConnectionPool.port()),
+     *             Map.entry("ssl_mode", testPoolPostgresSqlConnectionPool.sslMode()),
+     *             Map.entry("uri", testPoolPostgresSqlConnectionPool.uri()),
+     *             Map.entry("user_id", testPoolPostgresSqlConnectionPool.userId())
+     *         ));
      *     }
      * }
      * }
@@ -3586,7 +3630,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.roles());
      *     }
      * }
      * }
@@ -3631,7 +3675,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.roles());
      *     }
      * }
      * }
@@ -3676,7 +3720,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.roles());
      *     }
      * }
      * }
@@ -3721,7 +3765,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("pgUserRoles", pgUser.applyValue(getPostgresSqlUserResult -> getPostgresSqlUserResult.roles()));
+     *         ctx.export("pgUserRoles", pgUser.roles());
      *     }
      * }
      * }
@@ -3767,7 +3811,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
+     *         ctx.export("userName", user.name());
      *     }
      * }
      * }
@@ -3813,7 +3857,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
+     *         ctx.export("userName", user.name());
      *     }
      * }
      * }
@@ -3859,7 +3903,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
+     *         ctx.export("userName", user.name());
      *     }
      * }
      * }
@@ -3905,7 +3949,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .name("UUU")
      *             .build());
      * 
-     *         ctx.export("userName", user.applyValue(getUserResult -> getUserResult.name()));
+     *         ctx.export("userName", user.name());
      *     }
      * }
      * }
@@ -3950,7 +3994,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
+     *         ctx.export("userIds", users.userIds());
      *     }
      * }
      * }
@@ -3995,7 +4039,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
+     *         ctx.export("userIds", users.userIds());
      *     }
      * }
      * }
@@ -4040,7 +4084,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
+     *         ctx.export("userIds", users.userIds());
      *     }
      * }
      * }
@@ -4085,7 +4129,7 @@ public final class CloudProjectDatabaseFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("userIds", users.applyValue(getUsersResult -> getUsersResult.userIds()));
+     *         ctx.export("userIds", users.userIds());
      *     }
      * }
      * }

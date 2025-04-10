@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.DatabaseInstance;
- * import com.pulumi.ovh.CloudProjectDatabase.DatabaseInstanceArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.DatabaseInstance;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.DatabaseInstanceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,9 +56,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var database = new DatabaseInstance("database", DatabaseInstanceArgs.builder()
- *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
- *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(db.serviceName())
+ *             .engine(db.engine())
+ *             .clusterId(db.id())
  *             .build());
  * 
  *     }

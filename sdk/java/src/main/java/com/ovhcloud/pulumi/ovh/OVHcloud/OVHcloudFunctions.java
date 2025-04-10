@@ -212,7 +212,8 @@ public final class OVHcloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var occs = OVHcloudFunctions.Connect();
+     *         final var occs = OVHcloudFunctions.Connect(ConnectArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -252,7 +253,8 @@ public final class OVHcloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var occs = OVHcloudFunctions.Connect();
+     *         final var occs = OVHcloudFunctions.Connect(ConnectArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -292,7 +294,8 @@ public final class OVHcloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var occs = OVHcloudFunctions.Connect();
+     *         final var occs = OVHcloudFunctions.Connect(ConnectArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -332,7 +335,8 @@ public final class OVHcloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var occs = OVHcloudFunctions.Connect();
+     *         final var occs = OVHcloudFunctions.Connect(ConnectArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -372,7 +376,8 @@ public final class OVHcloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var occs = OVHcloudFunctions.Connect();
+     *         final var occs = OVHcloudFunctions.Connect(ConnectArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -412,7 +417,8 @@ public final class OVHcloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var occs = OVHcloudFunctions.Connect();
+     *         final var occs = OVHcloudFunctions.Connect(ConnectArgs.builder()
+     *             .build());
      * 
      *     }
      * }

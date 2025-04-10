@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Dbaas.DbaasFunctions;
  * import com.pulumi.ovh.Dbaas.inputs.GetLogsInputEngineArgs;
- * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
- * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
- * import com.pulumi.ovh.Dbaas.LogsInput;
- * import com.pulumi.ovh.Dbaas.LogsInputArgs;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsInput;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsInputArgs;
  * import com.pulumi.ovh.Dbaas.inputs.LogsInputConfigurationArgs;
  * import com.pulumi.ovh.Dbaas.inputs.LogsInputConfigurationLogstashArgs;
  * import java.util.List;
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .serviceName(stream.serviceName())
  *             .description(stream.description())
  *             .title(stream.title())
- *             .engineId(logstash.applyValue(getLogsInputEngineResult -> getLogsInputEngineResult.id()))
+ *             .engineId(logstash.id())
  *             .streamId(stream.id())
  *             .allowedNetworks("10.0.0.0/16")
  *             .exposedPort("6154")

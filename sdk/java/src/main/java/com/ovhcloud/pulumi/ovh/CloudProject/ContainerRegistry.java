@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
  * import com.pulumi.ovh.CloudProject.inputs.GetCapabilitiesContainerFilterArgs;
- * import com.pulumi.ovh.CloudProject.ContainerRegistry;
- * import com.pulumi.ovh.CloudProject.ContainerRegistryArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.ContainerRegistry;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.ContainerRegistryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myRegistry = new ContainerRegistry("myRegistry", ContainerRegistryArgs.builder()
- *             .serviceName(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.serviceName()))
- *             .planId(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.id()))
- *             .region(regcap.applyValue(getCapabilitiesContainerFilterResult -> getCapabilitiesContainerFilterResult.region()))
+ *             .serviceName(regcap.serviceName())
+ *             .planId(regcap.id())
+ *             .region(regcap.region())
  *             .build());
  * 
  *     }

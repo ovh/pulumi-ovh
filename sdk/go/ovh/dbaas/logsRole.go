@@ -48,7 +48,7 @@ import (
 // bash
 //
 // ```sh
-// $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+// $ pulumi import ovh:Dbaas/logsRole:LogsRole  ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
 // ```
 type LogsRole struct {
 	pulumi.CustomResourceState

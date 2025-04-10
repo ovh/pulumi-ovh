@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.KafkaAcl;
- * import com.pulumi.ovh.CloudProjectDatabase.KafkaAclArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.KafkaAcl;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.KafkaAclArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var acl = new KafkaAcl("acl", KafkaAclArgs.builder()
- *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(kafka.serviceName())
+ *             .clusterId(kafka.id())
  *             .permission("read")
  *             .topic("mytopic")
  *             .username("johndoe")

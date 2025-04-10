@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.Ssl;
- * import com.pulumi.ovh.IpLoadBalancing.SslArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.Ssl;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.SslArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .chain("...")
  *             .displayName("test")
  *             .key("...")
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .build());
  * 
  *     }

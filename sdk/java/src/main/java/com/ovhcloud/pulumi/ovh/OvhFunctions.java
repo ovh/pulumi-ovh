@@ -55,7 +55,7 @@ public final class OvhFunctions {
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate);
      *     }
      * }
      * }
@@ -98,7 +98,7 @@ public final class OvhFunctions {
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate);
      *     }
      * }
      * }
@@ -141,7 +141,7 @@ public final class OvhFunctions {
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate);
      *     }
      * }
      * }
@@ -184,7 +184,7 @@ public final class OvhFunctions {
      *             .templateName("debian12_64")
      *             .build());
      * 
-     *         ctx.export("template", ovhTemplate.applyValue(getInstallationTemplateResult -> getInstallationTemplateResult));
+     *         ctx.export("template", ovhTemplate);
      *     }
      * }
      * }
@@ -222,7 +222,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var templates = OvhFunctions.getInstallationTemplates();
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -261,7 +261,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var templates = OvhFunctions.getInstallationTemplates();
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -300,7 +300,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var templates = OvhFunctions.getInstallationTemplates();
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -339,7 +339,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var templates = OvhFunctions.getInstallationTemplates();
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -378,7 +378,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var templates = OvhFunctions.getInstallationTemplates();
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -417,7 +417,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var templates = OvhFunctions.getInstallationTemplates();
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -624,7 +624,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = OvhFunctions.getServers();
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -663,7 +663,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = OvhFunctions.getServers();
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -702,7 +702,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = OvhFunctions.getServers();
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -741,7 +741,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = OvhFunctions.getServers();
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -780,7 +780,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = OvhFunctions.getServers();
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -819,7 +819,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var servers = OvhFunctions.getServers();
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

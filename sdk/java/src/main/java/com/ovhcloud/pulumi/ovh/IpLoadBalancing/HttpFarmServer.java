@@ -31,10 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarm;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarmServer;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarmServerArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarm;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarmServer;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarmServerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()
  *             .port(8080)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .zone("all")
  *             .build());
  * 
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .port(80)
  *             .probe(true)
  *             .proxyProtocolVersion("v2")
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .ssl(false)
  *             .status("active")
  *             .weight(2)

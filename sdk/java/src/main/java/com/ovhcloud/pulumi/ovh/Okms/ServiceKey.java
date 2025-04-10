@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Okms.ServiceKey;
- * import com.pulumi.ovh.Okms.ServiceKeyArgs;
+ * import com.ovhcloud.pulumi.ovh.Okms.ServiceKey;
+ * import com.ovhcloud.pulumi.ovh.Okms.ServiceKeyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *             .operations(            
  *                 "encrypt",
  *                 "decrypt")
- *             .size(256)
+ *             .size(256.0)
  *             .type("oct")
  *             .build());
  * 
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .operations(            
  *                 "sign",
  *                 "verify")
- *             .size(2048)
+ *             .size(2048.0)
  *             .type("RSA")
  *             .build());
  * 

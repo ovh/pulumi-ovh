@@ -955,7 +955,7 @@ public final class CloudProjectFunctions {
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
+     *         ctx.export("oidc-client-id", myOidc.oidcClientId());
      *     }
      * }
      * }
@@ -999,7 +999,7 @@ public final class CloudProjectFunctions {
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
+     *         ctx.export("oidc-client-id", myOidc.oidcClientId());
      *     }
      * }
      * }
@@ -1043,7 +1043,7 @@ public final class CloudProjectFunctions {
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
+     *         ctx.export("oidc-client-id", myOidc.oidcClientId());
      *     }
      * }
      * }
@@ -1087,7 +1087,7 @@ public final class CloudProjectFunctions {
      *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-client-id", myOidc.applyValue(getContainerRegistryOIDCResult -> getContainerRegistryOIDCResult.oidcClientId()));
+     *         ctx.export("oidc-client-id", myOidc.oidcClientId());
      *     }
      * }
      * }
@@ -1642,37 +1642,6 @@ public final class CloudProjectFunctions {
      * To get information of floating IPs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
-     *             .serviceName("YYYY")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1687,37 +1656,6 @@ public final class CloudProjectFunctions {
      * To get information of floating IPs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
-     *             .serviceName("YYYY")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1732,37 +1670,6 @@ public final class CloudProjectFunctions {
      * To get information of floating IPs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
-     *             .serviceName("YYYY")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1777,37 +1684,6 @@ public final class CloudProjectFunctions {
      * To get information of floating IPs:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
-     * import com.pulumi.ovh.CloudProject.inputs.GetFloatingIPsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = CloudProjectFunctions.getFloatingIPs(GetFloatingIPsArgs.builder()
-     *             .region("XXXX")
-     *             .serviceName("YYYY")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2747,7 +2623,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("version", myKubeCluster.applyValue(getKubeResult -> getKubeResult.version()));
+     *         ctx.export("version", myKubeCluster.version());
      *     }
      * }
      * }
@@ -2791,7 +2667,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("version", myKubeCluster.applyValue(getKubeResult -> getKubeResult.version()));
+     *         ctx.export("version", myKubeCluster.version());
      *     }
      * }
      * }
@@ -2835,7 +2711,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("version", myKubeCluster.applyValue(getKubeResult -> getKubeResult.version()));
+     *         ctx.export("version", myKubeCluster.version());
      *     }
      * }
      * }
@@ -2879,7 +2755,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("version", myKubeCluster.applyValue(getKubeResult -> getKubeResult.version()));
+     *         ctx.export("version", myKubeCluster.version());
      *     }
      * }
      * }
@@ -2923,7 +2799,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -2967,7 +2843,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -3011,7 +2887,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -3055,7 +2931,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("ips", ipRestrictions.applyValue(getKubeIpRestrictionsResult -> getKubeIpRestrictionsResult.ips()));
+     *         ctx.export("ips", ipRestrictions.ips());
      *     }
      * }
      * }
@@ -3100,7 +2976,7 @@ public final class CloudProjectFunctions {
      *             .name("xxxxxx")
      *             .build());
      * 
-     *         ctx.export("maxNodes", nodepool.applyValue(getKubeNodePoolResult -> getKubeNodePoolResult.maxNodes()));
+     *         ctx.export("maxNodes", nodepool.maxNodes());
      *     }
      * }
      * }
@@ -3145,7 +3021,7 @@ public final class CloudProjectFunctions {
      *             .name("xxxxxx")
      *             .build());
      * 
-     *         ctx.export("maxNodes", nodepool.applyValue(getKubeNodePoolResult -> getKubeNodePoolResult.maxNodes()));
+     *         ctx.export("maxNodes", nodepool.maxNodes());
      *     }
      * }
      * }
@@ -3190,7 +3066,7 @@ public final class CloudProjectFunctions {
      *             .name("xxxxxx")
      *             .build());
      * 
-     *         ctx.export("maxNodes", nodepool.applyValue(getKubeNodePoolResult -> getKubeNodePoolResult.maxNodes()));
+     *         ctx.export("maxNodes", nodepool.maxNodes());
      *     }
      * }
      * }
@@ -3235,7 +3111,7 @@ public final class CloudProjectFunctions {
      *             .name("xxxxxx")
      *             .build());
      * 
-     *         ctx.export("maxNodes", nodepool.applyValue(getKubeNodePoolResult -> getKubeNodePoolResult.maxNodes()));
+     *         ctx.export("maxNodes", nodepool.maxNodes());
      *     }
      * }
      * }
@@ -3280,7 +3156,7 @@ public final class CloudProjectFunctions {
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodesKubeNodePoolNodes);
      *     }
      * }
      * }
@@ -3325,7 +3201,7 @@ public final class CloudProjectFunctions {
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodesKubeNodePoolNodes);
      *     }
      * }
      * }
@@ -3370,7 +3246,7 @@ public final class CloudProjectFunctions {
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodesKubeNodePoolNodes);
      *     }
      * }
      * }
@@ -3415,7 +3291,7 @@ public final class CloudProjectFunctions {
      *             .name("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodePoolNodes.applyValue(getKubeNodePoolNodesResult -> getKubeNodePoolNodesResult));
+     *         ctx.export("nodes", nodesKubeNodePoolNodes);
      *     }
      * }
      * }
@@ -3459,7 +3335,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodesKubeNodes);
      *     }
      * }
      * }
@@ -3503,7 +3379,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodesKubeNodes);
      *     }
      * }
      * }
@@ -3547,7 +3423,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodesKubeNodes);
      *     }
      * }
      * }
@@ -3591,7 +3467,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export("nodes", nodesKubeNodes.applyValue(getKubeNodesResult -> getKubeNodesResult));
+     *         ctx.export("nodes", nodesKubeNodes);
      *     }
      * }
      * }
@@ -3635,7 +3511,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-val", oidc.applyValue(getKubeOidcResult -> getKubeOidcResult.clientId()));
+     *         ctx.export("oidc-val", oidc.clientId());
      *     }
      * }
      * }
@@ -3679,7 +3555,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-val", oidc.applyValue(getKubeOidcResult -> getKubeOidcResult.clientId()));
+     *         ctx.export("oidc-val", oidc.clientId());
      *     }
      * }
      * }
@@ -3723,7 +3599,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-val", oidc.applyValue(getKubeOidcResult -> getKubeOidcResult.clientId()));
+     *         ctx.export("oidc-val", oidc.clientId());
      *     }
      * }
      * }
@@ -3767,7 +3643,7 @@ public final class CloudProjectFunctions {
      *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
      *             .build());
      * 
-     *         ctx.export("oidc-val", oidc.applyValue(getKubeOidcResult -> getKubeOidcResult.clientId()));
+     *         ctx.export("oidc-val", oidc.clientId());
      *     }
      * }
      * }
@@ -3812,7 +3688,7 @@ public final class CloudProjectFunctions {
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lbLoadBalancer);
      *     }
      * }
      * }
@@ -3857,7 +3733,7 @@ public final class CloudProjectFunctions {
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lbLoadBalancer);
      *     }
      * }
      * }
@@ -3902,7 +3778,7 @@ public final class CloudProjectFunctions {
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lbLoadBalancer);
      *     }
      * }
      * }
@@ -3947,7 +3823,7 @@ public final class CloudProjectFunctions {
      *             .id("XXX")
      *             .build());
      * 
-     *         ctx.export("lb", lbLoadBalancer.applyValue(getLoadBalancerResult -> getLoadBalancerResult));
+     *         ctx.export("lb", lbLoadBalancer);
      *     }
      * }
      * }
@@ -4163,7 +4039,7 @@ public final class CloudProjectFunctions {
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbsLoadBalancers);
      *     }
      * }
      * }
@@ -4207,7 +4083,7 @@ public final class CloudProjectFunctions {
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbsLoadBalancers);
      *     }
      * }
      * }
@@ -4251,7 +4127,7 @@ public final class CloudProjectFunctions {
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbsLoadBalancers);
      *     }
      * }
      * }
@@ -4295,7 +4171,7 @@ public final class CloudProjectFunctions {
      *             .regionName("XXX")
      *             .build());
      * 
-     *         ctx.export("lbs", lbsLoadBalancers.applyValue(getLoadBalancersResult -> getLoadBalancersResult));
+     *         ctx.export("lbs", lbsLoadBalancers);
      *     }
      * }
      * }
@@ -4340,7 +4216,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.type());
      *     }
      * }
      * }
@@ -4385,7 +4261,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.type());
      *     }
      * }
      * }
@@ -4430,7 +4306,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.type());
      *     }
      * }
      * }
@@ -4475,7 +4351,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbnamespaceType", m3dbNamespace.applyValue(getM3dbNamespaceResult -> getM3dbNamespaceResult.type()));
+     *         ctx.export("m3dbnamespaceType", m3dbNamespace.type());
      *     }
      * }
      * }
@@ -4519,7 +4395,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("namespaceIds", namespaces.applyValue(getM3dbNamespacesResult -> getM3dbNamespacesResult.namespaceIds()));
+     *         ctx.export("namespaceIds", namespaces.namespaceIds());
      *     }
      * }
      * }
@@ -4563,7 +4439,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("namespaceIds", namespaces.applyValue(getM3dbNamespacesResult -> getM3dbNamespacesResult.namespaceIds()));
+     *         ctx.export("namespaceIds", namespaces.namespaceIds());
      *     }
      * }
      * }
@@ -4607,7 +4483,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("namespaceIds", namespaces.applyValue(getM3dbNamespacesResult -> getM3dbNamespacesResult.namespaceIds()));
+     *         ctx.export("namespaceIds", namespaces.namespaceIds());
      *     }
      * }
      * }
@@ -4651,7 +4527,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("namespaceIds", namespaces.applyValue(getM3dbNamespacesResult -> getM3dbNamespacesResult.namespaceIds()));
+     *         ctx.export("namespaceIds", namespaces.namespaceIds());
      *     }
      * }
      * }
@@ -4696,7 +4572,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.group());
      *     }
      * }
      * }
@@ -4741,7 +4617,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.group());
      *     }
      * }
      * }
@@ -4786,7 +4662,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.group());
      *     }
      * }
      * }
@@ -4831,7 +4707,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("m3dbUserGroup", m3dbUser.applyValue(getM3dbUserResult -> getM3dbUserResult.group()));
+     *         ctx.export("m3dbUserGroup", m3dbUser.group());
      *     }
      * }
      * }
@@ -4875,7 +4751,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -4919,7 +4795,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -4963,7 +4839,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -5007,7 +4883,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getMongoDbPrometheusResult -> getMongoDbPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -5052,7 +4928,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.roles());
      *     }}{@code
      * }}{@code
      * }
@@ -5097,7 +4973,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.roles());
      *     }}{@code
      * }}{@code
      * }
@@ -5142,7 +5018,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.roles());
      *     }}{@code
      * }}{@code
      * }
@@ -5187,7 +5063,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ}{@literal @}{@code admin")
      *             .build());
      * 
-     *         ctx.export("mongoUserRoles", mongoUser.applyValue(getMongoDbUserResult -> getMongoDbUserResult.roles()));
+     *         ctx.export("mongoUserRoles", mongoUser.roles());
      *     }}{@code
      * }}{@code
      * }
@@ -5231,7 +5107,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", privateNetworkPrivate);
      *     }
      * }
      * }
@@ -5275,7 +5151,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", privateNetworkPrivate);
      *     }
      * }
      * }
@@ -5319,7 +5195,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", privateNetworkPrivate);
      *     }
      * }
      * }
@@ -5363,7 +5239,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivate.applyValue(getNetworkPrivateResult -> getNetworkPrivateResult));
+     *         ctx.export("private", privateNetworkPrivate);
      *     }
      * }
      * }
@@ -5407,7 +5283,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", privateNetworkPrivateSubnets);
      *     }
      * }
      * }
@@ -5451,7 +5327,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", privateNetworkPrivateSubnets);
      *     }
      * }
      * }
@@ -5495,7 +5371,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", privateNetworkPrivateSubnets);
      *     }
      * }
      * }
@@ -5539,7 +5415,7 @@ public final class CloudProjectFunctions {
      *             .networkId("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivateSubnets.applyValue(getNetworkPrivateSubnetsResult -> getNetworkPrivateSubnetsResult));
+     *         ctx.export("private", privateNetworkPrivateSubnets);
      *     }
      * }
      * }
@@ -5582,7 +5458,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", privateNetworkPrivates);
      *     }
      * }
      * }
@@ -5625,7 +5501,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", privateNetworkPrivates);
      *     }
      * }
      * }
@@ -5668,7 +5544,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", privateNetworkPrivates);
      *     }
      * }
      * }
@@ -5711,7 +5587,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("private", privateNetworkPrivates.applyValue(getNetworkPrivatesResult -> getNetworkPrivatesResult));
+     *         ctx.export("private", privateNetworkPrivates);
      *     }
      * }
      * }
@@ -5756,7 +5632,7 @@ public final class CloudProjectFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("patternPattern", pattern.applyValue(getOpenSearchPatternResult -> getOpenSearchPatternResult.pattern()));
+     *         ctx.export("patternPattern", pattern.pattern());
      *     }
      * }
      * }
@@ -5801,7 +5677,7 @@ public final class CloudProjectFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("patternPattern", pattern.applyValue(getOpenSearchPatternResult -> getOpenSearchPatternResult.pattern()));
+     *         ctx.export("patternPattern", pattern.pattern());
      *     }
      * }
      * }
@@ -5846,7 +5722,7 @@ public final class CloudProjectFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("patternPattern", pattern.applyValue(getOpenSearchPatternResult -> getOpenSearchPatternResult.pattern()));
+     *         ctx.export("patternPattern", pattern.pattern());
      *     }
      * }
      * }
@@ -5891,7 +5767,7 @@ public final class CloudProjectFunctions {
      *             .id("ZZZ")
      *             .build());
      * 
-     *         ctx.export("patternPattern", pattern.applyValue(getOpenSearchPatternResult -> getOpenSearchPatternResult.pattern()));
+     *         ctx.export("patternPattern", pattern.pattern());
      *     }
      * }
      * }
@@ -5935,7 +5811,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("patternIds", patterns.applyValue(getOpenSearchPatternsResult -> getOpenSearchPatternsResult.patternIds()));
+     *         ctx.export("patternIds", patterns.patternIds());
      *     }
      * }
      * }
@@ -5979,7 +5855,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("patternIds", patterns.applyValue(getOpenSearchPatternsResult -> getOpenSearchPatternsResult.patternIds()));
+     *         ctx.export("patternIds", patterns.patternIds());
      *     }
      * }
      * }
@@ -6023,7 +5899,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("patternIds", patterns.applyValue(getOpenSearchPatternsResult -> getOpenSearchPatternsResult.patternIds()));
+     *         ctx.export("patternIds", patterns.patternIds());
      *     }
      * }
      * }
@@ -6067,7 +5943,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("YYY")
      *             .build());
      * 
-     *         ctx.export("patternIds", patterns.applyValue(getOpenSearchPatternsResult -> getOpenSearchPatternsResult.patternIds()));
+     *         ctx.export("patternIds", patterns.patternIds());
      *     }
      * }
      * }
@@ -6112,7 +5988,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.acls());
      *     }
      * }
      * }
@@ -6157,7 +6033,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.acls());
      *     }
      * }
      * }
@@ -6202,7 +6078,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.acls());
      *     }
      * }
      * }
@@ -6247,7 +6123,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("osUserAcls", osUser.applyValue(getOpenSearchUserResult -> getOpenSearchUserResult.acls()));
+     *         ctx.export("osUserAcls", osUser.acls());
      *     }
      * }
      * }
@@ -6292,7 +6168,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -6337,7 +6213,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -6382,7 +6258,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -6427,7 +6303,7 @@ public final class CloudProjectFunctions {
      *             .clusterId("ZZZ")
      *             .build());
      * 
-     *         ctx.export("name", prometheus.applyValue(getPrometheusResult -> getPrometheusResult.username()));
+     *         ctx.export("name", prometheus.username());
      *     }
      * }
      * }
@@ -6980,7 +6856,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.commands());
      *     }
      * }
      * }
@@ -7025,7 +6901,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.commands());
      *     }
      * }
      * }
@@ -7070,7 +6946,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.commands());
      *     }
      * }
      * }
@@ -7115,7 +6991,7 @@ public final class CloudProjectFunctions {
      *             .name("ZZZ")
      *             .build());
      * 
-     *         ctx.export("redisUserCommands", redisUser.applyValue(getRedisUserResult -> getRedisUserResult.commands()));
+     *         ctx.export("redisUserCommands", redisUser.commands());
      *     }
      * }
      * }
@@ -8569,7 +8445,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -8622,7 +8498,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -8675,7 +8551,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -8728,7 +8604,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myUser = CloudProjectFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -8782,18 +8658,18 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
      *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .serviceName(myS3Credentials.serviceName())
+     *             .userId(myS3Credentials.userId())
+     *             .accessKeyId(myS3Credentials.accessKeyIds()[0])
      *             .build());
      * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *         ctx.export("myAccessKeyId", myS3Credential.accessKeyId());
+     *         ctx.export("mySecretAccessKey", myS3Credential.secretAccessKey());
      *     }
      * }
      * }
@@ -8844,18 +8720,18 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
      *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .serviceName(myS3Credentials.serviceName())
+     *             .userId(myS3Credentials.userId())
+     *             .accessKeyId(myS3Credentials.accessKeyIds()[0])
      *             .build());
      * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *         ctx.export("myAccessKeyId", myS3Credential.accessKeyId());
+     *         ctx.export("mySecretAccessKey", myS3Credential.secretAccessKey());
      *     }
      * }
      * }
@@ -8906,18 +8782,18 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
      *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .serviceName(myS3Credentials.serviceName())
+     *             .userId(myS3Credentials.userId())
+     *             .accessKeyId(myS3Credentials.accessKeyIds()[0])
      *             .build());
      * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *         ctx.export("myAccessKeyId", myS3Credential.accessKeyId());
+     *         ctx.export("mySecretAccessKey", myS3Credential.secretAccessKey());
      *     }
      * }
      * }
@@ -8968,18 +8844,18 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var myS3Credentials = CloudProjectFunctions.getUserS3Credentials(GetUserS3CredentialsArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
      *         final var myS3Credential = CloudProjectFunctions.getUserS3Credential(GetUserS3CredentialArgs.builder()
-     *             .serviceName(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.serviceName()))
-     *             .userId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.userId()))
-     *             .accessKeyId(myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()[0]))
+     *             .serviceName(myS3Credentials.serviceName())
+     *             .userId(myS3Credentials.userId())
+     *             .accessKeyId(myS3Credentials.accessKeyIds()[0])
      *             .build());
      * 
-     *         ctx.export("myAccessKeyId", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.accessKeyId()));
-     *         ctx.export("mySecretAccessKey", myS3Credential.applyValue(getUserS3CredentialResult -> getUserS3CredentialResult.secretAccessKey()));
+     *         ctx.export("myAccessKeyId", myS3Credential.accessKeyId());
+     *         ctx.export("mySecretAccessKey", myS3Credential.secretAccessKey());
      *     }
      * }
      * }
@@ -9023,7 +8899,7 @@ public final class CloudProjectFunctions {
      *             .userId("1234")
      *             .build());
      * 
-     *         ctx.export("accessKeyIds", myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()));
+     *         ctx.export("accessKeyIds", myS3Credentials.accessKeyIds());
      *     }
      * }
      * }
@@ -9067,7 +8943,7 @@ public final class CloudProjectFunctions {
      *             .userId("1234")
      *             .build());
      * 
-     *         ctx.export("accessKeyIds", myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()));
+     *         ctx.export("accessKeyIds", myS3Credentials.accessKeyIds());
      *     }
      * }
      * }
@@ -9111,7 +8987,7 @@ public final class CloudProjectFunctions {
      *             .userId("1234")
      *             .build());
      * 
-     *         ctx.export("accessKeyIds", myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()));
+     *         ctx.export("accessKeyIds", myS3Credentials.accessKeyIds());
      *     }
      * }
      * }
@@ -9155,7 +9031,7 @@ public final class CloudProjectFunctions {
      *             .userId("1234")
      *             .build());
      * 
-     *         ctx.export("accessKeyIds", myS3Credentials.applyValue(getUserS3CredentialsResult -> getUserS3CredentialsResult.accessKeyIds()));
+     *         ctx.export("accessKeyIds", myS3Credentials.accessKeyIds());
      *     }
      * }
      * }
@@ -9205,7 +9081,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -9258,7 +9134,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -9311,7 +9187,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -9364,7 +9240,7 @@ public final class CloudProjectFunctions {
      *         final var s3UserId = users[0];
      * 
      *         final var policy = CloudProjectFunctions.getUserS3Policy(GetUserS3PolicyArgs.builder()
-     *             .serviceName(projectUsers.applyValue(getUsersResult -> getUsersResult.serviceName()))
+     *             .serviceName(projectUsers.serviceName())
      *             .userId(s3UserId)
      *             .build());
      * 
@@ -9602,7 +9478,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrackVRack);
      *     }
      * }
      * }
@@ -9645,7 +9521,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrackVRack);
      *     }
      * }
      * }
@@ -9688,7 +9564,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrackVRack);
      *     }
      * }
      * }
@@ -9731,7 +9607,7 @@ public final class CloudProjectFunctions {
      *             .serviceName("XXXXXX")
      *             .build());
      * 
-     *         ctx.export("vrack", vrackVRack.applyValue(getVRackResult -> getVRackResult));
+     *         ctx.export("vrack", vrackVRack);
      *     }
      * }
      * }

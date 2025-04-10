@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Dbaas.LogsRole;
- * import com.pulumi.ovh.Dbaas.LogsRoleArgs;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsRole;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsRoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import ovh:Dbaas/logsRole:LogsRole ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
+ * $ pulumi import ovh:Dbaas/logsRole:LogsRole  ovh_dbaas_logs_role.ro ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX
  * ```
  * 
  */

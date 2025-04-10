@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpRestrictionsResult {
@@ -35,7 +37,7 @@ public final class GetIpRestrictionsResult {
      * @return See Argument Reference above.
      * 
      */
-    private String serviceName;
+    private @Nullable String serviceName;
 
     private GetIpRestrictionsResult() {}
     /**
@@ -70,8 +72,8 @@ public final class GetIpRestrictionsResult {
      * @return See Argument Reference above.
      * 
      */
-    public String serviceName() {
-        return this.serviceName;
+    public Optional<String> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     public static Builder builder() {
@@ -87,7 +89,7 @@ public final class GetIpRestrictionsResult {
         private String engine;
         private String id;
         private List<String> ips;
-        private String serviceName;
+        private @Nullable String serviceName;
         public Builder() {}
         public Builder(GetIpRestrictionsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -134,10 +136,8 @@ public final class GetIpRestrictionsResult {
             return ips(List.of(ips));
         }
         @CustomType.Setter
-        public Builder serviceName(String serviceName) {
-            if (serviceName == null) {
-              throw new MissingRequiredPropertyException("GetIpRestrictionsResult", "serviceName");
-            }
+        public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }
