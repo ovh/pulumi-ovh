@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.KafkaTopic;
- * import com.pulumi.ovh.CloudProjectDatabase.KafkaTopicArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.KafkaTopic;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.KafkaTopicArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var topic = new KafkaTopic("topic", KafkaTopicArgs.builder()
- *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(kafka.serviceName())
+ *             .clusterId(kafka.id())
  *             .minInsyncReplicas(1)
  *             .partitions(3)
  *             .replication(2)

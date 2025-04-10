@@ -5,7 +5,6 @@ package com.ovhcloud.pulumi.ovh;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -299,10 +298,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.applicationKey = Codegen.stringProp("applicationKey").output().arg($.applicationKey).env("OVH_APPLICATION_KEY").getNullable();
-            $.applicationSecret = Codegen.stringProp("applicationSecret").secret().arg($.applicationSecret).env("OVH_APPLICATION_SECRET").getNullable();
-            $.consumerKey = Codegen.stringProp("consumerKey").output().arg($.consumerKey).env("OVH_CONSUMER_KEY").getNullable();
-            $.endpoint = Codegen.stringProp("endpoint").output().arg($.endpoint).env("OVH_ENDPOINT").getNullable();
             return $;
         }
     }

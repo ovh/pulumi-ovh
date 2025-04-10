@@ -132,8 +132,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public string ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public string? ServiceName { get; set; }
 
         public GetIpRestrictionsArgs()
         {
@@ -158,8 +158,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public GetIpRestrictionsInvokeArgs()
         {
@@ -190,7 +190,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
-        public readonly string ServiceName;
+        public readonly string? ServiceName;
 
         [OutputConstructor]
         private GetIpRestrictionsResult(
@@ -202,7 +202,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
             ImmutableArray<string> ips,
 
-            string serviceName)
+            string? serviceName)
         {
             ClusterId = clusterId;
             Engine = engine;

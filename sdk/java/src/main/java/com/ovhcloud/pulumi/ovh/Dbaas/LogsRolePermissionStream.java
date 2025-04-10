@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Dbaas.LogsRolePermissionStream;
- * import com.pulumi.ovh.Dbaas.LogsRolePermissionStreamArgs;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsRolePermissionStream;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsRolePermissionStreamArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
+ * $ pulumi import ovh:Dbaas/logsRolePermissionStream:LogsRolePermissionStream  ovh_dbaas_logs_role_permission_stream.perm ldp-ra-XX/dc145bc2-eb01-4efe-a802-XXXXXX/e4818fa8-f426-11ef-a1f6-XXXXXXX
  * ```
  * 
  */

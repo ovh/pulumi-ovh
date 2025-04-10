@@ -227,7 +227,8 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client();
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -267,7 +268,8 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client();
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -307,7 +309,8 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client();
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -347,7 +350,8 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client();
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -387,7 +391,8 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client();
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -427,7 +432,8 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client();
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -634,7 +640,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups();
+     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -673,7 +679,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups();
+     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -712,7 +718,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups();
+     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -751,7 +757,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups();
+     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -790,7 +796,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups();
+     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -829,7 +835,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups();
+     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1036,7 +1042,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers();
+     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1075,7 +1081,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers();
+     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1114,7 +1120,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers();
+     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1153,7 +1159,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers();
+     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1192,7 +1198,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers();
+     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1231,7 +1237,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers();
+     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1270,7 +1276,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1309,7 +1315,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1348,7 +1354,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1387,7 +1393,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1426,7 +1432,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1465,7 +1471,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe();
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Order.inputs.GetCartArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductOptionsPlanArgs;
- * import com.pulumi.ovh.IpLoadBalancing.LoadBalancer;
- * import com.pulumi.ovh.IpLoadBalancing.LoadBalancerArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.LoadBalancer;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.LoadBalancerArgs;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.LoadBalancerPlanArgs;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.LoadBalancerPlanOptionArgs;
  * import java.util.List;
@@ -53,39 +53,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe();
+ *         final var myaccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.ovhSubsidiary())
  *             .build());
  * 
  *         final var iplb = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("ipLoadbalancing")
  *             .planCode("iplb-lb1")
  *             .build());
  * 
  *         final var bhs = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
- *             .cartId(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.cartId()))
- *             .priceCapacity(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.priceCapacity()))
- *             .product(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.product()))
- *             .planCode(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
+ *             .cartId(iplb.cartId())
+ *             .priceCapacity(iplb.priceCapacity())
+ *             .product(iplb.product())
+ *             .planCode(iplb.planCode())
  *             .optionsPlanCode("iplb-zone-lb1-rbx")
  *             .build());
  * 
  *         var iplb_lb1 = new LoadBalancer("iplb-lb1", LoadBalancerArgs.builder()
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .displayName("my ip loadbalancing")
  *             .plan(LoadBalancerPlanArgs.builder()
- *                 .duration(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(iplb.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(iplb.selectedPrices()[0].duration())
+ *                 .planCode(iplb.planCode())
+ *                 .pricingMode(iplb.selectedPrices()[0].pricingMode())
  *                 .build())
  *             .planOptions(LoadBalancerPlanOptionArgs.builder()
- *                 .duration(bhs.applyValue(getCartProductOptionsPlanResult -> getCartProductOptionsPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(bhs.applyValue(getCartProductOptionsPlanResult -> getCartProductOptionsPlanResult.planCode()))
- *                 .pricingMode(bhs.applyValue(getCartProductOptionsPlanResult -> getCartProductOptionsPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(bhs.selectedPrices()[0].duration())
+ *                 .planCode(bhs.planCode())
+ *                 .pricingMode(bhs.selectedPrices()[0].pricingMode())
  *                 .build())
  *             .build());
  * 

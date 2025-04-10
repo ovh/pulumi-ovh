@@ -30,14 +30,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Order.OrderFunctions;
  * import com.pulumi.ovh.Order.inputs.GetCartArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
- * import com.pulumi.ovh.Vrack.Vrack;
- * import com.pulumi.ovh.Vrack.VrackArgs;
+ * import com.ovhcloud.pulumi.ovh.Vrack.Vrack;
+ * import com.ovhcloud.pulumi.ovh.Vrack.VrackArgs;
  * import com.pulumi.ovh.Vrack.inputs.VrackPlanArgs;
- * import com.pulumi.ovh.Ip.IpService;
- * import com.pulumi.ovh.Ip.IpServiceArgs;
+ * import com.ovhcloud.pulumi.ovh.Ip.IpService;
+ * import com.ovhcloud.pulumi.ovh.Ip.IpServiceArgs;
  * import com.pulumi.ovh.Ip.inputs.IpServicePlanArgs;
- * import com.pulumi.ovh.Vrack.IpAddress;
- * import com.pulumi.ovh.Vrack.IpAddressArgs;
+ * import com.ovhcloud.pulumi.ovh.Vrack.IpAddress;
+ * import com.ovhcloud.pulumi.ovh.Vrack.IpAddressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,43 +51,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myAccount = MeFunctions.getMe();
+ *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myAccount.ovhSubsidiary())
  *             .build());
  * 
  *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(myCart.id())
  *             .priceCapacity("renew")
  *             .product("vrack")
  *             .planCode("vrack")
  *             .build());
  * 
  *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
- *             .description(myCart.applyValue(getCartResult -> getCartResult.description()))
- *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .description(myCart.description())
+ *             .ovhSubsidiary(myCart.ovhSubsidiary())
  *             .plan(VrackPlanArgs.builder()
- *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(vrackCartProductPlan.selectedPrices()[0].duration())
+ *                 .planCode(vrackCartProductPlan.planCode())
+ *                 .pricingMode(vrackCartProductPlan.selectedPrices()[0].pricingMode())
  *                 .build())
  *             .build());
  * 
  *         final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(myCart.id())
  *             .priceCapacity("renew")
  *             .product("ip")
  *             .planCode("ip-v4-s30-ripe")
  *             .build());
  * 
  *         var ipblockIpService = new IpService("ipblockIpService", IpServiceArgs.builder()
- *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
- *             .description(myCart.applyValue(getCartResult -> getCartResult.description()))
+ *             .ovhSubsidiary(myCart.ovhSubsidiary())
+ *             .description(myCart.description())
  *             .plan(IpServicePlanArgs.builder()
- *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(ipblockCartProductPlan.selectedPrices()[0].duration())
+ *                 .planCode(ipblockCartProductPlan.planCode())
+ *                 .pricingMode(ipblockCartProductPlan.selectedPrices()[0].pricingMode())
  *                 .configurations(IpServicePlanConfigurationArgs.builder()
  *                     .label("country")
  *                     .value("FR")

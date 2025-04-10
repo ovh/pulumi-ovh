@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.CloudProject.Rancher;
- * import com.pulumi.ovh.CloudProject.RancherArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Rancher;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.RancherArgs;
  * import com.pulumi.ovh.CloudProject.inputs.RancherTargetSpecArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export("rancherUrl", rancher.currentState().applyValue(currentState -> currentState.url()));
+ *         ctx.export("rancherUrl", rancher.currentState().applyValue(_currentState -> _currentState.url()));
  *     }
  * }
  * }

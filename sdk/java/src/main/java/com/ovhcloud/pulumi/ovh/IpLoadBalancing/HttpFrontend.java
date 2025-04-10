@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarm;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFrontend;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFrontendArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarm;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFrontend;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFrontendArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .zone("all")
  *             .build());
  * 
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .defaultFarmId(farm80.id())
  *             .displayName("ingress-8080-gra")
  *             .port("80,443")
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .zone("all")
  *             .build());
  * 
@@ -87,10 +87,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarm;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFrontend;
- * import com.pulumi.ovh.IpLoadBalancing.HttpFrontendArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarm;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFarmArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFrontend;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.HttpFrontendArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
  *             .port(80)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .zone("all")
  *             .build());
  * 
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *                 "X-Ip-Header %%ci",
  *                 "X-Port-Header %%cp")
  *             .port("80,443")
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .serviceName(lb.serviceName())
  *             .zone("all")
  *             .build());
  * 

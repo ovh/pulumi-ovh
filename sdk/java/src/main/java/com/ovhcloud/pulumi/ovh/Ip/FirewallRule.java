@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Ip.FirewallRule;
- * import com.pulumi.ovh.Ip.FirewallRuleArgs;
+ * import com.ovhcloud.pulumi.ovh.Ip.FirewallRule;
+ * import com.ovhcloud.pulumi.ovh.Ip.FirewallRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *             .ip("XXXXXX")
  *             .ipOnFirewall("XXXXXX")
  *             .protocol("tcp")
- *             .sequence(0)
+ *             .sequence(0.0)
  *             .build());
  * 
  *     }

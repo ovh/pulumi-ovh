@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Order.OrderFunctions;
  * import com.pulumi.ovh.Order.inputs.GetCartArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
- * import com.pulumi.ovh.Ip.IpService;
- * import com.pulumi.ovh.Ip.IpServiceArgs;
+ * import com.ovhcloud.pulumi.ovh.Ip.IpService;
+ * import com.ovhcloud.pulumi.ovh.Ip.IpServiceArgs;
  * import com.pulumi.ovh.Ip.inputs.IpServicePlanArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -51,26 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe();
+ *         final var myaccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
  *             .ovhSubsidiary("fr")
  *             .build());
  * 
  *         final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("ip")
  *             .planCode("ip-v4-s30-ripe")
  *             .build());
  * 
  *         var ipblockIpService = new IpService("ipblockIpService", IpServiceArgs.builder()
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .description("my ip block")
  *             .plan(IpServicePlanArgs.builder()
- *                 .duration(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(ipblockCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(ipblockCartProductPlan.selectedPrices()[0].duration())
+ *                 .planCode(ipblockCartProductPlan.planCode())
+ *                 .pricingMode(ipblockCartProductPlan.selectedPrices()[0].pricingMode())
  *                 .configurations(                
  *                     IpServicePlanConfigurationArgs.builder()
  *                         .label("country")

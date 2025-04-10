@@ -21,44 +21,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.ovh.CloudProject.RegionNetwork;
- * import com.pulumi.ovh.CloudProject.RegionNetworkArgs;
- * import com.pulumi.ovh.CloudProject.inputs.RegionNetworkSubnetArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var net = new RegionNetwork("net", RegionNetworkArgs.builder()
- *             .regionName("EU-SOUTH-LZ-MAD-A")
- *             .serviceName("XXXXXX")
- *             .subnet(RegionNetworkSubnetArgs.builder()
- *                 .cidr("10.0.0.0/24")
- *                 .enable_dhcp(true)
- *                 .enable_gateway_ip(false)
- *                 .ip_version(4)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

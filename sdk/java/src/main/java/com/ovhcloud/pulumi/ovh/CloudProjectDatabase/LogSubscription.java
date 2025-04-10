@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputGraylogStreamArgs;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.LogSubscription;
- * import com.pulumi.ovh.CloudProjectDatabase.LogSubscriptionArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.LogSubscription;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.LogSubscriptionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,10 +60,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subscription = new LogSubscription("subscription", LogSubscriptionArgs.builder()
- *             .serviceName(db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .engine(db.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
- *             .clusterId(db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
- *             .streamId(stream.applyValue(getLogsOutputGraylogStreamResult -> getLogsOutputGraylogStreamResult.id()))
+ *             .serviceName(db.serviceName())
+ *             .engine(db.engine())
+ *             .clusterId(db.id())
+ *             .streamId(stream.id())
  *             .build());
  * 
  *     }

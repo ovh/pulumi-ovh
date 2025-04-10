@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			ipRestrictions, err := cloudprojectdatabase.GetIpRestrictions(ctx, &cloudprojectdatabase.GetIpRestrictionsArgs{
-//				ServiceName: "XXXXXX",
+//				ServiceName: pulumi.StringRef("XXXXXX"),
 //				Engine:      "YYYY",
 //				ClusterId:   "ZZZZ",
 //			}, nil)
@@ -62,7 +62,7 @@ type GetIpRestrictionsArgs struct {
 	// The engine of the database cluster you want to list IP restrictions. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getIpRestrictions.
@@ -76,7 +76,7 @@ type GetIpRestrictionsResult struct {
 	// The list of IP restriction of the database associated with the project.
 	Ips []string `pulumi:"ips"`
 	// See Argument Reference above.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 func GetIpRestrictionsOutput(ctx *pulumi.Context, args GetIpRestrictionsOutputArgs, opts ...pulumi.InvokeOption) GetIpRestrictionsResultOutput {
@@ -95,7 +95,7 @@ type GetIpRestrictionsOutputArgs struct {
 	// The engine of the database cluster you want to list IP restrictions. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
 func (GetIpRestrictionsOutputArgs) ElementType() reflect.Type {
@@ -138,8 +138,8 @@ func (o GetIpRestrictionsResultOutput) Ips() pulumi.StringArrayOutput {
 }
 
 // See Argument Reference above.
-func (o GetIpRestrictionsResultOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIpRestrictionsResult) string { return v.ServiceName }).(pulumi.StringOutput)
+func (o GetIpRestrictionsResultOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpRestrictionsResult) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

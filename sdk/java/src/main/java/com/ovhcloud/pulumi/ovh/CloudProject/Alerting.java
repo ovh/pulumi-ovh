@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.CloudProject.Alerting;
- * import com.pulumi.ovh.CloudProject.AlertingArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Alerting;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.AlertingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,9 +44,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myAlert = new Alerting("myAlert", AlertingArgs.builder()
- *             .delay(3600)
+ *             .delay(3600.0)
  *             .email("aaa.bbb}{@literal @}{@code domain.com")
- *             .monthlyThreshold(1000)
+ *             .monthlyThreshold(1000.0)
  *             .serviceName("XXX")
  *             .build());
  * 

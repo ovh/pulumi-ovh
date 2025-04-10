@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.KafkaSchemaRegistryAcl;
- * import com.pulumi.ovh.CloudProjectDatabase.KafkaSchemaRegistryAclArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.KafkaSchemaRegistryAcl;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.KafkaSchemaRegistryAclArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var schemaRegistryAcl = new KafkaSchemaRegistryAcl("schemaRegistryAcl", KafkaSchemaRegistryAclArgs.builder()
- *             .serviceName(kafka.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .clusterId(kafka.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(kafka.serviceName())
+ *             .clusterId(kafka.id())
  *             .permission("schema_registry_read")
  *             .resource("Subject:myResource")
  *             .username("johndoe")

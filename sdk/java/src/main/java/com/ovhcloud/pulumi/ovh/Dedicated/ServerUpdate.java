@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
  * import com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
- * import com.pulumi.ovh.Dedicated.ServerUpdate;
- * import com.pulumi.ovh.Dedicated.ServerUpdateArgs;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.ServerUpdate;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.ServerUpdateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *         var server = new ServerUpdate("server", ServerUpdateArgs.builder()
  *             .serviceName("nsxxxxxxx.ip-xx-xx-xx.eu")
- *             .bootId(rescue.applyValue(getServerBootsResult -> getServerBootsResult.results()[0]))
+ *             .bootId(rescue.results()[0])
  *             .monitoring(true)
  *             .state("ok")
  *             .displayName("Some human-readable name")

@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Order.OrderFunctions;
  * import com.pulumi.ovh.Order.inputs.GetCartArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
- * import com.pulumi.ovh.Vrack.Vrack;
- * import com.pulumi.ovh.Vrack.VrackArgs;
+ * import com.ovhcloud.pulumi.ovh.Vrack.Vrack;
+ * import com.ovhcloud.pulumi.ovh.Vrack.VrackArgs;
  * import com.pulumi.ovh.Vrack.inputs.VrackPlanArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -49,26 +49,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myAccount = MeFunctions.getMe();
+ *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myAccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myAccount.ovhSubsidiary())
  *             .build());
  * 
  *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(myCart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(myCart.id())
  *             .priceCapacity("renew")
  *             .product("vrack")
  *             .planCode("vrack")
  *             .build());
  * 
  *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
- *             .ovhSubsidiary(myCart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myCart.ovhSubsidiary())
  *             .description("my vrack")
  *             .plan(VrackPlanArgs.builder()
- *                 .duration(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(vrackCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(vrackCartProductPlan.selectedPrices()[0].duration())
+ *                 .planCode(vrackCartProductPlan.planCode())
+ *                 .pricingMode(vrackCartProductPlan.selectedPrices()[0].pricingMode())
  *                 .build())
  *             .build());
  * 

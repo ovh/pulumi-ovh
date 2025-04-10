@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
- * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Dbaas.DbaasFunctions;
  * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
- * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
- * import com.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsOutputGraylogStream;
+ * import com.ovhcloud.pulumi.ovh.Dbaas.LogsOutputGraylogStreamArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *             .serviceName("....")
  *             .title("my stream")
  *             .description("my graylog stream")
- *             .retentionId(retention.applyValue(getLogsClustersRetentionResult -> getLogsClustersRetentionResult.retentionId()))
+ *             .retentionId(retention.retentionId())
  *             .build());
  * 
  *     }

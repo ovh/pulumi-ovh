@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
  * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.pulumi.ovh.IpLoadBalancing.UdpFarm;
- * import com.pulumi.ovh.IpLoadBalancing.UdpFarmArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.UdpFarm;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.UdpFarmArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  * 
  *         var farmName = new UdpFarm("farmName", UdpFarmArgs.builder()
  *             .displayName("ingress-8080-gra")
- *             .port(80)
- *             .serviceName(lb.applyValue(getIpLoadBalancingResult -> getIpLoadBalancingResult.serviceName()))
+ *             .port(80.0)
+ *             .serviceName(lb.serviceName())
  *             .zone("gra")
  *             .build());
  * 

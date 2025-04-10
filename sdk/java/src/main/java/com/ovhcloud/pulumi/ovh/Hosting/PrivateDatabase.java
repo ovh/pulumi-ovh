@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Order.OrderFunctions;
  * import com.pulumi.ovh.Order.inputs.GetCartArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
- * import com.pulumi.ovh.Hosting.PrivateDatabase;
- * import com.pulumi.ovh.Hosting.PrivateDatabaseArgs;
+ * import com.ovhcloud.pulumi.ovh.Hosting.PrivateDatabase;
+ * import com.ovhcloud.pulumi.ovh.Hosting.PrivateDatabaseArgs;
  * import com.pulumi.ovh.Hosting.inputs.PrivateDatabasePlanArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -51,26 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe();
+ *         final var myaccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.ovhSubsidiary())
  *             .build());
  * 
  *         final var databaseCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("privateSQL")
  *             .planCode("private-sql-512-instance")
  *             .build());
  * 
  *         var databasePrivateDatabase = new PrivateDatabase("databasePrivateDatabase", PrivateDatabaseArgs.builder()
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .displayName("Postgresql-12")
  *             .plan(PrivateDatabasePlanArgs.builder()
- *                 .duration(databaseCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.prices()[3].duration()))
- *                 .planCode(databaseCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(databaseCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(databaseCartProductPlan.prices()[3].duration())
+ *                 .planCode(databaseCartProductPlan.planCode())
+ *                 .pricingMode(databaseCartProductPlan.selectedPrices()[0].pricingMode())
  *                 .configurations(                
  *                     PrivateDatabasePlanConfigurationArgs.builder()
  *                         .label("dc")

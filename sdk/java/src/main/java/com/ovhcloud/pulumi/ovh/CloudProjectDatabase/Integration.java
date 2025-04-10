@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.Integration;
- * import com.pulumi.ovh.CloudProjectDatabase.IntegrationArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.Integration;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IntegrationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,11 +64,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var integration = new Integration("integration", IntegrationArgs.builder()
- *             .serviceName(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .engine(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.engine()))
- *             .clusterId(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
- *             .sourceServiceId(dbPostgresql.applyValue(getDatabaseResult -> getDatabaseResult.id()))
- *             .destinationServiceId(dbOpensearch.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(dbPostgresql.serviceName())
+ *             .engine(dbPostgresql.engine())
+ *             .clusterId(dbPostgresql.id())
+ *             .sourceServiceId(dbPostgresql.id())
+ *             .destinationServiceId(dbOpensearch.id())
  *             .type("opensearchLogs")
  *             .build());
  * 

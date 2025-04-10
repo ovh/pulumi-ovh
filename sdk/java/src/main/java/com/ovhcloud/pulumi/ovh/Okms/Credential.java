@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Me.MeFunctions;
- * import com.pulumi.ovh.Okms.Credential;
- * import com.pulumi.ovh.Okms.CredentialArgs;
+ * import com.ovhcloud.pulumi.ovh.Okms.Credential;
+ * import com.ovhcloud.pulumi.ovh.Okms.CredentialArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe();
+ *         final var myaccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var credNoCsr = new Credential("credNoCsr", CredentialArgs.builder()
  *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")

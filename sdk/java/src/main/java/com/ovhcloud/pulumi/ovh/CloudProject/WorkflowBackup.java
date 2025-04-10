@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.ovh.CloudProject.WorkflowBackup;
- * import com.pulumi.ovh.CloudProject.WorkflowBackupArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.WorkflowBackup;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.WorkflowBackupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  *         var myBackup = new WorkflowBackup("myBackup", WorkflowBackupArgs.builder()
  *             .cron("50 4 * * *")
  *             .instanceId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
- *             .maxExecutionCount("0")
+ *             .maxExecutionCount(0)
  *             .regionName("GRA11")
- *             .rotation("7")
+ *             .rotation(7)
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .build());
  * 

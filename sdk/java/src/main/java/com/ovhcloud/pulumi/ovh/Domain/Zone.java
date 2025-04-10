@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.ovh.Order.OrderFunctions;
  * import com.pulumi.ovh.Order.inputs.GetCartArgs;
  * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
- * import com.pulumi.ovh.Domain.Zone;
- * import com.pulumi.ovh.Domain.ZoneArgs;
+ * import com.ovhcloud.pulumi.ovh.Domain.Zone;
+ * import com.ovhcloud.pulumi.ovh.Domain.ZoneArgs;
  * import com.pulumi.ovh.Domain.inputs.ZonePlanArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -50,25 +50,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe();
+ *         final var myaccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var mycart = OrderFunctions.getCart(GetCartArgs.builder()
- *             .ovhSubsidiary(myaccount.applyValue(getMeResult -> getMeResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(myaccount.ovhSubsidiary())
  *             .build());
  * 
  *         final var zoneCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
- *             .cartId(mycart.applyValue(getCartResult -> getCartResult.id()))
+ *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("dns")
  *             .planCode("zone")
  *             .build());
  * 
  *         var zoneZone = new Zone("zoneZone", ZoneArgs.builder()
- *             .ovhSubsidiary(mycart.applyValue(getCartResult -> getCartResult.ovhSubsidiary()))
+ *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .plan(ZonePlanArgs.builder()
- *                 .duration(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].duration()))
- *                 .planCode(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.planCode()))
- *                 .pricingMode(zoneCartProductPlan.applyValue(getCartProductPlanResult -> getCartProductPlanResult.selectedPrices()[0].pricingMode()))
+ *                 .duration(zoneCartProductPlan.selectedPrices()[0].duration())
+ *                 .planCode(zoneCartProductPlan.planCode())
+ *                 .pricingMode(zoneCartProductPlan.selectedPrices()[0].pricingMode())
  *                 .configurations(                
  *                     ZonePlanConfigurationArgs.builder()
  *                         .label("zone")

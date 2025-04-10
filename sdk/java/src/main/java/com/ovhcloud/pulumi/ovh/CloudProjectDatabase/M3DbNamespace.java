@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
  * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
- * import com.pulumi.ovh.CloudProjectDatabase.M3DbNamespace;
- * import com.pulumi.ovh.CloudProjectDatabase.M3DbNamespaceArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.M3DbNamespace;
+ * import com.ovhcloud.pulumi.ovh.CloudProjectDatabase.M3DbNamespaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var namespace = new M3DbNamespace("namespace", M3DbNamespaceArgs.builder()
- *             .serviceName(m3db.applyValue(getDatabaseResult -> getDatabaseResult.serviceName()))
- *             .clusterId(m3db.applyValue(getDatabaseResult -> getDatabaseResult.id()))
+ *             .serviceName(m3db.serviceName())
+ *             .clusterId(m3db.id())
  *             .resolution("P2D")
  *             .retentionPeriodDuration("PT48H")
  *             .build());

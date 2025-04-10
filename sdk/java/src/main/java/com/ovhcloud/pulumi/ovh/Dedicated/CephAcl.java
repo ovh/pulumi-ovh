@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
  * import com.pulumi.ovh.Dedicated.inputs.GetCephArgs;
- * import com.pulumi.ovh.Dedicated.CephAcl;
- * import com.pulumi.ovh.Dedicated.CephAclArgs;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.CephAcl;
+ * import com.ovhcloud.pulumi.ovh.Dedicated.CephAclArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_acl = new CephAcl("my-acl", CephAclArgs.builder()
- *             .serviceName(myCeph.applyValue(getCephResult -> getCephResult.id()))
+ *             .serviceName(myCeph.id())
  *             .network("1.2.3.4")
  *             .netmask("255.255.255.255")
  *             .build());

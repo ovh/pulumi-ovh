@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.ovh.OvhFunctions;
  * import com.pulumi.ovh.inputs.GetServerArgs;
- * import com.pulumi.ovh.Vrack.DedicatedServerInterface;
- * import com.pulumi.ovh.Vrack.DedicatedServerInterfaceArgs;
+ * import com.ovhcloud.pulumi.ovh.Vrack.DedicatedServerInterface;
+ * import com.ovhcloud.pulumi.ovh.Vrack.DedicatedServerInterfaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *         var vdsi = new DedicatedServerInterface("vdsi", DedicatedServerInterfaceArgs.builder()
  *             .serviceName("pn-xxxxxxx")
- *             .interfaceId(server.applyValue(getServerResult -> getServerResult.enabledVrackVnis()[0]))
+ *             .interfaceId(server.enabledVrackVnis()[0])
  *             .build());
  * 
  *     }

@@ -22,14 +22,14 @@ public final class Config {
  * 
  */
     public Optional<String> applicationKey() {
-        return Codegen.stringProp("applicationKey").config(config).env("OVH_APPLICATION_KEY").get();
+        return Codegen.stringProp("applicationKey").config(config).get();
     }
 /**
  * The OVH API Application Secret
  * 
  */
     public Optional<String> applicationSecret() {
-        return Codegen.stringProp("applicationSecret").config(config).env("OVH_APPLICATION_SECRET").get();
+        return Codegen.stringProp("applicationSecret").config(config).get();
     }
 /**
  * OAuth 2.0 application&#39;s ID
@@ -50,13 +50,13 @@ public final class Config {
  * 
  */
     public Optional<String> consumerKey() {
-        return Codegen.stringProp("consumerKey").config(config).env("OVH_CONSUMER_KEY").get();
+        return Codegen.stringProp("consumerKey").config(config).get();
     }
 /**
  * The OVH API endpoint to target (ex: &#34;ovh-eu&#34;)
  * 
  */
     public Optional<String> endpoint() {
-        return Codegen.stringProp("endpoint").config(config).env("OVH_ENDPOINT").get();
+        return Codegen.stringProp("endpoint").config(config).get();
     }
 }
