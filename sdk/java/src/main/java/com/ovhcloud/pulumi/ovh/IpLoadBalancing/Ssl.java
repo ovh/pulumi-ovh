@@ -18,52 +18,6 @@ import javax.annotation.Nullable;
 /**
  * Creates a new custom SSL certificate on your IP Load Balancing
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
- * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
- * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.Ssl;
- * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.SslArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
- *             .serviceName("ip-1.2.3.4")
- *             .state("ok")
- *             .build());
- * 
- *         var sslname = new Ssl("sslname", SslArgs.builder()
- *             .certificate("...")
- *             .chain("...")
- *             .displayName("test")
- *             .key("...")
- *             .serviceName(lb.serviceName())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by &#34;/&#34; e.g.
@@ -271,6 +225,7 @@ public class Ssl extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "key"
             ))

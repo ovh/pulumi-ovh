@@ -222,9 +222,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewDatabase(ctx, "postgresql", &cloudproject.DatabaseArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-postgresql"),
 //				Engine:      pulumi.String("postgresql"),
-//				Flavor:      pulumi.String("db1-15"),
+//				Version:     pulumi.String("14"),
+//				Plan:        pulumi.String("business"),
 //				Nodes: cloudproject.DatabaseNodeArray{
 //					&cloudproject.DatabaseNodeArgs{
 //						Region: pulumi.String("GRA"),
@@ -233,9 +235,7 @@ import (
 //						Region: pulumi.String("GRA"),
 //					},
 //				},
-//				Plan:        pulumi.String("business"),
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Version:     pulumi.String("14"),
+//				Flavor: pulumi.String("db1-15"),
 //			})
 //			if err != nil {
 //				return err
@@ -261,29 +261,29 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewDatabase(ctx, "mongodb", &cloudproject.DatabaseArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description: pulumi.String("my-first-mongodb"),
 //				Engine:      pulumi.String("mongodb"),
-//				Flavor:      pulumi.String("db1-30"),
+//				Version:     pulumi.String("5.0"),
+//				Plan:        pulumi.String("production"),
 //				Nodes: cloudproject.DatabaseNodeArray{
 //					&cloudproject.DatabaseNodeArgs{
-//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //						Region:    pulumi.String("SBG"),
 //						SubnetId:  pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
+//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //					},
 //					&cloudproject.DatabaseNodeArgs{
-//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //						Region:    pulumi.String("SBG"),
 //						SubnetId:  pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
+//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //					},
 //					&cloudproject.DatabaseNodeArgs{
-//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //						Region:    pulumi.String("SBG"),
 //						SubnetId:  pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
+//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
 //					},
 //				},
-//				Plan:        pulumi.String("production"),
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Version:     pulumi.String("5.0"),
+//				Flavor: pulumi.String("db1-30"),
 //			})
 //			if err != nil {
 //				return err

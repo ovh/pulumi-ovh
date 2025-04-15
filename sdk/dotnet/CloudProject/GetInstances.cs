@@ -30,8 +30,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var instance = Ovh.CloudProject.GetInstances.Invoke(new()
         ///     {
-        ///         Region = "XXXX",
         ///         ServiceName = "YYYY",
+        ///         Region = "XXXX",
         ///     });
         /// 
         /// });
@@ -59,8 +59,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var instance = Ovh.CloudProject.GetInstances.Invoke(new()
         ///     {
-        ///         Region = "XXXX",
         ///         ServiceName = "YYYY",
+        ///         Region = "XXXX",
         ///     });
         /// 
         /// });
@@ -88,8 +88,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var instance = Ovh.CloudProject.GetInstances.Invoke(new()
         ///     {
-        ///         Region = "XXXX",
         ///         ServiceName = "YYYY",
+        ///         Region = "XXXX",
         ///     });
         /// 
         /// });

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myUser = new ovh.me.IdentityUser("myUser", {
+ * const myUser = new ovh.me.IdentityUser("my_user", {
  *     description: "Some custom description",
  *     email: "my_login@example.com",
  *     group: "DEFAULT",

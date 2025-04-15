@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myRegistry = ovh.CloudProject.getContainerRegistry({
- *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * ```
  */
@@ -98,8 +98,8 @@ export interface GetContainerRegistryResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const myRegistry = ovh.CloudProject.getContainerRegistry({
- *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * ```
  */

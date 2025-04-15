@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewRegionLoadBalancerLogSubscription(ctx, "subscription", &cloudproject.RegionLoadBalancerLogSubscriptionArgs{
-//				Kind:           pulumi.String("haproxy"),
-//				LoadbalancerId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-//				RegionName:     pulumi.String("yyyy"),
 //				ServiceName:    pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				RegionName:     pulumi.String("yyyy"),
+//				LoadbalancerId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+//				Kind:           pulumi.String("haproxy"),
 //				StreamId:       pulumi.String("ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj"),
 //			})
 //			if err != nil {

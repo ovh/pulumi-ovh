@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myRegistryIprestrictions = new ContainerRegistryIPRestrictionsRegistry("myRegistryIprestrictions", ContainerRegistryIPRestrictionsRegistryArgs.builder()
- *             .serviceName(ovh_cloud_project_containerregistry.registry().service_name())
- *             .registryId(ovh_cloud_project_containerregistry.registry().id())
+ *             .serviceName(registryOvhCloudProjectContainerregistry.serviceName())
+ *             .registryId(registryOvhCloudProjectContainerregistry.id())
  *             .ipRestrictions(Map.ofEntries(
  *                 Map.entry("ip_block", "xxx.xxx.xxx.xxx/xx"),
  *                 Map.entry("description", "xxxxxxx")
@@ -150,6 +150,7 @@ public class ContainerRegistryIPRestrictionsRegistry extends com.pulumi.resource
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

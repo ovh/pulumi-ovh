@@ -30,12 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewAPIOAuth2Client(ctx, "myOauth2ClientAuthCode", &me.APIOAuth2ClientArgs{
+//			_, err := me.NewAPIOAuth2Client(ctx, "my_oauth2_client_auth_code", &me.APIOAuth2ClientArgs{
+//				Name:        pulumi.String("OAuth2 authorization code service account"),
+//				Flow:        pulumi.String("AUTHORIZATION_CODE"),
+//				Description: pulumi.String("An OAuth2 client using the authorization code flow for my-app.com"),
 //				CallbackUrls: pulumi.StringArray{
 //					pulumi.String("https://my-app.com/callback"),
 //				},
-//				Description: pulumi.String("An OAuth2 client using the authorization code flow for my-app.com"),
-//				Flow:        pulumi.String("AUTHORIZATION_CODE"),
 //			})
 //			if err != nil {
 //				return err
@@ -60,7 +61,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewAPIOAuth2Client(ctx, "myOauth2ClientClientCreds", &me.APIOAuth2ClientArgs{
+//			_, err := me.NewAPIOAuth2Client(ctx, "my_oauth2_client_client_creds", &me.APIOAuth2ClientArgs{
+//				Name:        pulumi.String("client credentials service account"),
 //				Description: pulumi.String("An OAuth2 client using the client credentials flow for my app"),
 //				Flow:        pulumi.String("CLIENT_CREDENTIALS"),
 //			})

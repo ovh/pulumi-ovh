@@ -30,13 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewKubeNodePool(ctx, "nodePool", &cloudproject.KubeNodePoolArgs{
-//				DesiredNodes: pulumi.Int(3),
-//				FlavorName:   pulumi.String("b2-7"),
+//			_, err := cloudproject.NewKubeNodePool(ctx, "node_pool", &cloudproject.KubeNodePoolArgs{
+//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:         pulumi.String("my-pool-1"),
+//				FlavorName:   pulumi.String("b2-7"),
+//				DesiredNodes: pulumi.Int(3),
 //				MaxNodes:     pulumi.Int(3),
 //				MinNodes:     pulumi.Int(3),
-//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,12 +63,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewKubeNodePool(ctx, "pool", &cloudproject.KubeNodePoolArgs{
-//				DesiredNodes: pulumi.Int(3),
-//				FlavorName:   pulumi.String("b2-7"),
+//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:         pulumi.String("my-pool"),
+//				FlavorName:   pulumi.String("b2-7"),
+//				DesiredNodes: pulumi.Int(3),
 //				MaxNodes:     pulumi.Int(3),
 //				MinNodes:     pulumi.Int(3),
-//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Template: &cloudproject.KubeNodePoolTemplateArgs{
 //					Metadata: &cloudproject.KubeNodePoolTemplateMetadataArgs{
 //						Annotations: pulumi.StringMap{
@@ -81,6 +83,7 @@ import (
 //						},
 //					},
 //					Spec: &cloudproject.KubeNodePoolTemplateSpecArgs{
+//						Unschedulable: pulumi.Bool(false),
 //						Taints: pulumi.StringMapArray{
 //							pulumi.StringMap{
 //								"effect": pulumi.String("PreferNoSchedule"),
@@ -88,7 +91,6 @@ import (
 //								"value":  pulumi.String("v"),
 //							},
 //						},
-//						Unschedulable: pulumi.Bool(false),
 //					},
 //				},
 //			})

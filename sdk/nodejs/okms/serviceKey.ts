@@ -13,32 +13,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const keySymetric = new ovh.okms.ServiceKey("keySymetric", {
+ * const keySymetric = new ovh.okms.ServiceKey("key_symetric", {
  *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     name: "key_oct",
+ *     type: "oct",
+ *     size: 256,
  *     operations: [
  *         "encrypt",
  *         "decrypt",
  *     ],
- *     size: 256,
- *     type: "oct",
  * });
- * const keyRsa = new ovh.okms.ServiceKey("keyRsa", {
+ * const keyRsa = new ovh.okms.ServiceKey("key_rsa", {
  *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
- *     operations: [
- *         "sign",
- *         "verify",
- *     ],
- *     size: 2048,
+ *     name: "key_rsa",
  *     type: "RSA",
- * });
- * const keyEcdsa = new ovh.okms.ServiceKey("keyEcdsa", {
- *     curve: "P-256",
- *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     size: 2048,
  *     operations: [
  *         "sign",
  *         "verify",
  *     ],
+ * });
+ * const keyEcdsa = new ovh.okms.ServiceKey("key_ecdsa", {
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     name: "key_ecdsa",
  *     type: "EC",
+ *     curve: "P-256",
+ *     operations: [
+ *         "sign",
+ *         "verify",
+ *     ],
  * });
  * ```
  */

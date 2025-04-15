@@ -18,42 +18,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **WARNING** This resource and resource `ovh.Domain.ZoneRecord` should not be used together as `ovh.Domain.ZoneImport` controls the whole DNS zone at once.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.Domain.ZoneImport;
- * import com.ovhcloud.pulumi.ovh.Domain.ZoneImportArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var import_ = new ZoneImport("import", ZoneImportArgs.builder()
- *             .zoneName("mysite.ovh")
- *             .zoneFile(Files.readString(Paths.get("./example.zone")))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  */
 @ResourceType(type="ovh:Domain/zoneImport:ZoneImport")
 public class ZoneImport extends com.pulumi.resources.CustomResource {
@@ -139,6 +103,7 @@ public class ZoneImport extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

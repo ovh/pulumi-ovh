@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ldp = new LogsCluster("ldp", LogsClusterArgs.builder()
- *             .archiveAllowedNetworks("10.0.0.0/16")
+ *             .serviceName("ldp-xx-xxxxx")
  *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .archiveAllowedNetworks("10.0.0.0/16")
  *             .directInputAllowedNetworks("10.0.0.0/16")
  *             .queryAllowedNetworks("10.0.0.0/16")
- *             .serviceName("ldp-xx-xxxxx")
  *             .build());
  * 
  *     }
@@ -319,6 +319,7 @@ public class LogsCluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "dedicatedInputPem",
                 "directInputPem",

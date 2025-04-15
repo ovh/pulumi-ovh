@@ -49,25 +49,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var httpsRedirect = new HttpRoute("httpsRedirect", HttpRouteArgs.builder()
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
+ *             .displayName("Redirect to HTTPS")
+ *             .weight(1)
+ *             .frontendId(11111)
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
  *                 .target("https://${host}${path}${arguments}")
  *                 .type("redirect")
  *                 .build())
- *             .displayName("Redirect to HTTPS")
- *             .frontendId(11111)
- *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
- *             .weight(1)
  *             .build());
  * 
  *         var exampleRule = new HttpRouteRule("exampleRule", HttpRouteRuleArgs.builder()
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
+ *             .routeId(httpsRedirect.id())
  *             .displayName("Match example.com host")
  *             .field("host")
  *             .match("is")
  *             .negate(false)
  *             .pattern("example.com")
- *             .routeId(httpsRedirect.id())
- *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
@@ -102,13 +102,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleRule = new HttpRouteRule("exampleRule", HttpRouteRuleArgs.builder()
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
+ *             .routeId(httpsRedirect.id())
  *             .displayName("Match example.com Host header")
  *             .field("headers")
  *             .match("is")
  *             .negate(false)
  *             .pattern("example.com")
- *             .routeId(ovh_iploadbalancing_http_route.https_redirect().id())
- *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
  *             .subField("Host")
  *             .build());
  * 
@@ -283,6 +283,7 @@ public class HttpRouteRule extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -28,10 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dedicated.NewNasHAPartition(ctx, "myPartition", &dedicated.NasHAPartitionArgs{
-//				Protocol:    pulumi.String("NFS"),
+//			_, err := dedicated.NewNasHAPartition(ctx, "my_partition", &dedicated.NasHAPartitionArgs{
 //				ServiceName: pulumi.String("zpool-12345"),
+//				Name:        pulumi.String("my-partition"),
 //				Size:        pulumi.Int(20),
+//				Protocol:    pulumi.String("NFS"),
 //			})
 //			if err != nil {
 //				return err

@@ -19,17 +19,17 @@ import * as utilities from "../utilities";
  *     state: "ok",
  * });
  * const farm80 = new ovh.iploadbalancing.HttpFarm("farm80", {
+ *     serviceName: lb.then(lb => lb.serviceName),
  *     displayName: "ingress-8080-gra",
+ *     zone: "all",
  *     port: 80,
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
  * });
- * const testFrontend = new ovh.iploadbalancing.HttpFrontend("testFrontend", {
- *     defaultFarmId: farm80.id,
- *     displayName: "ingress-8080-gra",
- *     port: "80,443",
+ * const testFrontend = new ovh.iploadbalancing.HttpFrontend("test_frontend", {
  *     serviceName: lb.then(lb => lb.serviceName),
+ *     displayName: "ingress-8080-gra",
  *     zone: "all",
+ *     port: "80,443",
+ *     defaultFarmId: farm80.id,
  * });
  * ```
  *
@@ -45,21 +45,21 @@ import * as utilities from "../utilities";
  *     state: "ok",
  * });
  * const farm80 = new ovh.iploadbalancing.HttpFarm("farm80", {
- *     displayName: "ingress-8080-gra",
- *     port: 80,
  *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
- * });
- * const testFrontend = new ovh.iploadbalancing.HttpFrontend("testFrontend", {
- *     defaultFarmId: farm80.id,
  *     displayName: "ingress-8080-gra",
+ *     zone: "all",
+ *     port: 80,
+ * });
+ * const testFrontend = new ovh.iploadbalancing.HttpFrontend("test_frontend", {
+ *     serviceName: lb.then(lb => lb.serviceName),
+ *     displayName: "ingress-8080-gra",
+ *     zone: "all",
+ *     port: "80,443",
+ *     defaultFarmId: farm80.id,
  *     httpHeaders: [
  *         "X-Ip-Header %%ci",
  *         "X-Port-Header %%cp",
  *     ],
- *     port: "80,443",
- *     serviceName: lb.then(lb => lb.serviceName),
- *     zone: "all",
  * });
  * ```
  *

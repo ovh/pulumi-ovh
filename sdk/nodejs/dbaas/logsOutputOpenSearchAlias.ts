@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const alias = new ovh.dbaas.LogsOutputOpenSearchAlias("alias", {
- *     description: "my opensearch alias",
  *     serviceName: "....",
+ *     description: "my opensearch alias",
  *     suffix: "alias",
  * });
  * ```

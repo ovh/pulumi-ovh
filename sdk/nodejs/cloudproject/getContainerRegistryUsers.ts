@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * const users = ovh.CloudProject.getContainerRegistryUsers({
- *     serviceName: ovh_cloud_project_containerregistry.my_registry.service_name,
- *     registryId: ovh_cloud_project_containerregistry.my_registry.id,
+ *     serviceName: myRegistryOvhCloudProjectContainerregistry.serviceName,
+ *     registryId: myRegistryOvhCloudProjectContainerregistry.id,
  * });
  * ```
  */
@@ -76,8 +76,8 @@ export interface GetContainerRegistryUsersResult {
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * const users = ovh.CloudProject.getContainerRegistryUsers({
- *     serviceName: ovh_cloud_project_containerregistry.my_registry.service_name,
- *     registryId: ovh_cloud_project_containerregistry.my_registry.id,
+ *     serviceName: myRegistryOvhCloudProjectContainerregistry.serviceName,
+ *     registryId: myRegistryOvhCloudProjectContainerregistry.id,
  * });
  * ```
  */

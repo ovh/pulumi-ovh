@@ -16,11 +16,12 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const net = new ovh.cloudproject.NetworkPrivate("net", {
+ *     serviceName: "XXXXXX",
+ *     name: "admin_network",
  *     regions: [
  *         "GRA1",
  *         "BHS1",
  *     ],
- *     serviceName: "XXXXXX",
  * });
  * ```
  *

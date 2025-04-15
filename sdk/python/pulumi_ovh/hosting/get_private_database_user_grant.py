@@ -114,8 +114,8 @@ def get_private_database_user_grant(database_name: Optional[builtins.str] = None
     import pulumi
     import pulumi_ovh as ovh
 
-    user_grant = ovh.Hosting.get_private_database_user_grant(database_name="XXXXXX",
-        service_name="XXXXXX",
+    user_grant = ovh.Hosting.get_private_database_user_grant(service_name="XXXXXX",
+        database_name="XXXXXX",
         user_name="XXXXXX")
     ```
 
@@ -151,8 +151,8 @@ def get_private_database_user_grant_output(database_name: Optional[pulumi.Input[
     import pulumi
     import pulumi_ovh as ovh
 
-    user_grant = ovh.Hosting.get_private_database_user_grant(database_name="XXXXXX",
-        service_name="XXXXXX",
+    user_grant = ovh.Hosting.get_private_database_user_grant(service_name="XXXXXX",
+        database_name="XXXXXX",
         user_name="XXXXXX")
     ```
 

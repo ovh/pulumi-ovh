@@ -13,10 +13,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myResourceGroup = new ovh.iam.ResourceGroup("myResourceGroup", {resources: [
- *     "urn:v1:eu:resource:service1:service1-id",
- *     "urn:v1:eu:resource:service2:service2-id",
- * ]});
+ * const myResourceGroup = new ovh.iam.ResourceGroup("my_resource_group", {
+ *     name: "my_resource_group",
+ *     resources: [
+ *         "urn:v1:eu:resource:service1:service1-id",
+ *         "urn:v1:eu:resource:service2:service2-id",
+ *     ],
+ * });
  * ```
  *
  * ## Import

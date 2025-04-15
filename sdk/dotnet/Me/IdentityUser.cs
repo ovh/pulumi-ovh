@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Me
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myUser = new Ovh.Me.IdentityUser("myUser", new()
+    ///     var myUser = new Ovh.Me.IdentityUser("my_user", new()
     ///     {
     ///         Description = "Some custom description",
     ///         Email = "my_login@example.com",

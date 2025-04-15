@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hosting.GetPrivateDatabaseAllowlist(ctx, &hosting.GetPrivateDatabaseAllowlistArgs{
-//				Ip:          pulumi.StringRef("XXXXXX"),
 //				ServiceName: "XXXXXX",
+//				Ip:          pulumi.StringRef("XXXXXX"),
 //			}, nil)
 //			if err != nil {
 //				return err

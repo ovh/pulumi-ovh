@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vrack.NewIpLoadbalancing(ctx, "viplb", &vrack.IpLoadbalancingArgs{
-//				LoadbalancingId: pulumi.String("yyy"),
 //				ServiceName:     pulumi.String("xxx"),
+//				LoadbalancingId: pulumi.String("yyy"),
 //			})
 //			if err != nil {
 //				return err

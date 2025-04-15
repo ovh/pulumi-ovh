@@ -183,20 +183,20 @@ def get_postgres_sql_connection_pool(cluster_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    test_pool_postgres_sql_connection_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name="XXX",
+    test_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
     pulumi.export("testPool", {
-        "service_name": test_pool_postgres_sql_connection_pool.service_name,
-        "cluster_id": test_pool_postgres_sql_connection_pool.cluster_id,
-        "name": test_pool_postgres_sql_connection_pool.name,
-        "database_id": test_pool_postgres_sql_connection_pool.database_id,
-        "mode": test_pool_postgres_sql_connection_pool.mode,
-        "size": test_pool_postgres_sql_connection_pool.size,
-        "port": test_pool_postgres_sql_connection_pool.port,
-        "ssl_mode": test_pool_postgres_sql_connection_pool.ssl_mode,
-        "uri": test_pool_postgres_sql_connection_pool.uri,
-        "user_id": test_pool_postgres_sql_connection_pool.user_id,
+        "serviceName": test_pool.service_name,
+        "clusterId": test_pool.cluster_id,
+        "name": test_pool.name,
+        "databaseId": test_pool.database_id,
+        "mode": test_pool.mode,
+        "size": test_pool.size,
+        "port": test_pool.port,
+        "sslMode": test_pool.ssl_mode,
+        "uri": test_pool.uri,
+        "userId": test_pool.user_id,
     })
     ```
 
@@ -237,20 +237,20 @@ def get_postgres_sql_connection_pool_output(cluster_id: Optional[pulumi.Input[bu
     import pulumi
     import pulumi_ovh as ovh
 
-    test_pool_postgres_sql_connection_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name="XXX",
+    test_pool = ovh.CloudProjectDatabase.get_postgres_sql_connection_pool(service_name="XXX",
         cluster_id="YYY",
         name="ZZZ")
     pulumi.export("testPool", {
-        "service_name": test_pool_postgres_sql_connection_pool.service_name,
-        "cluster_id": test_pool_postgres_sql_connection_pool.cluster_id,
-        "name": test_pool_postgres_sql_connection_pool.name,
-        "database_id": test_pool_postgres_sql_connection_pool.database_id,
-        "mode": test_pool_postgres_sql_connection_pool.mode,
-        "size": test_pool_postgres_sql_connection_pool.size,
-        "port": test_pool_postgres_sql_connection_pool.port,
-        "ssl_mode": test_pool_postgres_sql_connection_pool.ssl_mode,
-        "uri": test_pool_postgres_sql_connection_pool.uri,
-        "user_id": test_pool_postgres_sql_connection_pool.user_id,
+        "serviceName": test_pool.service_name,
+        "clusterId": test_pool.cluster_id,
+        "name": test_pool.name,
+        "databaseId": test_pool.database_id,
+        "mode": test_pool.mode,
+        "size": test_pool.size,
+        "port": test_pool.port,
+        "sslMode": test_pool.ssl_mode,
+        "uri": test_pool.uri,
+        "userId": test_pool.user_id,
     })
     ```
 

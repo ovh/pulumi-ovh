@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewTcpRouteRule(ctx, "exampleRule", &iploadbalancing.TcpRouteRuleArgs{
+//			_, err = iploadbalancing.NewTcpRouteRule(ctx, "example_rule", &iploadbalancing.TcpRouteRuleArgs{
 //				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //				RouteId:     reject.ID(),
 //				DisplayName: pulumi.String("Match example.com host"),

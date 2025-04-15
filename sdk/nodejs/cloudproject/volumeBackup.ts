@@ -14,9 +14,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const backup = new ovh.cloudproject.VolumeBackup("backup", {
- *     regionName: "GRA9",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA9",
  *     volumeId: "<volume ID>",
+ *     name: "ExampleBackup",
  * });
  * ```
  *

@@ -120,8 +120,8 @@ def get_region(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    g_ra1 = ovh.CloudProject.get_region(name="GRA1",
-        service_name="XXXXXX")
+    gra1 = ovh.CloudProject.get_region(service_name="XXXXXX",
+        name="GRA1")
     ```
 
 
@@ -153,8 +153,8 @@ def get_region_output(name: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    g_ra1 = ovh.CloudProject.get_region(name="GRA1",
-        service_name="XXXXXX")
+    gra1 = ovh.CloudProject.get_region(service_name="XXXXXX",
+        name="GRA1")
     ```
 
 

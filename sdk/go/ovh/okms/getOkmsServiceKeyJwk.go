@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := okms.GetOkmsServiceKey(ctx, &okms.GetOkmsServiceKeyArgs{
-//				Id:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //				OkmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+//				Id:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err

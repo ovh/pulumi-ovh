@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var myFailoverIp = Ovh.CloudProject.GetFailoverIpAttach.Invoke(new()
         ///     {
-        ///         Ip = "XXXXXX",
         ///         ServiceName = "XXXXXX",
+        ///         Ip = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var myFailoverIp = Ovh.CloudProject.GetFailoverIpAttach.Invoke(new()
         ///     {
-        ///         Ip = "XXXXXX",
         ///         ServiceName = "XXXXXX",
+        ///         Ip = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var myFailoverIp = Ovh.CloudProject.GetFailoverIpAttach.Invoke(new()
         ///     {
-        ///         Ip = "XXXXXX",
         ///         ServiceName = "XXXXXX",
+        ///         Ip = "XXXXXX",
         ///     });
         /// 
         /// });

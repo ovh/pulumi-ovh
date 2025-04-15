@@ -113,8 +113,8 @@ class IpLoadbalancing(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         viplb = ovh.vrack.IpLoadbalancing("viplb",
-            loadbalancing_id="yyy",
-            service_name="xxx")
+            service_name="xxx",
+            loadbalancing_id="yyy")
         ```
 
         :param str resource_name: The name of the resource.
@@ -138,8 +138,8 @@ class IpLoadbalancing(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         viplb = ovh.vrack.IpLoadbalancing("viplb",
-            loadbalancing_id="yyy",
-            service_name="xxx")
+            service_name="xxx",
+            loadbalancing_id="yyy")
         ```
 
         :param str resource_name: The name of the resource.

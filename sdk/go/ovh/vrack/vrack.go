@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vrackCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			vrack, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        myCart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "vrack",
@@ -46,13 +46,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vrack.NewVrack(ctx, "vrackVrack", &vrack.VrackArgs{
+//			_, err = vrack.NewVrack(ctx, "vrack", &vrack.VrackArgs{
 //				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
+//				Name:          pulumi.String("my-vrack"),
 //				Description:   pulumi.String("my vrack"),
 //				Plan: &vrack.VrackPlanArgs{
-//					Duration:    pulumi.String(vrackCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(vrackCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(vrackCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(vrack.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(vrack.PlanCode),
+//					PricingMode: pulumi.String(vrack.SelectedPrices[0].PricingMode),
 //				},
 //			})
 //			if err != nil {

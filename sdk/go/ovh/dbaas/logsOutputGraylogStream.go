@@ -29,9 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.NewLogsOutputGraylogStream(ctx, "stream", &dbaas.LogsOutputGraylogStreamArgs{
-//				Description: pulumi.String("my graylog stream"),
 //				ServiceName: pulumi.String("...."),
 //				Title:       pulumi.String("my stream"),
+//				Description: pulumi.String("my graylog stream"),
 //			})
 //			if err != nil {
 //				return err

@@ -192,8 +192,8 @@ def get_logs_output_open_search_index(name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    index = ovh.Dbaas.get_logs_output_open_search_index(name="index-name",
-        service_name="ldp-xx-xxxxx")
+    index = ovh.Dbaas.get_logs_output_open_search_index(service_name="ldp-xx-xxxxx",
+        name="index-name")
     ```
 
 
@@ -234,8 +234,8 @@ def get_logs_output_open_search_index_output(name: Optional[pulumi.Input[builtin
     import pulumi
     import pulumi_ovh as ovh
 
-    index = ovh.Dbaas.get_logs_output_open_search_index(name="index-name",
-        service_name="ldp-xx-xxxxx")
+    index = ovh.Dbaas.get_logs_output_open_search_index(service_name="ldp-xx-xxxxx",
+        name="index-name")
     ```
 
 

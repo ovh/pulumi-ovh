@@ -29,11 +29,12 @@ namespace Pulumi.Ovh.CloudProject
     ///         Region = "GRA",
     ///     });
     /// 
-    ///     var myRegistry = new Ovh.CloudProject.ContainerRegistry("myRegistry", new()
+    ///     var myRegistry = new Ovh.CloudProject.ContainerRegistry("my_registry", new()
     ///     {
     ///         ServiceName = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.ServiceName),
     ///         PlanId = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Id),
     ///         Region = regcap.Apply(getCapabilitiesContainerFilterResult =&gt; getCapabilitiesContainerFilterResult.Region),
+    ///         Name = "mydockerregistry",
     ///     });
     /// 
     /// });

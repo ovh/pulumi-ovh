@@ -13,10 +13,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myPartition = new ovh.dedicated.NasHAPartition("myPartition", {
- *     protocol: "NFS",
+ * const myPartition = new ovh.dedicated.NasHAPartition("my_partition", {
  *     serviceName: "zpool-12345",
+ *     name: "my-partition",
  *     size: 20,
+ *     protocol: "NFS",
  * });
  * ```
  *

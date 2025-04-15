@@ -306,13 +306,14 @@ class RegionStoragePresign(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        presigned_url_region_storage_presign = ovh.cloud_project.RegionStoragePresign("presignedUrlRegionStoragePresign",
+        presigned_url = ovh.cloud_project.RegionStoragePresign("presigned_url",
             service_name="xxxxxxxxxxxxxxxxx",
             region_name="GRA",
+            name="s3-bucket-name",
             expire=3600,
             method="GET",
             object="an-object-in-the-bucket")
-        pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
+        pulumi.export("presignedUrl", presigned_url.url)
         ```
 
         :param str resource_name: The name of the resource.
@@ -340,13 +341,14 @@ class RegionStoragePresign(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        presigned_url_region_storage_presign = ovh.cloud_project.RegionStoragePresign("presignedUrlRegionStoragePresign",
+        presigned_url = ovh.cloud_project.RegionStoragePresign("presigned_url",
             service_name="xxxxxxxxxxxxxxxxx",
             region_name="GRA",
+            name="s3-bucket-name",
             expire=3600,
             method="GET",
             object="an-object-in-the-bucket")
-        pulumi.export("presignedUrl", presigned_url_region_storage_presign.url)
+        pulumi.export("presignedUrl", presigned_url.url)
         ```
 
         :param str resource_name: The name of the resource.

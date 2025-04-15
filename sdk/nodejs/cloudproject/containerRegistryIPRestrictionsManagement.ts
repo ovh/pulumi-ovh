@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  *     serviceName: "XXXXXX",
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
- * const myMgtIprestrictions = new ovh.cloudproject.ContainerRegistryIPRestrictionsManagement("myMgtIprestrictions", {
- *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
- *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ * const myMgtIprestrictions = new ovh.cloudproject.ContainerRegistryIPRestrictionsManagement("my_mgt_iprestrictions", {
+ *     serviceName: registryOvhCloudProjectContainerregistry.serviceName,
+ *     registryId: registryOvhCloudProjectContainerregistry.id,
  *     ipRestrictions: [{
  *         ip_block: "xxx.xxx.xxx.xxx/xx",
  *         description: "xxxxxxx",

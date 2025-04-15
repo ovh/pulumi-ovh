@@ -226,8 +226,9 @@ class LogsRole(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         ro = ovh.dbaas.LogsRole("ro",
-            description="Devops - RO",
-            service_name="ldp-xx-xxxxx")
+            service_name="ldp-xx-xxxxx",
+            name="Devops - RO",
+            description="Devops - RO")
         ```
 
         ## Import
@@ -262,8 +263,9 @@ class LogsRole(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         ro = ovh.dbaas.LogsRole("ro",
-            description="Devops - RO",
-            service_name="ldp-xx-xxxxx")
+            service_name="ldp-xx-xxxxx",
+            name="Devops - RO",
+            description="Devops - RO")
         ```
 
         ## Import

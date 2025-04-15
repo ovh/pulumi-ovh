@@ -113,8 +113,8 @@ class PrivateDatabaseDb(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         database = ovh.hosting.PrivateDatabaseDb("database",
-            database_name="XXXXXX",
-            service_name="XXXXXX")
+            service_name="XXXXXX",
+            database_name="XXXXXX")
         ```
 
         ## Import
@@ -146,8 +146,8 @@ class PrivateDatabaseDb(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         database = ovh.hosting.PrivateDatabaseDb("database",
-            database_name="XXXXXX",
-            service_name="XXXXXX")
+            service_name="XXXXXX",
+            database_name="XXXXXX")
         ```
 
         ## Import

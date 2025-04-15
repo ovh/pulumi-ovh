@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Vrack
     /// {
     ///     var viplb = new Ovh.Vrack.IpLoadbalancing("viplb", new()
     ///     {
-    ///         LoadbalancingId = "yyy",
     ///         ServiceName = "xxx",
+    ///         LoadbalancingId = "yyy",
     ///     });
     /// 
     /// });

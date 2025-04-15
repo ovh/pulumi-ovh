@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const vcp = new ovh.vrack.CloudProject("vcp", {
- *     projectId: "67890",
  *     serviceName: "12345",
+ *     projectId: "67890",
  * });
  * ```
  *

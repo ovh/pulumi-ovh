@@ -28,12 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dedicated.NewNasHAPartitionAccess(ctx, "myPartition", &dedicated.NasHAPartitionAccessArgs{
-//				AclDescription: pulumi.String("Description of the ACL"),
-//				Ip:             pulumi.String("123.123.123.123/32"),
-//				PartitionName:  pulumi.String("my-partition"),
+//			_, err := dedicated.NewNasHAPartitionAccess(ctx, "my_partition", &dedicated.NasHAPartitionAccessArgs{
 //				ServiceName:    pulumi.String("zpool-12345"),
+//				PartitionName:  pulumi.String("my-partition"),
+//				Ip:             pulumi.String("123.123.123.123/32"),
 //				Type:           pulumi.String("readwrite"),
+//				AclDescription: pulumi.String("Description of the ACL"),
 //			})
 //			if err != nil {
 //				return err

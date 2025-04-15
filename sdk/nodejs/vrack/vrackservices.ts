@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrackVrackservices = new ovh.vrack.Vrackservices("vrackVrackservices", {
+ * const vrackVrackservices = new ovh.vrack.Vrackservices("vrack_vrackservices", {
  *     serviceName: "<vRack service name>",
  *     vrackServices: "<vrackServices service name>",
  * });

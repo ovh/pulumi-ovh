@@ -334,24 +334,6 @@ class Credential(pulumi.CustomResource):
         """
         Creates a credential for an OVHcloud KMS.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        myaccount = ovh.Me.get_me()
-        cred_no_csr = ovh.okms.Credential("credNoCsr",
-            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
-            description="Credential without CSR")
-        cred_from_csr = ovh.okms.Credential("credFromCsr",
-            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
-            csr=(lambda path: open(path).read())("cred.csr"),
-            description="Credential from CSR")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] csr: Valid Certificate Signing Request
@@ -369,24 +351,6 @@ class Credential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a credential for an OVHcloud KMS.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        myaccount = ovh.Me.get_me()
-        cred_no_csr = ovh.okms.Credential("credNoCsr",
-            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
-            description="Credential without CSR")
-        cred_from_csr = ovh.okms.Credential("credFromCsr",
-            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            identity_urns=[f"urn:v1:eu:identity:account:{data['ovh_me']['current_account']['nichandle']}"],
-            csr=(lambda path: open(path).read())("cred.csr"),
-            description="Credential from CSR")
-        ```
 
         :param str resource_name: The name of the resource.
         :param CredentialArgs args: The arguments to use to populate this resource's properties.

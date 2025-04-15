@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vrack.NewDedicatedServer(ctx, "vds", &vrack.DedicatedServerArgs{
-//				ServerId:    pulumi.String("67890"),
 //				ServiceName: pulumi.String("XXXX"),
+//				ServerId:    pulumi.String("67890"),
 //			})
 //			if err != nil {
 //				return err

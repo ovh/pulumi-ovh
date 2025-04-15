@@ -242,9 +242,10 @@ class VolumeBackup(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         backup = ovh.cloud_project.VolumeBackup("backup",
-            region_name="GRA9",
             service_name="<public cloud project ID>",
-            volume_id="<volume ID>")
+            region_name="GRA9",
+            volume_id="<volume ID>",
+            name="ExampleBackup")
         ```
 
         ## Import
@@ -294,9 +295,10 @@ class VolumeBackup(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         backup = ovh.cloud_project.VolumeBackup("backup",
-            region_name="GRA9",
             service_name="<public cloud project ID>",
-            volume_id="<volume ID>")
+            region_name="GRA9",
+            volume_id="<volume ID>",
+            name="ExampleBackup")
         ```
 
         ## Import

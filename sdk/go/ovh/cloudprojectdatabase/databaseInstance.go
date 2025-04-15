@@ -45,6 +45,7 @@ import (
 //				ServiceName: pulumi.String(db.ServiceName),
 //				Engine:      pulumi.String(db.Engine),
 //				ClusterId:   pulumi.String(db.Id),
+//				Name:        pulumi.String("mydatabase"),
 //			})
 //			if err != nil {
 //				return err

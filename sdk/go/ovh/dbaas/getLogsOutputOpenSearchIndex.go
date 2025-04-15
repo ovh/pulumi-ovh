@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.GetLogsOutputOpenSearchIndex(ctx, &dbaas.GetLogsOutputOpenSearchIndexArgs{
-//				Name:        "index-name",
 //				ServiceName: "ldp-xx-xxxxx",
+//				Name:        "index-name",
 //			}, nil)
 //			if err != nil {
 //				return err

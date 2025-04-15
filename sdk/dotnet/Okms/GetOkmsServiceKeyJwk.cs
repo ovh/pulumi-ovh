@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Okms
         /// {
         ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
         ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.Okms
         /// {
         ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
         ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.Okms
         /// {
         ///     var keyInfo = Ovh.Okms.GetOkmsServiceKey.Invoke(new()
         ///     {
-        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///     });
         /// 
         /// });

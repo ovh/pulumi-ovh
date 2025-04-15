@@ -29,15 +29,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewNetworkPrivateSubnetV2(ctx, "subnet", &cloudproject.NetworkPrivateSubnetV2Args{
-//				Cidr: pulumi.String("192.168.168.0/24"),
-//				Dhcp: pulumi.Bool(true),
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				NetworkId:   pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:        pulumi.String("my_private_subnet"),
+//				Region:      pulumi.String("XXX1"),
 //				DnsNameservers: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),
 //				},
+//				Cidr:                        pulumi.String("192.168.168.0/24"),
+//				Dhcp:                        pulumi.Bool(true),
 //				EnableGatewayIp:             pulumi.Bool(true),
-//				NetworkId:                   pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				Region:                      pulumi.String("XXX1"),
-//				ServiceName:                 pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				UseDefaultPublicDnsResolver: pulumi.Bool(false),
 //			})
 //			if err != nil {

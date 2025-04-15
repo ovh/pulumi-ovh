@@ -24,16 +24,17 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var subnet = new Ovh.CloudProject.NetworkPrivateSubnetV2("subnet", new()
     ///     {
-    ///         Cidr = "192.168.168.0/24",
-    ///         Dhcp = true,
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         NetworkId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Name = "my_private_subnet",
+    ///         Region = "XXX1",
     ///         DnsNameservers = new[]
     ///         {
     ///             "1.1.1.1",
     ///         },
+    ///         Cidr = "192.168.168.0/24",
+    ///         Dhcp = true,
     ///         EnableGatewayIp = true,
-    ///         NetworkId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    ///         Region = "XXX1",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         UseDefaultPublicDnsResolver = false,
     ///     });
     /// 

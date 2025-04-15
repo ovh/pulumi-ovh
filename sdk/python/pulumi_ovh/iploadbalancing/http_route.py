@@ -247,15 +247,15 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
+        https_redirect = ovh.ip_load_balancing.HttpRoute("https_redirect",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            display_name="Redirect to HTTPS",
+            weight=1,
             action={
                 "status": 302,
                 "target": "https://${host}${path}${arguments}",
                 "type": "redirect",
-            },
-            display_name="Redirect to HTTPS",
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1)
+            })
         ```
 
         ## Import
@@ -293,15 +293,15 @@ class HttpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
+        https_redirect = ovh.ip_load_balancing.HttpRoute("https_redirect",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            display_name="Redirect to HTTPS",
+            weight=1,
             action={
                 "status": 302,
                 "target": "https://${host}${path}${arguments}",
                 "type": "redirect",
-            },
-            display_name="Redirect to HTTPS",
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1)
+            })
         ```
 
         ## Import

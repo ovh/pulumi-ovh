@@ -39,6 +39,7 @@ import (
 //			_, err = cloudprojectdatabase.NewM3DbNamespace(ctx, "namespace", &cloudprojectdatabase.M3DbNamespaceArgs{
 //				ServiceName:             pulumi.String(m3db.ServiceName),
 //				ClusterId:               pulumi.String(m3db.Id),
+//				Name:                    pulumi.String("mynamespace"),
 //				Resolution:              pulumi.String("P2D"),
 //				RetentionPeriodDuration: pulumi.String("PT48H"),
 //			})

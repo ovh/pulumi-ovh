@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Vrack
     /// {
     ///     var vrack_dedicatedCloud = new Ovh.Vrack.VrackDedicatedCloud("vrack-dedicatedCloud", new()
     ///     {
-    ///         DedicatedCloud = "&lt;Dedicated Cloud service name&gt;",
     ///         ServiceName = "&lt;vRack service name&gt;",
+    ///         DedicatedCloud = "&lt;Dedicated Cloud service name&gt;",
     ///     });
     /// 
     /// });

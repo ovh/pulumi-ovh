@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			zoneCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			zone, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        mycart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "dns",
@@ -46,12 +46,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = domain.NewZone(ctx, "zoneZone", &domain.ZoneArgs{
+//			_, err = domain.NewZone(ctx, "zone", &domain.ZoneArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Plan: &domain.ZonePlanArgs{
-//					Duration:    pulumi.String(zoneCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(zoneCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(zoneCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(zone.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(zone.PlanCode),
+//					PricingMode: pulumi.String(zone.SelectedPrices[0].PricingMode),
 //					Configurations: domain.ZonePlanConfigurationArray{
 //						&domain.ZonePlanConfigurationArgs{
 //							Label: pulumi.String("zone"),

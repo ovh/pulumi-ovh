@@ -33,6 +33,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///     {
     ///         ServiceName = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
     ///         ClusterId = kafka.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Name = "mytopic",
     ///         MinInsyncReplicas = 1,
     ///         Partitions = 3,
     ///         Replication = 2,

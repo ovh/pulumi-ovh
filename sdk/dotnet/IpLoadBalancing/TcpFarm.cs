@@ -28,10 +28,10 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         State = "ok",
     ///     });
     /// 
-    ///     var farmName = new Ovh.IpLoadBalancing.TcpFarm("farmName", new()
+    ///     var farmName = new Ovh.IpLoadBalancing.TcpFarm("farm_name", new()
     ///     {
-    ///         DisplayName = "ingress-8080-gra",
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "GRA",
     ///     });
     /// 

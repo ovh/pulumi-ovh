@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     description: "my user",
  *     roleNames: ["objectstore_operator"],
  * });
- * const myS3Credentials = new ovh.cloudproject.S3Credential("myS3Credentials", {
+ * const myS3Credentials = new ovh.cloudproject.S3Credential("my_s3_credentials", {
  *     serviceName: user.serviceName,
  *     userId: user.id,
  * });

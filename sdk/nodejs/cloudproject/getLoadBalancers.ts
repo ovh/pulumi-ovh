@@ -15,11 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const lbsLoadBalancers = ovh.CloudProject.getLoadBalancers({
- *     serviceName: "XXXXXX",
- *     regionName: "XXX",
- * });
- * export const lbs = lbsLoadBalancers;
+ * export = async () => {
+ *     const lbs = await ovh.CloudProject.getLoadBalancers({
+ *         serviceName: "XXXXXX",
+ *         regionName: "XXX",
+ *     });
+ *     return {
+ *         lbs: lbs,
+ *     };
+ * }
  * ```
  */
 export function getLoadBalancers(args: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
@@ -74,11 +78,15 @@ export interface GetLoadBalancersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const lbsLoadBalancers = ovh.CloudProject.getLoadBalancers({
- *     serviceName: "XXXXXX",
- *     regionName: "XXX",
- * });
- * export const lbs = lbsLoadBalancers;
+ * export = async () => {
+ *     const lbs = await ovh.CloudProject.getLoadBalancers({
+ *         serviceName: "XXXXXX",
+ *         regionName: "XXX",
+ *     });
+ *     return {
+ *         lbs: lbs,
+ *     };
+ * }
  * ```
  */
 export function getLoadBalancersOutput(args: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {

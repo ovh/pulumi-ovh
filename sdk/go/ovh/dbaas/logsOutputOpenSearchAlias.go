@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.NewLogsOutputOpenSearchAlias(ctx, "alias", &dbaas.LogsOutputOpenSearchAliasArgs{
-//				Description: pulumi.String("my opensearch alias"),
 //				ServiceName: pulumi.String("...."),
+//				Description: pulumi.String("my opensearch alias"),
 //				Suffix:      pulumi.String("alias"),
 //			})
 //			if err != nil {

@@ -28,11 +28,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a record to a sub-domain
 //			_, err := domain.NewZoneRecord(ctx, "test", &domain.ZoneRecordArgs{
-//				Fieldtype: pulumi.String("A"),
-//				Subdomain: pulumi.String("test"),
-//				Target:    pulumi.String("0.0.0.0"),
-//				Ttl:       pulumi.Int(3600),
 //				Zone:      pulumi.String("testdemo.ovh"),
+//				Subdomain: pulumi.String("test"),
+//				Fieldtype: pulumi.String("A"),
+//				Ttl:       pulumi.Int(3600),
+//				Target:    pulumi.String("0.0.0.0"),
 //			})
 //			if err != nil {
 //				return err

@@ -196,10 +196,10 @@ def get_storage_object(key: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    object = ovh.CloudProject.get_storage_object(key="<object name>",
-        name="<bucket name>",
+    object = ovh.CloudProject.get_storage_object(service_name="<public cloud project ID>",
         region_name="GRA",
-        service_name="<public cloud project ID>")
+        name="<bucket name>",
+        key="<object name>")
     ```
 
 
@@ -243,10 +243,10 @@ def get_storage_object_output(key: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    object = ovh.CloudProject.get_storage_object(key="<object name>",
-        name="<bucket name>",
+    object = ovh.CloudProject.get_storage_object(service_name="<public cloud project ID>",
         region_name="GRA",
-        service_name="<public cloud project ID>")
+        name="<bucket name>",
+        key="<object name>")
     ```
 
 

@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const logstash = ovh.Dbaas.getLogsCluster({
- *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     serviceName: "ldp-xx-xxxxx",
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  * });
  * ```
  */
@@ -106,8 +106,8 @@ export interface GetLogsClusterResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const logstash = ovh.Dbaas.getLogsCluster({
- *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     serviceName: "ldp-xx-xxxxx",
+ *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  * });
  * ```
  */

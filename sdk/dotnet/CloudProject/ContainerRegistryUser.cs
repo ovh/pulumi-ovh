@@ -30,8 +30,8 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     ///     var user = new Ovh.CloudProject.ContainerRegistryUser("user", new()
     ///     {
-    ///         ServiceName = ovh_cloud_project_containerregistry.Registry.Service_name,
-    ///         RegistryId = ovh_cloud_project_containerregistry.Registry.Id,
+    ///         ServiceName = registryOvhCloudProjectContainerregistry.ServiceName,
+    ///         RegistryId = registryOvhCloudProjectContainerregistry.Id,
     ///         Email = "foo@bar.com",
     ///         Login = "foobar",
     ///     });

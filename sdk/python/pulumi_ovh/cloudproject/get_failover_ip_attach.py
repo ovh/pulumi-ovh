@@ -162,8 +162,8 @@ def get_failover_ip_attach(block: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    my_failover_ip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
-        service_name="XXXXXX")
+    my_failover_ip = ovh.CloudProject.get_failover_ip_attach(service_name="XXXXXX",
+        ip="XXXXXX")
     ```
 
 
@@ -209,8 +209,8 @@ def get_failover_ip_attach_output(block: Optional[pulumi.Input[Optional[builtins
     import pulumi
     import pulumi_ovh as ovh
 
-    my_failover_ip = ovh.CloudProject.get_failover_ip_attach(ip="XXXXXX",
-        service_name="XXXXXX")
+    my_failover_ip = ovh.CloudProject.get_failover_ip_attach(service_name="XXXXXX",
+        ip="XXXXXX")
     ```
 
 

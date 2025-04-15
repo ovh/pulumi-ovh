@@ -25,10 +25,10 @@ namespace Pulumi.Ovh.Domain
     ///     // Add a redirection to a sub-domain
     ///     var test = new Ovh.Domain.ZoneRedirection("test", new()
     ///     {
-    ///         Subdomain = "test",
-    ///         Target = "http://www.ovh",
-    ///         Type = "visiblePermanent",
     ///         Zone = "testdemo.ovh",
+    ///         Subdomain = "test",
+    ///         Type = "visiblePermanent",
+    ///         Target = "http://www.ovh",
     ///     });
     /// 
     /// });

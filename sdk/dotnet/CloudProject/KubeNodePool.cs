@@ -24,14 +24,15 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nodePool = new Ovh.CloudProject.KubeNodePool("nodePool", new()
+    ///     var nodePool = new Ovh.CloudProject.KubeNodePool("node_pool", new()
     ///     {
-    ///         DesiredNodes = 3,
-    ///         FlavorName = "b2-7",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Name = "my-pool-1",
+    ///         FlavorName = "b2-7",
+    ///         DesiredNodes = 3,
     ///         MaxNodes = 3,
     ///         MinNodes = 3,
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///     });
     /// 
     /// });
@@ -49,12 +50,13 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var pool = new Ovh.CloudProject.KubeNodePool("pool", new()
     ///     {
-    ///         DesiredNodes = 3,
-    ///         FlavorName = "b2-7",
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Name = "my-pool",
+    ///         FlavorName = "b2-7",
+    ///         DesiredNodes = 3,
     ///         MaxNodes = 3,
     ///         MinNodes = 3,
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs
     ///         {
     ///             Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs
@@ -73,6 +75,7 @@ namespace Pulumi.Ovh.CloudProject
     ///             },
     ///             Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs
     ///             {
+    ///                 Unschedulable = false,
     ///                 Taints = new[]
     ///                 {
     ///                     
@@ -82,7 +85,6 @@ namespace Pulumi.Ovh.CloudProject
     ///                         { "value", "v" },
     ///                     },
     ///                 },
-    ///                 Unschedulable = false,
     ///             },
     ///         },
     ///     });

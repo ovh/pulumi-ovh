@@ -144,9 +144,9 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartitionSnapshot("myPartition",
-            partition_name="my-partition",
+        my_partition = ovh.dedicated.NasHAPartitionSnapshot("my_partition",
             service_name="zpool-12345",
+            partition_name="my-partition",
             type="day-3")
         ```
 
@@ -179,9 +179,9 @@ class NasHAPartitionSnapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartitionSnapshot("myPartition",
-            partition_name="my-partition",
+        my_partition = ovh.dedicated.NasHAPartitionSnapshot("my_partition",
             service_name="zpool-12345",
+            partition_name="my-partition",
             type="day-3")
         ```
 

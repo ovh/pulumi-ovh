@@ -92,8 +92,8 @@ def get_regions(has_services_ups: Optional[Sequence[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
-        service_name="XXXXXX")
+    regions = ovh.CloudProject.get_regions(service_name="XXXXXX",
+        has_services_ups=["network"])
     ```
 
 
@@ -123,8 +123,8 @@ def get_regions_output(has_services_ups: Optional[pulumi.Input[Optional[Sequence
     import pulumi
     import pulumi_ovh as ovh
 
-    regions = ovh.CloudProject.get_regions(has_services_ups=["network"],
-        service_name="XXXXXX")
+    regions = ovh.CloudProject.get_regions(service_name="XXXXXX",
+        has_services_ups=["network"])
     ```
 
 

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *         "private": {
  *             network: {
  *                 id: .filter(region => region.region == "GRA9").map(region => (region))[0].openstackid,
- *                 subnetId: ovh_cloud_project_network_private_subnet.myprivsub.id,
+ *                 subnetId: myprivsub.id,
  *             },
  *         },
  *     },
@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  * const priv = new ovh.cloudproject.NetworkPrivate("priv", {
  *     serviceName: "<public cloud project ID>",
  *     vlanId: 10,
+ *     name: "my_priv",
  *     regions: ["GRA9"],
  * });
  * const privsub = new ovh.cloudproject.NetworkPrivateSubnet("privsub", {

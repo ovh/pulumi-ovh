@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			databaseCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			database, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        mycart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "privateSQL",
@@ -46,13 +46,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			databasePrivateDatabase, err := hosting.NewPrivateDatabase(ctx, "databasePrivateDatabase", &hosting.PrivateDatabaseArgs{
+//			databasePrivateDatabase, err := hosting.NewPrivateDatabase(ctx, "database", &hosting.PrivateDatabaseArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("Postgresql-12"),
 //				Plan: &hosting.PrivateDatabasePlanArgs{
-//					Duration:    pulumi.String(databaseCartProductPlan.Prices[3].Duration),
-//					PlanCode:    pulumi.String(databaseCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(databaseCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(database.Prices[3].Duration),
+//					PlanCode:    pulumi.String(database.PlanCode),
+//					PricingMode: pulumi.String(database.SelectedPrices[0].PricingMode),
 //					Configurations: hosting.PrivateDatabasePlanConfigurationArray{
 //						&hosting.PrivateDatabasePlanConfigurationArgs{
 //							Label: pulumi.String("dc"),

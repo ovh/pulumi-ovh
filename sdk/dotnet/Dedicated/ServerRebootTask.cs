@@ -27,7 +27,7 @@ namespace Pulumi.Ovh.Dedicated
     ///         Kernel = "rescue64-pro",
     ///     });
     /// 
-    ///     var serverOnRescue = new Ovh.Dedicated.ServerUpdate("serverOnRescue", new()
+    ///     var serverOnRescue = new Ovh.Dedicated.ServerUpdate("server_on_rescue", new()
     ///     {
     ///         ServiceName = "nsxxxxxxx.ip-xx-xx-xx.eu",
     ///         BootId = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.Results[0]),
@@ -35,7 +35,7 @@ namespace Pulumi.Ovh.Dedicated
     ///         State = "ok",
     ///     });
     /// 
-    ///     var serverReboot = new Ovh.Dedicated.ServerRebootTask("serverReboot", new()
+    ///     var serverReboot = new Ovh.Dedicated.ServerRebootTask("server_reboot", new()
     ///     {
     ///         ServiceName = rescue.Apply(getServerBootsResult =&gt; getServerBootsResult.ServiceName),
     ///         Keepers = new[]

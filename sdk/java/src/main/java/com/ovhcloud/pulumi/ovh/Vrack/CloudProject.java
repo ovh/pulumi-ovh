@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vcp = new CloudProject("vcp", CloudProjectArgs.builder()
- *             .projectId("67890")
  *             .serviceName("12345")
+ *             .projectId("67890")
  *             .build());
  * 
  *     }
@@ -133,6 +133,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

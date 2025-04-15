@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			nodesKubeNodePoolNodes, err := cloudproject.GetKubeNodePoolNodes(ctx, &cloudproject.GetKubeNodePoolNodesArgs{
+//			nodes, err := cloudproject.GetKubeNodePoolNodes(ctx, &cloudproject.GetKubeNodePoolNodesArgs{
 //				ServiceName: "XXXXXX",
 //				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
 //				Name:        "XXXXXX",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("nodes", nodesKubeNodePoolNodes)
+//			ctx.Export("nodes", nodes)
 //			return nil
 //		})
 //	}

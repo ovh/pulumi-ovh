@@ -44,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var presignedUrlRegionStoragePresign = new RegionStoragePresign("presignedUrlRegionStoragePresign", RegionStoragePresignArgs.builder()
+ *         var presignedUrl = new RegionStoragePresign("presignedUrl", RegionStoragePresignArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxx")
  *             .regionName("GRA")
+ *             .name("s3-bucket-name")
  *             .expire(3600)
  *             .method("GET")
  *             .object("an-object-in-the-bucket")
  *             .build());
  * 
- *         ctx.export("presignedUrl", presignedUrlRegionStoragePresign.url());
+ *         ctx.export("presignedUrl", presignedUrl.url());
  *     }
  * }
  * }
@@ -228,6 +229,7 @@ public class RegionStoragePresign extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

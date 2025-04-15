@@ -22,40 +22,43 @@ namespace Pulumi.Ovh.Okms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keySymetric = new Ovh.Okms.ServiceKey("keySymetric", new()
+    ///     var keySymetric = new Ovh.Okms.ServiceKey("key_symetric", new()
     ///     {
     ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Name = "key_oct",
+    ///         Type = "oct",
+    ///         Size = 256,
     ///         Operations = new[]
     ///         {
     ///             "encrypt",
     ///             "decrypt",
     ///         },
-    ///         Size = 256,
-    ///         Type = "oct",
     ///     });
     /// 
-    ///     var keyRsa = new Ovh.Okms.ServiceKey("keyRsa", new()
+    ///     var keyRsa = new Ovh.Okms.ServiceKey("key_rsa", new()
     ///     {
     ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    ///         Operations = new[]
-    ///         {
-    ///             "sign",
-    ///             "verify",
-    ///         },
-    ///         Size = 2048,
+    ///         Name = "key_rsa",
     ///         Type = "RSA",
-    ///     });
-    /// 
-    ///     var keyEcdsa = new Ovh.Okms.ServiceKey("keyEcdsa", new()
-    ///     {
-    ///         Curve = "P-256",
-    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Size = 2048,
     ///         Operations = new[]
     ///         {
     ///             "sign",
     ///             "verify",
     ///         },
+    ///     });
+    /// 
+    ///     var keyEcdsa = new Ovh.Okms.ServiceKey("key_ecdsa", new()
+    ///     {
+    ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Name = "key_ecdsa",
     ///         Type = "EC",
+    ///         Curve = "P-256",
+    ///         Operations = new[]
+    ///         {
+    ///             "sign",
+    ///             "verify",
+    ///         },
     ///     });
     /// 
     /// });

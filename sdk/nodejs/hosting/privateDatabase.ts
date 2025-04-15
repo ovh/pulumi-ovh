@@ -18,19 +18,19 @@ import * as utilities from "../utilities";
  * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
  *     ovhSubsidiary: myaccount.ovhSubsidiary,
  * }));
- * const databaseCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ * const database = mycart.then(mycart => ovh.Order.getCartProductPlan({
  *     cartId: mycart.id,
  *     priceCapacity: "renew",
  *     product: "privateSQL",
  *     planCode: "private-sql-512-instance",
  * }));
- * const databasePrivateDatabase = new ovh.hosting.PrivateDatabase("databasePrivateDatabase", {
+ * const databasePrivateDatabase = new ovh.hosting.PrivateDatabase("database", {
  *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
  *     displayName: "Postgresql-12",
  *     plan: {
- *         duration: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.prices?.[3]?.duration),
- *         planCode: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.planCode),
- *         pricingMode: databaseCartProductPlan.then(databaseCartProductPlan => databaseCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         duration: database.then(database => database.prices?.[3]?.duration),
+ *         planCode: database.then(database => database.planCode),
+ *         pricingMode: database.then(database => database.selectedPrices?.[0]?.pricingMode),
  *         configurations: [
  *             {
  *                 label: "dc",

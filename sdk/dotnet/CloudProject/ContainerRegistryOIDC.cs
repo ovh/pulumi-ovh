@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myOidc = new Ovh.CloudProject.ContainerRegistryOIDC("myOidc", new()
+    ///     var myOidc = new Ovh.CloudProject.ContainerRegistryOIDC("my_oidc", new()
     ///     {
     ///         ServiceName = "XXXXXX",
     ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",

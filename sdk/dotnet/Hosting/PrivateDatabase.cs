@@ -27,7 +27,7 @@ namespace Pulumi.Ovh.Hosting
     ///         OvhSubsidiary = myaccount.Apply(getMeResult =&gt; getMeResult.OvhSubsidiary),
     ///     });
     /// 
-    ///     var databaseCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     var database = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
     ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
@@ -35,15 +35,15 @@ namespace Pulumi.Ovh.Hosting
     ///         PlanCode = "private-sql-512-instance",
     ///     });
     /// 
-    ///     var databasePrivateDatabase = new Ovh.Hosting.PrivateDatabase("databasePrivateDatabase", new()
+    ///     var databasePrivateDatabase = new Ovh.Hosting.PrivateDatabase("database", new()
     ///     {
     ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         DisplayName = "Postgresql-12",
     ///         Plan = new Ovh.Hosting.Inputs.PrivateDatabasePlanArgs
     ///         {
-    ///             Duration = databaseCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.Prices[3]?.Duration),
-    ///             PlanCode = databaseCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = databaseCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Duration = database.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.Prices[3]?.Duration),
+    ///             PlanCode = database.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = database.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
     ///             Configurations = new[]
     ///             {
     ///                 new Ovh.Hosting.Inputs.PrivateDatabasePlanConfigurationArgs

@@ -24,17 +24,17 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("httpsRedirect", new()
+    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("https_redirect", new()
     ///     {
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         DisplayName = "Redirect to HTTPS",
+    ///         Weight = 1,
     ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
     ///         {
     ///             Status = 302,
     ///             Target = "https://${host}${path}${arguments}",
     ///             Type = "redirect",
     ///         },
-    ///         DisplayName = "Redirect to HTTPS",
-    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
-    ///         Weight = 1,
     ///     });
     /// 
     /// });

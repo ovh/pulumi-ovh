@@ -227,9 +227,11 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var postgresql = new Ovh.CloudProject.Database("postgresql", new()
     ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         Description = "my-first-postgresql",
     ///         Engine = "postgresql",
-    ///         Flavor = "db1-15",
+    ///         Version = "14",
+    ///         Plan = "business",
     ///         Nodes = new[]
     ///         {
     ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
@@ -241,9 +243,7 @@ namespace Pulumi.Ovh.CloudProject
     ///                 Region = "GRA",
     ///             },
     ///         },
-    ///         Plan = "business",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Version = "14",
+    ///         Flavor = "db1-15",
     ///     });
     /// 
     /// });
@@ -261,33 +261,33 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var mongodb = new Ovh.CloudProject.Database("mongodb", new()
     ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         Description = "my-first-mongodb",
     ///         Engine = "mongodb",
-    ///         Flavor = "db1-30",
+    ///         Version = "5.0",
+    ///         Plan = "production",
     ///         Nodes = new[]
     ///         {
     ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
     ///             {
-    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///                 Region = "SBG",
     ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///             },
     ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
     ///             {
-    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///                 Region = "SBG",
     ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///             },
     ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
     ///             {
-    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///                 Region = "SBG",
     ///                 SubnetId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    ///                 NetworkId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     ///             },
     ///         },
-    ///         Plan = "production",
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Version = "5.0",
+    ///         Flavor = "db1-30",
     ///     });
     /// 
     /// });

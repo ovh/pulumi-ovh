@@ -112,9 +112,9 @@ class IpV6(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_block = ovh.vrack.IpV6("vrackBlock",
-            block="<ipv6 block>",
-            service_name="<vRack service name>")
+        vrack_block = ovh.vrack.IpV6("vrack_block",
+            service_name="<vRack service name>",
+            block="<ipv6 block>")
         ```
 
         ## Import
@@ -147,9 +147,9 @@ class IpV6(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_block = ovh.vrack.IpV6("vrackBlock",
-            block="<ipv6 block>",
-            service_name="<vRack service name>")
+        vrack_block = ovh.vrack.IpV6("vrack_block",
+            service_name="<vRack service name>",
+            block="<ipv6 block>")
         ```
 
         ## Import

@@ -336,8 +336,9 @@ class InstanceSnapshot(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         snapshot = ovh.cloud_project.InstanceSnapshot("snapshot",
+            service_name="<public cloud project ID>",
             instance_id="<instance ID>",
-            service_name="<public cloud project ID>")
+            name="SnapshotExample")
         ```
 
         :param str resource_name: The name of the resource.
@@ -360,8 +361,9 @@ class InstanceSnapshot(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         snapshot = ovh.cloud_project.InstanceSnapshot("snapshot",
+            service_name="<public cloud project ID>",
             instance_id="<instance ID>",
-            service_name="<public cloud project ID>")
+            name="SnapshotExample")
         ```
 
         :param str resource_name: The name of the resource.

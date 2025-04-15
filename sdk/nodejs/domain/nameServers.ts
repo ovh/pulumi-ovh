@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const nameServers = new ovh.domain.NameServers("nameServers", {
+ * const nameServers = new ovh.domain.NameServers("name_servers", {
  *     domain: "mydomain.ovh",
  *     servers: [
  *         {

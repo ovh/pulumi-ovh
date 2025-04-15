@@ -28,30 +28,31 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         State = "ok",
     ///     });
     /// 
-    ///     var farmName = new Ovh.IpLoadBalancing.TcpFarm("farmName", new()
+    ///     var farmName = new Ovh.IpLoadBalancing.TcpFarm("farm_name", new()
     ///     {
-    ///         Port = 8080,
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         Port = 8080,
     ///         Zone = "all",
     ///     });
     /// 
     ///     var backend = new Ovh.IpLoadBalancing.TcpFarmServer("backend", new()
     ///     {
-    ///         Address = "4.5.6.7",
-    ///         Backup = true,
-    ///         DisplayName = "mybackend",
-    ///         FarmId = farmName.Id,
-    ///         Port = 80,
-    ///         Probe = true,
-    ///         ProxyProtocolVersion = "v2",
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
-    ///         Ssl = false,
+    ///         FarmId = farmName.Id,
+    ///         DisplayName = "mybackend",
+    ///         Address = "4.5.6.7",
     ///         Status = "active",
+    ///         Port = 80,
+    ///         ProxyProtocolVersion = "v2",
     ///         Weight = 2,
+    ///         Probe = true,
+    ///         Ssl = false,
+    ///         Backup = true,
     ///     });
     /// 
     ///     var mylb = new Ovh.IpLoadBalancing.Refresh("mylb", new()
     ///     {
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
     ///         Keepers = new[]
     ///         {
     ///             new[]
@@ -59,7 +60,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///                 backend,
     ///             }.Select(__item =&gt; __item.Address).ToList(),
     ///         },
-    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
     ///     });
     /// 
     /// });

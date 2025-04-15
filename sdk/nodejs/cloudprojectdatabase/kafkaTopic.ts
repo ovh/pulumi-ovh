@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * const topic = new ovh.cloudprojectdatabase.KafkaTopic("topic", {
  *     serviceName: kafka.then(kafka => kafka.serviceName),
  *     clusterId: kafka.then(kafka => kafka.id),
+ *     name: "mytopic",
  *     minInsyncReplicas: 1,
  *     partitions: 3,
  *     replication: 2,

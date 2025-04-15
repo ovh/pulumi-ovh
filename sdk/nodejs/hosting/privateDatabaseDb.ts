@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const database = new ovh.hosting.PrivateDatabaseDb("database", {
- *     databaseName: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     databaseName: "XXXXXX",
  * });
  * ```
  *

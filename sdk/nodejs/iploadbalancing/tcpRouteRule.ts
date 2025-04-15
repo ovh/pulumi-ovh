@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *         type: "reject",
  *     },
  * });
- * const exampleRule = new ovh.iploadbalancing.TcpRouteRule("exampleRule", {
+ * const exampleRule = new ovh.iploadbalancing.TcpRouteRule("example_rule", {
  *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
  *     routeId: reject.id,
  *     displayName: "Match example.com host",

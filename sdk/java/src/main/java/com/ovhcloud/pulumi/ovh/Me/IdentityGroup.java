@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()
  *             .description("Some custom description")
+ *             .name("my_group_name")
  *             .role("NONE")
  *             .build());
  * 
@@ -195,6 +196,7 @@ public class IdentityGroup extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

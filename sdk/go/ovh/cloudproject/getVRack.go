@@ -27,13 +27,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vrackVRack, err := cloudproject.GetVRack(ctx, &cloudproject.GetVRackArgs{
+//			vrack, err := cloudproject.GetVRack(ctx, &cloudproject.GetVRackArgs{
 //				ServiceName: "XXXXXX",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("vrack", vrackVRack)
+//			ctx.Export("vrack", vrack)
 //			return nil
 //		})
 //	}

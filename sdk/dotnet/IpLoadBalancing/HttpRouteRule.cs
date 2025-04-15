@@ -24,29 +24,29 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("httpsRedirect", new()
+    ///     var httpsRedirect = new Ovh.IpLoadBalancing.HttpRoute("https_redirect", new()
     ///     {
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         DisplayName = "Redirect to HTTPS",
+    ///         Weight = 1,
+    ///         FrontendId = 11111,
     ///         Action = new Ovh.IpLoadBalancing.Inputs.HttpRouteActionArgs
     ///         {
     ///             Status = 302,
     ///             Target = "https://${host}${path}${arguments}",
     ///             Type = "redirect",
     ///         },
-    ///         DisplayName = "Redirect to HTTPS",
-    ///         FrontendId = 11111,
-    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
-    ///         Weight = 1,
     ///     });
     /// 
-    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("exampleRule", new()
+    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("example_rule", new()
     ///     {
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         RouteId = httpsRedirect.Id,
     ///         DisplayName = "Match example.com host",
     ///         Field = "host",
     ///         Match = "is",
     ///         Negate = false,
     ///         Pattern = "example.com",
-    ///         RouteId = httpsRedirect.Id,
-    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
     ///     });
     /// 
     /// });
@@ -62,15 +62,15 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("exampleRule", new()
+    ///     var exampleRule = new Ovh.IpLoadBalancing.HttpRouteRule("example_rule", new()
     ///     {
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///         RouteId = httpsRedirect.Id,
     ///         DisplayName = "Match example.com Host header",
     ///         Field = "headers",
     ///         Match = "is",
     ///         Negate = false,
     ///         Pattern = "example.com",
-    ///         RouteId = ovh_iploadbalancing_http_route.Https_redirect.Id,
-    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
     ///         SubField = "Host",
     ///     });
     /// 

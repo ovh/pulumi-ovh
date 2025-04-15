@@ -18,41 +18,42 @@ import * as utilities from "../utilities";
  * const myCart = myAccount.then(myAccount => ovh.Order.getCart({
  *     ovhSubsidiary: myAccount.ovhSubsidiary,
  * }));
- * const vrackCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
+ * const vrack = myCart.then(myCart => ovh.Order.getCartProductPlan({
  *     cartId: myCart.id,
  *     priceCapacity: "renew",
  *     product: "vrack",
  *     planCode: "vrack",
  * }));
- * const vrackVrack = new ovh.vrack.Vrack("vrackVrack", {
+ * const vrackVrack = new ovh.vrack.Vrack("vrack", {
  *     description: myCart.then(myCart => myCart.description),
+ *     name: myCart.then(myCart => myCart.description),
  *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
  *     plan: {
- *         duration: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.planCode),
- *         pricingMode: vrackCartProductPlan.then(vrackCartProductPlan => vrackCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         duration: vrack.then(vrack => vrack.selectedPrices?.[0]?.duration),
+ *         planCode: vrack.then(vrack => vrack.planCode),
+ *         pricingMode: vrack.then(vrack => vrack.selectedPrices?.[0]?.pricingMode),
  *     },
  * });
- * const ipblockCartProductPlan = myCart.then(myCart => ovh.Order.getCartProductPlan({
+ * const ipblock = myCart.then(myCart => ovh.Order.getCartProductPlan({
  *     cartId: myCart.id,
  *     priceCapacity: "renew",
  *     product: "ip",
  *     planCode: "ip-v4-s30-ripe",
  * }));
- * const ipblockIpService = new ovh.ip.IpService("ipblockIpService", {
+ * const ipblockIpService = new ovh.ip.IpService("ipblock", {
  *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
  *     description: myCart.then(myCart => myCart.description),
  *     plan: {
- *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
- *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         duration: ipblock.then(ipblock => ipblock.selectedPrices?.[0]?.duration),
+ *         planCode: ipblock.then(ipblock => ipblock.planCode),
+ *         pricingMode: ipblock.then(ipblock => ipblock.selectedPrices?.[0]?.pricingMode),
  *         configurations: [{
  *             label: "country",
  *             value: "FR",
  *         }],
  *     },
  * });
- * const vrackBlock = new ovh.vrack.IpAddress("vrackBlock", {
+ * const vrackBlock = new ovh.vrack.IpAddress("vrack_block", {
  *     serviceName: vrackVrack.serviceName,
  *     block: ipblockIpService.ip,
  * });

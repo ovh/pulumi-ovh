@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     engine: "kafka",
  *     id: "ZZZ",
  * });
- * const schemaRegistryAcl = new ovh.cloudprojectdatabase.KafkaSchemaRegistryAcl("schemaRegistryAcl", {
+ * const schemaRegistryAcl = new ovh.cloudprojectdatabase.KafkaSchemaRegistryAcl("schema_registry_acl", {
  *     serviceName: kafka.then(kafka => kafka.serviceName),
  *     clusterId: kafka.then(kafka => kafka.id),
  *     permission: "schema_registry_read",

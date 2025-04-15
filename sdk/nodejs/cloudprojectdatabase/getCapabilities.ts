@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about capabilities of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const capabilities = ovh.CloudProjectDatabase.getCapabilities({
+ *     serviceName: "XXX",
+ * });
+ * export const capabilitiesEngineName = [capabilities].map(__item => __item.engines?.[0]);
+ * ```
  */
 export function getCapabilities(args: GetCapabilitiesArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilitiesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +69,18 @@ export interface GetCapabilitiesResult {
 }
 /**
  * Use this data source to get information about capabilities of a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const capabilities = ovh.CloudProjectDatabase.getCapabilities({
+ *     serviceName: "XXX",
+ * });
+ * export const capabilitiesEngineName = [capabilities].map(__item => __item.engines?.[0]);
+ * ```
  */
 export function getCapabilitiesOutput(args: GetCapabilitiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapabilitiesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

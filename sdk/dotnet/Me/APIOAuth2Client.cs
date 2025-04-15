@@ -24,14 +24,15 @@ namespace Pulumi.Ovh.Me
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myOauth2ClientAuthCode = new Ovh.Me.APIOAuth2Client("myOauth2ClientAuthCode", new()
+    ///     var myOauth2ClientAuthCode = new Ovh.Me.APIOAuth2Client("my_oauth2_client_auth_code", new()
     ///     {
+    ///         Name = "OAuth2 authorization code service account",
+    ///         Flow = "AUTHORIZATION_CODE",
+    ///         Description = "An OAuth2 client using the authorization code flow for my-app.com",
     ///         CallbackUrls = new[]
     ///         {
     ///             "https://my-app.com/callback",
     ///         },
-    ///         Description = "An OAuth2 client using the authorization code flow for my-app.com",
-    ///         Flow = "AUTHORIZATION_CODE",
     ///     });
     /// 
     /// });
@@ -47,8 +48,9 @@ namespace Pulumi.Ovh.Me
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myOauth2ClientClientCreds = new Ovh.Me.APIOAuth2Client("myOauth2ClientClientCreds", new()
+    ///     var myOauth2ClientClientCreds = new Ovh.Me.APIOAuth2Client("my_oauth2_client_client_creds", new()
     ///     {
+    ///         Name = "client credentials service account",
     ///         Description = "An OAuth2 client using the client credentials flow for my app",
     ///         Flow = "CLIENT_CREDENTIALS",
     ///     });

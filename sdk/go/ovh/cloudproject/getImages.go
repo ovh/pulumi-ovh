@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetImages(ctx, &cloudproject.GetImagesArgs{
-//				OsType:      pulumi.StringRef("linux"),
-//				Region:      pulumi.StringRef("WAW1"),
 //				ServiceName: "<public cloud project ID>",
+//				Region:      pulumi.StringRef("WAW1"),
+//				OsType:      pulumi.StringRef("linux"),
 //			}, nil)
 //			if err != nil {
 //				return err

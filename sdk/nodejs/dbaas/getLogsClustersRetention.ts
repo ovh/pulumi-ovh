@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     retentionId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  *
@@ -27,9 +27,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     duration: "P14D",
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  *
@@ -40,10 +40,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     duration: "P14D",
  *     retentionType: "LOGS_INDEXING",
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  */
@@ -121,9 +121,9 @@ export interface GetLogsClustersRetentionResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     retentionId: "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  *
@@ -134,9 +134,9 @@ export interface GetLogsClustersRetentionResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     duration: "P14D",
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  *
@@ -147,10 +147,10 @@ export interface GetLogsClustersRetentionResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const retention = ovh.Dbaas.getLogsClustersRetention({
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     duration: "P14D",
  *     retentionType: "LOGS_INDEXING",
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  */

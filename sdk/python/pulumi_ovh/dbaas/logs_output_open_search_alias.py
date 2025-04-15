@@ -373,8 +373,8 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         alias = ovh.dbaas.LogsOutputOpenSearchAlias("alias",
-            description="my opensearch alias",
             service_name="....",
+            description="my opensearch alias",
             suffix="alias")
         ```
 
@@ -404,8 +404,8 @@ class LogsOutputOpenSearchAlias(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         alias = ovh.dbaas.LogsOutputOpenSearchAlias("alias",
-            description="my opensearch alias",
             service_name="....",
+            description="my opensearch alias",
             suffix="alias")
         ```
 

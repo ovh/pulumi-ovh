@@ -29,9 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewVolumeBackup(ctx, "backup", &cloudproject.VolumeBackupArgs{
-//				RegionName:  pulumi.String("GRA9"),
 //				ServiceName: pulumi.String("<public cloud project ID>"),
+//				RegionName:  pulumi.String("GRA9"),
 //				VolumeId:    pulumi.String("<volume ID>"),
+//				Name:        pulumi.String("ExampleBackup"),
 //			})
 //			if err != nil {
 //				return err

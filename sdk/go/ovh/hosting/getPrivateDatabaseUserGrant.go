@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hosting.GetPrivateDatabaseUserGrant(ctx, &hosting.GetPrivateDatabaseUserGrantArgs{
-//				DatabaseName: "XXXXXX",
 //				ServiceName:  "XXXXXX",
+//				DatabaseName: "XXXXXX",
 //				UserName:     "XXXXXX",
 //			}, nil)
 //			if err != nil {

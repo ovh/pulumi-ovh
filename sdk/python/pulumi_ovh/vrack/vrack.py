@@ -321,17 +321,18 @@ class Vrack(pulumi.CustomResource):
 
         my_account = ovh.Me.get_me()
         my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
+        vrack = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="vrack",
             plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+        vrack_vrack = ovh.vrack.Vrack("vrack",
             ovh_subsidiary=my_cart.ovh_subsidiary,
+            name="my-vrack",
             description="my vrack",
             plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": vrack.selected_prices[0].duration,
+                "plan_code": vrack.plan_code,
+                "pricing_mode": vrack.selected_prices[0].pricing_mode,
             })
         ```
 
@@ -384,17 +385,18 @@ class Vrack(pulumi.CustomResource):
 
         my_account = ovh.Me.get_me()
         my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
+        vrack = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="vrack",
             plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+        vrack_vrack = ovh.vrack.Vrack("vrack",
             ovh_subsidiary=my_cart.ovh_subsidiary,
+            name="my-vrack",
             description="my vrack",
             plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": vrack.selected_prices[0].duration,
+                "plan_code": vrack.plan_code,
+                "pricing_mode": vrack.selected_prices[0].pricing_mode,
             })
         ```
 

@@ -209,12 +209,12 @@ class ServerRebootTask(pulumi.CustomResource):
         rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
             boot_type="rescue",
             kernel="rescue64-pro")
-        server_on_rescue = ovh.dedicated.ServerUpdate("serverOnRescue",
+        server_on_rescue = ovh.dedicated.ServerUpdate("server_on_rescue",
             service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
             boot_id=rescue.results[0],
             monitoring=True,
             state="ok")
-        server_reboot = ovh.dedicated.ServerRebootTask("serverReboot",
+        server_reboot = ovh.dedicated.ServerRebootTask("server_reboot",
             service_name=rescue.service_name,
             keepers=[server_on_rescue.boot_id])
         ```
@@ -240,12 +240,12 @@ class ServerRebootTask(pulumi.CustomResource):
         rescue = ovh.Dedicated.get_server_boots(service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
             boot_type="rescue",
             kernel="rescue64-pro")
-        server_on_rescue = ovh.dedicated.ServerUpdate("serverOnRescue",
+        server_on_rescue = ovh.dedicated.ServerUpdate("server_on_rescue",
             service_name="nsxxxxxxx.ip-xx-xx-xx.eu",
             boot_id=rescue.results[0],
             monitoring=True,
             state="ok")
-        server_reboot = ovh.dedicated.ServerRebootTask("serverReboot",
+        server_reboot = ovh.dedicated.ServerRebootTask("server_reboot",
             service_name=rescue.service_name,
             keepers=[server_on_rescue.boot_id])
         ```

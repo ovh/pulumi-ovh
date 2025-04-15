@@ -411,16 +411,16 @@ class TcpFrontend(pulumi.CustomResource):
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
         farm80 = ovh.ip_load_balancing.TcpFarm("farm80",
-            display_name="ingress-8080-gra",
-            port=80,
             service_name=lb.service_name,
-            zone="all")
-        test_frontend = ovh.ip_load_balancing.TcpFrontend("testFrontend",
-            default_farm_id=farm80.id,
             display_name="ingress-8080-gra",
+            zone="all",
+            port=80)
+        test_frontend = ovh.ip_load_balancing.TcpFrontend("test_frontend",
+            service_name=lb.service_name,
+            display_name="ingress-8080-gra",
+            zone="all",
             port="80,443",
-            service_name=lb.service_name,
-            zone="all")
+            default_farm_id=farm80.id)
         ```
 
         ## Import
@@ -465,16 +465,16 @@ class TcpFrontend(pulumi.CustomResource):
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
         farm80 = ovh.ip_load_balancing.TcpFarm("farm80",
-            display_name="ingress-8080-gra",
-            port=80,
             service_name=lb.service_name,
-            zone="all")
-        test_frontend = ovh.ip_load_balancing.TcpFrontend("testFrontend",
-            default_farm_id=farm80.id,
             display_name="ingress-8080-gra",
+            zone="all",
+            port=80)
+        test_frontend = ovh.ip_load_balancing.TcpFrontend("test_frontend",
+            service_name=lb.service_name,
+            display_name="ingress-8080-gra",
+            zone="all",
             port="80,443",
-            service_name=lb.service_name,
-            zone="all")
+            default_farm_id=farm80.id)
         ```
 
         ## Import

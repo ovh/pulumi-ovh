@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Dbaas
     /// {
     ///     var index = new Ovh.Dbaas.LogsOutputOpenSearchIndex("index", new()
     ///     {
-    ///         Description = "my opensearch index",
     ///         ServiceName = "....",
+    ///         Description = "my opensearch index",
     ///         Suffix = "index",
     ///     });
     /// 

@@ -271,9 +271,9 @@ def get_storage(limit: Optional[builtins.float] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    storage = ovh.CloudProject.get_storage(name="my-storage-name",
+    storage = ovh.CloudProject.get_storage(service_name="<public cloud project ID>",
         region_name="GRA",
-        service_name="<public cloud project ID>")
+        name="my-storage-name")
     ```
 
 
@@ -329,9 +329,9 @@ def get_storage_output(limit: Optional[pulumi.Input[Optional[builtins.float]]] =
     import pulumi
     import pulumi_ovh as ovh
 
-    storage = ovh.CloudProject.get_storage(name="my-storage-name",
+    storage = ovh.CloudProject.get_storage(service_name="<public cloud project ID>",
         region_name="GRA",
-        service_name="<public cloud project ID>")
+        name="my-storage-name")
     ```
 
 

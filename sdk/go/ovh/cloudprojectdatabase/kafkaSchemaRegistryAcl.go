@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudprojectdatabase.NewKafkaSchemaRegistryAcl(ctx, "schemaRegistryAcl", &cloudprojectdatabase.KafkaSchemaRegistryAclArgs{
+//			_, err = cloudprojectdatabase.NewKafkaSchemaRegistryAcl(ctx, "schema_registry_acl", &cloudprojectdatabase.KafkaSchemaRegistryAclArgs{
 //				ServiceName: pulumi.String(kafka.ServiceName),
 //				ClusterId:   pulumi.String(kafka.Id),
 //				Permission:  pulumi.String("schema_registry_read"),

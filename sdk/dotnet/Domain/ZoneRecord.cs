@@ -23,11 +23,11 @@ namespace Pulumi.Ovh.Domain
     ///     // Add a record to a sub-domain
     ///     var test = new Ovh.Domain.ZoneRecord("test", new()
     ///     {
-    ///         Fieldtype = "A",
-    ///         Subdomain = "test",
-    ///         Target = "0.0.0.0",
-    ///         Ttl = 3600,
     ///         Zone = "testdemo.ovh",
+    ///         Subdomain = "test",
+    ///         Fieldtype = "A",
+    ///         Ttl = 3600,
+    ///         Target = "0.0.0.0",
     ///     });
     /// 
     /// });

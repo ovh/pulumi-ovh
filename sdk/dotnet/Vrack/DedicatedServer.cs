@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Vrack
     /// {
     ///     var vds = new Ovh.Vrack.DedicatedServer("vds", new()
     ///     {
-    ///         ServerId = "67890",
     ///         ServiceName = "XXXX",
+    ///         ServerId = "67890",
     ///     });
     /// 
     /// });

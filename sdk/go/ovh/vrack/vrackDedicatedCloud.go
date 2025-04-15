@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vrack.NewVrackDedicatedCloud(ctx, "vrack-dedicatedCloud", &vrack.VrackDedicatedCloudArgs{
-//				DedicatedCloud: pulumi.String("<Dedicated Cloud service name>"),
 //				ServiceName:    pulumi.String("<vRack service name>"),
+//				DedicatedCloud: pulumi.String("<Dedicated Cloud service name>"),
 //			})
 //			if err != nil {
 //				return err

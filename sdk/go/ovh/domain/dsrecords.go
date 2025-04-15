@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := domain.NewDSRecords(ctx, "dsRecords", &domain.DSRecordsArgs{
+//			_, err := domain.NewDSRecords(ctx, "ds_records", &domain.DSRecordsArgs{
 //				Domain: pulumi.String("mydomain.ovh"),
 //				DsRecords: domain.DSRecordsDsRecordArray{
 //					&domain.DSRecordsDsRecordArgs{

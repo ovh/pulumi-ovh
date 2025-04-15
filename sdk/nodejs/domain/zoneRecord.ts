@@ -13,11 +13,11 @@ import * as utilities from "../utilities";
  *
  * // Add a record to a sub-domain
  * const test = new ovh.domain.ZoneRecord("test", {
- *     fieldtype: "A",
- *     subdomain: "test",
- *     target: "0.0.0.0",
- *     ttl: 3600,
  *     zone: "testdemo.ovh",
+ *     subdomain: "test",
+ *     fieldtype: "A",
+ *     ttl: 3600,
+ *     target: "0.0.0.0",
  * });
  * ```
  *

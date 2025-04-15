@@ -22,9 +22,10 @@ namespace Pulumi.Ovh.Me
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myGroup = new Ovh.Me.IdentityGroup("myGroup", new()
+    ///     var myGroup = new Ovh.Me.IdentityGroup("my_group", new()
     ///     {
     ///         Description = "Some custom description",
+    ///         Name = "my_group_name",
     ///         Role = "NONE",
     ///     });
     /// 

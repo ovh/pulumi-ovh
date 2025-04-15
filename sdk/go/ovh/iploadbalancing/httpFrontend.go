@@ -36,20 +36,20 @@ import (
 //				return err
 //			}
 //			farm80, err := iploadbalancing.NewHttpFarm(ctx, "farm80", &iploadbalancing.HttpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				Port:        pulumi.Int(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("all"),
+//				Port:        pulumi.Int(80),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewHttpFrontend(ctx, "testFrontend", &iploadbalancing.HttpFrontendArgs{
-//				DefaultFarmId: farm80.ID(),
-//				DisplayName:   pulumi.String("ingress-8080-gra"),
-//				Port:          pulumi.String("80,443"),
+//			_, err = iploadbalancing.NewHttpFrontend(ctx, "test_frontend", &iploadbalancing.HttpFrontendArgs{
 //				ServiceName:   pulumi.String(lb.ServiceName),
+//				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				Zone:          pulumi.String("all"),
+//				Port:          pulumi.String("80,443"),
+//				DefaultFarmId: farm80.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,24 +82,24 @@ import (
 //				return err
 //			}
 //			farm80, err := iploadbalancing.NewHttpFarm(ctx, "farm80", &iploadbalancing.HttpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				Port:        pulumi.Int(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("all"),
+//				Port:        pulumi.Int(80),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewHttpFrontend(ctx, "testFrontend", &iploadbalancing.HttpFrontendArgs{
-//				DefaultFarmId: farm80.ID(),
+//			_, err = iploadbalancing.NewHttpFrontend(ctx, "test_frontend", &iploadbalancing.HttpFrontendArgs{
+//				ServiceName:   pulumi.String(lb.ServiceName),
 //				DisplayName:   pulumi.String("ingress-8080-gra"),
+//				Zone:          pulumi.String("all"),
+//				Port:          pulumi.String("80,443"),
+//				DefaultFarmId: farm80.ID(),
 //				HttpHeaders: pulumi.StringArray{
 //					pulumi.String("X-Ip-Header %%ci"),
 //					pulumi.String("X-Port-Header %%cp"),
 //				},
-//				Port:        pulumi.String("80,443"),
-//				ServiceName: pulumi.String(lb.ServiceName),
-//				Zone:        pulumi.String("all"),
 //			})
 //			if err != nil {
 //				return err
