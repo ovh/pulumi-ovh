@@ -30,19 +30,19 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     ///     var farm80 = new Ovh.IpLoadBalancing.HttpFarm("farm80", new()
     ///     {
-    ///         DisplayName = "ingress-8080-gra",
-    ///         Port = 80,
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "all",
+    ///         Port = 80,
     ///     });
     /// 
-    ///     var testFrontend = new Ovh.IpLoadBalancing.HttpFrontend("testFrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.HttpFrontend("test_frontend", new()
     ///     {
-    ///         DefaultFarmId = farm80.Id,
-    ///         DisplayName = "ingress-8080-gra",
-    ///         Port = "80,443",
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "all",
+    ///         Port = "80,443",
+    ///         DefaultFarmId = farm80.Id,
     ///     });
     /// 
     /// });
@@ -66,24 +66,24 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     ///     var farm80 = new Ovh.IpLoadBalancing.HttpFarm("farm80", new()
     ///     {
-    ///         DisplayName = "ingress-8080-gra",
-    ///         Port = 80,
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "all",
+    ///         Port = 80,
     ///     });
     /// 
-    ///     var testFrontend = new Ovh.IpLoadBalancing.HttpFrontend("testFrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.HttpFrontend("test_frontend", new()
     ///     {
-    ///         DefaultFarmId = farm80.Id,
+    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
     ///         DisplayName = "ingress-8080-gra",
+    ///         Zone = "all",
+    ///         Port = "80,443",
+    ///         DefaultFarmId = farm80.Id,
     ///         HttpHeaders = new[]
     ///         {
     ///             "X-Ip-Header %%ci",
     ///             "X-Port-Header %%cp",
     ///         },
-    ///         Port = "80,443",
-    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
-    ///         Zone = "all",
     ///     });
     /// 
     /// });

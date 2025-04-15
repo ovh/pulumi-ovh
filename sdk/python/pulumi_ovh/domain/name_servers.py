@@ -114,7 +114,7 @@ class NameServers(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        name_servers = ovh.domain.NameServers("nameServers",
+        name_servers = ovh.domain.NameServers("name_servers",
             domain="mydomain.ovh",
             servers=[
                 {
@@ -173,7 +173,7 @@ class NameServers(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        name_servers = ovh.domain.NameServers("nameServers",
+        name_servers = ovh.domain.NameServers("name_servers",
             domain="mydomain.ovh",
             servers=[
                 {

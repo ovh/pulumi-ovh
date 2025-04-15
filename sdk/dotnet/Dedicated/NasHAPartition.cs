@@ -22,11 +22,12 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPartition = new Ovh.Dedicated.NasHAPartition("myPartition", new()
+    ///     var myPartition = new Ovh.Dedicated.NasHAPartition("my_partition", new()
     ///     {
-    ///         Protocol = "NFS",
     ///         ServiceName = "zpool-12345",
+    ///         Name = "my-partition",
     ///         Size = 20,
+    ///         Protocol = "NFS",
     ///     });
     /// 
     /// });

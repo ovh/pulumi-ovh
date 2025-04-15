@@ -54,23 +54,23 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()
- *             .port(8080)
  *             .serviceName(lb.serviceName())
+ *             .port(8080)
  *             .zone("all")
  *             .build());
  * 
  *         var backend = new HttpFarmServer("backend", HttpFarmServerArgs.builder()
- *             .address("4.5.6.7")
- *             .backup(true)
- *             .displayName("mybackend")
- *             .farmId(farmname.id())
- *             .port(80)
- *             .probe(true)
- *             .proxyProtocolVersion("v2")
  *             .serviceName(lb.serviceName())
- *             .ssl(false)
+ *             .farmId(farmname.id())
+ *             .displayName("mybackend")
+ *             .address("4.5.6.7")
  *             .status("active")
+ *             .port(80)
+ *             .proxyProtocolVersion("v2")
  *             .weight(2)
+ *             .probe(true)
+ *             .ssl(false)
+ *             .backup(true)
  *             .build());
  * 
  *     }
@@ -320,6 +320,7 @@ public class HttpFarmServer extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

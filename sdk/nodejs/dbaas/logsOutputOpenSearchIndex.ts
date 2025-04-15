@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const index = new ovh.dbaas.LogsOutputOpenSearchIndex("index", {
- *     description: "my opensearch index",
  *     serviceName: "....",
+ *     description: "my opensearch index",
  *     suffix: "index",
  * });
  * ```

@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myOidc = new ovh.cloudproject.KubeOidc("myOidc", {
- *     serviceName: _var.projectid,
- *     kubeId: ovh_cloud_project_kube.mykube.id,
+ * const myOidc = new ovh.cloudproject.KubeOidc("my_oidc", {
+ *     serviceName: projectid,
+ *     kubeId: mykube.id,
  *     clientId: "xxx",
  *     issuerUrl: "https://ovh.com",
  *     oidcUsernameClaim: "an-email",

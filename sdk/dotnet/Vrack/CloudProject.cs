@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Vrack
     /// {
     ///     var vcp = new Ovh.Vrack.CloudProject("vcp", new()
     ///     {
-    ///         ProjectId = "67890",
     ///         ServiceName = "12345",
+    ///         ProjectId = "67890",
     ///     });
     /// 
     /// });

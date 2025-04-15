@@ -13,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrackOnly = new ovh.cloudproject.KubeIpRestrictions("vrackOnly", {
- *     ips: ["10.42.0.0/16"],
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * const vrackOnly = new ovh.cloudproject.KubeIpRestrictions("vrack_only", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     ips: ["10.42.0.0/16"],
  * });
  * ```
  *

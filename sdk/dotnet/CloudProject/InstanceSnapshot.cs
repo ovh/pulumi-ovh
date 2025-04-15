@@ -22,8 +22,9 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var snapshot = new Ovh.CloudProject.InstanceSnapshot("snapshot", new()
     ///     {
-    ///         InstanceId = "&lt;instance ID&gt;",
     ///         ServiceName = "&lt;public cloud project ID&gt;",
+    ///         InstanceId = "&lt;instance ID&gt;",
+    ///         Name = "SnapshotExample",
     ///     });
     /// 
     /// });

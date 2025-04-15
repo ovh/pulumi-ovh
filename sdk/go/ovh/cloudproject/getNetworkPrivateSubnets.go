@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			privateNetworkPrivateSubnets, err := cloudproject.GetNetworkPrivateSubnets(ctx, &cloudproject.GetNetworkPrivateSubnetsArgs{
+//			private, err := cloudproject.GetNetworkPrivateSubnets(ctx, &cloudproject.GetNetworkPrivateSubnetsArgs{
 //				ServiceName: "XXXXXX",
 //				NetworkId:   "XXXXXX",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("private", privateNetworkPrivateSubnets)
+//			ctx.Export("private", private)
 //			return nil
 //		})
 //	}

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myOidc, err := cloudproject.NewContainerRegistryOIDC(ctx, "myOidc", &cloudproject.ContainerRegistryOIDCArgs{
+//			myOidc, err := cloudproject.NewContainerRegistryOIDC(ctx, "my_oidc", &cloudproject.ContainerRegistryOIDCArgs{
 //				ServiceName:      pulumi.String("XXXXXX"),
 //				RegistryId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
 //				OidcName:         pulumi.String("my-oidc-provider"),

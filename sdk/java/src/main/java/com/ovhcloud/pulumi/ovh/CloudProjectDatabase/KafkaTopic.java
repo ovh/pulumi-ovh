@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *         var topic = new KafkaTopic("topic", KafkaTopicArgs.builder()
  *             .serviceName(kafka.serviceName())
  *             .clusterId(kafka.id())
+ *             .name("mytopic")
  *             .minInsyncReplicas(1)
  *             .partitions(3)
  *             .replication(2)
@@ -231,6 +232,7 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

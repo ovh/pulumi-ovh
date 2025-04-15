@@ -28,9 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			presignedUrlRegionStoragePresign, err := cloudproject.NewRegionStoragePresign(ctx, "presignedUrlRegionStoragePresign", &cloudproject.RegionStoragePresignArgs{
+//			presignedUrl, err := cloudproject.NewRegionStoragePresign(ctx, "presigned_url", &cloudproject.RegionStoragePresignArgs{
 //				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxx"),
 //				RegionName:  pulumi.String("GRA"),
+//				Name:        pulumi.String("s3-bucket-name"),
 //				Expire:      pulumi.Int(3600),
 //				Method:      pulumi.String("GET"),
 //				Object:      pulumi.String("an-object-in-the-bucket"),
@@ -38,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("presignedUrl", presignedUrlRegionStoragePresign.Url)
+//			ctx.Export("presignedUrl", presignedUrl.Url)
 //			return nil
 //		})
 //	}

@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hosting.NewPrivateDatabaseUserGrant(ctx, "userGrant", &hosting.PrivateDatabaseUserGrantArgs{
-//				DatabaseName: pulumi.String("ovhcloud"),
-//				Grant:        pulumi.String("admin"),
+//			_, err := hosting.NewPrivateDatabaseUserGrant(ctx, "user_grant", &hosting.PrivateDatabaseUserGrantArgs{
 //				ServiceName:  pulumi.String("XXXXXX"),
 //				UserName:     pulumi.String("terraform"),
+//				DatabaseName: pulumi.String("ovhcloud"),
+//				Grant:        pulumi.String("admin"),
 //			})
 //			if err != nil {
 //				return err

@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myAlert = new Alerting("myAlert", AlertingArgs.builder()
+ *             .serviceName("XXX")
  *             .delay(3600.0)
  *             .email("aaa.bbb}{@literal @}{@code domain.com")
  *             .monthlyThreshold(1000.0)
- *             .serviceName("XXX")
  *             .build());
  * 
  *     }}{@code
@@ -183,6 +183,7 @@ public class Alerting extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

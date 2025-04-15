@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const gRA1 = ovh.CloudProject.getRegion({
- *     name: "GRA1",
+ * const GRA1 = ovh.CloudProject.getRegion({
  *     serviceName: "XXXXXX",
+ *     name: "GRA1",
  * });
  * ```
  */
@@ -78,9 +78,9 @@ export interface GetRegionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const gRA1 = ovh.CloudProject.getRegion({
- *     name: "GRA1",
+ * const GRA1 = ovh.CloudProject.getRegion({
  *     serviceName: "XXXXXX",
+ *     name: "GRA1",
  * });
  * ```
  */

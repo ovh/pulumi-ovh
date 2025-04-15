@@ -30,28 +30,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			httpsRedirect, err := iploadbalancing.NewHttpRoute(ctx, "httpsRedirect", &iploadbalancing.HttpRouteArgs{
+//			httpsRedirect, err := iploadbalancing.NewHttpRoute(ctx, "https_redirect", &iploadbalancing.HttpRouteArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				DisplayName: pulumi.String("Redirect to HTTPS"),
+//				Weight:      pulumi.Int(1),
+//				FrontendId:  pulumi.Int(11111),
 //				Action: &iploadbalancing.HttpRouteActionArgs{
 //					Status: pulumi.Int(302),
 //					Target: pulumi.String("https://${host}${path}${arguments}"),
 //					Type:   pulumi.String("redirect"),
 //				},
-//				DisplayName: pulumi.String("Redirect to HTTPS"),
-//				FrontendId:  pulumi.Int(11111),
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
-//				Weight:      pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewHttpRouteRule(ctx, "exampleRule", &iploadbalancing.HttpRouteRuleArgs{
+//			_, err = iploadbalancing.NewHttpRouteRule(ctx, "example_rule", &iploadbalancing.HttpRouteRuleArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				RouteId:     httpsRedirect.ID(),
 //				DisplayName: pulumi.String("Match example.com host"),
 //				Field:       pulumi.String("host"),
 //				Match:       pulumi.String("is"),
 //				Negate:      pulumi.Bool(false),
 //				Pattern:     pulumi.String("example.com"),
-//				RouteId:     httpsRedirect.ID(),
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,14 +76,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iploadbalancing.NewHttpRouteRule(ctx, "exampleRule", &iploadbalancing.HttpRouteRuleArgs{
+//			_, err := iploadbalancing.NewHttpRouteRule(ctx, "example_rule", &iploadbalancing.HttpRouteRuleArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				RouteId:     pulumi.Any(httpsRedirect.Id),
 //				DisplayName: pulumi.String("Match example.com Host header"),
 //				Field:       pulumi.String("headers"),
 //				Match:       pulumi.String("is"),
 //				Negate:      pulumi.Bool(false),
 //				Pattern:     pulumi.String("example.com"),
-//				RouteId:     pulumi.Any(ovh_iploadbalancing_http_route.Https_redirect.Id),
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
 //				SubField:    pulumi.String("Host"),
 //			})
 //			if err != nil {

@@ -46,3 +46,7 @@ provider/**/schema-embed.json
 
 ## Java projects configuration
 target/
+
+
+# Ignore local build tracking directory
+.make

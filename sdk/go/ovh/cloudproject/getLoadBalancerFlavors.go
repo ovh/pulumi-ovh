@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetLoadBalancerFlavors(ctx, &cloudproject.GetLoadBalancerFlavorsArgs{
-//				RegionName:  "GRA9",
 //				ServiceName: "<public cloud project ID>",
+//				RegionName:  "GRA9",
 //			}, nil)
 //			if err != nil {
 //				return err

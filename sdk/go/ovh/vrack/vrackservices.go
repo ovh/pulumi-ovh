@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vrack.NewVrackservices(ctx, "vrackVrackservices", &vrack.VrackservicesArgs{
+//			_, err := vrack.NewVrackservices(ctx, "vrack_vrackservices", &vrack.VrackservicesArgs{
 //				ServiceName:   pulumi.String("<vRack service name>"),
 //				VrackServices: pulumi.String("<vrackServices service name>"),
 //			})

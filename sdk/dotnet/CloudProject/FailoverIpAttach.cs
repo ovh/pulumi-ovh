@@ -22,11 +22,11 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myFailoverIp = new Ovh.CloudProject.FailoverIpAttach("myFailoverIp", new()
+    ///     var myFailoverIp = new Ovh.CloudProject.FailoverIpAttach("my_failover_ip", new()
     ///     {
+    ///         ServiceName = "XXXXXX",
     ///         Ip = "XXXXXX",
     ///         RoutedTo = "XXXXXX",
-    ///         ServiceName = "XXXXXX",
     ///     });
     /// 
     /// });

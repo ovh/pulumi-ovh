@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const whitelist = ovh.Hosting.getPrivateDatabaseAllowlist({
- *     ip: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     ip: "XXXXXX",
  * });
  * ```
  */
@@ -86,8 +86,8 @@ export interface GetPrivateDatabaseAllowlistResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const whitelist = ovh.Hosting.getPrivateDatabaseAllowlist({
- *     ip: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     ip: "XXXXXX",
  * });
  * ```
  */

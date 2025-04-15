@@ -278,10 +278,10 @@ class ZoneRedirection(pulumi.CustomResource):
 
         # Add a redirection to a sub-domain
         test = ovh.domain.ZoneRedirection("test",
+            zone="testdemo.ovh",
             subdomain="test",
-            target="http://www.ovh",
             type="visiblePermanent",
-            zone="testdemo.ovh")
+            target="http://www.ovh")
         ```
 
         :param str resource_name: The name of the resource.
@@ -311,10 +311,10 @@ class ZoneRedirection(pulumi.CustomResource):
 
         # Add a redirection to a sub-domain
         test = ovh.domain.ZoneRedirection("test",
+            zone="testdemo.ovh",
             subdomain="test",
-            target="http://www.ovh",
             type="visiblePermanent",
-            zone="testdemo.ovh")
+            target="http://www.ovh")
         ```
 
         :param str resource_name: The name of the resource.

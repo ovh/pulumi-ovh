@@ -22,11 +22,12 @@ namespace Pulumi.Ovh.Dbaas
     /// {
     ///     var ldp = new Ovh.Dbaas.LogsCluster("ldp", new()
     ///     {
+    ///         ServiceName = "ldp-xx-xxxxx",
+    ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         ArchiveAllowedNetworks = new[]
     ///         {
     ///             "10.0.0.0/16",
     ///         },
-    ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         DirectInputAllowedNetworks = new[]
     ///         {
     ///             "10.0.0.0/16",
@@ -35,7 +36,6 @@ namespace Pulumi.Ovh.Dbaas
     ///         {
     ///             "10.0.0.0/16",
     ///         },
-    ///         ServiceName = "ldp-xx-xxxxx",
     ///     });
     /// 
     /// });

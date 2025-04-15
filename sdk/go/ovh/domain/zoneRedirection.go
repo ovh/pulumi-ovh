@@ -30,10 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a redirection to a sub-domain
 //			_, err := domain.NewZoneRedirection(ctx, "test", &domain.ZoneRedirectionArgs{
-//				Subdomain: pulumi.String("test"),
-//				Target:    pulumi.String("http://www.ovh"),
-//				Type:      pulumi.String("visiblePermanent"),
 //				Zone:      pulumi.String("testdemo.ovh"),
+//				Subdomain: pulumi.String("test"),
+//				Type:      pulumi.String("visiblePermanent"),
+//				Target:    pulumi.String("http://www.ovh"),
 //			})
 //			if err != nil {
 //				return err

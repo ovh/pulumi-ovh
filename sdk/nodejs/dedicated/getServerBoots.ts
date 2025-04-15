@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const netboots = ovh.Dedicated.getServerBoots({
- *     bootType: "harddisk",
  *     serviceName: "myserver",
+ *     bootType: "harddisk",
  * });
  * ```
  */
@@ -72,8 +72,8 @@ export interface GetServerBootsResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const netboots = ovh.Dedicated.getServerBoots({
- *     bootType: "harddisk",
  *     serviceName: "myserver",
+ *     bootType: "harddisk",
  * });
  * ```
  */

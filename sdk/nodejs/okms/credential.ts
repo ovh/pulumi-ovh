@@ -6,28 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a credential for an OVHcloud KMS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- * import * as ovh from "@pulumi/ovh";
- *
- * const myaccount = ovh.Me.getMe({});
- * const credNoCsr = new ovh.okms.Credential("credNoCsr", {
- *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
- *     identityUrns: [`urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}`],
- *     description: "Credential without CSR",
- * });
- * const credFromCsr = new ovh.okms.Credential("credFromCsr", {
- *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
- *     identityUrns: [`urn:v1:eu:identity:account:${data.ovh_me.current_account.nichandle}`],
- *     csr: fs.readFileSync("cred.csr", "utf8"),
- *     description: "Credential from CSR",
- * });
- * ```
  */
 export class Credential extends pulumi.CustomResource {
     /**

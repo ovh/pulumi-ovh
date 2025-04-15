@@ -17,15 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const httpsRedirect = new ovh.iploadbalancing.HttpRoute("httpsRedirect", {
+ * const httpsRedirect = new ovh.iploadbalancing.HttpRoute("https_redirect", {
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ *     displayName: "Redirect to HTTPS",
+ *     weight: 1,
  *     action: {
  *         status: 302,
  *         target: "https://${host}${path}${arguments}",
  *         type: "redirect",
  *     },
- *     displayName: "Redirect to HTTPS",
- *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
- *     weight: 1,
  * });
  * ```
  *

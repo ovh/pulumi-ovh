@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(myAccount.ovhSubsidiary())
  *             .build());
  * 
- *         final var vrackCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var vrack = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(myCart.id())
  *             .priceCapacity("renew")
  *             .product("vrack")
@@ -64,11 +64,12 @@ import javax.annotation.Nullable;
  * 
  *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
  *             .ovhSubsidiary(myCart.ovhSubsidiary())
+ *             .name("my-vrack")
  *             .description("my vrack")
  *             .plan(VrackPlanArgs.builder()
- *                 .duration(vrackCartProductPlan.selectedPrices()[0].duration())
- *                 .planCode(vrackCartProductPlan.planCode())
- *                 .pricingMode(vrackCartProductPlan.selectedPrices()[0].pricingMode())
+ *                 .duration(vrack.selectedPrices()[0].duration())
+ *                 .planCode(vrack.planCode())
+ *                 .pricingMode(vrack.selectedPrices()[0].pricingMode())
  *                 .build())
  *             .build());
  * 
@@ -275,6 +276,7 @@ public class Vrack extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

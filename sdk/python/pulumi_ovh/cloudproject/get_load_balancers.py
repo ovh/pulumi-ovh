@@ -99,9 +99,9 @@ def get_load_balancers(region_name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    lbs_load_balancers = ovh.CloudProject.get_load_balancers(service_name="XXXXXX",
+    lbs = ovh.CloudProject.get_load_balancers(service_name="XXXXXX",
         region_name="XXX")
-    pulumi.export("lbs", lbs_load_balancers)
+    pulumi.export("lbs", lbs)
     ```
 
 
@@ -131,9 +131,9 @@ def get_load_balancers_output(region_name: Optional[pulumi.Input[builtins.str]] 
     import pulumi
     import pulumi_ovh as ovh
 
-    lbs_load_balancers = ovh.CloudProject.get_load_balancers(service_name="XXXXXX",
+    lbs = ovh.CloudProject.get_load_balancers(service_name="XXXXXX",
         region_name="XXX")
-    pulumi.export("lbs", lbs_load_balancers)
+    pulumi.export("lbs", lbs)
     ```
 
 

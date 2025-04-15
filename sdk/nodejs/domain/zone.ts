@@ -18,18 +18,18 @@ import * as utilities from "../utilities";
  * const mycart = myaccount.then(myaccount => ovh.Order.getCart({
  *     ovhSubsidiary: myaccount.ovhSubsidiary,
  * }));
- * const zoneCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ * const zone = mycart.then(mycart => ovh.Order.getCartProductPlan({
  *     cartId: mycart.id,
  *     priceCapacity: "renew",
  *     product: "dns",
  *     planCode: "zone",
  * }));
- * const zoneZone = new ovh.domain.Zone("zoneZone", {
+ * const zoneZone = new ovh.domain.Zone("zone", {
  *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
  *     plan: {
- *         duration: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.planCode),
- *         pricingMode: zoneCartProductPlan.then(zoneCartProductPlan => zoneCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         duration: zone.then(zone => zone.selectedPrices?.[0]?.duration),
+ *         planCode: zone.then(zone => zone.planCode),
+ *         pricingMode: zone.then(zone => zone.selectedPrices?.[0]?.pricingMode),
  *         configurations: [
  *             {
  *                 label: "zone",

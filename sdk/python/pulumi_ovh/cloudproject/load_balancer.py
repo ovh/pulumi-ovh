@@ -426,8 +426,8 @@ class LoadBalancer(pulumi.CustomResource):
             network={
                 "private": {
                     "network": {
-                        "id": [region for region in ovh_cloud_project_network_private["mypriv"]["regions_attributes"] if region["region"] == "GRA9"][0]["openstackid"],
-                        "subnet_id": ovh_cloud_project_network_private_subnet["myprivsub"]["id"],
+                        "id": [region for region in mypriv["regionsAttributes"] if region["region"] == "GRA9"][0]["openstackid"],
+                        "subnet_id": myprivsub["id"],
                     },
                 },
             },
@@ -453,6 +453,7 @@ class LoadBalancer(pulumi.CustomResource):
         priv = ovh.cloud_project.NetworkPrivate("priv",
             service_name="<public cloud project ID>",
             vlan_id=10,
+            name="my_priv",
             regions=["GRA9"])
         privsub = ovh.cloud_project.NetworkPrivateSubnet("privsub",
             service_name=priv.service_name,
@@ -541,8 +542,8 @@ class LoadBalancer(pulumi.CustomResource):
             network={
                 "private": {
                     "network": {
-                        "id": [region for region in ovh_cloud_project_network_private["mypriv"]["regions_attributes"] if region["region"] == "GRA9"][0]["openstackid"],
-                        "subnet_id": ovh_cloud_project_network_private_subnet["myprivsub"]["id"],
+                        "id": [region for region in mypriv["regionsAttributes"] if region["region"] == "GRA9"][0]["openstackid"],
+                        "subnet_id": myprivsub["id"],
                     },
                 },
             },
@@ -568,6 +569,7 @@ class LoadBalancer(pulumi.CustomResource):
         priv = ovh.cloud_project.NetworkPrivate("priv",
             service_name="<public cloud project ID>",
             vlan_id=10,
+            name="my_priv",
             regions=["GRA9"])
         privsub = ovh.cloud_project.NetworkPrivateSubnet("privsub",
             service_name=priv.service_name,

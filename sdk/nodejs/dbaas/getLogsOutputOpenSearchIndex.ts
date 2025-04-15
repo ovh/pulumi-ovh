@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const index = ovh.Dbaas.getLogsOutputOpenSearchIndex({
- *     name: "index-name",
  *     serviceName: "ldp-xx-xxxxx",
+ *     name: "index-name",
  * });
  * ```
  */
@@ -106,8 +106,8 @@ export interface GetLogsOutputOpenSearchIndexResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const index = ovh.Dbaas.getLogsOutputOpenSearchIndex({
- *     name: "index-name",
  *     serviceName: "ldp-xx-xxxxx",
+ *     name: "index-name",
  * });
  * ```
  */

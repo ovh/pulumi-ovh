@@ -718,9 +718,9 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         stream = ovh.dbaas.LogsOutputGraylogStream("stream",
-            description="my graylog stream",
             service_name="....",
-            title="my stream")
+            title="my stream",
+            description="my graylog stream")
         ```
 
         To define the retention of the stream, you can use the following configuration:
@@ -774,9 +774,9 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         stream = ovh.dbaas.LogsOutputGraylogStream("stream",
-            description="my graylog stream",
             service_name="....",
-            title="my stream")
+            title="my stream",
+            description="my graylog stream")
         ```
 
         To define the retention of the stream, you can use the following configuration:

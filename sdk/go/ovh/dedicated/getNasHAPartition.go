@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dedicated.GetNasHAPartition(ctx, &dedicated.GetNasHAPartitionArgs{
-//				Name:        "my-zpool-partition",
 //				ServiceName: "zpool-12345",
+//				Name:        "my-zpool-partition",
 //			}, nil)
 //			if err != nil {
 //				return err

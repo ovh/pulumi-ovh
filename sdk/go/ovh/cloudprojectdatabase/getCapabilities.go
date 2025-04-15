@@ -12,6 +12,31 @@ import (
 )
 
 // Use this data source to get information about capabilities of a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudprojectdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// capabilities, err := cloudprojectdatabase.GetCapabilities(ctx, &cloudprojectdatabase.GetCapabilitiesArgs{
+// ServiceName: "XXX",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("capabilitiesEngineName", []cloudprojectdatabase.GetCapabilitiesEngine(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,11-37)))
+// return nil
+// })
+// }
+// ```
 func GetCapabilities(ctx *pulumi.Context, args *GetCapabilitiesArgs, opts ...pulumi.InvokeOption) (*GetCapabilitiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapabilitiesResult

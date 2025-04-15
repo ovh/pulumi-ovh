@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const images = ovh.CloudProject.getImages({
- *     osType: "linux",
- *     region: "WAW1",
  *     serviceName: "<public cloud project ID>",
+ *     region: "WAW1",
+ *     osType: "linux",
  * });
  * ```
  */
@@ -90,9 +90,9 @@ export interface GetImagesResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const images = ovh.CloudProject.getImages({
- *     osType: "linux",
- *     region: "WAW1",
  *     serviceName: "<public cloud project ID>",
+ *     region: "WAW1",
+ *     osType: "linux",
  * });
  * ```
  */

@@ -22,139 +22,11 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancer;
- * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancerArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateNetworkArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerListenerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var lb = new LoadBalancer("lb", LoadBalancerArgs.builder()
- *             .serviceName("<public cloud project ID>")
- *             .regionName("GRA9")
- *             .flavorId("<loadbalancer flavor ID>")
- *             .network(LoadBalancerNetworkArgs.builder()
- *                 .private_(LoadBalancerNetworkPrivateArgs.builder()
- *                     .network(LoadBalancerNetworkPrivateNetworkArgs.builder()
- *                         .id("TODO: ForExpression"[0].openstackid())
- *                         .subnetId(ovh_cloud_project_network_private_subnet.myprivsub().id())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .description("My new LB")
- *             .listeners(            
- *                 LoadBalancerListenerArgs.builder()
- *                     .port(34568.0)
- *                     .protocol("tcp")
- *                     .build(),
- *                 LoadBalancerListenerArgs.builder()
- *                     .port(34569.0)
- *                     .protocol("udp")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example usage with network and subnet creation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivate;
- * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivateArgs;
- * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivateSubnet;
- * import com.ovhcloud.pulumi.ovh.CloudProject.NetworkPrivateSubnetArgs;
- * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancer;
- * import com.ovhcloud.pulumi.ovh.CloudProject.LoadBalancerArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerNetworkPrivateNetworkArgs;
- * import com.pulumi.ovh.CloudProject.inputs.LoadBalancerListenerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var priv = new NetworkPrivate("priv", NetworkPrivateArgs.builder()
- *             .serviceName("<public cloud project ID>")
- *             .vlanId(10)
- *             .regions("GRA9")
- *             .build());
- * 
- *         var privsub = new NetworkPrivateSubnet("privsub", NetworkPrivateSubnetArgs.builder()
- *             .serviceName(priv.serviceName())
- *             .networkId(priv.id())
- *             .region("GRA9")
- *             .start("10.0.0.2")
- *             .end("10.0.255.254")
- *             .network("10.0.0.0/16")
- *             .dhcp(true)
- *             .build());
- * 
- *         var lb = new LoadBalancer("lb", LoadBalancerArgs.builder()
- *             .serviceName(privsub.serviceName())
- *             .regionName(privsub.region())
- *             .flavorId("<loadbalancer flavor ID>")
- *             .network(LoadBalancerNetworkArgs.builder()
- *                 .private_(LoadBalancerNetworkPrivateArgs.builder()
- *                     .network(LoadBalancerNetworkPrivateNetworkArgs.builder()
- *                         .id(priv.regionsAttributes().applyValue(_regionsAttributes -> "TODO: ForExpression")[0].applyValue(_regions -> _regions.openstackid()))
- *                         .subnetId(privsub.id())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .description("My new LB")
- *             .listeners(            
- *                 LoadBalancerListenerArgs.builder()
- *                     .port(34568.0)
- *                     .protocol("tcp")
- *                     .build(),
- *                 LoadBalancerListenerArgs.builder()
- *                     .port(34569.0)
- *                     .protocol("udp")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -448,6 +320,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

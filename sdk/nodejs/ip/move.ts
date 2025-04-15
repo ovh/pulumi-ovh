@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const moveIpToLoadBalancerXxxxx = new ovh.ip.Move("moveIpToLoadBalancerXxxxx", {
+ * const moveIpToLoadBalancerXxxxx = new ovh.ip.Move("move_ip_to_load_balancer_xxxxx", {
  *     ip: "1.2.3.4",
  *     routedTo: {
  *         serviceName: "loadbalancer-XXXXX",
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const parkIp = new ovh.ip.Move("parkIp", {
+ * const parkIp = new ovh.ip.Move("park_ip", {
  *     ip: "1.2.3.4",
  *     routedTo: {
  *         serviceName: "",

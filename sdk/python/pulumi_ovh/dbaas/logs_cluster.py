@@ -371,11 +371,11 @@ class LogsCluster(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         ldp = ovh.dbaas.LogsCluster("ldp",
-            archive_allowed_networks=["10.0.0.0/16"],
+            service_name="ldp-xx-xxxxx",
             cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            archive_allowed_networks=["10.0.0.0/16"],
             direct_input_allowed_networks=["10.0.0.0/16"],
-            query_allowed_networks=["10.0.0.0/16"],
-            service_name="ldp-xx-xxxxx")
+            query_allowed_networks=["10.0.0.0/16"])
         ```
 
         ## Import
@@ -410,11 +410,11 @@ class LogsCluster(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         ldp = ovh.dbaas.LogsCluster("ldp",
-            archive_allowed_networks=["10.0.0.0/16"],
+            service_name="ldp-xx-xxxxx",
             cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            archive_allowed_networks=["10.0.0.0/16"],
             direct_input_allowed_networks=["10.0.0.0/16"],
-            query_allowed_networks=["10.0.0.0/16"],
-            service_name="ldp-xx-xxxxx")
+            query_allowed_networks=["10.0.0.0/16"])
         ```
 
         ## Import

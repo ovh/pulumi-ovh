@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var lbLoadBalancer = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
+        ///     var lb = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegionName = "XXX",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["lb"] = lbLoadBalancer,
+        ///         ["lb"] = lb,
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var lbLoadBalancer = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
+        ///     var lb = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegionName = "XXX",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["lb"] = lbLoadBalancer,
+        ///         ["lb"] = lb,
         ///     };
         /// });
         /// ```
@@ -84,7 +84,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var lbLoadBalancer = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
+        ///     var lb = Ovh.CloudProject.GetLoadBalancer.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         RegionName = "XXX",
@@ -93,7 +93,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["lb"] = lbLoadBalancer,
+        ///         ["lb"] = lb,
         ///     };
         /// });
         /// ```

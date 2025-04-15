@@ -212,8 +212,8 @@ def get_logs_cluster(cluster_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    logstash = ovh.Dbaas.get_logs_cluster(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        service_name="ldp-xx-xxxxx")
+    logstash = ovh.Dbaas.get_logs_cluster(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
     ```
 
 
@@ -253,8 +253,8 @@ def get_logs_cluster_output(cluster_id: Optional[pulumi.Input[Optional[builtins.
     import pulumi
     import pulumi_ovh as ovh
 
-    logstash = ovh.Dbaas.get_logs_cluster(cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        service_name="ldp-xx-xxxxx")
+    logstash = ovh.Dbaas.get_logs_cluster(service_name="ldp-xx-xxxxx",
+        cluster_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
     ```
 
 

@@ -22,10 +22,10 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrackBlock = new Ovh.Vrack.IpV6("vrackBlock", new()
+    ///     var vrackBlock = new Ovh.Vrack.IpV6("vrack_block", new()
     ///     {
-    ///         Block = "&lt;ipv6 block&gt;",
     ///         ServiceName = "&lt;vRack service name&gt;",
+    ///         Block = "&lt;ipv6 block&gt;",
     ///     });
     /// 
     /// });

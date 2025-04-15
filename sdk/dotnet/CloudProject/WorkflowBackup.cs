@@ -22,14 +22,15 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myBackup = new Ovh.CloudProject.WorkflowBackup("myBackup", new()
+    ///     var myBackup = new Ovh.CloudProject.WorkflowBackup("my_backup", new()
     ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         RegionName = "GRA11",
     ///         Cron = "50 4 * * *",
     ///         InstanceId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     ///         MaxExecutionCount = 0,
-    ///         RegionName = "GRA11",
+    ///         Name = "Backup workflow for instance",
     ///         Rotation = 7,
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///     });
     /// 
     /// });

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.GetLogsCluster(ctx, &dbaas.GetLogsClusterArgs{
-//				ClusterId:   pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				ServiceName: "ldp-xx-xxxxx",
+//				ClusterId:   pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //			}, nil)
 //			if err != nil {
 //				return err

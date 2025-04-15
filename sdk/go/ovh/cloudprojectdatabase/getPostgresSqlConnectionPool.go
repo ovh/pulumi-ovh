@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testPoolPostgresSqlConnectionPool, err := cloudprojectdatabase.GetPostgresSqlConnectionPool(ctx, &cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{
+//			testPool, err := cloudprojectdatabase.GetPostgresSqlConnectionPool(ctx, &cloudprojectdatabase.GetPostgresSqlConnectionPoolArgs{
 //				ServiceName: "XXX",
 //				ClusterId:   "YYY",
 //				Name:        "ZZZ",
@@ -36,16 +36,16 @@ import (
 //				return err
 //			}
 //			ctx.Export("testPool", pulumi.Map{
-//				"service_name": testPoolPostgresSqlConnectionPool.ServiceName,
-//				"cluster_id":   testPoolPostgresSqlConnectionPool.ClusterId,
-//				"name":         testPoolPostgresSqlConnectionPool.Name,
-//				"database_id":  testPoolPostgresSqlConnectionPool.DatabaseId,
-//				"mode":         testPoolPostgresSqlConnectionPool.Mode,
-//				"size":         testPoolPostgresSqlConnectionPool.Size,
-//				"port":         testPoolPostgresSqlConnectionPool.Port,
-//				"ssl_mode":     testPoolPostgresSqlConnectionPool.SslMode,
-//				"uri":          testPoolPostgresSqlConnectionPool.Uri,
-//				"user_id":      testPoolPostgresSqlConnectionPool.UserId,
+//				"serviceName": testPool.ServiceName,
+//				"clusterId":   testPool.ClusterId,
+//				"name":        testPool.Name,
+//				"databaseId":  testPool.DatabaseId,
+//				"mode":        testPool.Mode,
+//				"size":        testPool.Size,
+//				"port":        testPool.Port,
+//				"sslMode":     testPool.SslMode,
+//				"uri":         testPool.Uri,
+//				"userId":      testPool.UserId,
 //			})
 //			return nil
 //		})

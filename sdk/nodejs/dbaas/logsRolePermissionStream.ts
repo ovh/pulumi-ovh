@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  *
  * const permission = new ovh.dbaas.LogsRolePermissionStream("permission", {
  *     serviceName: "ldp-xx-xxxxx",
- *     roleId: ovh_dbaas_logs_role.ro.id,
- *     streamId: ovh_dbaas_logs_output_graylog_stream.mystream.stream_id,
+ *     roleId: ro.id,
+ *     streamId: mystream.streamId,
  * });
  * ```
  *

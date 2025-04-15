@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  *     serviceName: "ip-1.2.3.4",
  *     state: "ok",
  * });
- * const farmName = new ovh.iploadbalancing.UdpFarm("farmName", {
- *     displayName: "ingress-8080-gra",
- *     port: 80,
+ * const farmName = new ovh.iploadbalancing.UdpFarm("farm_name", {
  *     serviceName: lb.then(lb => lb.serviceName),
+ *     displayName: "ingress-8080-gra",
  *     zone: "gra",
+ *     port: 80,
  * });
  * ```
  *

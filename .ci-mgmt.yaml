@@ -1,0 +1,27 @@
+template: external-bridged-provider
+provider: ovh
+organization: ovh
+major-version: 2
+providerDefaultBranch: main
+upstreamProviderOrg: ovh
+publishRegistry: false
+plugins:
+  - name: terraform
+    version: "1.0.19"
+    kind: converter
+  - name: random
+    version: "4.16.7"
+  - name: aws
+    version: "6.56.1"
+languages:
+  - dotnet
+  - go
+  - nodejs
+  - python
+  - java
+publish:
+  sdk: "all"
+  cdn: false
+toolVersions:
+  go: "1.23.x"
+pulumiConvert: 1

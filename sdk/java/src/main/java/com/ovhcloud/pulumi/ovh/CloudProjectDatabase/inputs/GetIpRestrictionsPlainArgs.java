@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetIpRestrictionsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -49,15 +47,15 @@ public final class GetIpRestrictionsPlainArgs extends com.pulumi.resources.Invok
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable String serviceName;
+    @Import(name="serviceName", required=true)
+    private String serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Optional<String> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public String serviceName() {
+        return this.serviceName;
     }
 
     private GetIpRestrictionsPlainArgs() {}
@@ -114,7 +112,7 @@ public final class GetIpRestrictionsPlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable String serviceName) {
+        public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -125,6 +123,9 @@ public final class GetIpRestrictionsPlainArgs extends com.pulumi.resources.Invok
             }
             if ($.engine == null) {
                 throw new MissingRequiredPropertyException("GetIpRestrictionsPlainArgs", "engine");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetIpRestrictionsPlainArgs", "serviceName");
             }
             return $;
         }

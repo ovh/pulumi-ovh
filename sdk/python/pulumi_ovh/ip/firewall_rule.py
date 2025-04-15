@@ -469,12 +469,12 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_firewall_rule = ovh.ip.FirewallRule("myFirewallRule",
-            action="deny",
+        my_firewall_rule = ovh.ip.FirewallRule("my_firewall_rule",
             ip="XXXXXX",
             ip_on_firewall="XXXXXX",
-            protocol="tcp",
-            sequence=0)
+            sequence=0,
+            action="deny",
+            protocol="tcp")
         ```
 
         ## Import
@@ -515,12 +515,12 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_firewall_rule = ovh.ip.FirewallRule("myFirewallRule",
-            action="deny",
+        my_firewall_rule = ovh.ip.FirewallRule("my_firewall_rule",
             ip="XXXXXX",
             ip_on_firewall="XXXXXX",
-            protocol="tcp",
-            sequence=0)
+            sequence=0,
+            action="deny",
+            protocol="tcp")
         ```
 
         ## Import

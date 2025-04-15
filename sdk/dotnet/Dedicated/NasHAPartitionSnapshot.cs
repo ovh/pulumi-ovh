@@ -22,10 +22,10 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionSnapshot("myPartition", new()
+    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionSnapshot("my_partition", new()
     ///     {
-    ///         PartitionName = "my-partition",
     ///         ServiceName = "zpool-12345",
+    ///         PartitionName = "my-partition",
     ///         Type = "day-3",
     ///     });
     /// 

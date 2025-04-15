@@ -800,9 +800,11 @@ class Database(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         postgresql = ovh.cloud_project.Database("postgresql",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-postgresql",
             engine="postgresql",
-            flavor="db1-15",
+            version="14",
+            plan="business",
             nodes=[
                 {
                     "region": "GRA",
@@ -811,9 +813,7 @@ class Database(pulumi.CustomResource):
                     "region": "GRA",
                 },
             ],
-            plan="business",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            version="14")
+            flavor="db1-15")
         ```
 
         To deploy an enterprise MongoDB service with three nodes on private network:
@@ -823,29 +823,29 @@ class Database(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         mongodb = ovh.cloud_project.Database("mongodb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-mongodb",
             engine="mongodb",
-            flavor="db1-30",
+            version="5.0",
+            plan="production",
             nodes=[
                 {
-                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                     "region": "SBG",
                     "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 },
                 {
-                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                     "region": "SBG",
                     "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 },
                 {
-                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                     "region": "SBG",
                     "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 },
             ],
-            plan="production",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            version="5.0")
+            flavor="db1-30")
         ```
 
         ## Import
@@ -1028,9 +1028,11 @@ class Database(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         postgresql = ovh.cloud_project.Database("postgresql",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-postgresql",
             engine="postgresql",
-            flavor="db1-15",
+            version="14",
+            plan="business",
             nodes=[
                 {
                     "region": "GRA",
@@ -1039,9 +1041,7 @@ class Database(pulumi.CustomResource):
                     "region": "GRA",
                 },
             ],
-            plan="business",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            version="14")
+            flavor="db1-15")
         ```
 
         To deploy an enterprise MongoDB service with three nodes on private network:
@@ -1051,29 +1051,29 @@ class Database(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         mongodb = ovh.cloud_project.Database("mongodb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-mongodb",
             engine="mongodb",
-            flavor="db1-30",
+            version="5.0",
+            plan="production",
             nodes=[
                 {
-                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                     "region": "SBG",
                     "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 },
                 {
-                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                     "region": "SBG",
                     "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 },
                 {
-                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                     "region": "SBG",
                     "subnet_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
                 },
             ],
-            plan="production",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            version="5.0")
+            flavor="db1-30")
         ```
 
         ## Import

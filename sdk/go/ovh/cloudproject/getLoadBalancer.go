@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lbLoadBalancer, err := cloudproject.GetLoadBalancer(ctx, &cloudproject.GetLoadBalancerArgs{
+//			lb, err := cloudproject.GetLoadBalancer(ctx, &cloudproject.GetLoadBalancerArgs{
 //				ServiceName: "XXXXXX",
 //				RegionName:  "XXX",
 //				Id:          "XXX",
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("lb", lbLoadBalancer)
+//			ctx.Export("lb", lb)
 //			return nil
 //		})
 //	}

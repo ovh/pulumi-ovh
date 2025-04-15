@@ -310,24 +310,24 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
+        https_redirect = ovh.ip_load_balancing.HttpRoute("https_redirect",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            display_name="Redirect to HTTPS",
+            weight=1,
+            frontend_id=11111,
             action={
                 "status": 302,
                 "target": "https://${host}${path}${arguments}",
                 "type": "redirect",
-            },
-            display_name="Redirect to HTTPS",
-            frontend_id=11111,
+            })
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("example_rule",
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1)
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
+            route_id=https_redirect.id,
             display_name="Match example.com host",
             field="host",
             match="is",
             negate=False,
-            pattern="example.com",
-            route_id=https_redirect.id,
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
+            pattern="example.com")
         ```
 
         Rule which match a specific header (same effect as the host match above).
@@ -336,14 +336,14 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("example_rule",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            route_id=https_redirect["id"],
             display_name="Match example.com Host header",
             field="headers",
             match="is",
             negate=False,
             pattern="example.com",
-            route_id=ovh_iploadbalancing_http_route["https_redirect"]["id"],
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
 
@@ -385,24 +385,24 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        https_redirect = ovh.ip_load_balancing.HttpRoute("httpsRedirect",
+        https_redirect = ovh.ip_load_balancing.HttpRoute("https_redirect",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            display_name="Redirect to HTTPS",
+            weight=1,
+            frontend_id=11111,
             action={
                 "status": 302,
                 "target": "https://${host}${path}${arguments}",
                 "type": "redirect",
-            },
-            display_name="Redirect to HTTPS",
-            frontend_id=11111,
+            })
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("example_rule",
             service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
-            weight=1)
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
+            route_id=https_redirect.id,
             display_name="Match example.com host",
             field="host",
             match="is",
             negate=False,
-            pattern="example.com",
-            route_id=https_redirect.id,
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
+            pattern="example.com")
         ```
 
         Rule which match a specific header (same effect as the host match above).
@@ -411,14 +411,14 @@ class HttpRouteRule(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        example_rule = ovh.ip_load_balancing.HttpRouteRule("exampleRule",
+        example_rule = ovh.ip_load_balancing.HttpRouteRule("example_rule",
+            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
+            route_id=https_redirect["id"],
             display_name="Match example.com Host header",
             field="headers",
             match="is",
             negate=False,
             pattern="example.com",
-            route_id=ovh_iploadbalancing_http_route["https_redirect"]["id"],
-            service_name="loadbalancer-xxxxxxxxxxxxxxxxxx",
             sub_field="Host")
         ```
 

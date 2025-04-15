@@ -315,16 +315,16 @@ class Zone(pulumi.CustomResource):
 
         myaccount = ovh.Me.get_me()
         mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-        zone_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        zone = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
             price_capacity="renew",
             product="dns",
             plan_code="zone")
-        zone_zone = ovh.domain.Zone("zoneZone",
+        zone_zone = ovh.domain.Zone("zone",
             ovh_subsidiary=mycart.ovh_subsidiary,
             plan={
-                "duration": zone_cart_product_plan.selected_prices[0].duration,
-                "plan_code": zone_cart_product_plan.plan_code,
-                "pricing_mode": zone_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": zone.selected_prices[0].duration,
+                "plan_code": zone.plan_code,
+                "pricing_mode": zone.selected_prices[0].pricing_mode,
                 "configurations": [
                     {
                         "label": "zone",
@@ -387,16 +387,16 @@ class Zone(pulumi.CustomResource):
 
         myaccount = ovh.Me.get_me()
         mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-        zone_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        zone = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
             price_capacity="renew",
             product="dns",
             plan_code="zone")
-        zone_zone = ovh.domain.Zone("zoneZone",
+        zone_zone = ovh.domain.Zone("zone",
             ovh_subsidiary=mycart.ovh_subsidiary,
             plan={
-                "duration": zone_cart_product_plan.selected_prices[0].duration,
-                "plan_code": zone_cart_product_plan.plan_code,
-                "pricing_mode": zone_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": zone.selected_prices[0].duration,
+                "plan_code": zone.plan_code,
+                "pricing_mode": zone.selected_prices[0].pricing_mode,
                 "configurations": [
                     {
                         "label": "zone",

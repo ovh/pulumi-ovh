@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrackVrackservices = new Ovh.Vrack.Vrackservices("vrackVrackservices", new()
+    ///     var vrackVrackservices = new Ovh.Vrack.Vrackservices("vrack_vrackservices", new()
     ///     {
     ///         ServiceName = "&lt;vRack service name&gt;",
     ///         VrackServices = "&lt;vrackServices service name&gt;",

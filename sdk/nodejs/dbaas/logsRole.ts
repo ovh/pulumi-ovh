@@ -14,8 +14,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const ro = new ovh.dbaas.LogsRole("ro", {
- *     description: "Devops - RO",
  *     serviceName: "ldp-xx-xxxxx",
+ *     name: "Devops - RO",
+ *     description: "Devops - RO",
  * });
  * ```
  *

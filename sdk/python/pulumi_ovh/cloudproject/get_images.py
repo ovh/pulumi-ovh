@@ -122,9 +122,9 @@ def get_images(flavor_type: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    images = ovh.CloudProject.get_images(os_type="linux",
+    images = ovh.CloudProject.get_images(service_name="<public cloud project ID>",
         region="WAW1",
-        service_name="<public cloud project ID>")
+        os_type="linux")
     ```
 
 
@@ -162,9 +162,9 @@ def get_images_output(flavor_type: Optional[pulumi.Input[Optional[builtins.str]]
     import pulumi
     import pulumi_ovh as ovh
 
-    images = ovh.CloudProject.get_images(os_type="linux",
+    images = ovh.CloudProject.get_images(service_name="<public cloud project ID>",
         region="WAW1",
-        service_name="<public cloud project ID>")
+        os_type="linux")
     ```
 
 

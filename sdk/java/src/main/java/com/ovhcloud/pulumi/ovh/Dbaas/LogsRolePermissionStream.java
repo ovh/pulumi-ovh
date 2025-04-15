@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var permission = new LogsRolePermissionStream("permission", LogsRolePermissionStreamArgs.builder()
  *             .serviceName("ldp-xx-xxxxx")
- *             .roleId(ovh_dbaas_logs_role.ro().id())
- *             .streamId(ovh_dbaas_logs_output_graylog_stream.mystream().stream_id())
+ *             .roleId(ro.id())
+ *             .streamId(mystream.streamId())
  *             .build());
  * 
  *     }
@@ -176,6 +176,7 @@ public class LogsRolePermissionStream extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

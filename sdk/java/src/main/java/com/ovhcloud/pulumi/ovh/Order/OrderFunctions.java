@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OrderFunctions {
@@ -159,6 +160,51 @@ public final class OrderFunctions {
      * 
      */
     public static Output<GetCartResult> getCart(GetCartArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Order/getCart:getCart", TypeShape.of(GetCartResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to create a temporary order cart to retrieve information order cart products.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Me.MeFunctions;
+     * import com.pulumi.ovh.Order.OrderFunctions;
+     * import com.pulumi.ovh.Order.inputs.GetCartArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.ovhSubsidiary())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCartResult> getCart(GetCartArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Order/getCart:getCart", TypeShape.of(GetCartResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -407,6 +453,57 @@ public final class OrderFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCartProductInvokeResult> getCartProduct(GetCartProductArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Order/getCartProduct:getCartProduct", TypeShape.of(GetCartProductInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information of order cart product products.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Me.MeFunctions;
+     * import com.pulumi.ovh.Order.OrderFunctions;
+     * import com.pulumi.ovh.Order.inputs.GetCartArgs;
+     * import com.pulumi.ovh.Order.inputs.GetCartProductArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.ovhSubsidiary())
+     *             .build());
+     * 
+     *         final var plans = OrderFunctions.getCartProduct(GetCartProductArgs.builder()
+     *             .cartId(myCart.id())
+     *             .product("...")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCartProductInvokeResult> getCartProductPlain(GetCartProductPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Order/getCartProduct:getCartProduct", TypeShape.of(GetCartProductInvokeResult.class), args, Utilities.withVersion(options));
     }
@@ -564,6 +661,58 @@ public final class OrderFunctions {
      * 
      */
     public static Output<GetCartProductOptionsInvokeResult> getCartProductOptions(GetCartProductOptionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Order/getCartProductOptions:getCartProductOptions", TypeShape.of(GetCartProductOptionsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information of order cart product options.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Me.MeFunctions;
+     * import com.pulumi.ovh.Order.OrderFunctions;
+     * import com.pulumi.ovh.Order.inputs.GetCartArgs;
+     * import com.pulumi.ovh.Order.inputs.GetCartProductOptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.ovhSubsidiary())
+     *             .build());
+     * 
+     *         final var options = OrderFunctions.getCartProductOptions(GetCartProductOptionsArgs.builder()
+     *             .cartId(myCart.id())
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCartProductOptionsInvokeResult> getCartProductOptions(GetCartProductOptionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Order/getCartProductOptions:getCartProductOptions", TypeShape.of(GetCartProductOptionsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -831,6 +980,60 @@ public final class OrderFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCartProductOptionsPlanResult> getCartProductOptionsPlan(GetCartProductOptionsPlanArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan", TypeShape.of(GetCartProductOptionsPlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information of order cart product options plan.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Me.MeFunctions;
+     * import com.pulumi.ovh.Order.OrderFunctions;
+     * import com.pulumi.ovh.Order.inputs.GetCartArgs;
+     * import com.pulumi.ovh.Order.inputs.GetCartProductOptionsPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.ovhSubsidiary())
+     *             .build());
+     * 
+     *         final var plan = OrderFunctions.getCartProductOptionsPlan(GetCartProductOptionsPlanArgs.builder()
+     *             .cartId(myCart.id())
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .optionsPlanCode("vrack")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCartProductOptionsPlanResult> getCartProductOptionsPlanPlain(GetCartProductOptionsPlanPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Order/getCartProductOptionsPlan:getCartProductOptionsPlan", TypeShape.of(GetCartProductOptionsPlanResult.class), args, Utilities.withVersion(options));
     }
@@ -991,6 +1194,59 @@ public final class OrderFunctions {
      * 
      */
     public static Output<GetCartProductPlanResult> getCartProductPlan(GetCartProductPlanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Order/getCartProductPlan:getCartProductPlan", TypeShape.of(GetCartProductPlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information of order cart product plan.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Me.MeFunctions;
+     * import com.pulumi.ovh.Order.OrderFunctions;
+     * import com.pulumi.ovh.Order.inputs.GetCartArgs;
+     * import com.pulumi.ovh.Order.inputs.GetCartProductPlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var myCart = OrderFunctions.getCart(GetCartArgs.builder()
+     *             .ovhSubsidiary(myAccount.ovhSubsidiary())
+     *             .build());
+     * 
+     *         final var plan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+     *             .cartId(myCart.id())
+     *             .priceCapacity("renew")
+     *             .product("cloud")
+     *             .planCode("project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCartProductPlanResult> getCartProductPlan(GetCartProductPlanArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Order/getCartProductPlan:getCartProductPlan", TypeShape.of(GetCartProductPlanResult.class), args, Utilities.withVersion(options));
     }
     /**

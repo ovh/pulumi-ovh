@@ -112,7 +112,7 @@ class Vrackservices(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_vrackservices = ovh.vrack.Vrackservices("vrackVrackservices",
+        vrack_vrackservices = ovh.vrack.Vrackservices("vrack_vrackservices",
             service_name="<vRack service name>",
             vrack_services="<vrackServices service name>")
         ```
@@ -147,7 +147,7 @@ class Vrackservices(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_vrackservices = ovh.vrack.Vrackservices("vrackVrackservices",
+        vrack_vrackservices = ovh.vrack.Vrackservices("vrack_vrackservices",
             service_name="<vRack service name>",
             vrack_services="<vrackServices service name>")
         ```

@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Add a record to a sub-domain
  *         var test = new ZoneRecord("test", ZoneRecordArgs.builder()
- *             .fieldtype("A")
- *             .subdomain("test")
- *             .target("0.0.0.0")
- *             .ttl(3600)
  *             .zone("testdemo.ovh")
+ *             .subdomain("test")
+ *             .fieldtype("A")
+ *             .ttl(3600)
+ *             .target("0.0.0.0")
  *             .build());
  * 
  *     }
@@ -179,6 +179,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
