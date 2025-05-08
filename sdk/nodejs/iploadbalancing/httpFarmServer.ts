@@ -19,22 +19,22 @@ import * as utilities from "../utilities";
  *     state: "ok",
  * });
  * const farmname = new ovh.iploadbalancing.HttpFarm("farmname", {
- *     port: 8080,
  *     serviceName: lb.then(lb => lb.serviceName),
+ *     port: 8080,
  *     zone: "all",
  * });
  * const backend = new ovh.iploadbalancing.HttpFarmServer("backend", {
- *     address: "4.5.6.7",
- *     backup: true,
- *     displayName: "mybackend",
- *     farmId: farmname.id,
- *     port: 80,
- *     probe: true,
- *     proxyProtocolVersion: "v2",
  *     serviceName: lb.then(lb => lb.serviceName),
- *     ssl: false,
+ *     farmId: farmname.id,
+ *     displayName: "mybackend",
+ *     address: "4.5.6.7",
  *     status: "active",
+ *     port: 80,
+ *     proxyProtocolVersion: "v2",
  *     weight: 2,
+ *     probe: true,
+ *     ssl: false,
+ *     backup: true,
  * });
  * ```
  *

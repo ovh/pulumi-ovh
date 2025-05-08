@@ -46,9 +46,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myOauth2ClientAuthCode = new APIOAuth2Client("myOauth2ClientAuthCode", APIOAuth2ClientArgs.builder()
- *             .callbackUrls("https://my-app.com/callback")
- *             .description("An OAuth2 client using the authorization code flow for my-app.com")
+ *             .name("OAuth2 authorization code service account")
  *             .flow("AUTHORIZATION_CODE")
+ *             .description("An OAuth2 client using the authorization code flow for my-app.com")
+ *             .callbackUrls("https://my-app.com/callback")
  *             .build());
  * 
  *     }
@@ -83,6 +84,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myOauth2ClientClientCreds = new APIOAuth2Client("myOauth2ClientClientCreds", APIOAuth2ClientArgs.builder()
+ *             .name("client credentials service account")
  *             .description("An OAuth2 client using the client credentials flow for my app")
  *             .flow("CLIENT_CREDENTIALS")
  *             .build());
@@ -252,6 +254,7 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "clientSecret"
             ))

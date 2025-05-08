@@ -19,6 +19,68 @@ import javax.annotation.Nullable;
 /**
  * Manage a vrack network for your IP Loadbalancing service.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
+ * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
+ * import com.ovhcloud.pulumi.ovh.Vrack.IpLoadbalancing;
+ * import com.ovhcloud.pulumi.ovh.Vrack.IpLoadbalancingArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.VrackNetwork;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.VrackNetworkArgs;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.TcpFarm;
+ * import com.ovhcloud.pulumi.ovh.IpLoadBalancing.TcpFarmArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var iplb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
+ *             .build());
+ * 
+ *         var vipLb = new IpLoadbalancing("vipLb", IpLoadbalancingArgs.builder()
+ *             .serviceName("xxx")
+ *             .LoadbalancingId(iplb.serviceName())
+ *             .build());
+ * 
+ *         var network = new VrackNetwork("network", VrackNetworkArgs.builder()
+ *             .serviceName(vipLb.LoadbalancingId())
+ *             .subnet("10.0.0.0/16")
+ *             .vlan(1)
+ *             .natIp("10.0.0.0/27")
+ *             .displayName("mynetwork")
+ *             .build());
+ * 
+ *         var testFarm = new TcpFarm("testFarm", TcpFarmArgs.builder()
+ *             .serviceName(network.serviceName())
+ *             .displayName("mytcpbackends")
+ *             .port(80)
+ *             .vrackNetworkId(network.vrackNetworkId())
+ *             .zone(iplb.zones()[0])
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/vrackNetwork:VrackNetwork")
 public class VrackNetwork extends com.pulumi.resources.CustomResource {
@@ -160,6 +222,7 @@ public class VrackNetwork extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

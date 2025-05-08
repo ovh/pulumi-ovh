@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const viplb = new ovh.vrack.IpLoadbalancing("viplb", {
- *     LoadbalancingId: "yyy",
  *     serviceName: "xxx",
+ *     LoadbalancingId: "yyy",
  * });
  * ```
  */

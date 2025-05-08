@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     engine: "YYYY",
  *     id: "ZZZZ",
  * });
- * const ipRestriction = new ovh.cloudprojectdatabase.IpRestriction("ipRestriction", {
+ * const ipRestriction = new ovh.cloudprojectdatabase.IpRestriction("ip_restriction", {
  *     serviceName: db.then(db => db.serviceName),
  *     engine: db.then(db => db.engine),
  *     clusterId: db.then(db => db.id),

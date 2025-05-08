@@ -95,8 +95,8 @@ def get_container_registry_users(registry_id: Optional[builtins.str] = None,
 
     my_registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
         registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    users = ovh.CloudProject.get_container_registry_users(service_name=ovh_cloud_project_containerregistry["my_registry"]["service_name"],
-        registry_id=ovh_cloud_project_containerregistry["my_registry"]["id"])
+    users = ovh.CloudProject.get_container_registry_users(service_name=my_registry_ovh_cloud_project_containerregistry["serviceName"],
+        registry_id=my_registry_ovh_cloud_project_containerregistry["id"])
     ```
 
 
@@ -128,8 +128,8 @@ def get_container_registry_users_output(registry_id: Optional[pulumi.Input[built
 
     my_registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
         registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-    users = ovh.CloudProject.get_container_registry_users(service_name=ovh_cloud_project_containerregistry["my_registry"]["service_name"],
-        registry_id=ovh_cloud_project_containerregistry["my_registry"]["id"])
+    users = ovh.CloudProject.get_container_registry_users(service_name=my_registry_ovh_cloud_project_containerregistry["serviceName"],
+        registry_id=my_registry_ovh_cloud_project_containerregistry["id"])
     ```
 
 

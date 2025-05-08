@@ -36,20 +36,20 @@ import (
 //				return err
 //			}
 //			farm80, err := iploadbalancing.NewTcpFarm(ctx, "farm80", &iploadbalancing.TcpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
-//				Port:        pulumi.Int(80),
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("all"),
+//				Port:        pulumi.Int(80),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewTcpFrontend(ctx, "testFrontend", &iploadbalancing.TcpFrontendArgs{
-//				DefaultFarmId: farm80.ID(),
-//				DisplayName:   pulumi.String("ingress-8080-gra"),
-//				Port:          pulumi.String("80,443"),
+//			_, err = iploadbalancing.NewTcpFrontend(ctx, "test_frontend", &iploadbalancing.TcpFrontendArgs{
 //				ServiceName:   pulumi.String(lb.ServiceName),
+//				DisplayName:   pulumi.String("ingress-8080-gra"),
 //				Zone:          pulumi.String("all"),
+//				Port:          pulumi.String("80,443"),
+//				DefaultFarmId: farm80.ID(),
 //			})
 //			if err != nil {
 //				return err

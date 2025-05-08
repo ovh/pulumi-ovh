@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var subnet = new NetworkPrivateSubnet("subnet", NetworkPrivateSubnetArgs.builder()
- *             .dhcp(true)
+ *             .serviceName("xxxxx")
+ *             .networkId("0234543")
+ *             .region("GRA1")
+ *             .start("192.168.168.100")
  *             .end("192.168.168.200")
  *             .network("192.168.168.0/24")
- *             .networkId("0234543")
+ *             .dhcp(true)
  *             .noGateway(false)
- *             .region("GRA1")
- *             .serviceName("xxxxx")
- *             .start("192.168.168.100")
  *             .build());
  * 
  *     }
@@ -279,6 +279,7 @@ public class NetworkPrivateSubnet extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -15,11 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myAlert = new ovh.cloudproject.Alerting("myAlert", {
+ * const myAlert = new ovh.cloudproject.Alerting("my_alert", {
+ *     serviceName: "XXX",
  *     delay: 3600,
  *     email: "aaa.bbb@domain.com",
  *     monthlyThreshold: 1000,
- *     serviceName: "XXX",
  * });
  * ```
  */

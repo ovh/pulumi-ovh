@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const subscription = new ovh.cloudproject.RegionLoadBalancerLogSubscription("subscription", {
- *     kind: "haproxy",
- *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
- *     regionName: "yyyy",
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     regionName: "yyyy",
+ *     loadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+ *     kind: "haproxy",
  *     streamId: "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj",
  * });
  * ```

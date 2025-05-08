@@ -15,10 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myOauth2ClientAuthCode = new ovh.me.APIOAuth2Client("myOauth2ClientAuthCode", {
- *     callbackUrls: ["https://my-app.com/callback"],
- *     description: "An OAuth2 client using the authorization code flow for my-app.com",
+ * const myOauth2ClientAuthCode = new ovh.me.APIOAuth2Client("my_oauth2_client_auth_code", {
+ *     name: "OAuth2 authorization code service account",
  *     flow: "AUTHORIZATION_CODE",
+ *     description: "An OAuth2 client using the authorization code flow for my-app.com",
+ *     callbackUrls: ["https://my-app.com/callback"],
  * });
  * ```
  *
@@ -28,7 +29,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myOauth2ClientClientCreds = new ovh.me.APIOAuth2Client("myOauth2ClientClientCreds", {
+ * const myOauth2ClientClientCreds = new ovh.me.APIOAuth2Client("my_oauth2_client_client_creds", {
+ *     name: "client credentials service account",
  *     description: "An OAuth2 client using the client credentials flow for my app",
  *     flow: "CLIENT_CREDENTIALS",
  * });

@@ -24,9 +24,9 @@ namespace Pulumi.Ovh.Dbaas
     /// {
     ///     var stream = new Ovh.Dbaas.LogsOutputGraylogStream("stream", new()
     ///     {
-    ///         Description = "my graylog stream",
     ///         ServiceName = "....",
     ///         Title = "my stream",
+    ///         Description = "my graylog stream",
     ///     });
     /// 
     /// });

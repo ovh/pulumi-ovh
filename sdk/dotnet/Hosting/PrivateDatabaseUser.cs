@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Hosting
     /// {
     ///     var user = new Ovh.Hosting.PrivateDatabaseUser("user", new()
     ///     {
-    ///         Password = "XXXXXX",
     ///         ServiceName = "XXXXXX",
+    ///         Password = "XXXXXX",
     ///         UserName = "XXXXXX",
     ///     });
     /// 

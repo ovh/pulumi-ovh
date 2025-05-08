@@ -430,6 +430,7 @@ class M3DbNamespace(pulumi.CustomResource):
         namespace = ovh.cloud_project_database.M3DbNamespace("namespace",
             service_name=m3db.service_name,
             cluster_id=m3db.id,
+            name="mynamespace",
             resolution="P2D",
             retention_period_duration="PT48H")
         ```
@@ -479,6 +480,7 @@ class M3DbNamespace(pulumi.CustomResource):
         namespace = ovh.cloud_project_database.M3DbNamespace("namespace",
             service_name=m3db.service_name,
             cluster_id=m3db.id,
+            name="mynamespace",
             resolution="P2D",
             retention_period_duration="PT48H")
         ```

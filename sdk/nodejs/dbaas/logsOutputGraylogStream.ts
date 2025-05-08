@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const stream = new ovh.dbaas.LogsOutputGraylogStream("stream", {
- *     description: "my graylog stream",
  *     serviceName: "....",
  *     title: "my stream",
+ *     description: "my graylog stream",
  * });
  * ```
  *

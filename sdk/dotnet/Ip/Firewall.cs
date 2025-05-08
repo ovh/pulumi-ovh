@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myFirewall = new Ovh.Ip.Firewall("myFirewall", new()
+    ///     var myFirewall = new Ovh.Ip.Firewall("my_firewall", new()
     ///     {
     ///         Ip = "XXXXXX",
     ///         IpOnFirewall = "XXXXXX",

@@ -35,9 +35,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewTcpFarm(ctx, "farmName", &iploadbalancing.TcpFarmArgs{
-//				DisplayName: pulumi.String("ingress-8080-gra"),
+//			_, err = iploadbalancing.NewTcpFarm(ctx, "farm_name", &iploadbalancing.TcpFarmArgs{
 //				ServiceName: pulumi.String(lb.ServiceName),
+//				DisplayName: pulumi.String("ingress-8080-gra"),
 //				Zone:        pulumi.String("GRA"),
 //			})
 //			if err != nil {

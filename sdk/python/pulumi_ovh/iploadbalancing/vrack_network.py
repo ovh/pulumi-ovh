@@ -253,6 +253,30 @@ class VrackNetwork(pulumi.CustomResource):
         """
         Manage a vrack network for your IP Loadbalancing service.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        iplb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
+        vip_lb = ovh.vrack.IpLoadbalancing("vip_lb",
+            service_name="xxx",
+            loadbalancing_id=iplb.service_name)
+        network = ovh.ip_load_balancing.VrackNetwork("network",
+            service_name=vip_lb.loadbalancing_id,
+            subnet="10.0.0.0/16",
+            vlan=1,
+            nat_ip="10.0.0.0/27",
+            display_name="mynetwork")
+        test_farm = ovh.ip_load_balancing.TcpFarm("test_farm",
+            service_name=network.service_name,
+            display_name="mytcpbackends",
+            port=80,
+            vrack_network_id=network.vrack_network_id,
+            zone=iplb.zones[0])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: Human readable name for your vrack network
@@ -270,6 +294,30 @@ class VrackNetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manage a vrack network for your IP Loadbalancing service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        iplb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="loadbalancer-xxxxxxxxxxxxxxxxxx")
+        vip_lb = ovh.vrack.IpLoadbalancing("vip_lb",
+            service_name="xxx",
+            loadbalancing_id=iplb.service_name)
+        network = ovh.ip_load_balancing.VrackNetwork("network",
+            service_name=vip_lb.loadbalancing_id,
+            subnet="10.0.0.0/16",
+            vlan=1,
+            nat_ip="10.0.0.0/27",
+            display_name="mynetwork")
+        test_farm = ovh.ip_load_balancing.TcpFarm("test_farm",
+            service_name=network.service_name,
+            display_name="mytcpbackends",
+            port=80,
+            vrack_network_id=network.vrack_network_id,
+            zone=iplb.zones[0])
+        ```
 
         :param str resource_name: The name of the resource.
         :param VrackNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var httpsRedirect = new HttpRoute("httpsRedirect", HttpRouteArgs.builder()
+ *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
+ *             .displayName("Redirect to HTTPS")
+ *             .weight(1)
  *             .action(HttpRouteActionArgs.builder()
  *                 .status(302)
  *                 .target("https://${host}${path}${arguments}")
  *                 .type("redirect")
  *                 .build())
- *             .displayName("Redirect to HTTPS")
- *             .serviceName("loadbalancer-xxxxxxxxxxxxxxxxxx")
- *             .weight(1)
  *             .build());
  * 
  *     }
@@ -217,6 +217,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

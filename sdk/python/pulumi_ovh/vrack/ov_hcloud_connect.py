@@ -112,9 +112,9 @@ class OVHcloudConnect(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_ovhcloudconnect = ovh.vrack.OVHcloudConnect("vrackOvhcloudconnect",
-            ovh_cloud_connect="<OVH Cloud Connect service name>",
-            service_name="<vRack service name>")
+        vrack_ovhcloudconnect = ovh.vrack.OVHcloudConnect("vrack_ovhcloudconnect",
+            service_name="<vRack service name>",
+            ovh_cloud_connect="<OVH Cloud Connect service name>")
         ```
 
         ## Import
@@ -147,9 +147,9 @@ class OVHcloudConnect(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_ovhcloudconnect = ovh.vrack.OVHcloudConnect("vrackOvhcloudconnect",
-            ovh_cloud_connect="<OVH Cloud Connect service name>",
-            service_name="<vRack service name>")
+        vrack_ovhcloudconnect = ovh.vrack.OVHcloudConnect("vrack_ovhcloudconnect",
+            service_name="<vRack service name>",
+            ovh_cloud_connect="<OVH Cloud Connect service name>")
         ```
 
         ## Import

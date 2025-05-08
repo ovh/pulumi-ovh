@@ -27,8 +27,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.NewInstanceSnapshot(ctx, "snapshot", &cloudproject.InstanceSnapshotArgs{
-//				InstanceId:  pulumi.String("<instance ID>"),
 //				ServiceName: pulumi.String("<public cloud project ID>"),
+//				InstanceId:  pulumi.String("<instance ID>"),
+//				Name:        pulumi.String("SnapshotExample"),
 //			})
 //			if err != nil {
 //				return err

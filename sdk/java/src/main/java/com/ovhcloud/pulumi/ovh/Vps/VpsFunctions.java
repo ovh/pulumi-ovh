@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -140,6 +141,48 @@ public final class VpsFunctions {
      * 
      */
     public static Output<GetVpsResult> getVps(GetVpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Vps/getVps:getVps", TypeShape.of(GetVpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a vps associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Vps.VpsFunctions;
+     * import com.pulumi.ovh.Vps.inputs.GetVpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var server = VpsFunctions.getVps(GetVpsArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpsResult> getVps(GetVpsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Vps/getVps:getVps", TypeShape.of(GetVpsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -377,6 +420,45 @@ public final class VpsFunctions {
      * 
      */
     public static Output<GetVpssResult> getVpss(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Vps/getVpss:getVpss", TypeShape.of(GetVpssResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of VPS associated with your OVH Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Vps.VpsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var servers = VpsFunctions.getVpss(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpssResult> getVpss(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Vps/getVpss:getVpss", TypeShape.of(GetVpssResult.class), args, Utilities.withVersion(options));
     }
     /**

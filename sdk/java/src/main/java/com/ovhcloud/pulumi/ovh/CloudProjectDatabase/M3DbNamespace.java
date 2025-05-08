@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *         var namespace = new M3DbNamespace("namespace", M3DbNamespaceArgs.builder()
  *             .serviceName(m3db.serviceName())
  *             .clusterId(m3db.id())
+ *             .name("mynamespace")
  *             .resolution("P2D")
  *             .retentionPeriodDuration("PT48H")
  *             .build());
@@ -285,6 +286,7 @@ public class M3DbNamespace extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

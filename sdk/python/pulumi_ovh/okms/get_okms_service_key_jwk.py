@@ -132,8 +132,8 @@ def get_okms_service_key_jwk(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    key_info = ovh.Okms.get_okms_service_key(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    key_info = ovh.Okms.get_okms_service_key(okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
     ```
 
 
@@ -168,8 +168,8 @@ def get_okms_service_key_jwk_output(id: Optional[pulumi.Input[builtins.str]] = N
     import pulumi
     import pulumi_ovh as ovh
 
-    key_info = ovh.Okms.get_okms_service_key(id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    key_info = ovh.Okms.get_okms_service_key(okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
     ```
 
 

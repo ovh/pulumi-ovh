@@ -78,7 +78,7 @@ class GetIpRestrictionsResult:
 
     @property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[builtins.str]:
+    def service_name(self) -> builtins.str:
         """
         See Argument Reference above.
         """
@@ -141,7 +141,7 @@ def get_ip_restrictions(cluster_id: Optional[builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                                engine: Optional[pulumi.Input[builtins.str]] = None,
-                               service_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                               service_name: Optional[pulumi.Input[builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpRestrictionsResult]:
     """
     Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.

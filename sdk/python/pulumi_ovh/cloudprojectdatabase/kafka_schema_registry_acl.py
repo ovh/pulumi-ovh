@@ -211,7 +211,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
             engine="kafka",
             id="ZZZ")
-        schema_registry_acl = ovh.cloud_project_database.KafkaSchemaRegistryAcl("schemaRegistryAcl",
+        schema_registry_acl = ovh.cloud_project_database.KafkaSchemaRegistryAcl("schema_registry_acl",
             service_name=kafka.service_name,
             cluster_id=kafka.id,
             permission="schema_registry_read",
@@ -255,7 +255,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         kafka = ovh.CloudProjectDatabase.get_database(service_name="XXX",
             engine="kafka",
             id="ZZZ")
-        schema_registry_acl = ovh.cloud_project_database.KafkaSchemaRegistryAcl("schemaRegistryAcl",
+        schema_registry_acl = ovh.cloud_project_database.KafkaSchemaRegistryAcl("schema_registry_acl",
             service_name=kafka.service_name,
             cluster_id=kafka.id,
             permission="schema_registry_read",

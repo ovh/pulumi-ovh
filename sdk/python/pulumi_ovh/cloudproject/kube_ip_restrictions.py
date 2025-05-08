@@ -144,10 +144,10 @@ class KubeIpRestrictions(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrackOnly",
-            ips=["10.42.0.0/16"],
+        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrack_only",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            ips=["10.42.0.0/16"])
         ```
 
         ## Import
@@ -181,10 +181,10 @@ class KubeIpRestrictions(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrackOnly",
-            ips=["10.42.0.0/16"],
+        vrack_only = ovh.cloud_project.KubeIpRestrictions("vrack_only",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            ips=["10.42.0.0/16"])
         ```
 
         ## Import

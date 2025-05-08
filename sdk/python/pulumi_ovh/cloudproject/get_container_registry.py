@@ -188,8 +188,8 @@ def get_container_registry(registry_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        service_name="XXXXXX")
+    my_registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
+        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     ```
 
 
@@ -227,8 +227,8 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[builtins.st
     import pulumi
     import pulumi_ovh as ovh
 
-    my_registry = ovh.CloudProject.get_container_registry(registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-        service_name="XXXXXX")
+    my_registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
+        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     ```
 
 

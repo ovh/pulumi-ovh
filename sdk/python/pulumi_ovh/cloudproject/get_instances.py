@@ -97,8 +97,8 @@ def get_instances(region: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    instance = ovh.CloudProject.get_instances(region="XXXX",
-        service_name="YYYY")
+    instance = ovh.CloudProject.get_instances(service_name="YYYY",
+        region="XXXX")
     ```
 
 
@@ -132,8 +132,8 @@ def get_instances_output(region: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    instance = ovh.CloudProject.get_instances(region="XXXX",
-        service_name="YYYY")
+    instance = ovh.CloudProject.get_instances(service_name="YYYY",
+        region="XXXX")
     ```
 
 

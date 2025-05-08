@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
+//				ServiceName: "ldp-xx-xxxxx",
 //				ClusterId:   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //				RetentionId: pulumi.StringRef("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"),
-//				ServiceName: "ldp-xx-xxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,9 +56,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
+//				ServiceName: "ldp-xx-xxxxx",
 //				ClusterId:   "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //				Duration:    pulumi.StringRef("P14D"),
-//				ServiceName: "ldp-xx-xxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -84,10 +84,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.GetLogsClustersRetention(ctx, &dbaas.GetLogsClustersRetentionArgs{
+//				ServiceName:   "ldp-xx-xxxxx",
 //				ClusterId:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 //				Duration:      pulumi.StringRef("P14D"),
 //				RetentionType: pulumi.StringRef("LOGS_INDEXING"),
-//				ServiceName:   "ldp-xx-xxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err

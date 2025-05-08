@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const storage = ovh.CloudProject.getStorage({
- *     name: "my-storage-name",
- *     regionName: "GRA",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA",
+ *     name: "my-storage-name",
  * });
  * ```
  */
@@ -151,9 +151,9 @@ export interface GetStorageResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const storage = ovh.CloudProject.getStorage({
- *     name: "my-storage-name",
- *     regionName: "GRA",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA",
+ *     name: "my-storage-name",
  * });
  * ```
  */

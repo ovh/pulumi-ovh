@@ -30,15 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iploadbalancing.NewHttpRoute(ctx, "httpsRedirect", &iploadbalancing.HttpRouteArgs{
+//			_, err := iploadbalancing.NewHttpRoute(ctx, "https_redirect", &iploadbalancing.HttpRouteArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				DisplayName: pulumi.String("Redirect to HTTPS"),
+//				Weight:      pulumi.Int(1),
 //				Action: &iploadbalancing.HttpRouteActionArgs{
 //					Status: pulumi.Int(302),
 //					Target: pulumi.String("https://${host}${path}${arguments}"),
 //					Type:   pulumi.String("redirect"),
 //				},
-//				DisplayName: pulumi.String("Redirect to HTTPS"),
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
-//				Weight:      pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err

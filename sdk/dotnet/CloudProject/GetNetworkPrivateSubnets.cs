@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivateSubnets = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         NetworkId = "XXXXXX",
@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivateSubnets,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```
@@ -53,7 +53,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivateSubnets = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         NetworkId = "XXXXXX",
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivateSubnets,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```
@@ -82,7 +82,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivateSubnets = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivateSubnets.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         NetworkId = "XXXXXX",
@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivateSubnets,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```

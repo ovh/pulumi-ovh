@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var plan = new SavingsPlan("plan", SavingsPlanArgs.builder()
- *             .autoRenewal(true)
- *             .displayName("one_month_rancher_savings_plan")
+ *             .serviceName("<public cloud project ID>")
  *             .flavor("Rancher")
  *             .period("P1M")
- *             .serviceName("<public cloud project ID>")
  *             .size(2)
+ *             .displayName("one_month_rancher_savings_plan")
+ *             .autoRenewal(true)
  *             .build());
  * 
  *     }
@@ -293,6 +293,7 @@ public class SavingsPlan extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

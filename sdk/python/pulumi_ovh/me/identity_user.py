@@ -290,7 +290,7 @@ class IdentityUser(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_user = ovh.me.IdentityUser("myUser",
+        my_user = ovh.me.IdentityUser("my_user",
             description="Some custom description",
             email="my_login@example.com",
             group="DEFAULT",
@@ -321,7 +321,7 @@ class IdentityUser(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_user = ovh.me.IdentityUser("myUser",
+        my_user = ovh.me.IdentityUser("my_user",
             description="Some custom description",
             email="my_login@example.com",
             group="DEFAULT",

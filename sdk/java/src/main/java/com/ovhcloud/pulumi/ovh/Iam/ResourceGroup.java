@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myResourceGroup = new ResourceGroup("myResourceGroup", ResourceGroupArgs.builder()
+ *             .name("my_resource_group")
  *             .resources(            
  *                 "urn:v1:eu:resource:service1:service1-id",
  *                 "urn:v1:eu:resource:service2:service2-id")
@@ -209,6 +210,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

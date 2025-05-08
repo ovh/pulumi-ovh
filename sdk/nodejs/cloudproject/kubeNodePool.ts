@@ -17,13 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const nodePool = new ovh.cloudproject.KubeNodePool("nodePool", {
- *     desiredNodes: 3,
- *     flavorName: "b2-7",
+ * const nodePool = new ovh.cloudproject.KubeNodePool("node_pool", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     name: "my-pool-1",
+ *     flavorName: "b2-7",
+ *     desiredNodes: 3,
  *     maxNodes: 3,
  *     minNodes: 3,
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  * });
  * ```
  *
@@ -34,12 +35,13 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const pool = new ovh.cloudproject.KubeNodePool("pool", {
- *     desiredNodes: 3,
- *     flavorName: "b2-7",
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     name: "my-pool",
+ *     flavorName: "b2-7",
+ *     desiredNodes: 3,
  *     maxNodes: 3,
  *     minNodes: 3,
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     template: {
  *         metadata: {
  *             annotations: {
@@ -53,12 +55,12 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *         spec: {
+ *             unschedulable: false,
  *             taints: [{
  *                 effect: "PreferNoSchedule",
  *                 key: "k",
  *                 value: "v",
  *             }],
- *             unschedulable: false,
  *         },
  *     },
  * });

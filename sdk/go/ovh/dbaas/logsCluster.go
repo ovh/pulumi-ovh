@@ -27,17 +27,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.NewLogsCluster(ctx, "ldp", &dbaas.LogsClusterArgs{
+//				ServiceName: pulumi.String("ldp-xx-xxxxx"),
+//				ClusterId:   pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				ArchiveAllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),
 //				},
-//				ClusterId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				DirectInputAllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),
 //				},
 //				QueryAllowedNetworks: pulumi.StringArray{
 //					pulumi.String("10.0.0.0/16"),
 //				},
-//				ServiceName: pulumi.String("ldp-xx-xxxxx"),
 //			})
 //			if err != nil {
 //				return err

@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetInstances(ctx, &cloudproject.GetInstancesArgs{
-//				Region:      "XXXX",
 //				ServiceName: "YYYY",
+//				Region:      "XXXX",
 //			}, nil)
 //			if err != nil {
 //				return err

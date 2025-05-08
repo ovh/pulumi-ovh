@@ -152,8 +152,8 @@ def get_private_database_allowlist(ip: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
-        service_name="XXXXXX")
+    whitelist = ovh.Hosting.get_private_database_allowlist(service_name="XXXXXX",
+        ip="XXXXXX")
     ```
 
 
@@ -188,8 +188,8 @@ def get_private_database_allowlist_output(ip: Optional[pulumi.Input[Optional[bui
     import pulumi
     import pulumi_ovh as ovh
 
-    whitelist = ovh.Hosting.get_private_database_allowlist(ip="XXXXXX",
-        service_name="XXXXXX")
+    whitelist = ovh.Hosting.get_private_database_allowlist(service_name="XXXXXX",
+        ip="XXXXXX")
     ```
 
 

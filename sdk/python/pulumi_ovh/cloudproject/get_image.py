@@ -242,8 +242,8 @@ def get_image(image_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    image = ovh.CloudProject.get_image(image_id="<image ID>",
-        service_name="<public cloud project ID>")
+    image = ovh.CloudProject.get_image(service_name="<public cloud project ID>",
+        image_id="<image ID>")
     ```
 
 
@@ -285,8 +285,8 @@ def get_image_output(image_id: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    image = ovh.CloudProject.get_image(image_id="<image ID>",
-        service_name="<public cloud project ID>")
+    image = ovh.CloudProject.get_image(service_name="<public cloud project ID>",
+        image_id="<image ID>")
     ```
 
 

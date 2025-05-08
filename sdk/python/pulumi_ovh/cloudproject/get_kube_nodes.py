@@ -99,9 +99,9 @@ def get_kube_nodes(kube_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    nodes_kube_nodes = ovh.CloudProject.get_kube_nodes(service_name="XXXXXX",
+    nodes = ovh.CloudProject.get_kube_nodes(service_name="XXXXXX",
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
-    pulumi.export("nodes", nodes_kube_nodes)
+    pulumi.export("nodes", nodes)
     ```
 
 
@@ -131,9 +131,9 @@ def get_kube_nodes_output(kube_id: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    nodes_kube_nodes = ovh.CloudProject.get_kube_nodes(service_name="XXXXXX",
+    nodes = ovh.CloudProject.get_kube_nodes(service_name="XXXXXX",
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx")
-    pulumi.export("nodes", nodes_kube_nodes)
+    pulumi.export("nodes", nodes)
     ```
 
 

@@ -22,13 +22,13 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myFirewallRule = new Ovh.Ip.FirewallRule("myFirewallRule", new()
+    ///     var myFirewallRule = new Ovh.Ip.FirewallRule("my_firewall_rule", new()
     ///     {
-    ///         Action = "deny",
     ///         Ip = "XXXXXX",
     ///         IpOnFirewall = "XXXXXX",
-    ///         Protocol = "tcp",
     ///         Sequence = 0,
+    ///         Action = "deny",
+    ///         Protocol = "tcp",
     ///     });
     /// 
     /// });

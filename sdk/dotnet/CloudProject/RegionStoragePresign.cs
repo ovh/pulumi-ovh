@@ -22,10 +22,11 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var presignedUrlRegionStoragePresign = new Ovh.CloudProject.RegionStoragePresign("presignedUrlRegionStoragePresign", new()
+    ///     var presignedUrl = new Ovh.CloudProject.RegionStoragePresign("presigned_url", new()
     ///     {
     ///         ServiceName = "xxxxxxxxxxxxxxxxx",
     ///         RegionName = "GRA",
+    ///         Name = "s3-bucket-name",
     ///         Expire = 3600,
     ///         Method = "GET",
     ///         Object = "an-object-in-the-bucket",
@@ -33,7 +34,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["presignedUrl"] = presignedUrlRegionStoragePresign.Url,
+    ///         ["presignedUrl"] = presignedUrl.Url,
     ///     };
     /// });
     /// ```

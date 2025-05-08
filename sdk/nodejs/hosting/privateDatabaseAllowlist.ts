@@ -14,9 +14,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const ip = new ovh.hosting.PrivateDatabaseAllowlist("ip", {
- *     ip: "1.2.3.4",
- *     service: true,
  *     serviceName: "XXXXXX",
+ *     ip: "1.2.3.4",
+ *     name: "A name for your IP address",
+ *     service: true,
  *     sftp: true,
  * });
  * ```

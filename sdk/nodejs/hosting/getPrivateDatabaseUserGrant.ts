@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const userGrant = ovh.Hosting.getPrivateDatabaseUserGrant({
- *     databaseName: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     databaseName: "XXXXXX",
  *     userName: "XXXXXX",
  * });
  * ```
@@ -77,8 +77,8 @@ export interface GetPrivateDatabaseUserGrantResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const userGrant = ovh.Hosting.getPrivateDatabaseUserGrant({
- *     databaseName: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     databaseName: "XXXXXX",
  *     userName: "XXXXXX",
  * });
  * ```

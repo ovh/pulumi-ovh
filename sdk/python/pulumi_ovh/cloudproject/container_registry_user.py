@@ -211,8 +211,8 @@ class ContainerRegistryUser(pulumi.CustomResource):
         registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
         user = ovh.cloud_project.ContainerRegistryUser("user",
-            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
-            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+            service_name=registry_ovh_cloud_project_containerregistry["serviceName"],
+            registry_id=registry_ovh_cloud_project_containerregistry["id"],
             email="foo@bar.com",
             login="foobar")
         ```
@@ -242,8 +242,8 @@ class ContainerRegistryUser(pulumi.CustomResource):
         registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
         user = ovh.cloud_project.ContainerRegistryUser("user",
-            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
-            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+            service_name=registry_ovh_cloud_project_containerregistry["serviceName"],
+            registry_id=registry_ovh_cloud_project_containerregistry["id"],
             email="foo@bar.com",
             login="foobar")
         ```

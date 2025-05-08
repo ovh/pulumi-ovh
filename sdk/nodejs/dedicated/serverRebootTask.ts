@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  *     bootType: "rescue",
  *     kernel: "rescue64-pro",
  * });
- * const serverOnRescue = new ovh.dedicated.ServerUpdate("serverOnRescue", {
+ * const serverOnRescue = new ovh.dedicated.ServerUpdate("server_on_rescue", {
  *     serviceName: "nsxxxxxxx.ip-xx-xx-xx.eu",
  *     bootId: rescue.then(rescue => rescue.results?.[0]),
  *     monitoring: true,
  *     state: "ok",
  * });
- * const serverReboot = new ovh.dedicated.ServerRebootTask("serverReboot", {
+ * const serverReboot = new ovh.dedicated.ServerRebootTask("server_reboot", {
  *     serviceName: rescue.then(rescue => rescue.serviceName),
  *     keepers: [serverOnRescue.bootId],
  * });

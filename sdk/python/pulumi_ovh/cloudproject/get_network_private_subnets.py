@@ -99,9 +99,9 @@ def get_network_private_subnets(network_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    private_network_private_subnets = ovh.CloudProject.get_network_private_subnets(service_name="XXXXXX",
+    private = ovh.CloudProject.get_network_private_subnets(service_name="XXXXXX",
         network_id="XXXXXX")
-    pulumi.export("private", private_network_private_subnets)
+    pulumi.export("private", private)
     ```
 
 
@@ -131,9 +131,9 @@ def get_network_private_subnets_output(network_id: Optional[pulumi.Input[builtin
     import pulumi
     import pulumi_ovh as ovh
 
-    private_network_private_subnets = ovh.CloudProject.get_network_private_subnets(service_name="XXXXXX",
+    private = ovh.CloudProject.get_network_private_subnets(service_name="XXXXXX",
         network_id="XXXXXX")
-    pulumi.export("private", private_network_private_subnets)
+    pulumi.export("private", private)
     ```
 
 

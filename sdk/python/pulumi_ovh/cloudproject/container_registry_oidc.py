@@ -470,7 +470,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oidc = ovh.cloud_project.ContainerRegistryOIDC("myOidc",
+        my_oidc = ovh.cloud_project.ContainerRegistryOIDC("my_oidc",
             service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             oidc_name="my-oidc-provider",
@@ -528,7 +528,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_oidc = ovh.cloud_project.ContainerRegistryOIDC("myOidc",
+        my_oidc = ovh.cloud_project.ContainerRegistryOIDC("my_oidc",
             service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             oidc_name="my-oidc-provider",

@@ -354,12 +354,12 @@ class SavingsPlan(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         plan = ovh.savings_plan.SavingsPlan("plan",
-            auto_renewal=True,
-            display_name="one_month_rancher_savings_plan",
+            service_name="<public cloud project ID>",
             flavor="Rancher",
             period="P1M",
-            service_name="<public cloud project ID>",
-            size=2)
+            size=2,
+            display_name="one_month_rancher_savings_plan",
+            auto_renewal=True)
         ```
 
         ## Import
@@ -397,12 +397,12 @@ class SavingsPlan(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         plan = ovh.savings_plan.SavingsPlan("plan",
-            auto_renewal=True,
-            display_name="one_month_rancher_savings_plan",
+            service_name="<public cloud project ID>",
             flavor="Rancher",
             period="P1M",
-            service_name="<public cloud project ID>",
-            size=2)
+            size=2,
+            display_name="one_month_rancher_savings_plan",
+            auto_renewal=True)
         ```
 
         ## Import

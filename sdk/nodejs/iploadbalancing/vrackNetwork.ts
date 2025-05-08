@@ -6,6 +6,36 @@ import * as utilities from "../utilities";
 
 /**
  * Manage a vrack network for your IP Loadbalancing service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ * import * as ovh from "@pulumi/ovh";
+ *
+ * const iplb = ovh.IpLoadBalancing.getIpLoadBalancing({
+ *     serviceName: "loadbalancer-xxxxxxxxxxxxxxxxxx",
+ * });
+ * const vipLb = new ovh.vrack.IpLoadbalancing("vip_lb", {
+ *     serviceName: "xxx",
+ *     LoadbalancingId: iplb.then(iplb => iplb.serviceName),
+ * });
+ * const network = new ovh.iploadbalancing.VrackNetwork("network", {
+ *     serviceName: vipLb.LoadbalancingId,
+ *     subnet: "10.0.0.0/16",
+ *     vlan: 1,
+ *     natIp: "10.0.0.0/27",
+ *     displayName: "mynetwork",
+ * });
+ * const testFarm = new ovh.iploadbalancing.TcpFarm("test_farm", {
+ *     serviceName: network.serviceName,
+ *     displayName: "mytcpbackends",
+ *     port: 80,
+ *     vrackNetworkId: network.vrackNetworkId,
+ *     zone: iplb.then(iplb => iplb.zones?.[0]),
+ * });
+ * ```
  */
 export class VrackNetwork extends pulumi.CustomResource {
     /**

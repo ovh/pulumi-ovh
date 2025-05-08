@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(myaccount.ovhSubsidiary())
  *             .build());
  * 
- *         final var zoneCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var zone = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("dns")
@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *         var zoneZone = new Zone("zoneZone", ZoneArgs.builder()
  *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .plan(ZonePlanArgs.builder()
- *                 .duration(zoneCartProductPlan.selectedPrices()[0].duration())
- *                 .planCode(zoneCartProductPlan.planCode())
- *                 .pricingMode(zoneCartProductPlan.selectedPrices()[0].pricingMode())
+ *                 .duration(zone.selectedPrices()[0].duration())
+ *                 .planCode(zone.planCode())
+ *                 .pricingMode(zone.selectedPrices()[0].pricingMode())
  *                 .configurations(                
  *                     ZonePlanConfigurationArgs.builder()
  *                         .label("zone")
@@ -306,6 +306,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -26,10 +26,10 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var subscription = new Ovh.CloudProject.RegionLoadBalancerLogSubscription("subscription", new()
     ///     {
-    ///         Kind = "haproxy",
-    ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-    ///         RegionName = "yyyy",
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         RegionName = "yyyy",
+    ///         LoadbalancerId = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    ///         Kind = "haproxy",
     ///         StreamId = "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj",
     ///     });
     /// 

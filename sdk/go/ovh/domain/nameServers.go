@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := domain.NewNameServers(ctx, "nameServers", &domain.NameServersArgs{
+//			_, err := domain.NewNameServers(ctx, "name_servers", &domain.NameServersArgs{
 //				Domain: pulumi.String("mydomain.ovh"),
 //				Servers: domain.NameServersServerArray{
 //					&domain.NameServersServerArgs{

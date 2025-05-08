@@ -13,23 +13,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const testPoolPostgresSqlConnectionPool = ovh.CloudProjectDatabase.getPostgresSqlConnectionPool({
- *     serviceName: "XXX",
- *     clusterId: "YYY",
- *     name: "ZZZ",
- * });
- * export const testPool = {
- *     service_name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.serviceName),
- *     cluster_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.clusterId),
- *     name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.name),
- *     database_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.databaseId),
- *     mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.mode),
- *     size: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.size),
- *     port: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.port),
- *     ssl_mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.sslMode),
- *     uri: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.uri),
- *     user_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.userId),
- * };
+ * export = async () => {
+ *     const testPool = await ovh.CloudProjectDatabase.getPostgresSqlConnectionPool({
+ *         serviceName: "XXX",
+ *         clusterId: "YYY",
+ *         name: "ZZZ",
+ *     });
+ *     return {
+ *         testPool: {
+ *             serviceName: testPool.serviceName,
+ *             clusterId: testPool.clusterId,
+ *             name: testPool.name,
+ *             databaseId: testPool.databaseId,
+ *             mode: testPool.mode,
+ *             size: testPool.size,
+ *             port: testPool.port,
+ *             sslMode: testPool.sslMode,
+ *             uri: testPool.uri,
+ *             userId: testPool.userId,
+ *         },
+ *     };
+ * }
  * ```
  */
 export function getPostgresSqlConnectionPool(args: GetPostgresSqlConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSqlConnectionPoolResult> {
@@ -117,23 +121,27 @@ export interface GetPostgresSqlConnectionPoolResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const testPoolPostgresSqlConnectionPool = ovh.CloudProjectDatabase.getPostgresSqlConnectionPool({
- *     serviceName: "XXX",
- *     clusterId: "YYY",
- *     name: "ZZZ",
- * });
- * export const testPool = {
- *     service_name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.serviceName),
- *     cluster_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.clusterId),
- *     name: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.name),
- *     database_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.databaseId),
- *     mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.mode),
- *     size: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.size),
- *     port: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.port),
- *     ssl_mode: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.sslMode),
- *     uri: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.uri),
- *     user_id: testPoolPostgresSqlConnectionPool.then(testPoolPostgresSqlConnectionPool => testPoolPostgresSqlConnectionPool.userId),
- * };
+ * export = async () => {
+ *     const testPool = await ovh.CloudProjectDatabase.getPostgresSqlConnectionPool({
+ *         serviceName: "XXX",
+ *         clusterId: "YYY",
+ *         name: "ZZZ",
+ *     });
+ *     return {
+ *         testPool: {
+ *             serviceName: testPool.serviceName,
+ *             clusterId: testPool.clusterId,
+ *             name: testPool.name,
+ *             databaseId: testPool.databaseId,
+ *             mode: testPool.mode,
+ *             size: testPool.size,
+ *             port: testPool.port,
+ *             sslMode: testPool.sslMode,
+ *             uri: testPool.uri,
+ *             userId: testPool.userId,
+ *         },
+ *     };
+ * }
  * ```
  */
 export function getPostgresSqlConnectionPoolOutput(args: GetPostgresSqlConnectionPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresSqlConnectionPoolResult> {

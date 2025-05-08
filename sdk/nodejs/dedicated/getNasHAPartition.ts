@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myNasHaPartition = ovh.Dedicated.getNasHAPartition({
- *     name: "my-zpool-partition",
  *     serviceName: "zpool-12345",
+ *     name: "my-zpool-partition",
  * });
  * ```
  */
@@ -82,8 +82,8 @@ export interface GetNasHAPartitionResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const myNasHaPartition = ovh.Dedicated.getNasHAPartition({
- *     name: "my-zpool-partition",
  *     serviceName: "zpool-12345",
+ *     name: "my-zpool-partition",
  * });
  * ```
  */

@@ -14,43 +14,6 @@ import (
 
 // Creates a new custom SSL certificate on your IP Load Balancing
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/iploadbalancing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
-//				ServiceName: pulumi.StringRef("ip-1.2.3.4"),
-//				State:       pulumi.StringRef("ok"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iploadbalancing.NewSsl(ctx, "sslname", &iploadbalancing.SslArgs{
-//				Certificate: pulumi.String("..."),
-//				Chain:       pulumi.String("..."),
-//				DisplayName: pulumi.String("test"),
-//				Key:         pulumi.String("..."),
-//				ServiceName: pulumi.String(lb.ServiceName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.

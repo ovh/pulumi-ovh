@@ -145,8 +145,8 @@ class PrivateDatabaseUser(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         user = ovh.hosting.PrivateDatabaseUser("user",
-            password="XXXXXX",
             service_name="XXXXXX",
+            password="XXXXXX",
             user_name="XXXXXX")
         ```
 
@@ -180,8 +180,8 @@ class PrivateDatabaseUser(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         user = ovh.hosting.PrivateDatabaseUser("user",
-            password="XXXXXX",
             service_name="XXXXXX",
+            password="XXXXXX",
             user_name="XXXXXX")
         ```
 

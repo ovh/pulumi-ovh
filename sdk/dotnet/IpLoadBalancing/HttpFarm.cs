@@ -30,8 +30,8 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     ///     var farmname = new Ovh.IpLoadBalancing.HttpFarm("farmname", new()
     ///     {
-    ///         DisplayName = "ingress-8080-gra",
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "GRA",
     ///     });
     /// 

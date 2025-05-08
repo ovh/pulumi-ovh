@@ -50,10 +50,12 @@ import javax.annotation.Nullable;
  *         final var account = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var myGroup = new IdentityGroup("myGroup", IdentityGroupArgs.builder()
+ *             .name("my_group")
  *             .description("my_group created in Terraform")
  *             .build());
  * 
  *         var manager = new Policy("manager", PolicyArgs.builder()
+ *             .name("allow_ovh_manager")
  *             .description("Users are allowed to use the OVH manager")
  *             .identities(myGroup.GroupURN())
  *             .resources(account.AccountURN())
@@ -283,6 +285,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

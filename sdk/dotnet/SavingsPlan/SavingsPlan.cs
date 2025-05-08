@@ -24,12 +24,12 @@ namespace Pulumi.Ovh.SavingsPlan
     /// {
     ///     var plan = new Ovh.SavingsPlan.SavingsPlan("plan", new()
     ///     {
-    ///         AutoRenewal = true,
-    ///         DisplayName = "one_month_rancher_savings_plan",
+    ///         ServiceName = "&lt;public cloud project ID&gt;",
     ///         Flavor = "Rancher",
     ///         Period = "P1M",
-    ///         ServiceName = "&lt;public cloud project ID&gt;",
     ///         Size = 2,
+    ///         DisplayName = "one_month_rancher_savings_plan",
+    ///         AutoRenewal = true,
     ///     });
     /// 
     /// });

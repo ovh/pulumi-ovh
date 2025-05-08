@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Dedicated
         /// {
         ///     var myNasHaPartition = Ovh.Dedicated.GetNasHAPartition.Invoke(new()
         ///     {
-        ///         Name = "my-zpool-partition",
         ///         ServiceName = "zpool-12345",
+        ///         Name = "my-zpool-partition",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.Dedicated
         /// {
         ///     var myNasHaPartition = Ovh.Dedicated.GetNasHAPartition.Invoke(new()
         ///     {
-        ///         Name = "my-zpool-partition",
         ///         ServiceName = "zpool-12345",
+        ///         Name = "my-zpool-partition",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.Dedicated
         /// {
         ///     var myNasHaPartition = Ovh.Dedicated.GetNasHAPartition.Invoke(new()
         ///     {
-        ///         Name = "my-zpool-partition",
         ///         ServiceName = "zpool-12345",
+        ///         Name = "my-zpool-partition",
         ///     });
         /// 
         /// });

@@ -49,7 +49,7 @@ export interface GetIpRestrictionsArgs {
     /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName?: string;
+    serviceName: string;
 }
 
 /**
@@ -75,7 +75,7 @@ export interface GetIpRestrictionsResult {
     /**
      * See Argument Reference above.
      */
-    readonly serviceName?: string;
+    readonly serviceName: string;
 }
 /**
  * Deprecated: Use ipRestrictions field in cloudProjectDatabase datasource instead.
@@ -122,5 +122,5 @@ export interface GetIpRestrictionsOutputArgs {
     /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

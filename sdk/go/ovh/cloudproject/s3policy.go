@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudproject.NewS3Credential(ctx, "myS3Credentials", &cloudproject.S3CredentialArgs{
+//			_, err = cloudproject.NewS3Credential(ctx, "my_s3_credentials", &cloudproject.S3CredentialArgs{
 //				ServiceName: user.ServiceName,
 //				UserId:      user.ID(),
 //			})

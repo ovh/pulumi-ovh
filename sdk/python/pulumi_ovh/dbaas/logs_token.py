@@ -210,7 +210,9 @@ class LogsToken(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        token = ovh.dbaas.LogsToken("token", service_name="ldp-xx-xxxxx")
+        token = ovh.dbaas.LogsToken("token",
+            service_name="ldp-xx-xxxxx",
+            name="ExampleToken")
         ```
 
         :param str resource_name: The name of the resource.
@@ -234,7 +236,9 @@ class LogsToken(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        token = ovh.dbaas.LogsToken("token", service_name="ldp-xx-xxxxx")
+        token = ovh.dbaas.LogsToken("token",
+            service_name="ldp-xx-xxxxx",
+            name="ExampleToken")
         ```
 
         :param str resource_name: The name of the resource.

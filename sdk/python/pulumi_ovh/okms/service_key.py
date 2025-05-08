@@ -324,30 +324,33 @@ class ServiceKey(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        key_symetric = ovh.okms.ServiceKey("keySymetric",
+        key_symetric = ovh.okms.ServiceKey("key_symetric",
             okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="key_oct",
+            type="oct",
+            size=256,
             operations=[
                 "encrypt",
                 "decrypt",
-            ],
-            size=256,
-            type="oct")
-        key_rsa = ovh.okms.ServiceKey("keyRsa",
+            ])
+        key_rsa = ovh.okms.ServiceKey("key_rsa",
             okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            operations=[
-                "sign",
-                "verify",
-            ],
+            name="key_rsa",
+            type="RSA",
             size=2048,
-            type="RSA")
-        key_ecdsa = ovh.okms.ServiceKey("keyEcdsa",
-            curve="P-256",
-            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             operations=[
                 "sign",
                 "verify",
-            ],
-            type="EC")
+            ])
+        key_ecdsa = ovh.okms.ServiceKey("key_ecdsa",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="key_ecdsa",
+            type="EC",
+            curve="P-256",
+            operations=[
+                "sign",
+                "verify",
+            ])
         ```
 
         :param str resource_name: The name of the resource.
@@ -375,30 +378,33 @@ class ServiceKey(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        key_symetric = ovh.okms.ServiceKey("keySymetric",
+        key_symetric = ovh.okms.ServiceKey("key_symetric",
             okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="key_oct",
+            type="oct",
+            size=256,
             operations=[
                 "encrypt",
                 "decrypt",
-            ],
-            size=256,
-            type="oct")
-        key_rsa = ovh.okms.ServiceKey("keyRsa",
+            ])
+        key_rsa = ovh.okms.ServiceKey("key_rsa",
             okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            operations=[
-                "sign",
-                "verify",
-            ],
+            name="key_rsa",
+            type="RSA",
             size=2048,
-            type="RSA")
-        key_ecdsa = ovh.okms.ServiceKey("keyEcdsa",
-            curve="P-256",
-            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             operations=[
                 "sign",
                 "verify",
-            ],
-            type="EC")
+            ])
+        key_ecdsa = ovh.okms.ServiceKey("key_ecdsa",
+            okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="key_ecdsa",
+            type="EC",
+            curve="P-256",
+            operations=[
+                "sign",
+                "verify",
+            ])
         ```
 
         :param str resource_name: The name of the resource.

@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var farmName = new UdpFarm("farmName", UdpFarmArgs.builder()
- *             .displayName("ingress-8080-gra")
- *             .port(80.0)
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("gra")
+ *             .port(80.0)
  *             .build());
  * 
  *     }
@@ -200,6 +200,7 @@ public class UdpFarm extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
