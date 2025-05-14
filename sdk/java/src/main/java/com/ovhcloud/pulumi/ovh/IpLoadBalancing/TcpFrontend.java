@@ -55,18 +55,18 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var farm80 = new TcpFarm("farm80", TcpFarmArgs.builder()
- *             .displayName("ingress-8080-gra")
- *             .port(80)
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("all")
+ *             .port(80)
  *             .build());
  * 
  *         var testFrontend = new TcpFrontend("testFrontend", TcpFrontendArgs.builder()
- *             .defaultFarmId(farm80.id())
- *             .displayName("ingress-8080-gra")
- *             .port("80,443")
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("all")
+ *             .port("80,443")
+ *             .defaultFarmId(farm80.id())
  *             .build());
  * 
  *     }
@@ -282,6 +282,7 @@ public class TcpFrontend extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

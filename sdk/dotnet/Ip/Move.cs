@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var moveIpToLoadBalancerXxxxx = new Ovh.Ip.Move("moveIpToLoadBalancerXxxxx", new()
+    ///     var moveIpToLoadBalancerXxxxx = new Ovh.Ip.Move("move_ip_to_load_balancer_xxxxx", new()
     ///     {
     ///         Ip = "1.2.3.4",
     ///         RoutedTo = new Ovh.Ip.Inputs.MoveRoutedToArgs
@@ -44,7 +44,7 @@ namespace Pulumi.Ovh.Ip
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var parkIp = new Ovh.Ip.Move("parkIp", new()
+    ///     var parkIp = new Ovh.Ip.Move("park_ip", new()
     ///     {
     ///         Ip = "1.2.3.4",
     ///         RoutedTo = new Ovh.Ip.Inputs.MoveRoutedToArgs

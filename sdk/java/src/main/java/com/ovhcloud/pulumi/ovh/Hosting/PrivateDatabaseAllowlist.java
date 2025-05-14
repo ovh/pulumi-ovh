@@ -43,9 +43,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ip = new PrivateDatabaseAllowlist("ip", PrivateDatabaseAllowlistArgs.builder()
- *             .ip("1.2.3.4")
- *             .service(true)
  *             .serviceName("XXXXXX")
+ *             .ip("1.2.3.4")
+ *             .name("A name for your IP address")
+ *             .service(true)
  *             .sftp(true)
  *             .build());
  * 
@@ -176,6 +177,7 @@ public class PrivateDatabaseAllowlist extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

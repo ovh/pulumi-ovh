@@ -96,8 +96,8 @@ def get_load_balancer_flavors(region_name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    flavors = ovh.CloudProject.get_load_balancer_flavors(region_name="GRA9",
-        service_name="<public cloud project ID>")
+    flavors = ovh.CloudProject.get_load_balancer_flavors(service_name="<public cloud project ID>",
+        region_name="GRA9")
     ```
 
 
@@ -127,8 +127,8 @@ def get_load_balancer_flavors_output(region_name: Optional[pulumi.Input[builtins
     import pulumi
     import pulumi_ovh as ovh
 
-    flavors = ovh.CloudProject.get_load_balancer_flavors(region_name="GRA9",
-        service_name="<public cloud project ID>")
+    flavors = ovh.CloudProject.get_load_balancer_flavors(service_name="<public cloud project ID>",
+        region_name="GRA9")
     ```
 
 

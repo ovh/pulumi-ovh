@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var stream = new LogsOutputGraylogStream("stream", LogsOutputGraylogStreamArgs.builder()
- *             .description("my graylog stream")
  *             .serviceName("....")
  *             .title("my stream")
+ *             .description("my graylog stream")
  *             .build());
  * 
  *     }
@@ -496,6 +496,7 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "writeToken"
             ))

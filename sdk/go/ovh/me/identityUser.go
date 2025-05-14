@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewIdentityUser(ctx, "myUser", &me.IdentityUserArgs{
+//			_, err := me.NewIdentityUser(ctx, "my_user", &me.IdentityUserArgs{
 //				Description: pulumi.String("Some custom description"),
 //				Email:       pulumi.String("my_login@example.com"),
 //				Group:       pulumi.String("DEFAULT"),

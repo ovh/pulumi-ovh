@@ -15,11 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const nodesKubeNodes = ovh.CloudProject.getKubeNodes({
- *     serviceName: "XXXXXX",
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
- * });
- * export const nodes = nodesKubeNodes;
+ * export = async () => {
+ *     const nodes = await ovh.CloudProject.getKubeNodes({
+ *         serviceName: "XXXXXX",
+ *         kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+ *     });
+ *     return {
+ *         nodes: nodes,
+ *     };
+ * }
  * ```
  */
 export function getKubeNodes(args: GetKubeNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodesResult> {
@@ -74,11 +78,15 @@ export interface GetKubeNodesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const nodesKubeNodes = ovh.CloudProject.getKubeNodes({
- *     serviceName: "XXXXXX",
- *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
- * });
- * export const nodes = nodesKubeNodes;
+ * export = async () => {
+ *     const nodes = await ovh.CloudProject.getKubeNodes({
+ *         serviceName: "XXXXXX",
+ *         kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
+ *     });
+ *     return {
+ *         nodes: nodes,
+ *     };
+ * }
  * ```
  */
 export function getKubeNodesOutput(args: GetKubeNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodesResult> {

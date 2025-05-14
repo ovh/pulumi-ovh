@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Hosting
     /// {
     ///     var database = new Ovh.Hosting.PrivateDatabaseDb("database", new()
     ///     {
-    ///         DatabaseName = "XXXXXX",
     ///         ServiceName = "XXXXXX",
+    ///         DatabaseName = "XXXXXX",
     ///     });
     /// 
     /// });

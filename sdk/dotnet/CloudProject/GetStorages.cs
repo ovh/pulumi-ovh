@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var storage = Ovh.CloudProject.GetStorage.Invoke(new()
         ///     {
-        ///         RegionName = "GRA",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var storage = Ovh.CloudProject.GetStorage.Invoke(new()
         ///     {
-        ///         RegionName = "GRA",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var storage = Ovh.CloudProject.GetStorage.Invoke(new()
         ///     {
-        ///         RegionName = "GRA",
         ///         ServiceName = "&lt;public cloud project ID&gt;",
+        ///         RegionName = "GRA",
         ///     });
         /// 
         /// });

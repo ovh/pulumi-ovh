@@ -24,14 +24,14 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var subnet = new Ovh.CloudProject.NetworkPrivateSubnet("subnet", new()
     ///     {
-    ///         Dhcp = true,
+    ///         ServiceName = "xxxxx",
+    ///         NetworkId = "0234543",
+    ///         Region = "GRA1",
+    ///         Start = "192.168.168.100",
     ///         End = "192.168.168.200",
     ///         Network = "192.168.168.0/24",
-    ///         NetworkId = "0234543",
+    ///         Dhcp = true,
     ///         NoGateway = false,
-    ///         Region = "GRA1",
-    ///         ServiceName = "xxxxx",
-    ///         Start = "192.168.168.100",
     ///     });
     /// 
     /// });

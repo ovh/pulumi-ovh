@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			nodesKubeNodes, err := cloudproject.GetKubeNodes(ctx, &cloudproject.GetKubeNodesArgs{
+//			nodes, err := cloudproject.GetKubeNodes(ctx, &cloudproject.GetKubeNodesArgs{
 //				ServiceName: "XXXXXX",
 //				KubeId:      "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("nodes", nodesKubeNodes)
+//			ctx.Export("nodes", nodes)
 //			return nil
 //		})
 //	}

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary("fr")
  *             .build());
  * 
- *         final var ipblockCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var ipblock = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("ip")
@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .description("my ip block")
  *             .plan(IpServicePlanArgs.builder()
- *                 .duration(ipblockCartProductPlan.selectedPrices()[0].duration())
- *                 .planCode(ipblockCartProductPlan.planCode())
- *                 .pricingMode(ipblockCartProductPlan.selectedPrices()[0].pricingMode())
+ *                 .duration(ipblock.selectedPrices()[0].duration())
+ *                 .planCode(ipblock.planCode())
+ *                 .pricingMode(ipblock.selectedPrices()[0].pricingMode())
  *                 .configurations(                
  *                     IpServicePlanConfigurationArgs.builder()
  *                         .label("country")
@@ -344,6 +344,7 @@ public class IpService extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

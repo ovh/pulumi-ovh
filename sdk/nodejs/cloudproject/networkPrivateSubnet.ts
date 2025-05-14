@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const subnet = new ovh.cloudproject.NetworkPrivateSubnet("subnet", {
- *     dhcp: true,
+ *     serviceName: "xxxxx",
+ *     networkId: "0234543",
+ *     region: "GRA1",
+ *     start: "192.168.168.100",
  *     end: "192.168.168.200",
  *     network: "192.168.168.0/24",
- *     networkId: "0234543",
+ *     dhcp: true,
  *     noGateway: false,
- *     region: "GRA1",
- *     serviceName: "xxxxx",
- *     start: "192.168.168.100",
  * });
  * ```
  *

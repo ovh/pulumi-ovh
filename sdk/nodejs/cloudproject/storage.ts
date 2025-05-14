@@ -14,8 +14,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const storage = new ovh.cloudproject.Storage("storage", {
- *     regionName: "GRA",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA",
+ *     name: "my-storage",
  *     versioning: {
  *         status: "enabled",
  *     },

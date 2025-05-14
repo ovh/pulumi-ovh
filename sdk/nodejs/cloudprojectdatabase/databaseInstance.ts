@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     serviceName: db.then(db => db.serviceName),
  *     engine: db.then(db => db.engine),
  *     clusterId: db.then(db => db.id),
+ *     name: "mydatabase",
  * });
  * ```
  *

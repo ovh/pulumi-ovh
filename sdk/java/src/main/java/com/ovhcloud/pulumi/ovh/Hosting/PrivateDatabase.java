@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(myaccount.ovhSubsidiary())
  *             .build());
  * 
- *         final var databaseCartProductPlan = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
+ *         final var database = OrderFunctions.getCartProductPlan(GetCartProductPlanArgs.builder()
  *             .cartId(mycart.id())
  *             .priceCapacity("renew")
  *             .product("privateSQL")
@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .displayName("Postgresql-12")
  *             .plan(PrivateDatabasePlanArgs.builder()
- *                 .duration(databaseCartProductPlan.prices()[3].duration())
- *                 .planCode(databaseCartProductPlan.planCode())
- *                 .pricingMode(databaseCartProductPlan.selectedPrices()[0].pricingMode())
+ *                 .duration(database.prices()[3].duration())
+ *                 .planCode(database.planCode())
+ *                 .pricingMode(database.selectedPrices()[0].pricingMode())
  *                 .configurations(                
  *                     PrivateDatabasePlanConfigurationArgs.builder()
  *                         .label("dc")
@@ -511,6 +511,7 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

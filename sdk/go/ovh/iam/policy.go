@@ -33,13 +33,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myGroup, err := me.NewIdentityGroup(ctx, "myGroup", &me.IdentityGroupArgs{
+//			myGroup, err := me.NewIdentityGroup(ctx, "my_group", &me.IdentityGroupArgs{
+//				Name:        pulumi.String("my_group"),
 //				Description: pulumi.String("my_group created in Terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = iam.NewPolicy(ctx, "manager", &iam.PolicyArgs{
+//				Name:        pulumi.String("allow_ovh_manager"),
 //				Description: pulumi.String("Users are allowed to use the OVH manager"),
 //				Identities: pulumi.StringArray{
 //					myGroup.GroupURN,

@@ -39,6 +39,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///         ServiceName = db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
     ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
     ///         ClusterId = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Name = "mydatabase",
     ///     });
     /// 
     /// });

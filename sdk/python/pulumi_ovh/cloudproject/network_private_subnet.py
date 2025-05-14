@@ -367,14 +367,14 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         subnet = ovh.cloud_project.NetworkPrivateSubnet("subnet",
-            dhcp=True,
+            service_name="xxxxx",
+            network_id="0234543",
+            region="GRA1",
+            start="192.168.168.100",
             end="192.168.168.200",
             network="192.168.168.0/24",
-            network_id="0234543",
-            no_gateway=False,
-            region="GRA1",
-            service_name="xxxxx",
-            start="192.168.168.100")
+            dhcp=True,
+            no_gateway=False)
         ```
 
         ## Import
@@ -414,14 +414,14 @@ class NetworkPrivateSubnet(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         subnet = ovh.cloud_project.NetworkPrivateSubnet("subnet",
-            dhcp=True,
+            service_name="xxxxx",
+            network_id="0234543",
+            region="GRA1",
+            start="192.168.168.100",
             end="192.168.168.200",
             network="192.168.168.0/24",
-            network_id="0234543",
-            no_gateway=False,
-            region="GRA1",
-            service_name="xxxxx",
-            start="192.168.168.100")
+            dhcp=True,
+            no_gateway=False)
         ```
 
         ## Import

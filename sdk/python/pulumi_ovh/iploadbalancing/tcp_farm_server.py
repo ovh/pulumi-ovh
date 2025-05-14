@@ -467,22 +467,22 @@ class TcpFarmServer(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
-            port=8080,
+        farm_name = ovh.ip_load_balancing.TcpFarm("farm_name",
             service_name=lb.service_name,
+            port=8080,
             zone="all")
         backend = ovh.ip_load_balancing.TcpFarmServer("backend",
-            address="4.5.6.7",
-            backup=True,
-            display_name="mybackend",
-            farm_id=farm_name.id,
-            port=80,
-            probe=True,
-            proxy_protocol_version="v2",
             service_name=lb.service_name,
-            ssl=False,
+            farm_id=farm_name.id,
+            display_name="mybackend",
+            address="4.5.6.7",
             status="active",
-            weight=2)
+            port=80,
+            proxy_protocol_version="v2",
+            weight=2,
+            probe=True,
+            ssl=False,
+            backup=True)
         ```
 
         ## Import
@@ -527,22 +527,22 @@ class TcpFarmServer(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
-            port=8080,
+        farm_name = ovh.ip_load_balancing.TcpFarm("farm_name",
             service_name=lb.service_name,
+            port=8080,
             zone="all")
         backend = ovh.ip_load_balancing.TcpFarmServer("backend",
-            address="4.5.6.7",
-            backup=True,
-            display_name="mybackend",
-            farm_id=farm_name.id,
-            port=80,
-            probe=True,
-            proxy_protocol_version="v2",
             service_name=lb.service_name,
-            ssl=False,
+            farm_id=farm_name.id,
+            display_name="mybackend",
+            address="4.5.6.7",
             status="active",
-            weight=2)
+            port=80,
+            proxy_protocol_version="v2",
+            weight=2,
+            probe=True,
+            ssl=False,
+            backup=True)
         ```
 
         ## Import

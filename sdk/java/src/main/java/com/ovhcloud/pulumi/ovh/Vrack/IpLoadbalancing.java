@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var viplb = new IpLoadbalancing("viplb", IpLoadbalancingArgs.builder()
- *             .LoadbalancingId("yyy")
  *             .serviceName("xxx")
+ *             .LoadbalancingId("yyy")
  *             .build());
  * 
  *     }
@@ -123,6 +123,7 @@ public class IpLoadbalancing extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

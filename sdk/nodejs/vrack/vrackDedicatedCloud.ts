@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const vrack_dedicatedCloud = new ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud", {
- *     dedicatedCloud: "<Dedicated Cloud service name>",
  *     serviceName: "<vRack service name>",
+ *     dedicatedCloud: "<Dedicated Cloud service name>",
  * });
  * ```
  *

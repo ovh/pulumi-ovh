@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrackOvhcloudconnect = new ovh.vrack.OVHcloudConnect("vrackOvhcloudconnect", {
- *     ovhCloudConnect: "<OVH Cloud Connect service name>",
+ * const vrackOvhcloudconnect = new ovh.vrack.OVHcloudConnect("vrack_ovhcloudconnect", {
  *     serviceName: "<vRack service name>",
+ *     ovhCloudConnect: "<OVH Cloud Connect service name>",
  * });
  * ```
  *

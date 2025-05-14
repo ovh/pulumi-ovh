@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const rancher = ovh.CloudProject.getRancher({
- *     id: "<Rancher service ID>",
  *     projectId: "<public cloud project ID>",
+ *     id: "<Rancher service ID>",
  * });
  * ```
  */
@@ -90,8 +90,8 @@ export interface GetRancherResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const rancher = ovh.CloudProject.getRancher({
- *     id: "<Rancher service ID>",
  *     projectId: "<public cloud project ID>",
+ *     id: "<Rancher service ID>",
  * });
  * ```
  */

@@ -13,63 +13,6 @@ import (
 )
 
 // Creates a credential for an OVHcloud KMS.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//	"os"
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me"
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/okms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.GetMe(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = okms.NewCredential(ctx, "credNoCsr", &okms.CredentialArgs{
-//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				IdentityUrns: pulumi.StringArray{
-//					pulumi.Sprintf("urn:v1:eu:identity:account:%v", data.Ovh_me.Current_account.Nichandle),
-//				},
-//				Description: pulumi.String("Credential without CSR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = okms.NewCredential(ctx, "credFromCsr", &okms.CredentialArgs{
-//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-//				IdentityUrns: pulumi.StringArray{
-//					pulumi.Sprintf("urn:v1:eu:identity:account:%v", data.Ovh_me.Current_account.Nichandle),
-//				},
-//				Csr:         pulumi.String(readFileOrPanic("cred.csr")),
-//				Description: pulumi.String("Credential from CSR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Credential struct {
 	pulumi.CustomResourceState
 

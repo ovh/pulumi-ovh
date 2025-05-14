@@ -44,12 +44,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myBackup = new WorkflowBackup("myBackup", WorkflowBackupArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .regionName("GRA11")
  *             .cron("50 4 * * *")
  *             .instanceId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx")
  *             .maxExecutionCount(0)
- *             .regionName("GRA11")
+ *             .name("Backup workflow for instance")
  *             .rotation(7)
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .build());
  * 
  *     }
@@ -215,6 +216,7 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

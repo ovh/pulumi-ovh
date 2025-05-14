@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
-        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
-        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var myRegistry = Ovh.CloudProject.GetContainerRegistry.Invoke(new()
         ///     {
-        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
         ///     });
         /// 
         /// });

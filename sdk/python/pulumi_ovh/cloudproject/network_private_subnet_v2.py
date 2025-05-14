@@ -443,13 +443,14 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         subnet = ovh.cloud_project.NetworkPrivateSubnetV2("subnet",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my_private_subnet",
+            region="XXX1",
+            dns_nameservers=["1.1.1.1"],
             cidr="192.168.168.0/24",
             dhcp=True,
-            dns_nameservers=["1.1.1.1"],
             enable_gateway_ip=True,
-            network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            region="XXX1",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             use_default_public_dns_resolver=False)
         ```
 
@@ -494,13 +495,14 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         subnet = ovh.cloud_project.NetworkPrivateSubnetV2("subnet",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my_private_subnet",
+            region="XXX1",
+            dns_nameservers=["1.1.1.1"],
             cidr="192.168.168.0/24",
             dhcp=True,
-            dns_nameservers=["1.1.1.1"],
             enable_gateway_ip=True,
-            network_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            region="XXX1",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             use_default_public_dns_resolver=False)
         ```
 

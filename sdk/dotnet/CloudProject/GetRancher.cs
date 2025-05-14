@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var rancher = Ovh.CloudProject.GetRancher.Invoke(new()
         ///     {
-        ///         Id = "&lt;Rancher service ID&gt;",
         ///         ProjectId = "&lt;public cloud project ID&gt;",
+        ///         Id = "&lt;Rancher service ID&gt;",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var rancher = Ovh.CloudProject.GetRancher.Invoke(new()
         ///     {
-        ///         Id = "&lt;Rancher service ID&gt;",
         ///         ProjectId = "&lt;public cloud project ID&gt;",
+        ///         Id = "&lt;Rancher service ID&gt;",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var rancher = Ovh.CloudProject.GetRancher.Invoke(new()
         ///     {
-        ///         Id = "&lt;Rancher service ID&gt;",
         ///         ProjectId = "&lt;public cloud project ID&gt;",
+        ///         Id = "&lt;Rancher service ID&gt;",
         ///     });
         /// 
         /// });

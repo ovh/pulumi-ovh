@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         State = "ok",
     ///     });
     /// 
-    ///     var testFrontend = new Ovh.IpLoadBalancing.UdpFrontend("testFrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.UdpFrontend("test_frontend", new()
     ///     {
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
     ///         DisplayName = "ingress-8080-gra",

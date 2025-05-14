@@ -22,6 +22,7 @@ import (
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -323,6 +324,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dedicated_server_networking": {
 				Tok: ovhResource(dedicatedMod, "ServerNetworking"),
+				Docs: &info.Doc{
+					AllowMissing: true,
+				},
 			},
 			"ovh_dedicated_server_reboot_task": {
 				Tok: ovhResource(dedicatedMod, "ServerRebootTask"),

@@ -149,7 +149,7 @@ class S3Policy(pulumi.CustomResource):
             service_name="XXX",
             description="my user",
             role_names=["objectstore_operator"])
-        my_s3_credentials = ovh.cloud_project.S3Credential("myS3Credentials",
+        my_s3_credentials = ovh.cloud_project.S3Credential("my_s3_credentials",
             service_name=user.service_name,
             user_id=user.id)
         policy = ovh.cloud_project.S3Policy("policy",
@@ -213,7 +213,7 @@ class S3Policy(pulumi.CustomResource):
             service_name="XXX",
             description="my user",
             role_names=["objectstore_operator"])
-        my_s3_credentials = ovh.cloud_project.S3Credential("myS3Credentials",
+        my_s3_credentials = ovh.cloud_project.S3Credential("my_s3_credentials",
             service_name=user.service_name,
             user_id=user.id)
         policy = ovh.cloud_project.S3Policy("policy",

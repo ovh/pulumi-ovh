@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nodesKubeNodePoolNodes = Ovh.CloudProject.GetKubeNodePoolNodes.Invoke(new()
+        ///     var nodes = Ovh.CloudProject.GetKubeNodePoolNodes.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
@@ -33,7 +33,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nodes"] = nodesKubeNodePoolNodes,
+        ///         ["nodes"] = nodes,
         ///     };
         /// });
         /// ```
@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nodesKubeNodePoolNodes = Ovh.CloudProject.GetKubeNodePoolNodes.Invoke(new()
+        ///     var nodes = Ovh.CloudProject.GetKubeNodePoolNodes.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
@@ -63,7 +63,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nodes"] = nodesKubeNodePoolNodes,
+        ///         ["nodes"] = nodes,
         ///     };
         /// });
         /// ```
@@ -84,7 +84,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nodesKubeNodePoolNodes = Ovh.CloudProject.GetKubeNodePoolNodes.Invoke(new()
+        ///     var nodes = Ovh.CloudProject.GetKubeNodePoolNodes.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx",
@@ -93,7 +93,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nodes"] = nodesKubeNodePoolNodes,
+        ///         ["nodes"] = nodes,
         ///     };
         /// });
         /// ```

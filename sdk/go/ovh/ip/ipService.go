@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ipblockCartProductPlan, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
+//			ipblock, err := order.GetCartProductPlan(ctx, &order.GetCartProductPlanArgs{
 //				CartId:        mycart.Id,
 //				PriceCapacity: "renew",
 //				Product:       "ip",
@@ -46,13 +46,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ip.NewIpService(ctx, "ipblockIpService", &ip.IpServiceArgs{
+//			_, err = ip.NewIpService(ctx, "ipblock", &ip.IpServiceArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				Description:   pulumi.String("my ip block"),
 //				Plan: &ip.IpServicePlanArgs{
-//					Duration:    pulumi.String(ipblockCartProductPlan.SelectedPrices[0].Duration),
-//					PlanCode:    pulumi.String(ipblockCartProductPlan.PlanCode),
-//					PricingMode: pulumi.String(ipblockCartProductPlan.SelectedPrices[0].PricingMode),
+//					Duration:    pulumi.String(ipblock.SelectedPrices[0].Duration),
+//					PlanCode:    pulumi.String(ipblock.PlanCode),
+//					PricingMode: pulumi.String(ipblock.SelectedPrices[0].PricingMode),
 //					Configurations: ip.IpServicePlanConfigurationArray{
 //						&ip.IpServicePlanConfigurationArgs{
 //							Label: pulumi.String("country"),

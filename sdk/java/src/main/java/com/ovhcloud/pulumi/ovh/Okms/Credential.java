@@ -19,53 +19,6 @@ import javax.annotation.Nullable;
 /**
  * Creates a credential for an OVHcloud KMS.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.ovh.Me.MeFunctions;
- * import com.ovhcloud.pulumi.ovh.Okms.Credential;
- * import com.ovhcloud.pulumi.ovh.Okms.CredentialArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var myaccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
- * 
- *         var credNoCsr = new Credential("credNoCsr", CredentialArgs.builder()
- *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
- *             .identityUrns(String.format("urn:v1:eu:identity:account:%s", data.ovh_me().current_account().nichandle()))
- *             .description("Credential without CSR")
- *             .build());
- * 
- *         var credFromCsr = new Credential("credFromCsr", CredentialArgs.builder()
- *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
- *             .identityUrns(String.format("urn:v1:eu:identity:account:%s", data.ovh_me().current_account().nichandle()))
- *             .csr(Files.readString(Paths.get("cred.csr")))
- *             .description("Credential from CSR")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  */
 @ResourceType(type="ovh:Okms/credential:Credential")
 public class Credential extends com.pulumi.resources.CustomResource {
@@ -277,6 +230,7 @@ public class Credential extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "privateKeyPem"
             ))

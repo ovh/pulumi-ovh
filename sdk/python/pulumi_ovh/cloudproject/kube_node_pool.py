@@ -659,13 +659,14 @@ class KubeNodePool(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        node_pool = ovh.cloud_project.KubeNodePool("nodePool",
-            desired_nodes=3,
-            flavor_name="b2-7",
+        node_pool = ovh.cloud_project.KubeNodePool("node_pool",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my-pool-1",
+            flavor_name="b2-7",
+            desired_nodes=3,
             max_nodes=3,
-            min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            min_nodes=3)
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -675,12 +676,13 @@ class KubeNodePool(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         pool = ovh.cloud_project.KubeNodePool("pool",
-            desired_nodes=3,
-            flavor_name="b2-7",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my-pool",
+            flavor_name="b2-7",
+            desired_nodes=3,
             max_nodes=3,
             min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             template={
                 "metadata": {
                     "annotations": {
@@ -694,12 +696,12 @@ class KubeNodePool(pulumi.CustomResource):
                     },
                 },
                 "spec": {
+                    "unschedulable": False,
                     "taints": [{
                         "effect": "PreferNoSchedule",
                         "key": "k",
                         "value": "v",
                     }],
-                    "unschedulable": False,
                 },
             })
         ```
@@ -749,13 +751,14 @@ class KubeNodePool(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        node_pool = ovh.cloud_project.KubeNodePool("nodePool",
-            desired_nodes=3,
-            flavor_name="b2-7",
+        node_pool = ovh.cloud_project.KubeNodePool("node_pool",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my-pool-1",
+            flavor_name="b2-7",
+            desired_nodes=3,
             max_nodes=3,
-            min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            min_nodes=3)
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -765,12 +768,13 @@ class KubeNodePool(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         pool = ovh.cloud_project.KubeNodePool("pool",
-            desired_nodes=3,
-            flavor_name="b2-7",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my-pool",
+            flavor_name="b2-7",
+            desired_nodes=3,
             max_nodes=3,
             min_nodes=3,
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             template={
                 "metadata": {
                     "annotations": {
@@ -784,12 +788,12 @@ class KubeNodePool(pulumi.CustomResource):
                     },
                 },
                 "spec": {
+                    "unschedulable": False,
                     "taints": [{
                         "effect": "PreferNoSchedule",
                         "key": "k",
                         "value": "v",
                     }],
-                    "unschedulable": False,
                 },
             })
         ```

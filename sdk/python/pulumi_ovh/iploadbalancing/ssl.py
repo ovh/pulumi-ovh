@@ -300,22 +300,6 @@ class Ssl(pulumi.CustomResource):
         """
         Creates a new custom SSL certificate on your IP Load Balancing
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        sslname = ovh.ip_load_balancing.Ssl("sslname",
-            certificate="...",
-            chain="...",
-            display_name="test",
-            key="...",
-            service_name=lb.service_name)
-        ```
-
         ## Import
 
         SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.
@@ -342,22 +326,6 @@ class Ssl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new custom SSL certificate on your IP Load Balancing
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
-            state="ok")
-        sslname = ovh.ip_load_balancing.Ssl("sslname",
-            certificate="...",
-            chain="...",
-            display_name="test",
-            key="...",
-            service_name=lb.service_name)
-        ```
 
         ## Import
 

@@ -25,8 +25,8 @@ namespace Pulumi.Ovh.Dbaas
     ///     var permission = new Ovh.Dbaas.LogsRolePermissionStream("permission", new()
     ///     {
     ///         ServiceName = "ldp-xx-xxxxx",
-    ///         RoleId = ovh_dbaas_logs_role.Ro.Id,
-    ///         StreamId = ovh_dbaas_logs_output_graylog_stream.Mystream.Stream_id,
+    ///         RoleId = ro.Id,
+    ///         StreamId = mystream.StreamId,
     ///     });
     /// 
     /// });

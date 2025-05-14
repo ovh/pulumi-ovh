@@ -36,8 +36,8 @@ import (
 //				return err
 //			}
 //			_, err = cloudproject.NewContainerRegistryUser(ctx, "user", &cloudproject.ContainerRegistryUserArgs{
-//				ServiceName: pulumi.Any(ovh_cloud_project_containerregistry.Registry.Service_name),
-//				RegistryId:  pulumi.Any(ovh_cloud_project_containerregistry.Registry.Id),
+//				ServiceName: pulumi.Any(registryOvhCloudProjectContainerregistry.ServiceName),
+//				RegistryId:  pulumi.Any(registryOvhCloudProjectContainerregistry.Id),
 //				Email:       pulumi.String("foo@bar.com"),
 //				Login:       pulumi.String("foobar"),
 //			})

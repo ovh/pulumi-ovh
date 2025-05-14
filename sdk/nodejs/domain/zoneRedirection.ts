@@ -15,10 +15,10 @@ import * as utilities from "../utilities";
  *
  * // Add a redirection to a sub-domain
  * const test = new ovh.domain.ZoneRedirection("test", {
- *     subdomain: "test",
- *     target: "http://www.ovh",
- *     type: "visiblePermanent",
  *     zone: "testdemo.ovh",
+ *     subdomain: "test",
+ *     type: "visiblePermanent",
+ *     target: "http://www.ovh",
  * });
  * ```
  */

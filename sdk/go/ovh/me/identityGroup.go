@@ -27,8 +27,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewIdentityGroup(ctx, "myGroup", &me.IdentityGroupArgs{
+//			_, err := me.NewIdentityGroup(ctx, "my_group", &me.IdentityGroupArgs{
 //				Description: pulumi.String("Some custom description"),
+//				Name:        pulumi.String("my_group_name"),
 //				Role:        pulumi.String("NONE"),
 //			})
 //			if err != nil {

@@ -55,18 +55,18 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()
- *             .displayName("ingress-8080-gra")
- *             .port(80)
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("all")
+ *             .port(80)
  *             .build());
  * 
  *         var testFrontend = new HttpFrontend("testFrontend", HttpFrontendArgs.builder()
- *             .defaultFarmId(farm80.id())
- *             .displayName("ingress-8080-gra")
- *             .port("80,443")
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("all")
+ *             .port("80,443")
+ *             .defaultFarmId(farm80.id())
  *             .build());
  * 
  *     }
@@ -110,21 +110,21 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var farm80 = new HttpFarm("farm80", HttpFarmArgs.builder()
- *             .displayName("ingress-8080-gra")
- *             .port(80)
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("all")
+ *             .port(80)
  *             .build());
  * 
  *         var testFrontend = new HttpFrontend("testFrontend", HttpFrontendArgs.builder()
- *             .defaultFarmId(farm80.id())
+ *             .serviceName(lb.serviceName())
  *             .displayName("ingress-8080-gra")
+ *             .zone("all")
+ *             .port("80,443")
+ *             .defaultFarmId(farm80.id())
  *             .httpHeaders(            
  *                 "X-Ip-Header %%ci",
  *                 "X-Port-Header %%cp")
- *             .port("80,443")
- *             .serviceName(lb.serviceName())
- *             .zone("all")
  *             .build());
  * 
  *     }
@@ -368,6 +368,7 @@ public class HttpFrontend extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

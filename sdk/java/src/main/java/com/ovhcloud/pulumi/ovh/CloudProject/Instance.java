@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.ovhcloud.pulumi.ovh.CloudProject.InstanceArgs;
  * import com.pulumi.ovh.CloudProject.inputs.InstanceBootFromArgs;
  * import com.pulumi.ovh.CloudProject.inputs.InstanceFlavorArgs;
- * import com.pulumi.ovh.CloudProject.inputs.InstanceNetworkArgs;
  * import com.pulumi.ovh.CloudProject.inputs.InstanceSshKeyArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.InstanceNetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,6 +60,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .serviceName("XXX")
+ *             .region("RRRR")
  *             .billingPeriod("hourly")
  *             .bootFrom(InstanceBootFromArgs.builder()
  *                 .imageId("UUID")
@@ -67,13 +69,12 @@ import javax.annotation.Nullable;
  *             .flavor(InstanceFlavorArgs.builder()
  *                 .flavorId("UUID")
  *                 .build())
- *             .network(InstanceNetworkArgs.builder()
- *                 .public_(true)
- *                 .build())
- *             .region("RRRR")
- *             .serviceName("XXX")
+ *             .name("instance name")
  *             .sshKey(InstanceSshKeyArgs.builder()
  *                 .name("sshname")
+ *                 .build())
+ *             .network(InstanceNetworkArgs.builder()
+ *                 .public_(true)
  *                 .build())
  *             .build());
  * 
@@ -406,6 +407,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Hosting
         /// {
         ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
         ///     {
-        ///         DatabaseName = "XXXXXX",
         ///         ServiceName = "XXXXXX",
+        ///         DatabaseName = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.Hosting
         /// {
         ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
         ///     {
-        ///         DatabaseName = "XXXXXX",
         ///         ServiceName = "XXXXXX",
+        ///         DatabaseName = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.Hosting
         /// {
         ///     var myDatabase = Ovh.Hosting.GetPrivateDatabaseDb.Invoke(new()
         ///     {
-        ///         DatabaseName = "XXXXXX",
         ///         ServiceName = "XXXXXX",
+        ///         DatabaseName = "XXXXXX",
         ///     });
         /// 
         /// });

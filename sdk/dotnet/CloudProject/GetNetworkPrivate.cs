@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivate = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         NetworkId = "XXX",
@@ -32,7 +32,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivate,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```
@@ -53,7 +53,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivate = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         NetworkId = "XXX",
@@ -61,7 +61,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivate,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```
@@ -82,7 +82,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivate = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivate.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///         NetworkId = "XXX",
@@ -90,7 +90,7 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivate,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```

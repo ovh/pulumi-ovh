@@ -43,9 +43,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vrackOnly = new KubeIpRestrictions("vrackOnly", KubeIpRestrictionsArgs.builder()
- *             .ips("10.42.0.0/16")
- *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+ *             .ips("10.42.0.0/16")
  *             .build());
  * 
  *     }
@@ -149,6 +149,7 @@ public class KubeIpRestrictions extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -22,8 +22,9 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var storage = new Ovh.CloudProject.Storage("storage", new()
     ///     {
-    ///         RegionName = "GRA",
     ///         ServiceName = "&lt;public cloud project ID&gt;",
+    ///         RegionName = "GRA",
+    ///         Name = "my-storage",
     ///         Versioning = new Ovh.CloudProject.Inputs.StorageVersioningArgs
     ///         {
     ///             Status = "enabled",

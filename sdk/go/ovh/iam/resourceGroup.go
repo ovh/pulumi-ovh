@@ -27,7 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.NewResourceGroup(ctx, "myResourceGroup", &iam.ResourceGroupArgs{
+//			_, err := iam.NewResourceGroup(ctx, "my_resource_group", &iam.ResourceGroupArgs{
+//				Name: pulumi.String("my_resource_group"),
 //				Resources: pulumi.StringArray{
 //					pulumi.String("urn:v1:eu:resource:service1:service1-id"),
 //					pulumi.String("urn:v1:eu:resource:service2:service2-id"),

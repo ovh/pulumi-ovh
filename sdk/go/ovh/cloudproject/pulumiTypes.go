@@ -3956,20 +3956,6 @@ type KubePrivateNetworkConfiguration struct {
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 	//
 	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	PrivateNetworkRoutingAsDefault bool `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -3990,20 +3976,6 @@ type KubePrivateNetworkConfigurationArgs struct {
 	// Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 	//
 	// In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	PrivateNetworkRoutingAsDefault pulumi.BoolInput `pulumi:"privateNetworkRoutingAsDefault"`
 }
 
@@ -4092,23 +4064,6 @@ func (o KubePrivateNetworkConfigurationOutput) DefaultVrackGateway() pulumi.Stri
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 //
 // In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o KubePrivateNetworkConfigurationOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubePrivateNetworkConfiguration) bool { return v.PrivateNetworkRoutingAsDefault }).(pulumi.BoolOutput)
 }
@@ -4150,23 +4105,6 @@ func (o KubePrivateNetworkConfigurationPtrOutput) DefaultVrackGateway() pulumi.S
 // Defines whether routing should default to using the nodes' private interface, instead of their public interface. Default is false.
 //
 // In order to use the gateway IP advertised by the private network subnet DHCP, the following configuration shall be used.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o KubePrivateNetworkConfigurationPtrOutput) PrivateNetworkRoutingAsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubePrivateNetworkConfiguration) *bool {
 		if v == nil {

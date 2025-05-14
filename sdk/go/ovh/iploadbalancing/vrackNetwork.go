@@ -13,6 +13,60 @@ import (
 )
 
 // Manage a vrack network for your IP Loadbalancing service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/iploadbalancing"
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/vrack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			iplb, err := iploadbalancing.GetIpLoadBalancing(ctx, &iploadbalancing.GetIpLoadBalancingArgs{
+//				ServiceName: pulumi.StringRef("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vipLb, err := vrack.NewIpLoadbalancing(ctx, "vip_lb", &vrack.IpLoadbalancingArgs{
+//				ServiceName:     pulumi.String("xxx"),
+//				LoadbalancingId: pulumi.String(iplb.ServiceName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network, err := iploadbalancing.NewVrackNetwork(ctx, "network", &iploadbalancing.VrackNetworkArgs{
+//				ServiceName: vipLb.LoadbalancingId,
+//				Subnet:      pulumi.String("10.0.0.0/16"),
+//				Vlan:        pulumi.Int(1),
+//				NatIp:       pulumi.String("10.0.0.0/27"),
+//				DisplayName: pulumi.String("mynetwork"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iploadbalancing.NewTcpFarm(ctx, "test_farm", &iploadbalancing.TcpFarmArgs{
+//				ServiceName:    network.ServiceName,
+//				DisplayName:    pulumi.String("mytcpbackends"),
+//				Port:           pulumi.Int(80),
+//				VrackNetworkId: network.VrackNetworkId,
+//				Zone:           pulumi.String(iplb.Zones[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type VrackNetwork struct {
 	pulumi.CustomResourceState
 

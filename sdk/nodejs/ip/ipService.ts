@@ -18,19 +18,19 @@ import * as utilities from "../utilities";
  * const mycart = ovh.Order.getCart({
  *     ovhSubsidiary: "fr",
  * });
- * const ipblockCartProductPlan = mycart.then(mycart => ovh.Order.getCartProductPlan({
+ * const ipblock = mycart.then(mycart => ovh.Order.getCartProductPlan({
  *     cartId: mycart.id,
  *     priceCapacity: "renew",
  *     product: "ip",
  *     planCode: "ip-v4-s30-ripe",
  * }));
- * const ipblockIpService = new ovh.ip.IpService("ipblockIpService", {
+ * const ipblockIpService = new ovh.ip.IpService("ipblock", {
  *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
  *     description: "my ip block",
  *     plan: {
- *         duration: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.duration),
- *         planCode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.planCode),
- *         pricingMode: ipblockCartProductPlan.then(ipblockCartProductPlan => ipblockCartProductPlan.selectedPrices?.[0]?.pricingMode),
+ *         duration: ipblock.then(ipblock => ipblock.selectedPrices?.[0]?.duration),
+ *         planCode: ipblock.then(ipblock => ipblock.planCode),
+ *         pricingMode: ipblock.then(ipblock => ipblock.selectedPrices?.[0]?.pricingMode),
  *         configurations: [
  *             {
  *                 label: "country",

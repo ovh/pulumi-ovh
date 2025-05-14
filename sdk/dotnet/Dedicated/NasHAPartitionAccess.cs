@@ -22,13 +22,13 @@ namespace Pulumi.Ovh.Dedicated
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionAccess("myPartition", new()
+    ///     var myPartition = new Ovh.Dedicated.NasHAPartitionAccess("my_partition", new()
     ///     {
-    ///         AclDescription = "Description of the ACL",
-    ///         Ip = "123.123.123.123/32",
-    ///         PartitionName = "my-partition",
     ///         ServiceName = "zpool-12345",
+    ///         PartitionName = "my-partition",
+    ///         Ip = "123.123.123.123/32",
     ///         Type = "readwrite",
+    ///         AclDescription = "Description of the ACL",
     ///     });
     /// 
     /// });

@@ -28,12 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iploadbalancing.NewTcpRoute(ctx, "tcpReject", &iploadbalancing.TcpRouteArgs{
+//			_, err := iploadbalancing.NewTcpRoute(ctx, "tcp_reject", &iploadbalancing.TcpRouteArgs{
+//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
+//				Weight:      pulumi.Int(1),
 //				Action: &iploadbalancing.TcpRouteActionArgs{
 //					Type: pulumi.String("reject"),
 //				},
-//				ServiceName: pulumi.String("loadbalancer-xxxxxxxxxxxxxxxxxx"),
-//				Weight:      pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err

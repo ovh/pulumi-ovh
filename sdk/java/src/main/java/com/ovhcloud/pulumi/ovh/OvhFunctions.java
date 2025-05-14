@@ -19,6 +19,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -150,6 +151,49 @@ public final class OvhFunctions {
      * 
      */
     public static Output<GetInstallationTemplateResult> getInstallationTemplate(GetInstallationTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getInstallationTemplate:getInstallationTemplate", TypeShape.of(GetInstallationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a specific OVH dedicated server installation template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetInstallationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ovhTemplate = OvhFunctions.getInstallationTemplate(GetInstallationTemplateArgs.builder()
+     *             .templateName("debian12_64")
+     *             .build());
+     * 
+     *         ctx.export("template", ovhTemplate);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstallationTemplateResult> getInstallationTemplate(GetInstallationTemplateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:index/getInstallationTemplate:getInstallationTemplate", TypeShape.of(GetInstallationTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -426,6 +470,45 @@ public final class OvhFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstallationTemplatesResult> getInstallationTemplates(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getInstallationTemplates:getInstallationTemplates", TypeShape.of(GetInstallationTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of installation templates available for dedicated servers.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var templates = OvhFunctions.getInstallationTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstallationTemplatesResult> getInstallationTemplatesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getInstallationTemplates:getInstallationTemplates", TypeShape.of(GetInstallationTemplatesResult.class), args, Utilities.withVersion(options));
     }
@@ -553,6 +636,48 @@ public final class OvhFunctions {
      * 
      */
     public static Output<GetServerResult> getServer(GetServerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getServer:getServer", TypeShape.of(GetServerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var server = OvhFunctions.getServer(GetServerArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerResult> getServer(GetServerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:index/getServer:getServer", TypeShape.of(GetServerResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -828,6 +953,45 @@ public final class OvhFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServersResult> getServers(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getServers:getServers", TypeShape.of(GetServersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of dedicated servers associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var servers = OvhFunctions.getServers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServersResult> getServersPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getServers:getServers", TypeShape.of(GetServersResult.class), args, Utilities.withVersion(options));
     }
@@ -958,6 +1122,49 @@ public final class OvhFunctions {
      * 
      */
     public static Output<GetVrackNetworksResult> getVrackNetworks(GetVrackNetworksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrackNetworks:getVrackNetworks", TypeShape.of(GetVrackNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetVrackNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lbNetworks = OvhFunctions.getVrackNetworks(GetVrackNetworksArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .subnet("10.0.0.0/24")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVrackNetworksResult> getVrackNetworks(GetVrackNetworksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:index/getVrackNetworks:getVrackNetworks", TypeShape.of(GetVrackNetworksResult.class), args, Utilities.withVersion(options));
     }
     /**

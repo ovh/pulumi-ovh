@@ -129,8 +129,8 @@ def get_private_database_db(database_name: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    my_database = ovh.Hosting.get_private_database_db(database_name="XXXXXX",
-        service_name="XXXXXX")
+    my_database = ovh.Hosting.get_private_database_db(service_name="XXXXXX",
+        database_name="XXXXXX")
     ```
 
 
@@ -163,8 +163,8 @@ def get_private_database_db_output(database_name: Optional[pulumi.Input[builtins
     import pulumi
     import pulumi_ovh as ovh
 
-    my_database = ovh.Hosting.get_private_database_db(database_name="XXXXXX",
-        service_name="XXXXXX")
+    my_database = ovh.Hosting.get_private_database_db(service_name="XXXXXX",
+        database_name="XXXXXX")
     ```
 
 

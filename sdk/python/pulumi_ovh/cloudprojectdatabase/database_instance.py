@@ -204,7 +204,8 @@ class DatabaseInstance(pulumi.CustomResource):
         database = ovh.cloud_project_database.DatabaseInstance("database",
             service_name=db.service_name,
             engine=db.engine,
-            cluster_id=db.id)
+            cluster_id=db.id,
+            name="mydatabase")
         ```
 
         ## Import
@@ -250,7 +251,8 @@ class DatabaseInstance(pulumi.CustomResource):
         database = ovh.cloud_project_database.DatabaseInstance("database",
             service_name=db.service_name,
             engine=db.engine,
-            cluster_id=db.id)
+            cluster_id=db.id,
+            name="mydatabase")
         ```
 
         ## Import

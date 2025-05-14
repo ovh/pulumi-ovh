@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hosting.NewPrivateDatabaseDb(ctx, "database", &hosting.PrivateDatabaseDbArgs{
-//				DatabaseName: pulumi.String("XXXXXX"),
 //				ServiceName:  pulumi.String("XXXXXX"),
+//				DatabaseName: pulumi.String("XXXXXX"),
 //			})
 //			if err != nil {
 //				return err

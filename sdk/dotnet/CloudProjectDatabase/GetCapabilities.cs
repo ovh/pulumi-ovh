@@ -13,18 +13,93 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     {
         /// <summary>
         /// Use this data source to get information about capabilities of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var capabilities = Ovh.CloudProjectDatabase.GetCapabilities.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["capabilitiesEngineName"] = new[]
+        ///         {
+        ///             capabilities,
+        ///         }.Select(__item =&gt; __item.Engines[0]).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetCapabilitiesResult> InvokeAsync(GetCapabilitiesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about capabilities of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var capabilities = Ovh.CloudProjectDatabase.GetCapabilities.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["capabilitiesEngineName"] = new[]
+        ///         {
+        ///             capabilities,
+        ///         }.Select(__item =&gt; __item.Engines[0]).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about capabilities of a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var capabilities = Ovh.CloudProjectDatabase.GetCapabilities.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXX",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["capabilitiesEngineName"] = new[]
+        ///         {
+        ///             capabilities,
+        ///         }.Select(__item =&gt; __item.Engines[0]).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCapabilitiesResult> Invoke(GetCapabilitiesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapabilitiesResult>("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", args ?? new GetCapabilitiesInvokeArgs(), options.WithDefaults());

@@ -242,10 +242,11 @@ class NasHAPartition(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartition("myPartition",
-            protocol="NFS",
+        my_partition = ovh.dedicated.NasHAPartition("my_partition",
             service_name="zpool-12345",
-            size=20)
+            name="my-partition",
+            size=20,
+            protocol="NFS")
         ```
 
         ## Import
@@ -279,10 +280,11 @@ class NasHAPartition(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_partition = ovh.dedicated.NasHAPartition("myPartition",
-            protocol="NFS",
+        my_partition = ovh.dedicated.NasHAPartition("my_partition",
             service_name="zpool-12345",
-            size=20)
+            name="my-partition",
+            size=20,
+            protocol="NFS")
         ```
 
         ## Import

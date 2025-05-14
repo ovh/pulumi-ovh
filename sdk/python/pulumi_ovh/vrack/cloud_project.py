@@ -113,8 +113,8 @@ class CloudProject(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         vcp = ovh.vrack.CloudProject("vcp",
-            project_id="67890",
-            service_name="12345")
+            service_name="12345",
+            project_id="67890")
         ```
 
         ## Import
@@ -148,8 +148,8 @@ class CloudProject(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         vcp = ovh.vrack.CloudProject("vcp",
-            project_id="67890",
-            service_name="12345")
+            service_name="12345",
+            project_id="67890")
         ```
 
         ## Import

@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  *     state: "ok",
  * });
  * const farmname = new ovh.iploadbalancing.HttpFarm("farmname", {
- *     displayName: "ingress-8080-gra",
  *     serviceName: lb.then(lb => lb.serviceName),
+ *     displayName: "ingress-8080-gra",
  *     zone: "GRA",
  * });
  * ```

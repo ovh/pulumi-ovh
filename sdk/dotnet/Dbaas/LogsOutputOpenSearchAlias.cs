@@ -24,8 +24,8 @@ namespace Pulumi.Ovh.Dbaas
     /// {
     ///     var @alias = new Ovh.Dbaas.LogsOutputOpenSearchAlias("alias", new()
     ///     {
-    ///         Description = "my opensearch alias",
     ///         ServiceName = "....",
+    ///         Description = "my opensearch alias",
     ///         Suffix = "alias",
     ///     });
     /// 

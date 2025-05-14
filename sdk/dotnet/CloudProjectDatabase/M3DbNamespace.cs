@@ -33,6 +33,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///     {
     ///         ServiceName = m3db.Apply(getDatabaseResult =&gt; getDatabaseResult.ServiceName),
     ///         ClusterId = m3db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
+    ///         Name = "mynamespace",
     ///         Resolution = "P2D",
     ///         RetentionPeriodDuration = "PT48H",
     ///     });

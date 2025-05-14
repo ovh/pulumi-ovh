@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const vds = new ovh.vrack.DedicatedServer("vds", {
- *     serverId: "67890",
  *     serviceName: "XXXX",
+ *     serverId: "67890",
  * });
  * ```
  */

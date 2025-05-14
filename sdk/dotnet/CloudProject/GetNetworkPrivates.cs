@@ -24,14 +24,14 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivates,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```
@@ -52,14 +52,14 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivates,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```
@@ -80,14 +80,14 @@ namespace Pulumi.Ovh.CloudProject
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateNetworkPrivates = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
+        ///     var @private = Ovh.CloudProject.GetNetworkPrivates.Invoke(new()
         ///     {
         ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["private"] = privateNetworkPrivates,
+        ///         ["private"] = @private,
         ///     };
         /// });
         /// ```

@@ -15,8 +15,12 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const account = ovh.Me.getMe({});
- * const myGroup = new ovh.me.IdentityGroup("myGroup", {description: "my_group created in Terraform"});
+ * const myGroup = new ovh.me.IdentityGroup("my_group", {
+ *     name: "my_group",
+ *     description: "my_group created in Terraform",
+ * });
  * const manager = new ovh.iam.Policy("manager", {
+ *     name: "allow_ovh_manager",
  *     description: "Users are allowed to use the OVH manager",
  *     identities: [myGroup.GroupURN],
  *     resources: [account.then(account => account.AccountURN)],

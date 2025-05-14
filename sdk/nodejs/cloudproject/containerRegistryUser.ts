@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * const user = new ovh.cloudproject.ContainerRegistryUser("user", {
- *     serviceName: ovh_cloud_project_containerregistry.registry.service_name,
- *     registryId: ovh_cloud_project_containerregistry.registry.id,
+ *     serviceName: registryOvhCloudProjectContainerregistry.serviceName,
+ *     registryId: registryOvhCloudProjectContainerregistry.id,
  *     email: "foo@bar.com",
  *     login: "foobar",
  * });

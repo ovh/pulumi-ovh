@@ -28,38 +28,41 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := okms.NewServiceKey(ctx, "keySymetric", &okms.ServiceKeyArgs{
+//			_, err := okms.NewServiceKey(ctx, "key_symetric", &okms.ServiceKeyArgs{
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:   pulumi.String("key_oct"),
+//				Type:   pulumi.String("oct"),
+//				Size:   pulumi.Float64(256),
 //				Operations: pulumi.StringArray{
 //					pulumi.String("encrypt"),
 //					pulumi.String("decrypt"),
 //				},
-//				Size: pulumi.Float64(256),
-//				Type: pulumi.String("oct"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = okms.NewServiceKey(ctx, "keyRsa", &okms.ServiceKeyArgs{
+//			_, err = okms.NewServiceKey(ctx, "key_rsa", &okms.ServiceKeyArgs{
 //				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:   pulumi.String("key_rsa"),
+//				Type:   pulumi.String("RSA"),
+//				Size:   pulumi.Float64(2048),
 //				Operations: pulumi.StringArray{
 //					pulumi.String("sign"),
 //					pulumi.String("verify"),
 //				},
-//				Size: pulumi.Float64(2048),
-//				Type: pulumi.String("RSA"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = okms.NewServiceKey(ctx, "keyEcdsa", &okms.ServiceKeyArgs{
+//			_, err = okms.NewServiceKey(ctx, "key_ecdsa", &okms.ServiceKeyArgs{
+//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:   pulumi.String("key_ecdsa"),
+//				Type:   pulumi.String("EC"),
 //				Curve:  pulumi.String("P-256"),
-//				OkmsId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Operations: pulumi.StringArray{
 //					pulumi.String("sign"),
 //					pulumi.String("verify"),
 //				},
-//				Type: pulumi.String("EC"),
 //			})
 //			if err != nil {
 //				return err

@@ -124,17 +124,6 @@ class ZoneImport(pulumi.CustomResource):
 
         > **WARNING** This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        import_ = ovh.domain.ZoneImport("import",
-            zone_name="mysite.ovh",
-            zone_file=(lambda path: open(path).read())("./example.zone"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] zone_file: Content of the zone file to import
@@ -150,17 +139,6 @@ class ZoneImport(pulumi.CustomResource):
         Handle a whole DNS zone using a zone file.
 
         > **WARNING** This resource and resource `Domain.ZoneRecord` should not be used together as `Domain.ZoneImport` controls the whole DNS zone at once.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        import_ = ovh.domain.ZoneImport("import",
-            zone_name="mysite.ovh",
-            zone_file=(lambda path: open(path).read())("./example.zone"))
-        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneImportArgs args: The arguments to use to populate this resource's properties.

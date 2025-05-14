@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetImage(ctx, &cloudproject.GetImageArgs{
-//				ImageId:     "<image ID>",
 //				ServiceName: "<public cloud project ID>",
+//				ImageId:     "<image ID>",
 //			}, nil)
 //			if err != nil {
 //				return err

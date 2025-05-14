@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetRancher(ctx, &cloudproject.GetRancherArgs{
-//				Id:        "<Rancher service ID>",
 //				ProjectId: "<public cloud project ID>",
+//				Id:        "<Rancher service ID>",
 //			}, nil)
 //			if err != nil {
 //				return err

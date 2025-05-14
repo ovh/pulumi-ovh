@@ -162,35 +162,36 @@ class IpAddress(pulumi.CustomResource):
 
         my_account = ovh.Me.get_me()
         my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
+        vrack = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="vrack",
             plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+        vrack_vrack = ovh.vrack.Vrack("vrack",
             description=my_cart.description,
+            name=my_cart.description,
             ovh_subsidiary=my_cart.ovh_subsidiary,
             plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": vrack.selected_prices[0].duration,
+                "plan_code": vrack.plan_code,
+                "pricing_mode": vrack.selected_prices[0].pricing_mode,
             })
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
+        ipblock = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="ip",
             plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
+        ipblock_ip_service = ovh.ip.IpService("ipblock",
             ovh_subsidiary=my_cart.ovh_subsidiary,
             description=my_cart.description,
             plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": ipblock.selected_prices[0].duration,
+                "plan_code": ipblock.plan_code,
+                "pricing_mode": ipblock.selected_prices[0].pricing_mode,
                 "configurations": [{
                     "label": "country",
                     "value": "FR",
                 }],
             })
-        vrack_block = ovh.vrack.IpAddress("vrackBlock",
+        vrack_block = ovh.vrack.IpAddress("vrack_block",
             service_name=vrack_vrack.service_name,
             block=ipblock_ip_service.ip)
         ```
@@ -217,35 +218,36 @@ class IpAddress(pulumi.CustomResource):
 
         my_account = ovh.Me.get_me()
         my_cart = ovh.Order.get_cart(ovh_subsidiary=my_account.ovh_subsidiary)
-        vrack_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
+        vrack = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="vrack",
             plan_code="vrack")
-        vrack_vrack = ovh.vrack.Vrack("vrackVrack",
+        vrack_vrack = ovh.vrack.Vrack("vrack",
             description=my_cart.description,
+            name=my_cart.description,
             ovh_subsidiary=my_cart.ovh_subsidiary,
             plan={
-                "duration": vrack_cart_product_plan.selected_prices[0].duration,
-                "plan_code": vrack_cart_product_plan.plan_code,
-                "pricing_mode": vrack_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": vrack.selected_prices[0].duration,
+                "plan_code": vrack.plan_code,
+                "pricing_mode": vrack.selected_prices[0].pricing_mode,
             })
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
+        ipblock = ovh.Order.get_cart_product_plan(cart_id=my_cart.id,
             price_capacity="renew",
             product="ip",
             plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
+        ipblock_ip_service = ovh.ip.IpService("ipblock",
             ovh_subsidiary=my_cart.ovh_subsidiary,
             description=my_cart.description,
             plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": ipblock.selected_prices[0].duration,
+                "plan_code": ipblock.plan_code,
+                "pricing_mode": ipblock.selected_prices[0].pricing_mode,
                 "configurations": [{
                     "label": "country",
                     "value": "FR",
                 }],
             })
-        vrack_block = ovh.vrack.IpAddress("vrackBlock",
+        vrack_block = ovh.vrack.IpAddress("vrack_block",
             service_name=vrack_vrack.service_name,
             block=ipblock_ip_service.ip)
         ```

@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const keyInfo = ovh.Okms.getOkmsServiceKey({
- *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  * });
  * ```
  */
@@ -68,8 +68,8 @@ export interface GetOkmsServiceKeyResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const keyInfo = ovh.Okms.getOkmsServiceKey({
- *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  * });
  * ```
  */

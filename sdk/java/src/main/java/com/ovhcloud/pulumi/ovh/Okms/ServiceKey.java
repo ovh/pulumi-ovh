@@ -45,29 +45,32 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var keySymetric = new ServiceKey("keySymetric", ServiceKeyArgs.builder()
  *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .name("key_oct")
+ *             .type("oct")
+ *             .size(256.0)
  *             .operations(            
  *                 "encrypt",
  *                 "decrypt")
- *             .size(256.0)
- *             .type("oct")
  *             .build());
  * 
  *         var keyRsa = new ServiceKey("keyRsa", ServiceKeyArgs.builder()
  *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .name("key_rsa")
+ *             .type("RSA")
+ *             .size(2048.0)
  *             .operations(            
  *                 "sign",
  *                 "verify")
- *             .size(2048.0)
- *             .type("RSA")
  *             .build());
  * 
  *         var keyEcdsa = new ServiceKey("keyEcdsa", ServiceKeyArgs.builder()
- *             .curve("P-256")
  *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .name("key_ecdsa")
+ *             .type("EC")
+ *             .curve("P-256")
  *             .operations(            
  *                 "sign",
  *                 "verify")
- *             .type("EC")
  *             .build());
  * 
  *     }
@@ -259,6 +262,7 @@ public class ServiceKey extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

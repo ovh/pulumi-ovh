@@ -26,11 +26,11 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var regions = Ovh.CloudProject.GetRegions.Invoke(new()
         ///     {
+        ///         ServiceName = "XXXXXX",
         ///         HasServicesUps = new[]
         ///         {
         ///             "network",
         ///         },
-        ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -54,11 +54,11 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var regions = Ovh.CloudProject.GetRegions.Invoke(new()
         ///     {
+        ///         ServiceName = "XXXXXX",
         ///         HasServicesUps = new[]
         ///         {
         ///             "network",
         ///         },
-        ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         /// });
@@ -82,11 +82,11 @@ namespace Pulumi.Ovh.CloudProject
         /// {
         ///     var regions = Ovh.CloudProject.GetRegions.Invoke(new()
         ///     {
+        ///         ServiceName = "XXXXXX",
         ///         HasServicesUps = new[]
         ///         {
         ///             "network",
         ///         },
-        ///         ServiceName = "XXXXXX",
         ///     });
         /// 
         /// });

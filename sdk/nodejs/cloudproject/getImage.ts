@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const image = ovh.CloudProject.getImage({
- *     imageId: "<image ID>",
  *     serviceName: "<public cloud project ID>",
+ *     imageId: "<image ID>",
  * });
  * ```
  */
@@ -120,8 +120,8 @@ export interface GetImageResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const image = ovh.CloudProject.getImage({
- *     imageId: "<image ID>",
  *     serviceName: "<public cloud project ID>",
+ *     imageId: "<image ID>",
  * });
  * ```
  */

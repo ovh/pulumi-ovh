@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testPoolPostgresSqlConnectionPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
+        ///     var testPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -35,16 +35,16 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     {
         ///         ["testPool"] = 
         ///         {
-        ///             { "service_name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
-        ///             { "cluster_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
-        ///             { "name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
-        ///             { "database_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
-        ///             { "mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
-        ///             { "size", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
-        ///             { "port", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
-        ///             { "ssl_mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
-        ///             { "uri", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
-        ///             { "user_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
+        ///             { "serviceName", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
+        ///             { "clusterId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
+        ///             { "name", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
+        ///             { "databaseId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
+        ///             { "mode", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
+        ///             { "size", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
+        ///             { "port", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
+        ///             { "sslMode", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
+        ///             { "uri", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
+        ///             { "userId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
         ///         },
         ///     };
         /// });
@@ -66,7 +66,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testPoolPostgresSqlConnectionPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
+        ///     var testPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -77,16 +77,16 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     {
         ///         ["testPool"] = 
         ///         {
-        ///             { "service_name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
-        ///             { "cluster_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
-        ///             { "name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
-        ///             { "database_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
-        ///             { "mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
-        ///             { "size", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
-        ///             { "port", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
-        ///             { "ssl_mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
-        ///             { "uri", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
-        ///             { "user_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
+        ///             { "serviceName", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
+        ///             { "clusterId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
+        ///             { "name", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
+        ///             { "databaseId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
+        ///             { "mode", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
+        ///             { "size", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
+        ///             { "port", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
+        ///             { "sslMode", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
+        ///             { "uri", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
+        ///             { "userId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
         ///         },
         ///     };
         /// });
@@ -108,7 +108,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testPoolPostgresSqlConnectionPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
+        ///     var testPool = Ovh.CloudProjectDatabase.GetPostgresSqlConnectionPool.Invoke(new()
         ///     {
         ///         ServiceName = "XXX",
         ///         ClusterId = "YYY",
@@ -119,16 +119,16 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         ///     {
         ///         ["testPool"] = 
         ///         {
-        ///             { "service_name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
-        ///             { "cluster_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
-        ///             { "name", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
-        ///             { "database_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
-        ///             { "mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
-        ///             { "size", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
-        ///             { "port", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
-        ///             { "ssl_mode", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
-        ///             { "uri", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
-        ///             { "user_id", testPoolPostgresSqlConnectionPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
+        ///             { "serviceName", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ServiceName) },
+        ///             { "clusterId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.ClusterId) },
+        ///             { "name", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Name) },
+        ///             { "databaseId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.DatabaseId) },
+        ///             { "mode", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Mode) },
+        ///             { "size", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Size) },
+        ///             { "port", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Port) },
+        ///             { "sslMode", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.SslMode) },
+        ///             { "uri", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.Uri) },
+        ///             { "userId", testPool.Apply(getPostgresSqlConnectionPoolResult =&gt; getPostgresSqlConnectionPoolResult.UserId) },
         ///         },
         ///     };
         /// });

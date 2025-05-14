@@ -323,10 +323,10 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         subscription = ovh.cloud_project.RegionLoadBalancerLogSubscription("subscription",
-            kind="haproxy",
-            loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-            region_name="yyyy",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            region_name="yyyy",
+            loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+            kind="haproxy",
             stream_id="ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj")
         ```
 
@@ -356,10 +356,10 @@ class RegionLoadBalancerLogSubscription(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         subscription = ovh.cloud_project.RegionLoadBalancerLogSubscription("subscription",
-            kind="haproxy",
-            loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-            region_name="yyyy",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            region_name="yyyy",
+            loadbalancer_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+            kind="haproxy",
             stream_id="ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj")
         ```
 

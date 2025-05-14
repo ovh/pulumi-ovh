@@ -192,11 +192,11 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        user_grant = ovh.hosting.PrivateDatabaseUserGrant("userGrant",
-            database_name="ovhcloud",
-            grant="admin",
+        user_grant = ovh.hosting.PrivateDatabaseUserGrant("user_grant",
             service_name="XXXXXX",
-            user_name="terraform")
+            user_name="terraform",
+            database_name="ovhcloud",
+            grant="admin")
         ```
 
         ## Import
@@ -233,11 +233,11 @@ class PrivateDatabaseUserGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        user_grant = ovh.hosting.PrivateDatabaseUserGrant("userGrant",
-            database_name="ovhcloud",
-            grant="admin",
+        user_grant = ovh.hosting.PrivateDatabaseUserGrant("user_grant",
             service_name="XXXXXX",
-            user_name="terraform")
+            user_name="terraform",
+            database_name="ovhcloud",
+            grant="admin")
         ```
 
         ## Import

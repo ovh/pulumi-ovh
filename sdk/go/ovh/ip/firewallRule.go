@@ -28,12 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewFirewallRule(ctx, "myFirewallRule", &ip.FirewallRuleArgs{
-//				Action:       pulumi.String("deny"),
+//			_, err := ip.NewFirewallRule(ctx, "my_firewall_rule", &ip.FirewallRuleArgs{
 //				Ip:           pulumi.String("XXXXXX"),
 //				IpOnFirewall: pulumi.String("XXXXXX"),
-//				Protocol:     pulumi.String("tcp"),
 //				Sequence:     pulumi.Float64(0),
+//				Action:       pulumi.String("deny"),
+//				Protocol:     pulumi.String("tcp"),
 //			})
 //			if err != nil {
 //				return err

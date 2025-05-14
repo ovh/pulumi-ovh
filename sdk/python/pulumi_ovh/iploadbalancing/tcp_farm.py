@@ -314,9 +314,9 @@ class TcpFarm(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
-            display_name="ingress-8080-gra",
+        farm_name = ovh.ip_load_balancing.TcpFarm("farm_name",
             service_name=lb.service_name,
+            display_name="ingress-8080-gra",
             zone="GRA")
         ```
 
@@ -358,9 +358,9 @@ class TcpFarm(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farm_name = ovh.ip_load_balancing.TcpFarm("farmName",
-            display_name="ingress-8080-gra",
+        farm_name = ovh.ip_load_balancing.TcpFarm("farm_name",
             service_name=lb.service_name,
+            display_name="ingress-8080-gra",
             zone="GRA")
         ```
 

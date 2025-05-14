@@ -577,17 +577,17 @@ class PrivateDatabase(pulumi.CustomResource):
 
         myaccount = ovh.Me.get_me()
         mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-        database_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        database = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
             price_capacity="renew",
             product="privateSQL",
             plan_code="private-sql-512-instance")
-        database_private_database = ovh.hosting.PrivateDatabase("databasePrivateDatabase",
+        database_private_database = ovh.hosting.PrivateDatabase("database",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="Postgresql-12",
             plan={
-                "duration": database_cart_product_plan.prices[3].duration,
-                "plan_code": database_cart_product_plan.plan_code,
-                "pricing_mode": database_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": database.prices[3].duration,
+                "plan_code": database.plan_code,
+                "pricing_mode": database.selected_prices[0].pricing_mode,
                 "configurations": [
                     {
                         "label": "dc",
@@ -651,17 +651,17 @@ class PrivateDatabase(pulumi.CustomResource):
 
         myaccount = ovh.Me.get_me()
         mycart = ovh.Order.get_cart(ovh_subsidiary=myaccount.ovh_subsidiary)
-        database_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        database = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
             price_capacity="renew",
             product="privateSQL",
             plan_code="private-sql-512-instance")
-        database_private_database = ovh.hosting.PrivateDatabase("databasePrivateDatabase",
+        database_private_database = ovh.hosting.PrivateDatabase("database",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="Postgresql-12",
             plan={
-                "duration": database_cart_product_plan.prices[3].duration,
-                "plan_code": database_cart_product_plan.plan_code,
-                "pricing_mode": database_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": database.prices[3].duration,
+                "plan_code": database.plan_code,
+                "pricing_mode": database.selected_prices[0].pricing_mode,
                 "configurations": [
                     {
                         "label": "dc",

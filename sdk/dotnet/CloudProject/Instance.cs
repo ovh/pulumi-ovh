@@ -26,6 +26,8 @@ namespace Pulumi.Ovh.CloudProject
     /// {
     ///     var instance = new Ovh.CloudProject.Instance("instance", new()
     ///     {
+    ///         ServiceName = "XXX",
+    ///         Region = "RRRR",
     ///         BillingPeriod = "hourly",
     ///         BootFrom = new Ovh.CloudProject.Inputs.InstanceBootFromArgs
     ///         {
@@ -35,15 +37,14 @@ namespace Pulumi.Ovh.CloudProject
     ///         {
     ///             FlavorId = "UUID",
     ///         },
-    ///         Network = new Ovh.CloudProject.Inputs.InstanceNetworkArgs
-    ///         {
-    ///             Public = true,
-    ///         },
-    ///         Region = "RRRR",
-    ///         ServiceName = "XXX",
+    ///         Name = "instance name",
     ///         SshKey = new Ovh.CloudProject.Inputs.InstanceSshKeyArgs
     ///         {
     ///             Name = "sshname",
+    ///         },
+    ///         Network = new Ovh.CloudProject.Inputs.InstanceNetworkArgs
+    ///         {
+    ///             Public = true,
     ///         },
     ///     });
     /// 

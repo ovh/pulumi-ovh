@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetRegion(ctx, &cloudproject.GetRegionArgs{
-//				Name:        "GRA1",
 //				ServiceName: "XXXXXX",
+//				Name:        "GRA1",
 //			}, nil)
 //			if err != nil {
 //				return err

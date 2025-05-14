@@ -311,10 +311,11 @@ class ContainerRegistry(pulumi.CustomResource):
         regcap = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
             plan_name="SMALL",
             region="GRA")
-        my_registry = ovh.cloud_project.ContainerRegistry("myRegistry",
+        my_registry = ovh.cloud_project.ContainerRegistry("my_registry",
             service_name=regcap.service_name,
             plan_id=regcap.id,
-            region=regcap.region)
+            region=regcap.region,
+            name="mydockerregistry")
         ```
 
         > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
@@ -344,10 +345,11 @@ class ContainerRegistry(pulumi.CustomResource):
         regcap = ovh.CloudProject.get_capabilities_container_filter(service_name="XXXXXX",
             plan_name="SMALL",
             region="GRA")
-        my_registry = ovh.cloud_project.ContainerRegistry("myRegistry",
+        my_registry = ovh.cloud_project.ContainerRegistry("my_registry",
             service_name=regcap.service_name,
             plan_id=regcap.id,
-            region=regcap.region)
+            region=regcap.region,
+            name="mydockerregistry")
         ```
 
         > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.

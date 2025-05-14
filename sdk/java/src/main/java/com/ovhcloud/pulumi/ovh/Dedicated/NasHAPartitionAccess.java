@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myPartition = new NasHAPartitionAccess("myPartition", NasHAPartitionAccessArgs.builder()
- *             .aclDescription("Description of the ACL")
- *             .ip("123.123.123.123/32")
- *             .partitionName("my-partition")
  *             .serviceName("zpool-12345")
+ *             .partitionName("my-partition")
+ *             .ip("123.123.123.123/32")
  *             .type("readwrite")
+ *             .aclDescription("Description of the ACL")
  *             .build());
  * 
  *     }
@@ -177,6 +177,7 @@ public class NasHAPartitionAccess extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

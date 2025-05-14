@@ -13,7 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const token = new ovh.dbaas.LogsToken("token", {serviceName: "ldp-xx-xxxxx"});
+ * const token = new ovh.dbaas.LogsToken("token", {
+ *     serviceName: "ldp-xx-xxxxx",
+ *     name: "ExampleToken",
+ * });
  * ```
  */
 export class LogsToken extends pulumi.CustomResource {

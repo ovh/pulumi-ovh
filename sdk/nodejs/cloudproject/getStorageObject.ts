@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const object = ovh.CloudProject.getStorageObject({
- *     key: "<object name>",
- *     name: "<bucket name>",
- *     regionName: "GRA",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA",
+ *     name: "<bucket name>",
+ *     key: "<object name>",
  * });
  * ```
  */
@@ -116,10 +116,10 @@ export interface GetStorageObjectResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const object = ovh.CloudProject.getStorageObject({
- *     key: "<object name>",
- *     name: "<bucket name>",
- *     regionName: "GRA",
  *     serviceName: "<public cloud project ID>",
+ *     regionName: "GRA",
+ *     name: "<bucket name>",
+ *     key: "<object name>",
  * });
  * ```
  */

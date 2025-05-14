@@ -29,9 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hosting.NewPrivateDatabaseAllowlist(ctx, "ip", &hosting.PrivateDatabaseAllowlistArgs{
-//				Ip:          pulumi.String("1.2.3.4"),
-//				Service:     pulumi.Bool(true),
 //				ServiceName: pulumi.String("XXXXXX"),
+//				Ip:          pulumi.String("1.2.3.4"),
+//				Name:        pulumi.String("A name for your IP address"),
+//				Service:     pulumi.Bool(true),
 //				Sftp:        pulumi.Bool(true),
 //			})
 //			if err != nil {

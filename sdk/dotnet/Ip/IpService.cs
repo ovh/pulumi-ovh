@@ -27,7 +27,7 @@ namespace Pulumi.Ovh.Ip
     ///         OvhSubsidiary = "fr",
     ///     });
     /// 
-    ///     var ipblockCartProductPlan = Ovh.Order.GetCartProductPlan.Invoke(new()
+    ///     var ipblock = Ovh.Order.GetCartProductPlan.Invoke(new()
     ///     {
     ///         CartId = mycart.Apply(getCartResult =&gt; getCartResult.Id),
     ///         PriceCapacity = "renew",
@@ -35,15 +35,15 @@ namespace Pulumi.Ovh.Ip
     ///         PlanCode = "ip-v4-s30-ripe",
     ///     });
     /// 
-    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblockIpService", new()
+    ///     var ipblockIpService = new Ovh.Ip.IpService("ipblock", new()
     ///     {
     ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         Description = "my ip block",
     ///         Plan = new Ovh.Ip.Inputs.IpServicePlanArgs
     ///         {
-    ///             Duration = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
-    ///             PlanCode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
-    ///             PricingMode = ipblockCartProductPlan.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
+    ///             Duration = ipblock.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.Duration),
+    ///             PlanCode = ipblock.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.PlanCode),
+    ///             PricingMode = ipblock.Apply(getCartProductPlanResult =&gt; getCartProductPlanResult.SelectedPrices[0]?.PricingMode),
     ///             Configurations = new[]
     ///             {
     ///                 new Ovh.Ip.Inputs.IpServicePlanConfigurationArgs

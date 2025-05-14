@@ -26,8 +26,8 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
         ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
         ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsCluster.Invoke(new()
         ///     {
-        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         ClusterId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         ///     });
         /// 
         /// });

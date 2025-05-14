@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewMove(ctx, "moveIpToLoadBalancerXxxxx", &ip.MoveArgs{
+//			_, err := ip.NewMove(ctx, "move_ip_to_load_balancer_xxxxx", &ip.MoveArgs{
 //				Ip: pulumi.String("1.2.3.4"),
 //				RoutedTo: &ip.MoveRoutedToArgs{
 //					ServiceName: pulumi.String("loadbalancer-XXXXX"),
@@ -57,7 +57,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewMove(ctx, "parkIp", &ip.MoveArgs{
+//			_, err := ip.NewMove(ctx, "park_ip", &ip.MoveArgs{
 //				Ip: pulumi.String("1.2.3.4"),
 //				RoutedTo: &ip.MoveRoutedToArgs{
 //					ServiceName: pulumi.String(""),

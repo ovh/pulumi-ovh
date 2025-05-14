@@ -146,9 +146,9 @@ class ContainerRegistryIPRestrictionsManagement(pulumi.CustomResource):
 
         registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-        my_mgt_iprestrictions = ovh.cloud_project.ContainerRegistryIPRestrictionsManagement("myMgtIprestrictions",
-            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
-            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+        my_mgt_iprestrictions = ovh.cloud_project.ContainerRegistryIPRestrictionsManagement("my_mgt_iprestrictions",
+            service_name=registry_ovh_cloud_project_containerregistry["serviceName"],
+            registry_id=registry_ovh_cloud_project_containerregistry["id"],
             ip_restrictions=[{
                 "ip_block": "xxx.xxx.xxx.xxx/xx",
                 "description": "xxxxxxx",
@@ -178,9 +178,9 @@ class ContainerRegistryIPRestrictionsManagement(pulumi.CustomResource):
 
         registry = ovh.CloudProject.get_container_registry(service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
-        my_mgt_iprestrictions = ovh.cloud_project.ContainerRegistryIPRestrictionsManagement("myMgtIprestrictions",
-            service_name=ovh_cloud_project_containerregistry["registry"]["service_name"],
-            registry_id=ovh_cloud_project_containerregistry["registry"]["id"],
+        my_mgt_iprestrictions = ovh.cloud_project.ContainerRegistryIPRestrictionsManagement("my_mgt_iprestrictions",
+            service_name=registry_ovh_cloud_project_containerregistry["serviceName"],
+            registry_id=registry_ovh_cloud_project_containerregistry["id"],
             ip_restrictions=[{
                 "ip_block": "xxx.xxx.xxx.xxx/xx",
                 "description": "xxxxxxx",

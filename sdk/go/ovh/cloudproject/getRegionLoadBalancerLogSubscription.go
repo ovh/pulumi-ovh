@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudproject.GetRegionLoadBalancerLogSubscription(ctx, &cloudproject.GetRegionLoadBalancerLogSubscriptionArgs{
-//				LoadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-//				RegionName:     "gggg",
 //				ServiceName:    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+//				RegionName:     "gggg",
+//				LoadbalancerId: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
 //				SubscriptionId: "zzzzzzzz-yyyy-xxxx-wwww-vvvvvvvvvvvv",
 //			}, nil)
 //			if err != nil {

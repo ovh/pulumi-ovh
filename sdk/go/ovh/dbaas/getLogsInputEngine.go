@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
-//				IsDeprecated: pulumi.BoolRef(true),
-//				Name:         pulumi.StringRef("logstash"),
 //				ServiceName:  "ldp-xx-xxxxx",
+//				Name:         pulumi.StringRef("logstash"),
 //				Version:      pulumi.StringRef("6.8"),
+//				IsDeprecated: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err

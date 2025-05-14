@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const capability = ovh.CloudProject.getCapabilitiesContainerFilter({
- *     planName: "SMALL",
- *     region: "GRA",
  *     serviceName: "XXXXXX",
+ *     region: "GRA",
+ *     planName: "SMALL",
  * });
  * ```
  */
@@ -95,9 +95,9 @@ export interface GetCapabilitiesContainerFilterResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const capability = ovh.CloudProject.getCapabilitiesContainerFilter({
- *     planName: "SMALL",
- *     region: "GRA",
  *     serviceName: "XXXXXX",
+ *     region: "GRA",
+ *     planName: "SMALL",
  * });
  * ```
  */

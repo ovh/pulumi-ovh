@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hosting.NewPrivateDatabaseUser(ctx, "user", &hosting.PrivateDatabaseUserArgs{
-//				Password:    pulumi.String("XXXXXX"),
 //				ServiceName: pulumi.String("XXXXXX"),
+//				Password:    pulumi.String("XXXXXX"),
 //				UserName:    pulumi.String("XXXXXX"),
 //			})
 //			if err != nil {

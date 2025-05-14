@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * const namespace = new ovh.cloudprojectdatabase.M3DbNamespace("namespace", {
  *     serviceName: m3db.then(m3db => m3db.serviceName),
  *     clusterId: m3db.then(m3db => m3db.id),
+ *     name: "mynamespace",
  *     resolution: "P2D",
  *     retentionPeriodDuration: "PT48H",
  * });

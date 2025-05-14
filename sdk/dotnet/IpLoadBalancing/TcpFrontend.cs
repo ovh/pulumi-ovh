@@ -30,19 +30,19 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// 
     ///     var farm80 = new Ovh.IpLoadBalancing.TcpFarm("farm80", new()
     ///     {
-    ///         DisplayName = "ingress-8080-gra",
-    ///         Port = 80,
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "all",
+    ///         Port = 80,
     ///     });
     /// 
-    ///     var testFrontend = new Ovh.IpLoadBalancing.TcpFrontend("testFrontend", new()
+    ///     var testFrontend = new Ovh.IpLoadBalancing.TcpFrontend("test_frontend", new()
     ///     {
-    ///         DefaultFarmId = farm80.Id,
-    ///         DisplayName = "ingress-8080-gra",
-    ///         Port = "80,443",
     ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///         DisplayName = "ingress-8080-gra",
     ///         Zone = "all",
+    ///         Port = "80,443",
+    ///         DefaultFarmId = farm80.Id,
     ///     });
     /// 
     /// });

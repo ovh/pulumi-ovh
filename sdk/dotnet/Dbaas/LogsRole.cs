@@ -24,8 +24,9 @@ namespace Pulumi.Ovh.Dbaas
     /// {
     ///     var ro = new Ovh.Dbaas.LogsRole("ro", new()
     ///     {
-    ///         Description = "Devops - RO",
     ///         ServiceName = "ldp-xx-xxxxx",
+    ///         Name = "Devops - RO",
+    ///         Description = "Devops - RO",
     ///     });
     /// 
     /// });

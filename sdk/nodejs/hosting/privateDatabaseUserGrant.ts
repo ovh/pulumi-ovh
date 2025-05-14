@@ -13,11 +13,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const userGrant = new ovh.hosting.PrivateDatabaseUserGrant("userGrant", {
- *     databaseName: "ovhcloud",
- *     grant: "admin",
+ * const userGrant = new ovh.hosting.PrivateDatabaseUserGrant("user_grant", {
  *     serviceName: "XXXXXX",
  *     userName: "terraform",
+ *     databaseName: "ovhcloud",
+ *     grant: "admin",
  * });
  * ```
  *

@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DedicatedFunctions {
@@ -156,6 +157,48 @@ public final class DedicatedFunctions {
      * 
      */
     public static Output<GetCephResult> getCeph(GetCephArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getCeph:getCeph", TypeShape.of(GetCephResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated CEPH.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetCephArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCeph = DedicatedFunctions.getCeph(GetCephArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCephResult> getCeph(GetCephArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Dedicated/getCeph:getCeph", TypeShape.of(GetCephResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -365,6 +408,48 @@ public final class DedicatedFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCloudResult> getCloud(GetCloudArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getCloud:getCloud", TypeShape.of(GetCloudResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Managed VMware service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetCloudArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pcc = DedicatedFunctions.getCloud(GetCloudArgs.builder()
+     *             .serviceName("<Dedicated Cloud service name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCloudResult> getCloudPlain(GetCloudPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dedicated/getCloud:getCloud", TypeShape.of(GetCloudResult.class), args, Utilities.withVersion(options));
     }
@@ -533,6 +618,48 @@ public final class DedicatedFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNasHAResult> getNasHA(GetNasHAArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getNasHA:getNasHA", TypeShape.of(GetNasHAResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated HA-NAS.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetNasHAArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNasHa = DedicatedFunctions.getNasHA(GetNasHAArgs.builder()
+     *             .serviceName("zpool-12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNasHAResult> getNasHAPlain(GetNasHAPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dedicated/getNasHA:getNasHA", TypeShape.of(GetNasHAResult.class), args, Utilities.withVersion(options));
     }
@@ -565,8 +692,8 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
-     *             .name("my-zpool-partition")
      *             .serviceName("zpool-12345")
+     *             .name("my-zpool-partition")
      *             .build());
      * 
      *     }
@@ -608,8 +735,8 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
-     *             .name("my-zpool-partition")
      *             .serviceName("zpool-12345")
+     *             .name("my-zpool-partition")
      *             .build());
      * 
      *     }
@@ -651,8 +778,8 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
-     *             .name("my-zpool-partition")
      *             .serviceName("zpool-12345")
+     *             .name("my-zpool-partition")
      *             .build());
      * 
      *     }
@@ -694,8 +821,51 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
-     *             .name("my-zpool-partition")
      *             .serviceName("zpool-12345")
+     *             .name("my-zpool-partition")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNasHAPartitionResult> getNasHAPartition(GetNasHAPartitionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getNasHAPartition:getNasHAPartition", TypeShape.of(GetNasHAPartitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a dedicated HA-NAS partition.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetNasHAPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNasHaPartition = DedicatedFunctions.getNasHAPartition(GetNasHAPartitionArgs.builder()
+     *             .serviceName("zpool-12345")
+     *             .name("my-zpool-partition")
      *             .build());
      * 
      *     }
@@ -737,8 +907,8 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType("harddisk")
      *             .serviceName("myserver")
+     *             .bootType("harddisk")
      *             .build());
      * 
      *     }
@@ -780,8 +950,8 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType("harddisk")
      *             .serviceName("myserver")
+     *             .bootType("harddisk")
      *             .build());
      * 
      *     }
@@ -823,8 +993,8 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType("harddisk")
      *             .serviceName("myserver")
+     *             .bootType("harddisk")
      *             .build());
      * 
      *     }
@@ -866,8 +1036,51 @@ public final class DedicatedFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
-     *             .bootType("harddisk")
      *             .serviceName("myserver")
+     *             .bootType("harddisk")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerBootsResult> getServerBoots(GetServerBootsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getServerBoots:getServerBoots", TypeShape.of(GetServerBootsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of compatible netboots for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetServerBootsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netboots = DedicatedFunctions.getServerBoots(GetServerBootsArgs.builder()
+     *             .serviceName("myserver")
+     *             .bootType("harddisk")
      *             .build());
      * 
      *     }
@@ -1045,6 +1258,48 @@ public final class DedicatedFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServerSpecificationsHardwareResult> getServerSpecificationsHardware(GetServerSpecificationsHardwareArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", TypeShape.of(GetServerSpecificationsHardwareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the hardward information about a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsHardwareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var spec = DedicatedFunctions.getServerSpecificationsHardware(GetServerSpecificationsHardwareArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServerSpecificationsHardwareResult> getServerSpecificationsHardwarePlain(GetServerSpecificationsHardwarePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware", TypeShape.of(GetServerSpecificationsHardwareResult.class), args, Utilities.withVersion(options));
     }
@@ -1172,6 +1427,48 @@ public final class DedicatedFunctions {
      * 
      */
     public static Output<GetServerSpecificationsNetworkResult> getServerSpecificationsNetwork(GetServerSpecificationsNetworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", TypeShape.of(GetServerSpecificationsNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the network information about a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dedicated.DedicatedFunctions;
+     * import com.pulumi.ovh.Dedicated.inputs.GetServerSpecificationsNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var spec = DedicatedFunctions.getServerSpecificationsNetwork(GetServerSpecificationsNetworkArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerSpecificationsNetworkResult> getServerSpecificationsNetwork(GetServerSpecificationsNetworkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Dedicated/getServerSpecificationsNetwork:getServerSpecificationsNetwork", TypeShape.of(GetServerSpecificationsNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**

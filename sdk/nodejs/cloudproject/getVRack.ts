@@ -13,10 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const vrackVRack = ovh.CloudProject.getVRack({
- *     serviceName: "XXXXXX",
- * });
- * export const vrack = vrackVRack;
+ * export = async () => {
+ *     const vrack = await ovh.CloudProject.getVRack({
+ *         serviceName: "XXXXXX",
+ *     });
+ *     return {
+ *         vrack: vrack,
+ *     };
+ * }
  * ```
  */
 export function getVRack(args: GetVRackArgs, opts?: pulumi.InvokeOptions): Promise<GetVRackResult> {
@@ -63,10 +67,14 @@ export interface GetVRackResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const vrackVRack = ovh.CloudProject.getVRack({
- *     serviceName: "XXXXXX",
- * });
- * export const vrack = vrackVRack;
+ * export = async () => {
+ *     const vrack = await ovh.CloudProject.getVRack({
+ *         serviceName: "XXXXXX",
+ *     });
+ *     return {
+ *         vrack: vrack,
+ *     };
+ * }
  * ```
  */
 export function getVRackOutput(args: GetVRackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVRackResult> {

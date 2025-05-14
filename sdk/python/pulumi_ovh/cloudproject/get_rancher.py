@@ -147,8 +147,8 @@ def get_rancher(id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    rancher = ovh.CloudProject.get_rancher(id="<Rancher service ID>",
-        project_id="<public cloud project ID>")
+    rancher = ovh.CloudProject.get_rancher(project_id="<public cloud project ID>",
+        id="<Rancher service ID>")
     ```
 
 
@@ -182,8 +182,8 @@ def get_rancher_output(id: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_ovh as ovh
 
-    rancher = ovh.CloudProject.get_rancher(id="<Rancher service ID>",
-        project_id="<public cloud project ID>")
+    rancher = ovh.CloudProject.get_rancher(project_id="<public cloud project ID>",
+        id="<Rancher service ID>")
     ```
 
 

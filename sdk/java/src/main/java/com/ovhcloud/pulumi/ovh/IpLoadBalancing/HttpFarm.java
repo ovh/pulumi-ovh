@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var farmname = new HttpFarm("farmname", HttpFarmArgs.builder()
- *             .displayName("ingress-8080-gra")
  *             .serviceName(lb.serviceName())
+ *             .displayName("ingress-8080-gra")
  *             .zone("GRA")
  *             .build());
  * 
@@ -228,6 +228,7 @@ public class HttpFarm extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

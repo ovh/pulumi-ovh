@@ -14,10 +14,10 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const logstash = ovh.Dbaas.getLogsInputEngine({
- *     isDeprecated: true,
- *     name: "logstash",
  *     serviceName: "ldp-xx-xxxxx",
+ *     name: "logstash",
  *     version: "6.8",
+ *     isDeprecated: true,
  * });
  * ```
  */
@@ -76,10 +76,10 @@ export interface GetLogsInputEngineResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const logstash = ovh.Dbaas.getLogsInputEngine({
- *     isDeprecated: true,
- *     name: "logstash",
  *     serviceName: "ldp-xx-xxxxx",
+ *     name: "logstash",
  *     version: "6.8",
+ *     isDeprecated: true,
  * });
  * ```
  */

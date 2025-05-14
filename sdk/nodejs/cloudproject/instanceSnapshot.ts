@@ -12,8 +12,9 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const snapshot = new ovh.cloudproject.InstanceSnapshot("snapshot", {
- *     instanceId: "<instance ID>",
  *     serviceName: "<public cloud project ID>",
+ *     instanceId: "<instance ID>",
+ *     name: "SnapshotExample",
  * });
  * ```
  */

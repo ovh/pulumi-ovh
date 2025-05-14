@@ -11,6 +11,48 @@ namespace Pulumi.Ovh.IpLoadBalancing
 {
     /// <summary>
     /// Manage a vrack network for your IP Loadbalancing service.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var iplb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
+    ///     {
+    ///         ServiceName = "loadbalancer-xxxxxxxxxxxxxxxxxx",
+    ///     });
+    /// 
+    ///     var vipLb = new Ovh.Vrack.IpLoadbalancing("vip_lb", new()
+    ///     {
+    ///         ServiceName = "xxx",
+    ///         LoadbalancingId = iplb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
+    ///     });
+    /// 
+    ///     var network = new Ovh.IpLoadBalancing.VrackNetwork("network", new()
+    ///     {
+    ///         ServiceName = vipLb.LoadbalancingId,
+    ///         Subnet = "10.0.0.0/16",
+    ///         Vlan = 1,
+    ///         NatIp = "10.0.0.0/27",
+    ///         DisplayName = "mynetwork",
+    ///     });
+    /// 
+    ///     var testFarm = new Ovh.IpLoadBalancing.TcpFarm("test_farm", new()
+    ///     {
+    ///         ServiceName = network.ServiceName,
+    ///         DisplayName = "mytcpbackends",
+    ///         Port = 80,
+    ///         VrackNetworkId = network.VrackNetworkId,
+    ///         Zone = iplb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.Zones[0]),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:IpLoadBalancing/vrackNetwork:VrackNetwork")]
     public partial class VrackNetwork : global::Pulumi.CustomResource

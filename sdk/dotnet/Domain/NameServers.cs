@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Domain
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nameServers = new Ovh.Domain.NameServers("nameServers", new()
+    ///     var nameServers = new Ovh.Domain.NameServers("name_servers", new()
     ///     {
     ///         Domain = "mydomain.ovh",
     ///         Servers = new[]

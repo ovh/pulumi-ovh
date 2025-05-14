@@ -28,13 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewWorkflowBackup(ctx, "myBackup", &cloudproject.WorkflowBackupArgs{
+//			_, err := cloudproject.NewWorkflowBackup(ctx, "my_backup", &cloudproject.WorkflowBackupArgs{
+//				ServiceName:       pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				RegionName:        pulumi.String("GRA11"),
 //				Cron:              pulumi.String("50 4 * * *"),
 //				InstanceId:        pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"),
 //				MaxExecutionCount: pulumi.Int(0),
-//				RegionName:        pulumi.String("GRA11"),
+//				Name:              pulumi.String("Backup workflow for instance"),
 //				Rotation:          pulumi.Int(7),
-//				ServiceName:       pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //			})
 //			if err != nil {
 //				return err

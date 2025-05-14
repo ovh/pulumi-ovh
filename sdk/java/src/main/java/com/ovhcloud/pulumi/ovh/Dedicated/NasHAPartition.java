@@ -44,9 +44,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myPartition = new NasHAPartition("myPartition", NasHAPartitionArgs.builder()
- *             .protocol("NFS")
  *             .serviceName("zpool-12345")
+ *             .name("my-partition")
  *             .size(20)
+ *             .protocol("NFS")
  *             .build());
  * 
  *     }
@@ -204,6 +205,7 @@ public class NasHAPartition extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

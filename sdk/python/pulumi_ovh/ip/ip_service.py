@@ -368,17 +368,17 @@ class IpService(pulumi.CustomResource):
 
         myaccount = ovh.Me.get_me()
         mycart = ovh.Order.get_cart(ovh_subsidiary="fr")
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        ipblock = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
             price_capacity="renew",
             product="ip",
             plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
+        ipblock_ip_service = ovh.ip.IpService("ipblock",
             ovh_subsidiary=mycart.ovh_subsidiary,
             description="my ip block",
             plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": ipblock.selected_prices[0].duration,
+                "plan_code": ipblock.plan_code,
+                "pricing_mode": ipblock.selected_prices[0].pricing_mode,
                 "configurations": [
                     {
                         "label": "country",
@@ -442,17 +442,17 @@ class IpService(pulumi.CustomResource):
 
         myaccount = ovh.Me.get_me()
         mycart = ovh.Order.get_cart(ovh_subsidiary="fr")
-        ipblock_cart_product_plan = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
+        ipblock = ovh.Order.get_cart_product_plan(cart_id=mycart.id,
             price_capacity="renew",
             product="ip",
             plan_code="ip-v4-s30-ripe")
-        ipblock_ip_service = ovh.ip.IpService("ipblockIpService",
+        ipblock_ip_service = ovh.ip.IpService("ipblock",
             ovh_subsidiary=mycart.ovh_subsidiary,
             description="my ip block",
             plan={
-                "duration": ipblock_cart_product_plan.selected_prices[0].duration,
-                "plan_code": ipblock_cart_product_plan.plan_code,
-                "pricing_mode": ipblock_cart_product_plan.selected_prices[0].pricing_mode,
+                "duration": ipblock.selected_prices[0].duration,
+                "plan_code": ipblock.plan_code,
+                "pricing_mode": ipblock.selected_prices[0].pricing_mode,
                 "configurations": [
                     {
                         "label": "country",

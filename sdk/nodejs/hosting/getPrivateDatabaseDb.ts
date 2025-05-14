@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * const myDatabase = ovh.Hosting.getPrivateDatabaseDb({
- *     databaseName: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     databaseName: "XXXXXX",
  * });
  * ```
  */
@@ -80,8 +80,8 @@ export interface GetPrivateDatabaseDbResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * const myDatabase = ovh.Hosting.getPrivateDatabaseDb({
- *     databaseName: "XXXXXX",
  *     serviceName: "XXXXXX",
+ *     databaseName: "XXXXXX",
  * });
  * ```
  */

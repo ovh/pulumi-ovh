@@ -210,11 +210,11 @@ class ZoneRecord(pulumi.CustomResource):
 
         # Add a record to a sub-domain
         test = ovh.domain.ZoneRecord("test",
-            fieldtype="A",
+            zone="testdemo.ovh",
             subdomain="test",
-            target="0.0.0.0",
+            fieldtype="A",
             ttl=3600,
-            zone="testdemo.ovh")
+            target="0.0.0.0")
         ```
 
         ## Import
@@ -250,11 +250,11 @@ class ZoneRecord(pulumi.CustomResource):
 
         # Add a record to a sub-domain
         test = ovh.domain.ZoneRecord("test",
-            fieldtype="A",
+            zone="testdemo.ovh",
             subdomain="test",
-            target="0.0.0.0",
+            fieldtype="A",
             ttl=3600,
-            zone="testdemo.ovh")
+            target="0.0.0.0")
         ```
 
         ## Import

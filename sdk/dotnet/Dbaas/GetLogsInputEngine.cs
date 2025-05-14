@@ -26,10 +26,10 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
         ///     {
-        ///         IsDeprecated = true,
-        ///         Name = "logstash",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Name = "logstash",
         ///         Version = "6.8",
+        ///         IsDeprecated = true,
         ///     });
         /// 
         /// });
@@ -53,10 +53,10 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
         ///     {
-        ///         IsDeprecated = true,
-        ///         Name = "logstash",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Name = "logstash",
         ///         Version = "6.8",
+        ///         IsDeprecated = true,
         ///     });
         /// 
         /// });
@@ -80,10 +80,10 @@ namespace Pulumi.Ovh.Dbaas
         /// {
         ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
         ///     {
-        ///         IsDeprecated = true,
-        ///         Name = "logstash",
         ///         ServiceName = "ldp-xx-xxxxx",
+        ///         Name = "logstash",
         ///         Version = "6.8",
+        ///         IsDeprecated = true,
         ///     });
         /// 
         /// });

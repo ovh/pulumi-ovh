@@ -115,8 +115,8 @@ class DedicatedServer(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         vds = ovh.vrack.DedicatedServer("vds",
-            server_id="67890",
-            service_name="XXXX")
+            service_name="XXXX",
+            server_id="67890")
         ```
 
         :param str resource_name: The name of the resource.
@@ -142,8 +142,8 @@ class DedicatedServer(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         vds = ovh.vrack.DedicatedServer("vds",
-            server_id="67890",
-            service_name="XXXX")
+            service_name="XXXX",
+            server_id="67890")
         ```
 
         :param str resource_name: The name of the resource.

@@ -16,12 +16,12 @@ import * as utilities from "../utilities";
  * import * as ovh from "@pulumi/ovh";
  *
  * export = async () => {
- *     const privateNetworkPrivate = await ovh.CloudProject.getNetworkPrivate({
+ *     const _private = await ovh.CloudProject.getNetworkPrivate({
  *         serviceName: "XXXXXX",
  *         networkId: "XXX",
  *     });
  *     return {
- *         "private": privateNetworkPrivate,
+ *         "private": _private,
  *     };
  * }
  * ```
@@ -95,12 +95,12 @@ export interface GetNetworkPrivateResult {
  * import * as ovh from "@pulumi/ovh";
  *
  * export = async () => {
- *     const privateNetworkPrivate = await ovh.CloudProject.getNetworkPrivate({
+ *     const _private = await ovh.CloudProject.getNetworkPrivate({
  *         serviceName: "XXXXXX",
  *         networkId: "XXX",
  *     });
  *     return {
- *         "private": privateNetworkPrivate,
+ *         "private": _private,
  *     };
  * }
  * ```

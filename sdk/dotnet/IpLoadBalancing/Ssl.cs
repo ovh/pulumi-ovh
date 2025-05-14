@@ -12,34 +12,6 @@ namespace Pulumi.Ovh.IpLoadBalancing
     /// <summary>
     /// Creates a new custom SSL certificate on your IP Load Balancing
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var lb = Ovh.IpLoadBalancing.GetIpLoadBalancing.Invoke(new()
-    ///     {
-    ///         ServiceName = "ip-1.2.3.4",
-    ///         State = "ok",
-    ///     });
-    /// 
-    ///     var sslname = new Ovh.IpLoadBalancing.Ssl("sslname", new()
-    ///     {
-    ///         Certificate = "...",
-    ///         Chain = "...",
-    ///         DisplayName = "test",
-    ///         Key = "...",
-    ///         ServiceName = lb.Apply(getIpLoadBalancingResult =&gt; getIpLoadBalancingResult.ServiceName),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// SSL can be imported using the following format `service_name` and the `id` of the ssl, separated by "/" e.g.

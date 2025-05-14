@@ -12,11 +12,11 @@ import * as utilities from "../utilities";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
  * const ldp = new ovh.dbaas.LogsCluster("ldp", {
- *     archiveAllowedNetworks: ["10.0.0.0/16"],
+ *     serviceName: "ldp-xx-xxxxx",
  *     clusterId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     archiveAllowedNetworks: ["10.0.0.0/16"],
  *     directInputAllowedNetworks: ["10.0.0.0/16"],
  *     queryAllowedNetworks: ["10.0.0.0/16"],
- *     serviceName: "ldp-xx-xxxxx",
  * });
  * ```
  *

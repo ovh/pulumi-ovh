@@ -228,11 +228,11 @@ class UdpFarm(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farm_name = ovh.ip_load_balancing.UdpFarm("farmName",
-            display_name="ingress-8080-gra",
-            port=80,
+        farm_name = ovh.ip_load_balancing.UdpFarm("farm_name",
             service_name=lb.service_name,
-            zone="gra")
+            display_name="ingress-8080-gra",
+            zone="gra",
+            port=80)
         ```
 
         ## Import
@@ -270,11 +270,11 @@ class UdpFarm(pulumi.CustomResource):
 
         lb = ovh.IpLoadBalancing.get_ip_load_balancing(service_name="ip-1.2.3.4",
             state="ok")
-        farm_name = ovh.ip_load_balancing.UdpFarm("farmName",
-            display_name="ingress-8080-gra",
-            port=80,
+        farm_name = ovh.ip_load_balancing.UdpFarm("farm_name",
             service_name=lb.service_name,
-            zone="gra")
+            display_name="ingress-8080-gra",
+            zone="gra",
+            port=80)
         ```
 
         ## Import
