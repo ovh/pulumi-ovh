@@ -18,11 +18,12 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+
 	ovh "github.com/ovh/pulumi-ovh/provider/v2"
-	//"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
 //go:embed schema-embed.json

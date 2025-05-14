@@ -1,6 +1,6 @@
 {
     "name": "@ovhcloud/pulumi-ovh",
-    "version": "${VERSION}",
+    "version": "2.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing OVH resources.",
     "keywords": [
         "pulumi",
@@ -24,6 +24,7 @@
     "pulumi": {
         "resource": true,
         "name": "ovh",
+        "version": "2.0.0-alpha.0+dev",
         "server": "github://api.github.com/ovh/pulumi-ovh"
     }
 }
