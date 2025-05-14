@@ -16,11 +16,15 @@ package ovh
 
 import (
 	"context"
-	_ "embed"
 	"fmt"
 	"path"
 
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	// The linter requires unnamed imports to have a doc comment
+	_ "embed"
+
+	"github.com/ovh/terraform-provider-ovh/v2/ovh"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -28,7 +32,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/ovh/pulumi-ovh/provider/v2/pkg/version"
-	"github.com/ovh/terraform-provider-ovh/v2/ovh"
 )
 
 // all of the token components used below.
@@ -509,7 +512,9 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(vrackMod, "CloudProject"),
 			},
 			"ovh_vrack_dedicated_cloud": {
-				Tok:       ovhResource(vrackMod, "VrackDedicatedCloud"), // VrackDedicatedCloud instead of DedicatedCloud fix until we don't have to create a ComputeID based on a dedicated_cloud field (error in dotnet sdk generation)
+				// VrackDedicatedCloud instead of DedicatedCloud fix until we don't have to create a ComputeID
+				// based on a dedicated_cloud field (error in dotnet sdk generation)
+				Tok:       ovhResource(vrackMod, "VrackDedicatedCloud"),
 				ComputeID: delegateID("dedicated_cloud"),
 			},
 			"ovh_vrack_dedicated_server": {
@@ -537,7 +542,8 @@ func Provider() tfbridge.ProviderInfo {
 				ComputeID: delegateID("ovh_cloud_connect"),
 			},
 			"ovh_vrack_vrackservices": {
-				Tok: ovhResource(vrackMod, "Vrackservices"), // "Vrackservices" Mandatory name to avoid CSharp issue: /workspaces/pulumi-ovh/sdk/dotnet/Vrack/VrackServices.cs(57,31): error CS0542: 'VrackServices': member names cannot be the same as their enclosing type [/workspaces/pulumi-ovh/sdk/dotnet/Pulumi.Ovh.csproj]
+				// "Vrackservices" Mandatory name to avoid CSharp issue: member names cannot be the same as their enclosing type
+				Tok: ovhResource(vrackMod, "Vrackservices"),
 			},
 			"ovh_cloud_project_workflow_backup": {
 				Tok: ovhResource(cloudProjectMod, "WorkflowBackup"),
