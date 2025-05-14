@@ -47,6 +47,8 @@ provider/**/schema-embed.json
 ## Java projects configuration
 target/
 
+**/__pycache__
+**/venv
 
 # Ignore local build tracking directory
 .make
