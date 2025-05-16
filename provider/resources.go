@@ -27,6 +27,7 @@ import (
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -1121,7 +1122,35 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	prov.MustComputeTokens(
+		tks.MappedModules(
+			"ovh_",
+			ovhMod,
+			map[string]string{
+				"Cloud":                cloudMod,
+				"CloudProject":         cloudProjectMod,
+				"CloudProjectDatabase": cloudProjectDbMod,
+				"Dbaas":                dbaasMod,
+				"Dedicated":            dedicatedMod,
+				"Domain":               domainMod,
+				"Hosting":              hostingMod,
+				"Ip":                   ipMod,
+				"IpLoadBalancing":      ipLoadBalancingMod,
+				"Me":                   meMod,
+				"Vrack":                vrackMod,
+				"Order":                orderMod,
+				"Vps":                  vpsMod,
+				"Iam":                  iamMod,
+				"Okms":                 okmsMod,
+				"SavingsPlan":          savingPlansMod,
+				"OVHcloud":             ovhCloudMod,
+				"VMware":               vmwareMod,
+			},
+			tks.MakeStandard(ovhPkg),
+		),
+	)
 	prov.SetAutonaming(255, "-")
+	prov.MustApplyAutoAliases()
 
 	return prov
 }
