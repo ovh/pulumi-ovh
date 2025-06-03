@@ -128,6 +128,7 @@ jobs:
       with:
         sdk: all
         version: ${{ inputs.version }}
+        gradle-version: 8.8
     - name: Publish SDKs (except Java)
       if: inputs.skipJavaSdk == true
       uses: pulumi/pulumi-package-publisher@696a0fe98f86d86ada2a842d1859f3e8c40d6cd7 # v0.0.21
