@@ -147,9 +147,7 @@ generate_java: .make/generate_java
 #		gradle --console=plain javadoc
 #	@touch $@
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java:: bin/pulumi-java-gen
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
-
+build_java::
 	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
 	echo "update inceptionYear in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/inceptionYear = .*/inceptionYear = "2024"/g' build.gradle
 
