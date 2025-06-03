@@ -224,28 +224,28 @@ public class Vps extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="planOptions", refs={List.class,VpsPlanOption.class}, tree="[0,1]")
-    private Output<List<VpsPlanOption>> planOptions;
+    private Output</* @Nullable */ List<VpsPlanOption>> planOptions;
 
     /**
      * @return Product Plan to order
      * 
      */
-    public Output<List<VpsPlanOption>> planOptions() {
-        return this.planOptions;
+    public Output<Optional<List<VpsPlanOption>>> planOptions() {
+        return Codegen.optional(this.planOptions);
     }
     /**
      * Product Plan to order
      * 
      */
     @Export(name="plans", refs={List.class,VpsPlan.class}, tree="[0,1]")
-    private Output<List<VpsPlan>> plans;
+    private Output</* @Nullable */ List<VpsPlan>> plans;
 
     /**
      * @return Product Plan to order
      * 
      */
-    public Output<List<VpsPlan>> plans() {
-        return this.plans;
+    public Output<Optional<List<VpsPlan>>> plans() {
+        return Codegen.optional(this.plans);
     }
     /**
      * The internal name of your VPS offer
@@ -349,7 +349,6 @@ public class Vps extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -82,10 +82,10 @@ runs:
       with:
         cache: gradle
         distribution: temurin
-        java-version: 11
+        java-version: 21
 
     - name: Setup Gradle
       if: inputs.tools == 'all' || contains(inputs.tools, 'java')
       uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1 # v3
       with:
-        gradle-version: 7.6
+        gradle-version: 8.8

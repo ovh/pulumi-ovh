@@ -77,7 +77,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
-import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudProjectDatabaseFunctions {
@@ -208,49 +207,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetCapabilitiesResult> getCapabilities(GetCapabilitiesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", TypeShape.of(GetCapabilitiesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about capabilities of a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetCapabilitiesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var capabilities = CloudProjectDatabaseFunctions.getCapabilities(GetCapabilitiesArgs.builder()
-     *             .serviceName("XXX")
-     *             .build());
-     * 
-     *         ctx.export("capabilitiesEngineName", List.of(capabilities).stream().map(element -> element.engines()[0]).collect(toList()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetCapabilitiesResult> getCapabilities(GetCapabilitiesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getCapabilities:getCapabilities", TypeShape.of(GetCapabilitiesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -429,51 +385,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about certificates of a cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certificates = CloudProjectDatabaseFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .serviceName("XXX")
-     *             .engine("YYY")
-     *             .clusterId("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("certificatesCa", certificates.ca());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -706,53 +617,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the managed database of a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * To get information of a database cluster service:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()
-     *             .serviceName("XXXXXX")
-     *             .engine("YYYY")
-     *             .id("ZZZZ")
-     *             .build());
-     * 
-     *         ctx.export("clusterId", db.id());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
     }
@@ -937,52 +801,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a database of a database cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var database = CloudProjectDatabaseFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
-     *             .serviceName("XXX")
-     *             .engine("YYY")
-     *             .clusterId("ZZZ")
-     *             .name("UUU")
-     *             .build());
-     * 
-     *         ctx.export("databaseName", database.name());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
@@ -1119,51 +937,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of databases of a database cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var databases = CloudProjectDatabaseFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
-     *             .serviceName("XXXX")
-     *             .engine("YYYY")
-     *             .clusterId("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("databaseIds", databases.databaseIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1392,52 +1165,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseIntegrationResult> getDatabaseIntegration(GetDatabaseIntegrationArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", TypeShape.of(GetDatabaseIntegrationResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about an integration of a database cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseIntegrationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integration = CloudProjectDatabaseFunctions.getDatabaseIntegration(GetDatabaseIntegrationArgs.builder()
-     *             .serviceName("XXX")
-     *             .engine("YYY")
-     *             .clusterId("ZZZ")
-     *             .id("UUU")
-     *             .build());
-     * 
-     *         ctx.export("integrationType", integration.type());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetDatabaseIntegrationResult> getDatabaseIntegrationPlain(GetDatabaseIntegrationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseIntegration:getDatabaseIntegration", TypeShape.of(GetDatabaseIntegrationResult.class), args, Utilities.withVersion(options));
     }
@@ -1574,51 +1301,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetDatabaseIntegrationsResult> getDatabaseIntegrations(GetDatabaseIntegrationsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseIntegrations:getDatabaseIntegrations", TypeShape.of(GetDatabaseIntegrationsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of integrations of a database cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseIntegrationsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrations = CloudProjectDatabaseFunctions.getDatabaseIntegrations(GetDatabaseIntegrationsArgs.builder()
-     *             .serviceName("XXX")
-     *             .engine("YYY")
-     *             .clusterId("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("integrationIds", integrations.integrationIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetDatabaseIntegrationsResult> getDatabaseIntegrations(GetDatabaseIntegrationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseIntegrations:getDatabaseIntegrations", TypeShape.of(GetDatabaseIntegrationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1847,52 +1529,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseLogSubscriptionResult> getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", TypeShape.of(GetDatabaseLogSubscriptionResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a log subscription for a cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var subscription = CloudProjectDatabaseFunctions.getDatabaseLogSubscription(GetDatabaseLogSubscriptionArgs.builder()
-     *             .serviceName("VVV")
-     *             .engine("XXX")
-     *             .clusterId("YYY")
-     *             .id("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("subscriptionLdpName", subscription.ldpServiceName());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetDatabaseLogSubscriptionResult> getDatabaseLogSubscriptionPlain(GetDatabaseLogSubscriptionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabaseLogSubscription:getDatabaseLogSubscription", TypeShape.of(GetDatabaseLogSubscriptionResult.class), args, Utilities.withVersion(options));
     }
@@ -2029,51 +1665,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetDatabaseLogSubscriptionsResult> getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", TypeShape.of(GetDatabaseLogSubscriptionsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of log subscription for a cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseLogSubscriptionsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var subscriptions = CloudProjectDatabaseFunctions.getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs.builder()
-     *             .serviceName("XXX")
-     *             .engine("YYY")
-     *             .clusterId("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("subscriptionIds", subscriptions.subscriptionIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetDatabaseLogSubscriptionsResult> getDatabaseLogSubscriptions(GetDatabaseLogSubscriptionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions", TypeShape.of(GetDatabaseLogSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2294,50 +1885,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabasePostgreSQLConnectionPoolsResult> getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", TypeShape.of(GetDatabasePostgreSQLConnectionPoolsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of connection pools of a postgresql cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabasePostgreSQLConnectionPoolsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testPools = CloudProjectDatabaseFunctions.getDatabasePostgreSQLConnectionPools(GetDatabasePostgreSQLConnectionPoolsArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .build());
-     * 
-     *         ctx.export("connectionPoolIds", testPools.connectionPoolIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetDatabasePostgreSQLConnectionPoolsResult> getDatabasePostgreSQLConnectionPoolsPlain(GetDatabasePostgreSQLConnectionPoolsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools", TypeShape.of(GetDatabasePostgreSQLConnectionPoolsResult.class), args, Utilities.withVersion(options));
     }
@@ -2477,52 +2024,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of managed databases of a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * To get the list of database clusters service for a given engine:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dbs = CloudProjectDatabaseFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .serviceName("XXXXXX")
-     *             .engine("YYYY")
-     *             .build());
-     * 
-     *         ctx.export("clusterIds", dbs.clusterIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2764,55 +2265,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetIpRestrictionsResult> getIpRestrictions(GetIpRestrictionsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", TypeShape.of(GetIpRestrictionsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
-     * 
-     * Use this data source to get the list of IP restrictions associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * To get the list of IP restriction on a database cluster service:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetIpRestrictionsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()
-     *             .serviceName("XXXXXX")
-     *             .engine("YYYY")
-     *             .clusterId("ZZZZ")
-     *             .build());
-     * 
-     *         ctx.export("ips", ipRestrictions.ips());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetIpRestrictionsResult> getIpRestrictionsPlain(GetIpRestrictionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", TypeShape.of(GetIpRestrictionsResult.class), args, Utilities.withVersion(options));
     }
@@ -2993,51 +2445,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", TypeShape.of(GetKafkaAclResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about an ACL of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaAclArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var acl = CloudProjectDatabaseFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .id("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("aclPermission", acl.permission());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl", TypeShape.of(GetKafkaAclResult.class), args, Utilities.withVersion(options));
     }
@@ -3171,50 +2578,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetKafkaAclsResult> getKafkaAcls(GetKafkaAclsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", TypeShape.of(GetKafkaAclsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaAclsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var acls = CloudProjectDatabaseFunctions.getKafkaAcls(GetKafkaAclsArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .build());
-     * 
-     *         ctx.export("aclIds", acls.aclIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetKafkaAclsResult> getKafkaAcls(GetKafkaAclsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls", TypeShape.of(GetKafkaAclsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3438,51 +2801,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a schema registry ACL of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaSchemaRegistryAclArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var schemaRegistryAcl = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .id("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("aclPermission", schemaRegistryAcl.permission());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
     }
@@ -3616,50 +2934,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcls:getKafkaSchemaRegistryAcls", TypeShape.of(GetKafkaSchemaRegistryAclsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of ACLs of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaSchemaRegistryAclsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var schemaRegistryAcls = CloudProjectDatabaseFunctions.getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .build());
-     * 
-     *         ctx.export("aclIds", schemaRegistryAcls.aclIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetKafkaSchemaRegistryAclsResult> getKafkaSchemaRegistryAcls(GetKafkaSchemaRegistryAclsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcls:getKafkaSchemaRegistryAcls", TypeShape.of(GetKafkaSchemaRegistryAclsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3883,51 +3157,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a topic of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaTopicArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var topic = CloudProjectDatabaseFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .id("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("topicName", topic.name());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
     }
@@ -4061,50 +3290,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetKafkaTopicsResult> getKafkaTopics(GetKafkaTopicsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", TypeShape.of(GetKafkaTopicsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of topics of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaTopicsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var topics = CloudProjectDatabaseFunctions.getKafkaTopics(GetKafkaTopicsArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .build());
-     * 
-     *         ctx.export("topicIds", topics.topicIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetKafkaTopicsResult> getKafkaTopics(GetKafkaTopicsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaTopics:getKafkaTopics", TypeShape.of(GetKafkaTopicsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4284,51 +3469,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetKafkaUserAccessResult> getKafkaUserAccess(GetKafkaUserAccessArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", TypeShape.of(GetKafkaUserAccessResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about user acces of a kafka cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetKafkaUserAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var access = CloudProjectDatabaseFunctions.getKafkaUserAccess(GetKafkaUserAccessArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .userId("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("accessCert", access.cert());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetKafkaUserAccessResult> getKafkaUserAccess(GetKafkaUserAccessArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getKafkaUserAccess:getKafkaUserAccess", TypeShape.of(GetKafkaUserAccessResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4597,62 +3737,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetPostgresSqlConnectionPoolResult> getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", TypeShape.of(GetPostgresSqlConnectionPoolResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a connection pool of a postgresql cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlConnectionPoolArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testPool = CloudProjectDatabaseFunctions.getPostgresSqlConnectionPool(GetPostgresSqlConnectionPoolArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .name("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("testPool", Map.ofEntries(
-     *             Map.entry("serviceName", testPool.serviceName()),
-     *             Map.entry("clusterId", testPool.clusterId()),
-     *             Map.entry("name", testPool.name()),
-     *             Map.entry("databaseId", testPool.databaseId()),
-     *             Map.entry("mode", testPool.mode()),
-     *             Map.entry("size", testPool.size()),
-     *             Map.entry("port", testPool.port()),
-     *             Map.entry("sslMode", testPool.sslMode()),
-     *             Map.entry("uri", testPool.uri()),
-     *             Map.entry("userId", testPool.userId())
-     *         ));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetPostgresSqlConnectionPoolResult> getPostgresSqlConnectionPoolPlain(GetPostgresSqlConnectionPoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getPostgresSqlConnectionPool:getPostgresSqlConnectionPool", TypeShape.of(GetPostgresSqlConnectionPoolResult.class), args, Utilities.withVersion(options));
     }
@@ -4789,51 +3873,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetPostgresSqlUserResult> getPostgresSqlUser(GetPostgresSqlUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", TypeShape.of(GetPostgresSqlUserResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a user of a postgresql cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetPostgresSqlUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var pgUser = CloudProjectDatabaseFunctions.getPostgresSqlUser(GetPostgresSqlUserArgs.builder()
-     *             .serviceName("XXX")
-     *             .clusterId("YYY")
-     *             .name("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("pgUserRoles", pgUser.roles());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetPostgresSqlUserResult> getPostgresSqlUser(GetPostgresSqlUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getPostgresSqlUser:getPostgresSqlUser", TypeShape.of(GetPostgresSqlUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5062,52 +4101,6 @@ public final class CloudProjectDatabaseFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about a user of a database cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = CloudProjectDatabaseFunctions.getUser(GetUserArgs.builder()
-     *             .serviceName("XXX")
-     *             .engine("YYY")
-     *             .clusterId("ZZZ")
-     *             .name("UUU")
-     *             .build());
-     * 
-     *         ctx.export("userName", user.name());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
@@ -5244,51 +4237,6 @@ public final class CloudProjectDatabaseFunctions {
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the list of users of a database cluster associated with a public cloud project.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;
-     * import com.pulumi.ovh.CloudProjectDatabase.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = CloudProjectDatabaseFunctions.getUsers(GetUsersArgs.builder()
-     *             .serviceName("XXXX")
-     *             .engine("YYYY")
-     *             .clusterId("ZZZ")
-     *             .build());
-     * 
-     *         ctx.export("userIds", users.userIds());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**

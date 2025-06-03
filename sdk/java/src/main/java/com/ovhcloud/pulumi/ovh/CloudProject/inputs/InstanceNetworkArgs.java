@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.InstanceNetworkPrivateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -16,14 +17,29 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     public static final InstanceNetworkArgs Empty = new InstanceNetworkArgs();
 
     /**
-     * Set the new instance as public boolean
+     * Private network information
+     * 
+     */
+    @Import(name="private")
+    private @Nullable Output<InstanceNetworkPrivateArgs> private_;
+
+    /**
+     * @return Private network information
+     * 
+     */
+    public Optional<Output<InstanceNetworkPrivateArgs>> private_() {
+        return Optional.ofNullable(this.private_);
+    }
+
+    /**
+     * Set the new instance as public
      * 
      */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
     /**
-     * @return Set the new instance as public boolean
+     * @return Set the new instance as public
      * 
      */
     public Optional<Output<Boolean>> public_() {
@@ -33,6 +49,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     private InstanceNetworkArgs() {}
 
     private InstanceNetworkArgs(InstanceNetworkArgs $) {
+        this.private_ = $.private_;
         this.public_ = $.public_;
     }
 
@@ -55,7 +72,28 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param public_ Set the new instance as public boolean
+         * @param private_ Private network information
+         * 
+         * @return builder
+         * 
+         */
+        public Builder private_(@Nullable Output<InstanceNetworkPrivateArgs> private_) {
+            $.private_ = private_;
+            return this;
+        }
+
+        /**
+         * @param private_ Private network information
+         * 
+         * @return builder
+         * 
+         */
+        public Builder private_(InstanceNetworkPrivateArgs private_) {
+            return private_(Output.of(private_));
+        }
+
+        /**
+         * @param public_ Set the new instance as public
          * 
          * @return builder
          * 
@@ -66,7 +104,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param public_ Set the new instance as public boolean
+         * @param public_ Set the new instance as public
          * 
          * @return builder
          * 

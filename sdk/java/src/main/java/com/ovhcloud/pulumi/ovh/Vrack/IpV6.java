@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh.Vrack;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.ovhcloud.pulumi.ovh.Vrack.IpV6Args;
 import com.ovhcloud.pulumi.ovh.Vrack.inputs.IpV6State;
+import com.ovhcloud.pulumi.ovh.Vrack.outputs.IpV6BridgedSubrange;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -15,42 +16,6 @@ import javax.annotation.Nullable;
 
 /**
  * Attach an IPv6 block to a VRack.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.Vrack.IpV6;
- * import com.ovhcloud.pulumi.ovh.Vrack.IpV6Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var vrackBlock = new IpV6("vrackBlock", IpV6Args.builder()
- *             .serviceName("<vRack service name>")
- *             .block("<ipv6 block>")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -78,6 +43,20 @@ public class IpV6 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> block() {
         return this.block;
+    }
+    /**
+     * Bridged subrange configuration.
+     * 
+     */
+    @Export(name="bridgedSubrange", refs={IpV6BridgedSubrange.class}, tree="[0]")
+    private Output<IpV6BridgedSubrange> bridgedSubrange;
+
+    /**
+     * @return Bridged subrange configuration.
+     * 
+     */
+    public Output<IpV6BridgedSubrange> bridgedSubrange() {
+        return this.bridgedSubrange;
     }
     /**
      * The internal name of your vrack
@@ -133,7 +112,6 @@ public class IpV6 extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

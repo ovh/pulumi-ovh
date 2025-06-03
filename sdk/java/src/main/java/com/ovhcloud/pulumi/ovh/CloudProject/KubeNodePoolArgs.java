@@ -11,6 +11,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -95,6 +96,13 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Double>> autoscalingScaleDownUtilizationThreshold() {
         return Optional.ofNullable(this.autoscalingScaleDownUtilizationThreshold);
+    }
+
+    @Import(name="availabilityZones")
+    private @Nullable Output<List<String>> availabilityZones;
+
+    public Optional<Output<List<String>>> availabilityZones() {
+        return Optional.ofNullable(this.availabilityZones);
     }
 
     /**
@@ -240,6 +248,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.autoscalingScaleDownUnneededTimeSeconds = $.autoscalingScaleDownUnneededTimeSeconds;
         this.autoscalingScaleDownUnreadyTimeSeconds = $.autoscalingScaleDownUnreadyTimeSeconds;
         this.autoscalingScaleDownUtilizationThreshold = $.autoscalingScaleDownUtilizationThreshold;
+        this.availabilityZones = $.availabilityZones;
         this.desiredNodes = $.desiredNodes;
         this.flavorName = $.flavorName;
         this.kubeId = $.kubeId;
@@ -374,6 +383,19 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoscalingScaleDownUtilizationThreshold(Double autoscalingScaleDownUtilizationThreshold) {
             return autoscalingScaleDownUtilizationThreshold(Output.of(autoscalingScaleDownUtilizationThreshold));
+        }
+
+        public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
+            $.availabilityZones = availabilityZones;
+            return this;
+        }
+
+        public Builder availabilityZones(List<String> availabilityZones) {
+            return availabilityZones(Output.of(availabilityZones));
+        }
+
+        public Builder availabilityZones(String... availabilityZones) {
+            return availabilityZones(List.of(availabilityZones));
         }
 
         /**

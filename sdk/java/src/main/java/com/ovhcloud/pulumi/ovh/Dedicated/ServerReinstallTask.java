@@ -19,18 +19,6 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * ## Import
- * 
- * Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by &#34;/&#34; E.g.,
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import ovh:Dedicated/serverReinstallTask:ServerReinstallTask ovh_dedicated_server_reinstall_task nsXXXX.ipXXXX/operating_system/12345
- * ```
- * 
- */
 @ResourceType(type="ovh:Dedicated/serverReinstallTask:ServerReinstallTask")
 public class ServerReinstallTask extends com.pulumi.resources.CustomResource {
     /**
@@ -245,7 +233,6 @@ public class ServerReinstallTask extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

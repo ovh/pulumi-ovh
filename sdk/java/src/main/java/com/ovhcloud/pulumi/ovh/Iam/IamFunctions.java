@@ -24,25 +24,51 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
-import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class IamFunctions {
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetPermissionsGroupResult> getPermissionsGroup(GetPermissionsGroupArgs args) {
         return getPermissionsGroup(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetPermissionsGroupResult> getPermissionsGroupPlain(GetPermissionsGroupPlainArgs args) {
-        return getPermissionsGroupPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetPermissionsGroupResult> getPermissionsGroup(GetPermissionsGroupArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetPermissionsGroupResult> getPermissionsGroup(GetPermissionsGroupArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetPermissionsGroupResult> getPermissionsGroupPlain(GetPermissionsGroupPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve an IAM permissions group.
@@ -75,6 +101,129 @@ public final class IamFunctions {
      *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
      *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
      *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPermissionsGroupResult> getPermissionsGroupPlain(GetPermissionsGroupPlainArgs args) {
+        return getPermissionsGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPermissionsGroupResult> getPermissionsGroup(GetPermissionsGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve an IAM permissions group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
+     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPermissionsGroupResult> getPermissionsGroupPlain(GetPermissionsGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:Iam/getPermissionsGroup:getPermissionsGroup", TypeShape.of(GetPermissionsGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all IAM permissions groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Iam.IamFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = IamFunctions.getPermissionsGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -87,7 +236,7 @@ public final class IamFunctions {
         return getPermissionsGroups(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve an IAM permissions group.
+     * Use this data source to retrieve all IAM permissions groups.
      * 
      * ## Example Usage
      * 
@@ -100,7 +249,6 @@ public final class IamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -114,9 +262,7 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
-     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-     *             .build());
+     *         final var groups = IamFunctions.getPermissionsGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -129,7 +275,7 @@ public final class IamFunctions {
         return getPermissionsGroupsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve an IAM permissions group.
+     * Use this data source to retrieve all IAM permissions groups.
      * 
      * ## Example Usage
      * 
@@ -142,7 +288,6 @@ public final class IamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -156,9 +301,7 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
-     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-     *             .build());
+     *         final var groups = IamFunctions.getPermissionsGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -171,7 +314,7 @@ public final class IamFunctions {
         return getPermissionsGroups(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve an IAM permissions group.
+     * Use this data source to retrieve all IAM permissions groups.
      * 
      * ## Example Usage
      * 
@@ -184,7 +327,6 @@ public final class IamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -198,9 +340,7 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
-     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-     *             .build());
+     *         final var groups = IamFunctions.getPermissionsGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -213,7 +353,7 @@ public final class IamFunctions {
         return getPermissionsGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve an IAM permissions group.
+     * Use this data source to retrieve all IAM permissions groups.
      * 
      * ## Example Usage
      * 
@@ -226,7 +366,6 @@ public final class IamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -240,9 +379,7 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
-     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-     *             .build());
+     *         final var groups = IamFunctions.getPermissionsGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -255,7 +392,7 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroups:getPermissionsGroups", TypeShape.of(GetPermissionsGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve an IAM permissions group.
+     * Use this data source to retrieve all IAM permissions groups.
      * 
      * ## Example Usage
      * 
@@ -268,7 +405,6 @@ public final class IamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -282,51 +418,7 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
-     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetPermissionsGroupsResult> getPermissionsGroups(InvokeArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getPermissionsGroups:getPermissionsGroups", TypeShape.of(GetPermissionsGroupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve an IAM permissions group.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPermissionsGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var website = IamFunctions.getPermissionsGroup(GetPermissionsGroupArgs.builder()
-     *             .urn("urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
-     *             .build());
+     *         final var groups = IamFunctions.getPermissionsGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -569,45 +661,6 @@ public final class IamFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetPoliciesResult> getPolicies(InvokeArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to list the existing IAM policies of an account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Iam.IamFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myPolicies = IamFunctions.getPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Iam/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -776,48 +829,6 @@ public final class IamFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve am IAM policy.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myPolicy = IamFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .id("my_policy_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Iam/getPolicy:getPolicy", TypeShape.of(GetPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -855,18 +866,6 @@ public final class IamFunctions {
      * 
      */
     public static Output<GetReferenceActionsResult> getReferenceActions(GetReferenceActionsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getReferenceActions:getReferenceActions", TypeShape.of(GetReferenceActionsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to list the IAM action associated with a resource type.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetReferenceActionsResult> getReferenceActions(GetReferenceActionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Iam/getReferenceActions:getReferenceActions", TypeShape.of(GetReferenceActionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1112,45 +1111,6 @@ public final class IamFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetReferenceResourceTypeResult> getReferenceResourceType(InvokeArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getReferenceResourceType:getReferenceResourceType", TypeShape.of(GetReferenceResourceTypeResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to list all the IAM resource types.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Iam.IamFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var types = IamFunctions.getReferenceResourceType(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetReferenceResourceTypeResult> getReferenceResourceTypePlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Iam/getReferenceResourceType:getReferenceResourceType", TypeShape.of(GetReferenceResourceTypeResult.class), args, Utilities.withVersion(options));
     }
@@ -1278,48 +1238,6 @@ public final class IamFunctions {
      * 
      */
     public static Output<GetResourceGroupResult> getResourceGroup(GetResourceGroupArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getResourceGroup:getResourceGroup", TypeShape.of(GetResourceGroupResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source get details about a resource group.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Iam.IamFunctions;
-     * import com.pulumi.ovh.Iam.inputs.GetResourceGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myResourceGroup = IamFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .id("my_resource_group_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetResourceGroupResult> getResourceGroup(GetResourceGroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Iam/getResourceGroup:getResourceGroup", TypeShape.of(GetResourceGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1557,45 +1475,6 @@ public final class IamFunctions {
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Iam/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to list the existing IAM policies of an account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Iam.IamFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myGroups = IamFunctions.getResourceGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetResourceGroupsResult> getResourceGroups(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Iam/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -518,6 +518,10 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:       ovhResource(vrackMod, "VrackDedicatedCloud"),
 				ComputeID: delegateID("dedicated_cloud"),
 			},
+			"ovh_vrack_dedicated_cloud_datacenter": {
+				Tok:       ovhResource(vrackMod, "DedicatedCloudDatacenter"),
+				ComputeID: delegateID("datacenter"),
+			},
 			"ovh_vrack_dedicated_server": {
 				Tok: ovhResource(vrackMod, "DedicatedServer"),
 			},

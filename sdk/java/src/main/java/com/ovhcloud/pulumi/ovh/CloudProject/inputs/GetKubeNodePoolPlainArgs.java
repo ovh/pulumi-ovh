@@ -7,6 +7,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolTemplate;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetKubeNodePoolPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubeNodePoolPlainArgs Empty = new GetKubeNodePoolPlainArgs();
+
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
+    @Import(name="availabilityZones")
+    private @Nullable List<String> availabilityZones;
+
+    /**
+     * @return list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
+    public Optional<List<String>> availabilityZones() {
+        return Optional.ofNullable(this.availabilityZones);
+    }
 
     /**
      * The id of the managed kubernetes cluster.
@@ -71,6 +87,7 @@ public final class GetKubeNodePoolPlainArgs extends com.pulumi.resources.InvokeA
     private GetKubeNodePoolPlainArgs() {}
 
     private GetKubeNodePoolPlainArgs(GetKubeNodePoolPlainArgs $) {
+        this.availabilityZones = $.availabilityZones;
         this.kubeId = $.kubeId;
         this.name = $.name;
         this.serviceName = $.serviceName;
@@ -93,6 +110,27 @@ public final class GetKubeNodePoolPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetKubeNodePoolPlainArgs defaults) {
             $ = new GetKubeNodePoolPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZones(@Nullable List<String> availabilityZones) {
+            $.availabilityZones = availabilityZones;
+            return this;
+        }
+
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZones(String... availabilityZones) {
+            return availabilityZones(List.of(availabilityZones));
         }
 
         /**

@@ -16,6 +16,7 @@
         "cloud/getProject.ts",
         "cloud/getProjects.ts",
         "cloud/index.ts",
+        "cloudProjectSshKey.ts",
         "cloudproject/alerting.ts",
         "cloudproject/containerRegistry.ts",
         "cloudproject/containerRegistryIPRestrictionsManagement.ts",
@@ -300,6 +301,7 @@
         "vps/index.ts",
         "vps/vps.ts",
         "vrack/cloudProject.ts",
+        "vrack/dedicatedCloudDatacenter.ts",
         "vrack/dedicatedServer.ts",
         "vrack/dedicatedServerInterface.ts",
         "vrack/getVracks.ts",
@@ -310,6 +312,7 @@
         "vrack/ovhcloudConnect.ts",
         "vrack/vrack.ts",
         "vrack/vrackDedicatedCloud.ts",
-        "vrack/vrackservices.ts"
+        "vrack/vrackservices.ts",
+        "vrackIpv6RoutedSubrange.ts"
     ]
 }

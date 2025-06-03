@@ -16,6 +16,10 @@ public final class GetPermissionsGroupsResult {
      * 
      */
     private String id;
+    /**
+     * @return List of available permissions groups URNs.
+     * 
+     */
     private List<String> urns;
 
     private GetPermissionsGroupsResult() {}
@@ -26,6 +30,10 @@ public final class GetPermissionsGroupsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of available permissions groups URNs.
+     * 
+     */
     public List<String> urns() {
         return this.urns;
     }

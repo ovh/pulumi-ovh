@@ -110,14 +110,14 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
     }
 
     /**
-     * Static host routes of subnet
+     * List of custom host routes. Changing this value recreates the resource.
      * 
      */
     @Import(name="hostRoutes")
     private @Nullable Output<List<NetworkPrivateSubnetV2HostRouteArgs>> hostRoutes;
 
     /**
-     * @return Static host routes of subnet
+     * @return List of custom host routes. Changing this value recreates the resource.
      * 
      */
     public Optional<Output<List<NetworkPrivateSubnetV2HostRouteArgs>>> hostRoutes() {
@@ -381,7 +381,7 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostRoutes Static host routes of subnet
+         * @param hostRoutes List of custom host routes. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostRoutes Static host routes of subnet
+         * @param hostRoutes List of custom host routes. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class NetworkPrivateSubnetV2State extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param hostRoutes Static host routes of subnet
+         * @param hostRoutes List of custom host routes. Changing this value recreates the resource.
          * 
          * @return builder
          * 

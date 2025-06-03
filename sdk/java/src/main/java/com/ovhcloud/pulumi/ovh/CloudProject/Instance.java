@@ -340,6 +340,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sshKeyCreate);
     }
     /**
+     * Instance status
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return Instance status
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
      * Instance task state
      * 
      */
@@ -407,7 +421,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

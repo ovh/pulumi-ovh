@@ -141,14 +141,14 @@ public class Server extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output<String> displayName;
+    private Output</* @Nullable */ String> displayName;
 
     /**
      * @return Resource display name
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
     }
     /**
      * Path of the EFI bootloader
@@ -191,6 +191,20 @@ public class Server extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ip() {
         return this.ip;
+    }
+    /**
+     * Whether we should avoid terminating the service when destroying the resource
+     * 
+     */
+    @Export(name="keepServiceAfterDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> keepServiceAfterDestroy;
+
+    /**
+     * @return Whether we should avoid terminating the service when destroying the resource
+     * 
+     */
+    public Output<Optional<Boolean>> keepServiceAfterDestroy() {
+        return Codegen.optional(this.keepServiceAfterDestroy);
     }
     /**
      * Link speed of the server
@@ -297,16 +311,16 @@ public class Server extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ovhSubsidiary);
     }
     @Export(name="planOptions", refs={List.class,ServerPlanOption.class}, tree="[0,1]")
-    private Output<List<ServerPlanOption>> planOptions;
+    private Output</* @Nullable */ List<ServerPlanOption>> planOptions;
 
-    public Output<List<ServerPlanOption>> planOptions() {
-        return this.planOptions;
+    public Output<Optional<List<ServerPlanOption>>> planOptions() {
+        return Codegen.optional(this.planOptions);
     }
     @Export(name="plans", refs={List.class,ServerPlan.class}, tree="[0,1]")
-    private Output<List<ServerPlan>> plans;
+    private Output</* @Nullable */ List<ServerPlan>> plans;
 
-    public Output<List<ServerPlan>> plans() {
-        return this.plans;
+    public Output<Optional<List<ServerPlan>>> plans() {
+        return Codegen.optional(this.plans);
     }
     /**
      * Power state of the server (poweron, poweroff)
@@ -321,6 +335,34 @@ public class Server extends com.pulumi.resources.CustomResource {
      */
     public Output<String> powerState() {
         return this.powerState;
+    }
+    /**
+     * Defines whether the server should not be reinstalled after creating the resource
+     * 
+     */
+    @Export(name="preventInstallOnCreate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> preventInstallOnCreate;
+
+    /**
+     * @return Defines whether the server should not be reinstalled after creating the resource
+     * 
+     */
+    public Output<Optional<Boolean>> preventInstallOnCreate() {
+        return Codegen.optional(this.preventInstallOnCreate);
+    }
+    /**
+     * Defines whether the server should not be reinstalled when importing the resource
+     * 
+     */
+    @Export(name="preventInstallOnImport", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> preventInstallOnImport;
+
+    /**
+     * @return Defines whether the server should not be reinstalled when importing the resource
+     * 
+     */
+    public Output<Optional<Boolean>> preventInstallOnImport() {
+        return Codegen.optional(this.preventInstallOnImport);
     }
     /**
      * Does this server have professional use option
@@ -383,28 +425,28 @@ public class Server extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rescueMail", refs={String.class}, tree="[0]")
-    private Output<String> rescueMail;
+    private Output</* @Nullable */ String> rescueMail;
 
     /**
      * @return Rescue mail of the server
      * 
      */
-    public Output<String> rescueMail() {
-        return this.rescueMail;
+    public Output<Optional<String>> rescueMail() {
+        return Codegen.optional(this.rescueMail);
     }
     /**
      * Public SSH Key used in the rescue mode
      * 
      */
     @Export(name="rescueSshKey", refs={String.class}, tree="[0]")
-    private Output<String> rescueSshKey;
+    private Output</* @Nullable */ String> rescueSshKey;
 
     /**
      * @return Public SSH Key used in the rescue mode
      * 
      */
-    public Output<String> rescueSshKey() {
-        return this.rescueSshKey;
+    public Output<Optional<String>> rescueSshKey() {
+        return Codegen.optional(this.rescueSshKey);
     }
     /**
      * Dedicated server reverse
@@ -433,6 +475,20 @@ public class Server extends com.pulumi.resources.CustomResource {
      */
     public Output<String> rootDevice() {
         return this.rootDevice;
+    }
+    /**
+     * Actions to run before destroying the resource
+     * 
+     */
+    @Export(name="runActionsBeforeDestroys", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> runActionsBeforeDestroys;
+
+    /**
+     * @return Actions to run before destroying the resource
+     * 
+     */
+    public Output<Optional<List<String>>> runActionsBeforeDestroys() {
+        return Codegen.optional(this.runActionsBeforeDestroys);
     }
     /**
      * Server id
@@ -544,7 +600,6 @@ public class Server extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

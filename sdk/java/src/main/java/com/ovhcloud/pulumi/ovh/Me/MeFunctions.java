@@ -27,7 +27,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
-import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -156,48 +155,6 @@ public final class MeFunctions {
      * 
      */
     public static Output<GetAPIOAuth2ClientResult> getAPIOAuth2Client(GetAPIOAuth2ClientArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", TypeShape.of(GetAPIOAuth2ClientResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an existing OAuth2 service account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myOauth2Client = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .clientId("5f8969a993ec8b4b")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetAPIOAuth2ClientResult> getAPIOAuth2Client(GetAPIOAuth2ClientArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Me/getAPIOAuth2Client:getAPIOAuth2Client", TypeShape.of(GetAPIOAuth2ClientResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -485,47 +442,6 @@ public final class MeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetAPIOAuth2ClientsResult> getAPIOAuth2Clients(InvokeArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", TypeShape.of(GetAPIOAuth2ClientsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information the list of existing OAuth2 service account IDs.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetAPIOAuth2ClientsResult> getAPIOAuth2ClientsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Me/getAPIOAuth2Clients:getAPIOAuth2Clients", TypeShape.of(GetAPIOAuth2ClientsResult.class), args, Utilities.withVersion(options));
     }
@@ -653,48 +569,6 @@ public final class MeFunctions {
      * 
      */
     public static Output<GetIdentityGroupResult> getIdentityGroup(GetIdentityGroupArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getIdentityGroup:getIdentityGroup", TypeShape.of(GetIdentityGroupResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an identity group.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetIdentityGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myGroup = MeFunctions.getIdentityGroup(GetIdentityGroupArgs.builder()
-     *             .name("my_group_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetIdentityGroupResult> getIdentityGroup(GetIdentityGroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Me/getIdentityGroup:getIdentityGroup", TypeShape.of(GetIdentityGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -970,45 +844,6 @@ public final class MeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetIdentityGroupsResult> getIdentityGroups(InvokeArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getIdentityGroups:getIdentityGroups", TypeShape.of(GetIdentityGroupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve the list of the account&#39;s identity groups
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = MeFunctions.getIdentityGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetIdentityGroupsResult> getIdentityGroupsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Me/getIdentityGroups:getIdentityGroups", TypeShape.of(GetIdentityGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -1136,48 +971,6 @@ public final class MeFunctions {
      * 
      */
     public static Output<GetIdentityUserResult> getIdentityUser(GetIdentityUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getIdentityUser:getIdentityUser", TypeShape.of(GetIdentityUserResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an identity user.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetIdentityUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myUser = MeFunctions.getIdentityUser(GetIdentityUserArgs.builder()
-     *             .user("my_user_login")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetIdentityUserResult> getIdentityUser(GetIdentityUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Me/getIdentityUser:getIdentityUser", TypeShape.of(GetIdentityUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1453,45 +1246,6 @@ public final class MeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetIdentityUsersResult> getIdentityUsers(InvokeArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getIdentityUsers:getIdentityUsers", TypeShape.of(GetIdentityUsersResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve list of user logins of the account&#39;s identity users.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = MeFunctions.getIdentityUsers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetIdentityUsersResult> getIdentityUsersPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Me/getIdentityUsers:getIdentityUsers", TypeShape.of(GetIdentityUsersResult.class), args, Utilities.withVersion(options));
     }
@@ -1688,45 +1442,6 @@ public final class MeFunctions {
      * 
      */
     public static Output<GetMeResult> getMe(InvokeArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getMe:getMe", TypeShape.of(GetMeResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get information about the current OVHcloud account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myAccount = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetMeResult> getMe(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Me/getMe:getMe", TypeShape.of(GetMeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2017,48 +1732,6 @@ public final class MeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccount(GetPaymentmeanBankAccountArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", TypeShape.of(GetPaymentmeanBankAccountResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a bank account payment mean associated with an OVHcloud account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetPaymentmeanBankAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ba = MeFunctions.getPaymentmeanBankAccount(GetPaymentmeanBankAccountArgs.builder()
-     *             .useDefault(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetPaymentmeanBankAccountResult> getPaymentmeanBankAccountPlain(GetPaymentmeanBankAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Me/getPaymentmeanBankAccount:getPaymentmeanBankAccount", TypeShape.of(GetPaymentmeanBankAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -2270,48 +1943,6 @@ public final class MeFunctions {
      * 
      */
     public static Output<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCard(GetPaymentmeanCreditCardArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", TypeShape.of(GetPaymentmeanCreditCardResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a credit card payment mean associated with an OVHcloud account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetPaymentmeanCreditCardArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cc = MeFunctions.getPaymentmeanCreditCard(GetPaymentmeanCreditCardArgs.builder()
-     *             .useDefault(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetPaymentmeanCreditCardResult> getPaymentmeanCreditCard(GetPaymentmeanCreditCardArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Me/getPaymentmeanCreditCard:getPaymentmeanCreditCard", TypeShape.of(GetPaymentmeanCreditCardResult.class), args, Utilities.withVersion(options));
     }
     /**

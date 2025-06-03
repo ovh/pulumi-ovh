@@ -16,6 +16,50 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * Create volume in a public cloud project.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Volume;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.VolumeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vol = new Volume("vol", VolumeArgs.builder()
+ *             .regionName("xxx")
+ *             .serviceName("yyyyy")
+ *             .description("Terraform volume")
+ *             .name("terrformName")
+ *             .size(15.0)
+ *             .type("classic")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ */
 @ResourceType(type="ovh:CloudProject/volume:Volume")
 public class Volume extends com.pulumi.resources.CustomResource {
     /**
@@ -61,14 +105,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Volume description
+     * A description of the volume
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Volume description
+     * @return A description of the volume
      * 
      */
     public Output<String> description() {
@@ -103,14 +147,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * Volume name
+     * Name of the volume
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Volume name
+     * @return Name of the volume
      * 
      */
     public Output<String> name() {
@@ -131,14 +175,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.progress;
     }
     /**
-     * Region name
+     * Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: &#34;GRA11&#34;. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="regionName", refs={String.class}, tree="[0]")
     private Output<String> regionName;
 
     /**
-     * @return Region name
+     * @return Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: &#34;GRA11&#34;. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> regionName() {
@@ -173,28 +217,28 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.resourceId;
     }
     /**
-     * Service name
+     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Service name
+     * @return Required. The id of the public cloud project. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Volume size
+     * Size (GB) of the volume
      * 
      */
     @Export(name="size", refs={Double.class}, tree="[0]")
     private Output<Double> size;
 
     /**
-     * @return Volume size
+     * @return Size (GB) of the volume
      * 
      */
     public Output<Double> size() {
@@ -257,14 +301,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.subOperations;
     }
     /**
-     * Type of the volume
+     * Type of the volume **Changing this value recreates the resource.**
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the volume
+     * @return Type of the volume **Changing this value recreates the resource.**
      * 
      */
     public Output<String> type() {
@@ -324,7 +368,6 @@ public class Volume extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

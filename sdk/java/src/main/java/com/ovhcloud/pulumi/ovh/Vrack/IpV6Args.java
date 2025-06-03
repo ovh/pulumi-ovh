@@ -3,11 +3,14 @@
 
 package com.ovhcloud.pulumi.ovh.Vrack;
 
+import com.ovhcloud.pulumi.ovh.Vrack.inputs.IpV6BridgedSubrangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class IpV6Args extends com.pulumi.resources.ResourceArgs {
@@ -30,6 +33,21 @@ public final class IpV6Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Bridged subrange configuration.
+     * 
+     */
+    @Import(name="bridgedSubrange")
+    private @Nullable Output<IpV6BridgedSubrangeArgs> bridgedSubrange;
+
+    /**
+     * @return Bridged subrange configuration.
+     * 
+     */
+    public Optional<Output<IpV6BridgedSubrangeArgs>> bridgedSubrange() {
+        return Optional.ofNullable(this.bridgedSubrange);
+    }
+
+    /**
      * The internal name of your vrack
      * 
      */
@@ -48,6 +66,7 @@ public final class IpV6Args extends com.pulumi.resources.ResourceArgs {
 
     private IpV6Args(IpV6Args $) {
         this.block = $.block;
+        this.bridgedSubrange = $.bridgedSubrange;
         this.serviceName = $.serviceName;
     }
 
@@ -88,6 +107,27 @@ public final class IpV6Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder block(String block) {
             return block(Output.of(block));
+        }
+
+        /**
+         * @param bridgedSubrange Bridged subrange configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bridgedSubrange(@Nullable Output<IpV6BridgedSubrangeArgs> bridgedSubrange) {
+            $.bridgedSubrange = bridgedSubrange;
+            return this;
+        }
+
+        /**
+         * @param bridgedSubrange Bridged subrange configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bridgedSubrange(IpV6BridgedSubrangeArgs bridgedSubrange) {
+            return bridgedSubrange(Output.of(bridgedSubrange));
         }
 
         /**

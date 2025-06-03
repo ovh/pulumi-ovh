@@ -136,3 +136,33 @@ $ make build
 ```
 
 * When everything is done, create a new git tag
+
+# Upgrade ONLY Terraform provider version
+
+* Update `github.com/ovh/terraform-provider-ovh/v2` dependency version in the `provider/go.mod` file
+
+before:
+```
+	github.com/ovh/terraform-provider-ovh/v2 v2.1.0
+```
+
+after:
+```
+	github.com/ovh/terraform-provider-ovh/v2 v2.2.0
+```
+
+* Download the new version of the dependency. It will update the `go.sum`` file
+
+```
+cd provider
+go get github.com/ovh/pulumi-ovh/provider/v2
+cd ..
+```
+
+* Re-generate the SDKs
+
+```
+make build_sdks
+```
+
+* Fix the missing `ComputeID` fields for the new TF resources in `provider/resources.go` file and execute the command again and again.
