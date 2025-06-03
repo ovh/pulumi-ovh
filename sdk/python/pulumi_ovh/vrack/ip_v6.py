@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['IpV6Args', 'IpV6']
 
@@ -21,14 +23,18 @@ __all__ = ['IpV6Args', 'IpV6']
 class IpV6Args:
     def __init__(__self__, *,
                  block: pulumi.Input[builtins.str],
-                 service_name: pulumi.Input[builtins.str]):
+                 service_name: pulumi.Input[builtins.str],
+                 bridged_subrange: Optional[pulumi.Input['IpV6BridgedSubrangeArgs']] = None):
         """
         The set of arguments for constructing a IpV6 resource.
         :param pulumi.Input[builtins.str] block: Your IPv6 block.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
+        :param pulumi.Input['IpV6BridgedSubrangeArgs'] bridged_subrange: Bridged subrange configuration.
         """
         pulumi.set(__self__, "block", block)
         pulumi.set(__self__, "service_name", service_name)
+        if bridged_subrange is not None:
+            pulumi.set(__self__, "bridged_subrange", bridged_subrange)
 
     @property
     @pulumi.getter
@@ -54,19 +60,35 @@ class IpV6Args:
     def service_name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "service_name", value)
 
+    @property
+    @pulumi.getter(name="bridgedSubrange")
+    def bridged_subrange(self) -> Optional[pulumi.Input['IpV6BridgedSubrangeArgs']]:
+        """
+        Bridged subrange configuration.
+        """
+        return pulumi.get(self, "bridged_subrange")
+
+    @bridged_subrange.setter
+    def bridged_subrange(self, value: Optional[pulumi.Input['IpV6BridgedSubrangeArgs']]):
+        pulumi.set(self, "bridged_subrange", value)
+
 
 @pulumi.input_type
 class _IpV6State:
     def __init__(__self__, *,
                  block: Optional[pulumi.Input[builtins.str]] = None,
+                 bridged_subrange: Optional[pulumi.Input['IpV6BridgedSubrangeArgs']] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpV6 resources.
         :param pulumi.Input[builtins.str] block: Your IPv6 block.
+        :param pulumi.Input['IpV6BridgedSubrangeArgs'] bridged_subrange: Bridged subrange configuration.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
         """
         if block is not None:
             pulumi.set(__self__, "block", block)
+        if bridged_subrange is not None:
+            pulumi.set(__self__, "bridged_subrange", bridged_subrange)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
 
@@ -81,6 +103,18 @@ class _IpV6State:
     @block.setter
     def block(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "block", value)
+
+    @property
+    @pulumi.getter(name="bridgedSubrange")
+    def bridged_subrange(self) -> Optional[pulumi.Input['IpV6BridgedSubrangeArgs']]:
+        """
+        Bridged subrange configuration.
+        """
+        return pulumi.get(self, "bridged_subrange")
+
+    @bridged_subrange.setter
+    def bridged_subrange(self, value: Optional[pulumi.Input['IpV6BridgedSubrangeArgs']]):
+        pulumi.set(self, "bridged_subrange", value)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -101,21 +135,11 @@ class IpV6(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block: Optional[pulumi.Input[builtins.str]] = None,
+                 bridged_subrange: Optional[pulumi.Input[Union['IpV6BridgedSubrangeArgs', 'IpV6BridgedSubrangeArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Attach an IPv6 block to a VRack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        vrack_block = ovh.vrack.IpV6("vrack_block",
-            service_name="<vRack service name>",
-            block="<ipv6 block>")
-        ```
 
         ## Import
 
@@ -130,6 +154,7 @@ class IpV6(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] block: Your IPv6 block.
+        :param pulumi.Input[Union['IpV6BridgedSubrangeArgs', 'IpV6BridgedSubrangeArgsDict']] bridged_subrange: Bridged subrange configuration.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
         """
         ...
@@ -140,17 +165,6 @@ class IpV6(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Attach an IPv6 block to a VRack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        vrack_block = ovh.vrack.IpV6("vrack_block",
-            service_name="<vRack service name>",
-            block="<ipv6 block>")
-        ```
 
         ## Import
 
@@ -178,6 +192,7 @@ class IpV6(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block: Optional[pulumi.Input[builtins.str]] = None,
+                 bridged_subrange: Optional[pulumi.Input[Union['IpV6BridgedSubrangeArgs', 'IpV6BridgedSubrangeArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -191,6 +206,7 @@ class IpV6(pulumi.CustomResource):
             if block is None and not opts.urn:
                 raise TypeError("Missing required property 'block'")
             __props__.__dict__["block"] = block
+            __props__.__dict__["bridged_subrange"] = bridged_subrange
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
@@ -205,6 +221,7 @@ class IpV6(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             block: Optional[pulumi.Input[builtins.str]] = None,
+            bridged_subrange: Optional[pulumi.Input[Union['IpV6BridgedSubrangeArgs', 'IpV6BridgedSubrangeArgsDict']]] = None,
             service_name: Optional[pulumi.Input[builtins.str]] = None) -> 'IpV6':
         """
         Get an existing IpV6 resource's state with the given name, id, and optional extra
@@ -214,6 +231,7 @@ class IpV6(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] block: Your IPv6 block.
+        :param pulumi.Input[Union['IpV6BridgedSubrangeArgs', 'IpV6BridgedSubrangeArgsDict']] bridged_subrange: Bridged subrange configuration.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -221,6 +239,7 @@ class IpV6(pulumi.CustomResource):
         __props__ = _IpV6State.__new__(_IpV6State)
 
         __props__.__dict__["block"] = block
+        __props__.__dict__["bridged_subrange"] = bridged_subrange
         __props__.__dict__["service_name"] = service_name
         return IpV6(resource_name, opts=opts, __props__=__props__)
 
@@ -231,6 +250,14 @@ class IpV6(pulumi.CustomResource):
         Your IPv6 block.
         """
         return pulumi.get(self, "block")
+
+    @property
+    @pulumi.getter(name="bridgedSubrange")
+    def bridged_subrange(self) -> pulumi.Output['outputs.IpV6BridgedSubrange']:
+        """
+        Bridged subrange configuration.
+        """
+        return pulumi.get(self, "bridged_subrange")
 
     @property
     @pulumi.getter(name="serviceName")

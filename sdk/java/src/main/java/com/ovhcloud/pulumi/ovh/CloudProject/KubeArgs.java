@@ -169,14 +169,14 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA9&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * @return a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA9&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> region() {
@@ -490,7 +490,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
+         * @param region a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA9&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
+         * @param region a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA9&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

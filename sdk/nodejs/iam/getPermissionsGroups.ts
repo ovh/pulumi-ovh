@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to retrieve an IAM permissions group.
+ * Use this data source to retrieve all IAM permissions groups.
  *
  * ## Example Usage
  *
@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const website = ovh.Iam.getPermissionsGroup({
- *     urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
- * });
+ * const groups = ovh.Iam.getPermissionsGroups({});
  * ```
  */
 export function getPermissionsGroups(opts?: pulumi.InvokeOptions): Promise<GetPermissionsGroupsResult> {
@@ -32,10 +30,13 @@ export interface GetPermissionsGroupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of available permissions groups URNs.
+     */
     readonly urns: string[];
 }
 /**
- * Use this data source to retrieve an IAM permissions group.
+ * Use this data source to retrieve all IAM permissions groups.
  *
  * ## Example Usage
  *
@@ -43,9 +44,7 @@ export interface GetPermissionsGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@pulumi/ovh";
  *
- * const website = ovh.Iam.getPermissionsGroup({
- *     urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
- * });
+ * const groups = ovh.Iam.getPermissionsGroups({});
  * ```
  */
 export function getPermissionsGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionsGroupsResult> {

@@ -62,49 +62,70 @@ class GetPermissionsGroupResult:
     @property
     @pulumi.getter
     def allows(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Set of actions allowed by the permissions group.
+        """
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> builtins.str:
+        """
+        Creation date of this group.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def denies(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Set of actions that will always be denied even if it is explicitly allowed by a policy.
+        """
         return pulumi.get(self, "denies")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
+        """
+        Group description.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def excepts(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Set of actions that will be subtracted from the `allow` list.
+        """
         return pulumi.get(self, "excepts")
 
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> builtins.str:
+        """
+        Name of the permissions group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> builtins.str:
+        """
+        Owner of the permissions group.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> builtins.str:
+        """
+        Date of the last update of this group.
+        """
         return pulumi.get(self, "updated_at")
 
     @property
@@ -139,7 +160,24 @@ def get_permissions_group(allows: Optional[Sequence[builtins.str]] = None,
                           urn: Optional[builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPermissionsGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve an IAM permissions group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    website = ovh.Iam.get_permissions_group(urn="urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+    ```
+
+
+    :param Sequence[builtins.str] allows: Set of actions allowed by the permissions group.
+    :param Sequence[builtins.str] denies: Set of actions that will always be denied even if it is explicitly allowed by a policy.
+    :param builtins.str description: Group description.
+    :param Sequence[builtins.str] excepts: Set of actions that will be subtracted from the `allow` list.
+    :param builtins.str updated_at: Date of the last update of this group.
+    :param builtins.str urn: URN of the permissions group.
     """
     __args__ = dict()
     __args__['allows'] = allows
@@ -170,7 +208,24 @@ def get_permissions_group_output(allows: Optional[pulumi.Input[Optional[Sequence
                                  urn: Optional[pulumi.Input[builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPermissionsGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve an IAM permissions group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    website = ovh.Iam.get_permissions_group(urn="urn:v1:eu:permissionsGroup:ovh:controlPanelAccess")
+    ```
+
+
+    :param Sequence[builtins.str] allows: Set of actions allowed by the permissions group.
+    :param Sequence[builtins.str] denies: Set of actions that will always be denied even if it is explicitly allowed by a policy.
+    :param builtins.str description: Group description.
+    :param Sequence[builtins.str] excepts: Set of actions that will be subtracted from the `allow` list.
+    :param builtins.str updated_at: Date of the last update of this group.
+    :param builtins.str urn: URN of the permissions group.
     """
     __args__ = dict()
     __args__['allows'] = allows

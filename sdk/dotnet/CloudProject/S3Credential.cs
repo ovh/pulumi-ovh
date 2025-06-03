@@ -12,6 +12,35 @@ namespace Pulumi.Ovh.CloudProject
     /// <summary>
     /// Creates an S3 Credential for a user in a public cloud project.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user = new Ovh.CloudProject.User("user", new()
+    ///     {
+    ///         ServiceName = "XXX",
+    ///         Description = "my user for acceptance tests",
+    ///         RoleNames = new[]
+    ///         {
+    ///             "objectstore_operator",
+    ///         },
+    ///     });
+    /// 
+    ///     var myS3Credentials = new Ovh.CloudProject.S3Credential("my_s3_credentials", new()
+    ///     {
+    ///         ServiceName = user.ServiceName,
+    ///         UserId = user.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,

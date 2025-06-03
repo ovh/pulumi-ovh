@@ -2058,7 +2058,9 @@ func (o InstanceGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 type InstanceNetwork struct {
-	// Set the new instance as public boolean
+	// Private network information
+	Private *InstanceNetworkPrivate `pulumi:"private"`
+	// Set the new instance as public
 	Public *bool `pulumi:"public"`
 }
 
@@ -2074,7 +2076,9 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
-	// Set the new instance as public boolean
+	// Private network information
+	Private InstanceNetworkPrivatePtrInput `pulumi:"private"`
+	// Set the new instance as public
 	Public pulumi.BoolPtrInput `pulumi:"public"`
 }
 
@@ -2155,7 +2159,12 @@ func (o InstanceNetworkOutput) ToInstanceNetworkPtrOutputWithContext(ctx context
 	}).(InstanceNetworkPtrOutput)
 }
 
-// Set the new instance as public boolean
+// Private network information
+func (o InstanceNetworkOutput) Private() InstanceNetworkPrivatePtrOutput {
+	return o.ApplyT(func(v InstanceNetwork) *InstanceNetworkPrivate { return v.Private }).(InstanceNetworkPrivatePtrOutput)
+}
+
+// Set the new instance as public
 func (o InstanceNetworkOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *bool { return v.Public }).(pulumi.BoolPtrOutput)
 }
@@ -2184,7 +2193,17 @@ func (o InstanceNetworkPtrOutput) Elem() InstanceNetworkOutput {
 	}).(InstanceNetworkOutput)
 }
 
-// Set the new instance as public boolean
+// Private network information
+func (o InstanceNetworkPtrOutput) Private() InstanceNetworkPrivatePtrOutput {
+	return o.ApplyT(func(v *InstanceNetwork) *InstanceNetworkPrivate {
+		if v == nil {
+			return nil
+		}
+		return v.Private
+	}).(InstanceNetworkPrivatePtrOutput)
+}
+
+// Set the new instance as public
 func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceNetwork) *bool {
 		if v == nil {
@@ -2192,6 +2211,1336 @@ func (o InstanceNetworkPtrOutput) Public() pulumi.BoolPtrOutput {
 		}
 		return v.Public
 	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceNetworkPrivate struct {
+	// Existing floating IP
+	FloatingIp *InstanceNetworkPrivateFloatingIp `pulumi:"floatingIp"`
+	// Information to create a new floating IP
+	FloatingIpCreate *InstanceNetworkPrivateFloatingIpCreate `pulumi:"floatingIpCreate"`
+	// Existing gateway
+	Gateway *InstanceNetworkPrivateGateway `pulumi:"gateway"`
+	// Information to create a new gateway
+	GatewayCreate *InstanceNetworkPrivateGatewayCreate `pulumi:"gatewayCreate"`
+	// Instance IP in the private network
+	Ip *string `pulumi:"ip"`
+	// Existing private network
+	Network *InstanceNetworkPrivateNetwork `pulumi:"network"`
+	// Information to create a new private network
+	NetworkCreate *InstanceNetworkPrivateNetworkCreate `pulumi:"networkCreate"`
+}
+
+// InstanceNetworkPrivateInput is an input type that accepts InstanceNetworkPrivateArgs and InstanceNetworkPrivateOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateInput` via:
+//
+//	InstanceNetworkPrivateArgs{...}
+type InstanceNetworkPrivateInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateOutput() InstanceNetworkPrivateOutput
+	ToInstanceNetworkPrivateOutputWithContext(context.Context) InstanceNetworkPrivateOutput
+}
+
+type InstanceNetworkPrivateArgs struct {
+	// Existing floating IP
+	FloatingIp InstanceNetworkPrivateFloatingIpPtrInput `pulumi:"floatingIp"`
+	// Information to create a new floating IP
+	FloatingIpCreate InstanceNetworkPrivateFloatingIpCreatePtrInput `pulumi:"floatingIpCreate"`
+	// Existing gateway
+	Gateway InstanceNetworkPrivateGatewayPtrInput `pulumi:"gateway"`
+	// Information to create a new gateway
+	GatewayCreate InstanceNetworkPrivateGatewayCreatePtrInput `pulumi:"gatewayCreate"`
+	// Instance IP in the private network
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// Existing private network
+	Network InstanceNetworkPrivateNetworkPtrInput `pulumi:"network"`
+	// Information to create a new private network
+	NetworkCreate InstanceNetworkPrivateNetworkCreatePtrInput `pulumi:"networkCreate"`
+}
+
+func (InstanceNetworkPrivateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivate)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateArgs) ToInstanceNetworkPrivateOutput() InstanceNetworkPrivateOutput {
+	return i.ToInstanceNetworkPrivateOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateArgs) ToInstanceNetworkPrivateOutputWithContext(ctx context.Context) InstanceNetworkPrivateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateOutput)
+}
+
+func (i InstanceNetworkPrivateArgs) ToInstanceNetworkPrivatePtrOutput() InstanceNetworkPrivatePtrOutput {
+	return i.ToInstanceNetworkPrivatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateArgs) ToInstanceNetworkPrivatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateOutput).ToInstanceNetworkPrivatePtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivatePtrInput is an input type that accepts InstanceNetworkPrivateArgs, InstanceNetworkPrivatePtr and InstanceNetworkPrivatePtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivatePtrInput` via:
+//
+//	        InstanceNetworkPrivateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivatePtrOutput() InstanceNetworkPrivatePtrOutput
+	ToInstanceNetworkPrivatePtrOutputWithContext(context.Context) InstanceNetworkPrivatePtrOutput
+}
+
+type instanceNetworkPrivatePtrType InstanceNetworkPrivateArgs
+
+func InstanceNetworkPrivatePtr(v *InstanceNetworkPrivateArgs) InstanceNetworkPrivatePtrInput {
+	return (*instanceNetworkPrivatePtrType)(v)
+}
+
+func (*instanceNetworkPrivatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivate)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivatePtrType) ToInstanceNetworkPrivatePtrOutput() InstanceNetworkPrivatePtrOutput {
+	return i.ToInstanceNetworkPrivatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivatePtrType) ToInstanceNetworkPrivatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivatePtrOutput)
+}
+
+type InstanceNetworkPrivateOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateOutput) ToInstanceNetworkPrivateOutput() InstanceNetworkPrivateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateOutput) ToInstanceNetworkPrivateOutputWithContext(ctx context.Context) InstanceNetworkPrivateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateOutput) ToInstanceNetworkPrivatePtrOutput() InstanceNetworkPrivatePtrOutput {
+	return o.ToInstanceNetworkPrivatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateOutput) ToInstanceNetworkPrivatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivate) *InstanceNetworkPrivate {
+		return &v
+	}).(InstanceNetworkPrivatePtrOutput)
+}
+
+// Existing floating IP
+func (o InstanceNetworkPrivateOutput) FloatingIp() InstanceNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *InstanceNetworkPrivateFloatingIp { return v.FloatingIp }).(InstanceNetworkPrivateFloatingIpPtrOutput)
+}
+
+// Information to create a new floating IP
+func (o InstanceNetworkPrivateOutput) FloatingIpCreate() InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *InstanceNetworkPrivateFloatingIpCreate { return v.FloatingIpCreate }).(InstanceNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+// Existing gateway
+func (o InstanceNetworkPrivateOutput) Gateway() InstanceNetworkPrivateGatewayPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *InstanceNetworkPrivateGateway { return v.Gateway }).(InstanceNetworkPrivateGatewayPtrOutput)
+}
+
+// Information to create a new gateway
+func (o InstanceNetworkPrivateOutput) GatewayCreate() InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *InstanceNetworkPrivateGatewayCreate { return v.GatewayCreate }).(InstanceNetworkPrivateGatewayCreatePtrOutput)
+}
+
+// Instance IP in the private network
+func (o InstanceNetworkPrivateOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// Existing private network
+func (o InstanceNetworkPrivateOutput) Network() InstanceNetworkPrivateNetworkPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *InstanceNetworkPrivateNetwork { return v.Network }).(InstanceNetworkPrivateNetworkPtrOutput)
+}
+
+// Information to create a new private network
+func (o InstanceNetworkPrivateOutput) NetworkCreate() InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivate) *InstanceNetworkPrivateNetworkCreate { return v.NetworkCreate }).(InstanceNetworkPrivateNetworkCreatePtrOutput)
+}
+
+type InstanceNetworkPrivatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivatePtrOutput) ToInstanceNetworkPrivatePtrOutput() InstanceNetworkPrivatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivatePtrOutput) ToInstanceNetworkPrivatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivatePtrOutput) Elem() InstanceNetworkPrivateOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) InstanceNetworkPrivate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivate
+		return ret
+	}).(InstanceNetworkPrivateOutput)
+}
+
+// Existing floating IP
+func (o InstanceNetworkPrivatePtrOutput) FloatingIp() InstanceNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *InstanceNetworkPrivateFloatingIp {
+		if v == nil {
+			return nil
+		}
+		return v.FloatingIp
+	}).(InstanceNetworkPrivateFloatingIpPtrOutput)
+}
+
+// Information to create a new floating IP
+func (o InstanceNetworkPrivatePtrOutput) FloatingIpCreate() InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *InstanceNetworkPrivateFloatingIpCreate {
+		if v == nil {
+			return nil
+		}
+		return v.FloatingIpCreate
+	}).(InstanceNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+// Existing gateway
+func (o InstanceNetworkPrivatePtrOutput) Gateway() InstanceNetworkPrivateGatewayPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *InstanceNetworkPrivateGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(InstanceNetworkPrivateGatewayPtrOutput)
+}
+
+// Information to create a new gateway
+func (o InstanceNetworkPrivatePtrOutput) GatewayCreate() InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *InstanceNetworkPrivateGatewayCreate {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayCreate
+	}).(InstanceNetworkPrivateGatewayCreatePtrOutput)
+}
+
+// Instance IP in the private network
+func (o InstanceNetworkPrivatePtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+// Existing private network
+func (o InstanceNetworkPrivatePtrOutput) Network() InstanceNetworkPrivateNetworkPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *InstanceNetworkPrivateNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(InstanceNetworkPrivateNetworkPtrOutput)
+}
+
+// Information to create a new private network
+func (o InstanceNetworkPrivatePtrOutput) NetworkCreate() InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivate) *InstanceNetworkPrivateNetworkCreate {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkCreate
+	}).(InstanceNetworkPrivateNetworkCreatePtrOutput)
+}
+
+type InstanceNetworkPrivateFloatingIp struct {
+	// Floating IP ID
+	Id *string `pulumi:"id"`
+}
+
+// InstanceNetworkPrivateFloatingIpInput is an input type that accepts InstanceNetworkPrivateFloatingIpArgs and InstanceNetworkPrivateFloatingIpOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateFloatingIpInput` via:
+//
+//	InstanceNetworkPrivateFloatingIpArgs{...}
+type InstanceNetworkPrivateFloatingIpInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateFloatingIpOutput() InstanceNetworkPrivateFloatingIpOutput
+	ToInstanceNetworkPrivateFloatingIpOutputWithContext(context.Context) InstanceNetworkPrivateFloatingIpOutput
+}
+
+type InstanceNetworkPrivateFloatingIpArgs struct {
+	// Floating IP ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (InstanceNetworkPrivateFloatingIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateFloatingIpArgs) ToInstanceNetworkPrivateFloatingIpOutput() InstanceNetworkPrivateFloatingIpOutput {
+	return i.ToInstanceNetworkPrivateFloatingIpOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateFloatingIpArgs) ToInstanceNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateFloatingIpOutput)
+}
+
+func (i InstanceNetworkPrivateFloatingIpArgs) ToInstanceNetworkPrivateFloatingIpPtrOutput() InstanceNetworkPrivateFloatingIpPtrOutput {
+	return i.ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateFloatingIpArgs) ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateFloatingIpOutput).ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateFloatingIpPtrInput is an input type that accepts InstanceNetworkPrivateFloatingIpArgs, InstanceNetworkPrivateFloatingIpPtr and InstanceNetworkPrivateFloatingIpPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateFloatingIpPtrInput` via:
+//
+//	        InstanceNetworkPrivateFloatingIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateFloatingIpPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateFloatingIpPtrOutput() InstanceNetworkPrivateFloatingIpPtrOutput
+	ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(context.Context) InstanceNetworkPrivateFloatingIpPtrOutput
+}
+
+type instanceNetworkPrivateFloatingIpPtrType InstanceNetworkPrivateFloatingIpArgs
+
+func InstanceNetworkPrivateFloatingIpPtr(v *InstanceNetworkPrivateFloatingIpArgs) InstanceNetworkPrivateFloatingIpPtrInput {
+	return (*instanceNetworkPrivateFloatingIpPtrType)(v)
+}
+
+func (*instanceNetworkPrivateFloatingIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateFloatingIpPtrType) ToInstanceNetworkPrivateFloatingIpPtrOutput() InstanceNetworkPrivateFloatingIpPtrOutput {
+	return i.ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateFloatingIpPtrType) ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateFloatingIpPtrOutput)
+}
+
+type InstanceNetworkPrivateFloatingIpOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateFloatingIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateFloatingIpOutput) ToInstanceNetworkPrivateFloatingIpOutput() InstanceNetworkPrivateFloatingIpOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpOutput) ToInstanceNetworkPrivateFloatingIpOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpOutput) ToInstanceNetworkPrivateFloatingIpPtrOutput() InstanceNetworkPrivateFloatingIpPtrOutput {
+	return o.ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateFloatingIpOutput) ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateFloatingIp) *InstanceNetworkPrivateFloatingIp {
+		return &v
+	}).(InstanceNetworkPrivateFloatingIpPtrOutput)
+}
+
+// Floating IP ID
+func (o InstanceNetworkPrivateFloatingIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateFloatingIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateFloatingIpPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateFloatingIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateFloatingIp)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateFloatingIpPtrOutput) ToInstanceNetworkPrivateFloatingIpPtrOutput() InstanceNetworkPrivateFloatingIpPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpPtrOutput) ToInstanceNetworkPrivateFloatingIpPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpPtrOutput) Elem() InstanceNetworkPrivateFloatingIpOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateFloatingIp) InstanceNetworkPrivateFloatingIp {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateFloatingIp
+		return ret
+	}).(InstanceNetworkPrivateFloatingIpOutput)
+}
+
+// Floating IP ID
+func (o InstanceNetworkPrivateFloatingIpPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateFloatingIp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateFloatingIpCreate struct {
+	// Floating IP description
+	Description *string `pulumi:"description"`
+}
+
+// InstanceNetworkPrivateFloatingIpCreateInput is an input type that accepts InstanceNetworkPrivateFloatingIpCreateArgs and InstanceNetworkPrivateFloatingIpCreateOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateFloatingIpCreateInput` via:
+//
+//	InstanceNetworkPrivateFloatingIpCreateArgs{...}
+type InstanceNetworkPrivateFloatingIpCreateInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateFloatingIpCreateOutput() InstanceNetworkPrivateFloatingIpCreateOutput
+	ToInstanceNetworkPrivateFloatingIpCreateOutputWithContext(context.Context) InstanceNetworkPrivateFloatingIpCreateOutput
+}
+
+type InstanceNetworkPrivateFloatingIpCreateArgs struct {
+	// Floating IP description
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (InstanceNetworkPrivateFloatingIpCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateFloatingIpCreateArgs) ToInstanceNetworkPrivateFloatingIpCreateOutput() InstanceNetworkPrivateFloatingIpCreateOutput {
+	return i.ToInstanceNetworkPrivateFloatingIpCreateOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateFloatingIpCreateArgs) ToInstanceNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateFloatingIpCreateOutput)
+}
+
+func (i InstanceNetworkPrivateFloatingIpCreateArgs) ToInstanceNetworkPrivateFloatingIpCreatePtrOutput() InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return i.ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateFloatingIpCreateArgs) ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateFloatingIpCreateOutput).ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateFloatingIpCreatePtrInput is an input type that accepts InstanceNetworkPrivateFloatingIpCreateArgs, InstanceNetworkPrivateFloatingIpCreatePtr and InstanceNetworkPrivateFloatingIpCreatePtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateFloatingIpCreatePtrInput` via:
+//
+//	        InstanceNetworkPrivateFloatingIpCreateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateFloatingIpCreatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateFloatingIpCreatePtrOutput() InstanceNetworkPrivateFloatingIpCreatePtrOutput
+	ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Context) InstanceNetworkPrivateFloatingIpCreatePtrOutput
+}
+
+type instanceNetworkPrivateFloatingIpCreatePtrType InstanceNetworkPrivateFloatingIpCreateArgs
+
+func InstanceNetworkPrivateFloatingIpCreatePtr(v *InstanceNetworkPrivateFloatingIpCreateArgs) InstanceNetworkPrivateFloatingIpCreatePtrInput {
+	return (*instanceNetworkPrivateFloatingIpCreatePtrType)(v)
+}
+
+func (*instanceNetworkPrivateFloatingIpCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateFloatingIpCreatePtrType) ToInstanceNetworkPrivateFloatingIpCreatePtrOutput() InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return i.ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateFloatingIpCreatePtrType) ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+type InstanceNetworkPrivateFloatingIpCreateOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateFloatingIpCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreateOutput) ToInstanceNetworkPrivateFloatingIpCreateOutput() InstanceNetworkPrivateFloatingIpCreateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreateOutput) ToInstanceNetworkPrivateFloatingIpCreateOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpCreateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreateOutput) ToInstanceNetworkPrivateFloatingIpCreatePtrOutput() InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreateOutput) ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateFloatingIpCreate) *InstanceNetworkPrivateFloatingIpCreate {
+		return &v
+	}).(InstanceNetworkPrivateFloatingIpCreatePtrOutput)
+}
+
+// Floating IP description
+func (o InstanceNetworkPrivateFloatingIpCreateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateFloatingIpCreate) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateFloatingIpCreatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateFloatingIpCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateFloatingIpCreate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreatePtrOutput) ToInstanceNetworkPrivateFloatingIpCreatePtrOutput() InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreatePtrOutput) ToInstanceNetworkPrivateFloatingIpCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateFloatingIpCreatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateFloatingIpCreatePtrOutput) Elem() InstanceNetworkPrivateFloatingIpCreateOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateFloatingIpCreate) InstanceNetworkPrivateFloatingIpCreate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateFloatingIpCreate
+		return ret
+	}).(InstanceNetworkPrivateFloatingIpCreateOutput)
+}
+
+// Floating IP description
+func (o InstanceNetworkPrivateFloatingIpCreatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateFloatingIpCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateGateway struct {
+	// Gateway ID
+	Id *string `pulumi:"id"`
+}
+
+// InstanceNetworkPrivateGatewayInput is an input type that accepts InstanceNetworkPrivateGatewayArgs and InstanceNetworkPrivateGatewayOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateGatewayInput` via:
+//
+//	InstanceNetworkPrivateGatewayArgs{...}
+type InstanceNetworkPrivateGatewayInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateGatewayOutput() InstanceNetworkPrivateGatewayOutput
+	ToInstanceNetworkPrivateGatewayOutputWithContext(context.Context) InstanceNetworkPrivateGatewayOutput
+}
+
+type InstanceNetworkPrivateGatewayArgs struct {
+	// Gateway ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (InstanceNetworkPrivateGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateGatewayArgs) ToInstanceNetworkPrivateGatewayOutput() InstanceNetworkPrivateGatewayOutput {
+	return i.ToInstanceNetworkPrivateGatewayOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateGatewayArgs) ToInstanceNetworkPrivateGatewayOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateGatewayOutput)
+}
+
+func (i InstanceNetworkPrivateGatewayArgs) ToInstanceNetworkPrivateGatewayPtrOutput() InstanceNetworkPrivateGatewayPtrOutput {
+	return i.ToInstanceNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateGatewayArgs) ToInstanceNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateGatewayOutput).ToInstanceNetworkPrivateGatewayPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateGatewayPtrInput is an input type that accepts InstanceNetworkPrivateGatewayArgs, InstanceNetworkPrivateGatewayPtr and InstanceNetworkPrivateGatewayPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateGatewayPtrInput` via:
+//
+//	        InstanceNetworkPrivateGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateGatewayPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateGatewayPtrOutput() InstanceNetworkPrivateGatewayPtrOutput
+	ToInstanceNetworkPrivateGatewayPtrOutputWithContext(context.Context) InstanceNetworkPrivateGatewayPtrOutput
+}
+
+type instanceNetworkPrivateGatewayPtrType InstanceNetworkPrivateGatewayArgs
+
+func InstanceNetworkPrivateGatewayPtr(v *InstanceNetworkPrivateGatewayArgs) InstanceNetworkPrivateGatewayPtrInput {
+	return (*instanceNetworkPrivateGatewayPtrType)(v)
+}
+
+func (*instanceNetworkPrivateGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateGatewayPtrType) ToInstanceNetworkPrivateGatewayPtrOutput() InstanceNetworkPrivateGatewayPtrOutput {
+	return i.ToInstanceNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateGatewayPtrType) ToInstanceNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateGatewayPtrOutput)
+}
+
+type InstanceNetworkPrivateGatewayOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateGatewayOutput) ToInstanceNetworkPrivateGatewayOutput() InstanceNetworkPrivateGatewayOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayOutput) ToInstanceNetworkPrivateGatewayOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayOutput) ToInstanceNetworkPrivateGatewayPtrOutput() InstanceNetworkPrivateGatewayPtrOutput {
+	return o.ToInstanceNetworkPrivateGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateGatewayOutput) ToInstanceNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateGateway) *InstanceNetworkPrivateGateway {
+		return &v
+	}).(InstanceNetworkPrivateGatewayPtrOutput)
+}
+
+// Gateway ID
+func (o InstanceNetworkPrivateGatewayOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateGateway) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateGateway)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateGatewayPtrOutput) ToInstanceNetworkPrivateGatewayPtrOutput() InstanceNetworkPrivateGatewayPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayPtrOutput) ToInstanceNetworkPrivateGatewayPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayPtrOutput) Elem() InstanceNetworkPrivateGatewayOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateGateway) InstanceNetworkPrivateGateway {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateGateway
+		return ret
+	}).(InstanceNetworkPrivateGatewayOutput)
+}
+
+// Gateway ID
+func (o InstanceNetworkPrivateGatewayPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateGatewayCreate struct {
+	// Gateway model (s | m | l)
+	Model *string `pulumi:"model"`
+	// Gateway name
+	Name *string `pulumi:"name"`
+}
+
+// InstanceNetworkPrivateGatewayCreateInput is an input type that accepts InstanceNetworkPrivateGatewayCreateArgs and InstanceNetworkPrivateGatewayCreateOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateGatewayCreateInput` via:
+//
+//	InstanceNetworkPrivateGatewayCreateArgs{...}
+type InstanceNetworkPrivateGatewayCreateInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateGatewayCreateOutput() InstanceNetworkPrivateGatewayCreateOutput
+	ToInstanceNetworkPrivateGatewayCreateOutputWithContext(context.Context) InstanceNetworkPrivateGatewayCreateOutput
+}
+
+type InstanceNetworkPrivateGatewayCreateArgs struct {
+	// Gateway model (s | m | l)
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Gateway name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (InstanceNetworkPrivateGatewayCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateGatewayCreateArgs) ToInstanceNetworkPrivateGatewayCreateOutput() InstanceNetworkPrivateGatewayCreateOutput {
+	return i.ToInstanceNetworkPrivateGatewayCreateOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateGatewayCreateArgs) ToInstanceNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateGatewayCreateOutput)
+}
+
+func (i InstanceNetworkPrivateGatewayCreateArgs) ToInstanceNetworkPrivateGatewayCreatePtrOutput() InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return i.ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateGatewayCreateArgs) ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateGatewayCreateOutput).ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateGatewayCreatePtrInput is an input type that accepts InstanceNetworkPrivateGatewayCreateArgs, InstanceNetworkPrivateGatewayCreatePtr and InstanceNetworkPrivateGatewayCreatePtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateGatewayCreatePtrInput` via:
+//
+//	        InstanceNetworkPrivateGatewayCreateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateGatewayCreatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateGatewayCreatePtrOutput() InstanceNetworkPrivateGatewayCreatePtrOutput
+	ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(context.Context) InstanceNetworkPrivateGatewayCreatePtrOutput
+}
+
+type instanceNetworkPrivateGatewayCreatePtrType InstanceNetworkPrivateGatewayCreateArgs
+
+func InstanceNetworkPrivateGatewayCreatePtr(v *InstanceNetworkPrivateGatewayCreateArgs) InstanceNetworkPrivateGatewayCreatePtrInput {
+	return (*instanceNetworkPrivateGatewayCreatePtrType)(v)
+}
+
+func (*instanceNetworkPrivateGatewayCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateGatewayCreatePtrType) ToInstanceNetworkPrivateGatewayCreatePtrOutput() InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return i.ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateGatewayCreatePtrType) ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateGatewayCreatePtrOutput)
+}
+
+type InstanceNetworkPrivateGatewayCreateOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateGatewayCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateGatewayCreateOutput) ToInstanceNetworkPrivateGatewayCreateOutput() InstanceNetworkPrivateGatewayCreateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayCreateOutput) ToInstanceNetworkPrivateGatewayCreateOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayCreateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayCreateOutput) ToInstanceNetworkPrivateGatewayCreatePtrOutput() InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return o.ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateGatewayCreateOutput) ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateGatewayCreate) *InstanceNetworkPrivateGatewayCreate {
+		return &v
+	}).(InstanceNetworkPrivateGatewayCreatePtrOutput)
+}
+
+// Gateway model (s | m | l)
+func (o InstanceNetworkPrivateGatewayCreateOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateGatewayCreate) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// Gateway name
+func (o InstanceNetworkPrivateGatewayCreateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateGatewayCreate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateGatewayCreatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateGatewayCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateGatewayCreate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateGatewayCreatePtrOutput) ToInstanceNetworkPrivateGatewayCreatePtrOutput() InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayCreatePtrOutput) ToInstanceNetworkPrivateGatewayCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateGatewayCreatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateGatewayCreatePtrOutput) Elem() InstanceNetworkPrivateGatewayCreateOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateGatewayCreate) InstanceNetworkPrivateGatewayCreate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateGatewayCreate
+		return ret
+	}).(InstanceNetworkPrivateGatewayCreateOutput)
+}
+
+// Gateway model (s | m | l)
+func (o InstanceNetworkPrivateGatewayCreatePtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateGatewayCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gateway name
+func (o InstanceNetworkPrivateGatewayCreatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateGatewayCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateNetwork struct {
+	// Network ID
+	Id *string `pulumi:"id"`
+	// Existing subnet ID
+	// * networkCreate - (Optional, Forces new resource) Information to create a new private network
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// InstanceNetworkPrivateNetworkInput is an input type that accepts InstanceNetworkPrivateNetworkArgs and InstanceNetworkPrivateNetworkOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateNetworkInput` via:
+//
+//	InstanceNetworkPrivateNetworkArgs{...}
+type InstanceNetworkPrivateNetworkInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateNetworkOutput() InstanceNetworkPrivateNetworkOutput
+	ToInstanceNetworkPrivateNetworkOutputWithContext(context.Context) InstanceNetworkPrivateNetworkOutput
+}
+
+type InstanceNetworkPrivateNetworkArgs struct {
+	// Network ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Existing subnet ID
+	// * networkCreate - (Optional, Forces new resource) Information to create a new private network
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (InstanceNetworkPrivateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateNetworkArgs) ToInstanceNetworkPrivateNetworkOutput() InstanceNetworkPrivateNetworkOutput {
+	return i.ToInstanceNetworkPrivateNetworkOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateNetworkArgs) ToInstanceNetworkPrivateNetworkOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkOutput)
+}
+
+func (i InstanceNetworkPrivateNetworkArgs) ToInstanceNetworkPrivateNetworkPtrOutput() InstanceNetworkPrivateNetworkPtrOutput {
+	return i.ToInstanceNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateNetworkArgs) ToInstanceNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkOutput).ToInstanceNetworkPrivateNetworkPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateNetworkPtrInput is an input type that accepts InstanceNetworkPrivateNetworkArgs, InstanceNetworkPrivateNetworkPtr and InstanceNetworkPrivateNetworkPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateNetworkPtrInput` via:
+//
+//	        InstanceNetworkPrivateNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateNetworkPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateNetworkPtrOutput() InstanceNetworkPrivateNetworkPtrOutput
+	ToInstanceNetworkPrivateNetworkPtrOutputWithContext(context.Context) InstanceNetworkPrivateNetworkPtrOutput
+}
+
+type instanceNetworkPrivateNetworkPtrType InstanceNetworkPrivateNetworkArgs
+
+func InstanceNetworkPrivateNetworkPtr(v *InstanceNetworkPrivateNetworkArgs) InstanceNetworkPrivateNetworkPtrInput {
+	return (*instanceNetworkPrivateNetworkPtrType)(v)
+}
+
+func (*instanceNetworkPrivateNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateNetworkPtrType) ToInstanceNetworkPrivateNetworkPtrOutput() InstanceNetworkPrivateNetworkPtrOutput {
+	return i.ToInstanceNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateNetworkPtrType) ToInstanceNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateNetworkOutput) ToInstanceNetworkPrivateNetworkOutput() InstanceNetworkPrivateNetworkOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkOutput) ToInstanceNetworkPrivateNetworkOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkOutput) ToInstanceNetworkPrivateNetworkPtrOutput() InstanceNetworkPrivateNetworkPtrOutput {
+	return o.ToInstanceNetworkPrivateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateNetworkOutput) ToInstanceNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateNetwork) *InstanceNetworkPrivateNetwork {
+		return &v
+	}).(InstanceNetworkPrivateNetworkPtrOutput)
+}
+
+// Network ID
+func (o InstanceNetworkPrivateNetworkOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Existing subnet ID
+// * networkCreate - (Optional, Forces new resource) Information to create a new private network
+func (o InstanceNetworkPrivateNetworkOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetwork) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateNetwork)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateNetworkPtrOutput) ToInstanceNetworkPrivateNetworkPtrOutput() InstanceNetworkPrivateNetworkPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkPtrOutput) ToInstanceNetworkPrivateNetworkPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkPtrOutput) Elem() InstanceNetworkPrivateNetworkOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetwork) InstanceNetworkPrivateNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateNetwork
+		return ret
+	}).(InstanceNetworkPrivateNetworkOutput)
+}
+
+// Network ID
+func (o InstanceNetworkPrivateNetworkPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Existing subnet ID
+// * networkCreate - (Optional, Forces new resource) Information to create a new private network
+func (o InstanceNetworkPrivateNetworkPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkCreate struct {
+	// Instance name
+	Name *string `pulumi:"name"`
+	// New subnet information
+	Subnet *InstanceNetworkPrivateNetworkCreateSubnet `pulumi:"subnet"`
+	// Network vlan ID
+	VlanId *int `pulumi:"vlanId"`
+}
+
+// InstanceNetworkPrivateNetworkCreateInput is an input type that accepts InstanceNetworkPrivateNetworkCreateArgs and InstanceNetworkPrivateNetworkCreateOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateNetworkCreateInput` via:
+//
+//	InstanceNetworkPrivateNetworkCreateArgs{...}
+type InstanceNetworkPrivateNetworkCreateInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateNetworkCreateOutput() InstanceNetworkPrivateNetworkCreateOutput
+	ToInstanceNetworkPrivateNetworkCreateOutputWithContext(context.Context) InstanceNetworkPrivateNetworkCreateOutput
+}
+
+type InstanceNetworkPrivateNetworkCreateArgs struct {
+	// Instance name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// New subnet information
+	Subnet InstanceNetworkPrivateNetworkCreateSubnetPtrInput `pulumi:"subnet"`
+	// Network vlan ID
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+}
+
+func (InstanceNetworkPrivateNetworkCreateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateNetworkCreate)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateNetworkCreateArgs) ToInstanceNetworkPrivateNetworkCreateOutput() InstanceNetworkPrivateNetworkCreateOutput {
+	return i.ToInstanceNetworkPrivateNetworkCreateOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateNetworkCreateArgs) ToInstanceNetworkPrivateNetworkCreateOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkCreateOutput)
+}
+
+func (i InstanceNetworkPrivateNetworkCreateArgs) ToInstanceNetworkPrivateNetworkCreatePtrOutput() InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return i.ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateNetworkCreateArgs) ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkCreateOutput).ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateNetworkCreatePtrInput is an input type that accepts InstanceNetworkPrivateNetworkCreateArgs, InstanceNetworkPrivateNetworkCreatePtr and InstanceNetworkPrivateNetworkCreatePtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateNetworkCreatePtrInput` via:
+//
+//	        InstanceNetworkPrivateNetworkCreateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateNetworkCreatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateNetworkCreatePtrOutput() InstanceNetworkPrivateNetworkCreatePtrOutput
+	ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(context.Context) InstanceNetworkPrivateNetworkCreatePtrOutput
+}
+
+type instanceNetworkPrivateNetworkCreatePtrType InstanceNetworkPrivateNetworkCreateArgs
+
+func InstanceNetworkPrivateNetworkCreatePtr(v *InstanceNetworkPrivateNetworkCreateArgs) InstanceNetworkPrivateNetworkCreatePtrInput {
+	return (*instanceNetworkPrivateNetworkCreatePtrType)(v)
+}
+
+func (*instanceNetworkPrivateNetworkCreatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateNetworkCreate)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateNetworkCreatePtrType) ToInstanceNetworkPrivateNetworkCreatePtrOutput() InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return i.ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateNetworkCreatePtrType) ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkCreatePtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkCreateOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateNetworkCreateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateNetworkCreate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateNetworkCreateOutput) ToInstanceNetworkPrivateNetworkCreateOutput() InstanceNetworkPrivateNetworkCreateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreateOutput) ToInstanceNetworkPrivateNetworkCreateOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreateOutput) ToInstanceNetworkPrivateNetworkCreatePtrOutput() InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return o.ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateNetworkCreateOutput) ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateNetworkCreate) *InstanceNetworkPrivateNetworkCreate {
+		return &v
+	}).(InstanceNetworkPrivateNetworkCreatePtrOutput)
+}
+
+// Instance name
+func (o InstanceNetworkPrivateNetworkCreateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetworkCreate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// New subnet information
+func (o InstanceNetworkPrivateNetworkCreateOutput) Subnet() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetworkCreate) *InstanceNetworkPrivateNetworkCreateSubnet {
+		return v.Subnet
+	}).(InstanceNetworkPrivateNetworkCreateSubnetPtrOutput)
+}
+
+// Network vlan ID
+func (o InstanceNetworkPrivateNetworkCreateOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetworkCreate) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkCreatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateNetworkCreatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateNetworkCreate)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateNetworkCreatePtrOutput) ToInstanceNetworkPrivateNetworkCreatePtrOutput() InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreatePtrOutput) ToInstanceNetworkPrivateNetworkCreatePtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreatePtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreatePtrOutput) Elem() InstanceNetworkPrivateNetworkCreateOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreate) InstanceNetworkPrivateNetworkCreate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateNetworkCreate
+		return ret
+	}).(InstanceNetworkPrivateNetworkCreateOutput)
+}
+
+// Instance name
+func (o InstanceNetworkPrivateNetworkCreatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// New subnet information
+func (o InstanceNetworkPrivateNetworkCreatePtrOutput) Subnet() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreate) *InstanceNetworkPrivateNetworkCreateSubnet {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(InstanceNetworkPrivateNetworkCreateSubnetPtrOutput)
+}
+
+// Network vlan ID
+func (o InstanceNetworkPrivateNetworkCreatePtrOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanId
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkCreateSubnet struct {
+	// Subnet range in CIDR notation
+	Cidr *string `pulumi:"cidr"`
+	// Whether to enable DHCP
+	EnableDhcp *bool `pulumi:"enableDhcp"`
+	// IP version
+	IpVersion *int `pulumi:"ipVersion"`
+}
+
+// InstanceNetworkPrivateNetworkCreateSubnetInput is an input type that accepts InstanceNetworkPrivateNetworkCreateSubnetArgs and InstanceNetworkPrivateNetworkCreateSubnetOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateNetworkCreateSubnetInput` via:
+//
+//	InstanceNetworkPrivateNetworkCreateSubnetArgs{...}
+type InstanceNetworkPrivateNetworkCreateSubnetInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateNetworkCreateSubnetOutput() InstanceNetworkPrivateNetworkCreateSubnetOutput
+	ToInstanceNetworkPrivateNetworkCreateSubnetOutputWithContext(context.Context) InstanceNetworkPrivateNetworkCreateSubnetOutput
+}
+
+type InstanceNetworkPrivateNetworkCreateSubnetArgs struct {
+	// Subnet range in CIDR notation
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Whether to enable DHCP
+	EnableDhcp pulumi.BoolPtrInput `pulumi:"enableDhcp"`
+	// IP version
+	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
+}
+
+func (InstanceNetworkPrivateNetworkCreateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateNetworkCreateSubnet)(nil)).Elem()
+}
+
+func (i InstanceNetworkPrivateNetworkCreateSubnetArgs) ToInstanceNetworkPrivateNetworkCreateSubnetOutput() InstanceNetworkPrivateNetworkCreateSubnetOutput {
+	return i.ToInstanceNetworkPrivateNetworkCreateSubnetOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateNetworkCreateSubnetArgs) ToInstanceNetworkPrivateNetworkCreateSubnetOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkCreateSubnetOutput)
+}
+
+func (i InstanceNetworkPrivateNetworkCreateSubnetArgs) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutput() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return i.ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkPrivateNetworkCreateSubnetArgs) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkCreateSubnetOutput).ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkPrivateNetworkCreateSubnetPtrInput is an input type that accepts InstanceNetworkPrivateNetworkCreateSubnetArgs, InstanceNetworkPrivateNetworkCreateSubnetPtr and InstanceNetworkPrivateNetworkCreateSubnetPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkPrivateNetworkCreateSubnetPtrInput` via:
+//
+//	        InstanceNetworkPrivateNetworkCreateSubnetArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkPrivateNetworkCreateSubnetPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutput() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput
+	ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(context.Context) InstanceNetworkPrivateNetworkCreateSubnetPtrOutput
+}
+
+type instanceNetworkPrivateNetworkCreateSubnetPtrType InstanceNetworkPrivateNetworkCreateSubnetArgs
+
+func InstanceNetworkPrivateNetworkCreateSubnetPtr(v *InstanceNetworkPrivateNetworkCreateSubnetArgs) InstanceNetworkPrivateNetworkCreateSubnetPtrInput {
+	return (*instanceNetworkPrivateNetworkCreateSubnetPtrType)(v)
+}
+
+func (*instanceNetworkPrivateNetworkCreateSubnetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateNetworkCreateSubnet)(nil)).Elem()
+}
+
+func (i *instanceNetworkPrivateNetworkCreateSubnetPtrType) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutput() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return i.ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkPrivateNetworkCreateSubnetPtrType) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkPrivateNetworkCreateSubnetPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkCreateSubnetOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateNetworkCreateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkPrivateNetworkCreateSubnet)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) ToInstanceNetworkPrivateNetworkCreateSubnetOutput() InstanceNetworkPrivateNetworkCreateSubnetOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) ToInstanceNetworkPrivateNetworkCreateSubnetOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateSubnetOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutput() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return o.ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkPrivateNetworkCreateSubnet) *InstanceNetworkPrivateNetworkCreateSubnet {
+		return &v
+	}).(InstanceNetworkPrivateNetworkCreateSubnetPtrOutput)
+}
+
+// Subnet range in CIDR notation
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetworkCreateSubnet) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable DHCP
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) EnableDhcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetworkCreateSubnet) *bool { return v.EnableDhcp }).(pulumi.BoolPtrOutput)
+}
+
+// IP version
+func (o InstanceNetworkPrivateNetworkCreateSubnetOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkPrivateNetworkCreateSubnet) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
+}
+
+type InstanceNetworkPrivateNetworkCreateSubnetPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkPrivateNetworkCreateSubnet)(nil)).Elem()
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutput() InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) ToInstanceNetworkPrivateNetworkCreateSubnetPtrOutputWithContext(ctx context.Context) InstanceNetworkPrivateNetworkCreateSubnetPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) Elem() InstanceNetworkPrivateNetworkCreateSubnetOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreateSubnet) InstanceNetworkPrivateNetworkCreateSubnet {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkPrivateNetworkCreateSubnet
+		return ret
+	}).(InstanceNetworkPrivateNetworkCreateSubnetOutput)
+}
+
+// Subnet range in CIDR notation
+func (o InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreateSubnet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable DHCP
+func (o InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) EnableDhcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreateSubnet) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDhcp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IP version
+func (o InstanceNetworkPrivateNetworkCreateSubnetPtrOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkPrivateNetworkCreateSubnet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IpVersion
+	}).(pulumi.IntPtrOutput)
 }
 
 type InstanceSshKey struct {
@@ -12906,6 +14255,8 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// SSH Keypair
 	SshKey string `pulumi:"sshKey"`
+	// Instance status
+	Status string `pulumi:"status"`
 	// Instance task state
 	TaskState string `pulumi:"taskState"`
 }
@@ -12940,6 +14291,8 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// SSH Keypair
 	SshKey pulumi.StringInput `pulumi:"sshKey"`
+	// Instance status
+	Status pulumi.StringInput `pulumi:"status"`
 	// Instance task state
 	TaskState pulumi.StringInput `pulumi:"taskState"`
 }
@@ -13038,6 +14391,11 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 // SSH Keypair
 func (o GetInstancesInstanceOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SshKey }).(pulumi.StringOutput)
+}
+
+// Instance status
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Instance task state
@@ -19373,6 +20731,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupPtrInput)(nil)).Elem(), InstanceGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPtrInput)(nil)).Elem(), InstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateInput)(nil)).Elem(), InstanceNetworkPrivateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivatePtrInput)(nil)).Elem(), InstanceNetworkPrivateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateFloatingIpInput)(nil)).Elem(), InstanceNetworkPrivateFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateFloatingIpPtrInput)(nil)).Elem(), InstanceNetworkPrivateFloatingIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateFloatingIpCreateInput)(nil)).Elem(), InstanceNetworkPrivateFloatingIpCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateFloatingIpCreatePtrInput)(nil)).Elem(), InstanceNetworkPrivateFloatingIpCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateGatewayInput)(nil)).Elem(), InstanceNetworkPrivateGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateGatewayPtrInput)(nil)).Elem(), InstanceNetworkPrivateGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateGatewayCreateInput)(nil)).Elem(), InstanceNetworkPrivateGatewayCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateGatewayCreatePtrInput)(nil)).Elem(), InstanceNetworkPrivateGatewayCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateNetworkInput)(nil)).Elem(), InstanceNetworkPrivateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateNetworkPtrInput)(nil)).Elem(), InstanceNetworkPrivateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateNetworkCreateInput)(nil)).Elem(), InstanceNetworkPrivateNetworkCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateNetworkCreatePtrInput)(nil)).Elem(), InstanceNetworkPrivateNetworkCreateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateNetworkCreateSubnetInput)(nil)).Elem(), InstanceNetworkPrivateNetworkCreateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkPrivateNetworkCreateSubnetPtrInput)(nil)).Elem(), InstanceNetworkPrivateNetworkCreateSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyInput)(nil)).Elem(), InstanceSshKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyPtrInput)(nil)).Elem(), InstanceSshKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSshKeyCreateInput)(nil)).Elem(), InstanceSshKeyCreateArgs{})
@@ -19647,6 +21021,22 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateFloatingIpOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateFloatingIpPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateFloatingIpCreateOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateFloatingIpCreatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateGatewayOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateGatewayPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateGatewayCreateOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateGatewayCreatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateNetworkOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateNetworkPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateNetworkCreateOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateNetworkCreatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateNetworkCreateSubnetOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkPrivateNetworkCreateSubnetPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSshKeyOutput{})
 	pulumi.RegisterOutputType(InstanceSshKeyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSshKeyCreateOutput{})

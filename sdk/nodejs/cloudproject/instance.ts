@@ -138,6 +138,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly sshKeyCreate!: pulumi.Output<outputs.CloudProject.InstanceSshKeyCreate | undefined>;
     /**
+     * Instance status
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
      * Instance task state
      */
     public /*out*/ readonly taskState!: pulumi.Output<string>;
@@ -177,6 +181,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["sshKey"] = state ? state.sshKey : undefined;
             resourceInputs["sshKeyCreate"] = state ? state.sshKeyCreate : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["taskState"] = state ? state.taskState : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
         } else {
@@ -218,6 +223,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["flavorId"] = undefined /*out*/;
             resourceInputs["flavorName"] = undefined /*out*/;
             resourceInputs["imageId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["taskState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -301,6 +307,10 @@ export interface InstanceState {
      * Add existing SSH Key pair into your Public Cloud project and link it to the instance
      */
     sshKeyCreate?: pulumi.Input<inputs.CloudProject.InstanceSshKeyCreate>;
+    /**
+     * Instance status
+     */
+    status?: pulumi.Input<string>;
     /**
      * Instance task state
      */

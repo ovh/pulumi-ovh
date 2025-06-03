@@ -58,7 +58,7 @@ type Kube struct {
 	//
 	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId pulumi.StringPtrOutput `pulumi:"privateNetworkId"`
-	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -147,7 +147,7 @@ type kubeState struct {
 	//
 	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId *string `pulumi:"privateNetworkId"`
-	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region *string `pulumi:"region"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName *string `pulumi:"serviceName"`
@@ -196,7 +196,7 @@ type KubeState struct {
 	//
 	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId pulumi.StringPtrInput
-	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringPtrInput
@@ -237,7 +237,7 @@ type kubeArgs struct {
 	//
 	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId *string `pulumi:"privateNetworkId"`
-	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region string `pulumi:"region"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName string `pulumi:"serviceName"`
@@ -271,7 +271,7 @@ type KubeArgs struct {
 	//
 	// > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
 	PrivateNetworkId pulumi.StringPtrInput
-	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 	Region pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringInput
@@ -447,7 +447,7 @@ func (o KubeOutput) PrivateNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringPtrOutput { return v.PrivateNetworkId }).(pulumi.StringPtrOutput)
 }
 
-// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
 func (o KubeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

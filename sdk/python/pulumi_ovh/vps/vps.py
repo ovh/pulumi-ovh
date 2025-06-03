@@ -857,7 +857,7 @@ class Vps(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="planOptions")
-    def plan_options(self) -> pulumi.Output[Sequence['outputs.VpsPlanOption']]:
+    def plan_options(self) -> pulumi.Output[Optional[Sequence['outputs.VpsPlanOption']]]:
         """
         Product Plan to order
         """
@@ -865,7 +865,7 @@ class Vps(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def plans(self) -> pulumi.Output[Sequence['outputs.VpsPlan']]:
+    def plans(self) -> pulumi.Output[Optional[Sequence['outputs.VpsPlan']]]:
         """
         Product Plan to order
         """

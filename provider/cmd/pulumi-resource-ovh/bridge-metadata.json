@@ -260,7 +260,43 @@
                         "maxItemsOne": true
                     },
                     "network": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "private": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "floating_ip": {
+                                                "maxItemsOne": true
+                                            },
+                                            "floating_ip_create": {
+                                                "maxItemsOne": true
+                                            },
+                                            "gateway": {
+                                                "maxItemsOne": true
+                                            },
+                                            "gateway_create": {
+                                                "maxItemsOne": true
+                                            },
+                                            "network": {
+                                                "maxItemsOne": true
+                                            },
+                                            "network_create": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "subnet": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "ssh_key": {
                         "maxItemsOne": true
@@ -367,6 +403,9 @@
                 "current": "ovh:CloudProject/kubeNodePool:KubeNodePool",
                 "majorVersion": 2,
                 "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    },
                     "template": {
                         "maxItemsOne": true,
                         "elem": {
@@ -532,6 +571,15 @@
             "ovh_cloud_project_region_storage_presign": {
                 "current": "ovh:CloudProject/regionStoragePresign:RegionStoragePresign",
                 "majorVersion": 2
+            },
+            "ovh_cloud_project_ssh_key": {
+                "current": "ovh:index/cloudProjectSshKey:CloudProjectSshKey",
+                "majorVersion": 2,
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_cloud_project_storage": {
                 "current": "ovh:CloudProject/storage:Storage",
@@ -731,6 +779,9 @@
                                 }
                             }
                         }
+                    },
+                    "run_actions_before_destroy": {
+                        "maxItemsOne": false
                     },
                     "storage": {
                         "maxItemsOne": false,
@@ -1447,6 +1498,10 @@
                 "current": "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud",
                 "majorVersion": 2
             },
+            "ovh_vrack_dedicated_cloud_datacenter": {
+                "current": "ovh:Vrack/dedicatedCloudDatacenter:DedicatedCloudDatacenter",
+                "majorVersion": 2
+            },
             "ovh_vrack_dedicated_server": {
                 "current": "ovh:Vrack/dedicatedServer:DedicatedServer",
                 "majorVersion": 2
@@ -1465,6 +1520,15 @@
             },
             "ovh_vrack_ipv6": {
                 "current": "ovh:Vrack/ipV6:IpV6",
+                "majorVersion": 2,
+                "fields": {
+                    "bridged_subrange": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "ovh_vrack_ipv6_routed_subrange": {
+                "current": "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange",
                 "majorVersion": 2
             },
             "ovh_vrack_ovhcloudconnect": {
@@ -1998,6 +2062,9 @@
                 "current": "ovh:CloudProject/getKubeNodePool:getKubeNodePool",
                 "majorVersion": 2,
                 "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    },
                     "template": {
                         "maxItemsOne": true,
                         "elem": {
@@ -3206,6 +3273,7 @@
             "ovh:SavingsPlan/savingsPlan:SavingsPlan": 0,
             "ovh:Vps/vps:Vps": 1,
             "ovh:Vrack/cloudProject:CloudProject": 0,
+            "ovh:Vrack/dedicatedCloudDatacenter:DedicatedCloudDatacenter": 1,
             "ovh:Vrack/dedicatedServer:DedicatedServer": 0,
             "ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface": 0,
             "ovh:Vrack/ipAddress:IpAddress": 0,
@@ -3214,7 +3282,9 @@
             "ovh:Vrack/oVHcloudConnect:OVHcloudConnect": 1,
             "ovh:Vrack/vrack:Vrack": 0,
             "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": 1,
-            "ovh:Vrack/vrackservices:Vrackservices": 0
+            "ovh:Vrack/vrackservices:Vrackservices": 0,
+            "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
+            "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": 1
         },
         "functions": {
             "ovh:Cloud/getProject:getProject": 1,

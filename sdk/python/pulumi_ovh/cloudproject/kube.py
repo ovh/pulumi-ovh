@@ -37,7 +37,7 @@ class KubeArgs:
                  version: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Kube resource.
-        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgs']]] customization_apiservers: Kubernetes API server customization
         :param pulumi.Input['KubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
@@ -85,7 +85,7 @@ class KubeArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[builtins.str]:
         """
-        a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region")
 
@@ -284,7 +284,7 @@ class _KubeState:
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
-        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] status: Cluster status. Should be normally set to 'READY'.
         :param pulumi.Input[builtins.str] update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
@@ -524,7 +524,7 @@ class _KubeState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region")
 
@@ -636,7 +636,7 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
-        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
         :param pulumi.Input[builtins.str] version: kubernetes version to use. Changing this value updates the resource. Defaults to the latest available.
@@ -777,7 +777,7 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
                > **WARNING** Updating the private network ID resets the cluster so that all user data is deleted.
-        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] status: Cluster status. Should be normally set to 'READY'.
         :param pulumi.Input[builtins.str] update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE, MINIMAL_DOWNTIME, NEVER_UPDATE].
@@ -938,7 +938,7 @@ class Kube(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region")
 

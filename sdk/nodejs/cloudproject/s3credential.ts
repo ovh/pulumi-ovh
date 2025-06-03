@@ -7,6 +7,23 @@ import * as utilities from "../utilities";
 /**
  * Creates an S3 Credential for a user in a public cloud project.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const user = new ovh.cloudproject.User("user", {
+ *     serviceName: "XXX",
+ *     description: "my user for acceptance tests",
+ *     roleNames: ["objectstore_operator"],
+ * });
+ * const myS3Credentials = new ovh.cloudproject.S3Credential("my_s3_credentials", {
+ *     serviceName: user.serviceName,
+ *     userId: user.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,

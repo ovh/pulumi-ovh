@@ -477,12 +477,12 @@ class Name(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="planOptions")
-    def plan_options(self) -> pulumi.Output[Sequence['outputs.NamePlanOption']]:
+    def plan_options(self) -> pulumi.Output[Optional[Sequence['outputs.NamePlanOption']]]:
         return pulumi.get(self, "plan_options")
 
     @property
     @pulumi.getter
-    def plans(self) -> pulumi.Output[Sequence['outputs.NamePlan']]:
+    def plans(self) -> pulumi.Output[Optional[Sequence['outputs.NamePlan']]]:
         return pulumi.get(self, "plans")
 
     @property

@@ -29,10 +29,34 @@ namespace Pulumi.Ovh.CloudProject
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         Name = "my-pool-1",
-    ///         FlavorName = "b2-7",
+    ///         FlavorName = "b3-8",
     ///         DesiredNodes = 3,
-    ///         MaxNodes = 3,
-    ///         MinNodes = 3,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nodePoolMultiZones = new Ovh.CloudProject.KubeNodePool("node_pool_multi_zones", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///         Name = "my-pool-zone-a",
+    ///         FlavorName = "b3-8",
+    ///         DesiredNodes = 3,
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "eu-west-par-a",
+    ///         },
     ///     });
     /// 
     /// });
@@ -53,10 +77,8 @@ namespace Pulumi.Ovh.CloudProject
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         KubeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     ///         Name = "my-pool",
-    ///         FlavorName = "b2-7",
+    ///         FlavorName = "b3-8",
     ///         DesiredNodes = 3,
-    ///         MaxNodes = 3,
-    ///         MinNodes = 3,
     ///         Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs
     ///         {
     ///             Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs
@@ -135,6 +157,9 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("autoscalingScaleDownUtilizationThreshold")]
         public Output<double> AutoscalingScaleDownUtilizationThreshold { get; private set; } = null!;
+
+        [Output("availabilityZones")]
+        public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
         /// <summary>
         /// Number of nodes which are actually ready in the pool
@@ -322,6 +347,14 @@ namespace Pulumi.Ovh.CloudProject
         [Input("autoscalingScaleDownUtilizationThreshold")]
         public Input<double>? AutoscalingScaleDownUtilizationThreshold { get; set; }
 
+        [Input("availabilityZones")]
+        private InputList<string>? _availabilityZones;
+        public InputList<string> AvailabilityZones
+        {
+            get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
+            set => _availabilityZones = value;
+        }
+
         /// <summary>
         /// number of nodes to start.
         /// </summary>
@@ -414,6 +447,14 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("autoscalingScaleDownUtilizationThreshold")]
         public Input<double>? AutoscalingScaleDownUtilizationThreshold { get; set; }
+
+        [Input("availabilityZones")]
+        private InputList<string>? _availabilityZones;
+        public InputList<string> AvailabilityZones
+        {
+            get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
+            set => _availabilityZones = value;
+        }
 
         /// <summary>
         /// Number of nodes which are actually ready in the pool

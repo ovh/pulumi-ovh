@@ -53,6 +53,8 @@ func LookupKubeNodePool(ctx *pulumi.Context, args *LookupKubeNodePoolArgs, opts 
 
 // A collection of arguments for invoking getKubeNodePool.
 type LookupKubeNodePoolArgs struct {
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The id of the managed kubernetes cluster.
 	KubeId string `pulumi:"kubeId"`
 	// The name of the node pool.
@@ -74,6 +76,8 @@ type LookupKubeNodePoolResult struct {
 	AutoscalingScaleDownUnreadyTimeSeconds int `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
 	// (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	AutoscalingScaleDownUtilizationThreshold float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes int `pulumi:"availableNodes"`
 	// Creation date
@@ -124,6 +128,8 @@ func LookupKubeNodePoolOutput(ctx *pulumi.Context, args LookupKubeNodePoolOutput
 
 // A collection of arguments for invoking getKubeNodePool.
 type LookupKubeNodePoolOutputArgs struct {
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// The id of the managed kubernetes cluster.
 	KubeId pulumi.StringInput `pulumi:"kubeId"`
 	// The name of the node pool.
@@ -175,6 +181,11 @@ func (o LookupKubeNodePoolResultOutput) AutoscalingScaleDownUnreadyTimeSeconds()
 // (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 func (o LookupKubeNodePoolResultOutput) AutoscalingScaleDownUtilizationThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupKubeNodePoolResult) float64 { return v.AutoscalingScaleDownUtilizationThreshold }).(pulumi.Float64Output)
+}
+
+// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+func (o LookupKubeNodePoolResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupKubeNodePoolResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // Number of nodes which are actually ready in the pool

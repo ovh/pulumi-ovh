@@ -297,6 +297,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Instance status
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Instance status
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * Instance task state
      * 
      */
@@ -347,6 +362,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.serviceName = $.serviceName;
         this.sshKey = $.sshKey;
         this.sshKeyCreate = $.sshKeyCreate;
+        this.status = $.status;
         this.taskState = $.taskState;
         this.userData = $.userData;
     }
@@ -765,6 +781,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sshKeyCreate(InstanceSshKeyCreateArgs sshKeyCreate) {
             return sshKeyCreate(Output.of(sshKeyCreate));
+        }
+
+        /**
+         * @param status Instance status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Instance status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

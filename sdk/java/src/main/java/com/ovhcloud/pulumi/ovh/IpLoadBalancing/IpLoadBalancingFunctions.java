@@ -14,7 +14,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
-import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class IpLoadBalancingFunctions {
@@ -273,49 +272,6 @@ public final class IpLoadBalancingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetIpLoadBalancingResult> getIpLoadBalancing(GetIpLoadBalancingArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", TypeShape.of(GetIpLoadBalancingResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about an IP Load Balancing product
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
-     * import com.pulumi.ovh.IpLoadBalancing.inputs.GetIpLoadBalancingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var lb = IpLoadBalancingFunctions.getIpLoadBalancing(GetIpLoadBalancingArgs.builder()
-     *             .serviceName("XXXXXX")
-     *             .state("ok")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetIpLoadBalancingResult> getIpLoadBalancingPlain(GetIpLoadBalancingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:IpLoadBalancing/getIpLoadBalancing:getIpLoadBalancing", TypeShape.of(GetIpLoadBalancingResult.class), args, Utilities.withVersion(options));
     }
@@ -446,49 +402,6 @@ public final class IpLoadBalancingFunctions {
      * 
      */
     public static Output<GetVrackNetworkResult> getVrackNetwork(GetVrackNetworkArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", TypeShape.of(GetVrackNetworkResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to get the details of Vrack network available for your IPLoadbalancer associated with your OVHcloud account.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.IpLoadBalancing.IpLoadBalancingFunctions;
-     * import com.pulumi.ovh.IpLoadBalancing.inputs.GetVrackNetworkArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var lbNetwork = IpLoadBalancingFunctions.getVrackNetwork(GetVrackNetworkArgs.builder()
-     *             .serviceName("XXXXXX")
-     *             .vrackNetworkId("yyy")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetVrackNetworkResult> getVrackNetwork(GetVrackNetworkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork", TypeShape.of(GetVrackNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**

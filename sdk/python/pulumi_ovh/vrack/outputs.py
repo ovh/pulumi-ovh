@@ -17,6 +17,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'IpV6BridgedSubrange',
     'VrackOrder',
     'VrackOrderDetail',
     'VrackPlan',
@@ -24,6 +25,48 @@ __all__ = [
     'VrackPlanOption',
     'VrackPlanOptionConfiguration',
 ]
+
+@pulumi.output_type
+class IpV6BridgedSubrange(dict):
+    def __init__(__self__, *,
+                 slaac: builtins.str,
+                 gateway: Optional[builtins.str] = None,
+                 subrange: Optional[builtins.str] = None):
+        """
+        :param builtins.str slaac: Slaac status <enabled|disabled>
+        :param builtins.str gateway: Your gateway
+        :param builtins.str subrange: IPv6 CIDR notation (e.g., 2001:41d0::/128)
+        """
+        pulumi.set(__self__, "slaac", slaac)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if subrange is not None:
+            pulumi.set(__self__, "subrange", subrange)
+
+    @property
+    @pulumi.getter
+    def slaac(self) -> builtins.str:
+        """
+        Slaac status <enabled|disabled>
+        """
+        return pulumi.get(self, "slaac")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> Optional[builtins.str]:
+        """
+        Your gateway
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def subrange(self) -> Optional[builtins.str]:
+        """
+        IPv6 CIDR notation (e.g., 2001:41d0::/128)
+        """
+        return pulumi.get(self, "subrange")
+
 
 @pulumi.output_type
 class VrackOrder(dict):

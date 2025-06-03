@@ -6,6 +6,25 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Create volume in a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const vol = new ovh.cloudproject.Volume("vol", {
+ *     regionName: "xxx",
+ *     serviceName: "yyyyy",
+ *     description: "Terraform volume",
+ *     name: "terrformName",
+ *     size: 15,
+ *     type: "classic",
+ * });
+ * ```
+ */
 export class Volume extends pulumi.CustomResource {
     /**
      * Get an existing Volume resource's state with the given name, ID, and optional extra
@@ -47,7 +66,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Volume description
+     * A description of the volume
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -59,7 +78,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Volume name
+     * Name of the volume
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -67,7 +86,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly progress!: pulumi.Output<number>;
     /**
-     * Region name
+     * Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
@@ -79,11 +98,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceId!: pulumi.Output<string>;
     /**
-     * Service name
+     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Volume size
+     * Size (GB) of the volume
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -103,7 +122,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly subOperations!: pulumi.Output<outputs.CloudProject.VolumeSubOperation[]>;
     /**
-     * Type of the volume
+     * Type of the volume **Changing this value recreates the resource.**
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -193,7 +212,7 @@ export interface VolumeState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Volume description
+     * A description of the volume
      */
     description?: pulumi.Input<string>;
     /**
@@ -205,7 +224,7 @@ export interface VolumeState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Volume name
+     * Name of the volume
      */
     name?: pulumi.Input<string>;
     /**
@@ -213,7 +232,7 @@ export interface VolumeState {
      */
     progress?: pulumi.Input<number>;
     /**
-     * Region name
+     * Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
      */
     regionName?: pulumi.Input<string>;
     /**
@@ -225,11 +244,11 @@ export interface VolumeState {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Service name
+     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Volume size
+     * Size (GB) of the volume
      */
     size?: pulumi.Input<number>;
     /**
@@ -249,7 +268,7 @@ export interface VolumeState {
      */
     subOperations?: pulumi.Input<pulumi.Input<inputs.CloudProject.VolumeSubOperation>[]>;
     /**
-     * Type of the volume
+     * Type of the volume **Changing this value recreates the resource.**
      */
     type?: pulumi.Input<string>;
     /**
@@ -263,7 +282,7 @@ export interface VolumeState {
  */
 export interface VolumeArgs {
     /**
-     * Volume description
+     * A description of the volume
      */
     description?: pulumi.Input<string>;
     /**
@@ -275,19 +294,19 @@ export interface VolumeArgs {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Volume name
+     * Name of the volume
      */
     name?: pulumi.Input<string>;
     /**
-     * Region name
+     * Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
      */
     regionName: pulumi.Input<string>;
     /**
-     * Service name
+     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Volume size
+     * Size (GB) of the volume
      */
     size?: pulumi.Input<number>;
     /**
@@ -295,7 +314,7 @@ export interface VolumeArgs {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * Type of the volume
+     * Type of the volume **Changing this value recreates the resource.**
      */
     type?: pulumi.Input<string>;
     /**

@@ -266,6 +266,7 @@ class _InstanceState:
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  ssh_key: Optional[pulumi.Input['InstanceSshKeyArgs']] = None,
                  ssh_key_create: Optional[pulumi.Input['InstanceSshKeyCreateArgs']] = None,
+                 status: Optional[pulumi.Input[builtins.str]] = None,
                  task_state: Optional[pulumi.Input[builtins.str]] = None,
                  user_data: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -288,6 +289,7 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input['InstanceSshKeyArgs'] ssh_key: Existing SSH Keypair
         :param pulumi.Input['InstanceSshKeyCreateArgs'] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
+        :param pulumi.Input[builtins.str] status: Instance status
         :param pulumi.Input[builtins.str] task_state: Instance task state
         :param pulumi.Input[builtins.str] user_data: Configuration information or scripts to use upon launch
         """
@@ -327,6 +329,8 @@ class _InstanceState:
             pulumi.set(__self__, "ssh_key", ssh_key)
         if ssh_key_create is not None:
             pulumi.set(__self__, "ssh_key_create", ssh_key_create)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if task_state is not None:
             pulumi.set(__self__, "task_state", task_state)
         if user_data is not None:
@@ -549,6 +553,18 @@ class _InstanceState:
         pulumi.set(self, "ssh_key_create", value)
 
     @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Instance status
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @property
     @pulumi.getter(name="taskState")
     def task_state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -745,6 +761,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["flavor_id"] = None
             __props__.__dict__["flavor_name"] = None
             __props__.__dict__["image_id"] = None
+            __props__.__dict__["status"] = None
             __props__.__dict__["task_state"] = None
         super(Instance, __self__).__init__(
             'ovh:CloudProject/instance:Instance',
@@ -774,6 +791,7 @@ class Instance(pulumi.CustomResource):
             service_name: Optional[pulumi.Input[builtins.str]] = None,
             ssh_key: Optional[pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']]] = None,
             ssh_key_create: Optional[pulumi.Input[Union['InstanceSshKeyCreateArgs', 'InstanceSshKeyCreateArgsDict']]] = None,
+            status: Optional[pulumi.Input[builtins.str]] = None,
             task_state: Optional[pulumi.Input[builtins.str]] = None,
             user_data: Optional[pulumi.Input[builtins.str]] = None) -> 'Instance':
         """
@@ -801,6 +819,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used
         :param pulumi.Input[Union['InstanceSshKeyArgs', 'InstanceSshKeyArgsDict']] ssh_key: Existing SSH Keypair
         :param pulumi.Input[Union['InstanceSshKeyCreateArgs', 'InstanceSshKeyCreateArgsDict']] ssh_key_create: Add existing SSH Key pair into your Public Cloud project and link it to the instance
+        :param pulumi.Input[builtins.str] status: Instance status
         :param pulumi.Input[builtins.str] task_state: Instance task state
         :param pulumi.Input[builtins.str] user_data: Configuration information or scripts to use upon launch
         """
@@ -826,6 +845,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["ssh_key"] = ssh_key
         __props__.__dict__["ssh_key_create"] = ssh_key_create
+        __props__.__dict__["status"] = status
         __props__.__dict__["task_state"] = task_state
         __props__.__dict__["user_data"] = user_data
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -973,6 +993,14 @@ class Instance(pulumi.CustomResource):
         Add existing SSH Key pair into your Public Cloud project and link it to the instance
         """
         return pulumi.get(self, "ssh_key_create")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[builtins.str]:
+        """
+        Instance status
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="taskState")

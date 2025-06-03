@@ -85,6 +85,8 @@ type LookupInstanceResult struct {
 	ServiceName string `pulumi:"serviceName"`
 	// SSH Keypair
 	SshKey string `pulumi:"sshKey"`
+	// Instance status
+	Status string `pulumi:"status"`
 	// Instance task state
 	TaskState string `pulumi:"taskState"`
 }
@@ -182,6 +184,11 @@ func (o LookupInstanceResultOutput) ServiceName() pulumi.StringOutput {
 // SSH Keypair
 func (o LookupInstanceResultOutput) SshKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.SshKey }).(pulumi.StringOutput)
+}
+
+// Instance status
+func (o LookupInstanceResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Instance task state

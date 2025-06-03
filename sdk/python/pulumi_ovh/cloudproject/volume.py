@@ -34,15 +34,15 @@ class VolumeArgs:
                  volume_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
-        :param pulumi.Input[builtins.str] region_name: Region name
-        :param pulumi.Input[builtins.str] service_name: Service name
-        :param pulumi.Input[builtins.str] description: Volume description
+        :param pulumi.Input[builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] description: A description of the volume
         :param pulumi.Input[builtins.str] image_id: Image ID
         :param pulumi.Input[builtins.str] instance_id: Instance ID
-        :param pulumi.Input[builtins.str] name: Volume name
-        :param pulumi.Input[builtins.float] size: Volume size
+        :param pulumi.Input[builtins.str] name: Name of the volume
+        :param pulumi.Input[builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[builtins.str] snapshot_id: Snapshot ID
-        :param pulumi.Input[builtins.str] type: Type of the volume
+        :param pulumi.Input[builtins.str] type: Type of the volume **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] volume_id: Volume ID
         """
         pulumi.set(__self__, "region_name", region_name)
@@ -68,7 +68,7 @@ class VolumeArgs:
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Input[builtins.str]:
         """
-        Region name
+        Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region_name")
 
@@ -80,7 +80,7 @@ class VolumeArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[builtins.str]:
         """
-        Service name
+        Required. The id of the public cloud project. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 
@@ -92,7 +92,7 @@ class VolumeArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Volume description
+        A description of the volume
         """
         return pulumi.get(self, "description")
 
@@ -128,7 +128,7 @@ class VolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Volume name
+        Name of the volume
         """
         return pulumi.get(self, "name")
 
@@ -140,7 +140,7 @@ class VolumeArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Volume size
+        Size (GB) of the volume
         """
         return pulumi.get(self, "size")
 
@@ -164,7 +164,7 @@ class VolumeArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Type of the volume
+        Type of the volume **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "type")
 
@@ -212,21 +212,21 @@ class _VolumeState:
         :param pulumi.Input[builtins.str] action: The action of the operation
         :param pulumi.Input[builtins.str] completed_at: The completed date of the operation
         :param pulumi.Input[builtins.str] created_at: The creation date of the operation
-        :param pulumi.Input[builtins.str] description: Volume description
+        :param pulumi.Input[builtins.str] description: A description of the volume
         :param pulumi.Input[builtins.str] image_id: Image ID
         :param pulumi.Input[builtins.str] instance_id: Instance ID
-        :param pulumi.Input[builtins.str] name: Volume name
+        :param pulumi.Input[builtins.str] name: Name of the volume
         :param pulumi.Input[builtins.float] progress: Volume status
-        :param pulumi.Input[builtins.str] region_name: Region name
+        :param pulumi.Input[builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] regions: List of regions
         :param pulumi.Input[builtins.str] resource_id: Id of the resource
-        :param pulumi.Input[builtins.str] service_name: Service name
-        :param pulumi.Input[builtins.float] size: Volume size
+        :param pulumi.Input[builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[builtins.str] snapshot_id: Snapshot ID
         :param pulumi.Input[builtins.str] started_at: Datetime of the operation creation
         :param pulumi.Input[builtins.str] status: Volume status
         :param pulumi.Input[Sequence[pulumi.Input['VolumeSubOperationArgs']]] sub_operations: Sub-operations of the operation
-        :param pulumi.Input[builtins.str] type: Type of the volume
+        :param pulumi.Input[builtins.str] type: Type of the volume **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] volume_id: Volume ID
         """
         if action is not None:
@@ -308,7 +308,7 @@ class _VolumeState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Volume description
+        A description of the volume
         """
         return pulumi.get(self, "description")
 
@@ -344,7 +344,7 @@ class _VolumeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Volume name
+        Name of the volume
         """
         return pulumi.get(self, "name")
 
@@ -368,7 +368,7 @@ class _VolumeState:
     @pulumi.getter(name="regionName")
     def region_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Region name
+        Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region_name")
 
@@ -404,7 +404,7 @@ class _VolumeState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Service name
+        Required. The id of the public cloud project. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 
@@ -416,7 +416,7 @@ class _VolumeState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Volume size
+        Size (GB) of the volume
         """
         return pulumi.get(self, "size")
 
@@ -476,7 +476,7 @@ class _VolumeState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Type of the volume
+        Type of the volume **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "type")
 
@@ -514,18 +514,34 @@ class Volume(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Create a Volume resource with the given unique name, props, and options.
+        Create volume in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vol = ovh.cloud_project.Volume("vol",
+            region_name="xxx",
+            service_name="yyyyy",
+            description="Terraform volume",
+            name="terrformName",
+            size=15,
+            type="classic")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: Volume description
+        :param pulumi.Input[builtins.str] description: A description of the volume
         :param pulumi.Input[builtins.str] image_id: Image ID
         :param pulumi.Input[builtins.str] instance_id: Instance ID
-        :param pulumi.Input[builtins.str] name: Volume name
-        :param pulumi.Input[builtins.str] region_name: Region name
-        :param pulumi.Input[builtins.str] service_name: Service name
-        :param pulumi.Input[builtins.float] size: Volume size
+        :param pulumi.Input[builtins.str] name: Name of the volume
+        :param pulumi.Input[builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[builtins.str] snapshot_id: Snapshot ID
-        :param pulumi.Input[builtins.str] type: Type of the volume
+        :param pulumi.Input[builtins.str] type: Type of the volume **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] volume_id: Volume ID
         """
         ...
@@ -535,7 +551,23 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Volume resource with the given unique name, props, and options.
+        Create volume in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        vol = ovh.cloud_project.Volume("vol",
+            region_name="xxx",
+            service_name="yyyyy",
+            description="Terraform volume",
+            name="terrformName",
+            size=15,
+            type="classic")
+        ```
+
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -632,21 +664,21 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] action: The action of the operation
         :param pulumi.Input[builtins.str] completed_at: The completed date of the operation
         :param pulumi.Input[builtins.str] created_at: The creation date of the operation
-        :param pulumi.Input[builtins.str] description: Volume description
+        :param pulumi.Input[builtins.str] description: A description of the volume
         :param pulumi.Input[builtins.str] image_id: Image ID
         :param pulumi.Input[builtins.str] instance_id: Instance ID
-        :param pulumi.Input[builtins.str] name: Volume name
+        :param pulumi.Input[builtins.str] name: Name of the volume
         :param pulumi.Input[builtins.float] progress: Volume status
-        :param pulumi.Input[builtins.str] region_name: Region name
+        :param pulumi.Input[builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] regions: List of regions
         :param pulumi.Input[builtins.str] resource_id: Id of the resource
-        :param pulumi.Input[builtins.str] service_name: Service name
-        :param pulumi.Input[builtins.float] size: Volume size
+        :param pulumi.Input[builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[builtins.str] snapshot_id: Snapshot ID
         :param pulumi.Input[builtins.str] started_at: Datetime of the operation creation
         :param pulumi.Input[builtins.str] status: Volume status
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeSubOperationArgs', 'VolumeSubOperationArgsDict']]]] sub_operations: Sub-operations of the operation
-        :param pulumi.Input[builtins.str] type: Type of the volume
+        :param pulumi.Input[builtins.str] type: Type of the volume **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] volume_id: Volume ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -702,7 +734,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[builtins.str]:
         """
-        Volume description
+        A description of the volume
         """
         return pulumi.get(self, "description")
 
@@ -726,7 +758,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Volume name
+        Name of the volume
         """
         return pulumi.get(self, "name")
 
@@ -742,7 +774,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="regionName")
     def region_name(self) -> pulumi.Output[builtins.str]:
         """
-        Region name
+        Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region_name")
 
@@ -766,7 +798,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[builtins.str]:
         """
-        Service name
+        Required. The id of the public cloud project. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 
@@ -774,7 +806,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[builtins.float]:
         """
-        Volume size
+        Size (GB) of the volume
         """
         return pulumi.get(self, "size")
 
@@ -814,7 +846,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        Type of the volume
+        Type of the volume **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "type")
 

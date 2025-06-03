@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const logstash = ovh.Dbaas.getLogsInputEngine({
  *     name: "logstash",
- *     version: "7.x",
+ *     version: "9.x",
  * });
  * const stream = new ovh.dbaas.LogsOutputGraylogStream("stream", {
  *     serviceName: "....",

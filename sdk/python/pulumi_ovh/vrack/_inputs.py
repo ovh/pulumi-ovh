@@ -16,6 +16,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'IpV6BridgedSubrangeArgs',
+    'IpV6BridgedSubrangeArgsDict',
     'VrackOrderArgs',
     'VrackOrderArgsDict',
     'VrackOrderDetailArgs',
@@ -31,6 +33,77 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class IpV6BridgedSubrangeArgsDict(TypedDict):
+        slaac: pulumi.Input[builtins.str]
+        """
+        Slaac status <enabled|disabled>
+        """
+        gateway: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Your gateway
+        """
+        subrange: NotRequired[pulumi.Input[builtins.str]]
+        """
+        IPv6 CIDR notation (e.g., 2001:41d0::/128)
+        """
+elif False:
+    IpV6BridgedSubrangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IpV6BridgedSubrangeArgs:
+    def __init__(__self__, *,
+                 slaac: pulumi.Input[builtins.str],
+                 gateway: Optional[pulumi.Input[builtins.str]] = None,
+                 subrange: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] slaac: Slaac status <enabled|disabled>
+        :param pulumi.Input[builtins.str] gateway: Your gateway
+        :param pulumi.Input[builtins.str] subrange: IPv6 CIDR notation (e.g., 2001:41d0::/128)
+        """
+        pulumi.set(__self__, "slaac", slaac)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if subrange is not None:
+            pulumi.set(__self__, "subrange", subrange)
+
+    @property
+    @pulumi.getter
+    def slaac(self) -> pulumi.Input[builtins.str]:
+        """
+        Slaac status <enabled|disabled>
+        """
+        return pulumi.get(self, "slaac")
+
+    @slaac.setter
+    def slaac(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "slaac", value)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Your gateway
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter
+    def subrange(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        IPv6 CIDR notation (e.g., 2001:41d0::/128)
+        """
+        return pulumi.get(self, "subrange")
+
+    @subrange.setter
+    def subrange(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subrange", value)
+
 
 if not MYPY:
     class VrackOrderArgsDict(TypedDict):

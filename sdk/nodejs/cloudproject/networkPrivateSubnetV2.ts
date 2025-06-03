@@ -91,7 +91,7 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
      */
     public readonly gatewayIp!: pulumi.Output<string>;
     /**
-     * Static host routes of subnet
+     * List of custom host routes. Changing this value recreates the resource.
      */
     public readonly hostRoutes!: pulumi.Output<outputs.CloudProject.NetworkPrivateSubnetV2HostRoute[] | undefined>;
     /**
@@ -201,7 +201,7 @@ export interface NetworkPrivateSubnetV2State {
      */
     gatewayIp?: pulumi.Input<string>;
     /**
-     * Static host routes of subnet
+     * List of custom host routes. Changing this value recreates the resource.
      */
     hostRoutes?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateSubnetV2HostRoute>[]>;
     /**
@@ -255,7 +255,7 @@ export interface NetworkPrivateSubnetV2Args {
      */
     gatewayIp?: pulumi.Input<string>;
     /**
-     * Static host routes of subnet
+     * List of custom host routes. Changing this value recreates the resource.
      */
     hostRoutes?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateSubnetV2HostRoute>[]>;
     /**

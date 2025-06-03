@@ -14,33 +14,6 @@ import (
 
 // Attach an IPv6 block to a VRack.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/vrack"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vrack.NewIpV6(ctx, "vrack_block", &vrack.IpV6Args{
-//				ServiceName: pulumi.String("<vRack service name>"),
-//				Block:       pulumi.String("<ipv6 block>"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Attachment of an IPv6 block and a VRack can be imported using the `service_name` (vRack identifier) and the `block` (IPv6 block), separated by "," E.g.,
@@ -55,6 +28,8 @@ type IpV6 struct {
 
 	// Your IPv6 block.
 	Block pulumi.StringOutput `pulumi:"block"`
+	// Bridged subrange configuration.
+	BridgedSubrange IpV6BridgedSubrangeOutput `pulumi:"bridgedSubrange"`
 	// The internal name of your vrack
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
@@ -97,6 +72,8 @@ func GetIpV6(ctx *pulumi.Context,
 type ipV6State struct {
 	// Your IPv6 block.
 	Block *string `pulumi:"block"`
+	// Bridged subrange configuration.
+	BridgedSubrange *IpV6BridgedSubrange `pulumi:"bridgedSubrange"`
 	// The internal name of your vrack
 	ServiceName *string `pulumi:"serviceName"`
 }
@@ -104,6 +81,8 @@ type ipV6State struct {
 type IpV6State struct {
 	// Your IPv6 block.
 	Block pulumi.StringPtrInput
+	// Bridged subrange configuration.
+	BridgedSubrange IpV6BridgedSubrangePtrInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringPtrInput
 }
@@ -115,6 +94,8 @@ func (IpV6State) ElementType() reflect.Type {
 type ipV6Args struct {
 	// Your IPv6 block.
 	Block string `pulumi:"block"`
+	// Bridged subrange configuration.
+	BridgedSubrange *IpV6BridgedSubrange `pulumi:"bridgedSubrange"`
 	// The internal name of your vrack
 	ServiceName string `pulumi:"serviceName"`
 }
@@ -123,6 +104,8 @@ type ipV6Args struct {
 type IpV6Args struct {
 	// Your IPv6 block.
 	Block pulumi.StringInput
+	// Bridged subrange configuration.
+	BridgedSubrange IpV6BridgedSubrangePtrInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringInput
 }
@@ -217,6 +200,11 @@ func (o IpV6Output) ToIpV6OutputWithContext(ctx context.Context) IpV6Output {
 // Your IPv6 block.
 func (o IpV6Output) Block() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpV6) pulumi.StringOutput { return v.Block }).(pulumi.StringOutput)
+}
+
+// Bridged subrange configuration.
+func (o IpV6Output) BridgedSubrange() IpV6BridgedSubrangeOutput {
+	return o.ApplyT(func(v *IpV6) IpV6BridgedSubrangeOutput { return v.BridgedSubrange }).(IpV6BridgedSubrangeOutput)
 }
 
 // The internal name of your vrack

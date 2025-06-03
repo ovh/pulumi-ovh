@@ -176,6 +176,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether we should avoid terminating the service when destroying the resource
+     * 
+     */
+    @Import(name="keepServiceAfterDestroy")
+    private @Nullable Output<Boolean> keepServiceAfterDestroy;
+
+    /**
+     * @return Whether we should avoid terminating the service when destroying the resource
+     * 
+     */
+    public Optional<Output<Boolean>> keepServiceAfterDestroy() {
+        return Optional.ofNullable(this.keepServiceAfterDestroy);
+    }
+
+    /**
      * Link speed of the server
      * 
      */
@@ -317,6 +332,36 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines whether the server should not be reinstalled after creating the resource
+     * 
+     */
+    @Import(name="preventInstallOnCreate")
+    private @Nullable Output<Boolean> preventInstallOnCreate;
+
+    /**
+     * @return Defines whether the server should not be reinstalled after creating the resource
+     * 
+     */
+    public Optional<Output<Boolean>> preventInstallOnCreate() {
+        return Optional.ofNullable(this.preventInstallOnCreate);
+    }
+
+    /**
+     * Defines whether the server should not be reinstalled when importing the resource
+     * 
+     */
+    @Import(name="preventInstallOnImport")
+    private @Nullable Output<Boolean> preventInstallOnImport;
+
+    /**
+     * @return Defines whether the server should not be reinstalled when importing the resource
+     * 
+     */
+    public Optional<Output<Boolean>> preventInstallOnImport() {
+        return Optional.ofNullable(this.preventInstallOnImport);
+    }
+
+    /**
      * Does this server have professional use option
      * 
      */
@@ -437,6 +482,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Actions to run before destroying the resource
+     * 
+     */
+    @Import(name="runActionsBeforeDestroys")
+    private @Nullable Output<List<String>> runActionsBeforeDestroys;
+
+    /**
+     * @return Actions to run before destroying the resource
+     * 
+     */
+    public Optional<Output<List<String>>> runActionsBeforeDestroys() {
+        return Optional.ofNullable(this.runActionsBeforeDestroys);
+    }
+
+    /**
      * Server id
      * 
      */
@@ -524,6 +584,7 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.efiBootloaderPath = $.efiBootloaderPath;
         this.iam = $.iam;
         this.ip = $.ip;
+        this.keepServiceAfterDestroy = $.keepServiceAfterDestroy;
         this.linkSpeed = $.linkSpeed;
         this.monitoring = $.monitoring;
         this.name = $.name;
@@ -535,6 +596,8 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.planOptions = $.planOptions;
         this.plans = $.plans;
         this.powerState = $.powerState;
+        this.preventInstallOnCreate = $.preventInstallOnCreate;
+        this.preventInstallOnImport = $.preventInstallOnImport;
         this.professionalUse = $.professionalUse;
         this.properties = $.properties;
         this.rack = $.rack;
@@ -543,6 +606,7 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.rescueSshKey = $.rescueSshKey;
         this.reverse = $.reverse;
         this.rootDevice = $.rootDevice;
+        this.runActionsBeforeDestroys = $.runActionsBeforeDestroys;
         this.serverId = $.serverId;
         this.serviceName = $.serviceName;
         this.state = $.state;
@@ -779,6 +843,27 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param keepServiceAfterDestroy Whether we should avoid terminating the service when destroying the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepServiceAfterDestroy(@Nullable Output<Boolean> keepServiceAfterDestroy) {
+            $.keepServiceAfterDestroy = keepServiceAfterDestroy;
+            return this;
+        }
+
+        /**
+         * @param keepServiceAfterDestroy Whether we should avoid terminating the service when destroying the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepServiceAfterDestroy(Boolean keepServiceAfterDestroy) {
+            return keepServiceAfterDestroy(Output.of(keepServiceAfterDestroy));
+        }
+
+        /**
          * @param linkSpeed Link speed of the server
          * 
          * @return builder
@@ -982,6 +1067,48 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param preventInstallOnCreate Defines whether the server should not be reinstalled after creating the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventInstallOnCreate(@Nullable Output<Boolean> preventInstallOnCreate) {
+            $.preventInstallOnCreate = preventInstallOnCreate;
+            return this;
+        }
+
+        /**
+         * @param preventInstallOnCreate Defines whether the server should not be reinstalled after creating the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventInstallOnCreate(Boolean preventInstallOnCreate) {
+            return preventInstallOnCreate(Output.of(preventInstallOnCreate));
+        }
+
+        /**
+         * @param preventInstallOnImport Defines whether the server should not be reinstalled when importing the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventInstallOnImport(@Nullable Output<Boolean> preventInstallOnImport) {
+            $.preventInstallOnImport = preventInstallOnImport;
+            return this;
+        }
+
+        /**
+         * @param preventInstallOnImport Defines whether the server should not be reinstalled when importing the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventInstallOnImport(Boolean preventInstallOnImport) {
+            return preventInstallOnImport(Output.of(preventInstallOnImport));
+        }
+
+        /**
          * @param professionalUse Does this server have professional use option
          * 
          * @return builder
@@ -1147,6 +1274,37 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rootDevice(String rootDevice) {
             return rootDevice(Output.of(rootDevice));
+        }
+
+        /**
+         * @param runActionsBeforeDestroys Actions to run before destroying the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runActionsBeforeDestroys(@Nullable Output<List<String>> runActionsBeforeDestroys) {
+            $.runActionsBeforeDestroys = runActionsBeforeDestroys;
+            return this;
+        }
+
+        /**
+         * @param runActionsBeforeDestroys Actions to run before destroying the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runActionsBeforeDestroys(List<String> runActionsBeforeDestroys) {
+            return runActionsBeforeDestroys(Output.of(runActionsBeforeDestroys));
+        }
+
+        /**
+         * @param runActionsBeforeDestroys Actions to run before destroying the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runActionsBeforeDestroys(String... runActionsBeforeDestroys) {
+            return runActionsBeforeDestroys(List.of(runActionsBeforeDestroys));
         }
 
         /**

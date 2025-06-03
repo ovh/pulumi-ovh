@@ -62,6 +62,11 @@ public final class GetInstanceResult {
      */
     private String sshKey;
     /**
+     * @return Instance status
+     * 
+     */
+    private String status;
+    /**
      * @return Instance task state
      * 
      */
@@ -141,6 +146,13 @@ public final class GetInstanceResult {
         return this.sshKey;
     }
     /**
+     * @return Instance status
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
      * @return Instance task state
      * 
      */
@@ -169,6 +181,7 @@ public final class GetInstanceResult {
         private String region;
         private String serviceName;
         private String sshKey;
+        private String status;
         private String taskState;
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
@@ -185,6 +198,7 @@ public final class GetInstanceResult {
     	      this.region = defaults.region;
     	      this.serviceName = defaults.serviceName;
     	      this.sshKey = defaults.sshKey;
+    	      this.status = defaults.status;
     	      this.taskState = defaults.taskState;
         }
 
@@ -291,6 +305,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder taskState(String taskState) {
             if (taskState == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "taskState");
@@ -312,6 +334,7 @@ public final class GetInstanceResult {
             _resultValue.region = region;
             _resultValue.serviceName = serviceName;
             _resultValue.sshKey = sshKey;
+            _resultValue.status = status;
             _resultValue.taskState = taskState;
             return _resultValue;
         }

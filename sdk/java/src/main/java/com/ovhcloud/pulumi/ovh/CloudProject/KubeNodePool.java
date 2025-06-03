@@ -15,6 +15,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -52,10 +53,48 @@ import javax.annotation.Nullable;
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
  *             .name("my-pool-1")
- *             .flavorName("b2-7")
+ *             .flavorName("b3-8")
  *             .desiredNodes(3)
- *             .maxNodes(3)
- *             .minNodes(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Create a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var nodePoolMultiZones = new KubeNodePool("nodePoolMultiZones", KubeNodePoolArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *             .name("my-pool-zone-a")
+ *             .flavorName("b3-8")
+ *             .desiredNodes(3)
+ *             .availabilityZones("eu-west-par-a")
  *             .build());
  * 
  *     }
@@ -96,10 +135,8 @@ import javax.annotation.Nullable;
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
  *             .name("my-pool")
- *             .flavorName("b2-7")
+ *             .flavorName("b3-8")
  *             .desiredNodes(3)
- *             .maxNodes(3)
- *             .minNodes(3)
  *             .template(KubeNodePoolTemplateArgs.builder()
  *                 .metadata(KubeNodePoolTemplateMetadataArgs.builder()
  *                     .annotations(Map.ofEntries(
@@ -213,6 +250,12 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Double> autoscalingScaleDownUtilizationThreshold() {
         return this.autoscalingScaleDownUtilizationThreshold;
+    }
+    @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> availabilityZones;
+
+    public Output<Optional<List<String>>> availabilityZones() {
+        return Codegen.optional(this.availabilityZones);
     }
     /**
      * Number of nodes which are actually ready in the pool
@@ -506,7 +549,6 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

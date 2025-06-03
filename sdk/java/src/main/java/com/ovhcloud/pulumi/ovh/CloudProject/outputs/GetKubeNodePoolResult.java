@@ -10,6 +10,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -41,6 +42,11 @@ public final class GetKubeNodePoolResult {
      * 
      */
     private Double autoscalingScaleDownUtilizationThreshold;
+    /**
+     * @return list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
+    private @Nullable List<String> availabilityZones;
     /**
      * @return Number of nodes which are actually ready in the pool
      * 
@@ -168,6 +174,13 @@ public final class GetKubeNodePoolResult {
      */
     public Double autoscalingScaleDownUtilizationThreshold() {
         return this.autoscalingScaleDownUtilizationThreshold;
+    }
+    /**
+     * @return list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
+    public List<String> availabilityZones() {
+        return this.availabilityZones == null ? List.of() : this.availabilityZones;
     }
     /**
      * @return Number of nodes which are actually ready in the pool
@@ -313,6 +326,7 @@ public final class GetKubeNodePoolResult {
         private Integer autoscalingScaleDownUnneededTimeSeconds;
         private Integer autoscalingScaleDownUnreadyTimeSeconds;
         private Double autoscalingScaleDownUtilizationThreshold;
+        private @Nullable List<String> availabilityZones;
         private Integer availableNodes;
         private String createdAt;
         private Integer currentNodes;
@@ -340,6 +354,7 @@ public final class GetKubeNodePoolResult {
     	      this.autoscalingScaleDownUnneededTimeSeconds = defaults.autoscalingScaleDownUnneededTimeSeconds;
     	      this.autoscalingScaleDownUnreadyTimeSeconds = defaults.autoscalingScaleDownUnreadyTimeSeconds;
     	      this.autoscalingScaleDownUtilizationThreshold = defaults.autoscalingScaleDownUtilizationThreshold;
+    	      this.availabilityZones = defaults.availabilityZones;
     	      this.availableNodes = defaults.availableNodes;
     	      this.createdAt = defaults.createdAt;
     	      this.currentNodes = defaults.currentNodes;
@@ -400,6 +415,15 @@ public final class GetKubeNodePoolResult {
             }
             this.autoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
             return this;
+        }
+        @CustomType.Setter
+        public Builder availabilityZones(@Nullable List<String> availabilityZones) {
+
+            this.availabilityZones = availabilityZones;
+            return this;
+        }
+        public Builder availabilityZones(String... availabilityZones) {
+            return availabilityZones(List.of(availabilityZones));
         }
         @CustomType.Setter
         public Builder availableNodes(Integer availableNodes) {
@@ -558,6 +582,7 @@ public final class GetKubeNodePoolResult {
             _resultValue.autoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
             _resultValue.autoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;
             _resultValue.autoscalingScaleDownUtilizationThreshold = autoscalingScaleDownUtilizationThreshold;
+            _resultValue.availabilityZones = availabilityZones;
             _resultValue.availableNodes = availableNodes;
             _resultValue.createdAt = createdAt;
             _resultValue.currentNodes = currentNodes;

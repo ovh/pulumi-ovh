@@ -88,11 +88,11 @@ export class Vps extends pulumi.CustomResource {
     /**
      * Product Plan to order
      */
-    public readonly planOptions!: pulumi.Output<outputs.Vps.VpsPlanOption[]>;
+    public readonly planOptions!: pulumi.Output<outputs.Vps.VpsPlanOption[] | undefined>;
     /**
      * Product Plan to order
      */
-    public readonly plans!: pulumi.Output<outputs.Vps.VpsPlan[]>;
+    public readonly plans!: pulumi.Output<outputs.Vps.VpsPlan[] | undefined>;
     /**
      * The internal name of your VPS offer
      */

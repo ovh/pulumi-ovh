@@ -162,14 +162,14 @@ public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource 
         return this.gatewayIp;
     }
     /**
-     * Static host routes of subnet
+     * List of custom host routes. Changing this value recreates the resource.
      * 
      */
     @Export(name="hostRoutes", refs={List.class,NetworkPrivateSubnetV2HostRoute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkPrivateSubnetV2HostRoute>> hostRoutes;
 
     /**
-     * @return Static host routes of subnet
+     * @return List of custom host routes. Changing this value recreates the resource.
      * 
      */
     public Output<Optional<List<NetworkPrivateSubnetV2HostRoute>>> hostRoutes() {
@@ -285,7 +285,6 @@ public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

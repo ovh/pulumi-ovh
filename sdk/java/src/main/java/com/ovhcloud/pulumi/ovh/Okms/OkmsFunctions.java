@@ -23,7 +23,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
-import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OkmsFunctions {
@@ -61,18 +60,6 @@ public final class OkmsFunctions {
      * 
      */
     public static Output<GetOkmsCredentialResult> getOkmsCredential(GetOkmsCredentialArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Okms/getOkmsCredential:getOkmsCredential", TypeShape.of(GetOkmsCredentialResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetOkmsCredentialResult> getOkmsCredential(GetOkmsCredentialArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Okms/getOkmsCredential:getOkmsCredential", TypeShape.of(GetOkmsCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -252,48 +239,6 @@ public final class OkmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetOkmsResourceResult> getOkmsResource(GetOkmsResourceArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Okms/getOkmsResource:getOkmsResource", TypeShape.of(GetOkmsResourceResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a KMS associated with this account
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Okms.OkmsFunctions;
-     * import com.pulumi.ovh.Okms.inputs.GetOkmsResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var kms = OkmsFunctions.getOkmsResource(GetOkmsResourceArgs.builder()
-     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetOkmsResourceResult> getOkmsResourcePlain(GetOkmsResourcePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Okms/getOkmsResource:getOkmsResource", TypeShape.of(GetOkmsResourceResult.class), args, Utilities.withVersion(options));
     }
@@ -424,49 +369,6 @@ public final class OkmsFunctions {
      * 
      */
     public static Output<GetOkmsServiceKeyResult> getOkmsServiceKey(GetOkmsServiceKeyArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", TypeShape.of(GetOkmsServiceKeyResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a KMS service key.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Okms.OkmsFunctions;
-     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var keyInfo = OkmsFunctions.getOkmsServiceKey(GetOkmsServiceKeyArgs.builder()
-     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetOkmsServiceKeyResult> getOkmsServiceKey(GetOkmsServiceKeyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKey:getOkmsServiceKey", TypeShape.of(GetOkmsServiceKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -681,49 +583,6 @@ public final class OkmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetOkmsServiceKeyJwkResult> getOkmsServiceKeyJwk(GetOkmsServiceKeyJwkArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", TypeShape.of(GetOkmsServiceKeyJwkResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a KMS service key, in the JWK format.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.ovh.Okms.OkmsFunctions;
-     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var keyInfo = OkmsFunctions.getOkmsServiceKey(GetOkmsServiceKeyArgs.builder()
-     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetOkmsServiceKeyJwkResult> getOkmsServiceKeyJwkPlain(GetOkmsServiceKeyJwkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Okms/getOkmsServiceKeyJwk:getOkmsServiceKeyJwk", TypeShape.of(GetOkmsServiceKeyJwkResult.class), args, Utilities.withVersion(options));
     }
@@ -746,13 +605,6 @@ public final class OkmsFunctions {
      * 
      */
     public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", TypeShape.of(GetOkmsServiceKeyPemResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a KMS service key, in the PEM format.
-     * 
-     */
-    public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", TypeShape.of(GetOkmsServiceKeyPemResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:Vrack/cloudProject:CloudProject":
 		r = &CloudProject{}
+	case "ovh:Vrack/dedicatedCloudDatacenter:DedicatedCloudDatacenter":
+		r = &DedicatedCloudDatacenter{}
 	case "ovh:Vrack/dedicatedServer:DedicatedServer":
 		r = &DedicatedServer{}
 	case "ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface":
@@ -57,6 +59,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Vrack/cloudProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Vrack/dedicatedCloudDatacenter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

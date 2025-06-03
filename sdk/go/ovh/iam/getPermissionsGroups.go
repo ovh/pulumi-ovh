@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve an IAM permissions group.
+// Use this data source to retrieve all IAM permissions groups.
 //
 // ## Example Usage
 //
@@ -27,9 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.GetPermissionsGroup(ctx, &iam.GetPermissionsGroupArgs{
-//				Urn: "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-//			}, nil)
+//			_, err := iam.GetPermissionsGroups(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +49,8 @@ func GetPermissionsGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*Ge
 // A collection of values returned by getPermissionsGroups.
 type GetPermissionsGroupsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of available permissions groups URNs.
 	Urns []string `pulumi:"urns"`
 }
 
@@ -82,6 +81,7 @@ func (o GetPermissionsGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of available permissions groups URNs.
 func (o GetPermissionsGroupsResultOutput) Urns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPermissionsGroupsResult) []string { return v.Urns }).(pulumi.StringArrayOutput)
 }

@@ -17,6 +17,50 @@ import javax.annotation.Nullable;
 /**
  * Creates an S3 Credential for a user in a public cloud project.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.User;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.UserArgs;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.S3Credential;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.S3CredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var user = new User("user", UserArgs.builder()
+ *             .serviceName("XXX")
+ *             .description("my user for acceptance tests")
+ *             .roleNames("objectstore_operator")
+ *             .build());
+ * 
+ *         var myS3Credentials = new S3Credential("myS3Credentials", S3CredentialArgs.builder()
+ *             .serviceName(user.serviceName())
+ *             .userId(user.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by &#34;/&#34; E.g.,
@@ -132,7 +176,6 @@ public class S3Credential extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "secretAccessKey"
             ))

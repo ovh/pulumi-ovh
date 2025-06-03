@@ -156,16 +156,16 @@ public class Name extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ovhSubsidiary);
     }
     @Export(name="planOptions", refs={List.class,NamePlanOption.class}, tree="[0,1]")
-    private Output<List<NamePlanOption>> planOptions;
+    private Output</* @Nullable */ List<NamePlanOption>> planOptions;
 
-    public Output<List<NamePlanOption>> planOptions() {
-        return this.planOptions;
+    public Output<Optional<List<NamePlanOption>>> planOptions() {
+        return Codegen.optional(this.planOptions);
     }
     @Export(name="plans", refs={List.class,NamePlan.class}, tree="[0,1]")
-    private Output<List<NamePlan>> plans;
+    private Output</* @Nullable */ List<NamePlan>> plans;
 
-    public Output<List<NamePlan>> plans() {
-        return this.plans;
+    public Output<Optional<List<NamePlan>>> plans() {
+        return Codegen.optional(this.plans);
     }
     /**
      * Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
@@ -235,7 +235,6 @@ public class Name extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

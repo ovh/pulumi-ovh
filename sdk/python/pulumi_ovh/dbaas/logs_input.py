@@ -585,7 +585,7 @@ class LogsInput(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         logstash = ovh.Dbaas.get_logs_input_engine(name="logstash",
-            version="7.x")
+            version="9.x")
         stream = ovh.dbaas.LogsOutputGraylogStream("stream",
             service_name="....",
             title="my stream",
@@ -643,7 +643,7 @@ class LogsInput(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         logstash = ovh.Dbaas.get_logs_input_engine(name="logstash",
-            version="7.x")
+            version="9.x")
         stream = ovh.dbaas.LogsOutputGraylogStream("stream",
             service_name="....",
             title="my stream",

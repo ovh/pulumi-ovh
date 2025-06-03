@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type IpV6BridgedSubrange struct {
+	// Your gateway
+	Gateway *string `pulumi:"gateway"`
+	// Slaac status <enabled|disabled>
+	Slaac string `pulumi:"slaac"`
+	// IPv6 CIDR notation (e.g., 2001:41d0::/128)
+	Subrange *string `pulumi:"subrange"`
+}
+
+// IpV6BridgedSubrangeInput is an input type that accepts IpV6BridgedSubrangeArgs and IpV6BridgedSubrangeOutput values.
+// You can construct a concrete instance of `IpV6BridgedSubrangeInput` via:
+//
+//	IpV6BridgedSubrangeArgs{...}
+type IpV6BridgedSubrangeInput interface {
+	pulumi.Input
+
+	ToIpV6BridgedSubrangeOutput() IpV6BridgedSubrangeOutput
+	ToIpV6BridgedSubrangeOutputWithContext(context.Context) IpV6BridgedSubrangeOutput
+}
+
+type IpV6BridgedSubrangeArgs struct {
+	// Your gateway
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+	// Slaac status <enabled|disabled>
+	Slaac pulumi.StringInput `pulumi:"slaac"`
+	// IPv6 CIDR notation (e.g., 2001:41d0::/128)
+	Subrange pulumi.StringPtrInput `pulumi:"subrange"`
+}
+
+func (IpV6BridgedSubrangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpV6BridgedSubrange)(nil)).Elem()
+}
+
+func (i IpV6BridgedSubrangeArgs) ToIpV6BridgedSubrangeOutput() IpV6BridgedSubrangeOutput {
+	return i.ToIpV6BridgedSubrangeOutputWithContext(context.Background())
+}
+
+func (i IpV6BridgedSubrangeArgs) ToIpV6BridgedSubrangeOutputWithContext(ctx context.Context) IpV6BridgedSubrangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpV6BridgedSubrangeOutput)
+}
+
+func (i IpV6BridgedSubrangeArgs) ToIpV6BridgedSubrangePtrOutput() IpV6BridgedSubrangePtrOutput {
+	return i.ToIpV6BridgedSubrangePtrOutputWithContext(context.Background())
+}
+
+func (i IpV6BridgedSubrangeArgs) ToIpV6BridgedSubrangePtrOutputWithContext(ctx context.Context) IpV6BridgedSubrangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpV6BridgedSubrangeOutput).ToIpV6BridgedSubrangePtrOutputWithContext(ctx)
+}
+
+// IpV6BridgedSubrangePtrInput is an input type that accepts IpV6BridgedSubrangeArgs, IpV6BridgedSubrangePtr and IpV6BridgedSubrangePtrOutput values.
+// You can construct a concrete instance of `IpV6BridgedSubrangePtrInput` via:
+//
+//	        IpV6BridgedSubrangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type IpV6BridgedSubrangePtrInput interface {
+	pulumi.Input
+
+	ToIpV6BridgedSubrangePtrOutput() IpV6BridgedSubrangePtrOutput
+	ToIpV6BridgedSubrangePtrOutputWithContext(context.Context) IpV6BridgedSubrangePtrOutput
+}
+
+type ipV6BridgedSubrangePtrType IpV6BridgedSubrangeArgs
+
+func IpV6BridgedSubrangePtr(v *IpV6BridgedSubrangeArgs) IpV6BridgedSubrangePtrInput {
+	return (*ipV6BridgedSubrangePtrType)(v)
+}
+
+func (*ipV6BridgedSubrangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpV6BridgedSubrange)(nil)).Elem()
+}
+
+func (i *ipV6BridgedSubrangePtrType) ToIpV6BridgedSubrangePtrOutput() IpV6BridgedSubrangePtrOutput {
+	return i.ToIpV6BridgedSubrangePtrOutputWithContext(context.Background())
+}
+
+func (i *ipV6BridgedSubrangePtrType) ToIpV6BridgedSubrangePtrOutputWithContext(ctx context.Context) IpV6BridgedSubrangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpV6BridgedSubrangePtrOutput)
+}
+
+type IpV6BridgedSubrangeOutput struct{ *pulumi.OutputState }
+
+func (IpV6BridgedSubrangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpV6BridgedSubrange)(nil)).Elem()
+}
+
+func (o IpV6BridgedSubrangeOutput) ToIpV6BridgedSubrangeOutput() IpV6BridgedSubrangeOutput {
+	return o
+}
+
+func (o IpV6BridgedSubrangeOutput) ToIpV6BridgedSubrangeOutputWithContext(ctx context.Context) IpV6BridgedSubrangeOutput {
+	return o
+}
+
+func (o IpV6BridgedSubrangeOutput) ToIpV6BridgedSubrangePtrOutput() IpV6BridgedSubrangePtrOutput {
+	return o.ToIpV6BridgedSubrangePtrOutputWithContext(context.Background())
+}
+
+func (o IpV6BridgedSubrangeOutput) ToIpV6BridgedSubrangePtrOutputWithContext(ctx context.Context) IpV6BridgedSubrangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpV6BridgedSubrange) *IpV6BridgedSubrange {
+		return &v
+	}).(IpV6BridgedSubrangePtrOutput)
+}
+
+// Your gateway
+func (o IpV6BridgedSubrangeOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpV6BridgedSubrange) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+// Slaac status <enabled|disabled>
+func (o IpV6BridgedSubrangeOutput) Slaac() pulumi.StringOutput {
+	return o.ApplyT(func(v IpV6BridgedSubrange) string { return v.Slaac }).(pulumi.StringOutput)
+}
+
+// IPv6 CIDR notation (e.g., 2001:41d0::/128)
+func (o IpV6BridgedSubrangeOutput) Subrange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpV6BridgedSubrange) *string { return v.Subrange }).(pulumi.StringPtrOutput)
+}
+
+type IpV6BridgedSubrangePtrOutput struct{ *pulumi.OutputState }
+
+func (IpV6BridgedSubrangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpV6BridgedSubrange)(nil)).Elem()
+}
+
+func (o IpV6BridgedSubrangePtrOutput) ToIpV6BridgedSubrangePtrOutput() IpV6BridgedSubrangePtrOutput {
+	return o
+}
+
+func (o IpV6BridgedSubrangePtrOutput) ToIpV6BridgedSubrangePtrOutputWithContext(ctx context.Context) IpV6BridgedSubrangePtrOutput {
+	return o
+}
+
+func (o IpV6BridgedSubrangePtrOutput) Elem() IpV6BridgedSubrangeOutput {
+	return o.ApplyT(func(v *IpV6BridgedSubrange) IpV6BridgedSubrange {
+		if v != nil {
+			return *v
+		}
+		var ret IpV6BridgedSubrange
+		return ret
+	}).(IpV6BridgedSubrangeOutput)
+}
+
+// Your gateway
+func (o IpV6BridgedSubrangePtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpV6BridgedSubrange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slaac status <enabled|disabled>
+func (o IpV6BridgedSubrangePtrOutput) Slaac() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpV6BridgedSubrange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Slaac
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPv6 CIDR notation (e.g., 2001:41d0::/128)
+func (o IpV6BridgedSubrangePtrOutput) Subrange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpV6BridgedSubrange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subrange
+	}).(pulumi.StringPtrOutput)
+}
+
 type VrackOrder struct {
 	// date
 	Date *string `pulumi:"date"`
@@ -820,6 +995,8 @@ func (o VrackPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) VrackP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IpV6BridgedSubrangeInput)(nil)).Elem(), IpV6BridgedSubrangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpV6BridgedSubrangePtrInput)(nil)).Elem(), IpV6BridgedSubrangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackOrderInput)(nil)).Elem(), VrackOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackOrderArrayInput)(nil)).Elem(), VrackOrderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackOrderDetailInput)(nil)).Elem(), VrackOrderDetailArgs{})
@@ -832,6 +1009,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackPlanOptionArrayInput)(nil)).Elem(), VrackPlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackPlanOptionConfigurationInput)(nil)).Elem(), VrackPlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackPlanOptionConfigurationArrayInput)(nil)).Elem(), VrackPlanOptionConfigurationArray{})
+	pulumi.RegisterOutputType(IpV6BridgedSubrangeOutput{})
+	pulumi.RegisterOutputType(IpV6BridgedSubrangePtrOutput{})
 	pulumi.RegisterOutputType(VrackOrderOutput{})
 	pulumi.RegisterOutputType(VrackOrderArrayOutput{})
 	pulumi.RegisterOutputType(VrackOrderDetailOutput{})

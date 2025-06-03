@@ -116,7 +116,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string?> PrivateNetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? PrivateNetworkId { get; set; }
 
         /// <summary>
-        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -436,7 +436,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? PrivateNetworkId { get; set; }
 
         /// <summary>
-        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+        /// a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

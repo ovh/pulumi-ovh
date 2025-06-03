@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
 export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
+        "availabilityZones": args.availabilityZones,
         "kubeId": args.kubeId,
         "name": args.name,
         "serviceName": args.serviceName,
@@ -37,6 +38,10 @@ export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getKubeNodePool.
  */
 export interface GetKubeNodePoolArgs {
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     */
+    availabilityZones?: string[];
     /**
      * The id of the managed kubernetes cluster.
      */
@@ -76,6 +81,10 @@ export interface GetKubeNodePoolResult {
      * (Optional) scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
      */
     readonly autoscalingScaleDownUtilizationThreshold: number;
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     */
+    readonly availabilityZones?: string[];
     /**
      * Number of nodes which are actually ready in the pool
      */
@@ -170,6 +179,7 @@ export interface GetKubeNodePoolResult {
 export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
+        "availabilityZones": args.availabilityZones,
         "kubeId": args.kubeId,
         "name": args.name,
         "serviceName": args.serviceName,
@@ -181,6 +191,10 @@ export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pu
  * A collection of arguments for invoking getKubeNodePool.
  */
 export interface GetKubeNodePoolOutputArgs {
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     */
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The id of the managed kubernetes cluster.
      */

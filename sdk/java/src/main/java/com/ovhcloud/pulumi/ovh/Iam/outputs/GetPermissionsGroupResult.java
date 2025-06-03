@@ -13,50 +13,106 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPermissionsGroupResult {
-    private @Nullable List<String> allows;
-    private String createdAt;
-    private @Nullable List<String> denies;
-    private @Nullable String description;
-    private @Nullable List<String> excepts;
     /**
-     * @return The ID of this resource.
+     * @return Set of actions allowed by the permissions group.
      * 
      */
+    private @Nullable List<String> allows;
+    /**
+     * @return Creation date of this group.
+     * 
+     */
+    private String createdAt;
+    /**
+     * @return Set of actions that will always be denied even if it is explicitly allowed by a policy.
+     * 
+     */
+    private @Nullable List<String> denies;
+    /**
+     * @return Group description.
+     * 
+     */
+    private @Nullable String description;
+    /**
+     * @return Set of actions that will be subtracted from the `allow` list.
+     * 
+     */
+    private @Nullable List<String> excepts;
     private String id;
+    /**
+     * @return Name of the permissions group.
+     * 
+     */
     private String name;
+    /**
+     * @return Owner of the permissions group.
+     * 
+     */
     private String owner;
+    /**
+     * @return Date of the last update of this group.
+     * 
+     */
     private String updatedAt;
     private String urn;
 
     private GetPermissionsGroupResult() {}
+    /**
+     * @return Set of actions allowed by the permissions group.
+     * 
+     */
     public List<String> allows() {
         return this.allows == null ? List.of() : this.allows;
     }
+    /**
+     * @return Creation date of this group.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Set of actions that will always be denied even if it is explicitly allowed by a policy.
+     * 
+     */
     public List<String> denies() {
         return this.denies == null ? List.of() : this.denies;
     }
+    /**
+     * @return Group description.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Set of actions that will be subtracted from the `allow` list.
+     * 
+     */
     public List<String> excepts() {
         return this.excepts == null ? List.of() : this.excepts;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Name of the permissions group.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Owner of the permissions group.
+     * 
+     */
     public String owner() {
         return this.owner;
     }
+    /**
+     * @return Date of the last update of this group.
+     * 
+     */
     public String updatedAt() {
         return this.updatedAt;
     }

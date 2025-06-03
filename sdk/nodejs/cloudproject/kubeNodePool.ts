@@ -21,10 +21,24 @@ import * as utilities from "../utilities";
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     name: "my-pool-1",
- *     flavorName: "b2-7",
+ *     flavorName: "b3-8",
  *     desiredNodes: 3,
- *     maxNodes: 3,
- *     minNodes: 3,
+ * });
+ * ```
+ *
+ * Create a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const nodePoolMultiZones = new ovh.cloudproject.KubeNodePool("node_pool_multi_zones", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     name: "my-pool-zone-a",
+ *     flavorName: "b3-8",
+ *     desiredNodes: 3,
+ *     availabilityZones: ["eu-west-par-a"],
  * });
  * ```
  *
@@ -38,10 +52,8 @@ import * as utilities from "../utilities";
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     name: "my-pool",
- *     flavorName: "b2-7",
+ *     flavorName: "b3-8",
  *     desiredNodes: 3,
- *     maxNodes: 3,
- *     minNodes: 3,
  *     template: {
  *         metadata: {
  *             annotations: {
@@ -125,6 +137,7 @@ export class KubeNodePool extends pulumi.CustomResource {
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     public readonly autoscalingScaleDownUtilizationThreshold!: pulumi.Output<number>;
+    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
     /**
      * Number of nodes which are actually ready in the pool
      */
@@ -216,6 +229,7 @@ export class KubeNodePool extends pulumi.CustomResource {
             resourceInputs["autoscalingScaleDownUnneededTimeSeconds"] = state ? state.autoscalingScaleDownUnneededTimeSeconds : undefined;
             resourceInputs["autoscalingScaleDownUnreadyTimeSeconds"] = state ? state.autoscalingScaleDownUnreadyTimeSeconds : undefined;
             resourceInputs["autoscalingScaleDownUtilizationThreshold"] = state ? state.autoscalingScaleDownUtilizationThreshold : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
             resourceInputs["availableNodes"] = state ? state.availableNodes : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["currentNodes"] = state ? state.currentNodes : undefined;
@@ -250,6 +264,7 @@ export class KubeNodePool extends pulumi.CustomResource {
             resourceInputs["autoscalingScaleDownUnneededTimeSeconds"] = args ? args.autoscalingScaleDownUnneededTimeSeconds : undefined;
             resourceInputs["autoscalingScaleDownUnreadyTimeSeconds"] = args ? args.autoscalingScaleDownUnreadyTimeSeconds : undefined;
             resourceInputs["autoscalingScaleDownUtilizationThreshold"] = args ? args.autoscalingScaleDownUtilizationThreshold : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
             resourceInputs["desiredNodes"] = args ? args.desiredNodes : undefined;
             resourceInputs["flavorName"] = args ? args.flavorName : undefined;
             resourceInputs["kubeId"] = args ? args.kubeId : undefined;
@@ -299,6 +314,7 @@ export interface KubeNodePoolState {
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of nodes which are actually ready in the pool
      */
@@ -398,6 +414,7 @@ export interface KubeNodePoolArgs {
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * number of nodes to start.
      */

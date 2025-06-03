@@ -95,6 +95,8 @@ type Instance struct {
 	SshKey InstanceSshKeyPtrOutput `pulumi:"sshKey"`
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate InstanceSshKeyCreatePtrOutput `pulumi:"sshKeyCreate"`
+	// Instance status
+	Status pulumi.StringOutput `pulumi:"status"`
 	// Instance task state
 	TaskState pulumi.StringOutput `pulumi:"taskState"`
 	// Configuration information or scripts to use upon launch
@@ -185,6 +187,8 @@ type instanceState struct {
 	SshKey *InstanceSshKey `pulumi:"sshKey"`
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate *InstanceSshKeyCreate `pulumi:"sshKeyCreate"`
+	// Instance status
+	Status *string `pulumi:"status"`
 	// Instance task state
 	TaskState *string `pulumi:"taskState"`
 	// Configuration information or scripts to use upon launch
@@ -228,6 +232,8 @@ type InstanceState struct {
 	SshKey InstanceSshKeyPtrInput
 	// Add existing SSH Key pair into your Public Cloud project and link it to the instance
 	SshKeyCreate InstanceSshKeyCreatePtrInput
+	// Instance status
+	Status pulumi.StringPtrInput
 	// Instance task state
 	TaskState pulumi.StringPtrInput
 	// Configuration information or scripts to use upon launch
@@ -476,6 +482,11 @@ func (o InstanceOutput) SshKey() InstanceSshKeyPtrOutput {
 // Add existing SSH Key pair into your Public Cloud project and link it to the instance
 func (o InstanceOutput) SshKeyCreate() InstanceSshKeyCreatePtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceSshKeyCreatePtrOutput { return v.SshKeyCreate }).(InstanceSshKeyCreatePtrOutput)
+}
+
+// Instance status
+func (o InstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Instance task state

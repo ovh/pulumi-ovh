@@ -110,7 +110,7 @@ export class Kube extends pulumi.CustomResource {
      */
     public readonly privateNetworkId!: pulumi.Output<string | undefined>;
     /**
-     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -274,7 +274,7 @@ export interface KubeState {
      */
     privateNetworkId?: pulumi.Input<string>;
     /**
-     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
      */
     region?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface KubeArgs {
      */
     privateNetworkId?: pulumi.Input<string>;
     /**
-     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA1". Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
      */
     region: pulumi.Input<string>;
     /**

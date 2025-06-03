@@ -30,6 +30,7 @@ class KubeNodePoolArgs:
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  desired_nodes: Optional[pulumi.Input[builtins.int]] = None,
                  max_nodes: Optional[pulumi.Input[builtins.int]] = None,
                  min_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -67,6 +68,8 @@ class KubeNodePoolArgs:
             pulumi.set(__self__, "autoscaling_scale_down_unready_time_seconds", autoscaling_scale_down_unready_time_seconds)
         if autoscaling_scale_down_utilization_threshold is not None:
             pulumi.set(__self__, "autoscaling_scale_down_utilization_threshold", autoscaling_scale_down_utilization_threshold)
+        if availability_zones is not None:
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if desired_nodes is not None:
             pulumi.set(__self__, "desired_nodes", desired_nodes)
         if max_nodes is not None:
@@ -178,6 +181,15 @@ class KubeNodePoolArgs:
         pulumi.set(self, "autoscaling_scale_down_utilization_threshold", value)
 
     @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "availability_zones")
+
+    @availability_zones.setter
+    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "availability_zones", value)
+
+    @property
     @pulumi.getter(name="desiredNodes")
     def desired_nodes(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -258,6 +270,7 @@ class _KubeNodePoolState:
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  available_nodes: Optional[pulumi.Input[builtins.int]] = None,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
                  current_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -313,6 +326,8 @@ class _KubeNodePoolState:
             pulumi.set(__self__, "autoscaling_scale_down_unready_time_seconds", autoscaling_scale_down_unready_time_seconds)
         if autoscaling_scale_down_utilization_threshold is not None:
             pulumi.set(__self__, "autoscaling_scale_down_utilization_threshold", autoscaling_scale_down_utilization_threshold)
+        if availability_zones is not None:
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if available_nodes is not None:
             pulumi.set(__self__, "available_nodes", available_nodes)
         if created_at is not None:
@@ -410,6 +425,15 @@ class _KubeNodePoolState:
     @autoscaling_scale_down_utilization_threshold.setter
     def autoscaling_scale_down_utilization_threshold(self, value: Optional[pulumi.Input[builtins.float]]):
         pulumi.set(self, "autoscaling_scale_down_utilization_threshold", value)
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "availability_zones")
+
+    @availability_zones.setter
+    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "availability_zones", value)
 
     @property
     @pulumi.getter(name="availableNodes")
@@ -638,6 +662,7 @@ class KubeNodePool(pulumi.CustomResource):
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  desired_nodes: Optional[pulumi.Input[builtins.int]] = None,
                  flavor_name: Optional[pulumi.Input[builtins.str]] = None,
                  kube_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -663,10 +688,23 @@ class KubeNodePool(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             name="my-pool-1",
-            flavor_name="b2-7",
+            flavor_name="b3-8",
+            desired_nodes=3)
+        ```
+
+        Create a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        node_pool_multi_zones = ovh.cloud_project.KubeNodePool("node_pool_multi_zones",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my-pool-zone-a",
+            flavor_name="b3-8",
             desired_nodes=3,
-            max_nodes=3,
-            min_nodes=3)
+            availability_zones=["eu-west-par-a"])
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -679,10 +717,8 @@ class KubeNodePool(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             name="my-pool",
-            flavor_name="b2-7",
+            flavor_name="b3-8",
             desired_nodes=3,
-            max_nodes=3,
-            min_nodes=3,
             template={
                 "metadata": {
                     "annotations": {
@@ -755,10 +791,23 @@ class KubeNodePool(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             name="my-pool-1",
-            flavor_name="b2-7",
+            flavor_name="b3-8",
+            desired_nodes=3)
+        ```
+
+        Create a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        node_pool_multi_zones = ovh.cloud_project.KubeNodePool("node_pool_multi_zones",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            name="my-pool-zone-a",
+            flavor_name="b3-8",
             desired_nodes=3,
-            max_nodes=3,
-            min_nodes=3)
+            availability_zones=["eu-west-par-a"])
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -771,10 +820,8 @@ class KubeNodePool(pulumi.CustomResource):
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             name="my-pool",
-            flavor_name="b2-7",
+            flavor_name="b3-8",
             desired_nodes=3,
-            max_nodes=3,
-            min_nodes=3,
             template={
                 "metadata": {
                     "annotations": {
@@ -828,6 +875,7 @@ class KubeNodePool(pulumi.CustomResource):
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  desired_nodes: Optional[pulumi.Input[builtins.int]] = None,
                  flavor_name: Optional[pulumi.Input[builtins.str]] = None,
                  kube_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -851,6 +899,7 @@ class KubeNodePool(pulumi.CustomResource):
             __props__.__dict__["autoscaling_scale_down_unneeded_time_seconds"] = autoscaling_scale_down_unneeded_time_seconds
             __props__.__dict__["autoscaling_scale_down_unready_time_seconds"] = autoscaling_scale_down_unready_time_seconds
             __props__.__dict__["autoscaling_scale_down_utilization_threshold"] = autoscaling_scale_down_utilization_threshold
+            __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["desired_nodes"] = desired_nodes
             if flavor_name is None and not opts.urn:
                 raise TypeError("Missing required property 'flavor_name'")
@@ -890,6 +939,7 @@ class KubeNodePool(pulumi.CustomResource):
             autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
             autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[builtins.int]] = None,
             autoscaling_scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None,
+            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             available_nodes: Optional[pulumi.Input[builtins.int]] = None,
             created_at: Optional[pulumi.Input[builtins.str]] = None,
             current_nodes: Optional[pulumi.Input[builtins.int]] = None,
@@ -949,6 +999,7 @@ class KubeNodePool(pulumi.CustomResource):
         __props__.__dict__["autoscaling_scale_down_unneeded_time_seconds"] = autoscaling_scale_down_unneeded_time_seconds
         __props__.__dict__["autoscaling_scale_down_unready_time_seconds"] = autoscaling_scale_down_unready_time_seconds
         __props__.__dict__["autoscaling_scale_down_utilization_threshold"] = autoscaling_scale_down_utilization_threshold
+        __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["available_nodes"] = available_nodes
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["current_nodes"] = current_nodes
@@ -1009,6 +1060,11 @@ class KubeNodePool(pulumi.CustomResource):
         * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="availableNodes")

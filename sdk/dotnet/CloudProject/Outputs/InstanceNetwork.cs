@@ -14,13 +14,21 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class InstanceNetwork
     {
         /// <summary>
-        /// Set the new instance as public boolean
+        /// Private network information
+        /// </summary>
+        public readonly Outputs.InstanceNetworkPrivate? Private;
+        /// <summary>
+        /// Set the new instance as public
         /// </summary>
         public readonly bool? Public;
 
         [OutputConstructor]
-        private InstanceNetwork(bool? @public)
+        private InstanceNetwork(
+            Outputs.InstanceNetworkPrivate? @private,
+
+            bool? @public)
         {
+            Private = @private;
             Public = @public;
         }
     }

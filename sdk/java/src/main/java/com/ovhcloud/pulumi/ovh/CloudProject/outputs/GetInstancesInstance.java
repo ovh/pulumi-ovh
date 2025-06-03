@@ -59,6 +59,11 @@ public final class GetInstancesInstance {
      */
     private String sshKey;
     /**
+     * @return Instance status
+     * 
+     */
+    private String status;
+    /**
      * @return Instance task state
      * 
      */
@@ -129,6 +134,13 @@ public final class GetInstancesInstance {
         return this.sshKey;
     }
     /**
+     * @return Instance status
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
      * @return Instance task state
      * 
      */
@@ -154,6 +166,7 @@ public final class GetInstancesInstance {
         private String imageId;
         private String name;
         private String sshKey;
+        private String status;
         private String taskState;
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
@@ -167,6 +180,7 @@ public final class GetInstancesInstance {
     	      this.imageId = defaults.imageId;
     	      this.name = defaults.name;
     	      this.sshKey = defaults.sshKey;
+    	      this.status = defaults.status;
     	      this.taskState = defaults.taskState;
         }
 
@@ -249,6 +263,14 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder taskState(String taskState) {
             if (taskState == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "taskState");
@@ -267,6 +289,7 @@ public final class GetInstancesInstance {
             _resultValue.imageId = imageId;
             _resultValue.name = name;
             _resultValue.sshKey = sshKey;
+            _resultValue.status = status;
             _resultValue.taskState = taskState;
             return _resultValue;
         }

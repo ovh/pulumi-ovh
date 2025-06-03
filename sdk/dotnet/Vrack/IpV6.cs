@@ -12,25 +12,6 @@ namespace Pulumi.Ovh.Vrack
     /// <summary>
     /// Attach an IPv6 block to a VRack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vrackBlock = new Ovh.Vrack.IpV6("vrack_block", new()
-    ///     {
-    ///         ServiceName = "&lt;vRack service name&gt;",
-    ///         Block = "&lt;ipv6 block&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Attachment of an IPv6 block and a VRack can be imported using the `service_name` (vRack identifier) and the `block` (IPv6 block), separated by "," E.g.,
@@ -49,6 +30,12 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Output("block")]
         public Output<string> Block { get; private set; } = null!;
+
+        /// <summary>
+        /// Bridged subrange configuration.
+        /// </summary>
+        [Output("bridgedSubrange")]
+        public Output<Outputs.IpV6BridgedSubrange> BridgedSubrange { get; private set; } = null!;
 
         /// <summary>
         /// The internal name of your vrack
@@ -110,6 +97,12 @@ namespace Pulumi.Ovh.Vrack
         public Input<string> Block { get; set; } = null!;
 
         /// <summary>
+        /// Bridged subrange configuration.
+        /// </summary>
+        [Input("bridgedSubrange")]
+        public Input<Inputs.IpV6BridgedSubrangeArgs>? BridgedSubrange { get; set; }
+
+        /// <summary>
         /// The internal name of your vrack
         /// </summary>
         [Input("serviceName", required: true)]
@@ -128,6 +121,12 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Input("block")]
         public Input<string>? Block { get; set; }
+
+        /// <summary>
+        /// Bridged subrange configuration.
+        /// </summary>
+        [Input("bridgedSubrange")]
+        public Input<Inputs.IpV6BridgedSubrangeGetArgs>? BridgedSubrange { get; set; }
 
         /// <summary>
         /// The internal name of your vrack

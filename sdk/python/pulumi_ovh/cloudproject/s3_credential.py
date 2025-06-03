@@ -150,6 +150,21 @@ class S3Credential(pulumi.CustomResource):
         """
         Creates an S3 Credential for a user in a public cloud project.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user = ovh.cloud_project.User("user",
+            service_name="XXX",
+            description="my user for acceptance tests",
+            role_names=["objectstore_operator"])
+        my_s3_credentials = ovh.cloud_project.S3Credential("my_s3_credentials",
+            service_name=user.service_name,
+            user_id=user.id)
+        ```
+
         ## Import
 
         OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,
@@ -173,6 +188,21 @@ class S3Credential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an S3 Credential for a user in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        user = ovh.cloud_project.User("user",
+            service_name="XXX",
+            description="my user for acceptance tests",
+            role_names=["objectstore_operator"])
+        my_s3_credentials = ovh.cloud_project.S3Credential("my_s3_credentials",
+            service_name=user.service_name,
+            user_id=user.id)
+        ```
 
         ## Import
 

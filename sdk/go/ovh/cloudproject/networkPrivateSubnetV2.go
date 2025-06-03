@@ -74,7 +74,7 @@ type NetworkPrivateSubnetV2 struct {
 	EnableGatewayIp pulumi.BoolPtrOutput `pulumi:"enableGatewayIp"`
 	// See Argument Reference above.
 	GatewayIp pulumi.StringOutput `pulumi:"gatewayIp"`
-	// Static host routes of subnet
+	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayOutput `pulumi:"hostRoutes"`
 	// Name of the subnet Changing this value recreates the subnet.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -142,7 +142,7 @@ type networkPrivateSubnetV2State struct {
 	EnableGatewayIp *bool `pulumi:"enableGatewayIp"`
 	// See Argument Reference above.
 	GatewayIp *string `pulumi:"gatewayIp"`
-	// Static host routes of subnet
+	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes []NetworkPrivateSubnetV2HostRoute `pulumi:"hostRoutes"`
 	// Name of the subnet Changing this value recreates the subnet.
 	Name *string `pulumi:"name"`
@@ -169,7 +169,7 @@ type NetworkPrivateSubnetV2State struct {
 	EnableGatewayIp pulumi.BoolPtrInput
 	// See Argument Reference above.
 	GatewayIp pulumi.StringPtrInput
-	// Static host routes of subnet
+	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayInput
 	// Name of the subnet Changing this value recreates the subnet.
 	Name pulumi.StringPtrInput
@@ -200,7 +200,7 @@ type networkPrivateSubnetV2Args struct {
 	EnableGatewayIp *bool `pulumi:"enableGatewayIp"`
 	// See Argument Reference above.
 	GatewayIp *string `pulumi:"gatewayIp"`
-	// Static host routes of subnet
+	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes []NetworkPrivateSubnetV2HostRoute `pulumi:"hostRoutes"`
 	// Name of the subnet Changing this value recreates the subnet.
 	Name *string `pulumi:"name"`
@@ -228,7 +228,7 @@ type NetworkPrivateSubnetV2Args struct {
 	EnableGatewayIp pulumi.BoolPtrInput
 	// See Argument Reference above.
 	GatewayIp pulumi.StringPtrInput
-	// Static host routes of subnet
+	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayInput
 	// Name of the subnet Changing this value recreates the subnet.
 	Name pulumi.StringPtrInput
@@ -361,7 +361,7 @@ func (o NetworkPrivateSubnetV2Output) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
-// Static host routes of subnet
+// List of custom host routes. Changing this value recreates the resource.
 func (o NetworkPrivateSubnetV2Output) HostRoutes() NetworkPrivateSubnetV2HostRouteArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) NetworkPrivateSubnetV2HostRouteArrayOutput { return v.HostRoutes }).(NetworkPrivateSubnetV2HostRouteArrayOutput)
 }

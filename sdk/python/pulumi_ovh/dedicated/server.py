@@ -27,16 +27,21 @@ class ServerArgs:
                  customizations: Optional[pulumi.Input['ServerCustomizationsArgs']] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[builtins.str]] = None,
+                 keep_service_after_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  no_intervention: Optional[pulumi.Input[builtins.bool]] = None,
                  os: Optional[pulumi.Input[builtins.str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanArgs']]]] = None,
+                 prevent_install_on_create: Optional[pulumi.Input[builtins.bool]] = None,
+                 prevent_install_on_import: Optional[pulumi.Input[builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  rescue_mail: Optional[pulumi.Input[builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  root_device: Optional[pulumi.Input[builtins.str]] = None,
+                 run_actions_before_destroys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 service_name: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]]] = None):
         """
@@ -46,14 +51,19 @@ class ServerArgs:
         :param pulumi.Input['ServerCustomizationsArgs'] customizations: OS reinstallation customizations
         :param pulumi.Input[builtins.str] display_name: Resource display name
         :param pulumi.Input[builtins.str] efi_bootloader_path: Path of the EFI bootloader
+        :param pulumi.Input[builtins.bool] keep_service_after_destroy: Whether we should avoid terminating the service when destroying the resource
         :param pulumi.Input[builtins.bool] monitoring: Icmp monitoring state
         :param pulumi.Input[builtins.bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[builtins.str] os: Operating system
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVH subsidiaries
+        :param pulumi.Input[builtins.bool] prevent_install_on_create: Defines whether the server should not be reinstalled after creating the resource
+        :param pulumi.Input[builtins.bool] prevent_install_on_import: Defines whether the server should not be reinstalled when importing the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[builtins.str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[builtins.str] root_device: Root device of the server
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] run_actions_before_destroys: Actions to run before destroying the resource
+        :param pulumi.Input[builtins.str] service_name: The service_name of your dedicated server
         :param pulumi.Input[builtins.str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         :param pulumi.Input[Sequence[pulumi.Input['ServerStorageArgs']]] storages: OS reinstallation storage configurations
         """
@@ -67,6 +77,8 @@ class ServerArgs:
             pulumi.set(__self__, "display_name", display_name)
         if efi_bootloader_path is not None:
             pulumi.set(__self__, "efi_bootloader_path", efi_bootloader_path)
+        if keep_service_after_destroy is not None:
+            pulumi.set(__self__, "keep_service_after_destroy", keep_service_after_destroy)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
         if no_intervention is not None:
@@ -79,6 +91,10 @@ class ServerArgs:
             pulumi.set(__self__, "plan_options", plan_options)
         if plans is not None:
             pulumi.set(__self__, "plans", plans)
+        if prevent_install_on_create is not None:
+            pulumi.set(__self__, "prevent_install_on_create", prevent_install_on_create)
+        if prevent_install_on_import is not None:
+            pulumi.set(__self__, "prevent_install_on_import", prevent_install_on_import)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if rescue_mail is not None:
@@ -87,6 +103,10 @@ class ServerArgs:
             pulumi.set(__self__, "rescue_ssh_key", rescue_ssh_key)
         if root_device is not None:
             pulumi.set(__self__, "root_device", root_device)
+        if run_actions_before_destroys is not None:
+            pulumi.set(__self__, "run_actions_before_destroys", run_actions_before_destroys)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if storages is not None:
@@ -151,6 +171,18 @@ class ServerArgs:
     @efi_bootloader_path.setter
     def efi_bootloader_path(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "efi_bootloader_path", value)
+
+    @property
+    @pulumi.getter(name="keepServiceAfterDestroy")
+    def keep_service_after_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether we should avoid terminating the service when destroying the resource
+        """
+        return pulumi.get(self, "keep_service_after_destroy")
+
+    @keep_service_after_destroy.setter
+    def keep_service_after_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "keep_service_after_destroy", value)
 
     @property
     @pulumi.getter
@@ -219,6 +251,30 @@ class ServerArgs:
         pulumi.set(self, "plans", value)
 
     @property
+    @pulumi.getter(name="preventInstallOnCreate")
+    def prevent_install_on_create(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Defines whether the server should not be reinstalled after creating the resource
+        """
+        return pulumi.get(self, "prevent_install_on_create")
+
+    @prevent_install_on_create.setter
+    def prevent_install_on_create(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "prevent_install_on_create", value)
+
+    @property
+    @pulumi.getter(name="preventInstallOnImport")
+    def prevent_install_on_import(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Defines whether the server should not be reinstalled when importing the resource
+        """
+        return pulumi.get(self, "prevent_install_on_import")
+
+    @prevent_install_on_import.setter
+    def prevent_install_on_import(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "prevent_install_on_import", value)
+
+    @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -267,6 +323,30 @@ class ServerArgs:
         pulumi.set(self, "root_device", value)
 
     @property
+    @pulumi.getter(name="runActionsBeforeDestroys")
+    def run_actions_before_destroys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Actions to run before destroying the resource
+        """
+        return pulumi.get(self, "run_actions_before_destroys")
+
+    @run_actions_before_destroys.setter
+    def run_actions_before_destroys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "run_actions_before_destroys", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The service_name of your dedicated server
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_name", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -304,6 +384,7 @@ class _ServerState:
                  efi_bootloader_path: Optional[pulumi.Input[builtins.str]] = None,
                  iam: Optional[pulumi.Input['ServerIamArgs']] = None,
                  ip: Optional[pulumi.Input[builtins.str]] = None,
+                 keep_service_after_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  link_speed: Optional[pulumi.Input[builtins.float]] = None,
                  monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -315,6 +396,8 @@ class _ServerState:
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['ServerPlanArgs']]]] = None,
                  power_state: Optional[pulumi.Input[builtins.str]] = None,
+                 prevent_install_on_create: Optional[pulumi.Input[builtins.bool]] = None,
+                 prevent_install_on_import: Optional[pulumi.Input[builtins.bool]] = None,
                  professional_use: Optional[pulumi.Input[builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  rack: Optional[pulumi.Input[builtins.str]] = None,
@@ -323,6 +406,7 @@ class _ServerState:
                  rescue_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  reverse: Optional[pulumi.Input[builtins.str]] = None,
                  root_device: Optional[pulumi.Input[builtins.str]] = None,
+                 run_actions_before_destroys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  server_id: Optional[pulumi.Input[builtins.float]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
@@ -340,6 +424,7 @@ class _ServerState:
         :param pulumi.Input[builtins.str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input['ServerIamArgs'] iam: IAM resource information
         :param pulumi.Input[builtins.str] ip: Dedicated server ip (IPv4)
+        :param pulumi.Input[builtins.bool] keep_service_after_destroy: Whether we should avoid terminating the service when destroying the resource
         :param pulumi.Input[builtins.float] link_speed: Link speed of the server
         :param pulumi.Input[builtins.bool] monitoring: Icmp monitoring state
         :param pulumi.Input[builtins.str] name: Dedicated server name
@@ -348,6 +433,8 @@ class _ServerState:
         :param pulumi.Input[builtins.str] os: Operating system
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[builtins.str] power_state: Power state of the server (poweron, poweroff)
+        :param pulumi.Input[builtins.bool] prevent_install_on_create: Defines whether the server should not be reinstalled after creating the resource
+        :param pulumi.Input[builtins.bool] prevent_install_on_import: Defines whether the server should not be reinstalled when importing the resource
         :param pulumi.Input[builtins.bool] professional_use: Does this server have professional use option
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[builtins.str] rack: Rack id of the server
@@ -356,6 +443,7 @@ class _ServerState:
         :param pulumi.Input[builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[builtins.str] reverse: Dedicated server reverse
         :param pulumi.Input[builtins.str] root_device: Root device of the server
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] run_actions_before_destroys: Actions to run before destroying the resource
         :param pulumi.Input[builtins.float] server_id: Server id
         :param pulumi.Input[builtins.str] service_name: The service_name of your dedicated server
         :param pulumi.Input[builtins.str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
@@ -382,6 +470,8 @@ class _ServerState:
             pulumi.set(__self__, "iam", iam)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if keep_service_after_destroy is not None:
+            pulumi.set(__self__, "keep_service_after_destroy", keep_service_after_destroy)
         if link_speed is not None:
             pulumi.set(__self__, "link_speed", link_speed)
         if monitoring is not None:
@@ -404,6 +494,10 @@ class _ServerState:
             pulumi.set(__self__, "plans", plans)
         if power_state is not None:
             pulumi.set(__self__, "power_state", power_state)
+        if prevent_install_on_create is not None:
+            pulumi.set(__self__, "prevent_install_on_create", prevent_install_on_create)
+        if prevent_install_on_import is not None:
+            pulumi.set(__self__, "prevent_install_on_import", prevent_install_on_import)
         if professional_use is not None:
             pulumi.set(__self__, "professional_use", professional_use)
         if properties is not None:
@@ -420,6 +514,8 @@ class _ServerState:
             pulumi.set(__self__, "reverse", reverse)
         if root_device is not None:
             pulumi.set(__self__, "root_device", root_device)
+        if run_actions_before_destroys is not None:
+            pulumi.set(__self__, "run_actions_before_destroys", run_actions_before_destroys)
         if server_id is not None:
             pulumi.set(__self__, "server_id", server_id)
         if service_name is not None:
@@ -552,6 +648,18 @@ class _ServerState:
         pulumi.set(self, "ip", value)
 
     @property
+    @pulumi.getter(name="keepServiceAfterDestroy")
+    def keep_service_after_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether we should avoid terminating the service when destroying the resource
+        """
+        return pulumi.get(self, "keep_service_after_destroy")
+
+    @keep_service_after_destroy.setter
+    def keep_service_after_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "keep_service_after_destroy", value)
+
+    @property
     @pulumi.getter(name="linkSpeed")
     def link_speed(self) -> Optional[pulumi.Input[builtins.float]]:
         """
@@ -675,6 +783,30 @@ class _ServerState:
         pulumi.set(self, "power_state", value)
 
     @property
+    @pulumi.getter(name="preventInstallOnCreate")
+    def prevent_install_on_create(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Defines whether the server should not be reinstalled after creating the resource
+        """
+        return pulumi.get(self, "prevent_install_on_create")
+
+    @prevent_install_on_create.setter
+    def prevent_install_on_create(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "prevent_install_on_create", value)
+
+    @property
+    @pulumi.getter(name="preventInstallOnImport")
+    def prevent_install_on_import(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Defines whether the server should not be reinstalled when importing the resource
+        """
+        return pulumi.get(self, "prevent_install_on_import")
+
+    @prevent_install_on_import.setter
+    def prevent_install_on_import(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "prevent_install_on_import", value)
+
+    @property
     @pulumi.getter(name="professionalUse")
     def professional_use(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -771,6 +903,18 @@ class _ServerState:
         pulumi.set(self, "root_device", value)
 
     @property
+    @pulumi.getter(name="runActionsBeforeDestroys")
+    def run_actions_before_destroys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Actions to run before destroying the resource
+        """
+        return pulumi.get(self, "run_actions_before_destroys")
+
+    @run_actions_before_destroys.setter
+    def run_actions_before_destroys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "run_actions_before_destroys", value)
+
+    @property
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[pulumi.Input[builtins.float]]:
         """
@@ -841,16 +985,21 @@ class Server(pulumi.CustomResource):
                  customizations: Optional[pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[builtins.str]] = None,
+                 keep_service_after_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  no_intervention: Optional[pulumi.Input[builtins.bool]] = None,
                  os: Optional[pulumi.Input[builtins.str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanOptionArgs', 'ServerPlanOptionArgsDict']]]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanArgs', 'ServerPlanArgsDict']]]]] = None,
+                 prevent_install_on_create: Optional[pulumi.Input[builtins.bool]] = None,
+                 prevent_install_on_import: Optional[pulumi.Input[builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  rescue_mail: Optional[pulumi.Input[builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  root_device: Optional[pulumi.Input[builtins.str]] = None,
+                 run_actions_before_destroys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 service_name: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]]] = None,
                  __props__=None):
@@ -886,14 +1035,19 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']] customizations: OS reinstallation customizations
         :param pulumi.Input[builtins.str] display_name: Resource display name
         :param pulumi.Input[builtins.str] efi_bootloader_path: Path of the EFI bootloader
+        :param pulumi.Input[builtins.bool] keep_service_after_destroy: Whether we should avoid terminating the service when destroying the resource
         :param pulumi.Input[builtins.bool] monitoring: Icmp monitoring state
         :param pulumi.Input[builtins.bool] no_intervention: Prevent datacenter intervention
         :param pulumi.Input[builtins.str] os: Operating system
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVH subsidiaries
+        :param pulumi.Input[builtins.bool] prevent_install_on_create: Defines whether the server should not be reinstalled after creating the resource
+        :param pulumi.Input[builtins.bool] prevent_install_on_import: Defines whether the server should not be reinstalled when importing the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[builtins.str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[builtins.str] root_device: Root device of the server
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] run_actions_before_destroys: Actions to run before destroying the resource
+        :param pulumi.Input[builtins.str] service_name: The service_name of your dedicated server
         :param pulumi.Input[builtins.str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]] storages: OS reinstallation storage configurations
         """
@@ -948,16 +1102,21 @@ class Server(pulumi.CustomResource):
                  customizations: Optional[pulumi.Input[Union['ServerCustomizationsArgs', 'ServerCustomizationsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  efi_bootloader_path: Optional[pulumi.Input[builtins.str]] = None,
+                 keep_service_after_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  no_intervention: Optional[pulumi.Input[builtins.bool]] = None,
                  os: Optional[pulumi.Input[builtins.str]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanOptionArgs', 'ServerPlanOptionArgsDict']]]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanArgs', 'ServerPlanArgsDict']]]]] = None,
+                 prevent_install_on_create: Optional[pulumi.Input[builtins.bool]] = None,
+                 prevent_install_on_import: Optional[pulumi.Input[builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  rescue_mail: Optional[pulumi.Input[builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  root_device: Optional[pulumi.Input[builtins.str]] = None,
+                 run_actions_before_destroys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 service_name: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerStorageArgs', 'ServerStorageArgsDict']]]]] = None,
                  __props__=None):
@@ -974,16 +1133,21 @@ class Server(pulumi.CustomResource):
             __props__.__dict__["customizations"] = customizations
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
+            __props__.__dict__["keep_service_after_destroy"] = keep_service_after_destroy
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["no_intervention"] = no_intervention
             __props__.__dict__["os"] = os
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["plans"] = plans
+            __props__.__dict__["prevent_install_on_create"] = prevent_install_on_create
+            __props__.__dict__["prevent_install_on_import"] = prevent_install_on_import
             __props__.__dict__["properties"] = properties
             __props__.__dict__["rescue_mail"] = rescue_mail
             __props__.__dict__["rescue_ssh_key"] = rescue_ssh_key
             __props__.__dict__["root_device"] = root_device
+            __props__.__dict__["run_actions_before_destroys"] = run_actions_before_destroys
+            __props__.__dict__["service_name"] = service_name
             __props__.__dict__["state"] = state
             __props__.__dict__["storages"] = storages
             __props__.__dict__["availability_zone"] = None
@@ -1001,7 +1165,6 @@ class Server(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["reverse"] = None
             __props__.__dict__["server_id"] = None
-            __props__.__dict__["service_name"] = None
             __props__.__dict__["support_level"] = None
         super(Server, __self__).__init__(
             'ovh:Dedicated/server:Server',
@@ -1023,6 +1186,7 @@ class Server(pulumi.CustomResource):
             efi_bootloader_path: Optional[pulumi.Input[builtins.str]] = None,
             iam: Optional[pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']]] = None,
             ip: Optional[pulumi.Input[builtins.str]] = None,
+            keep_service_after_destroy: Optional[pulumi.Input[builtins.bool]] = None,
             link_speed: Optional[pulumi.Input[builtins.float]] = None,
             monitoring: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1034,6 +1198,8 @@ class Server(pulumi.CustomResource):
             plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanOptionArgs', 'ServerPlanOptionArgsDict']]]]] = None,
             plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerPlanArgs', 'ServerPlanArgsDict']]]]] = None,
             power_state: Optional[pulumi.Input[builtins.str]] = None,
+            prevent_install_on_create: Optional[pulumi.Input[builtins.bool]] = None,
+            prevent_install_on_import: Optional[pulumi.Input[builtins.bool]] = None,
             professional_use: Optional[pulumi.Input[builtins.bool]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             rack: Optional[pulumi.Input[builtins.str]] = None,
@@ -1042,6 +1208,7 @@ class Server(pulumi.CustomResource):
             rescue_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
             reverse: Optional[pulumi.Input[builtins.str]] = None,
             root_device: Optional[pulumi.Input[builtins.str]] = None,
+            run_actions_before_destroys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             server_id: Optional[pulumi.Input[builtins.float]] = None,
             service_name: Optional[pulumi.Input[builtins.str]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
@@ -1064,6 +1231,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] efi_bootloader_path: Path of the EFI bootloader
         :param pulumi.Input[Union['ServerIamArgs', 'ServerIamArgsDict']] iam: IAM resource information
         :param pulumi.Input[builtins.str] ip: Dedicated server ip (IPv4)
+        :param pulumi.Input[builtins.bool] keep_service_after_destroy: Whether we should avoid terminating the service when destroying the resource
         :param pulumi.Input[builtins.float] link_speed: Link speed of the server
         :param pulumi.Input[builtins.bool] monitoring: Icmp monitoring state
         :param pulumi.Input[builtins.str] name: Dedicated server name
@@ -1072,6 +1240,8 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] os: Operating system
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVH subsidiaries
         :param pulumi.Input[builtins.str] power_state: Power state of the server (poweron, poweroff)
+        :param pulumi.Input[builtins.bool] prevent_install_on_create: Defines whether the server should not be reinstalled after creating the resource
+        :param pulumi.Input[builtins.bool] prevent_install_on_import: Defines whether the server should not be reinstalled when importing the resource
         :param pulumi.Input[builtins.bool] professional_use: Does this server have professional use option
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[builtins.str] rack: Rack id of the server
@@ -1080,6 +1250,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[builtins.str] reverse: Dedicated server reverse
         :param pulumi.Input[builtins.str] root_device: Root device of the server
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] run_actions_before_destroys: Actions to run before destroying the resource
         :param pulumi.Input[builtins.float] server_id: Server id
         :param pulumi.Input[builtins.str] service_name: The service_name of your dedicated server
         :param pulumi.Input[builtins.str] state: All states a Dedicated can be in (error, hacked, hackedBlocked, ok)
@@ -1100,6 +1271,7 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["efi_bootloader_path"] = efi_bootloader_path
         __props__.__dict__["iam"] = iam
         __props__.__dict__["ip"] = ip
+        __props__.__dict__["keep_service_after_destroy"] = keep_service_after_destroy
         __props__.__dict__["link_speed"] = link_speed
         __props__.__dict__["monitoring"] = monitoring
         __props__.__dict__["name"] = name
@@ -1111,6 +1283,8 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["plan_options"] = plan_options
         __props__.__dict__["plans"] = plans
         __props__.__dict__["power_state"] = power_state
+        __props__.__dict__["prevent_install_on_create"] = prevent_install_on_create
+        __props__.__dict__["prevent_install_on_import"] = prevent_install_on_import
         __props__.__dict__["professional_use"] = professional_use
         __props__.__dict__["properties"] = properties
         __props__.__dict__["rack"] = rack
@@ -1119,6 +1293,7 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["rescue_ssh_key"] = rescue_ssh_key
         __props__.__dict__["reverse"] = reverse
         __props__.__dict__["root_device"] = root_device
+        __props__.__dict__["run_actions_before_destroys"] = run_actions_before_destroys
         __props__.__dict__["server_id"] = server_id
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
@@ -1176,7 +1351,7 @@ class Server(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[builtins.str]:
+    def display_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Resource display name
         """
@@ -1205,6 +1380,14 @@ class Server(pulumi.CustomResource):
         Dedicated server ip (IPv4)
         """
         return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="keepServiceAfterDestroy")
+    def keep_service_after_destroy(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Whether we should avoid terminating the service when destroying the resource
+        """
+        return pulumi.get(self, "keep_service_after_destroy")
 
     @property
     @pulumi.getter(name="linkSpeed")
@@ -1269,12 +1452,12 @@ class Server(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="planOptions")
-    def plan_options(self) -> pulumi.Output[Sequence['outputs.ServerPlanOption']]:
+    def plan_options(self) -> pulumi.Output[Optional[Sequence['outputs.ServerPlanOption']]]:
         return pulumi.get(self, "plan_options")
 
     @property
     @pulumi.getter
-    def plans(self) -> pulumi.Output[Sequence['outputs.ServerPlan']]:
+    def plans(self) -> pulumi.Output[Optional[Sequence['outputs.ServerPlan']]]:
         return pulumi.get(self, "plans")
 
     @property
@@ -1284,6 +1467,22 @@ class Server(pulumi.CustomResource):
         Power state of the server (poweron, poweroff)
         """
         return pulumi.get(self, "power_state")
+
+    @property
+    @pulumi.getter(name="preventInstallOnCreate")
+    def prevent_install_on_create(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Defines whether the server should not be reinstalled after creating the resource
+        """
+        return pulumi.get(self, "prevent_install_on_create")
+
+    @property
+    @pulumi.getter(name="preventInstallOnImport")
+    def prevent_install_on_import(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Defines whether the server should not be reinstalled when importing the resource
+        """
+        return pulumi.get(self, "prevent_install_on_import")
 
     @property
     @pulumi.getter(name="professionalUse")
@@ -1319,7 +1518,7 @@ class Server(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rescueMail")
-    def rescue_mail(self) -> pulumi.Output[builtins.str]:
+    def rescue_mail(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Rescue mail of the server
         """
@@ -1327,7 +1526,7 @@ class Server(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rescueSshKey")
-    def rescue_ssh_key(self) -> pulumi.Output[builtins.str]:
+    def rescue_ssh_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Public SSH Key used in the rescue mode
         """
@@ -1348,6 +1547,14 @@ class Server(pulumi.CustomResource):
         Root device of the server
         """
         return pulumi.get(self, "root_device")
+
+    @property
+    @pulumi.getter(name="runActionsBeforeDestroys")
+    def run_actions_before_destroys(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        Actions to run before destroying the resource
+        """
+        return pulumi.get(self, "run_actions_before_destroys")
 
     @property
     @pulumi.getter(name="serverId")

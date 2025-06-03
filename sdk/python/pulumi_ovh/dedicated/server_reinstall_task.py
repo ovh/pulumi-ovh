@@ -342,16 +342,7 @@ class ServerReinstallTask(pulumi.CustomResource):
                  storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]]] = None,
                  __props__=None):
         """
-        ## Import
-
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Dedicated/serverReinstallTask:ServerReinstallTask ovh_dedicated_server_reinstall_task nsXXXX.ipXXXX/operating_system/12345
-        ```
-
+        Create a ServerReinstallTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] bootid_on_destroy: If set, reboot the server on the specified boot id during destroy phase.
@@ -370,16 +361,7 @@ class ServerReinstallTask(pulumi.CustomResource):
                  args: ServerReinstallTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        Installation task can be imported using the `service_name` (`nsXXXX.ip...`) of the baremetal server, the `operating_system` used and ths `task_id`, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Dedicated/serverReinstallTask:ServerReinstallTask ovh_dedicated_server_reinstall_task nsXXXX.ipXXXX/operating_system/12345
-        ```
-
+        Create a ServerReinstallTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServerReinstallTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

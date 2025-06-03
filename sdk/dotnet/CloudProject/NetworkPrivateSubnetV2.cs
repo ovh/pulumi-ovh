@@ -91,7 +91,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> GatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// Static host routes of subnet
+        /// List of custom host routes. Changing this value recreates the resource.
         /// </summary>
         [Output("hostRoutes")]
         public Output<ImmutableArray<Outputs.NetworkPrivateSubnetV2HostRoute>> HostRoutes { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.NetworkPrivateSubnetV2HostRouteArgs>? _hostRoutes;
 
         /// <summary>
-        /// Static host routes of subnet
+        /// List of custom host routes. Changing this value recreates the resource.
         /// </summary>
         public InputList<Inputs.NetworkPrivateSubnetV2HostRouteArgs> HostRoutes
         {
@@ -323,7 +323,7 @@ namespace Pulumi.Ovh.CloudProject
         private InputList<Inputs.NetworkPrivateSubnetV2HostRouteGetArgs>? _hostRoutes;
 
         /// <summary>
-        /// Static host routes of subnet
+        /// List of custom host routes. Changing this value recreates the resource.
         /// </summary>
         public InputList<Inputs.NetworkPrivateSubnetV2HostRouteGetArgs> HostRoutes
         {

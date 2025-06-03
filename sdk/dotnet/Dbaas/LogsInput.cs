@@ -25,7 +25,7 @@ namespace Pulumi.Ovh.Dbaas
     ///     var logstash = Ovh.Dbaas.GetLogsInputEngine.Invoke(new()
     ///     {
     ///         Name = "logstash",
-    ///         Version = "7.x",
+    ///         Version = "9.x",
     ///     });
     /// 
     ///     var stream = new Ovh.Dbaas.LogsOutputGraylogStream("stream", new()

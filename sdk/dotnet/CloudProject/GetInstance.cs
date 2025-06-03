@@ -193,6 +193,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string SshKey;
         /// <summary>
+        /// Instance status
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// Instance task state
         /// </summary>
         public readonly string TaskState;
@@ -223,6 +227,8 @@ namespace Pulumi.Ovh.CloudProject
 
             string sshKey,
 
+            string status,
+
             string taskState)
         {
             Addresses = addresses;
@@ -237,6 +243,7 @@ namespace Pulumi.Ovh.CloudProject
             Region = region;
             ServiceName = serviceName;
             SshKey = sshKey;
+            Status = status;
             TaskState = taskState;
         }
     }

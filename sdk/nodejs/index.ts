@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { CloudProjectSshKeyArgs, CloudProjectSshKeyState } from "./cloudProjectSshKey";
+export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshKey;
+export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
+utilities.lazyLoad(exports, ["CloudProjectSshKey"], () => require("./cloudProjectSshKey"));
+
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
 export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;
@@ -34,6 +39,11 @@ export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { VrackIpv6RoutedSubrangeArgs, VrackIpv6RoutedSubrangeState } from "./vrackIpv6RoutedSubrange";
+export type VrackIpv6RoutedSubrange = import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange;
+export const VrackIpv6RoutedSubrange: typeof import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange = null as any;
+utilities.lazyLoad(exports, ["VrackIpv6RoutedSubrange"], () => require("./vrackIpv6RoutedSubrange"));
 
 
 // Export sub-modules:
@@ -80,6 +90,22 @@ export {
     vps,
     vrack,
 };
+
+const _module = {
+    version: utilities.getVersion(),
+    construct: (name: string, type: string, urn: string): pulumi.Resource => {
+        switch (type) {
+            case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
+                return new CloudProjectSshKey(name, <any>undefined, { urn })
+            case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
+                return new VrackIpv6RoutedSubrange(name, <any>undefined, { urn })
+            default:
+                throw new Error(`unknown resource type ${type}`);
+        }
+    },
+};
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/vrackIpv6RoutedSubrange", _module)
 pulumi.runtime.registerResourcePackage("ovh", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

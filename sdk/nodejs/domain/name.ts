@@ -65,8 +65,8 @@ export class Name extends pulumi.CustomResource {
      * OVH subsidiaries
      */
     public readonly ovhSubsidiary!: pulumi.Output<string | undefined>;
-    public readonly planOptions!: pulumi.Output<outputs.Domain.NamePlanOption[]>;
-    public readonly plans!: pulumi.Output<outputs.Domain.NamePlan[]>;
+    public readonly planOptions!: pulumi.Output<outputs.Domain.NamePlanOption[] | undefined>;
+    public readonly plans!: pulumi.Output<outputs.Domain.NamePlan[] | undefined>;
     /**
      * Reflects the readiness of the domain name resource. A new target specification request will be accepted only in `READY`, `UPDATING` or `ERROR` status
      */

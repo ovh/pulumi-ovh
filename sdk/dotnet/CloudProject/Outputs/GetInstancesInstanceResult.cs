@@ -50,6 +50,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string SshKey;
         /// <summary>
+        /// Instance status
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// Instance task state
         /// </summary>
         public readonly string TaskState;
@@ -74,6 +78,8 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
             string sshKey,
 
+            string status,
+
             string taskState)
         {
             Addresses = addresses;
@@ -85,6 +91,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
             ImageId = imageId;
             Name = name;
             SshKey = sshKey;
+            Status = status;
             TaskState = taskState;
         }
     }

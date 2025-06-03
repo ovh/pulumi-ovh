@@ -45,7 +45,7 @@ class NetworkPrivateSubnetV2Args:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_nameservers: DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         :param pulumi.Input[builtins.bool] enable_gateway_ip: Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
         :param pulumi.Input[builtins.str] gateway_ip: See Argument Reference above.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: Static host routes of subnet
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: List of custom host routes. Changing this value recreates the resource.
         :param pulumi.Input[builtins.str] name: Name of the subnet Changing this value recreates the subnet.
         :param pulumi.Input[builtins.bool] use_default_public_dns_resolver: Set to false if you want to use your DNS resolver. Changing this value recreates the resource.
         """
@@ -182,7 +182,7 @@ class NetworkPrivateSubnetV2Args:
     @pulumi.getter(name="hostRoutes")
     def host_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]]]:
         """
-        Static host routes of subnet
+        List of custom host routes. Changing this value recreates the resource.
         """
         return pulumi.get(self, "host_routes")
 
@@ -238,7 +238,7 @@ class _NetworkPrivateSubnetV2State:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_nameservers: DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         :param pulumi.Input[builtins.bool] enable_gateway_ip: Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
         :param pulumi.Input[builtins.str] gateway_ip: See Argument Reference above.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: Static host routes of subnet
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]] host_routes: List of custom host routes. Changing this value recreates the resource.
         :param pulumi.Input[builtins.str] name: Name of the subnet Changing this value recreates the subnet.
         :param pulumi.Input[builtins.str] network_id: The id of the network. Changing this forces a new resource to be created.
         :param pulumi.Input[builtins.str] region: The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
@@ -346,7 +346,7 @@ class _NetworkPrivateSubnetV2State:
     @pulumi.getter(name="hostRoutes")
     def host_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateSubnetV2HostRouteArgs']]]]:
         """
-        Static host routes of subnet
+        List of custom host routes. Changing this value recreates the resource.
         """
         return pulumi.get(self, "host_routes")
 
@@ -472,7 +472,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_nameservers: DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         :param pulumi.Input[builtins.bool] enable_gateway_ip: Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
         :param pulumi.Input[builtins.str] gateway_ip: See Argument Reference above.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2HostRouteArgs', 'NetworkPrivateSubnetV2HostRouteArgsDict']]]] host_routes: Static host routes of subnet
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2HostRouteArgs', 'NetworkPrivateSubnetV2HostRouteArgsDict']]]] host_routes: List of custom host routes. Changing this value recreates the resource.
         :param pulumi.Input[builtins.str] name: Name of the subnet Changing this value recreates the subnet.
         :param pulumi.Input[builtins.str] network_id: The id of the network. Changing this forces a new resource to be created.
         :param pulumi.Input[builtins.str] region: The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
@@ -607,7 +607,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_nameservers: DNS nameservers used by DHCP Changing this value recreates the resource. Defaults to OVH default DNS nameserver.
         :param pulumi.Input[builtins.bool] enable_gateway_ip: Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
         :param pulumi.Input[builtins.str] gateway_ip: See Argument Reference above.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2HostRouteArgs', 'NetworkPrivateSubnetV2HostRouteArgsDict']]]] host_routes: Static host routes of subnet
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateSubnetV2HostRouteArgs', 'NetworkPrivateSubnetV2HostRouteArgsDict']]]] host_routes: List of custom host routes. Changing this value recreates the resource.
         :param pulumi.Input[builtins.str] name: Name of the subnet Changing this value recreates the subnet.
         :param pulumi.Input[builtins.str] network_id: The id of the network. Changing this forces a new resource to be created.
         :param pulumi.Input[builtins.str] region: The region in which the network subnet will be created. Ex.: "GRA1". Changing this value recreates the resource.
@@ -684,7 +684,7 @@ class NetworkPrivateSubnetV2(pulumi.CustomResource):
     @pulumi.getter(name="hostRoutes")
     def host_routes(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkPrivateSubnetV2HostRoute']]]:
         """
-        Static host routes of subnet
+        List of custom host routes. Changing this value recreates the resource.
         """
         return pulumi.get(self, "host_routes")
 

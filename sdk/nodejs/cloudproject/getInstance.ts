@@ -95,6 +95,10 @@ export interface GetInstanceResult {
      */
     readonly sshKey: string;
     /**
+     * Instance status
+     */
+    readonly status: string;
+    /**
      * Instance task state
      */
     readonly taskState: string;

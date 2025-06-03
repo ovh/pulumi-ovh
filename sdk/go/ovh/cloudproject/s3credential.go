@@ -14,6 +14,43 @@ import (
 
 // Creates an S3 Credential for a user in a public cloud project.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := cloudproject.NewUser(ctx, "user", &cloudproject.UserArgs{
+//				ServiceName: pulumi.String("XXX"),
+//				Description: pulumi.String("my user for acceptance tests"),
+//				RoleNames: pulumi.StringArray{
+//					pulumi.String("objectstore_operator"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudproject.NewS3Credential(ctx, "my_s3_credentials", &cloudproject.S3CredentialArgs{
+//				ServiceName: user.ServiceName,
+//				UserId:      user.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OVHcloud User S3 Credentials can be imported using the `service_name`, `user_id` and `access_key_id` of the credential, separated by "/" E.g.,

@@ -34,10 +34,41 @@ import (
 //				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Name:         pulumi.String("my-pool-1"),
-//				FlavorName:   pulumi.String("b2-7"),
+//				FlavorName:   pulumi.String("b3-8"),
 //				DesiredNodes: pulumi.Int(3),
-//				MaxNodes:     pulumi.Int(3),
-//				MinNodes:     pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewKubeNodePool(ctx, "node_pool_multi_zones", &cloudproject.KubeNodePoolArgs{
+//				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Name:         pulumi.String("my-pool-zone-a"),
+//				FlavorName:   pulumi.String("b3-8"),
+//				DesiredNodes: pulumi.Int(3),
+//				AvailabilityZones: pulumi.StringArray{
+//					pulumi.String("eu-west-par-a"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -66,10 +97,8 @@ import (
 //				ServiceName:  pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				KubeId:       pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Name:         pulumi.String("my-pool"),
-//				FlavorName:   pulumi.String("b2-7"),
+//				FlavorName:   pulumi.String("b3-8"),
 //				DesiredNodes: pulumi.Int(3),
-//				MaxNodes:     pulumi.Int(3),
-//				MinNodes:     pulumi.Int(3),
 //				Template: &cloudproject.KubeNodePoolTemplateArgs{
 //					Metadata: &cloudproject.KubeNodePoolTemplateMetadataArgs{
 //						Annotations: pulumi.StringMap{
@@ -125,7 +154,8 @@ type KubeNodePool struct {
 	AutoscalingScaleDownUnreadyTimeSeconds pulumi.IntOutput `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
-	AutoscalingScaleDownUtilizationThreshold pulumi.Float64Output `pulumi:"autoscalingScaleDownUtilizationThreshold"`
+	AutoscalingScaleDownUtilizationThreshold pulumi.Float64Output     `pulumi:"autoscalingScaleDownUtilizationThreshold"`
+	AvailabilityZones                        pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes pulumi.IntOutput `pulumi:"availableNodes"`
 	// Creation date
@@ -214,6 +244,7 @@ type kubeNodePoolState struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold *float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
+	AvailabilityZones                        []string `pulumi:"availabilityZones"`
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes *int `pulumi:"availableNodes"`
 	// Creation date
@@ -264,6 +295,7 @@ type KubeNodePoolState struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64PtrInput
+	AvailabilityZones                        pulumi.StringArrayInput
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes pulumi.IntPtrInput
 	// Creation date
@@ -318,6 +350,7 @@ type kubeNodePoolArgs struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold *float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
+	AvailabilityZones                        []string `pulumi:"availabilityZones"`
 	// number of nodes to start.
 	DesiredNodes *int `pulumi:"desiredNodes"`
 	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
@@ -351,6 +384,7 @@ type KubeNodePoolArgs struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64PtrInput
+	AvailabilityZones                        pulumi.StringArrayInput
 	// number of nodes to start.
 	DesiredNodes pulumi.IntPtrInput
 	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
@@ -482,6 +516,10 @@ func (o KubeNodePoolOutput) AutoscalingScaleDownUnreadyTimeSeconds() pulumi.IntO
 // * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 func (o KubeNodePoolOutput) AutoscalingScaleDownUtilizationThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.Float64Output { return v.AutoscalingScaleDownUtilizationThreshold }).(pulumi.Float64Output)
+}
+
+func (o KubeNodePoolOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KubeNodePool) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // Number of nodes which are actually ready in the pool

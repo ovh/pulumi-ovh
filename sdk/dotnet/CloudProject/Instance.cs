@@ -163,6 +163,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<Outputs.InstanceSshKeyCreate?> SshKeyCreate { get; private set; } = null!;
 
         /// <summary>
+        /// Instance status
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
         /// Instance task state
         /// </summary>
         [Output("taskState")]
@@ -432,6 +438,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("sshKeyCreate")]
         public Input<Inputs.InstanceSshKeyCreateGetArgs>? SshKeyCreate { get; set; }
+
+        /// <summary>
+        /// Instance status
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Instance task state

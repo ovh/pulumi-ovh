@@ -11,12 +11,75 @@ namespace Pulumi.Ovh.Iam
 {
     public static class GetPermissionsGroup
     {
+        /// <summary>
+        /// Use this data source to retrieve an IAM permissions group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
+        ///     {
+        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPermissionsGroupResult> InvokeAsync(GetPermissionsGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsGroupResult>("ovh:Iam/getPermissionsGroup:getPermissionsGroup", args ?? new GetPermissionsGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve an IAM permissions group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
+        ///     {
+        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPermissionsGroupResult> Invoke(GetPermissionsGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupResult>("ovh:Iam/getPermissionsGroup:getPermissionsGroup", args ?? new GetPermissionsGroupInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve an IAM permissions group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
+        ///     {
+        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPermissionsGroupResult> Invoke(GetPermissionsGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupResult>("ovh:Iam/getPermissionsGroup:getPermissionsGroup", args ?? new GetPermissionsGroupInvokeArgs(), options.WithDefaults());
     }
@@ -26,6 +89,10 @@ namespace Pulumi.Ovh.Iam
     {
         [Input("allows")]
         private List<string>? _allows;
+
+        /// <summary>
+        /// Set of actions allowed by the permissions group.
+        /// </summary>
         public List<string> Allows
         {
             get => _allows ?? (_allows = new List<string>());
@@ -34,26 +101,43 @@ namespace Pulumi.Ovh.Iam
 
         [Input("denies")]
         private List<string>? _denies;
+
+        /// <summary>
+        /// Set of actions that will always be denied even if it is explicitly allowed by a policy.
+        /// </summary>
         public List<string> Denies
         {
             get => _denies ?? (_denies = new List<string>());
             set => _denies = value;
         }
 
+        /// <summary>
+        /// Group description.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
         [Input("excepts")]
         private List<string>? _excepts;
+
+        /// <summary>
+        /// Set of actions that will be subtracted from the `allow` list.
+        /// </summary>
         public List<string> Excepts
         {
             get => _excepts ?? (_excepts = new List<string>());
             set => _excepts = value;
         }
 
+        /// <summary>
+        /// Date of the last update of this group.
+        /// </summary>
         [Input("updatedAt")]
         public string? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// URN of the permissions group.
+        /// </summary>
         [Input("urn", required: true)]
         public string Urn { get; set; } = null!;
 
@@ -67,6 +151,10 @@ namespace Pulumi.Ovh.Iam
     {
         [Input("allows")]
         private InputList<string>? _allows;
+
+        /// <summary>
+        /// Set of actions allowed by the permissions group.
+        /// </summary>
         public InputList<string> Allows
         {
             get => _allows ?? (_allows = new InputList<string>());
@@ -75,26 +163,43 @@ namespace Pulumi.Ovh.Iam
 
         [Input("denies")]
         private InputList<string>? _denies;
+
+        /// <summary>
+        /// Set of actions that will always be denied even if it is explicitly allowed by a policy.
+        /// </summary>
         public InputList<string> Denies
         {
             get => _denies ?? (_denies = new InputList<string>());
             set => _denies = value;
         }
 
+        /// <summary>
+        /// Group description.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("excepts")]
         private InputList<string>? _excepts;
+
+        /// <summary>
+        /// Set of actions that will be subtracted from the `allow` list.
+        /// </summary>
         public InputList<string> Excepts
         {
             get => _excepts ?? (_excepts = new InputList<string>());
             set => _excepts = value;
         }
 
+        /// <summary>
+        /// Date of the last update of this group.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// URN of the permissions group.
+        /// </summary>
         [Input("urn", required: true)]
         public Input<string> Urn { get; set; } = null!;
 
@@ -108,17 +213,38 @@ namespace Pulumi.Ovh.Iam
     [OutputType]
     public sealed class GetPermissionsGroupResult
     {
-        public readonly ImmutableArray<string> Allows;
-        public readonly string CreatedAt;
-        public readonly ImmutableArray<string> Denies;
-        public readonly string? Description;
-        public readonly ImmutableArray<string> Excepts;
         /// <summary>
-        /// The ID of this resource.
+        /// Set of actions allowed by the permissions group.
         /// </summary>
+        public readonly ImmutableArray<string> Allows;
+        /// <summary>
+        /// Creation date of this group.
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// Set of actions that will always be denied even if it is explicitly allowed by a policy.
+        /// </summary>
+        public readonly ImmutableArray<string> Denies;
+        /// <summary>
+        /// Group description.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
+        /// Set of actions that will be subtracted from the `allow` list.
+        /// </summary>
+        public readonly ImmutableArray<string> Excepts;
         public readonly string Id;
+        /// <summary>
+        /// Name of the permissions group.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Owner of the permissions group.
+        /// </summary>
         public readonly string Owner;
+        /// <summary>
+        /// Date of the last update of this group.
+        /// </summary>
         public readonly string UpdatedAt;
         public readonly string Urn;
 

@@ -12,7 +12,7 @@ namespace Pulumi.Ovh.Iam
     public static class GetPermissionsGroups
     {
         /// <summary>
-        /// Use this data source to retrieve an IAM permissions group.
+        /// Use this data source to retrieve all IAM permissions groups.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
-        ///     {
-        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-        ///     });
+        ///     var groups = Ovh.Iam.GetPermissionsGroups.Invoke();
         /// 
         /// });
         /// ```
@@ -36,7 +33,7 @@ namespace Pulumi.Ovh.Iam
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve an IAM permissions group.
+        /// Use this data source to retrieve all IAM permissions groups.
         /// 
         /// ## Example Usage
         /// 
@@ -48,10 +45,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
-        ///     {
-        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-        ///     });
+        ///     var groups = Ovh.Iam.GetPermissionsGroups.Invoke();
         /// 
         /// });
         /// ```
@@ -60,7 +54,7 @@ namespace Pulumi.Ovh.Iam
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsGroupsResult>("ovh:Iam/getPermissionsGroups:getPermissionsGroups", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve an IAM permissions group.
+        /// Use this data source to retrieve all IAM permissions groups.
         /// 
         /// ## Example Usage
         /// 
@@ -72,10 +66,7 @@ namespace Pulumi.Ovh.Iam
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var website = Ovh.Iam.GetPermissionsGroup.Invoke(new()
-        ///     {
-        ///         Urn = "urn:v1:eu:permissionsGroup:ovh:controlPanelAccess",
-        ///     });
+        ///     var groups = Ovh.Iam.GetPermissionsGroups.Invoke();
         /// 
         /// });
         /// ```
@@ -92,6 +83,9 @@ namespace Pulumi.Ovh.Iam
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of available permissions groups URNs.
+        /// </summary>
         public readonly ImmutableArray<string> Urns;
 
         [OutputConstructor]

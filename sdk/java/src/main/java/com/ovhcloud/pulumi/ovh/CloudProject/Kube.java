@@ -254,14 +254,14 @@ public class Kube extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateNetworkId);
     }
     /**
-     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA9&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA1&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
+     * @return a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: &#34;GRA9&#34;. Defaults to all public cloud regions. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> region() {
@@ -377,7 +377,6 @@ public class Kube extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "kubeconfig",
                 "kubeconfigAttributes"

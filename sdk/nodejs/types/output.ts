@@ -762,6 +762,10 @@ export namespace CloudProject {
          */
         sshKey: string;
         /**
+         * Instance status
+         */
+        status: string;
+        /**
          * Instance task state
          */
         taskState: string;
@@ -1823,9 +1827,118 @@ export namespace CloudProject {
 
     export interface InstanceNetwork {
         /**
-         * Set the new instance as public boolean
+         * Private network information
+         */
+        private?: outputs.CloudProject.InstanceNetworkPrivate;
+        /**
+         * Set the new instance as public
          */
         public?: boolean;
+    }
+
+    export interface InstanceNetworkPrivate {
+        /**
+         * Existing floating IP
+         */
+        floatingIp?: outputs.CloudProject.InstanceNetworkPrivateFloatingIp;
+        /**
+         * Information to create a new floating IP
+         */
+        floatingIpCreate?: outputs.CloudProject.InstanceNetworkPrivateFloatingIpCreate;
+        /**
+         * Existing gateway
+         */
+        gateway?: outputs.CloudProject.InstanceNetworkPrivateGateway;
+        /**
+         * Information to create a new gateway
+         */
+        gatewayCreate?: outputs.CloudProject.InstanceNetworkPrivateGatewayCreate;
+        /**
+         * Instance IP in the private network
+         */
+        ip?: string;
+        /**
+         * Existing private network
+         */
+        network?: outputs.CloudProject.InstanceNetworkPrivateNetwork;
+        /**
+         * Information to create a new private network
+         */
+        networkCreate?: outputs.CloudProject.InstanceNetworkPrivateNetworkCreate;
+    }
+
+    export interface InstanceNetworkPrivateFloatingIp {
+        /**
+         * Floating IP ID
+         */
+        id?: string;
+    }
+
+    export interface InstanceNetworkPrivateFloatingIpCreate {
+        /**
+         * Floating IP description
+         */
+        description?: string;
+    }
+
+    export interface InstanceNetworkPrivateGateway {
+        /**
+         * Gateway ID
+         */
+        id?: string;
+    }
+
+    export interface InstanceNetworkPrivateGatewayCreate {
+        /**
+         * Gateway model (s | m | l)
+         */
+        model?: string;
+        /**
+         * Gateway name
+         */
+        name?: string;
+    }
+
+    export interface InstanceNetworkPrivateNetwork {
+        /**
+         * Network ID
+         */
+        id?: string;
+        /**
+         * Existing subnet ID
+         * * networkCreate - (Optional, Forces new resource) Information to create a new private network
+         */
+        subnetId?: string;
+    }
+
+    export interface InstanceNetworkPrivateNetworkCreate {
+        /**
+         * Instance name
+         */
+        name?: string;
+        /**
+         * New subnet information
+         */
+        subnet?: outputs.CloudProject.InstanceNetworkPrivateNetworkCreateSubnet;
+        /**
+         * Network vlan ID
+         */
+        vlanId?: number;
+    }
+
+    export interface InstanceNetworkPrivateNetworkCreateSubnet {
+        /**
+         * Subnet range in CIDR notation
+         */
+        cidr?: string;
+        /**
+         * Whether to enable DHCP
+         */
+        enableDhcp?: boolean;
+        /**
+         * IP version
+         */
+        ipVersion?: number;
     }
 
     export interface InstanceSshKey {
@@ -3877,7 +3990,7 @@ export namespace Domain {
         /**
          * The name servers to update
          */
-        nameServers?: outputs.Domain.NameTargetSpecDnsConfigurationNameServer[];
+        nameServers: outputs.Domain.NameTargetSpecDnsConfigurationNameServer[];
     }
 
     export interface NameTargetSpecDnsConfigurationNameServer {
@@ -5703,6 +5816,21 @@ export namespace Vps {
 }
 
 export namespace Vrack {
+    export interface IpV6BridgedSubrange {
+        /**
+         * Your gateway
+         */
+        gateway: string;
+        /**
+         * Slaac status <enabled|disabled>
+         */
+        slaac: string;
+        /**
+         * IPv6 CIDR notation (e.g., 2001:41d0::/128)
+         */
+        subrange: string;
+    }
+
     export interface VrackOrder {
         /**
          * date

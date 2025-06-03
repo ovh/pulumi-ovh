@@ -64,14 +64,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume description
+     * A description of the volume
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Volume description
+     * @return A description of the volume
      * 
      */
     public Optional<Output<String>> description() {
@@ -109,14 +109,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume name
+     * Name of the volume
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume name
+     * @return Name of the volume
      * 
      */
     public Optional<Output<String>> name() {
@@ -139,14 +139,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Region name
+     * Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: &#34;GRA11&#34;. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="regionName")
     private @Nullable Output<String> regionName;
 
     /**
-     * @return Region name
+     * @return Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: &#34;GRA11&#34;. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> regionName() {
@@ -184,14 +184,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service name
+     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Service name
+     * @return Required. The id of the public cloud project. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -199,14 +199,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume size
+     * Size (GB) of the volume
      * 
      */
     @Import(name="size")
     private @Nullable Output<Double> size;
 
     /**
-     * @return Volume size
+     * @return Size (GB) of the volume
      * 
      */
     public Optional<Output<Double>> size() {
@@ -274,14 +274,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the volume
+     * Type of the volume **Changing this value recreates the resource.**
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the volume
+     * @return Type of the volume **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> type() {
@@ -409,7 +409,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Volume description
+         * @param description A description of the volume
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Volume description
+         * @param description A description of the volume
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Volume name
+         * @param name Name of the volume
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Volume name
+         * @param name Name of the volume
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionName Region name
+         * @param regionName Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: &#34;GRA11&#34;. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionName Region name
+         * @param regionName Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: &#34;GRA11&#34;. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Required. The id of the public cloud project. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -598,7 +598,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Required. The id of the public cloud project. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Volume size
+         * @param size Size (GB) of the volume
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Volume size
+         * @param size Size (GB) of the volume
          * 
          * @return builder
          * 
@@ -723,7 +723,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the volume
+         * @param type Type of the volume **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the volume
+         * @param type Type of the volume **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

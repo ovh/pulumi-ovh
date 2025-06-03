@@ -17,44 +17,92 @@ public final class GetPermissionsGroupArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetPermissionsGroupArgs Empty = new GetPermissionsGroupArgs();
 
+    /**
+     * Set of actions allowed by the permissions group.
+     * 
+     */
     @Import(name="allows")
     private @Nullable Output<List<String>> allows;
 
+    /**
+     * @return Set of actions allowed by the permissions group.
+     * 
+     */
     public Optional<Output<List<String>>> allows() {
         return Optional.ofNullable(this.allows);
     }
 
+    /**
+     * Set of actions that will always be denied even if it is explicitly allowed by a policy.
+     * 
+     */
     @Import(name="denies")
     private @Nullable Output<List<String>> denies;
 
+    /**
+     * @return Set of actions that will always be denied even if it is explicitly allowed by a policy.
+     * 
+     */
     public Optional<Output<List<String>>> denies() {
         return Optional.ofNullable(this.denies);
     }
 
+    /**
+     * Group description.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Group description.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Set of actions that will be subtracted from the `allow` list.
+     * 
+     */
     @Import(name="excepts")
     private @Nullable Output<List<String>> excepts;
 
+    /**
+     * @return Set of actions that will be subtracted from the `allow` list.
+     * 
+     */
     public Optional<Output<List<String>>> excepts() {
         return Optional.ofNullable(this.excepts);
     }
 
+    /**
+     * Date of the last update of this group.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
+    /**
+     * @return Date of the last update of this group.
+     * 
+     */
     public Optional<Output<String>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * URN of the permissions group.
+     * 
+     */
     @Import(name="urn", required=true)
     private Output<String> urn;
 
+    /**
+     * @return URN of the permissions group.
+     * 
+     */
     public Output<String> urn() {
         return this.urn;
     }
@@ -88,68 +136,158 @@ public final class GetPermissionsGroupArgs extends com.pulumi.resources.InvokeAr
             $ = new GetPermissionsGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allows Set of actions allowed by the permissions group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allows(@Nullable Output<List<String>> allows) {
             $.allows = allows;
             return this;
         }
 
+        /**
+         * @param allows Set of actions allowed by the permissions group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allows(List<String> allows) {
             return allows(Output.of(allows));
         }
 
+        /**
+         * @param allows Set of actions allowed by the permissions group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allows(String... allows) {
             return allows(List.of(allows));
         }
 
+        /**
+         * @param denies Set of actions that will always be denied even if it is explicitly allowed by a policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder denies(@Nullable Output<List<String>> denies) {
             $.denies = denies;
             return this;
         }
 
+        /**
+         * @param denies Set of actions that will always be denied even if it is explicitly allowed by a policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder denies(List<String> denies) {
             return denies(Output.of(denies));
         }
 
+        /**
+         * @param denies Set of actions that will always be denied even if it is explicitly allowed by a policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder denies(String... denies) {
             return denies(List.of(denies));
         }
 
+        /**
+         * @param description Group description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Group description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param excepts Set of actions that will be subtracted from the `allow` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excepts(@Nullable Output<List<String>> excepts) {
             $.excepts = excepts;
             return this;
         }
 
+        /**
+         * @param excepts Set of actions that will be subtracted from the `allow` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excepts(List<String> excepts) {
             return excepts(Output.of(excepts));
         }
 
+        /**
+         * @param excepts Set of actions that will be subtracted from the `allow` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excepts(String... excepts) {
             return excepts(List.of(excepts));
         }
 
+        /**
+         * @param updatedAt Date of the last update of this group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<String> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt Date of the last update of this group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param urn URN of the permissions group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder urn(Output<String> urn) {
             $.urn = urn;
             return this;
         }
 
+        /**
+         * @param urn URN of the permissions group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder urn(String urn) {
             return urn(Output.of(urn));
         }

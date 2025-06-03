@@ -10,6 +10,11 @@ export type CloudProject = import("./cloudProject").CloudProject;
 export const CloudProject: typeof import("./cloudProject").CloudProject = null as any;
 utilities.lazyLoad(exports, ["CloudProject"], () => require("./cloudProject"));
 
+export { DedicatedCloudDatacenterArgs, DedicatedCloudDatacenterState } from "./dedicatedCloudDatacenter";
+export type DedicatedCloudDatacenter = import("./dedicatedCloudDatacenter").DedicatedCloudDatacenter;
+export const DedicatedCloudDatacenter: typeof import("./dedicatedCloudDatacenter").DedicatedCloudDatacenter = null as any;
+utilities.lazyLoad(exports, ["DedicatedCloudDatacenter"], () => require("./dedicatedCloudDatacenter"));
+
 export { DedicatedServerArgs, DedicatedServerState } from "./dedicatedServer";
 export type DedicatedServer = import("./dedicatedServer").DedicatedServer;
 export const DedicatedServer: typeof import("./dedicatedServer").DedicatedServer = null as any;
@@ -67,6 +72,8 @@ const _module = {
         switch (type) {
             case "ovh:Vrack/cloudProject:CloudProject":
                 return new CloudProject(name, <any>undefined, { urn })
+            case "ovh:Vrack/dedicatedCloudDatacenter:DedicatedCloudDatacenter":
+                return new DedicatedCloudDatacenter(name, <any>undefined, { urn })
             case "ovh:Vrack/dedicatedServer:DedicatedServer":
                 return new DedicatedServer(name, <any>undefined, { urn })
             case "ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface":
@@ -91,6 +98,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "Vrack/cloudProject", _module)
+pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedCloudDatacenter", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServer", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/dedicatedServerInterface", _module)
 pulumi.runtime.registerResourceModule("ovh", "Vrack/ipAddress", _module)

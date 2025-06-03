@@ -30,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			logstash, err := dbaas.GetLogsInputEngine(ctx, &dbaas.GetLogsInputEngineArgs{
 //				Name:    pulumi.StringRef("logstash"),
-//				Version: pulumi.StringRef("7.x"),
+//				Version: pulumi.StringRef("9.x"),
 //			}, nil)
 //			if err != nil {
 //				return err

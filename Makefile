@@ -15,6 +15,17 @@ PULUMI_PROVIDER_BUILD_PARALLELISM ?=
 PULUMI_CONVERT := 1
 PULUMI_MISSING_DOCS_ERROR := true
 
+JAVA_GROUP_ID   := com.ovhcloud.pulumi.ovh
+JAVA_ARTIFACT_ID := pulumi-ovh
+
+OS := $(shell uname)
+EMPTY_TO_AVOID_SED := ""
+
+SED := sed -i
+ifeq ($(OS), Darwin)
+        SED += ''
+endif
+
 # Override during CI using `make [TARGET] PROVIDER_VERSION=""` or by setting a PROVIDER_VERSION environment variable
 # Local & branch builds will just used this fixed default version unless specified
 PROVIDER_VERSION ?= 2.0.0-alpha.0+dev
@@ -122,19 +133,37 @@ build_go: .make/build_go
 .PHONY: generate_go build_go
 
 generate_java: .make/generate_java
-build_java: .make/build_java
+#build_java: .make/build_java
 .make/generate_java: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 .make/generate_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
 .make/generate_java: .make/install_plugins bin/pulumi-java-gen .make/schema
 	PULUMI_HOME=$(GEN_PULUMI_HOME) PULUMI_CONVERT_EXAMPLES_CACHE_DIR=$(GEN_PULUMI_CONVERT_EXAMPLES_CACHE_DIR) bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 	printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > sdk/java/go.mod
 	@touch $@
-.make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
-.make/build_java: .make/generate_java
+#.make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
+#.make/build_java: .make/generate_java
+#	cd sdk/java/ && \
+#		gradle --console=plain build && \
+#		gradle --console=plain javadoc
+#	@touch $@
+build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+build_java:: bin/pulumi-java-gen
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
+
+	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
+	echo "update inceptionYear in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/inceptionYear = .*/inceptionYear = "2024"/g' build.gradle
+
+	echo "update meta info in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
+	${SED} -e 's/group = .*/group = "$(JAVA_GROUP_ID)"/g' build.gradle && \
+	${SED} -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' build.gradle && \
+	${SED} -e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
+	${SED} -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle
+							
+	echo "update rootProject in settings.gradle" && cd ./sdk/java && ${SED} -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
+
 	cd sdk/java/ && \
-		gradle --console=plain build && \
-		gradle --console=plain javadoc
-	@touch $@
+		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
+		gradle --console=plain build
 .PHONY: generate_java build_java
 
 generate_nodejs: .make/generate_nodejs
