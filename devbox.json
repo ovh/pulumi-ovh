@@ -6,7 +6,7 @@
     "nodejs@20.",
     "python3@3.11.8",
     "dotnet-sdk@8.0.",
-    "gradle_8@8.8",
+    "gradle_7@7.6",
     "curl@8"
   ],
   "shell": {
