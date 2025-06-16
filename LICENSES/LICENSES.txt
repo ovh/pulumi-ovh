@@ -7,7 +7,6 @@ MPL-2.0
 Unknown
 
 Packages:
-@ovhcloud/pulumi-ovh; Apache-2.0
 cloud.google.com/go/compute/metadata; Apache-2.0
 cloud.google.com/go/iam; Apache-2.0
 cloud.google.com/go/storage; Apache-2.0
@@ -18,6 +17,7 @@ github.com/Masterminds/goutils; Apache-2.0
 github.com/Masterminds/semver/v3; MIT
 github.com/Masterminds/semver; MIT
 github.com/Masterminds/sprig/v3; MIT
+github.com/Microsoft/go-winio; MIT
 github.com/ProtonMail/go-crypto; BSD-3-Clause
 github.com/aead/chacha20; MIT
 github.com/agext/levenshtein; Apache-2.0
@@ -91,6 +91,7 @@ github.com/hashicorp/yamux; MPL-2.0
 github.com/huandu/xstrings; MIT
 github.com/iancoleman/strcase; MIT
 github.com/imdario/mergo; BSD-3-Clause
+github.com/inconshreveable/mousetrap; Apache-2.0
 github.com/jbenet/go-context; MIT
 github.com/jmespath/go-jmespath; Apache-2.0
 github.com/json-iterator/go; MIT
@@ -104,6 +105,7 @@ github.com/mattn/go-runewidth; MIT
 github.com/mitchellh/cli; MPL-2.0
 github.com/mitchellh/copystructure; MIT
 github.com/mitchellh/go-homedir; MIT
+github.com/mitchellh/go-ps; MIT
 github.com/mitchellh/go-testing-interface; MIT
 github.com/mitchellh/go-wordwrap; MIT
 github.com/mitchellh/hashstructure; MIT
@@ -134,7 +136,6 @@ github.com/pulumi/appdash; MIT
 github.com/pulumi/esc; Apache-2.0
 github.com/pulumi/inflector; BSD-2-Clause
 github.com/pulumi/pulumi-java/pkg; Apache-2.0
-github.com/pulumi/pulumi-terraform-bridge/pf; Apache-2.0
 github.com/pulumi/pulumi-terraform-bridge/v3; Apache-2.0
 github.com/pulumi/pulumi-yaml; Apache-2.0
 github.com/pulumi/pulumi/pkg/v3; Apache-2.0
@@ -169,6 +170,7 @@ github.com/ybriffa/rfc3339; Unknown. See go/github.com/ybriffa/rfc3339/LICENSE f
 github.com/yuin/goldmark; MIT
 github.com/zclconf/go-cty; MIT
 go.opencensus.io; Apache-2.0
+go.opentelemetry.io/auto/sdk; Apache-2.0
 go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc; Apache-2.0
 go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp; Apache-2.0
 go.opentelemetry.io/otel/metric; Apache-2.0
