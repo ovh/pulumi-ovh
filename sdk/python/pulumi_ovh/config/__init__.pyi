@@ -20,6 +20,11 @@ accessToken: Optional[str]
 The OVH API Access Token
 """
 
+apiRateLimit: Optional[int]
+"""
+Specify the API request rate limit, X operations by seconds (default: unlimited)
+"""
+
 applicationKey: Optional[str]
 """
 The OVH API Application Key

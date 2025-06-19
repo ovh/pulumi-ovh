@@ -16,6 +16,11 @@ func GetAccessToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "ovh:accessToken")
 }
 
+// Specify the API request rate limit, X operations by seconds (default: unlimited)
+func GetApiRateLimit(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "ovh:apiRateLimit")
+}
+
 // The OVH API Application Key
 func GetApplicationKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "ovh:applicationKey")

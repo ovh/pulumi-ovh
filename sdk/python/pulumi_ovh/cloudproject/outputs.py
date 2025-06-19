@@ -4773,6 +4773,7 @@ class GetCapabilitiesContainerRegistryResultPlanRegistryLimitResult(dict):
 class GetContainerRegistriesResultResult(dict):
     def __init__(__self__, *,
                  created_at: builtins.str,
+                 iam_enabled: builtins.bool,
                  id: builtins.str,
                  name: builtins.str,
                  project_id: builtins.str,
@@ -4784,6 +4785,7 @@ class GetContainerRegistriesResultResult(dict):
                  version: builtins.str):
         """
         :param builtins.str created_at: Registry creation date
+        :param builtins.bool iam_enabled: OVHCloud IAM enabled
         :param builtins.str id: Registry ID
         :param builtins.str name: Registry name
         :param builtins.str project_id: Project ID of your registry
@@ -4795,6 +4797,7 @@ class GetContainerRegistriesResultResult(dict):
         :param builtins.str version: Version of your registry
         """
         pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "iam_enabled", iam_enabled)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project_id", project_id)
@@ -4812,6 +4815,14 @@ class GetContainerRegistriesResultResult(dict):
         Registry creation date
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="iamEnabled")
+    def iam_enabled(self) -> builtins.bool:
+        """
+        OVHCloud IAM enabled
+        """
+        return pulumi.get(self, "iam_enabled")
 
     @property
     @pulumi.getter

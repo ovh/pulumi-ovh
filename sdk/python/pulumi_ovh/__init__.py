@@ -6,7 +6,10 @@ import builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .cloud_project_containerregistry_iam import *
+from .cloud_project_database_valkey_user import *
 from .cloud_project_ssh_key import *
+from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
 from .get_cloud_project_rancher_capabilities_plan import *
 from .get_cloud_project_rancher_capabilities_version import *
@@ -1098,6 +1101,22 @@ _utilities.register(
   "fqn": "pulumi_ovh.vrack",
   "classes": {
    "ovh:Vrack/vrackservices:Vrackservices": "Vrackservices"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudProjectContainerregistryIam",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": "CloudProjectContainerregistryIam"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudProjectDatabaseValkeyUser",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": "CloudProjectDatabaseValkeyUser"
   }
  },
  {

@@ -52,6 +52,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// OVHCloud IAM enabled
+        /// </summary>
+        [Output("iamEnabled")]
+        public Output<bool> IamEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Registry name
         /// </summary>
         [Output("name")]
@@ -201,6 +207,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// OVHCloud IAM enabled
+        /// </summary>
+        [Input("iamEnabled")]
+        public Input<bool>? IamEnabled { get; set; }
 
         /// <summary>
         /// Registry name

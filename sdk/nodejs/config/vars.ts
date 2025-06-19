@@ -19,6 +19,17 @@ Object.defineProperty(exports, "accessToken", {
 });
 
 /**
+ * Specify the API request rate limit, X operations by seconds (default: unlimited)
+ */
+export declare const apiRateLimit: number | undefined;
+Object.defineProperty(exports, "apiRateLimit", {
+    get() {
+        return __config.getObject<number>("apiRateLimit");
+    },
+    enumerable: true,
+});
+
+/**
  * The OVH API Application Key
  */
 export declare const applicationKey: string | undefined;

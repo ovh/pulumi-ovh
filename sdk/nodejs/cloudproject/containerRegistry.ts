@@ -63,6 +63,10 @@ export class ContainerRegistry extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * OVHCloud IAM enabled
+     */
+    public /*out*/ readonly iamEnabled!: pulumi.Output<boolean>;
+    /**
      * Registry name
      */
     public readonly name!: pulumi.Output<string>;
@@ -121,6 +125,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ContainerRegistryState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["iamEnabled"] = state ? state.iamEnabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["planId"] = state ? state.planId : undefined;
             resourceInputs["plans"] = state ? state.plans : undefined;
@@ -142,6 +147,7 @@ export class ContainerRegistry extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["iamEnabled"] = undefined /*out*/;
             resourceInputs["plans"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
@@ -163,6 +169,10 @@ export interface ContainerRegistryState {
      * Plan creation date
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * OVHCloud IAM enabled
+     */
+    iamEnabled?: pulumi.Input<boolean>;
     /**
      * Registry name
      */

@@ -108,6 +108,12 @@ namespace Pulumi.Ovh
         public Input<string>? AccessToken { get; set; }
 
         /// <summary>
+        /// Specify the API request rate limit, X operations by seconds (default: unlimited)
+        /// </summary>
+        [Input("apiRateLimit", json: true)]
+        public Input<int>? ApiRateLimit { get; set; }
+
+        /// <summary>
         /// The OVH API Application Key
         /// </summary>
         [Input("applicationKey")]

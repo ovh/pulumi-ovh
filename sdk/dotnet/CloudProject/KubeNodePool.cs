@@ -158,6 +158,9 @@ namespace Pulumi.Ovh.CloudProject
         [Output("autoscalingScaleDownUtilizationThreshold")]
         public Output<double> AutoscalingScaleDownUtilizationThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+        /// </summary>
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
@@ -349,6 +352,10 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
+
+        /// <summary>
+        /// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
@@ -450,6 +457,10 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
+
+        /// <summary>
+        /// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());

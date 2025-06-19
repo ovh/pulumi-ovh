@@ -201,6 +201,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = cloudproject.NewDatabase(ctx, "valkeydb", &cloudproject.DatabaseArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				Description: pulumi.String("my-first-valkey"),
+//				Engine:      pulumi.String("valkey"),
+//				Version:     pulumi.String("8.0"),
+//				Plan:        pulumi.String("essential"),
+//				Nodes: cloudproject.DatabaseNodeArray{
+//					&cloudproject.DatabaseNodeArgs{
+//						Region: pulumi.String("BHS"),
+//					},
+//				},
+//				Flavor: pulumi.String("db1-4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -344,7 +360,8 @@ type Database struct {
 	// * MongoDB: Enum: "discovery", "production", "advanced".
 	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
 	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business"
+	// * Redis: "essential", "business".
+	// * Valkey: "essential", "business".
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -437,7 +454,8 @@ type databaseState struct {
 	// * MongoDB: Enum: "discovery", "production", "advanced".
 	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
 	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business"
+	// * Redis: "essential", "business".
+	// * Valkey: "essential", "business".
 	Plan *string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
@@ -486,7 +504,8 @@ type DatabaseState struct {
 	// * MongoDB: Enum: "discovery", "production", "advanced".
 	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
 	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business"
+	// * Redis: "essential", "business".
+	// * Valkey: "essential", "business".
 	Plan pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
@@ -531,7 +550,8 @@ type databaseArgs struct {
 	// * MongoDB: Enum: "discovery", "production", "advanced".
 	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
 	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business"
+	// * Redis: "essential", "business".
+	// * Valkey: "essential", "business".
 	Plan string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
@@ -571,7 +591,8 @@ type DatabaseArgs struct {
 	// * MongoDB: Enum: "discovery", "production", "advanced".
 	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
 	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business"
+	// * Redis: "essential", "business".
+	// * Valkey: "essential", "business".
 	Plan pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
@@ -755,7 +776,8 @@ func (o DatabaseOutput) OpensearchAclsEnabled() pulumi.BoolPtrOutput {
 // * MongoDB: Enum: "discovery", "production", "advanced".
 // * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
 // * M3 Aggregator: "business", "enterprise".
-// * Redis: "essential", "business"
+// * Redis: "essential", "business".
+// * Valkey: "essential", "business".
 func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

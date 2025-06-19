@@ -212,6 +212,23 @@ namespace Pulumi.Ovh.CloudProject
     ///         Flavor = "db1-4",
     ///     });
     /// 
+    ///     var valkeydb = new Ovh.CloudProject.Database("valkeydb", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         Description = "my-first-valkey",
+    ///         Engine = "valkey",
+    ///         Version = "8.0",
+    ///         Plan = "essential",
+    ///         Nodes = new[]
+    ///         {
+    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
+    ///             {
+    ///                 Region = "BHS",
+    ///             },
+    ///         },
+    ///         Flavor = "db1-4",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -413,7 +430,8 @@ namespace Pulumi.Ovh.CloudProject
         /// * MongoDB: Enum: "discovery", "production", "advanced".
         /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
         /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business"
+        /// * Redis: "essential", "business".
+        /// * Valkey: "essential", "business".
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -590,7 +608,8 @@ namespace Pulumi.Ovh.CloudProject
         /// * MongoDB: Enum: "discovery", "production", "advanced".
         /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
         /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business"
+        /// * Redis: "essential", "business".
+        /// * Valkey: "essential", "business".
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -752,7 +771,8 @@ namespace Pulumi.Ovh.CloudProject
         /// * MongoDB: Enum: "discovery", "production", "advanced".
         /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
         /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business"
+        /// * Redis: "essential", "business".
+        /// * Valkey: "essential", "business".
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

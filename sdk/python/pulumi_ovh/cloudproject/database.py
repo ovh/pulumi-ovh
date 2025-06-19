@@ -47,7 +47,8 @@ class DatabaseArgs:
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business"
+               * Redis: "essential", "business".
+               * Valkey: "essential", "business".
         :param pulumi.Input[builtins.str] version: The version of the engine in which the service should be deployed
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
@@ -133,7 +134,8 @@ class DatabaseArgs:
         * MongoDB: Enum: "discovery", "production", "advanced".
         * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
         * M3 Aggregator: "business", "enterprise".
-        * Redis: "essential", "business"
+        * Redis: "essential", "business".
+        * Valkey: "essential", "business".
         """
         return pulumi.get(self, "plan")
 
@@ -333,7 +335,8 @@ class _DatabaseState:
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business"
+               * Redis: "essential", "business".
+               * Valkey: "essential", "business".
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.str] status: Current status of the cluster.
         :param pulumi.Input[builtins.str] version: The version of the engine in which the service should be deployed
@@ -593,7 +596,8 @@ class _DatabaseState:
         * MongoDB: Enum: "discovery", "production", "advanced".
         * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
         * M3 Aggregator: "business", "enterprise".
-        * Redis: "essential", "business"
+        * Redis: "essential", "business".
+        * Valkey: "essential", "business".
         """
         return pulumi.get(self, "plan")
 
@@ -793,6 +797,16 @@ class Database(pulumi.CustomResource):
                 "region": "GRA",
             }],
             flavor="db1-4")
+        valkeydb = ovh.cloud_project.Database("valkeydb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-valkey",
+            engine="valkey",
+            version="8.0",
+            plan="essential",
+            nodes=[{
+                "region": "BHS",
+            }],
+            flavor="db1-4")
         ```
 
         To deploy a business PostgreSQL service with two nodes on public network:
@@ -879,7 +893,8 @@ class Database(pulumi.CustomResource):
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business"
+               * Redis: "essential", "business".
+               * Valkey: "essential", "business".
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.str] version: The version of the engine in which the service should be deployed
         """
@@ -1019,6 +1034,16 @@ class Database(pulumi.CustomResource):
             plan="essential",
             nodes=[{
                 "region": "GRA",
+            }],
+            flavor="db1-4")
+        valkeydb = ovh.cloud_project.Database("valkeydb",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-first-valkey",
+            engine="valkey",
+            version="8.0",
+            plan="essential",
+            nodes=[{
+                "region": "BHS",
             }],
             flavor="db1-4")
         ```
@@ -1218,7 +1243,8 @@ class Database(pulumi.CustomResource):
                * MongoDB: Enum: "discovery", "production", "advanced".
                * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
                * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business"
+               * Redis: "essential", "business".
+               * Valkey: "essential", "business".
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.str] status: Current status of the cluster.
         :param pulumi.Input[builtins.str] version: The version of the engine in which the service should be deployed
@@ -1394,7 +1420,8 @@ class Database(pulumi.CustomResource):
         * MongoDB: Enum: "discovery", "production", "advanced".
         * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
         * M3 Aggregator: "business", "enterprise".
-        * Redis: "essential", "business"
+        * Redis: "essential", "business".
+        * Valkey: "essential", "business".
         """
         return pulumi.get(self, "plan")
 

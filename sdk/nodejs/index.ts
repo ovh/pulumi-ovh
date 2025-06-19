@@ -5,10 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { CloudProjectContainerregistryIamArgs, CloudProjectContainerregistryIamState } from "./cloudProjectContainerregistryIam";
+export type CloudProjectContainerregistryIam = import("./cloudProjectContainerregistryIam").CloudProjectContainerregistryIam;
+export const CloudProjectContainerregistryIam: typeof import("./cloudProjectContainerregistryIam").CloudProjectContainerregistryIam = null as any;
+utilities.lazyLoad(exports, ["CloudProjectContainerregistryIam"], () => require("./cloudProjectContainerregistryIam"));
+
+export { CloudProjectDatabaseValkeyUserArgs, CloudProjectDatabaseValkeyUserState } from "./cloudProjectDatabaseValkeyUser";
+export type CloudProjectDatabaseValkeyUser = import("./cloudProjectDatabaseValkeyUser").CloudProjectDatabaseValkeyUser;
+export const CloudProjectDatabaseValkeyUser: typeof import("./cloudProjectDatabaseValkeyUser").CloudProjectDatabaseValkeyUser = null as any;
+utilities.lazyLoad(exports, ["CloudProjectDatabaseValkeyUser"], () => require("./cloudProjectDatabaseValkeyUser"));
+
 export { CloudProjectSshKeyArgs, CloudProjectSshKeyState } from "./cloudProjectSshKey";
 export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshKey;
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
 utilities.lazyLoad(exports, ["CloudProjectSshKey"], () => require("./cloudProjectSshKey"));
+
+export { GetCloudProjectDatabaseValkeyUserArgs, GetCloudProjectDatabaseValkeyUserResult, GetCloudProjectDatabaseValkeyUserOutputArgs } from "./getCloudProjectDatabaseValkeyUser";
+export const getCloudProjectDatabaseValkeyUser: typeof import("./getCloudProjectDatabaseValkeyUser").getCloudProjectDatabaseValkeyUser = null as any;
+export const getCloudProjectDatabaseValkeyUserOutput: typeof import("./getCloudProjectDatabaseValkeyUser").getCloudProjectDatabaseValkeyUserOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectDatabaseValkeyUser","getCloudProjectDatabaseValkeyUserOutput"], () => require("./getCloudProjectDatabaseValkeyUser"));
 
 export { GetCloudProjectFlavorArgs, GetCloudProjectFlavorResult, GetCloudProjectFlavorOutputArgs } from "./getCloudProjectFlavor";
 export const getCloudProjectFlavor: typeof import("./getCloudProjectFlavor").getCloudProjectFlavor = null as any;
@@ -153,6 +168,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam":
+                return new CloudProjectContainerregistryIam(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser":
+                return new CloudProjectDatabaseValkeyUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
@@ -168,6 +187,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)

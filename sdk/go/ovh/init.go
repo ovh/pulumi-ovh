@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam":
+		r = &CloudProjectContainerregistryIam{}
+	case "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser":
+		r = &CloudProjectDatabaseValkeyUser{}
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
 	case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
@@ -62,6 +66,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudProjectContainerregistryIam",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudProjectDatabaseValkeyUser",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudProjectSshKey",

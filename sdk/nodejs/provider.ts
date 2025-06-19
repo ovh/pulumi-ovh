@@ -70,6 +70,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["accessToken"] = args ? args.accessToken : undefined;
+            resourceInputs["apiRateLimit"] = pulumi.output(args ? args.apiRateLimit : undefined).apply(JSON.stringify);
             resourceInputs["applicationKey"] = args ? args.applicationKey : undefined;
             resourceInputs["applicationSecret"] = args ? args.applicationSecret : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
@@ -100,6 +101,10 @@ export interface ProviderArgs {
      * The OVH API Access Token
      */
     accessToken?: pulumi.Input<string>;
+    /**
+     * Specify the API request rate limit, X operations by seconds (default: unlimited)
+     */
+    apiRateLimit?: pulumi.Input<number>;
     /**
      * The OVH API Application Key
      */

@@ -18,6 +18,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// OVHCloud IAM enabled
+        /// </summary>
+        public readonly bool IamEnabled;
+        /// <summary>
         /// Registry ID
         /// </summary>
         public readonly string Id;
@@ -58,6 +62,8 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         private GetContainerRegistriesResultResult(
             string createdAt,
 
+            bool iamEnabled,
+
             string id,
 
             string name,
@@ -77,6 +83,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
             string version)
         {
             CreatedAt = createdAt;
+            IamEnabled = iamEnabled;
             Id = id;
             Name = name;
             ProjectId = projectId;

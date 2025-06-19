@@ -55,6 +55,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// The OVH API Access Token
 	AccessToken *string `pulumi:"accessToken"`
+	// Specify the API request rate limit, X operations by seconds (default: unlimited)
+	ApiRateLimit *int `pulumi:"apiRateLimit"`
 	// The OVH API Application Key
 	ApplicationKey *string `pulumi:"applicationKey"`
 	// The OVH API Application Secret
@@ -75,6 +77,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// The OVH API Access Token
 	AccessToken pulumi.StringPtrInput
+	// Specify the API request rate limit, X operations by seconds (default: unlimited)
+	ApiRateLimit pulumi.IntPtrInput
 	// The OVH API Application Key
 	ApplicationKey pulumi.StringPtrInput
 	// The OVH API Application Secret
