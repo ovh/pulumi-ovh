@@ -45,3 +45,8 @@ func GetConsumerKey(ctx *pulumi.Context) string {
 func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "ovh:endpoint")
 }
+
+// Extra information to append to the user-agent
+func GetUserAgentExtra(ctx *pulumi.Context) string {
+	return config.Get(ctx, "ovh:userAgentExtra")
+}

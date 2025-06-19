@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
+	case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
+		r = &OvhcloudConnectPopConfig{}
+	case "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig":
+		r = &OvhcloudConnectPopDatacenterConfig{}
+	case "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig":
+		r = &OvhcloudConnectPopDatacenterExtraConfig{}
 	case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
 		r = &VrackIpv6RoutedSubrange{}
 	default:
@@ -59,6 +65,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudProjectSshKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/ovhcloudConnectPopConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/ovhcloudConnectPopDatacenterConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/ovhcloudConnectPopDatacenterExtraConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

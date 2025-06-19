@@ -50,3 +50,8 @@ endpoint: Optional[str]
 The OVH API endpoint to target (ex: "ovh-eu")
 """
 
+userAgentExtra: Optional[str]
+"""
+Extra information to append to the user-agent
+"""
+

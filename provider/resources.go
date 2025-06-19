@@ -28,6 +28,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -1153,8 +1154,28 @@ func Provider() tfbridge.ProviderInfo {
 			tks.MakeStandard(ovhPkg),
 		),
 	)
+
+	// Some resource's have non-string IDs. Pulumi requires string ID fields, so we
+	// use a type override on these resources to tell Pulumi to present to users a
+	// string, even though the underlying TF provider will see an integer.
+	//
+	// Related to https://github.com/pulumi/pulumi-terraform-bridge/issues/1198
+	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
+
+		if value.Schema().Get("id") != nil {
+			if value.Schema().Get("id").Type() != shim.TypeString {
+				r := prov.Resources[key]
+				if r.Fields == nil {
+					r.Fields = make(map[string]*tfbridge.SchemaInfo, 1)
+				}
+				r.Fields["id"] = &tfbridge.SchemaInfo{Type: "string"}
+			}
+		}
+
+		return true
+	})
+
 	prov.SetAutonaming(255, "-")
 	prov.MustApplyAutoAliases()
-
 	return prov
 }

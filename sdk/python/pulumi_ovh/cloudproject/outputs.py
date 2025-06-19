@@ -7243,14 +7243,25 @@ class GetRancherVersionVersionResult(dict):
 @pulumi.output_type
 class GetRegionServiceResult(dict):
     def __init__(__self__, *,
+                 endpoint: builtins.str,
                  name: builtins.str,
                  status: builtins.str):
         """
+        :param builtins.str endpoint: Endpoint URL
         :param builtins.str name: The name of the region associated with the public cloud project.
         :param builtins.str status: the status of the service
         """
+        pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> builtins.str:
+        """
+        Endpoint URL
+        """
+        return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter

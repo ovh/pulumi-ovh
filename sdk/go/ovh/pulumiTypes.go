@@ -13,6 +13,554 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetCloudProjectFlavorCapability struct {
+	// Is the capability enabled
+	Enabled bool `pulumi:"enabled"`
+	// Name of the capability
+	Name string `pulumi:"name"`
+}
+
+// GetCloudProjectFlavorCapabilityInput is an input type that accepts GetCloudProjectFlavorCapabilityArgs and GetCloudProjectFlavorCapabilityOutput values.
+// You can construct a concrete instance of `GetCloudProjectFlavorCapabilityInput` via:
+//
+//	GetCloudProjectFlavorCapabilityArgs{...}
+type GetCloudProjectFlavorCapabilityInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectFlavorCapabilityOutput() GetCloudProjectFlavorCapabilityOutput
+	ToGetCloudProjectFlavorCapabilityOutputWithContext(context.Context) GetCloudProjectFlavorCapabilityOutput
+}
+
+type GetCloudProjectFlavorCapabilityArgs struct {
+	// Is the capability enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Name of the capability
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetCloudProjectFlavorCapabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectFlavorCapability)(nil)).Elem()
+}
+
+func (i GetCloudProjectFlavorCapabilityArgs) ToGetCloudProjectFlavorCapabilityOutput() GetCloudProjectFlavorCapabilityOutput {
+	return i.ToGetCloudProjectFlavorCapabilityOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectFlavorCapabilityArgs) ToGetCloudProjectFlavorCapabilityOutputWithContext(ctx context.Context) GetCloudProjectFlavorCapabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectFlavorCapabilityOutput)
+}
+
+// GetCloudProjectFlavorCapabilityArrayInput is an input type that accepts GetCloudProjectFlavorCapabilityArray and GetCloudProjectFlavorCapabilityArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectFlavorCapabilityArrayInput` via:
+//
+//	GetCloudProjectFlavorCapabilityArray{ GetCloudProjectFlavorCapabilityArgs{...} }
+type GetCloudProjectFlavorCapabilityArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectFlavorCapabilityArrayOutput() GetCloudProjectFlavorCapabilityArrayOutput
+	ToGetCloudProjectFlavorCapabilityArrayOutputWithContext(context.Context) GetCloudProjectFlavorCapabilityArrayOutput
+}
+
+type GetCloudProjectFlavorCapabilityArray []GetCloudProjectFlavorCapabilityInput
+
+func (GetCloudProjectFlavorCapabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectFlavorCapability)(nil)).Elem()
+}
+
+func (i GetCloudProjectFlavorCapabilityArray) ToGetCloudProjectFlavorCapabilityArrayOutput() GetCloudProjectFlavorCapabilityArrayOutput {
+	return i.ToGetCloudProjectFlavorCapabilityArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectFlavorCapabilityArray) ToGetCloudProjectFlavorCapabilityArrayOutputWithContext(ctx context.Context) GetCloudProjectFlavorCapabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectFlavorCapabilityArrayOutput)
+}
+
+type GetCloudProjectFlavorCapabilityOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectFlavorCapabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectFlavorCapability)(nil)).Elem()
+}
+
+func (o GetCloudProjectFlavorCapabilityOutput) ToGetCloudProjectFlavorCapabilityOutput() GetCloudProjectFlavorCapabilityOutput {
+	return o
+}
+
+func (o GetCloudProjectFlavorCapabilityOutput) ToGetCloudProjectFlavorCapabilityOutputWithContext(ctx context.Context) GetCloudProjectFlavorCapabilityOutput {
+	return o
+}
+
+// Is the capability enabled
+func (o GetCloudProjectFlavorCapabilityOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudProjectFlavorCapability) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of the capability
+func (o GetCloudProjectFlavorCapabilityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectFlavorCapability) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectFlavorCapabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectFlavorCapabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectFlavorCapability)(nil)).Elem()
+}
+
+func (o GetCloudProjectFlavorCapabilityArrayOutput) ToGetCloudProjectFlavorCapabilityArrayOutput() GetCloudProjectFlavorCapabilityArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectFlavorCapabilityArrayOutput) ToGetCloudProjectFlavorCapabilityArrayOutputWithContext(ctx context.Context) GetCloudProjectFlavorCapabilityArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectFlavorCapabilityArrayOutput) Index(i pulumi.IntInput) GetCloudProjectFlavorCapabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectFlavorCapability {
+		return vs[0].([]GetCloudProjectFlavorCapability)[vs[1].(int)]
+	}).(GetCloudProjectFlavorCapabilityOutput)
+}
+
+type GetCloudProjectFlavorPlanCodes struct {
+	// Plan code to order hourly instance
+	Hourly string `pulumi:"hourly"`
+	// Plan code to order monthly instance
+	Monthly string `pulumi:"monthly"`
+}
+
+// GetCloudProjectFlavorPlanCodesInput is an input type that accepts GetCloudProjectFlavorPlanCodesArgs and GetCloudProjectFlavorPlanCodesOutput values.
+// You can construct a concrete instance of `GetCloudProjectFlavorPlanCodesInput` via:
+//
+//	GetCloudProjectFlavorPlanCodesArgs{...}
+type GetCloudProjectFlavorPlanCodesInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectFlavorPlanCodesOutput() GetCloudProjectFlavorPlanCodesOutput
+	ToGetCloudProjectFlavorPlanCodesOutputWithContext(context.Context) GetCloudProjectFlavorPlanCodesOutput
+}
+
+type GetCloudProjectFlavorPlanCodesArgs struct {
+	// Plan code to order hourly instance
+	Hourly pulumi.StringInput `pulumi:"hourly"`
+	// Plan code to order monthly instance
+	Monthly pulumi.StringInput `pulumi:"monthly"`
+}
+
+func (GetCloudProjectFlavorPlanCodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectFlavorPlanCodes)(nil)).Elem()
+}
+
+func (i GetCloudProjectFlavorPlanCodesArgs) ToGetCloudProjectFlavorPlanCodesOutput() GetCloudProjectFlavorPlanCodesOutput {
+	return i.ToGetCloudProjectFlavorPlanCodesOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectFlavorPlanCodesArgs) ToGetCloudProjectFlavorPlanCodesOutputWithContext(ctx context.Context) GetCloudProjectFlavorPlanCodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectFlavorPlanCodesOutput)
+}
+
+type GetCloudProjectFlavorPlanCodesOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectFlavorPlanCodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectFlavorPlanCodes)(nil)).Elem()
+}
+
+func (o GetCloudProjectFlavorPlanCodesOutput) ToGetCloudProjectFlavorPlanCodesOutput() GetCloudProjectFlavorPlanCodesOutput {
+	return o
+}
+
+func (o GetCloudProjectFlavorPlanCodesOutput) ToGetCloudProjectFlavorPlanCodesOutputWithContext(ctx context.Context) GetCloudProjectFlavorPlanCodesOutput {
+	return o
+}
+
+// Plan code to order hourly instance
+func (o GetCloudProjectFlavorPlanCodesOutput) Hourly() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectFlavorPlanCodes) string { return v.Hourly }).(pulumi.StringOutput)
+}
+
+// Plan code to order monthly instance
+func (o GetCloudProjectFlavorPlanCodesOutput) Monthly() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectFlavorPlanCodes) string { return v.Monthly }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectRancherCapabilitiesPlanPlan struct {
+	// Cause for an unavailability
+	Cause string `pulumi:"cause"`
+	// Human-readable description of the unavailability cause
+	Message string `pulumi:"message"`
+	// Name of the plan
+	Name string `pulumi:"name"`
+	// Status of the plan
+	Status string `pulumi:"status"`
+}
+
+// GetCloudProjectRancherCapabilitiesPlanPlanInput is an input type that accepts GetCloudProjectRancherCapabilitiesPlanPlanArgs and GetCloudProjectRancherCapabilitiesPlanPlanOutput values.
+// You can construct a concrete instance of `GetCloudProjectRancherCapabilitiesPlanPlanInput` via:
+//
+//	GetCloudProjectRancherCapabilitiesPlanPlanArgs{...}
+type GetCloudProjectRancherCapabilitiesPlanPlanInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectRancherCapabilitiesPlanPlanOutput() GetCloudProjectRancherCapabilitiesPlanPlanOutput
+	ToGetCloudProjectRancherCapabilitiesPlanPlanOutputWithContext(context.Context) GetCloudProjectRancherCapabilitiesPlanPlanOutput
+}
+
+type GetCloudProjectRancherCapabilitiesPlanPlanArgs struct {
+	// Cause for an unavailability
+	Cause pulumi.StringInput `pulumi:"cause"`
+	// Human-readable description of the unavailability cause
+	Message pulumi.StringInput `pulumi:"message"`
+	// Name of the plan
+	Name pulumi.StringInput `pulumi:"name"`
+	// Status of the plan
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudProjectRancherCapabilitiesPlanPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlan)(nil)).Elem()
+}
+
+func (i GetCloudProjectRancherCapabilitiesPlanPlanArgs) ToGetCloudProjectRancherCapabilitiesPlanPlanOutput() GetCloudProjectRancherCapabilitiesPlanPlanOutput {
+	return i.ToGetCloudProjectRancherCapabilitiesPlanPlanOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectRancherCapabilitiesPlanPlanArgs) ToGetCloudProjectRancherCapabilitiesPlanPlanOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesPlanPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectRancherCapabilitiesPlanPlanOutput)
+}
+
+// GetCloudProjectRancherCapabilitiesPlanPlanArrayInput is an input type that accepts GetCloudProjectRancherCapabilitiesPlanPlanArray and GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectRancherCapabilitiesPlanPlanArrayInput` via:
+//
+//	GetCloudProjectRancherCapabilitiesPlanPlanArray{ GetCloudProjectRancherCapabilitiesPlanPlanArgs{...} }
+type GetCloudProjectRancherCapabilitiesPlanPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutput() GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput
+	ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutputWithContext(context.Context) GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput
+}
+
+type GetCloudProjectRancherCapabilitiesPlanPlanArray []GetCloudProjectRancherCapabilitiesPlanPlanInput
+
+func (GetCloudProjectRancherCapabilitiesPlanPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectRancherCapabilitiesPlanPlan)(nil)).Elem()
+}
+
+func (i GetCloudProjectRancherCapabilitiesPlanPlanArray) ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutput() GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput {
+	return i.ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectRancherCapabilitiesPlanPlanArray) ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput)
+}
+
+type GetCloudProjectRancherCapabilitiesPlanPlanOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectRancherCapabilitiesPlanPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlan)(nil)).Elem()
+}
+
+func (o GetCloudProjectRancherCapabilitiesPlanPlanOutput) ToGetCloudProjectRancherCapabilitiesPlanPlanOutput() GetCloudProjectRancherCapabilitiesPlanPlanOutput {
+	return o
+}
+
+func (o GetCloudProjectRancherCapabilitiesPlanPlanOutput) ToGetCloudProjectRancherCapabilitiesPlanPlanOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesPlanPlanOutput {
+	return o
+}
+
+// Cause for an unavailability
+func (o GetCloudProjectRancherCapabilitiesPlanPlanOutput) Cause() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesPlanPlan) string { return v.Cause }).(pulumi.StringOutput)
+}
+
+// Human-readable description of the unavailability cause
+func (o GetCloudProjectRancherCapabilitiesPlanPlanOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesPlanPlan) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Name of the plan
+func (o GetCloudProjectRancherCapabilitiesPlanPlanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesPlanPlan) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status of the plan
+func (o GetCloudProjectRancherCapabilitiesPlanPlanOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesPlanPlan) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectRancherCapabilitiesPlanPlan)(nil)).Elem()
+}
+
+func (o GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput) ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutput() GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput) ToGetCloudProjectRancherCapabilitiesPlanPlanArrayOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput) Index(i pulumi.IntInput) GetCloudProjectRancherCapabilitiesPlanPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectRancherCapabilitiesPlanPlan {
+		return vs[0].([]GetCloudProjectRancherCapabilitiesPlanPlan)[vs[1].(int)]
+	}).(GetCloudProjectRancherCapabilitiesPlanPlanOutput)
+}
+
+type GetCloudProjectRancherCapabilitiesVersionVersion struct {
+	// Cause for an unavailability
+	Cause string `pulumi:"cause"`
+	// Changelog URL of the version
+	ChangelogUrl string `pulumi:"changelogUrl"`
+	// Human-readable description of the unavailability cause
+	Message string `pulumi:"message"`
+	// Name of the version
+	Name string `pulumi:"name"`
+	// Status of the version
+	Status string `pulumi:"status"`
+}
+
+// GetCloudProjectRancherCapabilitiesVersionVersionInput is an input type that accepts GetCloudProjectRancherCapabilitiesVersionVersionArgs and GetCloudProjectRancherCapabilitiesVersionVersionOutput values.
+// You can construct a concrete instance of `GetCloudProjectRancherCapabilitiesVersionVersionInput` via:
+//
+//	GetCloudProjectRancherCapabilitiesVersionVersionArgs{...}
+type GetCloudProjectRancherCapabilitiesVersionVersionInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectRancherCapabilitiesVersionVersionOutput() GetCloudProjectRancherCapabilitiesVersionVersionOutput
+	ToGetCloudProjectRancherCapabilitiesVersionVersionOutputWithContext(context.Context) GetCloudProjectRancherCapabilitiesVersionVersionOutput
+}
+
+type GetCloudProjectRancherCapabilitiesVersionVersionArgs struct {
+	// Cause for an unavailability
+	Cause pulumi.StringInput `pulumi:"cause"`
+	// Changelog URL of the version
+	ChangelogUrl pulumi.StringInput `pulumi:"changelogUrl"`
+	// Human-readable description of the unavailability cause
+	Message pulumi.StringInput `pulumi:"message"`
+	// Name of the version
+	Name pulumi.StringInput `pulumi:"name"`
+	// Status of the version
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudProjectRancherCapabilitiesVersionVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersion)(nil)).Elem()
+}
+
+func (i GetCloudProjectRancherCapabilitiesVersionVersionArgs) ToGetCloudProjectRancherCapabilitiesVersionVersionOutput() GetCloudProjectRancherCapabilitiesVersionVersionOutput {
+	return i.ToGetCloudProjectRancherCapabilitiesVersionVersionOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectRancherCapabilitiesVersionVersionArgs) ToGetCloudProjectRancherCapabilitiesVersionVersionOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesVersionVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectRancherCapabilitiesVersionVersionOutput)
+}
+
+// GetCloudProjectRancherCapabilitiesVersionVersionArrayInput is an input type that accepts GetCloudProjectRancherCapabilitiesVersionVersionArray and GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectRancherCapabilitiesVersionVersionArrayInput` via:
+//
+//	GetCloudProjectRancherCapabilitiesVersionVersionArray{ GetCloudProjectRancherCapabilitiesVersionVersionArgs{...} }
+type GetCloudProjectRancherCapabilitiesVersionVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutput() GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput
+	ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutputWithContext(context.Context) GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput
+}
+
+type GetCloudProjectRancherCapabilitiesVersionVersionArray []GetCloudProjectRancherCapabilitiesVersionVersionInput
+
+func (GetCloudProjectRancherCapabilitiesVersionVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectRancherCapabilitiesVersionVersion)(nil)).Elem()
+}
+
+func (i GetCloudProjectRancherCapabilitiesVersionVersionArray) ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutput() GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput {
+	return i.ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectRancherCapabilitiesVersionVersionArray) ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput)
+}
+
+type GetCloudProjectRancherCapabilitiesVersionVersionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectRancherCapabilitiesVersionVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersion)(nil)).Elem()
+}
+
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) ToGetCloudProjectRancherCapabilitiesVersionVersionOutput() GetCloudProjectRancherCapabilitiesVersionVersionOutput {
+	return o
+}
+
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) ToGetCloudProjectRancherCapabilitiesVersionVersionOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesVersionVersionOutput {
+	return o
+}
+
+// Cause for an unavailability
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) Cause() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesVersionVersion) string { return v.Cause }).(pulumi.StringOutput)
+}
+
+// Changelog URL of the version
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) ChangelogUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesVersionVersion) string { return v.ChangelogUrl }).(pulumi.StringOutput)
+}
+
+// Human-readable description of the unavailability cause
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesVersionVersion) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Name of the version
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesVersionVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status of the version
+func (o GetCloudProjectRancherCapabilitiesVersionVersionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectRancherCapabilitiesVersionVersion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectRancherCapabilitiesVersionVersion)(nil)).Elem()
+}
+
+func (o GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput) ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutput() GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput) ToGetCloudProjectRancherCapabilitiesVersionVersionArrayOutputWithContext(ctx context.Context) GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput) Index(i pulumi.IntInput) GetCloudProjectRancherCapabilitiesVersionVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectRancherCapabilitiesVersionVersion {
+		return vs[0].([]GetCloudProjectRancherCapabilitiesVersionVersion)[vs[1].(int)]
+	}).(GetCloudProjectRancherCapabilitiesVersionVersionOutput)
+}
+
+type GetCloudProjectSshKeysSshKey struct {
+	// SSH key ID
+	Id string `pulumi:"id"`
+	// SSH key name
+	Name string `pulumi:"name"`
+	// SSH public key
+	PublicKey string `pulumi:"publicKey"`
+	// SSH key regions
+	Regions []string `pulumi:"regions"`
+}
+
+// GetCloudProjectSshKeysSshKeyInput is an input type that accepts GetCloudProjectSshKeysSshKeyArgs and GetCloudProjectSshKeysSshKeyOutput values.
+// You can construct a concrete instance of `GetCloudProjectSshKeysSshKeyInput` via:
+//
+//	GetCloudProjectSshKeysSshKeyArgs{...}
+type GetCloudProjectSshKeysSshKeyInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectSshKeysSshKeyOutput() GetCloudProjectSshKeysSshKeyOutput
+	ToGetCloudProjectSshKeysSshKeyOutputWithContext(context.Context) GetCloudProjectSshKeysSshKeyOutput
+}
+
+type GetCloudProjectSshKeysSshKeyArgs struct {
+	// SSH key ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// SSH key name
+	Name pulumi.StringInput `pulumi:"name"`
+	// SSH public key
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// SSH key regions
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (GetCloudProjectSshKeysSshKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetCloudProjectSshKeysSshKeyArgs) ToGetCloudProjectSshKeysSshKeyOutput() GetCloudProjectSshKeysSshKeyOutput {
+	return i.ToGetCloudProjectSshKeysSshKeyOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectSshKeysSshKeyArgs) ToGetCloudProjectSshKeysSshKeyOutputWithContext(ctx context.Context) GetCloudProjectSshKeysSshKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectSshKeysSshKeyOutput)
+}
+
+// GetCloudProjectSshKeysSshKeyArrayInput is an input type that accepts GetCloudProjectSshKeysSshKeyArray and GetCloudProjectSshKeysSshKeyArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectSshKeysSshKeyArrayInput` via:
+//
+//	GetCloudProjectSshKeysSshKeyArray{ GetCloudProjectSshKeysSshKeyArgs{...} }
+type GetCloudProjectSshKeysSshKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectSshKeysSshKeyArrayOutput() GetCloudProjectSshKeysSshKeyArrayOutput
+	ToGetCloudProjectSshKeysSshKeyArrayOutputWithContext(context.Context) GetCloudProjectSshKeysSshKeyArrayOutput
+}
+
+type GetCloudProjectSshKeysSshKeyArray []GetCloudProjectSshKeysSshKeyInput
+
+func (GetCloudProjectSshKeysSshKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetCloudProjectSshKeysSshKeyArray) ToGetCloudProjectSshKeysSshKeyArrayOutput() GetCloudProjectSshKeysSshKeyArrayOutput {
+	return i.ToGetCloudProjectSshKeysSshKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectSshKeysSshKeyArray) ToGetCloudProjectSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetCloudProjectSshKeysSshKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectSshKeysSshKeyArrayOutput)
+}
+
+type GetCloudProjectSshKeysSshKeyOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectSshKeysSshKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetCloudProjectSshKeysSshKeyOutput) ToGetCloudProjectSshKeysSshKeyOutput() GetCloudProjectSshKeysSshKeyOutput {
+	return o
+}
+
+func (o GetCloudProjectSshKeysSshKeyOutput) ToGetCloudProjectSshKeysSshKeyOutputWithContext(ctx context.Context) GetCloudProjectSshKeysSshKeyOutput {
+	return o
+}
+
+// SSH key ID
+func (o GetCloudProjectSshKeysSshKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectSshKeysSshKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// SSH key name
+func (o GetCloudProjectSshKeysSshKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectSshKeysSshKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// SSH public key
+func (o GetCloudProjectSshKeysSshKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectSshKeysSshKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// SSH key regions
+func (o GetCloudProjectSshKeysSshKeyOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudProjectSshKeysSshKey) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type GetCloudProjectSshKeysSshKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectSshKeysSshKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetCloudProjectSshKeysSshKeyArrayOutput) ToGetCloudProjectSshKeysSshKeyArrayOutput() GetCloudProjectSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectSshKeysSshKeyArrayOutput) ToGetCloudProjectSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetCloudProjectSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetCloudProjectSshKeysSshKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectSshKeysSshKey {
+		return vs[0].([]GetCloudProjectSshKeysSshKey)[vs[1].(int)]
+	}).(GetCloudProjectSshKeysSshKeyOutput)
+}
+
 type GetInstallationTemplateInput struct {
 	Default string `pulumi:"default"`
 	// Information about this template.
@@ -809,6 +1357,574 @@ func (o GetInstallationTemplateProjectUsageArrayOutput) Index(i pulumi.IntInput)
 	}).(GetInstallationTemplateProjectUsageOutput)
 }
 
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig struct {
+	// BGP AS number
+	BgpNeighborArea float64 `pulumi:"bgpNeighborArea"`
+	// Router IP for BGP
+	BgpNeighborIp string `pulumi:"bgpNeighborIp"`
+	// ID of the extra configuration
+	Id float64 `pulumi:"id"`
+	// Static route next hop
+	NextHop string `pulumi:"nextHop"`
+	// Status of the pop configuration
+	Status string `pulumi:"status"`
+	// Static route ip
+	Subnet string `pulumi:"subnet"`
+	// Type of the configuration
+	Type string `pulumi:"type"`
+}
+
+// GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput is an input type that accepts GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs and GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{...}
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs struct {
+	// BGP AS number
+	BgpNeighborArea pulumi.Float64Input `pulumi:"bgpNeighborArea"`
+	// Router IP for BGP
+	BgpNeighborIp pulumi.StringInput `pulumi:"bgpNeighborIp"`
+	// ID of the extra configuration
+	Id pulumi.Float64Input `pulumi:"id"`
+	// Static route next hop
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+	// Status of the pop configuration
+	Status pulumi.StringInput `pulumi:"status"`
+	// Static route ip
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Type of the configuration
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput)
+}
+
+// GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray and GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{ GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{...} }
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray []GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return o
+}
+
+// BGP AS number
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) BgpNeighborArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) float64 { return v.BgpNeighborArea }).(pulumi.Float64Output)
+}
+
+// Router IP for BGP
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) BgpNeighborIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.BgpNeighborIp }).(pulumi.StringOutput)
+}
+
+// ID of the extra configuration
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// Static route next hop
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// Status of the pop configuration
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Static route ip
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Type of the configuration
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig {
+		return vs[0].([]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)[vs[1].(int)]
+	}).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfig struct {
+	// Datacenter ID
+	DatacenterId float64 `pulumi:"datacenterId"`
+	// ID of the Datacenter configuration
+	Id float64 `pulumi:"id"`
+	// OVH Private AS
+	OvhBgpArea float64 `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status string `pulumi:"status"`
+	// Subnet should be a /28 min
+	Subnet string `pulumi:"subnet"`
+}
+
+// GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput is an input type that accepts GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs and GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{...}
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs struct {
+	// Datacenter ID
+	DatacenterId pulumi.Float64Input `pulumi:"datacenterId"`
+	// ID of the Datacenter configuration
+	Id pulumi.Float64Input `pulumi:"id"`
+	// OVH Private AS
+	OvhBgpArea pulumi.Float64Input `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status pulumi.StringInput `pulumi:"status"`
+	// Subnet should be a /28 min
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+}
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput)
+}
+
+// GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray and GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray{ GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{...} }
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray []GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return o
+}
+
+// Datacenter ID
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) DatacenterId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.DatacenterId }).(pulumi.Float64Output)
+}
+
+// ID of the Datacenter configuration
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// OVH Private AS
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) OvhBgpArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.OvhBgpArea }).(pulumi.Float64Output)
+}
+
+// Status of the pop configuration
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Subnet should be a /28 min
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopDatacentersDatacenterConfig {
+		return vs[0].([]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)[vs[1].(int)]
+	}).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput)
+}
+
+type GetOvhcloudConnectConfigPopsPopConfig struct {
+	// Customer Private AS
+	CustomerBgpArea float64 `pulumi:"customerBgpArea"`
+	// ID of the Pop Configuration
+	Id float64 `pulumi:"id"`
+	// ID of the interface
+	InterfaceId float64 `pulumi:"interfaceId"`
+	// OVH Private AS
+	OvhBgpArea float64 `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status string `pulumi:"status"`
+	// Subnet should be a /30, first IP for OVH, second IP for customer
+	Subnet string `pulumi:"subnet"`
+	// Type of the pop configuration
+	Type string `pulumi:"type"`
+}
+
+// GetOvhcloudConnectConfigPopsPopConfigInput is an input type that accepts GetOvhcloudConnectConfigPopsPopConfigArgs and GetOvhcloudConnectConfigPopsPopConfigOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopsPopConfigInput` via:
+//
+//	GetOvhcloudConnectConfigPopsPopConfigArgs{...}
+type GetOvhcloudConnectConfigPopsPopConfigInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput
+	ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigArgs struct {
+	// Customer Private AS
+	CustomerBgpArea pulumi.Float64Input `pulumi:"customerBgpArea"`
+	// ID of the Pop Configuration
+	Id pulumi.Float64Input `pulumi:"id"`
+	// ID of the interface
+	InterfaceId pulumi.Float64Input `pulumi:"interfaceId"`
+	// OVH Private AS
+	OvhBgpArea pulumi.Float64Input `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status pulumi.StringInput `pulumi:"status"`
+	// Subnet should be a /30, first IP for OVH, second IP for customer
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Type of the pop configuration
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetOvhcloudConnectConfigPopsPopConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArgs) ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return i.ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArgs) ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopsPopConfigOutput)
+}
+
+// GetOvhcloudConnectConfigPopsPopConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopsPopConfigArray and GetOvhcloudConnectConfigPopsPopConfigArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopsPopConfigArrayInput` via:
+//
+//	GetOvhcloudConnectConfigPopsPopConfigArray{ GetOvhcloudConnectConfigPopsPopConfigArgs{...} }
+type GetOvhcloudConnectConfigPopsPopConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput
+	ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigArray []GetOvhcloudConnectConfigPopsPopConfigInput
+
+func (GetOvhcloudConnectConfigPopsPopConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArray) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return i.ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArray) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopsPopConfigArrayOutput)
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopsPopConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return o
+}
+
+// Customer Private AS
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) CustomerBgpArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.CustomerBgpArea }).(pulumi.Float64Output)
+}
+
+// ID of the Pop Configuration
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// ID of the interface
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) InterfaceId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.InterfaceId }).(pulumi.Float64Output)
+}
+
+// OVH Private AS
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) OvhBgpArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.OvhBgpArea }).(pulumi.Float64Output)
+}
+
+// Status of the pop configuration
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Subnet should be a /30, first IP for OVH, second IP for customer
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Type of the pop configuration
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopsPopConfig {
+		return vs[0].([]GetOvhcloudConnectConfigPopsPopConfig)[vs[1].(int)]
+	}).(GetOvhcloudConnectConfigPopsPopConfigOutput)
+}
+
+type GetOvhcloudConnectDatacentersDatacenter struct {
+	// Get availability to add new configuration on it
+	Available bool `pulumi:"available"`
+	// Id
+	Id float64 `pulumi:"id"`
+	// name of the datacenter
+	Name string `pulumi:"name"`
+	// region of the datacenter
+	Region string `pulumi:"region"`
+	// region type of the datacenter
+	RegionType string `pulumi:"regionType"`
+}
+
+// GetOvhcloudConnectDatacentersDatacenterInput is an input type that accepts GetOvhcloudConnectDatacentersDatacenterArgs and GetOvhcloudConnectDatacentersDatacenterOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectDatacentersDatacenterInput` via:
+//
+//	GetOvhcloudConnectDatacentersDatacenterArgs{...}
+type GetOvhcloudConnectDatacentersDatacenterInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput
+	ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(context.Context) GetOvhcloudConnectDatacentersDatacenterOutput
+}
+
+type GetOvhcloudConnectDatacentersDatacenterArgs struct {
+	// Get availability to add new configuration on it
+	Available pulumi.BoolInput `pulumi:"available"`
+	// Id
+	Id pulumi.Float64Input `pulumi:"id"`
+	// name of the datacenter
+	Name pulumi.StringInput `pulumi:"name"`
+	// region of the datacenter
+	Region pulumi.StringInput `pulumi:"region"`
+	// region type of the datacenter
+	RegionType pulumi.StringInput `pulumi:"regionType"`
+}
+
+func (GetOvhcloudConnectDatacentersDatacenterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArgs) ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput {
+	return i.ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArgs) ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectDatacentersDatacenterOutput)
+}
+
+// GetOvhcloudConnectDatacentersDatacenterArrayInput is an input type that accepts GetOvhcloudConnectDatacentersDatacenterArray and GetOvhcloudConnectDatacentersDatacenterArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectDatacentersDatacenterArrayInput` via:
+//
+//	GetOvhcloudConnectDatacentersDatacenterArray{ GetOvhcloudConnectDatacentersDatacenterArgs{...} }
+type GetOvhcloudConnectDatacentersDatacenterArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput
+	ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput
+}
+
+type GetOvhcloudConnectDatacentersDatacenterArray []GetOvhcloudConnectDatacentersDatacenterInput
+
+func (GetOvhcloudConnectDatacentersDatacenterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArray) ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return i.ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArray) ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectDatacentersDatacenterArrayOutput)
+}
+
+type GetOvhcloudConnectDatacentersDatacenterOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectDatacentersDatacenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterOutput {
+	return o
+}
+
+// Get availability to add new configuration on it
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// Id
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// name of the datacenter
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// region of the datacenter
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// region type of the datacenter
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) RegionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.RegionType }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectDatacentersDatacenterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectDatacentersDatacenterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectDatacentersDatacenterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectDatacentersDatacenter {
+		return vs[0].([]GetOvhcloudConnectDatacentersDatacenter)[vs[1].(int)]
+	}).(GetOvhcloudConnectDatacentersDatacenterOutput)
+}
+
 type GetServerVni struct {
 	// VirtualNetworkInterface activation state
 	Enabled bool `pulumi:"enabled"`
@@ -961,6 +2077,15 @@ func (o GetServerVniArrayOutput) Index(i pulumi.IntInput) GetServerVniOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityArrayInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorPlanCodesInput)(nil)).Elem(), GetCloudProjectFlavorPlanCodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlanInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesPlanPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlanArrayInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesPlanPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersionInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesVersionVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersionArrayInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesVersionVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectSshKeysSshKeyInput)(nil)).Elem(), GetCloudProjectSshKeysSshKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectSshKeysSshKeyArrayInput)(nil)).Elem(), GetCloudProjectSshKeysSshKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputArrayInput)(nil)).Elem(), GetInstallationTemplateInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseInput)(nil)).Elem(), GetInstallationTemplateLicenseArgs{})
@@ -975,8 +2100,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOArrayInput)(nil)).Elem(), GetInstallationTemplateProjectOArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageArrayInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopsPopConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopsPopConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterArrayInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniInput)(nil)).Elem(), GetServerVniArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniArrayInput)(nil)).Elem(), GetServerVniArray{})
+	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectFlavorPlanCodesOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesPlanPlanOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesVersionVersionOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectSshKeysSshKeyOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectSshKeysSshKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateInputArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOutput{})
@@ -991,6 +2133,14 @@ func init() {
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectOArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopsPopConfigOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopsPopConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterArrayOutput{})
 	pulumi.RegisterOutputType(GetServerVniOutput{})
 	pulumi.RegisterOutputType(GetServerVniArrayOutput{})
 }

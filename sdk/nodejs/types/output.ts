@@ -5,6 +5,89 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetCloudProjectFlavorCapability {
+    /**
+     * Is the capability enabled
+     */
+    enabled: boolean;
+    /**
+     * Name of the capability
+     */
+    name: string;
+}
+
+export interface GetCloudProjectFlavorPlanCodes {
+    /**
+     * Plan code to order hourly instance
+     */
+    hourly: string;
+    /**
+     * Plan code to order monthly instance
+     */
+    monthly: string;
+}
+
+export interface GetCloudProjectRancherCapabilitiesPlanPlan {
+    /**
+     * Cause for an unavailability
+     */
+    cause: string;
+    /**
+     * Human-readable description of the unavailability cause
+     */
+    message: string;
+    /**
+     * Name of the plan
+     */
+    name: string;
+    /**
+     * Status of the plan
+     */
+    status: string;
+}
+
+export interface GetCloudProjectRancherCapabilitiesVersionVersion {
+    /**
+     * Cause for an unavailability
+     */
+    cause: string;
+    /**
+     * Changelog URL of the version
+     */
+    changelogUrl: string;
+    /**
+     * Human-readable description of the unavailability cause
+     */
+    message: string;
+    /**
+     * Name of the version
+     */
+    name: string;
+    /**
+     * Status of the version
+     */
+    status: string;
+}
+
+export interface GetCloudProjectSshKeysSshKey {
+    /**
+     * SSH key ID
+     */
+    id: string;
+    /**
+     * SSH key name
+     */
+    name: string;
+    /**
+     * SSH public key
+     */
+    publicKey: string;
+    /**
+     * SSH key regions
+     */
+    regions: string[];
+}
+
 export interface GetInstallationTemplateInput {
     default: string;
     /**
@@ -84,6 +167,114 @@ export interface GetInstallationTemplateProjectUsage {
      * OS template project item version
      */
     version: string;
+}
+
+export interface GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig {
+    /**
+     * BGP AS number
+     */
+    bgpNeighborArea: number;
+    /**
+     * Router IP for BGP
+     */
+    bgpNeighborIp: string;
+    /**
+     * ID of the extra configuration
+     */
+    id: number;
+    /**
+     * Static route next hop
+     */
+    nextHop: string;
+    /**
+     * Status of the pop configuration
+     */
+    status: string;
+    /**
+     * Static route ip
+     */
+    subnet: string;
+    /**
+     * Type of the configuration
+     */
+    type: string;
+}
+
+export interface GetOvhcloudConnectConfigPopDatacentersDatacenterConfig {
+    /**
+     * Datacenter ID
+     */
+    datacenterId: number;
+    /**
+     * ID of the Datacenter configuration
+     */
+    id: number;
+    /**
+     * OVH Private AS
+     */
+    ovhBgpArea: number;
+    /**
+     * Status of the pop configuration
+     */
+    status: string;
+    /**
+     * Subnet should be a /28 min
+     */
+    subnet: string;
+}
+
+export interface GetOvhcloudConnectConfigPopsPopConfig {
+    /**
+     * Customer Private AS
+     */
+    customerBgpArea: number;
+    /**
+     * ID of the Pop Configuration
+     */
+    id: number;
+    /**
+     * ID of the interface
+     */
+    interfaceId: number;
+    /**
+     * OVH Private AS
+     */
+    ovhBgpArea: number;
+    /**
+     * Status of the pop configuration
+     */
+    status: string;
+    /**
+     * Subnet should be a /30, first IP for OVH, second IP for customer
+     */
+    subnet: string;
+    /**
+     * Type of the pop configuration
+     */
+    type: string;
+}
+
+export interface GetOvhcloudConnectDatacentersDatacenter {
+    /**
+     * Get availability to add new configuration on it
+     */
+    available: boolean;
+    /**
+     * Id
+     */
+    id: number;
+    /**
+     * name of the datacenter
+     */
+    name: string;
+    /**
+     * region of the datacenter
+     */
+    region: string;
+    /**
+     * region type of the datacenter
+     */
+    regionType: string;
 }
 
 export interface GetServerVni {
@@ -1377,6 +1568,10 @@ export namespace CloudProject {
     }
 
     export interface GetRegionService {
+        /**
+         * Endpoint URL
+         */
+        endpoint: string;
         /**
          * The name of the region associated with the public cloud project.
          */

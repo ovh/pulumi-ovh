@@ -24,6 +24,7 @@ class UserArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  openstack_rc: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 password_reset: Optional[pulumi.Input[builtins.str]] = None,
                  role_name: Optional[pulumi.Input[builtins.str]] = None,
                  role_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None):
@@ -31,9 +32,11 @@ class UserArgs:
         The set of arguments for constructing a User resource.
         :param pulumi.Input[builtins.str] description: A description associated with the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
+        :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
-               - administrator,
+               - admin
+               - administrator
                - ai_training_operator
                - ai_training_read
                - authentication
@@ -41,6 +44,9 @@ class UserArgs:
                - compute_operator
                - image_operator
                - infrastructure_supervisor
+               - key-manager_operator
+               - key-manager_read
+               - load-balancer_operator
                - network_operator
                - network_security_operator
                - objectstore_operator
@@ -51,6 +57,8 @@ class UserArgs:
             pulumi.set(__self__, "description", description)
         if openstack_rc is not None:
             pulumi.set(__self__, "openstack_rc", openstack_rc)
+        if password_reset is not None:
+            pulumi.set(__self__, "password_reset", password_reset)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if role_names is not None:
@@ -83,6 +91,18 @@ class UserArgs:
         pulumi.set(self, "openstack_rc", value)
 
     @property
+    @pulumi.getter(name="passwordReset")
+    def password_reset(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Arbitrary string to change to trigger a password update
+        """
+        return pulumi.get(self, "password_reset")
+
+    @password_reset.setter
+    def password_reset(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password_reset", value)
+
+    @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -99,7 +119,8 @@ class UserArgs:
     def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         A list of role names. Values can be:
-        - administrator,
+        - admin
+        - administrator
         - ai_training_operator
         - ai_training_read
         - authentication
@@ -107,6 +128,9 @@ class UserArgs:
         - compute_operator
         - image_operator
         - infrastructure_supervisor
+        - key-manager_operator
+        - key-manager_read
+        - load-balancer_operator
         - network_operator
         - network_security_operator
         - objectstore_operator
@@ -138,6 +162,7 @@ class _UserState:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  openstack_rc: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
+                 password_reset: Optional[pulumi.Input[builtins.str]] = None,
                  role_name: Optional[pulumi.Input[builtins.str]] = None,
                  role_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleArgs']]]] = None,
@@ -150,9 +175,11 @@ class _UserState:
         :param pulumi.Input[builtins.str] description: A description associated with the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         :param pulumi.Input[builtins.str] password: (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
+        :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
-               - administrator,
+               - admin
+               - administrator
                - ai_training_operator
                - ai_training_read
                - authentication
@@ -160,6 +187,9 @@ class _UserState:
                - compute_operator
                - image_operator
                - infrastructure_supervisor
+               - key-manager_operator
+               - key-manager_read
+               - load-balancer_operator
                - network_operator
                - network_security_operator
                - objectstore_operator
@@ -177,6 +207,8 @@ class _UserState:
             pulumi.set(__self__, "openstack_rc", openstack_rc)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_reset is not None:
+            pulumi.set(__self__, "password_reset", password_reset)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if role_names is not None:
@@ -239,6 +271,18 @@ class _UserState:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="passwordReset")
+    def password_reset(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Arbitrary string to change to trigger a password update
+        """
+        return pulumi.get(self, "password_reset")
+
+    @password_reset.setter
+    def password_reset(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password_reset", value)
+
+    @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -255,7 +299,8 @@ class _UserState:
     def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         A list of role names. Values can be:
-        - administrator,
+        - admin
+        - administrator
         - ai_training_operator
         - ai_training_read
         - authentication
@@ -263,6 +308,9 @@ class _UserState:
         - compute_operator
         - image_operator
         - infrastructure_supervisor
+        - key-manager_operator
+        - key-manager_read
+        - load-balancer_operator
         - network_operator
         - network_security_operator
         - objectstore_operator
@@ -331,29 +379,22 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  openstack_rc: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 password_reset: Optional[pulumi.Input[builtins.str]] = None,
                  role_name: Optional[pulumi.Input[builtins.str]] = None,
                  role_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Creates a user in a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        user1 = ovh.cloud_project.User("user1", service_name="XXX")
-        ```
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: A description associated with the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
+        :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
-               - administrator,
+               - admin
+               - administrator
                - ai_training_operator
                - ai_training_read
                - authentication
@@ -361,6 +402,9 @@ class User(pulumi.CustomResource):
                - compute_operator
                - image_operator
                - infrastructure_supervisor
+               - key-manager_operator
+               - key-manager_read
+               - load-balancer_operator
                - network_operator
                - network_security_operator
                - objectstore_operator
@@ -374,17 +418,7 @@ class User(pulumi.CustomResource):
                  args: Optional[UserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a user in a public cloud project.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        user1 = ovh.cloud_project.User("user1", service_name="XXX")
-        ```
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -402,6 +436,7 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  openstack_rc: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 password_reset: Optional[pulumi.Input[builtins.str]] = None,
                  role_name: Optional[pulumi.Input[builtins.str]] = None,
                  role_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -416,6 +451,7 @@ class User(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["openstack_rc"] = openstack_rc
+            __props__.__dict__["password_reset"] = password_reset
             __props__.__dict__["role_name"] = role_name
             __props__.__dict__["role_names"] = role_names
             __props__.__dict__["service_name"] = service_name
@@ -440,6 +476,7 @@ class User(pulumi.CustomResource):
             description: Optional[pulumi.Input[builtins.str]] = None,
             openstack_rc: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             password: Optional[pulumi.Input[builtins.str]] = None,
+            password_reset: Optional[pulumi.Input[builtins.str]] = None,
             role_name: Optional[pulumi.Input[builtins.str]] = None,
             role_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleArgs', 'UserRoleArgsDict']]]]] = None,
@@ -457,9 +494,11 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: A description associated with the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] openstack_rc: a convenient map representing an openstack_rc file. Note: no password nor sensitive token is set in this map.
         :param pulumi.Input[builtins.str] password: (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
+        :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
-               - administrator,
+               - admin
+               - administrator
                - ai_training_operator
                - ai_training_read
                - authentication
@@ -467,6 +506,9 @@ class User(pulumi.CustomResource):
                - compute_operator
                - image_operator
                - infrastructure_supervisor
+               - key-manager_operator
+               - key-manager_read
+               - load-balancer_operator
                - network_operator
                - network_security_operator
                - objectstore_operator
@@ -484,6 +526,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["openstack_rc"] = openstack_rc
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_reset"] = password_reset
         __props__.__dict__["role_name"] = role_name
         __props__.__dict__["role_names"] = role_names
         __props__.__dict__["roles"] = roles
@@ -525,6 +568,14 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="passwordReset")
+    def password_reset(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Arbitrary string to change to trigger a password update
+        """
+        return pulumi.get(self, "password_reset")
+
+    @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
@@ -537,7 +588,8 @@ class User(pulumi.CustomResource):
     def role_names(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
         A list of role names. Values can be:
-        - administrator,
+        - admin
+        - administrator
         - ai_training_operator
         - ai_training_read
         - authentication
@@ -545,6 +597,9 @@ class User(pulumi.CustomResource):
         - compute_operator
         - image_operator
         - infrastructure_supervisor
+        - key-manager_operator
+        - key-manager_read
+        - load-balancer_operator
         - network_operator
         - network_security_operator
         - objectstore_operator

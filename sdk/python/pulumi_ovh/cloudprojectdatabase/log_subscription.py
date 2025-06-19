@@ -22,17 +22,20 @@ class LogSubscriptionArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[builtins.str],
                  engine: pulumi.Input[builtins.str],
+                 kind: pulumi.Input[builtins.str],
                  stream_id: pulumi.Input[builtins.str],
                  service_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a LogSubscription resource.
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[builtins.str] engine: The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[builtins.str] kind: Log kind name of this subscription.
         :param pulumi.Input[builtins.str] stream_id: Id of the target Log data platform stream.
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "stream_id", stream_id)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -60,6 +63,18 @@ class LogSubscriptionArgs:
     @engine.setter
     def engine(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[builtins.str]:
+        """
+        Log kind name of this subscription.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter(name="streamId")
@@ -278,6 +293,7 @@ class LogSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  engine: Optional[pulumi.Input[builtins.str]] = None,
+                 kind: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  stream_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -301,7 +317,8 @@ class LogSubscription(pulumi.CustomResource):
             service_name=db.service_name,
             engine=db.engine,
             cluster_id=db.id,
-            stream_id=stream.id)
+            stream_id=stream.id,
+            kind="customer_logs")
         ```
 
         ## Import
@@ -318,6 +335,7 @@ class LogSubscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[builtins.str] engine: The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
+        :param pulumi.Input[builtins.str] kind: Log kind name of this subscription.
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.str] stream_id: Id of the target Log data platform stream.
         """
@@ -347,7 +365,8 @@ class LogSubscription(pulumi.CustomResource):
             service_name=db.service_name,
             engine=db.engine,
             cluster_id=db.id,
-            stream_id=stream.id)
+            stream_id=stream.id,
+            kind="customer_logs")
         ```
 
         ## Import
@@ -377,6 +396,7 @@ class LogSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  engine: Optional[pulumi.Input[builtins.str]] = None,
+                 kind: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  stream_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -394,12 +414,14 @@ class LogSubscription(pulumi.CustomResource):
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
             __props__.__dict__["engine"] = engine
+            if kind is None and not opts.urn:
+                raise TypeError("Missing required property 'kind'")
+            __props__.__dict__["kind"] = kind
             __props__.__dict__["service_name"] = service_name
             if stream_id is None and not opts.urn:
                 raise TypeError("Missing required property 'stream_id'")
             __props__.__dict__["stream_id"] = stream_id
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["kind"] = None
             __props__.__dict__["ldp_service_name"] = None
             __props__.__dict__["operation_id"] = None
             __props__.__dict__["resource_name"] = None

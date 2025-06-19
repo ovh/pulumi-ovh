@@ -43,6 +43,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     ///         Engine = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Engine),
     ///         ClusterId = db.Apply(getDatabaseResult =&gt; getDatabaseResult.Id),
     ///         StreamId = stream.Apply(getLogsOutputGraylogStreamResult =&gt; getLogsOutputGraylogStreamResult.Id),
+    ///         Kind = "customer_logs",
     ///     });
     /// 
     /// });
@@ -189,6 +190,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
+
+        /// <summary>
+        /// Log kind name of this subscription.
+        /// </summary>
+        [Input("kind", required: true)]
+        public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
         /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.

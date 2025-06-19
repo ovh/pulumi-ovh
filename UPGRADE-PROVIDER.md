@@ -1,6 +1,28 @@
 # Pre-requisites
 
 ```bash
+# Install Node 20.5 minimum
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+source ~/.bashrc
+nvm install v20.5.0
+
+node -v
+v20.5.0
+
+# Install SDK
+curl -s "https://get.sdkman.io" | bash
+source "/root/.sdkman/bin/sdkman-init.sh"
+
+# Install Gradle 8
+sdk install gradle 8.8
+sdk use gradle 8.8
+gradle -v
+```
+
+
+
+Not necessary anymore:
+```bash
 apt install zip
 
 # Install Java 21
@@ -12,6 +34,7 @@ java -version
 
 # Install Gradle 8
 sdk install gradle 8.8
+sdk use gradle 8.8
 gradle -v
 ```
 

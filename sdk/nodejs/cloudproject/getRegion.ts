@@ -48,9 +48,17 @@ export interface GetRegionArgs {
  */
 export interface GetRegionResult {
     /**
-     * the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+     * Availability zones of the region
+     */
+    readonly availabilityZones: string[];
+    /**
+     * The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
      */
     readonly continentCode: string;
+    /**
+     * Region country code
+     */
+    readonly countryCode: string;
     /**
      * The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
      */
@@ -60,6 +68,10 @@ export interface GetRegionResult {
      */
     readonly id: string;
     /**
+     * Allowed countries for failover IP
+     */
+    readonly ipCountries: string[];
+    /**
      * the name of the public cloud service
      */
     readonly name: string;
@@ -68,6 +80,14 @@ export interface GetRegionResult {
      * The list of public cloud services running within the region
      */
     readonly services: outputs.CloudProject.GetRegionService[];
+    /**
+     * the status of the service
+     */
+    readonly status: string;
+    /**
+     * Region type (localzone | region | region-3-az)
+     */
+    readonly type: string;
 }
 /**
  * Use this data source to retrieve information about a region associated with a public cloud project. The region must be associated with the project.

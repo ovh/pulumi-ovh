@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
 export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getFlavors:getFlavors", {
+        "nameFilter": args.nameFilter,
         "region": args.region,
         "serviceName": args.serviceName,
     }, opts);
@@ -32,6 +33,10 @@ export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsArgs {
+    /**
+     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     */
+    nameFilter?: string;
     /**
      * Flavor region
      */
@@ -51,6 +56,10 @@ export interface GetFlavorsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     */
+    readonly nameFilter?: string;
     /**
      * Flavor region
      */
@@ -77,6 +86,7 @@ export interface GetFlavorsResult {
 export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getFlavors:getFlavors", {
+        "nameFilter": args.nameFilter,
         "region": args.region,
         "serviceName": args.serviceName,
     }, opts);
@@ -86,6 +96,10 @@ export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsOutputArgs {
+    /**
+     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     */
+    nameFilter?: pulumi.Input<string>;
     /**
      * Flavor region
      */

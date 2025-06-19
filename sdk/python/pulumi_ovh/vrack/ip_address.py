@@ -21,14 +21,18 @@ __all__ = ['IpAddressArgs', 'IpAddress']
 class IpAddressArgs:
     def __init__(__self__, *,
                  block: pulumi.Input[builtins.str],
-                 service_name: pulumi.Input[builtins.str]):
+                 service_name: pulumi.Input[builtins.str],
+                 region: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a IpAddress resource.
         :param pulumi.Input[builtins.str] block: Your IP block.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
+        :param pulumi.Input[builtins.str] region: The region (e.g: eu-west-gra) where want to route your block to.
         """
         pulumi.set(__self__, "block", block)
         pulumi.set(__self__, "service_name", service_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -54,6 +58,18 @@ class IpAddressArgs:
     def service_name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "service_name", value)
 
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region (e.g: eu-west-gra) where want to route your block to.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _IpAddressState:
@@ -61,6 +77,7 @@ class _IpAddressState:
                  block: Optional[pulumi.Input[builtins.str]] = None,
                  gateway: Optional[pulumi.Input[builtins.str]] = None,
                  ip: Optional[pulumi.Input[builtins.str]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  zone: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -68,6 +85,7 @@ class _IpAddressState:
         :param pulumi.Input[builtins.str] block: Your IP block.
         :param pulumi.Input[builtins.str] gateway: Your gateway
         :param pulumi.Input[builtins.str] ip: Your IP block
+        :param pulumi.Input[builtins.str] region: The region (e.g: eu-west-gra) where want to route your block to.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
         :param pulumi.Input[builtins.str] zone: Where you want your block announced on the network
         """
@@ -77,6 +95,8 @@ class _IpAddressState:
             pulumi.set(__self__, "gateway", gateway)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if zone is not None:
@@ -119,6 +139,18 @@ class _IpAddressState:
         pulumi.set(self, "ip", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region (e.g: eu-west-gra) where want to route your block to.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -150,6 +182,7 @@ class IpAddress(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block: Optional[pulumi.Input[builtins.str]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -200,6 +233,7 @@ class IpAddress(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] block: Your IP block.
+        :param pulumi.Input[builtins.str] region: The region (e.g: eu-west-gra) where want to route your block to.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
         """
         ...
@@ -269,6 +303,7 @@ class IpAddress(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block: Optional[pulumi.Input[builtins.str]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -282,6 +317,7 @@ class IpAddress(pulumi.CustomResource):
             if block is None and not opts.urn:
                 raise TypeError("Missing required property 'block'")
             __props__.__dict__["block"] = block
+            __props__.__dict__["region"] = region
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
@@ -301,6 +337,7 @@ class IpAddress(pulumi.CustomResource):
             block: Optional[pulumi.Input[builtins.str]] = None,
             gateway: Optional[pulumi.Input[builtins.str]] = None,
             ip: Optional[pulumi.Input[builtins.str]] = None,
+            region: Optional[pulumi.Input[builtins.str]] = None,
             service_name: Optional[pulumi.Input[builtins.str]] = None,
             zone: Optional[pulumi.Input[builtins.str]] = None) -> 'IpAddress':
         """
@@ -313,6 +350,7 @@ class IpAddress(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] block: Your IP block.
         :param pulumi.Input[builtins.str] gateway: Your gateway
         :param pulumi.Input[builtins.str] ip: Your IP block
+        :param pulumi.Input[builtins.str] region: The region (e.g: eu-west-gra) where want to route your block to.
         :param pulumi.Input[builtins.str] service_name: The internal name of your vrack
         :param pulumi.Input[builtins.str] zone: Where you want your block announced on the network
         """
@@ -323,6 +361,7 @@ class IpAddress(pulumi.CustomResource):
         __props__.__dict__["block"] = block
         __props__.__dict__["gateway"] = gateway
         __props__.__dict__["ip"] = ip
+        __props__.__dict__["region"] = region
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["zone"] = zone
         return IpAddress(resource_name, opts=opts, __props__=__props__)
@@ -350,6 +389,14 @@ class IpAddress(pulumi.CustomResource):
         Your IP block
         """
         return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[builtins.str]:
+        """
+        The region (e.g: eu-west-gra) where want to route your block to.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceName")

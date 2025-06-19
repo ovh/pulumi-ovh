@@ -28,16 +28,25 @@ class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, continent_code=None, datacenter_location=None, id=None, name=None, service_name=None, services=None):
+    def __init__(__self__, availability_zones=None, continent_code=None, country_code=None, datacenter_location=None, id=None, ip_countries=None, name=None, service_name=None, services=None, status=None, type=None):
+        if availability_zones and not isinstance(availability_zones, list):
+            raise TypeError("Expected argument 'availability_zones' to be a list")
+        pulumi.set(__self__, "availability_zones", availability_zones)
         if continent_code and not isinstance(continent_code, str):
             raise TypeError("Expected argument 'continent_code' to be a str")
         pulumi.set(__self__, "continent_code", continent_code)
+        if country_code and not isinstance(country_code, str):
+            raise TypeError("Expected argument 'country_code' to be a str")
+        pulumi.set(__self__, "country_code", country_code)
         if datacenter_location and not isinstance(datacenter_location, str):
             raise TypeError("Expected argument 'datacenter_location' to be a str")
         pulumi.set(__self__, "datacenter_location", datacenter_location)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_countries and not isinstance(ip_countries, list):
+            raise TypeError("Expected argument 'ip_countries' to be a list")
+        pulumi.set(__self__, "ip_countries", ip_countries)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -47,14 +56,36 @@ class GetRegionResult:
         if services and not isinstance(services, list):
             raise TypeError("Expected argument 'services' to be a list")
         pulumi.set(__self__, "services", services)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Sequence[builtins.str]:
+        """
+        Availability zones of the region
+        """
+        return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="continentCode")
     def continent_code(self) -> builtins.str:
         """
-        the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+        The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
         """
         return pulumi.get(self, "continent_code")
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> builtins.str:
+        """
+        Region country code
+        """
+        return pulumi.get(self, "country_code")
 
     @property
     @pulumi.getter(name="datacenterLocation")
@@ -71,6 +102,14 @@ class GetRegionResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipCountries")
+    def ip_countries(self) -> Sequence[builtins.str]:
+        """
+        Allowed countries for failover IP
+        """
+        return pulumi.get(self, "ip_countries")
 
     @property
     @pulumi.getter
@@ -93,6 +132,22 @@ class GetRegionResult:
         """
         return pulumi.get(self, "services")
 
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        the status of the service
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Region type (localzone | region | region-3-az)
+        """
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
@@ -100,12 +155,17 @@ class AwaitableGetRegionResult(GetRegionResult):
         if False:
             yield self
         return GetRegionResult(
+            availability_zones=self.availability_zones,
             continent_code=self.continent_code,
+            country_code=self.country_code,
             datacenter_location=self.datacenter_location,
             id=self.id,
+            ip_countries=self.ip_countries,
             name=self.name,
             service_name=self.service_name,
-            services=self.services)
+            services=self.services,
+            status=self.status,
+            type=self.type)
 
 
 def get_region(name: Optional[builtins.str] = None,
@@ -135,12 +195,17 @@ def get_region(name: Optional[builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:CloudProject/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
     return AwaitableGetRegionResult(
+        availability_zones=pulumi.get(__ret__, 'availability_zones'),
         continent_code=pulumi.get(__ret__, 'continent_code'),
+        country_code=pulumi.get(__ret__, 'country_code'),
         datacenter_location=pulumi.get(__ret__, 'datacenter_location'),
         id=pulumi.get(__ret__, 'id'),
+        ip_countries=pulumi.get(__ret__, 'ip_countries'),
         name=pulumi.get(__ret__, 'name'),
         service_name=pulumi.get(__ret__, 'service_name'),
-        services=pulumi.get(__ret__, 'services'))
+        services=pulumi.get(__ret__, 'services'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'))
 def get_region_output(name: Optional[pulumi.Input[builtins.str]] = None,
                       service_name: Optional[pulumi.Input[builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
@@ -167,9 +232,14 @@ def get_region_output(name: Optional[pulumi.Input[builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult)
     return __ret__.apply(lambda __response__: GetRegionResult(
+        availability_zones=pulumi.get(__response__, 'availability_zones'),
         continent_code=pulumi.get(__response__, 'continent_code'),
+        country_code=pulumi.get(__response__, 'country_code'),
         datacenter_location=pulumi.get(__response__, 'datacenter_location'),
         id=pulumi.get(__response__, 'id'),
+        ip_countries=pulumi.get(__response__, 'ip_countries'),
         name=pulumi.get(__response__, 'name'),
         service_name=pulumi.get(__response__, 'service_name'),
-        services=pulumi.get(__response__, 'services')))
+        services=pulumi.get(__response__, 'services'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type')))

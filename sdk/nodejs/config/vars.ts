@@ -84,3 +84,14 @@ Object.defineProperty(exports, "endpoint", {
     enumerable: true,
 });
 
+/**
+ * Extra information to append to the user-agent
+ */
+export declare const userAgentExtra: string | undefined;
+Object.defineProperty(exports, "userAgentExtra", {
+    get() {
+        return __config.get("userAgentExtra");
+    },
+    enumerable: true,
+});
+

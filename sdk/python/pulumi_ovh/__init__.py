@@ -7,11 +7,23 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .cloud_project_ssh_key import *
+from .get_cloud_project_flavor import *
+from .get_cloud_project_rancher_capabilities_plan import *
+from .get_cloud_project_rancher_capabilities_version import *
+from .get_cloud_project_ssh_key import *
+from .get_cloud_project_ssh_keys import *
 from .get_installation_template import *
 from .get_installation_templates import *
+from .get_ovhcloud_connect_config_pop_datacenter_extras import *
+from .get_ovhcloud_connect_config_pop_datacenters import *
+from .get_ovhcloud_connect_config_pops import *
+from .get_ovhcloud_connect_datacenters import *
 from .get_server import *
 from .get_servers import *
 from .get_vrack_networks import *
+from .ovhcloud_connect_pop_config import *
+from .ovhcloud_connect_pop_datacenter_config import *
+from .ovhcloud_connect_pop_datacenter_extra_config import *
 from .provider import *
 from .vrack_ipv6_routed_subrange import *
 from . import outputs
@@ -1094,6 +1106,30 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudProjectSshKey:CloudProjectSshKey": "CloudProjectSshKey"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/ovhcloudConnectPopConfig",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": "OvhcloudConnectPopConfig"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/ovhcloudConnectPopDatacenterConfig",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig": "OvhcloudConnectPopDatacenterConfig"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/ovhcloudConnectPopDatacenterExtraConfig",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig": "OvhcloudConnectPopDatacenterExtraConfig"
   }
  },
  {

@@ -11,33 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a user in a public cloud project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewUser(ctx, "user1", &cloudproject.UserArgs{
-//				ServiceName: pulumi.String("XXX"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type User struct {
 	pulumi.CustomResourceState
 
@@ -49,10 +22,13 @@ type User struct {
 	OpenstackRc pulumi.StringMapOutput `pulumi:"openstackRc"`
 	// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// Arbitrary string to change to trigger a password update
+	PasswordReset pulumi.StringPtrOutput `pulumi:"passwordReset"`
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
 	// A list of role names. Values can be:
-	// - administrator,
+	// - admin
+	// - administrator
 	// - aiTrainingOperator
 	// - aiTrainingRead
 	// - authentication
@@ -60,6 +36,9 @@ type User struct {
 	// - computeOperator
 	// - imageOperator
 	// - infrastructureSupervisor
+	// - key-manager_operator
+	// - key-manager_read
+	// - load-balancer_operator
 	// - networkOperator
 	// - networkSecurityOperator
 	// - objectstoreOperator
@@ -117,10 +96,13 @@ type userState struct {
 	OpenstackRc map[string]string `pulumi:"openstackRc"`
 	// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 	Password *string `pulumi:"password"`
+	// Arbitrary string to change to trigger a password update
+	PasswordReset *string `pulumi:"passwordReset"`
 	// The name of a role. See `roleNames`.
 	RoleName *string `pulumi:"roleName"`
 	// A list of role names. Values can be:
-	// - administrator,
+	// - admin
+	// - administrator
 	// - aiTrainingOperator
 	// - aiTrainingRead
 	// - authentication
@@ -128,6 +110,9 @@ type userState struct {
 	// - computeOperator
 	// - imageOperator
 	// - infrastructureSupervisor
+	// - key-manager_operator
+	// - key-manager_read
+	// - load-balancer_operator
 	// - networkOperator
 	// - networkSecurityOperator
 	// - objectstoreOperator
@@ -152,10 +137,13 @@ type UserState struct {
 	OpenstackRc pulumi.StringMapInput
 	// (Sensitive) the password generated for the user. The password can be used with the Openstack API. This attribute is sensitive and will only be retrieve once during creation.
 	Password pulumi.StringPtrInput
+	// Arbitrary string to change to trigger a password update
+	PasswordReset pulumi.StringPtrInput
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrInput
 	// A list of role names. Values can be:
-	// - administrator,
+	// - admin
+	// - administrator
 	// - aiTrainingOperator
 	// - aiTrainingRead
 	// - authentication
@@ -163,6 +151,9 @@ type UserState struct {
 	// - computeOperator
 	// - imageOperator
 	// - infrastructureSupervisor
+	// - key-manager_operator
+	// - key-manager_read
+	// - load-balancer_operator
 	// - networkOperator
 	// - networkSecurityOperator
 	// - objectstoreOperator
@@ -187,10 +178,13 @@ type userArgs struct {
 	Description *string `pulumi:"description"`
 	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc map[string]string `pulumi:"openstackRc"`
+	// Arbitrary string to change to trigger a password update
+	PasswordReset *string `pulumi:"passwordReset"`
 	// The name of a role. See `roleNames`.
 	RoleName *string `pulumi:"roleName"`
 	// A list of role names. Values can be:
-	// - administrator,
+	// - admin
+	// - administrator
 	// - aiTrainingOperator
 	// - aiTrainingRead
 	// - authentication
@@ -198,6 +192,9 @@ type userArgs struct {
 	// - computeOperator
 	// - imageOperator
 	// - infrastructureSupervisor
+	// - key-manager_operator
+	// - key-manager_read
+	// - load-balancer_operator
 	// - networkOperator
 	// - networkSecurityOperator
 	// - objectstoreOperator
@@ -213,10 +210,13 @@ type UserArgs struct {
 	Description pulumi.StringPtrInput
 	// a convenient map representing an openstackRc file. Note: no password nor sensitive token is set in this map.
 	OpenstackRc pulumi.StringMapInput
+	// Arbitrary string to change to trigger a password update
+	PasswordReset pulumi.StringPtrInput
 	// The name of a role. See `roleNames`.
 	RoleName pulumi.StringPtrInput
 	// A list of role names. Values can be:
-	// - administrator,
+	// - admin
+	// - administrator
 	// - aiTrainingOperator
 	// - aiTrainingRead
 	// - authentication
@@ -224,6 +224,9 @@ type UserArgs struct {
 	// - computeOperator
 	// - imageOperator
 	// - infrastructureSupervisor
+	// - key-manager_operator
+	// - key-manager_read
+	// - load-balancer_operator
 	// - networkOperator
 	// - networkSecurityOperator
 	// - objectstoreOperator
@@ -340,13 +343,19 @@ func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
+// Arbitrary string to change to trigger a password update
+func (o UserOutput) PasswordReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordReset }).(pulumi.StringPtrOutput)
+}
+
 // The name of a role. See `roleNames`.
 func (o UserOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.RoleName }).(pulumi.StringPtrOutput)
 }
 
 // A list of role names. Values can be:
-// - administrator,
+// - admin
+// - administrator
 // - aiTrainingOperator
 // - aiTrainingRead
 // - authentication
@@ -354,6 +363,9 @@ func (o UserOutput) RoleName() pulumi.StringPtrOutput {
 // - computeOperator
 // - imageOperator
 // - infrastructureSupervisor
+// - key-manager_operator
+// - key-manager_read
+// - load-balancer_operator
 // - networkOperator
 // - networkSecurityOperator
 // - objectstoreOperator

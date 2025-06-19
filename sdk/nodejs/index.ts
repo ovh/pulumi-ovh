@@ -10,6 +10,31 @@ export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshK
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
 utilities.lazyLoad(exports, ["CloudProjectSshKey"], () => require("./cloudProjectSshKey"));
 
+export { GetCloudProjectFlavorArgs, GetCloudProjectFlavorResult, GetCloudProjectFlavorOutputArgs } from "./getCloudProjectFlavor";
+export const getCloudProjectFlavor: typeof import("./getCloudProjectFlavor").getCloudProjectFlavor = null as any;
+export const getCloudProjectFlavorOutput: typeof import("./getCloudProjectFlavor").getCloudProjectFlavorOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectFlavor","getCloudProjectFlavorOutput"], () => require("./getCloudProjectFlavor"));
+
+export { GetCloudProjectRancherCapabilitiesPlanArgs, GetCloudProjectRancherCapabilitiesPlanResult, GetCloudProjectRancherCapabilitiesPlanOutputArgs } from "./getCloudProjectRancherCapabilitiesPlan";
+export const getCloudProjectRancherCapabilitiesPlan: typeof import("./getCloudProjectRancherCapabilitiesPlan").getCloudProjectRancherCapabilitiesPlan = null as any;
+export const getCloudProjectRancherCapabilitiesPlanOutput: typeof import("./getCloudProjectRancherCapabilitiesPlan").getCloudProjectRancherCapabilitiesPlanOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectRancherCapabilitiesPlan","getCloudProjectRancherCapabilitiesPlanOutput"], () => require("./getCloudProjectRancherCapabilitiesPlan"));
+
+export { GetCloudProjectRancherCapabilitiesVersionArgs, GetCloudProjectRancherCapabilitiesVersionResult, GetCloudProjectRancherCapabilitiesVersionOutputArgs } from "./getCloudProjectRancherCapabilitiesVersion";
+export const getCloudProjectRancherCapabilitiesVersion: typeof import("./getCloudProjectRancherCapabilitiesVersion").getCloudProjectRancherCapabilitiesVersion = null as any;
+export const getCloudProjectRancherCapabilitiesVersionOutput: typeof import("./getCloudProjectRancherCapabilitiesVersion").getCloudProjectRancherCapabilitiesVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectRancherCapabilitiesVersion","getCloudProjectRancherCapabilitiesVersionOutput"], () => require("./getCloudProjectRancherCapabilitiesVersion"));
+
+export { GetCloudProjectSshKeyArgs, GetCloudProjectSshKeyResult, GetCloudProjectSshKeyOutputArgs } from "./getCloudProjectSshKey";
+export const getCloudProjectSshKey: typeof import("./getCloudProjectSshKey").getCloudProjectSshKey = null as any;
+export const getCloudProjectSshKeyOutput: typeof import("./getCloudProjectSshKey").getCloudProjectSshKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectSshKey","getCloudProjectSshKeyOutput"], () => require("./getCloudProjectSshKey"));
+
+export { GetCloudProjectSshKeysArgs, GetCloudProjectSshKeysResult, GetCloudProjectSshKeysOutputArgs } from "./getCloudProjectSshKeys";
+export const getCloudProjectSshKeys: typeof import("./getCloudProjectSshKeys").getCloudProjectSshKeys = null as any;
+export const getCloudProjectSshKeysOutput: typeof import("./getCloudProjectSshKeys").getCloudProjectSshKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectSshKeys","getCloudProjectSshKeysOutput"], () => require("./getCloudProjectSshKeys"));
+
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
 export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;
@@ -19,6 +44,26 @@ export { GetInstallationTemplatesResult } from "./getInstallationTemplates";
 export const getInstallationTemplates: typeof import("./getInstallationTemplates").getInstallationTemplates = null as any;
 export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
+
+export { GetOvhcloudConnectConfigPopDatacenterExtrasArgs, GetOvhcloudConnectConfigPopDatacenterExtrasResult, GetOvhcloudConnectConfigPopDatacenterExtrasOutputArgs } from "./getOvhcloudConnectConfigPopDatacenterExtras";
+export const getOvhcloudConnectConfigPopDatacenterExtras: typeof import("./getOvhcloudConnectConfigPopDatacenterExtras").getOvhcloudConnectConfigPopDatacenterExtras = null as any;
+export const getOvhcloudConnectConfigPopDatacenterExtrasOutput: typeof import("./getOvhcloudConnectConfigPopDatacenterExtras").getOvhcloudConnectConfigPopDatacenterExtrasOutput = null as any;
+utilities.lazyLoad(exports, ["getOvhcloudConnectConfigPopDatacenterExtras","getOvhcloudConnectConfigPopDatacenterExtrasOutput"], () => require("./getOvhcloudConnectConfigPopDatacenterExtras"));
+
+export { GetOvhcloudConnectConfigPopDatacentersArgs, GetOvhcloudConnectConfigPopDatacentersResult, GetOvhcloudConnectConfigPopDatacentersOutputArgs } from "./getOvhcloudConnectConfigPopDatacenters";
+export const getOvhcloudConnectConfigPopDatacenters: typeof import("./getOvhcloudConnectConfigPopDatacenters").getOvhcloudConnectConfigPopDatacenters = null as any;
+export const getOvhcloudConnectConfigPopDatacentersOutput: typeof import("./getOvhcloudConnectConfigPopDatacenters").getOvhcloudConnectConfigPopDatacentersOutput = null as any;
+utilities.lazyLoad(exports, ["getOvhcloudConnectConfigPopDatacenters","getOvhcloudConnectConfigPopDatacentersOutput"], () => require("./getOvhcloudConnectConfigPopDatacenters"));
+
+export { GetOvhcloudConnectConfigPopsArgs, GetOvhcloudConnectConfigPopsResult, GetOvhcloudConnectConfigPopsOutputArgs } from "./getOvhcloudConnectConfigPops";
+export const getOvhcloudConnectConfigPops: typeof import("./getOvhcloudConnectConfigPops").getOvhcloudConnectConfigPops = null as any;
+export const getOvhcloudConnectConfigPopsOutput: typeof import("./getOvhcloudConnectConfigPops").getOvhcloudConnectConfigPopsOutput = null as any;
+utilities.lazyLoad(exports, ["getOvhcloudConnectConfigPops","getOvhcloudConnectConfigPopsOutput"], () => require("./getOvhcloudConnectConfigPops"));
+
+export { GetOvhcloudConnectDatacentersArgs, GetOvhcloudConnectDatacentersResult, GetOvhcloudConnectDatacentersOutputArgs } from "./getOvhcloudConnectDatacenters";
+export const getOvhcloudConnectDatacenters: typeof import("./getOvhcloudConnectDatacenters").getOvhcloudConnectDatacenters = null as any;
+export const getOvhcloudConnectDatacentersOutput: typeof import("./getOvhcloudConnectDatacenters").getOvhcloudConnectDatacentersOutput = null as any;
+utilities.lazyLoad(exports, ["getOvhcloudConnectDatacenters","getOvhcloudConnectDatacentersOutput"], () => require("./getOvhcloudConnectDatacenters"));
 
 export { GetServerArgs, GetServerResult, GetServerOutputArgs } from "./getServer";
 export const getServer: typeof import("./getServer").getServer = null as any;
@@ -34,6 +79,21 @@ export { GetVrackNetworksArgs, GetVrackNetworksResult, GetVrackNetworksOutputArg
 export const getVrackNetworks: typeof import("./getVrackNetworks").getVrackNetworks = null as any;
 export const getVrackNetworksOutput: typeof import("./getVrackNetworks").getVrackNetworksOutput = null as any;
 utilities.lazyLoad(exports, ["getVrackNetworks","getVrackNetworksOutput"], () => require("./getVrackNetworks"));
+
+export { OvhcloudConnectPopConfigArgs, OvhcloudConnectPopConfigState } from "./ovhcloudConnectPopConfig";
+export type OvhcloudConnectPopConfig = import("./ovhcloudConnectPopConfig").OvhcloudConnectPopConfig;
+export const OvhcloudConnectPopConfig: typeof import("./ovhcloudConnectPopConfig").OvhcloudConnectPopConfig = null as any;
+utilities.lazyLoad(exports, ["OvhcloudConnectPopConfig"], () => require("./ovhcloudConnectPopConfig"));
+
+export { OvhcloudConnectPopDatacenterConfigArgs, OvhcloudConnectPopDatacenterConfigState } from "./ovhcloudConnectPopDatacenterConfig";
+export type OvhcloudConnectPopDatacenterConfig = import("./ovhcloudConnectPopDatacenterConfig").OvhcloudConnectPopDatacenterConfig;
+export const OvhcloudConnectPopDatacenterConfig: typeof import("./ovhcloudConnectPopDatacenterConfig").OvhcloudConnectPopDatacenterConfig = null as any;
+utilities.lazyLoad(exports, ["OvhcloudConnectPopDatacenterConfig"], () => require("./ovhcloudConnectPopDatacenterConfig"));
+
+export { OvhcloudConnectPopDatacenterExtraConfigArgs, OvhcloudConnectPopDatacenterExtraConfigState } from "./ovhcloudConnectPopDatacenterExtraConfig";
+export type OvhcloudConnectPopDatacenterExtraConfig = import("./ovhcloudConnectPopDatacenterExtraConfig").OvhcloudConnectPopDatacenterExtraConfig;
+export const OvhcloudConnectPopDatacenterExtraConfig: typeof import("./ovhcloudConnectPopDatacenterExtraConfig").OvhcloudConnectPopDatacenterExtraConfig = null as any;
+utilities.lazyLoad(exports, ["OvhcloudConnectPopDatacenterExtraConfig"], () => require("./ovhcloudConnectPopDatacenterExtraConfig"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -95,6 +155,12 @@ const _module = {
         switch (type) {
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
+            case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
+                return new OvhcloudConnectPopConfig(name, <any>undefined, { urn })
+            case "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig":
+                return new OvhcloudConnectPopDatacenterConfig(name, <any>undefined, { urn })
+            case "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig":
+                return new OvhcloudConnectPopDatacenterExtraConfig(name, <any>undefined, { urn })
             case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
                 return new VrackIpv6RoutedSubrange(name, <any>undefined, { urn })
             default:
@@ -103,6 +169,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterExtraConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/vrackIpv6RoutedSubrange", _module)
 pulumi.runtime.registerResourcePackage("ovh", {
     version: utilities.getVersion(),

@@ -28,13 +28,16 @@ class GetFlavorsResult:
     """
     A collection of values returned by getFlavors.
     """
-    def __init__(__self__, flavors=None, id=None, region=None, service_name=None):
+    def __init__(__self__, flavors=None, id=None, name_filter=None, region=None, service_name=None):
         if flavors and not isinstance(flavors, list):
             raise TypeError("Expected argument 'flavors' to be a list")
         pulumi.set(__self__, "flavors", flavors)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if name_filter and not isinstance(name_filter, str):
+            raise TypeError("Expected argument 'name_filter' to be a str")
+        pulumi.set(__self__, "name_filter", name_filter)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -54,6 +57,14 @@ class GetFlavorsResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nameFilter")
+    def name_filter(self) -> Optional[builtins.str]:
+        """
+        Filter flavors using the given name (strict equality, e.g. b2-7)
+        """
+        return pulumi.get(self, "name_filter")
 
     @property
     @pulumi.getter
@@ -80,11 +91,13 @@ class AwaitableGetFlavorsResult(GetFlavorsResult):
         return GetFlavorsResult(
             flavors=self.flavors,
             id=self.id,
+            name_filter=self.name_filter,
             region=self.region,
             service_name=self.service_name)
 
 
-def get_flavors(region: Optional[builtins.str] = None,
+def get_flavors(name_filter: Optional[builtins.str] = None,
+                region: Optional[builtins.str] = None,
                 service_name: Optional[builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
@@ -100,10 +113,12 @@ def get_flavors(region: Optional[builtins.str] = None,
     ```
 
 
+    :param builtins.str name_filter: Filter flavors using the given name (strict equality, e.g. b2-7)
     :param builtins.str region: Flavor region
     :param builtins.str service_name: Service name
     """
     __args__ = dict()
+    __args__['nameFilter'] = name_filter
     __args__['region'] = region
     __args__['serviceName'] = service_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -112,9 +127,11 @@ def get_flavors(region: Optional[builtins.str] = None,
     return AwaitableGetFlavorsResult(
         flavors=pulumi.get(__ret__, 'flavors'),
         id=pulumi.get(__ret__, 'id'),
+        name_filter=pulumi.get(__ret__, 'name_filter'),
         region=pulumi.get(__ret__, 'region'),
         service_name=pulumi.get(__ret__, 'service_name'))
-def get_flavors_output(region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+def get_flavors_output(name_filter: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                       region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        service_name: Optional[pulumi.Input[builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
@@ -130,10 +147,12 @@ def get_flavors_output(region: Optional[pulumi.Input[Optional[builtins.str]]] = 
     ```
 
 
+    :param builtins.str name_filter: Filter flavors using the given name (strict equality, e.g. b2-7)
     :param builtins.str region: Flavor region
     :param builtins.str service_name: Service name
     """
     __args__ = dict()
+    __args__['nameFilter'] = name_filter
     __args__['region'] = region
     __args__['serviceName'] = service_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -141,5 +160,6 @@ def get_flavors_output(region: Optional[pulumi.Input[Optional[builtins.str]]] = 
     return __ret__.apply(lambda __response__: GetFlavorsResult(
         flavors=pulumi.get(__response__, 'flavors'),
         id=pulumi.get(__response__, 'id'),
+        name_filter=pulumi.get(__response__, 'name_filter'),
         region=pulumi.get(__response__, 'region'),
         service_name=pulumi.get(__response__, 'service_name')))

@@ -50,6 +50,8 @@ func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsArgs struct {
+	// Filter flavors using the given name (strict equality, e.g. b2-7)
+	NameFilter *string `pulumi:"nameFilter"`
 	// Flavor region
 	Region *string `pulumi:"region"`
 	// Service name
@@ -61,6 +63,8 @@ type GetFlavorsResult struct {
 	Flavors []GetFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Filter flavors using the given name (strict equality, e.g. b2-7)
+	NameFilter *string `pulumi:"nameFilter"`
 	// Flavor region
 	Region string `pulumi:"region"`
 	// Service name
@@ -78,6 +82,8 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsOutputArgs struct {
+	// Filter flavors using the given name (strict equality, e.g. b2-7)
+	NameFilter pulumi.StringPtrInput `pulumi:"nameFilter"`
 	// Flavor region
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Service name
@@ -110,6 +116,11 @@ func (o GetFlavorsResultOutput) Flavors() GetFlavorsFlavorArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Filter flavors using the given name (strict equality, e.g. b2-7)
+func (o GetFlavorsResultOutput) NameFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlavorsResult) *string { return v.NameFilter }).(pulumi.StringPtrOutput)
 }
 
 // Flavor region
