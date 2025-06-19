@@ -26,7 +26,8 @@ class ProviderArgs:
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  consumer_key: Optional[pulumi.Input[builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[builtins.str]] = None):
+                 endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 user_agent_extra: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[builtins.str] access_token: The OVH API Access Token
@@ -36,6 +37,7 @@ class ProviderArgs:
         :param pulumi.Input[builtins.str] client_secret: OAuth 2.0 application's secret
         :param pulumi.Input[builtins.str] consumer_key: The OVH API Consumer Key
         :param pulumi.Input[builtins.str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
+        :param pulumi.Input[builtins.str] user_agent_extra: Extra information to append to the user-agent
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
@@ -51,6 +53,8 @@ class ProviderArgs:
             pulumi.set(__self__, "consumer_key", consumer_key)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if user_agent_extra is not None:
+            pulumi.set(__self__, "user_agent_extra", user_agent_extra)
 
     @property
     @pulumi.getter(name="accessToken")
@@ -136,6 +140,18 @@ class ProviderArgs:
     def endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
+    @property
+    @pulumi.getter(name="userAgentExtra")
+    def user_agent_extra(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Extra information to append to the user-agent
+        """
+        return pulumi.get(self, "user_agent_extra")
+
+    @user_agent_extra.setter
+    def user_agent_extra(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user_agent_extra", value)
+
 
 @pulumi.type_token("pulumi:providers:ovh")
 class Provider(pulumi.ProviderResource):
@@ -150,6 +166,7 @@ class Provider(pulumi.ProviderResource):
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  consumer_key: Optional[pulumi.Input[builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 user_agent_extra: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the ovh package. By default, resources use package-wide configuration
@@ -166,6 +183,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[builtins.str] client_secret: OAuth 2.0 application's secret
         :param pulumi.Input[builtins.str] consumer_key: The OVH API Consumer Key
         :param pulumi.Input[builtins.str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
+        :param pulumi.Input[builtins.str] user_agent_extra: Extra information to append to the user-agent
         """
         ...
     @overload
@@ -201,6 +219,7 @@ class Provider(pulumi.ProviderResource):
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  consumer_key: Optional[pulumi.Input[builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 user_agent_extra: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -217,6 +236,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_secret"] = client_secret
             __props__.__dict__["consumer_key"] = consumer_key
             __props__.__dict__["endpoint"] = endpoint
+            __props__.__dict__["user_agent_extra"] = user_agent_extra
         super(Provider, __self__).__init__(
             'ovh',
             resource_name,
@@ -278,6 +298,14 @@ class Provider(pulumi.ProviderResource):
         The OVH API endpoint to target (ex: "ovh-eu")
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="userAgentExtra")
+    def user_agent_extra(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Extra information to append to the user-agent
+        """
+        return pulumi.get(self, "user_agent_extra")
 
     @pulumi.output_type
     class TerraformConfigResult:

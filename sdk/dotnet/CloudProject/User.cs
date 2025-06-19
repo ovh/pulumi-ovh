@@ -9,27 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Ovh.CloudProject
 {
-    /// <summary>
-    /// Creates a user in a public cloud project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var user1 = new Ovh.CloudProject.User("user1", new()
-    ///     {
-    ///         ServiceName = "XXX",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [OvhResourceType("ovh:CloudProject/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
@@ -58,6 +37,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
+        /// Arbitrary string to change to trigger a password update
+        /// </summary>
+        [Output("passwordReset")]
+        public Output<string?> PasswordReset { get; private set; } = null!;
+
+        /// <summary>
         /// The name of a role. See `role_names`.
         /// </summary>
         [Output("roleName")]
@@ -65,7 +50,8 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// A list of role names. Values can be:
-        /// - administrator,
+        /// - admin
+        /// - administrator
         /// - ai_training_operator
         /// - ai_training_read
         /// - authentication
@@ -73,6 +59,9 @@ namespace Pulumi.Ovh.CloudProject
         /// - compute_operator
         /// - image_operator
         /// - infrastructure_supervisor
+        /// - key-manager_operator
+        /// - key-manager_read
+        /// - load-balancer_operator
         /// - network_operator
         /// - network_security_operator
         /// - objectstore_operator
@@ -175,6 +164,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Arbitrary string to change to trigger a password update
+        /// </summary>
+        [Input("passwordReset")]
+        public Input<string>? PasswordReset { get; set; }
+
+        /// <summary>
         /// The name of a role. See `role_names`.
         /// </summary>
         [Input("roleName")]
@@ -185,7 +180,8 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// A list of role names. Values can be:
-        /// - administrator,
+        /// - admin
+        /// - administrator
         /// - ai_training_operator
         /// - ai_training_read
         /// - authentication
@@ -193,6 +189,9 @@ namespace Pulumi.Ovh.CloudProject
         /// - compute_operator
         /// - image_operator
         /// - infrastructure_supervisor
+        /// - key-manager_operator
+        /// - key-manager_read
+        /// - load-balancer_operator
         /// - network_operator
         /// - network_security_operator
         /// - objectstore_operator
@@ -259,6 +258,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Arbitrary string to change to trigger a password update
+        /// </summary>
+        [Input("passwordReset")]
+        public Input<string>? PasswordReset { get; set; }
+
+        /// <summary>
         /// The name of a role. See `role_names`.
         /// </summary>
         [Input("roleName")]
@@ -269,7 +274,8 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// A list of role names. Values can be:
-        /// - administrator,
+        /// - admin
+        /// - administrator
         /// - ai_training_operator
         /// - ai_training_read
         /// - authentication
@@ -277,6 +283,9 @@ namespace Pulumi.Ovh.CloudProject
         /// - compute_operator
         /// - image_operator
         /// - infrastructure_supervisor
+        /// - key-manager_operator
+        /// - key-manager_read
+        /// - load-balancer_operator
         /// - network_operator
         /// - network_security_operator
         /// - objectstore_operator

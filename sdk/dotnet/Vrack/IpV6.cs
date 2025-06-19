@@ -38,6 +38,18 @@ namespace Pulumi.Ovh.Vrack
         public Output<Outputs.IpV6BridgedSubrange> BridgedSubrange { get; private set; } = null!;
 
         /// <summary>
+        /// The IPv6 block.
+        /// </summary>
+        [Output("ipv6")]
+        public Output<string> Ipv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// The region in which the block is routed.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The internal name of your vrack
         /// </summary>
         [Output("serviceName")]
@@ -127,6 +139,18 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Input("bridgedSubrange")]
         public Input<Inputs.IpV6BridgedSubrangeGetArgs>? BridgedSubrange { get; set; }
+
+        /// <summary>
+        /// The IPv6 block.
+        /// </summary>
+        [Input("ipv6")]
+        public Input<string>? Ipv6 { get; set; }
+
+        /// <summary>
+        /// The region in which the block is routed.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The internal name of your vrack

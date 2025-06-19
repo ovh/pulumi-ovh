@@ -75,7 +75,7 @@ type SavingsPlan struct {
 	PeriodStartDate pulumi.StringOutput `pulumi:"periodStartDate"`
 	// Billing ID of the service
 	ServiceId pulumi.IntOutput `pulumi:"serviceId"`
-	// ID of the public cloud project
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Size of the Savings Plan
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -100,9 +100,6 @@ func NewSavingsPlan(ctx *pulumi.Context,
 	}
 	if args.Period == nil {
 		return nil, errors.New("invalid value for required argument 'Period'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
@@ -148,7 +145,7 @@ type savingsPlanState struct {
 	PeriodStartDate *string `pulumi:"periodStartDate"`
 	// Billing ID of the service
 	ServiceId *int `pulumi:"serviceId"`
-	// ID of the public cloud project
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Size of the Savings Plan
 	Size *int `pulumi:"size"`
@@ -177,7 +174,7 @@ type SavingsPlanState struct {
 	PeriodStartDate pulumi.StringPtrInput
 	// Billing ID of the service
 	ServiceId pulumi.IntPtrInput
-	// ID of the public cloud project
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Size of the Savings Plan
 	Size pulumi.IntPtrInput
@@ -200,8 +197,8 @@ type savingsPlanArgs struct {
 	Flavor string `pulumi:"flavor"`
 	// Periodicity of the Savings Plan
 	Period string `pulumi:"period"`
-	// ID of the public cloud project
-	ServiceName string `pulumi:"serviceName"`
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 	// Size of the Savings Plan
 	Size int `pulumi:"size"`
 }
@@ -216,8 +213,8 @@ type SavingsPlanArgs struct {
 	Flavor pulumi.StringInput
 	// Periodicity of the Savings Plan
 	Period pulumi.StringInput
-	// ID of the public cloud project
-	ServiceName pulumi.StringInput
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 	// Size of the Savings Plan
 	Size pulumi.IntInput
 }
@@ -354,7 +351,7 @@ func (o SavingsPlanOutput) ServiceId() pulumi.IntOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.IntOutput { return v.ServiceId }).(pulumi.IntOutput)
 }
 
-// ID of the public cloud project
+// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o SavingsPlanOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

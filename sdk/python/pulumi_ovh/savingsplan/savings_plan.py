@@ -23,25 +23,26 @@ class SavingsPlanArgs:
                  display_name: pulumi.Input[builtins.str],
                  flavor: pulumi.Input[builtins.str],
                  period: pulumi.Input[builtins.str],
-                 service_name: pulumi.Input[builtins.str],
                  size: pulumi.Input[builtins.int],
-                 auto_renewal: Optional[pulumi.Input[builtins.bool]] = None):
+                 auto_renewal: Optional[pulumi.Input[builtins.bool]] = None,
+                 service_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a SavingsPlan resource.
         :param pulumi.Input[builtins.str] display_name: Custom display name, used in invoices
         :param pulumi.Input[builtins.str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[builtins.str] period: Periodicity of the Savings Plan
-        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project
         :param pulumi.Input[builtins.int] size: Size of the Savings Plan
         :param pulumi.Input[builtins.bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
+        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "size", size)
         if auto_renewal is not None:
             pulumi.set(__self__, "auto_renewal", auto_renewal)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="displayName")
@@ -80,18 +81,6 @@ class SavingsPlanArgs:
         pulumi.set(self, "period", value)
 
     @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[builtins.str]:
-        """
-        ID of the public cloud project
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "service_name", value)
-
-    @property
     @pulumi.getter
     def size(self) -> pulumi.Input[builtins.int]:
         """
@@ -114,6 +103,18 @@ class SavingsPlanArgs:
     @auto_renewal.setter
     def auto_renewal(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "auto_renewal", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_name", value)
 
 
 @pulumi.input_type
@@ -143,7 +144,7 @@ class _SavingsPlanState:
         :param pulumi.Input[builtins.str] period_end_date: End date of the current period
         :param pulumi.Input[builtins.str] period_start_date: Start date of the current period
         :param pulumi.Input[builtins.int] service_id: Billing ID of the service
-        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project
+        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.int] size: Size of the Savings Plan
         :param pulumi.Input[builtins.str] start_date: Start date of the Savings Plan
         :param pulumi.Input[builtins.str] status: Status of the Savings Plan
@@ -287,7 +288,7 @@ class _SavingsPlanState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        ID of the public cloud project
+        ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -379,7 +380,7 @@ class SavingsPlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: Custom display name, used in invoices
         :param pulumi.Input[builtins.str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[builtins.str] period: Periodicity of the Savings Plan
-        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project
+        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.int] size: Size of the Savings Plan
         """
         ...
@@ -456,8 +457,6 @@ class SavingsPlan(pulumi.CustomResource):
             if period is None and not opts.urn:
                 raise TypeError("Missing required property 'period'")
             __props__.__dict__["period"] = period
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
@@ -508,7 +507,7 @@ class SavingsPlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] period_end_date: End date of the current period
         :param pulumi.Input[builtins.str] period_start_date: Start date of the current period
         :param pulumi.Input[builtins.int] service_id: Billing ID of the service
-        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project
+        :param pulumi.Input[builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[builtins.int] size: Size of the Savings Plan
         :param pulumi.Input[builtins.str] start_date: Start date of the Savings Plan
         :param pulumi.Input[builtins.str] status: Status of the Savings Plan
@@ -608,7 +607,7 @@ class SavingsPlan(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[builtins.str]:
         """
-        ID of the public cloud project
+        ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

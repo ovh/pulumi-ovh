@@ -30,6 +30,10 @@ type IpV6 struct {
 	Block pulumi.StringOutput `pulumi:"block"`
 	// Bridged subrange configuration.
 	BridgedSubrange IpV6BridgedSubrangeOutput `pulumi:"bridgedSubrange"`
+	// The IPv6 block.
+	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
+	// The region in which the block is routed.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The internal name of your vrack
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
@@ -74,6 +78,10 @@ type ipV6State struct {
 	Block *string `pulumi:"block"`
 	// Bridged subrange configuration.
 	BridgedSubrange *IpV6BridgedSubrange `pulumi:"bridgedSubrange"`
+	// The IPv6 block.
+	Ipv6 *string `pulumi:"ipv6"`
+	// The region in which the block is routed.
+	Region *string `pulumi:"region"`
 	// The internal name of your vrack
 	ServiceName *string `pulumi:"serviceName"`
 }
@@ -83,6 +91,10 @@ type IpV6State struct {
 	Block pulumi.StringPtrInput
 	// Bridged subrange configuration.
 	BridgedSubrange IpV6BridgedSubrangePtrInput
+	// The IPv6 block.
+	Ipv6 pulumi.StringPtrInput
+	// The region in which the block is routed.
+	Region pulumi.StringPtrInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringPtrInput
 }
@@ -205,6 +217,16 @@ func (o IpV6Output) Block() pulumi.StringOutput {
 // Bridged subrange configuration.
 func (o IpV6Output) BridgedSubrange() IpV6BridgedSubrangeOutput {
 	return o.ApplyT(func(v *IpV6) IpV6BridgedSubrangeOutput { return v.BridgedSubrange }).(IpV6BridgedSubrangeOutput)
+}
+
+// The IPv6 block.
+func (o IpV6Output) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpV6) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
+}
+
+// The region in which the block is routed.
+func (o IpV6Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpV6) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The internal name of your vrack

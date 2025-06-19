@@ -99,6 +99,10 @@ export class IpAddress extends pulumi.CustomResource {
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
+     * The region (e.g: eu-west-gra) where want to route your block to.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
      * The internal name of your vrack
      */
     public readonly serviceName!: pulumi.Output<string>;
@@ -123,6 +127,7 @@ export class IpAddress extends pulumi.CustomResource {
             resourceInputs["block"] = state ? state.block : undefined;
             resourceInputs["gateway"] = state ? state.gateway : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -134,6 +139,7 @@ export class IpAddress extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["block"] = args ? args.block : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["gateway"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
@@ -161,6 +167,10 @@ export interface IpAddressState {
      */
     ip?: pulumi.Input<string>;
     /**
+     * The region (e.g: eu-west-gra) where want to route your block to.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * The internal name of your vrack
      */
     serviceName?: pulumi.Input<string>;
@@ -178,6 +188,10 @@ export interface IpAddressArgs {
      * Your IP block.
      */
     block: pulumi.Input<string>;
+    /**
+     * The region (e.g: eu-west-gra) where want to route your block to.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The internal name of your vrack
      */

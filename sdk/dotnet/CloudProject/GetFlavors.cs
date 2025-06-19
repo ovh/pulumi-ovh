@@ -88,6 +88,12 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetFlavorsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Filter flavors using the given name (strict equality, e.g. b2-7)
+        /// </summary>
+        [Input("nameFilter")]
+        public string? NameFilter { get; set; }
+
+        /// <summary>
         /// Flavor region
         /// </summary>
         [Input("region")]
@@ -107,6 +113,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetFlavorsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Filter flavors using the given name (strict equality, e.g. b2-7)
+        /// </summary>
+        [Input("nameFilter")]
+        public Input<string>? NameFilter { get; set; }
+
         /// <summary>
         /// Flavor region
         /// </summary>
@@ -135,6 +147,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Filter flavors using the given name (strict equality, e.g. b2-7)
+        /// </summary>
+        public readonly string? NameFilter;
+        /// <summary>
         /// Flavor region
         /// </summary>
         public readonly string Region;
@@ -149,12 +165,15 @@ namespace Pulumi.Ovh.CloudProject
 
             string id,
 
+            string? nameFilter,
+
             string region,
 
             string serviceName)
         {
             Flavors = flavors;
             Id = id;
+            NameFilter = nameFilter;
             Region = region;
             ServiceName = serviceName;
         }

@@ -32,6 +32,8 @@ type Provider struct {
 	ConsumerKey pulumi.StringPtrOutput `pulumi:"consumerKey"`
 	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
+	// Extra information to append to the user-agent
+	UserAgentExtra pulumi.StringPtrOutput `pulumi:"userAgentExtra"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -65,6 +67,8 @@ type providerArgs struct {
 	ConsumerKey *string `pulumi:"consumerKey"`
 	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint *string `pulumi:"endpoint"`
+	// Extra information to append to the user-agent
+	UserAgentExtra *string `pulumi:"userAgentExtra"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -83,6 +87,8 @@ type ProviderArgs struct {
 	ConsumerKey pulumi.StringPtrInput
 	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint pulumi.StringPtrInput
+	// Extra information to append to the user-agent
+	UserAgentExtra pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -178,6 +184,11 @@ func (o ProviderOutput) ConsumerKey() pulumi.StringPtrOutput {
 // The OVH API endpoint to target (ex: "ovh-eu")
 func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Extra information to append to the user-agent
+func (o ProviderOutput) UserAgentExtra() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserAgentExtra }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -102,5 +102,15 @@ namespace Pulumi.Ovh
             set => _endpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _userAgentExtra = new __Value<string?>(() => __config.Get("userAgentExtra"));
+        /// <summary>
+        /// Extra information to append to the user-agent
+        /// </summary>
+        public static string? UserAgentExtra
+        {
+            get => _userAgentExtra.Get();
+            set => _userAgentExtra.Set(value);
+        }
+
     }
 }

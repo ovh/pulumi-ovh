@@ -103,7 +103,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Output<int> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the public cloud project
+        /// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -198,10 +198,10 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<string> Period { get; set; } = null!;
 
         /// <summary>
-        /// ID of the public cloud project
+        /// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// Size of the Savings Plan
@@ -272,7 +272,7 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<int>? ServiceId { get; set; }
 
         /// <summary>
-        /// ID of the public cloud project
+        /// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

@@ -111,6 +111,8 @@ type IpAddress struct {
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
 	// Your IP block
 	Ip pulumi.StringOutput `pulumi:"ip"`
+	// The region (e.g: eu-west-gra) where want to route your block to.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The internal name of your vrack
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Where you want your block announced on the network
@@ -159,6 +161,8 @@ type ipAddressState struct {
 	Gateway *string `pulumi:"gateway"`
 	// Your IP block
 	Ip *string `pulumi:"ip"`
+	// The region (e.g: eu-west-gra) where want to route your block to.
+	Region *string `pulumi:"region"`
 	// The internal name of your vrack
 	ServiceName *string `pulumi:"serviceName"`
 	// Where you want your block announced on the network
@@ -172,6 +176,8 @@ type IpAddressState struct {
 	Gateway pulumi.StringPtrInput
 	// Your IP block
 	Ip pulumi.StringPtrInput
+	// The region (e.g: eu-west-gra) where want to route your block to.
+	Region pulumi.StringPtrInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringPtrInput
 	// Where you want your block announced on the network
@@ -185,6 +191,8 @@ func (IpAddressState) ElementType() reflect.Type {
 type ipAddressArgs struct {
 	// Your IP block.
 	Block string `pulumi:"block"`
+	// The region (e.g: eu-west-gra) where want to route your block to.
+	Region *string `pulumi:"region"`
 	// The internal name of your vrack
 	ServiceName string `pulumi:"serviceName"`
 }
@@ -193,6 +201,8 @@ type ipAddressArgs struct {
 type IpAddressArgs struct {
 	// Your IP block.
 	Block pulumi.StringInput
+	// The region (e.g: eu-west-gra) where want to route your block to.
+	Region pulumi.StringPtrInput
 	// The internal name of your vrack
 	ServiceName pulumi.StringInput
 }
@@ -297,6 +307,11 @@ func (o IpAddressOutput) Gateway() pulumi.StringOutput {
 // Your IP block
 func (o IpAddressOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpAddress) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The region (e.g: eu-west-gra) where want to route your block to.
+func (o IpAddressOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpAddress) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The internal name of your vrack

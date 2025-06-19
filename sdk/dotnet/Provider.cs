@@ -60,6 +60,12 @@ namespace Pulumi.Ovh
         [Output("endpoint")]
         public Output<string?> Endpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// Extra information to append to the user-agent
+        /// </summary>
+        [Output("userAgentExtra")]
+        public Output<string?> UserAgentExtra { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -136,6 +142,12 @@ namespace Pulumi.Ovh
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// Extra information to append to the user-agent
+        /// </summary>
+        [Input("userAgentExtra")]
+        public Input<string>? UserAgentExtra { get; set; }
 
         public ProviderArgs()
         {

@@ -51,6 +51,7 @@ import (
 //				Engine:      pulumi.String(db.Engine),
 //				ClusterId:   pulumi.String(db.Id),
 //				StreamId:    pulumi.String(stream.Id),
+//				Kind:        pulumi.String("customer_logs"),
 //			})
 //			if err != nil {
 //				return err
@@ -109,6 +110,9 @@ func NewLogSubscription(ctx *pulumi.Context,
 	}
 	if args.Engine == nil {
 		return nil, errors.New("invalid value for required argument 'Engine'")
+	}
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	if args.StreamId == nil {
 		return nil, errors.New("invalid value for required argument 'StreamId'")
@@ -198,6 +202,8 @@ type logSubscriptionArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine string `pulumi:"engine"`
+	// Log kind name of this subscription.
+	Kind string `pulumi:"kind"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Id of the target Log data platform stream.
@@ -210,6 +216,8 @@ type LogSubscriptionArgs struct {
 	ClusterId pulumi.StringInput
 	// The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
 	Engine pulumi.StringInput
+	// Log kind name of this subscription.
+	Kind pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Id of the target Log data platform stream.

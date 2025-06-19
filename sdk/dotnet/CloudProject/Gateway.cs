@@ -16,6 +16,42 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// A gateway can be imported using the `service_name`, `region` and `id` (identifier of the gateway) properties, separated by a `/`.
     /// 
+    /// However, please note that in the case of a gateway import, `network_id` and `subnet_id` values used at gateway creation are not injected back in the state.
+    /// 
+    /// If you want to define these properties on your imported resource, you have to add an "ignore_changes" lifecycle argument in order not to trigger a recreation, as suggested in the following example.
+    /// 
+    /// terraform
+    /// 
+    /// resource "ovh_cloud_project_gateway" "imported_gateway" {
+    /// 
+    ///   service_name = ovh_cloud_project_network_private.mypriv.service_name
+    /// 
+    ///   name         = "&lt;my-imported-gateway&gt;"
+    /// 
+    ///   model        = "&lt;my-model&gt;"
+    /// 
+    ///   region       = "&lt;my-region&gt;"
+    /// 
+    ///   network_id   = "&lt;my-imported-gateway-network-id&gt;"
+    /// 
+    ///   subnet_id    = "&lt;my-imported-gateway-subnet-id&gt;"
+    /// 
+    ///   lifecycle {
+    /// 
+    ///     ignore_changes = [network_id, subnet_id]
+    /// 
+    ///   }
+    /// 
+    /// }
+    /// 
+    /// import {
+    /// 
+    ///   id = "&lt;service-name&gt;/&lt;region&gt;/&lt;gateway-id&gt;"
+    /// 
+    ///   to = ovh_cloud_project_gateway.imported_gateway
+    /// 
+    /// }
+    /// 
     /// bash
     /// 
     /// ```sh

@@ -98,7 +98,7 @@ export class SavingsPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceId!: pulumi.Output<number>;
     /**
-     * ID of the public cloud project
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -150,9 +150,6 @@ export class SavingsPlan extends pulumi.CustomResource {
             }
             if ((!args || args.period === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'period'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
@@ -217,7 +214,7 @@ export interface SavingsPlanState {
      */
     serviceId?: pulumi.Input<number>;
     /**
-     * ID of the public cloud project
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -255,9 +252,9 @@ export interface SavingsPlanArgs {
      */
     period: pulumi.Input<string>;
     /**
-     * ID of the public cloud project
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Size of the Savings Plan
      */

@@ -59,17 +59,27 @@ type GetRegionArgs struct {
 
 // A collection of values returned by getRegion.
 type GetRegionResult struct {
-	// the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+	// Availability zones of the region
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
 	ContinentCode string `pulumi:"continentCode"`
+	// Region country code
+	CountryCode string `pulumi:"countryCode"`
 	// The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
 	DatacenterLocation string `pulumi:"datacenterLocation"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Allowed countries for failover IP
+	IpCountries []string `pulumi:"ipCountries"`
 	// the name of the public cloud service
 	Name        string `pulumi:"name"`
 	ServiceName string `pulumi:"serviceName"`
 	// The list of public cloud services running within the region
 	Services []GetRegionService `pulumi:"services"`
+	// the status of the service
+	Status string `pulumi:"status"`
+	// Region type (localzone | region | region-3-az)
+	Type string `pulumi:"type"`
 }
 
 func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulumi.InvokeOption) GetRegionResultOutput {
@@ -108,9 +118,19 @@ func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+// Availability zones of the region
+func (o GetRegionResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
 func (o GetRegionResultOutput) ContinentCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.ContinentCode }).(pulumi.StringOutput)
+}
+
+// Region country code
+func (o GetRegionResultOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
 // The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
@@ -121,6 +141,11 @@ func (o GetRegionResultOutput) DatacenterLocation() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetRegionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Allowed countries for failover IP
+func (o GetRegionResultOutput) IpCountries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionResult) []string { return v.IpCountries }).(pulumi.StringArrayOutput)
 }
 
 // the name of the public cloud service
@@ -135,6 +160,16 @@ func (o GetRegionResultOutput) ServiceName() pulumi.StringOutput {
 // The list of public cloud services running within the region
 func (o GetRegionResultOutput) Services() GetRegionServiceArrayOutput {
 	return o.ApplyT(func(v GetRegionResult) []GetRegionService { return v.Services }).(GetRegionServiceArrayOutput)
+}
+
+// the status of the service
+func (o GetRegionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Region type (localzone | region | region-3-az)
+func (o GetRegionResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -18550,6 +18550,8 @@ func (o GetRancherVersionVersionArrayOutput) Index(i pulumi.IntInput) GetRancher
 }
 
 type GetRegionService struct {
+	// Endpoint URL
+	Endpoint string `pulumi:"endpoint"`
 	// The name of the region associated with the public cloud project.
 	Name string `pulumi:"name"`
 	// the status of the service
@@ -18568,6 +18570,8 @@ type GetRegionServiceInput interface {
 }
 
 type GetRegionServiceArgs struct {
+	// Endpoint URL
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The name of the region associated with the public cloud project.
 	Name pulumi.StringInput `pulumi:"name"`
 	// the status of the service
@@ -18623,6 +18627,11 @@ func (o GetRegionServiceOutput) ToGetRegionServiceOutput() GetRegionServiceOutpu
 
 func (o GetRegionServiceOutput) ToGetRegionServiceOutputWithContext(ctx context.Context) GetRegionServiceOutput {
 	return o
+}
+
+// Endpoint URL
+func (o GetRegionServiceOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionService) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The name of the region associated with the public cloud project.

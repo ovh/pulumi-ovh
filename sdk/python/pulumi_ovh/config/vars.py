@@ -70,3 +70,10 @@ class _ExportableConfig(types.ModuleType):
         """
         return __config__.get('endpoint')
 
+    @property
+    def user_agent_extra(self) -> Optional[str]:
+        """
+        Extra information to append to the user-agent
+        """
+        return __config__.get('userAgentExtra')
+

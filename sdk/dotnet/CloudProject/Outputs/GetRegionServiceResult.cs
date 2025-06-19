@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetRegionServiceResult
     {
         /// <summary>
+        /// Endpoint URL
+        /// </summary>
+        public readonly string Endpoint;
+        /// <summary>
         /// The name of the region associated with the public cloud project.
         /// </summary>
         public readonly string Name;
@@ -24,10 +28,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
         [OutputConstructor]
         private GetRegionServiceResult(
+            string endpoint,
+
             string name,
 
             string status)
         {
+            Endpoint = endpoint;
             Name = name;
             Status = status;
         }

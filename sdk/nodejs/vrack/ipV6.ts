@@ -56,6 +56,14 @@ export class IpV6 extends pulumi.CustomResource {
      */
     public readonly bridgedSubrange!: pulumi.Output<outputs.Vrack.IpV6BridgedSubrange>;
     /**
+     * The IPv6 block.
+     */
+    public /*out*/ readonly ipv6!: pulumi.Output<string>;
+    /**
+     * The region in which the block is routed.
+     */
+    public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
      * The internal name of your vrack
      */
     public readonly serviceName!: pulumi.Output<string>;
@@ -75,6 +83,8 @@ export class IpV6 extends pulumi.CustomResource {
             const state = argsOrState as IpV6State | undefined;
             resourceInputs["block"] = state ? state.block : undefined;
             resourceInputs["bridgedSubrange"] = state ? state.bridgedSubrange : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as IpV6Args | undefined;
@@ -87,6 +97,8 @@ export class IpV6 extends pulumi.CustomResource {
             resourceInputs["block"] = args ? args.block : undefined;
             resourceInputs["bridgedSubrange"] = args ? args.bridgedSubrange : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["ipv6"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpV6.__pulumiType, name, resourceInputs, opts);
@@ -105,6 +117,14 @@ export interface IpV6State {
      * Bridged subrange configuration.
      */
     bridgedSubrange?: pulumi.Input<inputs.Vrack.IpV6BridgedSubrange>;
+    /**
+     * The IPv6 block.
+     */
+    ipv6?: pulumi.Input<string>;
+    /**
+     * The region in which the block is routed.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The internal name of your vrack
      */

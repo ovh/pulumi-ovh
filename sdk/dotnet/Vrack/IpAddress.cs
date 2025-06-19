@@ -109,6 +109,12 @@ namespace Pulumi.Ovh.Vrack
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
+        /// The region (e.g: eu-west-gra) where want to route your block to.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The internal name of your vrack
         /// </summary>
         [Output("serviceName")]
@@ -174,6 +180,12 @@ namespace Pulumi.Ovh.Vrack
         public Input<string> Block { get; set; } = null!;
 
         /// <summary>
+        /// The region (e.g: eu-west-gra) where want to route your block to.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The internal name of your vrack
         /// </summary>
         [Input("serviceName", required: true)]
@@ -204,6 +216,12 @@ namespace Pulumi.Ovh.Vrack
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
+
+        /// <summary>
+        /// The region (e.g: eu-west-gra) where want to route your block to.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The internal name of your vrack

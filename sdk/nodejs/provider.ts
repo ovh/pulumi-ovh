@@ -53,6 +53,10 @@ export class Provider extends pulumi.ProviderResource {
      * The OVH API endpoint to target (ex: "ovh-eu")
      */
     public readonly endpoint!: pulumi.Output<string | undefined>;
+    /**
+     * Extra information to append to the user-agent
+     */
+    public readonly userAgentExtra!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -72,6 +76,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["consumerKey"] = args ? args.consumerKey : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["userAgentExtra"] = args ? args.userAgentExtra : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -119,6 +124,10 @@ export interface ProviderArgs {
      * The OVH API endpoint to target (ex: "ovh-eu")
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * Extra information to append to the user-agent
+     */
+    userAgentExtra?: pulumi.Input<string>;
 }
 
 export namespace Provider {

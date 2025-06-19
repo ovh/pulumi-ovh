@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Creates a user in a public cloud project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const user1 = new ovh.cloudproject.User("user1", {serviceName: "XXX"});
- * ```
- */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -63,12 +51,17 @@ export class User extends pulumi.CustomResource {
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
+     * Arbitrary string to change to trigger a password update
+     */
+    public readonly passwordReset!: pulumi.Output<string | undefined>;
+    /**
      * The name of a role. See `roleNames`.
      */
     public readonly roleName!: pulumi.Output<string | undefined>;
     /**
      * A list of role names. Values can be:
-     * - administrator,
+     * - admin
+     * - administrator
      * - aiTrainingOperator
      * - aiTrainingRead
      * - authentication
@@ -76,6 +69,9 @@ export class User extends pulumi.CustomResource {
      * - computeOperator
      * - imageOperator
      * - infrastructureSupervisor
+     * - key-manager_operator
+     * - key-manager_read
+     * - load-balancer_operator
      * - networkOperator
      * - networkSecurityOperator
      * - objectstoreOperator
@@ -116,6 +112,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["openstackRc"] = state ? state.openstackRc : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["passwordReset"] = state ? state.passwordReset : undefined;
             resourceInputs["roleName"] = state ? state.roleName : undefined;
             resourceInputs["roleNames"] = state ? state.roleNames : undefined;
             resourceInputs["roles"] = state ? state.roles : undefined;
@@ -126,6 +123,7 @@ export class User extends pulumi.CustomResource {
             const args = argsOrState as UserArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["openstackRc"] = args ? args.openstackRc : undefined;
+            resourceInputs["passwordReset"] = args ? args.passwordReset : undefined;
             resourceInputs["roleName"] = args ? args.roleName : undefined;
             resourceInputs["roleNames"] = args ? args.roleNames : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -163,12 +161,17 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
+     * Arbitrary string to change to trigger a password update
+     */
+    passwordReset?: pulumi.Input<string>;
+    /**
      * The name of a role. See `roleNames`.
      */
     roleName?: pulumi.Input<string>;
     /**
      * A list of role names. Values can be:
-     * - administrator,
+     * - admin
+     * - administrator
      * - aiTrainingOperator
      * - aiTrainingRead
      * - authentication
@@ -176,6 +179,9 @@ export interface UserState {
      * - computeOperator
      * - imageOperator
      * - infrastructureSupervisor
+     * - key-manager_operator
+     * - key-manager_read
+     * - load-balancer_operator
      * - networkOperator
      * - networkSecurityOperator
      * - objectstoreOperator
@@ -213,12 +219,17 @@ export interface UserArgs {
      */
     openstackRc?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Arbitrary string to change to trigger a password update
+     */
+    passwordReset?: pulumi.Input<string>;
+    /**
      * The name of a role. See `roleNames`.
      */
     roleName?: pulumi.Input<string>;
     /**
      * A list of role names. Values can be:
-     * - administrator,
+     * - admin
+     * - administrator
      * - aiTrainingOperator
      * - aiTrainingRead
      * - authentication
@@ -226,6 +237,9 @@ export interface UserArgs {
      * - computeOperator
      * - imageOperator
      * - infrastructureSupervisor
+     * - key-manager_operator
+     * - key-manager_read
+     * - load-balancer_operator
      * - networkOperator
      * - networkSecurityOperator
      * - objectstoreOperator

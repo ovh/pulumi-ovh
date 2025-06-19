@@ -133,9 +133,17 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetRegionResult
     {
         /// <summary>
-        /// the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+        /// Availability zones of the region
+        /// </summary>
+        public readonly ImmutableArray<string> AvailabilityZones;
+        /// <summary>
+        /// The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
         /// </summary>
         public readonly string ContinentCode;
+        /// <summary>
+        /// Region country code
+        /// </summary>
+        public readonly string CountryCode;
         /// <summary>
         /// The location code of the datacenter. E.g.: "GRA", meaning Gravelines, for region "GRA1"
         /// </summary>
@@ -145,6 +153,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Allowed countries for failover IP
+        /// </summary>
+        public readonly ImmutableArray<string> IpCountries;
+        /// <summary>
         /// the name of the public cloud service
         /// </summary>
         public readonly string Name;
@@ -153,27 +165,50 @@ namespace Pulumi.Ovh.CloudProject
         /// The list of public cloud services running within the region
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionServiceResult> Services;
+        /// <summary>
+        /// the status of the service
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// Region type (localzone | region | region-3-az)
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetRegionResult(
+            ImmutableArray<string> availabilityZones,
+
             string continentCode,
+
+            string countryCode,
 
             string datacenterLocation,
 
             string id,
 
+            ImmutableArray<string> ipCountries,
+
             string name,
 
             string serviceName,
 
-            ImmutableArray<Outputs.GetRegionServiceResult> services)
+            ImmutableArray<Outputs.GetRegionServiceResult> services,
+
+            string status,
+
+            string type)
         {
+            AvailabilityZones = availabilityZones;
             ContinentCode = continentCode;
+            CountryCode = countryCode;
             DatacenterLocation = datacenterLocation;
             Id = id;
+            IpCountries = ipCountries;
             Name = name;
             ServiceName = serviceName;
             Services = services;
+            Status = status;
+            Type = type;
         }
     }
 }

@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     engine: db.then(db => db.engine),
  *     clusterId: db.then(db => db.id),
  *     streamId: stream.then(stream => stream.id),
+ *     kind: "customer_logs",
  * });
  * ```
  *
@@ -85,7 +86,7 @@ export class LogSubscription extends pulumi.CustomResource {
     /**
      * Log kind name of this subscription.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    public readonly kind!: pulumi.Output<string>;
     /**
      * Name of the destination log service.
      */
@@ -147,15 +148,18 @@ export class LogSubscription extends pulumi.CustomResource {
             if ((!args || args.engine === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
+            if ((!args || args.kind === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'kind'");
+            }
             if ((!args || args.streamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'streamId'");
             }
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["streamId"] = args ? args.streamId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["ldpServiceName"] = undefined /*out*/;
             resourceInputs["operationId"] = undefined /*out*/;
             resourceInputs["resourceName"] = undefined /*out*/;
@@ -231,6 +235,10 @@ export interface LogSubscriptionArgs {
      * The database engine for which you want to manage a subscription. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
      */
     engine: pulumi.Input<string>;
+    /**
+     * Log kind name of this subscription.
+     */
+    kind: pulumi.Input<string>;
     /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
