@@ -50,6 +50,10 @@ export interface GetContainerRegistryResult {
      */
     readonly createdAt: string;
     /**
+     * OVHCloud IAM enabled
+     */
+    readonly iamEnabled: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

@@ -94,6 +94,7 @@ class ContainerRegistryArgs:
 class _ContainerRegistryState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 iam_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  plan_id: Optional[pulumi.Input[builtins.str]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRegistryPlanArgs']]]] = None,
@@ -108,6 +109,7 @@ class _ContainerRegistryState:
         """
         Input properties used for looking up and filtering ContainerRegistry resources.
         :param pulumi.Input[builtins.str] created_at: Plan creation date
+        :param pulumi.Input[builtins.bool] iam_enabled: OVHCloud IAM enabled
         :param pulumi.Input[builtins.str] name: Registry name
         :param pulumi.Input[builtins.str] plan_id: Plan ID of the registry
         :param pulumi.Input[Sequence[pulumi.Input['ContainerRegistryPlanArgs']]] plans: Plan of the registry
@@ -122,6 +124,8 @@ class _ContainerRegistryState:
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if iam_enabled is not None:
+            pulumi.set(__self__, "iam_enabled", iam_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if plan_id is not None:
@@ -156,6 +160,18 @@ class _ContainerRegistryState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="iamEnabled")
+    def iam_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        OVHCloud IAM enabled
+        """
+        return pulumi.get(self, "iam_enabled")
+
+    @iam_enabled.setter
+    def iam_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "iam_enabled", value)
 
     @property
     @pulumi.getter
@@ -391,6 +407,7 @@ class ContainerRegistry(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["iam_enabled"] = None
             __props__.__dict__["plans"] = None
             __props__.__dict__["project_id"] = None
             __props__.__dict__["size"] = None
@@ -409,6 +426,7 @@ class ContainerRegistry(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[builtins.str]] = None,
+            iam_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             plan_id: Optional[pulumi.Input[builtins.str]] = None,
             plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerRegistryPlanArgs', 'ContainerRegistryPlanArgsDict']]]]] = None,
@@ -428,6 +446,7 @@ class ContainerRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] created_at: Plan creation date
+        :param pulumi.Input[builtins.bool] iam_enabled: OVHCloud IAM enabled
         :param pulumi.Input[builtins.str] name: Registry name
         :param pulumi.Input[builtins.str] plan_id: Plan ID of the registry
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerRegistryPlanArgs', 'ContainerRegistryPlanArgsDict']]]] plans: Plan of the registry
@@ -445,6 +464,7 @@ class ContainerRegistry(pulumi.CustomResource):
         __props__ = _ContainerRegistryState.__new__(_ContainerRegistryState)
 
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["iam_enabled"] = iam_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["plan_id"] = plan_id
         __props__.__dict__["plans"] = plans
@@ -465,6 +485,14 @@ class ContainerRegistry(pulumi.CustomResource):
         Plan creation date
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="iamEnabled")
+    def iam_enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        OVHCloud IAM enabled
+        """
+        return pulumi.get(self, "iam_enabled")
 
     @property
     @pulumi.getter

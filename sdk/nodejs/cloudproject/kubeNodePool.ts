@@ -137,6 +137,9 @@ export class KubeNodePool extends pulumi.CustomResource {
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     public readonly autoscalingScaleDownUtilizationThreshold!: pulumi.Output<number>;
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
     /**
      * Number of nodes which are actually ready in the pool
@@ -311,6 +314,9 @@ export interface KubeNodePoolState {
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of nodes which are actually ready in the pool
@@ -411,6 +417,9 @@ export interface KubeNodePoolArgs {
      * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      */
     autoscalingScaleDownUtilizationThreshold?: pulumi.Input<number>;
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * number of nodes to start.

@@ -47,6 +47,7 @@ class KubeNodePoolArgs:
         :param pulumi.Input[builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[builtins.int] desired_nodes: number of nodes to start.
         :param pulumi.Input[builtins.int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[builtins.int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -172,6 +173,9 @@ class KubeNodePoolArgs:
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+        """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -298,6 +302,7 @@ class _KubeNodePoolState:
         :param pulumi.Input[builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[builtins.int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[builtins.str] created_at: Creation date
         :param pulumi.Input[builtins.int] current_nodes: Number of nodes present in the pool
@@ -430,6 +435,9 @@ class _KubeNodePoolState:
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+        """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -762,6 +770,7 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[builtins.int] desired_nodes: number of nodes to start.
         :param pulumi.Input[builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[builtins.str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
@@ -971,6 +980,7 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
                * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[builtins.int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[builtins.str] created_at: Creation date
         :param pulumi.Input[builtins.int] current_nodes: Number of nodes present in the pool
@@ -1064,6 +1074,9 @@ class KubeNodePool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+        """
         return pulumi.get(self, "availability_zones")
 
     @property

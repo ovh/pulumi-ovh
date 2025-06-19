@@ -61,6 +61,8 @@ type LookupContainerRegistryArgs struct {
 type LookupContainerRegistryResult struct {
 	// Registry creation date
 	CreatedAt string `pulumi:"createdAt"`
+	// OVHCloud IAM enabled
+	IamEnabled bool `pulumi:"iamEnabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Registry name
@@ -122,6 +124,11 @@ func (o LookupContainerRegistryResultOutput) ToLookupContainerRegistryResultOutp
 // Registry creation date
 func (o LookupContainerRegistryResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRegistryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// OVHCloud IAM enabled
+func (o LookupContainerRegistryResultOutput) IamEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupContainerRegistryResult) bool { return v.IamEnabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

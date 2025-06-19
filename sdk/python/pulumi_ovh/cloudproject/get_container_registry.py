@@ -27,10 +27,13 @@ class GetContainerRegistryResult:
     """
     A collection of values returned by getContainerRegistry.
     """
-    def __init__(__self__, created_at=None, id=None, name=None, project_id=None, region=None, registry_id=None, service_name=None, size=None, status=None, updated_at=None, url=None, version=None):
+    def __init__(__self__, created_at=None, iam_enabled=None, id=None, name=None, project_id=None, region=None, registry_id=None, service_name=None, size=None, status=None, updated_at=None, url=None, version=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if iam_enabled and not isinstance(iam_enabled, bool):
+            raise TypeError("Expected argument 'iam_enabled' to be a bool")
+        pulumi.set(__self__, "iam_enabled", iam_enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -72,6 +75,14 @@ class GetContainerRegistryResult:
         Registry creation date
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="iamEnabled")
+    def iam_enabled(self) -> builtins.bool:
+        """
+        OVHCloud IAM enabled
+        """
+        return pulumi.get(self, "iam_enabled")
 
     @property
     @pulumi.getter
@@ -163,6 +174,7 @@ class AwaitableGetContainerRegistryResult(GetContainerRegistryResult):
             yield self
         return GetContainerRegistryResult(
             created_at=self.created_at,
+            iam_enabled=self.iam_enabled,
             id=self.id,
             name=self.name,
             project_id=self.project_id,
@@ -204,6 +216,7 @@ def get_container_registry(registry_id: Optional[builtins.str] = None,
 
     return AwaitableGetContainerRegistryResult(
         created_at=pulumi.get(__ret__, 'created_at'),
+        iam_enabled=pulumi.get(__ret__, 'iam_enabled'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -242,6 +255,7 @@ def get_container_registry_output(registry_id: Optional[pulumi.Input[builtins.st
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getContainerRegistry:getContainerRegistry', __args__, opts=opts, typ=GetContainerRegistryResult)
     return __ret__.apply(lambda __response__: GetContainerRegistryResult(
         created_at=pulumi.get(__response__, 'created_at'),
+        iam_enabled=pulumi.get(__response__, 'iam_enabled'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),

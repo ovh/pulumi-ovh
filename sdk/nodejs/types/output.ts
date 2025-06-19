@@ -659,6 +659,10 @@ export namespace CloudProject {
          */
         createdAt: string;
         /**
+         * OVHCloud IAM enabled
+         */
+        iamEnabled: boolean;
+        /**
          * Registry ID
          */
         id: string;

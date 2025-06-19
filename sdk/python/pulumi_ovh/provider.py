@@ -21,6 +21,7 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  access_token: Optional[pulumi.Input[builtins.str]] = None,
+                 api_rate_limit: Optional[pulumi.Input[builtins.int]] = None,
                  application_key: Optional[pulumi.Input[builtins.str]] = None,
                  application_secret: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -31,6 +32,7 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[builtins.str] access_token: The OVH API Access Token
+        :param pulumi.Input[builtins.int] api_rate_limit: Specify the API request rate limit, X operations by seconds (default: unlimited)
         :param pulumi.Input[builtins.str] application_key: The OVH API Application Key
         :param pulumi.Input[builtins.str] application_secret: The OVH API Application Secret
         :param pulumi.Input[builtins.str] client_id: OAuth 2.0 application's ID
@@ -41,6 +43,8 @@ class ProviderArgs:
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
+        if api_rate_limit is not None:
+            pulumi.set(__self__, "api_rate_limit", api_rate_limit)
         if application_key is not None:
             pulumi.set(__self__, "application_key", application_key)
         if application_secret is not None:
@@ -67,6 +71,18 @@ class ProviderArgs:
     @access_token.setter
     def access_token(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "access_token", value)
+
+    @property
+    @pulumi.getter(name="apiRateLimit")
+    def api_rate_limit(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specify the API request rate limit, X operations by seconds (default: unlimited)
+        """
+        return pulumi.get(self, "api_rate_limit")
+
+    @api_rate_limit.setter
+    def api_rate_limit(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "api_rate_limit", value)
 
     @property
     @pulumi.getter(name="applicationKey")
@@ -160,6 +176,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_token: Optional[pulumi.Input[builtins.str]] = None,
+                 api_rate_limit: Optional[pulumi.Input[builtins.int]] = None,
                  application_key: Optional[pulumi.Input[builtins.str]] = None,
                  application_secret: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -177,6 +194,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] access_token: The OVH API Access Token
+        :param pulumi.Input[builtins.int] api_rate_limit: Specify the API request rate limit, X operations by seconds (default: unlimited)
         :param pulumi.Input[builtins.str] application_key: The OVH API Application Key
         :param pulumi.Input[builtins.str] application_secret: The OVH API Application Secret
         :param pulumi.Input[builtins.str] client_id: OAuth 2.0 application's ID
@@ -213,6 +231,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_token: Optional[pulumi.Input[builtins.str]] = None,
+                 api_rate_limit: Optional[pulumi.Input[builtins.int]] = None,
                  application_key: Optional[pulumi.Input[builtins.str]] = None,
                  application_secret: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -230,6 +249,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["access_token"] = access_token
+            __props__.__dict__["api_rate_limit"] = pulumi.Output.from_input(api_rate_limit).apply(pulumi.runtime.to_json) if api_rate_limit is not None else None
             __props__.__dict__["application_key"] = application_key
             __props__.__dict__["application_secret"] = application_secret
             __props__.__dict__["client_id"] = client_id

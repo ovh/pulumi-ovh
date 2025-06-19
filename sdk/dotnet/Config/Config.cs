@@ -42,6 +42,16 @@ namespace Pulumi.Ovh
             set => _accessToken.Set(value);
         }
 
+        private static readonly __Value<int?> _apiRateLimit = new __Value<int?>(() => __config.GetInt32("apiRateLimit"));
+        /// <summary>
+        /// Specify the API request rate limit, X operations by seconds (default: unlimited)
+        /// </summary>
+        public static int? ApiRateLimit
+        {
+            get => _apiRateLimit.Get();
+            set => _apiRateLimit.Set(value);
+        }
+
         private static readonly __Value<string?> _applicationKey = new __Value<string?>(() => __config.Get("applicationKey"));
         /// <summary>
         /// The OVH API Application Key

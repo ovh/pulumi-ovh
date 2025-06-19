@@ -12925,6 +12925,8 @@ func (o GetCapabilitiesContainerRegistryResultPlanRegistryLimitArrayOutput) Inde
 type GetContainerRegistriesResult struct {
 	// Registry creation date
 	CreatedAt string `pulumi:"createdAt"`
+	// OVHCloud IAM enabled
+	IamEnabled bool `pulumi:"iamEnabled"`
 	// Registry ID
 	Id string `pulumi:"id"`
 	// Registry name
@@ -12959,6 +12961,8 @@ type GetContainerRegistriesResultInput interface {
 type GetContainerRegistriesResultArgs struct {
 	// Registry creation date
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// OVHCloud IAM enabled
+	IamEnabled pulumi.BoolInput `pulumi:"iamEnabled"`
 	// Registry ID
 	Id pulumi.StringInput `pulumi:"id"`
 	// Registry name
@@ -13033,6 +13037,11 @@ func (o GetContainerRegistriesResultOutput) ToGetContainerRegistriesResultOutput
 // Registry creation date
 func (o GetContainerRegistriesResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRegistriesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// OVHCloud IAM enabled
+func (o GetContainerRegistriesResultOutput) IamEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetContainerRegistriesResult) bool { return v.IamEnabled }).(pulumi.BoolOutput)
 }
 
 // Registry ID

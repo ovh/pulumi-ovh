@@ -29,6 +29,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('accessToken')
 
     @property
+    def api_rate_limit(self) -> Optional[int]:
+        """
+        Specify the API request rate limit, X operations by seconds (default: unlimited)
+        """
+        return __config__.get_int('apiRateLimit')
+
+    @property
     def application_key(self) -> Optional[str]:
         """
         The OVH API Application Key

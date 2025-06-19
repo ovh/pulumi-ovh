@@ -137,6 +137,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// OVHCloud IAM enabled
+        /// </summary>
+        public readonly bool IamEnabled;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -179,6 +183,8 @@ namespace Pulumi.Ovh.CloudProject
         private GetContainerRegistryResult(
             string createdAt,
 
+            bool iamEnabled,
+
             string id,
 
             string name,
@@ -202,6 +208,7 @@ namespace Pulumi.Ovh.CloudProject
             string version)
         {
             CreatedAt = createdAt;
+            IamEnabled = iamEnabled;
             Id = id;
             Name = name;
             ProjectId = projectId;

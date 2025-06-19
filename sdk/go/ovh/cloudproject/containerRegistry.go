@@ -57,6 +57,8 @@ type ContainerRegistry struct {
 
 	// Plan creation date
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// OVHCloud IAM enabled
+	IamEnabled pulumi.BoolOutput `pulumi:"iamEnabled"`
 	// Registry name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Plan ID of the registry
@@ -116,6 +118,8 @@ func GetContainerRegistry(ctx *pulumi.Context,
 type containerRegistryState struct {
 	// Plan creation date
 	CreatedAt *string `pulumi:"createdAt"`
+	// OVHCloud IAM enabled
+	IamEnabled *bool `pulumi:"iamEnabled"`
 	// Registry name
 	Name *string `pulumi:"name"`
 	// Plan ID of the registry
@@ -143,6 +147,8 @@ type containerRegistryState struct {
 type ContainerRegistryState struct {
 	// Plan creation date
 	CreatedAt pulumi.StringPtrInput
+	// OVHCloud IAM enabled
+	IamEnabled pulumi.BoolPtrInput
 	// Registry name
 	Name pulumi.StringPtrInput
 	// Plan ID of the registry
@@ -284,6 +290,11 @@ func (o ContainerRegistryOutput) ToContainerRegistryOutputWithContext(ctx contex
 // Plan creation date
 func (o ContainerRegistryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// OVHCloud IAM enabled
+func (o ContainerRegistryOutput) IamEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ContainerRegistry) pulumi.BoolOutput { return v.IamEnabled }).(pulumi.BoolOutput)
 }
 
 // Registry name

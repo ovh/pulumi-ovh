@@ -154,8 +154,9 @@ type KubeNodePool struct {
 	AutoscalingScaleDownUnreadyTimeSeconds pulumi.IntOutput `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
-	AutoscalingScaleDownUtilizationThreshold pulumi.Float64Output     `pulumi:"autoscalingScaleDownUtilizationThreshold"`
-	AvailabilityZones                        pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	AutoscalingScaleDownUtilizationThreshold pulumi.Float64Output `pulumi:"autoscalingScaleDownUtilizationThreshold"`
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes pulumi.IntOutput `pulumi:"availableNodes"`
 	// Creation date
@@ -241,7 +242,8 @@ type kubeNodePoolState struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold *float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
-	AvailabilityZones                        []string `pulumi:"availabilityZones"`
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes *int `pulumi:"availableNodes"`
 	// Creation date
@@ -292,7 +294,8 @@ type KubeNodePoolState struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64PtrInput
-	AvailabilityZones                        pulumi.StringArrayInput
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones pulumi.StringArrayInput
 	// Number of nodes which are actually ready in the pool
 	AvailableNodes pulumi.IntPtrInput
 	// Creation date
@@ -347,7 +350,8 @@ type kubeNodePoolArgs struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold *float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
-	AvailabilityZones                        []string `pulumi:"availabilityZones"`
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// number of nodes to start.
 	DesiredNodes *int `pulumi:"desiredNodes"`
 	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
@@ -381,7 +385,8 @@ type KubeNodePoolArgs struct {
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
 	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64PtrInput
-	AvailabilityZones                        pulumi.StringArrayInput
+	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+	AvailabilityZones pulumi.StringArrayInput
 	// number of nodes to start.
 	DesiredNodes pulumi.IntPtrInput
 	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
@@ -515,6 +520,7 @@ func (o KubeNodePoolOutput) AutoscalingScaleDownUtilizationThreshold() pulumi.Fl
 	return o.ApplyT(func(v *KubeNodePool) pulumi.Float64Output { return v.AutoscalingScaleDownUtilizationThreshold }).(pulumi.Float64Output)
 }
 
+// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 func (o KubeNodePoolOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }

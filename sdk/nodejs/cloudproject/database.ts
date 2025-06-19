@@ -147,6 +147,17 @@ import * as utilities from "../utilities";
  *     }],
  *     flavor: "db1-4",
  * });
+ * const valkeydb = new ovh.cloudproject.Database("valkeydb", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-first-valkey",
+ *     engine: "valkey",
+ *     version: "8.0",
+ *     plan: "essential",
+ *     nodes: [{
+ *         region: "BHS",
+ *     }],
+ *     flavor: "db1-4",
+ * });
  * ```
  *
  * To deploy a business PostgreSQL service with two nodes on public network:
@@ -317,7 +328,8 @@ export class Database extends pulumi.CustomResource {
      * * MongoDB: Enum: "discovery", "production", "advanced".
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
      * * M3 Aggregator: "business", "enterprise".
-     * * Redis: "essential", "business"
+     * * Redis: "essential", "business".
+     * * Valkey: "essential", "business".
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -488,7 +500,8 @@ export interface DatabaseState {
      * * MongoDB: Enum: "discovery", "production", "advanced".
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
      * * M3 Aggregator: "business", "enterprise".
-     * * Redis: "essential", "business"
+     * * Redis: "essential", "business".
+     * * Valkey: "essential", "business".
      */
     plan?: pulumi.Input<string>;
     /**
@@ -566,7 +579,8 @@ export interface DatabaseArgs {
      * * MongoDB: Enum: "discovery", "production", "advanced".
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
      * * M3 Aggregator: "business", "enterprise".
-     * * Redis: "essential", "business"
+     * * Redis: "essential", "business".
+     * * Valkey: "essential", "business".
      */
     plan: pulumi.Input<string>;
     /**
