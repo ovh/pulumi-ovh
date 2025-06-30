@@ -27,6 +27,7 @@ github.com/armon/go-radix; MIT
 github.com/atotto/clipboard; BSD-3-Clause
 github.com/aws/aws-sdk-go; Apache-2.0
 github.com/aymanbagabas/go-osc52/v2; MIT
+github.com/benbjohnson/clock; MIT
 github.com/bgentry/go-netrc; MIT
 github.com/bgentry/speakeasy; Apache-2.0
 github.com/blang/semver; MIT
@@ -177,6 +178,7 @@ go.opentelemetry.io/otel/metric; Apache-2.0
 go.opentelemetry.io/otel/trace; Apache-2.0
 go.opentelemetry.io/otel; Apache-2.0
 go.uber.org/atomic; MIT
+go.uber.org/ratelimit; MIT
 golang.org/x/crypto; BSD-3-Clause
 golang.org/x/exp; BSD-3-Clause
 golang.org/x/mod; BSD-3-Clause
