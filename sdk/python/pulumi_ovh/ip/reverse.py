@@ -22,16 +22,20 @@ class ReverseArgs:
     def __init__(__self__, *,
                  reverse_ip: pulumi.Input[builtins.str],
                  reverse_value: pulumi.Input[builtins.str],
-                 ip: pulumi.Input[builtins.str]):
+                 ip: pulumi.Input[builtins.str],
+                 readiness_timeout_duration: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Reverse resource.
         :param pulumi.Input[builtins.str] reverse_ip: The IP to set the reverse of
         :param pulumi.Input[builtins.str] reverse_value: The value of the reverse
         :param pulumi.Input[builtins.str] ip: The IP block to which the IP belongs
+        :param pulumi.Input[builtins.str] readiness_timeout_duration: The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
         """
         pulumi.set(__self__, "reverse_ip", reverse_ip)
         pulumi.set(__self__, "reverse_value", reverse_value)
         pulumi.set(__self__, "ip", ip)
+        if readiness_timeout_duration is not None:
+            pulumi.set(__self__, "readiness_timeout_duration", readiness_timeout_duration)
 
     @property
     @pulumi.getter(name="ReverseIp")
@@ -69,18 +73,32 @@ class ReverseArgs:
     def ip(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "ip", value)
 
+    @property
+    @pulumi.getter(name="readinessTimeoutDuration")
+    def readiness_timeout_duration(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+        """
+        return pulumi.get(self, "readiness_timeout_duration")
+
+    @readiness_timeout_duration.setter
+    def readiness_timeout_duration(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "readiness_timeout_duration", value)
+
 
 @pulumi.input_type
 class _ReverseState:
     def __init__(__self__, *,
                  reverse_ip: Optional[pulumi.Input[builtins.str]] = None,
                  reverse_value: Optional[pulumi.Input[builtins.str]] = None,
-                 ip: Optional[pulumi.Input[builtins.str]] = None):
+                 ip: Optional[pulumi.Input[builtins.str]] = None,
+                 readiness_timeout_duration: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Reverse resources.
         :param pulumi.Input[builtins.str] reverse_ip: The IP to set the reverse of
         :param pulumi.Input[builtins.str] reverse_value: The value of the reverse
         :param pulumi.Input[builtins.str] ip: The IP block to which the IP belongs
+        :param pulumi.Input[builtins.str] readiness_timeout_duration: The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
         """
         if reverse_ip is not None:
             pulumi.set(__self__, "reverse_ip", reverse_ip)
@@ -88,6 +106,8 @@ class _ReverseState:
             pulumi.set(__self__, "reverse_value", reverse_value)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if readiness_timeout_duration is not None:
+            pulumi.set(__self__, "readiness_timeout_duration", readiness_timeout_duration)
 
     @property
     @pulumi.getter(name="ReverseIp")
@@ -125,6 +145,18 @@ class _ReverseState:
     def ip(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ip", value)
 
+    @property
+    @pulumi.getter(name="readinessTimeoutDuration")
+    def readiness_timeout_duration(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+        """
+        return pulumi.get(self, "readiness_timeout_duration")
+
+    @readiness_timeout_duration.setter
+    def readiness_timeout_duration(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "readiness_timeout_duration", value)
+
 
 @pulumi.type_token("ovh:Ip/reverse:Reverse")
 class Reverse(pulumi.CustomResource):
@@ -135,6 +167,7 @@ class Reverse(pulumi.CustomResource):
                  reverse_ip: Optional[pulumi.Input[builtins.str]] = None,
                  reverse_value: Optional[pulumi.Input[builtins.str]] = None,
                  ip: Optional[pulumi.Input[builtins.str]] = None,
+                 readiness_timeout_duration: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Provides a OVHcloud IP reverse.
@@ -147,6 +180,7 @@ class Reverse(pulumi.CustomResource):
 
         # Set the reverse of an IP
         test = ovh.ip.Reverse("test",
+            readiness_timeout_duration="1m",
             ip="192.0.2.0/24",
             reverse_ip="192.0.2.1",
             reverse_value="example.com")
@@ -167,6 +201,7 @@ class Reverse(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] reverse_ip: The IP to set the reverse of
         :param pulumi.Input[builtins.str] reverse_value: The value of the reverse
         :param pulumi.Input[builtins.str] ip: The IP block to which the IP belongs
+        :param pulumi.Input[builtins.str] readiness_timeout_duration: The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
         """
         ...
     @overload
@@ -185,6 +220,7 @@ class Reverse(pulumi.CustomResource):
 
         # Set the reverse of an IP
         test = ovh.ip.Reverse("test",
+            readiness_timeout_duration="1m",
             ip="192.0.2.0/24",
             reverse_ip="192.0.2.1",
             reverse_value="example.com")
@@ -218,6 +254,7 @@ class Reverse(pulumi.CustomResource):
                  reverse_ip: Optional[pulumi.Input[builtins.str]] = None,
                  reverse_value: Optional[pulumi.Input[builtins.str]] = None,
                  ip: Optional[pulumi.Input[builtins.str]] = None,
+                 readiness_timeout_duration: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -236,6 +273,7 @@ class Reverse(pulumi.CustomResource):
             if ip is None and not opts.urn:
                 raise TypeError("Missing required property 'ip'")
             __props__.__dict__["ip"] = ip
+            __props__.__dict__["readiness_timeout_duration"] = readiness_timeout_duration
         super(Reverse, __self__).__init__(
             'ovh:Ip/reverse:Reverse',
             resource_name,
@@ -248,7 +286,8 @@ class Reverse(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             reverse_ip: Optional[pulumi.Input[builtins.str]] = None,
             reverse_value: Optional[pulumi.Input[builtins.str]] = None,
-            ip: Optional[pulumi.Input[builtins.str]] = None) -> 'Reverse':
+            ip: Optional[pulumi.Input[builtins.str]] = None,
+            readiness_timeout_duration: Optional[pulumi.Input[builtins.str]] = None) -> 'Reverse':
         """
         Get an existing Reverse resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -259,6 +298,7 @@ class Reverse(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] reverse_ip: The IP to set the reverse of
         :param pulumi.Input[builtins.str] reverse_value: The value of the reverse
         :param pulumi.Input[builtins.str] ip: The IP block to which the IP belongs
+        :param pulumi.Input[builtins.str] readiness_timeout_duration: The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -267,6 +307,7 @@ class Reverse(pulumi.CustomResource):
         __props__.__dict__["reverse_ip"] = reverse_ip
         __props__.__dict__["reverse_value"] = reverse_value
         __props__.__dict__["ip"] = ip
+        __props__.__dict__["readiness_timeout_duration"] = readiness_timeout_duration
         return Reverse(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -292,4 +333,12 @@ class Reverse(pulumi.CustomResource):
         The IP block to which the IP belongs
         """
         return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="readinessTimeoutDuration")
+    def readiness_timeout_duration(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+        """
+        return pulumi.get(self, "readiness_timeout_duration")
 

@@ -308,6 +308,40 @@ export interface GetServerVni {
     vrack: string;
 }
 
+export interface GetStorageEfsIam {
+    /**
+     * Resource display name
+     */
+    displayName: string;
+    /**
+     * Unique identifier of the resource
+     */
+    id: string;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags: {[key: string]: string};
+    /**
+     * Unique resource name used in policies
+     */
+    urn: string;
+}
+
+export interface GetStorageEfsShareAccessPathsAccessPath {
+    /**
+     * Access path ID
+     */
+    id: string;
+    /**
+     * Access path
+     */
+    path: string;
+    /**
+     * Is this the preferred access path?
+     */
+    preferred: boolean;
+}
+
 export namespace Cloud {
     export interface GetProjectIam {
         /**

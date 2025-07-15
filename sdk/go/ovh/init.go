@@ -27,12 +27,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectDatabaseValkeyUser{}
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
+	case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
+		r = &DomainZoneDynhostRecord{}
 	case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
 		r = &OvhcloudConnectPopConfig{}
 	case "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig":
 		r = &OvhcloudConnectPopDatacenterConfig{}
 	case "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig":
 		r = &OvhcloudConnectPopDatacenterExtraConfig{}
+	case "ovh:index/storageEfsShare:StorageEfsShare":
+		r = &StorageEfsShare{}
+	case "ovh:index/storageEfsShareAcl:StorageEfsShareAcl":
+		r = &StorageEfsShareAcl{}
+	case "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot":
+		r = &StorageEfsShareSnapshot{}
 	case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
 		r = &VrackIpv6RoutedSubrange{}
 	default:
@@ -83,6 +91,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/domainZoneDynhostRecord",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/ovhcloudConnectPopConfig",
 		&module{version},
 	)
@@ -94,6 +107,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/ovhcloudConnectPopDatacenterExtraConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/storageEfsShare",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/storageEfsShareAcl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/storageEfsShareSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

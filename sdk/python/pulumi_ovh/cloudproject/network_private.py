@@ -97,6 +97,7 @@ class _NetworkPrivateState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  regions_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsAttributeArgs']]]] = None,
+                 regions_openstack_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  regions_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsStatusArgs']]]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
@@ -110,6 +111,7 @@ class _NetworkPrivateState:
                * `regions_attributes/region` - The id of the region.
                * `regions_attributes/status` - The status of the network in the region.
                * `regions_attributes/openstackid` - The private network id in the region.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] regions_openstack_ids: A map with region name as key, and region-specific openstack id as value
         :param pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsStatusArgs']]] regions_statuses: (Deprecated) A map representing the status of the network per region.
                * `regions_status/region` - (Deprecated) The id of the region.
                * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -124,6 +126,8 @@ class _NetworkPrivateState:
             pulumi.set(__self__, "regions", regions)
         if regions_attributes is not None:
             pulumi.set(__self__, "regions_attributes", regions_attributes)
+        if regions_openstack_ids is not None:
+            pulumi.set(__self__, "regions_openstack_ids", regions_openstack_ids)
         if regions_statuses is not None:
             warnings.warn("""use the regions_attributes field instead""", DeprecationWarning)
             pulumi.log.warn("""regions_statuses is deprecated: use the regions_attributes field instead""")
@@ -176,6 +180,18 @@ class _NetworkPrivateState:
     @regions_attributes.setter
     def regions_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPrivateRegionsAttributeArgs']]]]):
         pulumi.set(self, "regions_attributes", value)
+
+    @property
+    @pulumi.getter(name="regionsOpenstackIds")
+    def regions_openstack_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map with region name as key, and region-specific openstack id as value
+        """
+        return pulumi.get(self, "regions_openstack_ids")
+
+    @regions_openstack_ids.setter
+    def regions_openstack_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "regions_openstack_ids", value)
 
     @property
     @pulumi.getter(name="regionsStatuses")
@@ -354,6 +370,7 @@ class NetworkPrivate(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["vlan_id"] = vlan_id
             __props__.__dict__["regions_attributes"] = None
+            __props__.__dict__["regions_openstack_ids"] = None
             __props__.__dict__["regions_statuses"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["type"] = None
@@ -370,6 +387,7 @@ class NetworkPrivate(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             regions_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsAttributeArgs', 'NetworkPrivateRegionsAttributeArgsDict']]]]] = None,
+            regions_openstack_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             regions_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsStatusArgs', 'NetworkPrivateRegionsStatusArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
@@ -388,6 +406,7 @@ class NetworkPrivate(pulumi.CustomResource):
                * `regions_attributes/region` - The id of the region.
                * `regions_attributes/status` - The status of the network in the region.
                * `regions_attributes/openstackid` - The private network id in the region.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] regions_openstack_ids: A map with region name as key, and region-specific openstack id as value
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkPrivateRegionsStatusArgs', 'NetworkPrivateRegionsStatusArgsDict']]]] regions_statuses: (Deprecated) A map representing the status of the network per region.
                * `regions_status/region` - (Deprecated) The id of the region.
                * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -403,6 +422,7 @@ class NetworkPrivate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["regions"] = regions
         __props__.__dict__["regions_attributes"] = regions_attributes
+        __props__.__dict__["regions_openstack_ids"] = regions_openstack_ids
         __props__.__dict__["regions_statuses"] = regions_statuses
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["status"] = status
@@ -436,6 +456,14 @@ class NetworkPrivate(pulumi.CustomResource):
         * `regions_attributes/openstackid` - The private network id in the region.
         """
         return pulumi.get(self, "regions_attributes")
+
+    @property
+    @pulumi.getter(name="regionsOpenstackIds")
+    def regions_openstack_ids(self) -> pulumi.Output[Mapping[str, builtins.str]]:
+        """
+        A map with region name as key, and region-specific openstack id as value
+        """
+        return pulumi.get(self, "regions_openstack_ids")
 
     @property
     @pulumi.getter(name="regionsStatuses")

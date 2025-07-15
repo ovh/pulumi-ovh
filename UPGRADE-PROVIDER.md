@@ -7,7 +7,7 @@ source ~/.bashrc
 nvm install v20.5.0
 
 node -v
-v20.5.0
+#v20.5.0
 
 # Install SDK
 curl -s "https://get.sdkman.io" | bash

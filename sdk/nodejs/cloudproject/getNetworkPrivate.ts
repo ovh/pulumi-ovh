@@ -69,6 +69,10 @@ export interface GetNetworkPrivateResult {
      */
     readonly regions: outputs.CloudProject.GetNetworkPrivateRegion[];
     /**
+     * A map with region name as key, and region-specific openstack id as value
+     */
+    readonly regionsOpenstackIds: {[key: string]: string};
+    /**
      * ID of the public cloud project
      */
     readonly serviceName: string;

@@ -20,6 +20,11 @@ export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshK
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
 utilities.lazyLoad(exports, ["CloudProjectSshKey"], () => require("./cloudProjectSshKey"));
 
+export { DomainZoneDynhostRecordArgs, DomainZoneDynhostRecordState } from "./domainZoneDynhostRecord";
+export type DomainZoneDynhostRecord = import("./domainZoneDynhostRecord").DomainZoneDynhostRecord;
+export const DomainZoneDynhostRecord: typeof import("./domainZoneDynhostRecord").DomainZoneDynhostRecord = null as any;
+utilities.lazyLoad(exports, ["DomainZoneDynhostRecord"], () => require("./domainZoneDynhostRecord"));
+
 export { GetCloudProjectDatabaseValkeyUserArgs, GetCloudProjectDatabaseValkeyUserResult, GetCloudProjectDatabaseValkeyUserOutputArgs } from "./getCloudProjectDatabaseValkeyUser";
 export const getCloudProjectDatabaseValkeyUser: typeof import("./getCloudProjectDatabaseValkeyUser").getCloudProjectDatabaseValkeyUser = null as any;
 export const getCloudProjectDatabaseValkeyUserOutput: typeof import("./getCloudProjectDatabaseValkeyUser").getCloudProjectDatabaseValkeyUserOutput = null as any;
@@ -90,6 +95,21 @@ export const getServers: typeof import("./getServers").getServers = null as any;
 export const getServersOutput: typeof import("./getServers").getServersOutput = null as any;
 utilities.lazyLoad(exports, ["getServers","getServersOutput"], () => require("./getServers"));
 
+export { GetStorageEfsArgs, GetStorageEfsResult, GetStorageEfsOutputArgs } from "./getStorageEfs";
+export const getStorageEfs: typeof import("./getStorageEfs").getStorageEfs = null as any;
+export const getStorageEfsOutput: typeof import("./getStorageEfs").getStorageEfsOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageEfs","getStorageEfsOutput"], () => require("./getStorageEfs"));
+
+export { GetStorageEfsShareAccessPathArgs, GetStorageEfsShareAccessPathResult, GetStorageEfsShareAccessPathOutputArgs } from "./getStorageEfsShareAccessPath";
+export const getStorageEfsShareAccessPath: typeof import("./getStorageEfsShareAccessPath").getStorageEfsShareAccessPath = null as any;
+export const getStorageEfsShareAccessPathOutput: typeof import("./getStorageEfsShareAccessPath").getStorageEfsShareAccessPathOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageEfsShareAccessPath","getStorageEfsShareAccessPathOutput"], () => require("./getStorageEfsShareAccessPath"));
+
+export { GetStorageEfsShareAccessPathsArgs, GetStorageEfsShareAccessPathsResult, GetStorageEfsShareAccessPathsOutputArgs } from "./getStorageEfsShareAccessPaths";
+export const getStorageEfsShareAccessPaths: typeof import("./getStorageEfsShareAccessPaths").getStorageEfsShareAccessPaths = null as any;
+export const getStorageEfsShareAccessPathsOutput: typeof import("./getStorageEfsShareAccessPaths").getStorageEfsShareAccessPathsOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageEfsShareAccessPaths","getStorageEfsShareAccessPathsOutput"], () => require("./getStorageEfsShareAccessPaths"));
+
 export { GetVrackNetworksArgs, GetVrackNetworksResult, GetVrackNetworksOutputArgs } from "./getVrackNetworks";
 export const getVrackNetworks: typeof import("./getVrackNetworks").getVrackNetworks = null as any;
 export const getVrackNetworksOutput: typeof import("./getVrackNetworks").getVrackNetworksOutput = null as any;
@@ -112,6 +132,21 @@ utilities.lazyLoad(exports, ["OvhcloudConnectPopDatacenterExtraConfig"], () => r
 
 export * from "./provider";
 import { Provider } from "./provider";
+
+export { StorageEfsShareArgs, StorageEfsShareState } from "./storageEfsShare";
+export type StorageEfsShare = import("./storageEfsShare").StorageEfsShare;
+export const StorageEfsShare: typeof import("./storageEfsShare").StorageEfsShare = null as any;
+utilities.lazyLoad(exports, ["StorageEfsShare"], () => require("./storageEfsShare"));
+
+export { StorageEfsShareAclArgs, StorageEfsShareAclState } from "./storageEfsShareAcl";
+export type StorageEfsShareAcl = import("./storageEfsShareAcl").StorageEfsShareAcl;
+export const StorageEfsShareAcl: typeof import("./storageEfsShareAcl").StorageEfsShareAcl = null as any;
+utilities.lazyLoad(exports, ["StorageEfsShareAcl"], () => require("./storageEfsShareAcl"));
+
+export { StorageEfsShareSnapshotArgs, StorageEfsShareSnapshotState } from "./storageEfsShareSnapshot";
+export type StorageEfsShareSnapshot = import("./storageEfsShareSnapshot").StorageEfsShareSnapshot;
+export const StorageEfsShareSnapshot: typeof import("./storageEfsShareSnapshot").StorageEfsShareSnapshot = null as any;
+utilities.lazyLoad(exports, ["StorageEfsShareSnapshot"], () => require("./storageEfsShareSnapshot"));
 
 export { VrackIpv6RoutedSubrangeArgs, VrackIpv6RoutedSubrangeState } from "./vrackIpv6RoutedSubrange";
 export type VrackIpv6RoutedSubrange = import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange;
@@ -174,12 +209,20 @@ const _module = {
                 return new CloudProjectDatabaseValkeyUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
+            case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
+                return new DomainZoneDynhostRecord(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
                 return new OvhcloudConnectPopConfig(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig":
                 return new OvhcloudConnectPopDatacenterConfig(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig":
                 return new OvhcloudConnectPopDatacenterExtraConfig(name, <any>undefined, { urn })
+            case "ovh:index/storageEfsShare:StorageEfsShare":
+                return new StorageEfsShare(name, <any>undefined, { urn })
+            case "ovh:index/storageEfsShareAcl:StorageEfsShareAcl":
+                return new StorageEfsShareAcl(name, <any>undefined, { urn })
+            case "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot":
+                return new StorageEfsShareSnapshot(name, <any>undefined, { urn })
             case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
                 return new VrackIpv6RoutedSubrange(name, <any>undefined, { urn })
             default:
@@ -190,9 +233,13 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterExtraConfig", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShare", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareAcl", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/vrackIpv6RoutedSubrange", _module)
 pulumi.runtime.registerResourcePackage("ovh", {
     version: utilities.getVersion(),

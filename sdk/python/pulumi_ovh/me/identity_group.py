@@ -218,6 +218,16 @@ class IdentityGroup(pulumi.CustomResource):
             role="NONE")
         ```
 
+        ## Import
+
+        Identity groups can be imported using their `name`:
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Me/identityGroup:IdentityGroup my_identity_group name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: Group description.
@@ -243,6 +253,16 @@ class IdentityGroup(pulumi.CustomResource):
             description="Some custom description",
             name="my_group_name",
             role="NONE")
+        ```
+
+        ## Import
+
+        Identity groups can be imported using their `name`:
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Me/identityGroup:IdentityGroup my_identity_group name
         ```
 
         :param str resource_name: The name of the resource.

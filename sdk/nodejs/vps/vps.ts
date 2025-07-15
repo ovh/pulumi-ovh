@@ -50,6 +50,10 @@ export class Vps extends pulumi.CustomResource {
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Vps.VpsIam>;
     /**
+     * Id of the image to install on the VPS
+     */
+    public readonly imageId!: pulumi.Output<string | undefined>;
+    /**
      * KVM keyboard layout on VPS Cloud
      */
     public readonly keymap!: pulumi.Output<string>;
@@ -94,6 +98,10 @@ export class Vps extends pulumi.CustomResource {
      */
     public readonly plans!: pulumi.Output<outputs.Vps.VpsPlan[] | undefined>;
     /**
+     * Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+     */
+    public readonly publicSshKey!: pulumi.Output<string | undefined>;
+    /**
      * The internal name of your VPS offer
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
@@ -127,6 +135,7 @@ export class Vps extends pulumi.CustomResource {
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["iam"] = state ? state.iam : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["keymap"] = state ? state.keymap : undefined;
             resourceInputs["memoryLimit"] = state ? state.memoryLimit : undefined;
             resourceInputs["model"] = state ? state.model : undefined;
@@ -138,6 +147,7 @@ export class Vps extends pulumi.CustomResource {
             resourceInputs["ovhSubsidiary"] = state ? state.ovhSubsidiary : undefined;
             resourceInputs["planOptions"] = state ? state.planOptions : undefined;
             resourceInputs["plans"] = state ? state.plans : undefined;
+            resourceInputs["publicSshKey"] = state ? state.publicSshKey : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["slaMonitoring"] = state ? state.slaMonitoring : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -146,6 +156,7 @@ export class Vps extends pulumi.CustomResource {
         } else {
             const args = argsOrState as VpsArgs | undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["keymap"] = args ? args.keymap : undefined;
             resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
             resourceInputs["model"] = args ? args.model : undefined;
@@ -156,6 +167,7 @@ export class Vps extends pulumi.CustomResource {
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
             resourceInputs["planOptions"] = args ? args.planOptions : undefined;
             resourceInputs["plans"] = args ? args.plans : undefined;
+            resourceInputs["publicSshKey"] = args ? args.publicSshKey : undefined;
             resourceInputs["slaMonitoring"] = args ? args.slaMonitoring : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["vcore"] = args ? args.vcore : undefined;
@@ -186,6 +198,10 @@ export interface VpsState {
      * IAM resource information
      */
     iam?: pulumi.Input<inputs.Vps.VpsIam>;
+    /**
+     * Id of the image to install on the VPS
+     */
+    imageId?: pulumi.Input<string>;
     /**
      * KVM keyboard layout on VPS Cloud
      */
@@ -231,6 +247,10 @@ export interface VpsState {
      */
     plans?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlan>[]>;
     /**
+     * Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+     */
+    publicSshKey?: pulumi.Input<string>;
+    /**
      * The internal name of your VPS offer
      */
     serviceName?: pulumi.Input<string>;
@@ -257,6 +277,10 @@ export interface VpsArgs {
      * Custom display name
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Id of the image to install on the VPS
+     */
+    imageId?: pulumi.Input<string>;
     /**
      * KVM keyboard layout on VPS Cloud
      */
@@ -297,6 +321,10 @@ export interface VpsArgs {
      * Product Plan to order
      */
     plans?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlan>[]>;
+    /**
+     * Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+     */
+    publicSshKey?: pulumi.Input<string>;
     slaMonitoring?: pulumi.Input<boolean>;
     /**
      * State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)

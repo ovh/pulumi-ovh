@@ -2076,6 +2076,200 @@ func (o GetServerVniArrayOutput) Index(i pulumi.IntInput) GetServerVniOutput {
 	}).(GetServerVniOutput)
 }
 
+type GetStorageEfsIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetStorageEfsIamInput is an input type that accepts GetStorageEfsIamArgs and GetStorageEfsIamOutput values.
+// You can construct a concrete instance of `GetStorageEfsIamInput` via:
+//
+//	GetStorageEfsIamArgs{...}
+type GetStorageEfsIamInput interface {
+	pulumi.Input
+
+	ToGetStorageEfsIamOutput() GetStorageEfsIamOutput
+	ToGetStorageEfsIamOutputWithContext(context.Context) GetStorageEfsIamOutput
+}
+
+type GetStorageEfsIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetStorageEfsIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsIam)(nil)).Elem()
+}
+
+func (i GetStorageEfsIamArgs) ToGetStorageEfsIamOutput() GetStorageEfsIamOutput {
+	return i.ToGetStorageEfsIamOutputWithContext(context.Background())
+}
+
+func (i GetStorageEfsIamArgs) ToGetStorageEfsIamOutputWithContext(ctx context.Context) GetStorageEfsIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsIamOutput)
+}
+
+type GetStorageEfsIamOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEfsIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsIam)(nil)).Elem()
+}
+
+func (o GetStorageEfsIamOutput) ToGetStorageEfsIamOutput() GetStorageEfsIamOutput {
+	return o
+}
+
+func (o GetStorageEfsIamOutput) ToGetStorageEfsIamOutputWithContext(ctx context.Context) GetStorageEfsIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetStorageEfsIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetStorageEfsIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetStorageEfsIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetStorageEfsIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetStorageEfsShareAccessPathsAccessPath struct {
+	// Access path ID
+	Id string `pulumi:"id"`
+	// Access path
+	Path string `pulumi:"path"`
+	// Is this the preferred access path?
+	Preferred bool `pulumi:"preferred"`
+}
+
+// GetStorageEfsShareAccessPathsAccessPathInput is an input type that accepts GetStorageEfsShareAccessPathsAccessPathArgs and GetStorageEfsShareAccessPathsAccessPathOutput values.
+// You can construct a concrete instance of `GetStorageEfsShareAccessPathsAccessPathInput` via:
+//
+//	GetStorageEfsShareAccessPathsAccessPathArgs{...}
+type GetStorageEfsShareAccessPathsAccessPathInput interface {
+	pulumi.Input
+
+	ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput
+	ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(context.Context) GetStorageEfsShareAccessPathsAccessPathOutput
+}
+
+type GetStorageEfsShareAccessPathsAccessPathArgs struct {
+	// Access path ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Access path
+	Path pulumi.StringInput `pulumi:"path"`
+	// Is this the preferred access path?
+	Preferred pulumi.BoolInput `pulumi:"preferred"`
+}
+
+func (GetStorageEfsShareAccessPathsAccessPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArgs) ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput {
+	return i.ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(context.Background())
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArgs) ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsShareAccessPathsAccessPathOutput)
+}
+
+// GetStorageEfsShareAccessPathsAccessPathArrayInput is an input type that accepts GetStorageEfsShareAccessPathsAccessPathArray and GetStorageEfsShareAccessPathsAccessPathArrayOutput values.
+// You can construct a concrete instance of `GetStorageEfsShareAccessPathsAccessPathArrayInput` via:
+//
+//	GetStorageEfsShareAccessPathsAccessPathArray{ GetStorageEfsShareAccessPathsAccessPathArgs{...} }
+type GetStorageEfsShareAccessPathsAccessPathArrayInput interface {
+	pulumi.Input
+
+	ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput
+	ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput
+}
+
+type GetStorageEfsShareAccessPathsAccessPathArray []GetStorageEfsShareAccessPathsAccessPathInput
+
+func (GetStorageEfsShareAccessPathsAccessPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArray) ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return i.ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArray) ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsShareAccessPathsAccessPathArrayOutput)
+}
+
+type GetStorageEfsShareAccessPathsAccessPathOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEfsShareAccessPathsAccessPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput {
+	return o
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathOutput {
+	return o
+}
+
+// Access path ID
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Access path
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Is this the preferred access path?
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) Preferred() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) bool { return v.Preferred }).(pulumi.BoolOutput)
+}
+
+type GetStorageEfsShareAccessPathsAccessPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEfsShareAccessPathsAccessPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return o
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return o
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) Index(i pulumi.IntInput) GetStorageEfsShareAccessPathsAccessPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageEfsShareAccessPathsAccessPath {
+		return vs[0].([]GetStorageEfsShareAccessPathsAccessPath)[vs[1].(int)]
+	}).(GetStorageEfsShareAccessPathsAccessPathOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityArrayInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArray{})
@@ -2110,6 +2304,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterArrayInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniInput)(nil)).Elem(), GetServerVniArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniArrayInput)(nil)).Elem(), GetServerVniArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsIamInput)(nil)).Elem(), GetStorageEfsIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathArrayInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArray{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorPlanCodesOutput{})
@@ -2143,4 +2340,7 @@ func init() {
 	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterArrayOutput{})
 	pulumi.RegisterOutputType(GetServerVniOutput{})
 	pulumi.RegisterOutputType(GetServerVniArrayOutput{})
+	pulumi.RegisterOutputType(GetStorageEfsIamOutput{})
+	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathOutput{})
+	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathArrayOutput{})
 }

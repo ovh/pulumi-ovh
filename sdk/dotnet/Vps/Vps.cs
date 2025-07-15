@@ -34,6 +34,12 @@ namespace Pulumi.Ovh.Vps
         public Output<Outputs.VpsIam> Iam { get; private set; } = null!;
 
         /// <summary>
+        /// Id of the image to install on the VPS
+        /// </summary>
+        [Output("imageId")]
+        public Output<string?> ImageId { get; private set; } = null!;
+
+        /// <summary>
         /// KVM keyboard layout on VPS Cloud
         /// </summary>
         [Output("keymap")]
@@ -98,6 +104,12 @@ namespace Pulumi.Ovh.Vps
         /// </summary>
         [Output("plans")]
         public Output<ImmutableArray<Outputs.VpsPlan>> Plans { get; private set; } = null!;
+
+        /// <summary>
+        /// Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+        /// </summary>
+        [Output("publicSshKey")]
+        public Output<string?> PublicSshKey { get; private set; } = null!;
 
         /// <summary>
         /// The internal name of your VPS offer
@@ -180,6 +192,12 @@ namespace Pulumi.Ovh.Vps
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Id of the image to install on the VPS
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
         /// KVM keyboard layout on VPS Cloud
         /// </summary>
         [Input("keymap")]
@@ -257,6 +275,12 @@ namespace Pulumi.Ovh.Vps
             set => _plans = value;
         }
 
+        /// <summary>
+        /// Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+        /// </summary>
+        [Input("publicSshKey")]
+        public Input<string>? PublicSshKey { get; set; }
+
         [Input("slaMonitoring")]
         public Input<bool>? SlaMonitoring { get; set; }
 
@@ -303,6 +327,12 @@ namespace Pulumi.Ovh.Vps
         /// </summary>
         [Input("iam")]
         public Input<Inputs.VpsIamGetArgs>? Iam { get; set; }
+
+        /// <summary>
+        /// Id of the image to install on the VPS
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
 
         /// <summary>
         /// KVM keyboard layout on VPS Cloud
@@ -387,6 +417,12 @@ namespace Pulumi.Ovh.Vps
             get => _plans ?? (_plans = new InputList<Inputs.VpsPlanGetArgs>());
             set => _plans = value;
         }
+
+        /// <summary>
+        /// Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+        /// </summary>
+        [Input("publicSshKey")]
+        public Input<string>? PublicSshKey { get; set; }
 
         /// <summary>
         /// The internal name of your VPS offer

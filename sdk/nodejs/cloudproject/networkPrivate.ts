@@ -79,6 +79,10 @@ export class NetworkPrivate extends pulumi.CustomResource {
      */
     public /*out*/ readonly regionsAttributes!: pulumi.Output<outputs.CloudProject.NetworkPrivateRegionsAttribute[]>;
     /**
+     * A map with region name as key, and region-specific openstack id as value
+     */
+    public /*out*/ readonly regionsOpenstackIds!: pulumi.Output<{[key: string]: string}>;
+    /**
      * (Deprecated) A map representing the status of the network per region.
      * * `regions_status/region` - (Deprecated) The id of the region.
      * * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -119,6 +123,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["regions"] = state ? state.regions : undefined;
             resourceInputs["regionsAttributes"] = state ? state.regionsAttributes : undefined;
+            resourceInputs["regionsOpenstackIds"] = state ? state.regionsOpenstackIds : undefined;
             resourceInputs["regionsStatuses"] = state ? state.regionsStatuses : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -131,6 +136,7 @@ export class NetworkPrivate extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["vlanId"] = args ? args.vlanId : undefined;
             resourceInputs["regionsAttributes"] = undefined /*out*/;
+            resourceInputs["regionsOpenstackIds"] = undefined /*out*/;
             resourceInputs["regionsStatuses"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -159,6 +165,10 @@ export interface NetworkPrivateState {
      * * `regions_attributes/openstackid` - The private network id in the region.
      */
     regionsAttributes?: pulumi.Input<pulumi.Input<inputs.CloudProject.NetworkPrivateRegionsAttribute>[]>;
+    /**
+     * A map with region name as key, and region-specific openstack id as value
+     */
+    regionsOpenstackIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Deprecated) A map representing the status of the network per region.
      * * `regions_status/region` - (Deprecated) The id of the region.

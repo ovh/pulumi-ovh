@@ -28,7 +28,7 @@ class GetNetworkPrivateResult:
     """
     A collection of values returned by getNetworkPrivate.
     """
-    def __init__(__self__, id=None, name=None, network_id=None, regions=None, service_name=None, status=None, type=None, vlan_id=None):
+    def __init__(__self__, id=None, name=None, network_id=None, regions=None, regions_openstack_ids=None, service_name=None, status=None, type=None, vlan_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -41,6 +41,9 @@ class GetNetworkPrivateResult:
         if regions and not isinstance(regions, list):
             raise TypeError("Expected argument 'regions' to be a list")
         pulumi.set(__self__, "regions", regions)
+        if regions_openstack_ids and not isinstance(regions_openstack_ids, dict):
+            raise TypeError("Expected argument 'regions_openstack_ids' to be a dict")
+        pulumi.set(__self__, "regions_openstack_ids", regions_openstack_ids)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
@@ -87,6 +90,14 @@ class GetNetworkPrivateResult:
         return pulumi.get(self, "regions")
 
     @property
+    @pulumi.getter(name="regionsOpenstackIds")
+    def regions_openstack_ids(self) -> Mapping[str, builtins.str]:
+        """
+        A map with region name as key, and region-specific openstack id as value
+        """
+        return pulumi.get(self, "regions_openstack_ids")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> builtins.str:
         """
@@ -129,6 +140,7 @@ class AwaitableGetNetworkPrivateResult(GetNetworkPrivateResult):
             name=self.name,
             network_id=self.network_id,
             regions=self.regions,
+            regions_openstack_ids=self.regions_openstack_ids,
             service_name=self.service_name,
             status=self.status,
             type=self.type,
@@ -167,6 +179,7 @@ def get_network_private(network_id: Optional[builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         network_id=pulumi.get(__ret__, 'network_id'),
         regions=pulumi.get(__ret__, 'regions'),
+        regions_openstack_ids=pulumi.get(__ret__, 'regions_openstack_ids'),
         service_name=pulumi.get(__ret__, 'service_name'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
@@ -202,6 +215,7 @@ def get_network_private_output(network_id: Optional[pulumi.Input[builtins.str]] 
         name=pulumi.get(__response__, 'name'),
         network_id=pulumi.get(__response__, 'network_id'),
         regions=pulumi.get(__response__, 'regions'),
+        regions_openstack_ids=pulumi.get(__response__, 'regions_openstack_ids'),
         service_name=pulumi.get(__response__, 'service_name'),
         status=pulumi.get(__response__, 'status'),
         type=pulumi.get(__response__, 'type'),

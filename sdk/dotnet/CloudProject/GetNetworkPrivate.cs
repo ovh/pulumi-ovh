@@ -161,6 +161,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkPrivateRegionResult> Regions;
         /// <summary>
+        /// A map with region name as key, and region-specific openstack id as value
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> RegionsOpenstackIds;
+        /// <summary>
         /// ID of the public cloud project
         /// </summary>
         public readonly string ServiceName;
@@ -187,6 +191,8 @@ namespace Pulumi.Ovh.CloudProject
 
             ImmutableArray<Outputs.GetNetworkPrivateRegionResult> regions,
 
+            ImmutableDictionary<string, string> regionsOpenstackIds,
+
             string serviceName,
 
             string status,
@@ -199,6 +205,7 @@ namespace Pulumi.Ovh.CloudProject
             Name = name;
             NetworkId = networkId;
             Regions = regions;
+            RegionsOpenstackIds = regionsOpenstackIds;
             ServiceName = serviceName;
             Status = status;
             Type = type;

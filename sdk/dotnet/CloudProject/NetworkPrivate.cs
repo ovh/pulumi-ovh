@@ -71,6 +71,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.NetworkPrivateRegionsAttribute>> RegionsAttributes { get; private set; } = null!;
 
         /// <summary>
+        /// A map with region name as key, and region-specific openstack id as value
+        /// </summary>
+        [Output("regionsOpenstackIds")]
+        public Output<ImmutableDictionary<string, string>> RegionsOpenstackIds { get; private set; } = null!;
+
+        /// <summary>
         /// (Deprecated) A map representing the status of the network per region.
         /// * `regions_status/region` - (Deprecated) The id of the region.
         /// * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -218,6 +224,18 @@ namespace Pulumi.Ovh.CloudProject
         {
             get => _regionsAttributes ?? (_regionsAttributes = new InputList<Inputs.NetworkPrivateRegionsAttributeGetArgs>());
             set => _regionsAttributes = value;
+        }
+
+        [Input("regionsOpenstackIds")]
+        private InputMap<string>? _regionsOpenstackIds;
+
+        /// <summary>
+        /// A map with region name as key, and region-specific openstack id as value
+        /// </summary>
+        public InputMap<string> RegionsOpenstackIds
+        {
+            get => _regionsOpenstackIds ?? (_regionsOpenstackIds = new InputMap<string>());
+            set => _regionsOpenstackIds = value;
         }
 
         [Input("regionsStatuses")]

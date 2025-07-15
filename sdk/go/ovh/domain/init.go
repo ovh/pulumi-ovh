@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:Domain/dSRecords:DSRecords":
 		r = &DSRecords{}
+	case "ovh:Domain/dynhostLogin:DynhostLogin":
+		r = &DynhostLogin{}
 	case "ovh:Domain/name:Name":
 		r = &Name{}
 	case "ovh:Domain/nameServers:NameServers":
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Domain/dSRecords",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Domain/dynhostLogin",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -21,6 +21,8 @@ type Vps struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// IAM resource information
 	Iam VpsIamOutput `pulumi:"iam"`
+	// Id of the image to install on the VPS
+	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
 	Keymap pulumi.StringOutput `pulumi:"keymap"`
 	// RAM of this VPS
@@ -43,6 +45,8 @@ type Vps struct {
 	PlanOptions VpsPlanOptionArrayOutput `pulumi:"planOptions"`
 	// Product Plan to order
 	Plans VpsPlanArrayOutput `pulumi:"plans"`
+	// Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+	PublicSshKey pulumi.StringPtrOutput `pulumi:"publicSshKey"`
 	// The internal name of your VPS offer
 	ServiceName   pulumi.StringOutput `pulumi:"serviceName"`
 	SlaMonitoring pulumi.BoolOutput   `pulumi:"slaMonitoring"`
@@ -90,6 +94,8 @@ type vpsState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// IAM resource information
 	Iam *VpsIam `pulumi:"iam"`
+	// Id of the image to install on the VPS
+	ImageId *string `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
 	Keymap *string `pulumi:"keymap"`
 	// RAM of this VPS
@@ -112,6 +118,8 @@ type vpsState struct {
 	PlanOptions []VpsPlanOption `pulumi:"planOptions"`
 	// Product Plan to order
 	Plans []VpsPlan `pulumi:"plans"`
+	// Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+	PublicSshKey *string `pulumi:"publicSshKey"`
 	// The internal name of your VPS offer
 	ServiceName   *string `pulumi:"serviceName"`
 	SlaMonitoring *bool   `pulumi:"slaMonitoring"`
@@ -130,6 +138,8 @@ type VpsState struct {
 	DisplayName pulumi.StringPtrInput
 	// IAM resource information
 	Iam VpsIamPtrInput
+	// Id of the image to install on the VPS
+	ImageId pulumi.StringPtrInput
 	// KVM keyboard layout on VPS Cloud
 	Keymap pulumi.StringPtrInput
 	// RAM of this VPS
@@ -152,6 +162,8 @@ type VpsState struct {
 	PlanOptions VpsPlanOptionArrayInput
 	// Product Plan to order
 	Plans VpsPlanArrayInput
+	// Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+	PublicSshKey pulumi.StringPtrInput
 	// The internal name of your VPS offer
 	ServiceName   pulumi.StringPtrInput
 	SlaMonitoring pulumi.BoolPtrInput
@@ -170,6 +182,8 @@ func (VpsState) ElementType() reflect.Type {
 type vpsArgs struct {
 	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
+	// Id of the image to install on the VPS
+	ImageId *string `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
 	Keymap *string `pulumi:"keymap"`
 	// RAM of this VPS
@@ -189,8 +203,10 @@ type vpsArgs struct {
 	// Product Plan to order
 	PlanOptions []VpsPlanOption `pulumi:"planOptions"`
 	// Product Plan to order
-	Plans         []VpsPlan `pulumi:"plans"`
-	SlaMonitoring *bool     `pulumi:"slaMonitoring"`
+	Plans []VpsPlan `pulumi:"plans"`
+	// Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+	PublicSshKey  *string `pulumi:"publicSshKey"`
+	SlaMonitoring *bool   `pulumi:"slaMonitoring"`
 	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
 	State *string `pulumi:"state"`
 	// Number of vcores
@@ -203,6 +219,8 @@ type vpsArgs struct {
 type VpsArgs struct {
 	// Custom display name
 	DisplayName pulumi.StringPtrInput
+	// Id of the image to install on the VPS
+	ImageId pulumi.StringPtrInput
 	// KVM keyboard layout on VPS Cloud
 	Keymap pulumi.StringPtrInput
 	// RAM of this VPS
@@ -222,7 +240,9 @@ type VpsArgs struct {
 	// Product Plan to order
 	PlanOptions VpsPlanOptionArrayInput
 	// Product Plan to order
-	Plans         VpsPlanArrayInput
+	Plans VpsPlanArrayInput
+	// Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+	PublicSshKey  pulumi.StringPtrInput
 	SlaMonitoring pulumi.BoolPtrInput
 	// State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
 	State pulumi.StringPtrInput
@@ -334,6 +354,11 @@ func (o VpsOutput) Iam() VpsIamOutput {
 	return o.ApplyT(func(v *Vps) VpsIamOutput { return v.Iam }).(VpsIamOutput)
 }
 
+// Id of the image to install on the VPS
+func (o VpsOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vps) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
 // KVM keyboard layout on VPS Cloud
 func (o VpsOutput) Keymap() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.Keymap }).(pulumi.StringOutput)
@@ -387,6 +412,11 @@ func (o VpsOutput) PlanOptions() VpsPlanOptionArrayOutput {
 // Product Plan to order
 func (o VpsOutput) Plans() VpsPlanArrayOutput {
 	return o.ApplyT(func(v *Vps) VpsPlanArrayOutput { return v.Plans }).(VpsPlanArrayOutput)
+}
+
+// Public SSH key to pre-install on your VPS - if set, then `imageId` must also be set
+func (o VpsOutput) PublicSshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vps) pulumi.StringPtrOutput { return v.PublicSshKey }).(pulumi.StringPtrOutput)
 }
 
 // The internal name of your VPS offer

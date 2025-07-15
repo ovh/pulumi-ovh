@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * // Set the reverse of an IP
  * const test = new ovh.ip.Reverse("test", {
+ *     readinessTimeoutDuration: "1m",
  *     ip: "192.0.2.0/24",
  *     ReverseIp: "192.0.2.1",
  *     ReverseValue: "example.com",
@@ -71,6 +72,10 @@ export class Reverse extends pulumi.CustomResource {
      * The IP block to which the IP belongs
      */
     public readonly ip!: pulumi.Output<string>;
+    /**
+     * The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+     */
+    public readonly readinessTimeoutDuration!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Reverse resource with the given unique name, arguments, and options.
@@ -88,6 +93,7 @@ export class Reverse extends pulumi.CustomResource {
             resourceInputs["ReverseIp"] = state ? state.ReverseIp : undefined;
             resourceInputs["ReverseValue"] = state ? state.ReverseValue : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["readinessTimeoutDuration"] = state ? state.readinessTimeoutDuration : undefined;
         } else {
             const args = argsOrState as ReverseArgs | undefined;
             if ((!args || args.ReverseIp === undefined) && !opts.urn) {
@@ -102,6 +108,7 @@ export class Reverse extends pulumi.CustomResource {
             resourceInputs["ReverseIp"] = args ? args.ReverseIp : undefined;
             resourceInputs["ReverseValue"] = args ? args.ReverseValue : undefined;
             resourceInputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["readinessTimeoutDuration"] = args ? args.readinessTimeoutDuration : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Reverse.__pulumiType, name, resourceInputs, opts);
@@ -124,6 +131,10 @@ export interface ReverseState {
      * The IP block to which the IP belongs
      */
     ip?: pulumi.Input<string>;
+    /**
+     * The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+     */
+    readinessTimeoutDuration?: pulumi.Input<string>;
 }
 
 /**
@@ -142,4 +153,8 @@ export interface ReverseArgs {
      * The IP block to which the IP belongs
      */
     ip: pulumi.Input<string>;
+    /**
+     * The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+     */
+    readinessTimeoutDuration?: pulumi.Input<string>;
 }

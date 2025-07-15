@@ -364,6 +364,13 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:       ovhResource(domainMod, "ZoneImport"),
 				ComputeID: delegateID("zone_name"),
 			},
+			"ovh_domain_zone_dynhost_login": {
+				Tok: ovhResource(domainMod, "DynhostLogin"),
+				//ComputeID: delegateID("zone_name"), // + sub_domain
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					return resource.ID(state["zone_name"].String() + "_" + state["sub_domain"].String()), nil
+				},
+			},
 			"ovh_domain_zone_record": {
 				Tok: ovhResource(domainMod, "ZoneRecord"),
 			},

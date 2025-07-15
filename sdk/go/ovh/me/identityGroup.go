@@ -40,6 +40,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// Identity groups can be imported using their `name`:
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Me/identityGroup:IdentityGroup my_identity_group name
+// ```
 type IdentityGroup struct {
 	pulumi.CustomResourceState
 
