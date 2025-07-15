@@ -23,6 +23,7 @@ __all__ = ['VpsArgs', 'Vps']
 class VpsArgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[builtins.str]] = None,
                  keymap: Optional[pulumi.Input[builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[builtins.float]] = None,
                  model: Optional[pulumi.Input['VpsModelArgs']] = None,
@@ -33,6 +34,7 @@ class VpsArgs:
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]]] = None,
+                 public_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  sla_monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  vcore: Optional[pulumi.Input[builtins.float]] = None,
@@ -40,6 +42,7 @@ class VpsArgs:
         """
         The set of arguments for constructing a Vps resource.
         :param pulumi.Input[builtins.str] display_name: Custom display name
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input['VpsModelArgs'] model: Structure describing characteristics of a VPS model
@@ -50,12 +53,15 @@ class VpsArgs:
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]] plans: Product Plan to order
+        :param pulumi.Input[builtins.str] public_ssh_key: Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
         :param pulumi.Input[builtins.str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[builtins.float] vcore: Number of vcores
         :param pulumi.Input[builtins.str] zone: OpenStask region where the VPS is located
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
         if keymap is not None:
             pulumi.set(__self__, "keymap", keymap)
         if memory_limit is not None:
@@ -76,6 +82,8 @@ class VpsArgs:
             pulumi.set(__self__, "plan_options", plan_options)
         if plans is not None:
             pulumi.set(__self__, "plans", plans)
+        if public_ssh_key is not None:
+            pulumi.set(__self__, "public_ssh_key", public_ssh_key)
         if sla_monitoring is not None:
             pulumi.set(__self__, "sla_monitoring", sla_monitoring)
         if state is not None:
@@ -96,6 +104,18 @@ class VpsArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Id of the image to install on the VPS
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "image_id", value)
 
     @property
     @pulumi.getter
@@ -218,6 +238,18 @@ class VpsArgs:
         pulumi.set(self, "plans", value)
 
     @property
+    @pulumi.getter(name="publicSshKey")
+    def public_ssh_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+        """
+        return pulumi.get(self, "public_ssh_key")
+
+    @public_ssh_key.setter
+    def public_ssh_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "public_ssh_key", value)
+
+    @property
     @pulumi.getter(name="slaMonitoring")
     def sla_monitoring(self) -> Optional[pulumi.Input[builtins.bool]]:
         return pulumi.get(self, "sla_monitoring")
@@ -269,6 +301,7 @@ class _VpsState:
                  cluster: Optional[pulumi.Input[builtins.str]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  iam: Optional[pulumi.Input['VpsIamArgs']] = None,
+                 image_id: Optional[pulumi.Input[builtins.str]] = None,
                  keymap: Optional[pulumi.Input[builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[builtins.float]] = None,
                  model: Optional[pulumi.Input['VpsModelArgs']] = None,
@@ -280,6 +313,7 @@ class _VpsState:
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]]] = None,
+                 public_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
                  sla_monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
@@ -290,6 +324,7 @@ class _VpsState:
         :param pulumi.Input[builtins.str] cluster: VPS cluster
         :param pulumi.Input[builtins.str] display_name: Custom display name
         :param pulumi.Input['VpsIamArgs'] iam: IAM resource information
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input['VpsModelArgs'] model: Structure describing characteristics of a VPS model
@@ -301,6 +336,7 @@ class _VpsState:
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['VpsPlanArgs']]] plans: Product Plan to order
+        :param pulumi.Input[builtins.str] public_ssh_key: Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
         :param pulumi.Input[builtins.str] service_name: The internal name of your VPS offer
         :param pulumi.Input[builtins.str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[builtins.float] vcore: Number of vcores
@@ -312,6 +348,8 @@ class _VpsState:
             pulumi.set(__self__, "display_name", display_name)
         if iam is not None:
             pulumi.set(__self__, "iam", iam)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
         if keymap is not None:
             pulumi.set(__self__, "keymap", keymap)
         if memory_limit is not None:
@@ -334,6 +372,8 @@ class _VpsState:
             pulumi.set(__self__, "plan_options", plan_options)
         if plans is not None:
             pulumi.set(__self__, "plans", plans)
+        if public_ssh_key is not None:
+            pulumi.set(__self__, "public_ssh_key", public_ssh_key)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if sla_monitoring is not None:
@@ -380,6 +420,18 @@ class _VpsState:
     @iam.setter
     def iam(self, value: Optional[pulumi.Input['VpsIamArgs']]):
         pulumi.set(self, "iam", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Id of the image to install on the VPS
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "image_id", value)
 
     @property
     @pulumi.getter
@@ -514,6 +566,18 @@ class _VpsState:
         pulumi.set(self, "plans", value)
 
     @property
+    @pulumi.getter(name="publicSshKey")
+    def public_ssh_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+        """
+        return pulumi.get(self, "public_ssh_key")
+
+    @public_ssh_key.setter
+    def public_ssh_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "public_ssh_key", value)
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -578,6 +642,7 @@ class Vps(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[builtins.str]] = None,
                  keymap: Optional[pulumi.Input[builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[builtins.float]] = None,
                  model: Optional[pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']]] = None,
@@ -588,6 +653,7 @@ class Vps(pulumi.CustomResource):
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]]] = None,
+                 public_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  sla_monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  vcore: Optional[pulumi.Input[builtins.float]] = None,
@@ -599,6 +665,7 @@ class Vps(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: Custom display name
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
@@ -609,6 +676,7 @@ class Vps(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]] plans: Product Plan to order
+        :param pulumi.Input[builtins.str] public_ssh_key: Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
         :param pulumi.Input[builtins.str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[builtins.float] vcore: Number of vcores
         :param pulumi.Input[builtins.str] zone: OpenStask region where the VPS is located
@@ -638,6 +706,7 @@ class Vps(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[builtins.str]] = None,
                  keymap: Optional[pulumi.Input[builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[builtins.float]] = None,
                  model: Optional[pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']]] = None,
@@ -648,6 +717,7 @@ class Vps(pulumi.CustomResource):
                  ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]]] = None,
                  plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]]] = None,
+                 public_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
                  sla_monitoring: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  vcore: Optional[pulumi.Input[builtins.float]] = None,
@@ -662,6 +732,7 @@ class Vps(pulumi.CustomResource):
             __props__ = VpsArgs.__new__(VpsArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["image_id"] = image_id
             __props__.__dict__["keymap"] = keymap
             __props__.__dict__["memory_limit"] = memory_limit
             __props__.__dict__["model"] = model
@@ -672,6 +743,7 @@ class Vps(pulumi.CustomResource):
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
             __props__.__dict__["plan_options"] = plan_options
             __props__.__dict__["plans"] = plans
+            __props__.__dict__["public_ssh_key"] = public_ssh_key
             __props__.__dict__["sla_monitoring"] = sla_monitoring
             __props__.__dict__["state"] = state
             __props__.__dict__["vcore"] = vcore
@@ -693,6 +765,7 @@ class Vps(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[builtins.str]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             iam: Optional[pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']]] = None,
+            image_id: Optional[pulumi.Input[builtins.str]] = None,
             keymap: Optional[pulumi.Input[builtins.str]] = None,
             memory_limit: Optional[pulumi.Input[builtins.float]] = None,
             model: Optional[pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']]] = None,
@@ -704,6 +777,7 @@ class Vps(pulumi.CustomResource):
             ovh_subsidiary: Optional[pulumi.Input[builtins.str]] = None,
             plan_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]]] = None,
             plans: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]]] = None,
+            public_ssh_key: Optional[pulumi.Input[builtins.str]] = None,
             service_name: Optional[pulumi.Input[builtins.str]] = None,
             sla_monitoring: Optional[pulumi.Input[builtins.bool]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
@@ -719,6 +793,7 @@ class Vps(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cluster: VPS cluster
         :param pulumi.Input[builtins.str] display_name: Custom display name
         :param pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']] iam: IAM resource information
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
@@ -730,6 +805,7 @@ class Vps(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json](https://eu.api.ovh.com/console-preview/?section=%2Fme&branch=v1#get-/me)
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanOptionArgs', 'VpsPlanOptionArgsDict']]]] plan_options: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpsPlanArgs', 'VpsPlanArgsDict']]]] plans: Product Plan to order
+        :param pulumi.Input[builtins.str] public_ssh_key: Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
         :param pulumi.Input[builtins.str] service_name: The internal name of your VPS offer
         :param pulumi.Input[builtins.str] state: State of the VPS (backuping┃installing┃maintenance┃rebooting┃rescued┃running┃stopped┃stopping┃upgrading)
         :param pulumi.Input[builtins.float] vcore: Number of vcores
@@ -742,6 +818,7 @@ class Vps(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["iam"] = iam
+        __props__.__dict__["image_id"] = image_id
         __props__.__dict__["keymap"] = keymap
         __props__.__dict__["memory_limit"] = memory_limit
         __props__.__dict__["model"] = model
@@ -753,6 +830,7 @@ class Vps(pulumi.CustomResource):
         __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
         __props__.__dict__["plan_options"] = plan_options
         __props__.__dict__["plans"] = plans
+        __props__.__dict__["public_ssh_key"] = public_ssh_key
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["sla_monitoring"] = sla_monitoring
         __props__.__dict__["state"] = state
@@ -783,6 +861,14 @@ class Vps(pulumi.CustomResource):
         IAM resource information
         """
         return pulumi.get(self, "iam")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Id of the image to install on the VPS
+        """
+        return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter
@@ -871,6 +957,14 @@ class Vps(pulumi.CustomResource):
         Product Plan to order
         """
         return pulumi.get(self, "plans")
+
+    @property
+    @pulumi.getter(name="publicSshKey")
+    def public_ssh_key(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+        """
+        return pulumi.get(self, "public_ssh_key")
 
     @property
     @pulumi.getter(name="serviceName")

@@ -9,6 +9,7 @@ import typing
 from .cloud_project_containerregistry_iam import *
 from .cloud_project_database_valkey_user import *
 from .cloud_project_ssh_key import *
+from .domain_zone_dynhost_record import *
 from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
 from .get_cloud_project_rancher_capabilities_plan import *
@@ -23,11 +24,17 @@ from .get_ovhcloud_connect_config_pops import *
 from .get_ovhcloud_connect_datacenters import *
 from .get_server import *
 from .get_servers import *
+from .get_storage_efs import *
+from .get_storage_efs_share_access_path import *
+from .get_storage_efs_share_access_paths import *
 from .get_vrack_networks import *
 from .ovhcloud_connect_pop_config import *
 from .ovhcloud_connect_pop_datacenter_config import *
 from .ovhcloud_connect_pop_datacenter_extra_config import *
 from .provider import *
+from .storage_efs_share import *
+from .storage_efs_share_acl import *
+from .storage_efs_share_snapshot import *
 from .vrack_ipv6_routed_subrange import *
 from . import outputs
 
@@ -641,6 +648,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Domain/dynhostLogin",
+  "fqn": "pulumi_ovh.domain",
+  "classes": {
+   "ovh:Domain/dynhostLogin:DynhostLogin": "DynhostLogin"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Domain/name",
   "fqn": "pulumi_ovh.domain",
   "classes": {
@@ -1129,6 +1144,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/domainZoneDynhostRecord",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": "DomainZoneDynhostRecord"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/ovhcloudConnectPopConfig",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1149,6 +1172,30 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig": "OvhcloudConnectPopDatacenterExtraConfig"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/storageEfsShare",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/storageEfsShare:StorageEfsShare": "StorageEfsShare"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/storageEfsShareAcl",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/storageEfsShareAcl:StorageEfsShareAcl": "StorageEfsShareAcl"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/storageEfsShareSnapshot",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot": "StorageEfsShareSnapshot"
   }
  },
  {

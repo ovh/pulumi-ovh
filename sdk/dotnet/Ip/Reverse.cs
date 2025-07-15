@@ -25,6 +25,7 @@ namespace Pulumi.Ovh.Ip
     ///     // Set the reverse of an IP
     ///     var test = new Ovh.Ip.Reverse("test", new()
     ///     {
+    ///         ReadinessTimeoutDuration = "1m",
     ///         Ip = "192.0.2.0/24",
     ///         ReverseIp = "192.0.2.1",
     ///         ReverseValue = "example.com",
@@ -63,6 +64,12 @@ namespace Pulumi.Ovh.Ip
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+        /// </summary>
+        [Output("readinessTimeoutDuration")]
+        public Output<string?> ReadinessTimeoutDuration { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,6 +136,12 @@ namespace Pulumi.Ovh.Ip
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+        /// </summary>
+        [Input("readinessTimeoutDuration")]
+        public Input<string>? ReadinessTimeoutDuration { get; set; }
+
         public ReverseArgs()
         {
         }
@@ -154,6 +167,12 @@ namespace Pulumi.Ovh.Ip
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
+
+        /// <summary>
+        /// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+        /// </summary>
+        [Input("readinessTimeoutDuration")]
+        public Input<string>? ReadinessTimeoutDuration { get; set; }
 
         public ReverseState()
         {

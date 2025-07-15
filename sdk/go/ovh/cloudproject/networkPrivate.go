@@ -65,6 +65,8 @@ type NetworkPrivate struct {
 	// * `regions_attributes/status` - The status of the network in the region.
 	// * `regions_attributes/openstackid` - The private network id in the region.
 	RegionsAttributes NetworkPrivateRegionsAttributeArrayOutput `pulumi:"regionsAttributes"`
+	// A map with region name as key, and region-specific openstack id as value
+	RegionsOpenstackIds pulumi.StringMapOutput `pulumi:"regionsOpenstackIds"`
 	// (Deprecated) A map representing the status of the network per region.
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -120,6 +122,8 @@ type networkPrivateState struct {
 	// * `regions_attributes/status` - The status of the network in the region.
 	// * `regions_attributes/openstackid` - The private network id in the region.
 	RegionsAttributes []NetworkPrivateRegionsAttribute `pulumi:"regionsAttributes"`
+	// A map with region name as key, and region-specific openstack id as value
+	RegionsOpenstackIds map[string]string `pulumi:"regionsOpenstackIds"`
 	// (Deprecated) A map representing the status of the network per region.
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -146,6 +150,8 @@ type NetworkPrivateState struct {
 	// * `regions_attributes/status` - The status of the network in the region.
 	// * `regions_attributes/openstackid` - The private network id in the region.
 	RegionsAttributes NetworkPrivateRegionsAttributeArrayInput
+	// A map with region name as key, and region-specific openstack id as value
+	RegionsOpenstackIds pulumi.StringMapInput
 	// (Deprecated) A map representing the status of the network per region.
 	// * `regions_status/region` - (Deprecated) The id of the region.
 	// * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -292,6 +298,11 @@ func (o NetworkPrivateOutput) Regions() pulumi.StringArrayOutput {
 // * `regions_attributes/openstackid` - The private network id in the region.
 func (o NetworkPrivateOutput) RegionsAttributes() NetworkPrivateRegionsAttributeArrayOutput {
 	return o.ApplyT(func(v *NetworkPrivate) NetworkPrivateRegionsAttributeArrayOutput { return v.RegionsAttributes }).(NetworkPrivateRegionsAttributeArrayOutput)
+}
+
+// A map with region name as key, and region-specific openstack id as value
+func (o NetworkPrivateOutput) RegionsOpenstackIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkPrivate) pulumi.StringMapOutput { return v.RegionsOpenstackIds }).(pulumi.StringMapOutput)
 }
 
 // (Deprecated) A map representing the status of the network per region.

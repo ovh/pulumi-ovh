@@ -68,6 +68,8 @@ type LookupNetworkPrivateResult struct {
 	NetworkId string `pulumi:"networkId"`
 	// Information about the private network in the openstack region
 	Regions []GetNetworkPrivateRegion `pulumi:"regions"`
+	// A map with region name as key, and region-specific openstack id as value
+	RegionsOpenstackIds map[string]string `pulumi:"regionsOpenstackIds"`
 	// ID of the public cloud project
 	ServiceName string `pulumi:"serviceName"`
 	// Status of the network
@@ -132,6 +134,11 @@ func (o LookupNetworkPrivateResultOutput) NetworkId() pulumi.StringOutput {
 // Information about the private network in the openstack region
 func (o LookupNetworkPrivateResultOutput) Regions() GetNetworkPrivateRegionArrayOutput {
 	return o.ApplyT(func(v LookupNetworkPrivateResult) []GetNetworkPrivateRegion { return v.Regions }).(GetNetworkPrivateRegionArrayOutput)
+}
+
+// A map with region name as key, and region-specific openstack id as value
+func (o LookupNetworkPrivateResultOutput) RegionsOpenstackIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNetworkPrivateResult) map[string]string { return v.RegionsOpenstackIds }).(pulumi.StringMapOutput)
 }
 
 // ID of the public cloud project

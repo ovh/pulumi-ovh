@@ -19,6 +19,16 @@ import * as utilities from "../utilities";
  *     role: "NONE",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Identity groups can be imported using their `name`:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Me/identityGroup:IdentityGroup my_identity_group name
+ * ```
  */
 export class IdentityGroup extends pulumi.CustomResource {
     /**

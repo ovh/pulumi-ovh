@@ -31,6 +31,16 @@ namespace Pulumi.Ovh.Me
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Identity groups can be imported using their `name`:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Me/identityGroup:IdentityGroup my_identity_group name
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/identityGroup:IdentityGroup")]
     public partial class IdentityGroup : global::Pulumi.CustomResource

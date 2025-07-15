@@ -30,9 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Set the reverse of an IP
 //			_, err := ip.NewReverse(ctx, "test", &ip.ReverseArgs{
-//				Ip:           pulumi.String("192.0.2.0/24"),
-//				ReverseIp:    pulumi.String("192.0.2.1"),
-//				ReverseValue: pulumi.String("example.com"),
+//				ReadinessTimeoutDuration: pulumi.String("1m"),
+//				Ip:                       pulumi.String("192.0.2.0/24"),
+//				ReverseIp:                pulumi.String("192.0.2.1"),
+//				ReverseValue:             pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,6 +62,8 @@ type Reverse struct {
 	ReverseValue pulumi.StringOutput `pulumi:"ReverseValue"`
 	// The IP block to which the IP belongs
 	Ip pulumi.StringOutput `pulumi:"ip"`
+	// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+	ReadinessTimeoutDuration pulumi.StringPtrOutput `pulumi:"readinessTimeoutDuration"`
 }
 
 // NewReverse registers a new resource with the given unique name, arguments, and options.
@@ -108,6 +111,8 @@ type reverseState struct {
 	ReverseValue *string `pulumi:"ReverseValue"`
 	// The IP block to which the IP belongs
 	Ip *string `pulumi:"ip"`
+	// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+	ReadinessTimeoutDuration *string `pulumi:"readinessTimeoutDuration"`
 }
 
 type ReverseState struct {
@@ -117,6 +122,8 @@ type ReverseState struct {
 	ReverseValue pulumi.StringPtrInput
 	// The IP block to which the IP belongs
 	Ip pulumi.StringPtrInput
+	// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+	ReadinessTimeoutDuration pulumi.StringPtrInput
 }
 
 func (ReverseState) ElementType() reflect.Type {
@@ -130,6 +137,8 @@ type reverseArgs struct {
 	ReverseValue string `pulumi:"ReverseValue"`
 	// The IP block to which the IP belongs
 	Ip string `pulumi:"ip"`
+	// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+	ReadinessTimeoutDuration *string `pulumi:"readinessTimeoutDuration"`
 }
 
 // The set of arguments for constructing a Reverse resource.
@@ -140,6 +149,8 @@ type ReverseArgs struct {
 	ReverseValue pulumi.StringInput
 	// The IP block to which the IP belongs
 	Ip pulumi.StringInput
+	// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+	ReadinessTimeoutDuration pulumi.StringPtrInput
 }
 
 func (ReverseArgs) ElementType() reflect.Type {
@@ -242,6 +253,11 @@ func (o ReverseOutput) ReverseValue() pulumi.StringOutput {
 // The IP block to which the IP belongs
 func (o ReverseOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reverse) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+func (o ReverseOutput) ReadinessTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Reverse) pulumi.StringPtrOutput { return v.ReadinessTimeoutDuration }).(pulumi.StringPtrOutput)
 }
 
 type ReverseArrayOutput struct{ *pulumi.OutputState }

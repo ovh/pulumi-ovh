@@ -34,6 +34,8 @@ __all__ = [
     'GetOvhcloudConnectConfigPopsPopConfigResult',
     'GetOvhcloudConnectDatacentersDatacenterResult',
     'GetServerVniResult',
+    'GetStorageEfsIamResult',
+    'GetStorageEfsShareAccessPathsAccessPathResult',
 ]
 
 @pulumi.output_type
@@ -891,5 +893,96 @@ class GetServerVniResult(dict):
         vRack name
         """
         return pulumi.get(self, "vrack")
+
+
+@pulumi.output_type
+class GetStorageEfsIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: builtins.str,
+                 id: builtins.str,
+                 tags: Mapping[str, builtins.str],
+                 urn: builtins.str):
+        """
+        :param builtins.str display_name: Resource display name
+        :param builtins.str id: Unique identifier of the resource
+        :param Mapping[str, builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param builtins.str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, builtins.str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def urn(self) -> builtins.str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetStorageEfsShareAccessPathsAccessPathResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 path: builtins.str,
+                 preferred: builtins.bool):
+        """
+        :param builtins.str id: Access path ID
+        :param builtins.str path: Access path
+        :param builtins.bool preferred: Is this the preferred access path?
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "preferred", preferred)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Access path ID
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> builtins.str:
+        """
+        Access path
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def preferred(self) -> builtins.bool:
+        """
+        Is this the preferred access path?
+        """
+        return pulumi.get(self, "preferred")
 
 

@@ -10,6 +10,11 @@ export type DSRecords = import("./dsrecords").DSRecords;
 export const DSRecords: typeof import("./dsrecords").DSRecords = null as any;
 utilities.lazyLoad(exports, ["DSRecords"], () => require("./dsrecords"));
 
+export { DynhostLoginArgs, DynhostLoginState } from "./dynhostLogin";
+export type DynhostLogin = import("./dynhostLogin").DynhostLogin;
+export const DynhostLogin: typeof import("./dynhostLogin").DynhostLogin = null as any;
+utilities.lazyLoad(exports, ["DynhostLogin"], () => require("./dynhostLogin"));
+
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
@@ -62,6 +67,8 @@ const _module = {
         switch (type) {
             case "ovh:Domain/dSRecords:DSRecords":
                 return new DSRecords(name, <any>undefined, { urn })
+            case "ovh:Domain/dynhostLogin:DynhostLogin":
+                return new DynhostLogin(name, <any>undefined, { urn })
             case "ovh:Domain/name:Name":
                 return new Name(name, <any>undefined, { urn })
             case "ovh:Domain/nameServers:NameServers":
@@ -82,6 +89,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "Domain/dSRecords", _module)
+pulumi.runtime.registerResourceModule("ovh", "Domain/dynhostLogin", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/name", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/nameServers", _module)
 pulumi.runtime.registerResourceModule("ovh", "Domain/zone", _module)
