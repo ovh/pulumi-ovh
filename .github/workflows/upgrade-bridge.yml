@@ -49,6 +49,11 @@ on:
         required: false
         type: boolean
         default: false
+      patch-release:
+        description: Whether to create a patch release
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -58,20 +63,9 @@ permissions:
 env:
   GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-  PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-  PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  PYPI_USERNAME: __token__
-  SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
-  SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
-  SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
   TF_APPEND_USER_AGENT: pulumi
 
 jobs:
@@ -89,7 +83,7 @@ jobs:
         tools: pulumictl, pulumicli, dotnet, go, nodejs, python, java
     - name: Call upgrade provider action
       if: github.event_name == 'workflow_dispatch'
-      uses: pulumi/pulumi-upgrade-provider-action@ff5cb5907aecba099e61146c4d4d074c7fd6ca99 # v0.0.15
+      uses: pulumi/pulumi-upgrade-provider-action@3c670a7cb92732324c8ccc17f7f9ef9dfca126d0 # v0.0.17
       with:
         kind: ${{ inputs.kind }}
         email: bot@pulumi.com
@@ -100,9 +94,10 @@ jobs:
         pr-reviewers: ${{ inputs.pr-reviewers }}
         pr-description: ${{ inputs.pr-description }}
         pr-title-prefix: ${{ inputs.pr-title-prefix }}
+        patch-release: ${{ github.event.client_payload.patch-release }}
     - name: Call upgrade provider action
       if: github.event_name == 'repository_dispatch'
-      uses: pulumi/pulumi-upgrade-provider-action@ff5cb5907aecba099e61146c4d4d074c7fd6ca99 # v0.0.15
+      uses: pulumi/pulumi-upgrade-provider-action@3c670a7cb92732324c8ccc17f7f9ef9dfca126d0 # v0.0.17
       with:
         kind: ${{ github.event.client_payload.kind || 'bridge' }}
         email: bot@pulumi.com
@@ -113,3 +108,4 @@ jobs:
         pr-reviewers: ${{ github.event.client_payload.pr-reviewers }}
         pr-description: ${{ github.event.client_payload.pr-description }}
         pr-title-prefix: ${{ github.event.client_payload.pr-title-prefix }}
+        patch-release: ${{ github.event.client_payload.patch-release }}
