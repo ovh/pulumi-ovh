@@ -20,13 +20,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// <summary>
         /// Tags filter
         /// </summary>
-        public readonly ImmutableArray<Outputs.StorageReplicationRuleFilterTag> Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private StorageReplicationRuleFilter(
             string? prefix,
 
-            ImmutableArray<Outputs.StorageReplicationRuleFilterTag> tags)
+            ImmutableDictionary<string, string>? tags)
         {
             Prefix = prefix;
             Tags = tags;

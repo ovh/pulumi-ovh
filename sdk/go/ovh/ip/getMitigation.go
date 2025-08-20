@@ -60,9 +60,8 @@ type LookupMitigationArgs struct {
 // A collection of values returned by getMitigation.
 type LookupMitigationResult struct {
 	// Set on true if the IP is on auto-mitigation
-	Auto bool `pulumi:"auto"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Auto bool   `pulumi:"auto"`
+	Id   string `pulumi:"id"`
 	// The IP or the CIDR
 	Ip string `pulumi:"ip"`
 	// IPv4 address
@@ -114,7 +113,6 @@ func (o LookupMitigationResultOutput) Auto() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMitigationResult) bool { return v.Auto }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupMitigationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMitigationResult) string { return v.Id }).(pulumi.StringOutput)
 }

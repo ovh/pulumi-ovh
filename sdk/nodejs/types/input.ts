@@ -1140,6 +1140,21 @@ export namespace CloudProject {
         value: pulumi.Input<string>;
     }
 
+    export interface ProjectRegionService {
+        /**
+         * Endpoint URL
+         */
+        endpoint?: pulumi.Input<string>;
+        /**
+         * Service name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Service status
+         */
+        status?: pulumi.Input<string>;
+    }
+
     export interface RancherCurrentState {
         /**
          * Bootstrap password of the managed Rancher service, returned only on creation
@@ -1421,18 +1436,7 @@ export namespace CloudProject {
         /**
          * Tags filter
          */
-        tags?: pulumi.Input<pulumi.Input<inputs.CloudProject.StorageReplicationRuleFilterTag>[]>;
-    }
-
-    export interface StorageReplicationRuleFilterTag {
-        /**
-         * Tag key
-         */
-        key: pulumi.Input<string>;
-        /**
-         * Tag value
-         */
-        value: pulumi.Input<string>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface StorageVersioning {
@@ -3066,7 +3070,7 @@ export namespace Vps {
 
     export interface VpsPlanOption {
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
          */
         configurations?: pulumi.Input<pulumi.Input<inputs.Vps.VpsPlanOptionConfiguration>[]>;
         /**

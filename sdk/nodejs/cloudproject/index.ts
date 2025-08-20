@@ -395,6 +395,11 @@ export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
+export { ProjectRegionArgs, ProjectRegionState } from "./projectRegion";
+export type ProjectRegion = import("./projectRegion").ProjectRegion;
+export const ProjectRegion: typeof import("./projectRegion").ProjectRegion = null as any;
+utilities.lazyLoad(exports, ["ProjectRegion"], () => require("./projectRegion"));
+
 export { RancherArgs, RancherState } from "./rancher";
 export type Rancher = import("./rancher").Rancher;
 export const Rancher: typeof import("./rancher").Rancher = null as any;
@@ -497,6 +502,8 @@ const _module = {
                 return new NetworkPrivateSubnetV2(name, <any>undefined, { urn })
             case "ovh:CloudProject/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "ovh:CloudProject/projectRegion:ProjectRegion":
+                return new ProjectRegion(name, <any>undefined, { urn })
             case "ovh:CloudProject/rancher:Rancher":
                 return new Rancher(name, <any>undefined, { urn })
             case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
@@ -545,6 +552,7 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivate", _mod
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnet", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/networkPrivateSubnetV2", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/project", _module)
+pulumi.runtime.registerResourceModule("ovh", "CloudProject/projectRegion", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/rancher", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionLoadBalancerLogSubscription", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProject/regionNetwork", _module)

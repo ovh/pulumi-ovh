@@ -16,7 +16,7 @@ namespace Pulumi.Ovh.Vps.Inputs
         private InputList<Inputs.VpsPlanOptionConfigurationGetArgs>? _configurations;
 
         /// <summary>
-        /// Representation of a configuration item for personalizing product
+        /// Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
         /// </summary>
         public InputList<Inputs.VpsPlanOptionConfigurationGetArgs> Configurations
         {

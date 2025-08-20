@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myIam, err := ovh.NewCloudProjectContainerregistryIam(ctx, "my_iam", &ovh.CloudProjectContainerregistryIamArgs{
+//			registryIam, err := ovh.NewCloudProjectContainerregistryIam(ctx, "registry_iam", &ovh.CloudProjectContainerregistryIamArgs{
 //				ServiceName: pulumi.String("XXXXXX"),
 //				RegistryId:  pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
 //				DeleteUsers: pulumi.Bool(false),
@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("iam-enabled", myIam.IamEnabled)
+//			ctx.Export("iamEnabled", registryIam.IamEnabled)
 //			return nil
 //		})
 //	}

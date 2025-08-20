@@ -44,7 +44,7 @@ namespace Pulumi.Ovh.IpLoadBalancing
     ///         OptionsPlanCode = "iplb-zone-lb1-rbx",
     ///     });
     /// 
-    ///     var iplb_lb1 = new Ovh.IpLoadBalancing.LoadBalancer("iplb-lb1", new()
+    ///     var iplbLb1 = new Ovh.IpLoadBalancing.LoadBalancer("iplb_lb1", new()
     ///     {
     ///         OvhSubsidiary = mycart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
     ///         DisplayName = "my ip loadbalancing",

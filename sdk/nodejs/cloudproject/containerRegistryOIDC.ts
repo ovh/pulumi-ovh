@@ -112,7 +112,7 @@ export class ContainerRegistryOIDC extends pulumi.CustomResource {
     /**
      * Set it to `false` if your OIDC server is hosted via self-signed certificate.
      */
-    public readonly oidcVerifyCert!: pulumi.Output<boolean | undefined>;
+    public readonly oidcVerifyCert!: pulumi.Output<boolean>;
     /**
      * The ID of the Managed Private Registry. **Changing this value recreates the resource.**
      */

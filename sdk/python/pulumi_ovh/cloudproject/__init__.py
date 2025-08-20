@@ -84,6 +84,7 @@ from .network_private import *
 from .network_private_subnet import *
 from .network_private_subnet_v2 import *
 from .project import *
+from .project_region import *
 from .rancher import *
 from .region_load_balancer_log_subscription import *
 from .region_network import *

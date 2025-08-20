@@ -766,7 +766,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oidcVerifyCert")
-    def oidc_verify_cert(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def oidc_verify_cert(self) -> pulumi.Output[builtins.bool]:
         """
         Set it to `false` if your OIDC server is hosted via self-signed certificate.
         """

@@ -1044,7 +1044,7 @@ func (o VpsPlanConfigurationArrayOutput) Index(i pulumi.IntInput) VpsPlanConfigu
 }
 
 type VpsPlanOption struct {
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
 	Configurations []VpsPlanOptionConfiguration `pulumi:"configurations"`
 	// duration
 	Duration string `pulumi:"duration"`
@@ -1068,7 +1068,7 @@ type VpsPlanOptionInput interface {
 }
 
 type VpsPlanOptionArgs struct {
-	// Representation of a configuration item for personalizing product
+	// Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
 	Configurations VpsPlanOptionConfigurationArrayInput `pulumi:"configurations"`
 	// duration
 	Duration pulumi.StringInput `pulumi:"duration"`
@@ -1131,7 +1131,7 @@ func (o VpsPlanOptionOutput) ToVpsPlanOptionOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Representation of a configuration item for personalizing product
+// Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
 func (o VpsPlanOptionOutput) Configurations() VpsPlanOptionConfigurationArrayOutput {
 	return o.ApplyT(func(v VpsPlanOption) []VpsPlanOptionConfiguration { return v.Configurations }).(VpsPlanOptionConfigurationArrayOutput)
 }

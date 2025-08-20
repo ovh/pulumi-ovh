@@ -7,29 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Ovh.CloudProject.Outputs
+namespace Pulumi.Ovh.Outputs
 {
 
     [OutputType]
-    public sealed class StorageReplicationRuleFilterTag
+    public sealed class GetCloudProjectGatewayExternalInformationIpResult
     {
         /// <summary>
-        /// Tag key
+        /// External IP of the gateway
         /// </summary>
-        public readonly string Key;
+        public readonly string Ip;
         /// <summary>
-        /// Tag value
+        /// Subnet ID of the ip
         /// </summary>
-        public readonly string Value;
+        public readonly string SubnetId;
 
         [OutputConstructor]
-        private StorageReplicationRuleFilterTag(
-            string key,
+        private GetCloudProjectGatewayExternalInformationIpResult(
+            string ip,
 
-            string value)
+            string subnetId)
         {
-            Key = key;
-            Value = value;
+            Ip = ip;
+            SubnetId = subnetId;
         }
     }
 }

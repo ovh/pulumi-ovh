@@ -123,7 +123,7 @@ namespace Pulumi.Ovh.CloudProject
         /// Set it to `false` if your OIDC server is hosted via self-signed certificate.
         /// </summary>
         [Output("oidcVerifyCert")]
-        public Output<bool?> OidcVerifyCert { get; private set; } = null!;
+        public Output<bool> OidcVerifyCert { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Managed Private Registry. **Changing this value recreates the resource.**

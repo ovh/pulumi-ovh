@@ -49,7 +49,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Registry name
+        /// User name
         /// </summary>
         [Output("login")]
         public Output<string> Login { get; private set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// User name
+        /// User name (same as `login`)
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Registry name
+        /// User name
         /// </summary>
         [Input("login", required: true)]
         public Input<string> Login { get; set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Registry name
+        /// User name
         /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// User name
+        /// User name (same as `login`)
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

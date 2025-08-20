@@ -42,7 +42,7 @@ class VpsArgs:
         """
         The set of arguments for constructing a Vps resource.
         :param pulumi.Input[builtins.str] display_name: Custom display name
-        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input['VpsModelArgs'] model: Structure describing characteristics of a VPS model
@@ -109,7 +109,7 @@ class VpsArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Id of the image to install on the VPS
+        Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         """
         return pulumi.get(self, "image_id")
 
@@ -324,7 +324,7 @@ class _VpsState:
         :param pulumi.Input[builtins.str] cluster: VPS cluster
         :param pulumi.Input[builtins.str] display_name: Custom display name
         :param pulumi.Input['VpsIamArgs'] iam: IAM resource information
-        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input['VpsModelArgs'] model: Structure describing characteristics of a VPS model
@@ -425,7 +425,7 @@ class _VpsState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Id of the image to install on the VPS
+        Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         """
         return pulumi.get(self, "image_id")
 
@@ -665,7 +665,7 @@ class Vps(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: Custom display name
-        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
@@ -793,7 +793,7 @@ class Vps(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cluster: VPS cluster
         :param pulumi.Input[builtins.str] display_name: Custom display name
         :param pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']] iam: IAM resource information
-        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS
+        :param pulumi.Input[builtins.str] image_id: Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[builtins.float] memory_limit: RAM of this VPS
         :param pulumi.Input[Union['VpsModelArgs', 'VpsModelArgsDict']] model: Structure describing characteristics of a VPS model
@@ -866,7 +866,7 @@ class Vps(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Id of the image to install on the VPS
+        Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         """
         return pulumi.get(self, "image_id")
 

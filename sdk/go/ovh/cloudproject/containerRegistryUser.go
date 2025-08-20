@@ -54,7 +54,7 @@ type ContainerRegistryUser struct {
 
 	// User email
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Registry name
+	// User name
 	Login pulumi.StringOutput `pulumi:"login"`
 	// (Sensitive) User password
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -62,7 +62,7 @@ type ContainerRegistryUser struct {
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// User name
+	// User name (same as `login`)
 	User pulumi.StringOutput `pulumi:"user"`
 }
 
@@ -111,7 +111,7 @@ func GetContainerRegistryUser(ctx *pulumi.Context,
 type containerRegistryUserState struct {
 	// User email
 	Email *string `pulumi:"email"`
-	// Registry name
+	// User name
 	Login *string `pulumi:"login"`
 	// (Sensitive) User password
 	Password *string `pulumi:"password"`
@@ -119,14 +119,14 @@ type containerRegistryUserState struct {
 	RegistryId *string `pulumi:"registryId"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
-	// User name
+	// User name (same as `login`)
 	User *string `pulumi:"user"`
 }
 
 type ContainerRegistryUserState struct {
 	// User email
 	Email pulumi.StringPtrInput
-	// Registry name
+	// User name
 	Login pulumi.StringPtrInput
 	// (Sensitive) User password
 	Password pulumi.StringPtrInput
@@ -134,7 +134,7 @@ type ContainerRegistryUserState struct {
 	RegistryId pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
-	// User name
+	// User name (same as `login`)
 	User pulumi.StringPtrInput
 }
 
@@ -145,7 +145,7 @@ func (ContainerRegistryUserState) ElementType() reflect.Type {
 type containerRegistryUserArgs struct {
 	// User email
 	Email string `pulumi:"email"`
-	// Registry name
+	// User name
 	Login string `pulumi:"login"`
 	// Registry ID
 	RegistryId string `pulumi:"registryId"`
@@ -157,7 +157,7 @@ type containerRegistryUserArgs struct {
 type ContainerRegistryUserArgs struct {
 	// User email
 	Email pulumi.StringInput
-	// Registry name
+	// User name
 	Login pulumi.StringInput
 	// Registry ID
 	RegistryId pulumi.StringInput
@@ -257,7 +257,7 @@ func (o ContainerRegistryUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// Registry name
+// User name
 func (o ContainerRegistryUserOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.Login }).(pulumi.StringOutput)
 }
@@ -277,7 +277,7 @@ func (o ContainerRegistryUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User name
+// User name (same as `login`)
 func (o ContainerRegistryUserOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryUser) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
 }

@@ -27,6 +27,47 @@ export interface GetCloudProjectFlavorPlanCodes {
     monthly: string;
 }
 
+export interface GetCloudProjectGatewayExternalInformation {
+    /**
+     * External ips of the gateway
+     */
+    ips: outputs.GetCloudProjectGatewayExternalInformationIp[];
+    /**
+     * External network ID of the gateway
+     */
+    networkId: string;
+}
+
+export interface GetCloudProjectGatewayExternalInformationIp {
+    /**
+     * External IP of the gateway
+     */
+    ip: string;
+    /**
+     * Subnet ID of the ip
+     */
+    subnetId: string;
+}
+
+export interface GetCloudProjectGatewayInterface {
+    /**
+     * ID of the interface
+     */
+    id: string;
+    /**
+     * IP of the interface
+     */
+    ip: string;
+    /**
+     * Network ID of the interface
+     */
+    networkId: string;
+    /**
+     * Subnet ID of the interface
+     */
+    subnetId: string;
+}
+
 export interface GetCloudProjectRancherCapabilitiesPlanPlan {
     /**
      * Cause for an unavailability
@@ -2739,6 +2780,21 @@ export namespace CloudProject {
         value: string;
     }
 
+    export interface ProjectRegionService {
+        /**
+         * Endpoint URL
+         */
+        endpoint: string;
+        /**
+         * Service name
+         */
+        name: string;
+        /**
+         * Service status
+         */
+        status: string;
+    }
+
     export interface RancherCurrentState {
         /**
          * Bootstrap password of the managed Rancher service, returned only on creation
@@ -3020,18 +3076,7 @@ export namespace CloudProject {
         /**
          * Tags filter
          */
-        tags: outputs.CloudProject.StorageReplicationRuleFilterTag[];
-    }
-
-    export interface StorageReplicationRuleFilterTag {
-        /**
-         * Tag key
-         */
-        key: string;
-        /**
-         * Tag value
-         */
-        value: string;
+        tags: {[key: string]: string};
     }
 
     export interface StorageVersioning {
@@ -6014,7 +6059,7 @@ export namespace Vps {
 
     export interface VpsPlanOption {
         /**
-         * Representation of a configuration item for personalizing product
+         * Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
          */
         configurations?: outputs.Vps.VpsPlanOptionConfiguration[];
         /**

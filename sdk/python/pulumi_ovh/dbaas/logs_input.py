@@ -604,7 +604,7 @@ class LogsInput(pulumi.CustomResource):
                 "logstash": {
                     "input_section": \"\"\"  beats {
             port => 6514
-            ssl => true
+            ssl_enabled => true
             ssl_certificate => "/etc/ssl/private/server.crt"
             ssl_key => "/etc/ssl/private/server.key"
           }
@@ -662,7 +662,7 @@ class LogsInput(pulumi.CustomResource):
                 "logstash": {
                     "input_section": \"\"\"  beats {
             port => 6514
-            ssl => true
+            ssl_enabled => true
             ssl_certificate => "/etc/ssl/private/server.crt"
             ssl_key => "/etc/ssl/private/server.key"
           }

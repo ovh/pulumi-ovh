@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iploadbalancing.NewLoadBalancer(ctx, "iplb-lb1", &iploadbalancing.LoadBalancerArgs{
+//			_, err = iploadbalancing.NewLoadBalancer(ctx, "iplb_lb1", &iploadbalancing.LoadBalancerArgs{
 //				OvhSubsidiary: pulumi.String(mycart.OvhSubsidiary),
 //				DisplayName:   pulumi.String("my ip loadbalancing"),
 //				Plan: &iploadbalancing.LoadBalancerPlanArgs{

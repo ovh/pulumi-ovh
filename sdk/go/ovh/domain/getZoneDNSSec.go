@@ -56,7 +56,6 @@ type LookupZoneDNSSecArgs struct {
 
 // A collection of values returned by getZoneDNSSec.
 type LookupZoneDNSSecResult struct {
-	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
 	Status   string `pulumi:"status"`
@@ -97,7 +96,6 @@ func (o LookupZoneDNSSecResultOutput) ToLookupZoneDNSSecResultOutputWithContext(
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupZoneDNSSecResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDNSSecResult) string { return v.Id }).(pulumi.StringOutput)
 }

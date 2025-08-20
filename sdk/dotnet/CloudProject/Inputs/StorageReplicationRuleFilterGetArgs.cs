@@ -19,14 +19,14 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string>? Prefix { get; set; }
 
         [Input("tags")]
-        private InputList<Inputs.StorageReplicationRuleFilterTagGetArgs>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Tags filter
         /// </summary>
-        public InputList<Inputs.StorageReplicationRuleFilterTagGetArgs> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputList<Inputs.StorageReplicationRuleFilterTagGetArgs>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

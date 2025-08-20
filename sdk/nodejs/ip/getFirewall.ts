@@ -46,9 +46,6 @@ export interface GetFirewallArgs {
  */
 export interface GetFirewallResult {
     readonly enabled: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The IP or the CIDR

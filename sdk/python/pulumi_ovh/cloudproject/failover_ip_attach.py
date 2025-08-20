@@ -302,7 +302,7 @@ class FailoverIpAttach(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_failover_ip = ovh.cloud_project.FailoverIpAttach("my_failover_ip",
+        failover_ip = ovh.cloud_project.FailoverIpAttach("failover_ip",
             service_name="XXXXXX",
             ip="XXXXXX",
             routed_to="XXXXXX")
@@ -333,7 +333,7 @@ class FailoverIpAttach(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_failover_ip = ovh.cloud_project.FailoverIpAttach("my_failover_ip",
+        failover_ip = ovh.cloud_project.FailoverIpAttach("failover_ip",
             service_name="XXXXXX",
             ip="XXXXXX",
             routed_to="XXXXXX")

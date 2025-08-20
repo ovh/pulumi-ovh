@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewFailoverIpAttach(ctx, "my_failover_ip", &cloudproject.FailoverIpAttachArgs{
+//			_, err := cloudproject.NewFailoverIpAttach(ctx, "failover_ip", &cloudproject.FailoverIpAttachArgs{
 //				ServiceName: pulumi.String("XXXXXX"),
 //				Ip:          pulumi.String("XXXXXX"),
 //				RoutedTo:    pulumi.String("XXXXXX"),

@@ -113,7 +113,7 @@ class VrackDedicatedCloud(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud",
+        vrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud("vrack_dedicated_cloud",
             service_name="<vRack service name>",
             dedicated_cloud="<Dedicated Cloud service name>")
         ```
@@ -148,7 +148,7 @@ class VrackDedicatedCloud(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud",
+        vrack_dedicated_cloud = ovh.vrack.VrackDedicatedCloud("vrack_dedicated_cloud",
             service_name="<vRack service name>",
             dedicated_cloud="<Dedicated Cloud service name>")
         ```

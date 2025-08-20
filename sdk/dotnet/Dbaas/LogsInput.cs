@@ -54,7 +54,7 @@ namespace Pulumi.Ovh.Dbaas
     ///             {
     ///                 InputSection = @"  beats {
     ///     port =&gt; 6514
-    ///     ssl =&gt; true
+    ///     ssl_enabled =&gt; true
     ///     ssl_certificate =&gt; ""/etc/ssl/private/server.crt""
     ///     ssl_key =&gt; ""/etc/ssl/private/server.key""
     ///   }

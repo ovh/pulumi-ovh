@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrack_dedicatedCloud = new ovh.vrack.VrackDedicatedCloud("vrack-dedicatedCloud", {
+ * const vrackDedicatedCloud = new ovh.vrack.VrackDedicatedCloud("vrack_dedicated_cloud", {
  *     serviceName: "<vRack service name>",
  *     dedicatedCloud: "<Dedicated Cloud service name>",
  * });

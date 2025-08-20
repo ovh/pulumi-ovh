@@ -159,11 +159,11 @@ class CloudProjectContainerregistryIam(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_iam = ovh.CloudProjectContainerregistryIam("my_iam",
+        registry_iam = ovh.CloudProjectContainerregistryIam("registry_iam",
             service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             delete_users=False)
-        pulumi.export("iam-enabled", my_iam.iam_enabled)
+        pulumi.export("iamEnabled", registry_iam.iam_enabled)
         ```
 
         ## Import
@@ -197,11 +197,11 @@ class CloudProjectContainerregistryIam(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        my_iam = ovh.CloudProjectContainerregistryIam("my_iam",
+        registry_iam = ovh.CloudProjectContainerregistryIam("registry_iam",
             service_name="XXXXXX",
             registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
             delete_users=False)
-        pulumi.export("iam-enabled", my_iam.iam_enabled)
+        pulumi.export("iamEnabled", registry_iam.iam_enabled)
         ```
 
         ## Import

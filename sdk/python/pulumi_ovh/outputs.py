@@ -19,6 +19,9 @@ from . import outputs
 __all__ = [
     'GetCloudProjectFlavorCapabilityResult',
     'GetCloudProjectFlavorPlanCodesResult',
+    'GetCloudProjectGatewayExternalInformationResult',
+    'GetCloudProjectGatewayExternalInformationIpResult',
+    'GetCloudProjectGatewayInterfaceResult',
     'GetCloudProjectRancherCapabilitiesPlanPlanResult',
     'GetCloudProjectRancherCapabilitiesVersionVersionResult',
     'GetCloudProjectSshKeysSshKeyResult',
@@ -94,6 +97,115 @@ class GetCloudProjectFlavorPlanCodesResult(dict):
         Plan code to order monthly instance
         """
         return pulumi.get(self, "monthly")
+
+
+@pulumi.output_type
+class GetCloudProjectGatewayExternalInformationResult(dict):
+    def __init__(__self__, *,
+                 ips: Sequence['outputs.GetCloudProjectGatewayExternalInformationIpResult'],
+                 network_id: builtins.str):
+        """
+        :param Sequence['GetCloudProjectGatewayExternalInformationIpArgs'] ips: External ips of the gateway
+        :param builtins.str network_id: External network ID of the gateway
+        """
+        pulumi.set(__self__, "ips", ips)
+        pulumi.set(__self__, "network_id", network_id)
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Sequence['outputs.GetCloudProjectGatewayExternalInformationIpResult']:
+        """
+        External ips of the gateway
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> builtins.str:
+        """
+        External network ID of the gateway
+        """
+        return pulumi.get(self, "network_id")
+
+
+@pulumi.output_type
+class GetCloudProjectGatewayExternalInformationIpResult(dict):
+    def __init__(__self__, *,
+                 ip: builtins.str,
+                 subnet_id: builtins.str):
+        """
+        :param builtins.str ip: External IP of the gateway
+        :param builtins.str subnet_id: Subnet ID of the ip
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> builtins.str:
+        """
+        External IP of the gateway
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> builtins.str:
+        """
+        Subnet ID of the ip
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudProjectGatewayInterfaceResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 ip: builtins.str,
+                 network_id: builtins.str,
+                 subnet_id: builtins.str):
+        """
+        :param builtins.str id: ID of the interface
+        :param builtins.str ip: IP of the interface
+        :param builtins.str network_id: Network ID of the interface
+        :param builtins.str subnet_id: Subnet ID of the interface
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        ID of the interface
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> builtins.str:
+        """
+        IP of the interface
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> builtins.str:
+        """
+        Network ID of the interface
+        """
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> builtins.str:
+        """
+        Subnet ID of the interface
+        """
+        return pulumi.get(self, "subnet_id")
 
 
 @pulumi.output_type

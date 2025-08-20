@@ -21,7 +21,7 @@ type Vps struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// IAM resource information
 	Iam VpsIamOutput `pulumi:"iam"`
-	// Id of the image to install on the VPS
+	// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
 	Keymap pulumi.StringOutput `pulumi:"keymap"`
@@ -94,7 +94,7 @@ type vpsState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// IAM resource information
 	Iam *VpsIam `pulumi:"iam"`
-	// Id of the image to install on the VPS
+	// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId *string `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
 	Keymap *string `pulumi:"keymap"`
@@ -138,7 +138,7 @@ type VpsState struct {
 	DisplayName pulumi.StringPtrInput
 	// IAM resource information
 	Iam VpsIamPtrInput
-	// Id of the image to install on the VPS
+	// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId pulumi.StringPtrInput
 	// KVM keyboard layout on VPS Cloud
 	Keymap pulumi.StringPtrInput
@@ -182,7 +182,7 @@ func (VpsState) ElementType() reflect.Type {
 type vpsArgs struct {
 	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
-	// Id of the image to install on the VPS
+	// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId *string `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
 	Keymap *string `pulumi:"keymap"`
@@ -219,7 +219,7 @@ type vpsArgs struct {
 type VpsArgs struct {
 	// Custom display name
 	DisplayName pulumi.StringPtrInput
-	// Id of the image to install on the VPS
+	// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId pulumi.StringPtrInput
 	// KVM keyboard layout on VPS Cloud
 	Keymap pulumi.StringPtrInput
@@ -354,7 +354,7 @@ func (o VpsOutput) Iam() VpsIamOutput {
 	return o.ApplyT(func(v *Vps) VpsIamOutput { return v.Iam }).(VpsIamOutput)
 }
 
-// Id of the image to install on the VPS
+// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 func (o VpsOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
 }

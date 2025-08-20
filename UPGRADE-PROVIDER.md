@@ -31,11 +31,6 @@ source "/root/.sdkman/bin/sdkman-init.sh"
 sdk install java 21.0.4-tem
 sdk default java 21.0.4-tem
 java -version
-
-# Install Gradle 8
-sdk install gradle 8.8
-sdk use gradle 8.8
-gradle -v
 ```
 
 # Upgrading/Sync with existing Terraform provider

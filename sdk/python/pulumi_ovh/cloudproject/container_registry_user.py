@@ -27,7 +27,7 @@ class ContainerRegistryUserArgs:
         """
         The set of arguments for constructing a ContainerRegistryUser resource.
         :param pulumi.Input[builtins.str] email: User email
-        :param pulumi.Input[builtins.str] login: Registry name
+        :param pulumi.Input[builtins.str] login: User name
         :param pulumi.Input[builtins.str] registry_id: Registry ID
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -53,7 +53,7 @@ class ContainerRegistryUserArgs:
     @pulumi.getter
     def login(self) -> pulumi.Input[builtins.str]:
         """
-        Registry name
+        User name
         """
         return pulumi.get(self, "login")
 
@@ -98,11 +98,11 @@ class _ContainerRegistryUserState:
         """
         Input properties used for looking up and filtering ContainerRegistryUser resources.
         :param pulumi.Input[builtins.str] email: User email
-        :param pulumi.Input[builtins.str] login: Registry name
+        :param pulumi.Input[builtins.str] login: User name
         :param pulumi.Input[builtins.str] password: (Sensitive) User password
         :param pulumi.Input[builtins.str] registry_id: Registry ID
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[builtins.str] user: User name
+        :param pulumi.Input[builtins.str] user: User name (same as `login`)
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -133,7 +133,7 @@ class _ContainerRegistryUserState:
     @pulumi.getter
     def login(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Registry name
+        User name
         """
         return pulumi.get(self, "login")
 
@@ -181,7 +181,7 @@ class _ContainerRegistryUserState:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        User name
+        User name (same as `login`)
         """
         return pulumi.get(self, "user")
 
@@ -222,7 +222,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] email: User email
-        :param pulumi.Input[builtins.str] login: Registry name
+        :param pulumi.Input[builtins.str] login: User name
         :param pulumi.Input[builtins.str] registry_id: Registry ID
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -316,11 +316,11 @@ class ContainerRegistryUser(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] email: User email
-        :param pulumi.Input[builtins.str] login: Registry name
+        :param pulumi.Input[builtins.str] login: User name
         :param pulumi.Input[builtins.str] password: (Sensitive) User password
         :param pulumi.Input[builtins.str] registry_id: Registry ID
         :param pulumi.Input[builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[builtins.str] user: User name
+        :param pulumi.Input[builtins.str] user: User name (same as `login`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -346,7 +346,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
     @pulumi.getter
     def login(self) -> pulumi.Output[builtins.str]:
         """
-        Registry name
+        User name
         """
         return pulumi.get(self, "login")
 
@@ -378,7 +378,7 @@ class ContainerRegistryUser(pulumi.CustomResource):
     @pulumi.getter
     def user(self) -> pulumi.Output[builtins.str]:
         """
-        User name
+        User name (same as `login`)
         """
         return pulumi.get(self, "user")
 

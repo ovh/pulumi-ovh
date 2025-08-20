@@ -58,7 +58,7 @@ import (
 //					Logstash: &dbaas.LogsInputConfigurationLogstashArgs{
 //						InputSection: pulumi.String(`  beats {
 //	    port => 6514
-//	    ssl => true
+//	    ssl_enabled => true
 //	    ssl_certificate => "/etc/ssl/private/server.crt"
 //	    ssl_key => "/etc/ssl/private/server.key"
 //	  }
