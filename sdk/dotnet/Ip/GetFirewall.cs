@@ -133,9 +133,6 @@ namespace Pulumi.Ovh.Ip
     public sealed class GetFirewallResult
     {
         public readonly bool Enabled;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The IP or the CIDR

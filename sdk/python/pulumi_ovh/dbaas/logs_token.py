@@ -216,6 +216,32 @@ class LogsToken(pulumi.CustomResource):
             name="ExampleToken")
         ```
 
+        ## Import
+
+        A token can be imported using the `service_name` and `token_id` fields.
+
+        Using the following configuration:
+
+        terraform
+
+        import {
+
+          to = ovh_dbaas_logs_token.token
+
+          id = "<service_name>/<token_id"
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=token.tf
+
+        $ pulumi up
+
+        The file `token.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cluster_id: Cluster ID. If not provided, the default cluster_id is used
@@ -241,6 +267,32 @@ class LogsToken(pulumi.CustomResource):
             service_name="ldp-xx-xxxxx",
             name="ExampleToken")
         ```
+
+        ## Import
+
+        A token can be imported using the `service_name` and `token_id` fields.
+
+        Using the following configuration:
+
+        terraform
+
+        import {
+
+          to = ovh_dbaas_logs_token.token
+
+          id = "<service_name>/<token_id"
+
+        }
+
+        You can then run:
+
+        bash
+
+        $ pulumi preview -generate-config-out=token.tf
+
+        $ pulumi up
+
+        The file `token.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param LogsTokenArgs args: The arguments to use to populate this resource's properties.

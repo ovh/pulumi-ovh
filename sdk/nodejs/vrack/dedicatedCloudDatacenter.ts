@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vrack_dedicatedCloudDatacenter = new ovh.vrack.DedicatedCloudDatacenter("vrack-dedicatedCloudDatacenter", {
+ * const vrackDedicatedCloudDatacenter = new ovh.vrack.DedicatedCloudDatacenter("vrack_dedicated_cloud_datacenter", {
  *     serviceName: "<vRack service name>",
  *     datacenter: "<Dedicated Cloud Datacenter service name>",
  * });

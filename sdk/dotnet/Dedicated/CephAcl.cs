@@ -27,7 +27,7 @@ namespace Pulumi.Ovh.Dedicated
     ///         ServiceName = "94d423da-0e55-45f2-9812-836460a19939",
     ///     });
     /// 
-    ///     var my_acl = new Ovh.Dedicated.CephAcl("my-acl", new()
+    ///     var myAcl = new Ovh.Dedicated.CephAcl("my_acl", new()
     ///     {
     ///         ServiceName = myCeph.Apply(getCephResult =&gt; getCephResult.Id),
     ///         Network = "1.2.3.4",

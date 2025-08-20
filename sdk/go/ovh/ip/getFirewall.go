@@ -59,9 +59,8 @@ type LookupFirewallArgs struct {
 
 // A collection of values returned by getFirewall.
 type LookupFirewallResult struct {
-	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Enabled bool   `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
 	// The IP or the CIDR
 	Ip string `pulumi:"ip"`
 	// IPv4 address
@@ -111,7 +110,6 @@ func (o LookupFirewallResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFirewallResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupFirewallResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Id }).(pulumi.StringOutput)
 }

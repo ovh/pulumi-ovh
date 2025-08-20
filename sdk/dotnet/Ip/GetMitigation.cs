@@ -136,9 +136,6 @@ namespace Pulumi.Ovh.Ip
         /// Set on true if the IP is on auto-mitigation
         /// </summary>
         public readonly bool Auto;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The IP or the CIDR

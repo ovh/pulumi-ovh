@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkPrivateSubnetV2{}
 	case "ovh:CloudProject/project:Project":
 		r = &Project{}
+	case "ovh:CloudProject/projectRegion:ProjectRegion":
+		r = &ProjectRegion{}
 	case "ovh:CloudProject/rancher:Rancher":
 		r = &Rancher{}
 	case "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription":
@@ -201,6 +203,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProject/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"CloudProject/projectRegion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

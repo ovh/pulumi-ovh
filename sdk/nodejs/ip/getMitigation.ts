@@ -49,9 +49,6 @@ export interface GetMitigationResult {
      * Set on true if the IP is on auto-mitigation
      */
     readonly auto: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The IP or the CIDR

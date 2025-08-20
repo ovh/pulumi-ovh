@@ -30,6 +30,32 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A token can be imported using the `service_name` and `token_id` fields.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_dbaas_logs_token.token
+    /// 
+    ///   id = "&lt;service_name&gt;/&lt;token_id"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=token.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `token.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsToken:LogsToken")]
     public partial class LogsToken : global::Pulumi.CustomResource

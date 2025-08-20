@@ -35,6 +35,11 @@ export const getCloudProjectFlavor: typeof import("./getCloudProjectFlavor").get
 export const getCloudProjectFlavorOutput: typeof import("./getCloudProjectFlavor").getCloudProjectFlavorOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudProjectFlavor","getCloudProjectFlavorOutput"], () => require("./getCloudProjectFlavor"));
 
+export { GetCloudProjectGatewayArgs, GetCloudProjectGatewayResult, GetCloudProjectGatewayOutputArgs } from "./getCloudProjectGateway";
+export const getCloudProjectGateway: typeof import("./getCloudProjectGateway").getCloudProjectGateway = null as any;
+export const getCloudProjectGatewayOutput: typeof import("./getCloudProjectGateway").getCloudProjectGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectGateway","getCloudProjectGatewayOutput"], () => require("./getCloudProjectGateway"));
+
 export { GetCloudProjectRancherCapabilitiesPlanArgs, GetCloudProjectRancherCapabilitiesPlanResult, GetCloudProjectRancherCapabilitiesPlanOutputArgs } from "./getCloudProjectRancherCapabilitiesPlan";
 export const getCloudProjectRancherCapabilitiesPlan: typeof import("./getCloudProjectRancherCapabilitiesPlan").getCloudProjectRancherCapabilitiesPlan = null as any;
 export const getCloudProjectRancherCapabilitiesPlanOutput: typeof import("./getCloudProjectRancherCapabilitiesPlan").getCloudProjectRancherCapabilitiesPlanOutput = null as any;
@@ -64,6 +69,11 @@ export { GetInstallationTemplatesResult } from "./getInstallationTemplates";
 export const getInstallationTemplates: typeof import("./getInstallationTemplates").getInstallationTemplates = null as any;
 export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
+
+export { GetLocationArgs, GetLocationResult, GetLocationOutputArgs } from "./getLocation";
+export const getLocation: typeof import("./getLocation").getLocation = null as any;
+export const getLocationOutput: typeof import("./getLocation").getLocationOutput = null as any;
+utilities.lazyLoad(exports, ["getLocation","getLocationOutput"], () => require("./getLocation"));
 
 export { GetOvhcloudConnectConfigPopDatacenterExtrasArgs, GetOvhcloudConnectConfigPopDatacenterExtrasResult, GetOvhcloudConnectConfigPopDatacenterExtrasOutputArgs } from "./getOvhcloudConnectConfigPopDatacenterExtras";
 export const getOvhcloudConnectConfigPopDatacenterExtras: typeof import("./getOvhcloudConnectConfigPopDatacenterExtras").getOvhcloudConnectConfigPopDatacenterExtras = null as any;

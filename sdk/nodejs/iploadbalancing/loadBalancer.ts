@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     planCode: iplb3.planCode,
  *     optionsPlanCode: "iplb-zone-lb1-rbx",
  * }));
- * const iplb_lb1 = new ovh.iploadbalancing.LoadBalancer("iplb-lb1", {
+ * const iplbLb1 = new ovh.iploadbalancing.LoadBalancer("iplb_lb1", {
  *     ovhSubsidiary: mycart.then(mycart => mycart.ovhSubsidiary),
  *     displayName: "my ip loadbalancing",
  *     plan: {

@@ -22,7 +22,7 @@ namespace Pulumi.Ovh
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myIam = new Ovh.CloudProjectContainerregistryIam("my_iam", new()
+    ///     var registryIam = new Ovh.CloudProjectContainerregistryIam("registry_iam", new()
     ///     {
     ///         ServiceName = "XXXXXX",
     ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
@@ -31,7 +31,7 @@ namespace Pulumi.Ovh
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["iam-enabled"] = myIam.IamEnabled,
+    ///         ["iamEnabled"] = registryIam.IamEnabled,
     ///     };
     /// });
     /// ```

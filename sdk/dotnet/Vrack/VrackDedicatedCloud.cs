@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrack_dedicatedCloud = new Ovh.Vrack.VrackDedicatedCloud("vrack-dedicatedCloud", new()
+    ///     var vrackDedicatedCloud = new Ovh.Vrack.VrackDedicatedCloud("vrack_dedicated_cloud", new()
     ///     {
     ///         ServiceName = "&lt;vRack service name&gt;",
     ///         DedicatedCloud = "&lt;Dedicated Cloud service name&gt;",

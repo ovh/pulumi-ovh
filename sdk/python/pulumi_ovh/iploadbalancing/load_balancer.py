@@ -491,7 +491,7 @@ class LoadBalancer(pulumi.CustomResource):
             product=iplb.product,
             plan_code=iplb.plan_code,
             options_plan_code="iplb-zone-lb1-rbx")
-        iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb-lb1",
+        iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb_lb1",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="my ip loadbalancing",
             plan={
@@ -566,7 +566,7 @@ class LoadBalancer(pulumi.CustomResource):
             product=iplb.product,
             plan_code=iplb.plan_code,
             options_plan_code="iplb-zone-lb1-rbx")
-        iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb-lb1",
+        iplb_lb1 = ovh.ip_load_balancing.LoadBalancer("iplb_lb1",
             ovh_subsidiary=mycart.ovh_subsidiary,
             display_name="my ip loadbalancing",
             plan={

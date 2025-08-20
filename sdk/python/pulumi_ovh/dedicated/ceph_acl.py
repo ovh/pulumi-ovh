@@ -162,7 +162,7 @@ class CephAcl(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         my_ceph = ovh.Dedicated.get_ceph(service_name="94d423da-0e55-45f2-9812-836460a19939")
-        my_acl = ovh.dedicated.CephAcl("my-acl",
+        my_acl = ovh.dedicated.CephAcl("my_acl",
             service_name=my_ceph.id,
             network="1.2.3.4",
             netmask="255.255.255.255")
@@ -190,7 +190,7 @@ class CephAcl(pulumi.CustomResource):
         import pulumi_ovh as ovh
 
         my_ceph = ovh.Dedicated.get_ceph(service_name="94d423da-0e55-45f2-9812-836460a19939")
-        my_acl = ovh.dedicated.CephAcl("my-acl",
+        my_acl = ovh.dedicated.CephAcl("my_acl",
             service_name=my_ceph.id,
             network="1.2.3.4",
             netmask="255.255.255.255")

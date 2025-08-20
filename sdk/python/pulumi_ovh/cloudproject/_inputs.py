@@ -142,6 +142,8 @@ __all__ = [
     'ProjectPlanOptionArgsDict',
     'ProjectPlanOptionConfigurationArgs',
     'ProjectPlanOptionConfigurationArgsDict',
+    'ProjectRegionServiceArgs',
+    'ProjectRegionServiceArgsDict',
     'RancherCurrentStateArgs',
     'RancherCurrentStateArgsDict',
     'RancherCurrentStateIpRestrictionArgs',
@@ -174,8 +176,6 @@ __all__ = [
     'StorageReplicationRuleDestinationArgsDict',
     'StorageReplicationRuleFilterArgs',
     'StorageReplicationRuleFilterArgsDict',
-    'StorageReplicationRuleFilterTagArgs',
-    'StorageReplicationRuleFilterTagArgsDict',
     'StorageVersioningArgs',
     'StorageVersioningArgsDict',
     'UserRoleArgs',
@@ -4543,6 +4543,78 @@ class ProjectPlanOptionConfigurationArgs:
 
 
 if not MYPY:
+    class ProjectRegionServiceArgsDict(TypedDict):
+        endpoint: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Endpoint URL
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Service name
+        """
+        status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Service status
+        """
+elif False:
+    ProjectRegionServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectRegionServiceArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 status: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] endpoint: Endpoint URL
+        :param pulumi.Input[builtins.str] name: Service name
+        :param pulumi.Input[builtins.str] status: Service status
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Endpoint URL
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Service name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Service status
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
     class RancherCurrentStateArgsDict(TypedDict):
         bootstrap_password: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -5860,7 +5932,7 @@ if not MYPY:
         """
         Prefix filter
         """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['StorageReplicationRuleFilterTagArgsDict']]]]
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
         Tags filter
         """
@@ -5871,10 +5943,10 @@ elif False:
 class StorageReplicationRuleFilterArgs:
     def __init__(__self__, *,
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['StorageReplicationRuleFilterTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] prefix: Prefix filter
-        :param pulumi.Input[Sequence[pulumi.Input['StorageReplicationRuleFilterTagArgs']]] tags: Tags filter
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags filter
         """
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
@@ -5895,65 +5967,15 @@ class StorageReplicationRuleFilterArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StorageReplicationRuleFilterTagArgs']]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         Tags filter
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StorageReplicationRuleFilterTagArgs']]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
-
-
-if not MYPY:
-    class StorageReplicationRuleFilterTagArgsDict(TypedDict):
-        key: pulumi.Input[builtins.str]
-        """
-        Tag key
-        """
-        value: pulumi.Input[builtins.str]
-        """
-        Tag value
-        """
-elif False:
-    StorageReplicationRuleFilterTagArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class StorageReplicationRuleFilterTagArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[builtins.str],
-                 value: pulumi.Input[builtins.str]):
-        """
-        :param pulumi.Input[builtins.str] key: Tag key
-        :param pulumi.Input[builtins.str] value: Tag value
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[builtins.str]:
-        """
-        Tag key
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[builtins.str]:
-        """
-        Tag value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:

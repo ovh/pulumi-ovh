@@ -9241,6 +9241,121 @@ func (o ProjectPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) Proj
 	}).(ProjectPlanOptionConfigurationOutput)
 }
 
+type ProjectRegionService struct {
+	// Endpoint URL
+	Endpoint *string `pulumi:"endpoint"`
+	// Service name
+	Name *string `pulumi:"name"`
+	// Service status
+	Status *string `pulumi:"status"`
+}
+
+// ProjectRegionServiceInput is an input type that accepts ProjectRegionServiceArgs and ProjectRegionServiceOutput values.
+// You can construct a concrete instance of `ProjectRegionServiceInput` via:
+//
+//	ProjectRegionServiceArgs{...}
+type ProjectRegionServiceInput interface {
+	pulumi.Input
+
+	ToProjectRegionServiceOutput() ProjectRegionServiceOutput
+	ToProjectRegionServiceOutputWithContext(context.Context) ProjectRegionServiceOutput
+}
+
+type ProjectRegionServiceArgs struct {
+	// Endpoint URL
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Service name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Service status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ProjectRegionServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectRegionService)(nil)).Elem()
+}
+
+func (i ProjectRegionServiceArgs) ToProjectRegionServiceOutput() ProjectRegionServiceOutput {
+	return i.ToProjectRegionServiceOutputWithContext(context.Background())
+}
+
+func (i ProjectRegionServiceArgs) ToProjectRegionServiceOutputWithContext(ctx context.Context) ProjectRegionServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectRegionServiceOutput)
+}
+
+// ProjectRegionServiceArrayInput is an input type that accepts ProjectRegionServiceArray and ProjectRegionServiceArrayOutput values.
+// You can construct a concrete instance of `ProjectRegionServiceArrayInput` via:
+//
+//	ProjectRegionServiceArray{ ProjectRegionServiceArgs{...} }
+type ProjectRegionServiceArrayInput interface {
+	pulumi.Input
+
+	ToProjectRegionServiceArrayOutput() ProjectRegionServiceArrayOutput
+	ToProjectRegionServiceArrayOutputWithContext(context.Context) ProjectRegionServiceArrayOutput
+}
+
+type ProjectRegionServiceArray []ProjectRegionServiceInput
+
+func (ProjectRegionServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectRegionService)(nil)).Elem()
+}
+
+func (i ProjectRegionServiceArray) ToProjectRegionServiceArrayOutput() ProjectRegionServiceArrayOutput {
+	return i.ToProjectRegionServiceArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectRegionServiceArray) ToProjectRegionServiceArrayOutputWithContext(ctx context.Context) ProjectRegionServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectRegionServiceArrayOutput)
+}
+
+type ProjectRegionServiceOutput struct{ *pulumi.OutputState }
+
+func (ProjectRegionServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectRegionService)(nil)).Elem()
+}
+
+func (o ProjectRegionServiceOutput) ToProjectRegionServiceOutput() ProjectRegionServiceOutput {
+	return o
+}
+
+func (o ProjectRegionServiceOutput) ToProjectRegionServiceOutputWithContext(ctx context.Context) ProjectRegionServiceOutput {
+	return o
+}
+
+// Endpoint URL
+func (o ProjectRegionServiceOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectRegionService) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Service name
+func (o ProjectRegionServiceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectRegionService) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Service status
+func (o ProjectRegionServiceOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectRegionService) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ProjectRegionServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectRegionServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectRegionService)(nil)).Elem()
+}
+
+func (o ProjectRegionServiceArrayOutput) ToProjectRegionServiceArrayOutput() ProjectRegionServiceArrayOutput {
+	return o
+}
+
+func (o ProjectRegionServiceArrayOutput) ToProjectRegionServiceArrayOutputWithContext(ctx context.Context) ProjectRegionServiceArrayOutput {
+	return o
+}
+
+func (o ProjectRegionServiceArrayOutput) Index(i pulumi.IntInput) ProjectRegionServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectRegionService {
+		return vs[0].([]ProjectRegionService)[vs[1].(int)]
+	}).(ProjectRegionServiceOutput)
+}
+
 type RancherCurrentState struct {
 	// Bootstrap password of the managed Rancher service, returned only on creation
 	BootstrapPassword *string `pulumi:"bootstrapPassword"`
@@ -11628,7 +11743,7 @@ type StorageReplicationRuleFilter struct {
 	// Prefix filter
 	Prefix *string `pulumi:"prefix"`
 	// Tags filter
-	Tags []StorageReplicationRuleFilterTag `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // StorageReplicationRuleFilterInput is an input type that accepts StorageReplicationRuleFilterArgs and StorageReplicationRuleFilterOutput values.
@@ -11646,7 +11761,7 @@ type StorageReplicationRuleFilterArgs struct {
 	// Prefix filter
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// Tags filter
-	Tags StorageReplicationRuleFilterTagArrayInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (StorageReplicationRuleFilterArgs) ElementType() reflect.Type {
@@ -11732,8 +11847,8 @@ func (o StorageReplicationRuleFilterOutput) Prefix() pulumi.StringPtrOutput {
 }
 
 // Tags filter
-func (o StorageReplicationRuleFilterOutput) Tags() StorageReplicationRuleFilterTagArrayOutput {
-	return o.ApplyT(func(v StorageReplicationRuleFilter) []StorageReplicationRuleFilterTag { return v.Tags }).(StorageReplicationRuleFilterTagArrayOutput)
+func (o StorageReplicationRuleFilterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StorageReplicationRuleFilter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type StorageReplicationRuleFilterPtrOutput struct{ *pulumi.OutputState }
@@ -11771,119 +11886,13 @@ func (o StorageReplicationRuleFilterPtrOutput) Prefix() pulumi.StringPtrOutput {
 }
 
 // Tags filter
-func (o StorageReplicationRuleFilterPtrOutput) Tags() StorageReplicationRuleFilterTagArrayOutput {
-	return o.ApplyT(func(v *StorageReplicationRuleFilter) []StorageReplicationRuleFilterTag {
+func (o StorageReplicationRuleFilterPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleFilter) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Tags
-	}).(StorageReplicationRuleFilterTagArrayOutput)
-}
-
-type StorageReplicationRuleFilterTag struct {
-	// Tag key
-	Key string `pulumi:"key"`
-	// Tag value
-	Value string `pulumi:"value"`
-}
-
-// StorageReplicationRuleFilterTagInput is an input type that accepts StorageReplicationRuleFilterTagArgs and StorageReplicationRuleFilterTagOutput values.
-// You can construct a concrete instance of `StorageReplicationRuleFilterTagInput` via:
-//
-//	StorageReplicationRuleFilterTagArgs{...}
-type StorageReplicationRuleFilterTagInput interface {
-	pulumi.Input
-
-	ToStorageReplicationRuleFilterTagOutput() StorageReplicationRuleFilterTagOutput
-	ToStorageReplicationRuleFilterTagOutputWithContext(context.Context) StorageReplicationRuleFilterTagOutput
-}
-
-type StorageReplicationRuleFilterTagArgs struct {
-	// Tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Tag value
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (StorageReplicationRuleFilterTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageReplicationRuleFilterTag)(nil)).Elem()
-}
-
-func (i StorageReplicationRuleFilterTagArgs) ToStorageReplicationRuleFilterTagOutput() StorageReplicationRuleFilterTagOutput {
-	return i.ToStorageReplicationRuleFilterTagOutputWithContext(context.Background())
-}
-
-func (i StorageReplicationRuleFilterTagArgs) ToStorageReplicationRuleFilterTagOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterTagOutput)
-}
-
-// StorageReplicationRuleFilterTagArrayInput is an input type that accepts StorageReplicationRuleFilterTagArray and StorageReplicationRuleFilterTagArrayOutput values.
-// You can construct a concrete instance of `StorageReplicationRuleFilterTagArrayInput` via:
-//
-//	StorageReplicationRuleFilterTagArray{ StorageReplicationRuleFilterTagArgs{...} }
-type StorageReplicationRuleFilterTagArrayInput interface {
-	pulumi.Input
-
-	ToStorageReplicationRuleFilterTagArrayOutput() StorageReplicationRuleFilterTagArrayOutput
-	ToStorageReplicationRuleFilterTagArrayOutputWithContext(context.Context) StorageReplicationRuleFilterTagArrayOutput
-}
-
-type StorageReplicationRuleFilterTagArray []StorageReplicationRuleFilterTagInput
-
-func (StorageReplicationRuleFilterTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageReplicationRuleFilterTag)(nil)).Elem()
-}
-
-func (i StorageReplicationRuleFilterTagArray) ToStorageReplicationRuleFilterTagArrayOutput() StorageReplicationRuleFilterTagArrayOutput {
-	return i.ToStorageReplicationRuleFilterTagArrayOutputWithContext(context.Background())
-}
-
-func (i StorageReplicationRuleFilterTagArray) ToStorageReplicationRuleFilterTagArrayOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageReplicationRuleFilterTagArrayOutput)
-}
-
-type StorageReplicationRuleFilterTagOutput struct{ *pulumi.OutputState }
-
-func (StorageReplicationRuleFilterTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageReplicationRuleFilterTag)(nil)).Elem()
-}
-
-func (o StorageReplicationRuleFilterTagOutput) ToStorageReplicationRuleFilterTagOutput() StorageReplicationRuleFilterTagOutput {
-	return o
-}
-
-func (o StorageReplicationRuleFilterTagOutput) ToStorageReplicationRuleFilterTagOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagOutput {
-	return o
-}
-
-// Tag key
-func (o StorageReplicationRuleFilterTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageReplicationRuleFilterTag) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Tag value
-func (o StorageReplicationRuleFilterTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageReplicationRuleFilterTag) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type StorageReplicationRuleFilterTagArrayOutput struct{ *pulumi.OutputState }
-
-func (StorageReplicationRuleFilterTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageReplicationRuleFilterTag)(nil)).Elem()
-}
-
-func (o StorageReplicationRuleFilterTagArrayOutput) ToStorageReplicationRuleFilterTagArrayOutput() StorageReplicationRuleFilterTagArrayOutput {
-	return o
-}
-
-func (o StorageReplicationRuleFilterTagArrayOutput) ToStorageReplicationRuleFilterTagArrayOutputWithContext(ctx context.Context) StorageReplicationRuleFilterTagArrayOutput {
-	return o
-}
-
-func (o StorageReplicationRuleFilterTagArrayOutput) Index(i pulumi.IntInput) StorageReplicationRuleFilterTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageReplicationRuleFilterTag {
-		return vs[0].([]StorageReplicationRuleFilterTag)[vs[1].(int)]
-	}).(StorageReplicationRuleFilterTagOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type StorageVersioning struct {
@@ -20841,6 +20850,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionArrayInput)(nil)).Elem(), ProjectPlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationInput)(nil)).Elem(), ProjectPlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPlanOptionConfigurationArrayInput)(nil)).Elem(), ProjectPlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRegionServiceInput)(nil)).Elem(), ProjectRegionServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRegionServiceArrayInput)(nil)).Elem(), ProjectRegionServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateInput)(nil)).Elem(), RancherCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStatePtrInput)(nil)).Elem(), RancherCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RancherCurrentStateIpRestrictionInput)(nil)).Elem(), RancherCurrentStateIpRestrictionArgs{})
@@ -20873,8 +20884,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleDestinationPtrInput)(nil)).Elem(), StorageReplicationRuleDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterInput)(nil)).Elem(), StorageReplicationRuleFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterPtrInput)(nil)).Elem(), StorageReplicationRuleFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterTagInput)(nil)).Elem(), StorageReplicationRuleFilterTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleFilterTagArrayInput)(nil)).Elem(), StorageReplicationRuleFilterTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageVersioningInput)(nil)).Elem(), StorageVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageVersioningPtrInput)(nil)).Elem(), StorageVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleInput)(nil)).Elem(), UserRoleArgs{})
@@ -21131,6 +21140,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectPlanOptionArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationOutput{})
 	pulumi.RegisterOutputType(ProjectPlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(ProjectRegionServiceOutput{})
+	pulumi.RegisterOutputType(ProjectRegionServiceArrayOutput{})
 	pulumi.RegisterOutputType(RancherCurrentStateOutput{})
 	pulumi.RegisterOutputType(RancherCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(RancherCurrentStateIpRestrictionOutput{})
@@ -21163,8 +21174,6 @@ func init() {
 	pulumi.RegisterOutputType(StorageReplicationRuleDestinationPtrOutput{})
 	pulumi.RegisterOutputType(StorageReplicationRuleFilterOutput{})
 	pulumi.RegisterOutputType(StorageReplicationRuleFilterPtrOutput{})
-	pulumi.RegisterOutputType(StorageReplicationRuleFilterTagOutput{})
-	pulumi.RegisterOutputType(StorageReplicationRuleFilterTagArrayOutput{})
 	pulumi.RegisterOutputType(StorageVersioningOutput{})
 	pulumi.RegisterOutputType(StorageVersioningPtrOutput{})
 	pulumi.RegisterOutputType(UserRoleOutput{})

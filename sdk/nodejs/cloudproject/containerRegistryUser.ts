@@ -58,7 +58,7 @@ export class ContainerRegistryUser extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * Registry name
+     * User name
      */
     public readonly login!: pulumi.Output<string>;
     /**
@@ -74,7 +74,7 @@ export class ContainerRegistryUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * User name
+     * User name (same as `login`)
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
 
@@ -131,7 +131,7 @@ export interface ContainerRegistryUserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Registry name
+     * User name
      */
     login?: pulumi.Input<string>;
     /**
@@ -147,7 +147,7 @@ export interface ContainerRegistryUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * User name
+     * User name (same as `login`)
      */
     user?: pulumi.Input<string>;
 }
@@ -161,7 +161,7 @@ export interface ContainerRegistryUserArgs {
      */
     email: pulumi.Input<string>;
     /**
-     * Registry name
+     * User name
      */
     login: pulumi.Input<string>;
     /**

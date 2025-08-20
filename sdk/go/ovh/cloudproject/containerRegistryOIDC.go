@@ -86,7 +86,7 @@ type ContainerRegistryOIDC struct {
 	// The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
 	OidcUserClaim pulumi.StringPtrOutput `pulumi:"oidcUserClaim"`
 	// Set it to `false` if your OIDC server is hosted via self-signed certificate.
-	OidcVerifyCert pulumi.BoolPtrOutput `pulumi:"oidcVerifyCert"`
+	OidcVerifyCert pulumi.BoolOutput `pulumi:"oidcVerifyCert"`
 	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -406,8 +406,8 @@ func (o ContainerRegistryOIDCOutput) OidcUserClaim() pulumi.StringPtrOutput {
 }
 
 // Set it to `false` if your OIDC server is hosted via self-signed certificate.
-func (o ContainerRegistryOIDCOutput) OidcVerifyCert() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.BoolPtrOutput { return v.OidcVerifyCert }).(pulumi.BoolPtrOutput)
+func (o ContainerRegistryOIDCOutput) OidcVerifyCert() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.BoolOutput { return v.OidcVerifyCert }).(pulumi.BoolOutput)
 }
 
 // The ID of the Managed Private Registry. **Changing this value recreates the resource.**

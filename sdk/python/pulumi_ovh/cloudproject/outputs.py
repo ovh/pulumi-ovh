@@ -80,6 +80,7 @@ __all__ = [
     'ProjectPlanConfiguration',
     'ProjectPlanOption',
     'ProjectPlanOptionConfiguration',
+    'ProjectRegionService',
     'RancherCurrentState',
     'RancherCurrentStateIpRestriction',
     'RancherCurrentStateNetworking',
@@ -96,7 +97,6 @@ __all__ = [
     'StorageReplicationRule',
     'StorageReplicationRuleDestination',
     'StorageReplicationRuleFilter',
-    'StorageReplicationRuleFilterTag',
     'StorageVersioning',
     'UserRole',
     'VolumeSubOperation',
@@ -3370,6 +3370,49 @@ class ProjectPlanOptionConfiguration(dict):
 
 
 @pulumi.output_type
+class ProjectRegionService(dict):
+    def __init__(__self__, *,
+                 endpoint: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 status: Optional[builtins.str] = None):
+        """
+        :param builtins.str endpoint: Endpoint URL
+        :param builtins.str name: Service name
+        :param builtins.str status: Service status
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[builtins.str]:
+        """
+        Endpoint URL
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        Service name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[builtins.str]:
+        """
+        Service status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class RancherCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4382,10 +4425,10 @@ class StorageReplicationRuleDestination(dict):
 class StorageReplicationRuleFilter(dict):
     def __init__(__self__, *,
                  prefix: Optional[builtins.str] = None,
-                 tags: Optional[Sequence['outputs.StorageReplicationRuleFilterTag']] = None):
+                 tags: Optional[Mapping[str, builtins.str]] = None):
         """
         :param builtins.str prefix: Prefix filter
-        :param Sequence['StorageReplicationRuleFilterTagArgs'] tags: Tags filter
+        :param Mapping[str, builtins.str] tags: Tags filter
         """
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
@@ -4402,40 +4445,11 @@ class StorageReplicationRuleFilter(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Sequence['outputs.StorageReplicationRuleFilterTag']]:
+    def tags(self) -> Optional[Mapping[str, builtins.str]]:
         """
         Tags filter
         """
         return pulumi.get(self, "tags")
-
-
-@pulumi.output_type
-class StorageReplicationRuleFilterTag(dict):
-    def __init__(__self__, *,
-                 key: builtins.str,
-                 value: builtins.str):
-        """
-        :param builtins.str key: Tag key
-        :param builtins.str value: Tag value
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> builtins.str:
-        """
-        Tag key
-        """
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def value(self) -> builtins.str:
-        """
-        Tag value
-        """
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

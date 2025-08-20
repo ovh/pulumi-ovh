@@ -39,9 +39,6 @@ export interface GetZoneDNSSecArgs {
  * A collection of values returned by getZoneDNSSec.
  */
 export interface GetZoneDNSSecResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)

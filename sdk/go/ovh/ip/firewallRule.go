@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ip.NewFirewallRule(ctx, "my_firewall_rule", &ip.FirewallRuleArgs{
+//			_, err := ip.NewFirewallRule(ctx, "deny_tcp", &ip.FirewallRuleArgs{
 //				Ip:           pulumi.String("XXXXXX"),
 //				IpOnFirewall: pulumi.String("XXXXXX"),
 //				Sequence:     pulumi.Float64(0),

@@ -13,16 +13,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * export = async () => {
- *     const myIam = new ovh.CloudProjectContainerregistryIam("my_iam", {
- *         serviceName: "XXXXXX",
- *         registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
- *         deleteUsers: false,
- *     });
- *     return {
- *         "iam-enabled": myIam.iamEnabled,
- *     };
- * }
+ * const registryIam = new ovh.CloudProjectContainerregistryIam("registry_iam", {
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ *     deleteUsers: false,
+ * });
+ * export const iamEnabled = registryIam.iamEnabled;
  * ```
  *
  * ## Import

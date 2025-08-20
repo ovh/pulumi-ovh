@@ -665,7 +665,7 @@ if not MYPY:
         """
         configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgsDict']]]]
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
         """
 elif False:
     VpsPlanOptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -683,7 +683,7 @@ class VpsPlanOptionArgs:
         :param pulumi.Input[builtins.str] plan_code: Plan code
         :param pulumi.Input[builtins.str] pricing_mode: Pricing model identifier
         :param pulumi.Input[builtins.float] quantity: Quantity of product desired
-        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product
+        :param pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]] configurations: Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -744,7 +744,7 @@ class VpsPlanOptionArgs:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpsPlanOptionConfigurationArgs']]]]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
         """
         return pulumi.get(self, "configurations")
 

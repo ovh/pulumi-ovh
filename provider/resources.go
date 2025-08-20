@@ -259,11 +259,17 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_network_private_subnet_v2": {
 				Tok: ovhResource(cloudProjectMod, "NetworkPrivateSubnetV2"),
 			},
-			"ovh_cloud_project_region_network": {
-				Tok: ovhResource(cloudProjectMod, "RegionNetwork"),
-			},
 			"ovh_cloud_project_rancher": {
 				Tok: ovhResource(cloudProjectMod, "Rancher"),
+			},
+			"ovh_cloud_project_region": {
+				// ProjectRegion instead of Region fix until we don't have to create a ComputeID
+				// based on a dedicated_cloud field (error in dotnet sdk generation)
+				Tok:       ovhResource(cloudProjectMod, "ProjectRegion"),
+				ComputeID: delegateID("region"),
+			},
+			"ovh_cloud_project_region_network": {
+				Tok: ovhResource(cloudProjectMod, "RegionNetwork"),
 			},
 			"ovh_cloud_project_region_storage_presign": {
 				Tok: ovhResource(cloudProjectMod, "RegionStoragePresign"),

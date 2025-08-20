@@ -180,6 +180,299 @@ func (o GetCloudProjectFlavorPlanCodesOutput) Monthly() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudProjectFlavorPlanCodes) string { return v.Monthly }).(pulumi.StringOutput)
 }
 
+type GetCloudProjectGatewayExternalInformation struct {
+	// External ips of the gateway
+	Ips []GetCloudProjectGatewayExternalInformationIp `pulumi:"ips"`
+	// External network ID of the gateway
+	NetworkId string `pulumi:"networkId"`
+}
+
+// GetCloudProjectGatewayExternalInformationInput is an input type that accepts GetCloudProjectGatewayExternalInformationArgs and GetCloudProjectGatewayExternalInformationOutput values.
+// You can construct a concrete instance of `GetCloudProjectGatewayExternalInformationInput` via:
+//
+//	GetCloudProjectGatewayExternalInformationArgs{...}
+type GetCloudProjectGatewayExternalInformationInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectGatewayExternalInformationOutput() GetCloudProjectGatewayExternalInformationOutput
+	ToGetCloudProjectGatewayExternalInformationOutputWithContext(context.Context) GetCloudProjectGatewayExternalInformationOutput
+}
+
+type GetCloudProjectGatewayExternalInformationArgs struct {
+	// External ips of the gateway
+	Ips GetCloudProjectGatewayExternalInformationIpArrayInput `pulumi:"ips"`
+	// External network ID of the gateway
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+}
+
+func (GetCloudProjectGatewayExternalInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectGatewayExternalInformation)(nil)).Elem()
+}
+
+func (i GetCloudProjectGatewayExternalInformationArgs) ToGetCloudProjectGatewayExternalInformationOutput() GetCloudProjectGatewayExternalInformationOutput {
+	return i.ToGetCloudProjectGatewayExternalInformationOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectGatewayExternalInformationArgs) ToGetCloudProjectGatewayExternalInformationOutputWithContext(ctx context.Context) GetCloudProjectGatewayExternalInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectGatewayExternalInformationOutput)
+}
+
+type GetCloudProjectGatewayExternalInformationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectGatewayExternalInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectGatewayExternalInformation)(nil)).Elem()
+}
+
+func (o GetCloudProjectGatewayExternalInformationOutput) ToGetCloudProjectGatewayExternalInformationOutput() GetCloudProjectGatewayExternalInformationOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayExternalInformationOutput) ToGetCloudProjectGatewayExternalInformationOutputWithContext(ctx context.Context) GetCloudProjectGatewayExternalInformationOutput {
+	return o
+}
+
+// External ips of the gateway
+func (o GetCloudProjectGatewayExternalInformationOutput) Ips() GetCloudProjectGatewayExternalInformationIpArrayOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayExternalInformation) []GetCloudProjectGatewayExternalInformationIp {
+		return v.Ips
+	}).(GetCloudProjectGatewayExternalInformationIpArrayOutput)
+}
+
+// External network ID of the gateway
+func (o GetCloudProjectGatewayExternalInformationOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayExternalInformation) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectGatewayExternalInformationIp struct {
+	// External IP of the gateway
+	Ip string `pulumi:"ip"`
+	// Subnet ID of the ip
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudProjectGatewayExternalInformationIpInput is an input type that accepts GetCloudProjectGatewayExternalInformationIpArgs and GetCloudProjectGatewayExternalInformationIpOutput values.
+// You can construct a concrete instance of `GetCloudProjectGatewayExternalInformationIpInput` via:
+//
+//	GetCloudProjectGatewayExternalInformationIpArgs{...}
+type GetCloudProjectGatewayExternalInformationIpInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectGatewayExternalInformationIpOutput() GetCloudProjectGatewayExternalInformationIpOutput
+	ToGetCloudProjectGatewayExternalInformationIpOutputWithContext(context.Context) GetCloudProjectGatewayExternalInformationIpOutput
+}
+
+type GetCloudProjectGatewayExternalInformationIpArgs struct {
+	// External IP of the gateway
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Subnet ID of the ip
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudProjectGatewayExternalInformationIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectGatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (i GetCloudProjectGatewayExternalInformationIpArgs) ToGetCloudProjectGatewayExternalInformationIpOutput() GetCloudProjectGatewayExternalInformationIpOutput {
+	return i.ToGetCloudProjectGatewayExternalInformationIpOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectGatewayExternalInformationIpArgs) ToGetCloudProjectGatewayExternalInformationIpOutputWithContext(ctx context.Context) GetCloudProjectGatewayExternalInformationIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectGatewayExternalInformationIpOutput)
+}
+
+// GetCloudProjectGatewayExternalInformationIpArrayInput is an input type that accepts GetCloudProjectGatewayExternalInformationIpArray and GetCloudProjectGatewayExternalInformationIpArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectGatewayExternalInformationIpArrayInput` via:
+//
+//	GetCloudProjectGatewayExternalInformationIpArray{ GetCloudProjectGatewayExternalInformationIpArgs{...} }
+type GetCloudProjectGatewayExternalInformationIpArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectGatewayExternalInformationIpArrayOutput() GetCloudProjectGatewayExternalInformationIpArrayOutput
+	ToGetCloudProjectGatewayExternalInformationIpArrayOutputWithContext(context.Context) GetCloudProjectGatewayExternalInformationIpArrayOutput
+}
+
+type GetCloudProjectGatewayExternalInformationIpArray []GetCloudProjectGatewayExternalInformationIpInput
+
+func (GetCloudProjectGatewayExternalInformationIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectGatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (i GetCloudProjectGatewayExternalInformationIpArray) ToGetCloudProjectGatewayExternalInformationIpArrayOutput() GetCloudProjectGatewayExternalInformationIpArrayOutput {
+	return i.ToGetCloudProjectGatewayExternalInformationIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectGatewayExternalInformationIpArray) ToGetCloudProjectGatewayExternalInformationIpArrayOutputWithContext(ctx context.Context) GetCloudProjectGatewayExternalInformationIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectGatewayExternalInformationIpArrayOutput)
+}
+
+type GetCloudProjectGatewayExternalInformationIpOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectGatewayExternalInformationIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectGatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (o GetCloudProjectGatewayExternalInformationIpOutput) ToGetCloudProjectGatewayExternalInformationIpOutput() GetCloudProjectGatewayExternalInformationIpOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayExternalInformationIpOutput) ToGetCloudProjectGatewayExternalInformationIpOutputWithContext(ctx context.Context) GetCloudProjectGatewayExternalInformationIpOutput {
+	return o
+}
+
+// External IP of the gateway
+func (o GetCloudProjectGatewayExternalInformationIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayExternalInformationIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Subnet ID of the ip
+func (o GetCloudProjectGatewayExternalInformationIpOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayExternalInformationIp) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectGatewayExternalInformationIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectGatewayExternalInformationIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectGatewayExternalInformationIp)(nil)).Elem()
+}
+
+func (o GetCloudProjectGatewayExternalInformationIpArrayOutput) ToGetCloudProjectGatewayExternalInformationIpArrayOutput() GetCloudProjectGatewayExternalInformationIpArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayExternalInformationIpArrayOutput) ToGetCloudProjectGatewayExternalInformationIpArrayOutputWithContext(ctx context.Context) GetCloudProjectGatewayExternalInformationIpArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayExternalInformationIpArrayOutput) Index(i pulumi.IntInput) GetCloudProjectGatewayExternalInformationIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectGatewayExternalInformationIp {
+		return vs[0].([]GetCloudProjectGatewayExternalInformationIp)[vs[1].(int)]
+	}).(GetCloudProjectGatewayExternalInformationIpOutput)
+}
+
+type GetCloudProjectGatewayInterface struct {
+	// ID of the interface
+	Id string `pulumi:"id"`
+	// IP of the interface
+	Ip string `pulumi:"ip"`
+	// Network ID of the interface
+	NetworkId string `pulumi:"networkId"`
+	// Subnet ID of the interface
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudProjectGatewayInterfaceInput is an input type that accepts GetCloudProjectGatewayInterfaceArgs and GetCloudProjectGatewayInterfaceOutput values.
+// You can construct a concrete instance of `GetCloudProjectGatewayInterfaceInput` via:
+//
+//	GetCloudProjectGatewayInterfaceArgs{...}
+type GetCloudProjectGatewayInterfaceInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectGatewayInterfaceOutput() GetCloudProjectGatewayInterfaceOutput
+	ToGetCloudProjectGatewayInterfaceOutputWithContext(context.Context) GetCloudProjectGatewayInterfaceOutput
+}
+
+type GetCloudProjectGatewayInterfaceArgs struct {
+	// ID of the interface
+	Id pulumi.StringInput `pulumi:"id"`
+	// IP of the interface
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Network ID of the interface
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// Subnet ID of the interface
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudProjectGatewayInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectGatewayInterface)(nil)).Elem()
+}
+
+func (i GetCloudProjectGatewayInterfaceArgs) ToGetCloudProjectGatewayInterfaceOutput() GetCloudProjectGatewayInterfaceOutput {
+	return i.ToGetCloudProjectGatewayInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectGatewayInterfaceArgs) ToGetCloudProjectGatewayInterfaceOutputWithContext(ctx context.Context) GetCloudProjectGatewayInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectGatewayInterfaceOutput)
+}
+
+// GetCloudProjectGatewayInterfaceArrayInput is an input type that accepts GetCloudProjectGatewayInterfaceArray and GetCloudProjectGatewayInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectGatewayInterfaceArrayInput` via:
+//
+//	GetCloudProjectGatewayInterfaceArray{ GetCloudProjectGatewayInterfaceArgs{...} }
+type GetCloudProjectGatewayInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectGatewayInterfaceArrayOutput() GetCloudProjectGatewayInterfaceArrayOutput
+	ToGetCloudProjectGatewayInterfaceArrayOutputWithContext(context.Context) GetCloudProjectGatewayInterfaceArrayOutput
+}
+
+type GetCloudProjectGatewayInterfaceArray []GetCloudProjectGatewayInterfaceInput
+
+func (GetCloudProjectGatewayInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectGatewayInterface)(nil)).Elem()
+}
+
+func (i GetCloudProjectGatewayInterfaceArray) ToGetCloudProjectGatewayInterfaceArrayOutput() GetCloudProjectGatewayInterfaceArrayOutput {
+	return i.ToGetCloudProjectGatewayInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectGatewayInterfaceArray) ToGetCloudProjectGatewayInterfaceArrayOutputWithContext(ctx context.Context) GetCloudProjectGatewayInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectGatewayInterfaceArrayOutput)
+}
+
+type GetCloudProjectGatewayInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectGatewayInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectGatewayInterface)(nil)).Elem()
+}
+
+func (o GetCloudProjectGatewayInterfaceOutput) ToGetCloudProjectGatewayInterfaceOutput() GetCloudProjectGatewayInterfaceOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayInterfaceOutput) ToGetCloudProjectGatewayInterfaceOutputWithContext(ctx context.Context) GetCloudProjectGatewayInterfaceOutput {
+	return o
+}
+
+// ID of the interface
+func (o GetCloudProjectGatewayInterfaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayInterface) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP of the interface
+func (o GetCloudProjectGatewayInterfaceOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayInterface) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Network ID of the interface
+func (o GetCloudProjectGatewayInterfaceOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayInterface) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Subnet ID of the interface
+func (o GetCloudProjectGatewayInterfaceOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectGatewayInterface) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectGatewayInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectGatewayInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectGatewayInterface)(nil)).Elem()
+}
+
+func (o GetCloudProjectGatewayInterfaceArrayOutput) ToGetCloudProjectGatewayInterfaceArrayOutput() GetCloudProjectGatewayInterfaceArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayInterfaceArrayOutput) ToGetCloudProjectGatewayInterfaceArrayOutputWithContext(ctx context.Context) GetCloudProjectGatewayInterfaceArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) GetCloudProjectGatewayInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectGatewayInterface {
+		return vs[0].([]GetCloudProjectGatewayInterface)[vs[1].(int)]
+	}).(GetCloudProjectGatewayInterfaceOutput)
+}
+
 type GetCloudProjectRancherCapabilitiesPlanPlan struct {
 	// Cause for an unavailability
 	Cause string `pulumi:"cause"`
@@ -2274,6 +2567,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityArrayInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorPlanCodesInput)(nil)).Elem(), GetCloudProjectFlavorPlanCodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayExternalInformationInput)(nil)).Elem(), GetCloudProjectGatewayExternalInformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayExternalInformationIpInput)(nil)).Elem(), GetCloudProjectGatewayExternalInformationIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayExternalInformationIpArrayInput)(nil)).Elem(), GetCloudProjectGatewayExternalInformationIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayInterfaceInput)(nil)).Elem(), GetCloudProjectGatewayInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayInterfaceArrayInput)(nil)).Elem(), GetCloudProjectGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlanInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesPlanPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlanArrayInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesPlanPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersionInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesVersionVersionArgs{})
@@ -2310,6 +2608,11 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorPlanCodesOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectGatewayExternalInformationOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectGatewayExternalInformationIpOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectGatewayExternalInformationIpArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectGatewayInterfaceOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectGatewayInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesPlanPlanOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesVersionVersionOutput{})

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * const myCeph = ovh.Dedicated.getCeph({
  *     serviceName: "94d423da-0e55-45f2-9812-836460a19939",
  * });
- * const my_acl = new ovh.dedicated.CephAcl("my-acl", {
+ * const myAcl = new ovh.dedicated.CephAcl("my_acl", {
  *     serviceName: myCeph.then(myCeph => myCeph.id),
  *     network: "1.2.3.4",
  *     netmask: "255.255.255.255",

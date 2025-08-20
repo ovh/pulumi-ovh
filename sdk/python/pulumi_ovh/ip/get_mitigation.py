@@ -58,9 +58,6 @@ class GetMitigationResult:
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property

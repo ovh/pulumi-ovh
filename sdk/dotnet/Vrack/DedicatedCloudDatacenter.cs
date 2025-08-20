@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vrack_dedicatedCloudDatacenter = new Ovh.Vrack.DedicatedCloudDatacenter("vrack-dedicatedCloudDatacenter", new()
+    ///     var vrackDedicatedCloudDatacenter = new Ovh.Vrack.DedicatedCloudDatacenter("vrack_dedicated_cloud_datacenter", new()
     ///     {
     ///         ServiceName = "&lt;vRack service name&gt;",
     ///         Datacenter = "&lt;Dedicated Cloud Datacenter service name&gt;",

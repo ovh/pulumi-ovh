@@ -12,12 +12,14 @@ from .cloud_project_ssh_key import *
 from .domain_zone_dynhost_record import *
 from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
+from .get_cloud_project_gateway import *
 from .get_cloud_project_rancher_capabilities_plan import *
 from .get_cloud_project_rancher_capabilities_version import *
 from .get_cloud_project_ssh_key import *
 from .get_cloud_project_ssh_keys import *
 from .get_installation_template import *
 from .get_installation_templates import *
+from .get_location import *
 from .get_ovhcloud_connect_config_pop_datacenter_extras import *
 from .get_ovhcloud_connect_config_pop_datacenters import *
 from .get_ovhcloud_connect_config_pops import *
@@ -268,6 +270,14 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudproject",
   "classes": {
    "ovh:CloudProject/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "CloudProject/projectRegion",
+  "fqn": "pulumi_ovh.cloudproject",
+  "classes": {
+   "ovh:CloudProject/projectRegion:ProjectRegion": "ProjectRegion"
   }
  },
  {

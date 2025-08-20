@@ -517,7 +517,7 @@ class VpsPlanOption(dict):
         :param builtins.str plan_code: Plan code
         :param builtins.str pricing_mode: Pricing model identifier
         :param builtins.float quantity: Quantity of product desired
-        :param Sequence['VpsPlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product
+        :param Sequence['VpsPlanOptionConfigurationArgs'] configurations: Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "plan_code", plan_code)
@@ -562,7 +562,7 @@ class VpsPlanOption(dict):
     @pulumi.getter
     def configurations(self) -> Optional[Sequence['outputs.VpsPlanOptionConfiguration']]:
         """
-        Representation of a configuration item for personalizing product
+        Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&branch=v1#get-/order/catalog/public/vps).
         """
         return pulumi.get(self, "configurations")
 

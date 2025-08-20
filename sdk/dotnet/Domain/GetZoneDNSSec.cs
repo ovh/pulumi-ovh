@@ -117,9 +117,6 @@ namespace Pulumi.Ovh.Domain
     [OutputType]
     public sealed class GetZoneDNSSecResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// DNSSEC status (`disableInProgress`, `disabled`, `enableInProgress` or `enabled`)
