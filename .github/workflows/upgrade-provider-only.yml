@@ -1,0 +1,123 @@
+name: Upgrade provider only
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: |
+          The version of the upstream provider to upgrade to, without the 'v' prefix
+
+          If no version is specified, it will be inferred from the upstream provider's release tags.
+        required: false
+        type: string
+      upgradeProviderVersion:
+        description: |
+          Version of upgrade-provider to use. This must be a valid git reference in the pulumi/upgrade-provider repo. Defaults to "main"
+
+          See https://go.dev/ref/mod#versions for valid versions. E.g. "v0.1.0", "main", "da25dec".
+        default: main
+        type: string
+  schedule:
+    # 4 AM UTC ~ 9 PM PDT / 8 PM PST daily. Time chosen to run during off hours.
+    - cron: 0 4 * * *
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+env:
+  GH_TOKEN: ${{ secrets.PULUMI_PAT ||secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  upgrade_provider-only:
+    name: upgrade-provider-only
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # Persist credentials so upgrade-provider can push a new branch.
+          persist-credentials: true
+      - name: Setup tools
+        uses: ./.github/actions/setup-tools
+        with:
+          tools: pulumictl, pulumicli, dotnet, go, nodejs, python, java
+      - name: Install upgrade-provider
+        run: go install github.com/pulumi/upgrade-provider@${{ inputs.upgradeProviderVersion || 'main' }}
+        shell: bash
+      - name: "Set up git identity"
+        run: |
+          git config --global user.name 'bot@pulumi.com'
+          git config --global user.email 'bot@pulumi.com'
+        shell: bash
+      - name: Create issues for new upstream version
+        if: inputs.version == ''
+        id: upstream_version
+        # This step outputs `latest_version` if there is a pending upgrade
+        run: upgrade-provider "$REPO" --kind=check-upstream-version
+        env:
+          REPO: ${{ github.repository }}
+        shell: bash
+      - name: Calculate target version
+        id: target_version
+        # Prefer the manually specified version if it exists
+        # upstream_version will be empty if the provider is up-to-date
+        run: echo "version=${{ github.event.inputs.version || steps.upstream_version.outputs.latest_version }}" >> "$GITHUB_OUTPUT"
+        shell: bash
+      - name: Call upgrade provider only action
+        id: upgrade_provider_only
+        if: steps.target_version.outputs.version != ''
+        continue-on-error: true
+        # run script upgrade-provider-only.sh
+        run: "${GITHUB_WORKSPACE}/upgrade-provider-only.sh" ${{ steps.target_version.outputs.version }}
+
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          #token: ${{ secrets.PAT }}
+          commit-message: Upgrading terraform-provider-ovh to ${{ steps.target_version.outputs.version }}
+          title: Upgrade terraform-provider-ovh to ${{ steps.target_version.outputs.version }}
+          base: main
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: upgrade-terraform-provider-ovh-to-${{ steps.target_version.outputs.version }}-ci
+          delete-branch: true
+          body: |
+            This PR was generated via GH action
+            - Upgrading terraform-provider-ovh to ${{ steps.target_version.outputs.version }}.
+          draft: false
+
+#TODO: create PR
+#        with:
+#          kind: provider
+#          email: bot@pulumi.com
+#          username: pulumi-bot
+#          automerge: false
+#          target-version: ${{ steps.target_version.outputs.version }}
+#          allow-missing-docs: true
+#          gradle-version: '8.8'
+
+#      - name: Call upgrade provider action
+#        id: upgrade_provider
+#        if: steps.target_version.outputs.version != ''
+#        continue-on-error: true
+#        uses: scraly/pulumi-upgrade-provider-action@v0.0.2
+#        with:
+#          kind: provider
+#          email: bot@pulumi.com
+#          username: pulumi-bot
+#          automerge: false
+#          target-version: ${{ steps.target_version.outputs.version }}
+#          allow-missing-docs: true
+#          gradle-version: '8.8'
+
+      - name: Comment on upgrade issue if automated PR failed
+        if: steps.upgrade_provider.outcome == 'failure'
+        shell: bash
+        run: |
+          issue_number=$(gh issue list --search "pulumiupgradeproviderissue" --repo "${{ github.repository }}" --json=number --jq=".[0].number")
+          gh issue comment "${issue_number}" --repo "${{ github.repository }}" --body "Failed to create automatic PR: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/"
