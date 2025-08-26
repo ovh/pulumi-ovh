@@ -76,7 +76,7 @@ jobs:
           kind: provider
           email: bot@pulumi.com
           username: pulumi-bot
-          automerge: true
+          automerge: false
           target-version: ${{ steps.target_version.outputs.version }}
           allow-missing-docs: true
           gradle-version: '8.8'
