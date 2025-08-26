@@ -74,7 +74,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.PULUMI_PAT }}
           commit-message: Upgrading terraform-provider-ovh to v${{ steps.target_version.outputs.version }}
           title: Upgrade terraform-provider-ovh to v${{ steps.target_version.outputs.version }}
           base: main
