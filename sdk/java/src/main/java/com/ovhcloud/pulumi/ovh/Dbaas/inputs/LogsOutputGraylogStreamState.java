@@ -273,14 +273,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * If set, pause indexing when maximum size is reached
+     * If set, pause indexing when maximum size is reach
      * 
      */
     @Import(name="pauseIndexingOnMaxSize")
     private @Nullable Output<Boolean> pauseIndexingOnMaxSize;
 
     /**
-     * @return If set, pause indexing when maximum size is reached
+     * @return If set, pause indexing when maximum size is reach
      * 
      */
     public Optional<Output<Boolean>> pauseIndexingOnMaxSize() {
@@ -333,14 +333,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * Stream name
+     * Stream description
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return Stream name
+     * @return Stream description
      * 
      */
     public Optional<Output<String>> title() {
@@ -798,7 +798,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reached
+         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reach
          * 
          * @return builder
          * 
@@ -809,7 +809,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reached
+         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reach
          * 
          * @return builder
          * 
@@ -882,7 +882,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param title Stream name
+         * @param title Stream description
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param title Stream name
+         * @param title Stream description
          * 
          * @return builder
          * 

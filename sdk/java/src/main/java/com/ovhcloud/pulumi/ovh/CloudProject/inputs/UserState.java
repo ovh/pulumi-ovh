@@ -79,21 +79,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Arbitrary string to change to trigger a password update
-     * 
-     */
-    @Import(name="passwordReset")
-    private @Nullable Output<String> passwordReset;
-
-    /**
-     * @return Arbitrary string to change to trigger a password update
-     * 
-     */
-    public Optional<Output<String>> passwordReset() {
-        return Optional.ofNullable(this.passwordReset);
-    }
-
-    /**
      * The name of a role. See `role_names`.
      * 
      */
@@ -110,7 +95,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of role names. Values can be:
-     * - administrator
+     * - administrator,
      * - ai_training_operator
      * - ai_training_read
      * - authentication
@@ -118,9 +103,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * - compute_operator
      * - image_operator
      * - infrastructure_supervisor
-     * - key-manager_operator
-     * - key-manager_read
-     * - load-balancer_operator
      * - network_operator
      * - network_security_operator
      * - objectstore_operator
@@ -132,7 +114,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of role names. Values can be:
-     * - administrator
+     * - administrator,
      * - ai_training_operator
      * - ai_training_read
      * - authentication
@@ -140,9 +122,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * - compute_operator
      * - image_operator
      * - infrastructure_supervisor
-     * - key-manager_operator
-     * - key-manager_read
-     * - load-balancer_operator
      * - network_operator
      * - network_security_operator
      * - objectstore_operator
@@ -220,7 +199,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.openstackRc = $.openstackRc;
         this.password = $.password;
-        this.passwordReset = $.passwordReset;
         this.roleName = $.roleName;
         this.roleNames = $.roleNames;
         this.roles = $.roles;
@@ -332,27 +310,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordReset Arbitrary string to change to trigger a password update
-         * 
-         * @return builder
-         * 
-         */
-        public Builder passwordReset(@Nullable Output<String> passwordReset) {
-            $.passwordReset = passwordReset;
-            return this;
-        }
-
-        /**
-         * @param passwordReset Arbitrary string to change to trigger a password update
-         * 
-         * @return builder
-         * 
-         */
-        public Builder passwordReset(String passwordReset) {
-            return passwordReset(Output.of(passwordReset));
-        }
-
-        /**
          * @param roleName The name of a role. See `role_names`.
          * 
          * @return builder
@@ -375,7 +332,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleNames A list of role names. Values can be:
-         * - administrator
+         * - administrator,
          * - ai_training_operator
          * - ai_training_read
          * - authentication
@@ -383,9 +340,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * - compute_operator
          * - image_operator
          * - infrastructure_supervisor
-         * - key-manager_operator
-         * - key-manager_read
-         * - load-balancer_operator
          * - network_operator
          * - network_security_operator
          * - objectstore_operator
@@ -401,7 +355,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleNames A list of role names. Values can be:
-         * - administrator
+         * - administrator,
          * - ai_training_operator
          * - ai_training_read
          * - authentication
@@ -409,9 +363,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * - compute_operator
          * - image_operator
          * - infrastructure_supervisor
-         * - key-manager_operator
-         * - key-manager_read
-         * - load-balancer_operator
          * - network_operator
          * - network_security_operator
          * - objectstore_operator
@@ -426,7 +377,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleNames A list of role names. Values can be:
-         * - administrator
+         * - administrator,
          * - ai_training_operator
          * - ai_training_read
          * - authentication
@@ -434,9 +385,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * - compute_operator
          * - image_operator
          * - infrastructure_supervisor
-         * - key-manager_operator
-         * - key-manager_read
-         * - load-balancer_operator
          * - network_operator
          * - network_security_operator
          * - objectstore_operator

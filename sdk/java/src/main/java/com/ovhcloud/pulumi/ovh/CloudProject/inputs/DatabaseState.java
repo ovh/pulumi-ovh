@@ -282,8 +282,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;.
-     * * Valkey: &#34;essential&#34;, &#34;business&#34;.
+     * * Redis: &#34;essential&#34;, &#34;business&#34;
      * 
      */
     @Import(name="plan")
@@ -294,8 +293,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;.
-     * * Valkey: &#34;essential&#34;, &#34;business&#34;.
+     * * Redis: &#34;essential&#34;, &#34;business&#34;
      * 
      */
     public Optional<Output<String>> plan() {
@@ -793,8 +791,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
          * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
          * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-         * * Redis: &#34;essential&#34;, &#34;business&#34;.
-         * * Valkey: &#34;essential&#34;, &#34;business&#34;.
+         * * Redis: &#34;essential&#34;, &#34;business&#34;
          * 
          * @return builder
          * 
@@ -809,8 +806,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
          * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
          * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-         * * Redis: &#34;essential&#34;, &#34;business&#34;.
-         * * Valkey: &#34;essential&#34;, &#34;business&#34;.
+         * * Redis: &#34;essential&#34;, &#34;business&#34;
          * 
          * @return builder
          * 

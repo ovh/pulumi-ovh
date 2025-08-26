@@ -19,16 +19,6 @@ import * as utilities from "../utilities";
  *     suffix: "alias",
  * });
  * ```
- *
- * ## Import
- *
- * DBaaS logs Opensearch output alias can be imported using the `service_name` and `alias_id`, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias this ldp-XX-NNNNN/7e2301b6-c0fe-41d9-bc58-44fd844f1e3e
- * ```
  */
 export class LogsOutputOpenSearchAlias extends pulumi.CustomResource {
     /**

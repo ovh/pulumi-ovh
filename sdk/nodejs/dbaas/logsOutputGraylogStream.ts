@@ -38,16 +38,6 @@ import * as utilities from "../utilities";
  *     retentionId: retention.then(retention => retention.retentionId),
  * });
  * ```
- *
- * ## Import
- *
- * DBaas logs output Graylog stream can be imported using the `service_name` of the cluster and `stream_id` of the graylog output stream, separated by "/" E.g.,
- *
- * bash
- *
- * ```sh
- * $ pulumi import ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream ldp ldp-az-12345/9d2f9cf8-9f92-1337-c0f3-48a0213d2c6f
- * ```
  */
 export class LogsOutputGraylogStream extends pulumi.CustomResource {
     /**
@@ -146,7 +136,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly parentStreamId!: pulumi.Output<string | undefined>;
     /**
-     * If set, pause indexing when maximum size is reached
+     * If set, pause indexing when maximum size is reach
      */
     public readonly pauseIndexingOnMaxSize!: pulumi.Output<boolean>;
     /**
@@ -162,7 +152,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public /*out*/ readonly streamId!: pulumi.Output<string>;
     /**
-     * Stream name
+     * Stream description
      */
     public readonly title!: pulumi.Output<string>;
     /**
@@ -333,7 +323,7 @@ export interface LogsOutputGraylogStreamState {
      */
     parentStreamId?: pulumi.Input<string>;
     /**
-     * If set, pause indexing when maximum size is reached
+     * If set, pause indexing when maximum size is reach
      */
     pauseIndexingOnMaxSize?: pulumi.Input<boolean>;
     /**
@@ -349,7 +339,7 @@ export interface LogsOutputGraylogStreamState {
      */
     streamId?: pulumi.Input<string>;
     /**
-     * Stream name
+     * Stream description
      */
     title?: pulumi.Input<string>;
     /**
@@ -415,7 +405,7 @@ export interface LogsOutputGraylogStreamArgs {
      */
     parentStreamId?: pulumi.Input<string>;
     /**
-     * If set, pause indexing when maximum size is reached
+     * If set, pause indexing when maximum size is reach
      */
     pauseIndexingOnMaxSize?: pulumi.Input<boolean>;
     /**
@@ -427,7 +417,7 @@ export interface LogsOutputGraylogStreamArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Stream name
+     * Stream description
      */
     title: pulumi.Input<string>;
     /**

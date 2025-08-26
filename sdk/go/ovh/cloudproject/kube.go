@@ -52,8 +52,6 @@ type Kube struct {
 	NodesSubnetId pulumi.StringOutput `pulumi:"nodesSubnetId"`
 	// Cluster nodes URL.
 	NodesUrl pulumi.StringOutput `pulumi:"nodesUrl"`
-	// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrOutput `pulumi:"privateNetworkConfiguration"`
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -140,8 +138,6 @@ type kubeState struct {
 	NodesSubnetId *string `pulumi:"nodesSubnetId"`
 	// Cluster nodes URL.
 	NodesUrl *string `pulumi:"nodesUrl"`
-	// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-	Plan *string `pulumi:"plan"`
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -191,8 +187,6 @@ type KubeState struct {
 	NodesSubnetId pulumi.StringPtrInput
 	// Cluster nodes URL.
 	NodesUrl pulumi.StringPtrInput
-	// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-	Plan pulumi.StringPtrInput
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -234,8 +228,6 @@ type kubeArgs struct {
 	Name *string `pulumi:"name"`
 	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
 	NodesSubnetId *string `pulumi:"nodesSubnetId"`
-	// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-	Plan *string `pulumi:"plan"`
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration *KubePrivateNetworkConfiguration `pulumi:"privateNetworkConfiguration"`
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -270,8 +262,6 @@ type KubeArgs struct {
 	Name pulumi.StringPtrInput
 	// Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
 	NodesSubnetId pulumi.StringPtrInput
-	// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-	Plan pulumi.StringPtrInput
 	// The private network configuration. If this is set then the 2 parameters below shall be defined.
 	PrivateNetworkConfiguration KubePrivateNetworkConfigurationPtrInput
 	// Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
@@ -440,11 +430,6 @@ func (o KubeOutput) NodesSubnetId() pulumi.StringOutput {
 // Cluster nodes URL.
 func (o KubeOutput) NodesUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.NodesUrl }).(pulumi.StringOutput)
-}
-
-// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-func (o KubeOutput) Plan() pulumi.StringOutput {
-	return o.ApplyT(func(v *Kube) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
 // The private network configuration. If this is set then the 2 parameters below shall be defined.

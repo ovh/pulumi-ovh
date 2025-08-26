@@ -141,15 +141,15 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     /**
@@ -390,7 +390,7 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -453,6 +453,9 @@ public final class M3DbNamespaceArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.resolution == null) {
                 throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "resolution");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("M3DbNamespaceArgs", "serviceName");
             }
             return $;
         }

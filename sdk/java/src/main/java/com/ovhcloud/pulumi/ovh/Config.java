@@ -4,7 +4,6 @@
 package com.ovhcloud.pulumi.ovh;
 
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 
@@ -17,13 +16,6 @@ public final class Config {
  */
     public Optional<String> accessToken() {
         return Codegen.stringProp("accessToken").config(config).get();
-    }
-/**
- * Specify the API request rate limit, X operations by seconds (default: unlimited)
- * 
- */
-    public Optional<Integer> apiRateLimit() {
-        return Codegen.integerProp("apiRateLimit").config(config).get();
     }
 /**
  * The OVH API Application Key
@@ -66,12 +58,5 @@ public final class Config {
  */
     public Optional<String> endpoint() {
         return Codegen.stringProp("endpoint").config(config).get();
-    }
-/**
- * Extra information to append to the user-agent
- * 
- */
-    public Optional<String> userAgentExtra() {
-        return Codegen.stringProp("userAgentExtra").config(config).get();
     }
 }

@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class LogSubscriptionArgs extends com.pulumi.resources.ResourceArgs {
@@ -47,33 +45,18 @@ public final class LogSubscriptionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Log kind name of this subscription.
-     * 
-     */
-    @Import(name="kind", required=true)
-    private Output<String> kind;
-
-    /**
-     * @return Log kind name of this subscription.
-     * 
-     */
-    public Output<String> kind() {
-        return this.kind;
-    }
-
-    /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     /**
@@ -96,7 +79,6 @@ public final class LogSubscriptionArgs extends com.pulumi.resources.ResourceArgs
     private LogSubscriptionArgs(LogSubscriptionArgs $) {
         this.clusterId = $.clusterId;
         this.engine = $.engine;
-        this.kind = $.kind;
         this.serviceName = $.serviceName;
         this.streamId = $.streamId;
     }
@@ -162,33 +144,12 @@ public final class LogSubscriptionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kind Log kind name of this subscription.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kind(Output<String> kind) {
-            $.kind = kind;
-            return this;
-        }
-
-        /**
-         * @param kind Log kind name of this subscription.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kind(String kind) {
-            return kind(Output.of(kind));
-        }
-
-        /**
          * @param serviceName The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -231,8 +192,8 @@ public final class LogSubscriptionArgs extends com.pulumi.resources.ResourceArgs
             if ($.engine == null) {
                 throw new MissingRequiredPropertyException("LogSubscriptionArgs", "engine");
             }
-            if ($.kind == null) {
-                throw new MissingRequiredPropertyException("LogSubscriptionArgs", "kind");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("LogSubscriptionArgs", "serviceName");
             }
             if ($.streamId == null) {
                 throw new MissingRequiredPropertyException("LogSubscriptionArgs", "streamId");

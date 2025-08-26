@@ -31,14 +31,14 @@ public final class ContainerRegistryUserState extends com.pulumi.resources.Resou
     }
 
     /**
-     * User name
+     * Registry name
      * 
      */
     @Import(name="login")
     private @Nullable Output<String> login;
 
     /**
-     * @return User name
+     * @return Registry name
      * 
      */
     public Optional<Output<String>> login() {
@@ -91,14 +91,14 @@ public final class ContainerRegistryUserState extends com.pulumi.resources.Resou
     }
 
     /**
-     * User name (same as `login`)
+     * User name
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return User name (same as `login`)
+     * @return User name
      * 
      */
     public Optional<Output<String>> user() {
@@ -156,7 +156,7 @@ public final class ContainerRegistryUserState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param login User name
+         * @param login Registry name
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ContainerRegistryUserState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param login User name
+         * @param login Registry name
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ContainerRegistryUserState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param user User name (same as `login`)
+         * @param user User name
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ContainerRegistryUserState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param user User name (same as `login`)
+         * @param user User name
          * 
          * @return builder
          * 

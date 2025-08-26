@@ -80,15 +80,15 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * ID of the private network.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return ID of the private network.
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     /**
@@ -225,7 +225,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -270,6 +270,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GatewayArgs", "region");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "serviceName");
             }
             if ($.subnetId == null) {
                 throw new MissingRequiredPropertyException("GatewayArgs", "subnetId");

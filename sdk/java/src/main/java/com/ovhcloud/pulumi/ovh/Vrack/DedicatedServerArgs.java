@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class DedicatedServerArgs extends com.pulumi.resources.ResourceArgs {
@@ -35,15 +33,15 @@ public final class DedicatedServerArgs extends com.pulumi.resources.ResourceArgs
      * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     private DedicatedServerArgs() {}
@@ -98,7 +96,7 @@ public final class DedicatedServerArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -116,6 +114,9 @@ public final class DedicatedServerArgs extends com.pulumi.resources.ResourceArgs
         public DedicatedServerArgs build() {
             if ($.serverId == null) {
                 throw new MissingRequiredPropertyException("DedicatedServerArgs", "serverId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("DedicatedServerArgs", "serviceName");
             }
             return $;
         }
