@@ -91,6 +91,9 @@ namespace Pulumi.Ovh.Domain
     [OvhResourceType("ovh:Domain/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// URN of the DNS Zone to be used inside an IAM policy
+        /// </summary>
         [Output("ZoneURN")]
         public Output<string> ZoneURN { get; private set; } = null!;
 
@@ -251,6 +254,9 @@ namespace Pulumi.Ovh.Domain
 
     public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// URN of the DNS Zone to be used inside an IAM policy
+        /// </summary>
         [Input("ZoneURN")]
         public Input<string>? ZoneURN { get; set; }
 

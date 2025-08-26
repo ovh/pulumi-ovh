@@ -169,7 +169,7 @@ after:
 	github.com/ovh/terraform-provider-ovh/v2 v2.2.0
 ```
 
-* Download the new version of the dependency. It will update the `go.sum`` file
+* Download the new version of the dependency. It will update the `go.sum` file
 
 ```
 cd provider

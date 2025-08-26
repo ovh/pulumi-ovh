@@ -102,6 +102,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> NodesUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+        /// </summary>
+        [Output("plan")]
+        public Output<string> Plan { get; private set; } = null!;
+
+        /// <summary>
         /// The private network configuration. If this is set then the 2 parameters below shall be defined.
         /// </summary>
         [Output("privateNetworkConfiguration")]
@@ -257,6 +263,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("nodesSubnetId")]
         public Input<string>? NodesSubnetId { get; set; }
+
+        /// <summary>
+        /// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+        /// </summary>
+        [Input("plan")]
+        public Input<string>? Plan { get; set; }
 
         /// <summary>
         /// The private network configuration. If this is set then the 2 parameters below shall be defined.
@@ -420,6 +432,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("nodesUrl")]
         public Input<string>? NodesUrl { get; set; }
+
+        /// <summary>
+        /// Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+        /// </summary>
+        [Input("plan")]
+        public Input<string>? Plan { get; set; }
 
         /// <summary>
         /// The private network configuration. If this is set then the 2 parameters below shall be defined.

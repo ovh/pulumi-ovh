@@ -54,7 +54,7 @@ class GetZoneResult:
     @pulumi.getter(name="ZoneURN")
     def zone_urn(self) -> builtins.str:
         """
-        URN of the DNS zone
+        URN of the DNS Zone to be used inside an IAM policy
         """
         return pulumi.get(self, "zone_urn")
 
