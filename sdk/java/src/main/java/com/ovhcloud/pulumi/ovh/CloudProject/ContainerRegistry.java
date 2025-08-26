@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -83,6 +84,20 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * OVHCloud IAM enabled
+     * 
+     */
+    @Export(name="iamEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> iamEnabled;
+
+    /**
+     * @return OVHCloud IAM enabled
+     * 
+     */
+    public Output<Boolean> iamEnabled() {
+        return this.iamEnabled;
     }
     /**
      * Registry name
@@ -278,6 +293,7 @@ public class ContainerRegistry extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

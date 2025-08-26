@@ -103,6 +103,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * DBaas logs output Graylog stream can be imported using the `service_name` of the cluster and `stream_id` of the graylog output stream, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream ldp ldp-az-12345/9d2f9cf8-9f92-1337-c0f3-48a0213d2c6f
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream")
 public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource {
@@ -345,14 +355,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.parentStreamId);
     }
     /**
-     * If set, pause indexing when maximum size is reach
+     * If set, pause indexing when maximum size is reached
      * 
      */
     @Export(name="pauseIndexingOnMaxSize", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pauseIndexingOnMaxSize;
 
     /**
-     * @return If set, pause indexing when maximum size is reach
+     * @return If set, pause indexing when maximum size is reached
      * 
      */
     public Output<Boolean> pauseIndexingOnMaxSize() {
@@ -401,14 +411,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.streamId;
     }
     /**
-     * Stream description
+     * Stream name
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
-     * @return Stream description
+     * @return Stream name
      * 
      */
     public Output<String> title() {
@@ -496,6 +506,7 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "writeToken"
             ))

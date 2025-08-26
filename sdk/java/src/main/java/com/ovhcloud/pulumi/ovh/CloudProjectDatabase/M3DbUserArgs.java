@@ -80,15 +80,15 @@ public final class M3DbUserArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private M3DbUserArgs() {}
@@ -209,7 +209,7 @@ public final class M3DbUserArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -227,9 +227,6 @@ public final class M3DbUserArgs extends com.pulumi.resources.ResourceArgs {
         public M3DbUserArgs build() {
             if ($.clusterId == null) {
                 throw new MissingRequiredPropertyException("M3DbUserArgs", "clusterId");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("M3DbUserArgs", "serviceName");
             }
             return $;
         }

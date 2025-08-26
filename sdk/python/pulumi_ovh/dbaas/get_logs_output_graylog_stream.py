@@ -359,7 +359,7 @@ def get_logs_output_graylog_stream(service_name: Optional[builtins.str] = None,
 
 
     :param builtins.str service_name: The service name. It's the ID of your Logs Data Platform instance.
-    :param builtins.str title: Stream description
+    :param builtins.str title: Stream name
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -412,7 +412,7 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[bu
 
 
     :param builtins.str service_name: The service name. It's the ID of your Logs Data Platform instance.
-    :param builtins.str title: Stream description
+    :param builtins.str title: Stream name
     """
     __args__ = dict()
     __args__['serviceName'] = service_name

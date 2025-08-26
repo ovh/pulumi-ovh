@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpsPlanOption {
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
      * 
      */
     private @Nullable List<VpsPlanOptionConfiguration> configurations;
@@ -42,7 +42,7 @@ public final class VpsPlanOption {
 
     private VpsPlanOption() {}
     /**
-     * @return Representation of a configuration item for personalizing product
+     * @return Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
      * 
      */
     public List<VpsPlanOptionConfiguration> configurations() {

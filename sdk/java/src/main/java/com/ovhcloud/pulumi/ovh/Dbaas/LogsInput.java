@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                     .inputSection("""
  *   beats {
  *     port => 6514
- *     ssl => true
+ *     ssl_enabled => true
  *     ssl_certificate => "/etc/ssl/private/server.crt"
  *     ssl_key => "/etc/ssl/private/server.key"
  *   }
@@ -429,6 +429,7 @@ public class LogsInput extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "sslCertificate"
             ))
