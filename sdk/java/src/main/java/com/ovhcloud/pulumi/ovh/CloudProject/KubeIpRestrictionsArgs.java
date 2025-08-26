@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class KubeIpRestrictionsArgs extends com.pulumi.resources.ResourceArgs {
@@ -51,15 +49,15 @@ public final class KubeIpRestrictionsArgs extends com.pulumi.resources.ResourceA
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     private KubeIpRestrictionsArgs() {}
@@ -146,7 +144,7 @@ public final class KubeIpRestrictionsArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -167,6 +165,9 @@ public final class KubeIpRestrictionsArgs extends com.pulumi.resources.ResourceA
             }
             if ($.kubeId == null) {
                 throw new MissingRequiredPropertyException("KubeIpRestrictionsArgs", "kubeId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KubeIpRestrictionsArgs", "serviceName");
             }
             return $;
         }

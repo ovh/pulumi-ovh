@@ -187,14 +187,14 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
         return this.flow;
     }
     /**
-     * Identity URN of the service account to be used inside an IAM policy.
+     * URN that will allow you to associate this oauth2 client with an access policy
      * 
      */
     @Export(name="identity", refs={String.class}, tree="[0]")
     private Output<String> identity;
 
     /**
-     * @return Identity URN of the service account to be used inside an IAM policy.
+     * @return URN that will allow you to associate this oauth2 client with an access policy
      * 
      */
     public Output<String> identity() {
@@ -254,7 +254,6 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "clientSecret"
             ))

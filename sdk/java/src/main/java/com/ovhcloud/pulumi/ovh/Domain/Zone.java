@@ -116,17 +116,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="ovh:Domain/zone:Zone")
 public class Zone extends com.pulumi.resources.CustomResource {
-    /**
-     * URN of the DNS Zone to be used inside an IAM policy
-     * 
-     */
     @Export(name="ZoneURN", refs={String.class}, tree="[0]")
     private Output<String> ZoneURN;
 
-    /**
-     * @return URN of the DNS Zone to be used inside an IAM policy
-     * 
-     */
     public Output<String> ZoneURN() {
         return this.ZoneURN;
     }
@@ -314,7 +306,6 @@ public class Zone extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

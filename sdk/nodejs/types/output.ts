@@ -129,17 +129,6 @@ export interface GetCloudProjectSshKeysSshKey {
     regions: string[];
 }
 
-export interface GetDbaasLogsOutputGraylogStreamUrlUrl {
-    /**
-     * URL address
-     */
-    address: string;
-    /**
-     * URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-     */
-    type: string;
-}
-
 export interface GetInstallationTemplateInput {
     default: string;
     /**
@@ -1144,25 +1133,6 @@ export namespace CloudProject {
          * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
          */
         udpTimeout?: string;
-    }
-
-    export interface GetKubeKubeconfigAttribute {
-        /**
-         * (Sensitive) Client certificate data for authentication.
-         */
-        clientCertificate: string;
-        /**
-         * (Sensitive) Client private key data for authentication.
-         */
-        clientKey: string;
-        /**
-         * (Sensitive) Cluster certificate authority data.
-         */
-        clusterCaCertificate: string;
-        /**
-         * Kubernetes API server endpoint.
-         */
-        host: string;
     }
 
     export interface GetKubeNodePoolNodesNode {

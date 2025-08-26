@@ -11,11 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionService {
     /**
-     * @return Endpoint URL
-     * 
-     */
-    private String endpoint;
-    /**
      * @return The name of the region associated with the public cloud project.
      * 
      */
@@ -27,13 +22,6 @@ public final class GetRegionService {
     private String status;
 
     private GetRegionService() {}
-    /**
-     * @return Endpoint URL
-     * 
-     */
-    public String endpoint() {
-        return this.endpoint;
-    }
     /**
      * @return The name of the region associated with the public cloud project.
      * 
@@ -58,25 +46,15 @@ public final class GetRegionService {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String endpoint;
         private String name;
         private String status;
         public Builder() {}
         public Builder(GetRegionService defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.endpoint = defaults.endpoint;
     	      this.name = defaults.name;
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
-        public Builder endpoint(String endpoint) {
-            if (endpoint == null) {
-              throw new MissingRequiredPropertyException("GetRegionService", "endpoint");
-            }
-            this.endpoint = endpoint;
-            return this;
-        }
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
@@ -95,7 +73,6 @@ public final class GetRegionService {
         }
         public GetRegionService build() {
             final var _resultValue = new GetRegionService();
-            _resultValue.endpoint = endpoint;
             _resultValue.name = name;
             _resultValue.status = status;
             return _resultValue;

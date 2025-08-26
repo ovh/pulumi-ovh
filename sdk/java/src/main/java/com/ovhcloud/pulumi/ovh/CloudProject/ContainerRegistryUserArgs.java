@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ContainerRegistryUserArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,14 +30,14 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * User name
+     * Registry name
      * 
      */
     @Import(name="login", required=true)
     private Output<String> login;
 
     /**
-     * @return User name
+     * @return Registry name
      * 
      */
     public Output<String> login() {
@@ -65,15 +63,15 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     private ContainerRegistryUserArgs() {}
@@ -125,7 +123,7 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param login User name
+         * @param login Registry name
          * 
          * @return builder
          * 
@@ -136,7 +134,7 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param login User name
+         * @param login Registry name
          * 
          * @return builder
          * 
@@ -172,7 +170,7 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -196,6 +194,9 @@ public final class ContainerRegistryUserArgs extends com.pulumi.resources.Resour
             }
             if ($.registryId == null) {
                 throw new MissingRequiredPropertyException("ContainerRegistryUserArgs", "registryId");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ContainerRegistryUserArgs", "serviceName");
             }
             return $;
         }

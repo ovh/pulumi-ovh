@@ -15,7 +15,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -123,20 +122,6 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
         return this.regionsAttributes;
     }
     /**
-     * A map with region name as key, and region-specific openstack id as value
-     * 
-     */
-    @Export(name="regionsOpenstackIds", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> regionsOpenstackIds;
-
-    /**
-     * @return A map with region name as key, and region-specific openstack id as value
-     * 
-     */
-    public Output<Map<String,String>> regionsOpenstackIds() {
-        return this.regionsOpenstackIds;
-    }
-    /**
      * (Deprecated) A map representing the status of the network per region.
      * * `regions_status/region` - (Deprecated) The id of the region.
      * * `regions_status/status` - (Deprecated) The status of the network in the region.
@@ -227,7 +212,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkPrivate(java.lang.String name, @Nullable NetworkPrivateArgs args) {
+    public NetworkPrivate(java.lang.String name, NetworkPrivateArgs args) {
         this(name, args, null);
     }
     /**
@@ -236,7 +221,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkPrivate(java.lang.String name, @Nullable NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public NetworkPrivate(java.lang.String name, NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -244,7 +229,7 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
         super("ovh:CloudProject/networkPrivate:NetworkPrivate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static NetworkPrivateArgs makeArgs(@Nullable NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static NetworkPrivateArgs makeArgs(NetworkPrivateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
@@ -254,7 +239,6 @@ public class NetworkPrivate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

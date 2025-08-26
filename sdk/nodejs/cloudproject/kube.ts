@@ -100,10 +100,6 @@ export class Kube extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodesUrl!: pulumi.Output<string>;
     /**
-     * Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-     */
-    public readonly plan!: pulumi.Output<string>;
-    /**
      * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */
     public readonly privateNetworkConfiguration!: pulumi.Output<outputs.CloudProject.KubePrivateNetworkConfiguration | undefined>;
@@ -164,7 +160,6 @@ export class Kube extends pulumi.CustomResource {
             resourceInputs["nextUpgradeVersions"] = state ? state.nextUpgradeVersions : undefined;
             resourceInputs["nodesSubnetId"] = state ? state.nodesSubnetId : undefined;
             resourceInputs["nodesUrl"] = state ? state.nodesUrl : undefined;
-            resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["privateNetworkConfiguration"] = state ? state.privateNetworkConfiguration : undefined;
             resourceInputs["privateNetworkId"] = state ? state.privateNetworkId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -185,7 +180,6 @@ export class Kube extends pulumi.CustomResource {
             resourceInputs["loadBalancersSubnetId"] = args ? args.loadBalancersSubnetId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodesSubnetId"] = args ? args.nodesSubnetId : undefined;
-            resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["privateNetworkConfiguration"] = args ? args.privateNetworkConfiguration : undefined;
             resourceInputs["privateNetworkId"] = args ? args.privateNetworkId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -267,10 +261,6 @@ export interface KubeState {
      */
     nodesUrl?: pulumi.Input<string>;
     /**
-     * Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-     */
-    plan?: pulumi.Input<string>;
-    /**
      * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */
     privateNetworkConfiguration?: pulumi.Input<inputs.CloudProject.KubePrivateNetworkConfiguration>;
@@ -340,10 +330,6 @@ export interface KubeArgs {
      * Subnet ID to use for nodes, this subnet must belong to `privateNetworkId`. Default uses the first subnet belonging to the private network with id `privateNetworkId`. This attribute requires `privateNetworkId` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
      */
     nodesSubnetId?: pulumi.Input<string>;
-    /**
-     * Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-     */
-    plan?: pulumi.Input<string>;
     /**
      * The private network configuration. If this is set then the 2 parameters below shall be defined.
      */

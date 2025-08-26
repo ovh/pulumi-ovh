@@ -105,7 +105,7 @@ type APIOAuth2Client struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringOutput `pulumi:"flow"`
-	// Identity URN of the service account to be used inside an IAM policy.
+	// URN that will allow you to associate this oauth2 client with an access policy
 	Identity pulumi.StringOutput `pulumi:"identity"`
 	// OAuth2 client name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -161,7 +161,7 @@ type apioauth2ClientState struct {
 	Description *string `pulumi:"description"`
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow *string `pulumi:"flow"`
-	// Identity URN of the service account to be used inside an IAM policy.
+	// URN that will allow you to associate this oauth2 client with an access policy
 	Identity *string `pulumi:"identity"`
 	// OAuth2 client name.
 	Name *string `pulumi:"name"`
@@ -178,7 +178,7 @@ type APIOAuth2ClientState struct {
 	Description pulumi.StringPtrInput
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringPtrInput
-	// Identity URN of the service account to be used inside an IAM policy.
+	// URN that will allow you to associate this oauth2 client with an access policy
 	Identity pulumi.StringPtrInput
 	// OAuth2 client name.
 	Name pulumi.StringPtrInput
@@ -323,7 +323,7 @@ func (o APIOAuth2ClientOutput) Flow() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Flow }).(pulumi.StringOutput)
 }
 
-// Identity URN of the service account to be used inside an IAM policy.
+// URN that will allow you to associate this oauth2 client with an access policy
 func (o APIOAuth2ClientOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }

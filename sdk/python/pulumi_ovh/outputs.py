@@ -25,7 +25,6 @@ __all__ = [
     'GetCloudProjectRancherCapabilitiesPlanPlanResult',
     'GetCloudProjectRancherCapabilitiesVersionVersionResult',
     'GetCloudProjectSshKeysSshKeyResult',
-    'GetDbaasLogsOutputGraylogStreamUrlUrlResult',
     'GetInstallationTemplateInputResult',
     'GetInstallationTemplateLicenseResult',
     'GetInstallationTemplateLicenseOResult',
@@ -371,35 +370,6 @@ class GetCloudProjectSshKeysSshKeyResult(dict):
         SSH key regions
         """
         return pulumi.get(self, "regions")
-
-
-@pulumi.output_type
-class GetDbaasLogsOutputGraylogStreamUrlUrlResult(dict):
-    def __init__(__self__, *,
-                 address: builtins.str,
-                 type: builtins.str):
-        """
-        :param builtins.str address: URL address
-        :param builtins.str type: URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-        """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def address(self) -> builtins.str:
-        """
-        URL address
-        """
-        return pulumi.get(self, "address")
-
-    @property
-    @pulumi.getter
-    def type(self) -> builtins.str:
-        """
-        URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

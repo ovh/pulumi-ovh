@@ -6,7 +6,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomization;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomizationApiserver;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomizationKubeProxy;
-import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeKubeconfigAttribute;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -63,16 +62,6 @@ public final class GetKubeResult {
      */
     private @Nullable String kubeProxyMode;
     /**
-     * @return (Sensitive) Raw kubeconfig file content for connecting to the cluster.
-     * 
-     */
-    private String kubeconfig;
-    /**
-     * @return (Sensitive) Structured kubeconfig data for connecting to the cluster.
-     * 
-     */
-    private List<GetKubeKubeconfigAttribute> kubeconfigAttributes;
-    /**
      * @return Openstack private network (or vRack) ID to use for load balancers.
      * 
      */
@@ -97,11 +86,6 @@ public final class GetKubeResult {
      * 
      */
     private String nodesUrl;
-    /**
-     * @return Plan of the managed kubernetes cluster.
-     * 
-     */
-    private @Nullable String plan;
     /**
      * @return OpenStack private network (or vrack) ID to use.
      * 
@@ -200,20 +184,6 @@ public final class GetKubeResult {
         return Optional.ofNullable(this.kubeProxyMode);
     }
     /**
-     * @return (Sensitive) Raw kubeconfig file content for connecting to the cluster.
-     * 
-     */
-    public String kubeconfig() {
-        return this.kubeconfig;
-    }
-    /**
-     * @return (Sensitive) Structured kubeconfig data for connecting to the cluster.
-     * 
-     */
-    public List<GetKubeKubeconfigAttribute> kubeconfigAttributes() {
-        return this.kubeconfigAttributes;
-    }
-    /**
      * @return Openstack private network (or vRack) ID to use for load balancers.
      * 
      */
@@ -247,13 +217,6 @@ public final class GetKubeResult {
      */
     public String nodesUrl() {
         return this.nodesUrl;
-    }
-    /**
-     * @return Plan of the managed kubernetes cluster.
-     * 
-     */
-    public Optional<String> plan() {
-        return Optional.ofNullable(this.plan);
     }
     /**
      * @return OpenStack private network (or vrack) ID to use.
@@ -322,14 +285,11 @@ public final class GetKubeResult {
         private Boolean isUpToDate;
         private String kubeId;
         private @Nullable String kubeProxyMode;
-        private String kubeconfig;
-        private List<GetKubeKubeconfigAttribute> kubeconfigAttributes;
         private String loadBalancersSubnetId;
         private @Nullable String name;
         private List<String> nextUpgradeVersions;
         private String nodesSubnetId;
         private String nodesUrl;
-        private @Nullable String plan;
         private String privateNetworkId;
         private @Nullable String region;
         private String serviceName;
@@ -348,14 +308,11 @@ public final class GetKubeResult {
     	      this.isUpToDate = defaults.isUpToDate;
     	      this.kubeId = defaults.kubeId;
     	      this.kubeProxyMode = defaults.kubeProxyMode;
-    	      this.kubeconfig = defaults.kubeconfig;
-    	      this.kubeconfigAttributes = defaults.kubeconfigAttributes;
     	      this.loadBalancersSubnetId = defaults.loadBalancersSubnetId;
     	      this.name = defaults.name;
     	      this.nextUpgradeVersions = defaults.nextUpgradeVersions;
     	      this.nodesSubnetId = defaults.nodesSubnetId;
     	      this.nodesUrl = defaults.nodesUrl;
-    	      this.plan = defaults.plan;
     	      this.privateNetworkId = defaults.privateNetworkId;
     	      this.region = defaults.region;
     	      this.serviceName = defaults.serviceName;
@@ -432,25 +389,6 @@ public final class GetKubeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder kubeconfig(String kubeconfig) {
-            if (kubeconfig == null) {
-              throw new MissingRequiredPropertyException("GetKubeResult", "kubeconfig");
-            }
-            this.kubeconfig = kubeconfig;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder kubeconfigAttributes(List<GetKubeKubeconfigAttribute> kubeconfigAttributes) {
-            if (kubeconfigAttributes == null) {
-              throw new MissingRequiredPropertyException("GetKubeResult", "kubeconfigAttributes");
-            }
-            this.kubeconfigAttributes = kubeconfigAttributes;
-            return this;
-        }
-        public Builder kubeconfigAttributes(GetKubeKubeconfigAttribute... kubeconfigAttributes) {
-            return kubeconfigAttributes(List.of(kubeconfigAttributes));
-        }
-        @CustomType.Setter
         public Builder loadBalancersSubnetId(String loadBalancersSubnetId) {
             if (loadBalancersSubnetId == null) {
               throw new MissingRequiredPropertyException("GetKubeResult", "loadBalancersSubnetId");
@@ -489,12 +427,6 @@ public final class GetKubeResult {
               throw new MissingRequiredPropertyException("GetKubeResult", "nodesUrl");
             }
             this.nodesUrl = nodesUrl;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder plan(@Nullable String plan) {
-
-            this.plan = plan;
             return this;
         }
         @CustomType.Setter
@@ -557,14 +489,11 @@ public final class GetKubeResult {
             _resultValue.isUpToDate = isUpToDate;
             _resultValue.kubeId = kubeId;
             _resultValue.kubeProxyMode = kubeProxyMode;
-            _resultValue.kubeconfig = kubeconfig;
-            _resultValue.kubeconfigAttributes = kubeconfigAttributes;
             _resultValue.loadBalancersSubnetId = loadBalancersSubnetId;
             _resultValue.name = name;
             _resultValue.nextUpgradeVersions = nextUpgradeVersions;
             _resultValue.nodesSubnetId = nodesSubnetId;
             _resultValue.nodesUrl = nodesUrl;
-            _resultValue.plan = plan;
             _resultValue.privateNetworkId = privateNetworkId;
             _resultValue.region = region;
             _resultValue.serviceName = serviceName;

@@ -33,8 +33,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["version"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Version),
-        ///         ["kubeconfig"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Kubeconfig),
-        ///         ["kubeHost"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.KubeconfigAttributes[0]?.Host),
         ///     };
         /// });
         /// ```
@@ -64,8 +62,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["version"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Version),
-        ///         ["kubeconfig"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Kubeconfig),
-        ///         ["kubeHost"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.KubeconfigAttributes[0]?.Host),
         ///     };
         /// });
         /// ```
@@ -95,8 +91,6 @@ namespace Pulumi.Ovh.CloudProject
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["version"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Version),
-        ///         ["kubeconfig"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.Kubeconfig),
-        ///         ["kubeHost"] = myKubeCluster.Apply(getKubeResult =&gt; getKubeResult.KubeconfigAttributes[0]?.Host),
         ///     };
         /// });
         /// ```
@@ -156,12 +150,6 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
-
-        /// <summary>
-        /// Plan of the managed kubernetes cluster.
-        /// </summary>
-        [Input("plan")]
-        public string? Plan { get; set; }
 
         /// <summary>
         /// The OVHcloud public cloud region ID of the managed kubernetes cluster.
@@ -245,12 +233,6 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Plan of the managed kubernetes cluster.
-        /// </summary>
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
-        /// <summary>
         /// The OVHcloud public cloud region ID of the managed kubernetes cluster.
         /// </summary>
         [Input("region")]
@@ -317,14 +299,6 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string? KubeProxyMode;
         /// <summary>
-        /// (Sensitive) Raw kubeconfig file content for connecting to the cluster.
-        /// </summary>
-        public readonly string Kubeconfig;
-        /// <summary>
-        /// (Sensitive) Structured kubeconfig data for connecting to the cluster.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetKubeKubeconfigAttributeResult> KubeconfigAttributes;
-        /// <summary>
         /// Openstack private network (or vRack) ID to use for load balancers.
         /// </summary>
         public readonly string LoadBalancersSubnetId;
@@ -344,10 +318,6 @@ namespace Pulumi.Ovh.CloudProject
         /// Cluster nodes URL.
         /// </summary>
         public readonly string NodesUrl;
-        /// <summary>
-        /// Plan of the managed kubernetes cluster.
-        /// </summary>
-        public readonly string? Plan;
         /// <summary>
         /// OpenStack private network (or vrack) ID to use.
         /// </summary>
@@ -395,10 +365,6 @@ namespace Pulumi.Ovh.CloudProject
 
             string? kubeProxyMode,
 
-            string kubeconfig,
-
-            ImmutableArray<Outputs.GetKubeKubeconfigAttributeResult> kubeconfigAttributes,
-
             string loadBalancersSubnetId,
 
             string? name,
@@ -408,8 +374,6 @@ namespace Pulumi.Ovh.CloudProject
             string nodesSubnetId,
 
             string nodesUrl,
-
-            string? plan,
 
             string privateNetworkId,
 
@@ -433,14 +397,11 @@ namespace Pulumi.Ovh.CloudProject
             IsUpToDate = isUpToDate;
             KubeId = kubeId;
             KubeProxyMode = kubeProxyMode;
-            Kubeconfig = kubeconfig;
-            KubeconfigAttributes = kubeconfigAttributes;
             LoadBalancersSubnetId = loadBalancersSubnetId;
             Name = name;
             NextUpgradeVersions = nextUpgradeVersions;
             NodesSubnetId = nodesSubnetId;
             NodesUrl = nodesUrl;
-            Plan = plan;
             PrivateNetworkId = privateNetworkId;
             Region = region;
             ServiceName = serviceName;

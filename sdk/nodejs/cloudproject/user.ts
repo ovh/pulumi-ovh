@@ -60,6 +60,7 @@ export class User extends pulumi.CustomResource {
     public readonly roleName!: pulumi.Output<string | undefined>;
     /**
      * A list of role names. Values can be:
+     * - admin
      * - administrator
      * - aiTrainingOperator
      * - aiTrainingRead
@@ -169,6 +170,7 @@ export interface UserState {
     roleName?: pulumi.Input<string>;
     /**
      * A list of role names. Values can be:
+     * - admin
      * - administrator
      * - aiTrainingOperator
      * - aiTrainingRead
@@ -226,6 +228,7 @@ export interface UserArgs {
     roleName?: pulumi.Input<string>;
     /**
      * A list of role names. Values can be:
+     * - admin
      * - administrator
      * - aiTrainingOperator
      * - aiTrainingRead

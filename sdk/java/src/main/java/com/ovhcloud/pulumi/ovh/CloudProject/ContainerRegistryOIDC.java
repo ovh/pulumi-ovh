@@ -225,14 +225,14 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="oidcVerifyCert", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> oidcVerifyCert;
+    private Output</* @Nullable */ Boolean> oidcVerifyCert;
 
     /**
      * @return Set it to `false` if your OIDC server is hosted via self-signed certificate.
      * 
      */
-    public Output<Boolean> oidcVerifyCert() {
-        return this.oidcVerifyCert;
+    public Output<Optional<Boolean>> oidcVerifyCert() {
+        return Codegen.optional(this.oidcVerifyCert);
     }
     /**
      * The ID of the Managed Private Registry. **Changing this value recreates the resource.**
@@ -302,7 +302,6 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "oidcClientSecret"
             ))

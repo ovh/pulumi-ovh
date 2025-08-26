@@ -40,7 +40,7 @@ class LogsOutputGraylogStreamArgs:
         The set of arguments for constructing a LogsOutputGraylogStream resource.
         :param pulumi.Input[builtins.str] description: Stream description
         :param pulumi.Input[builtins.str] service_name: The service name
-        :param pulumi.Input[builtins.str] title: Stream name
+        :param pulumi.Input[builtins.str] title: Stream description
         :param pulumi.Input[builtins.str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
         :param pulumi.Input[builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
         :param pulumi.Input[builtins.bool] cold_storage_enabled: Is Cold storage enabled?
@@ -51,7 +51,7 @@ class LogsOutputGraylogStreamArgs:
         :param pulumi.Input[builtins.int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[builtins.bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
         :param pulumi.Input[builtins.str] parent_stream_id: Parent stream ID
-        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reached
+        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[builtins.str] retention_id: Retention ID
         :param pulumi.Input[builtins.bool] web_socket_enabled: Enable Websocket
         """
@@ -113,7 +113,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter
     def title(self) -> pulumi.Input[builtins.str]:
         """
-        Stream name
+        Stream description
         """
         return pulumi.get(self, "title")
 
@@ -245,7 +245,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter(name="pauseIndexingOnMaxSize")
     def pause_indexing_on_max_size(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If set, pause indexing when maximum size is reached
+        If set, pause indexing when maximum size is reach
         """
         return pulumi.get(self, "pause_indexing_on_max_size")
 
@@ -325,11 +325,11 @@ class _LogsOutputGraylogStreamState:
         :param pulumi.Input[builtins.int] nb_alert_condition: Number of alert condition
         :param pulumi.Input[builtins.int] nb_archive: Number of coldstored archivesr
         :param pulumi.Input[builtins.str] parent_stream_id: Parent stream ID
-        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reached
+        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[builtins.str] retention_id: Retention ID
         :param pulumi.Input[builtins.str] service_name: The service name
         :param pulumi.Input[builtins.str] stream_id: Stream ID
-        :param pulumi.Input[builtins.str] title: Stream name
+        :param pulumi.Input[builtins.str] title: Stream description
         :param pulumi.Input[builtins.str] updated_at: Stream last updater
         :param pulumi.Input[builtins.bool] web_socket_enabled: Enable Websocket
         :param pulumi.Input[builtins.str] write_token: Write token of the stream (empty if the caller is not the owner of the stream)
@@ -593,7 +593,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="pauseIndexingOnMaxSize")
     def pause_indexing_on_max_size(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If set, pause indexing when maximum size is reached
+        If set, pause indexing when maximum size is reach
         """
         return pulumi.get(self, "pause_indexing_on_max_size")
 
@@ -641,7 +641,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Stream name
+        Stream description
         """
         return pulumi.get(self, "title")
 
@@ -740,16 +740,6 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             retention_id=retention.retention_id)
         ```
 
-        ## Import
-
-        DBaas logs output Graylog stream can be imported using the `service_name` of the cluster and `stream_id` of the graylog output stream, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream ldp ldp-az-12345/9d2f9cf8-9f92-1337-c0f3-48a0213d2c6f
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
@@ -763,10 +753,10 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[builtins.bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
         :param pulumi.Input[builtins.str] parent_stream_id: Parent stream ID
-        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reached
+        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[builtins.str] retention_id: Retention ID
         :param pulumi.Input[builtins.str] service_name: The service name
-        :param pulumi.Input[builtins.str] title: Stream name
+        :param pulumi.Input[builtins.str] title: Stream description
         :param pulumi.Input[builtins.bool] web_socket_enabled: Enable Websocket
         """
         ...
@@ -804,16 +794,6 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             title="my stream",
             description="my graylog stream",
             retention_id=retention.retention_id)
-        ```
-
-        ## Import
-
-        DBaas logs output Graylog stream can be imported using the `service_name` of the cluster and `stream_id` of the graylog output stream, separated by "/" E.g.,
-
-        bash
-
-        ```sh
-        $ pulumi import ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream ldp ldp-az-12345/9d2f9cf8-9f92-1337-c0f3-48a0213d2c6f
         ```
 
         :param str resource_name: The name of the resource.
@@ -948,11 +928,11 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] nb_alert_condition: Number of alert condition
         :param pulumi.Input[builtins.int] nb_archive: Number of coldstored archivesr
         :param pulumi.Input[builtins.str] parent_stream_id: Parent stream ID
-        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reached
+        :param pulumi.Input[builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reach
         :param pulumi.Input[builtins.str] retention_id: Retention ID
         :param pulumi.Input[builtins.str] service_name: The service name
         :param pulumi.Input[builtins.str] stream_id: Stream ID
-        :param pulumi.Input[builtins.str] title: Stream name
+        :param pulumi.Input[builtins.str] title: Stream description
         :param pulumi.Input[builtins.str] updated_at: Stream last updater
         :param pulumi.Input[builtins.bool] web_socket_enabled: Enable Websocket
         :param pulumi.Input[builtins.str] write_token: Write token of the stream (empty if the caller is not the owner of the stream)
@@ -1128,7 +1108,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="pauseIndexingOnMaxSize")
     def pause_indexing_on_max_size(self) -> pulumi.Output[builtins.bool]:
         """
-        If set, pause indexing when maximum size is reached
+        If set, pause indexing when maximum size is reach
         """
         return pulumi.get(self, "pause_indexing_on_max_size")
 
@@ -1160,7 +1140,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[builtins.str]:
         """
-        Stream name
+        Stream description
         """
         return pulumi.get(self, "title")
 

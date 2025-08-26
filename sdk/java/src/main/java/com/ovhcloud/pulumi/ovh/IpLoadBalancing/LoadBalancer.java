@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .optionsPlanCode("iplb-zone-lb1-rbx")
  *             .build());
  * 
- *         var iplbLb1 = new LoadBalancer("iplbLb1", LoadBalancerArgs.builder()
+ *         var iplb_lb1 = new LoadBalancer("iplb-lb1", LoadBalancerArgs.builder()
  *             .ovhSubsidiary(mycart.ovhSubsidiary())
  *             .displayName("my ip loadbalancing")
  *             .plan(LoadBalancerPlanArgs.builder()
@@ -434,7 +434,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "metricsToken"
             ))
