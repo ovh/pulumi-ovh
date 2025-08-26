@@ -125,6 +125,7 @@ __all__ = [
     'GetKubeCustomizationKubeProxyResult',
     'GetKubeCustomizationKubeProxyIptablesResult',
     'GetKubeCustomizationKubeProxyIpvsResult',
+    'GetKubeKubeconfigAttributeResult',
     'GetKubeNodePoolNodesNodeResult',
     'GetKubeNodePoolTemplateResult',
     'GetKubeNodePoolTemplateMetadataResult',
@@ -5882,6 +5883,57 @@ class GetKubeCustomizationKubeProxyIpvsResult(dict):
         timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
         """
         return pulumi.get(self, "udp_timeout")
+
+
+@pulumi.output_type
+class GetKubeKubeconfigAttributeResult(dict):
+    def __init__(__self__, *,
+                 client_certificate: builtins.str,
+                 client_key: builtins.str,
+                 cluster_ca_certificate: builtins.str,
+                 host: builtins.str):
+        """
+        :param builtins.str client_certificate: (Sensitive) Client certificate data for authentication.
+        :param builtins.str client_key: (Sensitive) Client private key data for authentication.
+        :param builtins.str cluster_ca_certificate: (Sensitive) Cluster certificate authority data.
+        :param builtins.str host: Kubernetes API server endpoint.
+        """
+        pulumi.set(__self__, "client_certificate", client_certificate)
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
+        pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> builtins.str:
+        """
+        (Sensitive) Client certificate data for authentication.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> builtins.str:
+        """
+        (Sensitive) Client private key data for authentication.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="clusterCaCertificate")
+    def cluster_ca_certificate(self) -> builtins.str:
+        """
+        (Sensitive) Cluster certificate authority data.
+        """
+        return pulumi.get(self, "cluster_ca_certificate")
+
+    @property
+    @pulumi.getter
+    def host(self) -> builtins.str:
+        """
+        Kubernetes API server endpoint.
+        """
+        return pulumi.get(self, "host")
 
 
 @pulumi.output_type

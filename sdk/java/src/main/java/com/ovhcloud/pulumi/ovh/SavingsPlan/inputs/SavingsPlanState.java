@@ -153,14 +153,14 @@ public final class SavingsPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the public cloud project
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return ID of the public cloud project
+     * @return ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -438,7 +438,7 @@ public final class SavingsPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName ID of the public cloud project
+         * @param serviceName ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class SavingsPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName ID of the public cloud project
+         * @param serviceName ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

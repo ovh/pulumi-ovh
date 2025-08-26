@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlavorsResult {
@@ -18,6 +20,11 @@ public final class GetFlavorsResult {
      * 
      */
     private String id;
+    /**
+     * @return Filter flavors using the given name (strict equality, e.g. b2-7)
+     * 
+     */
+    private @Nullable String nameFilter;
     /**
      * @return Flavor region
      * 
@@ -39,6 +46,13 @@ public final class GetFlavorsResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Filter flavors using the given name (strict equality, e.g. b2-7)
+     * 
+     */
+    public Optional<String> nameFilter() {
+        return Optional.ofNullable(this.nameFilter);
     }
     /**
      * @return Flavor region
@@ -66,6 +80,7 @@ public final class GetFlavorsResult {
     public static final class Builder {
         private List<GetFlavorsFlavor> flavors;
         private String id;
+        private @Nullable String nameFilter;
         private String region;
         private String serviceName;
         public Builder() {}
@@ -73,6 +88,7 @@ public final class GetFlavorsResult {
     	      Objects.requireNonNull(defaults);
     	      this.flavors = defaults.flavors;
     	      this.id = defaults.id;
+    	      this.nameFilter = defaults.nameFilter;
     	      this.region = defaults.region;
     	      this.serviceName = defaults.serviceName;
         }
@@ -97,6 +113,12 @@ public final class GetFlavorsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nameFilter(@Nullable String nameFilter) {
+
+            this.nameFilter = nameFilter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetFlavorsResult", "region");
@@ -116,6 +138,7 @@ public final class GetFlavorsResult {
             final var _resultValue = new GetFlavorsResult();
             _resultValue.flavors = flavors;
             _resultValue.id = id;
+            _resultValue.nameFilter = nameFilter;
             _resultValue.region = region;
             _resultValue.serviceName = serviceName;
             return _resultValue;

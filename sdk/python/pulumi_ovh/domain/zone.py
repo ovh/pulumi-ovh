@@ -127,6 +127,7 @@ class _ZoneState:
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ZonePlanOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
+        :param pulumi.Input[builtins.str] zone_urn: URN of the DNS Zone to be used inside an IAM policy
         :param pulumi.Input[builtins.bool] dnssec_supported: Is DNSSEC supported by this zone
         :param pulumi.Input[builtins.bool] has_dns_anycast: hasDnsAnycast flag of the DNS zone
         :param pulumi.Input[builtins.str] last_update: Last update date of the DNS zone
@@ -167,6 +168,9 @@ class _ZoneState:
     @property
     @pulumi.getter(name="ZoneURN")
     def zone_urn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URN of the DNS Zone to be used inside an IAM policy
+        """
         return pulumi.get(self, "zone_urn")
 
     @zone_urn.setter
@@ -505,6 +509,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] zone_urn: URN of the DNS Zone to be used inside an IAM policy
         :param pulumi.Input[builtins.bool] dnssec_supported: Is DNSSEC supported by this zone
         :param pulumi.Input[builtins.bool] has_dns_anycast: hasDnsAnycast flag of the DNS zone
         :param pulumi.Input[builtins.str] last_update: Last update date of the DNS zone
@@ -536,6 +541,9 @@ class Zone(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ZoneURN")
     def zone_urn(self) -> pulumi.Output[builtins.str]:
+        """
+        URN of the DNS Zone to be used inside an IAM policy
+        """
         return pulumi.get(self, "zone_urn")
 
     @property

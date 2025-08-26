@@ -122,15 +122,15 @@ public final class WorkflowBackupArgs extends com.pulumi.resources.ResourceArgs 
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private WorkflowBackupArgs() {}
@@ -309,7 +309,7 @@ public final class WorkflowBackupArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -336,9 +336,6 @@ public final class WorkflowBackupArgs extends com.pulumi.resources.ResourceArgs 
             }
             if ($.rotation == null) {
                 throw new MissingRequiredPropertyException("WorkflowBackupArgs", "rotation");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("WorkflowBackupArgs", "serviceName");
             }
             return $;
         }

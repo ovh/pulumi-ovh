@@ -101,6 +101,7 @@ import (
 type Zone struct {
 	pulumi.CustomResourceState
 
+	// URN of the DNS Zone to be used inside an IAM policy
 	ZoneURN pulumi.StringOutput `pulumi:"ZoneURN"`
 	// Is DNSSEC supported by this zone
 	DnssecSupported pulumi.BoolOutput `pulumi:"dnssecSupported"`
@@ -156,6 +157,7 @@ func GetZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
+	// URN of the DNS Zone to be used inside an IAM policy
 	ZoneURN *string `pulumi:"ZoneURN"`
 	// Is DNSSEC supported by this zone
 	DnssecSupported *bool `pulumi:"dnssecSupported"`
@@ -182,6 +184,7 @@ type zoneState struct {
 }
 
 type ZoneState struct {
+	// URN of the DNS Zone to be used inside an IAM policy
 	ZoneURN pulumi.StringPtrInput
 	// Is DNSSEC supported by this zone
 	DnssecSupported pulumi.BoolPtrInput
@@ -329,6 +332,7 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
+// URN of the DNS Zone to be used inside an IAM policy
 func (o ZoneOutput) ZoneURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ZoneURN }).(pulumi.StringOutput)
 }

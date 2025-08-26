@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +17,11 @@ public final class GetContainerRegistryResult {
      * 
      */
     private String createdAt;
+    /**
+     * @return OVHCloud IAM enabled
+     * 
+     */
+    private Boolean iamEnabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -71,6 +77,13 @@ public final class GetContainerRegistryResult {
      */
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return OVHCloud IAM enabled
+     * 
+     */
+    public Boolean iamEnabled() {
+        return this.iamEnabled;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -152,6 +165,7 @@ public final class GetContainerRegistryResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdAt;
+        private Boolean iamEnabled;
         private String id;
         private String name;
         private String projectId;
@@ -167,6 +181,7 @@ public final class GetContainerRegistryResult {
         public Builder(GetContainerRegistryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
+    	      this.iamEnabled = defaults.iamEnabled;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
@@ -186,6 +201,14 @@ public final class GetContainerRegistryResult {
               throw new MissingRequiredPropertyException("GetContainerRegistryResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iamEnabled(Boolean iamEnabled) {
+            if (iamEnabled == null) {
+              throw new MissingRequiredPropertyException("GetContainerRegistryResult", "iamEnabled");
+            }
+            this.iamEnabled = iamEnabled;
             return this;
         }
         @CustomType.Setter
@@ -279,6 +302,7 @@ public final class GetContainerRegistryResult {
         public GetContainerRegistryResult build() {
             final var _resultValue = new GetContainerRegistryResult();
             _resultValue.createdAt = createdAt;
+            _resultValue.iamEnabled = iamEnabled;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.projectId = projectId;

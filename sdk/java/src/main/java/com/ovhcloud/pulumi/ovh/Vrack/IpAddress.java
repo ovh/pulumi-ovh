@@ -153,6 +153,20 @@ public class IpAddress extends com.pulumi.resources.CustomResource {
         return this.ip;
     }
     /**
+     * The region (e.g: eu-west-gra) where want to route your block to.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output<String> region;
+
+    /**
+     * @return The region (e.g: eu-west-gra) where want to route your block to.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
+    }
+    /**
      * The internal name of your vrack
      * 
      */
@@ -220,6 +234,7 @@ public class IpAddress extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
