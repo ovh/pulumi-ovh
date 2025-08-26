@@ -1,4 +1,4 @@
-name: Setup toos
+name: Setup tools
 on:
   workflow_dispatch:
 
