@@ -35,6 +35,7 @@ class UserArgs:
         :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
+               - admin
                - administrator
                - ai_training_operator
                - ai_training_read
@@ -118,6 +119,7 @@ class UserArgs:
     def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         A list of role names. Values can be:
+        - admin
         - administrator
         - ai_training_operator
         - ai_training_read
@@ -176,6 +178,7 @@ class _UserState:
         :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
+               - admin
                - administrator
                - ai_training_operator
                - ai_training_read
@@ -296,6 +299,7 @@ class _UserState:
     def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         A list of role names. Values can be:
+        - admin
         - administrator
         - ai_training_operator
         - ai_training_read
@@ -389,6 +393,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
+               - admin
                - administrator
                - ai_training_operator
                - ai_training_read
@@ -492,6 +497,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[builtins.str] role_name: The name of a role. See `role_names`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] role_names: A list of role names. Values can be:
+               - admin
                - administrator
                - ai_training_operator
                - ai_training_read
@@ -582,6 +588,7 @@ class User(pulumi.CustomResource):
     def role_names(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
         A list of role names. Values can be:
+        - admin
         - administrator
         - ai_training_operator
         - ai_training_read

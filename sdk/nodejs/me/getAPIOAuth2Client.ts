@@ -59,9 +59,6 @@ export interface GetAPIOAuth2ClientResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Identity URN of the service account to be used inside an IAM policy.
-     */
     readonly identity: string;
     /**
      * OAuth2 client name.

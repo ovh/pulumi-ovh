@@ -36,7 +36,7 @@ export interface GetLogsOutputGraylogStreamArgs {
      */
     serviceName: string;
     /**
-     * Stream name
+     * Stream description
      */
     title: string;
 }
@@ -173,7 +173,7 @@ export interface GetLogsOutputGraylogStreamOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Stream name
+     * Stream description
      */
     title: pulumi.Input<string>;
 }

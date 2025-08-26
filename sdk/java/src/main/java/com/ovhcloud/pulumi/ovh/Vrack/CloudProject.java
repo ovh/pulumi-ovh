@@ -106,7 +106,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudProject(java.lang.String name, @Nullable CloudProjectArgs args) {
+    public CloudProject(java.lang.String name, CloudProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -115,7 +115,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudProject(java.lang.String name, @Nullable CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public CloudProject(java.lang.String name, CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:Vrack/cloudProject:CloudProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -123,7 +123,7 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
         super("ovh:Vrack/cloudProject:CloudProject", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static CloudProjectArgs makeArgs(@Nullable CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static CloudProjectArgs makeArgs(CloudProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
@@ -133,7 +133,6 @@ public class CloudProject extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

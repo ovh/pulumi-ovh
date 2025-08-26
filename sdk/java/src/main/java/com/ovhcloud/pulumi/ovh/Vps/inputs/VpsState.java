@@ -69,21 +69,6 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
-     * 
-     */
-    @Import(name="imageId")
-    private @Nullable Output<String> imageId;
-
-    /**
-     * @return Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
-     * 
-     */
-    public Optional<Output<String>> imageId() {
-        return Optional.ofNullable(this.imageId);
-    }
-
-    /**
      * KVM keyboard layout on VPS Cloud
      * 
      */
@@ -249,21 +234,6 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
-     * 
-     */
-    @Import(name="publicSshKey")
-    private @Nullable Output<String> publicSshKey;
-
-    /**
-     * @return Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
-     * 
-     */
-    public Optional<Output<String>> publicSshKey() {
-        return Optional.ofNullable(this.publicSshKey);
-    }
-
-    /**
      * The internal name of your VPS offer
      * 
      */
@@ -336,7 +306,6 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
         this.cluster = $.cluster;
         this.displayName = $.displayName;
         this.iam = $.iam;
-        this.imageId = $.imageId;
         this.keymap = $.keymap;
         this.memoryLimit = $.memoryLimit;
         this.model = $.model;
@@ -348,7 +317,6 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
         this.ovhSubsidiary = $.ovhSubsidiary;
         this.planOptions = $.planOptions;
         this.plans = $.plans;
-        this.publicSshKey = $.publicSshKey;
         this.serviceName = $.serviceName;
         this.slaMonitoring = $.slaMonitoring;
         this.state = $.state;
@@ -435,27 +403,6 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder iam(VpsIamArgs iam) {
             return iam(Output.of(iam));
-        }
-
-        /**
-         * @param imageId Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder imageId(@Nullable Output<String> imageId) {
-            $.imageId = imageId;
-            return this;
-        }
-
-        /**
-         * @param imageId Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder imageId(String imageId) {
-            return imageId(Output.of(imageId));
         }
 
         /**
@@ -717,27 +664,6 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder plans(VpsPlanArgs... plans) {
             return plans(List.of(plans));
-        }
-
-        /**
-         * @param publicSshKey Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
-         * 
-         * @return builder
-         * 
-         */
-        public Builder publicSshKey(@Nullable Output<String> publicSshKey) {
-            $.publicSshKey = publicSshKey;
-            return this;
-        }
-
-        /**
-         * @param publicSshKey Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
-         * 
-         * @return builder
-         * 
-         */
-        public Builder publicSshKey(String publicSshKey) {
-            return publicSshKey(Output.of(publicSshKey));
         }
 
         /**

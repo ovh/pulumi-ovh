@@ -80,14 +80,14 @@ public class ContainerRegistryUser extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
-     * User name
+     * Registry name
      * 
      */
     @Export(name="login", refs={String.class}, tree="[0]")
     private Output<String> login;
 
     /**
-     * @return User name
+     * @return Registry name
      * 
      */
     public Output<String> login() {
@@ -136,14 +136,14 @@ public class ContainerRegistryUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * User name (same as `login`)
+     * User name
      * 
      */
     @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
-     * @return User name (same as `login`)
+     * @return User name
      * 
      */
     public Output<String> user() {
@@ -189,7 +189,6 @@ public class ContainerRegistryUser extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "password"
             ))

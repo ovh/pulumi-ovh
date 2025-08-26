@@ -60,11 +60,6 @@ export const getCloudProjectSshKeys: typeof import("./getCloudProjectSshKeys").g
 export const getCloudProjectSshKeysOutput: typeof import("./getCloudProjectSshKeys").getCloudProjectSshKeysOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudProjectSshKeys","getCloudProjectSshKeysOutput"], () => require("./getCloudProjectSshKeys"));
 
-export { GetDbaasLogsOutputGraylogStreamUrlArgs, GetDbaasLogsOutputGraylogStreamUrlResult, GetDbaasLogsOutputGraylogStreamUrlOutputArgs } from "./getDbaasLogsOutputGraylogStreamUrl";
-export const getDbaasLogsOutputGraylogStreamUrl: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrl = null as any;
-export const getDbaasLogsOutputGraylogStreamUrlOutput: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrlOutput = null as any;
-utilities.lazyLoad(exports, ["getDbaasLogsOutputGraylogStreamUrl","getDbaasLogsOutputGraylogStreamUrlOutput"], () => require("./getDbaasLogsOutputGraylogStreamUrl"));
-
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
 export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;

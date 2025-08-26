@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *             .serviceName("94d423da-0e55-45f2-9812-836460a19939")
  *             .build());
  * 
- *         var myAcl = new CephAcl("myAcl", CephAclArgs.builder()
+ *         var my_acl = new CephAcl("my-acl", CephAclArgs.builder()
  *             .serviceName(myCeph.id())
  *             .network("1.2.3.4")
  *             .netmask("255.255.255.255")
@@ -158,7 +158,6 @@ public class CephAcl extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

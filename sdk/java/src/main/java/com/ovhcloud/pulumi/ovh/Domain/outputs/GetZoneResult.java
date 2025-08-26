@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneResult {
     /**
-     * @return URN of the DNS Zone to be used inside an IAM policy
+     * @return URN of the DNS zone
      * 
      */
     private String ZoneURN;
@@ -46,7 +46,7 @@ public final class GetZoneResult {
 
     private GetZoneResult() {}
     /**
-     * @return URN of the DNS Zone to be used inside an IAM policy
+     * @return URN of the DNS zone
      * 
      */
     public String ZoneURN() {

@@ -206,7 +206,6 @@
         "getCloudProjectRancherCapabilitiesVersion.ts",
         "getCloudProjectSshKey.ts",
         "getCloudProjectSshKeys.ts",
-        "getDbaasLogsOutputGraylogStreamUrl.ts",
         "getInstallationTemplate.ts",
         "getInstallationTemplates.ts",
         "getLocation.ts",

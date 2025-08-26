@@ -854,112 +854,6 @@ func (o GetCloudProjectSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetClo
 	}).(GetCloudProjectSshKeysSshKeyOutput)
 }
 
-type GetDbaasLogsOutputGraylogStreamUrlUrl struct {
-	// URL address
-	Address string `pulumi:"address"`
-	// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-	Type string `pulumi:"type"`
-}
-
-// GetDbaasLogsOutputGraylogStreamUrlUrlInput is an input type that accepts GetDbaasLogsOutputGraylogStreamUrlUrlArgs and GetDbaasLogsOutputGraylogStreamUrlUrlOutput values.
-// You can construct a concrete instance of `GetDbaasLogsOutputGraylogStreamUrlUrlInput` via:
-//
-//	GetDbaasLogsOutputGraylogStreamUrlUrlArgs{...}
-type GetDbaasLogsOutputGraylogStreamUrlUrlInput interface {
-	pulumi.Input
-
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlArgs struct {
-	// URL address
-	Address pulumi.StringInput `pulumi:"address"`
-	// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return i.ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(context.Background())
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbaasLogsOutputGraylogStreamUrlUrlOutput)
-}
-
-// GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput is an input type that accepts GetDbaasLogsOutputGraylogStreamUrlUrlArray and GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput values.
-// You can construct a concrete instance of `GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput` via:
-//
-//	GetDbaasLogsOutputGraylogStreamUrlUrlArray{ GetDbaasLogsOutputGraylogStreamUrlUrlArgs{...} }
-type GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput interface {
-	pulumi.Input
-
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlArray []GetDbaasLogsOutputGraylogStreamUrlUrlInput
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArray) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return i.ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(context.Background())
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArray) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput)
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlOutput struct{ *pulumi.OutputState }
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return o
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return o
-}
-
-// URL address
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbaasLogsOutputGraylogStreamUrlUrl) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbaasLogsOutputGraylogStreamUrlUrl) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return o
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return o
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) Index(i pulumi.IntInput) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbaasLogsOutputGraylogStreamUrlUrl {
-		return vs[0].([]GetDbaasLogsOutputGraylogStreamUrlUrl)[vs[1].(int)]
-	}).(GetDbaasLogsOutputGraylogStreamUrlUrlOutput)
-}
-
 type GetInstallationTemplateInput struct {
 	Default string `pulumi:"default"`
 	// Information about this template.
@@ -2684,8 +2578,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersionArrayInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesVersionVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectSshKeysSshKeyInput)(nil)).Elem(), GetCloudProjectSshKeysSshKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectSshKeysSshKeyArrayInput)(nil)).Elem(), GetCloudProjectSshKeysSshKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputArrayInput)(nil)).Elem(), GetInstallationTemplateInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseInput)(nil)).Elem(), GetInstallationTemplateLicenseArgs{})
@@ -2727,8 +2619,6 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesVersionVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectSshKeysSshKeyOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectSshKeysSshKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlOutput{})
-	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateInputArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOutput{})

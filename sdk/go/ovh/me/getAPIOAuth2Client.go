@@ -65,8 +65,7 @@ type LookupAPIOAuth2ClientResult struct {
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow string `pulumi:"flow"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Identity URN of the service account to be used inside an IAM policy.
+	Id       string `pulumi:"id"`
 	Identity string `pulumi:"identity"`
 	// OAuth2 client name.
 	Name string `pulumi:"name"`
@@ -131,7 +130,6 @@ func (o LookupAPIOAuth2ClientResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identity URN of the service account to be used inside an IAM policy.
 func (o LookupAPIOAuth2ClientResultOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAPIOAuth2ClientResult) string { return v.Identity }).(pulumi.StringOutput)
 }

@@ -20,14 +20,14 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpsPlanOptionArgs Empty = new VpsPlanOptionArgs();
 
     /**
-     * Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
+     * Representation of a configuration item for personalizing product
      * 
      */
     @Import(name="configurations")
     private @Nullable Output<List<VpsPlanOptionConfigurationArgs>> configurations;
 
     /**
-     * @return Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
+     * @return Representation of a configuration item for personalizing product
      * 
      */
     public Optional<Output<List<VpsPlanOptionConfigurationArgs>>> configurations() {
@@ -123,7 +123,7 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
+         * @param configurations Representation of a configuration item for personalizing product
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
+         * @param configurations Representation of a configuration item for personalizing product
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class VpsPlanOptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations Representation of a configuration item for personalizing product. Available values can be retrieved on API using [catalog endpoint](https://eu.api.ovh.com/console/?section=%2Forder&amp;branch=v1#get-/order/catalog/public/vps).
+         * @param configurations Representation of a configuration item for personalizing product
          * 
          * @return builder
          * 

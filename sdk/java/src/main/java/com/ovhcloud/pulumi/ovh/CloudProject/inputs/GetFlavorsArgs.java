@@ -17,21 +17,6 @@ public final class GetFlavorsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlavorsArgs Empty = new GetFlavorsArgs();
 
     /**
-     * Filter flavors using the given name (strict equality, e.g. b2-7)
-     * 
-     */
-    @Import(name="nameFilter")
-    private @Nullable Output<String> nameFilter;
-
-    /**
-     * @return Filter flavors using the given name (strict equality, e.g. b2-7)
-     * 
-     */
-    public Optional<Output<String>> nameFilter() {
-        return Optional.ofNullable(this.nameFilter);
-    }
-
-    /**
      * Flavor region
      * 
      */
@@ -64,7 +49,6 @@ public final class GetFlavorsArgs extends com.pulumi.resources.InvokeArgs {
     private GetFlavorsArgs() {}
 
     private GetFlavorsArgs(GetFlavorsArgs $) {
-        this.nameFilter = $.nameFilter;
         this.region = $.region;
         this.serviceName = $.serviceName;
     }
@@ -85,27 +69,6 @@ public final class GetFlavorsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetFlavorsArgs defaults) {
             $ = new GetFlavorsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param nameFilter Filter flavors using the given name (strict equality, e.g. b2-7)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nameFilter(@Nullable Output<String> nameFilter) {
-            $.nameFilter = nameFilter;
-            return this;
-        }
-
-        /**
-         * @param nameFilter Filter flavors using the given name (strict equality, e.g. b2-7)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nameFilter(String nameFilter) {
-            return nameFilter(Output.of(nameFilter));
         }
 
         /**

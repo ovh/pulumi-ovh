@@ -222,20 +222,6 @@ public class Kube extends com.pulumi.resources.CustomResource {
         return this.nodesUrl;
     }
     /**
-     * Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-     * 
-     */
-    @Export(name="plan", refs={String.class}, tree="[0]")
-    private Output<String> plan;
-
-    /**
-     * @return Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-     * 
-     */
-    public Output<String> plan() {
-        return this.plan;
-    }
-    /**
      * The private network configuration. If this is set then the 2 parameters below shall be defined.
      * 
      */
@@ -391,7 +377,6 @@ public class Kube extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "kubeconfig",
                 "kubeconfigAttributes"
