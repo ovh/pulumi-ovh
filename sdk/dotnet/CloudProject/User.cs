@@ -50,6 +50,7 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// A list of role names. Values can be:
+        /// - admin
         /// - administrator
         /// - ai_training_operator
         /// - ai_training_read
@@ -179,6 +180,7 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// A list of role names. Values can be:
+        /// - admin
         /// - administrator
         /// - ai_training_operator
         /// - ai_training_read
@@ -272,6 +274,7 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// A list of role names. Values can be:
+        /// - admin
         /// - administrator
         /// - ai_training_operator
         /// - ai_training_read

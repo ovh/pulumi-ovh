@@ -20,17 +20,9 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     public static final ZoneState Empty = new ZoneState();
 
-    /**
-     * URN of the DNS Zone to be used inside an IAM policy
-     * 
-     */
     @Import(name="ZoneURN")
     private @Nullable Output<String> ZoneURN;
 
-    /**
-     * @return URN of the DNS Zone to be used inside an IAM policy
-     * 
-     */
     public Optional<Output<String>> ZoneURN() {
         return Optional.ofNullable(this.ZoneURN);
     }
@@ -227,23 +219,11 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
             $ = new ZoneState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ZoneURN URN of the DNS Zone to be used inside an IAM policy
-         * 
-         * @return builder
-         * 
-         */
         public Builder ZoneURN(@Nullable Output<String> ZoneURN) {
             $.ZoneURN = ZoneURN;
             return this;
         }
 
-        /**
-         * @param ZoneURN URN of the DNS Zone to be used inside an IAM policy
-         * 
-         * @return builder
-         * 
-         */
         public Builder ZoneURN(String ZoneURN) {
             return ZoneURN(Output.of(ZoneURN));
         }

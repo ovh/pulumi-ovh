@@ -40,7 +40,7 @@ export interface GetZoneArgs {
  */
 export interface GetZoneResult {
     /**
-     * URN of the DNS Zone to be used inside an IAM policy
+     * URN of the DNS zone
      */
     readonly ZoneURN: string;
     /**

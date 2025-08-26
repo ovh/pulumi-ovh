@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Creates an integration for a database cluster associated with a public cloud project.
  * 
- * With this resource you can create an integration for all engine except `mongodb`.
+ * With this resource you can create an integration for all engine exept `mongodb`.
  * 
- * Please take a look at the list of available `types` in the `Argument references` section in order to know the list of available integrations. For example, thanks to the integration feature you can have your PostgreSQL logs in your OpenSearch Database.
+ * Please take a look at the list of available `types` in the `Argument references` section in order to know the list of avaulable integrations. For example, thanks to the integration feature you can have your PostgreSQL logs in your OpenSearch Database.
  * 
  * ## Example Usage
  * 
@@ -253,7 +253,6 @@ public class Integration extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

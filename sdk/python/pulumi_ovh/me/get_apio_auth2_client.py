@@ -93,9 +93,6 @@ class GetAPIOAuth2ClientResult:
     @property
     @pulumi.getter
     def identity(self) -> builtins.str:
-        """
-        Identity URN of the service account to be used inside an IAM policy.
-        """
         return pulumi.get(self, "identity")
 
     @property

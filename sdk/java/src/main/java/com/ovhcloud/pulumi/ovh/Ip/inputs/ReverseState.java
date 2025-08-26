@@ -60,28 +60,12 @@ public final class ReverseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ip);
     }
 
-    /**
-     * The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
-     * 
-     */
-    @Import(name="readinessTimeoutDuration")
-    private @Nullable Output<String> readinessTimeoutDuration;
-
-    /**
-     * @return The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
-     * 
-     */
-    public Optional<Output<String>> readinessTimeoutDuration() {
-        return Optional.ofNullable(this.readinessTimeoutDuration);
-    }
-
     private ReverseState() {}
 
     private ReverseState(ReverseState $) {
         this.ReverseIp = $.ReverseIp;
         this.ReverseValue = $.ReverseValue;
         this.ip = $.ip;
-        this.readinessTimeoutDuration = $.readinessTimeoutDuration;
     }
 
     public static Builder builder() {
@@ -163,27 +147,6 @@ public final class ReverseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
-        }
-
-        /**
-         * @param readinessTimeoutDuration The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readinessTimeoutDuration(@Nullable Output<String> readinessTimeoutDuration) {
-            $.readinessTimeoutDuration = readinessTimeoutDuration;
-            return this;
-        }
-
-        /**
-         * @param readinessTimeoutDuration The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readinessTimeoutDuration(String readinessTimeoutDuration) {
-            return readinessTimeoutDuration(Output.of(readinessTimeoutDuration));
         }
 
         public ReverseState build() {

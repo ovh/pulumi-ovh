@@ -120,20 +120,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> endpoint() {
         return Codegen.optional(this.endpoint);
     }
-    /**
-     * Extra information to append to the user-agent
-     * 
-     */
-    @Export(name="userAgentExtra", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> userAgentExtra;
-
-    /**
-     * @return Extra information to append to the user-agent
-     * 
-     */
-    public Output<Optional<String>> userAgentExtra() {
-        return Codegen.optional(this.userAgentExtra);
-    }
 
     /**
      *
@@ -170,7 +156,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

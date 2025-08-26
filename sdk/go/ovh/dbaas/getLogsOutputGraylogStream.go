@@ -53,7 +53,7 @@ func LookupLogsOutputGraylogStream(ctx *pulumi.Context, args *LookupLogsOutputGr
 type LookupLogsOutputGraylogStreamArgs struct {
 	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName string `pulumi:"serviceName"`
-	// Stream name
+	// Stream description
 	Title string `pulumi:"title"`
 }
 
@@ -123,7 +123,7 @@ func LookupLogsOutputGraylogStreamOutput(ctx *pulumi.Context, args LookupLogsOut
 type LookupLogsOutputGraylogStreamOutputArgs struct {
 	// The service name. It's the ID of your Logs Data Platform instance.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Stream name
+	// Stream description
 	Title pulumi.StringInput `pulumi:"title"`
 }
 

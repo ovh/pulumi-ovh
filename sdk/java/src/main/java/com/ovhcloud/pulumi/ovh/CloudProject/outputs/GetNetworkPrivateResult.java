@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -34,11 +33,6 @@ public final class GetNetworkPrivateResult {
      * 
      */
     private List<GetNetworkPrivateRegion> regions;
-    /**
-     * @return A map with region name as key, and region-specific openstack id as value
-     * 
-     */
-    private Map<String,String> regionsOpenstackIds;
     /**
      * @return ID of the public cloud project
      * 
@@ -90,13 +84,6 @@ public final class GetNetworkPrivateResult {
         return this.regions;
     }
     /**
-     * @return A map with region name as key, and region-specific openstack id as value
-     * 
-     */
-    public Map<String,String> regionsOpenstackIds() {
-        return this.regionsOpenstackIds;
-    }
-    /**
      * @return ID of the public cloud project
      * 
      */
@@ -138,7 +125,6 @@ public final class GetNetworkPrivateResult {
         private String name;
         private String networkId;
         private List<GetNetworkPrivateRegion> regions;
-        private Map<String,String> regionsOpenstackIds;
         private String serviceName;
         private String status;
         private String type;
@@ -150,7 +136,6 @@ public final class GetNetworkPrivateResult {
     	      this.name = defaults.name;
     	      this.networkId = defaults.networkId;
     	      this.regions = defaults.regions;
-    	      this.regionsOpenstackIds = defaults.regionsOpenstackIds;
     	      this.serviceName = defaults.serviceName;
     	      this.status = defaults.status;
     	      this.type = defaults.type;
@@ -193,14 +178,6 @@ public final class GetNetworkPrivateResult {
             return regions(List.of(regions));
         }
         @CustomType.Setter
-        public Builder regionsOpenstackIds(Map<String,String> regionsOpenstackIds) {
-            if (regionsOpenstackIds == null) {
-              throw new MissingRequiredPropertyException("GetNetworkPrivateResult", "regionsOpenstackIds");
-            }
-            this.regionsOpenstackIds = regionsOpenstackIds;
-            return this;
-        }
-        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             if (serviceName == null) {
               throw new MissingRequiredPropertyException("GetNetworkPrivateResult", "serviceName");
@@ -238,7 +215,6 @@ public final class GetNetworkPrivateResult {
             _resultValue.name = name;
             _resultValue.networkId = networkId;
             _resultValue.regions = regions;
-            _resultValue.regionsOpenstackIds = regionsOpenstackIds;
             _resultValue.serviceName = serviceName;
             _resultValue.status = status;
             _resultValue.type = type;

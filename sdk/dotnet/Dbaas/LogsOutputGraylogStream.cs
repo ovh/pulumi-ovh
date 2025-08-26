@@ -59,16 +59,6 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// DBaas logs output Graylog stream can be imported using the `service_name` of the cluster and `stream_id` of the graylog output stream, separated by "/" E.g.,
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream ldp ldp-az-12345/9d2f9cf8-9f92-1337-c0f3-48a0213d2c6f
-    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream")]
     public partial class LogsOutputGraylogStream : global::Pulumi.CustomResource
@@ -176,7 +166,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string?> ParentStreamId { get; private set; } = null!;
 
         /// <summary>
-        /// If set, pause indexing when maximum size is reached
+        /// If set, pause indexing when maximum size is reach
         /// </summary>
         [Output("pauseIndexingOnMaxSize")]
         public Output<bool> PauseIndexingOnMaxSize { get; private set; } = null!;
@@ -200,7 +190,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> StreamId { get; private set; } = null!;
 
         /// <summary>
-        /// Stream name
+        /// Stream description
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -341,7 +331,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? ParentStreamId { get; set; }
 
         /// <summary>
-        /// If set, pause indexing when maximum size is reached
+        /// If set, pause indexing when maximum size is reach
         /// </summary>
         [Input("pauseIndexingOnMaxSize")]
         public Input<bool>? PauseIndexingOnMaxSize { get; set; }
@@ -359,7 +349,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Stream name
+        /// Stream description
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
@@ -481,7 +471,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? ParentStreamId { get; set; }
 
         /// <summary>
-        /// If set, pause indexing when maximum size is reached
+        /// If set, pause indexing when maximum size is reach
         /// </summary>
         [Input("pauseIndexingOnMaxSize")]
         public Input<bool>? PauseIndexingOnMaxSize { get; set; }
@@ -505,7 +495,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? StreamId { get; set; }
 
         /// <summary>
-        /// Stream name
+        /// Stream description
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

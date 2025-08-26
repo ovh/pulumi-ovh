@@ -80,15 +80,15 @@ public final class IpRestrictionArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName")
-    private @Nullable Output<String> serviceName;
+    @Import(name="serviceName", required=true)
+    private Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Optional<Output<String>> serviceName() {
-        return Optional.ofNullable(this.serviceName);
+    public Output<String> serviceName() {
+        return this.serviceName;
     }
 
     private IpRestrictionArgs() {}
@@ -209,7 +209,7 @@ public final class IpRestrictionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(@Nullable Output<String> serviceName) {
+        public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -233,6 +233,9 @@ public final class IpRestrictionArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.ip == null) {
                 throw new MissingRequiredPropertyException("IpRestrictionArgs", "ip");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("IpRestrictionArgs", "serviceName");
             }
             return $;
         }

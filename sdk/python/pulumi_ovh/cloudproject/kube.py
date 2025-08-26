@@ -30,7 +30,6 @@ class KubeArgs:
                  load_balancers_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  nodes_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
-                 plan: Optional[pulumi.Input[builtins.str]] = None,
                  private_network_configuration: Optional[pulumi.Input['KubePrivateNetworkConfigurationArgs']] = None,
                  private_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -46,7 +45,6 @@ class KubeArgs:
         :param pulumi.Input[builtins.str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[builtins.str] name: The name of the kubernetes cluster.
         :param pulumi.Input[builtins.str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
-        :param pulumi.Input[builtins.str] plan: Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
         :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
@@ -73,8 +71,6 @@ class KubeArgs:
             pulumi.set(__self__, "name", name)
         if nodes_subnet_id is not None:
             pulumi.set(__self__, "nodes_subnet_id", nodes_subnet_id)
-        if plan is not None:
-            pulumi.set(__self__, "plan", plan)
         if private_network_configuration is not None:
             pulumi.set(__self__, "private_network_configuration", private_network_configuration)
         if private_network_id is not None:
@@ -184,18 +180,6 @@ class KubeArgs:
         pulumi.set(self, "nodes_subnet_id", value)
 
     @property
-    @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "plan", value)
-
-    @property
     @pulumi.getter(name="privateNetworkConfiguration")
     def private_network_configuration(self) -> Optional[pulumi.Input['KubePrivateNetworkConfigurationArgs']]:
         """
@@ -274,7 +258,6 @@ class _KubeState:
                  next_upgrade_versions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  nodes_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
                  nodes_url: Optional[pulumi.Input[builtins.str]] = None,
-                 plan: Optional[pulumi.Input[builtins.str]] = None,
                  private_network_configuration: Optional[pulumi.Input['KubePrivateNetworkConfigurationArgs']] = None,
                  private_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -298,7 +281,6 @@ class _KubeState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
         :param pulumi.Input[builtins.str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input[builtins.str] nodes_url: Cluster nodes URL.
-        :param pulumi.Input[builtins.str] plan: Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
         :param pulumi.Input['KubePrivateNetworkConfigurationArgs'] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
@@ -339,8 +321,6 @@ class _KubeState:
             pulumi.set(__self__, "nodes_subnet_id", nodes_subnet_id)
         if nodes_url is not None:
             pulumi.set(__self__, "nodes_url", nodes_url)
-        if plan is not None:
-            pulumi.set(__self__, "plan", plan)
         if private_network_configuration is not None:
             pulumi.set(__self__, "private_network_configuration", private_network_configuration)
         if private_network_id is not None:
@@ -516,18 +496,6 @@ class _KubeState:
         pulumi.set(self, "nodes_url", value)
 
     @property
-    @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "plan", value)
-
-    @property
     @pulumi.getter(name="privateNetworkConfiguration")
     def private_network_configuration(self) -> Optional[pulumi.Input['KubePrivateNetworkConfigurationArgs']]:
         """
@@ -639,7 +607,6 @@ class Kube(pulumi.CustomResource):
                  load_balancers_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  nodes_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
-                 plan: Optional[pulumi.Input[builtins.str]] = None,
                  private_network_configuration: Optional[pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']]] = None,
                  private_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -667,7 +634,6 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[builtins.str] name: The name of the kubernetes cluster.
         :param pulumi.Input[builtins.str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
-        :param pulumi.Input[builtins.str] plan: Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
         :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
@@ -716,7 +682,6 @@ class Kube(pulumi.CustomResource):
                  load_balancers_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  nodes_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
-                 plan: Optional[pulumi.Input[builtins.str]] = None,
                  private_network_configuration: Optional[pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']]] = None,
                  private_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -739,7 +704,6 @@ class Kube(pulumi.CustomResource):
             __props__.__dict__["load_balancers_subnet_id"] = load_balancers_subnet_id
             __props__.__dict__["name"] = name
             __props__.__dict__["nodes_subnet_id"] = nodes_subnet_id
-            __props__.__dict__["plan"] = plan
             __props__.__dict__["private_network_configuration"] = private_network_configuration
             __props__.__dict__["private_network_id"] = private_network_id
             if region is None and not opts.urn:
@@ -781,7 +745,6 @@ class Kube(pulumi.CustomResource):
             next_upgrade_versions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             nodes_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
             nodes_url: Optional[pulumi.Input[builtins.str]] = None,
-            plan: Optional[pulumi.Input[builtins.str]] = None,
             private_network_configuration: Optional[pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']]] = None,
             private_network_id: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
@@ -810,7 +773,6 @@ class Kube(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] next_upgrade_versions: Kubernetes versions available for upgrade.
         :param pulumi.Input[builtins.str] nodes_subnet_id: Subnet ID to use for nodes, this subnet must belong to `private_network_id`. Default uses the first subnet belonging to the private network with id `private_network_id`. This attribute requires `private_network_id` to be defined. **Cannot be updated, it can only be used at cluster creation or reset.**
         :param pulumi.Input[builtins.str] nodes_url: Cluster nodes URL.
-        :param pulumi.Input[builtins.str] plan: Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
         :param pulumi.Input[Union['KubePrivateNetworkConfigurationArgs', 'KubePrivateNetworkConfigurationArgsDict']] private_network_configuration: The private network configuration. If this is set then the 2 parameters below shall be defined.
         :param pulumi.Input[builtins.str] private_network_id: Private network ID to use. **Changing this value recreates the resource, including ETCD user data.** Defaults - not use private network.
                
@@ -839,7 +801,6 @@ class Kube(pulumi.CustomResource):
         __props__.__dict__["next_upgrade_versions"] = next_upgrade_versions
         __props__.__dict__["nodes_subnet_id"] = nodes_subnet_id
         __props__.__dict__["nodes_url"] = nodes_url
-        __props__.__dict__["plan"] = plan
         __props__.__dict__["private_network_configuration"] = private_network_configuration
         __props__.__dict__["private_network_id"] = private_network_id
         __props__.__dict__["region"] = region
@@ -954,14 +915,6 @@ class Kube(pulumi.CustomResource):
         Cluster nodes URL.
         """
         return pulumi.get(self, "nodes_url")
-
-    @property
-    @pulumi.getter
-    def plan(self) -> pulumi.Output[builtins.str]:
-        """
-        Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
-        """
-        return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter(name="privateNetworkConfiguration")

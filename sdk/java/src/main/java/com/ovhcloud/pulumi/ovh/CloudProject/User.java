@@ -17,6 +17,45 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Creates a user in a public cloud project.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.User;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var user1 = new User("user1", UserArgs.builder()
+ *             .serviceName("XXX")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ */
 @ResourceType(type="ovh:CloudProject/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
@@ -76,20 +115,6 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
-     * Arbitrary string to change to trigger a password update
-     * 
-     */
-    @Export(name="passwordReset", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> passwordReset;
-
-    /**
-     * @return Arbitrary string to change to trigger a password update
-     * 
-     */
-    public Output<Optional<String>> passwordReset() {
-        return Codegen.optional(this.passwordReset);
-    }
-    /**
      * The name of a role. See `role_names`.
      * 
      */
@@ -105,7 +130,7 @@ public class User extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of role names. Values can be:
-     * - administrator
+     * - administrator,
      * - ai_training_operator
      * - ai_training_read
      * - authentication
@@ -113,9 +138,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * - compute_operator
      * - image_operator
      * - infrastructure_supervisor
-     * - key-manager_operator
-     * - key-manager_read
-     * - load-balancer_operator
      * - network_operator
      * - network_security_operator
      * - objectstore_operator
@@ -127,7 +149,7 @@ public class User extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of role names. Values can be:
-     * - administrator
+     * - administrator,
      * - ai_training_operator
      * - ai_training_read
      * - authentication
@@ -135,9 +157,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * - compute_operator
      * - image_operator
      * - infrastructure_supervisor
-     * - key-manager_operator
-     * - key-manager_read
-     * - load-balancer_operator
      * - network_operator
      * - network_security_operator
      * - objectstore_operator
@@ -216,7 +235,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public User(java.lang.String name, @Nullable UserArgs args) {
+    public User(java.lang.String name, UserArgs args) {
         this(name, args, null);
     }
     /**
@@ -225,7 +244,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public User(java.lang.String name, @Nullable UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public User(java.lang.String name, UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/user:User", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -233,7 +252,7 @@ public class User extends com.pulumi.resources.CustomResource {
         super("ovh:CloudProject/user:User", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static UserArgs makeArgs(@Nullable UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static UserArgs makeArgs(UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
@@ -243,7 +262,6 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "password"
             ))
