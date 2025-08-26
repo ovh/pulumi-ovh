@@ -71,7 +71,7 @@ jobs:
         id: upgrade_provider
         if: steps.target_version.outputs.version != ''
         continue-on-error: true
-        uses: scraly/pulumi-upgrade-provider-action@v0.0.1
+        uses: scraly/pulumi-upgrade-provider-action@v0.0.2
         with:
           kind: provider
           email: bot@pulumi.com
