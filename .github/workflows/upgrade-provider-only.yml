@@ -69,23 +69,23 @@ jobs:
         id: upgrade_provider_only
         if: steps.target_version.outputs.version != ''
         continue-on-error: true
-        run: "${GITHUB_WORKSPACE}/upgrade-provider-only.sh ${{ steps.target_version.outputs.version }}"
+        run: "${GITHUB_WORKSPACE}/upgrade-provider-only.sh v${{ steps.target_version.outputs.version }}"
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           #token: ${{ secrets.PAT }}
-          commit-message: Upgrading terraform-provider-ovh to ${{ steps.target_version.outputs.version }}
-          title: Upgrade terraform-provider-ovh to ${{ steps.target_version.outputs.version }}
+          commit-message: Upgrading terraform-provider-ovh to v${{ steps.target_version.outputs.version }}
+          title: Upgrade terraform-provider-ovh to v${{ steps.target_version.outputs.version }}
           base: main
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: upgrade-terraform-provider-ovh-to-${{ steps.target_version.outputs.version }}-ci
+          branch: upgrade-terraform-provider-ovh-to-v${{ steps.target_version.outputs.version }}-ci
           delete-branch: true
           body: |
             This PR was generated via GH action
-            - Upgrading terraform-provider-ovh to ${{ steps.target_version.outputs.version }}.
+            - Upgrading terraform-provider-ovh to v${{ steps.target_version.outputs.version }}.
           draft: false
       - name: Comment on upgrade issue if automated PR failed
         if: steps.upgrade_provider.outcome == 'failure'
