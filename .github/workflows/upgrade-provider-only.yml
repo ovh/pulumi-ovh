@@ -17,8 +17,8 @@ on:
         default: main
         type: string
   schedule:
-    # 4 AM UTC ~ 9 PM PDT / 8 PM PST daily. Time chosen to run during off hours.
-    - cron: 0 4 * * *
+    # 3 AM UTC ~ 8 PM PDT / 7 PM PST daily. Time chosen to run during off hours.
+    - cron: 0 3 * * *
 
 permissions:
   contents: write
@@ -30,7 +30,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  upgrade_provider-only:
+  upgrade_provider_only:
     name: upgrade-provider-only
     runs-on: ubuntu-latest
     steps:
@@ -65,59 +65,3 @@ jobs:
         # upstream_version will be empty if the provider is up-to-date
         run: echo "version=${{ github.event.inputs.version || steps.upstream_version.outputs.latest_version }}" >> "$GITHUB_OUTPUT"
         shell: bash
-      - name: Call upgrade provider only action
-        id: upgrade_provider_only
-        if: steps.target_version.outputs.version != ''
-        continue-on-error: true
-        # run script upgrade-provider-only.sh
-        run: "${GITHUB_WORKSPACE}/upgrade-provider-only.sh" ${{ steps.target_version.outputs.version }}
-
-
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          #token: ${{ secrets.PAT }}
-          commit-message: Upgrading terraform-provider-ovh to ${{ steps.target_version.outputs.version }}
-          title: Upgrade terraform-provider-ovh to ${{ steps.target_version.outputs.version }}
-          base: main
-          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          branch: upgrade-terraform-provider-ovh-to-${{ steps.target_version.outputs.version }}-ci
-          delete-branch: true
-          body: |
-            This PR was generated via GH action
-            - Upgrading terraform-provider-ovh to ${{ steps.target_version.outputs.version }}.
-          draft: false
-
-#TODO: create PR
-#        with:
-#          kind: provider
-#          email: bot@pulumi.com
-#          username: pulumi-bot
-#          automerge: false
-#          target-version: ${{ steps.target_version.outputs.version }}
-#          allow-missing-docs: true
-#          gradle-version: '8.8'
-
-#      - name: Call upgrade provider action
-#        id: upgrade_provider
-#        if: steps.target_version.outputs.version != ''
-#        continue-on-error: true
-#        uses: scraly/pulumi-upgrade-provider-action@v0.0.2
-#        with:
-#          kind: provider
-#          email: bot@pulumi.com
-#          username: pulumi-bot
-#          automerge: false
-#          target-version: ${{ steps.target_version.outputs.version }}
-#          allow-missing-docs: true
-#          gradle-version: '8.8'
-
-      - name: Comment on upgrade issue if automated PR failed
-        if: steps.upgrade_provider.outcome == 'failure'
-        shell: bash
-        run: |
-          issue_number=$(gh issue list --search "pulumiupgradeproviderissue" --repo "${{ github.repository }}" --json=number --jq=".[0].number")
-          gh issue comment "${issue_number}" --repo "${{ github.repository }}" --body "Failed to create automatic PR: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/"
