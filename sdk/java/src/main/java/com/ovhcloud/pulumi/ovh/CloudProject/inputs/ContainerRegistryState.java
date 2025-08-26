@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.ContainerRegistryPlanArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,21 @@ public final class ContainerRegistryState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * OVHCloud IAM enabled
+     * 
+     */
+    @Import(name="iamEnabled")
+    private @Nullable Output<Boolean> iamEnabled;
+
+    /**
+     * @return OVHCloud IAM enabled
+     * 
+     */
+    public Optional<Output<Boolean>> iamEnabled() {
+        return Optional.ofNullable(this.iamEnabled);
     }
 
     /**
@@ -202,6 +218,7 @@ public final class ContainerRegistryState extends com.pulumi.resources.ResourceA
 
     private ContainerRegistryState(ContainerRegistryState $) {
         this.createdAt = $.createdAt;
+        this.iamEnabled = $.iamEnabled;
         this.name = $.name;
         this.planId = $.planId;
         this.plans = $.plans;
@@ -252,6 +269,27 @@ public final class ContainerRegistryState extends com.pulumi.resources.ResourceA
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param iamEnabled OVHCloud IAM enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamEnabled(@Nullable Output<Boolean> iamEnabled) {
+            $.iamEnabled = iamEnabled;
+            return this;
+        }
+
+        /**
+         * @param iamEnabled OVHCloud IAM enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamEnabled(Boolean iamEnabled) {
+            return iamEnabled(Output.of(iamEnabled));
         }
 
         /**

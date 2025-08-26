@@ -5,7 +5,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -52,15 +51,15 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -163,7 +162,7 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -200,9 +199,6 @@ public final class NetworkPrivateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NetworkPrivateArgs build() {
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("NetworkPrivateArgs", "serviceName");
-            }
             return $;
         }
     }

@@ -137,6 +137,9 @@ namespace Pulumi.Ovh.Me
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identity URN of the service account to be used inside an IAM policy.
+        /// </summary>
         public readonly string Identity;
         /// <summary>
         /// OAuth2 client name.

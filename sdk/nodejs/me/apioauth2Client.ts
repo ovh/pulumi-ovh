@@ -103,7 +103,7 @@ export class APIOAuth2Client extends pulumi.CustomResource {
      */
     public readonly flow!: pulumi.Output<string>;
     /**
-     * URN that will allow you to associate this oauth2 client with an access policy
+     * Identity URN of the service account to be used inside an IAM policy.
      */
     public /*out*/ readonly identity!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface APIOAuth2ClientState {
      */
     flow?: pulumi.Input<string>;
     /**
-     * URN that will allow you to associate this oauth2 client with an access policy
+     * Identity URN of the service account to be used inside an IAM policy.
      */
     identity?: pulumi.Input<string>;
     /**

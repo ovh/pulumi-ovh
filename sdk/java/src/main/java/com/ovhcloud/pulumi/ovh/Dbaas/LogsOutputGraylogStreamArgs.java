@@ -184,14 +184,14 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If set, pause indexing when maximum size is reach
+     * If set, pause indexing when maximum size is reached
      * 
      */
     @Import(name="pauseIndexingOnMaxSize")
     private @Nullable Output<Boolean> pauseIndexingOnMaxSize;
 
     /**
-     * @return If set, pause indexing when maximum size is reach
+     * @return If set, pause indexing when maximum size is reached
      * 
      */
     public Optional<Output<Boolean>> pauseIndexingOnMaxSize() {
@@ -229,14 +229,14 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Stream description
+     * Stream name
      * 
      */
     @Import(name="title", required=true)
     private Output<String> title;
 
     /**
-     * @return Stream description
+     * @return Stream name
      * 
      */
     public Output<String> title() {
@@ -529,7 +529,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reach
+         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reached
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reach
+         * @param pauseIndexingOnMaxSize If set, pause indexing when maximum size is reached
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param title Stream description
+         * @param title Stream name
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param title Stream description
+         * @param title Stream name
          * 
          * @return builder
          * 

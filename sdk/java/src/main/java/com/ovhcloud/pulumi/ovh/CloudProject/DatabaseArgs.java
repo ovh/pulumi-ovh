@@ -222,7 +222,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;
+     * * Redis: &#34;essential&#34;, &#34;business&#34;.
+     * * Valkey: &#34;essential&#34;, &#34;business&#34;.
      * 
      */
     @Import(name="plan", required=true)
@@ -233,7 +234,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;
+     * * Redis: &#34;essential&#34;, &#34;business&#34;.
+     * * Valkey: &#34;essential&#34;, &#34;business&#34;.
      * 
      */
     public Output<String> plan() {
@@ -244,15 +246,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -617,7 +619,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
          * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
          * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-         * * Redis: &#34;essential&#34;, &#34;business&#34;
+         * * Redis: &#34;essential&#34;, &#34;business&#34;.
+         * * Valkey: &#34;essential&#34;, &#34;business&#34;.
          * 
          * @return builder
          * 
@@ -632,7 +635,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
          * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
          * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-         * * Redis: &#34;essential&#34;, &#34;business&#34;
+         * * Redis: &#34;essential&#34;, &#34;business&#34;.
+         * * Valkey: &#34;essential&#34;, &#34;business&#34;.
          * 
          * @return builder
          * 
@@ -647,7 +651,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -695,9 +699,6 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.plan == null) {
                 throw new MissingRequiredPropertyException("DatabaseArgs", "plan");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("DatabaseArgs", "serviceName");
             }
             if ($.version == null) {
                 throw new MissingRequiredPropertyException("DatabaseArgs", "version");

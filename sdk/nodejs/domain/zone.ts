@@ -97,6 +97,9 @@ export class Zone extends pulumi.CustomResource {
         return obj['__pulumiType'] === Zone.__pulumiType;
     }
 
+    /**
+     * URN of the DNS Zone to be used inside an IAM policy
+     */
     public /*out*/ readonly ZoneURN!: pulumi.Output<string>;
     /**
      * Is DNSSEC supported by this zone
@@ -188,6 +191,9 @@ export class Zone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Zone resources.
  */
 export interface ZoneState {
+    /**
+     * URN of the DNS Zone to be used inside an IAM policy
+     */
     ZoneURN?: pulumi.Input<string>;
     /**
      * Is DNSSEC supported by this zone

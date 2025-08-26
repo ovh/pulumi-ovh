@@ -47,6 +47,36 @@ public final class IpV6State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IPv6 block.
+     * 
+     */
+    @Import(name="ipv6")
+    private @Nullable Output<String> ipv6;
+
+    /**
+     * @return The IPv6 block.
+     * 
+     */
+    public Optional<Output<String>> ipv6() {
+        return Optional.ofNullable(this.ipv6);
+    }
+
+    /**
+     * The region in which the block is routed.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region in which the block is routed.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The internal name of your vrack
      * 
      */
@@ -66,6 +96,8 @@ public final class IpV6State extends com.pulumi.resources.ResourceArgs {
     private IpV6State(IpV6State $) {
         this.block = $.block;
         this.bridgedSubrange = $.bridgedSubrange;
+        this.ipv6 = $.ipv6;
+        this.region = $.region;
         this.serviceName = $.serviceName;
     }
 
@@ -127,6 +159,48 @@ public final class IpV6State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bridgedSubrange(IpV6BridgedSubrangeArgs bridgedSubrange) {
             return bridgedSubrange(Output.of(bridgedSubrange));
+        }
+
+        /**
+         * @param ipv6 The IPv6 block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6(@Nullable Output<String> ipv6) {
+            $.ipv6 = ipv6;
+            return this;
+        }
+
+        /**
+         * @param ipv6 The IPv6 block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6(String ipv6) {
+            return ipv6(Output.of(ipv6));
+        }
+
+        /**
+         * @param region The region in which the block is routed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region in which the block is routed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

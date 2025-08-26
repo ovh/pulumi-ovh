@@ -97,9 +97,17 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoscalingScaleDownUtilizationThreshold);
     }
 
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
     @Import(name="availabilityZones")
     private @Nullable Output<List<String>> availabilityZones;
 
+    /**
+     * @return list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
     public Optional<Output<List<String>>> availabilityZones() {
         return Optional.ofNullable(this.availabilityZones);
     }
@@ -528,15 +536,33 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
             return autoscalingScaleDownUtilizationThreshold(Output.of(autoscalingScaleDownUtilizationThreshold));
         }
 
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
             $.availabilityZones = availabilityZones;
             return this;
         }
 
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZones(List<String> availabilityZones) {
             return availabilityZones(Output.of(availabilityZones));
         }
 
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }
