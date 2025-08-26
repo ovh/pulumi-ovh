@@ -60,6 +60,10 @@
                     }
                 }
             },
+            "ovh_cloud_project_containerregistry_iam": {
+                "current": "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam",
+                "majorVersion": 2
+            },
             "ovh_cloud_project_containerregistry_ip_restrictions_management": {
                 "current": "ovh:CloudProject/containerRegistryIPRestrictionsManagement:ContainerRegistryIPRestrictionsManagement",
                 "majorVersion": 2,
@@ -209,6 +213,24 @@
             "ovh_cloud_project_database_user": {
                 "current": "ovh:CloudProjectDatabase/user:User",
                 "majorVersion": 2
+            },
+            "ovh_cloud_project_database_valkey_user": {
+                "current": "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser",
+                "majorVersion": 2,
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false
+                    },
+                    "channels": {
+                        "maxItemsOne": false
+                    },
+                    "commands": {
+                        "maxItemsOne": false
+                    },
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_cloud_project_failover_ip_attach": {
                 "current": "ovh:CloudProject/failoverIpAttach:FailoverIpAttach",
@@ -545,6 +567,21 @@
                     }
                 }
             },
+            "ovh_cloud_project_region": {
+                "current": "ovh:CloudProject/projectRegion:ProjectRegion",
+                "majorVersion": 2,
+                "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    },
+                    "ip_countries": {
+                        "maxItemsOne": false
+                    },
+                    "services": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_project_region_loadbalancer_log_subscription": {
                 "current": "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription",
                 "majorVersion": 2
@@ -591,18 +628,7 @@
                     "replication": {
                         "fields": {
                             "rules": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "filter": {
-                                            "fields": {
-                                                "tags": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                "maxItemsOne": false
                             }
                         }
                     }
@@ -997,6 +1023,14 @@
             },
             "ovh_domain_zone_dnssec": {
                 "current": "ovh:Domain/zoneDNSSec:ZoneDNSSec",
+                "majorVersion": 2
+            },
+            "ovh_domain_zone_dynhost_login": {
+                "current": "ovh:Domain/dynhostLogin:DynhostLogin",
+                "majorVersion": 2
+            },
+            "ovh_domain_zone_dynhost_record": {
+                "current": "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord",
                 "majorVersion": 2
             },
             "ovh_domain_zone_import": {
@@ -1404,8 +1438,32 @@
                     }
                 }
             },
+            "ovh_ovhcloud_connect_pop_config": {
+                "current": "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig",
+                "majorVersion": 2
+            },
+            "ovh_ovhcloud_connect_pop_datacenter_config": {
+                "current": "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig",
+                "majorVersion": 2
+            },
+            "ovh_ovhcloud_connect_pop_datacenter_extra_config": {
+                "current": "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig",
+                "majorVersion": 2
+            },
             "ovh_savings_plan": {
                 "current": "ovh:SavingsPlan/savingsPlan:SavingsPlan",
+                "majorVersion": 2
+            },
+            "ovh_storage_efs_share": {
+                "current": "ovh:index/storageEfsShare:StorageEfsShare",
+                "majorVersion": 2
+            },
+            "ovh_storage_efs_share_acl": {
+                "current": "ovh:index/storageEfsShareAcl:StorageEfsShareAcl",
+                "majorVersion": 2
+            },
+            "ovh_storage_efs_share_snapshot": {
+                "current": "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot",
                 "majorVersion": 2
             },
             "ovh_vps": {
@@ -1882,6 +1940,24 @@
                     }
                 }
             },
+            "ovh_cloud_project_database_valkey_user": {
+                "current": "ovh:index/getCloudProjectDatabaseValkeyUser:getCloudProjectDatabaseValkeyUser",
+                "majorVersion": 2,
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false
+                    },
+                    "channels": {
+                        "maxItemsOne": false
+                    },
+                    "commands": {
+                        "maxItemsOne": false
+                    },
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_project_databases": {
                 "current": "ovh:CloudProjectDatabase/getDatabases:getDatabases",
                 "majorVersion": 2,
@@ -1894,6 +1970,15 @@
             "ovh_cloud_project_failover_ip_attach": {
                 "current": "ovh:CloudProject/getFailoverIpAttach:getFailoverIpAttach",
                 "majorVersion": 2
+            },
+            "ovh_cloud_project_flavor": {
+                "current": "ovh:index/getCloudProjectFlavor:getCloudProjectFlavor",
+                "majorVersion": 2,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_cloud_project_flavors": {
                 "current": "ovh:CloudProject/getFlavors:getFlavors",
@@ -1916,6 +2001,22 @@
                 "majorVersion": 2,
                 "fields": {
                     "cloud_project_floatingips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_project_gateway": {
+                "current": "ovh:index/getCloudProjectGateway:getCloudProjectGateway",
+                "majorVersion": 2,
+                "fields": {
+                    "external_information": {
+                        "fields": {
+                            "ips": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "interfaces": {
                         "maxItemsOne": false
                     }
                 }
@@ -2043,6 +2144,9 @@
                                 }
                             }
                         }
+                    },
+                    "kubeconfig_attributes": {
+                        "maxItemsOne": false
                     },
                     "next_upgrade_versions": {
                         "maxItemsOne": false
@@ -2220,6 +2324,24 @@
                     }
                 }
             },
+            "ovh_cloud_project_rancher_capabilities_plan": {
+                "current": "ovh:index/getCloudProjectRancherCapabilitiesPlan:getCloudProjectRancherCapabilitiesPlan",
+                "majorVersion": 2,
+                "fields": {
+                    "plans": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_project_rancher_capabilities_version": {
+                "current": "ovh:index/getCloudProjectRancherCapabilitiesVersion:getCloudProjectRancherCapabilitiesVersion",
+                "majorVersion": 2,
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_project_rancher_plan": {
                 "current": "ovh:CloudProject/getRancherPlan:getRancherPlan",
                 "majorVersion": 2,
@@ -2242,6 +2364,12 @@
                 "current": "ovh:CloudProject/getRegion:getRegion",
                 "majorVersion": 2,
                 "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    },
+                    "ip_countries": {
+                        "maxItemsOne": false
+                    },
                     "services": {
                         "maxItemsOne": false
                     }
@@ -2269,6 +2397,31 @@
                     },
                     "names": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_project_ssh_key": {
+                "current": "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey",
+                "majorVersion": 2,
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_project_ssh_keys": {
+                "current": "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys",
+                "majorVersion": 2,
+                "fields": {
+                    "ssh_keys": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "regions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2441,6 +2594,15 @@
             "ovh_dbaas_logs_output_graylog_stream": {
                 "current": "ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream",
                 "majorVersion": 2
+            },
+            "ovh_dbaas_logs_output_graylog_stream_url": {
+                "current": "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl",
+                "majorVersion": 2,
+                "fields": {
+                    "url": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_dbaas_logs_output_opensearch_index": {
                 "current": "ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex",
@@ -2827,6 +2989,15 @@
                     }
                 }
             },
+            "ovh_location": {
+                "current": "ovh:index/getLocation:getLocation",
+                "majorVersion": 2,
+                "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_me": {
                 "current": "ovh:Me/getMe:getMe",
                 "majorVersion": 2,
@@ -3077,6 +3248,42 @@
                     }
                 }
             },
+            "ovh_ovhcloud_connect_config_pop_datacenter_extras": {
+                "current": "ovh:index/getOvhcloudConnectConfigPopDatacenterExtras:getOvhcloudConnectConfigPopDatacenterExtras",
+                "majorVersion": 2,
+                "fields": {
+                    "extra_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_ovhcloud_connect_config_pop_datacenters": {
+                "current": "ovh:index/getOvhcloudConnectConfigPopDatacenters:getOvhcloudConnectConfigPopDatacenters",
+                "majorVersion": 2,
+                "fields": {
+                    "datacenter_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_ovhcloud_connect_config_pops": {
+                "current": "ovh:index/getOvhcloudConnectConfigPops:getOvhcloudConnectConfigPops",
+                "majorVersion": 2,
+                "fields": {
+                    "pop_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_ovhcloud_connect_datacenters": {
+                "current": "ovh:index/getOvhcloudConnectDatacenters:getOvhcloudConnectDatacenters",
+                "majorVersion": 2,
+                "fields": {
+                    "datacenters": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_ovhcloud_connects": {
                 "current": "ovh:OVHcloud/connects:Connects",
                 "majorVersion": 2,
@@ -3090,6 +3297,23 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "ovh_storage_efs": {
+                "current": "ovh:index/getStorageEfs:getStorageEfs",
+                "majorVersion": 2
+            },
+            "ovh_storage_efs_share_access_path": {
+                "current": "ovh:index/getStorageEfsShareAccessPath:getStorageEfsShareAccessPath",
+                "majorVersion": 2
+            },
+            "ovh_storage_efs_share_access_paths": {
+                "current": "ovh:index/getStorageEfsShareAccessPaths:getStorageEfsShareAccessPaths",
+                "majorVersion": 2,
+                "fields": {
+                    "access_paths": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3178,6 +3402,7 @@
             "ovh:CloudProject/networkPrivateSubnet:NetworkPrivateSubnet": 0,
             "ovh:CloudProject/networkPrivateSubnetV2:NetworkPrivateSubnetV2": 0,
             "ovh:CloudProject/project:Project": 0,
+            "ovh:CloudProject/projectRegion:ProjectRegion": 1,
             "ovh:CloudProject/rancher:Rancher": 1,
             "ovh:CloudProject/regionLoadBalancerLogSubscription:RegionLoadBalancerLogSubscription": 0,
             "ovh:CloudProject/regionNetwork:RegionNetwork": 1,
@@ -3225,6 +3450,7 @@
             "ovh:Dedicated/serverReinstallTask:ServerReinstallTask": 0,
             "ovh:Dedicated/serverUpdate:ServerUpdate": 0,
             "ovh:Domain/dSRecords:DSRecords": 0,
+            "ovh:Domain/dynhostLogin:DynhostLogin": 1,
             "ovh:Domain/name:Name": 1,
             "ovh:Domain/nameServers:NameServers": 0,
             "ovh:Domain/zone:Zone": 0,
@@ -3283,7 +3509,16 @@
             "ovh:Vrack/vrack:Vrack": 0,
             "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": 1,
             "ovh:Vrack/vrackservices:Vrackservices": 0,
+            "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
+            "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
+            "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
+            "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": 1,
+            "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig": 1,
+            "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig": 1,
+            "ovh:index/storageEfsShare:StorageEfsShare": 1,
+            "ovh:index/storageEfsShareAcl:StorageEfsShareAcl": 1,
+            "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot": 1,
             "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": 1
         },
         "functions": {
@@ -3429,10 +3664,26 @@
             "ovh:Vps/getVps:getVps": 0,
             "ovh:Vps/getVpss:getVpss": 0,
             "ovh:Vrack/getVracks:getVracks": 0,
+            "ovh:index/getCloudProjectDatabaseValkeyUser:getCloudProjectDatabaseValkeyUser": 0,
+            "ovh:index/getCloudProjectFlavor:getCloudProjectFlavor": 1,
+            "ovh:index/getCloudProjectGateway:getCloudProjectGateway": 1,
+            "ovh:index/getCloudProjectRancherCapabilitiesPlan:getCloudProjectRancherCapabilitiesPlan": 1,
+            "ovh:index/getCloudProjectRancherCapabilitiesVersion:getCloudProjectRancherCapabilitiesVersion": 1,
+            "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey": 1,
+            "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys": 1,
+            "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
             "ovh:index/getInstallationTemplate:getInstallationTemplate": 0,
             "ovh:index/getInstallationTemplates:getInstallationTemplates": 0,
+            "ovh:index/getLocation:getLocation": 1,
+            "ovh:index/getOvhcloudConnectConfigPopDatacenterExtras:getOvhcloudConnectConfigPopDatacenterExtras": 1,
+            "ovh:index/getOvhcloudConnectConfigPopDatacenters:getOvhcloudConnectConfigPopDatacenters": 1,
+            "ovh:index/getOvhcloudConnectConfigPops:getOvhcloudConnectConfigPops": 1,
+            "ovh:index/getOvhcloudConnectDatacenters:getOvhcloudConnectDatacenters": 1,
             "ovh:index/getServer:getServer": 0,
             "ovh:index/getServers:getServers": 0,
+            "ovh:index/getStorageEfs:getStorageEfs": 1,
+            "ovh:index/getStorageEfsShareAccessPath:getStorageEfsShareAccessPath": 1,
+            "ovh:index/getStorageEfsShareAccessPaths:getStorageEfsShareAccessPaths": 1,
             "ovh:index/getVrackNetworks:getVrackNetworks": 0
         }
     },
