@@ -118,7 +118,7 @@ namespace Pulumi.Ovh.Domain
     public sealed class GetZoneResult
     {
         /// <summary>
-        /// URN of the DNS zone
+        /// URN of the DNS Zone to be used inside an IAM policy
         /// </summary>
         public readonly string ZoneURN;
         /// <summary>

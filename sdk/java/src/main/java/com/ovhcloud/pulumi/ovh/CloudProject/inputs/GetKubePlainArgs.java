@@ -118,6 +118,21 @@ public final class GetKubePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Plan of the managed kubernetes cluster.
+     * 
+     */
+    @Import(name="plan")
+    private @Nullable String plan;
+
+    /**
+     * @return Plan of the managed kubernetes cluster.
+     * 
+     */
+    public Optional<String> plan() {
+        return Optional.ofNullable(this.plan);
+    }
+
+    /**
      * The OVHcloud public cloud region ID of the managed kubernetes cluster.
      * 
      */
@@ -186,6 +201,7 @@ public final class GetKubePlainArgs extends com.pulumi.resources.InvokeArgs {
         this.kubeId = $.kubeId;
         this.kubeProxyMode = $.kubeProxyMode;
         this.name = $.name;
+        this.plan = $.plan;
         this.region = $.region;
         this.serviceName = $.serviceName;
         this.updatePolicy = $.updatePolicy;
@@ -301,6 +317,17 @@ public final class GetKubePlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param plan Plan of the managed kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plan(@Nullable String plan) {
+            $.plan = plan;
             return this;
         }
 

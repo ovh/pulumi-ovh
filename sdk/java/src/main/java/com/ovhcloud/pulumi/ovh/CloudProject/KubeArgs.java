@@ -135,6 +135,21 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+     * 
+     */
+    @Import(name="plan")
+    private @Nullable Output<String> plan;
+
+    /**
+     * @return Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+     * 
+     */
+    public Optional<Output<String>> plan() {
+        return Optional.ofNullable(this.plan);
+    }
+
+    /**
      * The private network configuration. If this is set then the 2 parameters below shall be defined.
      * 
      */
@@ -187,15 +202,15 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -238,6 +253,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         this.loadBalancersSubnetId = $.loadBalancersSubnetId;
         this.name = $.name;
         this.nodesSubnetId = $.nodesSubnetId;
+        this.plan = $.plan;
         this.privateNetworkConfiguration = $.privateNetworkConfiguration;
         this.privateNetworkId = $.privateNetworkId;
         this.region = $.region;
@@ -444,6 +460,27 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param plan Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plan(@Nullable Output<String> plan) {
+            $.plan = plan;
+            return this;
+        }
+
+        /**
+         * @param plan Plan of the MKS cluster `free` or `standard`. Default to `free`. Migration to another plan is not implemented yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plan(String plan) {
+            return plan(Output.of(plan));
+        }
+
+        /**
          * @param privateNetworkConfiguration The private network configuration. If this is set then the 2 parameters below shall be defined.
          * 
          * @return builder
@@ -516,7 +553,7 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -576,9 +613,6 @@ public final class KubeArgs extends com.pulumi.resources.ResourceArgs {
         public KubeArgs build() {
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("KubeArgs", "region");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("KubeArgs", "serviceName");
             }
             return $;
         }

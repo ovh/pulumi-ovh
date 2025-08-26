@@ -92,14 +92,14 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * URN that will allow you to associate this oauth2 client with an access policy
+     * Identity URN of the service account to be used inside an IAM policy.
      * 
      */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
     /**
-     * @return URN that will allow you to associate this oauth2 client with an access policy
+     * @return Identity URN of the service account to be used inside an IAM policy.
      * 
      */
     public Optional<Output<String>> identity() {
@@ -267,7 +267,7 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param identity URN that will allow you to associate this oauth2 client with an access policy
+         * @param identity Identity URN of the service account to be used inside an IAM policy.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param identity URN that will allow you to associate this oauth2 client with an access policy
+         * @param identity Identity URN of the service account to be used inside an IAM policy.
          * 
          * @return builder
          * 

@@ -251,9 +251,17 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
     public Output<Double> autoscalingScaleDownUtilizationThreshold() {
         return this.autoscalingScaleDownUtilizationThreshold;
     }
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
     @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
+    /**
+     * @return list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
@@ -549,6 +557,7 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

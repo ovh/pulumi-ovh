@@ -56,6 +56,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * DBaaS logs Opensearch output alias can be imported using the `service_name` and `alias_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias this ldp-XX-NNNNN/7e2301b6-c0fe-41d9-bc58-44fd844f1e3e
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias")
 public class LogsOutputOpenSearchAlias extends com.pulumi.resources.CustomResource {
@@ -281,6 +291,7 @@ public class LogsOutputOpenSearchAlias extends com.pulumi.resources.CustomResour
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

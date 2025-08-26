@@ -10,6 +10,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -68,6 +69,21 @@ public final class NetworkPrivateState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<NetworkPrivateRegionsAttributeArgs>>> regionsAttributes() {
         return Optional.ofNullable(this.regionsAttributes);
+    }
+
+    /**
+     * A map with region name as key, and region-specific openstack id as value
+     * 
+     */
+    @Import(name="regionsOpenstackIds")
+    private @Nullable Output<Map<String,String>> regionsOpenstackIds;
+
+    /**
+     * @return A map with region name as key, and region-specific openstack id as value
+     * 
+     */
+    public Optional<Output<Map<String,String>>> regionsOpenstackIds() {
+        return Optional.ofNullable(this.regionsOpenstackIds);
     }
 
     /**
@@ -163,6 +179,7 @@ public final class NetworkPrivateState extends com.pulumi.resources.ResourceArgs
         this.name = $.name;
         this.regions = $.regions;
         this.regionsAttributes = $.regionsAttributes;
+        this.regionsOpenstackIds = $.regionsOpenstackIds;
         this.regionsStatuses = $.regionsStatuses;
         this.serviceName = $.serviceName;
         this.status = $.status;
@@ -278,6 +295,27 @@ public final class NetworkPrivateState extends com.pulumi.resources.ResourceArgs
          */
         public Builder regionsAttributes(NetworkPrivateRegionsAttributeArgs... regionsAttributes) {
             return regionsAttributes(List.of(regionsAttributes));
+        }
+
+        /**
+         * @param regionsOpenstackIds A map with region name as key, and region-specific openstack id as value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionsOpenstackIds(@Nullable Output<Map<String,String>> regionsOpenstackIds) {
+            $.regionsOpenstackIds = regionsOpenstackIds;
+            return this;
+        }
+
+        /**
+         * @param regionsOpenstackIds A map with region name as key, and region-specific openstack id as value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionsOpenstackIds(Map<String,String> regionsOpenstackIds) {
+            return regionsOpenstackIds(Output.of(regionsOpenstackIds));
         }
 
         /**

@@ -201,15 +201,15 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private ContainerRegistryOIDCArgs() {}
@@ -506,7 +506,7 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -539,9 +539,6 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
             }
             if ($.registryId == null) {
                 throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "registryId");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("ContainerRegistryOIDCArgs", "serviceName");
             }
             return $;
         }

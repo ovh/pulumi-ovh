@@ -36,6 +36,10 @@ public final class GetAPIOAuth2ClientResult {
      * 
      */
     private String id;
+    /**
+     * @return Identity URN of the service account to be used inside an IAM policy.
+     * 
+     */
     private String identity;
     /**
      * @return OAuth2 client name.
@@ -79,6 +83,10 @@ public final class GetAPIOAuth2ClientResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identity URN of the service account to be used inside an IAM policy.
+     * 
+     */
     public String identity() {
         return this.identity;
     }

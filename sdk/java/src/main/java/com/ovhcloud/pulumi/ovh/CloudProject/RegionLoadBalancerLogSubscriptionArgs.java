@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.resources.ResourceArgs {
@@ -63,15 +65,15 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -186,7 +188,7 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -231,9 +233,6 @@ public final class RegionLoadBalancerLogSubscriptionArgs extends com.pulumi.reso
             }
             if ($.regionName == null) {
                 throw new MissingRequiredPropertyException("RegionLoadBalancerLogSubscriptionArgs", "regionName");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("RegionLoadBalancerLogSubscriptionArgs", "serviceName");
             }
             if ($.streamId == null) {
                 throw new MissingRequiredPropertyException("RegionLoadBalancerLogSubscriptionArgs", "streamId");

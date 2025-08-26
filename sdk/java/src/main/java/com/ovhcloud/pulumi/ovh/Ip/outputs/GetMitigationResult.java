@@ -16,10 +16,6 @@ public final class GetMitigationResult {
      * 
      */
     private Boolean auto;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The IP or the CIDR
@@ -47,10 +43,6 @@ public final class GetMitigationResult {
     public Boolean auto() {
         return this.auto;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
