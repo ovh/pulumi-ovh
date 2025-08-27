@@ -140,8 +140,8 @@ if (publishRepoUsername) {
     nexusPublishing {
         repositories {
             sonatype {
-                nexusUrl.set(uri(publishRepoURL + "/service/local/"))
-                snapshotRepositoryUrl.set(uri(publishRepoURL + "/content/repositories/snapshots/"))
+                nexusUrl.set(uri(publishStagingURL))
+                snapshotRepositoryUrl.set(uri(publishRepoURL))
                 username = publishRepoUsername
                 password = publishRepoPassword
             }
