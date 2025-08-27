@@ -29,7 +29,7 @@ class GetKubeResult:
     """
     A collection of values returned by getKube.
     """
-    def __init__(__self__, control_plane_is_up_to_date=None, customization_apiservers=None, customization_kube_proxy=None, customizations=None, id=None, is_up_to_date=None, kube_id=None, kube_proxy_mode=None, load_balancers_subnet_id=None, name=None, next_upgrade_versions=None, nodes_subnet_id=None, nodes_url=None, private_network_id=None, region=None, service_name=None, status=None, update_policy=None, url=None, version=None):
+    def __init__(__self__, control_plane_is_up_to_date=None, customization_apiservers=None, customization_kube_proxy=None, customizations=None, id=None, is_up_to_date=None, kube_id=None, kube_proxy_mode=None, kubeconfig=None, kubeconfig_attributes=None, load_balancers_subnet_id=None, name=None, next_upgrade_versions=None, nodes_subnet_id=None, nodes_url=None, plan=None, private_network_id=None, region=None, service_name=None, status=None, update_policy=None, url=None, version=None):
         if control_plane_is_up_to_date and not isinstance(control_plane_is_up_to_date, bool):
             raise TypeError("Expected argument 'control_plane_is_up_to_date' to be a bool")
         pulumi.set(__self__, "control_plane_is_up_to_date", control_plane_is_up_to_date)
@@ -54,6 +54,12 @@ class GetKubeResult:
         if kube_proxy_mode and not isinstance(kube_proxy_mode, str):
             raise TypeError("Expected argument 'kube_proxy_mode' to be a str")
         pulumi.set(__self__, "kube_proxy_mode", kube_proxy_mode)
+        if kubeconfig and not isinstance(kubeconfig, str):
+            raise TypeError("Expected argument 'kubeconfig' to be a str")
+        pulumi.set(__self__, "kubeconfig", kubeconfig)
+        if kubeconfig_attributes and not isinstance(kubeconfig_attributes, list):
+            raise TypeError("Expected argument 'kubeconfig_attributes' to be a list")
+        pulumi.set(__self__, "kubeconfig_attributes", kubeconfig_attributes)
         if load_balancers_subnet_id and not isinstance(load_balancers_subnet_id, str):
             raise TypeError("Expected argument 'load_balancers_subnet_id' to be a str")
         pulumi.set(__self__, "load_balancers_subnet_id", load_balancers_subnet_id)
@@ -69,6 +75,9 @@ class GetKubeResult:
         if nodes_url and not isinstance(nodes_url, str):
             raise TypeError("Expected argument 'nodes_url' to be a str")
         pulumi.set(__self__, "nodes_url", nodes_url)
+        if plan and not isinstance(plan, str):
+            raise TypeError("Expected argument 'plan' to be a str")
+        pulumi.set(__self__, "plan", plan)
         if private_network_id and not isinstance(private_network_id, str):
             raise TypeError("Expected argument 'private_network_id' to be a str")
         pulumi.set(__self__, "private_network_id", private_network_id)
@@ -157,6 +166,22 @@ class GetKubeResult:
         return pulumi.get(self, "kube_proxy_mode")
 
     @property
+    @pulumi.getter
+    def kubeconfig(self) -> builtins.str:
+        """
+        (Sensitive) Raw kubeconfig file content for connecting to the cluster.
+        """
+        return pulumi.get(self, "kubeconfig")
+
+    @property
+    @pulumi.getter(name="kubeconfigAttributes")
+    def kubeconfig_attributes(self) -> Sequence['outputs.GetKubeKubeconfigAttributeResult']:
+        """
+        (Sensitive) Structured kubeconfig data for connecting to the cluster.
+        """
+        return pulumi.get(self, "kubeconfig_attributes")
+
+    @property
     @pulumi.getter(name="loadBalancersSubnetId")
     def load_balancers_subnet_id(self) -> builtins.str:
         """
@@ -195,6 +220,14 @@ class GetKubeResult:
         Cluster nodes URL.
         """
         return pulumi.get(self, "nodes_url")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[builtins.str]:
+        """
+        Plan of the managed kubernetes cluster.
+        """
+        return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter(name="privateNetworkId")
@@ -267,11 +300,14 @@ class AwaitableGetKubeResult(GetKubeResult):
             is_up_to_date=self.is_up_to_date,
             kube_id=self.kube_id,
             kube_proxy_mode=self.kube_proxy_mode,
+            kubeconfig=self.kubeconfig,
+            kubeconfig_attributes=self.kubeconfig_attributes,
             load_balancers_subnet_id=self.load_balancers_subnet_id,
             name=self.name,
             next_upgrade_versions=self.next_upgrade_versions,
             nodes_subnet_id=self.nodes_subnet_id,
             nodes_url=self.nodes_url,
+            plan=self.plan,
             private_network_id=self.private_network_id,
             region=self.region,
             service_name=self.service_name,
@@ -287,6 +323,7 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
              kube_id: Optional[builtins.str] = None,
              kube_proxy_mode: Optional[builtins.str] = None,
              name: Optional[builtins.str] = None,
+             plan: Optional[builtins.str] = None,
              region: Optional[builtins.str] = None,
              service_name: Optional[builtins.str] = None,
              update_policy: Optional[builtins.str] = None,
@@ -304,6 +341,8 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
     my_kube_cluster = ovh.CloudProject.get_kube(service_name="XXXXXX",
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("version", my_kube_cluster.version)
+    pulumi.export("kubeconfig", my_kube_cluster.kubeconfig)
+    pulumi.export("kubeHost", my_kube_cluster.kubeconfig_attributes[0].host)
     ```
 
 
@@ -313,6 +352,7 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
     :param builtins.str kube_id: The id of the managed kubernetes cluster.
     :param builtins.str kube_proxy_mode: Selected mode for kube-proxy.
     :param builtins.str name: The name of the managed kubernetes cluster.
+    :param builtins.str plan: Plan of the managed kubernetes cluster.
     :param builtins.str region: The OVHcloud public cloud region ID of the managed kubernetes cluster.
     :param builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param builtins.str update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
@@ -325,6 +365,7 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
     __args__['kubeId'] = kube_id
     __args__['kubeProxyMode'] = kube_proxy_mode
     __args__['name'] = name
+    __args__['plan'] = plan
     __args__['region'] = region
     __args__['serviceName'] = service_name
     __args__['updatePolicy'] = update_policy
@@ -341,11 +382,14 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
         is_up_to_date=pulumi.get(__ret__, 'is_up_to_date'),
         kube_id=pulumi.get(__ret__, 'kube_id'),
         kube_proxy_mode=pulumi.get(__ret__, 'kube_proxy_mode'),
+        kubeconfig=pulumi.get(__ret__, 'kubeconfig'),
+        kubeconfig_attributes=pulumi.get(__ret__, 'kubeconfig_attributes'),
         load_balancers_subnet_id=pulumi.get(__ret__, 'load_balancers_subnet_id'),
         name=pulumi.get(__ret__, 'name'),
         next_upgrade_versions=pulumi.get(__ret__, 'next_upgrade_versions'),
         nodes_subnet_id=pulumi.get(__ret__, 'nodes_subnet_id'),
         nodes_url=pulumi.get(__ret__, 'nodes_url'),
+        plan=pulumi.get(__ret__, 'plan'),
         private_network_id=pulumi.get(__ret__, 'private_network_id'),
         region=pulumi.get(__ret__, 'region'),
         service_name=pulumi.get(__ret__, 'service_name'),
@@ -359,6 +403,7 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
                     kube_id: Optional[pulumi.Input[builtins.str]] = None,
                     kube_proxy_mode: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                    plan: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     service_name: Optional[pulumi.Input[builtins.str]] = None,
                     update_policy: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -376,6 +421,8 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     my_kube_cluster = ovh.CloudProject.get_kube(service_name="XXXXXX",
         kube_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
     pulumi.export("version", my_kube_cluster.version)
+    pulumi.export("kubeconfig", my_kube_cluster.kubeconfig)
+    pulumi.export("kubeHost", my_kube_cluster.kubeconfig_attributes[0].host)
     ```
 
 
@@ -385,6 +432,7 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     :param builtins.str kube_id: The id of the managed kubernetes cluster.
     :param builtins.str kube_proxy_mode: Selected mode for kube-proxy.
     :param builtins.str name: The name of the managed kubernetes cluster.
+    :param builtins.str plan: Plan of the managed kubernetes cluster.
     :param builtins.str region: The OVHcloud public cloud region ID of the managed kubernetes cluster.
     :param builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     :param builtins.str update_policy: Cluster update policy. Choose between [ALWAYS_UPDATE,MINIMAL_DOWNTIME,NEVER_UPDATE]'.
@@ -397,6 +445,7 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     __args__['kubeId'] = kube_id
     __args__['kubeProxyMode'] = kube_proxy_mode
     __args__['name'] = name
+    __args__['plan'] = plan
     __args__['region'] = region
     __args__['serviceName'] = service_name
     __args__['updatePolicy'] = update_policy
@@ -412,11 +461,14 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
         is_up_to_date=pulumi.get(__response__, 'is_up_to_date'),
         kube_id=pulumi.get(__response__, 'kube_id'),
         kube_proxy_mode=pulumi.get(__response__, 'kube_proxy_mode'),
+        kubeconfig=pulumi.get(__response__, 'kubeconfig'),
+        kubeconfig_attributes=pulumi.get(__response__, 'kubeconfig_attributes'),
         load_balancers_subnet_id=pulumi.get(__response__, 'load_balancers_subnet_id'),
         name=pulumi.get(__response__, 'name'),
         next_upgrade_versions=pulumi.get(__response__, 'next_upgrade_versions'),
         nodes_subnet_id=pulumi.get(__response__, 'nodes_subnet_id'),
         nodes_url=pulumi.get(__response__, 'nodes_url'),
+        plan=pulumi.get(__response__, 'plan'),
         private_network_id=pulumi.get(__response__, 'private_network_id'),
         region=pulumi.get(__response__, 'region'),
         service_name=pulumi.get(__response__, 'service_name'),

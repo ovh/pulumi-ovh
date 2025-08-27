@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vrack_dedicatedCloudDatacenter = new DedicatedCloudDatacenter("vrack-dedicatedCloudDatacenter", DedicatedCloudDatacenterArgs.builder()
+ *         var vrackDedicatedCloudDatacenter = new DedicatedCloudDatacenter("vrackDedicatedCloudDatacenter", DedicatedCloudDatacenterArgs.builder()
  *             .serviceName("<vRack service name>")
  *             .datacenter("<Dedicated Cloud Datacenter service name>")
  *             .build());
@@ -163,6 +163,7 @@ public class DedicatedCloudDatacenter extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

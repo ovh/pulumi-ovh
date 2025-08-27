@@ -189,6 +189,18 @@ import javax.annotation.Nullable;
  *             .flavor("db1-4")
  *             .build());
  * 
+ *         var valkeydb = new Database("valkeydb", DatabaseArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-first-valkey")
+ *             .engine("valkey")
+ *             .version("8.0")
+ *             .plan("essential")
+ *             .nodes(DatabaseNodeArgs.builder()
+ *                 .region("BHS")
+ *                 .build())
+ *             .flavor("db1-4")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -556,7 +568,8 @@ public class Database extends com.pulumi.resources.CustomResource {
      * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;
+     * * Redis: &#34;essential&#34;, &#34;business&#34;.
+     * * Valkey: &#34;essential&#34;, &#34;business&#34;.
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
@@ -567,7 +580,8 @@ public class Database extends com.pulumi.resources.CustomResource {
      * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
      * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;
+     * * Redis: &#34;essential&#34;, &#34;business&#34;.
+     * * Valkey: &#34;essential&#34;, &#34;business&#34;.
      * 
      */
     public Output<String> plan() {
@@ -655,6 +669,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

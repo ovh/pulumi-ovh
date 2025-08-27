@@ -13,10 +13,20 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionResult {
     /**
-     * @return the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+     * @return Availability zones of the region
+     * 
+     */
+    private List<String> availabilityZones;
+    /**
+     * @return The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
      * 
      */
     private String continentCode;
+    /**
+     * @return Region country code
+     * 
+     */
+    private String countryCode;
     /**
      * @return The location code of the datacenter. E.g.: &#34;GRA&#34;, meaning Gravelines, for region &#34;GRA1&#34;
      * 
@@ -28,6 +38,11 @@ public final class GetRegionResult {
      */
     private String id;
     /**
+     * @return Allowed countries for failover IP
+     * 
+     */
+    private List<String> ipCountries;
+    /**
      * @return the name of the public cloud service
      * 
      */
@@ -38,14 +53,38 @@ public final class GetRegionResult {
      * 
      */
     private List<GetRegionService> services;
+    /**
+     * @return the status of the service
+     * 
+     */
+    private String status;
+    /**
+     * @return Region type (localzone | region | region-3-az)
+     * 
+     */
+    private String type;
 
     private GetRegionResult() {}
     /**
-     * @return the code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
+     * @return Availability zones of the region
+     * 
+     */
+    public List<String> availabilityZones() {
+        return this.availabilityZones;
+    }
+    /**
+     * @return The code of the geographic continent the region is running. E.g.: EU for Europe, US for America...
      * 
      */
     public String continentCode() {
         return this.continentCode;
+    }
+    /**
+     * @return Region country code
+     * 
+     */
+    public String countryCode() {
+        return this.countryCode;
     }
     /**
      * @return The location code of the datacenter. E.g.: &#34;GRA&#34;, meaning Gravelines, for region &#34;GRA1&#34;
@@ -60,6 +99,13 @@ public final class GetRegionResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Allowed countries for failover IP
+     * 
+     */
+    public List<String> ipCountries() {
+        return this.ipCountries;
     }
     /**
      * @return the name of the public cloud service
@@ -78,6 +124,20 @@ public final class GetRegionResult {
     public List<GetRegionService> services() {
         return this.services;
     }
+    /**
+     * @return the status of the service
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
+     * @return Region type (localzone | region | region-3-az)
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -88,29 +148,58 @@ public final class GetRegionResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> availabilityZones;
         private String continentCode;
+        private String countryCode;
         private String datacenterLocation;
         private String id;
+        private List<String> ipCountries;
         private String name;
         private String serviceName;
         private List<GetRegionService> services;
+        private String status;
+        private String type;
         public Builder() {}
         public Builder(GetRegionResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availabilityZones = defaults.availabilityZones;
     	      this.continentCode = defaults.continentCode;
+    	      this.countryCode = defaults.countryCode;
     	      this.datacenterLocation = defaults.datacenterLocation;
     	      this.id = defaults.id;
+    	      this.ipCountries = defaults.ipCountries;
     	      this.name = defaults.name;
     	      this.serviceName = defaults.serviceName;
     	      this.services = defaults.services;
+    	      this.status = defaults.status;
+    	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder availabilityZones(List<String> availabilityZones) {
+            if (availabilityZones == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "availabilityZones");
+            }
+            this.availabilityZones = availabilityZones;
+            return this;
+        }
+        public Builder availabilityZones(String... availabilityZones) {
+            return availabilityZones(List.of(availabilityZones));
+        }
         @CustomType.Setter
         public Builder continentCode(String continentCode) {
             if (continentCode == null) {
               throw new MissingRequiredPropertyException("GetRegionResult", "continentCode");
             }
             this.continentCode = continentCode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder countryCode(String countryCode) {
+            if (countryCode == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "countryCode");
+            }
+            this.countryCode = countryCode;
             return this;
         }
         @CustomType.Setter
@@ -128,6 +217,17 @@ public final class GetRegionResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipCountries(List<String> ipCountries) {
+            if (ipCountries == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "ipCountries");
+            }
+            this.ipCountries = ipCountries;
+            return this;
+        }
+        public Builder ipCountries(String... ipCountries) {
+            return ipCountries(List.of(ipCountries));
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -156,14 +256,35 @@ public final class GetRegionResult {
         public Builder services(GetRegionService... services) {
             return services(List.of(services));
         }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
         public GetRegionResult build() {
             final var _resultValue = new GetRegionResult();
+            _resultValue.availabilityZones = availabilityZones;
             _resultValue.continentCode = continentCode;
+            _resultValue.countryCode = countryCode;
             _resultValue.datacenterLocation = datacenterLocation;
             _resultValue.id = id;
+            _resultValue.ipCountries = ipCountries;
             _resultValue.name = name;
             _resultValue.serviceName = serviceName;
             _resultValue.services = services;
+            _resultValue.status = status;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

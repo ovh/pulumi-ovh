@@ -79,18 +79,18 @@ public final class SavingsPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the public cloud project
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
-     * @return ID of the public cloud project
+     * @return ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -222,18 +222,18 @@ public final class SavingsPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName ID of the public cloud project
+         * @param serviceName ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
         /**
-         * @param serviceName ID of the public cloud project
+         * @param serviceName ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -272,9 +272,6 @@ public final class SavingsPlanArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.period == null) {
                 throw new MissingRequiredPropertyException("SavingsPlanArgs", "period");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("SavingsPlanArgs", "serviceName");
             }
             if ($.size == null) {
                 throw new MissingRequiredPropertyException("SavingsPlanArgs", "size");

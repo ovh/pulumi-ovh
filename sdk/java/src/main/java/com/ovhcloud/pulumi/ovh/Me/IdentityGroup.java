@@ -55,6 +55,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * Identity groups can be imported using their `name`:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Me/identityGroup:IdentityGroup my_identity_group name
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Me/identityGroup:IdentityGroup")
 public class IdentityGroup extends com.pulumi.resources.CustomResource {
@@ -196,6 +206,7 @@ public class IdentityGroup extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

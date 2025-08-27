@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
+ * export const kubeconfig = myKubeCluster.then(myKubeCluster => myKubeCluster.kubeconfig);
+ * export const kubeHost = myKubeCluster.then(myKubeCluster => myKubeCluster.kubeconfigAttributes?.[0]?.host);
  * ```
  */
 export function getKube(args: GetKubeArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeResult> {
@@ -31,6 +33,7 @@ export function getKube(args: GetKubeArgs, opts?: pulumi.InvokeOptions): Promise
         "kubeId": args.kubeId,
         "kubeProxyMode": args.kubeProxyMode,
         "name": args.name,
+        "plan": args.plan,
         "region": args.region,
         "serviceName": args.serviceName,
         "updatePolicy": args.updatePolicy,
@@ -68,6 +71,10 @@ export interface GetKubeArgs {
      * The name of the managed kubernetes cluster.
      */
     name?: string;
+    /**
+     * Plan of the managed kubernetes cluster.
+     */
+    plan?: string;
     /**
      * The OVHcloud public cloud region ID of the managed kubernetes cluster.
      */
@@ -125,6 +132,14 @@ export interface GetKubeResult {
      */
     readonly kubeProxyMode?: string;
     /**
+     * (Sensitive) Raw kubeconfig file content for connecting to the cluster.
+     */
+    readonly kubeconfig: string;
+    /**
+     * (Sensitive) Structured kubeconfig data for connecting to the cluster.
+     */
+    readonly kubeconfigAttributes: outputs.CloudProject.GetKubeKubeconfigAttribute[];
+    /**
      * Openstack private network (or vRack) ID to use for load balancers.
      */
     readonly loadBalancersSubnetId: string;
@@ -144,6 +159,10 @@ export interface GetKubeResult {
      * Cluster nodes URL.
      */
     readonly nodesUrl: string;
+    /**
+     * Plan of the managed kubernetes cluster.
+     */
+    readonly plan?: string;
     /**
      * OpenStack private network (or vrack) ID to use.
      */
@@ -187,6 +206,8 @@ export interface GetKubeResult {
  *     kubeId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
  * });
  * export const version = myKubeCluster.then(myKubeCluster => myKubeCluster.version);
+ * export const kubeconfig = myKubeCluster.then(myKubeCluster => myKubeCluster.kubeconfig);
+ * export const kubeHost = myKubeCluster.then(myKubeCluster => myKubeCluster.kubeconfigAttributes?.[0]?.host);
  * ```
  */
 export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeResult> {
@@ -198,6 +219,7 @@ export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOutpu
         "kubeId": args.kubeId,
         "kubeProxyMode": args.kubeProxyMode,
         "name": args.name,
+        "plan": args.plan,
         "region": args.region,
         "serviceName": args.serviceName,
         "updatePolicy": args.updatePolicy,
@@ -235,6 +257,10 @@ export interface GetKubeOutputArgs {
      * The name of the managed kubernetes cluster.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Plan of the managed kubernetes cluster.
+     */
+    plan?: pulumi.Input<string>;
     /**
      * The OVHcloud public cloud region ID of the managed kubernetes cluster.
      */

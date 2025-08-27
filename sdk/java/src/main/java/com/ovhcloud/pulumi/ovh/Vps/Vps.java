@@ -94,6 +94,20 @@ public class Vps extends com.pulumi.resources.CustomResource {
         return this.iam;
     }
     /**
+     * Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+     * 
+     */
+    @Export(name="imageId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> imageId;
+
+    /**
+     * @return Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+     * 
+     */
+    public Output<Optional<String>> imageId() {
+        return Codegen.optional(this.imageId);
+    }
+    /**
      * KVM keyboard layout on VPS Cloud
      * 
      */
@@ -248,6 +262,20 @@ public class Vps extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.plans);
     }
     /**
+     * Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+     * 
+     */
+    @Export(name="publicSshKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> publicSshKey;
+
+    /**
+     * @return Public SSH key to pre-install on your VPS - if set, then `image_id` must also be set
+     * 
+     */
+    public Output<Optional<String>> publicSshKey() {
+        return Codegen.optional(this.publicSshKey);
+    }
+    /**
      * The internal name of your VPS offer
      * 
      */
@@ -349,6 +377,7 @@ public class Vps extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

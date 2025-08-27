@@ -104,7 +104,7 @@ class _APIOAuth2ClientState:
         :param pulumi.Input[builtins.str] client_secret: Client secret of the created service account.
         :param pulumi.Input[builtins.str] description: OAuth2 client description.
         :param pulumi.Input[builtins.str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
-        :param pulumi.Input[builtins.str] identity: URN that will allow you to associate this oauth2 client with an access policy
+        :param pulumi.Input[builtins.str] identity: Identity URN of the service account to be used inside an IAM policy.
         :param pulumi.Input[builtins.str] name: OAuth2 client name.
         """
         if callback_urls is not None:
@@ -186,7 +186,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter
     def identity(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URN that will allow you to associate this oauth2 client with an access policy
+        Identity URN of the service account to be used inside an IAM policy.
         """
         return pulumi.get(self, "identity")
 
@@ -397,7 +397,7 @@ class APIOAuth2Client(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] client_secret: Client secret of the created service account.
         :param pulumi.Input[builtins.str] description: OAuth2 client description.
         :param pulumi.Input[builtins.str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
-        :param pulumi.Input[builtins.str] identity: URN that will allow you to associate this oauth2 client with an access policy
+        :param pulumi.Input[builtins.str] identity: Identity URN of the service account to be used inside an IAM policy.
         :param pulumi.Input[builtins.str] name: OAuth2 client name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -457,7 +457,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter
     def identity(self) -> pulumi.Output[builtins.str]:
         """
-        URN that will allow you to associate this oauth2 client with an access policy
+        Identity URN of the service account to be used inside an IAM policy.
         """
         return pulumi.get(self, "identity")
 
