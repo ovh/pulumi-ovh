@@ -1,7 +1,7 @@
 name: Publish Java SDK Only
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       version:
         required: true
