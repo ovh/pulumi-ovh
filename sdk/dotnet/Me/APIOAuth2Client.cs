@@ -110,7 +110,7 @@ namespace Pulumi.Ovh.Me
         public Output<string> Flow { get; private set; } = null!;
 
         /// <summary>
-        /// URN that will allow you to associate this oauth2 client with an access policy
+        /// Identity URN of the service account to be used inside an IAM policy.
         /// </summary>
         [Output("identity")]
         public Output<string> Identity { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.Ovh.Me
         public Input<string>? Flow { get; set; }
 
         /// <summary>
-        /// URN that will allow you to associate this oauth2 client with an access policy
+        /// Identity URN of the service account to be used inside an IAM policy.
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }

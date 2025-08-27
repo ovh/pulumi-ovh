@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accessToken() {
         return Optional.ofNullable(this.accessToken);
+    }
+
+    /**
+     * Specify the API request rate limit, X operations by seconds (default: unlimited)
+     * 
+     */
+    @Import(name="apiRateLimit", json=true)
+    private @Nullable Output<Integer> apiRateLimit;
+
+    /**
+     * @return Specify the API request rate limit, X operations by seconds (default: unlimited)
+     * 
+     */
+    public Optional<Output<Integer>> apiRateLimit() {
+        return Optional.ofNullable(this.apiRateLimit);
     }
 
     /**
@@ -120,16 +136,33 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.endpoint);
     }
 
+    /**
+     * Extra information to append to the user-agent
+     * 
+     */
+    @Import(name="userAgentExtra")
+    private @Nullable Output<String> userAgentExtra;
+
+    /**
+     * @return Extra information to append to the user-agent
+     * 
+     */
+    public Optional<Output<String>> userAgentExtra() {
+        return Optional.ofNullable(this.userAgentExtra);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
         this.accessToken = $.accessToken;
+        this.apiRateLimit = $.apiRateLimit;
         this.applicationKey = $.applicationKey;
         this.applicationSecret = $.applicationSecret;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.consumerKey = $.consumerKey;
         this.endpoint = $.endpoint;
+        this.userAgentExtra = $.userAgentExtra;
     }
 
     public static Builder builder() {
@@ -169,6 +202,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessToken(String accessToken) {
             return accessToken(Output.of(accessToken));
+        }
+
+        /**
+         * @param apiRateLimit Specify the API request rate limit, X operations by seconds (default: unlimited)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiRateLimit(@Nullable Output<Integer> apiRateLimit) {
+            $.apiRateLimit = apiRateLimit;
+            return this;
+        }
+
+        /**
+         * @param apiRateLimit Specify the API request rate limit, X operations by seconds (default: unlimited)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiRateLimit(Integer apiRateLimit) {
+            return apiRateLimit(Output.of(apiRateLimit));
         }
 
         /**
@@ -295,6 +349,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param userAgentExtra Extra information to append to the user-agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAgentExtra(@Nullable Output<String> userAgentExtra) {
+            $.userAgentExtra = userAgentExtra;
+            return this;
+        }
+
+        /**
+         * @param userAgentExtra Extra information to append to the user-agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAgentExtra(String userAgentExtra) {
+            return userAgentExtra(Output.of(userAgentExtra));
         }
 
         public ProviderArgs build() {

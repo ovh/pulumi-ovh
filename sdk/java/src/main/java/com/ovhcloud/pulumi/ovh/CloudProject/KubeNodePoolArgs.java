@@ -98,9 +98,17 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoscalingScaleDownUtilizationThreshold);
     }
 
+    /**
+     * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
     @Import(name="availabilityZones")
     private @Nullable Output<List<String>> availabilityZones;
 
+    /**
+     * @return list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+     * 
+     */
     public Optional<Output<List<String>>> availabilityZones() {
         return Optional.ofNullable(this.availabilityZones);
     }
@@ -214,15 +222,15 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -385,15 +393,33 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
             return autoscalingScaleDownUtilizationThreshold(Output.of(autoscalingScaleDownUtilizationThreshold));
         }
 
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
             $.availabilityZones = availabilityZones;
             return this;
         }
 
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZones(List<String> availabilityZones) {
             return availabilityZones(Output.of(availabilityZones));
         }
 
+        /**
+         * @param availabilityZones list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }
@@ -551,7 +577,7 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -593,9 +619,6 @@ public final class KubeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.kubeId == null) {
                 throw new MissingRequiredPropertyException("KubeNodePoolArgs", "kubeId");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("KubeNodePoolArgs", "serviceName");
             }
             return $;
         }

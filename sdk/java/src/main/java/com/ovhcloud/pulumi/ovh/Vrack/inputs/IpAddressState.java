@@ -61,6 +61,21 @@ public final class IpAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The region (e.g: eu-west-gra) where want to route your block to.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region (e.g: eu-west-gra) where want to route your block to.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The internal name of your vrack
      * 
      */
@@ -96,6 +111,7 @@ public final class IpAddressState extends com.pulumi.resources.ResourceArgs {
         this.block = $.block;
         this.gateway = $.gateway;
         this.ip = $.ip;
+        this.region = $.region;
         this.serviceName = $.serviceName;
         this.zone = $.zone;
     }
@@ -179,6 +195,27 @@ public final class IpAddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
+        }
+
+        /**
+         * @param region The region (e.g: eu-west-gra) where want to route your block to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region (e.g: eu-west-gra) where want to route your block to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

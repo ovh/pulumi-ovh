@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class IpAddressArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,6 +32,21 @@ public final class IpAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The region (e.g: eu-west-gra) where want to route your block to.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region (e.g: eu-west-gra) where want to route your block to.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The internal name of your vrack
      * 
      */
@@ -48,6 +65,7 @@ public final class IpAddressArgs extends com.pulumi.resources.ResourceArgs {
 
     private IpAddressArgs(IpAddressArgs $) {
         this.block = $.block;
+        this.region = $.region;
         this.serviceName = $.serviceName;
     }
 
@@ -88,6 +106,27 @@ public final class IpAddressArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder block(String block) {
             return block(Output.of(block));
+        }
+
+        /**
+         * @param region The region (e.g: eu-west-gra) where want to route your block to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region (e.g: eu-west-gra) where want to route your block to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

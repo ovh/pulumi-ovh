@@ -30,14 +30,14 @@ public final class GetLogsOutputGraylogStreamArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Stream description
+     * Stream name
      * 
      */
     @Import(name="title", required=true)
     private Output<String> title;
 
     /**
-     * @return Stream description
+     * @return Stream name
      * 
      */
     public Output<String> title() {
@@ -91,7 +91,7 @@ public final class GetLogsOutputGraylogStreamArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param title Stream description
+         * @param title Stream name
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetLogsOutputGraylogStreamArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param title Stream description
+         * @param title Stream name
          * 
          * @return builder
          * 

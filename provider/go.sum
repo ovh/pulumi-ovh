@@ -2139,6 +2139,8 @@ github.com/ovh/terraform-provider-ovh/v2 v2.5.0 h1:YABPbfXngSkzTvIszGhtNzm+ig3ic
 github.com/ovh/terraform-provider-ovh/v2 v2.5.0/go.mod h1:95AZ/yoV8o3dzMLVao73dmqzio1x+6iCWt0OJJ+WgDk=
 github.com/ovh/terraform-provider-ovh/v2 v2.6.0 h1:6l3Roynf8O+/wuXC+yubXu8+CpcAOdQ+K9xEzXwcoI8=
 github.com/ovh/terraform-provider-ovh/v2 v2.6.0/go.mod h1:bz1QiuIjRJp7utpts14g4tHuodVw9Oppm0/u0odiIyY=
+github.com/ovh/terraform-provider-ovh/v2 v2.7.0 h1:rIkp2SSGHUKMNaAqckjO0a3J9ChV96Tv3VVp56UXp5Q=
+github.com/ovh/terraform-provider-ovh/v2 v2.7.0/go.mod h1:bz1QiuIjRJp7utpts14g4tHuodVw9Oppm0/u0odiIyY=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=
 github.com/pgavlin/fx v0.1.6/go.mod h1:KWZJ6fqBBSh8GxHYqwYCf3rYE7Gp2p0N8tJp8xv9u9M=
 github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 h1:LoCV5cscNVWyK5ChN/uCoIFJz8jZD63VQiGJIRgr6uo=

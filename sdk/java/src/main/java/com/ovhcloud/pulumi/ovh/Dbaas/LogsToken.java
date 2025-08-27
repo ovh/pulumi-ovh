@@ -53,6 +53,32 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A token can be imported using the `service_name` and `token_id` fields.
+ * 
+ * Using the following configuration:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = ovh_dbaas_logs_token.token
+ * 
+ *   id = &#34;&lt;service_name&gt;/&lt;token_id&#34;
+ * 
+ * }
+ * 
+ * You can then run:
+ * 
+ * bash
+ * 
+ * $ pulumi preview -generate-config-out=token.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `token.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * 
  */
 @ResourceType(type="ovh:Dbaas/logsToken:LogsToken")
 public class LogsToken extends com.pulumi.resources.CustomResource {
@@ -194,6 +220,7 @@ public class LogsToken extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .additionalSecretOutputs(List.of(
                 "value"
             ))

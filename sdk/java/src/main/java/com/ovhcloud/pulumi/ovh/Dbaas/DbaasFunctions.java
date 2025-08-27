@@ -26,6 +26,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DbaasFunctions {
@@ -198,6 +199,49 @@ public final class DbaasFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLogsClusterResult> getLogsCluster(GetLogsClusterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsCluster:getLogsCluster", TypeShape.of(GetLogsClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve informations about a DBaas logs cluster tenant.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var logstash = DbaasFunctions.getLogsCluster(GetLogsClusterArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogsClusterResult> getLogsClusterPlain(GetLogsClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsCluster:getLogsCluster", TypeShape.of(GetLogsClusterResult.class), args, Utilities.withVersion(options));
     }
@@ -325,6 +369,48 @@ public final class DbaasFunctions {
      * 
      */
     public static Output<GetLogsClustersResult> getLogsClusters(GetLogsClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsClusters:getLogsClusters", TypeShape.of(GetLogsClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve UUIDs of DBaas logs clusters.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var logstash = DbaasFunctions.getLogsClusters(GetLogsClustersArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsClustersResult> getLogsClusters(GetLogsClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Dbaas/getLogsClusters:getLogsClusters", TypeShape.of(GetLogsClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -842,6 +928,125 @@ public final class DbaasFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLogsClustersRetentionResult> getLogsClustersRetention(GetLogsClustersRetentionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", TypeShape.of(GetLogsClustersRetentionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs cluster retention.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .retentionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * It is also possible to retrieve a retention using its duration:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Additionnaly, you can filter retentions on their type:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsClustersRetentionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var retention = DbaasFunctions.getLogsClustersRetention(GetLogsClustersRetentionArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .clusterId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .duration("P14D")
+     *             .retentionType("LOGS_INDEXING")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogsClustersRetentionResult> getLogsClustersRetentionPlain(GetLogsClustersRetentionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsClustersRetention:getLogsClustersRetention", TypeShape.of(GetLogsClustersRetentionResult.class), args, Utilities.withVersion(options));
     }
@@ -978,6 +1183,51 @@ public final class DbaasFunctions {
      * 
      */
     public static Output<GetLogsInputEngineResult> getLogsInputEngine(GetLogsInputEngineArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", TypeShape.of(GetLogsInputEngineResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs input engine.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsInputEngineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var logstash = DbaasFunctions.getLogsInputEngine(GetLogsInputEngineArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .name("logstash")
+     *             .version("6.8")
+     *             .isDeprecated(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsInputEngineResult> getLogsInputEngine(GetLogsInputEngineArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Dbaas/getLogsInputEngine:getLogsInputEngine", TypeShape.of(GetLogsInputEngineResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1194,6 +1444,49 @@ public final class DbaasFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", TypeShape.of(GetLogsOutputGraylogStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs output graylog stream.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputGraylogStreamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var stream = DbaasFunctions.getLogsOutputGraylogStream(GetLogsOutputGraylogStreamArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my stream")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogsOutputGraylogStreamResult> getLogsOutputGraylogStreamPlain(GetLogsOutputGraylogStreamPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream", TypeShape.of(GetLogsOutputGraylogStreamResult.class), args, Utilities.withVersion(options));
     }
@@ -1324,6 +1617,49 @@ public final class DbaasFunctions {
      * 
      */
     public static Output<GetLogsOutputOpenSearchIndexResult> getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", TypeShape.of(GetLogsOutputOpenSearchIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaas logs output opensearch index.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Dbaas.DbaasFunctions;
+     * import com.pulumi.ovh.Dbaas.inputs.GetLogsOutputOpenSearchIndexArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var index = DbaasFunctions.getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .name("index-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogsOutputOpenSearchIndexResult> getLogsOutputOpenSearchIndex(GetLogsOutputOpenSearchIndexArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Dbaas/getLogsOutputOpenSearchIndex:getLogsOutputOpenSearchIndex", TypeShape.of(GetLogsOutputOpenSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
