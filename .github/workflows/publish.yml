@@ -124,7 +124,7 @@ jobs:
         cache-go: false
     - name: Publish SDKs
       if: inputs.skipJavaSdk == false
-      uses: scraly/pulumi-package-publisher@v0.0.2
+      uses: scraly/pulumi-package-publisher@v0.0.3
       with:
         sdk: all
         version: ${{ inputs.version }}
